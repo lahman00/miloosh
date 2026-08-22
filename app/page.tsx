@@ -22,10 +22,12 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { FeatureCard } from "@/components/FeatureCard";
 import { SoftwareCard } from "@/components/SoftwareCard";
 import { CategoryCard } from "@/components/CategoryCard";
-import { getAllSoftware } from "@/data/software";
+import { getAllSoftware, getSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getSoftwareByCategory } from "@/lib/related";
-import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { getComparisonSlug } from "@/data/comparisons";
+import { parseComparisonSlug } from "@/lib/comparison";
+import { buildIndexationPriorityList } from "@/scripts/growth/indexation-priority";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -41,10 +43,30 @@ export default function Home() {
 
   const categoryCount = new Set(allSoftware.map((software) => software.category)).size;
 
-  const popularComparisons = PUBLISHED_COMPARISONS.slice(0, 6)
-    .map(([slugA, slugB]) => {
-      const softwareA = allSoftware.find((software) => software.slug === slugA);
-      const softwareB = allSoftware.find((software) => software.slug === slugB);
+  // Evidence-based selection (GOOGLE INDEXATION QUALITY WAR mission, Phase 8
+  // "indexation concentration strategy"): the homepage's "popular" sections
+  // used to be raw catalog/array order, which isn't actually a popularity
+  // signal and made "the tools people compare most" a claim the code didn't
+  // back up. buildIndexationPriorityList ranks by real cached GSC evidence
+  // where it exists, falling back to comparison-graph connectivity +
+  // freshness where it doesn't -- never fabricated, degrades safely if the
+  // gitignored GSC cache is absent (e.g. a clean Vercel build).
+  const priorityList = buildIndexationPriorityList(200);
+
+  const popularSoftwareSlugs = priorityList
+    .filter((row) => row.kind === "software")
+    .slice(0, 6)
+    .map((row) => row.url.replace("/software/", ""));
+  const popularSoftware = popularSoftwareSlugs.map((slug) => getSoftware(slug)).filter((s): s is NonNullable<typeof s> => s !== undefined);
+
+  const popularComparisons = priorityList
+    .filter((row) => row.kind === "comparison")
+    .slice(0, 6)
+    .map((row) => {
+      const parsed = parseComparisonSlug(row.url.replace("/compare/", ""));
+      if (!parsed) return null;
+      const softwareA = getSoftware(parsed.slugA);
+      const softwareB = getSoftware(parsed.slugB);
       return softwareA && softwareB ? { softwareA, softwareB } : null;
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
@@ -104,7 +126,7 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm">
             <span className="text-zinc-500">Popular:</span>
             <PopularSearches
-              items={allSoftware.slice(0, 6).map((software) => ({
+              items={popularSoftware.map((software) => ({
                 name: software.name,
                 slug: software.slug,
               }))}
