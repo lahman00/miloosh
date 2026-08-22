@@ -285,12 +285,13 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     affiliateUrl: "https://affiliate.hubstaff.com/ca2oe167vcj1",
     commissionModel: "30% year 1 or 20% year 1 (PartnerStack active offer)",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md", "PartnerStack Account #1 20-row sweep", "data/software/hubstaff.json"],
+    evidence: ["docs/affiliate-applications.md", "PartnerStack Account #1 20-row sweep", "data/software/hubstaff.json", "Owner-supplied promotion terms (2026-08-22)"],
     ownerBlocker: null,
     formBlocker: null,
     eligibility: "Approved publisher",
     applicationUrl: "https://affiliate.hubstaff.com/",
-    notes: "Active in Miloosh canonical registry."
+    notes:
+      "Active in Miloosh canonical registry. Owner-supplied (2026-08-22): a time-limited 90-day promotion sits alongside the standard commission -- 2 qualifying customers ($50+/month subscription each) within the window earns a $150 bonus; 3 qualifying customers earns $300. Recorded for reference only -- this is a program-terms fact, not something that changes editorial recommendations, ranking, or verdicts for Hubstaff (see editorial-independence tests)."
   },
 
   // ==========================================
