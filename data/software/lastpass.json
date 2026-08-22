@@ -25,6 +25,25 @@
     "https://www.lastpass.com"
   ],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$3/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "3", "currency": "USD", "billing_period": "annual", "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Limited to 1 device type. Unlimited password storage, autofill, dark web monitoring." },
+      { "name": "Premium", "amount": "3", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually; regular list price (a time-limited 30% promotional discount was active as of 2026-08-22). Access on all devices." },
+      { "name": "Families", "amount": "4", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually; regular list price. 6 Premium accounts included." },
+      { "name": "Teams", "amount": "4.25", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. Admin console, shared folders." },
+      { "name": "Business", "amount": "7", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. 100+ advanced security policies." },
+      { "name": "Business Max", "amount": "9", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. SaaS Monitoring, unlimited SSO apps." }
+    ],
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.lastpass.com/pricing"
+  },
   "alternatives": [
     {
       "name": "1Password",

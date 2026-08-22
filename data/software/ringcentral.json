@@ -25,6 +25,23 @@
     "https://www.ringcentral.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$20/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Core", "amount": "20", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($30/user/month billed monthly). Unlimited domestic calling, HD meetings for 300 participants." },
+      { "name": "Advanced", "amount": "25", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($35/user/month billed monthly). CRM integrations, multi-site support." },
+      { "name": "Ultra", "amount": "35", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($45/user/month billed monthly). RingCentral Webinar, unlimited storage." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.ringcentral.com/office/plansandpricing.html"
+  },
   "alternatives": [
     {
       "name": "Zoom",

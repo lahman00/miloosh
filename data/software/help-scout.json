@@ -16,6 +16,23 @@
   ],
   "sources": ["https://www.helpscout.com", "https://www.helpscout.com/mobile/"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$25/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 15 },
+    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Limited to 1 Inbox and 1 Docs site." },
+      { "name": "Standard", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month. Multiple inboxes, live chat and SMS, multiple knowledge bases, AI Inbox assistant." },
+      { "name": "Plus", "amount": "45", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month. Advanced workflows, secure customer portal, Salesforce/Jira/HubSpot integrations." },
+      { "name": "Pro", "amount": "75", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month, requires a sales demo. Unlimited workflows/SLA policies, SSO/SAML, HIPAA compliance." }
+    ],
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.helpscout.com/pricing/"
+  },
   "alternatives": [
     {
       "name": "Front",
