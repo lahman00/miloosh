@@ -17,6 +17,16 @@
   ],
   "sources": ["https://www.salesforce.com/mulesoft/anypoint-platform/", "https://www.mulesoft.com/platform/anypoint-platform-features"],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "unknown",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.salesforce.com/mulesoft/pricing/"
+  },
   "alternatives": [
     {
       "name": "Kong",

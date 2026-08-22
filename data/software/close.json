@@ -21,6 +21,24 @@
     "https://close.com/blog/introducing-chloe"
   ],
   "accessed_at": "2026-08-21",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$9/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Solo", "amount": "9", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($19/user/month billed monthly). Limited to 1 user, 10k leads max." },
+      { "name": "Essentials", "amount": "35", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($49/user/month billed monthly). Unlimited contacts and leads, team features." },
+      { "name": "Growth", "amount": "99", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($109/user/month billed monthly). Automated workflows, power dialer." },
+      { "name": "Scale", "amount": "139", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($149/user/month billed monthly). Predictive dialer, advanced permissions." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.close.com/pricing"
+  },
   "alternatives": [
     {
       "name": "Pipedrive",

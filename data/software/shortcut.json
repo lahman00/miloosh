@@ -23,6 +23,24 @@
     "https://shortcut.com/product"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$8.50/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "8.50", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Best for teams getting started." },
+      { "name": "Team", "amount": "8.50", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for small teams." },
+      { "name": "Business", "amount": "12", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for fast-growing teams." },
+      { "name": "Enterprise", "notes": "Custom pricing. For mature software companies. Contact sales." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.shortcut.com/pricing"
+  },
   "alternatives": [
     {
       "name": "Linear",

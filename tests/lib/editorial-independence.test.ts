@@ -56,7 +56,14 @@ describe("editorial independence from affiliate status", () => {
 
   it("every comparison row is generated the same way regardless of which side (if any) is an active partner", () => {
     const active = getComparisonBySlug("hubspot-vs-pipedrive"); // rejected vs active
-    const neitherPartner = getComparisonBySlug("hubspot-vs-salesforce"); // neither is an active partner
+    // Control pair: neither side is a partner, but -- like the pair above --
+    // exactly one side (Help Scout) has real sourced pricing data and the
+    // other (Front) doesn't. This isolates the variable the test actually
+    // cares about (partner status) from an unrelated one (which products
+    // happen to have pricing data yet), so the row-label comparison below
+    // is a fair apples-to-apples check rather than being tripped by a
+    // legitimate per-product data difference.
+    const neitherPartner = getComparisonBySlug("front-vs-help-scout");
     expect(active).not.toBeNull();
     expect(neitherPartner).not.toBeNull();
 
