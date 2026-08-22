@@ -2,6 +2,7 @@ import type { Software } from "@/data/software";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { META_DESCRIPTION_MAX_LENGTH, truncateAtWord } from "@/lib/generators";
+import { TREATMENT_COHORT } from "@/data/experiments/comparison-quality-cohort";
 
 /**
  * Comparison engine backing /compare/[comparison] (Sprint 7). Built in
@@ -145,6 +146,60 @@ export function generateWhoShouldChoose(software: Software): string {
   return `Choose ${software.name} if this fits: ${software.bestFor}`;
 }
 
+/**
+ * GOOGLE INDEXATION QUALITY WAR mission (2026-08-22) — real, evidenced gap
+ * this closes: generateWhoShouldChoose() above is derived from a single
+ * product's own data only, so its output is byte-identical across every
+ * comparison page that product appears on, regardless of which competitor
+ * it's being weighed against (e.g. "Choose Notion if this fits: ..." reads
+ * the same on notion-vs-clickup and notion-vs-coda). That's a real,
+ * concrete mechanism behind a prior finding (var/agents/latest-report.json,
+ * content-comparison-similarity-analyzer, 2026-08-21): 74.9% of
+ * shared-product comparison-page pairs exceed 50% Jaccard word-overlap.
+ * That finding explicitly did NOT claim this causes non-indexation — it's
+ * being tested as a hypothesis, not asserted as fact (see
+ * data/experiments/comparison-quality-cohort.ts).
+ *
+ * This function makes the "who should choose" text genuinely pair-aware
+ * WITHOUT inventing anything: it reuses the exact same real, already-
+ * validated feature/platform data generateKeyDifferences() already
+ * computes elsewhere on the same page, scoped to what's actually
+ * distinctive about THIS side relative to the specific other product.
+ * When no real difference exists (equal feature/platform sets — rare),
+ * it falls back to the plain sentence rather than fabricate one.
+ *
+ * Applied ONLY to data/experiments/comparison-quality-cohort.ts's
+ * TREATMENT_COHORT (20 pages, hand-selected by real evidence) —
+ * generateComparisonData below still calls the plain, unchanged
+ * generateWhoShouldChoose for every other comparison, including the
+ * CONTROL_COHORT, so this is a true controlled experiment, not a
+ * silent behavior change for all 1,212 pages.
+ */
+const PAIR_AWARE_FEATURE_HIGHLIGHT_CAP = 3;
+
+export function generateWhoShouldChoosePairAware(software: Software, other: Software): string {
+  const base = generateWhoShouldChoose(software);
+
+  const uniqueFeatures = software.features.filter((f) => !other.features.includes(f));
+  const uniquePlatforms = (software.platforms ?? []).filter((p) => !(other.platforms ?? []).includes(p));
+
+  if (uniqueFeatures.length === 0 && uniquePlatforms.length === 0) return base;
+
+  // Capped, not exhaustive: highlights a few concrete, real differences for
+  // decision-making rather than dumping the entire feature-set difference
+  // (which, for two products that barely overlap, would just restate one
+  // side's whole feature list — not "decision-useful," just longer).
+  const highlighted = uniqueFeatures.slice(0, PAIR_AWARE_FEATURE_HIGHLIGHT_CAP);
+  const remaining = uniqueFeatures.length - highlighted.length;
+  const featureClause = highlighted.length > 0
+    ? `${formatList(highlighted)}${remaining > 0 ? `, and ${remaining} more feature${remaining === 1 ? "" : "s"}` : ""} that ${other.name} doesn't list`
+    : null;
+  const platformClause = uniquePlatforms.length > 0 ? `${formatList(uniquePlatforms)} support that ${other.name} doesn't list` : null;
+
+  const clauses = [featureClause, platformClause].filter((c): c is string => c !== null);
+  return `${base} Compared with ${other.name} specifically, ${software.name} also offers ${clauses.join(", plus ")}.`;
+}
+
 function formatList(values: string[] | undefined): string {
   return values && values.length > 0 ? values.join(", ") : "Not yet documented";
 }
@@ -219,6 +274,15 @@ export function generateKeyDifferences(softwareA: Software, softwareB: Software)
 }
 
 export function generateComparisonData(softwareA: Software, softwareB: Software): ComparisonData {
+  // GOOGLE INDEXATION QUALITY WAR mission (2026-08-22) — the controlled
+  // experiment gate. Only the 20 hand-selected TREATMENT_COHORT slugs get
+  // the pair-aware whoShouldChoose text; every other comparison (including
+  // the 20-page CONTROL_COHORT) keeps calling the exact same, unchanged
+  // generateWhoShouldChoose it always has. See
+  // data/experiments/comparison-quality-cohort.ts for the selection
+  // methodology and hypothesis.
+  const isTreatment = TREATMENT_COHORT.includes(generateComparisonSlug(softwareA, softwareB));
+
   return {
     softwareA,
     softwareB,
@@ -227,8 +291,8 @@ export function generateComparisonData(softwareA: Software, softwareB: Software)
     intro: generateComparisonIntro(softwareA, softwareB),
     rows: generateComparisonRows(softwareA, softwareB),
     keyDifferences: generateKeyDifferences(softwareA, softwareB),
-    whoShouldChooseA: generateWhoShouldChoose(softwareA),
-    whoShouldChooseB: generateWhoShouldChoose(softwareB),
+    whoShouldChooseA: isTreatment ? generateWhoShouldChoosePairAware(softwareA, softwareB) : generateWhoShouldChoose(softwareA),
+    whoShouldChooseB: isTreatment ? generateWhoShouldChoosePairAware(softwareB, softwareA) : generateWhoShouldChoose(softwareB),
   };
 }
 
