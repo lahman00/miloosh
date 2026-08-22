@@ -1,5 +1,5 @@
 import { getSoftware } from "@/data/software";
-import { buildIndexationPriorityList, loadCachedGscOpportunities } from "@/scripts/growth/indexation-priority";
+import { buildIndexationPriorityList } from "@/scripts/growth/indexation-priority";
 import { scoreFactualDepth, type FactualDepthRow } from "@/scripts/growth/factual-depth-audit";
 
 /**
@@ -33,30 +33,28 @@ export interface RemediationCandidate {
 }
 
 export function buildRemediationQueue(maxCandidates = 10): RemediationCandidate[] {
-  const gscBySlug = loadCachedGscOpportunities();
   const indexationRows = buildIndexationPriorityList(500).filter((r) => r.kind === "software" && r.evidenceType === "CACHED");
 
   const candidates: RemediationCandidate[] = [];
   for (const row of indexationRows) {
     const slug = row.url.replace("/software/", "");
     const software = getSoftware(slug);
-    const gsc = gscBySlug.get(slug);
-    if (!software || !gsc) continue;
+    if (!software || row.gscImpressions === undefined || row.gscPosition === undefined) continue;
 
     const factualDepth = scoreFactualDepth(software);
     if (factualDepth.bucket !== "C" && factualDepth.bucket !== "D") continue; // only real, identifiable deficiencies
 
-    const strikingDistance = gsc.baselinePosition >= 8 && gsc.baselinePosition <= 40;
+    const strikingDistance = row.gscPosition >= 8 && row.gscPosition <= 40;
     // Real demand (impressions, inverse position) weighted against how thin
     // the page is (lower factual depth = more room for a fix to matter).
-    const priorityScore = gsc.baselineImpressions * 5 + (100 - Math.min(100, gsc.baselinePosition)) + (100 - factualDepth.score) * 0.5 + (strikingDistance ? 20 : 0);
+    const priorityScore = row.gscImpressions * 5 + (100 - Math.min(100, row.gscPosition)) + (100 - factualDepth.score) * 0.5 + (strikingDistance ? 20 : 0);
 
     candidates.push({
       slug,
       name: software.name,
       factualDepth,
-      gscImpressions: gsc.baselineImpressions,
-      gscPosition: gsc.baselinePosition,
+      gscImpressions: row.gscImpressions,
+      gscPosition: row.gscPosition,
       strikingDistance,
       priorityScore: Math.round(priorityScore * 10) / 10,
     });

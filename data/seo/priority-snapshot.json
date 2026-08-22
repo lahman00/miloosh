@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-22T21:13:34.316Z",
+  "sourceRunId": "2026-08-21T22-03-28-553Z-26b8efa4",
+  "sourceRunGeneratedAt": "2026-08-21T22:03:28.553Z",
+  "windowStartDate": "2026-07-22",
+  "windowEndDate": "2026-08-18",
+  "note": "Reviewed, git-committed snapshot derived from a real authenticated Google Search Console pull (via lib/seo-factory). Aggregated per URL (impressions/clicks summed, position impression-weighted) from run.opportunities, which itself caps at the top 100 highest-scoring query+page rows -- this is a real but partial view of the full pull (2,564 raw rows), not exhaustive. Regenerate with scripts/growth/generate-priority-snapshot.ts and review the diff before committing a refresh.",
+  "rows": [
+    {
+      "url": "/software/semrush",
+      "impressions": 1326,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 77.2
+    },
+    {
+      "url": "/software/freshdesk",
+      "impressions": 1216,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 79.7
+    },
+    {
+      "url": "/software/intercom",
+      "impressions": 1215,
+      "clicks": 1,
+      "ctr": 0.0008,
+      "position": 86.1
+    },
+    {
+      "url": "/software/front",
+      "impressions": 504,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 76
+    },
+    {
+      "url": "/software/buffer",
+      "impressions": 405,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 83.8
+    },
+    {
+      "url": "/software/help-scout",
+      "impressions": 350,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "url": "/software/sprout-social",
+      "impressions": 304,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 81.5
+    },
+    {
+      "url": "/software/salesforce",
+      "impressions": 270,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 76.5
+    },
+    {
+      "url": "/software/clickup",
+      "impressions": 266,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 88.5
+    },
+    {
+      "url": "/software/pipedrive",
+      "impressions": 238,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 77.6
+    },
+    {
+      "url": "/software/tidio",
+      "impressions": 209,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 87.4
+    },
+    {
+      "url": "/software/ecwid",
+      "impressions": 188,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 73.4
+    },
+    {
+      "url": "/software/ringcentral",
+      "impressions": 163,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 68.2
+    },
+    {
+      "url": "/software/airtable",
+      "impressions": 162,
+      "clicks": 1,
+      "ctr": 0.0062,
+      "position": 79.5
+    },
+    {
+      "url": "/software/smartsheet",
+      "impressions": 161,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 81.6
+    },
+    {
+      "url": "/software/wrike",
+      "impressions": 153,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 91.4
+    },
+    {
+      "url": "/software/confluence",
+      "impressions": 144,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 70.8
+    },
+    {
+      "url": "/software/lastpass",
+      "impressions": 141,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.2
+    },
+    {
+      "url": "/software/zapier",
+      "impressions": 137,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 89.3
+    },
+    {
+      "url": "/software/n8n",
+      "impressions": 128,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 86.9
+    },
+    {
+      "url": "/software/basecamp",
+      "impressions": 123,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 86.9
+    },
+    {
+      "url": "/software/jasper",
+      "impressions": 119,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.3
+    },
+    {
+      "url": "/software/activecampaign",
+      "impressions": 115,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 76.9
+    },
+    {
+      "url": "/software/webex",
+      "impressions": 111,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.4
+    },
+    {
+      "url": "/software/github",
+      "impressions": 101,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 77.8
+    },
+    {
+      "url": "/software/copy-ai",
+      "impressions": 100,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 80.3
+    },
+    {
+      "url": "/software/umbraco",
+      "impressions": 96,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 64.5
+    },
+    {
+      "url": "/software/crowdstrike",
+      "impressions": 88,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.8
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-segment",
+      "impressions": 84,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 25.1
+    },
+    {
+      "url": "/software/todoist",
+      "impressions": 82,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 68.5
+    },
+    {
+      "url": "/software/klaviyo",
+      "impressions": 80,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 83.6
+    },
+    {
+      "url": "/software/zoho-crm",
+      "impressions": 79,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 79.9
+    },
+    {
+      "url": "/software/power-automate",
+      "impressions": 75,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 82.9
+    },
+    {
+      "url": "/software/gorgias",
+      "impressions": 71,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 85.4
+    },
+    {
+      "url": "/software/matomo",
+      "impressions": 71,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 81.6
+    },
+    {
+      "url": "/software/hotjar",
+      "impressions": 56,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 89.6
+    },
+    {
+      "url": "/software/setmore",
+      "impressions": 54,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 71.9
+    },
+    {
+      "url": "/software/snyk",
+      "impressions": 54,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 78.6
+    },
+    {
+      "url": "/software/drupal",
+      "impressions": 52,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.2
+    },
+    {
+      "url": "/software/calendly",
+      "impressions": 51,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 85.2
+    },
+    {
+      "url": "/software/doodle",
+      "impressions": 49,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 86.9
+    },
+    {
+      "url": "/compare/notion-vs-clickup",
+      "impressions": 46,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 79.9
+    },
+    {
+      "url": "/software/synthesia",
+      "impressions": 45,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.1
+    },
+    {
+      "url": "/software/perplexity",
+      "impressions": 44,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "url": "/software/auth0",
+      "impressions": 44,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 70.7
+    },
+    {
+      "url": "/software/scribe",
+      "impressions": 40,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 78.2
+    },
+    {
+      "url": "/software/weebly",
+      "impressions": 38,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 73.3
+    },
+    {
+      "url": "/software/miro",
+      "impressions": 36,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 81.8
+    },
+    {
+      "url": "/software/woocommerce",
+      "impressions": 36,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 83.8
+    },
+    {
+      "url": "/software/docker",
+      "impressions": 34,
+      "clicks": 1,
+      "ctr": 0.0294,
+      "position": 81.1
+    },
+    {
+      "url": "/software/google-meet",
+      "impressions": 30,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 74.2
+    },
+    {
+      "url": "/software/1password",
+      "impressions": 28,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.9
+    },
+    {
+      "url": "/software/ghost",
+      "impressions": 27,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.6
+    },
+    {
+      "url": "/software/amplitude",
+      "impressions": 25,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 70.4
+    },
+    {
+      "url": "/software/netlify",
+      "impressions": 22,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.2
+    },
+    {
+      "url": "/compare/notion-vs-coda",
+      "impressions": 17,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 71.9
+    },
+    {
+      "url": "/compare/clickup-vs-teamwork",
+      "impressions": 17,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 62.2
+    },
+    {
+      "url": "/software/teamwork",
+      "impressions": 14,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 82.2
+    },
+    {
+      "url": "/software/hootsuite",
+      "impressions": 13,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 82.7
+    },
+    {
+      "url": "/software/freshsales",
+      "impressions": 12,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 66.8
+    },
+    {
+      "url": "/compare/clickup-vs-trello",
+      "impressions": 12,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 80.1
+    },
+    {
+      "url": "/software/nutshell",
+      "impressions": 11,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 42.6
+    },
+    {
+      "url": "/compare/docker-vs-vercel",
+      "impressions": 7,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8.1
+    },
+    {
+      "url": "/software/elevenlabs",
+      "impressions": 7,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 75.6
+    },
+    {
+      "url": "/compare/monday-vs-smartsheet",
+      "impressions": 6,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72.2
+    },
+    {
+      "url": "/compare/canva-vs-lucidchart",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "/software/close",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 66.8
+    },
+    {
+      "url": "/compare/shopware-vs-woocommerce",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 23.5
+    },
+    {
+      "url": "/compare/crowdstrike-vs-tailscale",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "/software/coda",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 66.8
+    },
+    {
+      "url": "/software/firebase",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 54.5
+    },
+    {
+      "url": "/compare/gitlab-vs-postman",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6.3
+    },
+    {
+      "url": "/compare/mkdocs-vs-read-the-docs",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4.3
+    },
+    {
+      "url": "/compare/notion-vs-ticktick",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "/software/craft-cms",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "/compare/discord-vs-google-meet",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "url": "/compare/bigcommerce-vs-weebly",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 19
+    }
+  ]
+}

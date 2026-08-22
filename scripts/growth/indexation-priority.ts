@@ -11,24 +11,32 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug, getComparisonsInvolving } fro
  *
  *   CURRENT  — would require a fresh GSC pull; never available this
  *              session (access remains blocked).
- *   CACHED   — a real number from var/agents/gsc-opportunity-mining.json,
- *              an authenticated API pull from 2026-08-13. Real, but 9+
- *              days old by the time this runs, AND only present in
- *              environments that happen to have this local/ephemeral
- *              agent-output file — /var/ is gitignored (never committed,
- *              by design: it's agent working state, not source), so nothing
- *              guarantees it exists on a clean clone or in the Vercel build.
- *              Loaded at RUNTIME via fs, never as a compile-time import
- *              (2026-08-22 production incident: a static JSON import of
- *              this exact file broke the Vercel build with "Cannot find
- *              module" the moment it built from a checkout that never had
- *              this ephemeral file locally generated). Missing or invalid
- *              cache degrades cleanly to zero CACHED rows — never
- *              fabricated, never crashes.
+ *   CACHED   — real GSC evidence from data/seo/priority-snapshot.json, a
+ *              deliberately reviewed, GIT-COMMITTED snapshot (see
+ *              scripts/growth/generate-priority-snapshot.ts). Real, but a
+ *              point-in-time snapshot rather than a live pull — check its
+ *              own generatedAt/sourceRunGeneratedAt fields for exact
+ *              freshness.
  *   INFERRED — no direct demand evidence exists for this specific page;
  *              scored only on structural proxies (comparison-graph
  *              connectivity, freshness). Never presented as if it were
  *              real demand data.
+ *
+ * MILOOSH CLAUDE OVERNIGHT WAR MISSION (2026-08-22/23), P0 — this used to
+ * read var/agents/gsc-opportunity-mining.json, a local/gitignored file.
+ * That degraded safely (never crashed a build, per the 2026-08-22 P0 fix,
+ * c348417) but public rendering (the homepage's "popular" picks, via
+ * buildIndexationPriorityList) still silently depended on whatever
+ * happened to be sitting in the DEPLOYING MACHINE's local var/ directory —
+ * confirmed empirically: this agent's own `vercel deploy` uploaded its
+ * local var/ cache directly, bypassing git, so a truly clean checkout (or
+ * a different contributor's machine) would have rendered different
+ * content with no error and no visible signal anything was environment-
+ * dependent. Fixed by moving the CACHED evidence source for public
+ * rendering to a real, committed file instead — same bytes, every build,
+ * every machine, reviewable in a git diff. loadCachedGscOpportunities()
+ * below (the old var/-backed loader) is kept only as analysis-only
+ * tooling, never called by buildIndexationPriorityList anymore.
  *
  * Scoring is deliberately simple and auditable (no learned weights, no
  * black box): real evidence always outranks inferred evidence, and within
@@ -46,9 +54,13 @@ function isGscOpportunity(value: unknown): value is GscOpportunity {
 }
 
 /**
+ * ANALYSIS-ONLY. Reads the local/gitignored agent cache — never called by
+ * buildIndexationPriorityList (see PRIORITY_SNAPSHOT_PATH below for the
+ * public-safe committed equivalent). Kept for scripts that specifically
+ * want to compare a fresh local pull against the committed snapshot.
  * Never throws, never fabricates: a missing file, a malformed file, or a
  * file whose shape doesn't match what's expected all resolve to the same
- * safe outcome — an empty map, i.e. every page falls back to INFERRED.
+ * safe outcome — an empty map.
  */
 export function loadCachedGscOpportunities(): Map<string, GscOpportunity> {
   try {
@@ -64,11 +76,46 @@ export function loadCachedGscOpportunities(): Map<string, GscOpportunity> {
   }
 }
 
+type PrioritySnapshotRow = { url: string; impressions: number; clicks: number; ctr: number; position: number };
+
+export const PRIORITY_SNAPSHOT_PATH = path.join(process.cwd(), "data", "seo", "priority-snapshot.json");
+
+function isPrioritySnapshotRow(value: unknown): value is PrioritySnapshotRow {
+  if (!value || typeof value !== "object") return false;
+  const v = value as Record<string, unknown>;
+  return typeof v.url === "string" && typeof v.impressions === "number" && typeof v.clicks === "number" && typeof v.position === "number";
+}
+
+/**
+ * PUBLIC-SAFE. Reads the committed data/seo/priority-snapshot.json — real
+ * GSC evidence, but deterministic (same file everywhere) rather than a
+ * live/ephemeral read. This is the evidence source buildIndexationPriorityList
+ * actually uses for CACHED rows. Same fail-safe posture as the loader
+ * above: missing/malformed file or entries degrade to an empty map /
+ * dropped rows, never a crash, never fabricated data — even though this
+ * file IS committed (so "missing" shouldn't normally happen), a future
+ * bad edit or merge conflict must not be able to break the build or
+ * public rendering either.
+ */
+export function loadPrioritySnapshot(): Map<string, PrioritySnapshotRow> {
+  try {
+    const raw = fs.readFileSync(PRIORITY_SNAPSHOT_PATH, "utf-8");
+    const parsed: unknown = JSON.parse(raw);
+    const list = parsed && typeof parsed === "object" && Array.isArray((parsed as Record<string, unknown>).rows) ? (parsed as { rows: unknown[] }).rows : [];
+    const valid = list.filter(isPrioritySnapshotRow);
+    return new Map(valid.map((r) => [r.url, r]));
+  } catch {
+    return new Map();
+  }
+}
+
 export interface IndexationPriorityRow {
   url: string;
   kind: "software" | "comparison";
   evidenceType: "CACHED" | "INFERRED";
   gscImpressions?: number;
+  gscClicks?: number;
+  gscCtr?: number;
   gscPosition?: number;
   connectivity: number;
   accessedAt: string;
@@ -80,19 +127,20 @@ function daysSince(dateStr: string): number {
 }
 
 export function buildIndexationPriorityList(topN = 50): IndexationPriorityRow[] {
-  const gscBySlug = loadCachedGscOpportunities();
+  const snapshotByUrl = loadPrioritySnapshot();
   const rows: IndexationPriorityRow[] = [];
 
   for (const software of getAllSoftware()) {
-    const gsc = gscBySlug.get(software.slug);
+    const url = `/software/${software.slug}`;
+    const gsc = snapshotByUrl.get(url);
     const connectivity = getComparisonsInvolving(software.slug).length;
     const freshnessScore = Math.max(0, 30 - daysSince(software.accessedAt)); // real signal within a 30-day window; older data contributes nothing extra, never penalized below 0
-    const score = gsc ? gsc.baselineImpressions * 10 + (100 - Math.min(100, gsc.baselinePosition)) + connectivity + freshnessScore : connectivity * 2 + freshnessScore;
+    const score = gsc ? gsc.impressions * 10 + (100 - Math.min(100, gsc.position)) + connectivity + freshnessScore : connectivity * 2 + freshnessScore;
     rows.push({
-      url: `/software/${software.slug}`,
+      url,
       kind: "software",
       evidenceType: gsc ? "CACHED" : "INFERRED",
-      ...(gsc ? { gscImpressions: gsc.baselineImpressions, gscPosition: gsc.baselinePosition } : {}),
+      ...(gsc ? { gscImpressions: gsc.impressions, gscClicks: gsc.clicks, gscCtr: gsc.ctr, gscPosition: gsc.position } : {}),
       connectivity,
       accessedAt: software.accessedAt,
       score: Math.round(score * 10) / 10,
@@ -101,19 +149,20 @@ export function buildIndexationPriorityList(topN = 50): IndexationPriorityRow[] 
 
   for (const [aSlug, bSlug] of PUBLISHED_COMPARISONS) {
     const slug = getComparisonSlug(aSlug, bSlug);
-    const gsc = gscBySlug.get(slug);
+    const url = `/compare/${slug}`;
+    const gsc = snapshotByUrl.get(url);
     const softwareA = getSoftware(aSlug);
     const softwareB = getSoftware(bSlug);
     if (!softwareA || !softwareB) continue;
     const connectivity = getComparisonsInvolving(aSlug).length + getComparisonsInvolving(bSlug).length;
     const accessedAt = [softwareA.accessedAt, softwareB.accessedAt].sort().at(-1)!;
     const freshnessScore = Math.max(0, 30 - daysSince(accessedAt));
-    const score = gsc ? gsc.baselineImpressions * 10 + (100 - Math.min(100, gsc.baselinePosition)) + connectivity * 0.5 + freshnessScore : connectivity * 0.5 + freshnessScore;
+    const score = gsc ? gsc.impressions * 10 + (100 - Math.min(100, gsc.position)) + connectivity * 0.5 + freshnessScore : connectivity * 0.5 + freshnessScore;
     rows.push({
-      url: `/compare/${slug}`,
+      url,
       kind: "comparison",
       evidenceType: gsc ? "CACHED" : "INFERRED",
-      ...(gsc ? { gscImpressions: gsc.baselineImpressions, gscPosition: gsc.baselinePosition } : {}),
+      ...(gsc ? { gscImpressions: gsc.impressions, gscClicks: gsc.clicks, gscCtr: gsc.ctr, gscPosition: gsc.position } : {}),
       connectivity,
       accessedAt,
       score: Math.round(score * 10) / 10,
@@ -124,17 +173,17 @@ export function buildIndexationPriorityList(topN = 50): IndexationPriorityRow[] 
 }
 
 async function main() {
-  const cacheAvailable = loadCachedGscOpportunities().size > 0;
+  const snapshotAvailable = loadPrioritySnapshot().size > 0;
   const rows = buildIndexationPriorityList(50);
   const cachedCount = rows.filter((r) => r.evidenceType === "CACHED").length;
   console.log("========================================================================================");
-  if (!cacheAvailable) {
-    console.log(` NOTE: ${GSC_CACHE_PATH} is missing, empty, or invalid on this run — every row below is INFERRED (structural proxies only, no real GSC demand evidence).`);
+  if (!snapshotAvailable) {
+    console.log(` NOTE: ${PRIORITY_SNAPSHOT_PATH} is missing, empty, or invalid on this run — every row below is INFERRED (structural proxies only, no real GSC demand evidence). Regenerate it with scripts/growth/generate-priority-snapshot.ts.`);
   }
-  console.log(` TOP 50 PAGES TO STRENGTHEN FOR INDEXATION TRUST (${cachedCount} backed by real cached GSC evidence, ${rows.length - cachedCount} inferred from structural proxies only)`);
+  console.log(` TOP 50 PAGES TO STRENGTHEN FOR INDEXATION TRUST (${cachedCount} backed by real committed GSC evidence, ${rows.length - cachedCount} inferred from structural proxies only)`);
   console.log("========================================================================================");
   for (const r of rows) {
-    const evidence = r.evidenceType === "CACHED" ? `CACHED: ${r.gscImpressions} impr @ pos ${r.gscPosition?.toFixed(1)}` : "INFERRED (no direct demand evidence)";
+    const evidence = r.evidenceType === "CACHED" ? `CACHED: ${r.gscImpressions} impr / ${r.gscClicks} clicks @ pos ${r.gscPosition?.toFixed(1)}` : "INFERRED (no direct demand evidence)";
     console.log(`   ${r.url.padEnd(45)} score ${r.score.toString().padStart(6)} | ${evidence}`);
   }
   console.log("========================================================================================\n");

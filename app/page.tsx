@@ -44,13 +44,22 @@ export default function Home() {
   const categoryCount = new Set(allSoftware.map((software) => software.category)).size;
 
   // Evidence-based selection (GOOGLE INDEXATION QUALITY WAR mission, Phase 8
-  // "indexation concentration strategy"): the homepage's "popular" sections
-  // used to be raw catalog/array order, which isn't actually a popularity
-  // signal and made "the tools people compare most" a claim the code didn't
-  // back up. buildIndexationPriorityList ranks by real cached GSC evidence
-  // where it exists, falling back to comparison-graph connectivity +
-  // freshness where it doesn't -- never fabricated, degrades safely if the
-  // gitignored GSC cache is absent (e.g. a clean Vercel build).
+  // "indexation concentration strategy"; corrected for production
+  // determinism in the OVERNIGHT WAR MISSION, 2026-08-22/23, P0):
+  // buildIndexationPriorityList ranks by real GSC evidence where it
+  // exists, falling back to comparison-graph connectivity + freshness
+  // where it doesn't. That evidence now comes from data/seo/priority-
+  // snapshot.json -- a small, reviewed, GIT-COMMITTED file (see
+  // scripts/growth/generate-priority-snapshot.ts), not a local/gitignored
+  // cache. This section used to read var/agents/gsc-opportunity-
+  // mining.json directly, which meant public rendering could silently
+  // depend on whichever machine happened to run `vercel deploy` (that
+  // file is gitignored, so a clean checkout never has it) -- confirmed
+  // empirically during that mission. Same evidence, every build,
+  // everywhere, now. Labels below are deliberately NOT "Popular" / "the
+  // tools people compare most": real click-through data is still near-
+  // zero site-wide, so a genuine popularity claim isn't yet supportable --
+  // this is an evidence-ranked shortlist, not a usage ranking.
   const priorityList = buildIndexationPriorityList(200);
 
   const popularSoftwareSlugs = priorityList
@@ -124,7 +133,7 @@ export default function Home() {
           <SearchForm className="mt-10 w-full max-w-2xl" />
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm">
-            <span className="text-zinc-500">Popular:</span>
+            <span className="text-zinc-500">Explore:</span>
             <PopularSearches
               items={popularSoftware.map((software) => ({
                 name: software.name,
@@ -208,8 +217,8 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Compare"
-              title="Popular head-to-head comparisons"
-              description="Side-by-side breakdowns of the tools people compare most."
+              title="Featured comparisons"
+              description="Side-by-side breakdowns, prioritized by real search demand and page connectivity."
             />
             <Link
               href="/compare"
