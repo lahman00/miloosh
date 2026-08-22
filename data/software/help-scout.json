@@ -25,9 +25,9 @@
     "free_trial": { "available": true, "days": 15 },
     "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Limited to 1 Inbox and 1 Docs site." },
-      { "name": "Standard", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month. Multiple inboxes, live chat and SMS, multiple knowledge bases, AI Inbox assistant." },
-      { "name": "Plus", "amount": "45", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month. Advanced workflows, secure customer portal, Salesforce/Jira/HubSpot integrations." },
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Up to 5 users. Limited to 1 Inbox and 1 Docs site." },
+      { "name": "Standard", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month (16% cheaper if billed annually). Multiple inboxes, live chat and SMS, multiple knowledge bases, AI Inbox assistant." },
+      { "name": "Plus", "amount": "45", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month (16% cheaper if billed annually). Advanced workflows, secure customer portal, Salesforce/Jira/HubSpot integrations." },
       { "name": "Pro", "amount": "75", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month, requires a sales demo. Unlimited workflows/SLA policies, SSO/SAML, HIPAA compliance." }
     ],
     "last_verified": "2026-08-22",
