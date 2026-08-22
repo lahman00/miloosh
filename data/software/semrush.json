@@ -19,6 +19,24 @@
     "https://www.semrush.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$117.33/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "117.33", "currency": "USD", "billing_period": "annual" },
+    "tiers": [
+      { "name": "SEO", "amount": "117.33", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($139/mo billed monthly). 5 websites, 500 tracked keywords, Site Audit, basic AI-search visibility tracking." },
+      { "name": "Starter (SEO + AI Search)", "amount": "165.17", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($199/mo billed monthly). 5 websites, 500 keywords, keyword research/optimization, 50 AI prompts tracked daily." },
+      { "name": "Pro+ (SEO + AI Search)", "amount": "248.17", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($299/mo billed monthly). 15 websites, 1,500 keywords, historical SEO data, multi-location tracking." },
+      { "name": "Advanced (SEO + AI Search)", "amount": "455.67", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($549/mo billed monthly). 40 websites, 5,000 keywords, SEO share of voice, API data integration." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-22",
+    "official_source": "https://www.semrush.com/prices/"
+  },
   "alternatives": [
     {
       "name": "Ahrefs",
