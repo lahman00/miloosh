@@ -13,6 +13,7 @@ const productLinks = [
   { name: "Compare", href: "/compare" },
   { name: "Find my software", href: "/recommend" },
   { name: "Cost calculator", href: "/tools/saas-cost-calculator" },
+  { name: "Pricing Pressure Index", href: "/research/saas-pricing-pressure-index-2026" },
 ];
 
 const companyLinks = [

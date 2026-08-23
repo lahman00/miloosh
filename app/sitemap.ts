@@ -93,6 +93,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // per-token content the same way /recommend/results is).
     { url: `${SITE_URL}/tools/saas-cost-calculator`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/newsletter`, changeFrequency: "monthly", priority: 0.5 },
+    // MILOOSH WAR MODE mission (2026-08-24) — the PR data asset. Weekly
+    // since the underlying pricing dataset is re-verified continuously.
+    { url: `${SITE_URL}/research/saas-pricing-pressure-index-2026`, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   return [...staticPages, ...categoryPages, ...roleGuidePages, ...softwarePages, ...comparisonPages, ...legalPages];
