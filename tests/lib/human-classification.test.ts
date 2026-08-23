@@ -126,4 +126,26 @@ describe("classifySessions", () => {
   it("never crashes or produces a session on an empty event list", () => {
     expect(classifySessions([])).toEqual([]);
   });
+
+  it("MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) Phase 18: a QA session carrying CTA-experiment fields is still KNOWN_QA_TEST, never counted as human growth just because it has experimentId/variant attached", () => {
+    const events: FirstPartyEvent[] = [
+      ev({ type: "page_view", sessionId: "s_exp_qa", timestamp: "2026-01-01T00:00:00.000Z", path: "/software/x", isTest: true }),
+      ev({ type: "cta_impression", sessionId: "s_exp_qa", timestamp: "2026-01-01T00:00:05.000Z", path: "/software/x", experimentId: "software-cta-copy-v1", variant: "treatment", isTest: true } as never),
+      ev({ type: "outbound_click", sessionId: "s_exp_qa", timestamp: "2026-01-01T00:00:10.000Z", path: "/software/x", experimentId: "software-cta-copy-v1", variant: "treatment", isTest: true } as never),
+    ];
+    const [c] = classifySessions(events);
+    expect(c!.bucket).toBe("KNOWN_QA_TEST");
+  });
+
+  it("a real (non-QA) experiment-tagged session with a genuine outbound click still classifies as CONFIRMED_CLEAN -- the experiment doesn't weaken or bypass the existing evidence rules", () => {
+    const events: FirstPartyEvent[] = [
+      ev({ type: "page_view", sessionId: "s_exp_real", timestamp: "2026-01-01T09:00:00.000Z", path: "/software/x" }),
+      ev({ type: "engaged_view", sessionId: "s_exp_real", timestamp: "2026-01-01T09:00:12.000Z", path: "/software/x" }),
+      ev({ type: "cta_impression", sessionId: "s_exp_real", timestamp: "2026-01-01T09:00:20.000Z", path: "/software/x", experimentId: "software-cta-copy-v1", variant: "treatment" } as never),
+      ev({ type: "outbound_click", sessionId: "s_exp_real", timestamp: "2026-01-01T09:00:25.000Z", path: "/software/x", experimentId: "software-cta-copy-v1", variant: "treatment" } as never),
+    ];
+    const [c] = classifySessions(events);
+    expect(c!.bucket).toBe("CONFIRMED_CLEAN");
+    expect(c!.isPartOfBurst).toBe(false);
+  });
 });

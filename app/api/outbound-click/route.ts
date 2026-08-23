@@ -26,6 +26,8 @@ type OutboundClickBody = {
   visitorId?: unknown;
   sessionId?: unknown;
   isTest?: unknown;
+  experimentId?: unknown;
+  variant?: unknown;
 };
 
 function isWixContext(value: unknown): value is WixFunnelContext {
@@ -60,6 +62,13 @@ export async function POST(request: NextRequest) {
   // events.ts) and first-party analytics, so a synthetic QA click never
   // gets counted as a real conversion in either system.
   const isTest = body.isTest === true;
+  // MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) — present only
+  // for a click on a CTA under active experimentation; the server trusts
+  // these as opaque labels only (never used to branch destination logic),
+  // same trust posture as ctaLocation.
+  const experimentId = typeof body.experimentId === "string" ? body.experimentId : undefined;
+  const variant = typeof body.variant === "string" ? body.variant : undefined;
+  const experimentFields = experimentId && variant ? { experimentId, variant } : {};
 
   if (kind === "vendor-link") {
     await trackVendorLinkClick(software, software.website, sourcePage, isTest);
@@ -77,6 +86,7 @@ export async function POST(request: NextRequest) {
       sessionId,
       timestamp: new Date().toISOString(),
       isTest,
+      ...experimentFields,
     });
   } else {
     const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software);
@@ -98,6 +108,7 @@ export async function POST(request: NextRequest) {
       sessionId,
       timestamp: new Date().toISOString(),
       isTest,
+      ...experimentFields,
     });
   }
 

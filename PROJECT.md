@@ -336,6 +336,56 @@ handful of hand-written pages.
   through probable), maximum plausible up to 60 if every unresolved/
   suspicious session were eventually vindicated (not expected, not
   claimed).
+- **CTA conversion optimization: measurement layer + first controlled
+  experiment (2026-08-23)** — the classified funnel's own bottleneck was
+  the next evidence-backed target: 6 STRONG_HUMAN_EVIDENCE visitors from
+  the real CircleCI/Facebook post reached `cta_impression` and 0 clicked.
+  Mapped the full CTA system first: 4 live locations all sharing one
+  component (`components/TrackedCtaLink.tsx`) — `software-page-cta`,
+  `compare-page-choose-card`, `role-guide-summary-table`, `role-guide-
+  card-cta` — plus a `VendorLinksBlock` that renders nothing today (no
+  `software.links` populated yet, a real but currently-inert gap). Every
+  CTA already resolves its destination through `lib/affiliate.ts`
+  (`getSoftwareCtaUrl`), which never fabricates a URL and dual-records
+  every real click into both the legacy revenue pipeline and first-party
+  analytics — confirmed this is why "outbound_click" events in the
+  classification layer were already trustworthy, not a measurement gap.
+
+  Real finding from the audit (Phase 4/10): `PricingSection` renders
+  AFTER the CTA card on the software page, not before it — a visitor
+  sees "Visit {Name}" before any pricing context. Documented, not fixed
+  this pass (a layout change would confound the copy experiment below;
+  left as a separately-scoped follow-up).
+
+  Built a real, additive (opt-in per CTA) experiment layer:
+  `lib/experiments/cta-copy-experiment.ts` (deterministic per-visitor
+  hash assignment, stable across sessions) wired into `TrackedCtaLink`
+  and the software-page primary CTA only (`software-cta-copy-v1`).
+  CONTROL is the pre-existing "Visit {Name}" text, byte-identical, so
+  the baseline arm is the real unchanged experience, not a synthetic one.
+  TREATMENT is "Visit {Name}'s Official Site" — deliberately NOT
+  "View pricing" / "Start free trial" / "Best deal", since
+  `getSoftwareCtaUrl` resolves to the vendor's general site for most
+  entries, and those phrases would describe a destination the link
+  doesn't actually deliver (this mission's own copy-accuracy rule).
+  `cta_impression`/`outbound_click` events now carry `experimentId`/
+  `variant` when applicable (extended, not replaced, the existing event
+  shapes). `scripts/analytics/report.ts` gained a per-arm CTA experiment
+  report with an explicit `INSUFFICIENT_DATA` gate (>= 30 impressions
+  required in EVERY arm before any comparison is shown) — never computes
+  or implies statistical significance even once that floor is cleared.
+  Real production status at deploy time: 0 experiment-tagged impressions
+  yet (too new) — INSUFFICIENT_DATA, honestly reported as such.
+
+  A known, accepted design tradeoff, documented in the component itself:
+  since visitor ID lives in localStorage (client-only), the treatment
+  variant can't be known during SSR — control renders first on both the
+  server and the initial client render (so there's no hydration
+  mismatch), then a post-mount effect swaps in treatment if assigned.
+  This is a small, standard, one-time text swap after mount, not a
+  flicker between page loads (a returning visitor's assignment never
+  changes) — the alternative (a cookie-based edge/middleware split) would
+  be materially larger scope than "one CTA hypothesis."
 
 ## Planned workstream — not yet started
 

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { isBotUserAgent, isInternalOrSyntheticTraffic } from "@/lib/analytics/bot-filter";
 import { recordFirstPartyEvent, getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/events";
-import { computePeriodMetrics, isSyntheticOrTestEvent, computeRecommendDomainBreakdown, computeCtaExposure, computeAcquisitionSourceBreakdown, computeAcquisitionMilestones } from "@/scripts/analytics/report";
+import { computePeriodMetrics, isSyntheticOrTestEvent, computeRecommendDomainBreakdown, computeCtaExposure, computeAcquisitionSourceBreakdown, computeAcquisitionMilestones, computeCtaExperimentReport } from "@/scripts/analytics/report";
 import { LEGACY_CONTAMINATED_SESSIONS, isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
 import fs from "node:fs";
 import path from "node:path";
@@ -361,6 +361,56 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
       ];
       expect(computeCtaExposure(events)).toEqual([]);
       expect(computeCtaExposure(events, true).find((r) => r.softwareSlug === "notion")?.impressions).toBe(1);
+    });
+  });
+
+  describe("MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23): CTA experiment reporting", () => {
+    const mkEvents = (impressions: number, clicks: number, variant: string, experimentId = "software-cta-copy-v1"): FirstPartyEvent[] => {
+      const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
+      const events: FirstPartyEvent[] = [];
+      for (let i = 0; i < impressions; i++) {
+        events.push({ type: "cta_impression", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", visitorId: `v_${variant}_${i}`, sessionId: `s_${variant}_${i}`, timestamp: t(i), experimentId, variant } as FirstPartyEvent);
+      }
+      for (let i = 0; i < clicks; i++) {
+        events.push({ type: "outbound_click", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", destination: "official", url: "https://x.com", visitorId: `v_${variant}_${i}`, sessionId: `s_${variant}_${i}`, timestamp: t(1000 + i), experimentId, variant } as FirstPartyEvent);
+      }
+      return events;
+    };
+
+    it("reports INSUFFICIENT_DATA below the per-arm sample-size floor, even with a real click observed", () => {
+      const events = [...mkEvents(2, 1, "control"), ...mkEvents(2, 0, "treatment")];
+      const [report] = computeCtaExperimentReport(events);
+      expect(report.status).toBe("INSUFFICIENT_DATA");
+      expect(report.arms.find((a) => a.variant === "control")?.ctrLabel).toBe("1/2 (50.0%)");
+    });
+
+    it("reports OBSERVATIONAL_DATA_AVAILABLE only once EVERY arm clears the floor -- one thin arm keeps the whole experiment INSUFFICIENT_DATA", () => {
+      const events = [...mkEvents(40, 5, "control"), ...mkEvents(3, 1, "treatment")];
+      const [report] = computeCtaExperimentReport(events);
+      expect(report.status).toBe("INSUFFICIENT_DATA");
+    });
+
+    it("reports OBSERVATIONAL_DATA_AVAILABLE once both arms clear the floor, with numerator/denominator always paired", () => {
+      const events = [...mkEvents(35, 4, "control"), ...mkEvents(32, 7, "treatment")];
+      const [report] = computeCtaExperimentReport(events);
+      expect(report.status).toBe("OBSERVATIONAL_DATA_AVAILABLE");
+      expect(report.arms.find((a) => a.variant === "control")).toEqual({ variant: "control", impressions: 35, clicks: 4, ctrLabel: "4/35 (11.4%)" });
+      expect(report.arms.find((a) => a.variant === "treatment")).toEqual({ variant: "treatment", impressions: 32, clicks: 7, ctrLabel: "7/32 (21.9%)" });
+    });
+
+    it("ignores CTA events with no experimentId/variant -- ordinary (non-experimental) CTAs never leak into an experiment report", () => {
+      const t = new Date().toISOString();
+      const events: FirstPartyEvent[] = [{ type: "cta_impression", path: "/software/y", softwareSlug: "y", ctaLocation: "software-page-cta", visitorId: "v_1", sessionId: "s_1", timestamp: t } as FirstPartyEvent];
+      expect(computeCtaExperimentReport(events)).toEqual([]);
+    });
+
+    it("excludes synthetic QA experiment events by default, matching every other analytics-truth boundary", () => {
+      const t = new Date().toISOString();
+      const events: FirstPartyEvent[] = [
+        { type: "cta_impression", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", visitorId: "v_qa", sessionId: "s_qa", timestamp: t, experimentId: "software-cta-copy-v1", variant: "control", isTest: true } as FirstPartyEvent,
+      ];
+      expect(computeCtaExperimentReport(events)).toEqual([]);
+      expect(computeCtaExperimentReport(events, true)).toHaveLength(1);
     });
   });
 

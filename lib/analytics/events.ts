@@ -109,6 +109,16 @@ export interface OutboundClickEvent extends BaseAnalyticsEvent {
   url: string;
   ctaLocation?: string;
   isTest?: boolean;
+  /**
+   * MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) — present only
+   * when this click came from a CTA under active experimentation (see
+   * lib/experiments/cta-copy-experiment.ts). Absent for every other CTA
+   * click, including ones on the same page location before/after an
+   * experiment ran — never inferred, only ever set by the experiment's own
+   * assignment logic.
+   */
+  experimentId?: string;
+  variant?: string;
 }
 
 export interface InternalCtaClickEvent extends BaseAnalyticsEvent {
@@ -174,6 +184,9 @@ export interface CtaImpressionEvent extends BaseAnalyticsEvent {
   type: "cta_impression";
   softwareSlug: string;
   ctaLocation?: string;
+  /** See OutboundClickEvent's experimentId/variant doc — same meaning, same mission. */
+  experimentId?: string;
+  variant?: string;
 }
 
 export type FirstPartyEvent =

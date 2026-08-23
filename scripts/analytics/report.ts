@@ -118,6 +118,76 @@ export function computeCtaExposure(events: FirstPartyEvent[], includeSynthetic =
 }
 
 /**
+ * MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23), Phase 3/9 —
+ * per-arm CTA experiment performance. Same unique-VISITOR joining
+ * discipline as computeCtaExposure (never an event count masquerading as
+ * a click-through rate), plus an explicit sample-size gate: below
+ * MIN_IMPRESSIONS_PER_ARM_FOR_SIGNAL impressions in EITHER arm, `status`
+ * is always "INSUFFICIENT_DATA" -- this function never computes or
+ * implies statistical significance (no p-value, no confidence interval)
+ * even once the threshold is crossed; it only ever reports the raw
+ * observed numbers side by side; deciding what counts as "enough" to act
+ * on is a human/reporting judgment, not something this function claims.
+ */
+const MIN_IMPRESSIONS_PER_ARM_FOR_SIGNAL = 30;
+
+export interface CtaExperimentArm {
+  variant: string;
+  impressions: number;
+  clicks: number;
+  ctrLabel: string; // e.g. "2/17 (11.8%)" -- numerator/denominator always shown together
+}
+
+export interface CtaExperimentReport {
+  experimentId: string;
+  arms: CtaExperimentArm[];
+  status: "INSUFFICIENT_DATA" | "OBSERVATIONAL_DATA_AVAILABLE";
+}
+
+function ctrLabel(clicks: number, impressions: number): string {
+  return impressions > 0 ? `${clicks}/${impressions} (${((clicks / impressions) * 100).toFixed(1)}%)` : `${clicks}/${impressions} (n/a)`;
+}
+
+export function computeCtaExperimentReport(events: FirstPartyEvent[], includeSynthetic = false): CtaExperimentReport[] {
+  const impressionVisitorsByArm = new Map<string, Set<string>>(); // key: experimentId|||variant
+  const clickVisitorsByArm = new Map<string, Set<string>>();
+
+  for (const e of events) {
+    if (isSyntheticOrTestEvent(e, includeSynthetic)) continue;
+    if (e.type !== "cta_impression" && e.type !== "outbound_click") continue;
+    const experimentId = (e as { experimentId?: string }).experimentId;
+    const variant = (e as { variant?: string }).variant;
+    if (!experimentId || !variant) continue;
+    const key = `${experimentId}|||${variant}`;
+    const bucket = e.type === "cta_impression" ? impressionVisitorsByArm : clickVisitorsByArm;
+    if (!bucket.has(key)) bucket.set(key, new Set());
+    bucket.get(key)!.add(e.visitorId);
+  }
+
+  const byExperiment = new Map<string, CtaExperimentArm[]>();
+  for (const [key, impressionVisitors] of impressionVisitorsByArm.entries()) {
+    const [experimentId, variant] = key.split("|||") as [string, string];
+    const clickVisitors = clickVisitorsByArm.get(key) ?? new Set<string>();
+    let clicks = 0;
+    for (const vid of clickVisitors) {
+      if (impressionVisitors.has(vid)) clicks++;
+    }
+    const arm: CtaExperimentArm = { variant, impressions: impressionVisitors.size, clicks, ctrLabel: ctrLabel(clicks, impressionVisitors.size) };
+    if (!byExperiment.has(experimentId)) byExperiment.set(experimentId, []);
+    byExperiment.get(experimentId)!.push(arm);
+  }
+
+  return [...byExperiment.entries()].map(([experimentId, arms]) => {
+    const sufficientData = arms.length >= 2 && arms.every((a) => a.impressions >= MIN_IMPRESSIONS_PER_ARM_FOR_SIGNAL);
+    return {
+      experimentId,
+      arms: arms.sort((a, b) => a.variant.localeCompare(b.variant)),
+      status: sufficientData ? "OBSERVATIONAL_DATA_AVAILABLE" : "INSUFFICIENT_DATA",
+    };
+  });
+}
+
+/**
  * TRAFFIC ACQUISITION WAR MODE mission (2026-08-22) Phase 2 — per-source
  * funnel, not just a landing-page-view count. Attributes each visitor to
  * the TrafficSource on their earliest page_view (their true landing
@@ -903,10 +973,33 @@ export async function generateAnalyticsReport() {
   if (ctaExposure.length === 0) {
     console.log("   (no cta_impression events recorded yet — this telemetry shipped 2026-08-22, so early periods will show none)");
   } else {
-    console.log(`   ${"SOFTWARE".padEnd(20)} ${"CTA LOCATION".padEnd(28)} IMPRESSIONS  CLICKS  CTR`);
+    console.log(`   ${"SOFTWARE".padEnd(20)} ${"CTA LOCATION".padEnd(28)} IMPRESSIONS  CLICKS  CTR (clickers/impressions)`);
     for (const row of ctaExposure) {
-      const ctr = row.impressions >= 5 ? `${((row.clicks / row.impressions) * 100).toFixed(1)}%` : "n too small";
+      // MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) Phase 3 --
+      // numerator/denominator always shown together, never a bare percentage.
+      const ctr = row.impressions >= 5 ? `${row.clicks}/${row.impressions} (${((row.clicks / row.impressions) * 100).toFixed(1)}%)` : `${row.clicks}/${row.impressions} (n too small)`;
       console.log(`   ${row.softwareSlug.padEnd(20)} ${row.ctaLocation.padEnd(28)} ${row.impressions.toString().padStart(11)} ${row.clicks.toString().padStart(7)}  ${ctr}`);
+    }
+  }
+  console.log("========================================================================================\n");
+
+  // MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) Phase 3/9 --
+  // the first controlled CTA experiment's per-arm performance. Status is
+  // never anything stronger than the raw observed numbers support -- see
+  // computeCtaExperimentReport's own doc for exactly what it does and does
+  // not claim.
+  const ctaExperiments = computeCtaExperimentReport(events, includeSynthetic);
+  console.log("========================================================================================");
+  console.log(" CTA EXPERIMENTS (per-arm, unique visitors -- never a fabricated significance claim)");
+  if (ctaExperiments.length === 0) {
+    console.log("   (no experiment-tagged CTA events recorded yet)");
+  } else {
+    for (const exp of ctaExperiments) {
+      console.log(`   Experiment: ${exp.experimentId}`);
+      console.log(`   Status: ${exp.status}${exp.status === "INSUFFICIENT_DATA" ? ` (needs >= ${MIN_IMPRESSIONS_PER_ARM_FOR_SIGNAL} impressions in EVERY arm before any comparison is meaningful)` : " (raw observed numbers only -- not a significance test)"}`);
+      for (const arm of exp.arms) {
+        console.log(`     ${arm.variant.padEnd(12)} impressions=${arm.impressions.toString().padStart(4)}  clicks=${arm.clicks.toString().padStart(3)}  CTR=${arm.ctrLabel}`);
+      }
     }
   }
   console.log("========================================================================================\n");

@@ -18,6 +18,7 @@ import { VendorLinksBlock } from "@/components/VendorLinksBlock";
 import { PricingSection } from "@/components/PricingSection";
 import { AlternativeDecisionGuide } from "@/components/AlternativeDecisionGuide";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
+import { CTA_COPY_EXPERIMENT_ID, getCtaCopyLabel } from "@/lib/experiments/cta-copy-experiment";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getRelatedSoftware } from "@/lib/related";
@@ -177,10 +178,22 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
               variant="secondary"
               className="mt-6 w-full"
               ctaLocation="software-page-cta"
-            >
-              Visit {software.name}
-              <ExternalLink className="h-4 w-4" />
-            </TrackedCtaLink>
+              ctaCopyExperiment={{
+                experimentId: CTA_COPY_EXPERIMENT_ID,
+                control: (
+                  <>
+                    {getCtaCopyLabel("control", software.name)}
+                    <ExternalLink className="h-4 w-4" />
+                  </>
+                ),
+                treatment: (
+                  <>
+                    {getCtaCopyLabel("treatment", software.name)}
+                    <ExternalLink className="h-4 w-4" />
+                  </>
+                ),
+              }}
+            />
 
             {shouldShowAffiliateDisclosure(software) ? (
               <p className="mt-3 text-center text-xs text-zinc-500">
