@@ -87,6 +87,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // noindex on the page itself; every answer combination would otherwise
     // look like near-duplicate content to a crawler.
     { url: `${SITE_URL}/recommend`, changeFrequency: "monthly", priority: 0.9 },
+    // MILOOSH PEOPLE NOW mission (2026-08-23) — the first linkable tool and
+    // the newsletter landing page. /newsletter/unsubscribe is correctly
+    // excluded (already noindex on the page itself, and query-param-driven
+    // per-token content the same way /recommend/results is).
+    { url: `${SITE_URL}/tools/saas-cost-calculator`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/newsletter`, changeFrequency: "monthly", priority: 0.5 },
   ];
 
   return [...staticPages, ...categoryPages, ...roleGuidePages, ...softwarePages, ...comparisonPages, ...legalPages];
