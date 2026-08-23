@@ -62,6 +62,13 @@ describe("QA gates", () => {
     expect(findings.some((f) => f.message.includes("doesn't exist"))).toBe(false);
   });
 
+  it("accepts links to the calculator, newsletter, and Pricing Pressure Index pages (real gap found and fixed 2026-08-24 — these shipped pages were missing from the known-path allowlist)", () => {
+    for (const path of ["/tools/saas-cost-calculator", "/newsletter", "/research/saas-pricing-pressure-index-2026"]) {
+      const findings = runQaGates(entry({ channels: { bluesky: variant({ link: `${SITE_URL}${path}` }) } }), []);
+      expect(findings.some((f) => f.message.includes("doesn't exist"))).toBe(false);
+    }
+  });
+
   it("flags a malformed hashtag", () => {
     const findings = runQaGates(entry({ channels: { bluesky: variant({ hashtags: ["#ok", "no-hash-prefix"] }) } }), []);
     expect(qaPassed(findings)).toBe(false);

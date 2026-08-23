@@ -34,6 +34,13 @@ const KNOWN_STATIC_PATHS = new Set([
   "/trademark-notice",
   "/compare",
   "/recommend",
+  // MILOOSH OVERNIGHT MONSTER mission (2026-08-24) — real gap found:
+  // these pages shipped in earlier missions but were never added here,
+  // so any social post linking to them would have failed checkLink's
+  // "path doesn't exist" gate even though the page is genuinely live.
+  "/tools/saas-cost-calculator",
+  "/newsletter",
+  "/research/saas-pricing-pressure-index-2026",
 ]);
 
 function isKnownPath(pathname: string): boolean {
