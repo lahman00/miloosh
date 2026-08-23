@@ -449,6 +449,51 @@ handful of hand-written pages.
   under this project's control, unlike the immutable analytics log, so
   direct deletion — not an annotation — was the correct fix here).
 
+- **MILOOSH WAR MODE mission (2026-08-24)** — first shipped deliverable:
+  the **SaaS Pricing Pressure Index 2026**, live at
+  `/research/saas-pricing-pressure-index-2026`. `lib/pricing-index/
+  build.ts`'s `buildPricingIndex()` computes every statistic directly from
+  `data/software/*.json`'s real `pricing` field — sample is every entry
+  with `pricing.status` of `"verified"` or `"contact_sales"` (64 of 247 at
+  ship time); entries without verified pricing are excluded entirely, never
+  counted as a negative. Every stat is reported as numerator/denominator/
+  percentage; modeled 5/10/25/50-seat team costs are computed only for
+  products with an explicit, structurally-recorded `entryPaid.perSeat`
+  flag — never assumed for flat-rate or usage-based pricing; category
+  median starting price is only published for categories with at least 3
+  real data points (tightened from 2 after review showed a 2-point
+  "analytics" median was really just an average dressed up as a median).
+  Headline finding: a 50-seat team on Sprout Social costs $3,950/month
+  (modeled from its own published $79/seat/month rate) — the strongest
+  single journalist-usable number the dataset currently supports, per the
+  gate in `docs/pr-targets-2026-08-24.md` ("no pitch without a fresh,
+  reproducible data point"). Page includes a sortable/filterable product
+  table (`components/pricing-index/PricingIndexTable.tsx`, built from
+  scratch — no existing sortable-table component in the codebase to
+  reuse), per-row source links, a published methodology section, a
+  cross-link to the cost calculator, and a `NewsletterSignupForm`
+  (`source="pricing-pressure-index"`). 9 regression tests
+  (`tests/lib/pricing-index.test.ts`) run against the real live catalog,
+  not mocked. Added to `app/sitemap.ts` and `components/Footer.tsx` in the
+  same pass this time (the calculator/newsletter sitemap gap from the
+  prior mission was caught only after shipping — fixed proactively here).
+  IndexNow submission attempted but rate-limited (`429`, likely from the
+  prior mission's calculator/newsletter submission still cooling down) —
+  deferred rather than retried immediately; the page is still fully
+  crawlable via the sitemap in the meantime.
+
+  Real, investigated-and-reported blocker: Phase 1's demand for a clean
+  7D/14D/28D Google Search Console trend comparison could not be produced
+  from real evidence this session. `runSeoFactory()` fails locally with
+  the same "Service account value doesn't start with '{'" error as prior
+  sessions — `GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT` in `.env.local` is an
+  intentional Vercel-"Sensitive"-only placeholder, not a bug. Only
+  point-in-time snapshots exist (2026-08-09 owner-reported indexation;
+  2026-08-13 real API pull: 1220 impressions/0 clicks/pos 69.98; the
+  latest stored `SeoFactoryRun` from 2026-08-22, comparison-pages-only) —
+  none of them share a consistent methodology or daily granularity, so a
+  same-methodology trend line was correctly not fabricated.
+
 See `docs/` for full architecture documentation:
 
 - `docs/content-engine.md` — data model, schema, generators, sourcing policy
