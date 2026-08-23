@@ -48,6 +48,11 @@ export const metadata: Metadata = {
       "impact-site-verification": "e305c395-51be-4058-a250-c21321eabfbb",
     },
   },
+  alternates: {
+    types: {
+      "application/rss+xml": `${SITE_URL}/feed.xml`,
+    },
+  },
 };
 
 export const viewport: Viewport = {

@@ -14,6 +14,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { ListingBadges } from "@/components/ListingBadges";
+import { ShareButton } from "@/components/ShareButton";
 import { VendorLinksBlock } from "@/components/VendorLinksBlock";
 import { PricingSection } from "@/components/PricingSection";
 import { AlternativeDecisionGuide } from "@/components/AlternativeDecisionGuide";
@@ -133,6 +134,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
               {software.alternatives.length} alternatives compared
             </div>
             <ListingBadges software={software} />
+            <ShareButton title={`${software.name} alternatives — Miloosh`} url={`${SITE_URL}/software/${software.slug}`} />
           </div>
         </header>
 

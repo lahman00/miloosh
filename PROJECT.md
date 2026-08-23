@@ -387,22 +387,67 @@ handful of hand-written pages.
   changes) — the alternative (a cookie-based edge/middleware split) would
   be materially larger scope than "one CTA hypothesis."
 
-## Planned workstream — not yet started
+- **MILOOSH PEOPLE NOW mission (2026-08-23)** — acquisition-focused, not
+  infrastructure-focused: the stated problem was "not enough real people,"
+  so this session built and shipped real acquisition assets rather than
+  further content/SEO work. **Email Acquisition Engine promoted from
+  PLANNED to ACTIVE ACQUISITION INFRASTRUCTURE** (capture half only — see
+  below): `lib/newsletter/leads.ts` (one private Vercel Blob object per
+  lead, keyed by a SHA-256 hash of the email so a re-subscribe updates
+  rather than duplicates — a deliberate, documented deviation from the
+  random-UUID-per-event pattern `lib/revenue/events.ts` uses, since a lead
+  has a real unique key an outbound click doesn't), a real signup form
+  with never-pre-checked consent (`components/newsletter/
+  NewsletterSignupForm.tsx`), a working token-based unsubscribe
+  (`/newsletter/unsubscribe`, functional even before any email is ever
+  sent), full first-party attribution (UTM + landing path + visitorId),
+  and a `newsletter_signup` analytics event (behavioral marker only, no
+  PII in the anonymous stream). Live at `/newsletter` and as a secondary
+  placement on the cost calculator (below). **Honest limitation:** no
+  email provider is configured in this environment (checked: no RESEND/
+  SENDGRID/MAILCHIMP/POSTMARK/SES env var) — signups are captured and
+  stored now, but no welcome email or Weekly Brief can actually send until
+  the owner adds one. No lead is lost waiting for that.
 
-- **Email Acquisition Engine.** Captured here so it isn't lost, not
-  because it's active. Scope: a genuinely useful lead magnet (not a
-  generic AI-written PDF) placed via real UX evaluation rather than
-  indiscriminate popups; compliant consent/privacy/unsubscribe handling
-  with no dark patterns or pre-checked boxes; a welcome sequence that
-  orients new subscribers toward real Miloosh research before any
-  affiliate content; a recurring "Miloosh Weekly Software Brief" editorial
-  product (real pricing/plan/feature changes, migration issues, verified
-  discounts only); first-party attribution (signup source, landing page,
-  UTM) connecting content → signup → engagement → software page →
-  affiliate click, without invasive tracking. **Priority: after** Google
-  indexing foundations, factual content quality, and demand-backed page
-  remediation — do not start this while those have unexhausted, evidence-
-  backed work remaining.
+  Shipped the first linkable tool: `/tools/saas-cost-calculator` (Phase
+  16) — add real products, see a real monthly/annual total, shareable via
+  URL query params that round-trip correctly on load. Built from the 59
+  (of 247) catalog entries with real, first-party-sourced
+  `pricing.entryPaid` — a product without verified pricing is left out,
+  never estimated. Found and fixed a real bug while building it: JSX
+  silently dropped the space between `{products.length}` and the
+  following word when both were interpolated into the same paragraph
+  (worked around with a single template-literal expression instead of
+  relying on JSX's own text-node whitespace handling).
+
+  Also shipped: `/feed.xml` (real RSS feed of the 30 most-recently-
+  verified software pages, dated from the same real `accessedAt` field
+  the sitemap already uses), a native-Web-Share `ShareButton` on software
+  and comparison pages, and `docs/acquisition-ledger.md` (the real,
+  evidence-based channel inventory and status tracker this mission
+  produced — see that file for the full channel-by-channel state).
+
+  Real Facebook finding (not a channel-level or content-type conclusion —
+  n=8 is too small): of 8 published posts, only 1 (CircleCI, the same
+  post from the CTA mission) produced meaningful attributed traffic (6
+  STRONG_HUMAN_EVIDENCE sessions); 6 of 8 produced zero. Reddit/Quora/
+  Product Hunt/directories were researched but not posted to or submitted
+  — no Miloosh account exists for any of them, and creating one is an
+  explicit prohibition this mission's own rules carried over from every
+  prior mission. See `docs/acquisition-ledger.md`'s "Reddit/Quora
+  research" and "Launch readiness" sections for exactly what was found
+  and what a human would need to do to activate each one.
+
+  Real incident, self-corrected: local verification of the newsletter
+  form (`npm run start` + a live browser, no `?qa=1`) wrote a real test
+  lead into the production Vercel Blob store, because `.env.local`'s real
+  `BLOB_READ_WRITE_TOKEN` is loaded automatically by `npm run start` the
+  same as production — not just an analytics-events risk (the lesson from
+  the CTA mission's browser-verification incident applies to ANY write
+  path this codebase has, not only the one it was first found on).
+  Caught immediately, deleted directly (a real lead record is mutable PII
+  under this project's control, unlike the immutable analytics log, so
+  direct deletion — not an annotation — was the correct fix here).
 
 See `docs/` for full architecture documentation:
 
@@ -424,6 +469,9 @@ See `docs/` for full architecture documentation:
 - `docs/agents-architecture.md` — the growth/QA agent swarm: registry,
   orchestrator, scoring formula, every agent's responsibility, blocked
   agents and how to unblock them, how to add/disable an agent, testing
+- `docs/acquisition-ledger.md` — every distribution channel's real status
+  (active/blocked/deferred/deliberately-disabled), Facebook's real
+  per-post evidence, and what's been researched but not yet acted on
 
 ## Rules that have held across every sprint
 

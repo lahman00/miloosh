@@ -29,7 +29,8 @@ export type FirstPartyEventType =
   | "recommend_result_viewed"
   | "recommend_product_open"
   | "recommend_comparison_open"
-  | "cta_impression";
+  | "cta_impression"
+  | "newsletter_signup";
 
 export interface BaseAnalyticsEvent {
   type: FirstPartyEventType;
@@ -189,6 +190,20 @@ export interface CtaImpressionEvent extends BaseAnalyticsEvent {
   variant?: string;
 }
 
+/**
+ * MILOOSH PEOPLE NOW mission (2026-08-23) — the behavioral marker that a
+ * newsletter signup happened, joinable to the rest of the funnel by
+ * visitorId/sessionId. Deliberately carries NO email address or any
+ * other PII — the real email lives only in lib/newsletter/leads.ts's
+ * separate, explicitly-consented store. `source` is which page/surface
+ * captured the signup (e.g. "saas-cost-calculator"), purely descriptive,
+ * same category as CtaImpressionEvent's ctaLocation.
+ */
+export interface NewsletterSignupEvent extends BaseAnalyticsEvent {
+  type: "newsletter_signup";
+  source: string;
+}
+
 export type FirstPartyEvent =
   | PageViewEvent
   | EngagedViewEvent
@@ -205,7 +220,8 @@ export type FirstPartyEvent =
   | RecommendResultViewedEvent
   | RecommendProductOpenEvent
   | RecommendComparisonOpenEvent
-  | CtaImpressionEvent;
+  | CtaImpressionEvent
+  | NewsletterSignupEvent;
 
 const BLOB_PREFIX = "first-party-analytics/";
 const LOCAL_FALLBACK_PATH = path.join(process.cwd(), "var", "first-party-analytics.json");

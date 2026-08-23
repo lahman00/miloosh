@@ -5,6 +5,7 @@ import { Ban, Check, ExternalLink, Scale, ThumbsUp, Users } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ShareButton } from "@/components/ShareButton";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SoftwareCard } from "@/components/SoftwareCard";
@@ -190,6 +191,9 @@ export default async function ComparePage({ params }: ComparePageProps) {
             {data.title}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">{data.intro}</p>
+          <div className="mt-4">
+            <ShareButton title={data.title} url={`${SITE_URL}/compare/${comparison}`} />
+          </div>
         </header>
 
         <section className="mt-14">

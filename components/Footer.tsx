@@ -12,11 +12,13 @@ const productLinks = [
   { name: "Browse", href: "/#browse" },
   { name: "Compare", href: "/compare" },
   { name: "Find my software", href: "/recommend" },
+  { name: "Cost calculator", href: "/tools/saas-cost-calculator" },
 ];
 
 const companyLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Newsletter", href: "/newsletter" },
 ];
 
 function FooterColumn({
