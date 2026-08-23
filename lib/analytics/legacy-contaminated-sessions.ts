@@ -77,6 +77,27 @@ export const LEGACY_CONTAMINATED_SESSIONS: readonly LegacyContaminatedSession[] 
       "forward: any future manual/browser QA against production must open with ?qa=1 regardless of " +
       "whether the check itself uses tracked UI controls.",
   },
+  {
+    sessionId: "s_2lrjxr7fmt63aebq",
+    visitorId: "v_kfqu33hvmt452kj6",
+    classification: "CONFIRMED_OPERATOR_QA",
+    investigatedAt: "2026-08-23",
+    reason:
+      "4 events from 2026-08-23T17:36:59.445Z to 2026-08-23T17:37:09.924Z, single visitor+session: " +
+      "page_view:/software/circleci -> software_view -> cta_impression (carrying " +
+      "experimentId:\"software-cta-copy-v1\", variant:\"treatment\") -> engaged_view. This is CONFIRMED " +
+      "with first-person certainty, not inferred: this is this agent's own live production browser " +
+      "verification pass for the CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) Phase 22, navigating " +
+      "to /software/circleci to visually confirm the new CTA-copy-experiment rendering. The reused " +
+      "browser tab already carried this same visitorId's localStorage from an EARLIER agent session " +
+      "(the same v_kfqu33hvmt452kj6 as the s_xdc34h7xmt452kj6 entry above, a different visit entirely) " +
+      "and the first navigation did not include the ?qa=1 marker before it was added on a follow-up " +
+      "navigation in the same tab/session a few seconds later (subsequent events in this same session " +
+      "correctly carry isTest:true and are NOT part of this entry). Excluded from REAL HUMAN metrics. " +
+      "Confirms the lesson from the prior entry needs restating, not that it failed: opening a REUSED " +
+      "browser tab against production requires navigating with ?qa=1 on the very first load, before any " +
+      "other interaction, not after.",
+  },
 ];
 
 export function isLegacyContaminatedSession(sessionId: string): boolean {
