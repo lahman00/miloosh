@@ -16,6 +16,27 @@
   ],
   "sources": ["https://front.com", "https://front.com/download", "https://help.front.com/en/articles/2140"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$25/seat/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Starter", "amount": "25", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (saves 24% vs monthly). Capped at 10 seats. Single-channel support, basic analytics." },
+      { "name": "Professional", "amount": "65", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually. Capped at 50 seats. Omnichannel, SSO/SCIM, advanced analytics." },
+      { "name": "Enterprise", "amount": "105", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually. Unlimited seats, most popular tier. Requires a sales demo; onboarding packages mandatory for contracts over $25k." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-23",
+    "official_source": "https://front.com/pricing"
+  },
+  "cons": [
+    "Starter is hard-capped at 10 seats and Professional at 50 seats -- growing past those limits forces an upgrade, not just a seat add-on.",
+    "AI features (Copilot, Smart QA, Smart CSAT) are paid add-ons ($10-20/seat/month each) on Starter and Professional; only Enterprise bundles them in."
+  ],
   "alternatives": [
     {
       "name": "Help Scout",

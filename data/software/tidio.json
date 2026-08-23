@@ -18,6 +18,28 @@
     "https://www.tidio.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$24.17/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "24.17", "currency": "USD", "billing_period": "monthly" },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "50 billable conversations/month, 50 one-time Lyro AI conversations, 100 Flows visitors/month." },
+      { "name": "Starter", "amount": "24.17", "currency": "USD", "billing_period": "monthly", "notes": "100 billable conversations/month, 50 Lyro AI conversations/month." },
+      { "name": "Growth", "amount": "49.17", "currency": "USD", "billing_period": "monthly", "notes": "Starting price, scales with usage. 250+ billable conversations/month, 50+ Lyro AI conversations/month. Marked \"Popular\"." },
+      { "name": "Plus", "amount": "300", "currency": "USD", "billing_period": "monthly", "notes": "Starting price + monthly usage charges on top. Custom conversation limits, dedicated success manager, requires contacting sales for exact pricing." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.tidio.com/pricing/"
+  },
+  "cons": [
+    "Above the Free plan, pricing scales with conversation volume rather than being a flat per-tier price -- Growth and Plus are both \"starting at\" prices that increase with usage.",
+    "The Free plan's Lyro AI allotment (50 conversations) is one-time, not monthly -- ongoing AI automation requires a paid tier."
+  ],
   "alternatives": [
     {
       "name": "Intercom",

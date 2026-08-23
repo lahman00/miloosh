@@ -16,6 +16,26 @@
   ],
   "sources": ["https://www.freshworks.com/freshdesk/", "https://www.freshworks.com/freshdesk/mobile/"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$19/agent/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Growth", "amount": "19", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox." },
+      { "name": "Pro", "amount": "55", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk." },
+      { "name": "Enterprise", "amount": "89", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually. All AI and helpdesk features." }
+    ],
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.freshworks.com/freshdesk/pricing/"
+  },
+  "cons": [
+    "New signups get a 14-day trial of the Enterprise plan, not the plan you'll actually pay for -- confirm your real plan's feature set before committing.",
+    "Freddy AI Copilot is a paid add-on ($29/agent/month) on top of any tier, not bundled into the base per-agent price."
+  ],
   "alternatives": [
     {
       "name": "Zendesk",

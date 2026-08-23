@@ -16,6 +16,26 @@
   ],
   "sources": ["https://www.intercom.com", "https://www.intercom.com/help/en/articles/190-intercom-system-requirements-on-web-and-mobile"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$29/seat/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Essential", "amount": "29", "currency": "USD", "billing_period": "monthly", "notes": "Per seat/month, regular price (a time-limited 35% new-customer promo showing $19/seat/mo was active as of 2026-08-23). Plus $0.99 per Fin AI resolution, billed separately." },
+      { "name": "Advanced", "amount": "85", "currency": "USD", "billing_period": "monthly", "notes": "Per seat/month. Includes 20 free Lite seats. Plus $0.99 per Fin AI resolution, billed separately." },
+      { "name": "Expert", "amount": "132", "currency": "USD", "billing_period": "monthly", "notes": "Per seat/month. Includes 50 free Lite seats. Plus $0.99 per Fin AI resolution, billed separately." }
+    ],
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.intercom.com/pricing"
+  },
+  "cons": [
+    "No free plan -- every tier requires a paid seat, only offset by a 14-day trial.",
+    "Fin AI Agent is billed separately at $0.99 per resolution on top of the seat price, on every tier -- automation usage is not included in the base plan cost."
+  ],
   "alternatives": [
     {
       "name": "Zendesk",
