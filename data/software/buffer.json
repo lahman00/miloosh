@@ -16,6 +16,26 @@
   ],
   "sources": ["https://buffer.com"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$5/channel/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "5", "currency": "USD", "billing_period": "monthly", "per_seat": false },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Up to 3 channels, 10 scheduled posts per channel, 1 user account." },
+      { "name": "Essentials", "amount": "5", "currency": "USD", "billing_period": "monthly", "notes": "Per channel/month ($60/channel billed yearly, saves 2 months). Unlimited scheduled posts, 1 user account." },
+      { "name": "Team", "amount": "10", "currency": "USD", "billing_period": "monthly", "notes": "Per channel/month ($120/channel billed yearly, saves 2 months). Unlimited team members." }
+    ],
+    "last_verified": "2026-08-23",
+    "official_source": "https://buffer.com/pricing"
+  },
+  "cons": [
+    "Pricing is per connected channel, not a flat team price -- cost scales directly with how many social accounts you connect, on every paid tier.",
+    "Free plan is limited to 1 user account -- team collaboration requires upgrading to the Team plan even for just 2 people."
+  ],
   "alternatives": [
     {
       "name": "Hootsuite",

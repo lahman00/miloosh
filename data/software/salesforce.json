@@ -23,6 +23,27 @@
     "https://www.salesforce.com/products/mobile/"
   ],
   "accessed_at": "2026-07-31",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$25/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Free Suite", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "2 user licenses included. No contract or credit card required. Lead/opportunity/case management, assistive AI." },
+      { "name": "Starter Suite", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Starting price per user/month, billed monthly or annually. Transaction fees apply. Unlimited users, built-in sales flows." },
+      { "name": "Pro Suite", "amount": "100", "currency": "USD", "billing_period": "annual", "notes": "Starting price per user/month, billed annually -- a signed contract is required for this tier. Transaction fees apply. Advanced automation, sales quoting/forecasting." }
+    ],
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.salesforce.com/crm/pricing/"
+  },
+  "cons": [
+    "Pro Suite and above require a signed annual contract -- unlike Starter Suite, you can't pay month-to-month once you need Pro-tier features.",
+    "Transaction fees apply on paid tiers on top of the per-user subscription price, per the vendor's own pricing page.",
+    "This page covers Salesforce's small-business CRM Suite pricing; the vendor's larger Enterprise/Unlimited/Agentforce editions for bigger organizations are priced and sold separately."
+  ],
   "alternatives": [
     {
       "name": "HubSpot",
