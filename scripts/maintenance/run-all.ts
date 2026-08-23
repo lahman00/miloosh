@@ -1,3 +1,4 @@
+import "./_load-env";
 import { executeLinksAgent } from "@/scripts/maintenance/links";
 import { executeSocialLinksAgent } from "@/scripts/maintenance/social-links";
 import { executeSocialChannelHealthAgent } from "@/scripts/maintenance/social-channel-health";

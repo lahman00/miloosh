@@ -1,3 +1,4 @@
+import "./_load-env";
 import { runSwarm } from "@/lib/agents/orchestrator";
 import { writeSwarmReport } from "@/lib/agents/report-io";
 import { relativeAgentsPath, LATEST_REPORT_JSON_PATH, LATEST_REPORT_MARKDOWN_PATH } from "@/lib/agents/paths";
