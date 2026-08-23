@@ -247,6 +247,112 @@ handful of hand-written pages.
   have `pricing.model`/`links.*`/`founded`/`company`/`pros`/`cons`/
   `faq`/`tags` populated — a systemic dataset gap, not specific to the
   7 products the freshness scorer flagged as "stale."
+- **Production determinism + first-party pricing/factual-depth push
+  (2026-08-22/23)** — two linked missions. First, a production
+  determinism bug: the homepage's evidence-ranked "popular" sections
+  (`app/page.tsx`) read a local, gitignored GSC cache
+  (`var/agents/gsc-opportunity-mining.json`), so public rendering
+  silently depended on whichever machine last ran `vercel deploy --prod`
+  (confirmed empirically that CLI deploy uploads the local working
+  directory directly, bypassing git — a real, still-open operational fact
+  about how this project ships, distinct from what any one fix can
+  change). Root-caused and fixed by discovering a real, already-running,
+  previously-unknown pipeline — `lib/seo-factory/run.ts` + a daily Vercel
+  cron (`0 22 * * *`) that queries Search Console directly and persists
+  to Vercel Blob — and building `scripts/growth/generate-priority-
+  snapshot.ts`, a manually-run/reviewed generator that writes a small,
+  git-committed evidence file (`data/seo/priority-snapshot.json`: url +
+  impressions + clicks + ctr + position only, no queries, no internals)
+  from that pipeline's real output. `buildIndexationPriorityList` now
+  reads the committed file; proven deterministic by diffing its output
+  with/without `var/agents` present (byte-identical) and by a full clean-
+  checkout build with the entire `var/` tree removed. Homepage copy
+  ("Popular" / "the tools people compare most") renamed to "Explore" /
+  "Featured comparisons... prioritized by real search demand and page
+  connectivity" since real clicks are still near-zero site-wide and
+  didn't support a genuine popularity claim.
+
+  Second, closed the software-catalog's biggest concrete factual-depth
+  gap: added `scripts/growth/factual-depth-audit.ts` (0-100 score across
+  12 real dimensions — pricing, free-trial info, feature/platform/source
+  counts, stated limitations, comparison connectivity; explicitly does
+  not reward prose length) and `scripts/growth/remediation-queue.ts`
+  (crosses factual depth against real GSC demand to find pages where
+  Google is already testing the page AND the page has a concrete, fixable
+  gap). Added real, first-party-sourced pricing (and, where the source
+  supported it, real stated limitations — seat caps, contract
+  requirements, per-channel/per-conversation billing) to 10 of the
+  catalog's highest-demand, thinnest pages: Semrush, Freshdesk, Intercom,
+  Front, Buffer, Salesforce, Tidio, Airtable, Wrike, and Smartsheet
+  (Smartsheet's exact tier prices couldn't be reliably verified — the
+  pricing page 404s in the available browser tool and WebFetch produced
+  inconsistent numbers across three attempts — so only its real tier
+  names, seat minimums, and trial length were recorded; prices left
+  genuinely unresolved rather than guessed). Factual-depth distribution
+  moved from A=51/B=4/C=150/D=42 to A=60/B=5/C=141/D=41. All ten pages'
+  scores moved from bucket C/D into bucket A. Next real remediation queue
+  (same demand-backed method, not yet acted on): Zapier, n8n, Jasper,
+  Basecamp, ActiveCampaign, Webex, GitHub, Copy.ai, Umbraco, CrowdStrike.
+- **9-page remediation completion + analytics human-traffic classification
+  system (2026-08-23)** — finished the remediation queue's remaining 9
+  pages (Freshdesk, Intercom, Front, Buffer, Salesforce, Tidio, Airtable,
+  Wrike, Smartsheet — all bucket C→A; Smartsheet's exact prices stayed
+  genuinely unverified after the pricing page 404s in the available
+  browser tool and WebFetch returned three inconsistent numbers). Full
+  distribution after both remediation passes: A=60, B=5, C=141, D=41.
+
+  Separately, and more consequentially: the raw "real/unknown human"
+  visitor count jumped 28→60 between sessions. Rather than report that as
+  growth, built a permanent second classification layer —
+  `lib/analytics/human-classification.ts` — that buckets every SESSION
+  (not event) into CONFIRMED_CLEAN / STRONG_HUMAN_EVIDENCE / PROBABLE_HUMAN
+  / SUSPICIOUS / UNRESOLVED / KNOWN_QA_TEST / KNOWN_AUTOMATION using only
+  rule-based, generalizable evidence (real UTM + a progressive multi-type
+  engagement funnel; a real outbound/affiliate click; multi-page
+  navigation with dwell time; two independent burst-cadence detectors —
+  same-path repeated hits, and a same-path-agnostic "N distinct visitors
+  arriving within 15s" check that the earlier Aug 22 5-visitor/5-page
+  cluster needed and a same-path-only rule would have missed). Applied to
+  the full dataset: 1 CONFIRMED_CLEAN, 6 STRONG_HUMAN_EVIDENCE (the real
+  CircleCI/Facebook post cluster — genuine `utm_content` match to the
+  actual published queue entry, real progressive engagement including two
+  client-only `cta_impression` `IntersectionObserver` events, no CTA click
+  yet — the deepest the acquisition loop has verifiably reached), 22
+  PROBABLE_HUMAN, 21 SUSPICIOUS (includes both the newly-found 09:01-09:04
+  homepage-only burst AND, correctly reclassified under the new framework,
+  the Aug 22 16:53 5-visitor/5-page cluster and the older
+  UNKNOWN_POSSIBLE_OPERATOR_QA legacy session), 12 UNRESOLVED, 8
+  KNOWN_QA_TEST, 0 KNOWN_AUTOMATION (investigated and explicitly ruled out
+  this agent's own deploys/verify-deployment/known crons as the source of
+  the homepage burst — see `lib/analytics/known-automation-sessions.ts`'s
+  header for exactly what was checked and ruled out; no deterministic
+  source was found, so it stays SUSPICIOUS rather than being force-fit).
+  `scripts/analytics/report.ts`'s milestone scoreboard now reports a
+  CONFIRMED-OR-STRONG count (7) as the headline number, with the raw
+  REAL_OR_UNKNOWN count kept only as a clearly-labeled, non-authoritative
+  denominator — regression-tested so a raw jump can never again silently
+  read as a milestone reached. Full defensible-range answer as of this
+  mission: minimum confirmed 1, probable estimate ~7-29 (confirmed+strong
+  through probable), maximum plausible up to 60 if every unresolved/
+  suspicious session were eventually vindicated (not expected, not
+  claimed).
+
+## Planned workstream — not yet started
+
+- **Email Acquisition Engine.** Captured here so it isn't lost, not
+  because it's active. Scope: a genuinely useful lead magnet (not a
+  generic AI-written PDF) placed via real UX evaluation rather than
+  indiscriminate popups; compliant consent/privacy/unsubscribe handling
+  with no dark patterns or pre-checked boxes; a welcome sequence that
+  orients new subscribers toward real Miloosh research before any
+  affiliate content; a recurring "Miloosh Weekly Software Brief" editorial
+  product (real pricing/plan/feature changes, migration issues, verified
+  discounts only); first-party attribution (signup source, landing page,
+  UTM) connecting content → signup → engagement → software page →
+  affiliate click, without invasive tracking. **Priority: after** Google
+  indexing foundations, factual content quality, and demand-backed page
+  remediation — do not start this while those have unexhausted, evidence-
+  backed work remaining.
 
 See `docs/` for full architecture documentation:
 

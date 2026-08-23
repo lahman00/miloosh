@@ -1,6 +1,7 @@
 import { getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/events";
 import { getOutboundEvents, type StoredOutboundEvent } from "@/lib/revenue/events";
 import { LEGACY_CONTAMINATED_SESSIONS, isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
+import { classifySessions, classifyVisitors, summarizeBuckets, type TrafficBucket } from "@/lib/analytics/human-classification";
 
 /**
  * Flippa Activation + Recommend Expansion Super-Mission (2026-08-21) —
@@ -245,7 +246,27 @@ export interface AcquisitionMilestoneStatus {
   visitorsRemaining: number;
 }
 
-export function computeAcquisitionMilestones(events: FirstPartyEvent[]): { cumulativeRealVisitors: number; milestones: AcquisitionMilestoneStatus[] } {
+/**
+ * MILOOSH ANALYTICS TRUTH & HUMAN TRAFFIC MISSION (2026-08-23) Phase 7 --
+ * "a jump such as 28 -> 60 must not be reported as human growth until
+ * classification runs." `cumulativeRealVisitors`/`milestones` below keep
+ * their EXACT original meaning and behavior (raw REAL_OR_UNKNOWN_HUMAN
+ * visitor count -- everything that merely isn't proven test/legacy
+ * traffic) for backward compatibility with the existing milestone tests
+ * and any caller relying on that semantic. They must never be presented
+ * as "confirmed human growth" on their own -- see
+ * `cumulativeConfirmedOrStrongVisitors`/`milestonesConfirmedOrStrong`,
+ * computed via lib/analytics/human-classification.ts's session-level
+ * evidence rules, which is what actually answers "how many real humans."
+ */
+export function computeAcquisitionMilestones(
+  events: FirstPartyEvent[]
+): {
+  cumulativeRealVisitors: number;
+  milestones: AcquisitionMilestoneStatus[];
+  cumulativeConfirmedOrStrongVisitors: number;
+  milestonesConfirmedOrStrong: AcquisitionMilestoneStatus[];
+} {
   const real = events.filter((e) => !isSyntheticOrTestEvent(e));
   const sorted = [...real].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
 
@@ -271,7 +292,42 @@ export function computeAcquisitionMilestones(events: FirstPartyEvent[]): { cumul
     visitorsRemaining: Math.max(0, m.threshold - cumulativeRealVisitors),
   }));
 
-  return { cumulativeRealVisitors, milestones };
+  // Classified track: only CONFIRMED_CLEAN/STRONG_HUMAN_EVIDENCE visitors count.
+  // Uses the SAME real (non-synthetic) event set, then applies session-level
+  // behavioral classification on top -- a raw event/visitor count alone is
+  // never sufficient evidence of humanity (see human-classification.ts).
+  const classifications = classifySessions(real);
+  const visitorClassifications = classifyVisitors(classifications);
+  const qualifyingVisitorIds = new Set(visitorClassifications.filter((v) => v.bucket === "CONFIRMED_CLEAN" || v.bucket === "STRONG_HUMAN_EVIDENCE").map((v) => v.visitorId));
+  const bestSessionByVisitor = new Map(visitorClassifications.map((v) => [v.visitorId, v.bestSessionId]));
+  const earliestQualifyingEventByVisitor = new Map<string, string>();
+  for (const e of sorted) {
+    if (!qualifyingVisitorIds.has(e.visitorId)) continue;
+    if (e.sessionId !== bestSessionByVisitor.get(e.visitorId)) continue;
+    if (!earliestQualifyingEventByVisitor.has(e.visitorId)) earliestQualifyingEventByVisitor.set(e.visitorId, e.timestamp);
+  }
+
+  const seenConfirmedOrStrong = new Set<string>();
+  const crossedAtConfirmedOrStrong = new Map<number, string>();
+  const orderedQualifying = [...earliestQualifyingEventByVisitor.entries()].sort((a, b) => a[1].localeCompare(b[1]));
+  for (const [visitorId, timestamp] of orderedQualifying) {
+    seenConfirmedOrStrong.add(visitorId);
+    for (const m of ACQUISITION_MILESTONES) {
+      if (seenConfirmedOrStrong.size === m.threshold && !crossedAtConfirmedOrStrong.has(m.threshold)) {
+        crossedAtConfirmedOrStrong.set(m.threshold, timestamp);
+      }
+    }
+  }
+  const cumulativeConfirmedOrStrongVisitors = seenConfirmedOrStrong.size;
+  const milestonesConfirmedOrStrong = ACQUISITION_MILESTONES.map((m) => ({
+    name: m.name,
+    threshold: m.threshold,
+    reached: cumulativeConfirmedOrStrongVisitors >= m.threshold,
+    reachedAt: crossedAtConfirmedOrStrong.get(m.threshold) ?? null,
+    visitorsRemaining: Math.max(0, m.threshold - cumulativeConfirmedOrStrongVisitors),
+  }));
+
+  return { cumulativeRealVisitors, milestones, cumulativeConfirmedOrStrongVisitors, milestonesConfirmedOrStrong };
 }
 
 export interface PeriodSummary {
@@ -858,13 +914,36 @@ export async function generateAnalyticsReport() {
   // ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) Phase 0 — the
   // durable milestone scoreboard, printed first among the growth sections
   // since it's now the mission's own stated single most important number.
-  const { cumulativeRealVisitors, milestones } = computeAcquisitionMilestones(events);
+  //
+  // MILOOSH ANALYTICS TRUTH & HUMAN TRAFFIC MISSION (2026-08-23) Phase 10:
+  // the raw REAL_OR_UNKNOWN_HUMAN count is printed ONLY as a clearly-
+  // labeled denominator now, never as "verified real humans" -- that claim
+  // requires the classification layer below. A jump in the raw number
+  // alone must never be read as human growth.
+  const { cumulativeRealVisitors, cumulativeConfirmedOrStrongVisitors, milestonesConfirmedOrStrong } = computeAcquisitionMilestones(events);
+  // Full, unfiltered event set -- classifySessions is self-sufficient (it
+  // recognizes isTest/synthetic-ID-prefix/legacy-contaminated sessions on
+  // its own), so passing everything here is what makes the KNOWN_QA_TEST/
+  // KNOWN_AUTOMATION rows below meaningful instead of structurally always 0.
+  const sessionClassifications = classifySessions(events);
+  const bucketSummary = summarizeBuckets(sessionClassifications);
+  const visitorBuckets = classifyVisitors(sessionClassifications);
+  const visitorBucketCounts = new Map<TrafficBucket, number>();
+  for (const v of visitorBuckets) visitorBucketCounts.set(v.bucket, (visitorBucketCounts.get(v.bucket) ?? 0) + 1);
+
   console.log("========================================================================================");
   console.log(" ACQUISITION SCOREBOARD — ROAD TO 1,000 REAL HUMANS");
-  console.log(`   Cumulative verified real humans (all time): ${cumulativeRealVisitors}`);
-  for (const m of milestones) {
-    const status = m.reached ? `REACHED at ${m.reachedAt}` : `not yet reached — ${m.visitorsRemaining} more real visitor(s) needed`;
+  console.log(`   CONFIRMED + STRONG-EVIDENCE human visitors (all time): ${cumulativeConfirmedOrStrongVisitors}`);
+  console.log(`   Raw REAL_OR_UNKNOWN_HUMAN visitors (unclassified denominator, NOT a human-growth claim): ${cumulativeRealVisitors}`);
+  for (const m of milestonesConfirmedOrStrong) {
+    const status = m.reached ? `REACHED at ${m.reachedAt}` : `not yet reached — ${m.visitorsRemaining} more confirmed/strong-evidence visitor(s) needed`;
     console.log(`   Milestone ${m.name} (${m.threshold}): ${status}`);
+  }
+  console.log("");
+  console.log("   Session-level classification (evidence standard per bucket in lib/analytics/human-classification.ts):");
+  console.log(`   ${"BUCKET".padEnd(24)} SESSIONS  VISITORS`);
+  for (const b of bucketSummary) {
+    console.log(`   ${b.bucket.padEnd(24)} ${b.sessions.toString().padStart(8)}  ${(visitorBucketCounts.get(b.bucket) ?? 0).toString().padStart(8)}`);
   }
   console.log("========================================================================================\n");
 
@@ -885,6 +964,26 @@ export async function generateAnalyticsReport() {
       );
     }
   }
+  console.log("========================================================================================\n");
+
+  // MILOOSH ANALYTICS TRUTH & HUMAN TRAFFIC MISSION (2026-08-23) Phase 8 —
+  // the cleanest measurable funnel from real instrumentation, with the
+  // numerator/denominator behind every rate shown explicitly so nobody
+  // mistakes an impression or pageview for a visitor or a conversion.
+  const totalCtaImpressions = acquisitionBreakdown.reduce((sum, r) => sum + r.ctaImpressions, 0);
+  const totalCtaClickers = acquisitionBreakdown.reduce((sum, r) => sum + r.ctaClickers, 0);
+  const totalOutboundClickers = acquisitionBreakdown.reduce((sum, r) => sum + r.outboundClickers, 0);
+  const totalAffiliateClickers = acquisitionBreakdown.reduce((sum, r) => sum + r.affiliateClickers, 0);
+  const totalVisitors = acquisitionBreakdown.reduce((sum, r) => sum + r.visitors, 0);
+  const pct = (numerator: number, denominator: number): string => (denominator > 0 ? `${((numerator / denominator) * 100).toFixed(1)}% (${numerator}/${denominator})` : `n/a (0/${denominator})`);
+
+  console.log("========================================================================================");
+  console.log(" ACQUISITION FUNNEL (unique visitors at each stage; CTA impressions are an EVENT count, not a visitor count)");
+  console.log(`   Real/unknown visitors (landing page_view): ${totalVisitors}`);
+  console.log(`   -> CTA impression events fired:             ${totalCtaImpressions} (event count -- one visitor can trigger multiple)`);
+  console.log(`   -> Visitors who clicked a CTA:               ${totalCtaClickers}  [${pct(totalCtaClickers, totalVisitors)} of visitors]`);
+  console.log(`   -> Visitors who clicked outbound (any):      ${totalOutboundClickers}  [${pct(totalOutboundClickers, totalVisitors)} of visitors]`);
+  console.log(`   -> Visitors who clicked an affiliate link:   ${totalAffiliateClickers}  [${pct(totalAffiliateClickers, totalVisitors)} of visitors]`);
   console.log("========================================================================================\n");
 }
 

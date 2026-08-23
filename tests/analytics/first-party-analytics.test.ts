@@ -445,6 +445,40 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
       ];
       expect(computeAcquisitionMilestones(events).cumulativeRealVisitors).toBe(1);
     });
+
+    it("MILOOSH ANALYTICS TRUTH & HUMAN TRAFFIC MISSION (2026-08-23) Phase 7 -- a raw jump in cumulativeRealVisitors must NEVER be reported as milestone-reached human growth on its own; the classified track requires real CONFIRMED_CLEAN/STRONG_HUMAN_EVIDENCE sessions, not just distinct visitor IDs", () => {
+      const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
+      // 100 distinct visitors, each a single bare page_view with no UTM, no
+      // engagement depth, no burst pattern -- exactly the shape that DOES
+      // cross the raw milestone (see the earlier "marks milestone A reached"
+      // test) but must NOT cross the classified one, since none of these
+      // sessions carry any real evidence of humanity beyond "produced one
+      // JS event" -- the mission's own non-negotiable rule.
+      const events: FirstPartyEvent[] = Array.from({ length: 100 }, (_, i) => ({
+        type: "page_view", path: "/", visitorId: `v_${i}`, sessionId: `s_${i}`, timestamp: t(i * 1000),
+      })) as FirstPartyEvent[];
+
+      const result = computeAcquisitionMilestones(events);
+      // The raw number DOES jump to 100 (this is what a naive report would misuse) --
+      expect(result.cumulativeRealVisitors).toBe(100);
+      expect(result.milestones.find((m) => m.name === "A")?.reached).toBe(true);
+      // -- but the classified, defensible count must not follow it automatically.
+      expect(result.cumulativeConfirmedOrStrongVisitors).toBe(0);
+      expect(result.milestonesConfirmedOrStrong.find((m) => m.name === "A")?.reached).toBe(false);
+    });
+
+    it("a real jump IS reflected in the classified track once sessions actually carry strong evidence (real UTM + progressive engagement)", () => {
+      const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
+      const events: FirstPartyEvent[] = [];
+      for (let i = 0; i < 3; i++) {
+        const sid = `s_strong_${i}`;
+        events.push({ type: "page_view", path: "/software/x", visitorId: `v_strong_${i}`, sessionId: sid, timestamp: t(i * 100000), utmContent: "real-campaign" } as FirstPartyEvent);
+        events.push({ type: "software_view", path: "/software/x", visitorId: `v_strong_${i}`, sessionId: sid, timestamp: t(i * 100000 + 2000) } as FirstPartyEvent);
+        events.push({ type: "engaged_view", path: "/software/x", visitorId: `v_strong_${i}`, sessionId: sid, timestamp: t(i * 100000 + 15000) } as FirstPartyEvent);
+      }
+      const result = computeAcquisitionMilestones(events);
+      expect(result.cumulativeConfirmedOrStrongVisitors).toBe(3);
+    });
   });
 
   describe("Phase 3: Privacy & Zero-PII Audit", () => {
