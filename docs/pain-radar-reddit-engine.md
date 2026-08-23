@@ -46,6 +46,51 @@ Output actions:
 
 The scorer intentionally does not fetch data. Discovery adapters must be separately authorized and policy-compliant.
 
+## Predictive Pain Forecasting
+
+Pain Radar reacts to pain that already exists. `lib/growth/pain-forecast.ts` adds a pre-pain layer intended to identify buyer pain before community complaints or search demand fully emerge.
+
+It scores early signals including:
+
+- pricing-page changes
+- terms changes
+- free-tier contraction
+- plan repackaging
+- seat minimum changes
+- usage/credit billing
+- AI pricing changes
+- feature gating
+- sunset/deprecation notices
+- migration policy changes
+- support policy changes
+- contract changes
+- risky release notes
+- sentiment acceleration
+- search-demand anomalies
+- competitor price gaps
+- M&A/support-risk signals
+
+Forecasts are generated for 7-day, 30-day and 90-day horizons and include:
+
+- probability score
+- severity score
+- Miloosh opportunity score
+- LOW / MEDIUM / HIGH confidence
+- likely pain classes
+- full evidence list
+- recommended pre-emptive action
+
+Possible pre-emptive actions include:
+
+- `PREBUILD_ASSET`
+- `PREPARE_PR_POSITION`
+- `PREPARE_MIGRATION_GUIDE`
+- `PREPARE_PRICING_ALERT`
+- `MONITOR_CLOSELY`
+- `NO_ACTION`
+
+Forecasts are not facts. They must remain auditable and later be backtested against what actually happened. See `docs/pain-forecasting-engine.md`.
+
 ## Reddit Intelligence Engine
 
 Reddit is treated as two distinct things:
@@ -166,13 +211,29 @@ High-scoring pain clusters may become PR opportunities when they reveal a broade
 
 A PR hook is publishable only after Miloosh has independently verified enough data to support a broader finding.
 
-### 8. Measurement
+### 8. Forecast/backtest loop
+
+Forecast records should eventually store:
+
+- forecast created time
+- horizon
+- predicted pain classes
+- probability/confidence
+- evidence available at forecast time
+- whether material pain actually appeared
+- time to first confirmed pain signal
+- resulting search-demand change
+- resulting asset traffic/leads/clicks/revenue
+
+The model should be calibrated over time. High forecast scores must empirically outperform low forecast scores or the weights must be changed.
+
+### 9. Measurement
 
 Every distributed Miloosh asset should use first-party attribution and the existing human-classification layer.
 
 Track:
 
-- pain candidate ID
+- pain candidate ID / forecast ID
 - source type
 - asset produced
 - channel
@@ -184,20 +245,21 @@ Track:
 - affiliate clicks
 - revenue
 
-The learning loop should reward pain signals that produce real human movement, not posts or impressions.
+The learning loop should reward pain signals and forecasts that produce real human movement, not posts or impressions.
 
 ## Next implementation steps
 
-1. Merge and test the pure scoring/gating core.
-2. Add persistent `PainCandidate` ledger storage.
+1. Merge and test the pure scoring/gating/forecasting core.
+2. Add persistent `PainCandidate` and forecast ledger storage.
 3. Add approved-source ingestion adapters.
-4. Add candidate deduplication.
+4. Add candidate deduplication and signal aggregation.
 5. Add vendor-fact verification workflow.
-6. Add remedy selector that maps candidates to Miloosh assets.
+6. Add remedy selector that maps candidates/forecasts to Miloosh assets.
 7. Add subreddit rules registry and freshness TTL.
 8. Add human-review queue UI/report.
 9. Add PR-cluster detection across vendors/intents.
-10. Wire outcome attribution back into scoring weights.
+10. Add forecast backtesting/calibration.
+11. Wire outcome attribution back into scoring weights.
 
 ## Non-negotiable guardrails
 
@@ -210,6 +272,7 @@ The learning loop should reward pain signals that produce real human movement, n
 - no ban/rate-limit/moderation evasion
 - no vote manipulation
 - no presenting Reddit anecdotes as verified vendor facts
+- no presenting forecasts as confirmed vendor actions
 - no auto-linking when subreddit rules are unclear
 
-The desired machine is aggressive in **speed, coverage, scoring, verification and execution** — not aggressive toward community rules.
+The desired machine is aggressive in **speed, coverage, scoring, verification, prediction and execution** — not aggressive toward community rules.
