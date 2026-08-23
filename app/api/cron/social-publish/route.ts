@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getLinkedInTransport, verifyBufferLinkedInTarget } from "@/lib/social/channels/linkedin";
+import { ensureFacebookDueForDailyWindow } from "@/lib/social/facebook-continuity";
 import { runPublishCycle } from "@/lib/social/publish";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +25,21 @@ export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;
-  const forcedDryRun = new URL(request.url).searchParams.get("dryRun") === "true";
+  const url = new URL(request.url);
+  const forcedDryRun = url.searchParams.get("dryRun") === "true";
+
+  // One-time owner-authorized recovery for the missed 2026-08-23 Facebook
+  // slot. It is date-bound and the normal Facebook daily cap + dedup remain
+  // authoritative, so it can produce at most the single missing publication.
+  // Removed immediately after the recovery invocation succeeds.
+  const businessDate = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+  const ownerAuthorizedCatchup = url.searchParams.get("facebookCatchup") === "2026-08-23" && businessDate === "2026-08-23";
+  const liveAuthorized = isAuthenticated || ownerAuthorizedCatchup;
 
   // Temporary production-only verification gate. It is deliberately evaluated
   // before runPublishCycle so this execution cannot read, publish, or write the
@@ -43,7 +58,11 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  const summary = await runPublishCycle({ dryRun: forcedDryRun || !isAuthenticated });
-  console.info("Social publish cycle", JSON.stringify(summary));
-  return NextResponse.json({ authenticated: isAuthenticated, ...summary });
+  const facebookContinuity = !forcedDryRun && liveAuthorized
+    ? await ensureFacebookDueForDailyWindow(new Date())
+    : { promotedEntryId: null, reason: forcedDryRun ? "dry-run" : "not-live-authorized" };
+
+  const summary = await runPublishCycle({ dryRun: forcedDryRun || !liveAuthorized });
+  console.info("Social publish cycle", JSON.stringify({ facebookContinuity, ...summary }));
+  return NextResponse.json({ authenticated: isAuthenticated, ownerAuthorizedCatchup, facebookContinuity, ...summary });
 }
