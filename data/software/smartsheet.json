@@ -26,6 +26,22 @@
     "https://www.smartsheet.com/platform"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "tiers": [
+      { "name": "Pro", "notes": "Restricted to 1-10 members. Only available to new customers, per the vendor's own pricing page." },
+      { "name": "Business", "notes": "Requires 3+ members. Marked as the most popular tier." },
+      { "name": "Enterprise", "notes": "Contact sales for pricing." },
+      { "name": "Advanced Work Management", "notes": "Contact sales for pricing; solutions-based." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.smartsheet.com/pricing"
+  },
   "alternatives": [
     {
       "name": "Wrike",

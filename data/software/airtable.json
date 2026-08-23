@@ -26,6 +26,28 @@
     "https://www.airtable.com/downloads"
   ],
   "accessed_at": "2026-07-31",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$20/seat/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "1,000 records per base, up to 5 editors, 1 GB of attachments per base, 100 automation runs." },
+      { "name": "Team", "amount": "20", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually. 50,000 records per base, 20 GB attachments per base, 25,000 automation runs." },
+      { "name": "Business", "amount": "45", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually. 125,000 records per base, 100 GB attachments, SAML SSO, admin panel." },
+      { "name": "Enterprise Scale", "notes": "Contact sales. 500,000 records per base, 1,000 GB attachments, enterprise API, audit logs." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.airtable.com/pricing"
+  },
+  "cons": [
+    "Every plan caps records and attachment storage per base, not per account -- once a base hits its limit (1,000 records on Free), you can't add more records or attachments until you upgrade.",
+    "The Free plan caps out at 5 editors, so team growth past that forces a paid tier even before hitting record limits."
+  ],
   "alternatives": [
     {
       "name": "Notion",

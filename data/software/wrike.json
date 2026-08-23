@@ -27,6 +27,29 @@
     "https://www.wrike.com/features/"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$10/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "10", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Essential task management, unlimited users. Web, desktop and mobile apps, board and table views." },
+      { "name": "Team", "amount": "10", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. Restricted to 2-15 users. AI Essentials, Gantt charts." },
+      { "name": "Business", "amount": "25", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. Restricted to 5-200 users. Most popular tier. AI Elite starter pack, workspace templates." },
+      { "name": "Pinnacle", "notes": "Contact sales. For 5+ users. Advanced resource/capacity planning, budgeting, advanced reporting." },
+      { "name": "Apex", "notes": "Contact sales. Unlimited whiteboards, Wrike Integrate and Wrike Sync included." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-23",
+    "official_source": "https://www.wrike.com/price/"
+  },
+  "cons": [
+    "Team and Business tiers have hard user-count ranges (Team: 2-15, Business: 5-200) rather than open per-seat pricing -- outgrowing the range means moving up a full tier, not just adding seats.",
+    "Annual billing is required from Business tier upward, per the vendor's own pricing page."
+  ],
   "alternatives": [
     {
       "name": "Monday.com",
