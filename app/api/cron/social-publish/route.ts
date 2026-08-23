@@ -5,46 +5,39 @@ import { runPublishCycle } from "@/lib/social/publish";
 
 export const dynamic = "force-dynamic";
 
+function businessHour(date: Date, timeZone: string): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hour: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  return Number(parts.find((part) => part.type === "hour")?.value ?? "-1");
+}
+
 /**
- * Vercel Cron target — Phase 18 scheduling. Authenticated the same way
- * Vercel's own docs specify for cron routes: Vercel sends
- * `Authorization: Bearer ${CRON_SECRET}` on invocations it triggers
- * itself; this route rejects anything else, so it can't be triggered by
- * a stranger who finds the URL. Runs LIVE (dryRun: false) only when
- * CRON_SECRET is set and matches — otherwise it dry-runs, so a
- * misconfigured or missing secret fails safe (never silently posts for
- * real) rather than failing open.
+ * Vercel Cron target — Phase 18 scheduling. Vercel sends
+ * `Authorization: Bearer ${CRON_SECRET}` on invocations it triggers.
+ * Unauthenticated requests remain dry-run only.
  *
- * `?dryRun=true` forces a dry run even on an authenticated request —
- * this is the only way to confirm the secret is recognized without
- * risking a live publish cycle (which would mutate queue state on any
- * due entry even if no channel is actually configured), so it exists
- * specifically for safe post-deploy verification.
+ * Live publication is additionally gated to the 13:00 hour in
+ * America/New_York. The Vercel cron intentionally probes both UTC hours
+ * that can correspond to 13:00 Eastern across DST; only the invocation
+ * whose Eastern local hour is actually 13 is allowed to publish. This
+ * prevents an overdue/shared queue entry from leaking out during an
+ * earlier cron probe.
+ *
+ * `?dryRun=true` always forces a dry run.
  */
 export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;
-  const url = new URL(request.url);
-  const forcedDryRun = url.searchParams.get("dryRun") === "true";
+  const forcedDryRun = new URL(request.url).searchParams.get("dryRun") === "true";
+  const now = new Date();
+  const inPublishWindow = businessHour(now, "America/New_York") === 13;
 
-  // One-time owner-authorized recovery for the missed 2026-08-23 Facebook
-  // slot. It is date-bound and the normal Facebook daily cap + dedup remain
-  // authoritative, so it can produce at most the single missing publication.
-  // Removed immediately after the recovery invocation succeeds.
-  const businessDate = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/New_York",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date());
-  const ownerAuthorizedCatchup = url.searchParams.get("facebookCatchup") === "2026-08-23" && businessDate === "2026-08-23";
-  const liveAuthorized = isAuthenticated || ownerAuthorizedCatchup;
-
-  // Temporary production-only verification gate. It is deliberately evaluated
-  // before runPublishCycle so this execution cannot read, publish, or write the
-  // social queue. Vercel supplies the existing CRON_SECRET header when it invokes
-  // this configured cron path; the flag is removed immediately after verification.
+  // Temporary production-only Buffer verification mode; never reads or
+  // mutates the social queue.
   if (isAuthenticated && process.env.SOCIAL_BUFFER_VERIFY_ONLY === "true") {
     try {
       const verification = await verifyBufferLinkedInTarget();
@@ -58,11 +51,30 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  const facebookContinuity = !forcedDryRun && liveAuthorized
-    ? await ensureFacebookDueForDailyWindow(new Date())
-    : { promotedEntryId: null, reason: forcedDryRun ? "dry-run" : "not-live-authorized" };
+  // Authenticated cron probes outside the 13:00 Eastern hour are deliberate
+  // no-ops. Do not even run a live queue cycle: the publisher may contain
+  // overdue entries and must not release them at an unintended hour.
+  if (isAuthenticated && !forcedDryRun && !inPublishWindow) {
+    const result = {
+      authenticated: true,
+      inPublishWindow: false,
+      ranAt: now.toISOString(),
+      dryRun: false,
+      paused: false,
+      entriesAttempted: 0,
+      results: [],
+      reason: "Outside the 13:00 America/New_York publication window.",
+    };
+    console.info("Social publish window skip", JSON.stringify(result));
+    return NextResponse.json(result);
+  }
 
-  const summary = await runPublishCycle({ dryRun: forcedDryRun || !liveAuthorized });
-  console.info("Social publish cycle", JSON.stringify({ facebookContinuity, ...summary }));
-  return NextResponse.json({ authenticated: isAuthenticated, ownerAuthorizedCatchup, facebookContinuity, ...summary });
+  const liveRun = isAuthenticated && !forcedDryRun && inPublishWindow;
+  const facebookContinuity = liveRun
+    ? await ensureFacebookDueForDailyWindow(now)
+    : { promotedEntryId: null, reason: forcedDryRun ? "dry-run" : isAuthenticated ? "outside-publish-window" : "not-authenticated" };
+
+  const summary = await runPublishCycle({ dryRun: !liveRun });
+  console.info("Social publish cycle", JSON.stringify({ inPublishWindow, facebookContinuity, ...summary }));
+  return NextResponse.json({ authenticated: isAuthenticated, inPublishWindow, facebookContinuity, ...summary });
 }
