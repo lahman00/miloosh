@@ -1,10 +1,16 @@
 import type { ActivePartnerSlug } from "@/data/affiliate/active-partners";
 
-export type PayoutRailId = "partnerstack" | "impact" | "tapfiliate-setmore" | "mailerlite-tipalti";
+export type PayoutRailId =
+  | "partnerstack-hello"
+  | "partnerstack-personal"
+  | "impact"
+  | "tapfiliate-setmore"
+  | "mailerlite-tipalti";
 
 export type PayoutRail = {
   id: PayoutRailId;
   label: string;
+  accountIdentity: string;
   partnerSlugs: readonly ActivePartnerSlug[];
   readiness: "UNVERIFIED" | "OWNER_ACTION_REQUIRED" | "VERIFIED";
   ownerActionPackId: string;
@@ -15,14 +21,16 @@ export type PayoutRail = {
 /**
  * Canonical payout ownership for every currently active Miloosh affiliate.
  *
- * This is intentionally separate from commission eligibility. A relationship
- * can be active and still have an unverified payout profile. Never store any
- * bank, tax, identity, password, 2FA, or payout-provider secret here.
+ * Payout ownership is account-specific, not only network-specific. Miloosh has
+ * two evidenced PartnerStack account identities, so they are separate payout
+ * rails even though both use PartnerStack. Never store any bank, tax, identity,
+ * password, 2FA, or payout-provider secret here.
  */
 export const PAYOUT_RAILS: readonly PayoutRail[] = [
   {
-    id: "partnerstack",
-    label: "PartnerStack",
+    id: "partnerstack-hello",
+    label: "PartnerStack — Miloosh business account",
+    accountIdentity: "hello@miloosh.com",
     partnerSlugs: [
       "constant-contact",
       "todoist",
@@ -31,22 +39,30 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "pipedrive",
       "getresponse",
       "airtable",
-      "monday",
-      "whatconverts",
-      "elevenlabs",
       "krispcall",
       "hubstaff",
       "close",
       "surveymonkey",
     ],
     readiness: "UNVERIFIED",
-    ownerActionPackId: "partnerstack-payout-rail",
+    ownerActionPackId: "partnerstack-hello-payout-rail",
     methodGuidance: "Prefer a real local Israeli bank through Airwallex if direct deposit is desired and the dashboard accepts it; otherwise use an actually available PayPal/Stripe option. Do not enter the Payoneer USD receiving account as Airwallex direct-deposit banking: PartnerStack says foreign-currency accounts and virtual banks are unsupported for that route.",
-    notes: "One network-level payout configuration should service all fourteen active PartnerStack relationships; dashboard readiness is not yet first-party verified.",
+    notes: "PartnerStack Support explicitly confirmed that hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity. First-party partner mail to hello@miloosh.com corroborates the other relationships assigned here. Dashboard payout readiness is not yet verified.",
+  },
+  {
+    id: "partnerstack-personal",
+    label: "PartnerStack — legacy/personal-email account",
+    accountIdentity: "lahman00@gmail.com",
+    partnerSlugs: ["monday", "whatconverts", "elevenlabs"],
+    readiness: "UNVERIFIED",
+    ownerActionPackId: "partnerstack-personal-payout-rail",
+    methodGuidance: "Verify the payout provider separately in this PartnerStack account. Do not assume the business-account payout configuration carries over. If direct deposit is used, the same Airwallex restrictions apply; Payoneer USD receiving details should not be used as Airwallex bank details.",
+    notes: "First-party monday.com application mail and WhatConverts/ElevenLabs affiliate mail are tied to lahman00@gmail.com. This makes it a separate account-level payout checkpoint from hello@miloosh.com.",
   },
   {
     id: "impact",
     label: "Impact.com",
+    accountIdentity: "Miloosh Impact publisher account",
     partnerSlugs: ["shopify", "wix", "omnisend"],
     readiness: "UNVERIFIED",
     ownerActionPackId: "impact-payout-rail",
@@ -56,6 +72,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
   {
     id: "tapfiliate-setmore",
     label: "Setmore / Tapfiliate",
+    accountIdentity: "Setmore affiliate account",
     partnerSlugs: ["setmore"],
     readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "setmore-payout-method",
@@ -65,6 +82,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
   {
     id: "mailerlite-tipalti",
     label: "MailerLite / Tipalti",
+    accountIdentity: "MailerLite affiliate account",
     partnerSlugs: ["mailerlite"],
     readiness: "UNVERIFIED",
     ownerActionPackId: "mailerlite-tipalti-payout",
