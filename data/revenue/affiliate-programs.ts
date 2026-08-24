@@ -212,7 +212,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
   },
   {
     slug: "clickup",
-    lastVerifiedAt: "2026-08-14",
+    lastVerifiedAt: "2026-08-24",
     programExists: "yes",
     type: "network",
     networkName: "PartnerStack",
@@ -222,7 +222,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
       "Up to $25 for every new free workspace referral, plus 20% commission on sales from visitors who convert to a paid plan within 180 days",
     recurrence: "unknown",
     notes:
-      "30-day cookie window. Tiered 'Advanced'/'Premier' partner status (based on signup volume) unlocks extra discounts/support. Page doesn't state whether the 20% paid-plan commission recurs beyond the first payment.",
+      "RELATIONSHIP STATUS: REJECTED 2026-08-21. First-party PartnerStack email states that ClickUp declined Miloosh application. The public affiliate program still exists, but Miloosh must not be treated as pending/active or prioritized for re-application without a material new reason and new evidence.",
     sourceUrls: ["https://clickup.com/partners/affiliates"],
     applicationUrl: "https://clickup.partnerstack.com/?group=standardtermsactivationstandardgeosculinks",
     cookieDuration: "30 days",
