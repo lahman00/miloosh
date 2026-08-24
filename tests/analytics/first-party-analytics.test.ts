@@ -365,14 +365,28 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
   });
 
   describe("MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23): CTA experiment reporting", () => {
+    // MILOOSH ZERO TO REVENUE WAR ROOM mission (2026-08-24), Phase 1 --
+    // sessions are now spaced 10 minutes apart (not milliseconds) and each
+    // carries a real engagement signal (a second event type ~6s after the
+    // impression, giving real dwell), so they classify as genuinely
+    // eligible (CONFIRMED_CLEAN when there's a click, PROBABLE_HUMAN when
+    // there isn't) instead of tripping the burst detector -- a tight
+    // same-path/same-second cluster of synthetic sessions is exactly the
+    // shape real burst detection is designed to catch, which is why the
+    // OLD millisecond-spaced fixture started failing the moment
+    // computeCtaExperimentReport began classifying its input for real.
     const mkEvents = (impressions: number, clicks: number, variant: string, experimentId = "software-cta-copy-v1"): FirstPartyEvent[] => {
-      const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
+      const base = Date.now();
+      const t = (i: number, extraMs: number) => new Date(base + i * 600_000 + extraMs).toISOString();
       const events: FirstPartyEvent[] = [];
       for (let i = 0; i < impressions; i++) {
-        events.push({ type: "cta_impression", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", visitorId: `v_${variant}_${i}`, sessionId: `s_${variant}_${i}`, timestamp: t(i), experimentId, variant } as FirstPartyEvent);
-      }
-      for (let i = 0; i < clicks; i++) {
-        events.push({ type: "outbound_click", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", destination: "official", url: "https://x.com", visitorId: `v_${variant}_${i}`, sessionId: `s_${variant}_${i}`, timestamp: t(1000 + i), experimentId, variant } as FirstPartyEvent);
+        const visitorId = `v_${variant}_${i}`;
+        const sessionId = `s_${variant}_${i}`;
+        events.push({ type: "cta_impression", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", visitorId, sessionId, timestamp: t(i, 0), experimentId, variant } as FirstPartyEvent);
+        events.push({ type: "engaged_view", path: "/software/x", visitorId, sessionId, timestamp: t(i, 6000) } as FirstPartyEvent);
+        if (i < clicks) {
+          events.push({ type: "outbound_click", path: "/software/x", softwareSlug: "x", ctaLocation: "software-page-cta", destination: "official", url: "https://x.com", visitorId, sessionId, timestamp: t(i, 7000), experimentId, variant } as FirstPartyEvent);
+        }
       }
       return events;
     };
@@ -411,6 +425,65 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
       ];
       expect(computeCtaExperimentReport(events)).toEqual([]);
       expect(computeCtaExperimentReport(events, true)).toHaveLength(1);
+    });
+
+    // MILOOSH ZERO TO REVENUE WAR ROOM mission (2026-08-24), Phase 1 --
+    // the regression tests this mission explicitly required: forbidden
+    // visitor classes (SUSPICIOUS burst, UNRESOLVED shallow-isolated)
+    // must never enter the experiment decision sample, even when the
+    // event itself carries a valid experimentId/variant.
+    it("excludes a SUSPICIOUS same-path burst from the decision sample, even though every event carries a valid experimentId/variant", () => {
+      const base = Date.now();
+      // 3 shallow, single-event, no-UTM sessions landing on the identical
+      // path within the same minute -- exactly what burst detection
+      // (same-path cadence rule) is designed to flag.
+      const events: FirstPartyEvent[] = [0, 1, 2].map(
+        (i) =>
+          ({
+            type: "cta_impression",
+            path: "/software/burst-target",
+            softwareSlug: "burst-target",
+            ctaLocation: "software-page-cta",
+            visitorId: `v_burst_${i}`,
+            sessionId: `s_burst_${i}`,
+            timestamp: new Date(base + i * 5000).toISOString(),
+            experimentId: "software-cta-copy-v1",
+            variant: "control",
+          }) as FirstPartyEvent,
+      );
+      expect(computeCtaExperimentReport(events)).toEqual([]);
+    });
+
+    it("excludes an UNRESOLVED shallow, isolated, single-event session from the decision sample", () => {
+      const t = new Date().toISOString();
+      const events: FirstPartyEvent[] = [
+        {
+          type: "cta_impression",
+          path: "/software/lone",
+          softwareSlug: "lone",
+          ctaLocation: "software-page-cta",
+          visitorId: "v_lone",
+          sessionId: "s_lone",
+          timestamp: t,
+          experimentId: "software-cta-copy-v1",
+          variant: "control",
+        } as FirstPartyEvent,
+      ];
+      // A single shallow event, no second event type, no dwell, no burst,
+      // no UTM, no outbound click -- this is the textbook UNRESOLVED
+      // shape (see lib/analytics/human-classification.ts), and must not
+      // count toward the experiment's observed impressions.
+      expect(computeCtaExperimentReport(events)).toEqual([]);
+    });
+
+    it("still counts a genuinely eligible PROBABLE_HUMAN session (real dwell, no click) toward impressions but not clicks", () => {
+      const base = Date.now();
+      const events: FirstPartyEvent[] = [
+        { type: "cta_impression", path: "/software/solo", softwareSlug: "solo", ctaLocation: "software-page-cta", visitorId: "v_solo", sessionId: "s_solo", timestamp: new Date(base).toISOString(), experimentId: "software-cta-copy-v1", variant: "control" } as FirstPartyEvent,
+        { type: "engaged_view", path: "/software/solo", visitorId: "v_solo", sessionId: "s_solo", timestamp: new Date(base + 6000).toISOString() } as FirstPartyEvent,
+      ];
+      const [report] = computeCtaExperimentReport(events);
+      expect(report.arms.find((a) => a.variant === "control")).toEqual({ variant: "control", impressions: 1, clicks: 0, ctrLabel: "0/1 (0.0%)" });
     });
   });
 

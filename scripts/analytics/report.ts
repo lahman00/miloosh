@@ -128,8 +128,29 @@ export function computeCtaExposure(events: FirstPartyEvent[], includeSynthetic =
  * even once the threshold is crossed; it only ever reports the raw
  * observed numbers side by side; deciding what counts as "enough" to act
  * on is a human/reporting judgment, not something this function claims.
+ *
+ * MILOOSH ZERO TO REVENUE WAR ROOM mission (2026-08-24), Phase 1 —
+ * real gap fixed: this function previously only excluded isTest/
+ * synthetic/legacy-contaminated events (isSyntheticOrTestEvent), the
+ * same broad filter every other report section uses. It never checked
+ * the finer human-classification buckets at all, meaning a SUSPICIOUS
+ * burst, an UNRESOLVED shallow session, or (if one is ever matched) a
+ * KNOWN_AUTOMATION session could silently sway an experiment's observed
+ * CTR. This is now the one canonical decisioning path: every event is
+ * classified via classifySessions() (given the FULL, unfiltered event
+ * set -- classifying from an already-filtered subset is exactly the bug
+ * that made KNOWN_QA_TEST undercount elsewhere in this file), and only
+ * events whose session lands in an ELIGIBLE bucket
+ * (CONFIRMED_CLEAN / STRONG_HUMAN_EVIDENCE / PROBABLE_HUMAN) are allowed
+ * into the arm aggregation below. KNOWN_QA_TEST, KNOWN_AUTOMATION,
+ * SUSPICIOUS, and UNRESOLVED sessions are excluded from the decision
+ * sample entirely -- not down-weighted, excluded. `includeSynthetic`
+ * (debug-only, matching every other function in this file) bypasses
+ * BOTH the isTest filter and this classification filter, so a debug run
+ * can still inspect the raw, unfiltered picture.
  */
 const MIN_IMPRESSIONS_PER_ARM_FOR_SIGNAL = 30;
+const CTA_EXPERIMENT_ELIGIBLE_BUCKETS: ReadonlySet<TrafficBucket> = new Set(["CONFIRMED_CLEAN", "STRONG_HUMAN_EVIDENCE", "PROBABLE_HUMAN"]);
 
 export interface CtaExperimentArm {
   variant: string;
@@ -149,11 +170,16 @@ function ctrLabel(clicks: number, impressions: number): string {
 }
 
 export function computeCtaExperimentReport(events: FirstPartyEvent[], includeSynthetic = false): CtaExperimentReport[] {
+  const eligibleSessionIds = includeSynthetic
+    ? null // debug passthrough -- no classification filter applied
+    : new Set(classifySessions(events).filter((c) => CTA_EXPERIMENT_ELIGIBLE_BUCKETS.has(c.bucket)).map((c) => c.sessionId));
+
   const impressionVisitorsByArm = new Map<string, Set<string>>(); // key: experimentId|||variant
   const clickVisitorsByArm = new Map<string, Set<string>>();
 
   for (const e of events) {
     if (isSyntheticOrTestEvent(e, includeSynthetic)) continue;
+    if (eligibleSessionIds && !eligibleSessionIds.has(e.sessionId)) continue;
     if (e.type !== "cta_impression" && e.type !== "outbound_click") continue;
     const experimentId = (e as { experimentId?: string }).experimentId;
     const variant = (e as { variant?: string }).variant;
