@@ -24,6 +24,15 @@ describe("payout rail integrity", () => {
     }
   });
 
+  it("keeps the two evidenced PartnerStack accounts as separate payout rails", () => {
+    const hello = PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-hello");
+    const personal = PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal");
+    expect(hello?.accountIdentity).toBe("hello@miloosh.com");
+    expect(personal?.accountIdentity).toBe("lahman00@gmail.com");
+    expect(personal?.partnerSlugs).toEqual(["monday", "whatconverts", "elevenlabs"]);
+    expect(new Set(hello?.partnerSlugs).has("monday")).toBe(false);
+  });
+
   it("keeps CJ outside the active-partner payout rails", () => {
     expect(PAYOUT_RAILS.some((rail) => rail.id === ("cj" as never))).toBe(false);
     expect(OWNER_ACTION_PACKS.find((pack) => pack.id === "cj-dual-account-reconciliation")?.productsCovered).toEqual([
