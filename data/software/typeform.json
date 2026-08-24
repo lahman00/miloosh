@@ -4,55 +4,62 @@
   "category": "productivity",
   "description": "Typeform is an online forms and surveys platform built around interactive, conversational data-collection experiences with logic, integrations, and branded workflows.",
   "website": "https://www.typeform.com",
+  "platforms": ["Web"],
+  "best_for": "Marketing, research, and operations teams that want polished interactive forms with conditional logic and workflow integrations.",
+  "features": [
+    "Interactive online forms, surveys, and quizzes",
+    "Conditional logic and branching",
+    "AI-powered form creation",
+    "Website embedding and shareable forms",
+    "Webhooks and third-party integrations",
+    "Conversion tracking and drop-off analysis on higher tiers"
+  ],
   "pricing": {
     "model": "freemium",
-    "startingPrice": "$39/month",
-    "hasFreeTier": true,
+    "starting_price": "$39/month",
+    "has_free_tier": true,
     "status": "verified",
-    "freePlan": true,
-    "entryPaid": {
+    "free_plan": true,
+    "entry_paid": {
       "amount": "39",
       "currency": "USD",
-      "billingPeriod": "monthly",
-      "perSeat": false,
-      "annualBillingRequired": false
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
     },
     "tiers": [
       {
         "name": "Free",
         "amount": "0",
         "currency": "USD",
-        "billingPeriod": "monthly",
+        "billing_period": "monthly",
         "notes": "Unlimited typeforms with 10 responses per month across the account, plus logic, embedding, exports, and basic design controls according to Typeform's current Help Center."
       },
       {
         "name": "Basic",
         "amount": "39",
         "currency": "USD",
-        "billingPeriod": "monthly",
+        "billing_period": "monthly",
         "notes": "Current monthly list price shown by Typeform. Includes 100 responses per month, one user, unlimited typeforms, AI-powered form creation, conditional logic, webhooks, and integrations."
       },
       {
         "name": "Plus",
         "amount": "79",
         "currency": "USD",
-        "billingPeriod": "monthly",
+        "billing_period": "monthly",
         "notes": "Current monthly list price shown by Typeform. Includes 1,000 responses per month, three users, removal of Typeform branding, and a custom subdomain."
       },
       {
         "name": "Business",
         "amount": "129",
         "currency": "USD",
-        "billingPeriod": "monthly",
+        "billing_period": "monthly",
         "notes": "Current monthly list price shown by Typeform. Includes 10,000 responses per month, five users, drop-off rates, conversion tracking, and priority support."
       }
     ],
-    "enterpriseContactSales": true,
-    "lastVerified": "2026-08-24",
-    "officialSource": "https://www.typeform.com/pricing"
+    "last_verified": "2026-08-24",
+    "official_source": "https://www.typeform.com/pricing"
   },
-  "platforms": ["Web"],
-  "bestFor": "Marketing, research, and operations teams that want polished interactive forms with conditional logic and workflow integrations.",
   "pros": [
     "Free plan supports unlimited forms and core logic for low-volume use",
     "Strong emphasis on interactive form design, conditional paths, embedding, and integrations",
@@ -62,37 +69,6 @@
     "The free plan is limited to 10 responses per month across all forms",
     "Response limits remain a central pricing constraint on paid plans",
     "Brand removal, custom subdomains, and broader collaboration require higher tiers"
-  ],
-  "features": [
-    "Interactive online forms, surveys, and quizzes",
-    "Conditional logic and branching",
-    "AI-powered form creation",
-    "Website embedding and shareable forms",
-    "Webhooks and third-party integrations",
-    "Conversion tracking and drop-off analysis on higher tiers"
-  ],
-  "alternatives": [
-    {
-      "name": "SurveyMonkey",
-      "slug": "surveymonkey",
-      "description": "A survey and feedback platform with broad research tooling, AI-assisted survey creation and analysis, advanced logic, and a large integration ecosystem.",
-      "bestFor": "Teams that prioritize structured research, survey methodology, and response analysis",
-      "strengths": ["Survey research", "Analysis tools", "Large template library"]
-    },
-    {
-      "name": "Jotform",
-      "slug": "jotform",
-      "description": "A no-code form builder with a large template library, payments, conditional logic, workflows, and broad form customization.",
-      "bestFor": "Businesses that need operational forms, payments, and high template variety",
-      "strengths": ["20,000+ templates", "Payment collection", "No-code customization"]
-    },
-    {
-      "name": "Qualtrics",
-      "slug": "qualtrics",
-      "description": "A research and experience-management survey platform with advanced logic, statistical analysis, dashboards, and enterprise workflows.",
-      "bestFor": "Organizations that need advanced research and enterprise survey governance",
-      "strengths": ["Advanced research", "Statistical analysis", "Enterprise workflows"]
-    }
   ],
   "faq": [
     {
@@ -108,14 +84,37 @@
       "answer": "Yes. Conditional logic is available for building different paths through forms, and Typeform's current Free plan documentation includes logic among its core capabilities."
     }
   ],
+  "links": {
+    "pricing": "https://www.typeform.com/pricing",
+    "docs": "https://help.typeform.com/"
+  },
   "sources": [
     "https://www.typeform.com/pricing",
     "https://help.typeform.com/hc/en-us/articles/360032972852-Free-plan",
     "https://help.typeform.com/hc/en-us/articles/360060585211-Basic-plan"
   ],
-  "accessedAt": "2026-08-24",
-  "links": {
-    "pricing": "https://www.typeform.com/pricing",
-    "docs": "https://help.typeform.com/"
-  }
+  "accessed_at": "2026-08-24",
+  "alternatives": [
+    {
+      "name": "SurveyMonkey",
+      "slug": "surveymonkey",
+      "description": "A survey and feedback platform with broad research tooling, AI-assisted survey creation and analysis, advanced logic, and a large integration ecosystem.",
+      "best_for": "Teams that prioritize structured research, survey methodology, and response analysis",
+      "strengths": ["Survey research", "Analysis tools", "Large template library"]
+    },
+    {
+      "name": "Jotform",
+      "slug": "jotform",
+      "description": "A no-code form builder with a large template library, payments, conditional logic, workflows, and broad form customization.",
+      "best_for": "Businesses that need operational forms, payments, and high template variety",
+      "strengths": ["20,000+ templates", "Payment collection", "No-code customization"]
+    },
+    {
+      "name": "Qualtrics",
+      "slug": "qualtrics",
+      "description": "A research and experience-management survey platform with advanced logic, statistical analysis, dashboards, and enterprise workflows.",
+      "best_for": "Organizations that need advanced research and enterprise survey governance",
+      "strengths": ["Advanced research", "Statistical analysis", "Enterprise workflows"]
+    }
+  ]
 }
