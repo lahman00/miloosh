@@ -53,12 +53,12 @@ export function buildCanonicalAffiliateState(): {
 
   const pendingSet = new Set([
     "freshdesk", "freshsales", "freshbooks", "close", "clickup",
-    "help-scout", "amplitude", "toggl-track", "wrike", "zendesk"
+    "amplitude", "toggl-track", "wrike", "zendesk"
   ]);
 
   const rejectedSet = new Set([
     "webflow", "activecampaign", "kit", "brevo", "hubspot",
-    "n8n", "loom", "zapier", "canva"
+    "n8n", "loom", "zapier", "canva", "help-scout"
   ]);
 
   const formBlockedSet = new Set([

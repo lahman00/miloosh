@@ -7,8 +7,8 @@ import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
 
 export function computeMonetizationGaps(
   software: Software[] = getAllSoftware(),
-  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "help-scout", "amplitude", "toggl-track", "clickup", "activecampaign", "close", "kit", "wrike", "zendesk", "freshbooks"]),
-  rejectedSlugs: Set<string> = new Set(["hubspot", "n8n", "brevo"]),
+  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "amplitude", "toggl-track", "clickup", "activecampaign", "close", "kit", "wrike", "zendesk", "freshbooks"]),
+  rejectedSlugs: Set<string> = new Set(["hubspot", "n8n", "brevo", "help-scout"]),
   ownerBlockedSlugs: Set<string> = new Set(["semrush", "lastpass", "woocommerce", "reclaim-ai", "crowdstrike", "tidio", "miro"]),
   gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS
 ): MonetizationGapRow[] {

@@ -8,7 +8,8 @@ import type { SeoExperiment } from "@/lib/seo-factory/types";
 function plusDays(value: string, days: number): string { return new Date(new Date(value).getTime() + days * 86_400_000).toISOString(); }
 function affiliateStatus(slug: string): string {
   if ((ACTIVE_PARTNER_SLUGS as readonly string[]).includes(slug)) return "ACTIVE";
-  if (["freshdesk", "help-scout"].includes(slug)) return "PENDING";
+  if (slug === "freshdesk") return "PENDING";
+  if (slug === "help-scout") return "REJECTED";
   if (slug === "semrush") return "OWNER_ACTION";
   if (slug === "intercom") return "NONE";
   return "NON_ACTIVE";

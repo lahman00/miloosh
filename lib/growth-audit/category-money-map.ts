@@ -9,7 +9,7 @@ import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
 export function computeCategoryMoneyMap(
   categories: Category[] = getAllCategories(),
   software: Software[] = getAllSoftware(),
-  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "help-scout", "amplitude", "toggl-track", "clickup", "activecampaign", "close", "kit", "wrike", "zendesk", "freshbooks"]),
+  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "amplitude", "toggl-track", "clickup", "activecampaign", "close", "kit", "wrike", "zendesk", "freshbooks"]),
   gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS,
   gscClicks: Record<string, number> = { "intercom": 1, "airtable": 1 },
   gscPositions: Record<string, number> = {
