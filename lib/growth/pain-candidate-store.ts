@@ -66,9 +66,36 @@ function hasBlobToken(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
-/** Deterministic id from the canonical source URL -- the same real post/page always maps to the same record. */
+/**
+ * MILOOSH P0 FIRST REAL PAIN RADAR SIGNAL mission (2026-08-24) --
+ * normalizes a source URL before it becomes a dedup key, so the same
+ * real page discovered twice with cosmetic differences (trailing slash,
+ * a tracking query param, a `www.` prefix, mixed case) collapses onto
+ * one candidate instead of silently duplicating. Falls back to a plain
+ * trim+lowercase of the raw string if the URL doesn't even parse --
+ * still deterministic, just without the structural normalization.
+ */
+export function normalizeSourceUrl(sourceUrl: string): string {
+  const raw = sourceUrl.trim();
+  let parsed: URL;
+  try {
+    parsed = new URL(raw);
+  } catch {
+    return raw.toLowerCase();
+  }
+  const host = parsed.host.toLowerCase().replace(/^www\./, "");
+  const pathname = parsed.pathname.replace(/\/+$/, "") || "/";
+  // Query params are near-universally tracking/session noise (utm_*, ref,
+  // context, share) for the kinds of pages this store indexes -- dropped
+  // entirely rather than allowlisted, since two different discovery runs
+  // hitting the identical page with different tracking params must
+  // collapse to the same candidate.
+  return `${host}${pathname}`.toLowerCase();
+}
+
+/** Deterministic id from the canonical (normalized) source URL -- the same real post/page always maps to the same record regardless of trailing slash, www, or query-string noise. */
 export function deriveCandidateId(sourceUrl: string): string {
-  return createHash("sha256").update(sourceUrl.trim().toLowerCase()).digest("hex").slice(0, 24);
+  return createHash("sha256").update(normalizeSourceUrl(sourceUrl)).digest("hex").slice(0, 24);
 }
 
 function readLocalFallback(): PersistedPainCandidate[] {

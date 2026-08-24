@@ -7,6 +7,7 @@ import {
   getAllPainCandidates,
   updatePainCandidateState,
   deriveCandidateId,
+  normalizeSourceUrl,
 } from "@/lib/growth/pain-candidate-store";
 
 /**
@@ -50,6 +51,40 @@ describe("pain candidate store", () => {
     const b = deriveCandidateId("  HTTPS://reddit.com/r/x/comments/1  ");
     expect(a).toBe(b);
     expect(a.length).toBeGreaterThan(0);
+  });
+
+  it("normalizeSourceUrl collapses a trailing slash", () => {
+    expect(normalizeSourceUrl("https://example.com/blog/post")).toBe(normalizeSourceUrl("https://example.com/blog/post/"));
+  });
+
+  it("normalizeSourceUrl collapses insignificant tracking query parameters", () => {
+    expect(normalizeSourceUrl("https://example.com/blog/post")).toBe(
+      normalizeSourceUrl("https://example.com/blog/post?utm_source=facebook&utm_medium=social"),
+    );
+  });
+
+  it("normalizeSourceUrl collapses a www. prefix", () => {
+    expect(normalizeSourceUrl("https://example.com/blog/post")).toBe(normalizeSourceUrl("https://www.example.com/blog/post"));
+  });
+
+  it("normalizeSourceUrl treats two discovery runs of the identical page (case + trailing slash + query) as the same source", () => {
+    const a = normalizeSourceUrl("https://Example.com/Blog/Post/");
+    const b = normalizeSourceUrl("https://example.com/Blog/Post?ref=share");
+    expect(a).toBe(b);
+  });
+
+  it("normalizeSourceUrl still returns a deterministic value for a URL that fails to parse, without crashing", () => {
+    const a = normalizeSourceUrl("not a real url");
+    const b = normalizeSourceUrl("NOT A REAL URL");
+    expect(a).toBe(b);
+  });
+
+  it("re-discovering the same real page via a www/trailing-slash/query-param variant merges onto the same stored candidate", async () => {
+    const first = await recordPainCandidate(baseInput({ sourceUrl: "https://example.com/pain/thread" }));
+    const second = await recordPainCandidate(baseInput({ sourceUrl: "https://www.example.com/pain/thread/?utm_source=x" }));
+    expect(second.id).toBe(first.id);
+    const all = await getAllPainCandidates();
+    expect(all.filter((c) => c.id === first.id)).toHaveLength(1);
   });
 
   it("records a candidate and initializes lifecycle state to the safe defaults", async () => {
