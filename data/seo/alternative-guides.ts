@@ -168,6 +168,22 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://www.wrike.com/features/", "https://monday.com"],
   },
+  "zoho-crm": {
+    diagnosis: "The page lists three alternatives but does not distinguish a broad suite decision, an enterprise customization decision, and a focused sales-pipeline decision.",
+    heading: "Choose the CRM scope before the vendor",
+    introduction: "Zoho CRM combines sales workflows, omnichannel engagement, automation, analytics, and AI assistance. The useful alternative decision is whether the team needs a broader go-to-market suite, a deeply customizable enterprise platform, or a focused visual sales pipeline.",
+    whySeekAlternative: [
+      "Marketing, sales, and service need to operate as one connected go-to-market system, not only inside a CRM.",
+      "The organization needs an enterprise CRM platform with extensive customization and a large add-on ecosystem.",
+      "The sales team wants a simpler, activity-led pipeline instead of a broader configurable CRM suite.",
+    ],
+    decisions: [
+      { heading: "Broader go-to-market suite", fit: "HubSpot is the relevant path when marketing, sales, and service workflows need to operate together in one platform.", alternativeSlug: "hubspot", comparisonSlug: "hubspot-vs-zoho-crm" },
+      { heading: "Enterprise customization", fit: "Salesforce fits organizations evaluating deeper platform customization, scale, and an extensive application ecosystem.", alternativeSlug: "salesforce", comparisonSlug: "salesforce-vs-zoho-crm" },
+      { heading: "Focused visual sales pipeline", fit: "Pipedrive is the closer comparison when the primary need is a visual, activity-led sales pipeline with a more focused operating model.", alternativeSlug: "pipedrive", comparisonSlug: "pipedrive-vs-zoho-crm" },
+    ],
+    evidenceSources: ["https://www.zoho.com/crm/", "https://www.pipedrive.com/en/features"],
+  },
   tidio: {
     diagnosis: "The page's alternatives list doesn't separate Tidio's live-chat-plus-AI-agent positioning from deeper omnichannel ticketing, ecommerce-native AI support, or simpler shared-inbox decisions.",
     heading: "Decide what kind of support operation you're running",
