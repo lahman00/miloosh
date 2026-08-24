@@ -839,18 +839,22 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     network: "Commission Junction (CJ)",
     productSlugs: ["1password", "dashlane", "acuity-scheduling", "google-meet", "google-chat", "evernote"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-21",
+    statusUpdatedAt: "2026-08-24",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
     commissionModel: "CJ publisher commission rates (25% on 1Password, $20 on Dashlane, Google Workspace)",
     cookieWindow: "45-90 days",
-    evidence: ["CJ Publisher Registration Portal (signup.cj.com)"],
-    ownerBlocker: "CJ publisher account CID 8048091 exists; owner must verify account ownership/completeness and finish any outstanding tax, payment, or advertiser activation requirements.",
+    evidence: [
+      "CJ first-party account-change emails for CID 8043935 sent to lahman00@gmail.com (2026-08-14 and 2026-08-23)",
+      "CJ first-party account-change emails for CID 8048091 sent to hello@miloosh.com (2026-08-20)",
+      "CJ Publisher Registration Portal (signup.cj.com)"
+    ],
+    ownerBlocker: "Two distinct CJ publisher CIDs are evidenced: 8043935 (lahman00@gmail.com) and 8048091 (hello@miloosh.com). Owner must identify the intended Miloosh account, verify payment/tax completeness, and avoid activating advertisers against the wrong account.",
     formBlocker: null,
-    eligibility: "Existing CJ publisher account; advertiser relationships not yet verified active",
+    eligibility: "Two existing CJ publisher accounts; intended canonical account and advertiser relationships not yet verified",
     applicationUrl: "https://signup.cj.com/member/signup/publisher/?cid=5140517",
-    notes: "Covers 1Password, Dashlane, Acuity Scheduling, Google Meet, Google Chat, Evernote (6 products)."
+    notes: "Covers 1Password, Dashlane, Acuity Scheduling, Google Meet, Google Chat, Evernote (6 products). Do not collapse or delete either evidenced account until ownership, payment setup, and advertiser relationships are compared."
   },
   {
     programId: "shareasale-portfolio",
