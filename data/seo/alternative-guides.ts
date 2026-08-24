@@ -271,6 +271,51 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://woocommerce.com", "https://www.shopify.com"],
   },
+  ecwid: {
+    diagnosis: "Ecwid's page lists two alternatives without explaining the decision that actually matters: adding a cart widget to an existing site versus running a dedicated, standalone store.",
+    heading: "Choose an Ecwid alternative by store structure",
+    introduction: "Ecwid is built to be embedded: a shopping-cart widget added into an existing WordPress, Wix, or custom site, with zero platform transaction fees. The relevant alternatives question is whether that embedded model still fits, or whether the business has outgrown it into needing a dedicated, full-featured store.",
+    whySeekAlternative: [
+      "The business has outgrown adding a cart to an existing site and needs a dedicated, standalone store.",
+      "Multichannel selling, apps, and a broader ecommerce feature set matter more than embedding into a site that already exists.",
+      "The team wants full platform ownership and customization rather than an embedded widget.",
+    ],
+    decisions: [
+      { heading: "A dedicated, standalone store", fit: "Shopify is the relevant path when a merchant has outgrown embedding a cart widget and wants a full-featured, dedicated store with multichannel selling.", alternativeSlug: "shopify", comparisonSlug: "ecwid-vs-shopify" },
+      { heading: "Open-source ownership and customization", fit: "PrestaShop is worth comparing when a merchant wants full platform ownership and customization rather than an embedded, hosted widget.", alternativeSlug: "prestashop", comparisonSlug: "ecwid-vs-prestashop" },
+    ],
+    evidenceSources: ["https://www.ecwid.com", "https://www.shopify.com"],
+  },
+  hubspot: {
+    diagnosis: "HubSpot's page lists two alternatives without explaining the decision that actually separates them: a single AI-enabled platform across departments versus a simpler, sales-focused pipeline tool.",
+    heading: "Choose a HubSpot alternative by team scope",
+    introduction: "HubSpot's free CRM is positioned for startups and small businesses that want to manage customers immediately and scale without a data migration later. The relevant alternatives question is whether the team actually needs that broader cross-departmental platform, or a simpler tool scoped to sales alone.",
+    whySeekAlternative: [
+      "The team is sales-only and doesn't need marketing and service tools bundled into the same platform.",
+      "A simpler, more visual pipeline view matters more than an all-in-one platform's breadth.",
+      "The organization is large enough to need one AI-enabled platform spanning multiple departments, not just sales.",
+    ],
+    decisions: [
+      { heading: "A simpler, sales-focused pipeline", fit: "Pipedrive is the relevant path when the team is sales-only and wants a simpler pipeline view without marketing and service tools bundled in.", alternativeSlug: "pipedrive", comparisonSlug: "hubspot-vs-pipedrive" },
+      { heading: "One AI-enabled platform across departments", fit: "Salesforce is worth comparing for larger organizations that need one platform spanning sales, service, and other departments.", alternativeSlug: "salesforce", comparisonSlug: "hubspot-vs-salesforce" },
+    ],
+    evidenceSources: ["https://www.hubspot.com/pricing", "https://www.pipedrive.com/en/pricing"],
+  },
+  squarespace: {
+    diagnosis: "Squarespace's page lists two alternatives without explaining the decision that actually separates them: an accessible, free-to-start site builder versus maximum customization through self-hosting.",
+    heading: "Choose a Squarespace alternative by control vs. simplicity",
+    introduction: "Squarespace positions itself for entrepreneurs, freelancers, and small business owners who want a polished website with integrated business tools, without coding. The relevant alternatives question is whether an even more accessible free-to-start builder fits better, or whether the team actually wants the deeper customization and control that comes with self-hosting.",
+    whySeekAlternative: [
+      "The business wants a free-to-start site builder rather than Squarespace's paid-only model.",
+      "Maximum customization and self-hosting control matter more than an integrated, managed platform.",
+      "The site needs a plugin ecosystem broader than what a closed, all-in-one builder offers.",
+    ],
+    decisions: [
+      { heading: "A free-to-start, accessible builder", fit: "Wix is the relevant path when a small business owner wants an accessible site builder with a genuine free-to-start tier.", alternativeSlug: "wix", comparisonSlug: "squarespace-vs-wix" },
+      { heading: "Maximum customization and self-hosting", fit: "WordPress is worth comparing when the team wants maximum customization and control through self-hosting rather than a managed, closed platform.", alternativeSlug: "wordpress", comparisonSlug: "squarespace-vs-wordpress" },
+    ],
+    evidenceSources: ["https://www.squarespace.com/pricing", "https://www.wix.com"],
+  },
 };
 
 export function getAlternativeGuide(slug: string): AlternativeGuide | undefined {
