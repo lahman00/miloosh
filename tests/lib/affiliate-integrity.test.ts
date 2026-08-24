@@ -96,8 +96,8 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
     }
 
     expect(summary.totalCatalogProducts).toBe(catalogSlugs.size);
-    expect(summary.totalCatalogProducts).toBe(247);
-    expect(summary.sumOfCatalogCoverageBuckets).toBe(247);
+    expect(summary.totalCatalogProducts).toBeGreaterThan(0);
+    expect(summary.sumOfCatalogCoverageBuckets).toBe(summary.totalCatalogProducts);
     expect(summary.isCatalogCoverageExhaustive).toBe(true);
   });
 

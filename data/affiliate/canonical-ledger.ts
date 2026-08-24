@@ -43,7 +43,7 @@ export interface AffiliateProgramRelationship {
 
 export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
   // ==========================================
-  // 1. ACTIVE MONITORED PARTNERS (13 programs)
+  // 1. ACTIVE MONITORED PARTNERS (16 programs)
   // ==========================================
   {
     programId: "constant-contact",
@@ -293,6 +293,44 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     notes:
       "Active in Miloosh canonical registry. Owner-supplied (2026-08-22): a time-limited 90-day promotion sits alongside the standard commission -- 2 qualifying customers ($50+/month subscription each) within the window earns a $150 bonus; 3 qualifying customers earns $300. Recorded for reference only -- this is a program-terms fact, not something that changes editorial recommendations, ranking, or verdicts for Hubstaff (see editorial-independence tests)."
   },
+  {
+    programId: "shopify",
+    programName: "Shopify Affiliate Program",
+    network: "Impact.com",
+    productSlugs: ["shopify"],
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-08-15",
+    affiliateUrl: "https://shopify.pxf.io/L0EG9O",
+    commissionModel: "Per Impact.com contract; exact current rate not recorded in durable evidence",
+    cookieWindow: null,
+    evidence: ["Gmail first-party Impact approval email dated 2026-08-15", "data/software/shopify.json", "data/affiliate/active-partners.ts"],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved publisher",
+    applicationUrl: "https://app.impact.com/",
+    notes: "Approval and exact tracking URL are verified; active in the canonical registry."
+  },
+  {
+    programId: "wix",
+    programName: "Wix Affiliate Program",
+    network: "Impact.com / Direct",
+    productSlugs: ["wix"],
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: "2026-08-15",
+    decisionAt: "2026-08-16",
+    affiliateUrl: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb",
+    commissionModel: "Per Impact.com contract; exact current rate not recorded in durable evidence",
+    cookieWindow: null,
+    evidence: ["Gmail first-party Impact welcome email dated 2026-08-16", "Direct email from Wix Partnerships Manager Romy Ninary", "data/software/wix.json", "data/affiliate/active-partners.ts"],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved publisher",
+    applicationUrl: "https://app.impact.com/",
+    notes: "Classic Website Builder tracking URL is the canonical general CTA; intent-specific Wix links remain separate."
+  },
 
   // ==========================================
   // 2. APPROVED NEEDS EDITORIAL CONTENT (2 programs)
@@ -419,19 +457,19 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "ClickUp Affiliate Program",
     network: "PartnerStack",
     productSlugs: ["clickup"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-08-20",
+    status: "REJECTED",
+    statusUpdatedAt: "2026-08-21",
     applicationSubmittedAt: "2026-08-14",
-    decisionAt: null,
+    decisionAt: "2026-08-21",
     affiliateUrl: null,
     commissionModel: "$28 (T1) / $10 (T2) / $2.50 (T3) per signup",
     cookieWindow: "180 days",
-    evidence: ["docs/affiliate-applications.md", "PartnerStack program page 'Your application was received'", "Gmail Aug 14 2026"],
+    evidence: ["docs/affiliate-applications.md", "Gmail vendor rejection dated 2026-08-21"],
     ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Publisher application submitted",
+    eligibility: "Declined by vendor",
     applicationUrl: "https://clickup.partnerstack.com/?group=standardtermsactivationstandardgeosculinks",
-    notes: "Oldest pending application (~6 days). Awaiting vendor decision."
+    notes: "Vendor declined the application. Do not represent ClickUp as pending or active."
   },
   {
     programId: "help-scout",
@@ -777,7 +815,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     network: "Impact.com",
     productSlugs: [
       "semrush", "lastpass", "woocommerce", "sprout-social", "hootsuite",
-      "smartsheet", "mailchimp", "shopify", "bigcommerce", "wix", "squarespace",
+      "smartsheet", "mailchimp", "bigcommerce", "squarespace",
       "grammarly", "bitwarden", "ringcentral", "nextiva", "craft", "keeper",
       "keeper-security", "ecwid", "moz"
     ],
@@ -786,14 +824,14 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "Impact publisher commission rates across 20 SaaS brands",
+    commissionModel: "Impact publisher commission rates across the remaining unresolved SaaS brands",
     cookieWindow: "30-120 days",
     evidence: ["docs/affiliate-applications.md Impact publisher portal login & tax requirement"],
-    ownerBlocker: "Owner must sign in to Impact.com publisher portal and submit W-8BEN/W-9 tax form to unlock all 20 SaaS programs.",
+    ownerBlocker: "Owner must complete any outstanding Impact.com tax/payment requirements and verify each remaining brand relationship individually.",
     formBlocker: null,
     eligibility: "Requires owner tax & payment credentials",
     applicationUrl: "https://app.impact.com/",
-    notes: "High-leverage Impact portfolio covering 20 catalog products."
+    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified."
   },
   {
     programId: "cj-portfolio",
@@ -808,9 +846,9 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     commissionModel: "CJ publisher commission rates (25% on 1Password, $20 on Dashlane, Google Workspace)",
     cookieWindow: "45-90 days",
     evidence: ["CJ Publisher Registration Portal (signup.cj.com)"],
-    ownerBlocker: "Requires creating and verifying a CJ Publisher Network Account with owner banking, tax ID, and password.",
+    ownerBlocker: "CJ publisher account CID 8048091 exists; owner must verify account ownership/completeness and finish any outstanding tax, payment, or advertiser activation requirements.",
     formBlocker: null,
-    eligibility: "Requires CJ publisher account",
+    eligibility: "Existing CJ publisher account; advertiser relationships not yet verified active",
     applicationUrl: "https://signup.cj.com/member/signup/publisher/?cid=5140517",
     notes: "Covers 1Password, Dashlane, Acuity Scheduling, Google Meet, Google Chat, Evernote (6 products)."
   },
