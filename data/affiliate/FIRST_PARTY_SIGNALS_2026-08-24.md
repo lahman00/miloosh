@@ -38,7 +38,7 @@ This file records first-party network/vendor evidence observed on 2026-08-24. It
   `https://refer.close.com/0alqdg4so8rm`
 - Close also invited Miloosh to apply for its Partner Directory (`https://partners.close.com/get-listed/form`).
 - This corroborates the existing ACTIVE Close relationship and exact referral URL already stored in the canonical ledger/active registry.
-- Directory listing is a distribution opportunity, not evidence that a directory listing already exists.
+- **RESOLVED, do not re-pursue:** the directory application was checked and Close explicitly does not allow content publishers/comparison sites in that listing. The Close affiliate PARTNERSHIP itself is unaffected and remains ACTIVE with the referral URL above -- only the separate Partner Directory listing is ineligible. Do not reopen this as an open task.
 
 ## CJ — dual-account evidence refresh
 
