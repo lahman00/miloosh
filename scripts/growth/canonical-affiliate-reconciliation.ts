@@ -44,26 +44,33 @@ export function buildCanonicalAffiliateState(): {
   const progMap = new Map(AFFILIATE_PROGRAMS.map(p => [p.slug, p]));
   const materialMap = new Map(PARTNER_MATERIAL_AUDIT.map(m => [m.slug, m]));
 
-  // Verified truth sets from Claude / PartnerStack / Gmail
+  // Verified relationship truth as of 2026-08-24. Keep this list synchronized
+  // with data/affiliate/active-partners.ts; the activeMap check below prevents
+  // a slug from becoming ACTIVE without a real canonical tracking URL.
   const activeSet = new Set([
     "constant-contact", "todoist", "moosend", "volza", "pipedrive",
     "getresponse", "airtable", "monday", "whatconverts", "elevenlabs",
-    "krispcall", "setmore", "hubstaff"
+    "krispcall", "setmore", "hubstaff", "close", "shopify", "wix",
+    "mailerlite", "omnisend", "surveymonkey"
   ]);
 
+  // Freshworks/Freshdesk/Freshsales remain pending: the latest first-party
+  // evidence available is an application-received confirmation and no
+  // first-party rejection was found on 2026-08-24. Do not promote a bare
+  // contradictory ledger enum into a vendor-decision claim.
   const pendingSet = new Set([
-    "freshdesk", "freshsales", "freshbooks", "close", "clickup",
-    "amplitude", "toggl-track", "wrike", "zendesk"
+    "freshdesk", "freshsales", "freshbooks", "amplitude", "toggl-track",
+    "callrail", "wrike", "zendesk"
   ]);
 
   const rejectedSet = new Set([
-    "webflow", "activecampaign", "kit", "brevo", "hubspot",
-    "n8n", "loom", "zapier", "canva", "help-scout"
+    "webflow", "activecampaign", "kit", "brevo", "hubspot", "n8n",
+    "loom", "zapier", "canva", "help-scout", "clickup"
   ]);
 
-  const formBlockedSet = new Set([
-    "xero", "trainual", "tidio"
-  ]);
+  // The former BLOCKED_FORM_DEFECT cases were re-verified on 2026-08-23.
+  // Their real current blockers are authenticated account / owner actions.
+  const formBlockedSet = new Set<string>();
 
   const ownerBlockedMap: Record<string, string> = {
     "semrush": "Requires owner login / tax W-8/W-9 in Impact.com dashboard.",
@@ -75,7 +82,12 @@ export function buildCanonicalAffiliateState(): {
     "zoho-desk": "Requires creating a new Zoho account (password creation).",
     "gohighlevel": "Requires creating a new account with password.",
     "quickbooks-online": "US-audience restriction & customer-facing discount instead of affiliate payout.",
-    "miro": "PartnerStack Account #1 search returned zero results. Requires owner check on account email."
+    "miro": "PartnerStack Account #1 search returned zero results. Requires owner check on account email.",
+    "xero": "Requires an authenticated PartnerStack login to reach the application flow.",
+    "trainual": "Requires an authenticated PartnerStack login; a direct vendor invite was received on 2026-08-24 but is not acceptance.",
+    "tidio": "Requires an authenticated PartnerStack login to reach the join flow.",
+    "synthesia": "Partner intake was submitted; final Rewardful account creation requires an owner-created password.",
+    "gorgias": "Requires authenticated PartnerStack access and owner-confirmed publisher traffic/profile fields; do not fabricate agency/reseller claims."
   };
 
   const editorialUnsuitableSet = new Set([
@@ -114,7 +126,7 @@ export function buildCanonicalAffiliateState(): {
     let appUrl = prog?.applicationUrl ?? null;
     let affUrl = active?.affiliateUrl ?? null;
     let evidenceSource = "Direct codebase catalog research";
-    const evidenceTimestamp = "2026-08-20";
+    const evidenceTimestamp = "2026-08-24";
     let confidence: "HIGH" | "MEDIUM" | "LOW" = "HIGH";
     let ownerBlocker: string | null = null;
     let nextAction = "";
@@ -122,43 +134,41 @@ export function buildCanonicalAffiliateState(): {
     if (activeSet.has(slug) && active && active.affiliateUrl) {
       status = "ACTIVE";
       affUrl = active.affiliateUrl;
-      evidenceSource = "data/affiliate/active-partners.ts & docs/affiliate-applications.md";
-      nextAction = "Live on Miloosh. Monitor traffic and click tracking.";
+      evidenceSource = "data/affiliate/active-partners.ts plus first-party relationship/link evidence";
+      nextAction = "Live on Miloosh. Monitor real traffic, clicks, referrals, conversions and payout state separately.";
       if (slug === "setmore") {
         commission = "30% of first subscription payment (one-time)";
         nextAction = "Live. STRICT COMPLIANCE: NO PAID MEDIA / PPC. Organic only.";
       }
     } else if (pendingSet.has(slug)) {
       status = "PENDING_REVIEW";
-      evidenceSource = "docs/affiliate-applications.md & PartnerStack in-app review";
-      nextAction = "Application submitted. Wait for vendor decision. Do NOT re-apply.";
-      if (slug === "clickup") commission = "$28 T1 / $10 T2 / $2.50 T3 per signup";
+      evidenceSource = "docs/affiliate-applications.md plus first-party PartnerStack/Gmail submission evidence";
+      nextAction = "Application submitted. Wait for vendor decision. Do NOT re-apply or invent an outcome.";
       if (slug === "toggl-track") commission = "30% on first customer payment";
       if (slug === "freshbooks") commission = "$10/free trial, up to $200/paid plan";
-      if (slug === "help-scout") commission = "15-20% per closed deal";
     } else if (rejectedSet.has(slug)) {
       status = "REJECTED";
-      evidenceSource = "docs/affiliate-applications.md first-party vendor rejection emails/messages";
-      nextAction = "Vendor declined application. Do NOT re-apply without new credentials.";
+      evidenceSource = "docs/affiliate-applications.md plus first-party vendor rejection email/message";
+      nextAction = "Vendor declined application. Do NOT re-apply without a material new reason and new evidence.";
+      if (slug === "clickup") commission = "$28 T1 / $10 T2 / $2.50 T3 per signup";
+      if (slug === "help-scout") commission = "15-20% per closed deal";
     } else if (formBlockedSet.has(slug)) {
       status = "BLOCKED_FORM_DEFECT";
-      evidenceSource = "docs/affiliate-applications.md PartnerStack form submission diagnosis";
-      nextAction = "Form truthfully filled but PartnerStack UI submit button failed. Retry in future session or owner manual click.";
-      if (slug === "xero") commission = "$200 per qualified purchase";
-      if (slug === "trainual") commission = "Affiliates 10% / Partners 20%";
+      evidenceSource = "Historical PartnerStack form diagnosis";
+      nextAction = "Tooling/form issue requires re-verification before retry.";
     } else if (ownerBlockedMap[slug]) {
       status = "OWNER_ACTION_REQUIRED";
       ownerBlocker = ownerBlockedMap[slug]!;
-      evidenceSource = "docs/affiliate-applications.md & data/revenue/affiliate-programs.ts";
+      evidenceSource = "Verified current account/application blocker";
       nextAction = `Blocked on owner action: ${ownerBlocker}`;
     } else if (editorialUnsuitableSet.has(slug)) {
       status = "EDITORIALLY_UNSUITABLE";
       evidenceSource = "docs/affiliate-applications.md & editorial policy";
-      nextAction = "Not suitable for commercial affiliate monetization.";
+      nextAction = "Not suitable for commercial affiliate monetization without an independently justified editorial surface.";
     } else if (noProgramSet.has(slug)) {
       status = "NO_REAL_PROGRAM_FOUND";
-      evidenceSource = "Direct vendor website & 404 URL checks";
-      nextAction = "Official vendor sources confirm no public affiliate program.";
+      evidenceSource = "Direct vendor website & URL checks";
+      nextAction = "No verified public affiliate program found.";
     } else if (prog && prog.programExists === "yes" && prog.applicationUrl) {
       status = "READY_AND_VERIFIED";
       network = prog.networkName || "Direct";
@@ -175,7 +185,7 @@ export function buildCanonicalAffiliateState(): {
       commission = "UNKNOWN";
       confidence = "LOW";
       evidenceSource = "Catalog exploration queue";
-      nextAction = "Slated for direct vendor partner page lookup.";
+      nextAction = "Requires direct vendor/program verification before any commercial action.";
     }
 
     counts[status]++;
