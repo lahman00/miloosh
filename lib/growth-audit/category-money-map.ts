@@ -9,7 +9,7 @@ import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
 export function computeCategoryMoneyMap(
   categories: Category[] = getAllCategories(),
   software: Software[] = getAllSoftware(),
-  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "amplitude", "toggl-track", "clickup", "activecampaign", "close", "kit", "wrike", "zendesk", "freshbooks"]),
+  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "freshbooks", "amplitude", "toggl-track", "callrail", "wrike", "zendesk"]),
   gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS,
   gscClicks: Record<string, number> = { "intercom": 1, "airtable": 1 },
   gscPositions: Record<string, number> = {
@@ -23,8 +23,6 @@ export function computeCategoryMoneyMap(
   const activeSlugs = new Set<string>(
     ACTIVE_PARTNERS.filter((p) => p.status === "active" && Boolean(p.affiliateUrl)).map((p) => p.slug as string)
   );
-  activeSlugs.add("shopify");
-  activeSlugs.add("wix");
 
   return categories.map((cat) => {
     const prods = software.filter((s) => s.category === cat.slug);
@@ -59,7 +57,7 @@ export function computeCategoryMoneyMap(
       return prog && prog.programExists === "yes";
     });
 
-    const affiliateCoveragePct = (activeProds.length / prods.length) * 100;
+    const affiliateCoveragePct = prods.length > 0 ? (activeProds.length / prods.length) * 100 : 0;
 
     let activeImp = 0;
     let activeClicks = 0;
