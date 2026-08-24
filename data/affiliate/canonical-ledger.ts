@@ -43,7 +43,7 @@ export interface AffiliateProgramRelationship {
 
 export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
   // ==========================================
-  // 1. ACTIVE MONITORED PARTNERS (16 programs)
+  // 1. ACTIVE MONITORED PARTNERS (19 programs)
   // ==========================================
   {
     programId: "constant-contact",
@@ -332,8 +332,17 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     notes: "Classic Website Builder tracking URL is the canonical general CTA; intent-specific Wix links remain separate."
   },
 
+  {
+    programId: "mailerlite", programName: "MailerLite Affiliate Program", network: "MailerLite Partner Portal", productSlugs: ["mailerlite"], status: "ACTIVE", statusUpdatedAt: "2026-08-24", applicationSubmittedAt: null, decisionAt: "2026-08-20", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", commissionModel: "Per current MailerLite partner terms; exact current rate retained in the partner portal", cookieWindow: null, evidence: ["Owner-supplied referral URL generated in the MailerLite affiliate portal, 2026-08-24", "data/software/mailerlite.json", "data/affiliate/active-partners.ts"], ownerBlocker: null, formBlocker: null, eligibility: "Approved affiliate with exact referral URL", applicationUrl: "https://www.mailerlite.com/affiliate", notes: "Active only after the owner supplied the exact portal-generated URL. Do not replace it with a generic signup URL."
+  },
+  {
+    programId: "omnisend", programName: "Omnisend Affiliate Program", network: "Impact.com", productSlugs: ["omnisend"], status: "ACTIVE", statusUpdatedAt: "2026-08-24", applicationSubmittedAt: null, decisionAt: "2026-08-19", affiliateUrl: "https://your.omnisend.com/PznLej", commissionModel: "Per current Impact.com contract; exact current rate not recorded in durable evidence", cookieWindow: null, evidence: ["First-party Impact approval evidence dated 2026-08-19", "Owner-supplied exact referral URL, 2026-08-24", "data/software/omnisend.json", "data/affiliate/active-partners.ts"], ownerBlocker: null, formBlocker: null, eligibility: "Approved affiliate with exact referral URL", applicationUrl: "https://www.omnisend.com/affiliates/", notes: "Active only after the owner supplied the exact Impact-generated URL."
+  },
+  {
+    programId: "surveymonkey", programName: "SurveyMonkey Affiliate Program", network: "PartnerStack", productSlugs: ["surveymonkey"], status: "ACTIVE", statusUpdatedAt: "2026-08-24", applicationSubmittedAt: null, decisionAt: "2026-08-24", affiliateUrl: "https://try.partnerstack.com/jx99ylh3mexb", commissionModel: "Per current PartnerStack program terms; exact current rate not recorded in durable evidence", cookieWindow: null, evidence: ["Owner screenshot of logged-in SurveyMonkey PartnerStack dashboard, 2026-08-24", "Owner-supplied exact referral URL, 2026-08-24", "data/software/surveymonkey.json", "data/affiliate/active-partners.ts"], ownerBlocker: null, formBlocker: null, eligibility: "PartnerStack relationship with exact referral URL", applicationUrl: "https://www.surveymonkey.com/mp/partner-program/", notes: "The owner confirmed the PartnerStack destination is SurveyMonkey; active link stays in the canonical registry."
+  },
   // ==========================================
-  // 2. APPROVED NEEDS EDITORIAL CONTENT (2 programs)
+  // 2. APPROVED NEEDS EDITORIAL CONTENT (3 programs)
   // ==========================================
   {
     programId: "pdware",
@@ -353,6 +362,9 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     eligibility: "Approved in PartnerStack, but product is enterprise PPM without public pricing. Withheld from public catalog.",
     applicationUrl: "https://try.pdware.com/",
     notes: "Approved in network but editorially withheld from Miloosh catalog."
+  },
+  {
+    programId: "notify-me", programName: "Notify Me! Affiliate Program", network: "PartnerStack", productSlugs: [], status: "APPROVED_NEEDS_EDITORIAL_CONTENT", statusUpdatedAt: "2026-08-24", applicationSubmittedAt: null, decisionAt: "2026-08-24", affiliateUrl: "https://affiliate.notify-me.io/e9mchzzo6r5t", commissionModel: "50% revenue share for the first six months, then 25% while the referred merchant remains subscribed (official program page, accessed 2026-08-24)", cookieWindow: null, evidence: ["Owner-supplied exact referral URL, 2026-08-24", "https://notify-me.io/affiliate-program"], ownerBlocker: null, formBlocker: null, eligibility: "Exact referral URL exists, but Miloosh has no independently justified Notify Me catalog page or buyer-decision surface yet.", applicationUrl: "https://notify-me.io/affiliate-program", notes: "Do not add this to ACTIVE_PARTNERS until a source-backed product page and editorially independent route exist. The referral URL alone must not create a recommendation."
   },
   {
     // Flippa Activation + Recommend Expansion Super-Mission (2026-08-21).

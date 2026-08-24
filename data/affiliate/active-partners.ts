@@ -2,6 +2,7 @@ export const ACTIVE_PARTNER_SLUGS = [
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
+  "mailerlite", "omnisend", "surveymonkey",
 ] as const;
 
 export type ActivePartnerSlug = (typeof ACTIVE_PARTNER_SLUGS)[number];
@@ -51,6 +52,8 @@ export type ActivePartner = {
  * Wix Partnerships Manager Romy Ninary supplied four unique tracking URLs. The
  * Classic Website Builder URL below is the canonical general-site CTA; specialized
  * Domain, Headless, and eCommerce links remain available for intent-specific use.
+ *
+ * MailerLite, Omnisend, and SurveyMonkey activated 2026-08-24 from exact owner-supplied referral URLs. Notify Me remains ledger-only until independent editorial content exists.
  */
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
@@ -69,6 +72,9 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "close", status: "active", affiliateUrl: "https://refer.close.com/0alqdg4so8rm", blocker: null },
   { slug: "shopify", status: "active", affiliateUrl: "https://shopify.pxf.io/L0EG9O", blocker: null },
   { slug: "wix", status: "active", affiliateUrl: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb", blocker: null },
+  { slug: "mailerlite", status: "active", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", blocker: null },
+  { slug: "omnisend", status: "active", affiliateUrl: "https://your.omnisend.com/PznLej", blocker: null },
+  { slug: "surveymonkey", status: "active", affiliateUrl: "https://try.partnerstack.com/jx99ylh3mexb", blocker: null },
 ] as const;
 
 const ACTIVE_PARTNERS_BY_SLUG = new Map(ACTIVE_PARTNERS.map((partner) => [partner.slug, partner]));
