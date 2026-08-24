@@ -77,29 +77,30 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     postCompletionAutomation: "PartnerStack will approve applications directly into the existing authenticated dashboard. Running `npm run affiliate:status` will pull new active links."
   },
   {
-    id: "cj-publisher-registration",
-    title: "3. Commission Junction (CJ) Publisher Account Registration",
+    id: "cj-dual-account-reconciliation",
+    title: "3. CJ Dual-Account Reconciliation (do not create a third account)",
     priority: 3,
-    loginOrSignupUrl: "https://signup.cj.com/member/signup/publisher/?cid=5140517",
+    loginOrSignupUrl: "https://members.cj.com/",
     productsCovered: [
       "1password", "dashlane", "acuity-scheduling", "google-meet", "google-chat", "evernote"
     ],
     comparisonsAffected: 64,
-    commissionEvidence: "CJ verified rates: 25% first year on 1Password, $20 on Dashlane, up to $30/seat on Google Workspace",
+    commissionEvidence: "Advertiser-specific rates must be verified inside the live CJ account before activation; do not treat historical planning figures as current contract terms.",
     preFilledFields: {
-      "Account Name": "Miloosh",
+      "Verified CJ Account A": "CID 8043935 — lahman00@gmail.com",
+      "Verified CJ Account B": "CID 8048091 — hello@miloosh.com",
       "Promotional Property": "https://miloosh.com",
       "Property Type": "Website / Content / Comparison Engine",
-      "Email Address": "hello@miloosh.com"
+      "Business Name": "Miloosh"
     },
     ownerRequiredFields: [
-      "Create master CJ account password",
-      "Submit electronic W-8BEN/W-9 form",
-      "Set up direct deposit / Payoneer banking details",
-      "Search Advertiser IDs: 5140517 (1Password), Dashlane, Google Workspace"
+      "Sign in to both existing CJ publisher accounts; do not create another account",
+      "Compare active advertiser relationships, pending/rejected applications, issued tracking links, tax/payment readiness, and any historical clicks/conversions",
+      "Choose a canonical account only after that evidence is visible",
+      "Do not delete, merge, deactivate, or abandon either CID before the comparison is recorded"
     ],
-    securityAndComplianceNotes: "Never input owner banking or tax info into chat sessions. Do all CJ verification in-browser.",
-    postCompletionAutomation: "Generate CJ tracking links with SID tracking and paste into active partner registry to unlock 64 comparisons."
+    securityAndComplianceNotes: "First-party Gmail evidence confirms both CIDs are real: CID 8043935 is tied to lahman00@gmail.com and had payment-information activity on 2026-08-23; CID 8048091 is tied to hello@miloosh.com and was created/configured on 2026-08-19/20. Never share passwords, tax forms, banking details, or one-time verification codes with AI agents.",
+    postCompletionAutomation: "After the canonical CID is chosen from live account evidence, record that decision and advertiser relationships in the canonical affiliate ledger; only then generate/activate CJ tracking links with SID tracking."
   },
   {
     id: "zoho-affiliate-ecosystem",
