@@ -1335,6 +1335,20 @@ export const PUBLISHED_COMPARISONS: ReadonlyArray<readonly [string, string]> = [
 
   // 2026-08-21 Revenue Expansion — High-intent substitute comparison:
   ["postmark", "brevo"],
+
+  // 2026-08-25 Owner-Side Elimination mission — coverage for the three newest
+  // active affiliate partners (MailerLite, Omnisend, SurveyMonkey). Every
+  // pair below already exists in both products' real, sourced `alternatives`
+  // data (data/software/*.json) -- never invented to hit an affiliate target.
+  ["mailerlite", "moosend"],
+  ["mailerlite", "getresponse"],
+  ["mailerlite", "brevo"],
+  ["omnisend", "klaviyo"],
+  ["omnisend", "brevo"],
+  ["omnisend", "mailchimp"],
+  ["surveymonkey", "typeform"],
+  ["surveymonkey", "jotform"],
+  ["surveymonkey", "qualtrics"],
 ];
 
 export function getComparisonSlug(slugA: string, slugB: string): string {
