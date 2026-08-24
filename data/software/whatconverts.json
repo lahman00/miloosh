@@ -8,7 +8,27 @@
   "pricing": {
     "model": "paid",
     "starting_price": "$30/mo",
-    "has_free_tier": false
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "30",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false
+    },
+    "tiers": [
+      { "name": "Call Tracking", "amount": "30", "currency": "USD", "billing_period": "monthly", "notes": "Single account. Includes $30 free usage credit." },
+      { "name": "Plus", "amount": "60", "currency": "USD", "billing_period": "monthly", "notes": "Single account. Adds form, chat, and transaction tracking." },
+      { "name": "Pro", "amount": "100", "currency": "USD", "billing_period": "monthly", "notes": "Single account. Adds call flows, report builder, scheduled reports, HIPAA." },
+      { "name": "Elite", "amount": "160", "currency": "USD", "billing_period": "monthly", "notes": "Single account. Adds customer journey, multi-click attribution, lead intelligence." }
+    ],
+    "last_verified": "2026-08-24",
+    "official_source": "https://www.whatconverts.com/pricing/"
   },
   "platforms": [
     "Web"
