@@ -9,7 +9,7 @@ Miloosh currently has 19 active affiliate partners. They collapse into four payo
 1. **PartnerStack** — Constant Contact, Todoist, Moosend, Volza, Pipedrive, GetResponse, Airtable, monday.com, WhatConverts, ElevenLabs, KrispCall, Hubstaff, Close, SurveyMonkey.
 2. **Impact.com** — Shopify, Wix, Omnisend.
 3. **Tapfiliate / Setmore** — Setmore only.
-4. **MailerLite direct affiliate platform** — MailerLite only.
+4. **MailerLite Trackdesk + Tipalti** — MailerLite only.
 
 ## 1. PartnerStack — primary payout rail
 
@@ -82,13 +82,27 @@ Owner-only:
 
 Payoneer is a strong candidate only if Setmore actually exposes Payoneer in this account. Do not assume a payout option merely because Tapfiliate supports it in general.
 
-## 4. MailerLite direct
+## 4. MailerLite / Trackdesk / Tipalti
 
-First-party MailerLite email confirms Miloosh is fully set up as a MailerLite affiliate and can promote using custom referral links from its own affiliate dashboard.
+First-party MailerLite email confirms Miloosh is fully set up as a MailerLite affiliate and can promote using custom referral links from its Trackdesk partner dashboard.
 
-The current collected evidence does not yet prove Miloosh's payout method or payout-completion status inside the MailerLite affiliate dashboard. Treat payment setup as **unverified**, not incomplete by assumption.
+Current official MailerLite documentation resolves the previously unattributed Tipalti task:
 
-Owner-only only if the dashboard shows an unfinished payout/tax step. Do not create a duplicate affiliate account.
+- MailerLite affiliate payouts are processed through **Tipalti**;
+- Tipalti is integrated directly into Trackdesk, so MailerLite says no separate payout account needs to be created;
+- available payout methods are **PayPal, Direct Deposit, and Wire Transfer**;
+- commissions have a 30-day hold;
+- payout eligibility requires at least **$100 Open Balance** generated from at least **2 unique paying referrals**;
+- when eligibility is met, billing details are complete, and a valid payout method is selected, settlements are processed automatically on Fridays.
+
+Operational conclusion: the old generic owner task `complete Tipalti` should be understood specifically as **complete MailerLite Trackdesk Billing/Tipalti setup if the dashboard shows it incomplete**. Do not look for a mystery second network or create a separate Tipalti account from an unsolicited path.
+
+Owner-only if incomplete:
+
+- open MailerLite partner portal / Trackdesk → Billing;
+- complete billing/tax identity fields requested there;
+- select PayPal, Direct Deposit, or Wire Transfer;
+- enter sensitive payout details locally.
 
 ## 5. Existing Payoneer asset
 
@@ -110,18 +124,14 @@ First-party CJ email dated 2026-08-23 proves **payment information was changed o
 
 CJ should remain optional and isolated to vendors whose current official affiliate path genuinely requires CJ. Do not build the whole Miloosh payout system around CJ.
 
-## 7. Tipalti
-
-No first-party Tipalti invitation/onboarding email was found in the current Gmail evidence. Therefore `complete Tipalti` is not an actionable owner task until a real payer/program is identified. Do not ask the owner for tax/bank data based on an unattributed Tipalti note.
-
 ## Minimal owner action target
 
 The intended end state is no more than these sensitive completion points:
 
-1. **PartnerStack:** verify or select one payout provider.
+1. **PartnerStack:** verify or select one payout provider for the PartnerStack partner group.
 2. **Impact.com:** verify finance/tax profile and one payout method for Shopify/Wix/Omnisend.
 3. **Setmore/Tapfiliate:** finish Step 4 payout method if still incomplete.
-4. **MailerLite:** inspect payout settings once; act only if incomplete.
+4. **MailerLite Trackdesk/Tipalti:** complete Billing only if the dashboard shows missing billing/tax/payment fields.
 
 Everything else should be handled as network-level operational state, not repeated vendor-by-vendor setup.
 
