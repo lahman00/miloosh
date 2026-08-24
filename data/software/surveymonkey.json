@@ -1,0 +1,117 @@
+{
+  "name": "SurveyMonkey",
+  "slug": "surveymonkey",
+  "category": "analytics",
+  "description": "SurveyMonkey is an online survey and forms platform for collecting feedback, running research, analyzing responses, and sharing insights.",
+  "website": "https://www.surveymonkey.com",
+  "pricing": {
+    "model": "freemium",
+    "startingPrice": "$30/user/month",
+    "hasFreeTier": true,
+    "status": "verified",
+    "freePlan": true,
+    "entryPaid": {
+      "amount": "30",
+      "currency": "USD",
+      "billingPeriod": "monthly",
+      "perSeat": true,
+      "annualBillingRequired": true
+    },
+    "tiers": [
+      {
+        "name": "Basic",
+        "amount": "0",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "notes": "Free plan for simple surveys, forms, and quizzes. SurveyMonkey says free users can create unlimited surveys but are limited to 10 questions per survey and limited responses."
+      },
+      {
+        "name": "Team Advantage",
+        "amount": "30",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "unit": "user",
+        "notes": "Starts at 3 users and is billed annually. Includes unlimited surveys and questions and 50,000 responses per year for the team plan shown on SurveyMonkey's current US pricing page."
+      },
+      {
+        "name": "Team Premier",
+        "amount": "92",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "unit": "user",
+        "notes": "Starts at 3 users and is billed annually. Includes 100,000 responses per year plus advanced logic, white-label branding, multilingual surveys, and crosstabs on the current team pricing page."
+      }
+    ],
+    "enterpriseContactSales": true,
+    "lastVerified": "2026-08-24",
+    "officialSource": "https://www.surveymonkey.com/pricing/details/"
+  },
+  "platforms": ["Web"],
+  "bestFor": "Teams and researchers that need structured surveys, feedback collection, advanced survey logic, analysis, and a large integration ecosystem.",
+  "pros": [
+    "Free entry plan and paid team plans for broader response volumes and collaboration",
+    "400+ expert-built templates and 25+ question types on SurveyMonkey's current feature pages",
+    "Advanced logic, AI-assisted survey creation and analysis, and 200+ integrations for connected research workflows"
+  ],
+  "cons": [
+    "The free plan limits questions and visible response capacity compared with paid plans",
+    "Team Advantage and Team Premier require at least three users and annual billing",
+    "Advanced research, branding, and administration capabilities are concentrated in higher-tier or enterprise plans"
+  ],
+  "features": [
+    "AI-assisted survey creation and response analysis",
+    "400+ survey and form templates",
+    "25+ question types",
+    "Skip, branching, randomization, and other survey logic",
+    "Email, web-link, SMS, QR-code, and embedded collection methods",
+    "Analytics, reporting, exports, and 200+ integrations"
+  ],
+  "alternatives": [
+    {
+      "name": "Typeform",
+      "slug": "typeform",
+      "description": "An interactive forms and surveys platform focused on conversational form experiences, logic, integrations, and branded data collection.",
+      "bestFor": "Teams that prioritize polished, conversational forms and lead-capture experiences",
+      "strengths": ["Interactive form experience", "Conditional logic", "Workflow integrations"]
+    },
+    {
+      "name": "Jotform",
+      "slug": "jotform",
+      "description": "A no-code form builder with a large template library, payments, conditional logic, workflows, and broad form customization.",
+      "bestFor": "Businesses that need flexible operational forms, payments, and high template variety",
+      "strengths": ["20,000+ templates", "Payment collection", "No-code form builder"]
+    },
+    {
+      "name": "Qualtrics",
+      "slug": "qualtrics",
+      "description": "A research and experience-management survey platform with advanced logic, statistical analysis, dashboards, and enterprise research workflows.",
+      "bestFor": "Organizations that need advanced research methods, analysis, and enterprise-grade survey workflows",
+      "strengths": ["Advanced research", "Statistical analysis", "Complex survey logic"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does SurveyMonkey have a free plan?",
+      "answer": "Yes. SurveyMonkey's Basic plan is free. Its current pricing documentation says free users can create unlimited surveys, while free surveys are limited to 10 questions and limited responses."
+    },
+    {
+      "question": "How much does SurveyMonkey cost for teams?",
+      "answer": "SurveyMonkey's current US team pricing lists Team Advantage at $30 per user per month and Team Premier at $92 per user per month, both starting at three users and billed annually."
+    },
+    {
+      "question": "Can SurveyMonkey build surveys with AI?",
+      "answer": "Yes. SurveyMonkey's current feature documentation includes Build with AI for generating surveys and AI-assisted tools for analyzing response data."
+    }
+  ],
+  "sources": [
+    "https://www.surveymonkey.com/pricing/details/",
+    "https://www.surveymonkey.com/product/features/",
+    "https://www.surveymonkey.com/product/features/ai/",
+    "https://www.surveymonkey.com/product/features/survey-logic/"
+  ],
+  "accessedAt": "2026-08-24",
+  "links": {
+    "pricing": "https://www.surveymonkey.com/pricing/",
+    "docs": "https://help.surveymonkey.com/"
+  }
+}
