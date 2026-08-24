@@ -24,7 +24,7 @@ import type { MaintenanceIssue } from "@/types/maintenance";
 
 function readSourceFile(relativePath: string): string {
   try {
-    return fs.readFileSync(path.join(process.cwd(), relativePath), "utf-8");
+    return fs.readFileSync(path.join(/*turbopackIgnore: true*/ process.cwd(), relativePath), "utf-8");
   } catch {
     return "";
   }
