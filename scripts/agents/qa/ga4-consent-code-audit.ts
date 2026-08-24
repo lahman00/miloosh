@@ -13,25 +13,28 @@ import type { AgentRunFn } from "@/types/agents";
  * "GA4 consent mode"). A regression here is a real, checkable code fact,
  * not a guess.
  *
- * Keep every source path statically scoped. This module is reachable from
- * the internal growth dashboard through the agent registry; using
- * path.join(process.cwd(), relativePath) with an arbitrary loop value made
- * Turbopack conservatively trace the entire repository into the server
- * component bundle. Explicit path segments preserve the audit while
- * keeping Next.js file tracing bounded to the actual files we inspect.
+ * This module is reachable from the internal growth dashboard through the
+ * agent registry. These source-code filesystem reads are runtime audit
+ * inputs, not deployment assets. `turbopackIgnore` prevents Next/Turbopack's
+ * NFT tracer from conservatively pulling the whole repository into that
+ * server bundle while preserving the audit when the files are present.
  */
 
 type RequiredSourceFile = { relativePath: string; absolutePath: string };
 
+function projectPath(...segments: string[]): string {
+  return path.join(/*turbopackIgnore: true*/ process.cwd(), ...segments);
+}
+
 const REQUIRED_FILES: readonly RequiredSourceFile[] = [
-  { relativePath: "lib/consent.ts", absolutePath: path.join(process.cwd(), "lib", "consent.ts") },
-  { relativePath: "components/ConsentBanner.tsx", absolutePath: path.join(process.cwd(), "components", "ConsentBanner.tsx") },
-  { relativePath: "components/GoogleAnalyticsConsent.tsx", absolutePath: path.join(process.cwd(), "components", "GoogleAnalyticsConsent.tsx") },
-  { relativePath: "components/CookiePreferencesControl.tsx", absolutePath: path.join(process.cwd(), "components", "CookiePreferencesControl.tsx") },
+  { relativePath: "lib/consent.ts", absolutePath: projectPath("lib", "consent.ts") },
+  { relativePath: "components/ConsentBanner.tsx", absolutePath: projectPath("components", "ConsentBanner.tsx") },
+  { relativePath: "components/GoogleAnalyticsConsent.tsx", absolutePath: projectPath("components", "GoogleAnalyticsConsent.tsx") },
+  { relativePath: "components/CookiePreferencesControl.tsx", absolutePath: projectPath("components", "CookiePreferencesControl.tsx") },
 ] as const;
 
 const ANALYTICS_RELATIVE_PATH = "components/Analytics.tsx";
-const ANALYTICS_PATH = path.join(process.cwd(), "components", "Analytics.tsx");
+const ANALYTICS_PATH = projectPath("components", "Analytics.tsx");
 
 export const run: AgentRunFn = async () => {
   const agentId = "qa-ga4-consent-code-audit";
