@@ -17,7 +17,6 @@ export const PENDING_PROGRAMS = [
   { programId: "freshbooks", products: ["freshbooks"] },
   { programId: "close", products: ["close"] },
   { programId: "clickup", products: ["clickup"] },
-  { programId: "help-scout", products: ["help-scout"] },
   { programId: "amplitude", products: ["amplitude"] },
   { programId: "toggl-track", products: ["toggl-track"] },
   { programId: "callrail", products: ["callrail"] }
