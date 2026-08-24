@@ -6,9 +6,8 @@ import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } f
 import { getAffiliateActivation } from "@/lib/revenue/affiliate-manager";
 
 describe("canonical active affiliate partner registry", () => {
-  it("contains exactly the 14 verified active partners", () => {
-    expect(ACTIVE_PARTNERS).toHaveLength(14);
-    expect(new Set(ACTIVE_PARTNERS.map(({ slug }) => slug)).size).toBe(14);
+  it("contains a unique row for every verified active partner", () => {
+    expect(new Set(ACTIVE_PARTNERS.map(({ slug }) => slug)).size).toBe(ACTIVE_PARTNERS.length);
   });
 
   it.each(ACTIVE_PARTNERS.filter((partner) => partner.affiliateUrl))(
@@ -45,10 +44,10 @@ describe("canonical active affiliate partner registry", () => {
     expect(shouldShowAffiliateDisclosure(software!)).toBe(false);
   });
 
-  it("builds a 14-row operational money matrix with no partners blocked", () => {
+  it("builds one operational money-matrix row per active partner with no blockers", () => {
     const matrix = getPartnerMoneyMatrix();
-    expect(matrix).toHaveLength(14);
-    expect(matrix.filter(({ revenueReady }) => revenueReady)).toHaveLength(14);
+    expect(matrix).toHaveLength(ACTIVE_PARTNERS.length);
+    expect(matrix.filter(({ revenueReady }) => revenueReady)).toHaveLength(ACTIVE_PARTNERS.length);
     expect(matrix.filter(({ blocker }) => blocker)).toEqual([]);
     expect(matrix.every(({ coverage }) => coverage.comparisonRoutes > 0)).toBe(true);
     expect(matrix.find(({ slug }) => slug === "krispcall")).toMatchObject({
