@@ -1,7 +1,7 @@
 export const ACTIVE_PARTNER_SLUGS = [
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
-  "setmore", "hubstaff", "close",
+  "setmore", "hubstaff", "close", "shopify", "wix",
 ] as const;
 
 export type ActivePartnerSlug = (typeof ACTIVE_PARTNER_SLUGS)[number];
@@ -41,6 +41,16 @@ export type ActivePartner = {
  * application). Verified affiliate URL: https://refer.close.com/0alqdg4so8rm.
  * See data/affiliate/canonical-ledger.ts's "close" entry for the full note,
  * including the scope of first-party Chloe (AI sales agent) claims supported.
+ *
+ * Shopify reconciled 2026-08-24: first-party Impact email dated 2026-08-15
+ * explicitly says "Shopify Affiliate Program: Application Approved" and confirms
+ * the Miloosh Impact publisher account. The exact tracking URL already exists in
+ * data/software/shopify.json and is copied here as the canonical active URL.
+ *
+ * Wix reconciled 2026-08-24: first-party Impact welcome plus direct email from
+ * Wix Partnerships Manager Romy Ninary supplied four unique tracking URLs. The
+ * Classic Website Builder URL below is the canonical general-site CTA; specialized
+ * Domain, Headless, and eCommerce links remain available for intent-specific use.
  */
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
@@ -57,6 +67,8 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "setmore", status: "active", affiliateUrl: "https://www.setmore.com?ref=nge2zwi", blocker: null },
   { slug: "hubstaff", status: "active", affiliateUrl: "https://affiliate.hubstaff.com/ca2oe167vcj1", blocker: null },
   { slug: "close", status: "active", affiliateUrl: "https://refer.close.com/0alqdg4so8rm", blocker: null },
+  { slug: "shopify", status: "active", affiliateUrl: "https://shopify.pxf.io/L0EG9O", blocker: null },
+  { slug: "wix", status: "active", affiliateUrl: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb", blocker: null },
 ] as const;
 
 const ACTIVE_PARTNERS_BY_SLUG = new Map(ACTIVE_PARTNERS.map((partner) => [partner.slug, partner]));
