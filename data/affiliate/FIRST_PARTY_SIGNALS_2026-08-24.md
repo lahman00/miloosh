@@ -11,6 +11,15 @@ This file records first-party network/vendor evidence observed on 2026-08-24. It
 - Interpretation: verified network-side click activity exists. **No sale, customer, commission, payout, or revenue is evidenced by this email.** Do not convert this milestone into a conversion/revenue claim.
 - QA caveat: PartnerStack's milestone email does not identify whether individual clicks were human, QA, or otherwise; Miloosh's own `isTest` telemetry must remain separate from network-side totals.
 
+## WhatConverts — network click activity
+
+- Source: first-party email from `adrian.cooney@whatconverts.com`, delivered on 2026-08-18.
+- Subject: `Your WhatConverts link is getting some activity!`.
+- The vendor states that **new clicks came through the Miloosh referral link**.
+- Canonical referral URL remains `https://partners.whatconverts.com/bmckzlf0vnl8`.
+- Interpretation: this independently confirms network-side referral-link traffic for WhatConverts. The email gives no click count and proves **no signup, sale, commission, payout, or revenue**.
+- Together with KrispCall, Miloosh now has first-party network evidence of referral-link traffic on at least two active partners. Keep network-side activity separate from Miloosh QA/test telemetry.
+
 ## Trainual — direct PartnerStack invitation
 
 - Source: email from `tom.h@trainual.com`, delivered to `hello@miloosh.com` on 2026-08-24.
