@@ -152,6 +152,22 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://www.smartsheet.com/platform", "https://www.airtable.com/platform"],
   },
+  wrike: {
+    diagnosis: "The page lists three alternatives but does not explain the distinct choice between a visual workflow platform, a spreadsheet-style governed system, and a task hierarchy with documents and dashboards.",
+    heading: "Choose the operating model for complex work",
+    introduction: "Wrike is positioned around enterprise work visibility, resource management, request intake, approvals, and cross-functional workflows. The useful alternative decision is whether the team needs highly visual configurable boards, grid-led portfolio control, or a more task-hierarchy-centered work system.",
+    whySeekAlternative: [
+      "The team wants a visual, configurable workflow platform with board-led views and automation rather than Wrike's enterprise work-management model.",
+      "Spreadsheet-style planning, Gantt views, forms, and governed reporting are the primary operating model.",
+      "The requirement is a unified task hierarchy with documents and dashboards for project execution.",
+    ],
+    decisions: [
+      { heading: "Visual workflow configuration", fit: "Monday.com is the relevant path when customizable boards, dashboards, and visual workflow automation are the core requirement.", alternativeSlug: "monday", comparisonSlug: "monday-vs-wrike" },
+      { heading: "Grid-led portfolio control", fit: "Smartsheet fits teams that want spreadsheet-style planning, forms, Gantt views, and enterprise reporting at the center of work management.", alternativeSlug: "smartsheet", comparisonSlug: "smartsheet-vs-wrike" },
+      { heading: "Task hierarchy with docs", fit: "ClickUp is the closer comparison when task structure, documents, dashboards, and flexible project execution are the main decision criteria.", alternativeSlug: "clickup", comparisonSlug: "clickup-vs-wrike" },
+    ],
+    evidenceSources: ["https://www.wrike.com/features/", "https://monday.com"],
+  },
   tidio: {
     diagnosis: "The page's alternatives list doesn't separate Tidio's live-chat-plus-AI-agent positioning from deeper omnichannel ticketing, ecommerce-native AI support, or simpler shared-inbox decisions.",
     heading: "Decide what kind of support operation you're running",

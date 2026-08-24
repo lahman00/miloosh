@@ -54,7 +54,12 @@ describe("SEO execution cohort alternatives guides", () => {
     // already a sourced Smartsheet alternative, already ACTIVE with an exact
     // tracking URL, and its existing comparison was already published. The
     // Smartsheet software page is outside the protected experiment cohorts.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce"]);
+    // Wrike was added on 2026-08-24 from that reviewed snapshot: 153
+    // impressions, 0 clicks, position 91.4. Monday.com was already a
+    // source-backed Wrike alternative, already ACTIVE with an exact tracking
+    // URL, and its comparison already existed. Wrike is outside the protected
+    // experiment cohorts.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2
