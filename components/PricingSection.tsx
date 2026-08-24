@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { DollarSign, ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
 import { Badge } from "@/components/Badge";
@@ -114,9 +115,9 @@ export function PricingSection({ software }: { software: Software }) {
           </TrackedCtaLink>
           <p className="mt-3 text-xs text-zinc-500">
             Affiliate link. Our research and recommendations are independent of commissions. See our{" "}
-            <a href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
+            <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
               Affiliate Disclosure
-            </a>
+            </Link>
             .
           </p>
         </div>
