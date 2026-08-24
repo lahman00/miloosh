@@ -6,6 +6,7 @@ import { Badge } from "@/components/Badge";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getAllSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
+import { NETWORK_PERFORMANCE_SIGNALS } from "@/data/affiliate/network-performance-signals";
 import { getRevenueScores } from "@/lib/revenue/scoring";
 import { getRevenueTier, countByTier, explainTier } from "@/lib/revenue/tiers";
 import { getAffiliateProgram, countAffiliateProgramsByStatus } from "@/lib/revenue/affiliate-manager";
@@ -84,6 +85,31 @@ export default function RevenueDashboardPage() {
             </p>
             <p className="mt-2 text-3xl font-bold text-white">{affiliateCounts.unknown}</p>
           </Card>
+        </section>
+
+        <section className="mt-14">
+          <SectionHeading
+            eyebrow="First-party network evidence"
+            title="Partners already showing click activity"
+            description="Vendor/network-side evidence is kept separate from Miloosh click telemetry and never treated as a conversion or revenue event."
+          />
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {NETWORK_PERFORMANCE_SIGNALS.map((signal) => {
+              const item = softwareBySlug.get(signal.partnerSlug);
+              return (
+                <Card key={`${signal.partnerSlug}-${signal.observedAt}`}>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <h3 className="text-lg font-semibold text-white">{item?.name ?? signal.partnerSlug}</h3>
+                    <Badge>{signal.signal === "CLICK_MILESTONE" ? `${signal.clickFloor}+ clicks` : "New clicks"}</Badge>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-zinc-400">{signal.summary}</p>
+                  <p className="mt-2 text-xs leading-5 text-zinc-500">
+                    Observed {signal.observedAt} via {signal.network}. This proves neither a sale nor revenue and does not identify the originating Miloosh page.
+                  </p>
+                </Card>
+              );
+            })}
+          </div>
         </section>
 
         <section className="mt-14">
