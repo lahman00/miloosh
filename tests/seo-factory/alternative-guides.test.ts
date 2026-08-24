@@ -59,7 +59,12 @@ describe("SEO execution cohort alternatives guides", () => {
     // source-backed Wrike alternative, already ACTIVE with an exact tracking
     // URL, and its comparison already existed. Wrike is outside the protected
     // experiment cohorts.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike"]);
+    // Zoho CRM was added on 2026-08-24 from the same snapshot: 79
+    // impressions, 0 clicks, position 79.9. Pipedrive was already a
+    // source-backed Zoho CRM alternative, already ACTIVE with an exact
+    // tracking URL, and its comparison already existed. Zoho CRM is outside
+    // the protected experiment cohorts.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike", "zoho-crm"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2
