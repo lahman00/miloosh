@@ -1,0 +1,128 @@
+{
+  "name": "Omnisend",
+  "slug": "omnisend",
+  "category": "marketing",
+  "description": "Omnisend is an ecommerce-focused marketing platform combining email campaigns, automation, segmentation, forms, web push notifications, reporting, and SMS capabilities for online stores.",
+  "website": "https://www.omnisend.com",
+  "platforms": [
+    "Web"
+  ],
+  "best_for": "Ecommerce brands that want email marketing, behavior-based automation, store data, segmentation, and multi-channel messaging in one platform.",
+  "features": [
+    "Drag-and-drop ecommerce email campaigns with product and discount blocks",
+    "Automation workflows for welcome, abandoned cart, browse abandonment, post-purchase, and win-back journeys",
+    "Behavior- and purchase-based dynamic segmentation with AI-assisted audience building",
+    "Email, SMS, and web push channels available across Omnisend's marketing toolkit",
+    "Forms, pop-ups, flyouts, and landing pages for subscriber acquisition",
+    "Revenue attribution and campaign, automation, deliverability, and channel performance reporting"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$16/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "16",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 500 emails per month to a maximum of 250 unique contacts. No credit card required."
+      },
+      {
+        "name": "Standard",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $16/month. Email credits scale at 12 times the contact count per billing cycle, with unlimited push notifications and live chat support. For new subscriptions from May 4, 2026 onward, SMS sending requires Pro."
+      },
+      {
+        "name": "Pro",
+        "amount": "59",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $59/month. Includes unlimited email and push sending; new subscriptions can add SMS with volume-based pricing."
+      }
+    ],
+    "last_verified": "2026-08-24",
+    "official_source": "https://support.omnisend.com/en/articles/3533018-omnisend-pricing-plans-2026"
+  },
+  "pros": [
+    "Free plan provides access to the core platform for up to 250 unique contacts and 500 emails per month",
+    "Automation supports ecommerce workflows such as abandoned cart, browse recovery, post-purchase, and win-back journeys",
+    "Built specifically around ecommerce data with email, web push, segmentation, forms, and revenue reporting in one platform"
+  ],
+  "cons": [
+    "The Free plan is limited to 500 emails per month and a maximum of 250 unique contacts for campaign sending",
+    "Standard email volume scales with contact count rather than offering unlimited email sends",
+    "For subscriptions started on or after May 4, 2026, SMS sending requires the Pro plan and separate volume-based SMS credits"
+  ],
+  "faq": [
+    {
+      "question": "Does Omnisend have a free plan?",
+      "answer": "Yes. Omnisend's current Free plan costs $0 and supports up to 500 emails per month to a maximum of 250 unique contacts, with no credit card required."
+    },
+    {
+      "question": "How much does Omnisend cost?",
+      "answer": "Omnisend's Standard plan starts at $16/month and Pro starts at $59/month. Paid pricing scales with contact count and the features or sending volume required."
+    },
+    {
+      "question": "Can Omnisend send SMS?",
+      "answer": "Yes, but current access depends on plan and subscription date. For customers subscribing on or after May 4, 2026, SMS sending is available on Pro as a separately priced volume-based add-on; Free and Standard do not include new SMS sending access."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.omnisend.com/pricing/",
+    "docs": "https://support.omnisend.com/"
+  },
+  "sources": [
+    "https://www.omnisend.com/",
+    "https://www.omnisend.com/features/",
+    "https://www.omnisend.com/features/automation/",
+    "https://support.omnisend.com/en/articles/3533018-omnisend-pricing-plans-2026"
+  ],
+  "accessed_at": "2026-08-24",
+  "alternatives": [
+    {
+      "name": "Klaviyo",
+      "slug": "klaviyo",
+      "description": "An ecommerce marketing platform for email, SMS, customer data, automation, and personalization.",
+      "best_for": "Ecommerce teams evaluating a data-heavy marketing and lifecycle platform",
+      "strengths": [
+        "Ecommerce customer data",
+        "Automation",
+        "Email and SMS"
+      ]
+    },
+    {
+      "name": "Brevo",
+      "slug": "brevo",
+      "description": "An email and CRM platform with volume-based email pricing, automations, SMS, WhatsApp, and customer management.",
+      "best_for": "Businesses that want multi-channel messaging and pricing based primarily on email send volume",
+      "strengths": [
+        "Email-volume pricing",
+        "SMS and WhatsApp",
+        "Built-in CRM"
+      ]
+    },
+    {
+      "name": "Mailchimp",
+      "slug": "mailchimp",
+      "description": "An email and marketing automation platform with campaigns, templates, analytics, customer journeys, and integrations.",
+      "best_for": "Businesses that want a widely used email marketing ecosystem and broad third-party integration coverage",
+      "strengths": [
+        "Email campaigns",
+        "Marketing automation",
+        "Integration ecosystem"
+      ]
+    }
+  ]
+}
