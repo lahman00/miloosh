@@ -23,9 +23,20 @@ describe("SEO execution cohort alternatives guides", () => {
     // CTR for "X alternatives" queries), non-protected-cohort, action=IMPROVE
     // per the seo-factory's own deterministic scoring. See data/seo/
     // alternative-guides.ts's comments.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "freshdesk", "front", "help-scout", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "sprout-social", "tidio", "todoist"]);
+    //
+    // MILOOSH REVENUE STRIKE mission (2026-08-24) added woocommerce: real
+    // GSC evidence (81 impressions across 4 real queries including the
+    // exact "woocommerce alternatives" intent), and the newly-activated
+    // Shopify affiliate partnership makes one of its two real alternatives
+    // (Shopify, PrestaShop) directly monetizable. Only 2 decisions, not 3 --
+    // woocommerce.json's real `alternatives` array has exactly two entries,
+    // and a third was never invented to hit a round number the other
+    // cohort members happen to share.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "freshdesk", "front", "help-scout", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "sprout-social", "tidio", "todoist", "woocommerce"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
-      expect(getSoftware(slug)).toBeDefined(); expect(guide.decisions).toHaveLength(3); expect(guide.whySeekAlternative).toHaveLength(3);
+      expect(getSoftware(slug)).toBeDefined();
+      expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2
+      expect(guide.whySeekAlternative).toHaveLength(3);
       for (const decision of guide.decisions) {
         expect(getSoftware(decision.alternativeSlug)).toBeDefined();
         const [a, b] = decision.comparisonSlug.split("-vs-");

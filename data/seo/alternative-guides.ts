@@ -256,6 +256,21 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://front.com/pricing", "https://front.com/product"],
   },
+  woocommerce: {
+    diagnosis: "WooCommerce's page lists two alternatives without explaining the decision that actually separates them: staying self-hosted on WordPress versus moving to a managed, hosted platform.",
+    heading: "Choose a WooCommerce alternative by hosting model",
+    introduction: "WooCommerce is a self-hosted, open-source plugin: it runs on WordPress, and the merchant (or their developer/agency) owns hosting, updates, and server maintenance in exchange for full control. The relevant alternatives question is whether that ownership is still wanted, or whether a managed, all-in-one platform is a better fit.",
+    whySeekAlternative: [
+      "The team doesn't want to manage WordPress hosting, plugin updates, or server maintenance.",
+      "Built-in checkout, payments, and multichannel selling matter more than plugin-level customization.",
+      "The team wants to stay open-source and self-hosted, but outside the WordPress plugin ecosystem specifically.",
+    ],
+    decisions: [
+      { heading: "A managed, hosted platform", fit: "Shopify is the relevant path when a merchant wants built-in checkout, payments, and multichannel selling without owning WordPress hosting, plugins, or updates.", alternativeSlug: "shopify", comparisonSlug: "shopify-vs-woocommerce" },
+      { heading: "Open-source ownership outside WordPress", fit: "PrestaShop is worth comparing when a merchant wants to stay open-source and self-hosted but outside the WordPress plugin ecosystem.", alternativeSlug: "prestashop", comparisonSlug: "prestashop-vs-woocommerce" },
+    ],
+    evidenceSources: ["https://woocommerce.com", "https://www.shopify.com"],
+  },
 };
 
 export function getAlternativeGuide(slug: string): AlternativeGuide | undefined {
