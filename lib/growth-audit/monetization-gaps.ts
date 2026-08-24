@@ -7,16 +7,14 @@ import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
 
 export function computeMonetizationGaps(
   software: Software[] = getAllSoftware(),
-  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "amplitude", "toggl-track", "clickup", "activecampaign", "close", "kit", "wrike", "zendesk", "freshbooks"]),
-  rejectedSlugs: Set<string> = new Set(["hubspot", "n8n", "brevo", "help-scout"]),
-  ownerBlockedSlugs: Set<string> = new Set(["semrush", "lastpass", "woocommerce", "reclaim-ai", "crowdstrike", "tidio", "miro"]),
+  pendingSlugs: Set<string> = new Set(["freshdesk", "freshsales", "freshbooks", "amplitude", "toggl-track", "callrail", "wrike", "zendesk"]),
+  rejectedSlugs: Set<string> = new Set(["hubspot", "n8n", "brevo", "help-scout", "clickup", "activecampaign", "kit", "webflow", "loom", "zapier", "canva"]),
+  ownerBlockedSlugs: Set<string> = new Set(["semrush", "lastpass", "woocommerce", "reclaim-ai", "crowdstrike", "tidio", "miro", "xero", "trainual", "synthesia", "gorgias"]),
   gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS
 ): MonetizationGapRow[] {
   const activeSlugs = new Set<string>(
     ACTIVE_PARTNERS.filter((p) => p.status === "active" && Boolean(p.affiliateUrl)).map((p) => p.slug as string)
   );
-  activeSlugs.add("shopify");
-  activeSlugs.add("wix");
 
   const progMap = new Map(AFFILIATE_PROGRAMS.map((p) => [p.slug, p]));
   const gaps: MonetizationGapRow[] = [];
@@ -32,10 +30,10 @@ export function computeMonetizationGaps(
       statusGroup = "B";
     } else if (ownerBlockedSlugs.has(s.slug)) {
       statusGroup = "D";
-    } else if (prog && prog.programExists === "yes") {
-      statusGroup = "C";
     } else if (rejectedSlugs.has(s.slug) || (prog && prog.programExists === "no")) {
       statusGroup = "F";
+    } else if (prog && prog.programExists === "yes") {
+      statusGroup = "C";
     } else if (prog && prog.programExists === "unknown") {
       statusGroup = "E";
     } else {
@@ -45,7 +43,6 @@ export function computeMonetizationGaps(
     const imp = gscImpressions[s.slug] ?? 0;
     const comps = getComparisonsInvolving(s.slug).length;
 
-    // 1. Search Demand score (0-35)
     let demandScore = 2;
     if (imp >= 800) demandScore = 35;
     else if (imp >= 300) demandScore = 28;
@@ -54,29 +51,26 @@ export function computeMonetizationGaps(
     else if (imp >= 10) demandScore = 10;
     else if (imp > 0) demandScore = 5;
 
-    // 2. Commercial intent score (0-25)
     const highIntentCats = ["crm", "customer-support", "marketing", "ecommerce", "accounting", "field-service-management", "security"];
     const medIntentCats = ["project-management", "analytics", "automation", "scheduling", "cms", "api", "ai"];
     const intentScore = highIntentCats.includes(s.category) ? 25 : medIntentCats.includes(s.category) ? 18 : 10;
 
-    // 3. Actionability score (0-25)
     let actionScore = 0;
-    if (statusGroup === "B") actionScore = 25; // Pending approval
-    else if (statusGroup === "C") actionScore = 20; // Ready to apply
-    else if (statusGroup === "D") actionScore = 15; // Owner blocked
-    else if (statusGroup === "E") actionScore = 8;  // Uncertain/unresearched
-    else if (statusGroup === "F") actionScore = 0;  // No program / rejected
-    else if (statusGroup === "A") actionScore = 0;  // Already active
+    if (statusGroup === "B") actionScore = 25;
+    else if (statusGroup === "C") actionScore = 20;
+    else if (statusGroup === "D") actionScore = 15;
+    else if (statusGroup === "E") actionScore = 8;
+    else if (statusGroup === "F") actionScore = 0;
+    else if (statusGroup === "A") actionScore = 0;
 
-    // 4. Comparison leverage (0-15)
     const compScore = Math.min(15, comps);
-
     const totalScore = demandScore + intentScore + actionScore + compScore;
 
     let notes = prog?.notes ?? "Unresearched program status in repository";
     if (statusGroup === "B") notes = "Application submitted; pending network review";
     else if (statusGroup === "D") notes = "Verified program; requires owner action/login to unblock";
     else if (statusGroup === "A") notes = "Active monetized partner with live link";
+    else if (statusGroup === "F") notes = "Rejected or no verified public program; no application/activation work should be prioritized";
 
     gaps.push({
       slug: s.slug,
