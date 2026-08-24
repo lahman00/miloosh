@@ -1,4 +1,5 @@
-import { CANONICAL_AFFILIATE_LEDGER, type CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import type { CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import { CURRENT_AFFILIATE_LEDGER as CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { getAllSoftware } from "@/data/software";
 import { verifyProjectIdentity, ProjectIdentityError } from "@/lib/project-guard";
 import fs from "node:fs";
