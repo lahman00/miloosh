@@ -1,0 +1,107 @@
+{
+  "name": "Qualtrics",
+  "slug": "qualtrics",
+  "category": "analytics",
+  "description": "Qualtrics is a survey research and experience-management platform for designing complex studies, collecting feedback, analyzing response data, and building research dashboards.",
+  "website": "https://www.qualtrics.com",
+  "platforms": ["Web"],
+  "best_for": "Research teams and organizations that need complex survey logic, advanced statistical analysis, dashboards, and enterprise-grade experience research.",
+  "features": [
+    "Survey Flow with branch, display, and skip logic",
+    "Embedded data, randomization, authentication, and quotas",
+    "Email, SMS, and anonymous-link survey distribution",
+    "Data cleaning, filtering, exports, and response management",
+    "Crosstabs and statistical analysis tools",
+    "Results dashboards and configurable reports"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$420/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "420",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Qualtrics Surveys Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free single-user account with 3 active surveys, 30 questions per survey, 500 total responses, 50+ templates, 8 question types, and basic survey logic according to Qualtrics' current buy-online page."
+      },
+      {
+        "name": "Strategic Research",
+        "amount": "420",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Special online pricing shown as $420/month, billed $5,040 annually for 1,000 responses shared across users. Includes unlimited users, surveys, and questions plus advanced analysis capabilities."
+      }
+    ],
+    "last_verified": "2026-08-24",
+    "official_source": "https://www.qualtrics.com/buy-online/"
+  },
+  "pros": [
+    "Free account provides a real entry point for limited survey projects",
+    "Advanced survey flow supports branching, embedded data, randomization, authentication, and other complex research paths",
+    "Data and Analysis tooling includes filtering, cleaning, crosstabs, weighting, statistics, text analysis, and reporting"
+  ],
+  "cons": [
+    "The public paid entry point is materially more expensive than self-service form and survey tools",
+    "The free account is limited to three active surveys, 30 questions per survey, and 500 total responses",
+    "Many advanced features vary by license and larger deployments require custom pricing"
+  ],
+  "faq": [
+    {
+      "question": "Does Qualtrics have a free survey plan?",
+      "answer": "Yes. Qualtrics currently offers a free single-user survey account with three active surveys, up to 30 questions per survey, and 500 total responses."
+    },
+    {
+      "question": "How much does Qualtrics Strategic Research cost?",
+      "answer": "Qualtrics currently shows special online pricing of $420 per month, billed as $5,040 annually, for its entry Strategic Research package with 1,000 responses shared across users."
+    },
+    {
+      "question": "Does Qualtrics support advanced survey logic?",
+      "answer": "Yes. Qualtrics Survey Flow supports branching, embedded data, randomization, authentication, and other logic used to create personalized or controlled research paths."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.qualtrics.com/buy-online/",
+    "docs": "https://www.qualtrics.com/support/survey-platform/"
+  },
+  "sources": [
+    "https://www.qualtrics.com/buy-online/",
+    "https://www.qualtrics.com/support/survey-platform/survey-module/survey-module-overview/",
+    "https://www.qualtrics.com/support/survey-platform/survey-module/using-logic/",
+    "https://www.qualtrics.com/support/survey-platform/data-and-analysis-module/data-and-analysis-overview/"
+  ],
+  "accessed_at": "2026-08-24",
+  "alternatives": [
+    {
+      "name": "SurveyMonkey",
+      "slug": "surveymonkey",
+      "description": "A survey and feedback platform with broad templates, AI-assisted survey creation and analysis, advanced logic, and a large integration ecosystem.",
+      "best_for": "Teams that want a lower-friction survey platform with broad research and feedback use cases",
+      "strengths": ["Ease of use", "Survey templates", "Integrations"]
+    },
+    {
+      "name": "Typeform",
+      "slug": "typeform",
+      "description": "An interactive forms and surveys platform focused on conversational form experiences, logic, integrations, and branded data collection.",
+      "best_for": "Teams that prioritize respondent experience and polished interactive forms",
+      "strengths": ["Interactive experience", "Design", "Conditional logic"]
+    },
+    {
+      "name": "Jotform",
+      "slug": "jotform",
+      "description": "A no-code form builder with a large template library, payments, conditional logic, workflows, and broad form customization.",
+      "best_for": "Businesses that need flexible operational forms and lower-cost data collection",
+      "strengths": ["No-code forms", "Payments", "Template library"]
+    }
+  ]
+}
