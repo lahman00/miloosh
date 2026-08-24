@@ -1,0 +1,140 @@
+{
+  "name": "MailerLite",
+  "slug": "mailerlite",
+  "category": "marketing",
+  "description": "MailerLite is an email marketing platform for creating campaigns, automations, landing pages, signup forms, websites, and digital products, with subscriber-based plans and a permanent free tier.",
+  "website": "https://www.mailerlite.com",
+  "platforms": [
+    "Web"
+  ],
+  "best_for": "Creators, small businesses, and marketing teams that want email campaigns, automation, lead capture, and lightweight website or landing-page tools in one platform.",
+  "features": [
+    "Email campaigns with drag-and-drop, simple, and custom HTML editors",
+    "Visual email automations with subscriber, ecommerce, and behavior-based triggers",
+    "Landing pages, websites, signup forms, and pop-ups for lead capture",
+    "Campaign A/B testing and comparative performance reporting",
+    "Digital products, paid newsletters, and appointment booking tools",
+    "100+ integrations plus API and MCP connectivity"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$12/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "12",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "For up to 250 subscribers, with 2,500 monthly emails, 2 user seats, campaigns, up to 3 visual automations, 1 website, 1 landing page, and signup forms."
+      },
+      {
+        "name": "Comfort",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $12/month. Adds unlimited newsletter templates, up to 50 visual automations, 10 websites and landing pages, 10 signup forms and pop-ups, AI writing tools, smart sending, and other paid features."
+      },
+      {
+        "name": "Power",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $25/month. Adds unlimited monthly emails, unlimited user seats, unlimited automations, landing pages, signup forms, digital products and bookings, plus 24/7 live chat and email support."
+      },
+      {
+        "name": "Enterprise",
+        "billing_period": "unknown",
+        "notes": "For businesses with more than 200,000 subscribers. Custom pricing with priority support, onboarding and training, a dedicated success manager, and deliverability support."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-24",
+    "official_source": "https://www.mailerlite.com/pricing"
+  },
+  "pros": [
+    "Permanent free plan includes campaigns, automations, landing pages, a website, and signup forms",
+    "Comfort starts at $12/month and Power at $25/month for the lowest subscriber tier",
+    "Combines email marketing with lead-capture pages, forms, websites, digital products, and booking tools"
+  ],
+  "cons": [
+    "The Free plan is capped at 250 active subscribers and 2,500 monthly emails",
+    "Comfort limits visual automations, forms, and websites/landing pages while Power removes those usage limits",
+    "Enterprise pricing is custom rather than publicly listed"
+  ],
+  "faq": [
+    {
+      "question": "Does MailerLite have a free plan?",
+      "answer": "Yes. MailerLite's current Free plan supports up to 250 subscribers and 2,500 monthly emails, plus campaigns, limited visual automations, a website, a landing page, and signup forms."
+    },
+    {
+      "question": "How much does MailerLite cost?",
+      "answer": "MailerLite's Comfort plan starts at $12/month and its Power plan starts at $25/month at the lowest subscriber tier. Pricing rises with subscriber count, and annual billing is discounted relative to monthly billing."
+    },
+    {
+      "question": "What changed in MailerLite pricing in 2026?",
+      "answer": "MailerLite introduced updated pricing and plan structure in June 2026. Growing Business is now Comfort and Advanced is now Power; the Free plan also changed to a 250-subscriber and 2,500-email monthly limit."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.mailerlite.com/pricing",
+    "docs": "https://www.mailerlite.com/help"
+  },
+  "sources": [
+    "https://www.mailerlite.com/",
+    "https://www.mailerlite.com/pricing",
+    "https://www.mailerlite.com/features/email-marketing",
+    "https://www.mailerlite.com/features/automation",
+    "https://www.mailerlite.com/help/free-plan-update-faq",
+    "https://www.mailerlite.com/help/paid-plans-update-faq"
+  ],
+  "accessed_at": "2026-08-24",
+  "alternatives": [
+    {
+      "name": "Brevo",
+      "slug": "brevo",
+      "description": "An email and CRM platform with email-volume-based pricing, SMS and WhatsApp messaging, automations, and a built-in CRM.",
+      "best_for": "Businesses that want multi-channel messaging and pricing based primarily on email volume",
+      "strengths": [
+        "Email-volume pricing",
+        "SMS and WhatsApp",
+        "Built-in CRM"
+      ]
+    },
+    {
+      "name": "Moosend",
+      "slug": "moosend",
+      "description": "An email marketing and automation platform with campaigns, automation workflows, landing pages, and subscriber management.",
+      "best_for": "Teams focused on email campaigns and automation with straightforward subscriber-based plans",
+      "strengths": [
+        "Email automation",
+        "Landing pages",
+        "Campaign tools"
+      ]
+    },
+    {
+      "name": "GetResponse",
+      "slug": "getresponse",
+      "description": "An email marketing platform with automation, landing pages, webinars, ecommerce marketing, and lead-generation tools.",
+      "best_for": "Businesses wanting email marketing plus webinars and broader lead-generation tools",
+      "strengths": [
+        "Webinars",
+        "Marketing automation",
+        "Landing pages"
+      ]
+    }
+  ]
+}
