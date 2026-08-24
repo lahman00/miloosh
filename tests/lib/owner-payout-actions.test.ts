@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { OWNER_ACTION_PACKS } from "@/data/affiliate/owner-action-packs";
 
 const EXPECTED_PAYOUT_PACKS = [
-  "partnerstack-payout-rail",
+  "partnerstack-hello-payout-rail",
+  "partnerstack-personal-payout-rail",
   "impact-payout-rail",
   "setmore-payout-method",
   "mailerlite-tipalti-payout",
@@ -10,7 +11,7 @@ const EXPECTED_PAYOUT_PACKS = [
 ] as const;
 
 describe("owner payout action queue", () => {
-  it("contains only the five current payout/account checkpoints", () => {
+  it("contains only the current payout/account checkpoints", () => {
     expect(OWNER_ACTION_PACKS.map((pack) => pack.id)).toEqual(EXPECTED_PAYOUT_PACKS);
   });
 
@@ -22,9 +23,17 @@ describe("owner payout action queue", () => {
     expect(serialized).not.toContain("zoho-affiliate-ecosystem");
   });
 
+  it("keeps both evidenced PartnerStack accounts separate", () => {
+    const hello = OWNER_ACTION_PACKS.find((pack) => pack.id === "partnerstack-hello-payout-rail");
+    const personal = OWNER_ACTION_PACKS.find((pack) => pack.id === "partnerstack-personal-payout-rail");
+    expect(hello?.preFilledFields["Account email"]).toBe("hello@miloosh.com");
+    expect(personal?.preFilledFields["Account email"]).toBe("lahman00@gmail.com");
+    expect(personal?.productsCovered).toEqual(["monday", "whatconverts", "elevenlabs"]);
+  });
+
   it("keeps CJ optional and restricted to current CJ-required targets", () => {
     const cj = OWNER_ACTION_PACKS.find((pack) => pack.id === "cj-dual-account-reconciliation");
-    expect(cj?.priority).toBe(5);
+    expect(cj?.priority).toBe(6);
     expect(cj?.productsCovered).toEqual(["1password", "quickbooks-online"]);
     expect(cj?.title.toLowerCase()).toContain("optional");
   });
