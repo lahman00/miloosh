@@ -49,7 +49,12 @@ describe("SEO execution cohort alternatives guides", () => {
     // honestly here rather than overstated -- chosen because it's the
     // first real Decision Guide coverage routing to Wix, which the Money
     // Priority Engine's own output flagged as having zero guide coverage).
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce"]);
+    // Smartsheet was added on 2026-08-24 from the same authenticated GSC
+    // snapshot: 161 impressions, 0 clicks, position 81.6. Airtable was
+    // already a sourced Smartsheet alternative, already ACTIVE with an exact
+    // tracking URL, and its existing comparison was already published. The
+    // Smartsheet software page is outside the protected experiment cohorts.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2

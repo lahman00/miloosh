@@ -136,6 +136,22 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://www.salesforce.com"],
   },
+  smartsheet: {
+    diagnosis: "The page names three alternatives but does not separate the spreadsheet-style, governed work-management model from a flexible database, a task-first project system, or another enterprise work-management platform.",
+    heading: "Choose the work model before the tool",
+    introduction: "Smartsheet combines spreadsheet-style grids, project views, forms, automation, dashboards, and governance. The useful alternatives decision is whether the team needs a flexible database for custom operational apps, a task-first delivery system, or an enterprise work-management platform with a different operating model.",
+    whySeekAlternative: [
+      "The team needs to model connected records and build custom internal workflows, not primarily manage work in spreadsheet-style sheets.",
+      "Assigned tasks, project delivery, and cross-team execution matter more than a grid-first planning model.",
+      "The organization still needs enterprise work management, but wants to compare reporting, resource management, and collaboration approaches.",
+    ],
+    decisions: [
+      { heading: "Flexible operational database", fit: "Airtable is the relevant path when the core requirement is connected records, custom interfaces, and configurable internal applications rather than a spreadsheet-style project system.", alternativeSlug: "airtable", comparisonSlug: "airtable-vs-smartsheet" },
+      { heading: "Task-first project delivery", fit: "Asana fits teams that want work organized around owned tasks, projects, dependencies, and cross-team delivery rather than grid-led planning.", alternativeSlug: "asana", comparisonSlug: "asana-vs-smartsheet" },
+      { heading: "Enterprise work management", fit: "Wrike is the closer comparison for organizations evaluating enterprise project visibility, resource management, and cross-functional work operations.", alternativeSlug: "wrike", comparisonSlug: "smartsheet-vs-wrike" },
+    ],
+    evidenceSources: ["https://www.smartsheet.com/platform", "https://www.airtable.com/platform"],
+  },
   tidio: {
     diagnosis: "The page's alternatives list doesn't separate Tidio's live-chat-plus-AI-agent positioning from deeper omnichannel ticketing, ecommerce-native AI support, or simpler shared-inbox decisions.",
     heading: "Decide what kind of support operation you're running",
