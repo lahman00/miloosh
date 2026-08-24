@@ -1,0 +1,236 @@
+name: One-shot canonical affiliate network reconciliation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/one-shot-canonical-network-reconcile.yml
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Reconcile canonical network truth
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('data/affiliate/canonical-ledger.ts')
+          text = path.read_text()
+
+          def replace_once(old: str, new: str, label: str):
+              global text
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{label}: expected exactly one match, found {count}')
+              text = text.replace(old, new, 1)
+
+          old_cj = '''  {
+    programId: "cj-portfolio",
+    programName: "Commission Junction (CJ) Publisher Account",
+    network: "Commission Junction (CJ)",
+    productSlugs: ["1password", "dashlane", "acuity-scheduling", "google-meet", "google-chat", "evernote"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "CJ publisher commission rates (25% on 1Password, $20 on Dashlane, Google Workspace)",
+    cookieWindow: "45-90 days",
+    evidence: [
+      "CJ first-party account-change emails for CID 8043935 sent to lahman00@gmail.com (2026-08-14 and 2026-08-23)",
+      "CJ first-party account-change emails for CID 8048091 sent to hello@miloosh.com (2026-08-20)",
+      "CJ Publisher Registration Portal (signup.cj.com)"
+    ],
+    ownerBlocker: "Two distinct CJ publisher CIDs are evidenced: 8043935 (lahman00@gmail.com) and 8048091 (hello@miloosh.com). Owner must identify the intended Miloosh account, verify payment/tax completeness, and avoid activating advertisers against the wrong account.",
+    formBlocker: null,
+    eligibility: "Two existing CJ publisher accounts; intended canonical account and advertiser relationships not yet verified",
+    applicationUrl: "https://signup.cj.com/member/signup/publisher/?cid=5140517",
+    notes: "Covers 1Password, Dashlane, Acuity Scheduling, Google Meet, Google Chat, Evernote (6 products). Do not collapse or delete either evidenced account until ownership, payment setup, and advertiser relationships are compared."
+  },'''
+          new_cj = '''  {
+    programId: "cj-portfolio",
+    programName: "Commission Junction (CJ) Publisher Accounts",
+    network: "Commission Junction (CJ)",
+    productSlugs: ["1password", "quickbooks-online"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Advertiser-specific CJ terms; verify live contract terms before activation",
+    cookieWindow: null,
+    evidence: [
+      "CJ first-party account-change emails for CID 8043935 sent to lahman00@gmail.com (2026-08-14 and 2026-08-23)",
+      "CJ first-party account-change emails for CID 8048091 sent to hello@miloosh.com (2026-08-20)",
+      "https://quickbooks.intuit.com/learn-support/en-us/help-article/small-business/promote-sell-quickbooks-quickbooks-business/L1WmCWEMR_US_en_US — current Intuit documentation states publishers use the QuickBooks Commission Junction Program",
+      "https://1password.com/affiliate — current 1Password publisher path uses CJ"
+    ],
+    ownerBlocker: "Two distinct CJ publisher CIDs are evidenced. Reconcile them only if Miloosh chooses to pursue current CJ-required publishers such as 1Password or QuickBooks; do not create a third account.",
+    formBlocker: null,
+    eligibility: "Optional network; no currently active Miloosh affiliate depends on CJ",
+    applicationUrl: "https://members.cj.com/",
+    notes: "CJ is intentionally isolated from the 19 active-partner payout rails. Do not treat historical Dashlane/Google/Acuity/Evernote planning claims as current advertiser relationships without live CJ evidence."
+  },'''
+          replace_once(old_cj, new_cj, 'CJ portfolio')
+
+          old_sas = '''  {
+    programId: "shareasale-portfolio",
+    programName: "ShareASale Publisher Account",
+    network: "ShareASale",
+    productSlugs: ["shift4shop", "weebly", "later"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-21",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "ShareASale publisher commission rates ($100 Shift4Shop, 30% Weebly, $20 Later)",
+    cookieWindow: "30-90 days",
+    evidence: ["ShareASale Publisher Portal (shareasale.com)"],
+    ownerBlocker: "Requires creating and verifying a ShareASale Publisher Account with owner tax and payout info.",
+    formBlocker: null,
+    eligibility: "Requires ShareASale account",
+    applicationUrl: "https://shareasale.com/",
+    notes: "Covers Shift4Shop, Weebly, and Later (3 products)."
+  },'''
+          new_sas = '''  {
+    programId: "shift4shop",
+    programName: "Shift4Shop Affiliate Program",
+    network: "Awin",
+    productSlugs: ["shift4shop"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "$5-$25 per referred free-store launch; $100 on paid hosting plans per current Awin profile",
+    cookieWindow: "120 days",
+    evidence: ["https://ui.awin.com/merchant-profile/87645 — current Awin Shift4Shop merchant profile", "https://www.awin.com/us/news-and-events/awin-news/awin-shareasale-new-era — ShareASale closed 2025-10-06 after migration to Awin"],
+    ownerBlocker: "Requires authenticated Awin publisher access/application if Miloosh chooses to pursue Shift4Shop.",
+    formBlocker: null,
+    eligibility: "Current Awin advertiser program exists; Miloosh relationship not yet verified",
+    applicationUrl: "https://ui.awin.com/merchant-profile/87645",
+    notes: "Do not route to ShareASale. The current program is visible on Awin."
+  },
+  {
+    programId: "later",
+    programName: "Later Affiliate Program",
+    network: "PartnerStack",
+    productSlugs: ["later"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "30% or higher commission for every sale per current official Later affiliate page",
+    cookieWindow: null,
+    evidence: ["https://later.com/affiliate-program/ — official Apply now links to market.partnerstack.com and states 30% or higher commission"],
+    ownerBlocker: "Requires authenticated PartnerStack access to apply; do not create a duplicate PartnerStack identity while the existing-account consolidation is unresolved.",
+    formBlocker: null,
+    eligibility: "Official affiliate program is live; acceptance is not guaranteed",
+    applicationUrl: "https://later.com/affiliate-program/",
+    notes: "Current route is PartnerStack, not ShareASale. Defer application until PartnerStack account consolidation is resolved."
+  },
+  {
+    programId: "weebly",
+    programName: "Weebly Affiliate Program",
+    network: "Unverified",
+    productSlugs: ["weebly"],
+    status: "PROGRAM_NOT_VERIFIED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "UNKNOWN",
+    cookieWindow: null,
+    evidence: ["2026-08-24 current-source sweep found no official Weebly publisher affiliate application; Weebly App Center referral apps are tools for merchants, not a Weebly publisher program", "https://www.awin.com/us/news-and-events/awin-news/awin-shareasale-new-era — ShareASale closed 2025-10-06"],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Current publisher program not verified",
+    applicationUrl: null,
+    notes: "Do not create an Awin/ShareASale account for Weebly based on historical claims. Re-open only with current first-party publisher evidence."
+  },'''
+          replace_once(old_sas, new_sas, 'ShareASale portfolio')
+
+          old_ps_slugs = '    productSlugs: ["document360", "mixpanel", "reclaim-ai", "dialpad", "calendly", "motion", "guru", "scribe", "nutshell", "keap", "ruler-analytics", "front", "descript", "hotjar", "coda", "klaviyo", "gorgias", "quickbooks-online", "miro"],'
+          new_ps_slugs = '    productSlugs: ["document360", "mixpanel", "reclaim-ai", "dialpad", "motion", "guru", "scribe", "nutshell", "keap", "ruler-analytics", "front", "descript", "hotjar", "klaviyo", "gorgias", "miro"],'
+          replace_once(old_ps_slugs, new_ps_slugs, 'PartnerStack portfolio slugs')
+
+          old_ps_notes = '    notes: "Consolidated PartnerStack category programs covering 19 catalog products."'
+          new_ps_notes = '    notes: "Current unresolved PartnerStack category programs only. Calendly removed because Calendly currently states it has no affiliate/referral/reseller partner program; Coda removed because its affiliate program closed 2026-04-13; QuickBooks removed because Intuit routes publishers to CJ. Later is tracked separately with its current official PartnerStack application path."'
+          replace_once(old_ps_notes, new_ps_notes, 'PartnerStack portfolio notes')
+
+          marker = '''  {
+    programId: "liveagent",'''
+          insert = '''  {
+    programId: "calendly-affiliate",
+    programName: "Calendly Affiliate / Referral Program",
+    network: "None currently",
+    productSlugs: ["calendly"],
+    status: "NO_REAL_PROGRAM_FOUND",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "N/A",
+    cookieWindow: null,
+    evidence: ["https://calendly.com/partners/contact — Calendly states it does not currently have an affiliate, referral, or reseller partner program"],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "No current affiliate/referral/reseller program",
+    applicationUrl: null,
+    notes: "Do not send owner to PartnerStack or another network for Calendly unless Calendly publishes a new program."
+  },
+  {
+    programId: "coda-affiliate",
+    programName: "Coda / Superhuman Docs Affiliate Program",
+    network: "Historical PartnerStack; future Superhuman program on Impact",
+    productSlugs: ["coda"],
+    status: "PROGRAM_ENDED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-04-13",
+    affiliateUrl: null,
+    commissionModel: "Coda earnings stopped 2026-04-13; future Coda commission opportunity not yet live",
+    cookieWindow: null,
+    evidence: ["https://help.coda.io/hc/en-us/articles/39555863889165-Coda-s-affiliate-program-moves-to-Grammarly — Coda says its affiliate program closed 2026-04-13 and future unified program is moving to Impact"],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Program ended",
+    applicationUrl: null,
+    notes: "Do not apply through PartnerStack. Re-check only when Superhuman publishes a live Coda/Docs commission opportunity."
+  },
+  {
+    programId: "liveagent",'''
+          replace_once(marker, insert, 'Calendly/Coda insertion point')
+
+          path.write_text(text)
+          PY
+          git diff --check
+
+      - run: npm ci
+      - run: npm run validate:data
+      - run: npx vitest run tests/lib/affiliate-integrity.test.ts tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts tests/lib/owner-payout-actions.test.ts tests/lib/payout-rails.test.ts
+      - run: npx tsc --noEmit
+
+      - name: Commit reconciled ledger and remove one-shot workflow
+        run: |
+          rm .github/workflows/one-shot-canonical-network-reconcile.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/affiliate/canonical-ledger.ts .github/workflows/one-shot-canonical-network-reconcile.yml
+          git commit -m "fix: reconcile current affiliate network truth"
+          git pull --rebase origin main
+          git push origin HEAD:main
