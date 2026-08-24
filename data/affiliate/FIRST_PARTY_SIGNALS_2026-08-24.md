@@ -45,6 +45,30 @@ No advertiser approval/relationship email was found in the current Gmail search 
 - do not delete/merge/deactivate either account;
 - compare live advertiser relationships, issued links, tax/payment readiness, and historical performance before choosing the canonical account.
 
+## Freshworks — unresolved canonical contradiction
+
+The current canonical ledger entry is internally contradictory:
+
+- `status: "REJECTED"`
+- `statusUpdatedAt: "2026-08-24"`
+- `decisionAt: "2026-08-24"`
+
+but the same record still says:
+
+- evidence: application received / Gmail confirmation
+- eligibility: `Publisher application submitted`
+- notes: `Awaiting vendor decision`
+
+A Gmail search on 2026-08-24 found only the first-party PartnerStack submission message (`Your Application to join Freshworks`, received 2026-08-19) and **no first-party decline/rejection message** for Freshworks/Freshdesk/Freshsales.
+
+Therefore `REJECTED` is not independently supportable from the currently available first-party evidence. Do not propagate the rejected state into more derived files until the actual decision evidence is found. Equally, do not silently revert it to pending without checking whether the missing decision came from another first-party source outside Gmail. This record needs explicit reconciliation.
+
+## `hello@miloosh.com` outbound identity
+
+Current Gmail evidence contains inbound mail to `hello@miloosh.com`, but a Sent search found no message whose actual From identity is `hello@miloosh.com`. Recent Miloosh business messages were sent from `lahman00@gmail.com`.
+
+Treat send-as as unresolved until a real sent message proves the business From identity works. Do not infer completion from incoming delivery alone.
+
 ## Evidence discipline
 
 These signals are deliberately separated into three classes:
