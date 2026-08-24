@@ -61,7 +61,7 @@ The following executable status consumers were reconciled to that evidence on 20
 - `lib/growth-audit/category-money-map.ts`
 - `tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts`
 
-The oversized raw record in `data/affiliate/canonical-ledger.ts` still contains the accidental enum/date mutation and requires a surgical source edit; do not treat that raw three-field contradiction as vendor evidence. No derived engine should promote it over the actual first-party evidence.
+The raw canonical record was surgically repaired by commit `f406aad69d53bd18a8dd79781a702cca2d571bd2`: `status=PENDING_REVIEW`, `statusUpdatedAt=2026-08-20`, and `decisionAt=null`. The temporary one-shot workflow deleted itself after targeted affiliate-integrity tests and TypeScript verification passed. Freshworks now has one consistent source-of-truth state.
 
 ## `hello@miloosh.com` outbound identity
 

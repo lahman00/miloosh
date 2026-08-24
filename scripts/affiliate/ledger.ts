@@ -1,4 +1,4 @@
-import { CANONICAL_AFFILIATE_LEDGER, type AffiliateProgramRelationship, type CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import { CANONICAL_AFFILIATE_LEDGER, type CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { getAllSoftware } from "@/data/software";
 import { verifyProjectIdentity, ProjectIdentityError } from "@/lib/project-guard";
 import fs from "node:fs";
@@ -19,42 +19,6 @@ export const ALL_CANONICAL_STATUSES: readonly CanonicalLedgerStatus[] = [
   "PROGRAM_ENDED",
   "NOT_ELIGIBLE"
 ] as const;
-
-/**
- * Effective ledger view for operational reports.
- *
- * 2026-08-24: repository history proves commit e4238c25 (whose stated job
- * was recording the Help Scout decline) accidentally changed only the
- * Freshworks enum/date fields from PENDING_REVIEW to REJECTED while leaving
- * Freshworks's own evidence, eligibility and notes in the pending state.
- * Connected first-party Gmail contains the Freshworks application-received
- * notice and no decline. Until the oversized source record receives its
- * surgical three-field edit, fail toward the evidence-backed pending state
- * here rather than propagating an unsupported vendor rejection into money
- * maps or owner reports.
- *
- * This is intentionally narrow: no other relationship is normalized here.
- */
-export function getEffectiveCanonicalAffiliateLedger(
-  ledger: readonly AffiliateProgramRelationship[] = CANONICAL_AFFILIATE_LEDGER
-): AffiliateProgramRelationship[] {
-  return ledger.map((program) => {
-    if (
-      program.programId === "freshworks" &&
-      program.status === "REJECTED" &&
-      program.eligibility === "Publisher application submitted" &&
-      /Awaiting vendor decision/i.test(program.notes)
-    ) {
-      return {
-        ...program,
-        status: "PENDING_REVIEW",
-        statusUpdatedAt: "2026-08-20",
-        decisionAt: null,
-      };
-    }
-    return { ...program };
-  });
-}
 
 export interface LedgerSummaryReport {
   timestamp: string;
@@ -81,7 +45,7 @@ export interface LedgerSummaryReport {
 export function computeLedgerSummary(): LedgerSummaryReport {
   const software = getAllSoftware();
   const catalogSlugs = new Set(software.map(s => s.slug));
-  const ledger = getEffectiveCanonicalAffiliateLedger();
+  const ledger = CANONICAL_AFFILIATE_LEDGER;
 
   const statusBreakdown: Record<CanonicalLedgerStatus, number> = {
     ACTIVE: 0,
