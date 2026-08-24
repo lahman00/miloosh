@@ -1,4 +1,4 @@
-import { CANONICAL_AFFILIATE_LEDGER, type CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import { CANONICAL_AFFILIATE_LEDGER, type AffiliateProgramRelationship, type CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { getAllSoftware } from "@/data/software";
 import { verifyProjectIdentity, ProjectIdentityError } from "@/lib/project-guard";
 import fs from "node:fs";
@@ -20,14 +20,48 @@ export const ALL_CANONICAL_STATUSES: readonly CanonicalLedgerStatus[] = [
   "NOT_ELIGIBLE"
 ] as const;
 
+/**
+ * Effective ledger view for operational reports.
+ *
+ * 2026-08-24: repository history proves commit e4238c25 (whose stated job
+ * was recording the Help Scout decline) accidentally changed only the
+ * Freshworks enum/date fields from PENDING_REVIEW to REJECTED while leaving
+ * Freshworks's own evidence, eligibility and notes in the pending state.
+ * Connected first-party Gmail contains the Freshworks application-received
+ * notice and no decline. Until the oversized source record receives its
+ * surgical three-field edit, fail toward the evidence-backed pending state
+ * here rather than propagating an unsupported vendor rejection into money
+ * maps or owner reports.
+ *
+ * This is intentionally narrow: no other relationship is normalized here.
+ */
+export function getEffectiveCanonicalAffiliateLedger(
+  ledger: readonly AffiliateProgramRelationship[] = CANONICAL_AFFILIATE_LEDGER
+): AffiliateProgramRelationship[] {
+  return ledger.map((program) => {
+    if (
+      program.programId === "freshworks" &&
+      program.status === "REJECTED" &&
+      program.eligibility === "Publisher application submitted" &&
+      /Awaiting vendor decision/i.test(program.notes)
+    ) {
+      return {
+        ...program,
+        status: "PENDING_REVIEW",
+        statusUpdatedAt: "2026-08-20",
+        decisionAt: null,
+      };
+    }
+    return { ...program };
+  });
+}
+
 export interface LedgerSummaryReport {
   timestamp: string;
-  // Section A: Program Relationships
   totalProgramRelationships: number;
   statusBreakdown: Record<CanonicalLedgerStatus, number>;
   sumOfStatusBuckets: number;
   isStatusSumConsistent: boolean;
-  // Section B: Catalog Coverage
   totalCatalogProducts: number;
   catalogProductsWithProgramRelationship: number;
   activeCatalogProductsCovered: number;
@@ -40,7 +74,6 @@ export interface LedgerSummaryReport {
   unverifiedCatalogProductsCount: number;
   sumOfCatalogCoverageBuckets: number;
   isCatalogCoverageExhaustive: boolean;
-  // Details
   noProgramSlugs: string[];
   unverifiedSlugs: string[];
 }
@@ -48,7 +81,7 @@ export interface LedgerSummaryReport {
 export function computeLedgerSummary(): LedgerSummaryReport {
   const software = getAllSoftware();
   const catalogSlugs = new Set(software.map(s => s.slug));
-  const ledger = CANONICAL_AFFILIATE_LEDGER;
+  const ledger = getEffectiveCanonicalAffiliateLedger();
 
   const statusBreakdown: Record<CanonicalLedgerStatus, number> = {
     ACTIVE: 0,
@@ -96,7 +129,6 @@ export function computeLedgerSummary(): LedgerSummaryReport {
   const sumOfStatusBuckets = Object.values(statusBreakdown).reduce((a, b) => a + b, 0);
   const isStatusSumConsistent = sumOfStatusBuckets === ledger.length;
 
-  // Verified FOSS / 404 / Non-commercial / No Program products
   const noProgramSlugsList = [
     "harvest", "time-doctor", "basecamp", "slite", "mattermost",
     "git", "postgresql", "mysql", "redis", "nginx", "docker", "kubernetes", "linux",
@@ -120,15 +152,11 @@ export function computeLedgerSummary(): LedgerSummaryReport {
   ].filter(s => catalogSlugs.has(s));
 
   const noProgramSlugs = new Set(noProgramSlugsList);
-  for (const s of noProgramSlugs) {
-    coveredCatalogSlugs.add(s);
-  }
+  for (const s of noProgramSlugs) coveredCatalogSlugs.add(s);
 
   const unverifiedSlugs: string[] = [];
   for (const s of software) {
-    if (!coveredCatalogSlugs.has(s.slug)) {
-      unverifiedSlugs.push(s.slug);
-    }
+    if (!coveredCatalogSlugs.has(s.slug)) unverifiedSlugs.push(s.slug);
   }
 
   const catalogProductsWithProgramRelationship = coveredCatalogSlugs.size - noProgramSlugs.size;
