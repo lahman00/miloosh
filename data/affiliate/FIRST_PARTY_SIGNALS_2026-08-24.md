@@ -45,29 +45,53 @@ No advertiser approval/relationship email was found in the current Gmail search 
 - do not delete/merge/deactivate either account;
 - compare live advertiser relationships, issued links, tax/payment readiness, and historical performance before choosing the canonical account.
 
-## Freshworks — unresolved canonical contradiction
+## Freshworks — false rejection traced and operationally corrected
 
-The current canonical ledger entry is internally contradictory:
+Freshworks/Freshdesk/Freshsales have only first-party submission evidence in the connected Gmail account. The latest matching message is `Your Application to join Freshworks`; no first-party decline/rejection message was found on 2026-08-24.
 
-- `status: "REJECTED"`
-- `statusUpdatedAt: "2026-08-24"`
-- `decisionAt: "2026-08-24"`
+Repository history identifies the source of the contradictory rejection: commit `e4238c25b7646af22078e6278708357c3c10f663`, titled `fix: record Help Scout application decline`, changed the Freshworks ledger enum from `PENDING_REVIEW` to `REJECTED` and set a decision date while leaving Freshworks evidence/eligibility/notes in their pending state. The subsequent merge carried that accidental mutation. The immediately earlier affiliate-truth merge explicitly described its work as `classify ClickUp rejection without changing Freshworks`.
 
-but the same record still says:
+Verified operational interpretation as of 2026-08-24: **Freshworks is PENDING_REVIEW, not verified rejected.**
 
-- evidence: application received / Gmail confirmation
-- eligibility: `Publisher application submitted`
-- notes: `Awaiting vendor decision`
+The following executable status consumers were reconciled to that evidence on 2026-08-24:
 
-A Gmail search on 2026-08-24 found only the first-party PartnerStack submission message (`Your Application to join Freshworks`, received 2026-08-19) and **no first-party decline/rejection message** for Freshworks/Freshdesk/Freshsales.
+- `scripts/growth/canonical-affiliate-reconciliation.ts`
+- `scripts/growth/pending-program-readiness.ts`
+- `lib/growth-audit/monetization-gaps.ts`
+- `lib/growth-audit/category-money-map.ts`
+- `tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts`
 
-Therefore `REJECTED` is not independently supportable from the currently available first-party evidence. Do not propagate the rejected state into more derived files until the actual decision evidence is found. Equally, do not silently revert it to pending without checking whether the missing decision came from another first-party source outside Gmail. This record needs explicit reconciliation.
+The oversized raw record in `data/affiliate/canonical-ledger.ts` still contains the accidental enum/date mutation and requires a surgical source edit; do not treat that raw three-field contradiction as vendor evidence. No derived engine should promote it over the actual first-party evidence.
 
 ## `hello@miloosh.com` outbound identity
 
-Current Gmail evidence contains inbound mail to `hello@miloosh.com`, but a Sent search found no message whose actual From identity is `hello@miloosh.com`. Recent Miloosh business messages were sent from `lahman00@gmail.com`.
+The connected Gmail profile is `lahman00@gmail.com`. Gmail contains inbound mail addressed to `hello@miloosh.com`, but a Sent search found no message whose actual From identity is `hello@miloosh.com`; recent Miloosh business messages were sent from `lahman00@gmail.com`.
 
-Treat send-as as unresolved until a real sent message proves the business From identity works. Do not infer completion from incoming delivery alone.
+Treat send-as as **not yet verified/configured through the connected Gmail identity**. Incoming forwarding proves receipt, not outbound From authorization. A real sent message with `From: hello@miloosh.com` is required before this task can be marked complete.
+
+## Buffer — key creation evidence and code contract
+
+First-party Buffer email shows two API-key creation notifications on 2026-08-19 for the Miloosh Buffer account. The emails instruct that keys remain private and can be revoked/regenerated from Buffer API Settings; they do not expose the secret value in Gmail.
+
+Current Miloosh code uses server-only variables:
+
+- `SOCIAL_LINKEDIN_BUFFER_API_KEY`
+- `SOCIAL_LINKEDIN_BUFFER_CHANNEL_ID`
+- `LINKEDIN_TRANSPORT=buffer`
+
+The adapter requires the API key to support account/channel read plus post read/write behavior and verifies that the configured target resolves to a LinkedIn **Company Page**, not a personal profile. No secret value should ever be committed or copied into evidence files.
+
+A replacement cannot be performed from Gmail alone because the secret key value is not included in the notification email. Do not invent or recover it from logs.
+
+## Tipalti / payout onboarding — no attributable first-party evidence found
+
+A Gmail search on 2026-08-24 for `Tipalti` returned zero messages. Broader recent searches for affiliate payout/tax/payment onboarding found PartnerStack guidance and CJ payment-information notices, but no Tipalti-branded onboarding or payee invitation that can be safely tied to a Miloosh partner/network.
+
+Therefore the owner-task label `complete Tipalti` is currently **unattributed** in the available first-party evidence. Do not guess which network/program it belongs to or ask for banking/tax data until a real Tipalti invitation/dashboard context identifies the payer and required onboarding step.
+
+## Pending-program decision sweep
+
+A targeted Gmail sweep on 2026-08-24 for Freshworks, FreshBooks, Amplitude, Toggl and CallRail found only submission/application-received evidence for the matching programs; no new approval/decline decision was found. Continue to represent those programs as pending unless newer first-party evidence appears.
 
 ## Evidence discipline
 
