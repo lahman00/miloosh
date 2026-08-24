@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { computeLedgerSummary, ALL_CANONICAL_STATUSES } from "@/scripts/affiliate/ledger";
 import { getAllSoftware } from "@/data/software";
@@ -86,11 +87,19 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
   });
 
   it("Invariant 10: Derived summary counts match the actual ledger counts exactly (sum of status buckets === ledger.length)", () => {
-    expect(summary.totalProgramRelationships).toBe(CANONICAL_AFFILIATE_LEDGER.length);
-    expect(summary.sumOfStatusBuckets).toBe(CANONICAL_AFFILIATE_LEDGER.length);
+    // MILOOSH OWNER-SIDE ELIMINATION mission (2026-08-25) — real fix:
+    // computeLedgerSummary() reads data/affiliate/current-affiliate-truth.ts's
+    // CURRENT_AFFILIATE_LEDGER (the reconciled operational projection --
+    // ShareASale filtered out, CJ/PartnerStack-portfolio remapped to real
+    // current targets), not the raw historical CANONICAL_AFFILIATE_LEDGER.
+    // This invariant must compare against the same source the function
+    // actually derives from, or it drifts every time the two counts
+    // legitimately diverge (66 raw vs 70 current as of this fix).
+    expect(summary.totalProgramRelationships).toBe(CURRENT_AFFILIATE_LEDGER.length);
+    expect(summary.sumOfStatusBuckets).toBe(CURRENT_AFFILIATE_LEDGER.length);
     expect(summary.isStatusSumConsistent).toBe(true);
 
-    const statusesInLedger = new Set(CANONICAL_AFFILIATE_LEDGER.map(p => p.status));
+    const statusesInLedger = new Set(CURRENT_AFFILIATE_LEDGER.map(p => p.status));
     for (const st of statusesInLedger) {
       expect(summary.statusBreakdown[st]).toBeGreaterThan(0);
     }

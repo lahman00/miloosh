@@ -24,7 +24,12 @@ describe("partner materials audit", () => {
 
   it("keeps rejected, pending, and hold states distinct", () => {
     expect(PARTNER_MATERIAL_AUDIT.find((record) => record.slug === "hubspot")?.readiness).toBe("REJECTED");
-    expect(PARTNER_MATERIAL_AUDIT.find((record) => record.slug === "clickup")?.readiness).toBe("PENDING APPROVAL");
+    // ClickUp: this assertion expected PENDING APPROVAL, written before a
+    // first-party PartnerStack rejection email dated 2026-08-21 arrived
+    // ("After careful consideration, ClickUp has declined your application").
+    // Real data was correctly updated to REJECTED; this stale test
+    // assertion was the one still behind.
+    expect(PARTNER_MATERIAL_AUDIT.find((record) => record.slug === "clickup")?.readiness).toBe("REJECTED");
     // Brevo: PartnerStack's top-level badge still showed Active, but the program's own Messages
     // thread carried a first-party rejection dated 2026-08-19 — corrected from APPROVED BUT NEEDS
     // LINK to REJECTED, same treatment as HubSpot/n8n.
