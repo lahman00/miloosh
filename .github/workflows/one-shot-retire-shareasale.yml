@@ -1,0 +1,143 @@
+name: One-shot retire obsolete ShareASale path
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/one-shot-retire-shareasale.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Split obsolete ShareASale portfolio into current evidence states
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          ledger = Path('data/affiliate/canonical-ledger.ts')
+          text = ledger.read_text()
+          start_marker = '  {\n    programId: "shareasale-portfolio",'
+          end_marker = '  {\n    programId: "zoho-ecosystem",'
+          start = text.index(start_marker)
+          end = text.index(end_marker, start)
+
+          replacement = '''  {
+    programId: "shift4shop",
+    programName: "Shift4Shop Affiliate Program",
+    network: "Legacy ShareASale path (network closed; current application routing unresolved)",
+    productSlugs: ["shift4shop"],
+    status: "HOLD",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "$5-$25 per new signup (current Shift4Shop affiliate page)",
+    cookieWindow: "120 days",
+    evidence: [
+      "https://www.shift4shop.com/affiliate/ — current official Shift4Shop page still advertises the affiliate program but directs publishers to ShareASale",
+      "https://help.awin.com/advertisers/docs/en/post-upgrade-checklist-sas — Awin states ShareASale officially closed on 2025-10-06"
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Program is advertised by Shift4Shop, but the documented third-party application network is closed; a current working publisher onboarding path has not been verified.",
+    applicationUrl: "https://www.shift4shop.com/affiliate/",
+    notes: "Do not send the owner to ShareASale. Re-verify Shift4Shop's current network/application path before any signup or activation."
+  },
+  {
+    programId: "later",
+    programName: "Later Affiliate Program",
+    network: "PartnerStack",
+    productSlugs: ["later"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "30% or higher commission for every sale (current official Later page)",
+    cookieWindow: null,
+    evidence: [
+      "https://later.com/affiliate-program/ — official page links Apply now to PartnerStack and states 30% or higher commission",
+      "https://help.later.com/hc/en-us/articles/360042869494-Become-a-Later-Social-Affiliate — official help center confirms affiliate earnings can run up to one year"
+    ],
+    ownerBlocker: "Requires authenticated PartnerStack access to submit the application; do not create a duplicate PartnerStack account or fabricate audience/profile fields.",
+    formBlocker: null,
+    eligibility: "Later says ideal affiliates include small business owners, creators/influencers and people with engaged audiences across websites/social; acceptance is not guaranteed.",
+    applicationUrl: "https://later.com/affiliate-program/",
+    notes: "Real current PartnerStack program. Do not mark pending until an authenticated application is actually submitted."
+  },
+  {
+    programId: "weebly",
+    programName: "Weebly Affiliate Program",
+    network: "Historical program; current publisher network unverified",
+    productSlugs: ["weebly"],
+    status: "PROGRAM_NOT_VERIFIED",
+    statusUpdatedAt: "2026-08-24",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "UNKNOWN — no current official Weebly publisher offer verified",
+    cookieWindow: null,
+    evidence: [
+      "2026-08-24 current-source sweep found no official Weebly affiliate application page or current network evidence",
+      "https://help.awin.com/advertisers/docs/en/post-upgrade-checklist-sas — legacy ShareASale platform officially closed 2025-10-06"
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Current affiliate program not verified.",
+    applicationUrl: null,
+    notes: "Do not create an Awin/ShareASale account for Weebly based on historical program claims. Re-research only from a current official Weebly/Square source."
+  },
+'''
+          ledger.write_text(text[:start] + replacement + text[end:])
+
+          # Owner action packs: remove active Shopify/Wix from unresolved Impact,
+          # add current Later to the existing PartnerStack owner-login batch,
+          # and delete the dead ShareASale registration pack entirely.
+          packs = Path('data/affiliate/owner-action-packs.ts')
+          text = packs.read_text()
+          text = text.replace(' * Structured instructions for the 5 highest-leverage owner actions.', ' * Structured instructions for the current highest-leverage owner actions.')
+          text = text.replace('      "smartsheet", "mailchimp", "shopify", "bigcommerce", "wix", "squarespace",', '      "smartsheet", "mailchimp", "bigcommerce", "squarespace",')
+          text = text.replace('      "Click \'Apply / Join Campaign\' for each brand inside Impact marketplace"', '      "Verify and join only the still-unresolved brand campaigns inside Impact; Shopify and Wix are already active and must not be re-applied"')
+          text = text.replace('    postCompletionAutomation: "Once campaigns are approved and affiliate URLs generated, paste the URLs into data/affiliate/active-partners.ts to enable automatic tracking and CTA rendering across 178 comparison surfaces."', '    postCompletionAutomation: "Once a still-unresolved campaign is genuinely approved and an exact tracking URL exists, reconcile it into the canonical ledger and active-partners registry; do not touch already-active Shopify/Wix."')
+          text = text.replace('      "hotjar", "coda", "klaviyo", "gorgias", "quickbooks-online", "miro", "partnerstack"', '      "hotjar", "coda", "klaviyo", "gorgias", "quickbooks-online", "miro", "later", "partnerstack"')
+
+          share_start = text.index('  {\n    id: "shareasale-account-creation",')
+          # It is the final object in the array.
+          share_end = text.index('\n  }\n];', share_start) + len('\n  }')
+          text = text[:share_start] + text[share_end:]
+          packs.write_text(text)
+          PY
+
+          git diff --check
+          git diff -- data/affiliate/canonical-ledger.ts data/affiliate/owner-action-packs.ts
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate data
+        run: npm run validate:data
+      - name: Affiliate integrity
+        run: npx vitest run tests/lib/affiliate-integrity.test.ts tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Remove workflow and commit
+        run: |
+          rm .github/workflows/one-shot-retire-shareasale.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/affiliate/canonical-ledger.ts data/affiliate/owner-action-packs.ts .github/workflows/one-shot-retire-shareasale.yml
+          git commit -m "fix: retire closed ShareASale owner path"
+          git push origin HEAD:main
