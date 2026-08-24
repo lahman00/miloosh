@@ -12,15 +12,24 @@ export interface PendingProgramReadiness {
   editorialIntegrityStatus: string;
 }
 
+/**
+ * Programs with current first-party evidence supporting PENDING_REVIEW.
+ *
+ * 2026-08-24 corrections:
+ * - Close removed: ACTIVE with a verified referral URL.
+ * - ClickUp removed: REJECTED by vendor on 2026-08-21.
+ * - Help Scout was already removed after its 2026-08-24 rejection.
+ * - Freshworks stays pending: submission evidence exists and no first-party
+ *   rejection evidence is currently available; do not infer a decline from
+ *   the contradictory canonical-ledger enum introduced by the Help Scout fix.
+ */
 export const PENDING_PROGRAMS = [
   { programId: "freshworks", products: ["freshdesk", "freshsales"] },
   { programId: "freshbooks", products: ["freshbooks"] },
-  { programId: "close", products: ["close"] },
-  { programId: "clickup", products: ["clickup"] },
   { programId: "amplitude", products: ["amplitude"] },
   { programId: "toggl-track", products: ["toggl-track"] },
   { programId: "callrail", products: ["callrail"] }
-];
+] as const;
 
 export function auditPendingPrograms(): PendingProgramReadiness[] {
   const publishedPairs = PUBLISHED_COMPARISONS;
@@ -30,14 +39,12 @@ export function auditPendingPrograms(): PendingProgramReadiness[] {
     const guidesSet = new Set<string>();
 
     for (const prod of prog.products) {
-      // Count comparisons involving product
       for (const [a, b] of publishedPairs) {
         if (a === prod || b === prod) {
           comparisonCount++;
         }
       }
 
-      // Count role guides
       for (const guide of ROLE_GUIDES) {
         if (guide.products && guide.products.some(p => p.slug === prod)) {
           guidesSet.add(guide.slug);
@@ -45,7 +52,6 @@ export function auditPendingPrograms(): PendingProgramReadiness[] {
       }
     }
 
-    // Verify software data exists and is valid
     const allValid = prog.products.every(p => {
       const sw = getSoftware(p);
       return sw && sw.features.length >= 3 && sw.pricing;
@@ -53,7 +59,7 @@ export function auditPendingPrograms(): PendingProgramReadiness[] {
 
     return {
       programId: prog.programId,
-      coveredProducts: prog.products,
+      coveredProducts: [...prog.products],
       publishedComparisonsCount: comparisonCount,
       roleGuidesCount: guidesSet.size,
       postApprovalNewMonetizedComparisons: comparisonCount,
