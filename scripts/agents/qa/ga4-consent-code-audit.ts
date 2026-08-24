@@ -12,17 +12,33 @@ import type { AgentRunFn } from "@/types/agents";
  * codebase deliberately moved away from — see docs/legal-and-trust.md
  * "GA4 consent mode"). A regression here is a real, checkable code fact,
  * not a guess.
+ *
+ * Keep every source path statically scoped. This module is reachable from
+ * the internal growth dashboard through the agent registry; using
+ * path.join(process.cwd(), relativePath) with an arbitrary loop value made
+ * Turbopack conservatively trace the entire repository into the server
+ * component bundle. Explicit path segments preserve the audit while
+ * keeping Next.js file tracing bounded to the actual files we inspect.
  */
 
-const REQUIRED_FILES = ["lib/consent.ts", "components/ConsentBanner.tsx", "components/GoogleAnalyticsConsent.tsx", "components/CookiePreferencesControl.tsx"];
+type RequiredSourceFile = { relativePath: string; absolutePath: string };
+
+const REQUIRED_FILES: readonly RequiredSourceFile[] = [
+  { relativePath: "lib/consent.ts", absolutePath: path.join(process.cwd(), "lib", "consent.ts") },
+  { relativePath: "components/ConsentBanner.tsx", absolutePath: path.join(process.cwd(), "components", "ConsentBanner.tsx") },
+  { relativePath: "components/GoogleAnalyticsConsent.tsx", absolutePath: path.join(process.cwd(), "components", "GoogleAnalyticsConsent.tsx") },
+  { relativePath: "components/CookiePreferencesControl.tsx", absolutePath: path.join(process.cwd(), "components", "CookiePreferencesControl.tsx") },
+] as const;
+
+const ANALYTICS_RELATIVE_PATH = "components/Analytics.tsx";
+const ANALYTICS_PATH = path.join(process.cwd(), "components", "Analytics.tsx");
 
 export const run: AgentRunFn = async () => {
   const agentId = "qa-ga4-consent-code-audit";
-  const root = process.cwd();
   const findings = [];
 
-  for (const relativePath of REQUIRED_FILES) {
-    if (!fs.existsSync(path.join(root, relativePath))) {
+  for (const { relativePath, absolutePath } of REQUIRED_FILES) {
+    if (!fs.existsSync(absolutePath)) {
       findings.push(
         makeFinding({
           agentId,
@@ -41,9 +57,8 @@ export const run: AgentRunFn = async () => {
     }
   }
 
-  const analyticsPath = path.join(root, "components/Analytics.tsx");
-  if (fs.existsSync(analyticsPath)) {
-    const source = fs.readFileSync(analyticsPath, "utf-8");
+  if (fs.existsSync(ANALYTICS_PATH)) {
+    const source = fs.readFileSync(ANALYTICS_PATH, "utf-8");
     const delegatesToConsent = source.includes("GoogleAnalyticsConsent");
     const rendersRawGtagScript = /googletagmanager\.com\/gtag\/js/.test(source);
 
@@ -55,7 +70,7 @@ export const run: AgentRunFn = async () => {
           severity: "critical",
           title: "components/Analytics.tsx no longer delegates GA4 to the consent-gated component",
           description: `components/Analytics.tsx's "ga" branch ${delegatesToConsent ? "" : "no longer references GoogleAnalyticsConsent, and "}${rendersRawGtagScript ? "appears to render a raw gtag.js script tag directly" : ""}. This is the exact regression that would silently reintroduce always-on analytics.`,
-          location: "components/Analytics.tsx",
+          location: ANALYTICS_RELATIVE_PATH,
           evidence: [`Contains "GoogleAnalyticsConsent": ${delegatesToConsent}`, `Contains raw gtag.js script src: ${rendersRawGtagScript}`],
           confidence: 1,
           riskLevel: 3,
