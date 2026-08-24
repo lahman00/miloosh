@@ -59,8 +59,8 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     partnerSlugs: ["setmore"],
     readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "setmore-payout-method",
-    methodGuidance: "If Setmore exposes Payoneer, the already-ready Payoneer account is an efficient existing asset. Otherwise choose only a method Setmore actually exposes. Tapfiliate's generic support for a method is not proof that Setmore enables it.",
-    notes: "Prior verified Setmore onboarding state was Step 4, payout method. Do not assume Payoneer or another method unless the Setmore portal actually offers it.",
+    methodGuidance: "Verify or update PayPal. Setmore's first-party welcome email explicitly tells the Miloosh affiliate to keep PayPal details updated in order to cash in. Do not substitute Payoneer merely because Tapfiliate supports it generically unless Setmore itself changes the payout instructions.",
+    notes: "Prior verified Setmore onboarding state was Step 4, payout method; first-party Setmore email identifies PayPal as the payout detail that should be kept updated.",
   },
   {
     id: "mailerlite-tipalti",
