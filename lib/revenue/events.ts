@@ -222,9 +222,23 @@ export type OutboundClickSummaryRow = {
   affiliateClicks: number;
   vendorLinkClicks: number;
   totalClicks: number;
+  testClicks: number;
 };
 
-/** Clicks grouped by product — "outbound clicks by product" for the admin report, sorted busiest first. */
+/**
+ * MILOOSH REVENUE WAR MISSION (2026-08-24) — real gap fixed: this
+ * function never excluded isTest events, so QA verification clicks
+ * (this codebase's own established ?qa=1 discipline for live-browser
+ * testing) counted identically to a real human affiliate click in the
+ * one internal report meant to answer "did a real click happen." A real
+ * first conversion could have gone unnoticed inside routine QA noise.
+ *
+ * Test events are never discarded — testClicks reports the real count
+ * transparently — they're just excluded from officialClicks/
+ * affiliateClicks/vendorLinkClicks/totalClicks, which now mean "real,
+ * non-test clicks only," matching every other "real" metric in this
+ * codebase (isSyntheticOrTestEvent, the human-classification buckets).
+ */
 export function summarizeOutboundEventsByProduct(events: StoredOutboundEvent[]): OutboundClickSummaryRow[] {
   const bySlug = new Map<string, OutboundClickSummaryRow>();
 
@@ -235,12 +249,17 @@ export function summarizeOutboundEventsByProduct(events: StoredOutboundEvent[]):
       affiliateClicks: 0,
       vendorLinkClicks: 0,
       totalClicks: 0,
+      testClicks: 0,
     };
 
-    if (event.type === "affiliate_link_click") row.affiliateClicks += 1;
-    else if (event.type === "vendor_link_click") row.vendorLinkClicks += 1;
-    else row.officialClicks += 1;
-    row.totalClicks += 1;
+    if (event.isTest) {
+      row.testClicks += 1;
+    } else {
+      if (event.type === "affiliate_link_click") row.affiliateClicks += 1;
+      else if (event.type === "vendor_link_click") row.vendorLinkClicks += 1;
+      else row.officialClicks += 1;
+      row.totalClicks += 1;
+    }
 
     bySlug.set(event.softwareSlug, row);
   }

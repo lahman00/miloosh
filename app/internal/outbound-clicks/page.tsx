@@ -42,6 +42,7 @@ export default async function OutboundClicksReportPage() {
   const totalOfficial = summary.reduce((sum, row) => sum + row.officialClicks, 0);
   const totalAffiliate = summary.reduce((sum, row) => sum + row.affiliateClicks, 0);
   const totalVendorLink = summary.reduce((sum, row) => sum + row.vendorLinkClicks, 0);
+  const totalTest = summary.reduce((sum, row) => sum + row.testClicks, 0);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -54,14 +55,20 @@ export default async function OutboundClicksReportPage() {
             Outbound clicks
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            Internal only — not indexed, not linked from the site. Every row below is a real
-            recorded click on a &quot;visit official site&quot; or vendor-link button; nothing
-            here is simulated. Tracking is currently{" "}
+            Internal only — not indexed, not linked from the site. Tracking is currently{" "}
             <strong className="text-white">{trackingEnabled ? "enabled" : "disabled"}</strong> (
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm">
               NEXT_PUBLIC_REVENUE_TRACKING_ENABLED
             </code>
             ). See <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm">docs/revenue.md</code>.
+          </p>
+          <p className="mt-3 text-sm leading-6 text-zinc-500">
+            The three totals below exclude QA/test clicks (this project&apos;s{" "}
+            <code className="rounded bg-white/10 px-1 py-0.5">?qa=1</code> convention) so a real
+            first click can&apos;t hide inside routine verification noise — test clicks are
+            reported separately, never discarded. Every row in the table below is a real,
+            individually recorded event; each is tagged <strong className="text-white">real</strong>{" "}
+            or <strong className="text-amber-300">test</strong> explicitly.
           </p>
         </header>
 
@@ -76,14 +83,14 @@ export default async function OutboundClicksReportPage() {
           </Card>
         ) : null}
 
-        <section className="mt-10 grid gap-6 sm:grid-cols-3">
+        <section className="mt-10 grid gap-6 sm:grid-cols-4">
           <Card>
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Official-site clicks
             </p>
             <p className="mt-2 text-3xl font-bold text-white">{totalOfficial}</p>
           </Card>
-          <Card>
+          <Card className="border-emerald-500/20">
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Affiliate-link clicks
             </p>
@@ -94,6 +101,12 @@ export default async function OutboundClicksReportPage() {
               Vendor-link clicks
             </p>
             <p className="mt-2 text-3xl font-bold text-white">{totalVendorLink}</p>
+          </Card>
+          <Card className="border-amber-500/20">
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+              Test clicks (excluded above)
+            </p>
+            <p className="mt-2 text-3xl font-bold text-amber-300">{totalTest}</p>
           </Card>
         </section>
 
@@ -106,19 +119,20 @@ export default async function OutboundClicksReportPage() {
             </Card>
           ) : (
             <Card className="mt-8 overflow-x-auto">
-              <div className="min-w-[640px]">
-                <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-4 border-b border-white/10 pb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              <div className="min-w-[720px]">
+                <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 border-b border-white/10 pb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
                   <span>Software</span>
                   <span>Official</span>
                   <span>Affiliate</span>
                   <span>Vendor link</span>
-                  <span>Total</span>
+                  <span>Total (real)</span>
+                  <span>Test</span>
                 </div>
                 <div className="divide-y divide-white/10">
                   {summary.map((row) => (
                     <div
                       key={row.softwareSlug}
-                      className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-4 py-3 text-sm"
+                      className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 py-3 text-sm"
                     >
                       <span className="font-medium text-white">
                         {softwareBySlug.get(row.softwareSlug)?.name ?? row.softwareSlug}
@@ -127,6 +141,7 @@ export default async function OutboundClicksReportPage() {
                       <span className="text-zinc-400">{row.affiliateClicks}</span>
                       <span className="text-zinc-400">{row.vendorLinkClicks}</span>
                       <span className="text-zinc-300">{row.totalClicks}</span>
+                      <span className="text-amber-300/80">{row.testClicks}</span>
                     </div>
                   ))}
                 </div>
@@ -147,18 +162,19 @@ export default async function OutboundClicksReportPage() {
             </Card>
           ) : (
             <Card className="mt-8 overflow-x-auto">
-              <div className="min-w-[720px]">
-                <div className="grid grid-cols-[2fr_1.5fr_2fr_2fr] gap-4 border-b border-white/10 pb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              <div className="min-w-[820px]">
+                <div className="grid grid-cols-[2fr_1.5fr_2fr_2fr_1fr] gap-4 border-b border-white/10 pb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
                   <span>Software</span>
                   <span>Link type</span>
                   <span>Source page</span>
                   <span>Timestamp (UTC)</span>
+                  <span>Traffic</span>
                 </div>
                 <div className="divide-y divide-white/10">
                   {events.slice(0, 200).map((event, index) => (
                     <div
                       key={`${event.timestamp}-${index}`}
-                      className="grid grid-cols-[2fr_1.5fr_2fr_2fr] gap-4 py-3 text-sm"
+                      className="grid grid-cols-[2fr_1.5fr_2fr_2fr_1fr] gap-4 py-3 text-sm"
                     >
                       <span className="font-medium text-white">
                         {softwareBySlug.get(event.softwareSlug)?.name ?? event.softwareSlug}
@@ -176,6 +192,11 @@ export default async function OutboundClicksReportPage() {
                       </span>
                       <span className="text-zinc-400">{event.sourcePage}</span>
                       <span className="text-zinc-400">{event.timestamp}</span>
+                      <span>
+                        <Badge className={event.isTest ? "border-amber-500/30 text-amber-300" : "border-emerald-500/30 text-emerald-300"}>
+                          {event.isTest ? "test" : "real"}
+                        </Badge>
+                      </span>
                     </div>
                   ))}
                 </div>
