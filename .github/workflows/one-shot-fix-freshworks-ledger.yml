@@ -1,0 +1,77 @@
+name: One-shot Freshworks ledger repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/one-shot-fix-freshworks-ledger.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Repair only the proven accidental Freshworks mutation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("data/affiliate/canonical-ledger.ts")
+          text = path.read_text()
+          marker = 'programId: "freshworks"'
+          start = text.index(marker)
+          end = text.index('affiliateUrl:', start)
+          block = text[start:end]
+
+          expected = {
+              'status: "REJECTED"': 'status: "PENDING_REVIEW"',
+              'statusUpdatedAt: "2026-08-24"': 'statusUpdatedAt: "2026-08-20"',
+              'decisionAt: "2026-08-24"': 'decisionAt: null',
+          }
+
+          for old in expected:
+              count = block.count(old)
+              if count != 1:
+                  raise SystemExit(f"Refusing repair: expected exactly one {old!r} in Freshworks block, found {count}")
+
+          repaired = block
+          for old, new in expected.items():
+              repaired = repaired.replace(old, new, 1)
+
+          path.write_text(text[:start] + repaired + text[end:])
+          PY
+
+          git diff -- data/affiliate/canonical-ledger.ts
+          git diff --check
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify affiliate truth tests
+        run: npx vitest run tests/lib/affiliate-integrity.test.ts tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Remove this one-shot workflow and commit repair
+        run: |
+          rm .github/workflows/one-shot-fix-freshworks-ledger.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/affiliate/canonical-ledger.ts .github/workflows/one-shot-fix-freshworks-ledger.yml
+          git commit -m "fix: restore Freshworks to evidence-backed pending state"
+          git push origin HEAD:main
