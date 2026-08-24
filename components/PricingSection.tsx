@@ -1,7 +1,13 @@
-import { DollarSign } from "lucide-react";
+import { DollarSign, ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
 import { Badge } from "@/components/Badge";
+import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { formatIsoDate } from "@/lib/date";
+import {
+  getSoftwareCtaRel,
+  getSoftwareCtaUrl,
+  shouldShowAffiliateDisclosure,
+} from "@/lib/affiliate";
 import type { Software } from "@/data/software";
 
 /**
@@ -15,6 +21,8 @@ export function PricingSection({ software }: { software: Software }) {
   const pricing = software.pricing;
   const hasBackfilledData = pricing?.status || pricing?.entryPaid || (pricing?.tiers && pricing.tiers.length > 0);
   if (!hasBackfilledData) return null;
+
+  const hasActiveAffiliatePath = shouldShowAffiliateDisclosure(software);
 
   return (
     <Card className="mt-14">
@@ -89,6 +97,30 @@ export function PricingSection({ software }: { software: Software }) {
           </a>
         ) : null}
       </div>
+
+      {hasActiveAffiliatePath ? (
+        <div className="mt-6 border-t border-white/10 pt-6">
+          <TrackedCtaLink
+            slug={software.slug}
+            href={getSoftwareCtaUrl(software)}
+            rel={getSoftwareCtaRel(software)}
+            target="_blank"
+            variant="primary"
+            className="w-full sm:w-auto"
+            ctaLocation="pricing-section-cta"
+          >
+            Check {software.name} plans
+            <ExternalLink className="h-4 w-4" />
+          </TrackedCtaLink>
+          <p className="mt-3 text-xs text-zinc-500">
+            Affiliate link. Our research and recommendations are independent of commissions. See our{" "}
+            <a href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
+              Affiliate Disclosure
+            </a>
+            .
+          </p>
+        </div>
+      ) : null}
     </Card>
   );
 }
