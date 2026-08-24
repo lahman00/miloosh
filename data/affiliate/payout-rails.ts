@@ -8,6 +8,7 @@ export type PayoutRail = {
   partnerSlugs: readonly ActivePartnerSlug[];
   readiness: "UNVERIFIED" | "OWNER_ACTION_REQUIRED" | "VERIFIED";
   ownerActionPackId: string;
+  methodGuidance: string;
   notes: string;
 };
 
@@ -40,6 +41,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-payout-rail",
+    methodGuidance: "Prefer a real local Israeli bank through Airwallex if direct deposit is desired and the dashboard accepts it; otherwise use an actually available PayPal/Stripe option. Do not enter the Payoneer USD receiving account as Airwallex direct-deposit banking: PartnerStack says foreign-currency accounts and virtual banks are unsupported for that route.",
     notes: "One network-level payout configuration should service all fourteen active PartnerStack relationships; dashboard readiness is not yet first-party verified.",
   },
   {
@@ -48,6 +50,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     partnerSlugs: ["shopify", "wix", "omnisend"],
     readiness: "UNVERIFIED",
     ownerActionPackId: "impact-payout-rail",
+    methodGuidance: "Prefer bank/EFT when the live account supports the desired currency and fees are acceptable. PayPal is a valid fallback but Impact currently documents a 2% processing fee, capped at the currency-equivalent of USD $20. Do not change working bank details casually because Impact places a security hold after updates.",
     notes: "Shopify, Wix, and Omnisend are active on the same Impact publisher rail; finance-profile readiness is not yet first-party verified.",
   },
   {
@@ -56,6 +59,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     partnerSlugs: ["setmore"],
     readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "setmore-payout-method",
+    methodGuidance: "If Setmore exposes Payoneer, the already-ready Payoneer account is an efficient existing asset. Otherwise choose only a method Setmore actually exposes. Tapfiliate's generic support for a method is not proof that Setmore enables it.",
     notes: "Prior verified Setmore onboarding state was Step 4, payout method. Do not assume Payoneer or another method unless the Setmore portal actually offers it.",
   },
   {
@@ -64,6 +68,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     partnerSlugs: ["mailerlite"],
     readiness: "UNVERIFIED",
     ownerActionPackId: "mailerlite-tipalti-payout",
+    methodGuidance: "Prefer PayPal when operationally acceptable: MailerLite's current affiliate page says it covers PayPal transaction fees, while Direct Deposit and Wire Transfer fees are borne by the affiliate. Use another method only if the live Tipalti flow or owner preference makes it preferable.",
     notes: "MailerLite is active; payout-profile completion inside its Trackdesk/Tipalti flow remains unverified.",
   },
 ] as const;
