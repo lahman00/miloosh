@@ -68,6 +68,10 @@ export default function InternalPayoutsPage() {
                     <Badge>{STATUS_LABEL[rail.readiness]}</Badge>
                   </div>
                   <p className="mt-4 text-sm leading-6 text-zinc-400">{rail.notes}</p>
+                  <div className="mt-4 rounded-lg border border-white/10 bg-white/[0.025] p-4">
+                    <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">Method guidance</p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-300">{rail.methodGuidance}</p>
+                  </div>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {rail.partnerSlugs.map((slug) => (
                       <span key={slug} className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 text-xs text-zinc-400">
@@ -96,7 +100,7 @@ export default function InternalPayoutsPage() {
           <SectionHeading eyebrow="Optional network" title="CJ stays isolated" />
           <Card className="mt-6">
             <p className="text-sm leading-6 text-zinc-400">
-              CJ is intentionally not counted among the four active-partner payout rails. Preserve the two evidenced publisher CIDs and reconcile them only for vendors whose current publisher path genuinely requires CJ. Do not create a third account.
+              CJ is intentionally not counted among the four active-partner payout rails. Preserve the two evidenced publisher CIDs and reconcile them only for vendors whose current publisher path genuinely requires CJ. CJ officially supports Payoneer for publisher payouts, but the live account must prove whether Miloosh has actually linked it. Do not create a third account.
             </p>
           </Card>
         </section>
