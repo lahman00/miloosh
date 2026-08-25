@@ -60,7 +60,7 @@ record = f'''  {{
 text = text.replace(anchor, record + anchor, 1)
 p.write_text(text)
 
-# Research registry: preserve exact known facts, leave undisclosed terms unknown.
+# Research registry
 p = Path("data/revenue/affiliate-programs.ts")
 text = p.read_text()
 if 'slug: "wrike"' in text:
@@ -89,9 +89,7 @@ record = f'''  {{
 text = text.replace(anchor, record + anchor, 1)
 p.write_text(text)
 
-# Payout rail ownership is account-specific. Both Wrike onboarding emails were sent
-# to the legacy/personal PartnerStack identity, so assign it there while keeping
-# payout readiness UNVERIFIED until the actual payout profile is verified.
+# Payout rail ownership is account-specific.
 p = Path("data/affiliate/payout-rails.ts")
 text = p.read_text()
 rail_anchor = '    partnerSlugs: ["monday", "whatconverts", "elevenlabs"],'
@@ -108,16 +106,29 @@ text = text.replace(
 )
 p.write_text(text)
 
-# Current-truth reconciliation deliberately asserts the exact active relationship count.
+# Existing current-truth tests deliberately pin account ownership and active counts.
 p = Path("tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts")
 text = p.read_text()
-count_anchor = '    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(19);'
-if count_anchor not in text:
+old = '    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(19);'
+if old not in text:
     raise SystemExit("active partner count regression anchor missing")
-text = text.replace(count_anchor, '    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(20);', 1)
-p.write_text(text)
+p.write_text(text.replace(old, '    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(20);', 1))
 
-# Regression test: this keeps the live relationship and exact issued link from silently regressing.
+p = Path("tests/lib/affiliate-money-matrix-readiness.test.ts")
+text = p.read_text()
+old = '    expect(matrix).toHaveLength(19);'
+if old not in text:
+    raise SystemExit("money matrix count anchor missing")
+p.write_text(text.replace(old, '    expect(matrix).toHaveLength(20);', 1))
+
+p = Path("tests/lib/payout-rails.test.ts")
+text = p.read_text()
+old = '    expect(personal?.partnerSlugs).toEqual(["monday", "whatconverts", "elevenlabs"]);'
+if old not in text:
+    raise SystemExit("personal payout rail regression anchor missing")
+p.write_text(text.replace(old, '    expect(personal?.partnerSlugs).toEqual(["monday", "whatconverts", "elevenlabs", "wrike"]);', 1))
+
+# Dedicated Wrike regression test.
 p = Path("tests/lib/wrike-affiliate-activation.test.ts")
 if p.exists():
     raise SystemExit("Wrike activation test already exists")
