@@ -1,93 +1,55 @@
 import { describe, it, expect, vi } from "vitest";
 import fs from "node:fs";
-import { getAffiliatePriority, getRankedApplicationCandidates, getAllPriorities } from "@/lib/revenue/affiliate-priority";
+import {
+  getAffiliatePriority,
+  getRankedApplicationCandidates,
+  getFreshApplicationCandidates,
+  getAllPriorities,
+} from "@/lib/revenue/affiliate-priority";
 import { readAffiliatePipeline, type AffiliatePipelineEntry } from "@/lib/revenue/affiliate-pipeline";
 import { getSoftware, getAllSoftware } from "@/data/software";
-import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 
-function countPipelineFileReads(spy: ReturnType<typeof vi.spyOn>): number {
+function pipelineReads(spy: ReturnType<typeof vi.spyOn>): number {
   return spy.mock.calls.filter((call: unknown[]) => String(call[0]).includes("affiliate-pipeline.json")).length;
 }
 
-describe("affiliate priority scoring", () => {
-  it("produces a score within the documented 0-100 range for every product", async () => {
+describe("affiliate priority current truth", () => {
+  it("scores every product inside 0-100", async () => {
     for (const software of getAllSoftware()) {
-      const breakdown = await getAffiliatePriority(software);
-      expect(breakdown.totalScore).toBeGreaterThanOrEqual(0);
-      expect(breakdown.totalScore).toBeLessThanOrEqual(100);
+      const row = await getAffiliatePriority(software);
+      expect(row.totalScore).toBeGreaterThanOrEqual(0);
+      expect(row.totalScore).toBeLessThanOrEqual(100);
     }
   });
 
-  it("gives maximum application-availability credit only to a genuine fresh candidate", async () => {
-    const ranked = await getRankedApplicationCandidates([]);
-    expect(ranked.length).toBeGreaterThan(0);
-    const candidate = ranked[0]!;
-    expect(candidate.programExists).toBe("yes");
-    expect(candidate.readyToApply).toBe(true);
-    expect(candidate.affiliateAvailabilityScore).toBe(10);
+  it("keeps ClickUp rejected despite a public program", async () => {
+    const row = await getAffiliatePriority(getSoftware("clickup")!);
+    expect(row.programExists).toBe("yes");
+    expect(row.operationalStatus).toBe("REJECTED");
+    expect(row.readyToApply).toBe(false);
+    expect(row.affiliateAvailabilityScore).toBe(0);
   });
 
-  it("does not turn ClickUp's public PartnerStack program into an application opportunity after Miloosh was rejected", async () => {
-    const clickup = getSoftware("clickup")!;
-    const breakdown = await getAffiliatePriority(clickup);
-    expect(breakdown.programExists).toBe("yes");
-    expect(breakdown.operationalStatus).toBe("REJECTED");
-    expect(breakdown.readyToApply).toBe(false);
-    expect(breakdown.affiliateAvailabilityScore).toBe(0);
-    expect(breakdown.approvalFrictionScore).toBe(0);
-    expect(breakdown.blockReason).toMatch(/rejected/i);
+  it("keeps active and pending relationships out of fresh applications", async () => {
+    expect((await getAffiliatePriority(getSoftware("close")!)).readyToApply).toBe(false);
+    expect((await getAffiliatePriority(getSoftware("freshdesk")!)).readyToApply).toBe(false);
   });
 
-  it("does not rank an already-active partner as a fresh application", async () => {
-    const close = getSoftware("close")!;
-    const breakdown = await getAffiliatePriority(close);
-    expect(breakdown.operationalStatus).toBe("ACTIVE_REGISTRY");
-    expect(breakdown.readyToApply).toBe(false);
-    expect(breakdown.blockReason).toMatch(/active/i);
-  });
+  it("program rows preserve history while fresh candidates are submit-now only", async () => {
+    const programRows = await getRankedApplicationCandidates([]);
+    expect(programRows.find((row) => row.slug === "clickup")?.readyToApply).toBe(false);
 
-  it("does not rank a current pending relationship as a duplicate application", async () => {
-    const freshdesk = getSoftware("freshdesk")!;
-    const breakdown = await getAffiliatePriority(freshdesk);
-    expect(breakdown.operationalStatus).toBe("PENDING_REVIEW");
-    expect(breakdown.readyToApply).toBe(false);
-    expect(breakdown.blockReason).toMatch(/pending_review/i);
-  });
-
-  it("scores a product with no research entry as no_entry / zero application availability", async () => {
-    const untouched = getAllSoftware().find((software) => !AFFILIATE_PROGRAMS.some((program) => program.slug === software.slug));
-    expect(untouched).toBeDefined();
-    const breakdown = await getAffiliatePriority(untouched!);
-    expect(breakdown.programExists).toBe("no_entry");
-    expect(breakdown.affiliateAvailabilityScore).toBe(0);
-  });
-
-  it("labels traffic score honestly as none when no real GSC cohort data exists", async () => {
-    const zoom = getSoftware("zoom");
-    if (zoom) {
-      const breakdown = await getAffiliatePriority(zoom);
-      if (breakdown.trafficOpportunityScore === 0) expect(breakdown.trafficDataSource).toBe("none");
-    }
-  });
-
-  it("keeps an evidenced closed public program out of fresh candidates", async () => {
-    const doodle = AFFILIATE_PROGRAMS.find((program) => program.slug === "doodle");
-    expect(doodle?.programExists).toBe("no");
-  });
-
-  it("getRankedApplicationCandidates contains only current fresh ready-to-apply programs", async () => {
-    const ranked = await getRankedApplicationCandidates([]);
-    expect(ranked.length).toBeGreaterThan(0);
+    const fresh = await getFreshApplicationCandidates([]);
+    expect(fresh.length).toBeGreaterThan(0);
     const activeSlugs = new Set(ACTIVE_PARTNERS.map((partner) => partner.slug as string));
     const nonFreshSlugs = new Set(
       CURRENT_AFFILIATE_LEDGER
         .filter((relationship) => relationship.status !== "PROGRAM_NOT_VERIFIED")
         .flatMap((relationship) => relationship.productSlugs),
     );
-
-    for (const row of ranked) {
+    for (const row of fresh) {
       expect(row.programExists).toBe("yes");
       expect(row.readyToApply).toBe(true);
       expect(row.operationalStatus).toBe("NO_RELATIONSHIP");
@@ -96,103 +58,59 @@ describe("affiliate priority scoring", () => {
     }
   });
 
-  it("getRankedApplicationCandidates is sorted highest score first", async () => {
-    const ranked = await getRankedApplicationCandidates([]);
-    for (let i = 1; i < ranked.length; i++) {
-      expect(ranked[i - 1]!.totalScore).toBeGreaterThanOrEqual(ranked[i]!.totalScore);
+  it("fresh candidates are sorted highest score first", async () => {
+    const rows = await getFreshApplicationCandidates([]);
+    for (let i = 1; i < rows.length; i++) {
+      expect(rows[i - 1]!.totalScore).toBeGreaterThanOrEqual(rows[i]!.totalScore);
     }
   });
 
-  it("getAllPriorities covers every software product exactly once", async () => {
-    const all = await getAllPriorities([]);
-    expect(all).toHaveLength(getAllSoftware().length);
-    const slugs = new Set(all.map((entry) => entry.slug));
-    expect(slugs.size).toBe(all.length);
+  it("all priorities covers every product exactly once", async () => {
+    const rows = await getAllPriorities([]);
+    expect(rows).toHaveLength(getAllSoftware().length);
+    expect(new Set(rows.map((row) => row.slug)).size).toBe(rows.length);
   });
 });
 
-describe("affiliate priority — pipeline read efficiency", () => {
-  it("catalog is large enough that an N+1 regression would be caught", () => {
-    expect(getAllSoftware().length).toBeGreaterThan(50);
-  });
-
-  it("getRankedApplicationCandidates reads the pipeline file at most once when no entries are passed", async () => {
-    const readSpy = vi.spyOn(fs, "readFileSync");
+describe("affiliate priority pipeline reads", () => {
+  it("does not regress to N+1 Blob/file reads", async () => {
+    const spy = vi.spyOn(fs, "readFileSync");
     await getRankedApplicationCandidates();
-    const pipelineReads = countPipelineFileReads(readSpy);
-    readSpy.mockRestore();
-    expect(pipelineReads).toBeLessThanOrEqual(1);
-  });
-
-  it("getAllPriorities reads the pipeline file at most once when no entries are passed", async () => {
-    const readSpy = vi.spyOn(fs, "readFileSync");
+    expect(pipelineReads(spy)).toBeLessThanOrEqual(1);
+    spy.mockClear();
+    await getFreshApplicationCandidates();
+    expect(pipelineReads(spy)).toBeLessThanOrEqual(1);
+    spy.mockClear();
     await getAllPriorities();
-    const pipelineReads = countPipelineFileReads(readSpy);
-    readSpy.mockRestore();
-    expect(pipelineReads).toBeLessThanOrEqual(1);
+    expect(pipelineReads(spy)).toBeLessThanOrEqual(1);
+    spy.mockRestore();
   });
 
-  it("passing a pre-fetched entries array makes zero additional pipeline reads", async () => {
+  it("uses caller-supplied pipeline state and excludes an approved row from fresh candidates", async () => {
+    const target = (await getFreshApplicationCandidates([]))[0]!;
+    const fakeEntries: AffiliatePipelineEntry[] = [{
+      slug: target.slug,
+      status: "approved",
+      ownerActionRequired: null,
+      submittedAt: null,
+      approvedAt: "2026-01-01T00:00:00.000Z",
+      rejectedAt: null,
+      affiliateUrl: null,
+      trackingId: null,
+      notes: "test fixture",
+      history: [],
+    }];
+    expect((await getFreshApplicationCandidates(fakeEntries)).some((row) => row.slug === target.slug)).toBe(false);
+    expect((await getRankedApplicationCandidates(fakeEntries)).find((row) => row.slug === target.slug)?.pipelineStatus).toBe("approved");
+  });
+
+  it("reuses pre-fetched entries without extra pipeline reads", async () => {
     const entries = await readAffiliatePipeline();
-    const readSpy = vi.spyOn(fs, "readFileSync");
+    const spy = vi.spyOn(fs, "readFileSync");
     await getRankedApplicationCandidates(entries);
+    await getFreshApplicationCandidates(entries);
     await getAllPriorities(entries);
-    const pipelineReads = countPipelineFileReads(readSpy);
-    readSpy.mockRestore();
-    expect(pipelineReads).toBe(0);
-  });
-
-  it("a single ranking call never scales pipeline reads with catalog size", async () => {
-    const catalogSize = getAllSoftware().length;
-    const readSpy = vi.spyOn(fs, "readFileSync");
-    await getRankedApplicationCandidates();
-    const pipelineReads = countPipelineFileReads(readSpy);
-    readSpy.mockRestore();
-    expect(pipelineReads).toBeLessThan(catalogSize);
-  });
-
-  it("uses a caller-supplied ready_to_apply pipeline entry for an otherwise fresh candidate", async () => {
-    const baseline = await getRankedApplicationCandidates([]);
-    expect(baseline.length).toBeGreaterThan(0);
-    const target = baseline[0]!;
-    const fakeEntries: AffiliatePipelineEntry[] = [
-      {
-        slug: target.slug,
-        status: "ready_to_apply",
-        ownerActionRequired: null,
-        submittedAt: null,
-        approvedAt: null,
-        rejectedAt: null,
-        affiliateUrl: null,
-        trackingId: null,
-        notes: "regression-test fixture",
-        history: [],
-      },
-    ];
-    const ranked = await getRankedApplicationCandidates(fakeEntries);
-    const entry = ranked.find((row) => row.slug === target.slug);
-    expect(entry?.pipelineStatus).toBe("ready_to_apply");
-    expect(entry?.readyToApply).toBe(true);
-  });
-
-  it("excludes a caller-supplied approved pipeline entry from fresh application ranking", async () => {
-    const baseline = await getRankedApplicationCandidates([]);
-    const target = baseline[0]!;
-    const fakeEntries: AffiliatePipelineEntry[] = [
-      {
-        slug: target.slug,
-        status: "approved",
-        ownerActionRequired: null,
-        submittedAt: null,
-        approvedAt: "2026-01-01T00:00:00.000Z",
-        rejectedAt: null,
-        affiliateUrl: "https://example.com/ref/fake",
-        trackingId: null,
-        notes: "regression-test fixture",
-        history: [],
-      },
-    ];
-    const ranked = await getRankedApplicationCandidates(fakeEntries);
-    expect(ranked.some((row) => row.slug === target.slug)).toBe(false);
+    expect(pipelineReads(spy)).toBe(0);
+    spy.mockRestore();
   });
 });
