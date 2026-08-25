@@ -2,6 +2,8 @@ import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partners";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import type { CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { getAffiliateProgram } from "@/data/revenue/affiliate-programs";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
@@ -62,6 +64,53 @@ const SUPERLATIVE_PATTERNS = [
   /\b(outstanding|the benchmark for|the ultimate|best overall)\b/i
 ];
 
+const TERMINAL_NEGATIVE_STATUSES = new Set<CanonicalLedgerStatus>([
+  "REJECTED",
+  "NOT_ELIGIBLE",
+  "PROGRAM_ENDED",
+]);
+
+function relationshipsForSlug(slug: string) {
+  return CURRENT_AFFILIATE_LEDGER.filter((relationship) => relationship.productSlugs.includes(slug));
+}
+
+function preferredCurrentRelationship(slug: string) {
+  const relationships = relationshipsForSlug(slug);
+  return (
+    relationships.find((relationship) => relationship.programId === slug) ??
+    relationships.find((relationship) => relationship.productSlugs.length === 1) ??
+    relationships[0] ??
+    null
+  );
+}
+
+function currentCommercialAffiliateStatus(slug: string): CommercialNode["affiliateStatus"] | null {
+  const relationships = relationshipsForSlug(slug);
+  if (relationships.length === 0) return null;
+
+  // Explicit terminal evidence must beat a broader portfolio relationship.
+  if (relationships.some((relationship) => TERMINAL_NEGATIVE_STATUSES.has(relationship.status))) return "REJECTED";
+  if (relationships.some((relationship) => relationship.status === "NO_REAL_PROGRAM_FOUND")) return "NO_PROGRAM";
+  if (relationships.some((relationship) => relationship.status === "PENDING_REVIEW")) return "PENDING";
+  if (
+    relationships.some((relationship) =>
+      ["OWNER_ACTION_REQUIRED", "BLOCKED_FORM_DEFECT", "HOLD"].includes(relationship.status)
+    )
+  ) {
+    return "OWNER_BLOCKED";
+  }
+  if (
+    relationships.some((relationship) =>
+      ["APPROVED_NEEDS_LINK", "APPROVED_NEEDS_EDITORIAL_CONTENT", "READY_AND_VERIFIED"].includes(relationship.status)
+    )
+  ) {
+    return "PROGRAM_EXISTS";
+  }
+  if (relationships.some((relationship) => relationship.status === "PROGRAM_NOT_VERIFIED")) return "UNKNOWN";
+
+  return null;
+}
+
 export function buildCommercialGraph(): CommercialGraphSummary {
   const software = getAllSoftware();
   const categories = getAllCategories();
@@ -89,8 +138,6 @@ export function buildCommercialGraph(): CommercialGraphSummary {
   }
 
   const activeSet = new Set(ACTIVE_PARTNERS.map(p => p.slug as string));
-  activeSet.add("shopify");
-  activeSet.add("wix");
 
   // Compute graph in-degree
   const comparisonsBySlug = new Map<string, string[]>();
@@ -128,8 +175,9 @@ export function buildCommercialGraph(): CommercialGraphSummary {
   const nodes: CommercialNode[] = software.map(s => {
     const active = getActivePartner(s.slug);
     const prog = getAffiliateProgram(s.slug);
+    const currentRelationship = preferredCurrentRelationship(s.slug);
     const compNeighbors = comparisonsBySlug.get(s.slug) ?? [];
-    
+
     // Count how many comparisons involving this product are monetized
     let monComps = 0;
     let dualComps = 0;
@@ -143,13 +191,15 @@ export function buildCommercialGraph(): CommercialGraphSummary {
     let affiliateStatus: CommercialNode["affiliateStatus"] = "UNKNOWN";
     if (active) {
       affiliateStatus = "ACTIVE";
-    } else if (prog) {
-      if (prog.programExists === "yes") {
-        if (prog.notes?.toLowerCase().includes("pending")) affiliateStatus = "PENDING";
-        else if (prog.notes?.toLowerCase().includes("owner action") || prog.notes?.toLowerCase().includes("blocked")) affiliateStatus = "OWNER_BLOCKED";
-        else affiliateStatus = "PROGRAM_EXISTS";
-      } else if (prog.programExists === "no") {
-        affiliateStatus = "NO_PROGRAM";
+    } else {
+      const currentStatus = currentCommercialAffiliateStatus(s.slug);
+      if (currentStatus) {
+        affiliateStatus = currentStatus;
+      } else if (prog) {
+        // Fallback for researched products that have not yet entered the
+        // operational ledger. This never overrides current ledger evidence.
+        if (prog.programExists === "yes") affiliateStatus = "PROGRAM_EXISTS";
+        else if (prog.programExists === "no") affiliateStatus = "NO_PROGRAM";
       }
     }
 
@@ -202,9 +252,12 @@ export function buildCommercialGraph(): CommercialGraphSummary {
       alternativesListed: s.alternatives?.map(a => a.slug) ?? [],
       listedAsAlternativeBy: listedAsAltBy.get(s.slug) ?? [],
       affiliateStatus,
-      affiliateNetwork: prog?.networkName ?? null,
+      affiliateNetwork: currentRelationship?.network ?? prog?.networkName ?? null,
       affiliateUrl: active?.affiliateUrl ?? null,
-      commissionModel: prog?.commissionModel ?? null,
+      commissionModel:
+        currentRelationship && currentRelationship.commissionModel !== "UNKNOWN"
+          ? currentRelationship.commissionModel
+          : prog?.commissionModel ?? null,
       gscImpressions: imp,
       gscClicks: clicks,
       avgPosition: pos,
