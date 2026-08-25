@@ -3,6 +3,7 @@ import { DollarSign, ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
 import { Badge } from "@/components/Badge";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
+import { TrackedVendorLink } from "@/components/TrackedVendorLink";
 import { formatIsoDate } from "@/lib/date";
 import {
   getSoftwareCtaRel,
@@ -93,9 +94,16 @@ export function PricingSection({ software }: { software: Software }) {
           <Badge className="border-white/10 bg-white/5 text-zinc-400">Pricing checked {formatIsoDate(pricing.lastVerified)}</Badge>
         ) : null}
         {pricing.officialSource ? (
-          <a href={pricing.officialSource} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline underline-offset-4 hover:text-zinc-300">
+          <TrackedVendorLink
+            slug={software.slug}
+            href={pricing.officialSource}
+            ctaLocation="pricing-source-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-zinc-500 underline underline-offset-4 hover:text-zinc-300"
+          >
             Official pricing page
-          </a>
+          </TrackedVendorLink>
         ) : null}
       </div>
 
@@ -110,7 +118,7 @@ export function PricingSection({ software }: { software: Software }) {
             className="w-full sm:w-auto"
             ctaLocation="pricing-section-cta"
           >
-            Check {software.name} plans
+            Visit {software.name}
             <ExternalLink className="h-4 w-4" />
           </TrackedCtaLink>
           <p className="mt-3 text-xs text-zinc-500">
