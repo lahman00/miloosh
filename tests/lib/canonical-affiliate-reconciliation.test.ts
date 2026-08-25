@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildCanonicalAffiliateState } from "@/scripts/growth/canonical-affiliate-reconciliation";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 
 const bySlug = new Map(buildCanonicalAffiliateState().records.map((record) => [record.slug, record]));
 
@@ -19,10 +20,11 @@ describe("canonical affiliate reconciliation projection", () => {
     expect(bySlug.get("coda")?.status).toBe("NO_REAL_PROGRAM_FOUND");
   });
 
-  it("does not fabricate commission values when official economics are unknown", () => {
-    // Asana's official program defers commission economics to a non-public
-    // partner guide; the committed research deliberately stores null.
-    expect(bySlug.get("asana")?.commission).toBe("UNKNOWN");
+  it("projects relationship economics verbatim instead of inventing a numeric rate", () => {
+    const relationship = CURRENT_AFFILIATE_LEDGER.find((entry) => entry.productSlugs.includes("asana"));
+    expect(relationship).toBeDefined();
+    expect(bySlug.get("asana")?.commission).toBe(relationship!.commissionModel);
+    expect(bySlug.get("asana")?.commission).not.toMatch(/\d+\s*%|\$\s*\d+/);
   });
 
   it("does not use one hard-coded evidence timestamp for every record", () => {
