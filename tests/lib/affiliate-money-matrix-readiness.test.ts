@@ -6,7 +6,7 @@ const matrix = getPartnerMoneyMatrix();
 
 describe("affiliate money matrix readiness semantics", () => {
   it("covers every active partner exactly once", () => {
-    expect(matrix).toHaveLength(19);
+    expect(matrix).toHaveLength(20);
     expect(new Set(matrix.map((row) => row.slug)).size).toBe(matrix.length);
   });
 

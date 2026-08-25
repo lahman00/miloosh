@@ -53,11 +53,11 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     id: "partnerstack-personal",
     label: "PartnerStack — legacy/personal-email account",
     accountIdentity: "lahman00@gmail.com",
-    partnerSlugs: ["monday", "whatconverts", "elevenlabs"],
+    partnerSlugs: ["monday", "whatconverts", "elevenlabs", "wrike"],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-personal-payout-rail",
     methodGuidance: "Verify the payout provider separately in this PartnerStack account. Do not assume the business-account payout configuration carries over. If direct deposit is used, the same Airwallex restrictions apply; Payoneer USD receiving details should not be used as Airwallex bank details.",
-    notes: "First-party monday.com application mail and WhatConverts/ElevenLabs affiliate mail are tied to lahman00@gmail.com. This makes it a separate account-level payout checkpoint from hello@miloosh.com.",
+    notes: "First-party monday.com application mail, WhatConverts/ElevenLabs affiliate mail, and the 2026-08-25 Wrike PartnerStack welcome/onboarding emails are tied to lahman00@gmail.com. This makes it a separate account-level payout checkpoint from hello@miloosh.com. Wrike payout readiness remains unverified until the live payout profile is checked.",
   },
   {
     id: "impact",

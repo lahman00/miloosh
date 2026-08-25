@@ -1837,6 +1837,21 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     applicationUrl: null,
     confidence: "medium",
   },
+  {
+    slug: "wrike",
+    lastVerifiedAt: "2026-08-25",
+    programExists: "yes",
+    type: "network",
+    networkName: "PartnerStack",
+    countryRestrictions: null,
+    commissionModel: "Wrike states referral partners receive a percentage of licenses sold; the acceptance email says rewards are earned when a referral becomes a qualified opportunity. No exact rate was disclosed in the available first-party evidence.",
+    recurrence: "unknown",
+    notes:
+      "ACTIVE 2026-08-25: first-party PartnerStack welcome email confirms Miloosh joined the Wrike Referral Program and issued the live personal referral URL https://get.wrike.com/wdgn8ok7i5ij. Wrike's current first-party referral page confirms the referral program and commission on referred license sales. Exact percentage, cookie window, payout threshold, and payout method remain unrecorded rather than guessed.",
+    sourceUrls: ["https://www.wrike.com/partners/referral/"],
+    applicationUrl: "https://www.wrike.com/partners/referral/",
+    confidence: "high",
+  },
 ];
 
 export function getAffiliateProgram(slug: string): AffiliateProgramInfo | undefined {
