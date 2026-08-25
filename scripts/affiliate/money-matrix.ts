@@ -8,6 +8,8 @@ console.table(getPartnerMoneyMatrix().map((row) => ({
   cta: row.cta,
   tracking: row.tracking,
   disclosure: row.disclosure,
+  technicalPathReady: row.technicalPathReady,
+  payoutReadiness: row.payoutReadiness,
   revenueReady: row.revenueReady,
   blocker: row.blocker ?? "none",
   nextAction: row.nextAction,
