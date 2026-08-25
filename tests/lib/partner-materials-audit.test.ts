@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { PARTNER_MATERIAL_AUDIT } from "@/data/affiliate/partner-materials-audit";
+import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 
 describe("partner materials audit", () => {
   it("has one record per company and no duplicate known affiliate URL", () => {
@@ -37,5 +38,18 @@ describe("partner materials audit", () => {
     // Miro: the prior "approved" pipeline status had no cited source and is contradicted by a live
     // PartnerStack check (zero results) — corrected from APPROVED BUT NEEDS LINK to HOLD / UNCLEAR.
     expect(PARTNER_MATERIAL_AUDIT.find((record) => record.slug === "miro")?.readiness).toBe("HOLD / UNCLEAR");
+  });
+
+  // MILOOSH MONEY SPRINT (2026-08-26) -- Wrike was found ACTIVE in
+  // data/affiliate/active-partners.ts and data/affiliate/canonical-ledger.ts
+  // while this audit still listed it PENDING APPROVAL alongside FreshBooks/
+  // Zendesk, a stale-drift class this test now guards against generally.
+  it("resolves every currently active partner to READY NOW with a real affiliate URL, never stale pending/rejected history", () => {
+    for (const partner of ACTIVE_PARTNERS) {
+      const record = PARTNER_MATERIAL_AUDIT.find((item) => item.slug === partner.slug);
+      expect(record, `active partner "${partner.slug}" is missing from PARTNER_MATERIAL_AUDIT`).toBeDefined();
+      expect(record!.readiness, `active partner "${partner.slug}" should read READY NOW`).toBe("READY NOW");
+      expect(record!.affiliateUrl).not.toBe("UNKNOWN");
+    }
   });
 });
