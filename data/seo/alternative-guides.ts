@@ -241,8 +241,9 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
       { heading: "Broader service operations", fit: "Zendesk is the relevant comparison for organizations evaluating wider omnichannel and service-management capability.", alternativeSlug: "zendesk", comparisonSlug: "freshdesk-vs-zendesk" },
       { heading: "AI-led conversational support", fit: "Intercom is the path when an integrated AI agent and messenger-led support model drive the decision.", alternativeSlug: "intercom", comparisonSlug: "freshdesk-vs-intercom" },
       { heading: "Simpler shared-inbox workflow", fit: "Help Scout is useful for teams prioritizing an inbox, knowledge base, and straightforward collaboration model.", alternativeSlug: "help-scout", comparisonSlug: "freshdesk-vs-help-scout" },
+      { heading: "Ecommerce-specific customer context", fit: "Gorgias is the relevant comparison for ecommerce teams that need Shopify-linked live order and customer data plus in-conversation order actions inside the support workflow.", alternativeSlug: "gorgias", comparisonSlug: "freshdesk-vs-gorgias" },
     ],
-    evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/"],
+    evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/", "https://www.gorgias.com"],
   },
   buffer: {
     diagnosis: "The current two-option section does not answer the recurring free-alternative queries or distinguish lightweight publishing from enterprise social intelligence.",
