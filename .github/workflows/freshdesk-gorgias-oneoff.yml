@@ -1,0 +1,74 @@
+name: Freshdesk Gorgias one-off
+
+on:
+  push:
+    branches:
+      - autonomous/freshdesk-gorgias-decision-guide-2026-08-25
+
+permissions:
+  contents: write
+
+jobs:
+  patch-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: autonomous/freshdesk-gorgias-decision-guide-2026-08-25
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Patch Freshdesk decision guide from existing Gorgias evidence
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("data/seo/alternative-guides.ts")
+          text = path.read_text()
+          marker = '      { heading: "Simpler shared-inbox workflow", fit: "Help Scout is useful for teams prioritizing an inbox, knowledge base, and straightforward collaboration model.", alternativeSlug: "help-scout", comparisonSlug: "freshdesk-vs-help-scout" },\n'
+          addition = '      { heading: "Ecommerce-specific customer context", fit: "Gorgias is the relevant comparison for ecommerce teams that need Shopify-linked live order and customer data plus in-conversation order actions inside the support workflow.", alternativeSlug: "gorgias", comparisonSlug: "freshdesk-vs-gorgias" },\n'
+          old_sources = '    evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/"],'
+          new_sources = '    evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/", "https://www.gorgias.com"],'
+
+          if addition not in text:
+              if marker not in text:
+                  raise SystemExit("Freshdesk Help Scout decision marker not found; refusing to guess")
+              text = text.replace(marker, marker + addition, 1)
+          if new_sources not in text:
+              if old_sources not in text:
+                  raise SystemExit("Freshdesk evidence source marker not found; refusing to guess")
+              text = text.replace(old_sources, new_sources, 1)
+          path.write_text(text)
+          PY
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Tests
+        run: npm test
+
+      - name: Validate data
+        run: npm run validate:data
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit verified editorial change
+        run: |
+          if git diff --quiet -- data/seo/alternative-guides.ts; then
+            echo "Freshdesk guide already patched."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/seo/alternative-guides.ts
+          git commit -m "seo: add Freshdesk ecommerce path to Gorgias"
+          git push origin HEAD:autonomous/freshdesk-gorgias-decision-guide-2026-08-25
