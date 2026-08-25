@@ -13,4 +13,18 @@ describe("inbound affiliate opportunities", () => {
     expect(buddyPunch?.catalogSlug).toBeNull();
     expect(ACTIVE_PARTNERS.some((partner) => partner.slug === "buddy-punch")).toBe(false);
   });
+
+  it("records Trainual as terms review and preserves the invite-versus-public-economics discrepancy", () => {
+    const trainual = INBOUND_AFFILIATE_OPPORTUNITIES.find((entry) => entry.vendorName === "Trainual");
+    expect(trainual).toBeDefined();
+    expect(trainual?.status).toBe("TERMS_REVIEW");
+    expect(trainual?.acceptedAt).toBeNull();
+    expect(trainual?.affiliateUrl).toBeNull();
+    expect(trainual?.ownerAcceptanceRequired).toBe(true);
+    expect(trainual?.catalogSlug).toBeNull();
+    expect(trainual?.headlineOffer).toContain("Tiered commissions");
+    expect(trainual?.verifiedPublicEconomics).toContain("10% recurring commission");
+    expect(trainual?.verifiedPublicEconomics).toContain("90-day cookie");
+    expect(ACTIVE_PARTNERS.some((partner) => partner.slug === "trainual")).toBe(false);
+  });
 });
