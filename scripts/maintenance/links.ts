@@ -78,9 +78,9 @@ export function collectUrls(): CollectedUrl[] {
   return [...bySlug.values()];
 }
 
-const CRITICAL_OUTCOMES: LinkCheckOutcome[] = ["not_found", "gone", "invalid_url", "connection_failure", "timeout"];
+const CRITICAL_OUTCOMES: LinkCheckOutcome[] = ["not_found", "gone", "invalid_url"];
 
-function severityForOutcome(outcome: LinkCheckOutcome): "critical" | "warning" {
+export function severityForOutcome(outcome: LinkCheckOutcome): "critical" | "warning" {
   return CRITICAL_OUTCOMES.includes(outcome) ? "critical" : "warning";
 }
 

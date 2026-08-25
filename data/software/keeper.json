@@ -69,7 +69,7 @@
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-20",
-    "official_source": "https://www.keepersecurity.com/pricing/"
+    "official_source": "https://www.keepersecurity.com/pricing/personal-and-family.html"
   },
   "pros": [
     "Rigorous zero-trust, zero-knowledge security architecture certified for SOC 2, ISO 27001, and FedRAMP",
@@ -82,10 +82,11 @@
     "Admin configuration console has a slight learning curve for non-technical managers"
   ],
   "sources": [
-    "https://www.keepersecurity.com/pricing/",
+    "https://www.keepersecurity.com/pricing/personal-and-family.html",
+    "https://www.keepersecurity.com/pricing/business-and-enterprise.html",
     "https://www.keepersecurity.com"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-08-25",
   "alternatives": [
     {
       "name": "1Password",

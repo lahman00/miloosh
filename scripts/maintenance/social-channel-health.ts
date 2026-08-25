@@ -41,6 +41,7 @@ import type { MaintenanceIssue } from "@/types/maintenance";
  * world (matches seo.ts's and social-links.ts's precedent).
  */
 const NOT_LOCALLY_VERIFIABLE: Channel[] = ["linkedin"];
+const IS_GITHUB_ACTIONS = process.env.GITHUB_ACTIONS === "true";
 
 async function run() {
   const strategy = getSocialStrategy();
@@ -51,12 +52,18 @@ async function run() {
 
   for (const [channel, isEnabled] of Object.entries(strategy.enabledChannels) as [Channel, boolean][]) {
     if (!isEnabled) continue;
+    const adapter = ADAPTERS[channel];
     if (NOT_LOCALLY_VERIFIABLE.includes(channel)) {
       skipped++;
       continue;
     }
+    // Scheduled GitHub maintenance intentionally lacks Vercel production secrets.
+    // Missing env in that runner is therefore not evidence that production is broken.
+    if (IS_GITHUB_ACTIONS && !adapter.isConfigured()) {
+      skipped++;
+      continue;
+    }
     checked++;
-    const adapter = ADAPTERS[channel];
     if (adapter.isConfigured()) continue;
 
     broken++;
@@ -71,7 +78,7 @@ async function run() {
   }
 
   return {
-    summary: `Checked ${checked} enabled channel(s) (${skipped} skipped — not locally verifiable, see module header). ${broken > 0 ? `${broken} enabled but not publishable.` : "All locally-verifiable enabled channels are publishable."}`,
+    summary: `Checked ${checked} enabled channel(s) (${skipped} skipped — not verifiable in this runtime, see module header). ${broken > 0 ? `${broken} enabled but not publishable.` : "All locally-verifiable enabled channels are publishable."}`,
     issues,
     data: { checked, broken, skipped },
   };
