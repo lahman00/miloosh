@@ -30,4 +30,10 @@ describe("current operational affiliate truth", () => {
     expect(byId("coda-affiliate")?.status).toBe("PROGRAM_ENDED");
     expect(byId("coda-affiliate")?.decisionAt).toBe("2026-04-13");
   });
+
+  it("records BigCommerce as ended and removes it from the generic Impact acquisition portfolio", () => {
+    expect(byId("bigcommerce-affiliate")?.status).toBe("PROGRAM_ENDED");
+    expect(byId("bigcommerce-affiliate")?.decisionAt).toBe("2025-05-17");
+    expect(byId("impact-portfolio")?.productSlugs ?? []).not.toContain("bigcommerce");
+  });
 });
