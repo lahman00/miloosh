@@ -12,10 +12,10 @@ import {
   Tag,
   Users,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
 import type { ComponentType } from "react";
 import type { LucideProps } from "lucide-react";
 import type { Software } from "@/data/software";
+import { TrackedVendorLink } from "@/components/TrackedVendorLink";
 
 type VendorLinkDef = {
   label: string;
@@ -29,16 +29,14 @@ type VendorLinkDef = {
  * covers the other link types (pricing, trial, docs, support,
  * integrations, status, community, deals, enterprise — the last three
  * added Sprint 20 Phase 7 as affiliate-readiness insertion points), and
- * only when at least one is actually present. Renders nothing today — no
- * entry populates software.links yet. Do not invent a URL here; leave the
- * field unset instead.
+ * only when at least one is actually present. Do not invent a URL here;
+ * leave the field unset instead.
  *
- * A client component since Sprint 9 (Task 6): each link fires a
- * best-effort outbound-click event on click — see components/TrackedCtaLink.tsx
- * for the same pattern applied to the main CTA button.
+ * Every direct vendor link now routes through TrackedVendorLink so the
+ * same visitor/session/test semantics are used everywhere. This prevents
+ * synthetic QA on a vendor source from being misreported as real traffic.
  */
 export function VendorLinksBlock({ software }: { software: Software }) {
-  const pathname = usePathname();
   const candidates: Array<{ label: string; url?: string; icon: ComponentType<LucideProps> }> = [
     { label: "Pricing", url: software.links?.pricing, icon: DollarSign },
     { label: "Free trial", url: software.links?.trial, icon: Rocket },
@@ -65,40 +63,25 @@ export function VendorLinksBlock({ software }: { software: Software }) {
         More from {software.name}
       </h3>
       <ul className="mt-3 space-y-2">
-        {links.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-zinc-300 transition hover:text-white"
-              onClick={() => {
-                const visitorId = typeof localStorage !== "undefined" ? localStorage.getItem("miloosh_vid") ?? undefined : undefined;
-                const sessionId = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("miloosh_sid") ?? undefined : undefined;
-                const ctaLocation = `vendor-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`;
-                void fetch("/api/outbound-click", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    slug: software.slug,
-                    kind: "vendor-link",
-                    sourcePage: pathname,
-                    ctaLocation,
-                    visitorId,
-                    sessionId,
-                  }),
-                  keepalive: true,
-                }).catch(() => {
-                  // Best-effort only — a tracking failure must never affect the user's click.
-                });
-              }}
-            >
-              <link.icon className="h-4 w-4 shrink-0 text-zinc-500" />
-              {link.label}
-              <ExternalLink className="h-3 w-3 shrink-0 text-zinc-600" />
-            </a>
-          </li>
-        ))}
+        {links.map((link) => {
+          const ctaLocation = `vendor-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`;
+          return (
+            <li key={link.label}>
+              <TrackedVendorLink
+                slug={software.slug}
+                href={link.url}
+                ctaLocation={ctaLocation}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-zinc-300 transition hover:text-white"
+              >
+                <link.icon className="h-4 w-4 shrink-0 text-zinc-500" />
+                {link.label}
+                <ExternalLink className="h-3 w-3 shrink-0 text-zinc-600" />
+              </TrackedVendorLink>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
