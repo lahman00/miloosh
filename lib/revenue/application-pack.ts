@@ -3,34 +3,14 @@ import { getSoftware, getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAffiliateProgram } from "@/lib/revenue/affiliate-manager";
 import type { AffiliateProgramInfo } from "@/data/revenue/affiliate-programs";
-
-/**
- * Affiliate Revenue Engine, Phase 6 — application pack generator.
- *
- * The business description and promotion strategy below are the owner's
- * own verbatim text from the 2026-08-14 directive, already used for the
- * real Pipedrive/PartnerStack application — reused as-is, never
- * paraphrased, so every application makes the same truthful claim about
- * what Miloosh is. Nothing here invents traffic, audience size, employee
- * count, or partnerships; every field an application form asks for that
- * this system can't truthfully answer is left null with a note explaining
- * why, per the owner's own non-negotiable rule against fabrication.
- */
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import type { AffiliateProgramRelationship, CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
+import { KNOWN_APPLICATION_BLOCKERS } from "@/lib/revenue/affiliate-priority";
 
 export const APPLICANT_BUSINESS_NAME = "Miloosh";
 export const APPLICANT_WEBSITE = "https://miloosh.com";
-/**
- * The email actually used on the real, already-submitted Pipedrive
- * application (recorded 2026-08-14). 2026-08-18 — the owner confirmed
- * this is the correct address; lib/site.ts's SITE_EMAIL was corrected to
- * match (it previously pointed at hello@miloosh.app, a domain with no
- * MX records). Kept as its own literal constant rather than importing
- * SITE_EMAIL — this file records what a real, already-submitted external
- * application says, which must stay stable even if the site's displayed
- * contact address changes again later.
- */
 export const APPLICANT_BUSINESS_EMAIL = "hello@miloosh.com";
-/** Recorded 2026-08-14 from the owner directly — the real Miloosh LinkedIn company page. Reused for every application pack; do not ask the owner for this again. */
 export const APPLICANT_LINKEDIN_URL: string | null = "https://www.linkedin.com/company/141163964/";
 
 export const BUSINESS_DESCRIPTION =
@@ -41,16 +21,6 @@ export const PROMOTION_STRATEGY =
 
 export const PUBLISHER_CLASSIFICATION = "Publisher of product reviews, buying guides or comparison articles.";
 
-/**
- * Resume, 2026-08-15 — three fields several application forms ask for
- * that the pack didn't have text for yet: an audience description, a
- * summary of the software Miloosh covers, and answers to the handful of
- * free-text questions that recur across most affiliate applications.
- * Computed from real catalog counts (getAllSoftware/getAllCategories),
- * never a fabricated traffic or audience-size number — same discipline
- * as BUSINESS_DESCRIPTION/PROMOTION_STRATEGY above and the trafficOpportunityScore
- * comment in lib/revenue/affiliate-priority.ts ("0 means no data, never no traffic").
- */
 export function getAudienceDescription(): string {
   const productCount = getAllSoftware().length;
   const categoryCount = getAllCategories().length;
@@ -63,12 +33,10 @@ export function getPromotedSoftwareSummary(): string {
   return `${productCount} SaaS/business-software products across ${categoryCount} categories are covered on Miloosh today, each with its own product page and relevant head-to-head comparison pages against direct competitors.`;
 }
 
-/** Real category names from data/categories — the actual list a "what niches do you cover?" field expects, not just a count. */
 export function getCategoriesNichesList(): string {
-  return getAllCategories().map((c) => c.name).join(", ");
+  return getAllCategories().map((category) => category.name).join(", ");
 }
 
-/** Answers to the free-text questions that recur across most affiliate application forms — kept separate from the fixed description/strategy fields since forms phrase the same underlying question differently. */
 export function getCommonAnswers(): Record<string, string> {
   return {
     "How will you promote us?": PROMOTION_STRATEGY,
@@ -94,22 +62,81 @@ export type ApplicationPack = {
   commonAnswers: Record<string, string>;
   program: AffiliateProgramInfo | null;
   applicationUrl: string | null;
-  /** True only when the software's own program data is confirmed ("yes") — a pack for anything else is evidence to review, not something ready to submit. */
+  currentRelationshipStatus: CanonicalLedgerStatus | "ACTIVE_REGISTRY" | "NO_RELATIONSHIP";
+  /** Static/account-truth gate. The prepare CLI adds the mutable pipeline gate before representing a pack as submit-ready. */
   readyToApply: boolean;
+  operationalBlockReason: string | null;
   missingOwnerInputs: string[];
 };
+
+function relationshipForProduct(slug: string): AffiliateProgramRelationship | null {
+  const matches = CURRENT_AFFILIATE_LEDGER.filter((relationship) => relationship.productSlugs.includes(slug));
+  if (matches.length === 0) return null;
+  return [...matches].sort(
+    (a, b) => a.productSlugs.length - b.productSlugs.length || b.statusUpdatedAt.localeCompare(a.statusUpdatedAt),
+  )[0]!;
+}
+
+function relationshipReason(relationship: AffiliateProgramRelationship): string {
+  switch (relationship.status) {
+    case "PENDING_REVIEW":
+      return "Application is already pending review; do not submit a duplicate.";
+    case "ACTIVE":
+    case "READY_AND_VERIFIED":
+      return "A verified relationship already exists; no fresh application is needed.";
+    case "APPROVED_NEEDS_LINK":
+    case "APPROVED_NEEDS_EDITORIAL_CONTENT":
+      return "The program is already approved and needs activation work, not another application.";
+    case "OWNER_ACTION_REQUIRED":
+    case "BLOCKED_FORM_DEFECT":
+    case "HOLD":
+      return relationship.ownerBlocker ?? relationship.formBlocker ?? relationship.notes ?? "Current relationship is blocked.";
+    case "REJECTED":
+      return "Miloosh was rejected. Do not reapply without genuinely new first-party evidence.";
+    case "NOT_ELIGIBLE":
+      return "Miloosh is not eligible under current first-party evidence.";
+    case "NO_REAL_PROGRAM_FOUND":
+      return "No current real publisher program is verified.";
+    case "PROGRAM_NOT_VERIFIED":
+      return "Current publisher program is not sufficiently verified.";
+    case "PROGRAM_ENDED":
+      return "The historical affiliate program ended.";
+  }
+}
 
 export function buildApplicationPack(slug: string): ApplicationPack | null {
   const software: Software | undefined = getSoftware(slug);
   if (!software) return null;
   const program = getAffiliateProgram(slug) ?? null;
+  const active = ACTIVE_PARTNERS.find((partner) => partner.slug === slug);
+  const relationship = relationshipForProduct(slug);
 
+  let currentRelationshipStatus: ApplicationPack["currentRelationshipStatus"] = "NO_RELATIONSHIP";
+  let operationalBlockReason: string | null = null;
+
+  if (active) {
+    currentRelationshipStatus = "ACTIVE_REGISTRY";
+    operationalBlockReason = "Verified active partner already exists; do not apply again.";
+  } else if (relationship) {
+    currentRelationshipStatus = relationship.status;
+    operationalBlockReason = relationshipReason(relationship);
+  } else if (KNOWN_APPLICATION_BLOCKERS[slug]) {
+    operationalBlockReason = KNOWN_APPLICATION_BLOCKERS[slug]!;
+  } else if (!program || program.programExists !== "yes") {
+    operationalBlockReason = "No confirmed current public affiliate program.";
+  } else if (!program.applicationUrl) {
+    operationalBlockReason = `Official application URL for ${software.name} is not confirmed.`;
+  } else if (program.confidence === "low") {
+    operationalBlockReason = "Public-program research confidence is too low to submit safely.";
+  }
+
+  const readyToApply = operationalBlockReason === null;
   const missingOwnerInputs: string[] = [];
   if (!APPLICANT_LINKEDIN_URL) {
-    missingOwnerInputs.push("Miloosh LinkedIn company-page URL — not recorded anywhere; provide it once, reused for every application.");
+    missingOwnerInputs.push("Miloosh LinkedIn company-page URL — provide it once and reuse it for every legitimate application.");
   }
-  if (!program || !program.applicationUrl) {
-    missingOwnerInputs.push(`Official application URL for ${software.name} — not confirmed in data/revenue/affiliate-programs.ts.`);
+  if (!program?.applicationUrl && !operationalBlockReason) {
+    missingOwnerInputs.push(`Official application URL for ${software.name} — not confirmed.`);
   }
 
   return {
@@ -127,8 +154,10 @@ export function buildApplicationPack(slug: string): ApplicationPack | null {
     categoriesNiches: getCategoriesNichesList(),
     commonAnswers: getCommonAnswers(),
     program,
-    applicationUrl: program?.applicationUrl ?? null,
-    readyToApply: program?.programExists === "yes",
+    applicationUrl: program?.applicationUrl ?? relationship?.applicationUrl ?? null,
+    currentRelationshipStatus,
+    readyToApply,
+    operationalBlockReason,
     missingOwnerInputs,
   };
 }
