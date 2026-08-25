@@ -1,5 +1,7 @@
 import { ACTIVE_PARTNERS, type ActivePartnerSlug } from "@/data/affiliate/active-partners";
 import { NETWORK_PERFORMANCE_SIGNALS, type NetworkPerformanceSignal } from "@/data/affiliate/network-performance-signals";
+import { classifySessions, type TrafficBucket } from "@/lib/analytics/human-classification";
+import type { FirstPartyEvent, OutboundClickEvent } from "@/lib/analytics/events";
 import type { OutboundClickSummaryRow } from "@/lib/revenue/events";
 
 export type GscPartnerMetric = {
@@ -56,6 +58,49 @@ export type PartnerPerformanceRow = {
   };
 };
 
+export type EligibleHumanAffiliateEvidence = {
+  clicksBySlug: Record<string, number>;
+  sessionsBySlug: Record<string, number>;
+};
+
+const ELIGIBLE_HUMAN_BUCKETS = new Set<TrafficBucket>([
+  "CONFIRMED_CLEAN",
+  "STRONG_HUMAN_EVIDENCE",
+  "PROBABLE_HUMAN",
+]);
+
+/**
+ * Derives affiliate-click evidence from the same canonical session classifier
+ * used by the rest of Miloosh analytics reporting. QA, known automation,
+ * suspicious, and unresolved sessions are excluded. This is intentionally
+ * computed from first-party analytics events rather than the legacy outbound
+ * store because analytics events carry the sessionId needed for classification.
+ */
+export function summarizeEligibleHumanAffiliateEvidence(events: readonly FirstPartyEvent[]): EligibleHumanAffiliateEvidence {
+  const classifications = classifySessions(events);
+  const eligibleSessionIds = new Set(
+    classifications.filter((classification) => ELIGIBLE_HUMAN_BUCKETS.has(classification.bucket)).map((classification) => classification.sessionId)
+  );
+  const clicksBySlug: Record<string, number> = {};
+  const sessionSetsBySlug = new Map<string, Set<string>>();
+
+  for (const event of events) {
+    if (event.type !== "outbound_click") continue;
+    const outbound = event as OutboundClickEvent;
+    if (outbound.destination !== "affiliate" || outbound.isTest || !eligibleSessionIds.has(outbound.sessionId)) continue;
+
+    clicksBySlug[outbound.softwareSlug] = (clicksBySlug[outbound.softwareSlug] ?? 0) + 1;
+    const sessions = sessionSetsBySlug.get(outbound.softwareSlug) ?? new Set<string>();
+    sessions.add(outbound.sessionId);
+    sessionSetsBySlug.set(outbound.softwareSlug, sessions);
+  }
+
+  return {
+    clicksBySlug,
+    sessionsBySlug: Object.fromEntries([...sessionSetsBySlug.entries()].map(([slug, sessions]) => [slug, sessions.size])),
+  };
+}
+
 function clampScore(value: number, max: number): number {
   return Math.max(0, Math.min(max, Math.round(value)));
 }
@@ -65,9 +110,9 @@ function clampScore(value: number, max: number): number {
  *
  * Metric classes are intentionally separate:
  * - GSC search clicks are Google-result clicks into Miloosh.
- * - eligible-human affiliate clicks require an explicit traffic classifier.
- * - legacy first-party outbound rows currently prove only `isTest !== true`;
- *   they are therefore named non-test events, NOT verified-human clicks.
+ * - eligible-human affiliate clicks require the canonical traffic classifier.
+ * - legacy first-party outbound rows prove only `isTest !== true`; they are
+ *   therefore named non-test events, NOT verified-human clicks.
  * - network click signals are vendor/network-side evidence and are never added
  *   to first-party event totals because attribution and traffic quality cannot
  *   be proven from those emails alone.
@@ -96,10 +141,6 @@ export function buildPartnerPerformanceRows(inputs: PartnerPerformanceInputs = {
     const nonTestFirstPartyAffiliateEvents = outbound?.affiliateClicks ?? 0;
     const nonTestFirstPartyOutboundEvents = outbound?.totalClicks ?? 0;
 
-    // Revenue-proximity is dominated by proven downstream movement and
-    // classifier-qualified affiliate clicks. Legacy non-test events remain a
-    // useful first-party signal, but get deliberately less weight because they
-    // do not prove a human session on their own.
     const scoreBreakdown = {
       eligibleHumanAffiliateClicks: clampScore((eligibleHumanAffiliateClicks ?? 0) * 16, 48),
       nonTestFirstPartyAffiliateEvents: clampScore(nonTestFirstPartyAffiliateEvents * 7, 28),
