@@ -141,6 +141,43 @@ text = text.replace(
 )
 p.write_text(text)
 
+# Update the regression test to encode the same runtime distinction. In GitHub Actions,
+# absent Vercel secrets are intentionally unverifiable and must not be flagged. In a
+# runtime that can actually resolve adapters, the strict broken-channel assertion remains.
+p = Path("tests/lib/social-channel-health.test.ts")
+text = p.read_text()
+old = '''  it("flags any enabled, locally-verifiable channel whose adapter reports itself unconfigured", async () => {
+    const strategy = getSocialStrategy();
+    const report = await executeSocialChannelHealthAgent();
+    const flaggedChannels = new Set(report.issues.map((i) => i.location));
+
+    for (const [channel, enabled] of Object.entries(strategy.enabledChannels) as [Channel, boolean][]) {
+      if (!enabled || channel === "linkedin") continue;
+      const isConfigured = ADAPTERS[channel].isConfigured();
+      expect(flaggedChannels.has(channel)).toBe(!isConfigured);
+    }
+  });'''
+new = '''  it("flags broken enabled channels only when their configuration is verifiable in this runtime", async () => {
+    const strategy = getSocialStrategy();
+    const report = await executeSocialChannelHealthAgent();
+    const flaggedChannels = new Set(report.issues.map((i) => i.location));
+    const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+
+    for (const [channel, enabled] of Object.entries(strategy.enabledChannels) as [Channel, boolean][]) {
+      if (!enabled || channel === "linkedin") continue;
+      const isConfigured = ADAPTERS[channel].isConfigured();
+      if (isGitHubActions && !isConfigured) {
+        expect(flaggedChannels.has(channel)).toBe(false);
+        continue;
+      }
+      expect(flaggedChannels.has(channel)).toBe(!isConfigured);
+    }
+  });'''
+if old not in text:
+    raise SystemExit("social channel health regression anchor missing")
+text = text.replace(old, new, 1)
+p.write_text(text)
+
 p = Path(".github/workflows/maintenance.yml")
 text = p.read_text()
 if "uses: actions/checkout@v4" not in text or "uses: actions/setup-node@v4" not in text:
