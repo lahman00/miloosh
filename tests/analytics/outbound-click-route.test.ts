@@ -2,7 +2,8 @@ import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest } from "next/server";
-import { POST } from "@/app/api/outbound-click/route";
+import { POST, __test__ } from "@/app/api/outbound-click/route";
+import { getSoftware } from "@/data/software";
 import { getOutboundEvents } from "@/lib/revenue/events";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
 
@@ -83,14 +84,23 @@ describe("POST /api/outbound-click — legacy and first-party pipelines agree on
   });
 
   it("a vendor-link click also propagates isTest to both pipelines", async () => {
-    await post({ slug: "notion", kind: "vendor-link", sourcePage: "/software/notion", visitorId: "v_vendor_qa", sessionId: "s_vendor_qa", isTest: true });
+    await post({ slug: "pipedrive", kind: "vendor-link", sourcePage: "/software/pipedrive", ctaLocation: "pricing-source-link", visitorId: "v_vendor_qa", sessionId: "s_vendor_qa", isTest: true });
 
     const legacy = await getOutboundEvents();
-    expect(legacy.find((e) => e.softwareSlug === "notion")?.isTest).toBe(true);
+    const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
+    expect(legacyEvent?.isTest).toBe(true);
+    expect(legacyEvent?.url).toBe("https://www.pipedrive.com/en/pricing");
 
     const firstParty = await getAllFirstPartyEvents();
-    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "notion");
+    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
     expect(fpEvent?.isTest).toBe(true);
+    expect(fpEvent && "url" in fpEvent ? fpEvent.url : null).toBe("https://www.pipedrive.com/en/pricing");
+  });
+
+  it("resolves vendor destinations only from canonical server-side data", () => {
+    const pipedrive = getSoftware("pipedrive")!;
+    expect(__test__.resolveVendorLinkUrl(pipedrive, "pricing-source-link")).toBe("https://www.pipedrive.com/en/pricing");
+    expect(__test__.resolveVendorLinkUrl(pipedrive, "made-up-client-location")).toBe(pipedrive.website);
   });
 
   it("never actually navigates anywhere or hits a real vendor endpoint — this route only records an event", async () => {
