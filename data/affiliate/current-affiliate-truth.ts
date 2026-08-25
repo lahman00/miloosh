@@ -12,29 +12,6 @@ import {
  */
 const replacements: readonly AffiliateProgramRelationship[] = [
   {
-    programId: "close",
-    programName: "Close Affiliate Program",
-    network: "PartnerStack / Close",
-    productSlugs: ["close"],
-    status: "ACTIVE",
-    statusUpdatedAt: "2026-08-25",
-    applicationSubmittedAt: "2026-08-18",
-    decisionAt: "2026-08-21",
-    affiliateUrl: "https://refer.close.com/0alqdg4so8rm",
-    commissionModel: "Per current Close PartnerStack program terms; exact current rate not recorded in durable evidence",
-    cookieWindow: null,
-    evidence: [
-      "data/affiliate/active-partners.ts",
-      "First-party Close/PartnerStack email dated 2026-08-24 containing the exact referral URL",
-      "First-party Close PartnerStack message dated 2026-08-24 confirming content publishers are not eligible for the Close Partner Directory",
-    ],
-    ownerBlocker: null,
-    formBlocker: null,
-    eligibility: "Approved affiliate/referral partner. Content publishers are not eligible for Close Partner Directory listings.",
-    applicationUrl: null,
-    notes: "Affiliate relationship remains active. Do not propose or submit a Close Partner Directory listing for Miloosh; Close confirmed that content publishers are not eligible for that directory.",
-  },
-  {
     programId: "shift4shop",
     programName: "Shift4Shop Affiliate Program",
     network: "Awin",
@@ -185,6 +162,19 @@ export const CURRENT_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] =
           ...relationship,
           productSlugs: relationship.productSlugs.filter((slug) => slug !== "bigcommerce"),
           notes: `${relationship.notes} BigCommerce is excluded from this portfolio because its affiliate program ended on 2025-05-17.`,
+        };
+      }
+
+      if (relationship.programId === "close") {
+        return {
+          ...relationship,
+          statusUpdatedAt: "2026-08-25",
+          evidence: [
+            ...relationship.evidence,
+            "First-party Close PartnerStack message dated 2026-08-24 confirming content publishers are not eligible for the Close Partner Directory",
+          ],
+          eligibility: "Approved affiliate/referral partner. Content publishers are not eligible for Close Partner Directory listings.",
+          notes: `${relationship.notes} Close confirmed on 2026-08-24 that content publishers are not eligible for its Partner Directory. This directory restriction does not invalidate the active affiliate/referral relationship.`,
         };
       }
 
