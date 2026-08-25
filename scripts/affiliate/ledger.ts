@@ -29,6 +29,7 @@ export interface LedgerSummaryReport {
   isStatusSumConsistent: boolean;
   totalCatalogProducts: number;
   catalogProductsWithProgramRelationship: number;
+  catalogProductsWithoutProgramRelationship: number;
   activeCatalogProductsCovered: number;
   pendingCatalogProductsCovered: number;
   ownerBlockedCatalogProductsCovered: number;
@@ -67,65 +68,49 @@ export function computeLedgerSummary(): LedgerSummaryReport {
   const coveredCatalogSlugs = new Set<string>();
   const activeSlugs = new Set<string>();
   const pendingSlugs = new Set<string>();
-  const readySlugs = new Set<string>();
   const rejectedSlugs = new Set<string>();
   const formBlockedSlugs = new Set<string>();
   const ownerBlockedSlugs = new Set<string>();
   const holdSlugs = new Set<string>();
+  const explicitNoProgramSlugs = new Set<string>();
+  const explicitUnverifiedSlugs = new Set<string>();
 
   for (const prog of ledger) {
     statusBreakdown[prog.status] = (statusBreakdown[prog.status] ?? 0) + 1;
 
     for (const slug of prog.productSlugs) {
-      if (catalogSlugs.has(slug)) {
-        coveredCatalogSlugs.add(slug);
+      if (!catalogSlugs.has(slug)) continue;
+      coveredCatalogSlugs.add(slug);
 
-        if (prog.status === "ACTIVE") activeSlugs.add(slug);
-        else if (prog.status === "PENDING_REVIEW") pendingSlugs.add(slug);
-        else if (prog.status === "READY_AND_VERIFIED") readySlugs.add(slug);
-        else if (prog.status === "REJECTED") rejectedSlugs.add(slug);
-        else if (prog.status === "BLOCKED_FORM_DEFECT") formBlockedSlugs.add(slug);
-        else if (prog.status === "OWNER_ACTION_REQUIRED") ownerBlockedSlugs.add(slug);
-        else if (prog.status === "HOLD") holdSlugs.add(slug);
-      }
+      if (prog.status === "ACTIVE") activeSlugs.add(slug);
+      else if (prog.status === "PENDING_REVIEW") pendingSlugs.add(slug);
+      else if (prog.status === "REJECTED" || prog.status === "NOT_ELIGIBLE") rejectedSlugs.add(slug);
+      else if (prog.status === "BLOCKED_FORM_DEFECT") formBlockedSlugs.add(slug);
+      else if (prog.status === "OWNER_ACTION_REQUIRED") ownerBlockedSlugs.add(slug);
+      else if (prog.status === "HOLD") holdSlugs.add(slug);
+
+      if (prog.status === "NO_REAL_PROGRAM_FOUND" || prog.status === "PROGRAM_ENDED") explicitNoProgramSlugs.add(slug);
+      if (prog.status === "PROGRAM_NOT_VERIFIED") explicitUnverifiedSlugs.add(slug);
     }
   }
 
   const sumOfStatusBuckets = Object.values(statusBreakdown).reduce((a, b) => a + b, 0);
   const isStatusSumConsistent = sumOfStatusBuckets === ledger.length;
 
-  const noProgramSlugsList = [
-    "harvest", "time-doctor", "basecamp", "slite", "mattermost",
-    "git", "postgresql", "mysql", "redis", "nginx", "docker", "kubernetes", "linux",
-    "sqlite", "mongodb", "apache", "caddy", "prometheus", "grafana",
-    "open-webui", "ollama", "vllm", "tgi", "lm-studio", "localai", "flowise", "langflow",
-    "slack", "discord", "obsidian", "wordpress", "joomla", "drupal", "github",
-    "bitbucket", "confluence", "jira", "trello", "postman", "postmark", "insomnia",
-    "posthog", "plausible", "matomo", "gitlab", "deepl", "gemini", "readme",
-    "zeroheight", "craft-cms", "clockify", "google-analytics", "docusaurus", "mkdocs",
-    "read-the-docs", "things", "microsoft-onenote", "figma", "sketch", "chatgpt",
-    "claude", "midjourney", "github-copilot", "perplexity", "runway", "signal",
-    "telegram", "wave",
-    "youcanbookme", "slab", "nuclino", "knowledgeowl", "stack-overflow-for-teams",
-    "linear", "ticktick", "superhuman", "anydo", "tailscale", "opencart", "ifttt",
-    "pipedream", "rapidapi", "workos", "sentry", "render", "supabase", "firebase",
-    "circleci", "jenkins", "whimsical", "balsamiq", "marvel", "zeplin", "affinity",
-    "tettra", "ahrefs", "otter-ai", "crazy-egg", "kayako", "braze", "appfolio", "servicetitan",
-    "shopware", "kong", "elastic", "adyen", "plaid", "algolia", "datadog", "sanity",
-    "directus", "umbraco", "heap", "fullstory", "cloudflare", "snyk", "wiz", "crowdstrike",
-    "auth0", "okta", "contentful", "storyblok", "strapi", "swaggerhub", "zendesk", "wrike"
-  ].filter(s => catalogSlugs.has(s));
+  // Absence of a relationship is UNKNOWN, never evidence that a vendor has no
+  // program. The old implementation maintained a large hand-written
+  // "noProgram" list and therefore converted stale research into false
+  // certainty. Current truth is deliberately conservative.
+  const noRelationshipSlugs = software
+    .map((entry) => entry.slug)
+    .filter((slug) => !coveredCatalogSlugs.has(slug));
 
-  const noProgramSlugs = new Set(noProgramSlugsList);
-  for (const s of noProgramSlugs) coveredCatalogSlugs.add(s);
+  const unverifiedSlugs = Array.from(new Set([...explicitUnverifiedSlugs, ...noRelationshipSlugs])).sort();
+  const noProgramSlugs = [...explicitNoProgramSlugs].sort();
 
-  const unverifiedSlugs: string[] = [];
-  for (const s of software) {
-    if (!coveredCatalogSlugs.has(s.slug)) unverifiedSlugs.push(s.slug);
-  }
-
-  const catalogProductsWithProgramRelationship = coveredCatalogSlugs.size - noProgramSlugs.size;
-  const sumOfCatalogCoverageBuckets = catalogProductsWithProgramRelationship + noProgramSlugs.size + unverifiedSlugs.length;
+  const catalogProductsWithProgramRelationship = coveredCatalogSlugs.size;
+  const catalogProductsWithoutProgramRelationship = noRelationshipSlugs.length;
+  const sumOfCatalogCoverageBuckets = catalogProductsWithProgramRelationship + catalogProductsWithoutProgramRelationship;
   const isCatalogCoverageExhaustive = sumOfCatalogCoverageBuckets === software.length;
 
   return {
@@ -136,17 +121,18 @@ export function computeLedgerSummary(): LedgerSummaryReport {
     isStatusSumConsistent,
     totalCatalogProducts: software.length,
     catalogProductsWithProgramRelationship,
+    catalogProductsWithoutProgramRelationship,
     activeCatalogProductsCovered: activeSlugs.size,
     pendingCatalogProductsCovered: pendingSlugs.size,
     ownerBlockedCatalogProductsCovered: ownerBlockedSlugs.size,
     formBlockedCatalogProductsCovered: formBlockedSlugs.size,
     rejectedCatalogProductsCovered: rejectedSlugs.size,
     holdCatalogProductsCovered: holdSlugs.size,
-    noProgramCatalogProductsCount: noProgramSlugs.size,
+    noProgramCatalogProductsCount: noProgramSlugs.length,
     unverifiedCatalogProductsCount: unverifiedSlugs.length,
     sumOfCatalogCoverageBuckets,
     isCatalogCoverageExhaustive,
-    noProgramSlugs: noProgramSlugsList,
+    noProgramSlugs,
     unverifiedSlugs
   };
 }
@@ -163,11 +149,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(summary, null, 2));
 
-  console.log(`================================================================`);
-  console.log(`         MILOOSH CANONICAL AFFILIATE LEDGER SUMMARY             `);
-  console.log(`================================================================\n`);
+  console.log("================================================================");
+  console.log("          MILOOSH CURRENT AFFILIATE LEDGER SUMMARY              ");
+  console.log("================================================================\n");
 
-  console.log(`SECTION A — PROGRAM RELATIONSHIPS:`);
+  console.log("SECTION A — PROGRAM RELATIONSHIPS:");
   console.log(`  Program Relationships Total:                ${summary.totalProgramRelationships}`);
   ALL_CANONICAL_STATUSES.forEach(status => {
     const count = summary.statusBreakdown[status] ?? 0;
@@ -175,17 +161,18 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   });
   console.log(`  Sum of Program Status Buckets:              ${summary.sumOfStatusBuckets} (Match: ${summary.isStatusSumConsistent})\n`);
 
-  console.log(`SECTION B — CATALOG PRODUCT COVERAGE:`);
+  console.log("SECTION B — CATALOG PRODUCT COVERAGE:");
   console.log(`  Catalog Products Total:                     ${summary.totalCatalogProducts}`);
   console.log(`  Products Covered by >=1 Relationship:       ${summary.catalogProductsWithProgramRelationship}`);
+  console.log(`  Products Without Relationship Evidence:     ${summary.catalogProductsWithoutProgramRelationship}`);
   console.log(`    - Active Monetization:                    ${summary.activeCatalogProductsCovered}`);
   console.log(`    - Pending Programs:                       ${summary.pendingCatalogProductsCovered}`);
   console.log(`    - Owner-Blocked Programs:                 ${summary.ownerBlockedCatalogProductsCovered}`);
   console.log(`    - Form-Blocked Programs:                  ${summary.formBlockedCatalogProductsCovered}`);
-  console.log(`    - Rejected Programs:                      ${summary.rejectedCatalogProductsCovered}`);
+  console.log(`    - Rejected / Not Eligible:                ${summary.rejectedCatalogProductsCovered}`);
   console.log(`    - Hold Programs:                          ${summary.holdCatalogProductsCovered}`);
-  console.log(`  Products with Verified NO_REAL_PROGRAM:     ${summary.noProgramCatalogProductsCount}`);
-  console.log(`  Products with PROGRAM_NOT_VERIFIED:         ${summary.unverifiedCatalogProductsCount}`);
-  console.log(`  Sum of Catalog Coverage Buckets:            ${summary.sumOfCatalogCoverageBuckets} (Match: ${summary.isCatalogCoverageExhaustive})\n`);
-  console.log(`================================================================`);
+  console.log(`  Explicit NO_REAL_PROGRAM / ENDED Products:  ${summary.noProgramCatalogProductsCount}`);
+  console.log(`  Unverified / No Relationship Evidence:      ${summary.unverifiedCatalogProductsCount}`);
+  console.log(`  Relationship + No-Relationship Coverage:    ${summary.sumOfCatalogCoverageBuckets} (Match: ${summary.isCatalogCoverageExhaustive})\n`);
+  console.log("================================================================");
 }
