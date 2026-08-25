@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partners";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { getPartnerMoneyMatrix } from "@/data/affiliate/money-matrix";
 import { PAYOUT_RAILS } from "@/data/affiliate/payout-rails";
 import { getAllSoftware, getSoftware } from "@/data/software";
@@ -9,6 +10,34 @@ import { getAffiliateActivation } from "@/lib/revenue/affiliate-manager";
 describe("canonical active affiliate partner registry", () => {
   it("contains a unique row for every verified active partner", () => {
     expect(new Set(ACTIVE_PARTNERS.map(({ slug }) => slug)).size).toBe(ACTIVE_PARTNERS.length);
+  });
+
+  it("keeps every active partner represented as ACTIVE in the current affiliate ledger with the same URL", () => {
+    for (const partner of ACTIVE_PARTNERS) {
+      const relationship = CURRENT_AFFILIATE_LEDGER.find(
+        (row) =>
+          row.status === "ACTIVE" &&
+          row.productSlugs.includes(partner.slug) &&
+          row.affiliateUrl === partner.affiliateUrl,
+      );
+
+      expect(
+        relationship,
+        `${partner.slug} is active but has no matching ACTIVE relationship in CURRENT_AFFILIATE_LEDGER`,
+      ).toBeDefined();
+    }
+  });
+
+  it("records the Close Partner Directory restriction without disabling the active referral relationship", () => {
+    const close = CURRENT_AFFILIATE_LEDGER.find(
+      (row) => row.programId === "close" && row.status === "ACTIVE",
+    );
+
+    expect(close).toMatchObject({
+      productSlugs: ["close"],
+      affiliateUrl: "https://refer.close.com/0alqdg4so8rm",
+    });
+    expect(close?.eligibility).toContain("not eligible for Close Partner Directory listings");
   });
 
   it.each(ACTIVE_PARTNERS.filter((partner) => partner.affiliateUrl))(

@@ -165,6 +165,19 @@ export const CURRENT_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] =
         };
       }
 
+      if (relationship.programId === "close") {
+        return {
+          ...relationship,
+          statusUpdatedAt: "2026-08-25",
+          evidence: [
+            ...relationship.evidence,
+            "First-party Close PartnerStack message dated 2026-08-24 confirming content publishers are not eligible for the Close Partner Directory",
+          ],
+          eligibility: "Approved affiliate/referral partner. Content publishers are not eligible for Close Partner Directory listings.",
+          notes: `${relationship.notes} Close confirmed on 2026-08-24 that content publishers are not eligible for its Partner Directory. This directory restriction does not invalidate the active affiliate/referral relationship.`,
+        };
+      }
+
       return relationship;
     }),
   ...replacements,
