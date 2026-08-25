@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
+import { NextRequest } from "next/server";
 import { POST } from "@/app/api/outbound-click/route";
 import { getOutboundEvents } from "@/lib/revenue/events";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
@@ -11,6 +12,10 @@ import { getAllFirstPartyEvents } from "@/lib/analytics/events";
  * first-party analytics pipeline (lib/analytics/events.ts) must agree on
  * isTest for the same click — this route writes to both. Same local-file
  * isolation discipline as tests/lib/click-tracker.test.ts.
+ *
+ * Use a real NextRequest here rather than casting a Web Request. The route
+ * intentionally relies on NextRequest.nextUrl for same-origin Referer
+ * validation; a plain Request does not provide that production contract.
  */
 
 const LEGACY_LOG_FILE = path.join(process.cwd(), "var", "outbound-clicks.json");
@@ -37,11 +42,14 @@ afterAll(() => {
 
 function post(body: unknown): Promise<Response> {
   return POST(
-    new Request("https://miloosh.com/api/outbound-click", {
+    new NextRequest("https://miloosh.com/api/outbound-click", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "content-type": "application/json",
+        referer: "https://miloosh.com/software/pipedrive",
+      },
       body: JSON.stringify(body),
-    }) as never
+    }),
   );
 }
 
@@ -86,10 +94,6 @@ describe("POST /api/outbound-click — legacy and first-party pipelines agree on
   });
 
   it("never actually navigates anywhere or hits a real vendor endpoint — this route only records an event", async () => {
-    // The route's only side effect is writing to the two local event stores;
-    // it never makes an outbound network call to a vendor/affiliate URL.
-    // Structural proof: recordOutboundEvent/recordFirstPartyEvent are the
-    // only awaited calls in the route body (see app/api/outbound-click/route.ts).
     const routeSource = fs.readFileSync(path.join(process.cwd(), "app/api/outbound-click/route.ts"), "utf-8");
     expect(routeSource).not.toMatch(/fetch\(.*(url|affiliate)/i);
   });
