@@ -9,7 +9,7 @@ on:
       - .github/scripts/maintenance-critical-cleanup.py
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   clean:
@@ -29,13 +29,17 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run maintenance
-      - name: Print maintenance totals
+      - name: Print maintenance critical findings
         run: |
-          node -e 'const s=require("./var/maintenance/latest-summary.json"); console.log("critical="+s.totalCritical+" warning="+s.totalWarning+" info="+s.totalInfo)'
-      - name: Commit verified cleanup
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/revenue/affiliate-programs.ts data/software/keeper.json scripts/maintenance/social-channel-health.ts tests/lib/social-channel-health.test.ts .github/workflows/maintenance.yml
-          git commit -m "maintenance: repair stale critical findings"
-          git push origin HEAD:autonomous/maintenance-critical-cleanup-2026-08-25
+          node - <<'NODE'
+          const fs=require('fs');
+          const s=JSON.parse(fs.readFileSync('./var/maintenance/latest-summary.json','utf8'));
+          console.log(`critical=${s.totalCritical} warning=${s.totalWarning} info=${s.totalInfo}`);
+          for (const a of s.agents.filter(x=>x.criticalCount>0)) {
+            console.log(`CRITICAL_AGENT ${a.agent}: ${a.criticalCount}`);
+            const file=`./var/maintenance/${a.agent}.json`;
+            if (!fs.existsSync(file)) continue;
+            const r=JSON.parse(fs.readFileSync(file,'utf8'));
+            for (const i of r.issues.filter(x=>x.severity==='critical')) console.log(JSON.stringify(i));
+          }
+          NODE
