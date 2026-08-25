@@ -39,9 +39,9 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     title: "2. PartnerStack payout verification — lahman00@gmail.com",
     priority: 2,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
-    productsCovered: ["monday", "whatconverts", "elevenlabs"],
+    productsCovered: ["monday", "whatconverts", "elevenlabs", "wrike"],
     comparisonsAffected: 0,
-    commissionEvidence: "First-party monday.com application mail and WhatConverts/ElevenLabs affiliate mail are tied to lahman00@gmail.com, so this account requires its own payout verification.",
+    commissionEvidence: "First-party monday.com application mail, WhatConverts/ElevenLabs affiliate mail, and the 2026-08-25 Wrike PartnerStack welcome/onboarding emails are tied to lahman00@gmail.com, so this account requires its own payout verification.",
     preFilledFields: { "Account email": "lahman00@gmail.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },
     ownerRequiredFields: [
       "Sign in to the existing PartnerStack account tied to lahman00@gmail.com; do not create another account",
