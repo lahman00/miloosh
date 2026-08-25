@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { withTrackingParams } from "@/lib/affiliate";
 
 describe("affiliate tracking parameter safety", () => {
@@ -6,6 +7,21 @@ describe("affiliate tracking parameter safety", () => {
     const url = withTrackingParams("https://www.setmore.com?ref=nge2zwi", { ref: "generic-miloosh-ref" });
     const parsed = new URL(url);
     expect(parsed.searchParams.get("ref")).toBe("nge2zwi");
+  });
+
+  it("preserves every query key already issued by every active affiliate network", () => {
+    for (const partner of ACTIVE_PARTNERS) {
+      const original = new URL(partner.affiliateUrl);
+      const existingEntries = [...original.searchParams.entries()];
+      if (existingEntries.length === 0) continue;
+
+      const attemptedOverwrite = Object.fromEntries(existingEntries.map(([key]) => [key, `MILOOSH_SHOULD_NOT_REPLACE_${key}`]));
+      const resolved = new URL(withTrackingParams(partner.affiliateUrl, attemptedOverwrite));
+
+      for (const [key, originalValue] of existingEntries) {
+        expect(resolved.searchParams.get(key), `${partner.slug} network-issued query key ${key}`).toBe(originalValue);
+      }
+    }
   });
 
   it("adds a configured parameter when the affiliate URL does not already own that key", () => {
