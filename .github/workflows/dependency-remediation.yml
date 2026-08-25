@@ -1,0 +1,65 @@
+name: One-time dependency remediation
+
+on:
+  push:
+    branches:
+      - autonomous/npm-audit-remediation-2026-08-25
+    paths:
+      - .github/workflows/dependency-remediation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  remediate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout remediation branch
+        uses: actions/checkout@v7
+        with:
+          ref: autonomous/npm-audit-remediation-2026-08-25
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install current dependencies
+        run: npm ci
+
+      - name: Upgrade Next.js within the current major
+        run: npm install next@16.3.2 eslint-config-next@16.3.2 --save-exact
+
+      - name: Apply non-breaking audit fixes to the lockfile
+        run: npm audit fix --package-lock-only
+
+      - name: Reinstall exactly from remediated lockfile
+        run: npm ci
+
+      - name: Require a clean moderate-or-higher audit
+        run: npm audit --audit-level=moderate
+
+      - name: Tests
+        run: npm test
+
+      - name: Validate data
+        run: npm run validate:data
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit dependency remediation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          if git diff --cached --quiet; then
+            echo "No dependency changes were required."
+            exit 0
+          fi
+          git commit -m "security: remediate npm audit findings"
+          git push origin HEAD:autonomous/npm-audit-remediation-2026-08-25
