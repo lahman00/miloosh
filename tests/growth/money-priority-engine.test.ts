@@ -90,6 +90,38 @@ describe("computeMoneyPriorityQueue", () => {
     expect(row.currentBlocker).toMatch(/no observed eligible-human demand/i);
   });
 
+  it("targets SERP CTR when measured impressions exist but GSC clicks are zero", () => {
+    const seo: SeoOpportunityRow[] = [
+      { relatedSoftware: ["pipedrive"], query: "pipedrive alternatives", gsc: { impressions: 280, clicks: 0, position: 35 } },
+    ];
+    const row = computeMoneyPriorityQueue([], seo).find((r) => r.slug === "pipedrive")!;
+    expect(row.revenueReadiness).toBe("PARTIAL");
+    expect(row.currentBlocker).toMatch(/gsc clicks are still zero/i);
+    expect(row.nextIntervention).toMatch(/search-result ctr and ranking/i);
+  });
+
+  it("targets landing/session capture when GSC clicks exist without qualified landing sessions", () => {
+    const seo: SeoOpportunityRow[] = [
+      { relatedSoftware: ["pipedrive"], query: "pipedrive pricing", gsc: { impressions: 100, clicks: 3, position: 18 } },
+    ];
+    const row = computeMoneyPriorityQueue([], seo).find((r) => r.slug === "pipedrive")!;
+    expect(row.currentBlocker).toMatch(/measured gsc clicks exist/i);
+    expect(row.nextIntervention).toMatch(/landing path and first-party session capture/i);
+  });
+
+  it("targets decision-path CRO when qualified visitors arrive but do not click out", () => {
+    const t0 = Date.now();
+    const events: FirstPartyEvent[] = [
+      pageView("pipedrive", "s_cro", "v_cro", new Date(t0).toISOString()),
+      engagedView("pipedrive", "s_cro", "v_cro", new Date(t0 + 8_000).toISOString()),
+    ];
+    const row = computeMoneyPriorityQueue(events, []).find((r) => r.slug === "pipedrive")!;
+    expect(row.eligibleHumanPageSessions).toBe(1);
+    expect(row.eligibleHumanAffiliateClicks).toBe(0);
+    expect(row.currentBlocker).toMatch(/none has produced a qualified affiliate click/i);
+    expect(row.nextIntervention).toMatch(/decision-path cro/i);
+  });
+
   it("reflects real comparison, guide, pricing and commission coverage", () => {
     const queue = computeMoneyPriorityQueue([], []);
     const pipedrive = queue.find((r) => r.slug === "pipedrive")!;
