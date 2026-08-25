@@ -1,0 +1,140 @@
+import { ACTIVE_PARTNERS, type ActivePartnerSlug } from "@/data/affiliate/active-partners";
+import { NETWORK_PERFORMANCE_SIGNALS, type NetworkPerformanceSignal } from "@/data/affiliate/network-performance-signals";
+import type { OutboundClickSummaryRow } from "@/lib/revenue/events";
+
+export type GscPartnerMetric = {
+  impressions: number | null;
+  searchClicks: number | null;
+  source: string;
+};
+
+export type DownstreamPartnerMetric = {
+  conversions: number | null;
+  commissions: number | null;
+  revenue: number | null;
+};
+
+export type PartnerPerformanceInputs = {
+  outboundRows?: readonly OutboundClickSummaryRow[];
+  gscBySlug?: Readonly<Record<string, GscPartnerMetric>>;
+  eligibleHumanSessionsBySlug?: Readonly<Record<string, number>>;
+  comparisonCountBySlug?: Readonly<Record<string, number>>;
+  downstreamBySlug?: Readonly<Record<string, DownstreamPartnerMetric>>;
+  networkSignals?: readonly NetworkPerformanceSignal[];
+};
+
+export type PartnerPerformanceRow = {
+  slug: ActivePartnerSlug;
+  affiliateUrl: string | null;
+  gscImpressions: number | null;
+  gscSearchClicks: number | null;
+  gscSource: string | null;
+  eligibleHumanSessions: number | null;
+  firstPartyOutboundClicks: number;
+  firstPartyAffiliateClicks: number;
+  firstPartyOfficialClicks: number;
+  firstPartyVendorLinkClicks: number;
+  firstPartyTestClicks: number;
+  networkClickActivity: boolean;
+  networkClickFloor: number | null;
+  networkSignalSummary: string | null;
+  comparisonCount: number | null;
+  conversions: number | null;
+  commissions: number | null;
+  revenue: number | null;
+  revenueProximityScore: number;
+  scoreBreakdown: {
+    firstPartyAffiliateClicks: number;
+    networkEvidence: number;
+    gscDemand: number;
+    gscSearchClicks: number;
+    comparisonCoverage: number;
+    downstreamEvidence: number;
+  };
+};
+
+function clampScore(value: number, max: number): number {
+  return Math.max(0, Math.min(max, Math.round(value)));
+}
+
+/**
+ * Canonical active-partner performance projection.
+ *
+ * Metric classes are intentionally separate:
+ * - GSC search clicks are Google-result clicks into Miloosh.
+ * - first-party outbound/affiliate clicks are Miloosh -> vendor interactions.
+ * - network click signals are vendor/network-side evidence and are never added
+ *   to first-party click totals because attribution and QA/human classification
+ *   cannot be proven from those emails alone.
+ * - unknown conversion/commission/revenue values stay null, never zero.
+ */
+export function buildPartnerPerformanceRows(inputs: PartnerPerformanceInputs = {}): PartnerPerformanceRow[] {
+  const outboundBySlug = new Map((inputs.outboundRows ?? []).map((row) => [row.softwareSlug, row]));
+  const signals = inputs.networkSignals ?? NETWORK_PERFORMANCE_SIGNALS;
+  const networkBySlug = new Map<string, NetworkPerformanceSignal>();
+
+  for (const signal of signals) {
+    const existing = networkBySlug.get(signal.partnerSlug);
+    if (!existing || (signal.clickFloor ?? -1) > (existing.clickFloor ?? -1)) {
+      networkBySlug.set(signal.partnerSlug, signal);
+    }
+  }
+
+  const rows: PartnerPerformanceRow[] = ACTIVE_PARTNERS.map((partner) => {
+    const outbound = outboundBySlug.get(partner.slug);
+    const gsc = inputs.gscBySlug?.[partner.slug];
+    const network = networkBySlug.get(partner.slug);
+    const downstream = inputs.downstreamBySlug?.[partner.slug];
+    const comparisonCount = inputs.comparisonCountBySlug?.[partner.slug] ?? null;
+
+    const firstPartyAffiliateClicks = outbound?.affiliateClicks ?? 0;
+    const firstPartyOutboundClicks = outbound?.totalClicks ?? 0;
+
+    // Revenue-proximity score is deliberately dominated by proven downstream
+    // movement, then first-party affiliate clicks. Search demand and content
+    // coverage can raise priority but can never erase a real outbound click.
+    const scoreBreakdown = {
+      firstPartyAffiliateClicks: clampScore(firstPartyAffiliateClicks * 12, 48),
+      networkEvidence: network ? clampScore(8 + (network.clickFloor ?? 0), 20) : 0,
+      gscDemand: gsc?.impressions == null ? 0 : clampScore(Math.sqrt(gsc.impressions) * 1.25, 16),
+      gscSearchClicks: gsc?.searchClicks == null ? 0 : clampScore(gsc.searchClicks * 2, 6),
+      comparisonCoverage: comparisonCount == null ? 0 : clampScore(comparisonCount, 10),
+      downstreamEvidence: clampScore(
+        (downstream?.conversions ?? 0) * 10 + (downstream?.commissions ?? 0) * 12 + ((downstream?.revenue ?? 0) > 0 ? 20 : 0),
+        30
+      ),
+    };
+
+    return {
+      slug: partner.slug,
+      affiliateUrl: partner.affiliateUrl,
+      gscImpressions: gsc?.impressions ?? null,
+      gscSearchClicks: gsc?.searchClicks ?? null,
+      gscSource: gsc?.source ?? null,
+      eligibleHumanSessions: inputs.eligibleHumanSessionsBySlug?.[partner.slug] ?? null,
+      firstPartyOutboundClicks,
+      firstPartyAffiliateClicks,
+      firstPartyOfficialClicks: outbound?.officialClicks ?? 0,
+      firstPartyVendorLinkClicks: outbound?.vendorLinkClicks ?? 0,
+      firstPartyTestClicks: outbound?.testClicks ?? 0,
+      networkClickActivity: Boolean(network),
+      networkClickFloor: network?.clickFloor ?? null,
+      networkSignalSummary: network?.summary ?? null,
+      comparisonCount,
+      conversions: downstream?.conversions ?? null,
+      commissions: downstream?.commissions ?? null,
+      revenue: downstream?.revenue ?? null,
+      revenueProximityScore: Object.values(scoreBreakdown).reduce((sum, score) => sum + score, 0),
+      scoreBreakdown,
+    };
+  });
+
+  return rows.sort(
+    (a, b) =>
+      b.revenueProximityScore - a.revenueProximityScore ||
+      b.firstPartyAffiliateClicks - a.firstPartyAffiliateClicks ||
+      (b.networkClickFloor ?? -1) - (a.networkClickFloor ?? -1) ||
+      (b.gscImpressions ?? -1) - (a.gscImpressions ?? -1) ||
+      a.slug.localeCompare(b.slug)
+  );
+}

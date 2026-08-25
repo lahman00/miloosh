@@ -31,9 +31,10 @@ export function affiliateRel(link: AffiliateLink): string {
 }
 
 /**
- * Appends tracking parameters to a URL. Intended for affiliate links only —
- * official links are never tagged. No params are applied unless explicitly
- * configured (see getConfiguredTrackingParams); nothing here is fabricated.
+ * Appends optional Miloosh tracking parameters to an affiliate URL without
+ * overwriting parameters already issued by the affiliate network. A network's
+ * own `ref`, campaign, sub-id, or similar query key is part of the verified
+ * tracking URL and therefore has precedence over generic environment config.
  */
 export function withTrackingParams(url: string, params: Record<string, string>): string {
   if (Object.keys(params).length === 0) {
@@ -43,7 +44,9 @@ export function withTrackingParams(url: string, params: Record<string, string>):
   try {
     const parsed = new URL(url);
     for (const [key, value] of Object.entries(params)) {
-      parsed.searchParams.set(key, value);
+      if (!parsed.searchParams.has(key)) {
+        parsed.searchParams.set(key, value);
+      }
     }
     return parsed.toString();
   } catch {
@@ -54,8 +57,9 @@ export function withTrackingParams(url: string, params: Record<string, string>):
 /**
  * Reads an optional affiliate tracking parameter from environment config —
  * e.g. an affiliate network's ref code. Empty unless
- * NEXT_PUBLIC_AFFILIATE_REF is set; nothing is hardcoded, so this is a
- * no-op today.
+ * NEXT_PUBLIC_AFFILIATE_REF is set; nothing is hardcoded, so this is a no-op
+ * by default. `withTrackingParams` will never overwrite a parameter already
+ * present in a network-issued affiliate URL.
  */
 export function getConfiguredTrackingParams(): Record<string, string> {
   const ref = process.env.NEXT_PUBLIC_AFFILIATE_REF;
