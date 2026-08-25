@@ -10,11 +10,9 @@ function displayMeasured(value: number | "NOT_MEASURED"): string {
   return value === "NOT_MEASURED" ? value : String(value);
 }
 
-function networkEvidenceFor(slug: string): string {
-  const signals = NETWORK_PERFORMANCE_SIGNALS.filter((signal) => signal.partnerSlug === slug);
-  if (signals.length === 0) return "none evidenced";
-  const strongest = [...signals].sort((a, b) => (b.clickFloor ?? -1) - (a.clickFloor ?? -1))[0]!;
-  return strongest.clickFloor == null ? "YES, count UNKNOWN" : `${strongest.clickFloor}+`;
+function displayNetwork(row: { networkClickActivity: boolean; networkClickFloor: number | null; networkEvidenceSummary: string | null }): string {
+  if (!row.networkClickActivity) return "none evidenced";
+  return row.networkClickFloor == null ? "YES, count UNKNOWN" : `${row.networkClickFloor}+`;
 }
 
 export default async function PartnerPerformancePage() {
@@ -24,11 +22,12 @@ export default async function PartnerPerformancePage() {
     readLatestSeoFactoryRun(),
   ]);
 
-  const queue = computeMoneyPriorityQueue(firstPartyEvents, seoRun?.opportunities ?? [], revenueLogEvents);
+  const queue = computeMoneyPriorityQueue(firstPartyEvents, seoRun?.opportunities ?? [], revenueLogEvents, NETWORK_PERFORMANCE_SIGNALS);
   const humanAffiliateClicks = queue.reduce((sum, row) => sum + row.eligibleHumanAffiliateClicks, 0);
   const uniqueHumanClickers = queue.reduce((sum, row) => sum + row.uniqueEligibleHumanClickers, 0);
   const revenueLogClicks = queue.reduce((sum, row) => sum + row.revenueLogRealAffiliateClicks, 0);
   const revenueLogTests = queue.reduce((sum, row) => sum + row.revenueLogTestClicks, 0);
+  const networkSignalPartners = queue.filter((row) => row.networkClickActivity).length;
 
   return (
     <main className="mx-auto max-w-[1600px] px-6 py-10 text-zinc-100">
@@ -41,17 +40,23 @@ export default async function PartnerPerformancePage() {
           identity and is shown independently. Network-side click emails are also separate evidence. GSC values come
           from the latest SEO Factory run when one exists. None of these click classes are added together.
         </p>
+        <p className="mt-2 max-w-5xl text-xs leading-5 text-zinc-500">
+          The priority score may award a separately-labelled network-evidence bonus because vendor-reported click
+          activity is commercially actionable. That bonus never increments first-party click counts and never proves
+          a conversion, commission or revenue event.
+        </p>
         <p className="mt-2 text-xs text-zinc-500">
           SEO source: {seoRun ? `SEO Factory run ${seoRun.generatedAt}` : "NOT_MEASURED — no SEO Factory run available"}
         </p>
       </header>
 
-      <section className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <section className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
         <Stat label="Active partners" value={String(queue.length)} />
         <Stat label="Eligible-human affiliate clicks" value={String(humanAffiliateClicks)} />
         <Stat label="Unique eligible clickers" value={String(uniqueHumanClickers)} />
         <Stat label="Separate revenue-log clicks" value={String(revenueLogClicks)} />
         <Stat label="Revenue-log test clicks" value={String(revenueLogTests)} />
+        <Stat label="Network-signal partners" value={String(networkSignalPartners)} />
       </section>
 
       <div className="overflow-x-auto rounded-xl border border-zinc-800">
@@ -60,7 +65,8 @@ export default async function PartnerPerformancePage() {
             <tr>
               <th className="px-4 py-3">Rank</th>
               <th className="px-4 py-3">Partner</th>
-              <th className="px-4 py-3">Score</th>
+              <th className="px-4 py-3">Priority score</th>
+              <th className="px-4 py-3">Network bonus</th>
               <th className="px-4 py-3">Readiness</th>
               <th className="px-4 py-3">Human aff. clicks</th>
               <th className="px-4 py-3">Unique human clickers</th>
@@ -83,12 +89,13 @@ export default async function PartnerPerformancePage() {
                 <td className="px-4 py-3 text-zinc-500">{index + 1}</td>
                 <td className="px-4 py-3 font-semibold text-white">{row.name}</td>
                 <td className="px-4 py-3 font-mono">{row.score}</td>
+                <td className="px-4 py-3 font-mono">{row.scoreBreakdown.networkEvidence ?? 0}</td>
                 <td className="px-4 py-3">{row.revenueReadiness}</td>
                 <td className="px-4 py-3 font-mono font-semibold">{row.eligibleHumanAffiliateClicks}</td>
                 <td className="px-4 py-3 font-mono">{row.uniqueEligibleHumanClickers}</td>
                 <td className="px-4 py-3 font-mono">{row.revenueLogRealAffiliateClicks}</td>
                 <td className="px-4 py-3 font-mono text-zinc-500">{row.revenueLogTestClicks}</td>
-                <td className="px-4 py-3">{networkEvidenceFor(row.slug)}</td>
+                <td className="px-4 py-3" title={row.networkEvidenceSummary ?? undefined}>{displayNetwork(row)}</td>
                 <td className="px-4 py-3 font-mono">{row.eligibleHumanPageSessions}</td>
                 <td className="px-4 py-3 font-mono">{displayMeasured(row.gscImpressions)}</td>
                 <td className="px-4 py-3 font-mono">{displayMeasured(row.gscClicks)}</td>
@@ -106,8 +113,8 @@ export default async function PartnerPerformancePage() {
       <p className="mt-5 text-xs leading-5 text-zinc-500">
         Revenue-log clicks are non-test events from the separate legacy revenue sink. They are not treated as
         eligible-human evidence because that sink intentionally stores no visitorId/sessionId. Vendor/network click
-        signals are not merged with either first-party store. Conversion, commission and revenue remain unverified
-        until first-party network evidence exists.
+        signals remain separate evidence. Conversion, commission and revenue remain unverified until first-party
+        network evidence exists.
       </p>
     </main>
   );
