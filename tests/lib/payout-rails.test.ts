@@ -40,4 +40,20 @@ describe("payout rail integrity", () => {
       "quickbooks-online",
     ]);
   });
+
+  // MILOOSH MONEY SPRINT (2026-08-26) -- Wrike was added to PAYOUT_RAILS's
+  // partnerstack-personal.partnerSlugs but the linked owner action pack's
+  // productsCovered was never updated, so the owner-facing checklist for
+  // that account silently omitted it. Guards every rail with a real
+  // (non-CJ) active-partner scope against this exact class of drift.
+  it("keeps every active-partner payout rail's owner action pack productsCovered in sync with partnerSlugs", () => {
+    const ownerPacksById = new Map(OWNER_ACTION_PACKS.map((pack) => [pack.id, pack]));
+    for (const rail of PAYOUT_RAILS) {
+      const pack = ownerPacksById.get(rail.ownerActionPackId);
+      expect(pack, `rail "${rail.id}" has no linked owner action pack`).toBeDefined();
+      expect([...pack!.productsCovered].sort(), `rail "${rail.id}" vs owner action pack "${pack!.id}"`).toEqual(
+        [...rail.partnerSlugs].sort(),
+      );
+    }
+  });
 });

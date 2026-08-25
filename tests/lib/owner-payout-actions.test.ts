@@ -28,7 +28,9 @@ describe("owner payout action queue", () => {
     const personal = OWNER_ACTION_PACKS.find((pack) => pack.id === "partnerstack-personal-payout-rail");
     expect(hello?.preFilledFields["Account email"]).toBe("hello@miloosh.com");
     expect(personal?.preFilledFields["Account email"]).toBe("lahman00@gmail.com");
-    expect(personal?.productsCovered).toEqual(["monday", "whatconverts", "elevenlabs"]);
+    // Wrike joined this account 2026-08-25 (see data/affiliate/payout-rails.ts);
+    // this checklist must name it too so the owner doesn't miss verifying it.
+    expect(personal?.productsCovered).toEqual(["monday", "whatconverts", "elevenlabs", "wrike"]);
   });
 
   it("keeps CJ optional and restricted to current CJ-required targets", () => {
