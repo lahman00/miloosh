@@ -1,74 +1,57 @@
-import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
+import { NETWORK_PERFORMANCE_SIGNALS } from "@/data/affiliate/network-performance-signals";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
-import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
-import { getOutboundEvents, summarizeOutboundEventsByProduct } from "@/lib/revenue/events";
-import {
-  buildPartnerPerformanceRows,
-  summarizeEligibleHumanAffiliateEvidence,
-  type GscPartnerMetric,
-} from "@/lib/revenue/partner-performance";
+import { computeMoneyPriorityQueue } from "@/lib/growth/money-priority-engine";
+import { getOutboundEvents } from "@/lib/revenue/events";
+import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
 
 export const dynamic = "force-dynamic";
 
-function displayUnknown(value: number | null): string {
-  return value == null ? "UNKNOWN" : String(value);
+function displayMeasured(value: number | "NOT_MEASURED"): string {
+  return value === "NOT_MEASURED" ? value : String(value);
+}
+
+function networkEvidenceFor(slug: string): string {
+  const signals = NETWORK_PERFORMANCE_SIGNALS.filter((signal) => signal.partnerSlug === slug);
+  if (signals.length === 0) return "none evidenced";
+  const strongest = [...signals].sort((a, b) => (b.clickFloor ?? -1) - (a.clickFloor ?? -1))[0]!;
+  return strongest.clickFloor == null ? "YES, count UNKNOWN" : `${strongest.clickFloor}+`;
 }
 
 export default async function PartnerPerformancePage() {
-  const [legacyOutboundEvents, firstPartyEvents] = await Promise.all([getOutboundEvents(), getAllFirstPartyEvents()]);
-  const outboundRows = summarizeOutboundEventsByProduct(legacyOutboundEvents);
-  const eligibleEvidence = summarizeEligibleHumanAffiliateEvidence(firstPartyEvents);
+  const [firstPartyEvents, revenueLogEvents, seoRun] = await Promise.all([
+    getAllFirstPartyEvents(),
+    getOutboundEvents(),
+    readLatestSeoFactoryRun(),
+  ]);
 
-  const comparisonCountBySlug: Record<string, number> = {};
-  for (const [a, b] of PUBLISHED_COMPARISONS) {
-    comparisonCountBySlug[a] = (comparisonCountBySlug[a] ?? 0) + 1;
-    comparisonCountBySlug[b] = (comparisonCountBySlug[b] ?? 0) + 1;
-  }
-
-  // This is intentionally labelled as a repository baseline rather than live
-  // Search Console data. Human-qualified click counts, by contrast, are
-  // derived live from first-party analytics + the canonical session classifier.
-  const gscBySlug: Record<string, GscPartnerMetric> = {};
-  for (const [slug, impressions] of Object.entries(KNOWN_GSC_IMPRESSIONS)) {
-    gscBySlug[slug] = {
-      impressions,
-      searchClicks: null,
-      source: "repository baseline (not live GSC)",
-    };
-  }
-
-  const rows = buildPartnerPerformanceRows({
-    outboundRows,
-    gscBySlug,
-    comparisonCountBySlug,
-    eligibleHumanAffiliateClicksBySlug: eligibleEvidence.clicksBySlug,
-    eligibleHumanSessionsBySlug: eligibleEvidence.sessionsBySlug,
-  });
-
-  const humanAffiliateClicks = rows.reduce((sum, row) => sum + (row.eligibleHumanAffiliateClicks ?? 0), 0);
-  const nonTestAffiliateEvents = rows.reduce((sum, row) => sum + row.nonTestFirstPartyAffiliateEvents, 0);
-  const testEvents = rows.reduce((sum, row) => sum + row.firstPartyTestEvents, 0);
-  const networkSignalPartners = rows.filter((row) => row.networkClickActivity).length;
+  const queue = computeMoneyPriorityQueue(firstPartyEvents, seoRun?.opportunities ?? [], revenueLogEvents);
+  const humanAffiliateClicks = queue.reduce((sum, row) => sum + row.eligibleHumanAffiliateClicks, 0);
+  const uniqueHumanClickers = queue.reduce((sum, row) => sum + row.uniqueEligibleHumanClickers, 0);
+  const revenueLogClicks = queue.reduce((sum, row) => sum + row.revenueLogRealAffiliateClicks, 0);
+  const revenueLogTests = queue.reduce((sum, row) => sum + row.revenueLogTestClicks, 0);
 
   return (
-    <main className="mx-auto max-w-[1500px] px-6 py-10 text-zinc-100">
+    <main className="mx-auto max-w-[1600px] px-6 py-10 text-zinc-100">
       <header className="mb-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500">Internal revenue truth</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500">Canonical revenue priority</p>
         <h1 className="mt-2 text-3xl font-bold">Partner performance</h1>
-        <p className="mt-3 max-w-4xl text-sm leading-6 text-zinc-400">
-          Metric classes stay separate by design. Human affiliate clicks are derived from first-party analytics and
-          the canonical session classifier, excluding QA, known automation, suspicious and unresolved sessions. The
-          legacy outbound store is shown separately as non-test evidence. Network click emails remain separate, and
-          unknown conversions, commissions and revenue remain UNKNOWN.
+        <p className="mt-3 max-w-5xl text-sm leading-6 text-zinc-400">
+          This page uses the same canonical Money Priority Engine as the CLI report. Human affiliate clicks come from
+          first-party analytics joined to the canonical session classifier. The separate revenue log has no session
+          identity and is shown independently. Network-side click emails are also separate evidence. GSC values come
+          from the latest SEO Factory run when one exists. None of these click classes are added together.
+        </p>
+        <p className="mt-2 text-xs text-zinc-500">
+          SEO source: {seoRun ? `SEO Factory run ${seoRun.generatedAt}` : "NOT_MEASURED — no SEO Factory run available"}
         </p>
       </header>
 
       <section className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        <Stat label="Active partners" value={String(rows.length)} />
-        <Stat label="Human-classified affiliate clicks" value={String(humanAffiliateClicks)} />
-        <Stat label="Legacy non-test affiliate events" value={String(nonTestAffiliateEvents)} />
-        <Stat label="Excluded legacy test events" value={String(testEvents)} />
-        <Stat label="Partners with network click evidence" value={String(networkSignalPartners)} />
+        <Stat label="Active partners" value={String(queue.length)} />
+        <Stat label="Eligible-human affiliate clicks" value={String(humanAffiliateClicks)} />
+        <Stat label="Unique eligible clickers" value={String(uniqueHumanClickers)} />
+        <Stat label="Separate revenue-log clicks" value={String(revenueLogClicks)} />
+        <Stat label="Revenue-log test clicks" value={String(revenueLogTests)} />
       </section>
 
       <div className="overflow-x-auto rounded-xl border border-zinc-800">
@@ -78,48 +61,42 @@ export default async function PartnerPerformancePage() {
               <th className="px-4 py-3">Rank</th>
               <th className="px-4 py-3">Partner</th>
               <th className="px-4 py-3">Score</th>
-              <th className="px-4 py-3">Human affiliate clicks</th>
-              <th className="px-4 py-3">Human click sessions</th>
-              <th className="px-4 py-3">Legacy non-test affiliate</th>
-              <th className="px-4 py-3">All legacy non-test outbound</th>
-              <th className="px-4 py-3">Legacy test</th>
+              <th className="px-4 py-3">Readiness</th>
+              <th className="px-4 py-3">Human aff. clicks</th>
+              <th className="px-4 py-3">Unique human clickers</th>
+              <th className="px-4 py-3">Revenue-log clicks</th>
+              <th className="px-4 py-3">Revenue-log tests</th>
               <th className="px-4 py-3">Network clicks</th>
+              <th className="px-4 py-3">Human page sessions</th>
               <th className="px-4 py-3">GSC impressions</th>
               <th className="px-4 py-3">GSC clicks</th>
+              <th className="px-4 py-3">GSC pos.</th>
               <th className="px-4 py-3">Comparisons</th>
-              <th className="px-4 py-3">Conversions</th>
-              <th className="px-4 py-3">Commission</th>
-              <th className="px-4 py-3">Revenue</th>
+              <th className="px-4 py-3">Guide</th>
+              <th className="px-4 py-3">Pricing CTA</th>
+              <th className="px-4 py-3">Next intervention</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-800 bg-zinc-900/40">
-            {rows.map((row, index) => (
+            {queue.map((row, index) => (
               <tr key={row.slug} className="align-top">
                 <td className="px-4 py-3 text-zinc-500">{index + 1}</td>
-                <td className="px-4 py-3 font-semibold text-white">{row.slug}</td>
-                <td className="px-4 py-3 font-mono">{row.revenueProximityScore}</td>
-                <td className="px-4 py-3 font-mono font-semibold">{displayUnknown(row.eligibleHumanAffiliateClicks)}</td>
-                <td className="px-4 py-3 font-mono">{displayUnknown(row.eligibleHumanSessions)}</td>
-                <td className="px-4 py-3 font-mono">{row.nonTestFirstPartyAffiliateEvents}</td>
-                <td className="px-4 py-3 font-mono">{row.nonTestFirstPartyOutboundEvents}</td>
-                <td className="px-4 py-3 font-mono text-zinc-500">{row.firstPartyTestEvents}</td>
-                <td className="px-4 py-3">
-                  {row.networkClickActivity ? (
-                    <span title={row.networkSignalSummary ?? undefined}>
-                      {row.networkClickFloor == null ? "YES, count UNKNOWN" : `${row.networkClickFloor}+`}
-                    </span>
-                  ) : (
-                    "none evidenced"
-                  )}
-                </td>
-                <td className="px-4 py-3 font-mono" title={row.gscSource ?? undefined}>
-                  {displayUnknown(row.gscImpressions)}
-                </td>
-                <td className="px-4 py-3 font-mono">{displayUnknown(row.gscSearchClicks)}</td>
-                <td className="px-4 py-3 font-mono">{displayUnknown(row.comparisonCount)}</td>
-                <td className="px-4 py-3">{displayUnknown(row.conversions)}</td>
-                <td className="px-4 py-3">{displayUnknown(row.commissions)}</td>
-                <td className="px-4 py-3">{displayUnknown(row.revenue)}</td>
+                <td className="px-4 py-3 font-semibold text-white">{row.name}</td>
+                <td className="px-4 py-3 font-mono">{row.score}</td>
+                <td className="px-4 py-3">{row.revenueReadiness}</td>
+                <td className="px-4 py-3 font-mono font-semibold">{row.eligibleHumanAffiliateClicks}</td>
+                <td className="px-4 py-3 font-mono">{row.uniqueEligibleHumanClickers}</td>
+                <td className="px-4 py-3 font-mono">{row.revenueLogRealAffiliateClicks}</td>
+                <td className="px-4 py-3 font-mono text-zinc-500">{row.revenueLogTestClicks}</td>
+                <td className="px-4 py-3">{networkEvidenceFor(row.slug)}</td>
+                <td className="px-4 py-3 font-mono">{row.eligibleHumanPageSessions}</td>
+                <td className="px-4 py-3 font-mono">{displayMeasured(row.gscImpressions)}</td>
+                <td className="px-4 py-3 font-mono">{displayMeasured(row.gscClicks)}</td>
+                <td className="px-4 py-3 font-mono">{displayMeasured(row.gscAvgPosition)}</td>
+                <td className="px-4 py-3 font-mono">{row.comparisonCoverage}</td>
+                <td className="px-4 py-3">{row.hasDecisionGuideCoverage ? "yes" : "no"}</td>
+                <td className="px-4 py-3">{row.hasPricingCtaCoverage ? "yes" : "no"}</td>
+                <td className="max-w-md px-4 py-3 text-zinc-300">{row.nextIntervention}</td>
               </tr>
             ))}
           </tbody>
@@ -127,10 +104,10 @@ export default async function PartnerPerformancePage() {
       </div>
 
       <p className="mt-5 text-xs leading-5 text-zinc-500">
-        Ranking uses proven downstream movement first, then classifier-qualified human affiliate clicks. Legacy
-        non-test first-party events receive lower weight, followed by network-side evidence, explicitly sourced GSC
-        demand and comparison coverage. Repository GSC values are labelled as a baseline and never presented as a
-        live Search Console pull.
+        Revenue-log clicks are non-test events from the separate legacy revenue sink. They are not treated as
+        eligible-human evidence because that sink intentionally stores no visitorId/sessionId. Vendor/network click
+        signals are not merged with either first-party store. Conversion, commission and revenue remain unverified
+        until first-party network evidence exists.
       </p>
     </main>
   );
