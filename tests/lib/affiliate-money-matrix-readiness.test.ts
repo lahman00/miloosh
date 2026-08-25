@@ -20,7 +20,7 @@ describe("affiliate money matrix readiness semantics", () => {
   });
 
   it("derives payout readiness from the canonical account-level payout profiles", () => {
-    const readinessByPartner = new Map(
+    const readinessByPartner = new Map<string, (typeof PAYOUT_RAILS)[number]["readiness"]>(
       PAYOUT_RAILS.flatMap((rail) => rail.partnerSlugs.map((slug) => [slug, rail.readiness] as const)),
     );
     for (const row of matrix) {
