@@ -19,12 +19,13 @@ describe("canonical affiliate reconciliation projection", () => {
     expect(bySlug.get("coda")?.status).toBe("NO_REAL_PROGRAM_FOUND");
   });
 
-  it("does not fabricate commission values for unknown economics", () => {
-    const records = [...bySlug.values()];
-    expect(records.some((record) => record.commission.includes("15-30%"))).toBe(false);
+  it("does not fabricate commission values when official economics are unknown", () => {
+    // Asana's official program defers commission economics to a non-public
+    // partner guide; the committed research deliberately stores null.
+    expect(bySlug.get("asana")?.commission).toBe("UNKNOWN");
   });
 
-  it("does not use the old hard-coded 2026-08-24 evidence timestamp for every record", () => {
+  it("does not use one hard-coded evidence timestamp for every record", () => {
     const timestamps = new Set([...bySlug.values()].map((record) => record.evidenceTimestamp));
     expect(timestamps.size).toBeGreaterThan(1);
   });
