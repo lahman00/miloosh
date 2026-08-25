@@ -109,6 +109,25 @@ const replacements: readonly AffiliateProgramRelationship[] = [
     applicationUrl: null,
     notes: "Do not send owner to the historical PartnerStack program.",
   },
+  {
+    programId: "bigcommerce-affiliate",
+    programName: "BigCommerce Affiliate Program",
+    network: "Historical Impact.com",
+    productSlugs: ["bigcommerce"],
+    status: "PROGRAM_ENDED",
+    statusUpdatedAt: "2026-08-25",
+    applicationSubmittedAt: null,
+    decisionAt: "2025-05-17",
+    affiliateUrl: null,
+    commissionModel: "Program ended",
+    cookieWindow: null,
+    evidence: ["Official BigCommerce Affiliate Program Closure page: program ended 2025-05-17 and tracking links were disabled"],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Affiliate program ended; no replacement program announced on the official closure page",
+    applicationUrl: null,
+    notes: "Do not route Miloosh to the historical Impact affiliate application. Re-open only on new first-party BigCommerce evidence.",
+  },
 ];
 
 export const CURRENT_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
@@ -135,6 +154,14 @@ export const CURRENT_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] =
             (slug) => !["calendly", "coda", "quickbooks-online"].includes(slug)
           ),
           notes: "Current unresolved PartnerStack category programs only. Calendly has no current program, Coda's program ended, and QuickBooks publisher acquisition routes through CJ. Later is tracked separately.",
+        };
+      }
+
+      if (relationship.programId === "impact-portfolio") {
+        return {
+          ...relationship,
+          productSlugs: relationship.productSlugs.filter((slug) => slug !== "bigcommerce"),
+          notes: `${relationship.notes} BigCommerce is excluded from this portfolio because its affiliate program ended on 2025-05-17.`,
         };
       }
 
