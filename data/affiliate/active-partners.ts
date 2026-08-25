@@ -40,8 +40,11 @@ export type ActivePartner = {
  * Close added 2026-08-21: owner supplied a verified referral URL directly
  * (previously PENDING_REVIEW with no link since the 2026-08-18 PartnerStack
  * application). Verified affiliate URL: https://refer.close.com/0alqdg4so8rm.
- * See data/affiliate/canonical-ledger.ts's "close" entry for the full note,
- * including the scope of first-party Chloe (AI sales agent) claims supported.
+ * On 2026-08-24 Close also confirmed in a first-party PartnerStack message that
+ * content publishers are NOT eligible for the Close Partner Directory. This is
+ * a directory-listing restriction only; it does not invalidate the active
+ * affiliate/referral relationship. See data/affiliate/current-affiliate-truth.ts
+ * for the operational Close relationship and restriction.
  *
  * Shopify reconciled 2026-08-24: first-party Impact email dated 2026-08-15
  * explicitly says "Shopify Affiliate Program: Application Approved" and confirms
