@@ -1,5 +1,6 @@
 import { computeMoneyPriorityQueue } from "@/lib/growth/money-priority-engine";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
+import { getOutboundEvents } from "@/lib/revenue/events";
 import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
 
 /**
@@ -20,6 +21,7 @@ import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
  */
 async function main() {
   const events = await getAllFirstPartyEvents();
+  const revenueLogEvents = await getOutboundEvents();
   const seoRun = await readLatestSeoFactoryRun();
   const seoOpportunities = seoRun?.opportunities ?? [];
 
@@ -29,14 +31,19 @@ async function main() {
     console.log(`Using SEO Factory run generated ${seoRun.generatedAt} (${seoRun.opportunities.length} opportunity rows).`);
   }
 
-  const queue = computeMoneyPriorityQueue(events, seoOpportunities);
+  const queue = computeMoneyPriorityQueue(events, seoOpportunities, revenueLogEvents);
 
-  console.log(`\n${"RANK".padEnd(5)}${"SLUG".padEnd(16)}${"SCORE".padEnd(7)}${"READINESS".padEnd(11)}${"CLICKS".padEnd(8)}${"SESSIONS".padEnd(10)}${"CMP".padEnd(5)}${"GUIDE".padEnd(7)}${"PRICE".padEnd(7)}GSC IMPR.`);
+  console.log(
+    `\n${"RANK".padEnd(5)}${"SLUG".padEnd(16)}${"SCORE".padEnd(7)}${"READINESS".padEnd(11)}${"FP-CLICKS".padEnd(10)}${"REV-LOG".padEnd(9)}${"REV-TEST".padEnd(9)}${"SESSIONS".padEnd(10)}${"CMP".padEnd(5)}${"GUIDE".padEnd(7)}${"PRICE".padEnd(7)}GSC IMPR.`,
+  );
   queue.forEach((row, i) => {
     console.log(
-      `${(i + 1).toString().padEnd(5)}${row.slug.padEnd(16)}${row.score.toString().padEnd(7)}${row.revenueReadiness.padEnd(11)}${row.uniqueEligibleHumanClickers.toString().padEnd(8)}${row.eligibleHumanPageSessions.toString().padEnd(10)}${row.comparisonCoverage.toString().padEnd(5)}${(row.hasDecisionGuideCoverage ? "yes" : "no").padEnd(7)}${(row.hasPricingCtaCoverage ? "yes" : "no").padEnd(7)}${row.gscImpressions}`,
+      `${(i + 1).toString().padEnd(5)}${row.slug.padEnd(16)}${row.score.toString().padEnd(7)}${row.revenueReadiness.padEnd(11)}${row.uniqueEligibleHumanClickers.toString().padEnd(10)}${row.revenueLogRealAffiliateClicks.toString().padEnd(9)}${row.revenueLogTestClicks.toString().padEnd(9)}${row.eligibleHumanPageSessions.toString().padEnd(10)}${row.comparisonCoverage.toString().padEnd(5)}${(row.hasDecisionGuideCoverage ? "yes" : "no").padEnd(7)}${(row.hasPricingCtaCoverage ? "yes" : "no").padEnd(7)}${row.gscImpressions}`,
     );
   });
+  console.log(
+    "\n(FP-CLICKS = eligible-human first-party affiliate clicks used in scoring. REV-LOG = real (non-test) clicks in the separate revenue log, shown for transparency only, never added to the score. REV-TEST = test clicks in that same log.)",
+  );
 
   console.log("\n--- Top 5 detail ---");
   for (const row of queue.slice(0, 5)) {

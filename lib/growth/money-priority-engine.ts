@@ -5,6 +5,7 @@ import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
 import { ALTERNATIVE_GUIDES } from "@/data/seo/alternative-guides";
 import { classifySessions } from "@/lib/analytics/human-classification";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
+import type { StoredOutboundEvent } from "@/lib/revenue/events";
 
 /**
  * MILOOSH AUTONOMOUS REVENUE COMPANY BUILD mission (2026-08-24), Phase 2 —
@@ -36,6 +37,21 @@ export type PartnerOpportunity = {
   eligibleHumanPageSessions: number;
   eligibleHumanAffiliateClicks: number;
   uniqueEligibleHumanClickers: number;
+
+  /**
+   * MILOOSH RECONCILIATION mission (2026-08-25) — a real, separate signal
+   * from lib/revenue/events.ts's non-personal click log. Deliberately
+   * NEVER merged into eligibleHumanAffiliateClicks or the score: that log
+   * carries no visitorId/sessionId, so a click recorded there cannot be
+   * joined against the human-classification buckets the way a first-party
+   * outbound_click event can. A real historical gap proved this matters:
+   * one genuine Pipedrive affiliate click (2026-08-19) exists only in
+   * this log, with no first-party twin -- the two stores are not always
+   * 1:1, so reporting only one of them silently understates real activity.
+   * Surfaced here for transparency, not used as an eligibility signal.
+   */
+  revenueLogRealAffiliateClicks: number;
+  revenueLogTestClicks: number;
 
   gscImpressions: number | "NOT_MEASURED";
   gscClicks: number | "NOT_MEASURED";
@@ -86,6 +102,7 @@ function parseCommissionPercent(model: string): number | null {
 export function computeMoneyPriorityQueue(
   events: readonly FirstPartyEvent[],
   seoOpportunities: readonly SeoOpportunityRow[],
+  revenueLogEvents: readonly StoredOutboundEvent[] = [],
 ): PartnerOpportunity[] {
   const classifications = classifySessions(events);
   const eligibleSessionIds = new Set(classifications.filter((c) => ELIGIBLE_BUCKETS.has(c.bucket)).map((c) => c.sessionId));
@@ -115,6 +132,14 @@ export function computeMoneyPriorityQueue(
     );
     const eligibleAffiliateClicks = affiliateClickEvents.filter((e) => eligibleSessionIds.has(e.sessionId));
     const uniqueEligibleClickers = new Set(eligibleAffiliateClicks.map((e) => e.visitorId));
+
+    // ---- Revenue log's own real affiliate-click count for this slug ----
+    // Deliberately a separate count, never added to eligibleAffiliateClicks
+    // above -- see the PartnerOpportunity type doc for why the two stores
+    // cannot be safely merged.
+    const revenueLogEventsForSlug = revenueLogEvents.filter((e) => e.softwareSlug === slug && e.type === "affiliate_link_click");
+    const revenueLogRealAffiliateClicks = revenueLogEventsForSlug.filter((e) => !e.isTest).length;
+    const revenueLogTestClicks = revenueLogEventsForSlug.filter((e) => e.isTest).length;
 
     // ---- Demand: real GSC opportunity rows mentioning this slug ----
     const seoRows = seoOpportunities.filter((o) => o.relatedSoftware.includes(slug));
@@ -178,6 +203,8 @@ export function computeMoneyPriorityQueue(
       eligibleHumanPageSessions: eligibleSessionsOnPage.size,
       eligibleHumanAffiliateClicks: eligibleAffiliateClicks.length,
       uniqueEligibleHumanClickers: uniqueEligibleClickers.size,
+      revenueLogRealAffiliateClicks,
+      revenueLogTestClicks,
       gscImpressions,
       gscClicks,
       gscAvgPosition,
