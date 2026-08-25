@@ -26,6 +26,24 @@
     "https://www.crowdstrike.com/platform/"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$7.99/device/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "7.99", "currency": "USD", "billing_period": "monthly" },
+    "tiers": [
+      { "name": "Falcon Go", "amount": "7.99", "currency": "USD", "billing_period": "monthly", "unit": "device", "notes": "$59.99 per device with annual billing; purchases are limited to a maximum of 100 devices." },
+      { "name": "Falcon Pro", "amount": "14.99", "currency": "USD", "billing_period": "monthly", "unit": "device", "notes": "$99.99 per device with annual billing." },
+      { "name": "Falcon Enterprise", "amount": "19.99", "currency": "USD", "billing_period": "monthly", "unit": "device", "notes": "$184.99 per device with annual billing." },
+      { "name": "Falcon Complete", "notes": "Contact sales for pricing." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://www.crowdstrike.com/en-us/pricing/"
+  },
   "alternatives": [
     {
       "name": "Wiz",

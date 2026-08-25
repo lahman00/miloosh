@@ -16,6 +16,20 @@
   ],
   "sources": ["https://www.activecampaign.com", "https://www.activecampaign.com/platform/mobile-application"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly" },
+    "tiers": [
+      { "name": "Starter", "amount": "15", "currency": "USD", "billing_period": "monthly", "notes": "Starting price for accounts with fewer than 1,000 contacts. ActiveCampaign pricing scales with contact volume and feature needs." }
+    ],
+    "last_verified": "2026-08-25",
+    "official_source": "https://www.activecampaign.com/about/faq"
+  },
   "alternatives": [
     {
       "name": "Mailchimp",

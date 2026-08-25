@@ -24,6 +24,24 @@
     "https://docs.umbraco.com/umbraco-cloud"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "€45/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "45", "currency": "EUR", "billing_period": "monthly" },
+    "tiers": [
+      { "name": "Umbraco CMS", "amount": "0", "currency": "EUR", "billing_period": "monthly", "notes": "Open-source CMS core; self-hosting infrastructure and optional commercial add-ons are separate." },
+      { "name": "Starter", "amount": "45", "currency": "EUR", "billing_period": "monthly", "notes": "Managed Umbraco Cloud hosting with Azure hosting, automatic security updates, Cloudflare CDN, and Forms Builder." },
+      { "name": "Standard", "amount": "280", "currency": "EUR", "billing_period": "monthly", "notes": "Adds multiple environments, SLA coverage, expanded hosting features, and higher usage limits." },
+      { "name": "Professional", "amount": "730", "currency": "EUR", "billing_period": "monthly", "notes": "Adds business-hours support, advanced hosting features, and higher-priority resources." },
+      { "name": "Enterprise", "notes": "Custom pricing with expanded SLA, customized support, dedicated CSM, and architectural advising." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://umbraco.com/pricing/"
+  },
   "alternatives": [
     {
       "name": "WordPress",

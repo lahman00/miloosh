@@ -17,6 +17,24 @@
     "https://zapier.com/features"
   ],
   "accessed_at": "2026-07-31",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$19.99/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "19.99", "currency": "USD", "billing_period": "annual", "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "100 tasks per month; unlimited Zap workflows, Tables, and Forms; two-step Zap workflows." },
+      { "name": "Professional", "amount": "19.99", "currency": "USD", "billing_period": "annual", "notes": "Starting price per month when billed annually; multi-step workflows, premium apps, webhooks, email and live-chat support." },
+      { "name": "Team", "amount": "69", "currency": "USD", "billing_period": "annual", "notes": "Starting price per month when billed annually; includes 25 users, shared workflows/folders/connections, SAML SSO, and priority support." },
+      { "name": "Enterprise", "notes": "Contact for pricing; unlimited users and advanced administration, deployment, observability, and support features." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://zapier.com/pricing"
+  },
   "alternatives": [
     {
       "name": "Make",

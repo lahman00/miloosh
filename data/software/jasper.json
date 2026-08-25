@@ -16,6 +16,22 @@
   ],
   "sources": ["https://www.jasper.ai/"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$59/month/seat",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "59", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Pro", "amount": "59", "currency": "USD", "billing_period": "annual", "unit": "seat", "notes": "Per month per seat, billed annually; $69/month/seat with monthly billing. Includes one seat and a 7-day free trial." },
+      { "name": "Business", "notes": "Custom pricing; adds advanced agents, custom AI agents, Jasper Grid, API access, enterprise governance, dedicated account management, and priority support." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://www.jasper.ai/pricing"
+  },
   "alternatives": [
     {
       "name": "Copy.ai",

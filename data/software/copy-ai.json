@@ -16,6 +16,24 @@
   ],
   "sources": ["https://www.copy.ai/"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$24/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "24", "currency": "USD", "billing_period": "annual", "annual_billing_required": true },
+    "tiers": [
+      { "name": "Chat", "amount": "24", "currency": "USD", "billing_period": "annual", "notes": "Per month when billed $288/year; 5 seats. Monthly billing is $29/month." },
+      { "name": "Growth", "amount": "1000", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed $12,000/year; 75 seats and 20K workflow credits per month." },
+      { "name": "Expansion", "amount": "2000", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed $24,000/year; 150 seats and 45K workflow credits per month." },
+      { "name": "Scale", "amount": "3000", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed $36,000/year; 200 seats and 75K workflow credits per month." },
+      { "name": "Enterprise", "notes": "Custom enterprise plan; contact Copy.ai for a demo and commercial terms." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://www.copy.ai/prices"
+  },
   "alternatives": [
     {
       "name": "Jasper",
