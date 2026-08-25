@@ -1,14 +1,14 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { buildMoneyMap } from "@/lib/revenue/money-map";
+import { buildMoneyMap, summarizeMoneyMapOutboundEvents } from "@/lib/revenue/money-map";
+import type { StoredOutboundEvent } from "@/lib/revenue/events";
 
 /**
  * Phase 12 — tests run without BLOB_READ_WRITE_TOKEN or
  * GOOGLE_SEARCH_CONSOLE_* set (vitest.config.mts doesn't load .env.local),
  * so every run here exercises the real "GSC unavailable" / local-fallback
- * click-log path — never a live network call. That's a first-class,
- * intentionally-tested state of the system, not a workaround.
+ * click-log path — never a live network call.
  */
 
 const LOG_FILE = path.join(process.cwd(), "var", "outbound-clicks.json");
@@ -30,6 +30,45 @@ afterAll(() => {
   }
   if (realFlag !== undefined) process.env.NEXT_PUBLIC_REVENUE_TRACKING_ENABLED = realFlag;
   else delete process.env.NEXT_PUBLIC_REVENUE_TRACKING_ENABLED;
+});
+
+function outbound(overrides: Partial<StoredOutboundEvent> = {}): StoredOutboundEvent {
+  return {
+    type: "affiliate_link_click",
+    softwareSlug: "pipedrive",
+    destination: "affiliate",
+    url: "https://example.test/pipedrive",
+    sourcePage: "/software/pipedrive",
+    timestamp: "2026-08-25T08:00:00.000Z",
+    ...overrides,
+  };
+}
+
+describe("Money Map outbound-log truth", () => {
+  it("excludes QA/test events from all page click metrics while preserving an excluded count", () => {
+    const summary = summarizeMoneyMapOutboundEvents([
+      outbound(),
+      outbound({ isTest: true, timestamp: "2026-08-25T08:00:01.000Z" }),
+      outbound({ type: "official_site_click", destination: "official", sourcePage: "/software/pipedrive", timestamp: "2026-08-25T08:00:02.000Z" }),
+    ]);
+
+    expect(summary.nonTestEvents).toBe(2);
+    expect(summary.excludedTestEvents).toBe(1);
+    expect(summary.clicksBySourcePage.get("/software/pipedrive")).toEqual({
+      affiliateClicks: 1,
+      officialClicks: 1,
+      totalClicks: 2,
+    });
+  });
+
+  it("never lets a test-only page appear to have outbound evidence", () => {
+    const summary = summarizeMoneyMapOutboundEvents([
+      outbound({ isTest: true, sourcePage: "/compare/pipedrive-vs-hubspot" }),
+    ]);
+    expect(summary.nonTestEvents).toBe(0);
+    expect(summary.excludedTestEvents).toBe(1);
+    expect(summary.clicksBySourcePage.has("/compare/pipedrive-vs-hubspot")).toBe(false);
+  });
 });
 
 describe("buildMoneyMap", () => {
@@ -79,14 +118,13 @@ describe("buildMoneyMap", () => {
 
   it("a comparison with one active partner and one non-partner is classified 'one' coverage and bucket D", async () => {
     const data = await buildMoneyMap();
-    // hubspot (rejected, no active affiliate) vs pipedrive (active) — real published pair.
     const page = data.pages.find((p) => p.url === "/compare/hubspot-vs-pipedrive");
     expect(page).toBeDefined();
     expect(page!.monetizationCoverage).toBe("one");
     expect(page!.bucket).toBe("D");
   });
 
-  it("a software page for an active partner shows 'none' coverage is impossible — active partner always monetizes its own page", async () => {
+  it("a software page for an active partner is always monetized", async () => {
     const data = await buildMoneyMap();
     const todoist = data.pages.find((p) => p.url === "/software/todoist");
     expect(todoist).toBeDefined();
@@ -94,12 +132,20 @@ describe("buildMoneyMap", () => {
     expect(todoist!.products[0]!.affiliateStatus).toBe("active");
   });
 
-  it("outbound-click evidence reflects the real Blob/local click log, not a fabricated count", async () => {
+  it("outbound-log evidence reflects the isolated store, not a fabricated count", async () => {
     const data = await buildMoneyMap();
-    // No clicks were seeded in this test's isolated log file, so every page must show zero.
     for (const page of data.pages) {
       expect(page.clicks.totalClicks).toBe(0);
     }
+    expect(data.totalOutboundEventsSitewide).toBe(0);
+    expect(data.totalTestOutboundEventsSitewide).toBe(0);
+  });
+
+  it("labels the score component as non-test outbound-log evidence rather than human evidence", async () => {
+    const data = await buildMoneyMap();
+    const component = data.pages[0]!.scoreComponents.find((c) => c.label === "Non-test outbound-log evidence");
+    expect(component).toBeDefined();
+    expect(component!.note.toLowerCase()).toContain("not human-qualified");
   });
 
   it("pages are sorted by Money Score, highest first", async () => {
