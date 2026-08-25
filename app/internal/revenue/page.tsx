@@ -12,12 +12,6 @@ import { getRevenueTier, countByTier, explainTier } from "@/lib/revenue/tiers";
 import { getAffiliateProgram, countAffiliateProgramsByStatus } from "@/lib/revenue/affiliate-manager";
 import { getRevenueOpportunities } from "@/lib/revenue/opportunities";
 
-/**
- * Sprint 8 — internal Revenue Dashboard. Not linked from the navbar,
- * footer, homepage, or sitemap, and marked noindex/nofollow: this
- * surfaces our own commercial scoring of the dataset, not something meant
- * for public search results or casual visitors. See docs/revenue.md.
- */
 export const metadata: Metadata = {
   title: "Revenue Dashboard",
   robots: { index: false, follow: false },
@@ -27,9 +21,8 @@ export default function RevenueDashboardPage() {
   const software = getAllSoftware();
   const scores = getRevenueScores(software);
   const tierCounts = countByTier(scores);
-  const affiliateCounts = countAffiliateProgramsByStatus();
+  const publicProgramCounts = countAffiliateProgramsByStatus();
   const opportunities = getRevenueOpportunities();
-
   const softwareBySlug = new Map(software.map((item) => [item.slug, item]));
 
   return (
@@ -39,15 +32,12 @@ export default function RevenueDashboardPage() {
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-zinc-950">
             <TrendingUp className="h-5 w-5" strokeWidth={2.25} />
           </span>
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Revenue dashboard
-          </h1>
+          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">Revenue dashboard</h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            Internal only — not indexed, not linked from the site. Every score below is computed
-            from real stored data (Phase 1 affiliate research, stored pricing model, comparison
-            involvement) plus a documented editorial category-value weight. No commission figures
-            are used as score inputs. See{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm">docs/revenue.md</code>.
+            Internal static opportunity view. Affiliate scoring uses Miloosh&apos;s current relationship truth:
+            active, approved, pending, owner-blocked, rejected or absent. Generic vendor program existence can
+            only contribute a lower fallback score when no Miloosh relationship exists. Comparison count is
+            content coverage, not measured user buying intent. No commission percentage is used as a score input.
           </p>
         </header>
 
@@ -68,30 +58,28 @@ export default function RevenueDashboardPage() {
 
         <section className="mt-8 grid gap-6 sm:grid-cols-3">
           <Card>
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
-              Confirmed affiliate programs
-            </p>
-            <p className="mt-2 text-3xl font-bold text-white">{affiliateCounts.yes}</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Public programs found in research</p>
+            <p className="mt-2 text-3xl font-bold text-white">{publicProgramCounts.yes}</p>
           </Card>
           <Card>
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
-              Confirmed no program
-            </p>
-            <p className="mt-2 text-3xl font-bold text-white">{affiliateCounts.no}</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Public no-program findings</p>
+            <p className="mt-2 text-3xl font-bold text-white">{publicProgramCounts.no}</p>
           </Card>
           <Card>
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
-              Unresolved (needs follow-up)
-            </p>
-            <p className="mt-2 text-3xl font-bold text-white">{affiliateCounts.unknown}</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Public-program research unresolved</p>
+            <p className="mt-2 text-3xl font-bold text-white">{publicProgramCounts.unknown}</p>
           </Card>
         </section>
+
+        <p className="mt-3 text-xs leading-5 text-zinc-500">
+          These three cards describe vendor public-program research only. They are not Miloosh approval counts and do not override the current relationship ledger.
+        </p>
 
         <section className="mt-14">
           <SectionHeading
             eyebrow="First-party network evidence"
             title="Partners already showing click activity"
-            description="Vendor/network-side evidence is kept separate from Miloosh click telemetry and never treated as a conversion or revenue event."
+            description="Vendor/network-side evidence stays separate from Miloosh telemetry and is never treated as a conversion, revenue event or proof of the originating page."
           />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {NETWORK_PERFORMANCE_SIGNALS.map((signal) => {
@@ -114,8 +102,8 @@ export default function RevenueDashboardPage() {
 
         <section className="mt-14">
           <SectionHeading
-            title="All software, ranked by revenue score"
-            description="Score breakdown: affiliate availability, category value, commercial intent, buying intent."
+            title="All software, ranked by static revenue score"
+            description="Score breakdown: current Miloosh affiliate availability, category value, stored commercial intent and comparison coverage. Live human-qualified revenue priority is a separate engine."
           />
 
           <Card className="mt-8 overflow-x-auto">
@@ -125,10 +113,10 @@ export default function RevenueDashboardPage() {
                 <span>Category</span>
                 <span>Tier</span>
                 <span>Score</span>
-                <span>Affiliate</span>
+                <span>Relationship</span>
                 <span>Category value</span>
-                <span>Intent / Buying</span>
-                <span>Affiliate program</span>
+                <span>Intent / Coverage</span>
+                <span>Public program research</span>
               </div>
               <div className="divide-y divide-white/10">
                 {scores.map((score) => {
@@ -138,10 +126,7 @@ export default function RevenueDashboardPage() {
                   const program = getAffiliateProgram(score.slug);
 
                   return (
-                    <div
-                      key={score.slug}
-                      className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr_1.5fr] gap-4 py-3 text-sm"
-                    >
+                    <div key={score.slug} className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr_1.5fr] gap-4 py-3 text-sm">
                       <span className="font-medium text-white">{item.name}</span>
                       <span className="text-zinc-400">{getCategoryName(item.category)}</span>
                       <span>
@@ -160,15 +145,15 @@ export default function RevenueDashboardPage() {
                       <span className="text-zinc-300">{score.totalScore}/100</span>
                       <span className="text-zinc-400">{score.affiliateAvailabilityScore}/10</span>
                       <span className="text-zinc-400">{score.categoryValueScore}/10</span>
-                      <span className="text-zinc-400">
-                        {score.commercialIntentScore}/10 · {score.buyingIntentScore}/10
-                      </span>
+                      <span className="text-zinc-400">{score.commercialIntentScore}/10 · {score.buyingIntentScore}/10</span>
                       <span className="text-zinc-400">
                         {program?.programExists === "yes"
-                          ? `Yes${program.networkName ? ` (${program.networkName})` : ""}`
+                          ? `Exists${program.networkName ? ` (${program.networkName})` : ""}`
                           : program?.programExists === "unknown"
                             ? "Unresolved"
-                            : "No"}
+                            : program
+                              ? "No public program"
+                              : "Not researched"}
                       </span>
                     </div>
                   );
@@ -179,7 +164,7 @@ export default function RevenueDashboardPage() {
         </section>
 
         <section className="mt-14">
-          <SectionHeading title="Tier rationale" description="Why each entry landed where it did." />
+          <SectionHeading title="Tier rationale" description="Why each static repository score landed where it did." />
           <div className="mt-8 grid gap-4">
             {scores.map((score) => {
               const item = softwareBySlug.get(score.slug);
@@ -196,9 +181,9 @@ export default function RevenueDashboardPage() {
 
         <section className="mt-14">
           <SectionHeading
-            eyebrow="Phase 5"
-            title="Future revenue opportunities"
-            description="Ranked by effort to activate vs. what already exists in the codebase. Full rationale in docs/revenue.md."
+            eyebrow="Strategic backlog"
+            title="Future revenue models"
+            description="Architecture-level ideas only. These are not vendor approvals, measured demand or current revenue forecasts."
           />
           <div className="mt-8 grid gap-4">
             {opportunities.map((opportunity) => (
