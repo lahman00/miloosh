@@ -11,7 +11,7 @@ describe("inbound affiliate opportunities", () => {
     expect(buddyPunch?.affiliateUrl).toBeNull();
     expect(buddyPunch?.ownerAcceptanceRequired).toBe(true);
     expect(buddyPunch?.catalogSlug).toBeNull();
-    expect(ACTIVE_PARTNERS.some((partner) => partner.slug === "buddy-punch")).toBe(false);
+    expect(ACTIVE_PARTNERS.some((partner) => String(partner.slug) === "buddy-punch")).toBe(false);
   });
 
   it("records Trainual as terms review and preserves the invite-versus-public-economics discrepancy", () => {
@@ -25,6 +25,6 @@ describe("inbound affiliate opportunities", () => {
     expect(trainual?.headlineOffer).toContain("Tiered commissions");
     expect(trainual?.verifiedPublicEconomics).toContain("10% recurring commission");
     expect(trainual?.verifiedPublicEconomics).toContain("90-day cookie");
-    expect(ACTIVE_PARTNERS.some((partner) => partner.slug === "trainual")).toBe(false);
+    expect(ACTIVE_PARTNERS.some((partner) => String(partner.slug) === "trainual")).toBe(false);
   });
 });
