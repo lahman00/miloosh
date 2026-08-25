@@ -10,16 +10,18 @@
  * INCAPABLE of touching production -- process.env.BLOB_READ_WRITE_TOKEN
  * is simply never populated in that code path.
  *
- * REAL_CANDIDATES below are the only two of the three researched signals
- * (Freshdesk, Salesforce, Notion) that could be independently verified
- * tonight: opened, fetched, and confirmed to genuinely describe the pain
- * attributed to them. Reddit itself could not be reached -- ten distinct
- * WebSearch queries across two sessions, plus a direct forum fetch
- * (edugeek.net, HTTP 403), never produced a real, openable Reddit
+ * REAL_CANDIDATES below covers two of the three originally-researched
+ * signals (Freshdesk, Notion), plus a second, independent Freshdesk
+ * source added 2026-08-26 (MILOOSH MONEY SPRINT) that corroborates the
+ * first via real multi-source clustering rather than duplicating it.
+ * Every entry was opened, fetched, and confirmed to genuinely describe
+ * the pain attributed to it. Reddit itself could not be reached -- ten
+ * distinct WebSearch queries across two sessions, plus a direct forum
+ * fetch (edugeek.net, HTTP 403), never produced a real, openable Reddit
  * permalink. No slug was guessed to fill that gap. Salesforce was
  * dropped entirely: every search result was a generic pricing-guide
  * article, not a specific dated pain narrative, and didn't clear the
- * same evidentiary bar as the other two.
+ * same evidentiary bar as the others.
  *
  * Every field below is either (a) a fact I directly verified by fetching
  * the URL and reading the actual page content, or (b) an explicit
@@ -62,6 +64,45 @@ const REAL_CANDIDATES: NewPainCandidateInput[] = [
     audienceFit: 65, // Miloosh already covers Freshdesk with real verified pricing
     existingMilooshCoverage: 40, // Freshdesk page exists in the catalog with verified pricing; no dedicated free-plan-change content yet
     affiliateRelevant: true,
+    canBuildAssetQuickly: true,
+    canDistributeImmediately: true,
+  },
+  {
+    // MILOOSH MONEY SPRINT (2026-08-26) -- independent second Freshdesk
+    // source, found via WebSearch and fetched/content-verified directly.
+    // Same vendor + normalizedPainClass as the eesel.ai entry above, so
+    // this deliberately clusters with it rather than standing alone --
+    // two distinct, independently-published sources describing the same
+    // real event is stronger evidence than either alone.
+    source: "news",
+    sourceUrl: "https://fluentsupport.com/freshdesk-is-ending-its-free-version/",
+    vendor: "Freshdesk",
+    product: "Freshdesk",
+    title: "Freshdesk Is Ending Its Free Version: What's Next?",
+    excerpt:
+      "Freshworks has been notifying free-tier Freshdesk accounts that they will be deactivated after a deadline unless the account upgrades to a paid plan (from $15/month per agent) or migrates elsewhere. The article states this impacts thousands of small businesses, startups, and educational groups that relied on the free tier.",
+    // Verified by direct fetch 2026-08-25: page states "Published May 21,
+    // 2025" with "Last updated January 6, 2026". The underlying event
+    // (deactivation deadlines of June 2025) is now historical rather than
+    // breaking news -- scored honestly as an older, already-resolved-
+    // timeline signal, not treated as fresh.
+    publishedAt: "2026-01-06",
+    discoveredAt: new Date().toISOString(),
+    intent: "free-plan-ending",
+    normalizedPainClass: "loss-of-free-access",
+    // sourceReliability: a competitor's own content-marketing article (it
+    // pitches its own product as the alternative), not a neutral source or
+    // a first-party vendor page -- independently fetched and content-
+    // verified, but reasoned lower than a neutral blog for that reason.
+    sourceReliability: 45,
+    // severity: describes full account deactivation (not a reduced/hidden
+    // free tier like the eesel.ai entry) -- real total-loss risk for
+    // affected accounts.
+    severity: 65,
+    commercialIntent: 65, // an account deactivation deadline is an immediate switch-or-pay decision
+    audienceFit: 65, // same real, covered Freshdesk category as the other entry
+    existingMilooshCoverage: 80, // 12 published Freshdesk comparisons plus a software page already exist
+    affiliateRelevant: true, // same real Freshworks/Freshdesk commercial category as the eesel.ai entry, despite the affiliate application itself remaining PENDING_REVIEW
     canBuildAssetQuickly: true,
     canDistributeImmediately: true,
   },
