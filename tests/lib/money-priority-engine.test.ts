@@ -3,6 +3,17 @@ import { computeMoneyPriorityQueue } from "@/lib/growth/money-priority-engine";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
 import type { StoredOutboundEvent } from "@/lib/revenue/events";
 
+function pageView(slug: string, sessionId: string, visitorId: string, isTest = false): FirstPartyEvent {
+  return {
+    type: "page_view",
+    path: `/software/${slug}`,
+    visitorId,
+    sessionId,
+    timestamp: "2026-08-25T03:59:59.000Z",
+    isTest,
+  };
+}
+
 function affiliateClick(slug: string, sessionId: string, visitorId: string, isTest = false): FirstPartyEvent {
   return {
     type: "outbound_click",
@@ -31,7 +42,10 @@ function revenueLogClick(slug: string, isTest = false): StoredOutboundEvent {
 
 describe("Money Priority Engine click truth", () => {
   it("keeps classifier-qualified first-party clicks separate from revenue-log clicks and GSC clicks", () => {
-    const events: FirstPartyEvent[] = [affiliateClick("pipedrive", "s_real_1", "v_real_1")];
+    const events: FirstPartyEvent[] = [
+      pageView("pipedrive", "s_real_1", "v_real_1"),
+      affiliateClick("pipedrive", "s_real_1", "v_real_1"),
+    ];
     const seo = [
       {
         relatedSoftware: ["pipedrive"],
@@ -50,8 +64,20 @@ describe("Money Priority Engine click truth", () => {
     expect(row.gscClicks).not.toBe(row.eligibleHumanAffiliateClicks);
   });
 
+  it("does not promote a direct outbound POST with no preceding funnel event to human-qualified revenue evidence", () => {
+    const events: FirstPartyEvent[] = [affiliateClick("close", "s_direct_post", "v_direct_post")];
+    const row = computeMoneyPriorityQueue(events, [], []).find((item) => item.slug === "close")!;
+
+    expect(row.eligibleHumanAffiliateClicks).toBe(0);
+    expect(row.uniqueEligibleHumanClickers).toBe(0);
+    expect(row.scoreBreakdown.provenClicks).toBe(0);
+  });
+
   it("excludes QA first-party clicks from human-qualified scoring while exposing revenue-log tests separately", () => {
-    const events: FirstPartyEvent[] = [affiliateClick("airtable", "s_test_1", "v_test_1", true)];
+    const events: FirstPartyEvent[] = [
+      pageView("airtable", "s_test_1", "v_test_1", true),
+      affiliateClick("airtable", "s_test_1", "v_test_1", true),
+    ];
     const revenueLog: StoredOutboundEvent[] = [revenueLogClick("airtable", true)];
 
     const row = computeMoneyPriorityQueue(events, [], revenueLog).find((item) => item.slug === "airtable")!;
