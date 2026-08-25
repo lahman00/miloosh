@@ -5,8 +5,8 @@ import { buildPartnerPerformanceRows, type GscPartnerMetric } from "@/lib/revenu
 
 export const dynamic = "force-dynamic";
 
-function displayUnknown(value: number | null, suffix = ""): string {
-  return value == null ? "UNKNOWN" : `${value}${suffix}`;
+function displayUnknown(value: number | null): string {
+  return value == null ? "UNKNOWN" : String(value);
 }
 
 export default async function PartnerPerformancePage() {
@@ -20,8 +20,8 @@ export default async function PartnerPerformancePage() {
   }
 
   // This is intentionally labelled as a repository baseline rather than live
-  // Search Console data. Live first-party outbound events are read above from
-  // the production store; stale GSC snapshots must never masquerade as current.
+  // Search Console data. The outbound store is live, but its legacy rows only
+  // prove non-test events; they do not carry a joinable human classifier.
   const gscBySlug: Record<string, GscPartnerMetric> = {};
   for (const [slug, impressions] of Object.entries(KNOWN_GSC_IMPRESSIONS)) {
     gscBySlug[slug] = {
@@ -37,8 +37,8 @@ export default async function PartnerPerformancePage() {
     comparisonCountBySlug,
   });
 
-  const realAffiliateClicks = rows.reduce((sum, row) => sum + row.firstPartyAffiliateClicks, 0);
-  const testClicks = rows.reduce((sum, row) => sum + row.firstPartyTestClicks, 0);
+  const nonTestAffiliateEvents = rows.reduce((sum, row) => sum + row.nonTestFirstPartyAffiliateEvents, 0);
+  const testEvents = rows.reduce((sum, row) => sum + row.firstPartyTestEvents, 0);
   const networkSignalPartners = rows.filter((row) => row.networkClickActivity).length;
 
   return (
@@ -47,16 +47,17 @@ export default async function PartnerPerformancePage() {
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500">Internal revenue truth</p>
         <h1 className="mt-2 text-3xl font-bold">Partner performance</h1>
         <p className="mt-3 max-w-4xl text-sm leading-6 text-zinc-400">
-          Metric classes stay separate by design. GSC search clicks mean Google → Miloosh. First-party affiliate
-          clicks mean Miloosh → vendor. Network click emails are evidence from the partner network and are never
-          added to first-party totals. Unknown conversions, commissions and revenue remain UNKNOWN.
+          Metric classes stay separate by design. GSC search clicks mean Google → Miloosh. Legacy first-party
+          outbound rows prove non-test Miloosh → vendor events, but they do not currently prove an eligible-human
+          session. Network click emails are separate evidence and are never added to first-party totals. Unknown
+          human-qualified clicks, conversions, commissions and revenue remain UNKNOWN.
         </p>
       </header>
 
       <section className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Active partners" value={String(rows.length)} />
-        <Stat label="Live first-party affiliate clicks" value={String(realAffiliateClicks)} />
-        <Stat label="Excluded test clicks" value={String(testClicks)} />
+        <Stat label="Non-test affiliate events" value={String(nonTestAffiliateEvents)} />
+        <Stat label="Excluded test events" value={String(testEvents)} />
         <Stat label="Partners with network click evidence" value={String(networkSignalPartners)} />
       </section>
 
@@ -67,9 +68,10 @@ export default async function PartnerPerformancePage() {
               <th className="px-4 py-3">Rank</th>
               <th className="px-4 py-3">Partner</th>
               <th className="px-4 py-3">Score</th>
-              <th className="px-4 py-3">Affiliate clicks</th>
-              <th className="px-4 py-3">All outbound</th>
-              <th className="px-4 py-3">Test clicks</th>
+              <th className="px-4 py-3">Human affiliate clicks</th>
+              <th className="px-4 py-3">Non-test affiliate events</th>
+              <th className="px-4 py-3">All non-test outbound</th>
+              <th className="px-4 py-3">Test events</th>
               <th className="px-4 py-3">Network clicks</th>
               <th className="px-4 py-3">GSC impressions</th>
               <th className="px-4 py-3">GSC clicks</th>
@@ -85,9 +87,10 @@ export default async function PartnerPerformancePage() {
                 <td className="px-4 py-3 text-zinc-500">{index + 1}</td>
                 <td className="px-4 py-3 font-semibold text-white">{row.slug}</td>
                 <td className="px-4 py-3 font-mono">{row.revenueProximityScore}</td>
-                <td className="px-4 py-3 font-mono font-semibold">{row.firstPartyAffiliateClicks}</td>
-                <td className="px-4 py-3 font-mono">{row.firstPartyOutboundClicks}</td>
-                <td className="px-4 py-3 font-mono text-zinc-500">{row.firstPartyTestClicks}</td>
+                <td className="px-4 py-3 font-mono">{displayUnknown(row.eligibleHumanAffiliateClicks)}</td>
+                <td className="px-4 py-3 font-mono font-semibold">{row.nonTestFirstPartyAffiliateEvents}</td>
+                <td className="px-4 py-3 font-mono">{row.nonTestFirstPartyOutboundEvents}</td>
+                <td className="px-4 py-3 font-mono text-zinc-500">{row.firstPartyTestEvents}</td>
                 <td className="px-4 py-3">
                   {row.networkClickActivity ? (
                     <span title={row.networkSignalSummary ?? undefined}>
@@ -112,7 +115,8 @@ export default async function PartnerPerformancePage() {
       </div>
 
       <p className="mt-5 text-xs leading-5 text-zinc-500">
-        Ranking uses proven downstream movement first, then first-party affiliate clicks, network-side evidence,
+        Ranking uses proven downstream movement first, then classifier-qualified human affiliate clicks when such
+        evidence exists. Legacy non-test first-party events receive lower weight, followed by network-side evidence,
         explicitly sourced GSC demand and comparison coverage. Repository GSC values are labelled as a baseline and
         never presented as a live Search Console pull.
       </p>
