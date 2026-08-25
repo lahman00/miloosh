@@ -34,6 +34,9 @@ jobs:
       - name: Apply targeted Next.js security upgrade
         run: npm install --save-exact next@16.3.2 eslint-config-next@16.3.2
 
+      - name: Apply compatible transitive audit fixes
+        run: npm audit fix
+
       - name: Dependency audit diagnostics
         run: npm audit --json || true
 
@@ -49,7 +52,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Commit verified lockfile upgrade
+      - name: Commit verified dependency upgrade
         run: |
           if git diff --quiet -- package.json package-lock.json; then
             echo "Dependency manifests already current."
@@ -58,5 +61,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package.json package-lock.json
-          git commit -m "security: upgrade Next.js to 16.3.2"
+          git commit -m "security: upgrade Next.js and compatible transitive dependencies"
           git push origin HEAD:autonomous/npm-audit-diagnostic-2026-08-25
