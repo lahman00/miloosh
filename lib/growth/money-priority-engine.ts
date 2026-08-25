@@ -2,6 +2,7 @@ import { getSoftware } from "@/data/software";
 import { getComparisonsInvolving } from "@/data/comparisons";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import type { NetworkPerformanceSignal } from "@/data/affiliate/network-performance-signals";
 import { ALTERNATIVE_GUIDES } from "@/data/seo/alternative-guides";
 import { classifySessions } from "@/lib/analytics/human-classification";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
@@ -20,6 +21,10 @@ import type { StoredOutboundEvent } from "@/lib/revenue/events";
  * as arguments rather than reading storage itself, so it stays pure and
  * testable, and so a caller can pass either real production data or
  * synthetic fixtures without this module knowing the difference.
+ *
+ * Network-side click evidence is accepted as a separate prioritization
+ * signal only. It never increments first-party click/session fields and
+ * never proves a conversion, commission or revenue event.
  */
 
 export type RevenueReadiness = "READY" | "PARTIAL" | "NOT_READY";
@@ -40,13 +45,18 @@ export type PartnerOpportunity = {
 
   /**
    * A real, separate signal from lib/revenue/events.ts's non-personal
-   * click log. Deliberately NEVER merged into eligibleHumanAffiliateClicks
-   * or the score: that log carries no visitorId/sessionId, so a click
-   * recorded there cannot be joined against the human-classification
-   * buckets the way a first-party outbound_click event can.
+   * click log. Deliberately NEVER merged into eligibleHumanAffiliateClicks:
+   * that log carries no visitorId/sessionId, so a click recorded there
+   * cannot be joined against the human-classification buckets the way a
+   * first-party outbound_click event can.
    */
   revenueLogRealAffiliateClicks: number;
   revenueLogTestClicks: number;
+
+  /** Vendor/network-side evidence stays explicit and separate from both stores. */
+  networkClickActivity: boolean;
+  networkClickFloor: number | null;
+  networkEvidenceSummary: string | null;
 
   gscImpressions: number | "NOT_MEASURED";
   gscClicks: number | "NOT_MEASURED";
@@ -111,6 +121,12 @@ function parseCommissionPercent(model: string): number | null {
   return match ? Number.parseFloat(match[1]!) : null;
 }
 
+function strongestNetworkSignal(slug: string, signals: readonly NetworkPerformanceSignal[]): NetworkPerformanceSignal | null {
+  const matching = signals.filter((signal) => signal.partnerSlug === slug);
+  if (matching.length === 0) return null;
+  return [...matching].sort((a, b) => (b.clickFloor ?? -1) - (a.clickFloor ?? -1))[0]!;
+}
+
 /**
  * An outbound POST by itself is not enough to prove a human commercial path:
  * the public endpoint can be called directly. Require at least one earlier
@@ -133,6 +149,7 @@ export function computeMoneyPriorityQueue(
   events: readonly FirstPartyEvent[],
   seoOpportunities: readonly SeoOpportunityRow[],
   revenueLogEvents: readonly StoredOutboundEvent[] = [],
+  networkSignals: readonly NetworkPerformanceSignal[] = [],
 ): PartnerOpportunity[] {
   const classifications = classifySessions(events);
   const eligibleSessionIds = new Set(classifications.filter((c) => ELIGIBLE_BUCKETS.has(c.bucket)).map((c) => c.sessionId));
@@ -162,6 +179,8 @@ export function computeMoneyPriorityQueue(
     const revenueLogRealAffiliateClicks = revenueLogEventsForSlug.filter((e) => !e.isTest).length;
     const revenueLogTestClicks = revenueLogEventsForSlug.filter((e) => e.isTest).length;
 
+    const networkSignal = strongestNetworkSignal(slug, networkSignals);
+
     const seoRows = seoOpportunities.filter((o) => o.relatedSoftware.includes(slug));
     const gscImpressions = seoRows.length > 0 ? seoRows.reduce((sum, o) => sum + o.gsc.impressions, 0) : ("NOT_MEASURED" as const);
     const gscClicks = seoRows.length > 0 ? seoRows.reduce((sum, o) => sum + o.gsc.clicks, 0) : ("NOT_MEASURED" as const);
@@ -184,12 +203,16 @@ export function computeMoneyPriorityQueue(
     const hasMeasuredSearchVisits = typeof gscClicks === "number" && gscClicks > 0;
     const hasRealDemand = eligibleSessionsOnPage.size > 0 || hasMeasuredSearchDemand;
     const hasCompletePath = pricingCoverage && (comparisonCoverage > 0 || guideCoverage);
-    const revenueReadiness: RevenueReadiness = uniqueEligibleClickers.size > 0 ? "READY" : hasRealDemand && hasCompletePath ? "PARTIAL" : "NOT_READY";
+    const hasCommercialMovement = hasRealDemand || Boolean(networkSignal);
+    const revenueReadiness: RevenueReadiness = uniqueEligibleClickers.size > 0 ? "READY" : hasCommercialMovement && hasCompletePath ? "PARTIAL" : "NOT_READY";
 
     let currentBlocker: string | null = null;
     let nextIntervention: string;
     if (uniqueEligibleClickers.size > 0) {
       nextIntervention = "Already producing classifier-qualified affiliate clicks with prior funnel evidence -- monitor for conversion evidence from the network.";
+    } else if (networkSignal) {
+      currentBlocker = "The partner network reports referral-link activity, but Miloosh has no verified downstream conversion, commission or revenue evidence yet.";
+      nextIntervention = `Prioritize ${name}'s downstream conversion loop: reconcile the network-reported activity, confirm signup/trial/conversion state with the partner, and optimize the decision-to-vendor handoff without reclassifying network clicks as first-party humans.`;
     } else if (!hasRealDemand) {
       currentBlocker = "No observed eligible-human demand (no page sessions, no measured GSC impressions).";
       nextIntervention = "Needs a real distribution or search-demand source before further content investment is justified.";
@@ -220,6 +243,7 @@ export function computeMoneyPriorityQueue(
     const commissionPercent = parseCommissionPercent(commissionModel);
     scoreBreakdown.commissionStrength = commissionPercent !== null ? Math.min(10, Math.round(commissionPercent / 5)) : 0;
     scoreBreakdown.provenClicks = Math.min(15, uniqueEligibleClickers.size * 15);
+    scoreBreakdown.networkEvidence = networkSignal ? Math.min(20, 8 + (networkSignal.clickFloor ?? 0)) : 0;
     scoreBreakdown.shortPathBonus = hasCompletePath ? 5 : 0;
 
     const score = Object.values(scoreBreakdown).reduce((a, b) => a + b, 0);
@@ -232,6 +256,9 @@ export function computeMoneyPriorityQueue(
       uniqueEligibleHumanClickers: uniqueEligibleClickers.size,
       revenueLogRealAffiliateClicks,
       revenueLogTestClicks,
+      networkClickActivity: Boolean(networkSignal),
+      networkClickFloor: networkSignal?.clickFloor ?? null,
+      networkEvidenceSummary: networkSignal?.summary ?? null,
       gscImpressions,
       gscClicks,
       gscAvgPosition,
