@@ -1,25 +1,22 @@
 import fs from "node:fs";
 import path from "node:path";
 import { getAllSoftware } from "@/data/software";
-import { getAffiliateProgram } from "@/data/revenue/affiliate-programs";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { getRevenueScores } from "@/lib/revenue/scoring";
 import { getRevenueTier } from "@/lib/revenue/tiers";
 
 /**
- * Sprint 9 Task 5 — lets an approved affiliate URL go live with a config
- * change, not a code change. Two supply mechanisms, checked in order:
+ * Legacy runtime affiliate-URL resolver.
  *
- * 1. Env vars `NEXT_PUBLIC_AFFILIATE_URL_<SLUG>` / `NEXT_PUBLIC_AFFILIATE_ID_<SLUG>`
- *    — the primary mechanism, works on any host that lets you set env vars.
- * 2. `config/affiliate-credentials.json` (gitignored, never committed) — a
- *    local fallback for self-hosted setups that prefer a mounted config
- *    file over env vars. See config/affiliate-credentials.example.json.
+ * Security/truth boundary: an env/config URL can NEVER create a new Miloosh
+ * affiliate relationship merely because the vendor has a public program. It is
+ * honored only for a relationship already recorded ACTIVE in current affiliate
+ * truth. New approvals must first be reconciled into the canonical relationship
+ * state/active registry. This prevents an old or accidental env var from
+ * reactivating a rejected, ended, pending or merely public program.
  *
- * Either way, a value is only ever honored for a software entry whose
- * Phase 1 research (data/revenue/affiliate-programs.ts) confirms
- * `programExists: "yes"` — Sprint 9's rule is "use only confirmed official
- * affiliate programs," enforced here in code, not just in docs. Setting an
- * env var for a product with no confirmed program is silently ignored.
+ * Canonical registered partner URLs still take precedence in lib/affiliate.ts;
+ * this resolver is a legacy fallback, not a higher-priority source of truth.
  */
 
 export type AffiliateActivationSource = "env" | "config-file" | "none";
@@ -43,29 +40,30 @@ function envVarName(slug: string, field: "ID" | "URL"): string {
 let cachedCredentialsFile: CredentialsFile | null = null;
 
 function loadCredentialsFile(): CredentialsFile {
-  if (cachedCredentialsFile) {
-    return cachedCredentialsFile;
-  }
+  if (cachedCredentialsFile) return cachedCredentialsFile;
 
   try {
     const contents = fs.readFileSync(CONFIG_FILE_PATH, "utf-8");
     cachedCredentialsFile = JSON.parse(contents) as CredentialsFile;
   } catch {
-    // No local config file — that's the default, expected state. Env vars
-    // remain available as the primary activation mechanism.
     cachedCredentialsFile = {};
   }
 
   return cachedCredentialsFile;
 }
 
-function hasConfirmedProgram(slug: string): boolean {
-  return getAffiliateProgram(slug)?.programExists === "yes";
+function hasCurrentActiveRelationship(slug: string): boolean {
+  return CURRENT_AFFILIATE_LEDGER.some(
+    (relationship) => relationship.status === "ACTIVE" && relationship.productSlugs.includes(slug),
+  );
 }
 
-/** Resolves activation for one software slug. Always safe to call — returns an inactive result for anything without a confirmed program, even if a value happens to be set. */
+/**
+ * Resolves a legacy runtime activation. Rejected/pending/public-only products
+ * always return inactive even if an environment/config URL is present.
+ */
 export function getAffiliateActivation(slug: string): AffiliateActivation {
-  if (!hasConfirmedProgram(slug)) {
+  if (!hasCurrentActiveRelationship(slug)) {
     return { slug, affiliateId: null, affiliateUrl: null, isActive: false, source: "none" };
   }
 
@@ -87,7 +85,7 @@ export function getAffiliateActivation(slug: string): AffiliateActivation {
   return { slug, affiliateId: envId ?? fileId, affiliateUrl: null, isActive: false, source: "none" };
 }
 
-/** Tier A is computed from the live scoring model, not hardcoded, so this can't drift if the dataset changes. */
+/** Tier A is computed from the current scoring model, not hardcoded. */
 export function getTierASlugs(): string[] {
   return getRevenueScores(getAllSoftware())
     .filter((score) => getRevenueTier(score.totalScore) === "A")
