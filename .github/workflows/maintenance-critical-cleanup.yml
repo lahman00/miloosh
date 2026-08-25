@@ -6,6 +6,7 @@ on:
       - autonomous/maintenance-critical-cleanup-2026-08-25
     paths:
       - .github/workflows/maintenance-critical-cleanup.yml
+      - .github/scripts/maintenance-critical-cleanup.py
 
 permissions:
   contents: write
@@ -14,202 +15,24 @@ jobs:
   clean:
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout cleanup branch
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           ref: autonomous/maintenance-critical-cleanup-2026-08-25
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Repair verified stale sources and maintenance runtime semantics
+      - run: npm ci
+      - run: python .github/scripts/maintenance-critical-cleanup.py
+      - run: npm test
+      - run: npm run validate:data
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run maintenance
+      - name: Print maintenance totals
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import json
-
-          # 1) Replace three affiliate records whose old source URLs are now stale.
-          p = Path('data/revenue/affiliate-programs.ts')
-          text = p.read_text()
-
-          def replace_entry(slug, replacement):
-              global text
-              start_marker = f'  {{\n    slug: "{slug}",' 
-              start = text.find(start_marker)
-              if start < 0:
-                  raise SystemExit(f'Could not find affiliate entry for {slug}')
-              end = text.find('\n  },', start)
-              if end < 0:
-                  raise SystemExit(f'Could not find end of affiliate entry for {slug}')
-              end += len('\n  },')
-              text = text[:start] + replacement.rstrip() + text[end:]
-
-          replace_entry('framer', '''  {
-    slug: "framer",
-    lastVerifiedAt: "2026-08-25",
-    programExists: "yes",
-    type: "network",
-    networkName: "Dub",
-    countryRestrictions: null,
-    commissionModel: "50% of subscription payments for the first 12 months for each qualifying referred subscription",
-    recurrence: "recurring",
-    notes:
-      "Re-verified 2026-08-25 against Framer's current first-party Affiliate Conditions and Help Center. The legal terms confirm a 90-day cookie, 50% of subscription payments for the first 12 months, monthly payouts covering promotions redeemed two months earlier, a $200 payout threshold, and Stripe payouts. Framer's current Help Center says affiliate links are now part of the Creator Program and are powered by Dub; manual applications are available through the Links tab in a Framer Community profile, and paid advertising using affiliate links is prohibited.",
-    sourceUrls: [
-      "https://www.framer.com/legal/affiliates/1.0",
-      "https://www.framer.com/help/articles/how-affiliate-links-work/",
-      "https://www.framer.com/help/articles/how-the-creator-program-works/",
-    ],
-    cookieDuration: "90 days",
-    payoutThreshold: "$200",
-    payoutMethod: "Stripe via Dub",
-    confidence: "high",
-  },''')
-
-          replace_entry('harvest', '''  {
-    slug: "harvest",
-    lastVerifiedAt: "2026-08-25",
-    programExists: "no",
-    type: "unknown",
-    networkName: null,
-    countryRestrictions: null,
-    commissionModel: null,
-    recurrence: "unknown",
-    notes:
-      "Re-verified 2026-08-25 from Harvest's current first-party referral terms and Help Center. Harvest has a customer referral-credit program, not a cash publisher affiliate program: when a referred user converts to a paying plan, both parties receive account credit. Harvest's terms explicitly state credits are non-transferable and cannot be redeemed for cash. This is not a monetizable affiliate program for Miloosh.",
-    sourceUrls: [
-      "https://www.getharvest.com/referral-program-tos",
-      "https://support.getharvest.com/hc/en-us/articles/360048685751-How-do-Harvest-referrals-work",
-    ],
-    applicationUrl: null,
-    confidence: "high",
-  },''')
-
-          replace_entry('time-doctor', '''  {
-    slug: "time-doctor",
-    lastVerifiedAt: "2026-08-25",
-    programExists: "yes",
-    type: "network",
-    networkName: "PartnerStack",
-    countryRestrictions: null,
-    commissionModel: "Recurring commission for up to three years: 30% in year 1, 15% in year 2, and 10% in year 3",
-    recurrence: "recurring",
-    notes:
-      "CORRECTED 2026-08-25 from Time Doctor's current first-party Partner and Affiliate Partner pages. The prior 2026-08-20 conclusion that no affiliate program existed was based on three obsolete 404 paths. Time Doctor now publishes a live PartnerStack-managed affiliate program for content creators and publishers, with a 90-day last-click window, monthly payouts after the referred customer pays, and no minimum payout threshold. Material eligibility guardrail: the official FAQ explicitly excludes coupon/discount sites, software aggregators, and generic comparison directories, while allowing original-content publishers with an engaged HR/operations/IT/business audience. Because Miloosh is a software-comparison publication, do not apply or activate this program without direct eligibility confirmation from Time Doctor.",
-    sourceUrls: [
-      "https://www.timedoctor.com/partner",
-      "https://www.timedoctor.com/partner/affiliate",
-    ],
-    applicationUrl: "https://www.timedoctor.com/partner/affiliate",
-    cookieDuration: "90 days (last-click)",
-    payoutThreshold: "No minimum payout threshold",
-    payoutMethod: "PartnerStack",
-    eligibility: "Original-content creators and publishers with an engaged HR, operations, IT, or business audience. Coupon/discount sites, software aggregators, and generic comparison directories are explicitly ineligible; Miloosh requires direct eligibility confirmation before applying.",
-    confidence: "high",
-  },''')
-
-          p.write_text(text)
-
-          # 2) Repair Keeper's dead generic pricing URL with current first-party pages.
-          p = Path('data/software/keeper.json')
-          keeper = json.loads(p.read_text())
-          old = 'https://www.keepersecurity.com/pricing/'
-          personal = 'https://www.keepersecurity.com/pricing/personal-and-family.html'
-          business = 'https://www.keepersecurity.com/pricing/business-and-enterprise.html'
-          if keeper.get('pricing', {}).get('official_source') != old:
-              raise SystemExit('Keeper pricing source no longer matches expected stale URL')
-          keeper['pricing']['official_source'] = personal
-          sources = keeper.get('sources', [])
-          if old not in sources:
-              raise SystemExit('Keeper stale source URL not found')
-          rebuilt = []
-          for url in sources:
-              if url == old:
-                  rebuilt.extend([personal, business])
-              else:
-                  rebuilt.append(url)
-          keeper['sources'] = list(dict.fromkeys(rebuilt))
-          keeper['accessed_at'] = '2026-08-25'
-          p.write_text(json.dumps(keeper, indent=2, ensure_ascii=False) + '\n')
-
-          # 3) Scheduled GitHub maintenance does not have Vercel production secrets.
-          # Do not report a production channel as broken merely because those secrets
-          # are intentionally absent from the GitHub runner.
-          p = Path('scripts/maintenance/social-channel-health.ts')
-          text = p.read_text()
-          old = 'const NOT_LOCALLY_VERIFIABLE: Channel[] = ["linkedin"];'
-          new = '''const NOT_LOCALLY_VERIFIABLE: Channel[] = ["linkedin"];
-const IS_GITHUB_ACTIONS = process.env.GITHUB_ACTIONS === "true";'''
-          if old not in text:
-              raise SystemExit('social health constant anchor missing')
-          text = text.replace(old, new, 1)
-          old = '''    if (NOT_LOCALLY_VERIFIABLE.includes(channel)) {
-      skipped++;
-      continue;
-    }
-    checked++;
-    const adapter = ADAPTERS[channel];
-    if (adapter.isConfigured()) continue;'''
-          new = '''    const adapter = ADAPTERS[channel];
-    if (NOT_LOCALLY_VERIFIABLE.includes(channel)) {
-      skipped++;
-      continue;
-    }
-    // The scheduled GitHub runner intentionally does not receive Vercel production
-    // channel secrets. Missing env there is therefore "not verifiable", not proof
-    // that production publishing is broken. In a runtime that actually has channel
-    // credentials (local pulled env or Vercel), retain the strict configuration check.
-    if (IS_GITHUB_ACTIONS && !adapter.isConfigured()) {
-      skipped++;
-      continue;
-    }
-    checked++;
-    if (adapter.isConfigured()) continue;'''
-          if old not in text:
-              raise SystemExit('social health loop anchor missing')
-          text = text.replace(old, new, 1)
-          text = text.replace(
-              'summary: `Checked ${checked} enabled channel(s) (${skipped} skipped — not locally verifiable, see module header).',
-              'summary: `Checked ${checked} enabled channel(s) (${skipped} skipped — not verifiable in this runtime, see module header).',
-              1,
-          )
-          p.write_text(text)
-
-          # 4) Keep the scheduled maintenance workflow on the same current Actions majors as CI.
-          p = Path('.github/workflows/maintenance.yml')
-          text = p.read_text()
-          if 'uses: actions/checkout@v4' not in text or 'uses: actions/setup-node@v4' not in text:
-              raise SystemExit('maintenance action-version anchors missing')
-          text = text.replace('uses: actions/checkout@v4', 'uses: actions/checkout@v7', 1)
-          text = text.replace('uses: actions/setup-node@v4', 'uses: actions/setup-node@v7', 1)
-          p.write_text(text)
-          PY
-
-      - name: Full test suite
-        run: npm test
-
-      - name: Validate data
-        run: npm run validate:data
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Build
-        run: npm run build
-
-      - name: Run maintenance report once with corrected GitHub-runtime semantics
-        run: npm run maintenance
-
-      - name: Show new critical summary
-        run: node -e 'const s=require("./var/maintenance/latest-summary.json"); console.log(JSON.stringify({critical:s.totalCritical,warning:s.totalWarning,info:s.totalInfo,agents:s.agents.filter(a=>a.criticalCount>0)},null,2))'
-
-      - name: Commit cleanup
+          node -e 'const s=require("./var/maintenance/latest-summary.json"); console.log("critical="+s.totalCritical+" warning="+s.totalWarning+" info="+s.totalInfo)'
+      - name: Commit verified cleanup
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
