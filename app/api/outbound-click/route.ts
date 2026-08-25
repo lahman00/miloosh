@@ -2,19 +2,17 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getSoftware } from "@/data/software";
 import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { trackSoftwareCtaClick, trackVendorLinkClick } from "@/lib/revenue/click-tracker";
+import { resolveOutboundSourcePage } from "@/lib/revenue/source-page";
 import { WIX_CONTEXTS, getWixAffiliateUrl, type WixFunnelContext } from "@/lib/wix-funnels";
 
 /**
  * Sprint 9 Task 6 — the only entry point components/TrackedCtaLink.tsx
- * talks to. Deliberately trusts nothing the client sends except which
- * software, which page, which UI location, and (for Wix) which funnel
- * context — the actual destination URL and whether it's an affiliate
- * link are recomputed here from server-side data (lib/affiliate.ts,
- * lib/wix-funnels.ts), not taken from the request body. `wixContext` is
- * validated against the known context list before use, so a malformed
- * or spoofed value can never route to an unintended URL — it just falls
- * through to the safe default. Recording itself is a no-op unless
- * NEXT_PUBLIC_REVENUE_TRACKING_ENABLED=true.
+ * talks to. The actual destination URL and whether it's an affiliate link
+ * are recomputed from server-side data rather than accepted from the body.
+ * Source-page attribution prefers a same-origin Referer and only falls back
+ * to a restricted local pathname from the client. `wixContext` is validated
+ * against the known context list before use. Recording itself is a no-op
+ * unless NEXT_PUBLIC_REVENUE_TRACKING_ENABLED=true.
  */
 
 type OutboundClickBody = {
@@ -43,10 +41,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid JSON body" }, { status: 400 });
   }
 
-  const { slug, kind, sourcePage, ctaLocation, wixContext } = body;
+  const { slug, kind, ctaLocation, wixContext } = body;
 
-  if (typeof slug !== "string" || typeof sourcePage !== "string") {
-    return NextResponse.json({ error: "slug and sourcePage are required strings" }, { status: 400 });
+  if (typeof slug !== "string") {
+    return NextResponse.json({ error: "slug is required" }, { status: 400 });
   }
 
   const software = getSoftware(slug);
@@ -54,18 +52,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "unknown software slug" }, { status: 404 });
   }
 
+  const sourcePage = resolveOutboundSourcePage(request.headers.get("referer"), request.nextUrl.origin, body.sourcePage);
   const resolvedCtaLocation = typeof ctaLocation === "string" ? ctaLocation : undefined;
   const visitorId = typeof body.visitorId === "string" ? body.visitorId : "v_anon";
   const sessionId = typeof body.sessionId === "string" ? body.sessionId : "s_anon";
   // Analytics Zero-Drop Production Proof Mega Mission (2026-08-21) Phase
-  // 11: propagated to both the legacy outbound-click pipeline (lib/revenue/
-  // events.ts) and first-party analytics, so a synthetic QA click never
-  // gets counted as a real conversion in either system.
+  // 11: propagated to both the legacy outbound-click pipeline and first-party
+  // analytics, so a synthetic QA click never gets counted as a real conversion.
   const isTest = body.isTest === true;
-  // MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) — present only
-  // for a click on a CTA under active experimentation; the server trusts
-  // these as opaque labels only (never used to branch destination logic),
-  // same trust posture as ctaLocation.
+  // Experiment labels are descriptive only and never branch destination logic.
   const experimentId = typeof body.experimentId === "string" ? body.experimentId : undefined;
   const variant = typeof body.variant === "string" ? body.variant : undefined;
   const experimentFields = experimentId && variant ? { experimentId, variant } : {};
@@ -73,7 +68,6 @@ export async function POST(request: NextRequest) {
   if (kind === "vendor-link") {
     await trackVendorLinkClick(software, software.website, sourcePage, isTest);
 
-    // Also record into first-party analytics event store
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
     await recordFirstPartyEvent({
       type: "outbound_click",
@@ -92,7 +86,6 @@ export async function POST(request: NextRequest) {
     const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software);
     await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest);
 
-    // Also record into first-party analytics event store
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
     const { shouldShowAffiliateDisclosure } = await import("@/lib/affiliate");
     const isAffiliate = shouldShowAffiliateDisclosure(software);
