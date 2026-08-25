@@ -89,8 +89,36 @@ record = f'''  {{
 text = text.replace(anchor, record + anchor, 1)
 p.write_text(text)
 
+# Payout rail ownership is account-specific. Both Wrike onboarding emails were sent
+# to the legacy/personal PartnerStack identity, so assign it there while keeping
+# payout readiness UNVERIFIED until the actual payout profile is verified.
+p = Path("data/affiliate/payout-rails.ts")
+text = p.read_text()
+rail_anchor = '    partnerSlugs: ["monday", "whatconverts", "elevenlabs"],'
+if rail_anchor not in text:
+    raise SystemExit("PartnerStack personal payout rail anchor missing")
+text = text.replace(rail_anchor, '    partnerSlugs: ["monday", "whatconverts", "elevenlabs", "wrike"],', 1)
+notes_anchor = '    notes: "First-party monday.com application mail and WhatConverts/ElevenLabs affiliate mail are tied to lahman00@gmail.com. This makes it a separate account-level payout checkpoint from hello@miloosh.com.",'
+if notes_anchor not in text:
+    raise SystemExit("PartnerStack personal payout rail notes anchor missing")
+text = text.replace(
+    notes_anchor,
+    '    notes: "First-party monday.com application mail, WhatConverts/ElevenLabs affiliate mail, and the 2026-08-25 Wrike PartnerStack welcome/onboarding emails are tied to lahman00@gmail.com. This makes it a separate account-level payout checkpoint from hello@miloosh.com. Wrike payout readiness remains unverified until the live payout profile is checked.",',
+    1,
+)
+p.write_text(text)
+
+# Current-truth reconciliation deliberately asserts the exact active relationship count.
+p = Path("tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts")
+text = p.read_text()
+count_anchor = '    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(19);'
+if count_anchor not in text:
+    raise SystemExit("active partner count regression anchor missing")
+text = text.replace(count_anchor, '    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(20);', 1)
+p.write_text(text)
+
 # Regression test: this keeps the live relationship and exact issued link from silently regressing.
 p = Path("tests/lib/wrike-affiliate-activation.test.ts")
 if p.exists():
     raise SystemExit("Wrike activation test already exists")
-p.write_text('''import { describe, expect, it } from "vitest";\nimport { getActivePartner } from "@/data/affiliate/active-partners";\nimport { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";\nimport { getAffiliateProgram } from "@/data/revenue/affiliate-programs";\n\ndescribe("Wrike affiliate activation", () => {\n  it("keeps Wrike active on the exact issued PartnerStack referral URL", () => {\n    const partner = getActivePartner("wrike");\n    expect(partner?.status).toBe("active");\n    expect(partner?.affiliateUrl).toBe("https://get.wrike.com/wdgn8ok7i5ij");\n    expect(partner?.blocker).toBeNull();\n  });\n\n  it("keeps the canonical relationship active without inventing undisclosed terms", () => {\n    const relationship = CURRENT_AFFILIATE_LEDGER.find((entry) => entry.programId === "wrike");\n    expect(relationship?.status).toBe("ACTIVE");\n    expect(relationship?.affiliateUrl).toBe("https://get.wrike.com/wdgn8ok7i5ij");\n    expect(relationship?.network).toBe("PartnerStack");\n    expect(relationship?.cookieWindow).toBeNull();\n  });\n\n  it("records the first-party program evidence as high confidence", () => {\n    const program = getAffiliateProgram("wrike");\n    expect(program?.programExists).toBe("yes");\n    expect(program?.networkName).toBe("PartnerStack");\n    expect(program?.confidence).toBe("high");\n    expect(program?.cookieDuration).toBeUndefined();\n  });\n});\n''')
+p.write_text('''import { describe, expect, it } from "vitest";\nimport { getActivePartner } from "@/data/affiliate/active-partners";\nimport { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";\nimport { getAffiliateProgram } from "@/data/revenue/affiliate-programs";\nimport { getPayoutRailForPartner } from "@/data/affiliate/payout-rails";\n\ndescribe("Wrike affiliate activation", () => {\n  it("keeps Wrike active on the exact issued PartnerStack referral URL", () => {\n    const partner = getActivePartner("wrike");\n    expect(partner?.status).toBe("active");\n    expect(partner?.affiliateUrl).toBe("https://get.wrike.com/wdgn8ok7i5ij");\n    expect(partner?.blocker).toBeNull();\n  });\n\n  it("keeps the canonical relationship active without inventing undisclosed terms", () => {\n    const relationship = CURRENT_AFFILIATE_LEDGER.find((entry) => entry.programId === "wrike");\n    expect(relationship?.status).toBe("ACTIVE");\n    expect(relationship?.affiliateUrl).toBe("https://get.wrike.com/wdgn8ok7i5ij");\n    expect(relationship?.network).toBe("PartnerStack");\n    expect(relationship?.cookieWindow).toBeNull();\n  });\n\n  it("records the first-party program evidence as high confidence", () => {\n    const program = getAffiliateProgram("wrike");\n    expect(program?.programExists).toBe("yes");\n    expect(program?.networkName).toBe("PartnerStack");\n    expect(program?.confidence).toBe("high");\n    expect(program?.cookieDuration).toBeUndefined();\n  });\n\n  it("assigns Wrike to the actual PartnerStack account while keeping payout readiness unverified", () => {\n    const rail = getPayoutRailForPartner("wrike");\n    expect(rail.id).toBe("partnerstack-personal");\n    expect(rail.accountIdentity).toBe("lahman00@gmail.com");\n    expect(rail.readiness).toBe("UNVERIFIED");\n  });\n});\n''')
