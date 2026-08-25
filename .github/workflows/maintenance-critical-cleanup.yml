@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/revenue/affiliate-programs.ts data/software/keeper.json scripts/maintenance/social-channel-health.ts .github/workflows/maintenance.yml
+          git add data/revenue/affiliate-programs.ts data/software/keeper.json scripts/maintenance/social-channel-health.ts tests/lib/social-channel-health.test.ts .github/workflows/maintenance.yml
           git commit -m "maintenance: repair stale critical findings"
           git push origin HEAD:autonomous/maintenance-critical-cleanup-2026-08-25
