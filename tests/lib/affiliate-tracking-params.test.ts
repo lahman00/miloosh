@@ -11,12 +11,16 @@ describe("affiliate tracking parameter safety", () => {
 
   it("preserves every query key already issued by every active affiliate network", () => {
     for (const partner of ACTIVE_PARTNERS) {
-      const original = new URL(partner.affiliateUrl);
+      const affiliateUrl = partner.affiliateUrl;
+      expect(affiliateUrl, `${partner.slug} active affiliate URL`).not.toBeNull();
+      if (!affiliateUrl) continue;
+
+      const original = new URL(affiliateUrl);
       const existingEntries = [...original.searchParams.entries()];
       if (existingEntries.length === 0) continue;
 
       const attemptedOverwrite = Object.fromEntries(existingEntries.map(([key]) => [key, `MILOOSH_SHOULD_NOT_REPLACE_${key}`]));
-      const resolved = new URL(withTrackingParams(partner.affiliateUrl, attemptedOverwrite));
+      const resolved = new URL(withTrackingParams(affiliateUrl, attemptedOverwrite));
 
       for (const [key, originalValue] of existingEntries) {
         expect(resolved.searchParams.get(key), `${partner.slug} network-issued query key ${key}`).toBe(originalValue);
