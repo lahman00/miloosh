@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -17,10 +17,8 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout upgrade branch
+      - name: Checkout
         uses: actions/checkout@v7
-        with:
-          ref: autonomous/npm-audit-diagnostic-2026-08-25
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -30,15 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Apply targeted Next.js security upgrade
-        run: npm install --save-exact next@16.3.2 eslint-config-next@16.3.2
-
-      - name: Apply compatible transitive audit fixes
-        run: npm audit fix
-
-      - name: Dependency audit diagnostics
-        run: npm audit --json || true
 
       - name: Tests
         run: npm test
@@ -51,15 +40,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Commit verified dependency upgrade
-        run: |
-          if git diff --quiet -- package.json package-lock.json; then
-            echo "Dependency manifests already current."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json
-          git commit -m "security: upgrade Next.js and compatible transitive dependencies"
-          git push origin HEAD:autonomous/npm-audit-diagnostic-2026-08-25
