@@ -34,7 +34,7 @@ export default function InternalPayoutsPage() {
           </span>
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">Payout control plane</h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            Internal only. The {activeCovered} active affiliate partners collapse into {PAYOUT_RAILS.length} payout rails. This page stores no bank, tax, identity, password, or 2FA data.
+            Internal only. The {activeCovered} active affiliate partners collapse into {PAYOUT_RAILS.length} payout profiles. This page stores no bank, tax, identity, password, or 2FA data.
           </p>
         </header>
 
@@ -44,17 +44,17 @@ export default function InternalPayoutsPage() {
             <p className="mt-2 text-3xl font-semibold text-white">{activeCovered}</p>
           </Card>
           <Card>
-            <p className="text-xs uppercase tracking-wide text-zinc-500">Payout rails</p>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">Payout profiles</p>
             <p className="mt-2 text-3xl font-semibold text-white">{PAYOUT_RAILS.length}</p>
           </Card>
           <Card>
-            <p className="text-xs uppercase tracking-wide text-zinc-500">Rails not yet verified</p>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">Profiles not yet verified</p>
             <p className="mt-2 text-3xl font-semibold text-white">{ownerActions}</p>
           </Card>
         </section>
 
         <section className="mt-16">
-          <SectionHeading eyebrow="Payout rails" title="One setup per network, not per vendor" />
+          <SectionHeading eyebrow="Payout profiles" title="One setup per account-level payout profile, not per vendor" />
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             {PAYOUT_RAILS.map((rail) => {
               const pack = ownerPackById.get(rail.ownerActionPackId);
@@ -100,7 +100,7 @@ export default function InternalPayoutsPage() {
           <SectionHeading eyebrow="Optional network" title="CJ stays isolated" />
           <Card className="mt-6">
             <p className="text-sm leading-6 text-zinc-400">
-              CJ is intentionally not counted among the four active-partner payout rails. Preserve the two evidenced publisher CIDs and reconcile them only for vendors whose current publisher path genuinely requires CJ. CJ officially supports Payoneer for publisher payouts, but the live account must prove whether Miloosh has actually linked it. Do not create a third account.
+              CJ is intentionally not counted among the {PAYOUT_RAILS.length} active-partner payout profiles. Preserve the two evidenced publisher CIDs and reconcile them only for vendors whose current publisher path genuinely requires CJ. CJ officially supports Payoneer for publisher payouts, but the live account must prove whether Miloosh has actually linked it. Do not create a third account.
             </p>
           </Card>
         </section>
