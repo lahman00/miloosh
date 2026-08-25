@@ -1,6 +1,6 @@
 import "./_load-env";
 import { buildApplicationPack } from "@/lib/revenue/application-pack";
-import { getRankedApplicationCandidates, getAllPriorities, type AffiliatePriorityBreakdown } from "@/lib/revenue/affiliate-priority";
+import { getFreshApplicationCandidates, getAllPriorities, type AffiliatePriorityBreakdown } from "@/lib/revenue/affiliate-priority";
 
 function printPack(slug: string, priority: AffiliatePriorityBreakdown | undefined) {
   const pack = buildApplicationPack(slug);
@@ -9,9 +9,6 @@ function printPack(slug: string, priority: AffiliatePriorityBreakdown | undefine
     return;
   }
 
-  // Priority includes mutable runtime pipeline state; application-pack's own
-  // readyToApply is the static/current-account gate. Both must agree before
-  // this CLI represents a pack as submit-ready.
   const runtimeReady = Boolean(priority?.readyToApply && pack.readyToApply);
   const blockReason = priority?.blockReason ?? pack.operationalBlockReason;
 
@@ -44,7 +41,7 @@ async function main() {
   const limit = limitArg ? Number(limitArg.split("=")[1]) : 10;
 
   if (topFlag) {
-    const candidates = (await getRankedApplicationCandidates()).slice(0, limit);
+    const candidates = (await getFreshApplicationCandidates()).slice(0, limit);
     console.log(`Preparing packs for the top ${candidates.length} genuine fresh application candidates...`);
     for (const candidate of candidates) printPack(candidate.slug, candidate);
     return;
@@ -57,7 +54,6 @@ async function main() {
     process.exit(1);
   }
 
-  // One pipeline read for any number of explicit slugs.
   const priorities = await getAllPriorities();
   const priorityBySlug = new Map(priorities.map((priority) => [priority.slug, priority]));
   for (const slug of slugs) printPack(slug, priorityBySlug.get(slug));
