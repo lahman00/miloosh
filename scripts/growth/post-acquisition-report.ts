@@ -1,22 +1,15 @@
 import { getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/events";
+import { classifySessions } from "@/lib/analytics/human-classification";
 import { isSyntheticOrTestEvent } from "@/scripts/analytics/report";
 import { readQueue } from "@/lib/social/queue";
 
 /**
- * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) Priority 3 —
- * "Build a post-level acquisition table." Real gap found and closed in
- * the same investigation: every social post's link is tagged with
- * utm_content=<queue entry id> at publish time, but nothing in the
- * analytics pipeline ever captured utm_content from the landing URL, so
- * true post-level attribution was structurally impossible despite the
- * tag existing on every link (see components/FirstPartyAnalytics.tsx and
- * lib/analytics/events.ts for the capture fix). This script is the other
- * half: join real utmContent-tagged events against the social queue by
- * entry ID to answer "which specific post brought real humans."
- *
- * Data only exists going forward from the capture fix's deploy — this
- * intentionally does not attempt to retroactively reconstruct
- * attribution for the 6 posts published before it existed.
+ * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22/25).
+ * Post-level attribution joins utm_content to the social queue, but "real"
+ * is deliberately stricter than "not marked test": only sessions accepted
+ * by the canonical human classifier enter the default report. Affiliate clicks
+ * additionally require a prior funnel event in the same session so an isolated
+ * direct POST cannot manufacture a commercial success signal.
  */
 export interface PostAcquisitionRow {
   queueEntryId: string;
@@ -30,9 +23,32 @@ export interface PostAcquisitionRow {
   affiliateClicks: number;
 }
 
+const ELIGIBLE_BUCKETS = new Set(["CONFIRMED_CLEAN", "STRONG_HUMAN_EVIDENCE", "PROBABLE_HUMAN"]);
+const PRE_CLICK_FUNNEL_TYPES = new Set(["page_view", "software_view", "comparison_view", "engaged_view", "cta_impression"]);
+
+function hasPreClickFunnelEvidence(click: Extract<FirstPartyEvent, { type: "outbound_click" }>, allEvents: readonly FirstPartyEvent[]): boolean {
+  return allEvents.some(
+    (event) =>
+      event.sessionId === click.sessionId &&
+      event.timestamp < click.timestamp &&
+      PRE_CLICK_FUNNEL_TYPES.has(event.type),
+  );
+}
+
 export async function buildPostAcquisitionTable(includeSynthetic = false): Promise<PostAcquisitionRow[]> {
   const [events, queue] = await Promise.all([getAllFirstPartyEvents(), readQueue()]);
-  const real = events.filter((e) => !isSyntheticOrTestEvent(e, includeSynthetic));
+  const classifications = classifySessions(events);
+  const eligibleSessionIds = new Set(
+    classifications.filter((classification) => ELIGIBLE_BUCKETS.has(classification.bucket)).map((classification) => classification.sessionId),
+  );
+
+  const reportEvents = includeSynthetic
+    ? events
+    : events.filter(
+        (event) =>
+          !isSyntheticOrTestEvent(event, false) &&
+          eligibleSessionIds.has(event.sessionId),
+      );
 
   const visitorsByContentId = new Map<string, Set<string>>();
   const pageViewCountByVisitor = new Map<string, number>();
@@ -41,31 +57,35 @@ export async function buildPostAcquisitionTable(includeSynthetic = false): Promi
   const affiliateByContentId = new Map<string, Set<string>>();
   const contentIdByVisitor = new Map<string, string>();
 
-  const sorted = [...real].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
-  for (const e of sorted) {
-    if (e.type === "page_view") {
-      pageViewCountByVisitor.set(e.visitorId, (pageViewCountByVisitor.get(e.visitorId) ?? 0) + 1);
-      const contentId = (e as FirstPartyEvent & { utmContent?: string }).utmContent;
-      if (contentId && !contentIdByVisitor.has(e.visitorId)) {
-        contentIdByVisitor.set(e.visitorId, contentId);
+  const sorted = [...reportEvents].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+  for (const event of sorted) {
+    if (event.type === "page_view") {
+      pageViewCountByVisitor.set(event.visitorId, (pageViewCountByVisitor.get(event.visitorId) ?? 0) + 1);
+      const contentId = event.utmContent;
+      if (contentId && !contentIdByVisitor.has(event.visitorId)) {
+        contentIdByVisitor.set(event.visitorId, contentId);
         if (!visitorsByContentId.has(contentId)) visitorsByContentId.set(contentId, new Set());
-        visitorsByContentId.get(contentId)!.add(e.visitorId);
+        visitorsByContentId.get(contentId)!.add(event.visitorId);
       }
     }
   }
 
-  for (const e of sorted) {
-    const contentId = contentIdByVisitor.get(e.visitorId);
+  for (const event of sorted) {
+    const contentId = contentIdByVisitor.get(event.visitorId);
     if (!contentId) continue;
-    if (e.type === "engaged_view") {
+    if (event.type === "engaged_view") {
       if (!engagedByContentId.has(contentId)) engagedByContentId.set(contentId, new Set());
-      engagedByContentId.get(contentId)!.add(e.visitorId);
-    } else if (e.type === "software_view" || e.type === "comparison_view") {
+      engagedByContentId.get(contentId)!.add(event.visitorId);
+    } else if (event.type === "software_view" || event.type === "comparison_view") {
       if (!commercialByContentId.has(contentId)) commercialByContentId.set(contentId, new Set());
-      commercialByContentId.get(contentId)!.add(e.visitorId);
-    } else if (e.type === "outbound_click" && e.destination === "affiliate") {
+      commercialByContentId.get(contentId)!.add(event.visitorId);
+    } else if (
+      event.type === "outbound_click" &&
+      event.destination === "affiliate" &&
+      (includeSynthetic || hasPreClickFunnelEvidence(event, events))
+    ) {
       if (!affiliateByContentId.has(contentId)) affiliateByContentId.set(contentId, new Set());
-      affiliateByContentId.get(contentId)!.add(e.visitorId);
+      affiliateByContentId.get(contentId)!.add(event.visitorId);
     }
   }
 
@@ -83,7 +103,7 @@ export async function buildPostAcquisitionTable(includeSynthetic = false): Promi
         destination: v.link,
         realVisitors: visitors.size,
         engaged: engagedByContentId.get(contentId)?.size ?? 0,
-        multiPage: [...visitors].filter((vid) => (pageViewCountByVisitor.get(vid) ?? 0) >= 2).length,
+        multiPage: [...visitors].filter((visitorId) => (pageViewCountByVisitor.get(visitorId) ?? 0) >= 2).length,
         commercialActions: commercialByContentId.get(contentId)?.size ?? 0,
         affiliateClicks: affiliateByContentId.get(contentId)?.size ?? 0,
       });
@@ -97,13 +117,13 @@ async function main() {
   const includeSynthetic = process.argv.includes("--include-synthetic");
   const rows = await buildPostAcquisitionTable(includeSynthetic);
   console.log("========================================================================================");
-  console.log(" POST-LEVEL ACQUISITION TABLE (real visitors attributed via utm_content, per social post)");
+  console.log(" POST-LEVEL ACQUISITION TABLE (human-qualified visitors attributed via utm_content)");
   if (rows.length === 0) {
-    console.log("   (no attributable data yet — utm_content capture just shipped; nothing published since)");
+    console.log("   (no human-qualified attributable data yet)");
   } else {
-    for (const r of rows) {
-      console.log(`   [${r.queueEntryId.slice(0, 8)}] ${r.channel.padEnd(10)} "${r.topic}"`);
-      console.log(`     visitors: ${r.realVisitors} | engaged: ${r.engaged} | multi-page: ${r.multiPage} | commercial: ${r.commercialActions} | affiliate: ${r.affiliateClicks}`);
+    for (const row of rows) {
+      console.log(`   [${row.queueEntryId.slice(0, 8)}] ${row.channel.padEnd(10)} "${row.topic}"`);
+      console.log(`     visitors: ${row.realVisitors} | engaged: ${row.engaged} | multi-page: ${row.multiPage} | commercial: ${row.commercialActions} | affiliate: ${row.affiliateClicks}`);
     }
   }
   console.log("========================================================================================\n");
