@@ -1,0 +1,55 @@
+name: One-time Wrike activation
+
+on:
+  push:
+    branches:
+      - autonomous/wrike-activation-2026-08-25
+    paths:
+      - .github/workflows/wrike-activation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout activation branch
+        uses: actions/checkout@v7
+        with:
+          ref: autonomous/wrike-activation-2026-08-25
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply Wrike activation
+        run: python .github/scripts/wrike-activation.py
+
+      - name: Wrike regression test
+        run: npm test -- tests/lib/wrike-affiliate-activation.test.ts
+
+      - name: Full tests
+        run: npm test
+
+      - name: Validate data
+        run: npm run validate:data
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit verified activation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/affiliate/active-partners.ts data/affiliate/canonical-ledger.ts data/revenue/affiliate-programs.ts tests/lib/wrike-affiliate-activation.test.ts
+          git commit -m "affiliate: activate Wrike referral partnership"
+          git push origin HEAD:autonomous/wrike-activation-2026-08-25
