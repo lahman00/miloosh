@@ -11,6 +11,8 @@ describe("affiliate tracking parameter safety", () => {
 
   it("preserves every query key already issued by every active affiliate network", () => {
     for (const partner of ACTIVE_PARTNERS) {
+      expect(partner.affiliateUrl, `${partner.slug} must have an active affiliate URL`).toBeTruthy();
+      if (!partner.affiliateUrl) continue;
       const original = new URL(partner.affiliateUrl);
       const existingEntries = [...original.searchParams.entries()];
       if (existingEntries.length === 0) continue;
