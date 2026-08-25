@@ -1,5 +1,7 @@
 import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import type { CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
@@ -13,10 +15,69 @@ export interface PortfolioGroup {
   categoriesCovered: string[];
   totalGscImpressions: number;
   totalComparisonsCovered: number;
+  /** Compatibility field: derived from CURRENT relationship state, never a guessed vendor acceptance probability. */
   approvalLikelihood: "HIGH" | "MEDIUM" | "LOW";
   ownerFriction: "LOW" | "MEDIUM" | "HIGH";
   strategicPriority: number;
   actionRequired: string;
+  status: CanonicalLedgerStatus;
+}
+
+function compatibilityLikelihood(status: CanonicalLedgerStatus): PortfolioGroup["approvalLikelihood"] {
+  if (["ACTIVE", "READY_AND_VERIFIED", "APPROVED_NEEDS_LINK", "APPROVED_NEEDS_EDITORIAL_CONTENT"].includes(status)) return "HIGH";
+  if (["PENDING_REVIEW", "OWNER_ACTION_REQUIRED", "BLOCKED_FORM_DEFECT", "HOLD"].includes(status)) return "MEDIUM";
+  return "LOW";
+}
+
+function ownerFriction(status: CanonicalLedgerStatus): PortfolioGroup["ownerFriction"] {
+  if (["OWNER_ACTION_REQUIRED", "BLOCKED_FORM_DEFECT", "HOLD"].includes(status)) return "HIGH";
+  if (["APPROVED_NEEDS_LINK", "APPROVED_NEEDS_EDITORIAL_CONTENT"].includes(status)) return "MEDIUM";
+  return "LOW";
+}
+
+function actionForStatus(
+  status: CanonicalLedgerStatus,
+  ownerBlocker: string | null,
+  formBlocker: string | null,
+  notes: string,
+): string {
+  if (status === "PENDING_REVIEW") return "Wait for the vendor decision. Do not resubmit while the current application is pending.";
+  if (["REJECTED", "NOT_ELIGIBLE", "PROGRAM_ENDED", "NO_REAL_PROGRAM_FOUND"].includes(status)) {
+    return "No current acquisition action. Re-open only on genuinely new first-party evidence.";
+  }
+  if (status === "PROGRAM_NOT_VERIFIED") return "Research current first-party program availability before any owner action.";
+  if (["OWNER_ACTION_REQUIRED", "BLOCKED_FORM_DEFECT", "HOLD"].includes(status)) {
+    return ownerBlocker ?? formBlocker ?? notes;
+  }
+  if (["APPROVED_NEEDS_LINK", "APPROVED_NEEDS_EDITORIAL_CONTENT"].includes(status)) {
+    return ownerBlocker ?? formBlocker ?? notes;
+  }
+  if (status === "ACTIVE" || status === "READY_AND_VERIFIED") return "No acquisition action; maintain the verified relationship and revenue path.";
+  return notes;
+}
+
+function statusWeight(status: CanonicalLedgerStatus): number {
+  switch (status) {
+    case "ACTIVE":
+    case "READY_AND_VERIFIED":
+      return 80;
+    case "APPROVED_NEEDS_LINK":
+    case "APPROVED_NEEDS_EDITORIAL_CONTENT":
+      return 70;
+    case "PENDING_REVIEW":
+      return 50;
+    case "OWNER_ACTION_REQUIRED":
+    case "BLOCKED_FORM_DEFECT":
+    case "HOLD":
+      return 30;
+    case "PROGRAM_NOT_VERIFIED":
+      return 10;
+    case "REJECTED":
+    case "NOT_ELIGIBLE":
+    case "PROGRAM_ENDED":
+    case "NO_REAL_PROGRAM_FOUND":
+      return 0;
+  }
 }
 
 export function analyzePortfolioPrograms(): PortfolioGroup[] {
@@ -30,61 +91,18 @@ export function analyzePortfolioPrograms(): PortfolioGroup[] {
     compCounts.set(b, (compCounts.get(b) ?? 0) + 1);
   }
 
-  const rawPortfolios = [
-    {
-      name: "Zoho Partner Program",
-      network: "Direct (Zoho)",
-      commissionStructure: "15% recurring commission on all Zoho subscriptions for 12 months",
-      slugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk"],
-      approvalLikelihood: "HIGH" as const,
-      ownerFriction: "LOW" as const,
-      actionRequired: "Apply via https://www.zoho.com/affiliate.html with standard Miloosh publishing URL."
-    },
-    {
-      name: "Atlassian Partner Program",
-      network: "Direct / Impact",
-      commissionStructure: "Standard tier revenue share per new cloud subscription",
-      slugs: ["confluence", "trello", "jira", "bitbucket"],
-      approvalLikelihood: "MEDIUM" as const,
-      ownerFriction: "MEDIUM" as const,
-      actionRequired: "Apply through Atlassian Developer/Partner portal; requires business entity verification."
-    },
-    {
-      name: "Freshworks Affiliate Program",
-      network: "PartnerStack / Direct",
-      commissionStructure: "Up to $5 per lead + 15% recurring commission for 1 year",
-      slugs: ["freshdesk", "freshsales", "freshservice", "freshchat"],
-      approvalLikelihood: "HIGH" as const,
-      ownerFriction: "LOW" as const,
-      actionRequired: "Submit application via PartnerStack for Freshworks affiliate program."
-    },
-    {
-      name: "Google Workspace Referral Program",
-      network: "Direct (Google)",
-      commissionStructure: "Up to $23 per user / $230 per domain on Business Standard tiers",
-      slugs: ["google-workspace", "google-chat", "google-meet"],
-      approvalLikelihood: "HIGH" as const,
-      ownerFriction: "LOW" as const,
-      actionRequired: "Enroll in Google Workspace Referral Program with official Miloosh domain."
-    },
-    {
-      name: "Impact.com SaaS Multi-Program Portfolio",
-      network: "Impact.com",
-      commissionStructure: "20-30% recurring on HubSpot, Semrush, BigCommerce, LastPass, NordPass",
-      slugs: ["hubspot", "semrush", "bigcommerce", "lastpass", "nordpass"],
-      approvalLikelihood: "MEDIUM" as const,
-      ownerFriction: "HIGH" as const,
-      actionRequired: "Owner must submit W-8BEN/W-9 tax form in Impact.com dashboard to release pending and new partner offers."
-    }
-  ];
+  const currentPortfolios = CURRENT_AFFILIATE_LEDGER.filter(
+    (relationship) => relationship.productSlugs.filter((slug) => softwareMap.has(slug)).length > 1,
+  );
 
-  const results: PortfolioGroup[] = rawPortfolios.map(p => {
+  const results: PortfolioGroup[] = currentPortfolios.map(relationship => {
+    const productsCovered = relationship.productSlugs.filter((slug) => softwareMap.has(slug));
     let totalImp = 0;
     let totalComps = 0;
     const cats = new Set<string>();
     const names: string[] = [];
 
-    for (const slug of p.slugs) {
+    for (const slug of productsCovered) {
       const s = softwareMap.get(slug);
       if (s) {
         names.push(s.name);
@@ -94,25 +112,34 @@ export function analyzePortfolioPrograms(): PortfolioGroup[] {
       totalComps += compCounts.get(slug) ?? 0;
     }
 
-    const priority = (p.slugs.length * 15) + (totalImp * 0.5) + (totalComps * 0.8) + (p.approvalLikelihood === "HIGH" ? 20 : 10) - (p.ownerFriction === "HIGH" ? 25 : 0);
+    // Status is the dominant signal. Coverage/demand are deliberately small
+    // tie-breakers so a rejected or ended portfolio can never outrank a real
+    // pending/approved relationship merely because its products have traffic.
+    const priority = statusWeight(relationship.status) + Math.min(totalImp * 0.1, 10) + Math.min(totalComps * 0.2, 10);
 
     return {
-      name: p.name,
-      network: p.network,
-      commissionStructure: p.commissionStructure,
-      productsCovered: p.slugs,
+      name: relationship.programName,
+      network: relationship.network,
+      commissionStructure: relationship.commissionModel,
+      productsCovered,
       productNames: names,
       categoriesCovered: Array.from(cats),
       totalGscImpressions: totalImp,
       totalComparisonsCovered: totalComps,
-      approvalLikelihood: p.approvalLikelihood,
-      ownerFriction: p.ownerFriction,
+      approvalLikelihood: compatibilityLikelihood(relationship.status),
+      ownerFriction: ownerFriction(relationship.status),
       strategicPriority: Number(priority.toFixed(1)),
-      actionRequired: p.actionRequired
+      actionRequired: actionForStatus(
+        relationship.status,
+        relationship.ownerBlocker,
+        relationship.formBlocker,
+        relationship.notes,
+      ),
+      status: relationship.status,
     };
   });
 
-  results.sort((a, b) => b.strategicPriority - a.strategicPriority);
+  results.sort((a, b) => b.strategicPriority - a.strategicPriority || a.name.localeCompare(b.name));
   return results;
 }
 
@@ -120,11 +147,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const portfolios = analyzePortfolioPrograms();
   const outPath = path.join(process.cwd(), "var/agents/portfolio-programs.json");
   fs.writeFileSync(outPath, JSON.stringify(portfolios, null, 2));
-  console.log(`================================================================`);
-  console.log(`           MILOOSH PORTFOLIO AFFILIATE OPPORTUNITIES             `);
-  console.log(`================================================================\n`);
+  console.log("================================================================");
+  console.log("       MILOOSH CURRENT PORTFOLIO AFFILIATE RELATIONSHIPS        ");
+  console.log("================================================================\n");
   portfolios.forEach((p, idx) => {
-    console.log(`#${idx + 1}. [${p.name}] (Priority Score: ${p.strategicPriority})`);
+    console.log(`#${idx + 1}. [${p.name}] [${p.status}] (Priority Score: ${p.strategicPriority})`);
     console.log(`    Network: ${p.network} | Commission: ${p.commissionStructure}`);
     console.log(`    Products: ${p.productNames.join(", ")} (${p.productsCovered.length} products)`);
     console.log(`    Categories: ${p.categoriesCovered.join(", ")}`);
