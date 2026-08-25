@@ -16,6 +16,22 @@
   ],
   "sources": ["https://github.com", "https://github.com/features", "https://desktop.github.com/download/", "https://github.com/mobile"],
   "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$4/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "4", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Unlimited public and private repositories; 2,000 Actions minutes per month for private repositories, with public repositories free for Actions usage." },
+      { "name": "Team", "amount": "4", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Per user per month; advanced collaboration features beyond Free." },
+      { "name": "Enterprise", "amount": "21", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Starting price per user per month; enterprise security, compliance, and deployment features. A 30-day Enterprise trial is offered." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://github.com/pricing"
+  },
   "alternatives": [
     {
       "name": "GitLab",
