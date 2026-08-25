@@ -180,7 +180,9 @@ export function computeMoneyPriorityQueue(
 
     const contentFreshnessDate = software?.accessedAt ?? "UNKNOWN";
 
-    const hasRealDemand = eligibleSessionsOnPage.size > 0 || (typeof gscImpressions === "number" && gscImpressions > 0);
+    const hasMeasuredSearchDemand = typeof gscImpressions === "number" && gscImpressions > 0;
+    const hasMeasuredSearchVisits = typeof gscClicks === "number" && gscClicks > 0;
+    const hasRealDemand = eligibleSessionsOnPage.size > 0 || hasMeasuredSearchDemand;
     const hasCompletePath = pricingCoverage && (comparisonCoverage > 0 || guideCoverage);
     const revenueReadiness: RevenueReadiness = uniqueEligibleClickers.size > 0 ? "READY" : hasRealDemand && hasCompletePath ? "PARTIAL" : "NOT_READY";
 
@@ -197,6 +199,15 @@ export function computeMoneyPriorityQueue(
     } else if (comparisonCoverage === 0 && !guideCoverage) {
       currentBlocker = "Real demand exists but no comparison or Decision Guide routes a buyer to a commercial decision.";
       nextIntervention = "Build one comparison or Decision Guide entry grounded in this product's real, sourced alternatives.";
+    } else if (hasMeasuredSearchDemand && !hasMeasuredSearchVisits && eligibleSessionsOnPage.size === 0) {
+      currentBlocker = "Google is showing Miloosh for commercial queries, but measured GSC clicks are still zero.";
+      nextIntervention = `Improve ${name}'s search-result CTR and ranking before adding more content surface: tighten title/meta intent match, strengthen internal links from relevant authority pages, and re-check the queries already earning impressions.`;
+    } else if (hasMeasuredSearchVisits && eligibleSessionsOnPage.size === 0) {
+      currentBlocker = "Measured GSC clicks exist, but no classifier-qualified software-page session is joining to them.";
+      nextIntervention = `Audit ${name}'s landing path and first-party session capture before buying or creating more traffic; prove where the measured search visits enter and whether they engage.`;
+    } else if (eligibleSessionsOnPage.size > 0) {
+      currentBlocker = "Classifier-qualified visitors reach the software page, but none has produced a qualified affiliate click.";
+      nextIntervention = `Run decision-path CRO on ${name}: inspect CTA impressions and placement, sharpen buyer-facing CTA copy, and strengthen the nearest comparison/guide handoff instead of chasing more traffic first.`;
     } else {
       nextIntervention = "Path is complete; needs real distribution to generate eligible-human traffic.";
     }
