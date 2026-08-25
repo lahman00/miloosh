@@ -1,6 +1,7 @@
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { getSoftware } from "@/data/software";
 import { ROLE_GUIDES } from "@/data/guides/registry";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 
 export interface PendingProgramReadiness {
   programId: string;
@@ -14,22 +15,15 @@ export interface PendingProgramReadiness {
 
 /**
  * Programs with current first-party evidence supporting PENDING_REVIEW.
- *
- * 2026-08-24 corrections:
- * - Close removed: ACTIVE with a verified referral URL.
- * - ClickUp removed: REJECTED by vendor on 2026-08-21.
- * - Help Scout was already removed after its 2026-08-24 rejection.
- * - Freshworks stays pending: submission evidence exists and no first-party
- *   rejection evidence is currently available; do not infer a decline from
- *   the contradictory canonical-ledger enum introduced by the Help Scout fix.
+ * Derived from the operational affiliate truth so a vendor decision cannot
+ * leave a stale hard-coded pending row behind after the ledger is updated.
  */
-export const PENDING_PROGRAMS = [
-  { programId: "freshworks", products: ["freshdesk", "freshsales"] },
-  { programId: "freshbooks", products: ["freshbooks"] },
-  { programId: "amplitude", products: ["amplitude"] },
-  { programId: "toggl-track", products: ["toggl-track"] },
-  { programId: "callrail", products: ["callrail"] }
-] as const;
+export const PENDING_PROGRAMS = CURRENT_AFFILIATE_LEDGER
+  .filter((relationship) => relationship.status === "PENDING_REVIEW")
+  .map((relationship) => ({
+    programId: relationship.programId,
+    products: [...relationship.productSlugs],
+  }));
 
 export function auditPendingPrograms(): PendingProgramReadiness[] {
   const publishedPairs = PUBLISHED_COMPARISONS;
