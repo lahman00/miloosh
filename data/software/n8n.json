@@ -22,6 +22,25 @@
     "https://docs.n8n.io/deploy/host-n8n"
   ],
   "accessed_at": "2026-07-31",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "€20/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "20", "currency": "EUR", "billing_period": "annual", "annual_billing_required": true },
+    "tiers": [
+      { "name": "Community Edition", "amount": "0", "currency": "EUR", "billing_period": "monthly", "notes": "Standard self-hosted edition available on GitHub; hosting infrastructure costs are separate." },
+      { "name": "Starter", "amount": "20", "currency": "EUR", "billing_period": "annual", "notes": "Per month, billed annually; 2,500 workflow executions; hosted by n8n." },
+      { "name": "Pro", "amount": "50", "currency": "EUR", "billing_period": "annual", "notes": "Per month, billed annually; 10,000 workflow executions; hosted by n8n." },
+      { "name": "Business", "amount": "667", "currency": "EUR", "billing_period": "annual", "notes": "Per month, billed annually; 40,000 workflow executions; self-hosted." },
+      { "name": "Enterprise", "notes": "Contact Sales; custom workflow-execution allowance; hosted by n8n or self-hosted." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-25",
+    "official_source": "https://n8n.io/pricing/"
+  },
   "alternatives": [
     {
       "name": "Zapier",
