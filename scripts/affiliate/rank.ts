@@ -1,5 +1,5 @@
 import "./_load-env";
-import { getRankedApplicationCandidates, getAllPriorities } from "@/lib/revenue/affiliate-priority";
+import { getFreshApplicationCandidates, getAllPriorities } from "@/lib/revenue/affiliate-priority";
 
 /**
  * `npm run affiliate:rank` prints fresh application candidates only.
@@ -10,7 +10,7 @@ import { getRankedApplicationCandidates, getAllPriorities } from "@/lib/revenue/
  */
 async function main() {
   const showAll = process.argv.includes("--all");
-  const rows = showAll ? await getAllPriorities() : await getRankedApplicationCandidates();
+  const rows = showAll ? await getAllPriorities() : await getFreshApplicationCandidates();
 
   console.log(
     showAll
