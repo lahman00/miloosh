@@ -21,6 +21,6 @@ describe("affiliate pipeline operation guard", () => {
   });
 
   it("does not invent a blocker when no current relationship exists", () => {
-    expect(affiliatePipelineOperationBlockReason("zoom", "approve")).toBeNull();
+    expect(affiliatePipelineOperationBlockReason("__untracked-test-slug__", "approve")).toBeNull();
   });
 });
