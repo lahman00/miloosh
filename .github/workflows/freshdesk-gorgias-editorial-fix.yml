@@ -35,16 +35,22 @@ jobs:
 
           path = Path('data/seo/alternative-guides.ts')
           text = path.read_text()
-          old = '''      { heading: "Simpler shared-inbox workflow", fit: "Help Scout is useful for teams prioritizing an inbox, knowledge base, and straightforward collaboration model.", alternativeSlug: "help-scout", comparisonSlug: "freshdesk-vs-help-scout" },
-            ],
-            evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/"],'''
-          new = '''      { heading: "Simpler shared-inbox workflow", fit: "Help Scout is useful for teams prioritizing an inbox, knowledge base, and straightforward collaboration model.", alternativeSlug: "help-scout", comparisonSlug: "freshdesk-vs-help-scout" },
-              { heading: "Ecommerce-specific customer context", fit: "Gorgias is the relevant route for ecommerce and Shopify support teams that need live order and customer data plus order actions inside the support conversation.", alternativeSlug: "gorgias", comparisonSlug: "freshdesk-vs-gorgias" },
-            ],
-            evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/", "https://www.gorgias.com"],'''
-          if old not in text:
-              raise SystemExit('Expected Freshdesk guide block not found; refusing a blind edit')
-          path.write_text(text.replace(old, new, 1))
+
+          anchor = '      { heading: "Simpler shared-inbox workflow", fit: "Help Scout is useful for teams prioritizing an inbox, knowledge base, and straightforward collaboration model.", alternativeSlug: "help-scout", comparisonSlug: "freshdesk-vs-help-scout" },'
+          addition = '      { heading: "Ecommerce-specific customer context", fit: "Gorgias is the relevant route for ecommerce and Shopify support teams that need live order and customer data plus order actions inside the support conversation.", alternativeSlug: "gorgias", comparisonSlug: "freshdesk-vs-gorgias" },'
+          old_sources = '    evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/"],'
+          new_sources = '    evidenceSources: ["https://www.freshworks.com/freshdesk/pricing/", "https://www.freshworks.com/freshdesk/features/", "https://www.gorgias.com"],'
+
+          if anchor not in text:
+              raise SystemExit('Freshdesk Help Scout anchor not found; refusing blind edit')
+          if old_sources not in text:
+              raise SystemExit('Freshdesk evidence anchor not found; refusing blind edit')
+          if addition in text:
+              raise SystemExit('Gorgias decision already present; refusing duplicate edit')
+
+          text = text.replace(anchor, anchor + '\n' + addition, 1)
+          text = text.replace(old_sources, new_sources, 1)
+          path.write_text(text)
           PY
 
       - name: Alternative guide regression tests
