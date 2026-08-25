@@ -2,11 +2,11 @@ import "./_load-env";
 import { getRankedApplicationCandidates, getAllPriorities } from "@/lib/revenue/affiliate-priority";
 
 /**
- * Affiliate Revenue Engine, Phase 5 — `npm run affiliate:rank`.
- * Prints every confirmed ("yes") program ranked by the priority score in
- * lib/revenue/affiliate-priority.ts, with every component score shown so
- * the ranking is auditable, not a black box. Pass --all to also see
- * unresolved/no-program products (useful for spotting research gaps).
+ * `npm run affiliate:rank` prints fresh application candidates only.
+ * Public program existence is necessary but never sufficient: current active,
+ * pending, rejected, ended, blocked, or already-progressed relationships are
+ * excluded by lib/revenue/affiliate-priority.ts. Pass --all for the forensic
+ * full catalog view, where operationalStatus/blockReason explain exclusions.
  */
 async function main() {
   const showAll = process.argv.includes("--all");
@@ -14,23 +14,24 @@ async function main() {
 
   console.log(
     showAll
-      ? `All ${rows.length} products, ranked by affiliate priority score:`
-      : `${rows.length} products with a confirmed affiliate program, ranked by priority score:`
+      ? `All ${rows.length} products, ranked by affiliate acquisition signals (forensic view):`
+      : `${rows.length} genuine fresh affiliate application candidates, ranked by priority score:`
   );
   console.log("");
 
-  rows.forEach((r, i) => {
-    console.log(`${String(i + 1).padStart(3)}. ${r.name} (${r.slug}) — score ${r.totalScore}/100`);
+  rows.forEach((row, index) => {
+    console.log(`${String(index + 1).padStart(3)}. ${row.name} (${row.slug}) — score ${row.totalScore}/100`);
     console.log(
-      `     program=${r.programExists} pipeline=${r.pipelineStatus} | availability=${r.affiliateAvailabilityScore}/10 category=${r.categoryValueScore}/10 commercialIntent=${r.commercialIntentScore}/10 buyingIntent=${r.buyingIntentScore}/10`
+      `     publicProgram=${row.programExists} operational=${row.operationalStatus} pipeline=${row.pipelineStatus} readyToApply=${row.readyToApply} | availability=${row.affiliateAvailabilityScore}/10 category=${row.categoryValueScore}/10 commercialIntent=${row.commercialIntentScore}/10 buyingIntent=${row.buyingIntentScore}/10`
     );
     console.log(
-      `     traffic=${r.trafficOpportunityScore}/10 (${r.trafficDataSource}) approvalFriction=${r.approvalFrictionScore}/10 recurringBonus=+${r.recurringBonus}`
+      `     traffic=${row.trafficOpportunityScore}/10 (${row.trafficDataSource}) approvalFriction=${row.approvalFrictionScore}/10 recurringBonus=+${row.recurringBonus}`
     );
+    if (row.blockReason) console.log(`     blocked: ${row.blockReason}`);
   });
 
   console.log("");
-  console.log("Score model: weighted sum of real component signals (never multiplied — see lib/revenue/affiliate-priority.ts header for why). No dollar amount is predicted.");
+  console.log("Score model: additive real-signal ranking for acquisition candidates. Public program existence never overrides Miloosh account truth. No dollar amount or approval probability is predicted.");
 }
 
 main();
