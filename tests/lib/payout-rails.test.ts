@@ -29,7 +29,7 @@ describe("payout rail integrity", () => {
     const personal = PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal");
     expect(hello?.accountIdentity).toBe("hello@miloosh.com");
     expect(personal?.accountIdentity).toBe("lahman00@gmail.com");
-    expect(personal?.partnerSlugs).toEqual(["monday", "whatconverts", "elevenlabs"]);
+    expect(personal?.partnerSlugs).toEqual(["monday", "whatconverts", "elevenlabs", "wrike"]);
     expect(new Set(hello?.partnerSlugs).has("monday")).toBe(false);
   });
 

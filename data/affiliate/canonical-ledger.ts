@@ -43,8 +43,31 @@ export interface AffiliateProgramRelationship {
 
 export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
   // ==========================================
-  // 1. ACTIVE MONITORED PARTNERS (19 programs)
+  // 1. ACTIVE MONITORED PARTNERS (20 programs)
   // ==========================================
+  {
+    programId: "wrike",
+    programName: "Wrike Referral Program",
+    network: "PartnerStack",
+    productSlugs: ["wrike"],
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-08-25",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-08-25",
+    affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij",
+    commissionModel: "Percentage of licenses sold / reward on qualified opportunities; exact rate not disclosed in the available first-party evidence",
+    cookieWindow: null,
+    evidence: [
+      "First-party PartnerStack email dated 2026-08-25: Welcome to the Wrike Referral Program",
+      "First-party Wrike referral-partner page confirming commissions on referred license sales",
+      "data/affiliate/active-partners.ts"
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Accepted Wrike referral partner; referral link issued and authorized for sharing",
+    applicationUrl: "https://www.wrike.com/partners/referral/",
+    notes: "Active relationship verified from the issued PartnerStack referral URL. Do not invent an exact payout percentage until the live offer terms disclose one."
+  },
   {
     programId: "constant-contact",
     programName: "Constant Contact Affiliate Program",
