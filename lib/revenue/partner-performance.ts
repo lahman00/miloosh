@@ -18,6 +18,7 @@ export type PartnerPerformanceInputs = {
   outboundRows?: readonly OutboundClickSummaryRow[];
   gscBySlug?: Readonly<Record<string, GscPartnerMetric>>;
   eligibleHumanSessionsBySlug?: Readonly<Record<string, number>>;
+  eligibleHumanAffiliateClicksBySlug?: Readonly<Record<string, number>>;
   comparisonCountBySlug?: Readonly<Record<string, number>>;
   downstreamBySlug?: Readonly<Record<string, DownstreamPartnerMetric>>;
   networkSignals?: readonly NetworkPerformanceSignal[];
@@ -30,11 +31,12 @@ export type PartnerPerformanceRow = {
   gscSearchClicks: number | null;
   gscSource: string | null;
   eligibleHumanSessions: number | null;
-  firstPartyOutboundClicks: number;
-  firstPartyAffiliateClicks: number;
-  firstPartyOfficialClicks: number;
-  firstPartyVendorLinkClicks: number;
-  firstPartyTestClicks: number;
+  eligibleHumanAffiliateClicks: number | null;
+  nonTestFirstPartyOutboundEvents: number;
+  nonTestFirstPartyAffiliateEvents: number;
+  nonTestFirstPartyOfficialEvents: number;
+  nonTestFirstPartyVendorLinkEvents: number;
+  firstPartyTestEvents: number;
   networkClickActivity: boolean;
   networkClickFloor: number | null;
   networkSignalSummary: string | null;
@@ -44,7 +46,8 @@ export type PartnerPerformanceRow = {
   revenue: number | null;
   revenueProximityScore: number;
   scoreBreakdown: {
-    firstPartyAffiliateClicks: number;
+    eligibleHumanAffiliateClicks: number;
+    nonTestFirstPartyAffiliateEvents: number;
     networkEvidence: number;
     gscDemand: number;
     gscSearchClicks: number;
@@ -62,10 +65,12 @@ function clampScore(value: number, max: number): number {
  *
  * Metric classes are intentionally separate:
  * - GSC search clicks are Google-result clicks into Miloosh.
- * - first-party outbound/affiliate clicks are Miloosh -> vendor interactions.
+ * - eligible-human affiliate clicks require an explicit traffic classifier.
+ * - legacy first-party outbound rows currently prove only `isTest !== true`;
+ *   they are therefore named non-test events, NOT verified-human clicks.
  * - network click signals are vendor/network-side evidence and are never added
- *   to first-party click totals because attribution and QA/human classification
- *   cannot be proven from those emails alone.
+ *   to first-party event totals because attribution and traffic quality cannot
+ *   be proven from those emails alone.
  * - unknown conversion/commission/revenue values stay null, never zero.
  */
 export function buildPartnerPerformanceRows(inputs: PartnerPerformanceInputs = {}): PartnerPerformanceRow[] {
@@ -86,15 +91,18 @@ export function buildPartnerPerformanceRows(inputs: PartnerPerformanceInputs = {
     const network = networkBySlug.get(partner.slug);
     const downstream = inputs.downstreamBySlug?.[partner.slug];
     const comparisonCount = inputs.comparisonCountBySlug?.[partner.slug] ?? null;
+    const eligibleHumanAffiliateClicks = inputs.eligibleHumanAffiliateClicksBySlug?.[partner.slug] ?? null;
 
-    const firstPartyAffiliateClicks = outbound?.affiliateClicks ?? 0;
-    const firstPartyOutboundClicks = outbound?.totalClicks ?? 0;
+    const nonTestFirstPartyAffiliateEvents = outbound?.affiliateClicks ?? 0;
+    const nonTestFirstPartyOutboundEvents = outbound?.totalClicks ?? 0;
 
-    // Revenue-proximity score is deliberately dominated by proven downstream
-    // movement, then first-party affiliate clicks. Search demand and content
-    // coverage can raise priority but can never erase a real outbound click.
+    // Revenue-proximity is dominated by proven downstream movement and
+    // classifier-qualified affiliate clicks. Legacy non-test events remain a
+    // useful first-party signal, but get deliberately less weight because they
+    // do not prove a human session on their own.
     const scoreBreakdown = {
-      firstPartyAffiliateClicks: clampScore(firstPartyAffiliateClicks * 12, 48),
+      eligibleHumanAffiliateClicks: clampScore((eligibleHumanAffiliateClicks ?? 0) * 16, 48),
+      nonTestFirstPartyAffiliateEvents: clampScore(nonTestFirstPartyAffiliateEvents * 7, 28),
       networkEvidence: network ? clampScore(8 + (network.clickFloor ?? 0), 20) : 0,
       gscDemand: gsc?.impressions == null ? 0 : clampScore(Math.sqrt(gsc.impressions) * 1.25, 16),
       gscSearchClicks: gsc?.searchClicks == null ? 0 : clampScore(gsc.searchClicks * 2, 6),
@@ -112,11 +120,12 @@ export function buildPartnerPerformanceRows(inputs: PartnerPerformanceInputs = {
       gscSearchClicks: gsc?.searchClicks ?? null,
       gscSource: gsc?.source ?? null,
       eligibleHumanSessions: inputs.eligibleHumanSessionsBySlug?.[partner.slug] ?? null,
-      firstPartyOutboundClicks,
-      firstPartyAffiliateClicks,
-      firstPartyOfficialClicks: outbound?.officialClicks ?? 0,
-      firstPartyVendorLinkClicks: outbound?.vendorLinkClicks ?? 0,
-      firstPartyTestClicks: outbound?.testClicks ?? 0,
+      eligibleHumanAffiliateClicks,
+      nonTestFirstPartyOutboundEvents,
+      nonTestFirstPartyAffiliateEvents,
+      nonTestFirstPartyOfficialEvents: outbound?.officialClicks ?? 0,
+      nonTestFirstPartyVendorLinkEvents: outbound?.vendorLinkClicks ?? 0,
+      firstPartyTestEvents: outbound?.testClicks ?? 0,
       networkClickActivity: Boolean(network),
       networkClickFloor: network?.clickFloor ?? null,
       networkSignalSummary: network?.summary ?? null,
@@ -132,7 +141,8 @@ export function buildPartnerPerformanceRows(inputs: PartnerPerformanceInputs = {
   return rows.sort(
     (a, b) =>
       b.revenueProximityScore - a.revenueProximityScore ||
-      b.firstPartyAffiliateClicks - a.firstPartyAffiliateClicks ||
+      (b.eligibleHumanAffiliateClicks ?? -1) - (a.eligibleHumanAffiliateClicks ?? -1) ||
+      b.nonTestFirstPartyAffiliateEvents - a.nonTestFirstPartyAffiliateEvents ||
       (b.networkClickFloor ?? -1) - (a.networkClickFloor ?? -1) ||
       (b.gscImpressions ?? -1) - (a.gscImpressions ?? -1) ||
       a.slug.localeCompare(b.slug)
