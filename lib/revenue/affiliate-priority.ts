@@ -1,6 +1,9 @@
 import type { Software } from "@/data/software";
 import { getAllSoftware } from "@/data/software";
 import { AFFILIATE_PROGRAMS, type AffiliateProgramInfo } from "@/data/revenue/affiliate-programs";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import type { AffiliateProgramRelationship, CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { readFirstClickCandidates } from "@/lib/agents/first-click-experiment";
 import { readFirstClickStrikeCandidates } from "@/lib/agents/first-click-strike";
 import {
@@ -13,39 +16,36 @@ import {
 import { getRevenueScore } from "@/lib/revenue/scoring";
 
 /**
- * Affiliate Revenue Engine, Phase 5 — money-first prioritization.
+ * Affiliate acquisition prioritization.
  *
- * This is deliberately an ADDITIVE weighted score, not the directive's
- * literal "Traffic opportunity x Commercial intent x Commission potential
- * x Approval probability" product: most products have zero real traffic
- * signal (see trafficOpportunityScore below), and multiplying by zero
- * would erase every other real signal a product does have. Exposing each
- * component separately — as the directive itself also requires — is more
- * honest than a single multiplied number that implies more precision than
- * the inputs support.
+ * Public program research answers "does the vendor appear to run a program?"
+ * It does NOT answer "should Miloosh apply now?". Operational account truth
+ * (ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER) and real pipeline progress gate
+ * application readiness before public-program economics are scored.
  */
+
+export type AffiliateOperationalStatus = CanonicalLedgerStatus | "ACTIVE_REGISTRY" | "NO_RELATIONSHIP";
 
 export type AffiliatePriorityBreakdown = {
   slug: string;
   name: string;
   programExists: AffiliateProgramInfo["programExists"] | "no_entry";
   pipelineStatus: AffiliatePipelineStatus;
+  operationalStatus: AffiliateOperationalStatus;
   affiliateAvailabilityScore: number;
   categoryValueScore: number;
   commercialIntentScore: number;
   buyingIntentScore: number;
-  /** 0-10. Real GSC impressions found for this product's own page(s) in the two prior first-click experiment cohorts — the only per-product traffic data this system actually has. 0 means "no data," never "no traffic." */
+  /** 0-10. Real GSC impressions from recorded first-click cohorts. 0 means no measured cohort data, never proven zero traffic. */
   trafficOpportunityScore: number;
-  /** Whether trafficOpportunityScore came from a real recorded GSC baseline, or is a structural 0 (no data collected for this product's pages). */
   trafficDataSource: "real-gsc-cohort" | "none";
-  /** 0-10. Not a real approval-probability model — a documented proxy: a network the owner already has an account on (PartnerStack) scores highest, a known network scores next, an unnamed/direct program scores lower, and no confirmed application path scores lowest. */
+  /** Infrastructure/friction proxy, not an approval probability. */
   approvalFrictionScore: number;
   recurringBonus: number;
   totalScore: number;
-  /** False when there's a concrete, evidenced reason this shouldn't go in a ready-to-apply batch yet (see KNOWN_APPLICATION_BLOCKERS / applicationUrl missing / low confidence) — even if programExists is "yes". */
+  /** True only when no current account/pipeline state says this application is already active, pending, rejected, blocked, closed, or otherwise not a fresh application candidate. */
   readyToApply: boolean;
   blockReason: string | null;
-  /** The real affiliate/referral URL once approved — null until an owner-confirmed approval records one. Never the research applicationUrl (that's the page to apply on, not the tracking link you get after acceptance). */
   affiliateUrl: string | null;
   approvedAt: string | null;
   submittedAt: string | null;
@@ -54,20 +54,11 @@ export type AffiliatePriorityBreakdown = {
   ownerActionRequired: string | null;
 };
 
-/**
- * Concrete, evidenced reasons a confirmed ("yes") program still isn't safe
- * to hand the owner as a one-click application — found during the
- * Completion Pass re-verification (2026-08-14) by actually re-reading each
- * official page rather than trusting the "yes" flag alone. Hand-maintained
- * rather than string-matched against `notes`, so it stays exact and
- * auditable; add an entry here (with the real source) whenever a
- * confirmed program turns out to have a real blocker.
- */
 export const KNOWN_APPLICATION_BLOCKERS: Record<string, string> = {
   notion: "Official page currently shows 'Program is currently not accepting new affiliates' (re-checked 2026-08-14).",
   asana: "Application requires being an existing paying Asana customer and runs through a Salesforce sales portal — not a fit for Miloosh's comparison-publisher model.",
   canva: "Official Help Center pages return 403 on every direct fetch attempt; network and current open/closed status could not be independently confirmed.",
-  "fathom-analytics": "Program is restricted to existing Fathom Analytics customers with an active paid subscription (confirmed directly on Fathom's own docs, 2026-08-14) — Miloosh is not a Fathom customer, so applying would require a real spend decision first, not just an account signup.",
+  "fathom-analytics": "Program is restricted to existing Fathom Analytics customers with an active paid subscription (confirmed directly on Fathom's own docs, 2026-08-14) — applying would require a real spend decision first.",
 };
 
 const WEIGHTS = {
@@ -83,24 +74,121 @@ const MAX_RAW =
   10 * (WEIGHTS.affiliateAvailability + WEIGHTS.categoryValue + WEIGHTS.commercialIntent + WEIGHTS.buyingIntent + WEIGHTS.trafficOpportunity + WEIGHTS.approvalFriction) +
   RECURRING_BONUS;
 
-function scoreAffiliateAvailability(program: AffiliateProgramInfo | undefined): number {
-  if (!program) return 0;
-  if (program.programExists === "yes") return 10;
-  if (program.programExists === "unknown") return 5;
-  return 0;
+const ACTIVE_SLUGS = new Set(ACTIVE_PARTNERS.map((partner) => partner.slug as string));
+const PIPELINE_APPLICATION_BLOCKERS = new Set<AffiliatePipelineStatus>([
+  "application_in_progress",
+  "submitted",
+  "pending_review",
+  "approved",
+  "rejected",
+  "affiliate_link_received",
+  "activated",
+  "earning",
+  "no_program",
+  "program_closed",
+  "needs_owner_action",
+  "needs_more_research",
+  "waiting_on_network",
+]);
+
+function relationshipForProduct(slug: string): AffiliateProgramRelationship | null {
+  const matches = CURRENT_AFFILIATE_LEDGER.filter((relationship) => relationship.productSlugs.includes(slug));
+  if (matches.length === 0) return null;
+  return [...matches].sort(
+    (a, b) => a.productSlugs.length - b.productSlugs.length || b.statusUpdatedAt.localeCompare(a.statusUpdatedAt),
+  )[0]!;
 }
 
-/** Real GSC impressions recorded for this slug's own software/compare page(s) in the two prior first-click experiments — the only per-product live-traffic evidence this codebase has collected. Not a general keyword-volume estimate. */
+function operationalStatus(slug: string, relationship: AffiliateProgramRelationship | null): AffiliateOperationalStatus {
+  if (ACTIVE_SLUGS.has(slug)) return "ACTIVE_REGISTRY";
+  return relationship?.status ?? "NO_RELATIONSHIP";
+}
+
+function currentRelationshipBlockReason(relationship: AffiliateProgramRelationship): string {
+  switch (relationship.status) {
+    case "PENDING_REVIEW":
+      return `${relationship.programName} is already PENDING_REVIEW. Wait for first-party approval/rejection evidence; do not submit a duplicate application.`;
+    case "ACTIVE":
+    case "READY_AND_VERIFIED":
+      return `${relationship.programName} already has a verified relationship; this is not a fresh application candidate.`;
+    case "APPROVED_NEEDS_LINK":
+    case "APPROVED_NEEDS_EDITORIAL_CONTENT":
+      return `${relationship.programName} is already approved and needs activation work, not another application.`;
+    case "OWNER_ACTION_REQUIRED":
+    case "BLOCKED_FORM_DEFECT":
+    case "HOLD":
+      return relationship.ownerBlocker ?? relationship.formBlocker ?? relationship.notes ?? `${relationship.programName} is currently blocked.`;
+    case "REJECTED":
+      return `${relationship.programName} was rejected. Do not reapply without genuinely new first-party evidence.`;
+    case "NOT_ELIGIBLE":
+      return `${relationship.programName} is not eligible for Miloosh under current evidence.`;
+    case "NO_REAL_PROGRAM_FOUND":
+      return `${relationship.programName}: no current real publisher program is verified.`;
+    case "PROGRAM_NOT_VERIFIED":
+      return `${relationship.programName}: current publisher program is not sufficiently verified; research before any application.`;
+    case "PROGRAM_ENDED":
+      return `${relationship.programName} ended. Do not route the owner to the historical application path.`;
+  }
+}
+
+function publicApplicationGate(
+  software: Software,
+  program: AffiliateProgramInfo | undefined,
+  pipelineEntry: AffiliatePipelineEntry | undefined,
+  relationship: AffiliateProgramRelationship | null,
+): { ready: boolean; reason: string | null; status: AffiliateOperationalStatus } {
+  const status = operationalStatus(software.slug, relationship);
+
+  if (status === "ACTIVE_REGISTRY") {
+    return { ready: false, reason: "Verified active partner already exists; optimize/measure the live relationship instead of applying again.", status };
+  }
+  if (relationship) {
+    return { ready: false, reason: currentRelationshipBlockReason(relationship), status };
+  }
+
+  const pipelineStatus = pipelineEntry?.status ?? "unresearched";
+  if (PIPELINE_APPLICATION_BLOCKERS.has(pipelineStatus)) {
+    return {
+      ready: false,
+      reason: `Runtime pipeline is already "${pipelineStatus}". Reconcile/continue that workflow instead of creating a duplicate application.`,
+      status,
+    };
+  }
+
+  if (program?.programExists !== "yes") {
+    return { ready: false, reason: "No confirmed current public affiliate program.", status };
+  }
+  if (!program.applicationUrl) {
+    return { ready: false, reason: "No confirmed application URL yet.", status };
+  }
+  if (program.confidence === "low") {
+    return { ready: false, reason: "Research confidence is low — key facts or current application status are unconfirmed.", status };
+  }
+  if (KNOWN_APPLICATION_BLOCKERS[software.slug]) {
+    return { ready: false, reason: KNOWN_APPLICATION_BLOCKERS[software.slug]!, status };
+  }
+
+  return { ready: true, reason: null, status };
+}
+
+function scoreAffiliateAvailability(program: AffiliateProgramInfo | undefined, readyToApply: boolean): number {
+  // This is an APPLICATION priority model. A public program that Miloosh is
+  // already active/pending/rejected/blocked on gets no acquisition-availability
+  // credit even though the vendor may publicly run a program.
+  if (!readyToApply) return 0;
+  return program?.programExists === "yes" ? 10 : 0;
+}
+
 function getRealImpressionsForSlug(slug: string): number {
   let total = 0;
-  for (const c of readFirstClickCandidates()) {
-    if (c.url.includes(`/software/${slug}`) || c.url.includes(`/compare/`) && c.url.includes(slug)) {
-      total += c.baseline.impressions;
+  for (const candidate of readFirstClickCandidates()) {
+    if (candidate.url.includes(`/software/${slug}`) || (candidate.url.includes(`/compare/`) && candidate.url.includes(slug))) {
+      total += candidate.baseline.impressions;
     }
   }
-  for (const c of readFirstClickStrikeCandidates()) {
-    if (c.url.includes(`/software/${slug}`) || (c.url.includes(`/compare/`) && c.url.includes(slug))) {
-      total += c.baseline.impressions;
+  for (const candidate of readFirstClickStrikeCandidates()) {
+    if (candidate.url.includes(`/software/${slug}`) || (candidate.url.includes(`/compare/`) && candidate.url.includes(slug))) {
+      total += candidate.baseline.impressions;
     }
   }
   return total;
@@ -109,35 +197,27 @@ function getRealImpressionsForSlug(slug: string): number {
 function scoreTrafficOpportunity(slug: string): { score: number; source: "real-gsc-cohort" | "none" } {
   const impressions = getRealImpressionsForSlug(slug);
   if (impressions <= 0) return { score: 0, source: "none" };
-  // Same position-weighted bucketing already used to rank the first-click cohorts (see first-click-experiment.ts) — capped at 10.
   const score = Math.min(10, Math.round(Math.log2(impressions + 1) * 1.8));
   return { score, source: "real-gsc-cohort" };
 }
 
-function scoreApprovalFriction(program: AffiliateProgramInfo | undefined): number {
-  if (!program || program.programExists !== "yes") return 2;
-  if (program.networkName === "PartnerStack") return 10; // owner already has an account here
-  if (program.networkName) return 7; // a named network — real infrastructure, just not one we're onboarded to yet
+function scoreApprovalFriction(program: AffiliateProgramInfo | undefined, readyToApply: boolean): number {
+  if (!readyToApply || !program || program.programExists !== "yes") return 0;
+  if (program.networkName === "PartnerStack") return 10;
+  if (program.networkName) return 7;
   if (program.type === "direct") return 5;
   return 3;
 }
 
-/**
- * Pure — no I/O. Takes the pipeline entry (or undefined) as a plain
- * argument instead of fetching it, so a caller iterating many products
- * can fetch the whole pipeline once and pass each product's own entry in,
- * rather than every product independently triggering its own Blob read.
- * getAffiliatePriority(), getRankedApplicationCandidates(), and
- * getAllPriorities() below are all thin wrappers around this.
- */
 function computeAffiliatePriority(software: Software, pipelineEntry: AffiliatePipelineEntry | undefined): AffiliatePriorityBreakdown {
-  const program = AFFILIATE_PROGRAMS.find((p) => p.slug === software.slug);
+  const program = AFFILIATE_PROGRAMS.find((entry) => entry.slug === software.slug);
+  const relationship = relationshipForProduct(software.slug);
+  const gate = publicApplicationGate(software, program, pipelineEntry, relationship);
   const revenueScore = getRevenueScore(software);
   const traffic = scoreTrafficOpportunity(software.slug);
-  const approvalFrictionScore = scoreApprovalFriction(program);
-  const recurringBonus = program?.recurrence === "recurring" ? RECURRING_BONUS : 0;
-
-  const affiliateAvailabilityScore = scoreAffiliateAvailability(program);
+  const affiliateAvailabilityScore = scoreAffiliateAvailability(program, gate.ready);
+  const approvalFrictionScore = scoreApprovalFriction(program, gate.ready);
+  const recurringBonus = gate.ready && program?.recurrence === "recurring" ? RECURRING_BONUS : 0;
 
   const raw =
     affiliateAvailabilityScore * WEIGHTS.affiliateAvailability +
@@ -153,6 +233,7 @@ function computeAffiliatePriority(software: Software, pipelineEntry: AffiliatePi
     name: software.name,
     programExists: program?.programExists ?? "no_entry",
     pipelineStatus: pipelineEntry?.status ?? "unresearched",
+    operationalStatus: gate.status,
     affiliateAvailabilityScore,
     categoryValueScore: revenueScore.categoryValueScore,
     commercialIntentScore: revenueScore.commercialIntentScore,
@@ -162,50 +243,33 @@ function computeAffiliatePriority(software: Software, pipelineEntry: AffiliatePi
     approvalFrictionScore,
     recurringBonus,
     totalScore: Math.round((raw / MAX_RAW) * 100),
-    readyToApply: Boolean(program?.applicationUrl) && program?.confidence !== "low" && !KNOWN_APPLICATION_BLOCKERS[software.slug],
-    blockReason:
-      KNOWN_APPLICATION_BLOCKERS[software.slug] ??
-      (!program?.applicationUrl ? "No confirmed application URL yet." : program.confidence === "low" ? "Research confidence is low — key facts (network, current status) unconfirmed." : null),
-    affiliateUrl: pipelineEntry?.affiliateUrl ?? null,
+    readyToApply: gate.ready,
+    blockReason: gate.reason,
+    affiliateUrl: ACTIVE_PARTNERS.find((partner) => partner.slug === software.slug)?.affiliateUrl ?? pipelineEntry?.affiliateUrl ?? relationship?.affiliateUrl ?? null,
     approvedAt: pipelineEntry?.approvedAt ?? null,
-    submittedAt: pipelineEntry?.submittedAt ?? null,
-    rejectedAt: pipelineEntry?.rejectedAt ?? null,
+    submittedAt: pipelineEntry?.submittedAt ?? relationship?.applicationSubmittedAt ?? null,
+    rejectedAt: pipelineEntry?.rejectedAt ?? (relationship?.status === "REJECTED" ? relationship.decisionAt : null),
     pipelineNotes: pipelineEntry?.notes ?? null,
-    ownerActionRequired: pipelineEntry?.ownerActionRequired ?? null,
+    ownerActionRequired: pipelineEntry?.ownerActionRequired ?? relationship?.ownerBlocker ?? relationship?.formBlocker ?? null,
   };
 }
 
-/** Single-product convenience wrapper — one Blob read for one product, which is correct (not the N+1 bug; that was N products each independently re-reading the same full pipeline). Used by CLI scripts and tests that want just one slug's breakdown. */
 export async function getAffiliatePriority(software: Software): Promise<AffiliatePriorityBreakdown> {
   const pipelineEntry = await getPipelineEntry(software.slug);
   return computeAffiliatePriority(software, pipelineEntry);
 }
 
-/**
- * Every software with a confirmed ("yes") program, ranked highest-priority
- * first — the only pool it's safe to build a real application batch from.
- *
- * Reads the pipeline exactly once (or reuses `entries` if the caller
- * already fetched it this request) regardless of catalog size — pass the
- * same array you already have (e.g. the dashboard page also uses it for
- * countByPipelineStatus) to avoid a second Blob read entirely.
- */
+/** Fresh application candidates only. Current active/pending/rejected/blocked relationships and already-progressed pipeline entries are excluded even if the vendor publicly runs a program. */
 export async function getRankedApplicationCandidates(entries?: AffiliatePipelineEntry[]): Promise<AffiliatePriorityBreakdown[]> {
   const list = entries ?? (await readAffiliatePipeline());
   const pipelineMap = buildPipelineMap(list);
-  const breakdowns = getAllSoftware().map((s) => computeAffiliatePriority(s, pipelineMap.get(s.slug)));
-  return breakdowns.filter((b) => b.programExists === "yes").sort((a, b) => b.totalScore - a.totalScore);
+  const breakdowns = getAllSoftware().map((software) => computeAffiliatePriority(software, pipelineMap.get(software.slug)));
+  return breakdowns.filter((breakdown) => breakdown.readyToApply).sort((a, b) => b.totalScore - a.totalScore);
 }
 
-/**
- * Every product this priority model has an opinion on, ranked — includes
- * unresolved/no-program entries so the dashboard can show the full
- * picture, not just the actionable slice. Same single-read discipline as
- * getRankedApplicationCandidates() above.
- */
 export async function getAllPriorities(entries?: AffiliatePipelineEntry[]): Promise<AffiliatePriorityBreakdown[]> {
   const list = entries ?? (await readAffiliatePipeline());
   const pipelineMap = buildPipelineMap(list);
-  const breakdowns = getAllSoftware().map((s) => computeAffiliatePriority(s, pipelineMap.get(s.slug)));
+  const breakdowns = getAllSoftware().map((software) => computeAffiliatePriority(software, pipelineMap.get(software.slug)));
   return breakdowns.sort((a, b) => b.totalScore - a.totalScore);
 }
