@@ -7,12 +7,8 @@ import { addQueueEntries } from "@/lib/social/queue";
 import type { ChannelVariant, SocialQueueEntry } from "@/lib/social/types";
 
 /**
- * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) Priority 3.
- * Proves the post-level table correctly joins real utm_content-tagged
- * analytics events against the social queue by entry ID -- the concrete
- * deliverable the mission asked for ("which specific post brought real
- * humans"), only possible after this same investigation's utmContent
- * capture fix.
+ * Proves post-level attribution joins utm_content to the social queue only
+ * after canonical human qualification. A flat non-test hit is not enough.
  */
 const ANALYTICS_PATH = path.join(process.cwd(), "var", "first-party-analytics.json");
 const QUEUE_PATH = path.join(process.cwd(), "var", "agents", "social-queue.json");
@@ -53,19 +49,38 @@ function queueEntry(id: string): SocialQueueEntry {
 }
 
 describe("buildPostAcquisitionTable", () => {
-  it("attributes real visitors to the specific post that brought them via utm_content", async () => {
+  it("attributes a human-qualified visitor to the specific post that brought them via utm_content", async () => {
     await addQueueEntries([queueEntry("post-1")]);
     const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
     await recordFirstPartyEvent({ type: "page_view", path: "/software/circleci", utmContent: "post-1", utmSource: "facebook", utmMedium: "social", visitorId: "v_a", sessionId: "s_a", timestamp: t(0) } as FirstPartyEvent);
-    await recordFirstPartyEvent({ type: "engaged_view", path: "/software/circleci", durationSeconds: 12, visitorId: "v_a", sessionId: "s_a", timestamp: t(1000) } as FirstPartyEvent);
+    await recordFirstPartyEvent({ type: "software_view", path: "/software/circleci", softwareSlug: "circleci", visitorId: "v_a", sessionId: "s_a", timestamp: t(1000) } as FirstPartyEvent);
+    await recordFirstPartyEvent({ type: "engaged_view", path: "/software/circleci", durationSeconds: 12, visitorId: "v_a", sessionId: "s_a", timestamp: t(12000) } as FirstPartyEvent);
 
     const rows = await buildPostAcquisitionTable();
     const row = rows.find((r) => r.queueEntryId === "post-1" && r.channel === "facebook");
     expect(row).toBeTruthy();
     expect(row?.realVisitors).toBe(1);
     expect(row?.engaged).toBe(1);
+    expect(row?.commercialActions).toBe(1);
     expect(row?.topic).toBe("alternatives-circleci");
     expect(row?.destination).toBe("https://miloosh.com/software/circleci");
+  });
+
+  it("does not call a shallow non-test UTM page hit a real visitor", async () => {
+    await addQueueEntries([queueEntry("post-shallow")]);
+    await recordFirstPartyEvent({
+      type: "page_view",
+      path: "/software/circleci",
+      utmContent: "post-shallow",
+      utmSource: "facebook",
+      utmMedium: "social",
+      visitorId: "v_shallow",
+      sessionId: "s_shallow",
+      timestamp: new Date().toISOString(),
+    } as FirstPartyEvent);
+
+    const rows = await buildPostAcquisitionTable();
+    expect(rows.find((r) => r.queueEntryId === "post-shallow")).toBeUndefined();
   });
 
   it("never attributes a visitor with no utm_content to any post", async () => {
@@ -74,6 +89,17 @@ describe("buildPostAcquisitionTable", () => {
     const rows = await buildPostAcquisitionTable();
     expect(rows.every((r) => r.queueEntryId !== undefined)).toBe(true);
     expect(rows.some((r) => r.realVisitors > 0 && r.queueEntryId === "")).toBe(false);
+  });
+
+  it("counts an affiliate click only on a human-qualified attributed session with pre-click funnel evidence", async () => {
+    await addQueueEntries([queueEntry("post-click")]);
+    const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
+    await recordFirstPartyEvent({ type: "page_view", path: "/software/circleci", utmContent: "post-click", visitorId: "v_click", sessionId: "s_click", timestamp: t(0) } as FirstPartyEvent);
+    await recordFirstPartyEvent({ type: "software_view", path: "/software/circleci", softwareSlug: "circleci", visitorId: "v_click", sessionId: "s_click", timestamp: t(1000) } as FirstPartyEvent);
+    await recordFirstPartyEvent({ type: "outbound_click", path: "/software/circleci", softwareSlug: "circleci", destination: "affiliate", url: "https://example.test/affiliate", visitorId: "v_click", sessionId: "s_click", timestamp: t(2000) } as FirstPartyEvent);
+
+    const rows = await buildPostAcquisitionTable();
+    expect(rows.find((r) => r.queueEntryId === "post-click")?.affiliateClicks).toBe(1);
   });
 
   it("excludes synthetic QA visitors by default", async () => {
