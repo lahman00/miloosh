@@ -7,12 +7,10 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { buildMoneyMap, type MoneyMapBucket, type MoneyMapPage } from "@/lib/revenue/money-map";
 
 /**
- * Phase 12 — internal Money Map. Not linked from the navbar, footer,
- * homepage, or sitemap; /internal/ is Basic-Auth gated by proxy.ts and
- * disallowed in app/robots.ts as defense in depth — same posture as
- * every other /internal/ dashboard. Reads real data at request time
- * (force-dynamic): a live Search Console fetch plus the real
- * Blob-backed outbound-click log, both of which change continuously.
+ * Internal Money Map. Basic-Auth gated and excluded from indexing. Reads live
+ * Search Console data plus the Blob-backed outbound revenue log at request
+ * time. Revenue-log events are operational evidence, not human-qualified
+ * traffic; QA/test events are excluded explicitly by lib/revenue/money-map.ts.
  */
 export const metadata: Metadata = {
   title: "Money Map",
@@ -61,15 +59,15 @@ export default async function MoneyMapPageRoute() {
   const data = await buildMoneyMap();
 
   const bucketCounts = data.pages.reduce(
-    (acc, p) => {
-      if (p.bucket) acc[p.bucket] = (acc[p.bucket] ?? 0) + 1;
+    (acc, page) => {
+      if (page.bucket) acc[page.bucket] = (acc[page.bucket] ?? 0) + 1;
       return acc;
     },
     {} as Record<Exclude<MoneyMapBucket, null>, number>
   );
 
   const top20 = data.pages.slice(0, 20);
-  const unclassifiedCount = data.pages.filter((p) => p.bucket === null).length;
+  const unclassifiedCount = data.pages.filter((page) => page.bucket === null).length;
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -80,20 +78,18 @@ export default async function MoneyMapPageRoute() {
           </span>
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">Money Map</h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            Internal only — not indexed, not linked from the site. Ranks every software and
-            comparison page by a transparent Money Score built only from real, measured data
-            where available. A component that isn&apos;t available is excluded from the score,
-            never faked as neutral. See <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm">lib/revenue/money-map.ts</code>{" "}
-            for the exact formula.
+            Internal only. Ranks software and comparison pages with a transparent score built from
+            available evidence. Missing components are excluded, not replaced with invented neutral values.
+            Human-qualified affiliate priority is handled separately by the canonical Money Priority Engine.
           </p>
           <p className="mt-4 text-sm leading-6 text-zinc-500">
             Search Console: <strong className="text-zinc-300">{data.gscFetchAvailability}</strong> —{" "}
             {data.gscFetchNote}
           </p>
           <p className="mt-2 text-sm leading-6 text-zinc-500">
-            Outbound-click log: {data.totalOutboundEventsSitewide} real event(s) recorded
-            sitewide. This is still very early — click-based conclusions (bucket E) will stay
-            empty or near-empty until real volume accumulates.
+            Revenue outbound log: {data.totalOutboundEventsSitewide} non-test event(s) included;{" "}
+            {data.totalTestOutboundEventsSitewide} QA/test event(s) excluded. These stored events are not
+            human-qualified because this revenue log carries no session classifier.
           </p>
         </header>
 
@@ -123,7 +119,7 @@ export default async function MoneyMapPageRoute() {
         <section className="mt-14">
           <SectionHeading
             title="Top 20 by Money Score"
-            description="Highest realistic near-term revenue opportunity first. Score = weighted average of only the components that had real/derived/heuristic data for that page."
+            description="Highest near-term opportunity first. The click component is deliberately weak and uses only non-test revenue-log events; it is not a human count."
           />
 
           <Card className="mt-8 overflow-x-auto">
@@ -134,7 +130,7 @@ export default async function MoneyMapPageRoute() {
                 <span>Products / coverage</span>
                 <span>Score</span>
                 <span>Search Console</span>
-                <span>Outbound clicks</span>
+                <span>Non-test outbound log</span>
                 <span>Bucket</span>
                 <span>Recommended action</span>
               </div>
@@ -144,7 +140,7 @@ export default async function MoneyMapPageRoute() {
                     <span className="font-medium text-white">{page.url}</span>
                     <span className="text-zinc-400">{page.pageType}</span>
                     <span className="text-zinc-400">
-                      {page.products.map((p) => p.name).join(" vs ")}
+                      {page.products.map((product) => product.name).join(" vs ")}
                       <br />
                       <span className="text-xs text-zinc-500">coverage: {page.monetizationCoverage}</span>
                     </span>
@@ -173,16 +169,16 @@ export default async function MoneyMapPageRoute() {
         <section className="mt-14">
           <SectionHeading
             title="Score formula"
-            description="Every component is 0-10, weighted, then rescaled to 0-100. A missing component is excluded from the average, not defaulted."
+            description="Every available component is 0-10, weighted, then rescaled to 0-100. Missing components are excluded from the average."
           />
           <Card className="mt-8">
             <ul className="space-y-2 text-sm text-zinc-400">
-              <li>Search visibility (weight 3) — real, from live Search Console impressions.</li>
-              <li>Ranking proximity (weight 2) — real, from live Search Console average position.</li>
-              <li>CTR opportunity gap (weight 1.5) — real CTR vs. a heuristic expected-CTR-by-position curve.</li>
-              <li>Commercial intent (weight 2) — derived from stored pricing model (software pages) or a heuristic that comparison pages carry stronger buying intent.</li>
-              <li>Monetization readiness (weight 2.5) — real, from the canonical affiliate registry.</li>
-              <li>Real outbound-click evidence (weight 1, deliberately low) — real, but sitewide click history is still very young; treat as a weak early signal.</li>
+              <li>Search visibility (weight 3) — live Search Console impressions.</li>
+              <li>Ranking proximity (weight 2) — live Search Console average position.</li>
+              <li>CTR opportunity gap (weight 1.5) — live CTR versus a heuristic expected-CTR curve.</li>
+              <li>Commercial intent (weight 2) — derived from stored pricing or explicitly labeled heuristic comparison intent.</li>
+              <li>Monetization readiness (weight 2.5) — active affiliate registry coverage.</li>
+              <li>Non-test outbound-log evidence (weight 1) — QA excluded; weak operational evidence only, not human-qualified traffic.</li>
             </ul>
           </Card>
         </section>
