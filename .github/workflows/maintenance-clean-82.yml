@@ -1,0 +1,68 @@
+name: One-time maintenance 82 gate
+
+on:
+  push:
+    branches:
+      - autonomous/maintenance-clean-82-2026-08-25
+    paths:
+      - .github/workflows/maintenance-clean-82.yml
+      - .github/scripts/maintenance-clean-82.py
+
+permissions:
+  contents: write
+
+jobs:
+  verify-and-commit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v7
+        with:
+          ref: autonomous/maintenance-clean-82-2026-08-25
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply maintenance cleanup
+        run: python .github/scripts/maintenance-clean-82.py
+
+      - name: Full tests
+        run: npm test
+
+      - name: Validate data
+        run: npm run validate:data
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Run live maintenance
+        run: npm run maintenance
+
+      - name: Require zero critical maintenance findings
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const s = JSON.parse(fs.readFileSync('./var/maintenance/latest-summary.json', 'utf8'));
+          console.log(`critical=${s.totalCritical} warning=${s.totalWarning} info=${s.totalInfo}`);
+          if (s.totalCritical !== 0) {
+            for (const a of s.agents.filter(x => x.criticalCount > 0)) console.log(`CRITICAL ${a.agent}: ${a.criticalCount}`);
+            process.exit(1);
+          }
+          NODE
+
+      - name: Commit verified cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/revenue/affiliate-programs.ts data/software/keeper.json scripts/maintenance/social-channel-health.ts scripts/maintenance/links.ts tests/lib/social-channel-health.test.ts tests/lib/link-severity.test.ts
+          git commit -m "maintenance: clear false criticals and stale evidence"
+          git push origin HEAD:autonomous/maintenance-clean-82-2026-08-25
