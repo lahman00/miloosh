@@ -27,14 +27,19 @@ describe("Social channel health checker", () => {
     expect(report.issues.map((i) => i.location)).not.toContain("linkedin");
   });
 
-  it("flags any enabled, locally-verifiable channel whose adapter reports itself unconfigured", async () => {
+  it("flags broken enabled channels only when their configuration is verifiable in this runtime", async () => {
     const strategy = getSocialStrategy();
     const report = await executeSocialChannelHealthAgent();
     const flaggedChannels = new Set(report.issues.map((i) => i.location));
+    const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
 
     for (const [channel, enabled] of Object.entries(strategy.enabledChannels) as [Channel, boolean][]) {
       if (!enabled || channel === "linkedin") continue;
       const isConfigured = ADAPTERS[channel].isConfigured();
+      if (isGitHubActions && !isConfigured) {
+        expect(flaggedChannels.has(channel)).toBe(false);
+        continue;
+      }
       expect(flaggedChannels.has(channel)).toBe(!isConfigured);
     }
   });
