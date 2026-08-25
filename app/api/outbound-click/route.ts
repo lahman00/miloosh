@@ -32,6 +32,41 @@ function isWixContext(value: unknown): value is WixFunnelContext {
   return typeof value === "string" && (WIX_CONTEXTS as readonly string[]).includes(value);
 }
 
+type SoftwareRecord = NonNullable<ReturnType<typeof getSoftware>>;
+
+/**
+ * Direct vendor links may target a specific server-verified subpage rather
+ * than the vendor homepage. Resolve those destinations from the canonical
+ * software record and the finite ctaLocation vocabulary, never from a URL
+ * supplied by the browser. Unknown locations fail safely to the homepage.
+ */
+function resolveVendorLinkUrl(software: SoftwareRecord, ctaLocation?: string): string {
+  switch (ctaLocation) {
+    case "pricing-source-link":
+      return software.pricing?.officialSource ?? software.website;
+    case "vendor-link-pricing":
+      return software.links?.pricing ?? software.website;
+    case "vendor-link-free-trial":
+      return software.links?.trial ?? software.website;
+    case "vendor-link-documentation":
+      return software.links?.docs ?? software.website;
+    case "vendor-link-support":
+      return software.links?.support ?? software.website;
+    case "vendor-link-integrations":
+      return software.links?.integrations ?? software.website;
+    case "vendor-link-status-page":
+      return software.links?.status ?? software.website;
+    case "vendor-link-community":
+      return software.links?.community ?? software.website;
+    case "vendor-link-current-deals":
+      return software.links?.deals ?? software.website;
+    case "vendor-link-enterprise-contact":
+      return software.links?.enterprise ?? software.website;
+    default:
+      return software.website;
+  }
+}
+
 export async function POST(request: NextRequest) {
   let body: OutboundClickBody;
 
@@ -66,14 +101,15 @@ export async function POST(request: NextRequest) {
   const experimentFields = experimentId && variant ? { experimentId, variant } : {};
 
   if (kind === "vendor-link") {
-    await trackVendorLinkClick(software, software.website, sourcePage, isTest);
+    const url = resolveVendorLinkUrl(software, resolvedCtaLocation);
+    await trackVendorLinkClick(software, url, sourcePage, isTest);
 
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
     await recordFirstPartyEvent({
       type: "outbound_click",
       softwareSlug: software.slug,
       destination: "official",
-      url: software.website,
+      url,
       ctaLocation: resolvedCtaLocation || "vendor-link",
       path: sourcePage,
       visitorId,
@@ -107,3 +143,5 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ ok: true }, { status: 202 });
 }
+
+export const __test__ = { resolveVendorLinkUrl };
