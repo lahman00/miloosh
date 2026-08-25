@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { computeMoneyPriorityQueue, type SeoOpportunityRow } from "@/lib/growth/money-priority-engine";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
+import type { NetworkPerformanceSignal } from "@/data/affiliate/network-performance-signals";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
 import type { StoredOutboundEvent } from "@/lib/revenue/events";
 
@@ -25,6 +26,20 @@ function revenueLogClick(slug: string, timestamp: string, isTest = false): Store
     sourcePage: `/software/${slug}`,
     timestamp,
     isTest,
+  };
+}
+
+function networkSignal(partnerSlug: string, clickFloor: number | null): NetworkPerformanceSignal {
+  return {
+    partnerSlug,
+    observedAt: "2026-08-24",
+    source: "first-party-email",
+    network: "fixture-network",
+    signal: clickFloor == null ? "NEW_CLICKS" : "CLICK_MILESTONE",
+    clickFloor,
+    summary: "Fixture network-side click evidence.",
+    provesConversion: false,
+    provesRevenue: false,
   };
 }
 
@@ -164,7 +179,27 @@ describe("computeMoneyPriorityQueue", () => {
     expect(withLog.scoreBreakdown.provenClicks).toBe(base.scoreBreakdown.provenClicks);
   });
 
-  it("has no input channel that silently merges vendor-network milestone clicks", () => {
-    expect(computeMoneyPriorityQueue.length).toBe(2);
+  it("uses network evidence as a separate priority signal without inventing human clicks or revenue", () => {
+    const signal = networkSignal("krispcall", 10);
+    const base = computeMoneyPriorityQueue([], []).find((r) => r.slug === "krispcall")!;
+    const withNetwork = computeMoneyPriorityQueue([], [], [], [signal]).find((r) => r.slug === "krispcall")!;
+
+    expect(withNetwork.networkClickActivity).toBe(true);
+    expect(withNetwork.networkClickFloor).toBe(10);
+    expect(withNetwork.eligibleHumanAffiliateClicks).toBe(0);
+    expect(withNetwork.uniqueEligibleHumanClickers).toBe(0);
+    expect(withNetwork.revenueLogRealAffiliateClicks).toBe(0);
+    expect(withNetwork.scoreBreakdown.networkEvidence).toBe(18);
+    expect(withNetwork.score).toBe(base.score + 18);
+    expect(withNetwork.currentBlocker).toMatch(/network reports referral-link activity/i);
+    expect(withNetwork.nextIntervention).toMatch(/downstream conversion loop/i);
+  });
+
+  it("does not fabricate a network click count when the vendor reported activity without a count", () => {
+    const row = computeMoneyPriorityQueue([], [], [], [networkSignal("whatconverts", null)])
+      .find((r) => r.slug === "whatconverts")!;
+    expect(row.networkClickActivity).toBe(true);
+    expect(row.networkClickFloor).toBeNull();
+    expect(row.scoreBreakdown.networkEvidence).toBe(8);
   });
 });
