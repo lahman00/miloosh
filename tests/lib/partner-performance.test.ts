@@ -21,7 +21,7 @@ function outbound(
 }
 
 describe("canonical partner performance", () => {
-  it("keeps GSC search clicks separate from first-party affiliate clicks", () => {
+  it("keeps GSC search clicks separate from non-test first-party affiliate events", () => {
     const rows = buildPartnerPerformanceRows({
       outboundRows: [outbound("pipedrive", 2)],
       gscBySlug: {
@@ -32,8 +32,9 @@ describe("canonical partner performance", () => {
 
     const pipedrive = rows.find((row) => row.slug === "pipedrive")!;
     expect(pipedrive.gscSearchClicks).toBe(7);
-    expect(pipedrive.firstPartyAffiliateClicks).toBe(2);
-    expect(pipedrive.firstPartyOutboundClicks).toBe(2);
+    expect(pipedrive.nonTestFirstPartyAffiliateEvents).toBe(2);
+    expect(pipedrive.nonTestFirstPartyOutboundEvents).toBe(2);
+    expect(pipedrive.eligibleHumanAffiliateClicks).toBeNull();
   });
 
   it("never merges network-side click evidence into first-party telemetry", () => {
@@ -56,20 +57,35 @@ describe("canonical partner performance", () => {
 
     expect(krispcall.networkClickActivity).toBe(true);
     expect(krispcall.networkClickFloor).toBe(10);
-    expect(krispcall.firstPartyAffiliateClicks).toBe(0);
-    expect(krispcall.firstPartyOutboundClicks).toBe(0);
+    expect(krispcall.nonTestFirstPartyAffiliateEvents).toBe(0);
+    expect(krispcall.nonTestFirstPartyOutboundEvents).toBe(0);
+    expect(krispcall.eligibleHumanAffiliateClicks).toBeNull();
   });
 
-  it("keeps test clicks out of real outbound totals", () => {
+  it("keeps test events out of non-test outbound totals without calling the remainder human", () => {
     const rows = buildPartnerPerformanceRows({
       outboundRows: [outbound("airtable", 1, 4)],
       networkSignals: [],
     });
     const airtable = rows.find((row) => row.slug === "airtable")!;
 
-    expect(airtable.firstPartyAffiliateClicks).toBe(1);
-    expect(airtable.firstPartyOutboundClicks).toBe(1);
-    expect(airtable.firstPartyTestClicks).toBe(4);
+    expect(airtable.nonTestFirstPartyAffiliateEvents).toBe(1);
+    expect(airtable.nonTestFirstPartyOutboundEvents).toBe(1);
+    expect(airtable.firstPartyTestEvents).toBe(4);
+    expect(airtable.eligibleHumanAffiliateClicks).toBeNull();
+  });
+
+  it("uses classifier-qualified human clicks only when explicitly supplied", () => {
+    const rows = buildPartnerPerformanceRows({
+      outboundRows: [outbound("close", 3)],
+      eligibleHumanAffiliateClicksBySlug: { close: 1 },
+      networkSignals: [],
+    });
+    const close = rows.find((row) => row.slug === "close")!;
+
+    expect(close.nonTestFirstPartyAffiliateEvents).toBe(3);
+    expect(close.eligibleHumanAffiliateClicks).toBe(1);
+    expect(close.scoreBreakdown.eligibleHumanAffiliateClicks).toBeGreaterThan(0);
   });
 
   it("preserves unknown downstream outcomes as unknown instead of fabricating zero", () => {
@@ -81,7 +97,7 @@ describe("canonical partner performance", () => {
     expect(close.revenue).toBeNull();
   });
 
-  it("gives proven first-party affiliate movement more weight than impressions alone", () => {
+  it("lets a first-party non-test affiliate signal outrank impressions alone while weighting it below classified-human evidence", () => {
     const rows = buildPartnerPerformanceRows({
       outboundRows: [outbound("pipedrive", 2), outbound("todoist", 0)],
       gscBySlug: {
@@ -95,6 +111,8 @@ describe("canonical partner performance", () => {
     const pipedrive = rows.find((row) => row.slug === "pipedrive")!;
     const todoist = rows.find((row) => row.slug === "todoist")!;
     expect(pipedrive.revenueProximityScore).toBeGreaterThan(todoist.revenueProximityScore);
+    expect(pipedrive.scoreBreakdown.eligibleHumanAffiliateClicks).toBe(0);
+    expect(pipedrive.scoreBreakdown.nonTestFirstPartyAffiliateEvents).toBeGreaterThan(0);
   });
 
   it("covers every currently active partner exactly once", () => {
