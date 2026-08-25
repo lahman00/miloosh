@@ -51,6 +51,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/affiliate/active-partners.ts data/affiliate/canonical-ledger.ts data/revenue/affiliate-programs.ts data/affiliate/payout-rails.ts tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts tests/lib/wrike-affiliate-activation.test.ts
+          git add data/affiliate/active-partners.ts data/affiliate/canonical-ledger.ts data/revenue/affiliate-programs.ts data/affiliate/payout-rails.ts tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts tests/lib/affiliate-money-matrix-readiness.test.ts tests/lib/payout-rails.test.ts tests/lib/wrike-affiliate-activation.test.ts
           git commit -m "affiliate: activate Wrike referral partnership"
           git push origin HEAD:autonomous/wrike-activation-2026-08-25
