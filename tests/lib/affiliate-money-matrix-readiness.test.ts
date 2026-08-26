@@ -9,8 +9,9 @@ const matrix = getPartnerMoneyMatrix();
 
 describe("affiliate money matrix readiness semantics", () => {
   it("covers every active partner exactly once", () => {
-    expect(matrix).toHaveLength(20);
+    expect(matrix).toHaveLength(ACTIVE_PARTNERS.length);
     expect(new Set(matrix.map((row) => row.slug)).size).toBe(matrix.length);
+    expect(new Set(matrix.map((row) => row.slug))).toEqual(new Set(ACTIVE_PARTNERS.map((partner) => partner.slug)));
   });
 
   it("does not call a working technical CTA end-to-end revenue ready while its payout profile is unverified", () => {
@@ -31,11 +32,6 @@ describe("affiliate money matrix readiness semantics", () => {
     }
   });
 
-  // MILOOSH MONEY SPRINT (2026-08-26), Task 3 -- affiliate click integrity.
-  // Regression guard: every active partner's technical path (exact tracking
-  // URL, rel=sponsored, disclosure) must resolve correctly, and must never be
-  // silently replaced by an ordinary vendor URL through env-var overrides,
-  // stale software JSON, or a registry/software mismatch.
   it("keeps every active partner's technical CTA path ready (URL, rel, disclosure)", () => {
     for (const row of matrix) {
       expect(row.technicalPathReady, `${row.slug}: technical path not ready -- ${row.blocker}`).toBe(true);
@@ -65,6 +61,7 @@ describe("affiliate money matrix readiness semantics", () => {
       wix: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb",
       omnisend: "https://your.omnisend.com/PznLej",
       mailerlite: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite",
+      jotform: "https://www.jotform.com/?partner=miloosh",
     };
     for (const [slug, url] of Object.entries(expected)) {
       const software = getSoftware(slug);
