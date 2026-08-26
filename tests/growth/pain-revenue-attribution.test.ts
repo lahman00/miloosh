@@ -3,6 +3,7 @@ import { buildPainRadarDashboard } from "@/lib/growth/pain-dashboard";
 import type { PersistedPainCandidate } from "@/lib/growth/pain-candidate-store";
 import {
   summarizePainRevenueAttribution,
+  type PainRevenueAttribution,
   type PainRevenueEvent,
 } from "@/lib/growth/pain-revenue-attribution";
 
@@ -26,14 +27,7 @@ function event(overrides: Partial<PainRevenueEvent> = {}): PainRevenueEvent {
   };
 }
 
-function candidate(
-  id: string,
-  revenueAttribution?: PersistedPainCandidate["attributedOutcome"] extends infer Outcome
-    ? Outcome extends { revenueAttribution?: infer Revenue }
-      ? Revenue
-      : never
-    : never,
-): PersistedPainCandidate {
+function candidate(id: string, revenueAttribution?: PainRevenueAttribution): PersistedPainCandidate {
   return {
     id,
     source: "support-community",
