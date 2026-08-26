@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { buildPainRadarDashboard } from "@/lib/growth/pain-dashboard";
+import type { PersistedPainCandidate } from "@/lib/growth/pain-candidate-store";
 import {
   summarizePainRevenueAttribution,
   type PainRevenueEvent,
@@ -21,6 +23,40 @@ function event(overrides: Partial<PainRevenueEvent> = {}): PainRevenueEvent {
       verifiedAt: "2026-08-26T10:06:00.000Z",
     },
     ...overrides,
+  };
+}
+
+function candidate(
+  id: string,
+  revenueAttribution?: PersistedPainCandidate["attributedOutcome"] extends infer Outcome
+    ? Outcome extends { revenueAttribution?: infer Revenue }
+      ? Revenue
+      : never
+    : never,
+): PersistedPainCandidate {
+  return {
+    id,
+    source: "support-community",
+    sourceUrl: `https://example.com/${id}`,
+    discoveredAt: "2026-08-26T09:00:00.000Z",
+    product: "KrispCall",
+    vendor: "KrispCall",
+    title: "Business phone buyer pain",
+    intent: "alternatives",
+    normalizedPainClass: "buyer-anxiety",
+    verificationState: "VERIFIED_TRUE",
+    remedyState: "PUBLISHED",
+    distributionState: "DISTRIBUTED",
+    createdAt: "2026-08-26T09:00:00.000Z",
+    updatedAt: "2026-08-26T10:00:00.000Z",
+    attributedOutcome: {
+      classifiedHumanSessions: 3,
+      ctaClicks: 2,
+      leads: 1,
+      affiliateClicks: 1,
+      revenueAttribution,
+      lastMeasuredAt: "2026-08-26T10:00:00.000Z",
+    },
   };
 }
 
@@ -125,5 +161,26 @@ describe("Pain Radar revenue attribution", () => {
     expect(summary.integrationState).toBe("CONNECTED_NO_EVENTS");
     expect(summary.validEventCount).toBe(0);
     expect(summary.approvedCommissionByCurrency).toEqual([]);
+  });
+
+  it("aggregates verified conversion and commission truth into the dashboard", () => {
+    const data = buildPainRadarDashboard(
+      [
+        candidate("pain-1", {
+          integrationState: "VERIFIED_EVENTS",
+          events: [event(), event({ id: "network-event-2", status: "PENDING" })],
+        }),
+        candidate("pain-2", { integrationState: "CONNECTED_NO_EVENTS", events: [] }),
+      ],
+      new Date("2026-08-26T11:00:00.000Z"),
+    );
+
+    expect(data.summary.revenueIntegrationState).toBe("VERIFIED_EVENTS");
+    expect(data.summary.verifiedConversions).toBe(2);
+    expect(data.summary.pendingCommissionEvents).toBe(1);
+    expect(data.summary.approvedCommissionByCurrency).toEqual([{ currency: "USD", amount: 25 }]);
+    expect(data.signals.find((signal) => signal.id === "pain-2")?.revenueIntegrationState).toBe(
+      "CONNECTED_NO_EVENTS",
+    );
   });
 });
