@@ -1,6 +1,12 @@
 import { clusterPainCandidates, type PainCluster } from "./pain-clustering";
 import { scorePainCandidate, type PainAction } from "./pain-radar";
 import type { PersistedPainCandidate } from "./pain-candidate-store";
+import {
+  mergePainCommissionTotals,
+  summarizePainRevenueAttribution,
+  type PainCommissionTotal,
+  type PainRevenueIntegrationState,
+} from "./pain-revenue-attribution";
 
 const FRESH_WINDOW_HOURS = 30 * 24;
 const MAX_SIGNAL_ROWS = 20;
@@ -31,6 +37,10 @@ export type PainDashboardSignal = {
   ctaClicks: number;
   leads: number;
   affiliateClicks: number;
+  revenueIntegrationState: PainRevenueIntegrationState;
+  verifiedConversions: number;
+  approvedCommissionByCurrency: PainCommissionTotal[];
+  pendingCommissionEvents: number;
 };
 
 export type PainDashboardSummary = {
@@ -44,6 +54,10 @@ export type PainDashboardSummary = {
   attributedCtaClicks: number;
   attributedLeads: number;
   attributedAffiliateClicks: number;
+  revenueIntegrationState: PainRevenueIntegrationState;
+  verifiedConversions: number;
+  approvedCommissionByCurrency: PainCommissionTotal[];
+  pendingCommissionEvents: number;
 };
 
 export type PainDashboardData = {
@@ -75,6 +89,11 @@ function ageHours(discoveredAt: string, nowMs: number): number {
 function toSignal(candidate: PersistedPainCandidate): PainDashboardSignal {
   const scored = scorePainCandidate(candidate);
   const source = parseSafeSource(candidate.sourceUrl);
+  const revenue = summarizePainRevenueAttribution(
+    candidate.attributedOutcome?.revenueAttribution,
+    candidate.id,
+  );
+
   return {
     id: candidate.id,
     title: candidate.title,
@@ -101,7 +120,19 @@ function toSignal(candidate: PersistedPainCandidate): PainDashboardSignal {
     ctaClicks: candidate.attributedOutcome?.ctaClicks ?? 0,
     leads: candidate.attributedOutcome?.leads ?? 0,
     affiliateClicks: candidate.attributedOutcome?.affiliateClicks ?? 0,
+    revenueIntegrationState: revenue.integrationState,
+    verifiedConversions: revenue.verifiedConversions,
+    approvedCommissionByCurrency: revenue.approvedCommissionByCurrency,
+    pendingCommissionEvents: revenue.pendingCommissionEvents,
   };
+}
+
+function overallRevenueState(
+  states: PainRevenueIntegrationState[],
+): PainRevenueIntegrationState {
+  if (states.includes("VERIFIED_EVENTS")) return "VERIFIED_EVENTS";
+  if (states.includes("CONNECTED_NO_EVENTS")) return "CONNECTED_NO_EVENTS";
+  return "NOT_CONNECTED";
 }
 
 export function buildPainRadarDashboard(
@@ -117,6 +148,9 @@ export function buildPainRadarDashboard(
     .slice(0, MAX_SIGNAL_ROWS);
 
   const clusters = clusterPainCandidates(candidates).slice(0, 20);
+  const revenueSummaries = candidates.map((candidate) =>
+    summarizePainRevenueAttribution(candidate.attributedOutcome?.revenueAttribution, candidate.id),
+  );
 
   const summary: PainDashboardSummary = {
     totalCandidates: candidates.length,
@@ -136,6 +170,15 @@ export function buildPainRadarDashboard(
     attributedLeads: candidates.reduce((sum, candidate) => sum + (candidate.attributedOutcome?.leads ?? 0), 0),
     attributedAffiliateClicks: candidates.reduce(
       (sum, candidate) => sum + (candidate.attributedOutcome?.affiliateClicks ?? 0),
+      0,
+    ),
+    revenueIntegrationState: overallRevenueState(revenueSummaries.map((summary) => summary.integrationState)),
+    verifiedConversions: revenueSummaries.reduce((sum, summary) => sum + summary.verifiedConversions, 0),
+    approvedCommissionByCurrency: mergePainCommissionTotals(
+      revenueSummaries.map((summary) => summary.approvedCommissionByCurrency),
+    ),
+    pendingCommissionEvents: revenueSummaries.reduce(
+      (sum, summary) => sum + summary.pendingCommissionEvents,
       0,
     ),
   };

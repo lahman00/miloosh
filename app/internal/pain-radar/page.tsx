@@ -7,6 +7,7 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getAllPainCandidates } from "@/lib/growth/pain-candidate-store";
 import { buildPainRadarDashboard } from "@/lib/growth/pain-dashboard";
+import type { PainCommissionTotal } from "@/lib/growth/pain-revenue-attribution";
 
 export const metadata: Metadata = {
   title: "Pain Radar Operator Dashboard",
@@ -40,6 +41,18 @@ function MetricCard({ value, label }: { value: number; label: string }) {
       <p className="mt-1 text-xs text-zinc-500">{label}</p>
     </Card>
   );
+}
+
+function formatCommissionTotals(totals: PainCommissionTotal[]): string {
+  return totals
+    .map(({ currency, amount }) =>
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency,
+        maximumFractionDigits: 2,
+      }).format(amount),
+    )
+    .join(" · ");
 }
 
 function communityRuleLabel(allowsPromotion: boolean | undefined, verifiedAt: string | undefined): string {
@@ -129,7 +142,19 @@ export default async function PainRadarDashboardPage() {
                         <span>CTA {signal.ctaClicks}</span>
                         <span>leads {signal.leads}</span>
                         <span>affiliate clicks {signal.affiliateClicks}</span>
+                        <span>revenue state {signal.revenueIntegrationState}</span>
+                        <span>verified conversions {signal.verifiedConversions}</span>
                       </div>
+                      {signal.approvedCommissionByCurrency.length > 0 ? (
+                        <p className="mt-2 text-xs text-emerald-300">
+                          approved/paid commission: {formatCommissionTotals(signal.approvedCommissionByCurrency)}
+                        </p>
+                      ) : null}
+                      {signal.pendingCommissionEvents > 0 ? (
+                        <p className="mt-1 text-xs text-amber-300">
+                          pending commission events: {signal.pendingCommissionEvents}
+                        </p>
+                      ) : null}
                       {signal.sourceHref ? (
                         <a
                           href={signal.sourceHref}
@@ -198,21 +223,50 @@ export default async function PainRadarDashboardPage() {
         </section>
 
         <section className="mt-14">
-          <SectionHeading title="Measured outcomes" description="Attribution is shown only when persisted on the candidate. Zero means no measured outcome is currently recorded, not proof of zero real-world impact." />
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeading
+            title="Measured outcomes"
+            description="Attribution is shown only when persisted with verifiable evidence. An unconnected integration is not displayed as zero revenue."
+          />
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <MetricCard value={dashboard.summary.attributedHumanSessions} label="Classified human sessions" />
             <MetricCard value={dashboard.summary.attributedCtaClicks} label="CTA clicks" />
             <MetricCard value={dashboard.summary.attributedLeads} label="Leads" />
             <MetricCard value={dashboard.summary.attributedAffiliateClicks} label="Affiliate clicks" />
+            <MetricCard value={dashboard.summary.verifiedConversions} label="Verified conversions" />
           </div>
-          <Card className="mt-4 border-amber-500/20">
-            <p className="text-sm font-semibold text-amber-200">Revenue attribution is not stored on PainCandidate yet.</p>
-            <p className="mt-2 text-sm leading-6 text-zinc-400">
-              The current durable outcome schema ends at affiliate clicks. This dashboard therefore does not invent a
-              revenue number. Wiring verified commission/revenue outcomes back to a PainCandidate remains a separate
-              issue #4 completion step.
-            </p>
-          </Card>
+
+          {dashboard.summary.revenueIntegrationState === "NOT_CONNECTED" ? (
+            <Card className="mt-4 border-amber-500/20">
+              <p className="text-sm font-semibold text-amber-200">Revenue attribution is not connected.</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">
+                The durable schema can now store evidenced partner, source page, network, conversion, status, and
+                commission data for each PainCandidate. No verified network event has been connected yet, so this
+                dashboard intentionally shows no currency amount rather than a misleading zero.
+              </p>
+            </Card>
+          ) : dashboard.summary.revenueIntegrationState === "CONNECTED_NO_EVENTS" ? (
+            <Card className="mt-4 border-cyan-500/20">
+              <p className="text-sm font-semibold text-cyan-200">Revenue source connected, no verified events returned.</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">
+                The checked partner source produced no structurally valid conversion or commission event for a stored
+                PainCandidate. This is a measured zero-event state, not an absent integration.
+              </p>
+            </Card>
+          ) : (
+            <Card className="mt-4 border-emerald-500/20">
+              <p className="text-sm font-semibold text-emerald-200">Verified network events are attributed.</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">
+                Verified conversions: {dashboard.summary.verifiedConversions}. Approved or paid commission:{" "}
+                {dashboard.summary.approvedCommissionByCurrency.length > 0
+                  ? formatCommissionTotals(dashboard.summary.approvedCommissionByCurrency)
+                  : "no approved currency amount yet"}
+                {dashboard.summary.pendingCommissionEvents > 0
+                  ? ` · pending commission events: ${dashboard.summary.pendingCommissionEvents}`
+                  : ""}
+                .
+              </p>
+            </Card>
+          )}
         </section>
 
         <section className="mt-16 border-t border-white/10 pt-10 text-center">
