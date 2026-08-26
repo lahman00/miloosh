@@ -5,12 +5,14 @@ import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import type { Software } from "@/data/software";
 import type { ComparisonData } from "@/lib/comparison";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { getRecommendationVendorCtaLabel } from "@/lib/recommend/vendor-cta";
 import { getWixContextForComparison, resolveComparisonCtaUrl } from "@/lib/wix-funnels";
 
 function SummaryAction({ software, otherSlug }: { software: Software; otherSlug: string }) {
   const href = resolveComparisonCtaUrl(software, otherSlug);
   const wixContext = software.slug === "wix" ? getWixContextForComparison(otherSlug) : undefined;
   const isAffiliate = shouldShowAffiliateDisclosure(software);
+  const ctaLabel = getRecommendationVendorCtaLabel(software);
 
   return (
     <div>
@@ -24,7 +26,7 @@ function SummaryAction({ software, otherSlug }: { software: Software; otherSlug:
         ctaLocation="compare-summary-direct-vendor"
         wixContext={wixContext}
       >
-        Visit {software.name}
+        {ctaLabel}
         <ExternalLink className="h-4 w-4" />
       </TrackedCtaLink>
       {isAffiliate ? (
