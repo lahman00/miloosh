@@ -24,7 +24,7 @@ export function PricingSection({ software }: { software: Software }) {
   const hasBackfilledData = pricing?.status || pricing?.entryPaid || (pricing?.tiers && pricing.tiers.length > 0);
   if (!hasBackfilledData) return null;
 
-  const hasActiveAffiliatePath = shouldShowAffiliateDisclosure(software);
+  const hasActiveAffiliatePath = shouldShowAffiliateDisclosure(software, "pricing");
 
   return (
     <Card className="mt-14">
@@ -111,14 +111,14 @@ export function PricingSection({ software }: { software: Software }) {
         <div className="mt-6 border-t border-white/10 pt-6">
           <TrackedCtaLink
             slug={software.slug}
-            href={getSoftwareCtaUrl(software)}
-            rel={getSoftwareCtaRel(software)}
+            href={getSoftwareCtaUrl(software, "pricing")}
+            rel={getSoftwareCtaRel(software, "pricing")}
             target="_blank"
             variant="primary"
             className="w-full sm:w-auto"
             ctaLocation="pricing-section-cta"
           >
-            Visit {software.name}
+            View {software.name} pricing
             <ExternalLink className="h-4 w-4" />
           </TrackedCtaLink>
           <p className="mt-3 text-xs text-zinc-500">
