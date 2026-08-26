@@ -2,7 +2,7 @@ export const ACTIVE_PARTNER_SLUGS = [
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
-  "mailerlite", "omnisend", "surveymonkey", "wrike",
+  "mailerlite", "omnisend", "surveymonkey", "wrike", "jotform",
 ] as const;
 
 export type ActivePartnerSlug = (typeof ACTIVE_PARTNER_SLUGS)[number];
@@ -57,6 +57,13 @@ export type ActivePartner = {
  * Domain, Headless, and eCommerce links remain available for intent-specific use.
  *
  * MailerLite, Omnisend, and SurveyMonkey activated 2026-08-24 from exact owner-supplied referral URLs. Notify Me remains ledger-only until independent editorial content exists.
+ *
+ * Jotform activated 2026-08-26 after Anna Scheucher from Jotform Partnerships
+ * confirmed Miloosh was approved on 2026-08-19 and supplied account-specific
+ * tracking links using the partner=miloosh parameter. The homepage link below is
+ * the canonical general CTA; https://www.jotform.com/pricing/?partner=miloosh is
+ * also vendor-issued for pricing-intent surfaces. Affiliate status must not alter
+ * Jotform's editorial ranking in the Surveys & Forms recommendation flow.
  */
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
@@ -79,6 +86,7 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "omnisend", status: "active", affiliateUrl: "https://your.omnisend.com/PznLej", blocker: null },
   { slug: "surveymonkey", status: "active", affiliateUrl: "https://try.partnerstack.com/jx99ylh3mexb", blocker: null },
   { slug: "wrike", status: "active", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij", blocker: null },
+  { slug: "jotform", status: "active", affiliateUrl: "https://www.jotform.com/?partner=miloosh", blocker: null },
 ] as const;
 
 const ACTIVE_PARTNERS_BY_SLUG = new Map(ACTIVE_PARTNERS.map((partner) => [partner.slug, partner]));
