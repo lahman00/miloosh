@@ -33,6 +33,7 @@ import { formatIsoDate } from "@/lib/date";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { resolveComparisonCtaUrl, getWixContextForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
+import { getRecommendationVendorCtaLabel } from "@/lib/recommend/vendor-cta";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -76,7 +77,7 @@ function ComparisonChoiceCta({ software, otherSlug }: { software: Software; othe
         ctaLocation="compare-page-choose-card"
         wixContext={wixContext}
       >
-        Visit {software.name}
+        {getRecommendationVendorCtaLabel(software)}
         <ExternalLink className="h-4 w-4" />
       </TrackedCtaLink>
       {shouldShowAffiliateDisclosure(software) ? (
