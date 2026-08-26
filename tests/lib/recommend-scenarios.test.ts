@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { getRecommendations } from "@/lib/recommend/engine";
 import { DEFAULT_ANSWERS } from "@/lib/recommend/query";
 import type { RecommendationAnswers } from "@/lib/recommend/types";
-import { getSlugsForDomain } from "@/data/recommend/product-profiles";
+import { getSlugsForDomainFromEvidence as getSlugsForDomain } from "@/data/recommend/domain-evidence";
 import { RECOMMEND_DOMAINS } from "@/lib/recommend/domains";
 
 /**
