@@ -3,7 +3,7 @@ import { getSocialStrategy, getEffectiveCadence } from "@/lib/social/strategy";
 import { CHANNELS } from "@/lib/social/types";
 import { interleaveByPillarWeight } from "@/lib/social/content-engine";
 import { localTimeToUtc } from "@/lib/social/timezone";
-import type { SocialQueueEntry } from "@/lib/social/types";
+import type { ContentPillar, SocialQueueEntry } from "@/lib/social/types";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — extracted
@@ -34,9 +34,31 @@ import type { SocialQueueEntry } from "@/lib/social/types";
  * linkedin(3/wk), giving a conservative 1/day pace) — never dumps the
  * backlog, matches the "start conservative to avoid spam signals"
  * principle already documented in social-strategy.json.
+ *
+ * PROVEN-INTENT LANE (2026-08-26): KrispCall and WhatConverts are the
+ * only active partners for which Miloosh currently has first-party
+ * network messages confirming referral-link activity. With thousands of
+ * approved posts in the backlog, a purely shuffled 14-day batch can
+ * postpone those pages indefinitely. The scheduler therefore reserves at
+ * most one slot per proven target, never more than two slots in a batch,
+ * and leaves every other slot under the existing weighted editorial mix.
+ * This is traffic prioritization, not ranking bias: no product verdict,
+ * comparison result, or recommendation score changes here.
  */
 const DAYS_AHEAD = 14;
 const POST_HOUR_LOCAL = 13; // Facebook's required local-time slot; every enabled channel currently shares one scheduledFor per entry (see KNOWN SIMPLIFICATION in module history).
+
+export const PROVEN_INTENT_TARGET_SLUGS = ["krispcall", "whatconverts"] as const;
+export type ProvenIntentTargetSlug = (typeof PROVEN_INTENT_TARGET_SLUGS)[number];
+
+const PROVEN_INTENT_PILLAR_SCORE: Partial<Record<ContentPillar, number>> = {
+  commercial: 50,
+  pricing_intelligence: 40,
+  alternatives: 30,
+  software_decisions: 25,
+  migration: 15,
+  miloosh_research: 10,
+};
 
 function sharesVendor(a: SocialQueueEntry, b: SocialQueueEntry): boolean {
   return a.sourceSlugs.some((slug) => b.sourceSlugs.includes(slug));
@@ -55,6 +77,98 @@ function avoidAdjacentSameVendor(ordered: SocialQueueEntry[]): SocialQueueEntry[
   return result;
 }
 
+function normalizedLinkPath(link: string | null): string | null {
+  if (!link) return null;
+  try {
+    const pathname = new URL(link).pathname.replace(/\/+$/, "");
+    return pathname || "/";
+  } catch {
+    return null;
+  }
+}
+
+function entryLinkPaths(entry: SocialQueueEntry): string[] {
+  return [...new Set(Object.values(entry.channels).map((variant) => normalizedLinkPath(variant?.link ?? null)).filter((path): path is string => Boolean(path)))];
+}
+
+function pathTargetsSlug(pathname: string, slug: ProvenIntentTargetSlug): { matches: boolean; direct: boolean } {
+  if (pathname === `/software/${slug}`) return { matches: true, direct: true };
+  const comparison = pathname.match(/^\/compare\/([^/]+)$/)?.[1];
+  if (!comparison) return { matches: false, direct: false };
+  const [left, right, ...rest] = comparison.split("-vs-");
+  return { matches: rest.length === 0 && (left === slug || right === slug), direct: false };
+}
+
+function provenIntentScore(entry: SocialQueueEntry, slug: ProvenIntentTargetSlug): number | null {
+  const matches = entryLinkPaths(entry).map((path) => pathTargetsSlug(path, slug)).filter((match) => match.matches);
+  if (matches.length === 0) return null;
+
+  const destinationScore = matches.some((match) => match.direct) ? 100 : 70;
+  const pillarScore = PROVEN_INTENT_PILLAR_SCORE[entry.pillar] ?? 0;
+  const topicScore = entry.topic === `commercial-${slug}`
+    ? 20
+    : entry.topic === `pricing-${slug}`
+      ? 15
+      : entry.topic === `alternatives-${slug}`
+        ? 10
+        : 0;
+  return destinationScore + pillarScore + topicScore;
+}
+
+export type ProvenIntentPrioritySelection = {
+  entries: SocialQueueEntry[];
+  targetByEntryId: ReadonlyMap<string, ProvenIntentTargetSlug>;
+};
+
+/**
+ * Selects at most one high-intent queue entry for each target. A target
+ * must be the actual Miloosh destination (/software/slug or one side of
+ * /compare/a-vs-b); appearing only in sourceSlugs is not sufficient,
+ * because an alternatives post can cite a product while linking to a
+ * different product's page.
+ */
+export function selectProvenIntentPriorityEntries(entries: SocialQueueEntry[]): ProvenIntentPrioritySelection {
+  const selected: SocialQueueEntry[] = [];
+  const targetByEntryId = new Map<string, ProvenIntentTargetSlug>();
+  const usedEntryIds = new Set<string>();
+
+  for (const target of PROVEN_INTENT_TARGET_SLUGS) {
+    const ranked = entries
+      .map((entry) => ({ entry, score: provenIntentScore(entry, target) }))
+      .filter((row): row is { entry: SocialQueueEntry; score: number } => row.score !== null && !usedEntryIds.has(row.entry.id))
+      .sort((a, b) => b.score - a.score || a.entry.createdAt.localeCompare(b.entry.createdAt) || a.entry.id.localeCompare(b.entry.id));
+    const best = ranked[0]?.entry;
+    if (!best) continue;
+    selected.push(best);
+    usedEntryIds.add(best.id);
+    targetByEntryId.set(best.id, target);
+  }
+
+  return { entries: selected, targetByEntryId };
+}
+
+/**
+ * Spreads the bounded priority lane across the batch: first target at the
+ * start, second around the midpoint. All non-priority positions retain
+ * the existing weighted, vendor-de-collided order.
+ */
+export function insertProvenIntentPriorityEntries(
+  ordinaryOrder: SocialQueueEntry[],
+  priorityEntries: SocialQueueEntry[],
+  capacity: number,
+): SocialQueueEntry[] {
+  if (capacity <= 0 || priorityEntries.length === 0) return ordinaryOrder;
+  const result = [...ordinaryOrder];
+  const bounded = priorityEntries.slice(0, Math.min(capacity, PROVEN_INTENT_TARGET_SLUGS.length));
+
+  bounded.forEach((entry, index) => {
+    const desired = index === 0 ? 0 : Math.min(Math.floor(capacity / 2), result.length);
+    result.splice(desired, 0, entry);
+  });
+
+  return result;
+}
+
 export type ScheduleRunSummary = {
   ranAt: string;
   dryRun: boolean;
@@ -64,6 +178,8 @@ export type ScheduleRunSummary = {
   perDay: number;
   minCadence: number;
   scheduledEntryIds: string[];
+  priorityScheduledEntryIds: string[];
+  priorityTargetSlugs: ProvenIntentTargetSlug[];
   reason?: string;
 };
 
@@ -78,13 +194,18 @@ export async function runScheduleCycle(options: { dryRun: boolean; now?: Date })
   const approved = queue.filter((e) => e.state === "APPROVED_FOR_AUTO");
 
   if (approved.length === 0) {
-    return { ranAt: now.toISOString(), dryRun: options.dryRun, approvedCount: 0, scheduledCount: 0, remainingApprovedCount: 0, perDay, minCadence, scheduledEntryIds: [], reason: "No APPROVED_FOR_AUTO entries to schedule." };
+    return { ranAt: now.toISOString(), dryRun: options.dryRun, approvedCount: 0, scheduledCount: 0, remainingApprovedCount: 0, perDay, minCadence, scheduledEntryIds: [], priorityScheduledEntryIds: [], priorityTargetSlugs: [], reason: "No APPROVED_FOR_AUTO entries to schedule." };
   }
   if (minCadence === 0) {
-    return { ranAt: now.toISOString(), dryRun: options.dryRun, approvedCount: approved.length, scheduledCount: 0, remainingApprovedCount: approved.length, perDay, minCadence, scheduledEntryIds: [], reason: "No channel has cadence > 0 in social-strategy.json." };
+    return { ranAt: now.toISOString(), dryRun: options.dryRun, approvedCount: approved.length, scheduledCount: 0, remainingApprovedCount: approved.length, perDay, minCadence, scheduledEntryIds: [], priorityScheduledEntryIds: [], priorityTargetSlugs: [], reason: "No channel has cadence > 0 in social-strategy.json." };
   }
 
-  const ordered = avoidAdjacentSameVendor(interleaveByPillarWeight(approved, strategy.pillarWeights));
+  const capacity = DAYS_AHEAD * perDay;
+  const priority = selectProvenIntentPriorityEntries(approved);
+  const priorityIds = new Set(priority.entries.map((entry) => entry.id));
+  const ordinaryApproved = approved.filter((entry) => !priorityIds.has(entry.id));
+  const ordinaryOrder = avoidAdjacentSameVendor(interleaveByPillarWeight(ordinaryApproved, strategy.pillarWeights));
+  const ordered = insertProvenIntentPriorityEntries(ordinaryOrder, priority.entries, capacity);
   const approvedIds = ordered.map((e) => e.id);
 
   const scheduledForById = new Map<string, string>();
@@ -104,11 +225,20 @@ export async function runScheduleCycle(options: { dryRun: boolean; now?: Date })
     const updated = queue.map((entry) => {
       const when = scheduledForById.get(entry.id);
       if (!when) return entry;
-      const transitioned = applyQueueTransition(entry, "SCHEDULED", `Scheduled for ${when} by runScheduleCycle (pace: ${perDay}/day, min channel cadence ${minCadence}/week, pillar-interleaved + vendor-adjacency-checked order).`);
+      const priorityTarget = priority.targetByEntryId.get(entry.id);
+      const priorityNote = priorityTarget ? ` Proven-intent lane: ${priorityTarget}; first-party partner activity exists, but no conversion is claimed.` : "";
+      const transitioned = applyQueueTransition(entry, "SCHEDULED", `Scheduled for ${when} by runScheduleCycle (pace: ${perDay}/day, min channel cadence ${minCadence}/week, pillar-interleaved + vendor-adjacency-checked order).${priorityNote}`);
       return { ...transitioned, scheduledFor: when };
     });
     await writeQueue(updated);
   }
+
+  const priorityScheduledEntryIds = priority.entries
+    .filter((entry) => scheduledForById.has(entry.id))
+    .map((entry) => entry.id);
+  const priorityTargetSlugs = priorityScheduledEntryIds
+    .map((id) => priority.targetByEntryId.get(id))
+    .filter((slug): slug is ProvenIntentTargetSlug => Boolean(slug));
 
   return {
     ranAt: now.toISOString(),
@@ -119,5 +249,7 @@ export async function runScheduleCycle(options: { dryRun: boolean; now?: Date })
     perDay,
     minCadence,
     scheduledEntryIds: [...scheduledForById.keys()],
+    priorityScheduledEntryIds,
+    priorityTargetSlugs,
   };
 }
