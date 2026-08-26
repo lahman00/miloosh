@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import type { PainCandidate, PainAction } from "./pain-radar";
+import type { PainRevenueAttribution } from "./pain-revenue-attribution";
 
 /**
  * MILOOSH OVERNIGHT MONSTER mission (2026-08-24) — persistent storage for
@@ -41,6 +42,7 @@ export type PainAttributedOutcome = {
   ctaClicks: number;
   leads: number;
   affiliateClicks: number;
+  revenueAttribution?: PainRevenueAttribution;
   lastMeasuredAt: string;
 };
 
