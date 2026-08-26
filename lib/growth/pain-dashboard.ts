@@ -12,6 +12,7 @@ export type PainDashboardSignal = {
   vendor?: string;
   source: string;
   sourceUrl: string;
+  sourceHref?: string;
   sourceHost: string;
   discoveredAt: string;
   intent: string;
@@ -24,6 +25,8 @@ export type PainDashboardSignal = {
   normalizedPainClass: PersistedPainCandidate["normalizedPainClass"];
   clusterId?: string;
   affiliateRelevant: boolean;
+  communityAllowsPromotion?: boolean;
+  communityRulesVerifiedAt?: string;
   classifiedHumanSessions: number;
   ctaClicks: number;
   leads: number;
@@ -50,11 +53,16 @@ export type PainDashboardData = {
   clusters: PainCluster[];
 };
 
-function safeHost(url: string): string {
+function parseSafeSource(url: string): { host: string; href?: string } {
   try {
-    return new URL(url).hostname.replace(/^www\./, "");
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./, "");
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+      return { host: host || "unsafe-source-url" };
+    }
+    return { host, href: parsed.toString() };
   } catch {
-    return "invalid-source-url";
+    return { host: "invalid-source-url" };
   }
 }
 
@@ -66,6 +74,7 @@ function ageHours(discoveredAt: string, nowMs: number): number {
 
 function toSignal(candidate: PersistedPainCandidate): PainDashboardSignal {
   const scored = scorePainCandidate(candidate);
+  const source = parseSafeSource(candidate.sourceUrl);
   return {
     id: candidate.id,
     title: candidate.title,
@@ -73,7 +82,8 @@ function toSignal(candidate: PersistedPainCandidate): PainDashboardSignal {
     vendor: candidate.vendor,
     source: candidate.source,
     sourceUrl: candidate.sourceUrl,
-    sourceHost: safeHost(candidate.sourceUrl),
+    sourceHref: source.href,
+    sourceHost: source.host,
     discoveredAt: candidate.discoveredAt,
     intent: candidate.intent,
     score: scored.score,
@@ -85,6 +95,8 @@ function toSignal(candidate: PersistedPainCandidate): PainDashboardSignal {
     normalizedPainClass: candidate.normalizedPainClass,
     clusterId: candidate.clusterId,
     affiliateRelevant: candidate.affiliateRelevant === true,
+    communityAllowsPromotion: candidate.communityAllowsPromotion,
+    communityRulesVerifiedAt: candidate.communityRulesVerifiedAt,
     classifiedHumanSessions: candidate.attributedOutcome?.classifiedHumanSessions ?? 0,
     ctaClicks: candidate.attributedOutcome?.ctaClicks ?? 0,
     leads: candidate.attributedOutcome?.leads ?? 0,
