@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Ban, Check, Compass, ThumbsUp } from "lucide-react";
+import Link from "next/link";
+import { Ban, Check, Compass, ExternalLink, ThumbsUp } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import { Badge } from "@/components/Badge";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ButtonLink } from "@/components/ButtonLink";
+import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { TrackedRecommendationLink } from "@/components/recommend/TrackedRecommendationLink";
 import { TrackedComparisonLink } from "@/components/recommend/TrackedComparisonLink";
 import { RecommendResultsAnalytics } from "@/components/recommend/RecommendResultsAnalytics";
@@ -15,6 +17,11 @@ import { getRecommendations } from "@/lib/recommend/engine";
 import { hasAnyAnswer, searchParamsToAnswers, summarizeAnswers } from "@/lib/recommend/query";
 import { recordRecommendationEvent } from "@/lib/recommend/events";
 import type { ScoreFactor } from "@/lib/recommend/types";
+import {
+  getSoftwareCtaRel,
+  getSoftwareCtaUrl,
+  shouldShowAffiliateDisclosure,
+} from "@/lib/affiliate";
 
 export const metadata: Metadata = {
   title: "Your recommendations",
@@ -136,6 +143,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
             const positiveFactors = rec.scoring.factors.filter((f) => f.direction === "positive");
             const negativeFactors = rec.scoring.factors.filter((f) => f.direction === "negative");
             const informationalFactors = rec.scoring.factors.filter((f) => f.direction === "informational");
+            const isAffiliate = shouldShowAffiliateDisclosure(rec.software);
 
             const relatedComparisons = rec.relatedComparisonSlugs
               .map((slug) => ({ slug, data: getComparisonBySlug(slug) }))
@@ -170,17 +178,39 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                       </p>
                     ) : null}
                   </div>
-                  <TrackedRecommendationLink
-                    slug={rec.software.slug}
-                    rank={rec.rank}
-                    matchPercent={rec.scoring.matchPercent}
-                    answersSummary={answersSummary}
-                    domain={answers.primaryNeed ?? "not_sure"}
-                    href={`/software/${rec.software.slug}`}
-                    className="inline-flex min-h-11 shrink-0 items-center rounded-lg border border-white/15 bg-white/5 px-4 text-sm font-semibold text-white transition hover:bg-white/10"
-                  >
-                    View full page
-                  </TrackedRecommendationLink>
+
+                  <div className="flex min-w-44 shrink-0 flex-col gap-2">
+                    <TrackedCtaLink
+                      slug={rec.software.slug}
+                      href={getSoftwareCtaUrl(rec.software)}
+                      rel={getSoftwareCtaRel(rec.software)}
+                      target="_blank"
+                      ctaLocation="recommend-results-direct-vendor"
+                      className="w-full justify-center"
+                    >
+                      Visit {rec.software.name}
+                      <ExternalLink className="h-4 w-4" />
+                    </TrackedCtaLink>
+                    <TrackedRecommendationLink
+                      slug={rec.software.slug}
+                      rank={rec.rank}
+                      matchPercent={rec.scoring.matchPercent}
+                      answersSummary={answersSummary}
+                      domain={answers.primaryNeed ?? "not_sure"}
+                      href={`/software/${rec.software.slug}`}
+                      className="inline-flex min-h-11 items-center justify-center rounded-lg border border-white/15 bg-white/5 px-4 text-sm font-semibold text-white transition hover:bg-white/10"
+                    >
+                      View full page
+                    </TrackedRecommendationLink>
+                    {isAffiliate ? (
+                      <p className="text-center text-[11px] leading-4 text-zinc-500">
+                        Affiliate link. Our ranking is independent. {" "}
+                        <Link href="/affiliate-disclosure" className="underline underline-offset-2 hover:text-zinc-300">
+                          Disclosure
+                        </Link>
+                      </p>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div className="mt-8 grid gap-8 lg:grid-cols-2">
