@@ -1,5 +1,43 @@
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
+import { TrackedCtaLink } from "@/components/TrackedCtaLink";
+import type { Software } from "@/data/software";
 import type { ComparisonData } from "@/lib/comparison";
+import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { getWixContextForComparison, resolveComparisonCtaUrl } from "@/lib/wix-funnels";
+
+function SummaryAction({ software, otherSlug }: { software: Software; otherSlug: string }) {
+  const href = resolveComparisonCtaUrl(software, otherSlug);
+  const wixContext = software.slug === "wix" ? getWixContextForComparison(otherSlug) : undefined;
+  const isAffiliate = shouldShowAffiliateDisclosure(software);
+
+  return (
+    <div>
+      <TrackedCtaLink
+        slug={software.slug}
+        href={href}
+        rel={getSoftwareCtaRel(software)}
+        target="_blank"
+        variant="secondary"
+        className="w-full"
+        ctaLocation="compare-summary-direct-vendor"
+        wixContext={wixContext}
+      >
+        Visit {software.name}
+        <ExternalLink className="h-4 w-4" />
+      </TrackedCtaLink>
+      {isAffiliate ? (
+        <p className="mt-2 text-center text-[11px] leading-4 text-zinc-500">
+          Affiliate link. Analysis is independent. {" "}
+          <Link href="/affiliate-disclosure" className="underline underline-offset-2 hover:text-zinc-300">
+            Disclosure
+          </Link>
+        </p>
+      ) : null}
+    </div>
+  );
+}
 
 /** Head-to-head summary table, used by app/compare/[comparison]/page.tsx. */
 export function ComparisonTable({ data }: { data: ComparisonData }) {
@@ -19,6 +57,11 @@ export function ComparisonTable({ data }: { data: ComparisonData }) {
             <span className="text-center text-sm text-zinc-300">{row.b}</span>
           </div>
         ))}
+      </div>
+
+      <div className="mt-5 grid gap-3 border-t border-white/10 pt-5 sm:grid-cols-2">
+        <SummaryAction software={data.softwareA} otherSlug={data.softwareB.slug} />
+        <SummaryAction software={data.softwareB} otherSlug={data.softwareA.slug} />
       </div>
     </Card>
   );
