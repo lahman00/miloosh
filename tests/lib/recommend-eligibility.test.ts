@@ -3,6 +3,7 @@ import { getSoftware } from "@/data/software";
 import { isDomainEligible, isHardExcluded, passesEligibility } from "@/lib/recommend/eligibility";
 import { DEFAULT_ANSWERS } from "@/lib/recommend/query";
 import { PRODUCT_PROFILES, getProductProfile } from "@/data/recommend/product-profiles";
+import { getSlugsForDomainFromEvidence } from "@/data/recommend/domain-evidence";
 import { RECOMMEND_DOMAINS } from "@/lib/recommend/domains";
 import { scoreSoftwareForAnswers } from "@/lib/recommend/scoring";
 
@@ -137,12 +138,11 @@ describe("Product profile data integrity — Phase 31 of the rebuild brief", () 
   });
 
   it("every domain has at least 3 eligible products (Phase 3's 'enough real catalog products' bar)", () => {
-    const counts: Record<string, number> = {};
-    for (const profile of PRODUCT_PROFILES) {
-      for (const domain of profile.domains) counts[domain] = (counts[domain] ?? 0) + 1;
-    }
     for (const domain of RECOMMEND_DOMAINS) {
-      expect(counts[domain] ?? 0, `domain "${domain}" has too few eligible products`).toBeGreaterThanOrEqual(3);
+      expect(
+        getSlugsForDomainFromEvidence(domain).length,
+        `domain "${domain}" has too few eligible products`,
+      ).toBeGreaterThanOrEqual(3);
     }
   });
 });
