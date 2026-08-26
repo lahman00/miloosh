@@ -5,7 +5,8 @@ export type PayoutRailId =
   | "partnerstack-personal"
   | "impact"
   | "tapfiliate-setmore"
-  | "mailerlite-tipalti";
+  | "mailerlite-tipalti"
+  | "jotform-direct";
 
 export type PayoutRail = {
   id: PayoutRailId;
@@ -88,6 +89,16 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     ownerActionPackId: "mailerlite-tipalti-payout",
     methodGuidance: "Prefer PayPal when operationally acceptable: MailerLite's current affiliate page says it covers PayPal transaction fees, while Direct Deposit and Wire Transfer fees are borne by the affiliate. Use another method only if the live Tipalti flow or owner preference makes it preferable.",
     notes: "MailerLite is active; payout-profile completion inside its Trackdesk/Tipalti flow remains unverified.",
+  },
+  {
+    id: "jotform-direct",
+    label: "Jotform Affiliate Program",
+    accountIdentity: "Jotform partner account Eyal_hello",
+    partnerSlugs: ["jotform"],
+    readiness: "UNVERIFIED",
+    ownerActionPackId: "jotform-payout-verification",
+    methodGuidance: "Use only the payout method actually offered inside the existing Jotform partnership dashboard. Do not infer a method, threshold, tax status, or payout readiness from the tracking-link approval alone.",
+    notes: "Jotform is technically active with vendor-issued partner=miloosh links, but payout settings have not been independently verified. Keep revenue readiness separate from link readiness.",
   },
 ] as const;
 
