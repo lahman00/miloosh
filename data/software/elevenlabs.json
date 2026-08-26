@@ -32,10 +32,10 @@
       },
       {
         "name": "Creator",
-        "amount": "11",
+        "amount": "22",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "121k credits/month. Page showed a first-month 50%-off promo ($22 -> $11); $11/mo is the standard ongoing rate."
+        "notes": "$22/month ongoing; current offer is 50% off the first month ($11 for month one). Includes 121k credits/month."
       },
       {
         "name": "Pro",
@@ -62,7 +62,7 @@
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-08-26",
     "official_source": "https://elevenlabs.io/pricing"
   },
   "best_for": "ElevenLabs positions itself for enterprises needing customer-service voice solutions, creators/content producers (audiobooks, podcasts, video), developers building via API/SDK, and government agencies.",
@@ -88,7 +88,7 @@
     "https://elevenlabs.io/pricing",
     "https://elevenlabs.io/"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-08-26",
   "alternatives": [
     {
       "name": "Murf AI",
