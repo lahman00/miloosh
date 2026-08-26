@@ -14,10 +14,9 @@
  *
  * This file is the single source of truth for what a "domain" is. Every
  * domain here was added only after checking the real catalog has enough
- * products with a coherent, evidence-backed fit — see
- * DOMAIN_ELIGIBLE_SLUGS below and its research notes. A domain is never
- * added merely because data/categories/categories.json has a matching
- * category slug.
+ * products with a coherent, evidence-backed fit — see the product-profile
+ * and supplemental-domain-evidence research notes. A domain is never added
+ * merely because data/categories/categories.json has a matching category slug.
  */
 
 export const RECOMMEND_DOMAINS = [
@@ -60,17 +59,17 @@ export const RECOMMEND_DOMAINS = [
   // audit of scripts/recommend/catalog-only-report.ts's live output (not a
   // stale report). Every domain below cleared the same >=3-genuine-product,
   // coherent-buyer-job bar as the prior expansion — see product-profiles.ts's
-  // per-domain research notes for the exact stored-text evidence. Checked
-  // and rejected in this same pass: "ai" (16 products spanning chat/image/
-  // video/code/copywriting/transcription — not one buyer job), "api"
-  // payments sub-cluster (adyen/stripe are genuine substitutes, but plaid is
-  // a different job — bank-data verification, not payment processing — so
-  // still only 2), "marketing" outside seo/call-tracking (marketo-engage,
-  // braze — 2, different jobs from each other too).
+  // per-domain research notes for the exact stored-text evidence.
   "ui_ux_design",
   "task_management",
   "note_taking",
   "identity_management",
+  // Revenue sprint (2026-08-26): fresh catalog audit found four independently
+  // researched products with the same buyer job of collecting structured
+  // responses through surveys/forms — SurveyMonkey, Typeform, Jotform and
+  // Qualtrics. The domain exists because the editorial evidence clears the
+  // established >=3-product bar, not because any one product is monetized.
+  "survey_forms",
 ] as const;
 
 export type RecommendDomain = (typeof RECOMMEND_DOMAINS)[number];
@@ -81,15 +80,13 @@ export type DomainMeta = {
   label: string;
   /** One-sentence plain-language description of the need, not the product category name. */
   description: string;
-  /** The real data/categories/categories.json slug this domain is centered on — informational, not the eligibility source (see DOMAIN_ELIGIBLE_SLUGS in product-profiles.ts, which is the real gate). */
+  /** The real catalog category this domain is centered on — informational, never the eligibility source. */
   primaryCategorySlug: string;
 };
 
 /**
  * Every domain's plain-language framing. Written for a buyer who doesn't
- * know or care what "CRM" or "knowledge base" means as a category label —
- * see docs/recommendation-engine.md Phase 5 for the "bad: 'Do you need a
- * knowledge base?' / better: plain language" guidance this was written to.
+ * know or care what "CRM" or "knowledge base" means as a category label.
  */
 export const DOMAIN_META: Record<RecommendDomain, DomainMeta> = {
   project_management: {
@@ -277,6 +274,12 @@ export const DOMAIN_META: Record<RecommendDomain, DomainMeta> = {
     label: "Add login, SSO, or multi-factor authentication",
     description: "Secure how people sign in to your product or your company's internal tools.",
     primaryCategorySlug: "security",
+  },
+  survey_forms: {
+    domain: "survey_forms",
+    label: "Collect responses with surveys or forms",
+    description: "Build forms or surveys, apply logic, collect responses, and analyze what people submit.",
+    primaryCategorySlug: "analytics",
   },
 };
 
