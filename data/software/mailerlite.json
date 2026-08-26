@@ -14,7 +14,8 @@
     "Landing pages, websites, signup forms, and pop-ups for lead capture",
     "Campaign A/B testing and comparative performance reporting",
     "Digital products, paid newsletters, and appointment booking tools",
-    "100+ integrations plus API and MCP connectivity"
+    "100+ integrations plus API and MCP connectivity",
+    "Native Shopify integration syncs customers and order data, imports store products, and supports ecommerce-triggered email workflows"
   ],
   "pricing": {
     "model": "freemium",
@@ -68,7 +69,8 @@
   "pros": [
     "Permanent free plan includes campaigns, automations, landing pages, a website, and signup forms",
     "Comfort starts at $12/month and Power at $25/month for the lowest subscriber tier",
-    "Combines email marketing with lead-capture pages, forms, websites, digital products, and booking tools"
+    "Combines email marketing with lead-capture pages, forms, websites, digital products, and booking tools",
+    "Shopify connects natively so customer and order data can feed segmentation, product content, and ecommerce-triggered workflows"
   ],
   "cons": [
     "The Free plan is capped at 250 active subscribers and 2,500 monthly emails",
@@ -99,9 +101,10 @@
     "https://www.mailerlite.com/features/email-marketing",
     "https://www.mailerlite.com/features/automation",
     "https://www.mailerlite.com/help/free-plan-update-faq",
-    "https://www.mailerlite.com/help/paid-plans-update-faq"
+    "https://www.mailerlite.com/help/paid-plans-update-faq",
+    "https://www.mailerlite.com/help/how-to-set-up-the-mailerlite-integration-for-shopify"
   ],
-  "accessed_at": "2026-08-24",
+  "accessed_at": "2026-08-26",
   "alternatives": [
     {
       "name": "Brevo",
