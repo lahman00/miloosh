@@ -16,6 +16,7 @@ import { getComparisonBySlug } from "@/lib/comparison";
 import { getRecommendations } from "@/lib/recommend/engine";
 import { hasAnyAnswer, searchParamsToAnswers, summarizeAnswers } from "@/lib/recommend/query";
 import { recordRecommendationEvent } from "@/lib/recommend/events";
+import { getRecommendationVendorCtaLabel } from "@/lib/recommend/vendor-cta";
 import type { ScoreFactor } from "@/lib/recommend/types";
 import {
   getSoftwareCtaRel,
@@ -25,9 +26,6 @@ import {
 
 export const metadata: Metadata = {
   title: "Your recommendations",
-  // Query-driven results aren't meaningful search-engine content, and
-  // every answer combination would otherwise look like a near-duplicate
-  // page — noindex here, keep /recommend itself indexable.
   robots: { index: false, follow: false },
 };
 
@@ -112,7 +110,9 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
 
         <header className="mt-6 max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            {confidence === "none" ? "No strong match yet" : `Your top ${recommendations.length} recommendation${recommendations.length === 1 ? "" : "s"}`}
+            {confidence === "none"
+              ? "No strong match yet"
+              : `Your top ${recommendations.length} recommendation${recommendations.length === 1 ? "" : "s"}`}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
             Ranked by a deterministic score computed from our verified dataset — no AI, no
@@ -144,11 +144,15 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
             const negativeFactors = rec.scoring.factors.filter((f) => f.direction === "negative");
             const informationalFactors = rec.scoring.factors.filter((f) => f.direction === "informational");
             const isAffiliate = shouldShowAffiliateDisclosure(rec.software);
+            const vendorCtaLabel = getRecommendationVendorCtaLabel(rec.software);
 
             const relatedComparisons = rec.relatedComparisonSlugs
               .map((slug) => ({ slug, data: getComparisonBySlug(slug) }))
-              .filter((item): item is { slug: string; data: NonNullable<ReturnType<typeof getComparisonBySlug>> } =>
-                item.data !== null
+              .filter(
+                (item): item is {
+                  slug: string;
+                  data: NonNullable<ReturnType<typeof getComparisonBySlug>>;
+                } => item.data !== null
               )
               .slice(0, 3);
 
@@ -188,7 +192,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                       ctaLocation="recommend-results-direct-vendor"
                       className="w-full justify-center"
                     >
-                      Visit {rec.software.name}
+                      {vendorCtaLabel}
                       <ExternalLink className="h-4 w-4" />
                     </TrackedCtaLink>
                     <TrackedRecommendationLink
@@ -205,7 +209,10 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                     {isAffiliate ? (
                       <p className="text-center text-[11px] leading-4 text-zinc-500">
                         Affiliate link. Our ranking is independent. {" "}
-                        <Link href="/affiliate-disclosure" className="underline underline-offset-2 hover:text-zinc-300">
+                        <Link
+                          href="/affiliate-disclosure"
+                          className="underline underline-offset-2 hover:text-zinc-300"
+                        >
                           Disclosure
                         </Link>
                       </p>
