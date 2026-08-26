@@ -14,7 +14,8 @@
     "Behavior- and purchase-based dynamic segmentation with AI-assisted audience building",
     "Email, SMS, and web push channels available across Omnisend's marketing toolkit",
     "Forms, pop-ups, flyouts, and landing pages for subscriber acquisition",
-    "Revenue attribution and campaign, automation, deliverability, and channel performance reporting"
+    "Revenue attribution and campaign, automation, deliverability, and channel performance reporting",
+    "Native Shopify integration syncs customers, products, and orders and enables behavior-based campaigns and automation workflows"
   ],
   "pricing": {
     "model": "freemium",
@@ -58,7 +59,8 @@
   "pros": [
     "Free plan provides access to the core platform for up to 250 unique contacts and 500 emails per month",
     "Automation supports ecommerce workflows such as abandoned cart, browse recovery, post-purchase, and win-back journeys",
-    "Built specifically around ecommerce data with email, web push, segmentation, forms, and revenue reporting in one platform"
+    "Built specifically around ecommerce data with email, web push, segmentation, forms, and revenue reporting in one platform",
+    "Shopify connects natively and syncs customers, products, and orders for targeted campaigns and automation triggers"
   ],
   "cons": [
     "The Free plan is limited to 500 emails per month and a maximum of 250 unique contacts for campaign sending",
@@ -87,9 +89,10 @@
     "https://www.omnisend.com/",
     "https://www.omnisend.com/features/",
     "https://www.omnisend.com/features/automation/",
-    "https://support.omnisend.com/en/articles/3533018-omnisend-pricing-plans-2026"
+    "https://support.omnisend.com/en/articles/3533018-omnisend-pricing-plans-2026",
+    "https://support.omnisend.com/en/articles/3175406-connect-your-shopify-store-to-omnisend"
   ],
-  "accessed_at": "2026-08-24",
+  "accessed_at": "2026-08-26",
   "alternatives": [
     {
       "name": "Klaviyo",
