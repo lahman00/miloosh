@@ -42,6 +42,13 @@ function MetricCard({ value, label }: { value: number; label: string }) {
   );
 }
 
+function communityRuleLabel(allowsPromotion: boolean | undefined, verifiedAt: string | undefined): string {
+  if (!verifiedAt) return "HUMAN_REVIEW: rules not verified";
+  if (allowsPromotion === true) return `promotion allowed · verified ${verifiedAt}`;
+  if (allowsPromotion === false) return `promotion not allowed · verified ${verifiedAt}`;
+  return `HUMAN_REVIEW: ambiguous · checked ${verifiedAt}`;
+}
+
 export default async function PainRadarDashboardPage() {
   const candidates = await getAllPainCandidates();
   const dashboard = buildPainRadarDashboard(candidates);
@@ -114,20 +121,27 @@ export default async function PainRadarDashboardPage() {
                         <span>distribution: {signal.distributionState}</span>
                         <span>discovered: {signal.discoveredAt}</span>
                       </div>
+                      <p className="mt-2 text-xs text-zinc-500">
+                        community: {communityRuleLabel(signal.communityAllowsPromotion, signal.communityRulesVerifiedAt)}
+                      </p>
                       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-500">
                         <span>humans {signal.classifiedHumanSessions}</span>
                         <span>CTA {signal.ctaClicks}</span>
                         <span>leads {signal.leads}</span>
                         <span>affiliate clicks {signal.affiliateClicks}</span>
                       </div>
-                      <a
-                        href={signal.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-block text-xs text-zinc-400 underline decoration-zinc-700 underline-offset-4 hover:text-white"
-                      >
-                        Source: {signal.sourceHost}
-                      </a>
+                      {signal.sourceHref ? (
+                        <a
+                          href={signal.sourceHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-block text-xs text-zinc-400 underline decoration-zinc-700 underline-offset-4 hover:text-white"
+                        >
+                          Source: {signal.sourceHost}
+                        </a>
+                      ) : (
+                        <p className="mt-3 text-xs text-red-300">Source URL is not a safe HTTP(S) destination.</p>
+                      )}
                     </div>
                     <div className="shrink-0 text-right">
                       <p className="text-3xl font-bold text-white">{signal.score}</p>
@@ -191,6 +205,14 @@ export default async function PainRadarDashboardPage() {
             <MetricCard value={dashboard.summary.attributedLeads} label="Leads" />
             <MetricCard value={dashboard.summary.attributedAffiliateClicks} label="Affiliate clicks" />
           </div>
+          <Card className="mt-4 border-amber-500/20">
+            <p className="text-sm font-semibold text-amber-200">Revenue attribution is not stored on PainCandidate yet.</p>
+            <p className="mt-2 text-sm leading-6 text-zinc-400">
+              The current durable outcome schema ends at affiliate clicks. This dashboard therefore does not invent a
+              revenue number. Wiring verified commission/revenue outcomes back to a PainCandidate remains a separate
+              issue #4 completion step.
+            </p>
+          </Card>
         </section>
 
         <section className="mt-16 border-t border-white/10 pt-10 text-center">
