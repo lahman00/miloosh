@@ -35,6 +35,29 @@ const replacements: readonly AffiliateProgramRelationship[] = [
     notes: "Do not activate or insert an affiliate URL until Jotform sends explicit approval and a verified tracking asset. Jotform already participates editorially in the Surveys & Forms recommendation flow; affiliate status must not change its ranking.",
   },
   {
+    programId: "grammarly-creator",
+    programName: "Grammarly Creator Affiliate Program",
+    network: "Impact.com",
+    productSlugs: ["grammarly"],
+    status: "PENDING_REVIEW",
+    statusUpdatedAt: "2026-08-26",
+    applicationSubmittedAt: "2026-08-19",
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Per current Grammarly Creator campaign terms in Impact.com; exact commission is not recorded in durable first-party evidence available to this ledger",
+    cookieWindow: null,
+    evidence: [
+      "First-party Impact.com Application Received email dated 2026-08-19 for Grammarly - Creator (44925), publisher hello@miloosh.com",
+      "A second first-party Impact.com Application Received email dated 2026-08-19 for Grammarly / Superhuman Mail confirms the same publisher account also submitted to that adjacent campaign; it is not treated as a Grammarly tracking approval",
+      "Miloosh status follow-up sent to grammarly@accelerationpartners.com on 2026-08-26; no approval or rejection had arrived before the follow-up",
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Grammarly Creator application submitted through Impact.com; vendor review is still unresolved",
+    applicationUrl: "https://app.impact.com/",
+    notes: "Do not activate Grammarly or invent an Impact tracking URL until an explicit approval and real tracking asset are received. Grammarly already exists editorially in Miloosh; affiliate status must not change its ranking or recommendations.",
+  },
+  {
     programId: "shift4shop",
     programName: "Shift4Shop Affiliate Program",
     network: "Awin",
@@ -183,8 +206,10 @@ export const CURRENT_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] =
       if (relationship.programId === "impact-portfolio") {
         return {
           ...relationship,
-          productSlugs: relationship.productSlugs.filter((slug) => slug !== "bigcommerce"),
-          notes: `${relationship.notes} BigCommerce is excluded from this portfolio because its affiliate program ended on 2025-05-17.`,
+          productSlugs: relationship.productSlugs.filter(
+            (slug) => !["bigcommerce", "grammarly"].includes(slug)
+          ),
+          notes: `${relationship.notes} BigCommerce is excluded because its affiliate program ended on 2025-05-17. Grammarly is excluded because a real Creator application was submitted through Impact on 2026-08-19 and is tracked separately as PENDING_REVIEW.`,
         };
       }
 
