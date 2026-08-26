@@ -64,7 +64,19 @@ describe("SEO execution cohort alternatives guides", () => {
     // source-backed Zoho CRM alternative, already ACTIVE with an exact
     // tracking URL, and its comparison already existed. Zoho CRM is outside
     // the protected experiment cohorts.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike", "zoho-crm"]);
+    //
+    // MILOOSH SUPER MISSION (2026-08-26) added elevenlabs: real but modest
+    // GSC evidence for "elevenlabs alternatives" (7 impressions, 0 clicks,
+    // position 75.6 in the 2026-08-25 SEO Factory run -- recorded honestly,
+    // not overstated to match the larger cohorts above). Chosen primarily
+    // because the Money Priority Engine's own output flagged ElevenLabs
+    // (an ACTIVE affiliate partner) as having zero Decision Guide coverage,
+    // same rationale as the Squarespace addition. All three real, sourced
+    // alternatives from elevenlabs.json (murf-ai, descript, synthesia) map
+    // to distinct real jobs (video/slide voiceover, transcript-based
+    // editing, multilingual training video) and already have published
+    // comparisons -- no new comparison page was created.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "elevenlabs", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike", "zoho-crm"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2
