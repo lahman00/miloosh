@@ -1,7 +1,14 @@
 import {
+  ALTERNATIVE_GUIDES,
   getAlternativeGuide as getCoreAlternativeGuide,
-  type AlternativeGuide,
-} from "@/data/seo/alternative-guides";
+} from "./alternative-guides";
+import type {
+  AlternativeDecision,
+  AlternativeGuide,
+} from "./alternative-guides";
+
+export { ALTERNATIVE_GUIDES };
+export type { AlternativeDecision, AlternativeGuide };
 
 /**
  * Revenue-surface guides added after the original GSC execution cohort.
