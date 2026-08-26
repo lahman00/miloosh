@@ -4,17 +4,34 @@ import {
 } from "./alternative-guides";
 import type {
   AlternativeDecision,
-  AlternativeGuide,
+  AlternativeGuide as CoreAlternativeGuide,
 } from "./alternative-guides";
 
 export { ALTERNATIVE_GUIDES };
-export type { AlternativeDecision, AlternativeGuide };
+export type { AlternativeDecision };
+
+export type OriginalProductFit = {
+  softwareSlug: string;
+  heading: string;
+  fit: string;
+  ctaLabel: string;
+};
+
+export type AlternativeGuide = CoreAlternativeGuide & {
+  originalFit?: OriginalProductFit;
+};
 
 /**
  * Revenue-surface guides added after the original GSC execution cohort.
  * They remain separate from that fixed cohort so its historical, evidence-
  * specific test does not get rewritten whenever a later commercial surface
  * earns editorial coverage.
+ *
+ * `originalFit` is deliberately present only on products with first-party
+ * partner activity already observed. It gives the decision guide an honest
+ * "keep the current product" route instead of making every reader choose a
+ * competitor. Affiliate status never creates the fit; the fit text is sourced
+ * from the same verified product record used by the rest of the page.
  */
 export const REVENUE_ALTERNATIVE_GUIDES: Readonly<Record<string, AlternativeGuide>> = {
   krispcall: {
@@ -28,6 +45,12 @@ export const REVENUE_ALTERNATIVE_GUIDES: Readonly<Record<string, AlternativeGuid
       "The organization needs phone, video, team messaging, and contact-center capabilities in a broader enterprise communications platform.",
       "Domestic US and Canada calling, team collaboration, and around-the-clock live support matter more than global-number coverage.",
     ],
+    originalFit: {
+      softwareSlug: "krispcall",
+      heading: "Keep KrispCall for global numbers and a focused business-phone stack",
+      fit: "KrispCall remains the direct fit when a small or growing team wants business numbers across 100+ countries, a unified calls/SMS/voicemail inbox, IVR, recording, a power dialer, and CRM integrations without buying a broader enterprise communications suite.",
+      ctaLabel: "View KrispCall plans",
+    },
     decisions: [
       {
         heading: "AI-assisted sales and support calls",
@@ -65,6 +88,12 @@ export const REVENUE_ALTERNATIVE_GUIDES: Readonly<Record<string, AlternativeGuid
       "The team needs multi-touch website journeys connected directly to closed CRM deal revenue rather than lead-level attribution alone.",
       "CRM records, marketing automation, sales activity, service workflows, and lifecycle reporting need to live in one vendor ecosystem.",
     ],
+    originalFit: {
+      softwareSlug: "whatconverts",
+      heading: "Keep WhatConverts for lead-level source attribution across calls, forms, chats, and transactions",
+      fit: "WhatConverts remains the focused choice when the team needs one lead record tied back to campaign and keyword data, qualification and lead value, agency reporting, and CRM export without replacing the existing CRM or marketing stack.",
+      ctaLabel: "Start the 14-day WhatConverts trial",
+    },
     decisions: [
       {
         heading: "Call-driven local lead tracking and conversation intelligence",
