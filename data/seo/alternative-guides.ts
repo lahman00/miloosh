@@ -365,6 +365,22 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://www.squarespace.com/pricing", "https://www.wix.com"],
   },
+  elevenlabs: {
+    diagnosis: "The page's alternatives list (Murf AI, Descript, Synthesia) is presented as three interchangeable options, without explaining that they actually serve three different jobs -- video/slide voiceover, transcript-based podcast/video editing, and corporate training video -- that ElevenLabs itself doesn't specialize in the same way.",
+    heading: "Choose an alternative by the job you're actually doing",
+    introduction: "ElevenLabs centers on realistic AI voice generation and cloning for customer-service voice, content production, and API/SDK-driven apps. The useful alternatives question is less \"which sounds better\" and more which workflow the team is actually in: syncing a voiceover to existing video or slides, editing spoken audio the way you'd edit a text transcript, or producing multilingual corporate training video.",
+    whySeekAlternative: [
+      "The job is voiceover work synced to an existing video or slide deck, not standalone voice generation.",
+      "The workflow is editing recorded speech (podcasts, video) by editing a transcript, not scripting audio from text.",
+      "The need is corporate training or explainer video in multiple languages, not a voice API.",
+    ],
+    decisions: [
+      { heading: "Voiceover synced to video or slides", fit: "Murf AI is the relevant comparison when the job is producing a voiceover that syncs to an existing video or slide deck rather than generating standalone audio.", alternativeSlug: "murf-ai", comparisonSlug: "elevenlabs-vs-murf-ai" },
+      { heading: "Transcript-based podcast and video editing", fit: "Descript fits podcasters and video creators who want to edit spoken audio by editing a text transcript instead of a waveform.", alternativeSlug: "descript", comparisonSlug: "elevenlabs-vs-descript" },
+      { heading: "Multilingual corporate training video", fit: "Synthesia is the closer route once the requirement is corporate training or explainer video production across multiple languages.", alternativeSlug: "synthesia", comparisonSlug: "elevenlabs-vs-synthesia" },
+    ],
+    evidenceSources: ["https://elevenlabs.io"],
+  },
 };
 
 export function getAlternativeGuide(slug: string): AlternativeGuide | undefined {
