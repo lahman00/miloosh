@@ -12,6 +12,29 @@ import {
  */
 const replacements: readonly AffiliateProgramRelationship[] = [
   {
+    programId: "jotform-affiliate",
+    programName: "Jotform Affiliate Program",
+    network: "Direct",
+    productSlugs: ["jotform"],
+    status: "PENDING_REVIEW",
+    statusUpdatedAt: "2026-08-26",
+    applicationSubmittedAt: "2026-08-18",
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "30% commission on every new paid user for the first 12 months of the referred customer's subscription",
+    cookieWindow: "60-day qualification window before referred paid customer commission is payable",
+    evidence: [
+      "First-party Jotform Affiliates application receipt dated 2026-08-18 stating review within 1-3 business days",
+      "Current official Jotform affiliate page verified 2026-08-16",
+      "Miloosh status follow-up sent to affiliates@jotform.com on 2026-08-26 after no approval/rejection arrived within the stated review window",
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Application submitted as an independent software research/content publisher; approval remains case-by-case and is not yet granted",
+    applicationUrl: "https://www.jotform.com/partnership/affiliate/application/",
+    notes: "Do not activate or insert an affiliate URL until Jotform sends explicit approval and a verified tracking asset. Jotform already participates editorially in the Surveys & Forms recommendation flow; affiliate status must not change its ranking.",
+  },
+  {
     programId: "shift4shop",
     programName: "Shift4Shop Affiliate Program",
     network: "Awin",
