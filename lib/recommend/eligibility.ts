@@ -1,6 +1,6 @@
 import type { Software } from "@/data/software";
 import type { RecommendationAnswers } from "@/lib/recommend/types";
-import { isEligibleForDomain } from "@/data/recommend/product-profiles";
+import { isEligibleForDomainFromEvidence } from "@/data/recommend/domain-evidence";
 
 /**
  * Recommend Engine Rebuild (2026-08-21) — Phase 7 (eligibility) and
@@ -26,7 +26,7 @@ import { isEligibleForDomain } from "@/data/recommend/product-profiles";
 
 export function isDomainEligible(software: Software, answers: RecommendationAnswers): boolean {
   if (!answers.primaryNeed) return true; // no domain selected -> generic fallback, unchanged from the original engine
-  return isEligibleForDomain(software.slug, answers.primaryNeed);
+  return isEligibleForDomainFromEvidence(software.slug, answers.primaryNeed);
 }
 
 /**
