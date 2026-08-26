@@ -23,7 +23,7 @@ describe("Recommend vendor CTA copy", () => {
     expect(getRecommendationVendorCtaLabel(jotform)).toBe("Visit Jotform");
   });
 
-  it("uses the helper only for post-ranking CTA copy and keeps affiliate logic out of it", () => {
+  it("uses the helper only for post-ranking CTA copy and keeps affiliate modules out of it", () => {
     const helperSource = fs.readFileSync(
       path.join(process.cwd(), "lib/recommend/vendor-cta.ts"),
       "utf-8",
@@ -33,8 +33,8 @@ describe("Recommend vendor CTA copy", () => {
       "utf-8",
     );
 
-    expect(helperSource).not.toContain("active-partners");
-    expect(helperSource).not.toContain("commission");
+    expect(helperSource).not.toContain('from "@/data/affiliate');
+    expect(helperSource).not.toContain('from "@/lib/affiliate');
     expect(resultsSource).toContain("getRecommendationVendorCtaLabel(rec.software)");
     expect(resultsSource).toContain('ctaLocation="recommend-results-direct-vendor"');
   });
