@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Compass, ExternalLink } from "lucide-react";
+import { ArrowRight, CheckCircle2, Compass, ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
@@ -20,6 +20,9 @@ export function getVerifiedStartingPrice(software: Software): string | null {
 }
 
 export function AlternativeDecisionGuide({ guide, category }: { guide: AlternativeGuide; category: string }) {
+  const originalSoftware = guide.originalFit ? getSoftware(guide.originalFit.softwareSlug) : undefined;
+  const originalStartingPrice = originalSoftware ? getVerifiedStartingPrice(originalSoftware) : null;
+
   return (
     <section className="mt-14" aria-labelledby="alternative-decision-heading">
       <SectionHeading eyebrow="Decision guide" title={<span id="alternative-decision-heading">{guide.heading}</span>} description={guide.introduction} />
@@ -27,6 +30,48 @@ export function AlternativeDecisionGuide({ guide, category }: { guide: Alternati
         <div className="flex items-center gap-3"><Compass className="h-5 w-5 text-zinc-300" /><h3 className="text-lg font-semibold text-white">Why consider another option?</h3></div>
         <ul className="mt-4 grid gap-3 sm:grid-cols-3">{guide.whySeekAlternative.map((reason) => <li key={reason} className="text-sm leading-6 text-zinc-400">{reason}</li>)}</ul>
       </Card>
+
+      {guide.originalFit && originalSoftware ? (
+        <Card className="mt-6 border-emerald-500/20 bg-emerald-500/[0.04]">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="h-5 w-5 text-emerald-300" />
+                <p className="text-sm font-semibold uppercase tracking-wider text-emerald-300">When the current product still fits</p>
+              </div>
+              <h3 className="mt-3 text-xl font-semibold text-white">{guide.originalFit.heading}</h3>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-300">{guide.originalFit.fit}</p>
+              {originalStartingPrice ? (
+                <p className="mt-3 text-sm font-medium text-white">Verified starting price: {originalStartingPrice}</p>
+              ) : null}
+            </div>
+            <div className="lg:min-w-72">
+              <TrackedCtaLink
+                slug={originalSoftware.slug}
+                href={getSoftwareCtaUrl(originalSoftware)}
+                rel={getSoftwareCtaRel(originalSoftware)}
+                target="_blank"
+                variant="primary"
+                className="w-full"
+                ctaLocation="alternative-decision-guide-original-fit"
+              >
+                {guide.originalFit.ctaLabel}
+                <ExternalLink className="h-4 w-4" />
+              </TrackedCtaLink>
+              {shouldShowAffiliateDisclosure(originalSoftware) ? (
+                <p className="mt-2 text-center text-xs text-zinc-500">
+                  This is an affiliate link. See our{" "}
+                  <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
+                    Affiliate Disclosure
+                  </Link>
+                  .
+                </p>
+              ) : null}
+            </div>
+          </div>
+        </Card>
+      ) : null}
+
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
         {guide.decisions.map((decision) => {
           const alternative = getSoftware(decision.alternativeSlug);
