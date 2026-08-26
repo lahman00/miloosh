@@ -55,7 +55,7 @@ export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportuni
   {
     id: "trainual-2026-08-24",
     vendorName: "Trainual",
-    catalogSlug: null,
+    catalogSlug: "trainual",
     network: "PartnerStack",
     status: "TERMS_REVIEW",
     receivedAt: "2026-08-24",
@@ -74,6 +74,6 @@ export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportuni
     acceptedAt: null,
     ownerAcceptanceRequired: true,
     nextAction: "Wait for Tom Healy to reconcile the invitation's tiered-commission wording with the public 10% recurring baseline and confirm current publisher eligibility and promotional restrictions. Do not accept the invitation until those terms are reviewed.",
-    notes: "No Trainual software record currently exists in Miloosh. Do not create a catalog product solely to activate an affiliate invitation. The official public page explicitly welcomes tech bloggers and other audience publishers, but the direct invitation may contain newer or partner-specific tier economics, so the emailed confirmation remains the controlling unresolved item.",
+    notes: "data/software/trainual.json already exists as a real, published Miloosh catalog entry (knowledge-base category) -- this was a stale note from before that page existed, not a current blocker. The official public page explicitly welcomes tech bloggers and other audience publishers, but the direct invitation may contain newer or partner-specific tier economics, so the emailed confirmation remains the controlling unresolved item before activation.",
   },
 ] as const;

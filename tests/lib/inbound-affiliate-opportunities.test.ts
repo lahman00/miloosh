@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { INBOUND_AFFILIATE_OPPORTUNITIES } from "@/data/affiliate/inbound-opportunities";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
+import { getSoftware } from "@/data/software";
 
 describe("inbound affiliate opportunities", () => {
   it("records Buddy Punch as terms review, not an accepted or active relationship", () => {
@@ -21,7 +22,13 @@ describe("inbound affiliate opportunities", () => {
     expect(trainual?.acceptedAt).toBeNull();
     expect(trainual?.affiliateUrl).toBeNull();
     expect(trainual?.ownerAcceptanceRequired).toBe(true);
-    expect(trainual?.catalogSlug).toBeNull();
+    // catalogSlug was stale-null: data/software/trainual.json is a real,
+    // published catalog entry (added by the Launch expansion sprint,
+    // predating this inbound-opportunity record). Terms review status is
+    // about the affiliate relationship, not catalog presence -- both can
+    // be true independently.
+    expect(trainual?.catalogSlug).toBe("trainual");
+    expect(getSoftware("trainual")).toBeDefined();
     expect(trainual?.headlineOffer).toContain("Tiered commissions");
     expect(trainual?.verifiedPublicEconomics).toContain("10% recurring commission");
     expect(trainual?.verifiedPublicEconomics).toContain("90-day cookie");
