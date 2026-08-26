@@ -23,6 +23,8 @@ function candidate(overrides: Partial<PersistedPainCandidate>): PersistedPainCan
     affiliateRelevant: false,
     canBuildAssetQuickly: true,
     canDistributeImmediately: true,
+    communityAllowsPromotion: false,
+    communityRulesVerifiedAt: "2026-08-25T08:00:00.000Z",
     normalizedPainClass: "loss-of-free-access",
     verificationState: "VERIFIED_TRUE",
     remedyState: "PUBLISHED",
@@ -42,7 +44,7 @@ function candidate(overrides: Partial<PersistedPainCandidate>): PersistedPainCan
 }
 
 describe("buildPainRadarDashboard", () => {
-  it("shows fresh signals, clusters corroboration, and sums measured outcomes", () => {
+  it("shows fresh signals, clusters corroboration, community state, and measured outcomes", () => {
     const data = buildPainRadarDashboard(
       [
         candidate({ id: "fresh-1", sourceUrl: "https://community.example.com/a", discoveredAt: "2026-08-25T10:00:00.000Z" }),
@@ -54,6 +56,8 @@ describe("buildPainRadarDashboard", () => {
           attributedOutcome: undefined,
           remedyState: "SELECTED",
           distributionState: "QUEUED",
+          communityAllowsPromotion: undefined,
+          communityRulesVerifiedAt: undefined,
         }),
         candidate({
           id: "old-1",
@@ -84,7 +88,11 @@ describe("buildPainRadarDashboard", () => {
 
     expect(data.signals).toHaveLength(2);
     expect(data.signals.map((signal) => signal.id)).not.toContain("old-1");
-    expect(data.signals[0].sourceHost).toBe("community.example.com");
+    const first = data.signals.find((signal) => signal.id === "fresh-1");
+    expect(first?.sourceHost).toBe("community.example.com");
+    expect(first?.sourceHref).toBe("https://community.example.com/a");
+    expect(first?.communityAllowsPromotion).toBe(false);
+    expect(first?.communityRulesVerifiedAt).toBe("2026-08-25T08:00:00.000Z");
 
     const freshdeskCluster = data.clusters.find((cluster) => cluster.vendor === "freshdesk");
     expect(freshdeskCluster).toBeDefined();
@@ -102,5 +110,14 @@ describe("buildPainRadarDashboard", () => {
     expect(data.summary.freshCandidates).toBe(0);
     expect(data.signals).toHaveLength(1);
     expect(data.signals[0].id).toBe("old-only");
+  });
+
+  it("never exposes a non-HTTP(S) source as a clickable dashboard link", () => {
+    const data = buildPainRadarDashboard(
+      [candidate({ id: "unsafe", sourceUrl: "javascript:alert(1)" })],
+      new Date("2026-08-26T10:00:00.000Z"),
+    );
+
+    expect(data.signals[0].sourceHref).toBeUndefined();
   });
 });
