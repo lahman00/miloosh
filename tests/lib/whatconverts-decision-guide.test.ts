@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getAlternativeGuide } from "@/data/seo/alternative-guides";
+import { getAlternativeGuide } from "@/data/seo/alternative-guide-resolver";
 import { isPublishedComparison } from "@/data/comparisons";
 import { getSoftware } from "@/data/software";
 import { getSoftwareCtaRel, getSoftwareCtaUrl } from "@/lib/affiliate";
