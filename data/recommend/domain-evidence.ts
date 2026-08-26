@@ -16,6 +16,11 @@ import {
  * jobs, so leaving them CATALOG_ONLY made the Recommend funnel stale relative
  * to current editorial truth.
  *
+ * A 2026-08-26 catalog audit also established a coherent survey/forms buyer
+ * job across four independently researched products: SurveyMonkey, Typeform,
+ * Jotform and Qualtrics. All four enter the new domain together; monetization
+ * status is not consulted and cannot affect eligibility.
+ *
  * Keep this overlay small and evidence-only. A future consolidation can fold
  * these entries into PRODUCT_PROFILES directly; the helpers below expose one
  * merged source of truth to runtime and coverage tooling in the meantime.
@@ -23,6 +28,10 @@ import {
 export const SUPPLEMENTAL_PRODUCT_PROFILES: readonly ProductProfile[] = [
   { slug: "mailerlite", domains: ["email_marketing"] },
   { slug: "omnisend", domains: ["email_marketing"] },
+  { slug: "surveymonkey", domains: ["survey_forms"] },
+  { slug: "typeform", domains: ["survey_forms"] },
+  { slug: "jotform", domains: ["survey_forms"] },
+  { slug: "qualtrics", domains: ["survey_forms"] },
 ] as const;
 
 const MERGED_PROFILE_BY_SLUG = new Map<string, ProductProfile>();
