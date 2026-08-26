@@ -18,12 +18,13 @@ import { RECOMMEND_DOMAINS } from "@/lib/recommend/domains";
  * isn't a runtime experiment (mocking a readonly ESM import binding at
  * test time is fragile and proves less than it looks like it does) — it's
  * a real static check: every file in the actual decision pipeline
- * (engine, eligibility, scoring, explain, domains, product-profiles)
- * literally does not import from data/affiliate/, lib/affiliate.ts, or
- * lib/revenue/ (the only places affiliate/commission data lives in this
- * codebase). If none of those imports exist, there is no code path by
- * which affiliate status COULD reach a score, gate, or explanation,
- * full stop — stronger than a behavioral test that could pass by luck.
+ * (engine, eligibility, scoring, explain, domains, product profiles and
+ * later evidence overlays) literally does not import from data/affiliate/,
+ * lib/affiliate.ts, or lib/revenue/ (the only places affiliate/commission
+ * data lives in this codebase). If none of those imports exist, there is
+ * no code path by which affiliate status COULD reach a score, gate, or
+ * explanation, full stop — stronger than a behavioral test that could
+ * pass by luck.
  */
 
 const PIPELINE_FILES = [
@@ -35,6 +36,7 @@ const PIPELINE_FILES = [
   "lib/recommend/keywords.ts",
   "lib/recommend/query.ts",
   "data/recommend/product-profiles.ts",
+  "data/recommend/domain-evidence.ts",
 ];
 
 const FORBIDDEN_IMPORT_PATTERNS = [/data\/affiliate/, /lib\/affiliate["']/, /lib\/revenue/];

@@ -1,6 +1,6 @@
 import "../social/_load-env";
 import { getAllSoftware } from "@/data/software";
-import { getProductProfile } from "@/data/recommend/product-profiles";
+import { getProductProfileFromEvidence } from "@/data/recommend/domain-evidence";
 import { RECOMMEND_DOMAINS } from "@/lib/recommend/domains";
 
 /**
@@ -10,6 +10,10 @@ import { RECOMMEND_DOMAINS } from "@/lib/recommend/domains";
  * product into Recommend — a CATALOG_ONLY classification is a legitimate,
  * honest outcome for a product with no domain evidence (e.g. a CMS or
  * API-infra tool), not a gap demanding action.
+ *
+ * Runtime eligibility can gain later evidence-backed additions after the
+ * original profile authoring pass, so this report reads the merged domain
+ * evidence source rather than the historical base profile table alone.
  *
  * Usage: npx tsx --env-file=.env.local scripts/recommend/coverage-report.ts
  */
@@ -24,7 +28,7 @@ function main() {
   const catalogOnlySlugs: string[] = [];
 
   for (const software of all) {
-    const profile = getProductProfile(software.slug);
+    const profile = getProductProfileFromEvidence(software.slug);
     const classification: Classification = profile ? "RECOMMEND_ELIGIBLE" : "CATALOG_ONLY";
     if (classification === "RECOMMEND_ELIGIBLE") eligible++;
     else {
@@ -41,7 +45,7 @@ function main() {
 
   console.log("Products per domain:");
   for (const domain of RECOMMEND_DOMAINS) {
-    const count = all.filter((s) => getProductProfile(s.slug)?.domains.includes(domain)).length;
+    const count = all.filter((s) => getProductProfileFromEvidence(s.slug)?.domains.includes(domain)).length;
     console.log(`  ${domain}: ${count}`);
   }
   console.log();
@@ -61,7 +65,7 @@ function main() {
   // more than one domain is worth a human glance, even though it isn't
   // automatically wrong (a handful of real products do span domains).
   const multiDomain = all
-    .map((s) => ({ slug: s.slug, domains: getProductProfile(s.slug)?.domains ?? [] }))
+    .map((s) => ({ slug: s.slug, domains: getProductProfileFromEvidence(s.slug)?.domains ?? [] }))
     .filter((p) => p.domains.length > 1);
   console.log(`\nProducts eligible for more than one domain: ${multiDomain.length}`);
   for (const p of multiDomain) console.log(`  ${p.slug}: ${p.domains.join(", ")}`);

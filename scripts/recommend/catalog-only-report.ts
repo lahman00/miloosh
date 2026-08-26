@@ -1,6 +1,6 @@
 import "../social/_load-env";
 import { getAllSoftware } from "@/data/software";
-import { getProductProfile } from "@/data/recommend/product-profiles";
+import { getProductProfileFromEvidence } from "@/data/recommend/domain-evidence";
 
 /**
  * Flippa Activation + Recommend Expansion Super-Mission (2026-08-21) —
@@ -8,13 +8,16 @@ import { getProductProfile } from "@/data/recommend/product-profiles";
  * CATALOG_ONLY product grouped by its real catalog category, as the
  * starting input for the domain-acceptance gate (Phase 12) — this report
  * only groups; it does not recommend which groups become domains.
+ *
+ * Use merged current domain evidence so later editorially verified
+ * additions do not remain falsely listed as CATALOG_ONLY.
  */
 
 function main() {
   const all = getAllSoftware();
   const byCategory: Record<string, string[]> = {};
   for (const s of all) {
-    if (!getProductProfile(s.slug)) {
+    if (!getProductProfileFromEvidence(s.slug)) {
       byCategory[s.category] = byCategory[s.category] ?? [];
       byCategory[s.category].push(s.slug);
     }
