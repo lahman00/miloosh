@@ -1,15 +1,16 @@
 import type { Software } from "@/data/software";
-import { getActivePartner } from "@/data/affiliate/active-partners";
+import { getActivePartner, type ActivePartnerIntent } from "@/data/affiliate/active-partners";
 import { getAffiliateActivation } from "@/lib/revenue/affiliate-manager";
 
 /**
  * Reusable affiliate-link architecture.
  *
  * Source precedence is intentional:
- * 1. canonical active-partner registry URL;
- * 2. legacy runtime activation, which itself is restricted to a current ACTIVE relationship;
- * 3. software-entry affiliateUrl fallback;
- * 4. official vendor URL.
+ * 1. a vendor-issued intent-specific URL from the canonical active-partner registry;
+ * 2. the canonical active-partner general URL;
+ * 3. legacy runtime activation, which itself is restricted to a current ACTIVE relationship;
+ * 4. software-entry affiliateUrl fallback;
+ * 5. official vendor URL.
  *
  * An environment variable must never override a network-issued URL already
  * verified in the canonical active registry.
@@ -19,6 +20,8 @@ export type AffiliateLink = {
   officialUrl: string;
   affiliateUrl?: string;
 };
+
+export type SoftwareCtaIntent = "default" | ActivePartnerIntent;
 
 export function preferredUrl(link: AffiliateLink): string {
   return link.affiliateUrl || link.officialUrl;
@@ -55,8 +58,13 @@ export function getConfiguredTrackingParams(): Record<string, string> {
   return ref ? { ref } : {};
 }
 
-function softwareToAffiliateLink(software: Software): AffiliateLink {
-  const registeredPartnerUrl = getActivePartner(software.slug)?.affiliateUrl ?? undefined;
+function softwareToAffiliateLink(
+  software: Software,
+  intent: SoftwareCtaIntent = "default",
+): AffiliateLink {
+  const registeredPartner = getActivePartner(software.slug);
+  const intentSpecificUrl = intent === "default" ? undefined : registeredPartner?.intentUrls?.[intent];
+  const registeredPartnerUrl = intentSpecificUrl ?? registeredPartner?.affiliateUrl ?? undefined;
   const activation = registeredPartnerUrl ? null : getAffiliateActivation(software.slug);
   const affiliateUrl =
     registeredPartnerUrl ??
@@ -66,16 +74,25 @@ function softwareToAffiliateLink(software: Software): AffiliateLink {
   return { officialUrl: software.website, affiliateUrl };
 }
 
-export function getSoftwareCtaUrl(software: Software): string {
-  const link = softwareToAffiliateLink(software);
+export function getSoftwareCtaUrl(
+  software: Software,
+  intent: SoftwareCtaIntent = "default",
+): string {
+  const link = softwareToAffiliateLink(software, intent);
   const url = preferredUrl(link);
   return isAffiliateLink(link) ? withTrackingParams(url, getConfiguredTrackingParams()) : url;
 }
 
-export function getSoftwareCtaRel(software: Software): string {
-  return affiliateRel(softwareToAffiliateLink(software));
+export function getSoftwareCtaRel(
+  software: Software,
+  intent: SoftwareCtaIntent = "default",
+): string {
+  return affiliateRel(softwareToAffiliateLink(software, intent));
 }
 
-export function shouldShowAffiliateDisclosure(software: Software): boolean {
-  return isAffiliateLink(softwareToAffiliateLink(software));
+export function shouldShowAffiliateDisclosure(
+  software: Software,
+  intent: SoftwareCtaIntent = "default",
+): boolean {
+  return isAffiliateLink(softwareToAffiliateLink(software, intent));
 }
