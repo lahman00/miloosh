@@ -54,10 +54,10 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     label: "PartnerStack — legacy/personal-email account",
     accountIdentity: "lahman00@gmail.com",
     partnerSlugs: ["monday", "whatconverts", "elevenlabs", "wrike"],
-    readiness: "UNVERIFIED",
+    readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "partnerstack-personal-payout-rail",
-    methodGuidance: "Verify the payout provider separately in this PartnerStack account. Do not assume the business-account payout configuration carries over. If direct deposit is used, the same Airwallex restrictions apply; Payoneer USD receiving details should not be used as Airwallex bank details.",
-    notes: "First-party monday.com application mail, WhatConverts/ElevenLabs affiliate mail, and the 2026-08-25 Wrike PartnerStack welcome/onboarding emails are tied to lahman00@gmail.com. This makes it a separate account-level payout checkpoint from hello@miloosh.com. Wrike payout readiness remains unverified until the live payout profile is checked.",
+    methodGuidance: "Do not close this account and do not re-apply to any program from Account #1 until the owner has decided how to preserve the four existing tracking links/relationships. Verify the payout provider separately in this PartnerStack account once resolved. If direct deposit is used, the same Airwallex restrictions apply; Payoneer USD receiving details should not be used as Airwallex bank details.",
+    notes: "MILOOSH SUPER MISSION (2026-08-27) -- PartnerStack Support (Nina R, ticket #121396, first-party reply 2026-08-26 19:37 EDT) confirmed this account's own network-level application status is DECLINED, even though it individually shows 'Partnered with' monday.com/WhatConverts/ElevenLabs/Wrike/Zendesk. PartnerStack's own recommendation: consolidate onto Account #1 (hello@miloosh.com, network-approved) and re-apply to these four programs from there; closing Account #2 was suggested but NOT executed -- this is an owner decision (risks losing the four existing referral links/tracking history if done before re-establishing them under Account #1). Do not close Account #2 or send any reply to PartnerStack without the owner's explicit direction. This does not change the four partnerships' ACTIVE status in the canonical ledger (their tracking URLs are still real and still resolve correctly on-site) -- it specifically means their PAYOUT path is now confirmed at risk, not merely unverified.",
   },
   {
     id: "impact",

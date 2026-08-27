@@ -28,10 +28,16 @@ describe("Wrike affiliate activation", () => {
     expect(program?.cookieDuration).toBeUndefined();
   });
 
-  it("assigns Wrike to the actual PartnerStack account while keeping payout readiness unverified", () => {
+  it("assigns Wrike to the actual PartnerStack account, now a confirmed owner-action-required payout risk", () => {
+    // PartnerStack Support (ticket #121396, 2026-08-26) confirmed this
+    // account's own network application is DECLINED, even though it
+    // individually shows Wrike as a partnership. No longer just
+    // "unverified" -- there's a concrete, confirmed blocker requiring an
+    // owner decision (re-apply from the approved hello@miloosh.com account,
+    // or resolve directly with PartnerStack) before payout can be verified.
     const rail = getPayoutRailForPartner("wrike");
     expect(rail.id).toBe("partnerstack-personal");
     expect(rail.accountIdentity).toBe("lahman00@gmail.com");
-    expect(rail.readiness).toBe("UNVERIFIED");
+    expect(rail.readiness).toBe("OWNER_ACTION_REQUIRED");
   });
 });
