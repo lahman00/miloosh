@@ -83,6 +83,17 @@
         "Dashboards",
         "Automation"
       ]
+    },
+    {
+      "name": "Zoho Projects",
+      "slug": "zoho-projects",
+      "description": "An online project management platform for planning, tracking, and collaborating on work, with deep integration into the wider Zoho suite.",
+      "best_for": "Teams already using Zoho apps, or organizations wanting an affordable, feature-rich project tool bundled with invoicing and billing",
+      "strengths": [
+        "Deep Zoho-suite integration",
+        "Gantt charts and timesheets",
+        "Affordable at scale"
+      ]
     }
   ]
 }

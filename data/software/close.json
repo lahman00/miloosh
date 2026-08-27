@@ -60,6 +60,13 @@
       "description": "A Freshworks CRM using Freddy AI for lead scoring and automated email writing.",
       "best_for": "Sales teams wanting AI-assisted lead management and a 360° customer view.",
       "strengths": ["Freddy AI scoring", "Kanban pipeline", "Built-in phone and email"]
+    },
+    {
+      "name": "Zoho CRM",
+      "slug": "zoho-crm",
+      "description": "A cloud-based sales platform using the Zia AI assistant to manage leads, deals, and customer relationships with omnichannel engagement and no-code workflow automation.",
+      "best_for": "Businesses wanting CRM bundled with a much wider suite of Zoho apps rather than a calling-first standalone sales tool.",
+      "strengths": ["Zia AI assistant", "Deep Zoho-suite integration", "No-code workflow automation"]
     }
   ]
 }

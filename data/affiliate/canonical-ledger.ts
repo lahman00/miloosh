@@ -912,22 +912,27 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
   },
   {
     programId: "zoho-ecosystem",
-    programName: "Zoho Partner Ecosystem",
+    programName: "Zoho Affiliate Program",
     network: "Direct (Zoho)",
     productSlugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk", "zoho-flow"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-21",
+    statusUpdatedAt: "2026-08-27",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "15% recurring commission on all Zoho subscriptions for 12 months",
+    commissionModel: "15% (Standard tier) of the revenue Zoho receives from a qualified sale for the first 12 months, PROVIDED the referral stays a Zoho customer for at least 60 days (the 'stickiness period') before commission accrues. No commission on the same customer's subsequent/cross-sell purchases. Highest commission per single deal is capped at $25,000. Qualified sale requires: customer not an existing paid Zoho customer; signup within 90 days of first affiliate-link click; purchase within 90 days of signup; customer signs up in the SAME Zoho data center the affiliate is registered in. Tiers above Standard (Super 18%, Elite 20%) require $5,001+ revenue or 21+ new customers.",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md", "zoho.com/affiliate/signup.html"],
-    ownerBlocker: "Requires creating a new Zoho account with password tied to hello@miloosh.com (agents cannot create passwords).",
+    evidence: [
+      "First-party email thread: Hari Kittu (Zoho Affiliate Team) invited Miloosh to apply and offered to arrange a meeting for evaluation/onboarding once applied; Miloosh replied intending to proceed; Hari replied 'We will look forward to hearing from you' -- consistent with the application not yet being submitted, not confirmation of receipt",
+      "zoho.com/affiliate/ (live page, verified 2026-08-27): program overview, tier table, FAQ",
+      "zoho.com/affiliate/faq.html (live page, verified 2026-08-27): full Referrals & Commission / Links & Promotions / Payments / Program Restrictions / Getting Started FAQ content, extracted via DOM inspection since answers are accordion-collapsed",
+      "zoho.com/affiliate/signup.html (live form, verified 2026-08-27): real field-by-field form structure"
+    ],
+    ownerBlocker: "The application form (zoho.com/affiliate/signup.html) requires a phone number with SMS verification code and a CAPTCHA, both of which require direct owner action -- an agent cannot receive an SMS or solve a CAPTCHA. Every other field was pre-filled with real, truthful Miloosh information in a live session on 2026-08-27 (see docs/affiliate-applications.md for the exact values) but the session was not persisted, so the owner will need to re-enter them (2 minutes of typing) before completing the phone/CAPTCHA step and submitting. NOTE: the previously-recorded blocker ('requires creating a password, agents cannot create passwords') is STALE and INCORRECT -- the live form has no password field at signup; Zoho auto-creates the account and (per the form's own text) links it to any existing Zoho account on the same email.",
     formBlocker: null,
-    eligibility: "Requires account creation",
+    eligibility: "Confirmed eligible: Miloosh is not an existing Zoho reseller/consulting/platform partner (the one stated disqualifying condition). Israel is a fully selectable country and phone country code on the live signup form -- no geographic exclusion found for Israel in the FAQ or signup form.",
     applicationUrl: "https://www.zoho.com/affiliate/signup.html",
-    notes: "Covers Zoho CRM, Books, Projects, Desk, and Flow (5 products)."
+    notes: "Covers Zoho CRM, Books, Projects, Desk, and Flow (5 products) today; see docs/zoho-product-opportunity-map.md for a full current-portfolio evaluation of which additional Zoho products are worth adding. Payout: PayPal or wire transfer preferred; $100 (or INR 4,000) minimum unpaid-commission threshold; ~15 days from payout request to bank reflection; payout currency follows the REFERRED CUSTOMER's payment currency, not the affiliate's home currency (except INR) -- a real operational nuance for an Israel-based affiliate, not a blocker. Do not reproduce Zoho's own marketing/promotional materials, case studies, or testimonials as Miloosh's own (explicit FAQ term) -- consistent with Miloosh's existing sourced-content policy."
   },
   {
     programId: "adobe-portfolio",
