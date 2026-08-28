@@ -15,6 +15,66 @@
     "Shared ticket ownership and internal team collaboration notes",
     "Real-time analytics dashboards for CSAT and performance tracking"
   ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$7",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "7.00",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 3 agents; free forever. Email ticketing out of the box."
+      },
+      {
+        "name": "Express",
+        "amount": "7.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Email, social media, web forms, AI agents, and workflows ($9/user/mo billed monthly)."
+      },
+      {
+        "name": "Standard",
+        "amount": "14.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds business messaging, answer bot, community forum, and knowledge base ($20/user/mo billed monthly)."
+      },
+      {
+        "name": "Professional",
+        "amount": "23.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds telephony, Zia AI, blueprints, multi-department, and round-robin assignment ($35/user/mo billed monthly)."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "40.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds live chat, guided conversations, skill-based assignment, and sandbox ($50/user/mo billed monthly)."
+      }
+    ],
+    "last_verified": "2026-08-28",
+    "official_source": "https://www.zoho.com/desk/pricing.html"
+  },
   "sources": [
     "https://www.zoho.com/desk/",
     "https://www.zoho.com/desk/ios-android-mobile-helpdesk-app.html"

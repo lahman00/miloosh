@@ -15,6 +15,66 @@
     "Business-card scanning and duplicate-contact merging in the mobile app",
     "Integration with 1,000+ apps via Zoho Marketplace"
   ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$14",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "14.00",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 3 users; leads, deals, workflows, reports, and mobile app."
+      },
+      {
+        "name": "Standard",
+        "amount": "14.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Workflows, AI agents, cadences, reports, and sales forecasting ($20/user/mo billed monthly)."
+      },
+      {
+        "name": "Professional",
+        "amount": "23.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds CPQ, email intelligence, process automation, and inventory management ($35/user/mo billed monthly)."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "40.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds an AI sales assistant, journey orchestration, territory management, and custom functions ($50/user/mo billed monthly)."
+      },
+      {
+        "name": "Ultimate",
+        "amount": "52.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds enhanced feature limits, consulting, migration assistance, and custom AI/ML ($65/user/mo billed monthly)."
+      }
+    ],
+    "last_verified": "2026-08-28",
+    "official_source": "https://www.zoho.com/crm/zohocrm-pricing.html"
+  },
   "sources": [
     "https://www.zoho.com/crm/",
     "https://www.zoho.com/crm/mobility.html"

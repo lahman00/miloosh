@@ -20,6 +20,60 @@
     "Resource allocation tools to prevent overload",
     "Integrations with Slack, GitHub, Jira, and Office 365"
   ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$4",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 15
+    },
+    "entry_paid": {
+      "amount": "4.00",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 5 users; 3 projects, subtasks, whiteboard, and 5GB storage."
+      },
+      {
+        "name": "Premium",
+        "amount": "4.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Unlimited projects, task blueprints, project budgeting, and timesheets ($5/user/mo billed monthly)."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "9.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds custom profiles/roles, SSO, 2FA, portfolio dashboard, and critical path/baseline ($10/user/mo billed monthly)."
+      },
+      {
+        "name": "Ultimate",
+        "amount": "14.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user/mo",
+        "notes": "Adds unlimited custom dashboards, multi-user timesheets, and 100 resources ($15/user/mo billed monthly)."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-28",
+    "official_source": "https://www.zoho.com/projects/pricing.html"
+  },
   "sources": [
     "https://www.zoho.com/projects/",
     "https://www.zoho.com/projects/features.html"

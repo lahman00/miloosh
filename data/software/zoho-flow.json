@@ -18,6 +18,48 @@
     "Conditional logic and branching workflows",
     "Workflow monitoring with the ability to restart or rerun specific parts of a flow"
   ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$25",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 15
+    },
+    "entry_paid": {
+      "amount": "25.00",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "100 tasks/month, 5 flows, 30-day flow history, and base app connectors."
+      },
+      {
+        "name": "Standard",
+        "amount": "25.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Flat org price, not per-seat. 5,000 tasks/month, unlimited flows, custom functions ($29/mo billed monthly)."
+      },
+      {
+        "name": "Professional",
+        "amount": "41.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Flat org price, not per-seat. 10,000 tasks/month, premium apps, on-prem integration ($49/mo billed monthly)."
+      }
+    ],
+    "last_verified": "2026-08-28",
+    "official_source": "https://www.zoho.com/flow/pricing.html"
+  },
   "sources": [
     "https://www.zoho.com/flow"
   ],
