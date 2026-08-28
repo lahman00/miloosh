@@ -1349,6 +1349,18 @@ export const PUBLISHED_COMPARISONS: ReadonlyArray<readonly [string, string]> = [
   ["surveymonkey", "typeform"],
   ["surveymonkey", "jotform"],
   ["surveymonkey", "qualtrics"],
+
+  // 2026-08-28 Zoho affiliate sprint — Zoho Campaigns was added as a new
+  // software entry (data/software/zoho-campaigns.json), ranked the #1 new
+  // Zoho opportunity in ZOHO_OPPORTUNITY_MAP_2026-08-27.md Phase 6 because
+  // it has 5 real active-Miloosh-affiliate-partner overlaps. Every pair
+  // below already exists in at least one side's real, sourced
+  // `alternatives` data.
+  ["getresponse", "zoho-campaigns"],
+  ["mailerlite", "zoho-campaigns"],
+  ["omnisend", "zoho-campaigns"],
+  ["constant-contact", "zoho-campaigns"],
+  ["moosend", "zoho-campaigns"],
 ];
 
 export function getComparisonSlug(slugA: string, slugB: string): string {
