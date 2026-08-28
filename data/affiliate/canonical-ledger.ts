@@ -914,7 +914,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programId: "zoho-ecosystem",
     programName: "Zoho Affiliate Program",
     network: "Direct (Zoho)",
-    productSlugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk", "zoho-flow"],
+    productSlugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk", "zoho-flow", "zoho-campaigns"],
     status: "PENDING_REVIEW",
     statusUpdatedAt: "2026-08-27",
     applicationSubmittedAt: "2026-08-27",
