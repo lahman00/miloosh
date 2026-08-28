@@ -4,6 +4,11 @@
   "category": "marketing",
   "description": "GetResponse is an all-in-one marketing platform combining email marketing, automation, landing pages, webinars, and SMS so businesses can manage the full customer journey from a single tool.",
   "website": "https://www.getresponse.com",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for entrepreneurs, e-commerce stores, and enterprise brands that want AI-assisted tools covering every step of the customer journey, from lead capture to repeat revenue.",
   "features": [
     "Email marketing with AI-optimized send times for promotional and lifecycle emails",
