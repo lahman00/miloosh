@@ -30,6 +30,17 @@
       "description": "An all-in-one support platform with AI agents, live chat, and a shared inbox for companies of any size.",
       "best_for": "Startups and small-to-mid businesses wanting a lightweight chat-first tool.",
       "strengths": ["AI agent builder", "Multi-channel live chat", "Built-in CRM"]
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "description": "An AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
+      "best_for": "Customer-first businesses wanting unified multichannel ticketing with AI automation",
+      "strengths": [
+        "Zia AI ticket automation",
+        "Unified multichannel inbox",
+        "Deep Zoho-suite integration"
+      ]
     }
   ]
 }

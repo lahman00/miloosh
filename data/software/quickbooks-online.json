@@ -131,6 +131,17 @@
         "Unlimited invoicing",
         "Transparent transaction fees"
       ]
+    },
+    {
+      "name": "Zoho Books",
+      "slug": "zoho-books",
+      "description": "Cloud accounting software that automates core financial workflows, handles multi-currency invoicing, manages inventory, and integrates with the wider Zoho ecosystem.",
+      "best_for": "Small to mid-sized businesses and existing Zoho users wanting workflow automation and cost-effective multi-user accounting",
+      "strengths": [
+        "Multi-currency invoicing",
+        "Inventory tracking",
+        "Deep Zoho-suite integration"
+      ]
     }
   ],
   "order": 224

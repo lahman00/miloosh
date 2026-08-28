@@ -66,6 +66,17 @@
         "Ease of use",
         "Sales automation"
       ]
+    },
+    {
+      "name": "Zoho CRM",
+      "slug": "zoho-crm",
+      "description": "A cloud-based sales platform using the Zia AI assistant to manage leads, deals, and customer relationships with omnichannel engagement and no-code workflow automation.",
+      "best_for": "Businesses already using or considering the wider Zoho suite who want CRM bundled with dozens of adjacent apps",
+      "strengths": [
+        "Zia AI assistant",
+        "Deep Zoho-suite integration",
+        "No-code workflow automation"
+      ]
     }
   ],
   "order": 13

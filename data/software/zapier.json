@@ -57,6 +57,17 @@
         "Custom code steps",
         "Developer-oriented"
       ]
+    },
+    {
+      "name": "Zoho Flow",
+      "slug": "zoho-flow",
+      "description": "An AI-powered integration platform that connects cloud and on-premises apps and automates workflows across departments.",
+      "best_for": "Businesses already using Zoho's app ecosystem who want no-code workflow automation across 1,000+ apps",
+      "strengths": [
+        "Natural-language flow generation",
+        "1,000+ app integrations",
+        "Deluge scripting for custom logic"
+      ]
     }
   ],
   "order": 15

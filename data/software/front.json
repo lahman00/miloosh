@@ -51,6 +51,17 @@
       "description": "A customer service platform pairing a full helpdesk with Fin, a natively integrated AI agent.",
       "best_for": "Businesses wanting AI-agent-led resolution alongside human conversations.",
       "strengths": ["Fin AI Agent", "Omnichannel inbox", "350+ integrations"]
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "description": "An AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
+      "best_for": "Customer-first businesses wanting unified multichannel ticketing with AI automation",
+      "strengths": [
+        "Zia AI ticket automation",
+        "Unified multichannel inbox",
+        "Deep Zoho-suite integration"
+      ]
     }
   ]
 }

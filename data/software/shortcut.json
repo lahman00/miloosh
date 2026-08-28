@@ -74,6 +74,17 @@
         "Simplicity",
         "Power-Ups integrations"
       ]
+    },
+    {
+      "name": "Zoho Projects",
+      "slug": "zoho-projects",
+      "description": "An online project management platform for planning, tracking, and collaborating on work, with deep integration into the wider Zoho suite.",
+      "best_for": "Teams already using Zoho apps, and organizations wanting an affordable, feature-rich project tool",
+      "strengths": [
+        "Gantt charts",
+        "Zoho Invoice billing integration",
+        "Affordable at scale"
+      ]
     }
   ]
 }

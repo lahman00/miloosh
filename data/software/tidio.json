@@ -61,6 +61,17 @@
       "description": "An all-in-one help desk merging email, chat, phone, and social into one dashboard.",
       "best_for": "Businesses handling multiple channels wanting fast live chat.",
       "strengths": ["Built-in call center", "Multichannel ticketing", "AI chatbot"]
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "description": "An AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
+      "best_for": "Customer-first businesses wanting unified multichannel ticketing with AI automation",
+      "strengths": [
+        "Zia AI ticket automation",
+        "Unified multichannel inbox",
+        "Deep Zoho-suite integration"
+      ]
     }
   ]
 }

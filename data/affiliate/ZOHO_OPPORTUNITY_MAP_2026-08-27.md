@@ -8,14 +8,16 @@ counts, active-partner list) or from a live-verified Zoho source (dated
 
 ## Phase 1-2: current state and terms (see canonical-ledger.ts for the full record)
 
-**State: OWNER_ACTION_REQUIRED** (application drafted, not submitted).
-Zoho's own signup form requires phone-number SMS verification and a
-CAPTCHA — both genuinely require the owner, not an agent. Every other
-field was filled with real, truthful information in a live browser session
-on 2026-08-27; the session did not persist, so re-entry is needed (~2
-minutes) before the owner completes the phone/CAPTCHA step. The
-previously-recorded "requires a password" blocker was verified stale and
-incorrect — the live form has no password field at signup.
+**State: PENDING_REVIEW** (application submitted 2026-08-27). Update: the
+owner completed the phone/SMS verification and CAPTCHA steps this agent
+could not perform, re-entered the drafted fields, and submitted the real
+form -- confirmed directly by the owner ("נרשמתי"). Not yet independently
+verified against a Zoho confirmation email (Gmail was unavailable in this
+session both times it was checked). Zoho's own signup page states a
+five-business-day review SLA, so a decision or meeting invite is expected
+on or before 2026-09-03. The previously-recorded "requires a password"
+blocker was verified stale and incorrect before submission — the live
+form has no password field at signup.
 
 **Terms confirmed to materially match Hari's summary**, with real
 additions found in the live FAQ/signup form that Hari did not mention:
@@ -220,11 +222,13 @@ This does **not** repeat the PartnerStack pattern (an account created and
 believed active while payout was actually unverified/declined) — no Zoho
 account exists yet at all, so there is nothing to falsely mark ready.
 
-## Phase 4: draft reply to Hari (PREPARED, NOT SENT)
+## Phase 4: draft reply to Hari (PREPARED, STILL NOT SENT)
 
-Not sent — authoritative evidence does not yet confirm submission (blocked
-on phone/CAPTCHA, see Phase 1 above). Ready to send in the *existing*
-thread the moment the owner completes and submits the real form:
+Submission is now confirmed (see Phase 1 above) -- this reply is ready to
+send in the *existing* thread, but has not been sent yet because Gmail
+was not reachable from this session when checked (twice, both before and
+after the owner confirmed submission). Send it as soon as Gmail access is
+available, or the owner can send it directly:
 
 > Hi Hari,
 >

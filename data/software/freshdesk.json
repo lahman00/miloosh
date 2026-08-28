@@ -50,6 +50,17 @@
       "description": "A conversational AI helpdesk built specifically for ecommerce brands, especially Shopify merchants.",
       "best_for": "Ecommerce/DTC brands wanting support tightly integrated with order and revenue data.",
       "strengths": ["Native Shopify integration", "AI shopping assistant", "In-conversation order actions"]
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "description": "An AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
+      "best_for": "Customer-first businesses wanting unified multichannel ticketing with AI automation",
+      "strengths": [
+        "Zia AI ticket automation",
+        "Unified multichannel inbox",
+        "Deep Zoho-suite integration"
+      ]
     }
   ]
 }

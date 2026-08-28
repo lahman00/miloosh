@@ -30,6 +30,17 @@
       "description": "An AI-powered customer service solution designed to be easy to set up and boost agent productivity.",
       "best_for": "Mid-market to enterprise support teams wanting quick setup and AI ticket resolution.",
       "strengths": ["AI Copilot for agents", "Omnichannel messaging", "Unified workspace"]
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "description": "An AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
+      "best_for": "Customer-first businesses wanting unified multichannel ticketing with AI automation",
+      "strengths": [
+        "Zia AI ticket automation",
+        "Unified multichannel inbox",
+        "Deep Zoho-suite integration"
+      ]
     }
   ]
 }

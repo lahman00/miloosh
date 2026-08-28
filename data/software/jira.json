@@ -40,6 +40,17 @@
       "description": "A project-management platform with tasks, dashboards, documents, and workflow automation.",
       "best_for": "Teams wanting an all-in-one workspace beyond issue tracking",
       "strengths": ["Task hierarchy", "Dashboards", "Automation"]
+    },
+    {
+      "name": "Zoho Projects",
+      "slug": "zoho-projects",
+      "description": "An online project management platform for planning, tracking, and collaborating on work, with deep integration into the wider Zoho suite.",
+      "best_for": "Teams already using Zoho apps, and organizations wanting an affordable, feature-rich project tool",
+      "strengths": [
+        "Gantt charts",
+        "Zoho Invoice billing integration",
+        "Affordable at scale"
+      ]
     }
   ]
 }

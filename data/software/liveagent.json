@@ -40,6 +40,17 @@
       "description": "A shared inbox and help desk platform built for personalized, human-feeling support.",
       "best_for": "Small to mid-sized support teams wanting simple, email-centric ticketing.",
       "strengths": ["Shared inbox", "Simplicity", "Beacon in-app help widget"]
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "description": "An AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
+      "best_for": "Customer-first businesses wanting unified multichannel ticketing with AI automation",
+      "strengths": [
+        "Zia AI ticket automation",
+        "Unified multichannel inbox",
+        "Deep Zoho-suite integration"
+      ]
     }
   ]
 }
