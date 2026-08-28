@@ -849,9 +849,9 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Impact.com Multi-Program Publisher Account",
     network: "Impact.com",
     productSlugs: [
-      "semrush", "lastpass", "woocommerce", "sprout-social", "hootsuite",
+      "lastpass", "woocommerce", "hootsuite",
       "smartsheet", "mailchimp", "bigcommerce", "squarespace",
-      "grammarly", "bitwarden", "ringcentral", "nextiva", "craft", "keeper",
+      "grammarly", "bitwarden", "nextiva", "craft", "keeper",
       "keeper-security", "ecwid", "moz"
     ],
     status: "OWNER_ACTION_REQUIRED",
@@ -866,30 +866,55 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     formBlocker: null,
     eligibility: "Requires owner tax & payment credentials",
     applicationUrl: "https://app.impact.com/",
-    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified."
+    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified. Sprout Social and RingCentral were removed 2026-08-28: re-audited and found to expose their own distinct affiliate routes (Sprout Social -> CJ, see the cj-portfolio program; RingCentral -> a direct affiliate contact, currently its own pending-clarification record) rather than being genuinely Impact-modeled -- do not re-add either without new evidence that Impact is in fact the correct network for them."
   },
   {
     programId: "cj-portfolio",
     programName: "Commission Junction (CJ) Publisher Account",
     network: "Commission Junction (CJ)",
-    productSlugs: ["1password", "dashlane", "acuity-scheduling", "google-meet", "google-chat", "evernote"],
+    productSlugs: ["1password", "dashlane", "acuity-scheduling", "google-meet", "google-chat", "evernote", "sprout-social"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-24",
+    statusUpdatedAt: "2026-08-28",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "CJ publisher commission rates (25% on 1Password, $20 on Dashlane, Google Workspace)",
+    commissionModel: "CJ publisher commission rates (25% on 1Password, $20 on Dashlane, Google Workspace; Sprout Social's exact CJ commission rate not yet independently verified -- third-party affiliate directories (not Sprout Social's own site) cite ~$75 initial + 15% recurring, not treated as confirmed)",
     cookieWindow: "45-90 days",
     evidence: [
       "CJ first-party account-change emails for CID 8043935 sent to lahman00@gmail.com (2026-08-14 and 2026-08-23)",
       "CJ first-party account-change emails for CID 8048091 sent to hello@miloosh.com (2026-08-20)",
-      "CJ Publisher Registration Portal (signup.cj.com)"
+      "CJ Publisher Registration Portal (signup.cj.com)",
+      "Owner-reported verified context, 2026-08-28: Sprout Social's official partner material exposes a distinct Affiliate Program route hosted on CJ, separate from its Referral/Agency/Reseller partnership routes",
+      "Independent verification, 2026-08-28: sproutsocial.com/partnership-program (live page) confirms Referral, Agency, and Reseller are modeled as three distinct, separate routes -- consistent with an affiliate-specific route existing separately from all three; the CJ-hosted affiliate page itself was not directly reached in this check (site navigation only, no CJ login attempted)"
     ],
-    ownerBlocker: "Two distinct CJ publisher CIDs are evidenced: 8043935 (lahman00@gmail.com) and 8048091 (hello@miloosh.com). Owner must identify the intended Miloosh account, verify payment/tax completeness, and avoid activating advertisers against the wrong account.",
+    ownerBlocker: "Two distinct CJ publisher CIDs are evidenced: 8043935 (lahman00@gmail.com) and 8048091 (hello@miloosh.com). Owner must identify the intended Miloosh account, verify payment/tax completeness, and avoid activating advertisers against the wrong account. Sprout Social's CJ onboarding is additionally blocked on this same owner tax/payment-completeness requirement -- no separate blocker exists for it.",
     formBlocker: null,
-    eligibility: "Two existing CJ publisher accounts; intended canonical account and advertiser relationships not yet verified",
+    eligibility: "Two existing CJ publisher accounts; intended canonical account and advertiser relationships not yet verified. Sprout Social eligibility as a CJ advertiser not yet independently confirmed beyond the owner-reported context above.",
     applicationUrl: "https://signup.cj.com/member/signup/publisher/?cid=5140517",
-    notes: "Covers 1Password, Dashlane, Acuity Scheduling, Google Meet, Google Chat, Evernote (6 products). Do not collapse or delete either evidenced account until ownership, payment setup, and advertiser relationships are compared."
+    notes: "Covers 1Password, Dashlane, Acuity Scheduling, Google Meet, Google Chat, Evernote, and Sprout Social (7 products). Do not collapse or delete either evidenced account until ownership, payment setup, and advertiser relationships are compared. Sprout Social added 2026-08-28 after re-audit found it was previously mismodeled under impact-portfolio -- moved here as the more accurate representation, not newly discovered demand; no tracking asset exists yet for it either way."
+  },
+  {
+    programId: "ringcentral",
+    programName: "RingCentral Affiliate Program",
+    network: "Pending clarification -- direct affiliate contact found, hosting network not yet confirmed",
+    productSlugs: ["ringcentral"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-28",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Not yet confirmed -- awaiting vendor reply, not invented",
+    cookieWindow: null,
+    evidence: [
+      "Previously modeled only inside impact-portfolio; re-audit found this was an unverified assumption, not a confirmed route",
+      "Independent verification, 2026-08-28: affiliates.ringcentral.com is a real, distinct RingCentral-branded affiliate portal domain (Product Information / Affiliate Program Policies / Best Practices / Program Details / Contact Us sub-pages found via search; full page content blocked automated access, not logged into or applied through)",
+      "Owner-reported context, 2026-08-28: a direct inquiry has been sent to RingCentral's affiliate contact asking about editorial publisher eligibility, network/platform, commission, attribution, deep links, and PPC/trademark/coupon restrictions -- no reply received yet"
+    ],
+    ownerBlocker: "Awaiting RingCentral's reply to the direct affiliate inquiry before any network, commission, or eligibility fact can be confirmed.",
+    formBlocker: null,
+    eligibility: "Not yet confirmed",
+    applicationUrl: "https://affiliates.ringcentral.com",
+    notes: "Removed from impact-portfolio 2026-08-28 -- do not assume Impact.com is the correct/only network for RingCentral; a direct affiliate contact route now exists and is the one currently being pursued. No commercial terms are asserted here until the vendor replies. No tracking asset exists; do not mark active."
   },
   {
     programId: "shareasale-portfolio",
@@ -927,13 +952,14 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
       "zoho.com/affiliate/ (live page, verified 2026-08-27): program overview, tier table, FAQ",
       "zoho.com/affiliate/faq.html (live page, verified 2026-08-27): full Referrals & Commission / Links & Promotions / Payments / Program Restrictions / Getting Started FAQ content, extracted via DOM inspection since answers are accordion-collapsed",
       "zoho.com/affiliate/signup.html (live form, verified 2026-08-27): real field-by-field form structure",
-      "Owner-reported direct confirmation, 2026-08-27: owner completed the phone/SMS verification and CAPTCHA steps this agent could not perform, and submitted the form ('נרשמתי' -- 'I registered/applied'). Not yet independently verified against a Zoho confirmation email or the affiliate dashboard -- Gmail access was unavailable in this session when this was recorded. Treated as authoritative because it is the owner's own first-hand report of an action only the owner could take, consistent with this ledger's evidence discipline elsewhere."
+      "Owner-reported direct confirmation, 2026-08-27: owner completed the phone/SMS verification and CAPTCHA steps this agent could not perform, and submitted the form ('נרשמתי' -- 'I registered/applied'). Not yet independently verified against a Zoho confirmation email or the affiliate dashboard -- Gmail access was unavailable in this session when this was recorded. Treated as authoritative because it is the owner's own first-hand report of an action only the owner could take, consistent with this ledger's evidence discipline elsewhere.",
+      "Owner-reported correspondence, 2026-08-28: after submission, Zoho sent a human qualification questionnaire (not an automated decision); the owner replied directly with Miloosh business/audience/content details. Program remains PENDING_REVIEW -- a qualification questionnaire is a review step, not an approval signal, and is not treated as one here. Owner also reconfirmed: PayPal/wire payout, $100 threshold, 90-day first-click attribution, no-existing-paid-customer requirement, purchase due within 90 days of signup, deep links generated via Zoho's own URL Builder tool, and a 55+ product Zoho portfolio (i.e. more than the 6 products Miloosh currently covers) is technically eligible once approved -- consistent with, not contradicting, the terms already on file above."
     ],
     ownerBlocker: null,
     formBlocker: null,
     eligibility: "Confirmed eligible: Miloosh is not an existing Zoho reseller/consulting/platform partner (the one stated disqualifying condition). Israel is a fully selectable country and phone country code on the live signup form -- no geographic exclusion found for Israel in the FAQ or signup form.",
     applicationUrl: "https://www.zoho.com/affiliate/signup.html",
-    notes: "Application submitted 2026-08-27 (owner-confirmed). Zoho's own signup page states a five-business-day review SLA -- next expected step is a decision or a meeting invite from Hari, expected on or before 2026-09-03. The prepared confirmation reply to Hari in the existing thread (see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md) has not been sent yet -- Gmail was not accessible in this session; send it (or ask the agent to, once Gmail is reachable) so Hari knows to expect the review. Covers Zoho CRM, Books, Projects, Desk, and Flow (5 products) today; see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md for a full current-portfolio evaluation of which additional Zoho products are worth adding, including which submitted fields (data center, city, employee count) the owner should confirm or correct if they differed from this agent's drafted values. Payout: PayPal or wire transfer preferred; $100 (or INR 4,000) minimum unpaid-commission threshold; ~15 days from payout request to bank reflection; payout currency follows the REFERRED CUSTOMER's payment currency, not the affiliate's home currency (except INR) -- a real operational nuance for an Israel-based affiliate, not a blocker. Do not reproduce Zoho's own marketing/promotional materials, case studies, or testimonials as Miloosh's own (explicit FAQ term) -- consistent with Miloosh's existing sourced-content policy."
+    notes: "Application submitted 2026-08-27 (owner-confirmed); still PENDING_REVIEW as of 2026-08-28 -- Zoho followed up with a human qualification questionnaire (answered by the owner) rather than a decision. No tracking asset exists; do not mark approved/active until a real, usable affiliate link is issued. The prepared confirmation reply to Hari in the existing thread (see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md) has not been sent yet -- Gmail was not accessible in this session; send it (or ask the agent to, once Gmail is reachable) so Hari knows to expect the review. Covers Zoho CRM, Books, Projects, Desk, Flow, and Campaigns (6 products) today; deep links for any of these would use Zoho's own URL Builder once approved -- see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md for the full current-portfolio evaluation. Payout: PayPal or wire transfer preferred; $100 (or INR 4,000) minimum unpaid-commission threshold; ~15 days from payout request to bank reflection; payout currency follows the REFERRED CUSTOMER's payment currency, not the affiliate's home currency (except INR) -- a real operational nuance for an Israel-based affiliate, not a blocker. Do not reproduce Zoho's own marketing/promotional materials, case studies, or testimonials as Miloosh's own (explicit FAQ term) -- consistent with Miloosh's existing sourced-content policy."
   },
   {
     programId: "adobe-portfolio",
@@ -1126,23 +1152,49 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     notes: "Requires owner Fathom account login."
   },
   {
+    programId: "framer",
+    programName: "Framer Affiliate Program",
+    network: "Direct (Framer Creator Dashboard)",
+    productSlugs: ["framer"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-28",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Not yet confirmed -- commission, attribution window, payout, deep-link support, and PPC/brand/disclosure restrictions all asked about, no reply yet; not invented here",
+    cookieWindow: null,
+    evidence: [
+      "Owner-reported correspondence, 2026-08-28: Framer's affiliate team replied directly confirming an editorial publisher can apply via Creator Dashboard -> Links tab; applications are reviewed based on past content and audience relevance; referral links are generated only once approved",
+      "Owner-reported context, 2026-08-28: Miloosh has asked Framer for current commission, attribution window, payout, deep-link support, and PPC/brand/disclosure restrictions -- no reply yet",
+      "Previously only modeled generically inside collaboration-and-design-portfolio (vague 'vendor partner portal listings' evidence) -- replaced with this more specific, directly-sourced record"
+    ],
+    ownerBlocker: "Owner must apply via the Framer Creator Dashboard's Links tab (requires an existing Framer account/login this agent cannot access) and await both the application decision and the vendor's reply on commercial terms.",
+    formBlocker: null,
+    eligibility: "Editorial publisher, reviewed on past content and audience relevance -- not yet applied",
+    applicationUrl: "https://www.framer.com/partners",
+    notes: "Do not mark active or approved -- no application has been submitted and no terms are confirmed yet. No tracking asset exists."
+  },
+  {
     programId: "buffer",
     programName: "Buffer Affiliate Program",
     network: "Dub",
     productSlugs: ["buffer"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-21",
+    statusUpdatedAt: "2026-08-28",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "Revenue share on Buffer paid plans",
+    commissionModel: "25% commission on referred customers, paid for the first 12 months, per previously-verified official program economics",
     cookieWindow: "60 days",
-    evidence: ["Official Buffer Dub Partner Portal (partners.dub.co/buffer/apply)"],
-    ownerBlocker: "Requires owner confirmation to link Dub partner portal to Buffer publisher account.",
+    evidence: [
+      "Official Buffer Dub Partner Portal (partners.dub.co/buffer/apply)",
+      "Owner-reported verified context, 2026-08-28: official program economics previously confirmed as 25% commission on referred customers for 12 months, manual approval required, unique partner link issued only after approval"
+    ],
+    ownerBlocker: "Requires owner confirmation to link Dub partner portal to Buffer publisher account, and manual vendor approval after applying.",
     formBlocker: null,
-    eligibility: "Dub partner portal",
+    eligibility: "Dub partner portal; manual approval required",
     applicationUrl: "https://partners.dub.co/buffer/apply",
-    notes: "Requires owner confirmation."
+    notes: "A new Miloosh eligibility inquiry was sent to Buffer 2026-08-28; application not auto-submitted -- awaiting reply before applying. No tracking asset exists; do not mark active."
   },
   {
     programId: "partnerstack-portfolio",
@@ -1281,9 +1333,9 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programId: "collaboration-and-design-portfolio",
     programName: "Collaboration & Design Partner Network",
     network: "Direct / Partner Portals",
-    productSlugs: ["zoom", "lucidchart", "rocket-chat", "framer", "teamwork", "gitbook", "doodle", "cal-com", "bloomfire"],
+    productSlugs: ["zoom", "lucidchart", "rocket-chat", "teamwork", "gitbook", "doodle", "cal-com", "bloomfire"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-21",
+    statusUpdatedAt: "2026-08-28",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
@@ -1294,7 +1346,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     formBlocker: null,
     eligibility: "Vendor partner registration",
     applicationUrl: "https://www.framer.com/partners",
-    notes: "Covers Zoom, Lucidchart, Rocket.Chat, Framer, Teamwork, GitBook, Doodle, Cal.com, and Bloomfire (9 products)."
+    notes: "Covers Zoom, Lucidchart, Rocket.Chat, Teamwork, GitBook, Doodle, Cal.com, and Bloomfire (8 products). Framer moved out 2026-08-28 to its own dedicated record after Framer's own affiliate team replied directly with a more specific application route than this bucket's generic 'vendor partner portal' evidence -- see the framer program."
   },
   {
     programId: "support-and-crm-portfolio",
