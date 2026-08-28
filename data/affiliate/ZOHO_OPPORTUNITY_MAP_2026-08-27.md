@@ -80,6 +80,16 @@ a guessed keyword list but because it is the one candidate with real,
 already-published Miloosh competitor content on 5 different active
 affiliate partners simultaneously.
 
+**Done 2026-08-28** (commits `c0bfc12`, `1472c6d`): `data/software/
+zoho-campaigns.json` built with real, live-sourced content (features,
+pricing, FAQ); reciprocal `alternatives` links added on GetResponse,
+MailerLite, Omnisend, Constant Contact, and Moosend; all 5 comparison
+pages published (`/compare/{getresponse,mailerlite,omnisend,
+constant-contact,moosend}-vs-zoho-campaigns`). Zoho Forms/Survey (the
+#2 candidate, 1 active-partner overlap) not started — meaningfully
+lower expected value than Campaigns' 5-partner overlap, left for a
+future pass rather than pursued for its own sake.
+
 ## Phase 7: first money clusters (existing coverage, not new pages)
 
 Because Miloosh already has deep comparison coverage on all 5 current
@@ -117,15 +127,22 @@ moment Zoho tracking is live, with zero new content work:
 | `zoho-projects` vs `monday` | Zoho Projects | monday.com (ACTIVE) |
 | `zoho-projects` vs `wrike` | Zoho Projects | Wrike (ACTIVE) |
 
-If Zoho Campaigns is built (Phase 6/7), it would add up to 5 more
-two-sided-monetized comparisons (vs GetResponse, MailerLite, Omnisend,
-Constant Contact, Moosend) — the single highest-leverage content
-investment identified in this sprint.
+**Done 2026-08-28**: all 5 Zoho Campaigns comparisons are now live
+(`zoho-campaigns` vs GetResponse, MailerLite, Omnisend, Constant
+Contact, Moosend) — bringing this table to 9 comparison pages with an
+active partner already on one side. None are revenue-two-sided yet:
+the Zoho CTA on every one of these pages still resolves to Zoho's
+plain official URL, not an affiliate link (`affiliateUrl` stays `null`
+in `canonical-ledger.ts` per the Phase 12 fail-closed rule until Zoho
+approves and a real tracking link is generated and verified) — "built"
+and "revenue-live" are different states, and only the partner side of
+each pair earns commission today.
 
 No comparison was force-created to hit a monetization target — every pair
 above already existed in the real, editorially-built comparison graph
-before this sprint; this phase only identified which of them are
-commercially doubled-up.
+before this sprint, or (for the 5 Campaigns pairs) was backed by real
+alternatives-array data on at least one side before being published;
+this phase only identified which of them are commercially doubled-up.
 
 ## Phase 9-10: content quality and fact verification
 
