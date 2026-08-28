@@ -885,7 +885,8 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
       "CJ first-party account-change emails for CID 8048091 sent to hello@miloosh.com (2026-08-20)",
       "CJ Publisher Registration Portal (signup.cj.com)",
       "Owner-reported verified context, 2026-08-28: Sprout Social's official partner material exposes a distinct Affiliate Program route hosted on CJ, separate from its Referral/Agency/Reseller partnership routes",
-      "Independent verification, 2026-08-28: sproutsocial.com/partnership-program (live page) confirms Referral, Agency, and Reseller are modeled as three distinct, separate routes -- consistent with an affiliate-specific route existing separately from all three; the CJ-hosted affiliate page itself was not directly reached in this check (site navigation only, no CJ login attempted)"
+      "Independent verification, 2026-08-28: sproutsocial.com/partnership-program (live page) confirms Referral, Agency, and Reseller are modeled as three distinct, separate routes -- consistent with an affiliate-specific route existing separately from all three; the CJ-hosted affiliate page itself was not directly reached in this check (site navigation only, no CJ login attempted)",
+      "Corroborating prior research, confidence: low (data/revenue/affiliate-programs.ts, 2026-08-20): confirmed a referral-partnership tier exists via sproutsocial.com/agencies/terms, but explicitly could not identify the network -- confirmed NOT on PartnerStack. The CJ identification above is new information this prior pass didn't have, not a contradiction of it."
     ],
     ownerBlocker: "Two distinct CJ publisher CIDs are evidenced: 8043935 (lahman00@gmail.com) and 8048091 (hello@miloosh.com). Owner must identify the intended Miloosh account, verify payment/tax completeness, and avoid activating advertisers against the wrong account. Sprout Social's CJ onboarding is additionally blocked on this same owner tax/payment-completeness requirement -- no separate blocker exists for it.",
     formBlocker: null,
@@ -908,7 +909,8 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     evidence: [
       "Previously modeled only inside impact-portfolio; re-audit found this was an unverified assumption, not a confirmed route",
       "Independent verification, 2026-08-28: affiliates.ringcentral.com is a real, distinct RingCentral-branded affiliate portal domain (Product Information / Affiliate Program Policies / Best Practices / Program Details / Contact Us sub-pages found via search; full page content blocked automated access, not logged into or applied through)",
-      "Owner-reported context, 2026-08-28: a direct inquiry has been sent to RingCentral's affiliate contact asking about editorial publisher eligibility, network/platform, commission, attribution, deep links, and PPC/trademark/coupon restrictions -- no reply received yet"
+      "Owner-reported context, 2026-08-28: a direct inquiry has been sent to RingCentral's affiliate contact asking about editorial publisher eligibility, network/platform, commission, attribution, deep links, and PPC/trademark/coupon restrictions -- no reply received yet",
+      "Corroborating prior research, confidence: low (data/revenue/affiliate-programs.ts, 2026-08-14): RingCentral's own blog confirmed a real affiliate program exists, separate from its B2B Certified Partner Commission Program -- consistent with the direct route found here. A commission figure (\"up to $25/lead + $60/sale\") was reported by that pass but explicitly flagged as third-party/unconfirmed -- not treated as confirmed here either."
     ],
     ownerBlocker: "Awaiting RingCentral's reply to the direct affiliate inquiry before any network, commission, or eligibility fact can be confirmed.",
     formBlocker: null,
@@ -1154,25 +1156,26 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
   {
     programId: "framer",
     programName: "Framer Affiliate Program",
-    network: "Direct (Framer Creator Dashboard)",
+    network: "Dub (Framer's own Creator Program, self-serve link generation via Community profile Links tab)",
     productSlugs: ["framer"],
     status: "OWNER_ACTION_REQUIRED",
     statusUpdatedAt: "2026-08-28",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "Not yet confirmed -- commission, attribution window, payout, deep-link support, and PPC/brand/disclosure restrictions all asked about, no reply yet; not invented here",
-    cookieWindow: null,
+    commissionModel: "50% of subscription payments for the first 12 months per qualifying referred subscription -- already independently confirmed high-confidence 2026-08-25 directly against Framer's own legal Affiliate Conditions and Help Center (data/revenue/affiliate-programs.ts, framer entry), 3 days before the owner's new direct correspondence below. Paid advertising using affiliate links is explicitly prohibited.",
+    cookieWindow: "90 days",
     evidence: [
-      "Owner-reported correspondence, 2026-08-28: Framer's affiliate team replied directly confirming an editorial publisher can apply via Creator Dashboard -> Links tab; applications are reviewed based on past content and audience relevance; referral links are generated only once approved",
-      "Owner-reported context, 2026-08-28: Miloosh has asked Framer for current commission, attribution window, payout, deep-link support, and PPC/brand/disclosure restrictions -- no reply yet",
+      "Independently verified 2026-08-25, confidence: high (data/revenue/affiliate-programs.ts) against framer.com/legal/affiliates/1.0 and framer.com/help: 90-day cookie, 50% of subscription payments for 12 months, monthly payouts (promotions redeemed ~2 months earlier), $200 payout threshold, Stripe payouts via Dub, PPC/paid-advertising with affiliate links prohibited",
+      "Owner-reported correspondence, 2026-08-28: Framer's affiliate team separately replied directly confirming an editorial publisher can apply via Creator Dashboard -> Links tab; applications are reviewed based on past content and audience relevance; referral links are generated only once approved -- consistent with, not contradicting, the 2026-08-25 finding above",
+      "Owner-reported context, 2026-08-28: Miloosh has also asked Framer to reconfirm current commission/attribution/payout/deep-link/PPC terms directly -- no reply yet to this specific inquiry, though the terms above were already independently sourced from Framer's own legal page",
       "Previously only modeled generically inside collaboration-and-design-portfolio (vague 'vendor partner portal listings' evidence) -- replaced with this more specific, directly-sourced record"
     ],
-    ownerBlocker: "Owner must apply via the Framer Creator Dashboard's Links tab (requires an existing Framer account/login this agent cannot access) and await both the application decision and the vendor's reply on commercial terms.",
+    ownerBlocker: "Owner must apply via the Framer Creator Dashboard's Links tab (requires an existing Framer account/login this agent cannot access) and await the application decision.",
     formBlocker: null,
     eligibility: "Editorial publisher, reviewed on past content and audience relevance -- not yet applied",
     applicationUrl: "https://www.framer.com/partners",
-    notes: "Do not mark active or approved -- no application has been submitted and no terms are confirmed yet. No tracking asset exists."
+    notes: "Do not mark active or approved -- no application has been submitted, regardless of how well the commercial terms are already documented. No tracking asset exists. Deep-link readiness: Dub-powered self-serve link generation is a real, positive signal once approved -- no URL Builder / manual request step expected, unlike some other pending programs."
   },
   {
     programId: "buffer",

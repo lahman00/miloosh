@@ -50,4 +50,41 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("clickup")?.status).toBe("REJECTED");
     expect(byProgramId.get("close")?.status).toBe("ACTIVE");
   });
+
+  it("locks the 2026-08-28 suspension-period reconciliation (Zoho qualification stage, Sprout Social/RingCentral/Framer routes) against silent regression", () => {
+    // Zoho: a human qualification questionnaire is a review step, not a
+    // decision -- must stay pending, not drift to ACTIVE/APPROVED without a
+    // real tracking asset.
+    const zoho = byProgramId.get("zoho-ecosystem");
+    expect(zoho?.status).toBe("PENDING_REVIEW");
+    expect(zoho?.affiliateUrl).toBeNull();
+    expect(zoho?.productSlugs).toContain("zoho-campaigns");
+
+    // Sprout Social: re-modeled onto the CJ account, not the generic Impact
+    // bucket -- both directions must hold, or the two ledgers disagree on
+    // which network is responsible for this relationship.
+    expect(byProgramId.get("cj-portfolio")?.productSlugs).toContain("sprout-social");
+    expect(byProgramId.get("impact-portfolio")?.productSlugs).not.toContain("sprout-social");
+
+    // RingCentral: carved out of the Impact bucket into its own
+    // pending-clarification record -- Impact is no longer assumed correct.
+    expect(byProgramId.get("ringcentral")?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(byProgramId.get("ringcentral")?.affiliateUrl).toBeNull();
+    expect(byProgramId.get("impact-portfolio")?.productSlugs).not.toContain("ringcentral");
+
+    // Framer: its own record, not buried in the generic
+    // collaboration-and-design-portfolio bucket.
+    expect(byProgramId.get("framer")?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(byProgramId.get("framer")?.affiliateUrl).toBeNull();
+    expect(byProgramId.get("collaboration-and-design-portfolio")?.productSlugs).not.toContain("framer");
+
+    // None of these five newly-touched relationships may be ACTIVE without
+    // a verified tracking asset -- this session found none, so none should
+    // claim one.
+    for (const id of ["zoho-ecosystem", "cj-portfolio", "ringcentral", "framer", "buffer"]) {
+      const program = byProgramId.get(id);
+      expect(program?.status, `${id} marked ACTIVE without this test being updated to expect it`).not.toBe("ACTIVE");
+      expect(program?.affiliateUrl, `${id} has a tracking URL but isn't ACTIVE`).toBeNull();
+    }
+  });
 });
