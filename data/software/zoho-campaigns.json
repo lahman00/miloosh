@@ -1,0 +1,140 @@
+{
+  "name": "Zoho Campaigns",
+  "slug": "zoho-campaigns",
+  "category": "marketing",
+  "description": "Zoho Campaigns is an AI-powered email, SMS, and WhatsApp marketing platform that helps small businesses build campaigns, automate customer journeys, and track performance across channels from one place.",
+  "website": "https://www.zoho.com/campaigns/",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Small businesses wanting affordable, contact-tier-priced email marketing with built-in SMS and WhatsApp channels and deep integration into the wider Zoho suite.",
+  "features": [
+    "Zia AI assistant for drafting campaign copy, refining tone, and personalizing sends",
+    "Unified email, SMS, and WhatsApp campaign creation from one platform",
+    "240+ ready-to-use, mobile-first responsive email templates with a drag-and-drop editor",
+    "Marketing automation workflows with live in-flight editing and Trace Contact Path drop-off analysis",
+    "Real-time analytics for opens, clicks, and deliveries across all channels",
+    "55+ integrations including Zoho CRM, Zoho Books, Shopify, Salesforce, HubSpot, and Zapier",
+    "Advanced segmentation, dynamic content, and send-time optimization on the Professional plan",
+    "Native mobile apps for iOS and Android"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$3",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "3.00",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 2,000 contacts, 6,000 emails/month, 5 users, drag-and-drop templates with generative AI, and 35+ app integrations."
+      },
+      {
+        "name": "Standard",
+        "amount": "3.00",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Starts at 500 contacts, billed annually ($4/month billed monthly). Unlimited emails, 10 users, 120+ templates, A/B testing, and basic automation workflows. Price rises with contact-list size, up to 100,000 contacts."
+      },
+      {
+        "name": "Professional",
+        "amount": "4.50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Starts at 500 contacts, billed annually ($6/month billed monthly). Adds advanced segmentation, dynamic content, send-time optimization, abandoned-cart workflows, and webhooks. Price rises with contact-list size."
+      }
+    ],
+    "last_verified": "2026-08-28",
+    "official_source": "https://www.zoho.com/campaigns/pricing.html"
+  },
+  "pros": [
+    "Contact-tier pricing starts at just $3/month for 500 contacts billed annually, among the cheapest entry points in email marketing",
+    "Native SMS and WhatsApp channels alongside email in one workflow, not a bolted-on add-on",
+    "Deep native integration with Zoho CRM, Zoho Books, and the wider Zoho suite"
+  ],
+  "cons": [
+    "Pricing is contact-tiered and rises with list size like most email marketing competitors, not a flat rate",
+    "Ecommerce automations like abandoned-cart and purchase-follow-up workflows are gated to the Professional plan, not included in Standard",
+    "Best value comes from being inside or willing to adopt the wider Zoho ecosystem"
+  ],
+  "faq": [
+    {
+      "question": "Does Zoho Campaigns have a free plan?",
+      "answer": "Yes — Zoho Campaigns' Forever Free plan covers up to 2,000 contacts and 6,000 emails per month, with 5 user seats, drag-and-drop templates, generative AI, and 35+ app integrations, with no credit card required."
+    },
+    {
+      "question": "How does Zoho Campaigns pricing work?",
+      "answer": "Paid plans are priced by contact-list size rather than a flat fee. At the smallest tier (up to 500 contacts), Standard starts at $3/month and Professional at $4.50/month, both billed annually (higher if billed monthly); larger contact tiers cost more, scaling up to 500,000+ contacts on request."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.zoho.com/campaigns/pricing.html"
+  },
+  "sources": [
+    "https://www.zoho.com/campaigns/",
+    "https://www.zoho.com/campaigns/pricing.html"
+  ],
+  "accessed_at": "2026-08-28",
+  "alternatives": [
+    {
+      "name": "GetResponse",
+      "slug": "getresponse",
+      "description": "An email marketing platform with automation, landing pages, webinars, ecommerce marketing, and lead-generation tools.",
+      "best_for": "Businesses wanting email marketing plus webinars and broader lead-generation tools",
+      "strengths": [
+        "Webinars",
+        "Marketing automation",
+        "Landing pages"
+      ]
+    },
+    {
+      "name": "MailerLite",
+      "slug": "mailerlite",
+      "description": "An email marketing platform for creating campaigns, automations, landing pages, signup forms, websites, and digital products, with subscriber-based plans and a permanent free tier.",
+      "best_for": "Creators and small businesses wanting email campaigns bundled with lightweight website and landing-page tools",
+      "strengths": [
+        "Permanent free plan",
+        "Built-in landing pages",
+        "Digital products and bookings"
+      ]
+    },
+    {
+      "name": "Omnisend",
+      "slug": "omnisend",
+      "description": "An ecommerce-focused email and SMS marketing platform with pre-built automation workflows for cart abandonment, order confirmation, and customer win-back.",
+      "best_for": "Ecommerce stores wanting pre-built email and SMS automation tied directly to sales events",
+      "strengths": [
+        "Ecommerce automation templates",
+        "Email plus SMS in one platform",
+        "Shopify and BigCommerce integration"
+      ]
+    },
+    {
+      "name": "Constant Contact",
+      "slug": "constant-contact",
+      "description": "An email marketing platform with campaign templates, automation, event marketing, and social media posting tools built for small businesses.",
+      "best_for": "Small businesses and nonprofits wanting an established, support-heavy email marketing platform",
+      "strengths": [
+        "Event marketing tools",
+        "Social media posting",
+        "Established support network"
+      ]
+    }
+  ]
+}

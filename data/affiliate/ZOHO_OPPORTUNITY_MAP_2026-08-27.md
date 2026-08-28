@@ -41,14 +41,21 @@ should reflect the real terms, not the abbreviated ones.
 
 All 5 existing Zoho pages return 200, carry the Affiliate Disclosure link,
 correct `<title>`/canonical tags, and no placeholder/lorem-ipsum/TODO
-content found. `zoho-books` is on the current extended pricing schema
+content found. `zoho-books` was on the current extended pricing schema
 (`last_verified: 2026-08-20`); `zoho-crm`, `zoho-projects`, `zoho-desk`,
-`zoho-flow` are still on the older 3-field pricing schema (`accessed_at:
-2026-08-04`) — the basic starting price still renders on these pages, but
-they lack the newer tier/free-trial detail. Not a functional defect;
-flagged as a real, ready-to-execute content-freshness follow-up, most
-valuable on `zoho-crm` given it's the highest-comparison-count product
-(see below).
+`zoho-flow` had no `pricing` field at all (correction: an earlier note
+here claimed the basic starting price "still renders" on these pages —
+that was wrong. `components/PricingSection.tsx` returns `null` entirely
+when `pricing.status`/`entryPaid`/`tiers` are all absent, so all four
+pages were shipping with **no Pricing card whatsoever**, confirmed by
+reading the component and then live in the browser before and after the
+fix). **Done 2026-08-28** (commit `8ec068d`): real pricing pulled live
+from each product's own official pricing page (both annual and monthly
+views), written in the same schema/convention as `zoho-books.json`,
+`hubstaff.json`, and `copy-ai.json`; verified rendering correctly in a
+local dev-server browser check on `zoho-crm` (per-seat tiers) and
+`zoho-flow` (flat org-wide tiers, structurally different — task-volume
+priced, not per-seat).
 
 ## Phase 6: product opportunity scoring
 

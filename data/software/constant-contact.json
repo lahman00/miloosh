@@ -128,6 +128,17 @@
         "300+ integrations",
         "AI content generation"
       ]
+    },
+    {
+      "name": "Zoho Campaigns",
+      "slug": "zoho-campaigns",
+      "description": "An AI-powered email, SMS, and WhatsApp marketing platform with contact-tier pricing and deep integration into the wider Zoho suite.",
+      "best_for": "Small businesses already using or considering the wider Zoho suite who want low-cost, contact-tiered email marketing",
+      "strengths": [
+        "Contact-tier pricing from $3/month",
+        "Native SMS and WhatsApp channels",
+        "Deep Zoho-suite integration"
+      ]
     }
   ],
   "order": 41
