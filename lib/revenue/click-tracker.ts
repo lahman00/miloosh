@@ -50,13 +50,14 @@ export async function trackSoftwareCtaClick(software: Software, resolvedUrl: str
   await recordOutboundEvent(event, sourcePage);
 }
 
-export async function trackVendorLinkClick(software: Software, url: string, sourcePage: string, isTest = false): Promise<void> {
+export async function trackVendorLinkClick(software: Software, url: string, sourcePage: string, ctaLocation?: string, isTest = false): Promise<void> {
   await recordOutboundEvent(
     {
       type: "vendor_link_click",
       softwareSlug: software.slug,
       destination: "official",
       url,
+      ctaLocation,
       isTest,
     },
     sourcePage

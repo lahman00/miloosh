@@ -103,6 +103,70 @@ describe("POST /api/outbound-click — legacy and first-party pipelines agree on
     expect(__test__.resolveVendorLinkUrl(pipedrive, "made-up-client-location")).toBe(pipedrive.website);
   });
 
+  /**
+   * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) P1-2: the legacy
+   * outbound-click pipeline (lib/revenue/events.ts, written via
+   * trackVendorLinkClick) used to silently drop ctaLocation for every
+   * vendor-link click, even though the first-party pipeline
+   * (lib/analytics/events.ts) always kept it -- confirmed here with a real
+   * end-to-end POST through both real sinks, not a unit-level mock.
+   */
+  it("every valid vendor-link ctaLocation is kept identical in BOTH the legacy and first-party sinks", async () => {
+    await post({ slug: "pipedrive", kind: "vendor-link", sourcePage: "/software/pipedrive", ctaLocation: "vendor-link-pricing", visitorId: "v_ctaloc", sessionId: "s_ctaloc" });
+
+    const legacy = await getOutboundEvents();
+    const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
+    expect(legacyEvent?.ctaLocation).toBe("vendor-link-pricing");
+
+    const firstParty = await getAllFirstPartyEvents();
+    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
+    expect(fpEvent && "ctaLocation" in fpEvent ? fpEvent.ctaLocation : null).toBe("vendor-link-pricing");
+
+    expect(legacyEvent?.ctaLocation).toBe(fpEvent && "ctaLocation" in fpEvent ? fpEvent.ctaLocation : undefined);
+  });
+
+  it("every real vendor-link location from KNOWN_CTA_LOCATIONS round-trips unchanged through both sinks", async () => {
+    for (const location of __test__.KNOWN_CTA_LOCATIONS) {
+      if (location === "vendor-link") continue; // the fallback, not a client-supplied value
+      await post({ slug: "pipedrive", kind: "vendor-link", sourcePage: "/software/pipedrive", ctaLocation: location, visitorId: `v_${location}`, sessionId: `s_${location}` });
+    }
+
+    const legacy = await getOutboundEvents();
+    const firstParty = await getAllFirstPartyEvents();
+    for (const location of __test__.KNOWN_CTA_LOCATIONS) {
+      if (location === "vendor-link") continue;
+      expect(legacy.some((e) => e.ctaLocation === location)).toBe(true);
+      expect(firstParty.some((e) => e.type === "outbound_click" && "ctaLocation" in e && e.ctaLocation === location)).toBe(true);
+    }
+  });
+
+  it("an unrecognized/arbitrary ctaLocation is normalized to a single bounded sentinel in both sinks, never stored verbatim", async () => {
+    const arbitraryLocation = "some-arbitrary-client-supplied-string-" + "x".repeat(200);
+    await post({ slug: "pipedrive", kind: "vendor-link", sourcePage: "/software/pipedrive", ctaLocation: arbitraryLocation, visitorId: "v_bogus", sessionId: "s_bogus" });
+
+    const legacy = await getOutboundEvents();
+    const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive" && e.url === "https://www.pipedrive.com");
+    expect(legacyEvent?.ctaLocation).toBe("unknown-cta-location");
+    expect(legacyEvent?.ctaLocation).not.toBe(arbitraryLocation);
+
+    const firstParty = await getAllFirstPartyEvents();
+    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "ctaLocation" in e && e.ctaLocation === "unknown-cta-location");
+    expect(fpEvent).toBeDefined();
+
+    // Confirms the fallback URL resolution also treats the bogus location as
+    // unrecognized (falls back to the plain website), proving normalization
+    // happens before URL resolution too, not just before analytics writes.
+    expect(legacyEvent?.url).toBe("https://www.pipedrive.com");
+  });
+
+  it("normalizeCtaLocation is a pure allowlist gate: every real known location passes through, everything else collapses to one sentinel", () => {
+    for (const location of __test__.KNOWN_CTA_LOCATIONS) {
+      expect(__test__.normalizeCtaLocation(location)).toBe(location);
+    }
+    expect(__test__.normalizeCtaLocation("totally-made-up")).toBe("unknown-cta-location");
+    expect(__test__.normalizeCtaLocation(undefined)).toBeUndefined();
+  });
+
   it("never actually navigates anywhere or hits a real vendor endpoint — this route only records an event", async () => {
     const routeSource = fs.readFileSync(path.join(process.cwd(), "app/api/outbound-click/route.ts"), "utf-8");
     expect(routeSource).not.toMatch(/fetch\(.*(url|affiliate)/i);

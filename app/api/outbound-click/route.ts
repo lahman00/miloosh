@@ -32,6 +32,45 @@ function isWixContext(value: unknown): value is WixFunnelContext {
   return typeof value === "string" && (WIX_CONTEXTS as readonly string[]).includes(value);
 }
 
+/**
+ * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) P1-2: the finite,
+ * real set of ctaLocation values this codebase actually sends -- swept
+ * directly from every literal `ctaLocation="..."` in components/app (6
+ * commercial CTA surfaces) plus the 9 fixed vendor-link labels
+ * components/VendorLinksBlock.tsx hardcodes (never user input, so this
+ * list is exhaustive by construction, not a guess) plus the
+ * `pricing-source-link` editorial surface and the `vendor-link` fallback
+ * used when a vendor-link click carries no specific location. A client
+ * could still send an arbitrary string here (this endpoint is public),
+ * so anything outside this set is normalized to a single bounded
+ * sentinel rather than stored verbatim -- unbounded arbitrary strings
+ * must never become unbounded analytics cardinality.
+ */
+const KNOWN_CTA_LOCATIONS = new Set([
+  "software-page-cta",
+  "pricing-section-cta",
+  "alternative-decision-guide",
+  "compare-page-choose-card",
+  "role-guide-card-cta",
+  "role-guide-summary-table",
+  "pricing-source-link",
+  "vendor-link-pricing",
+  "vendor-link-free-trial",
+  "vendor-link-documentation",
+  "vendor-link-support",
+  "vendor-link-integrations",
+  "vendor-link-status-page",
+  "vendor-link-community",
+  "vendor-link-current-deals",
+  "vendor-link-enterprise-contact",
+  "vendor-link",
+]);
+
+function normalizeCtaLocation(value: string | undefined): string | undefined {
+  if (value === undefined) return undefined;
+  return KNOWN_CTA_LOCATIONS.has(value) ? value : "unknown-cta-location";
+}
+
 type SoftwareRecord = NonNullable<ReturnType<typeof getSoftware>>;
 
 /**
@@ -88,7 +127,7 @@ export async function POST(request: NextRequest) {
   }
 
   const sourcePage = resolveOutboundSourcePage(request.headers.get("referer"), request.nextUrl.origin, body.sourcePage);
-  const resolvedCtaLocation = typeof ctaLocation === "string" ? ctaLocation : undefined;
+  const resolvedCtaLocation = normalizeCtaLocation(typeof ctaLocation === "string" ? ctaLocation : undefined);
   const visitorId = typeof body.visitorId === "string" ? body.visitorId : "v_anon";
   const sessionId = typeof body.sessionId === "string" ? body.sessionId : "s_anon";
   // Analytics Zero-Drop Production Proof Mega Mission (2026-08-21) Phase
@@ -102,7 +141,8 @@ export async function POST(request: NextRequest) {
 
   if (kind === "vendor-link") {
     const url = resolveVendorLinkUrl(software, resolvedCtaLocation);
-    await trackVendorLinkClick(software, url, sourcePage, isTest);
+    const vendorLinkCtaLocation = resolvedCtaLocation || "vendor-link";
+    await trackVendorLinkClick(software, url, sourcePage, vendorLinkCtaLocation, isTest);
 
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
     await recordFirstPartyEvent({
@@ -110,7 +150,7 @@ export async function POST(request: NextRequest) {
       softwareSlug: software.slug,
       destination: "official",
       url,
-      ctaLocation: resolvedCtaLocation || "vendor-link",
+      ctaLocation: vendorLinkCtaLocation,
       path: sourcePage,
       visitorId,
       sessionId,
@@ -144,4 +184,4 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ ok: true }, { status: 202 });
 }
 
-export const __test__ = { resolveVendorLinkUrl };
+export const __test__ = { resolveVendorLinkUrl, normalizeCtaLocation, KNOWN_CTA_LOCATIONS };
