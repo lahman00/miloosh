@@ -4,6 +4,7 @@ import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-tru
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { computeLedgerSummary, ALL_CANONICAL_STATUSES } from "@/scripts/affiliate/ledger";
 import { getAllSoftware } from "@/data/software";
+import { getSoftwareCtaRel, shouldShowAffiliateDisclosure, getSoftwareCtaUrl } from "@/lib/affiliate";
 
 describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () => {
   const summary = computeLedgerSummary();
@@ -114,5 +115,64 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
     const setmore = CANONICAL_AFFILIATE_LEDGER.find(p => p.programId === "setmore");
     expect(setmore?.status).toBe("ACTIVE");
     expect(setmore?.notes).toMatch(/NO PAID MEDIA/i);
+  });
+
+  /**
+   * Invariant 12 (2026-08-29, SurveyMonkey fail-close): a PENDING/REJECTED/
+   * OWNER_ACTION_REQUIRED/PROGRAM_NOT_VERIFIED/HOLD/etc. canonical-ledger
+   * record must never cause its product's actual rendered CTA to carry
+   * rel="sponsored" or show the affiliate disclosure -- regardless of what
+   * historical affiliateUrl text sits in that record's evidence/notes
+   * fields (canonical-ledger.ts is a documentation/audit trail; it is never
+   * read by the runtime CTA resolver in lib/affiliate.ts). Only a real
+   * ACTIVE_PARTNERS entry can make a CTA resolve as affiliate -- this
+   * invariant checks the OTHER direction: no non-ACTIVE ledger status may
+   * coincide with an affiliate-rendering CTA for the same product.
+   */
+  it("Invariant 12: no non-ACTIVE canonical relationship's product renders an affiliate/sponsored CTA", () => {
+    const nonActive = CANONICAL_AFFILIATE_LEDGER.filter((p) => p.status !== "ACTIVE");
+    for (const program of nonActive) {
+      for (const slug of program.productSlugs) {
+        const item = software.find((s) => s.slug === slug);
+        if (!item) continue; // no catalog page for this slug -- nothing can render
+        expect(shouldShowAffiliateDisclosure(item), `${slug} (${program.programId}, status ${program.status}) shows affiliate disclosure without being ACTIVE`).toBe(false);
+        expect(getSoftwareCtaRel(item), `${slug} (${program.programId}, status ${program.status}) renders rel=sponsored without being ACTIVE`).not.toContain("sponsored");
+      }
+    }
+  });
+
+  it("Invariant 13: SurveyMonkey specifically fails closed pending vendor confirmation of the 2026-08-24 tracking asset", () => {
+    const surveymonkey = CANONICAL_AFFILIATE_LEDGER.find((p) => p.programId === "surveymonkey");
+    expect(surveymonkey?.status).toBe("PROGRAM_NOT_VERIFIED");
+    expect(surveymonkey?.affiliateUrl).toBeNull();
+    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("surveymonkey");
+
+    const item = software.find((s) => s.slug === "surveymonkey")!;
+    expect(item).toBeDefined();
+    expect(shouldShowAffiliateDisclosure(item)).toBe(false);
+    expect(getSoftwareCtaRel(item)).toBe("noopener noreferrer");
+  });
+
+  /**
+   * Invariant 14 (2026-08-29): the inverse of Invariant 12 -- every verified
+   * ACTIVE_PARTNERS entry's product must actually render as affiliate/
+   * sponsored, not silently fall back to the plain vendor URL. Every
+   * commercial CTA surface (software-page-cta, pricing-section-cta,
+   * alternative-decision-guide, compare-page-choose-card, role-guide-*)
+   * renders through TrackedCtaLink, which calls getSoftwareCtaUrl /
+   * getSoftwareCtaRel / shouldShowAffiliateDisclosure -- the same three
+   * functions checked here -- so one check per product covers every
+   * surface simultaneously; there is no separate per-surface resolution
+   * path to leak through.
+   */
+  it("Invariant 14: every verified active partner's product actually renders as affiliate, not silently plain", () => {
+    for (const partner of ACTIVE_PARTNERS) {
+      const item = software.find((s) => s.slug === partner.slug);
+      expect(item, `${partner.slug} is in ACTIVE_PARTNERS but has no catalog page`).toBeDefined();
+      if (!item) continue;
+      expect(getSoftwareCtaUrl(item), `${partner.slug} CTA does not resolve to its verified affiliate URL`).toBe(partner.affiliateUrl);
+      expect(getSoftwareCtaRel(item), `${partner.slug} CTA is missing rel=sponsored`).toContain("sponsored");
+      expect(shouldShowAffiliateDisclosure(item), `${partner.slug} CTA does not show the affiliate disclosure`).toBe(true);
+    }
   });
 });
