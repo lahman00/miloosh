@@ -21,6 +21,7 @@ export {
   getAffiliateActivation,
   getTierASlugs,
   getTierAActivationStatus,
+  hasCurrentActiveRelationship,
   type AffiliateActivation,
   type AffiliateActivationSource,
 } from "@/lib/revenue/affiliate-activation";

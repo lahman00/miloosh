@@ -52,7 +52,16 @@ function loadCredentialsFile(): CredentialsFile {
   return cachedCredentialsFile;
 }
 
-function hasCurrentActiveRelationship(slug: string): boolean {
+/**
+ * Exported for lib/affiliate.ts's softwareToAffiliateLink() -- MILOOSH
+ * CRITICAL MONETIZATION CLOSEOUT (2026-08-29) P1-1: the legacy catalog-level
+ * software.affiliateUrl field (see docs/monetization.md's original Sprint
+ * 4/6 design) used to independently activate monetization with zero
+ * verification against this ledger. Same operational-truth check already
+ * used to gate the env/config-file fallback path below, reused rather than
+ * duplicated.
+ */
+export function hasCurrentActiveRelationship(slug: string): boolean {
   return CURRENT_AFFILIATE_LEDGER.some(
     (relationship) => relationship.status === "ACTIVE" && relationship.productSlugs.includes(slug),
   );

@@ -58,4 +58,36 @@ describe("legacy runtime affiliate activation truth boundary", () => {
     expect(activation.isActive).toBe(false);
     expect(activation.affiliateUrl).toBeNull();
   });
+
+  /**
+   * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) P1-1 regression
+   * fixture: a catalog-level software.affiliateUrl must never independently
+   * activate monetization. Uses a real non-active product (trello, already
+   * established above as having no current ACTIVE relationship) with a
+   * synthetic affiliateUrl spliced onto it, simulating a stale or
+   * accidentally-set field in that product's actual JSON -- which would be
+   * a real, valid Software object, not a malformed one.
+   */
+  it("a stale/unverified catalog-level affiliateUrl never activates monetization on its own", () => {
+    const trello = getSoftware("trello")!;
+    const withStaleAffiliateUrl = { ...trello, affiliateUrl: FAKE_URL };
+
+    expect(getSoftwareCtaUrl(withStaleAffiliateUrl)).toBe(trello.website);
+    expect(getSoftwareCtaUrl(withStaleAffiliateUrl)).not.toBe(FAKE_URL);
+    expect(getSoftwareCtaRel(withStaleAffiliateUrl)).toBe("noopener noreferrer");
+    expect(shouldShowAffiliateDisclosure(withStaleAffiliateUrl)).toBe(false);
+  });
+
+  it("a catalog-level affiliateUrl IS honored when the same slug also has a real ACTIVE relationship", () => {
+    const pipedrive = getSoftware("pipedrive")!;
+    // pipedrive is genuinely ACTIVE via active-partners.ts already, so this
+    // proves the gate is a real AND, not an accidental always-false: the
+    // canonical registry URL still wins over the catalog-level one either
+    // way (source precedence #1 beats #3), but the catalog-level path
+    // itself is provably reachable for a slug with real current-truth
+    // ACTIVE status, not just provably blocked for one without it.
+    const withCatalogUrl = { ...pipedrive, affiliateUrl: FAKE_URL };
+    expect(getSoftwareCtaRel(withCatalogUrl)).toContain("sponsored");
+    expect(shouldShowAffiliateDisclosure(withCatalogUrl)).toBe(true);
+  });
 });

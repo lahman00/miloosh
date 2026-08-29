@@ -1,6 +1,6 @@
 import type { Software } from "@/data/software";
 import { getActivePartner } from "@/data/affiliate/active-partners";
-import { getAffiliateActivation } from "@/lib/revenue/affiliate-manager";
+import { getAffiliateActivation, hasCurrentActiveRelationship } from "@/lib/revenue/affiliate-manager";
 
 /**
  * Reusable affiliate-link architecture.
@@ -8,7 +8,18 @@ import { getAffiliateActivation } from "@/lib/revenue/affiliate-manager";
  * Source precedence is intentional:
  * 1. canonical active-partner registry URL;
  * 2. legacy runtime activation, which itself is restricted to a current ACTIVE relationship;
- * 3. software-entry affiliateUrl fallback;
+ * 3. software-entry affiliateUrl fallback -- MILOOSH CRITICAL MONETIZATION
+ *    CLOSEOUT (2026-08-29) P1-1: this catalog-level field (docs/monetization.md's
+ *    original Sprint 4/6 design, predating the current canonical-ledger/
+ *    active-partners operational-truth system) used to activate monetization
+ *    on its own, with no cross-check against that system at all -- a stale
+ *    or accidentally-set affiliateUrl in a product's JSON could silently go
+ *    live with sponsored/disclosure rendering and no verified relationship
+ *    behind it. Now gated behind the exact same operational-truth check
+ *    (hasCurrentActiveRelationship) already used to gate the env/config-file
+ *    fallback below it, so a bare catalog-level URL can never independently
+ *    activate monetization -- there must also be a real ACTIVE relationship
+ *    on record for the same slug;
  * 4. official vendor URL.
  *
  * An environment variable must never override a network-issued URL already
@@ -58,10 +69,12 @@ export function getConfiguredTrackingParams(): Record<string, string> {
 function softwareToAffiliateLink(software: Software): AffiliateLink {
   const registeredPartnerUrl = getActivePartner(software.slug)?.affiliateUrl ?? undefined;
   const activation = registeredPartnerUrl ? null : getAffiliateActivation(software.slug);
+  const gatedCatalogUrl =
+    software.affiliateUrl && hasCurrentActiveRelationship(software.slug) ? software.affiliateUrl : undefined;
   const affiliateUrl =
     registeredPartnerUrl ??
     (activation?.isActive ? activation.affiliateUrl ?? undefined : undefined) ??
-    software.affiliateUrl;
+    gatedCatalogUrl;
 
   return { officialUrl: software.website, affiliateUrl };
 }

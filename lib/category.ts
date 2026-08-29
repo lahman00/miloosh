@@ -2,7 +2,6 @@ import type { Software } from "@/data/software";
 import type { Category } from "@/data/categories";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
-import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 
 /**
  * Content forensics (2026-08-10) flagged category pages as "just a list"
@@ -44,35 +43,34 @@ export type FeaturedCategoryComparison = {
  * Derives a curated, deterministically ranked set of featured comparisons
  * for a category page.
  *
- * Ranking criteria (editorial usefulness first):
+ * Ranking criteria (editorial usefulness only -- affiliate/commercial
+ * status is never a scoring input, see below):
  * 1. Intra-category relevance: both tools belong to this category (+100 pts).
  * 2. Mutual / direct alternative relationship (+50 pts).
  * 3. Information richness: combined feature depth (+0-20 pts).
- * 4. Bounded commercial tie-breaker: +5 pts per active affiliate (max 10 pts).
  *
- * Tested for affiliate independence: non-affiliate tools remain prominently
- * featured based on editorial merit.
+ * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) P0-3: this function
+ * used to add `activeCount * 5` to the score (up to +10 for a pair where
+ * both sides were active affiliate partners), a real, measurable
+ * affiliate-status influence on featured-comparison selection and
+ * ordering across 9 categories -- removed entirely, along with the
+ * ACTIVE_PARTNERS import and the now-meaningless `ignoreAffiliateStatus`
+ * option that used to let a caller compute the (previously different)
+ * affiliate-free ranking for comparison. There is no longer an
+ * affiliate-free variant to compute, because there is no affiliate
+ * signal in this function at all -- see
+ * tests/category/featured-comparisons.test.ts's editorial-independence
+ * test, which now asserts exact order/identity, not just matching
+ * length, against a scoring function with ACTIVE_PARTNERS emptied out
+ * entirely (there being nothing left to disable in this file itself).
  */
 export function getCategoryFeaturedComparisons(
   categorySlug: string,
-  limit = 6,
-  options?: { ignoreAffiliateStatus?: boolean }
+  limit = 6
 ): FeaturedCategoryComparison[] {
   const allSoftware = getAllSoftware();
   const catProds = allSoftware.filter((s) => s.category === categorySlug);
   const catSlugs = new Set(catProds.map((s) => s.slug));
-
-  const activeSlugs = new Set<string>(
-    options?.ignoreAffiliateStatus
-      ? []
-      : ACTIVE_PARTNERS.filter((p) => p.status === "active" && Boolean(p.affiliateUrl)).map(
-          (p) => p.slug as string
-        )
-  );
-  if (!options?.ignoreAffiliateStatus) {
-    activeSlugs.add("shopify");
-    activeSlugs.add("wix");
-  }
 
   const comparisons = PUBLISHED_COMPARISONS.filter(
     ([slugA, slugB]) => catSlugs.has(slugA) || catSlugs.has(slugB)
@@ -87,14 +85,12 @@ export function getCategoryFeaturedComparisons(
         softwareA.alternatives?.some((alt) => alt.slug === slugB) ||
         softwareB.alternatives?.some((alt) => alt.slug === slugA)
       );
-      const activeCount = (activeSlugs.has(slugA) ? 1 : 0) + (activeSlugs.has(slugB) ? 1 : 0);
       const featureDepth = (softwareA.features?.length || 0) + (softwareB.features?.length || 0);
 
       let score = 0;
       if (bothInCat) score += 100;
       if (isDirectAlt) score += 50;
       score += Math.min(20, featureDepth);
-      score += activeCount * 5;
 
       return {
         slugA,
