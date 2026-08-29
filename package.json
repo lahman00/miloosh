@@ -14,6 +14,8 @@
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",
     "growth:graph": "tsx scripts/growth/commercial-graph-engine.ts",
     "growth:gsc-factual": "tsx scripts/growth/gsc-factual-report.ts",
+    "growth:cta-coverage": "tsx scripts/growth/verified-active-cta-coverage.ts",
+    "growth:one-sided-audit": "tsx scripts/growth/one-sided-comparison-audit.ts",
     "report:pricing": "tsx scripts/report-pricing-freshness.ts",
     "report:links": "tsx scripts/report-internal-links.ts",
     "maintenance": "tsx scripts/maintenance/run-all.ts",
