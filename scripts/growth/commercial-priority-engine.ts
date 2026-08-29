@@ -59,7 +59,7 @@ export function runCommercialPriorityEngine(): {
       priorityScore: op.score,
       confidence: "HIGH",
       effort: "MEDIUM",
-      rationale: `${op.name} generates ${op.gscImpressions} GSC impressions and participates in ${op.degree} comparisons.`,
+      rationale: `${op.name} shows a heuristic traffic signal of ${op.gscImpressions} (NOT verified GSC impressions -- see lib/growth-audit/comparison-graph.ts) and participates in ${op.degree} comparisons.`,
       exactAction: `Ensure comparison pages route traffic effectively to active partners in ${op.category} while exploring direct affiliate partnership.`
     });
   }
@@ -116,7 +116,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`================================================================`);
   console.log(`          MILOOSH COMMERCIAL PRIORITY ENGINE REPORT              `);
   console.log(`================================================================\n`);
-  console.log(`✓ Ranked ${result.totalPrioritized} prioritized commercial actions based on real repository, GSC, and affiliate state.\n`);
+  console.log(`✓ Ranked ${result.totalPrioritized} prioritized commercial actions based on real repository and affiliate state, plus a heuristic traffic signal (NOT verified GSC data -- see lib/growth-audit/comparison-graph.ts).\n`);
   console.log(`TOP 15 ACTIONABLE OPPORTUNITIES:`);
   result.topOpportunities.slice(0, 15).forEach(op => {
     console.log(` #${String(op.rank).padStart(2)} [${op.type}] (Score: ${op.priorityScore}) | ${op.title}`);

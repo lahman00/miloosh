@@ -2,20 +2,24 @@ import { getAllSoftware, type Software } from "@/data/software";
 import { getAllCategories, type Category } from "@/data/categories";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import type { CategoryMoneyMapRow } from "./types";
-import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "./comparison-graph";
 import { computeMonetizationGaps } from "./monetization-gaps";
 
 /**
- * Static category opportunity map. Repository GSC impressions are a baseline;
- * clicks and positions are UNKNOWN unless explicitly supplied by the caller.
- * Affiliate status is derived through computeMonetizationGaps(), which in turn
- * uses current affiliate relationship truth rather than hard-coded queues.
+ * Static category opportunity map. The `impressions` field on each row is
+ * HEURISTIC_TRAFFIC_SIGNAL, a hand-curated relative-priority number -- NOT
+ * an authenticated Search Console measurement (see
+ * lib/growth-audit/comparison-graph.ts for what it actually is and where
+ * real GSC data lives instead). Clicks and positions are UNKNOWN unless
+ * explicitly supplied by the caller -- never fabricated. Affiliate status
+ * is derived through computeMonetizationGaps(), which in turn uses current
+ * affiliate relationship truth rather than hard-coded queues.
  */
 export function computeCategoryMoneyMap(
   categories: Category[] = getAllCategories(),
   software: Software[] = getAllSoftware(),
   pendingSlugs?: Set<string>,
-  gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS,
+  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL,
   gscClicks: Record<string, number> = {},
   gscPositions: Record<string, number> = {}
 ): CategoryMoneyMapRow[] {

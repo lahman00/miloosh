@@ -4,7 +4,28 @@ import { ACTIVE_PARTNER_SLUGS } from "@/data/affiliate/active-partners";
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
 import type { GraphNodeDegree, MissingComparisonCandidate } from "./types";
 
-export const KNOWN_GSC_IMPRESSIONS: Record<string, number> = {
+/**
+ * HEURISTIC, hand-curated relative-priority numbers -- NOT authenticated
+ * Search Console data. There is no recorded source, fetch date, or query
+ * window behind these values; they exist only to give the growth-audit
+ * scripts below a rough, deterministic way to rank candidates against each
+ * other. Renamed 2026-08-29 from the previous export name
+ * (KNOWN_GSC_IMPRESSIONS) specifically because that name let several
+ * scripts print these numbers labeled "GSC impressions" in console output,
+ * which reads as a real, measured Search Console figure -- it isn't.
+ *
+ * The real, authenticated source of truth for actual GSC measurements is
+ * var/agents/gsc-snapshots.json (see lib/agents/gsc-snapshot.ts) -- e.g.
+ * the 2026-08-13 API-sourced snapshot: 1,220 total site impressions, 0
+ * clicks, avg position 69.98, over the 2026-07-14 to 2026-08-10 28-day
+ * window. That snapshot is SITE-WIDE, not broken down per product/slug,
+ * which is exactly why this per-slug heuristic exists for relative
+ * prioritization -- the two serve different purposes and must not be
+ * conflated. Any report doing FACTUAL GSC reporting (stating real search
+ * performance, not just ranking candidates) must read the snapshot file,
+ * not this object.
+ */
+export const HEURISTIC_TRAFFIC_SIGNAL: Record<string, number> = {
   "clickup": 65, "confluence": 62, "ecwid": 47, "pipedrive": 24, "help-scout": 23,
   "coda": 20, "ringcentral": 19, "sprout-social": 17, "mulesoft": 14, "lastpass": 8,
   "adobe-analytics": 7, "segment": 7, "postmark": 6, "shortcut": 3, "gitlab": 2,
@@ -35,7 +56,7 @@ export function computeGraphNodeDegrees(software: Software[] = getAllSoftware())
 
 export function findMissingComparisonOpportunities(
   software: Software[] = getAllSoftware(),
-  gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS
+  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
 ): MissingComparisonCandidate[] {
   const publishedPairs = new Set<string>();
   for (const [a, b] of PUBLISHED_COMPARISONS) {
@@ -117,7 +138,7 @@ export function findMissingComparisonOpportunities(
 
       let reason = "Topological coverage";
       if (minDeg === 0) reason = "Connects isolated 0-degree product";
-      else if ((s1Active && imp2 >= 100) || (s2Active && imp1 >= 100)) reason = "Direct money bridge from high-GSC traffic to active affiliate";
+      else if ((s1Active && imp2 >= 100) || (s2Active && imp1 >= 100)) reason = "Direct money bridge from high heuristic-traffic-signal product to active affiliate";
       else if (s1Active && s2Active) reason = "Dual-monetized comparison pair";
       else if (s1Active || s2Active) reason = "Single-monetized active partner expansion";
       else if (sameCat && (s1Prog || s2Prog)) reason = "Intra-category commercial comparison";
@@ -139,8 +160,8 @@ export function findMissingComparisonOpportunities(
         minDegree: minDeg,
         isDualMonetized: s1Active && s2Active,
         isSingleMonetized: s1Active || s2Active,
-        gscImpressionsA: imp1,
-        gscImpressionsB: imp2,
+        heuristicSignalA: imp1,
+        heuristicSignalB: imp2,
         reason,
       });
     }

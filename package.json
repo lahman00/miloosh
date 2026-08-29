@@ -13,6 +13,7 @@
     "audit:growth": "tsx scripts/growth/commercial-audit.ts",
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",
     "growth:graph": "tsx scripts/growth/commercial-graph-engine.ts",
+    "growth:gsc-factual": "tsx scripts/growth/gsc-factual-report.ts",
     "report:pricing": "tsx scripts/report-pricing-freshness.ts",
     "report:links": "tsx scripts/report-internal-links.ts",
     "maintenance": "tsx scripts/maintenance/run-all.ts",

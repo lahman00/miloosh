@@ -2,7 +2,7 @@ import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import type { CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
-import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -108,7 +108,7 @@ export function analyzePortfolioPrograms(): PortfolioGroup[] {
         names.push(s.name);
         cats.add(s.category);
       }
-      totalImp += KNOWN_GSC_IMPRESSIONS[slug] ?? 0;
+      totalImp += HEURISTIC_TRAFFIC_SIGNAL[slug] ?? 0;
       totalComps += compCounts.get(slug) ?? 0;
     }
 
@@ -155,7 +155,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`    Network: ${p.network} | Commission: ${p.commissionStructure}`);
     console.log(`    Products: ${p.productNames.join(", ")} (${p.productsCovered.length} products)`);
     console.log(`    Categories: ${p.categoriesCovered.join(", ")}`);
-    console.log(`    Coverage: ${p.totalComparisonsCovered} total comparisons | ${p.totalGscImpressions} GSC impressions`);
+    console.log(`    Coverage: ${p.totalComparisonsCovered} total comparisons | ${p.totalGscImpressions} heuristic traffic signal (NOT verified GSC impressions)`);
     console.log(`    Action: ${p.actionRequired}\n`);
   });
 }

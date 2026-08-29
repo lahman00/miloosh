@@ -3,12 +3,12 @@ import { getAllCategories, type Category } from "@/data/categories";
 import { PUBLISHED_COMPARISONS, getComparisonSlug, getComparisonsInvolving } from "@/data/comparisons";
 import { ACTIVE_PARTNER_SLUGS } from "@/data/affiliate/active-partners";
 import type { InternalLinkAuditRow } from "./types";
-import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "./comparison-graph";
 
 export function analyzeInternalLinkGraph(
   software: Software[] = getAllSoftware(),
   categories: Category[] = getAllCategories(),
-  gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS
+  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
 ): {
   rows: InternalLinkAuditRow[];
   orphans: string[];
@@ -85,7 +85,7 @@ export function analyzeInternalLinkGraph(
       type: "software",
       inboundCount: inCount,
       isActiveAffiliate: activeSet.has(s.slug),
-      gscImpressions: gscImpressions[s.slug] ?? 0,
+      heuristicSignal: gscImpressions[s.slug] ?? 0,
     });
   }
 
@@ -97,7 +97,7 @@ export function analyzeInternalLinkGraph(
       type: "category",
       inboundCount: inCount,
       isActiveAffiliate: false,
-      gscImpressions: 0,
+      heuristicSignal: 0,
     });
   }
 
@@ -109,7 +109,7 @@ export function analyzeInternalLinkGraph(
       type: "comparison",
       inboundCount: inCount,
       isActiveAffiliate: activeSet.has(a) || activeSet.has(b),
-      gscImpressions: 0,
+      heuristicSignal: 0,
     });
   }
 

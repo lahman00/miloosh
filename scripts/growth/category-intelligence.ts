@@ -3,7 +3,7 @@ import { getAllCategories } from "@/data/categories";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { getAllRoleGuides } from "@/data/guides/registry";
-import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -51,7 +51,7 @@ export function auditCategoryIntelligence(): {
     
     let totalImp = 0;
     for (const s of catSoftware) {
-      totalImp += KNOWN_GSC_IMPRESSIONS[s.slug] ?? 0;
+      totalImp += HEURISTIC_TRAFFIC_SIGNAL[s.slug] ?? 0;
     }
 
     const comps = compsByCat.get(cat.slug) ?? 0;
@@ -113,6 +113,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`✓ Tier Summary:`, result.tierSummary);
   console.log(`\nRanked Categories:`);
   result.categories.forEach(c => {
-    console.log(`   - [${c.tier}] ${c.name.padEnd(25)} | Products: ${String(c.productCount).padStart(2)} | Comps: ${String(c.comparisonCount).padStart(3)} | Guides: ${c.roleGuidesCount} | Active Affs: ${c.activeAffiliatesCount} | GSC: ${c.totalGscImpressions} imp`);
+    console.log(`   - [${c.tier}] ${c.name.padEnd(25)} | Products: ${String(c.productCount).padStart(2)} | Comps: ${String(c.comparisonCount).padStart(3)} | Guides: ${c.roleGuidesCount} | Active Affs: ${c.activeAffiliatesCount} | Heuristic signal: ${c.totalGscImpressions}`);
   });
 }

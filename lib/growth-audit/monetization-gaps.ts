@@ -5,7 +5,7 @@ import type { AffiliateProgramRelationship } from "@/data/affiliate/canonical-le
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
 import { getComparisonsInvolving } from "@/data/comparisons";
 import type { MonetizationGapRow, MonetizationStatusGroup } from "./types";
-import { KNOWN_GSC_IMPRESSIONS } from "./comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "./comparison-graph";
 
 function preferredRelationship(slug: string): AffiliateProgramRelationship | null {
   const matches = CURRENT_AFFILIATE_LEDGER.filter((relationship) => relationship.productSlugs.includes(slug));
@@ -53,7 +53,7 @@ export function computeMonetizationGaps(
   pendingSlugs?: Set<string>,
   rejectedSlugs?: Set<string>,
   ownerBlockedSlugs?: Set<string>,
-  gscImpressions: Record<string, number> = KNOWN_GSC_IMPRESSIONS
+  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
 ): MonetizationGapRow[] {
   const activeSlugs = new Set<string>(
     ACTIVE_PARTNERS.filter((partner) => partner.status === "active" && Boolean(partner.affiliateUrl)).map((partner) => partner.slug as string)

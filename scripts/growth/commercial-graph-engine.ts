@@ -6,7 +6,7 @@ import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-tru
 import type { CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { getAffiliateProgram } from "@/data/revenue/affiliate-programs";
 import { getAllRoleGuides } from "@/data/guides/registry";
-import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -208,8 +208,8 @@ export function buildCommercialGraph(): CommercialGraphSummary {
       .filter(g => g.products.some(p => p.slug === s.slug))
       .map(g => g.slug);
 
-    // GSC data
-    const gscDirect = KNOWN_GSC_IMPRESSIONS[s.slug] ?? 0;
+    // Heuristic traffic signal (NOT verified GSC data -- see lib/growth-audit/comparison-graph.ts)
+    const gscDirect = HEURISTIC_TRAFFIC_SIGNAL[s.slug] ?? 0;
     const expData = experimentGsc[s.slug];
     const imp = Math.max(gscDirect, expData?.impressions ?? 0);
     const clicks = expData?.clicks ?? 0;

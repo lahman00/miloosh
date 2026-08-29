@@ -3,7 +3,7 @@ import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import type { AffiliateProgramRelationship, CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
-import { KNOWN_GSC_IMPRESSIONS } from "@/lib/growth-audit/comparison-graph";
+import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -102,7 +102,7 @@ export function runFullAffiliateSweep(): {
     const active = activeMap.get(softwareEntry.slug);
     const relationship = relationshipForProduct(softwareEntry.slug);
     const publicProgram = publicProgramMap.get(softwareEntry.slug);
-    const gscImpressions = KNOWN_GSC_IMPRESSIONS[softwareEntry.slug] ?? 0;
+    const gscImpressions = HEURISTIC_TRAFFIC_SIGNAL[softwareEntry.slug] ?? 0;
 
     let classification: AffiliateClassification = "NEEDS_MORE_RESEARCH";
     let notes = relationship?.notes ?? publicProgram?.notes ?? "No current relationship or sufficiently verified public program record.";
@@ -191,6 +191,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   });
   console.log("\nTOP 10 HIGH-TRAFFIC ELIGIBLE_READY_TO_APPLY CANDIDATES:");
   result.eligibleToApply.slice(0, 10).forEach((candidate) => {
-    console.log(`   - [${candidate.slug}] (GSC: ${candidate.gscImpressions} imp) | Network: ${candidate.network ?? "Direct/unknown"} | Commission: ${candidate.commissionStructure ?? "UNKNOWN"}`);
+    console.log(`   - [${candidate.slug}] (heuristic signal: ${candidate.gscImpressions}, NOT verified GSC) | Network: ${candidate.network ?? "Direct/unknown"} | Commission: ${candidate.commissionStructure ?? "UNKNOWN"}`);
   });
 }

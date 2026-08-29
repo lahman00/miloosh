@@ -84,7 +84,7 @@ function strategicAction(
     case "OWNER_BLOCKED":
       return `Current relationship requires an owner-only checkpoint. Resolve only the blocker recorded in current affiliate truth.`;
     case "ELIGIBLE_READY_TO_APPLY":
-      return `A current public program is evidenced. Prioritize an application only if ${gscImpressions} measured GSC impression(s) and ${comparisons} comparison route(s) justify the owner/network cost.`;
+      return `A current public program is evidenced. Prioritize an application only if a heuristic traffic signal of ${gscImpressions} (NOT a measured GSC impression count) and ${comparisons} comparison route(s) justify the owner/network cost.`;
     case "NEEDS_MORE_RESEARCH":
       return `${name} has demand/coverage but no sufficiently verified current relationship. Verify the vendor's current publisher route before any application work.`;
   }
@@ -149,7 +149,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log("================================================================\n");
   console.log("NOTE: live first-party revenue priority is computed separately by the canonical Money Priority Engine.\n");
   top20.forEach((opportunity) => {
-    console.log(`#${String(opportunity.rank).padStart(2)}. [${opportunity.name}] (Score: ${opportunity.moneyScore}) | GSC: ${opportunity.gscImpressions} imp | Comps: ${opportunity.publishedComparisons} | Status: ${opportunity.programStatus}`);
+    console.log(`#${String(opportunity.rank).padStart(2)}. [${opportunity.name}] (Score: ${opportunity.moneyScore}) | Heuristic signal: ${opportunity.gscImpressions} | Comps: ${opportunity.publishedComparisons} | Status: ${opportunity.programStatus}`);
     console.log(`     Network: ${opportunity.network} | Commission: ${opportunity.commission}`);
     console.log(`     Action:  ${opportunity.strategicAction}\n`);
   });

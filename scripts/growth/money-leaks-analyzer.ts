@@ -43,19 +43,19 @@ export function rankCommercialOpportunities(): {
       group = "A";
       groupName = "TRAFFIC + ACTIVE AFFILIATE";
       score = 90 + Math.min(node.gscImpressions / 5, 10);
-      rationale = `Active affiliate partner with verified organic GSC impressions (${node.gscImpressions} imp, ${node.degree} comparisons).`;
+      rationale = `Active affiliate partner with a high heuristic traffic signal (${node.gscImpressions}, ${node.degree} comparisons) -- NOT a verified GSC measurement, see lib/growth-audit/comparison-graph.ts.`;
       actionableStep = `Maximize comparison bridge density and feature in high-intent role guides.`;
     } else if (hasTraffic && isPending) {
       group = "F";
-      groupName = "PENDING AFFILIATE + REAL TRAFFIC";
+      groupName = "PENDING AFFILIATE + HEURISTIC TRAFFIC SIGNAL";
       score = 80 + Math.min(node.gscImpressions / 5, 15);
-      rationale = `Affiliate application pending with verified Search Console impressions (${node.gscImpressions} imp).`;
+      rationale = `Affiliate application pending with a high heuristic traffic signal (${node.gscImpressions}) -- NOT a verified Search Console measurement, see lib/growth-audit/comparison-graph.ts.`;
       actionableStep = `Monitor affiliate network approval and prepare immediate CTA activation.`;
     } else if (hasTraffic && !isActive && !isBlocked) {
       group = "B";
       groupName = "TRAFFIC + NO AFFILIATE";
       score = 75 + Math.min(node.gscImpressions / 5, 20);
-      rationale = `Receiving Search Console impressions (${node.gscImpressions} imp) but unmonetized directly.`;
+      rationale = `Shows a heuristic traffic signal (${node.gscImpressions} -- NOT a verified Search Console measurement) but unmonetized directly.`;
       actionableStep = `Bridge via comparison pages to active partners and explore affiliate partnership.`;
     } else if (isActive && node.degree <= 8) {
       group = "C";
@@ -128,6 +128,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`✓ Group breakdown:`, groupSummary);
   console.log(`\nTop 15 Commercial Opportunities:`);
   rankedNodes.slice(0, 15).forEach(op => {
-    console.log(`   #${String(op.rank).padStart(2)} [Group ${op.group}] ${op.name.padEnd(20)} (Score: ${op.score}) | GSC: ${String(op.gscImpressions).padStart(2)} imp | Comps: ${String(op.degree).padStart(2)} | ${op.actionableStep}`);
+    console.log(`   #${String(op.rank).padStart(2)} [Group ${op.group}] ${op.name.padEnd(20)} (Score: ${op.score}) | Heuristic signal: ${String(op.gscImpressions).padStart(2)} | Comps: ${String(op.degree).padStart(2)} | ${op.actionableStep}`);
   });
 }

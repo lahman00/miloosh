@@ -33,8 +33,9 @@ export type MissingComparisonCandidate = {
   minDegree: number;
   isDualMonetized: boolean;
   isSingleMonetized: boolean;
-  gscImpressionsA: number;
-  gscImpressionsB: number;
+  /** Heuristic traffic-priority signal, NOT a verified GSC measurement -- see lib/growth-audit/comparison-graph.ts. */
+  heuristicSignalA: number;
+  heuristicSignalB: number;
   reason: string;
 };
 
@@ -76,7 +77,8 @@ export type InternalLinkAuditRow = {
   type: "software" | "category" | "comparison" | "other";
   inboundCount: number;
   isActiveAffiliate: boolean;
-  gscImpressions: number;
+  /** Heuristic traffic-priority signal, NOT a verified GSC measurement -- see lib/growth-audit/comparison-graph.ts. */
+  heuristicSignal: number;
 };
 
 export type OpportunityType =
