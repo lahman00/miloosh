@@ -42,12 +42,11 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "krispcall",
       "hubstaff",
       "close",
-      "surveymonkey",
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
     methodGuidance: "Prefer a real local Israeli bank through Airwallex if direct deposit is desired and the dashboard accepts it; otherwise use an actually available PayPal/Stripe option. Do not enter the Payoneer USD receiving account as Airwallex direct-deposit banking: PartnerStack says foreign-currency accounts and virtual banks are unsupported for that route.",
-    notes: "PartnerStack Support explicitly confirmed that hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity. First-party partner mail to hello@miloosh.com corroborates the other relationships assigned here. Dashboard payout readiness is not yet verified.",
+    notes: "PartnerStack Support explicitly confirmed that hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity. First-party partner mail to hello@miloosh.com corroborates the other relationships assigned here. Dashboard payout readiness is not yet verified. SurveyMonkey removed 2026-08-29: fail-closed pending first-party vendor confirmation that the existing tracking asset genuinely belongs to Miloosh on the correct account -- see data/affiliate/active-partners.ts and canonical-ledger.ts's surveymonkey entry (status: PROGRAM_NOT_VERIFIED). Re-add here only once that confirmation arrives and the entry is restored to active-partners.ts.",
   },
   {
     id: "partnerstack-personal",

@@ -21,9 +21,9 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     title: "1. PartnerStack payout verification — hello@miloosh.com",
     priority: 1,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
-    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey"],
+    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close"],
     comparisonsAffected: 0,
-    commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity; first-party partner mail corroborates the other relationships assigned to this account.",
+    commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity; first-party partner mail corroborates the other relationships assigned to this account. SurveyMonkey removed 2026-08-29 (fail-closed pending vendor confirmation of asset ownership) -- see data/affiliate/canonical-ledger.ts's surveymonkey entry.",
     preFilledFields: { "Account email": "hello@miloosh.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },
     ownerRequiredFields: [
       "Sign in with the existing email-and-password PartnerStack account; PartnerStack Support explicitly warned not to use Google sign-in for this account",

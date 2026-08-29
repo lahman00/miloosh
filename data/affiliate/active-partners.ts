@@ -2,7 +2,7 @@ export const ACTIVE_PARTNER_SLUGS = [
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
-  "mailerlite", "omnisend", "surveymonkey", "wrike",
+  "mailerlite", "omnisend", "wrike",
 ] as const;
 
 export type ActivePartnerSlug = (typeof ACTIVE_PARTNER_SLUGS)[number];
@@ -56,7 +56,25 @@ export type ActivePartner = {
  * Classic Website Builder URL below is the canonical general-site CTA; specialized
  * Domain, Headless, and eCommerce links remain available for intent-specific use.
  *
- * MailerLite, Omnisend, and SurveyMonkey activated 2026-08-24 from exact owner-supplied referral URLs. Notify Me remains ledger-only until independent editorial content exists.
+ * MailerLite and Omnisend activated 2026-08-24 from exact owner-supplied referral URLs. Notify Me remains ledger-only until independent editorial content exists.
+ *
+ * SurveyMonkey removed 2026-08-29 (fail-closed): the 2026-08-24 activation was
+ * based on an owner screenshot of a PartnerStack dashboard plus an owner-
+ * supplied URL, but the SurveyMonkey affiliate manager has NOT yet confirmed
+ * first-party that https://try.partnerstack.com/jx99ylh3mexb is genuinely
+ * Miloosh's own asset on the correct PartnerStack account -- a real, live
+ * doubt given the separate, confirmed Account #1/#2 PartnerStack confusion
+ * elsewhere in this ledger. Presence in THIS array is what makes a CTA
+ * resolve to an affiliate link (see lib/affiliate.ts's
+ * softwareToAffiliateLink -- it reads .affiliateUrl unconditionally off
+ * whatever this array returns, it does not check any status field), so
+ * removal is the only way to actually fail the CTA closed to the plain
+ * SurveyMonkey URL, not merely a label change. The historical evidence and
+ * URL are preserved, not deleted, in data/affiliate/canonical-ledger.ts's
+ * surveymonkey entry (status: PROGRAM_NOT_VERIFIED) and in
+ * data/affiliate/partner-materials-audit.ts. Do not re-add without explicit
+ * first-party vendor confirmation, and do not accept the pending
+ * PartnerStack invitation as a substitute for that confirmation.
  */
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
@@ -77,7 +95,6 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "wix", status: "active", affiliateUrl: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb", blocker: null },
   { slug: "mailerlite", status: "active", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", blocker: null },
   { slug: "omnisend", status: "active", affiliateUrl: "https://your.omnisend.com/PznLej", blocker: null },
-  { slug: "surveymonkey", status: "active", affiliateUrl: "https://try.partnerstack.com/jx99ylh3mexb", blocker: null },
   { slug: "wrike", status: "active", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij", blocker: null },
 ] as const;
 
