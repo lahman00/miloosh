@@ -15,7 +15,8 @@ export interface RoleGuideAuditResult {
   unresolvedComparisons: string[];
   faqsCount: number;
   criteriaCount: number;
-  evidenceClass: "QUERY_PROVEN" | "PAGE_PROVEN" | "INDIRECT_GSC" | "EDITORIAL_INFERENCE";
+  /** HEURISTIC_DEMAND (renamed from INDIRECT_GSC, 2026-08-29): this is a hand-classified confidence tier, not derived from any authenticated Search Console data anywhere in this file or its slug list below -- the old name falsely implied real GSC backing. See lib/growth-audit/comparison-graph.ts for where real vs. heuristic signal actually lives in this codebase. */
+  evidenceClass: "QUERY_PROVEN" | "PAGE_PROVEN" | "HEURISTIC_DEMAND" | "EDITORIAL_INFERENCE";
   status: "VALID" | "HAS_DEFECT";
 }
 
@@ -38,7 +39,7 @@ export function auditRoleGuides(): {
   const evidenceBreakdown: Record<string, number> = {
     QUERY_PROVEN: 0,
     PAGE_PROVEN: 0,
-    INDIRECT_GSC: 0,
+    HEURISTIC_DEMAND: 0,
     EDITORIAL_INFERENCE: 0,
   };
 
@@ -83,7 +84,7 @@ export function auditRoleGuides(): {
       "best-property-management-software",
       "best-field-service-software-for-contractors"
     ].includes(g.slug)) {
-      evidenceClass = "INDIRECT_GSC";
+      evidenceClass = "HEURISTIC_DEMAND";
     } else {
       evidenceClass = "EDITORIAL_INFERENCE";
     }

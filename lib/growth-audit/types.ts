@@ -44,6 +44,7 @@ export type MonetizationGapRow = {
   name: string;
   category: string;
   statusGroup: MonetizationStatusGroup;
+  /** Heuristic traffic-priority signal (HEURISTIC_TRAFFIC_SIGNAL), NOT a verified GSC measurement -- see lib/growth-audit/comparison-graph.ts. Field kept as "impressions" (not renamed) for consistency with CategoryMoneyMapRow.impressions, which carries the same caveat in computeCategoryMoneyMap's docstring. */
   impressions: number;
   comparisonsCount: number;
   monetizationGapScore: number;

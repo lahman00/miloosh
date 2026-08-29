@@ -47,6 +47,12 @@ function groupFromRelationship(relationship: AffiliateProgramRelationship): Mone
  * The optional status sets are test/forensic overrides. Production callers
  * should omit them so status is derived from CURRENT_AFFILIATE_LEDGER instead
  * of a hard-coded list that can drift after a vendor decision.
+ *
+ * The `impressions` field on each returned row is HEURISTIC_TRAFFIC_SIGNAL,
+ * a hand-curated relative-priority number -- NOT an authenticated Search
+ * Console measurement (see lib/growth-audit/comparison-graph.ts for what it
+ * actually is and where real GSC data lives instead). Callers must not print
+ * or label it as GSC/Search-Console data.
  */
 export function computeMonetizationGaps(
   software: Software[] = getAllSoftware(),

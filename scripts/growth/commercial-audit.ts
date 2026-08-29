@@ -69,7 +69,7 @@ export function runCommercialAudit() {
     .filter((g) => g.statusGroup !== "A")
     .slice(0, 5)
     .forEach((gap) => {
-      console.log("   - " + gap.name.padEnd(20) + " | GSC Imp: " + String(gap.impressions).padStart(4) + " | Gap Score: " + gap.monetizationGapScore + "/100 | Group: " + gap.statusGroup);
+      console.log("   - " + gap.name.padEnd(20) + " | Traffic Signal: " + String(gap.impressions).padStart(4) + " | Gap Score: " + gap.monetizationGapScore + "/100 | Group: " + gap.statusGroup);
     });
   console.log("");
 
