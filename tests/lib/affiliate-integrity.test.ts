@@ -5,6 +5,7 @@ import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { computeLedgerSummary, ALL_CANONICAL_STATUSES } from "@/scripts/affiliate/ledger";
 import { getAllSoftware } from "@/data/software";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure, getSoftwareCtaUrl } from "@/lib/affiliate";
+import { resolveComparisonCtaUrl } from "@/lib/wix-funnels";
 
 describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () => {
   const summary = computeLedgerSummary();
@@ -174,5 +175,62 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
       expect(getSoftwareCtaRel(item), `${partner.slug} CTA is missing rel=sponsored`).toContain("sponsored");
       expect(shouldShowAffiliateDisclosure(item), `${partner.slug} CTA does not show the affiliate disclosure`).toBe(true);
     }
+  });
+
+  /**
+   * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29): Jotform
+   * specifically, by name, mirroring Invariant 13's SurveyMonkey lock --
+   * already covered generically by Invariant 12 (Jotform's canonical-ledger
+   * status is OWNER_ACTION_REQUIRED, not ACTIVE), but named explicitly so
+   * this exact case can't silently regress without a targeted test
+   * failing, and so the "Jotform is currently NOT active" fact is
+   * asserted in one obvious place rather than only implied by a loop.
+   * Reflects current, correct state -- Jotform has no verified tracking
+   * asset recorded anywhere in this repository (see commit 3a1c6ab); this
+   * is deliberately NOT a test of the disputed vendor-issued URLs.
+   */
+  it("Invariant 15: Jotform currently fails closed (no verified tracking asset on file)", () => {
+    const jotform = CANONICAL_AFFILIATE_LEDGER.find((p) => p.programId === "jotform");
+    expect(jotform?.status).not.toBe("ACTIVE");
+    expect(jotform?.affiliateUrl).toBeNull();
+    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("jotform");
+
+    const item = software.find((s) => s.slug === "jotform")!;
+    expect(item).toBeDefined();
+    expect(shouldShowAffiliateDisclosure(item)).toBe(false);
+    expect(getSoftwareCtaRel(item)).toBe("noopener noreferrer");
+    expect(getSoftwareCtaUrl(item)).toBe(item.website);
+  });
+
+  /**
+   * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29): the mission
+   * requested "/compare/surveymonkey-vs-jotform: SurveyMonkey direct,
+   * Jotform affiliate" -- that target routing was NOT implemented, because
+   * Jotform's only proposed tracking asset (a bare "?partner=miloosh" query
+   * parameter, unlike every other ACTIVE_PARTNERS entry's opaque
+   * network-issued token) reached this repository as a second-hand claim
+   * bundled with three fabricated commit SHAs and two fabricated PR numbers
+   * in the same message (see commit 3a1c6ab), and remains unconfirmed
+   * first-hand. This test locks in the actual, current, correct behavior of
+   * that specific compare page instead: BOTH sides resolve as direct/organic
+   * through the real compare-page-choose-card resolver
+   * (lib/wix-funnels.ts's resolveComparisonCtaUrl), not just the generic
+   * per-product loops in Invariants 12-15. If either side is activated
+   * later with a verified asset, this test's expectations must change
+   * deliberately -- it will not silently pass either state.
+   */
+  it("surveymonkey-vs-jotform: both sides currently resolve direct on the compare-page-choose-card surface (neither has a verified tracking asset on file)", () => {
+    const surveymonkey = software.find((s) => s.slug === "surveymonkey")!;
+    const jotform = software.find((s) => s.slug === "jotform")!;
+    expect(surveymonkey).toBeDefined();
+    expect(jotform).toBeDefined();
+
+    expect(resolveComparisonCtaUrl(surveymonkey, "jotform")).toBe(surveymonkey.website);
+    expect(resolveComparisonCtaUrl(jotform, "surveymonkey")).toBe(jotform.website);
+
+    expect(getSoftwareCtaRel(surveymonkey)).not.toContain("sponsored");
+    expect(getSoftwareCtaRel(jotform)).not.toContain("sponsored");
+    expect(shouldShowAffiliateDisclosure(surveymonkey)).toBe(false);
+    expect(shouldShowAffiliateDisclosure(jotform)).toBe(false);
   });
 });
