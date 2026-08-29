@@ -131,4 +131,21 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     securityAndComplianceNotes: "Never share CJ passwords, tax forms, banking/Payoneer details, or one-time codes. The business-email CID is not automatically canonical merely because it is newer.",
     postCompletionAutomation: "After canonical CID and payout readiness are proven, record the decision and activate only real approved CJ advertisers with SID tracking.",
   },
+  {
+    id: "jotform-tremendous-payout",
+    title: "7. Jotform / Tremendous payout verification",
+    priority: 7,
+    loginOrSignupUrl: "https://www.jotform.com/partnership/affiliate/",
+    productsCovered: ["jotform"],
+    comparisonsAffected: 0,
+    commissionEvidence: "Jotform activated 2026-08-29 on the owner's direct first-hand account of Jotform Affiliate Marketing Specialist Anna Scheucher's approval (account 'Eyal_hello', hello@miloosh.com) and account-specific tracking links. Jotform's program page documents payouts via Tremendous.",
+    preFilledFields: { "Account": "Eyal_hello", "Business Email": "hello@miloosh.com", Website: "https://miloosh.com" },
+    ownerRequiredFields: [
+      "Sign in to the existing Jotform partner dashboard; do not re-apply",
+      "Open payout/Tremendous settings and verify whether a payout method is already complete",
+      "If incomplete, select an offered payout method and enter payment details locally",
+    ],
+    securityAndComplianceNotes: "Do not share Jotform or Tremendous passwords, tax IDs, bank details, or verification codes through chat.",
+    postCompletionAutomation: "Record Jotform payout readiness only once the dashboard confirms the payout profile is complete.",
+  },
 ];

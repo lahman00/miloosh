@@ -11,8 +11,10 @@ describe("canonical affiliate reconciliation current truth", () => {
     // first-party vendor confirmation the existing tracking asset genuinely
     // belongs to Miloosh on the correct PartnerStack account. See
     // data/affiliate/active-partners.ts and canonical-ledger.ts's
-    // surveymonkey entry (status: PROGRAM_NOT_VERIFIED).
-    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(19);
+    // surveymonkey entry (status: PROGRAM_NOT_VERIFIED). Jotform added the
+    // same day (back to 20) on the owner's direct first-hand account of the
+    // Jotform correspondence -- see canonical-ledger.ts's jotform entry.
+    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(20);
     for (const slug of ACTIVE_PARTNER_SLUGS) {
       const record = bySlug.get(slug);
       expect(record, `missing reconciliation record for ${slug}`).toBeDefined();

@@ -8,6 +8,7 @@ const EXPECTED_PAYOUT_PACKS = [
   "setmore-payout-method",
   "mailerlite-tipalti-payout",
   "cj-dual-account-reconciliation",
+  "jotform-tremendous-payout",
 ] as const;
 
 describe("owner payout action queue", () => {

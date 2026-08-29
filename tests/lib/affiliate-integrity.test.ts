@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
-import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
+import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partners";
 import { computeLedgerSummary, ALL_CANONICAL_STATUSES } from "@/scripts/affiliate/ledger";
 import { getAllSoftware } from "@/data/software";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure, getSoftwareCtaUrl } from "@/lib/affiliate";
@@ -178,59 +178,58 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
   });
 
   /**
-   * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29): Jotform
-   * specifically, by name, mirroring Invariant 13's SurveyMonkey lock --
-   * already covered generically by Invariant 12 (Jotform's canonical-ledger
-   * status is OWNER_ACTION_REQUIRED, not ACTIVE), but named explicitly so
-   * this exact case can't silently regress without a targeted test
-   * failing, and so the "Jotform is currently NOT active" fact is
-   * asserted in one obvious place rather than only implied by a loop.
-   * Reflects current, correct state -- Jotform has no verified tracking
-   * asset recorded anywhere in this repository (see commit 3a1c6ab); this
-   * is deliberately NOT a test of the disputed vendor-issued URLs.
+   * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29) superseded by
+   * a follow-up mission the same day: an earlier attempt to activate Jotform
+   * was correctly declined here because the supporting message bundled three
+   * git commit SHAs and two PR numbers that did not exist anywhere in this
+   * repository (see commit 3a1c6ab, and the superseded version of this test
+   * at commit d393707). Activation now rests on a separate, later, direct
+   * first-hand account from the owner (not relayed via Codex or any other
+   * agent) of personally re-reading the original correspondence in the
+   * connected Gmail account -- see data/affiliate/canonical-ledger.ts's
+   * jotform entry and data/affiliate/active-partners.ts's header comment for
+   * the full evidence record. Renamed from "Invariant 15" (fails-closed) to
+   * this activation lock; mirrors Invariant 14's generic active-partner
+   * check but named explicitly, matching the treatment MailerLite got in
+   * tests/lib/mailerlite-regression-protection.test.ts, since this specific
+   * relationship's history makes a silent regression especially costly.
    */
-  it("Invariant 15: Jotform currently fails closed (no verified tracking asset on file)", () => {
+  it("Invariant 15: Jotform is active with its exact verified homepage tracking asset", () => {
     const jotform = CANONICAL_AFFILIATE_LEDGER.find((p) => p.programId === "jotform");
-    expect(jotform?.status).not.toBe("ACTIVE");
-    expect(jotform?.affiliateUrl).toBeNull();
-    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("jotform");
+    expect(jotform?.status).toBe("ACTIVE");
+    expect(jotform?.affiliateUrl).toBe("https://www.jotform.com/?partner=miloosh");
+    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).toContain("jotform");
+    expect(getActivePartner("jotform")?.affiliateUrl).toBe("https://www.jotform.com/?partner=miloosh");
 
     const item = software.find((s) => s.slug === "jotform")!;
     expect(item).toBeDefined();
-    expect(shouldShowAffiliateDisclosure(item)).toBe(false);
-    expect(getSoftwareCtaRel(item)).toBe("noopener noreferrer");
-    expect(getSoftwareCtaUrl(item)).toBe(item.website);
+    expect(shouldShowAffiliateDisclosure(item)).toBe(true);
+    expect(getSoftwareCtaRel(item)).toContain("sponsored");
+    expect(getSoftwareCtaUrl(item)).toBe("https://www.jotform.com/?partner=miloosh");
   });
 
   /**
-   * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29): the mission
-   * requested "/compare/surveymonkey-vs-jotform: SurveyMonkey direct,
-   * Jotform affiliate" -- that target routing was NOT implemented, because
-   * Jotform's only proposed tracking asset (a bare "?partner=miloosh" query
-   * parameter, unlike every other ACTIVE_PARTNERS entry's opaque
-   * network-issued token) reached this repository as a second-hand claim
-   * bundled with three fabricated commit SHAs and two fabricated PR numbers
-   * in the same message (see commit 3a1c6ab), and remains unconfirmed
-   * first-hand. This test locks in the actual, current, correct behavior of
-   * that specific compare page instead: BOTH sides resolve as direct/organic
-   * through the real compare-page-choose-card resolver
-   * (lib/wix-funnels.ts's resolveComparisonCtaUrl), not just the generic
-   * per-product loops in Invariants 12-15. If either side is activated
-   * later with a verified asset, this test's expectations must change
-   * deliberately -- it will not silently pass either state.
+   * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29), follow-up:
+   * with Jotform activated, this compare page now carries the requested
+   * "SurveyMonkey direct, Jotform affiliate" split. SurveyMonkey is
+   * unaffected by the Jotform reconciliation -- still PROGRAM_NOT_VERIFIED,
+   * still fails closed. Tested through the real compare-page-choose-card
+   * resolver (lib/wix-funnels.ts's resolveComparisonCtaUrl), the same
+   * surface the mission specified, not just the generic per-product checks
+   * above.
    */
-  it("surveymonkey-vs-jotform: both sides currently resolve direct on the compare-page-choose-card surface (neither has a verified tracking asset on file)", () => {
+  it("surveymonkey-vs-jotform: SurveyMonkey resolves direct, Jotform resolves to its verified affiliate URL", () => {
     const surveymonkey = software.find((s) => s.slug === "surveymonkey")!;
     const jotform = software.find((s) => s.slug === "jotform")!;
     expect(surveymonkey).toBeDefined();
     expect(jotform).toBeDefined();
 
     expect(resolveComparisonCtaUrl(surveymonkey, "jotform")).toBe(surveymonkey.website);
-    expect(resolveComparisonCtaUrl(jotform, "surveymonkey")).toBe(jotform.website);
+    expect(resolveComparisonCtaUrl(jotform, "surveymonkey")).toBe("https://www.jotform.com/?partner=miloosh");
 
     expect(getSoftwareCtaRel(surveymonkey)).not.toContain("sponsored");
-    expect(getSoftwareCtaRel(jotform)).not.toContain("sponsored");
+    expect(getSoftwareCtaRel(jotform)).toContain("sponsored");
     expect(shouldShowAffiliateDisclosure(surveymonkey)).toBe(false);
-    expect(shouldShowAffiliateDisclosure(jotform)).toBe(false);
+    expect(shouldShowAffiliateDisclosure(jotform)).toBe(true);
   });
 });

@@ -5,7 +5,8 @@ export type PayoutRailId =
   | "partnerstack-personal"
   | "impact"
   | "tapfiliate-setmore"
-  | "mailerlite-tipalti";
+  | "mailerlite-tipalti"
+  | "jotform-tremendous";
 
 export type PayoutRail = {
   id: PayoutRailId;
@@ -87,6 +88,16 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     ownerActionPackId: "mailerlite-tipalti-payout",
     methodGuidance: "Prefer PayPal when operationally acceptable: MailerLite's current affiliate page says it covers PayPal transaction fees, while Direct Deposit and Wire Transfer fees are borne by the affiliate. Use another method only if the live Tipalti flow or owner preference makes it preferable.",
     notes: "MailerLite is active; payout-profile completion inside its Trackdesk/Tipalti flow remains unverified.",
+  },
+  {
+    id: "jotform-tremendous",
+    label: "Jotform / Tremendous",
+    accountIdentity: "Jotform partner account 'Eyal_hello' (hello@miloosh.com)",
+    partnerSlugs: ["jotform"],
+    readiness: "UNVERIFIED",
+    ownerActionPackId: "jotform-tremendous-payout",
+    methodGuidance: "Jotform's program page documents payouts via Tremendous; confirm the live payout method/profile directly in the Jotform partner dashboard before assuming any specific method is already configured.",
+    notes: "Jotform activated 2026-08-29 on the owner's direct first-hand account of Jotform Affiliate Marketing Specialist Anna Scheucher's approval and account-specific tracking links -- see data/affiliate/canonical-ledger.ts's jotform entry. Payout-profile completion inside the Jotform/Tremendous flow has not been separately verified.",
   },
 ] as const;
 

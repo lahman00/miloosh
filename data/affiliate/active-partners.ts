@@ -2,7 +2,7 @@ export const ACTIVE_PARTNER_SLUGS = [
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
-  "mailerlite", "omnisend", "wrike",
+  "mailerlite", "omnisend", "wrike", "jotform",
 ] as const;
 
 export type ActivePartnerSlug = (typeof ACTIVE_PARTNER_SLUGS)[number];
@@ -75,6 +75,24 @@ export type ActivePartner = {
  * data/affiliate/partner-materials-audit.ts. Do not re-add without explicit
  * first-party vendor confirmation, and do not accept the pending
  * PartnerStack invitation as a substitute for that confirmation.
+ *
+ * Jotform added 2026-08-29: an earlier attempt to activate this same
+ * relationship was declined because the supporting message bundled three
+ * git commit SHAs and two PR numbers that did not exist anywhere in this
+ * repository's history. This activation rests on a separate, later, direct
+ * first-hand account from the owner (not relayed via Codex or any other
+ * agent) of personally re-reading the original correspondence in the
+ * connected Gmail account: Jotform Affiliate Marketing Specialist Anna
+ * Scheucher confirmed approval on 2026-08-19 for account "Eyal_hello"
+ * (hello@miloosh.com), and, asked specifically for a link generated for
+ * that account (to rule out a demo or mismatched-partner link), supplied
+ * both URLs below stating "these are the tracking links associated with
+ * your account." Same evidentiary bar as MailerLite/Close/Omnisend. The
+ * homepage URL is the canonical CTA below; the pricing-intent URL
+ * (https://www.jotform.com/pricing/?partner=miloosh) is not wired into a
+ * second CTA surface, since this resolver returns one affiliateUrl per
+ * product regardless of page -- see data/affiliate/canonical-ledger.ts's
+ * jotform entry for the full evidence record.
  */
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
@@ -96,6 +114,7 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "mailerlite", status: "active", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", blocker: null },
   { slug: "omnisend", status: "active", affiliateUrl: "https://your.omnisend.com/PznLej", blocker: null },
   { slug: "wrike", status: "active", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij", blocker: null },
+  { slug: "jotform", status: "active", affiliateUrl: "https://www.jotform.com/?partner=miloosh", blocker: null },
 ] as const;
 
 const ACTIVE_PARTNERS_BY_SLUG = new Map(ACTIVE_PARTNERS.map((partner) => [partner.slug, partner]));
