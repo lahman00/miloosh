@@ -22,7 +22,7 @@ export interface ProductAffiliateAudit {
   slug: string;
   name: string;
   category: string;
-  gscImpressions: number;
+  heuristicSignal: number;
   classification: AffiliateClassification;
   programName: string | null;
   network: string | null;
@@ -102,7 +102,7 @@ export function runFullAffiliateSweep(): {
     const active = activeMap.get(softwareEntry.slug);
     const relationship = relationshipForProduct(softwareEntry.slug);
     const publicProgram = publicProgramMap.get(softwareEntry.slug);
-    const gscImpressions = HEURISTIC_TRAFFIC_SIGNAL[softwareEntry.slug] ?? 0;
+    const heuristicSignal = HEURISTIC_TRAFFIC_SIGNAL[softwareEntry.slug] ?? 0;
 
     let classification: AffiliateClassification = "NEEDS_MORE_RESEARCH";
     let notes = relationship?.notes ?? publicProgram?.notes ?? "No current relationship or sufficiently verified public program record.";
@@ -149,7 +149,7 @@ export function runFullAffiliateSweep(): {
       slug: softwareEntry.slug,
       name: softwareEntry.name,
       category: softwareEntry.category,
-      gscImpressions,
+      heuristicSignal,
       classification,
       programName,
       network,
@@ -163,7 +163,7 @@ export function runFullAffiliateSweep(): {
     });
   }
 
-  results.sort((a, b) => b.gscImpressions - a.gscImpressions || a.slug.localeCompare(b.slug));
+  results.sort((a, b) => b.heuristicSignal - a.heuristicSignal || a.slug.localeCompare(b.slug));
 
   return {
     totalAudited: software.length,
@@ -191,6 +191,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   });
   console.log("\nTOP 10 HIGH-TRAFFIC ELIGIBLE_READY_TO_APPLY CANDIDATES:");
   result.eligibleToApply.slice(0, 10).forEach((candidate) => {
-    console.log(`   - [${candidate.slug}] (heuristic signal: ${candidate.gscImpressions}, NOT verified GSC) | Network: ${candidate.network ?? "Direct/unknown"} | Commission: ${candidate.commissionStructure ?? "UNKNOWN"}`);
+    console.log(`   - [${candidate.slug}] (heuristic signal: ${candidate.heuristicSignal}, NOT verified GSC) | Network: ${candidate.network ?? "Direct/unknown"} | Commission: ${candidate.commissionStructure ?? "UNKNOWN"}`);
   });
 }

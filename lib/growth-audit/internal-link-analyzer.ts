@@ -8,7 +8,7 @@ import { HEURISTIC_TRAFFIC_SIGNAL } from "./comparison-graph";
 export function analyzeInternalLinkGraph(
   software: Software[] = getAllSoftware(),
   categories: Category[] = getAllCategories(),
-  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
+  heuristicSignalBySlug: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
 ): {
   rows: InternalLinkAuditRow[];
   orphans: string[];
@@ -85,7 +85,7 @@ export function analyzeInternalLinkGraph(
       type: "software",
       inboundCount: inCount,
       isActiveAffiliate: activeSet.has(s.slug),
-      heuristicSignal: gscImpressions[s.slug] ?? 0,
+      heuristicSignal: heuristicSignalBySlug[s.slug] ?? 0,
     });
   }
 

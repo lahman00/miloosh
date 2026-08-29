@@ -19,11 +19,11 @@ export function computeCategoryMoneyMap(
   categories: Category[] = getAllCategories(),
   software: Software[] = getAllSoftware(),
   pendingSlugs?: Set<string>,
-  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL,
+  heuristicSignalBySlug: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL,
   gscClicks: Record<string, number> = {},
   gscPositions: Record<string, number> = {}
 ): CategoryMoneyMapRow[] {
-  const gapRows = computeMonetizationGaps(software, pendingSlugs, undefined, undefined, gscImpressions);
+  const gapRows = computeMonetizationGaps(software, pendingSlugs, undefined, undefined, heuristicSignalBySlug);
   const statusBySlug = new Map(gapRows.map((row) => [row.slug, row.statusGroup]));
 
   return categories.map((category) => {
@@ -39,7 +39,7 @@ export function computeCategoryMoneyMap(
     let positionedImpressions = 0;
 
     for (const product of products) {
-      const impressions = gscImpressions[product.slug] ?? 0;
+      const impressions = heuristicSignalBySlug[product.slug] ?? 0;
       const clicks = gscClicks[product.slug] ?? 0;
       const position = gscPositions[product.slug] ?? null;
 
@@ -63,7 +63,7 @@ export function computeCategoryMoneyMap(
     let activeImpressions = 0;
     let activeClicks = 0;
     for (const activeProduct of activeProducts) {
-      activeImpressions += gscImpressions[activeProduct.slug] ?? 0;
+      activeImpressions += heuristicSignalBySlug[activeProduct.slug] ?? 0;
       activeClicks += gscClicks[activeProduct.slug] ?? 0;
     }
 

@@ -19,7 +19,8 @@ export interface CanonicalAffiliateRecord {
   slug: string;
   name: string;
   category: string;
-  gscImpressions: number;
+  /** Heuristic traffic-priority signal, NOT a verified GSC measurement -- see lib/growth-audit/comparison-graph.ts. */
+  heuristicSignal: number;
   status: CanonicalAffiliateStatus;
   network: string;
   commission: string;
@@ -144,7 +145,7 @@ export function buildCanonicalAffiliateState(): {
       slug: product.slug,
       name: product.name,
       category: product.category,
-      gscImpressions: product.gscImpressions,
+      heuristicSignal: product.heuristicSignal,
       status,
       network: product.network ?? "UNKNOWN",
       commission: product.commissionStructure ?? "UNKNOWN",
@@ -158,7 +159,7 @@ export function buildCanonicalAffiliateState(): {
     };
   });
 
-  records.sort((a, b) => b.gscImpressions - a.gscImpressions || a.slug.localeCompare(b.slug));
+  records.sort((a, b) => b.heuristicSignal - a.heuristicSignal || a.slug.localeCompare(b.slug));
 
   return {
     totalAudited: sweep.totalAudited,

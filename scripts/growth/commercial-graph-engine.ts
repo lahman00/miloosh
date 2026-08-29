@@ -32,7 +32,17 @@ export interface CommercialNode {
   affiliateNetwork: string | null;
   affiliateUrl: string | null;
   commissionModel: string | null;
-  gscImpressions: number;
+  /**
+   * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) P1-3: this is
+   * max(HEURISTIC_TRAFFIC_SIGNAL heuristic, real per-URL experiment
+   * impressions from var/agents/first-click-experiment.json when
+   * available) -- a genuine blend, not pure heuristic and not pure
+   * verified GSC data either, so neither label alone would be accurate.
+   * Named to say exactly that. gscClicks/avgPosition below are NOT
+   * blended -- they come only from the real experiment data (null/0 when
+   * none exists), never estimated.
+   */
+  bestAvailableTrafficSignal: number;
   gscClicks: number;
   avgPosition: number | null;
   queriesCount: number;
@@ -258,7 +268,7 @@ export function buildCommercialGraph(): CommercialGraphSummary {
         currentRelationship && currentRelationship.commissionModel !== "UNKNOWN"
           ? currentRelationship.commissionModel
           : prog?.commissionModel ?? null,
-      gscImpressions: imp,
+      bestAvailableTrafficSignal: imp,
       gscClicks: clicks,
       avgPosition: pos,
       queriesCount,

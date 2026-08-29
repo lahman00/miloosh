@@ -56,7 +56,7 @@ export function computeGraphNodeDegrees(software: Software[] = getAllSoftware())
 
 export function findMissingComparisonOpportunities(
   software: Software[] = getAllSoftware(),
-  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
+  heuristicSignalBySlug: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
 ): MissingComparisonCandidate[] {
   const publishedPairs = new Set<string>();
   for (const [a, b] of PUBLISHED_COMPARISONS) {
@@ -107,8 +107,8 @@ export function findMissingComparisonOpportunities(
       const s1Prog = progMap.get(s1.slug) === "yes";
       const s2Prog = progMap.get(s2.slug) === "yes";
 
-      const imp1 = gscImpressions[s1.slug] ?? 0;
-      const imp2 = gscImpressions[s2.slug] ?? 0;
+      const imp1 = heuristicSignalBySlug[s1.slug] ?? 0;
+      const imp2 = heuristicSignalBySlug[s2.slug] ?? 0;
       const maxImp = Math.max(imp1, imp2);
 
       let demandScore = 2;

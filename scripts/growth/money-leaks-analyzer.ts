@@ -10,7 +10,8 @@ export interface RankedOpportunity {
   group: "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H";
   groupName: string;
   score: number;
-  gscImpressions: number;
+  /** See CommercialNode.bestAvailableTrafficSignal (commercial-graph-engine.ts) -- a blend of heuristic and, when available, real experiment data. Not pure heuristic, not pure verified GSC. */
+  bestAvailableTrafficSignal: number;
   degree: number;
   monetizedComps: number;
   affiliateStatus: string;
@@ -33,7 +34,7 @@ export function rankCommercialOpportunities(): {
     let rationale = "";
     let actionableStep = "";
 
-    const hasTraffic = node.gscImpressions > 0;
+    const hasTraffic = node.bestAvailableTrafficSignal > 0;
     const isActive = node.affiliateStatus === "ACTIVE";
     const isPending = node.affiliateStatus === "PENDING";
     const isBlocked = node.affiliateStatus === "OWNER_BLOCKED" || node.affiliateStatus === "REJECTED";
@@ -42,20 +43,20 @@ export function rankCommercialOpportunities(): {
     if (isActive && hasTraffic) {
       group = "A";
       groupName = "TRAFFIC + ACTIVE AFFILIATE";
-      score = 90 + Math.min(node.gscImpressions / 5, 10);
-      rationale = `Active affiliate partner with a high heuristic traffic signal (${node.gscImpressions}, ${node.degree} comparisons) -- NOT a verified GSC measurement, see lib/growth-audit/comparison-graph.ts.`;
+      score = 90 + Math.min(node.bestAvailableTrafficSignal / 5, 10);
+      rationale = `Active affiliate partner with a high traffic signal (${node.bestAvailableTrafficSignal}, ${node.degree} comparisons) -- a blend of heuristic and real experiment data where available, not a pure verified GSC measurement, see commercial-graph-engine.ts's CommercialNode.bestAvailableTrafficSignal.`;
       actionableStep = `Maximize comparison bridge density and feature in high-intent role guides.`;
     } else if (hasTraffic && isPending) {
       group = "F";
-      groupName = "PENDING AFFILIATE + HEURISTIC TRAFFIC SIGNAL";
-      score = 80 + Math.min(node.gscImpressions / 5, 15);
-      rationale = `Affiliate application pending with a high heuristic traffic signal (${node.gscImpressions}) -- NOT a verified Search Console measurement, see lib/growth-audit/comparison-graph.ts.`;
+      groupName = "PENDING AFFILIATE + TRAFFIC SIGNAL";
+      score = 80 + Math.min(node.bestAvailableTrafficSignal / 5, 15);
+      rationale = `Affiliate application pending with a high traffic signal (${node.bestAvailableTrafficSignal}) -- a blend of heuristic and real experiment data where available, not a pure verified Search Console measurement.`;
       actionableStep = `Monitor affiliate network approval and prepare immediate CTA activation.`;
     } else if (hasTraffic && !isActive && !isBlocked) {
       group = "B";
       groupName = "TRAFFIC + NO AFFILIATE";
-      score = 75 + Math.min(node.gscImpressions / 5, 20);
-      rationale = `Shows a heuristic traffic signal (${node.gscImpressions} -- NOT a verified Search Console measurement) but unmonetized directly.`;
+      score = 75 + Math.min(node.bestAvailableTrafficSignal / 5, 20);
+      rationale = `Shows a traffic signal (${node.bestAvailableTrafficSignal} -- a blend of heuristic and real experiment data where available, not a pure verified Search Console measurement) but unmonetized directly.`;
       actionableStep = `Bridge via comparison pages to active partners and explore affiliate partnership.`;
     } else if (isActive && node.degree <= 8) {
       group = "C";
@@ -97,7 +98,7 @@ export function rankCommercialOpportunities(): {
       group,
       groupName,
       score,
-      gscImpressions: node.gscImpressions,
+      bestAvailableTrafficSignal: node.bestAvailableTrafficSignal,
       degree: node.degree,
       monetizedComps: node.monetizedComparisonsCount,
       affiliateStatus: node.affiliateStatus,
@@ -107,7 +108,7 @@ export function rankCommercialOpportunities(): {
     });
   }
 
-  opportunities.sort((a, b) => b.score - a.score || b.gscImpressions - a.gscImpressions || b.degree - a.degree);
+  opportunities.sort((a, b) => b.score - a.score || b.bestAvailableTrafficSignal - a.bestAvailableTrafficSignal || b.degree - a.degree);
   opportunities.forEach((op, idx) => {
     op.rank = idx + 1;
   });
@@ -128,6 +129,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`✓ Group breakdown:`, groupSummary);
   console.log(`\nTop 15 Commercial Opportunities:`);
   rankedNodes.slice(0, 15).forEach(op => {
-    console.log(`   #${String(op.rank).padStart(2)} [Group ${op.group}] ${op.name.padEnd(20)} (Score: ${op.score}) | Heuristic signal: ${String(op.gscImpressions).padStart(2)} | Comps: ${String(op.degree).padStart(2)} | ${op.actionableStep}`);
+    console.log(`   #${String(op.rank).padStart(2)} [Group ${op.group}] ${op.name.padEnd(20)} (Score: ${op.score}) | Traffic signal: ${String(op.bestAvailableTrafficSignal).padStart(2)} | Comps: ${String(op.degree).padStart(2)} | ${op.actionableStep}`);
   });
 }

@@ -53,7 +53,7 @@ export function computeMonetizationGaps(
   pendingSlugs?: Set<string>,
   rejectedSlugs?: Set<string>,
   ownerBlockedSlugs?: Set<string>,
-  gscImpressions: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
+  heuristicSignalBySlug: Record<string, number> = HEURISTIC_TRAFFIC_SIGNAL
 ): MonetizationGapRow[] {
   const activeSlugs = new Set<string>(
     ACTIVE_PARTNERS.filter((partner) => partner.status === "active" && Boolean(partner.affiliateUrl)).map((partner) => partner.slug as string)
@@ -98,7 +98,7 @@ export function computeMonetizationGaps(
       }
     }
 
-    const impressions = gscImpressions[softwareEntry.slug] ?? 0;
+    const impressions = heuristicSignalBySlug[softwareEntry.slug] ?? 0;
     const comparisons = getComparisonsInvolving(softwareEntry.slug).length;
 
     let demandScore = 2;

@@ -8,7 +8,8 @@ export interface TopMoneyOpportunity {
   slug: string;
   name: string;
   category: string;
-  gscImpressions: number;
+  /** Heuristic traffic-priority signal, NOT a verified GSC measurement -- see lib/growth-audit/comparison-graph.ts. */
+  heuristicSignal: number;
   programStatus:
     | "ACTIVE"
     | "APPROVED_NOT_ACTIVATED"
@@ -72,7 +73,7 @@ function strategicAction(
   name: string,
   network: string,
   comparisons: number,
-  gscImpressions: number,
+  heuristicSignal: number,
 ): string {
   switch (status) {
     case "ACTIVE":
@@ -84,7 +85,7 @@ function strategicAction(
     case "OWNER_BLOCKED":
       return `Current relationship requires an owner-only checkpoint. Resolve only the blocker recorded in current affiliate truth.`;
     case "ELIGIBLE_READY_TO_APPLY":
-      return `A current public program is evidenced. Prioritize an application only if a heuristic traffic signal of ${gscImpressions} (NOT a measured GSC impression count) and ${comparisons} comparison route(s) justify the owner/network cost.`;
+      return `A current public program is evidenced. Prioritize an application only if a heuristic traffic signal of ${heuristicSignal} (NOT a measured GSC impression count) and ${comparisons} comparison route(s) justify the owner/network cost.`;
     case "NEEDS_MORE_RESEARCH":
       return `${name} has demand/coverage but no sufficiently verified current relationship. Verify the vendor's current publisher route before any application work.`;
   }
@@ -115,20 +116,20 @@ export function rankTopMoneyOpportunities(): TopMoneyOpportunity[] {
     const comparisons = compCounts.get(product.slug) ?? 0;
     const network = product.network ?? "UNKNOWN";
     const commission = product.commissionStructure ?? "UNKNOWN";
-    const score = product.gscImpressions * 2 + comparisons * 1.5 + statusBonus(status);
+    const score = product.heuristicSignal * 2 + comparisons * 1.5 + statusBonus(status);
 
     list.push({
       rank: 0,
       slug: product.slug,
       name: product.name,
       category: product.category,
-      gscImpressions: product.gscImpressions,
+      heuristicSignal: product.heuristicSignal,
       programStatus: status,
       network,
       commission,
       publishedComparisons: comparisons,
       moneyScore: Number(score.toFixed(1)),
-      strategicAction: strategicAction(status, product.name, network, comparisons, product.gscImpressions),
+      strategicAction: strategicAction(status, product.name, network, comparisons, product.heuristicSignal),
     });
   }
 
@@ -149,7 +150,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log("================================================================\n");
   console.log("NOTE: live first-party revenue priority is computed separately by the canonical Money Priority Engine.\n");
   top20.forEach((opportunity) => {
-    console.log(`#${String(opportunity.rank).padStart(2)}. [${opportunity.name}] (Score: ${opportunity.moneyScore}) | Heuristic signal: ${opportunity.gscImpressions} | Comps: ${opportunity.publishedComparisons} | Status: ${opportunity.programStatus}`);
+    console.log(`#${String(opportunity.rank).padStart(2)}. [${opportunity.name}] (Score: ${opportunity.moneyScore}) | Heuristic signal: ${opportunity.heuristicSignal} | Comps: ${opportunity.publishedComparisons} | Status: ${opportunity.programStatus}`);
     console.log(`     Network: ${opportunity.network} | Commission: ${opportunity.commission}`);
     console.log(`     Action:  ${opportunity.strategicAction}\n`);
   });

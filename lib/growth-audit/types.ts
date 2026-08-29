@@ -98,7 +98,8 @@ export type MasterOpportunityRow = {
   type: OpportunityType;
   target: string;
   evidence: string;
-  gscImpressions: number | null;
+  /** Heuristic traffic-priority signal, NOT a verified GSC measurement -- see lib/growth-audit/comparison-graph.ts. Currently unused: no code constructs a MasterOpportunityRow anywhere in this repo. */
+  heuristicSignal: number | null;
   currentPosition: number | null;
   affiliateStatus: "ACTIVE" | "PENDING" | "VIABLE" | "OWNER_BLOCKED" | "UNCERTAIN" | "NONE";
   commercialIntent: "High" | "Medium" | "Low";
