@@ -47,6 +47,8 @@
     "social:post-publish-review": "tsx scripts/social/post-publish-review.ts",
     "reddit:worker": "tsx scripts/reddit/worker.ts",
     "reddit:gmail": "tsx scripts/reddit/gmail-transport.ts",
+    "facebook:worker": "tsx scripts/facebook/worker.ts",
+    "facebook:gmail": "tsx scripts/facebook/gmail-transport.ts",
     "test": "vitest run"
   },
   "dependencies": {
