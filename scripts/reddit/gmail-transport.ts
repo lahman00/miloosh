@@ -1,9 +1,9 @@
 import { createServer } from "node:http";
 import { execFileSync, spawn } from "node:child_process";
 import { randomBytes } from "node:crypto";
-import { mkdir, readFile, readdir, rename, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { parseRedditTask, type RedditTask } from "./worker";
 
 export const MAX_TASK_BODY_BYTES = 32 * 1024;
@@ -21,8 +21,10 @@ const OAUTH_CLIENT_PATH = process.env.MILOOSH_GMAIL_OAUTH_CLIENT ?? join(homedir
 const KEYCHAIN_SERVICE = "com.miloosh.gmail-reddit.oauth";
 const KEYCHAIN_ACCOUNT = "refresh-token";
 const BRIDGE_ROOT = process.env.MILOOSH_BRIDGE_ROOT ?? join(homedir(), "Library", "CloudStorage", "GoogleDrive-lahman00@gmail.com", "My Drive", "ImportFix-Claude-Bridge");
-const INBOX_DIR = join(BRIDGE_ROOT, "inbox");
-const OUTBOX_DIR = join(BRIDGE_ROOT, "outbox");
+const TASK_DIR = join(STATE_DIR, "tasks");
+const RESULT_DIR = join(STATE_DIR, "results");
+const WORKER_TIMEOUT_MS = Number(process.env.MILOOSH_REDDIT_WORKER_TIMEOUT_MS ?? "120000");
+const GMAIL_TIMEOUT_MS = Number(process.env.MILOOSH_GMAIL_TIMEOUT_MS ?? "15000");
 
 type OAuthClient = {
   client_id: string;
@@ -44,11 +46,26 @@ type MimePart = {
   parts?: MimePart[];
 };
 
-export type TransportLedger = {
-  version: 1;
-  messages: Record<string, { task_id: string | null; disposition: "accepted" | "rejected"; processed_at: string }>;
-  tasks: Record<string, { message_id: string; sender: string; accepted_at: string; result_sent_at?: string }>;
+export type TaskState = "RECEIVED" | "ACCEPTED" | "EXECUTING" | "RESULT_READY" | "RESULT_SENT" | "FAILED";
+export type TransportTaskEntry = {
+  message_id: string;
+  sender: string;
+  command: RedditTask["command"];
+  state: TaskState;
+  accepted_at: string;
+  updated_at: string;
+  task_path: string;
+  result_path: string;
+  result_sent_at?: string;
+  terminal_message_id?: string;
+  error?: string;
 };
+export type TransportLedger = {
+  version: 2;
+  messages: Record<string, { task_id: string | null; disposition: "accepted" | "rejected"; processed_at: string }>;
+  tasks: Record<string, TransportTaskEntry>;
+};
+type LegacyLedger = { version?: 1; messages?: TransportLedger["messages"]; tasks?: Record<string, { message_id: string; sender: string; accepted_at: string; result_sent_at?: string }> };
 
 export type ParsedIncomingTask = {
   taskId: string;
@@ -56,7 +73,7 @@ export type ParsedIncomingTask = {
 };
 
 function emptyLedger(): TransportLedger {
-  return { version: 1, messages: {}, tasks: {} };
+  return { version: 2, messages: {}, tasks: {} };
 }
 
 function base64UrlDecode(value: string): string {
@@ -142,7 +159,7 @@ export function buildResultEmail(taskId: string, resultBody: string, recipient: 
     `From: ${EXPECTED_EMAIL}`,
     `Subject: ${subject}`,
     "MIME-Version: 1.0",
-    "Content-Type: application/json; charset=UTF-8",
+    "Content-Type: text/plain; charset=UTF-8",
     "Content-Transfer-Encoding: 8bit",
     "",
     resultBody,
@@ -155,7 +172,18 @@ export function isReplay(ledger: TransportLedger, messageId: string, taskId: str
 }
 
 async function readLedger(): Promise<TransportLedger> {
-  return readFile(LEDGER_PATH, "utf8").then((value) => JSON.parse(value) as TransportLedger).catch(() => emptyLedger());
+  const raw = await readFile(LEDGER_PATH, "utf8").then((value) => JSON.parse(value) as TransportLedger | LegacyLedger).catch(() => emptyLedger());
+  if (raw.version === 2) return raw as TransportLedger;
+  const migrated = emptyLedger();
+  migrated.messages = raw.messages ?? {};
+  for (const [taskId, entry] of Object.entries(raw.tasks ?? {})) {
+    const taskPath = join(TASK_DIR, `miloosh_task_reddit_${taskId}.json`);
+    const legacyPath = join(BRIDGE_ROOT, "inbox", `miloosh_task_reddit_${taskId}.json`);
+    const resultPath = join(RESULT_DIR, `result_miloosh_task_reddit_${taskId}.json`);
+    migrated.tasks[taskId] = { message_id: entry.message_id, sender: entry.sender, command: "reddit_status", state: entry.result_sent_at ? "RESULT_SENT" : "ACCEPTED", accepted_at: entry.accepted_at, updated_at: entry.accepted_at, task_path: await stat(taskPath).then(() => taskPath).catch(() => legacyPath), result_path: resultPath, result_sent_at: entry.result_sent_at };
+  }
+  await writeLedger(migrated);
+  return migrated;
 }
 
 async function writeLedger(ledger: TransportLedger): Promise<void> {
@@ -201,6 +229,7 @@ async function accessToken(): Promise<string> {
 async function gmail<T>(token: string, path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me${path}`, {
     ...init,
+    signal: init?.signal ?? AbortSignal.timeout(GMAIL_TIMEOUT_MS),
     headers: { authorization: `Bearer ${token}`, "content-type": "application/json", ...(init?.headers ?? {}) },
   });
   if (!response.ok) throw new Error(`GMAIL_API_${response.status}`);
@@ -228,12 +257,12 @@ async function modifyMessage(token: string, messageId: string, addLabelIds: stri
   await gmail(token, `/messages/${encodeURIComponent(messageId)}/modify`, { method: "POST", body: JSON.stringify({ addLabelIds, removeLabelIds: ["UNREAD"] }) });
 }
 
-async function sendRaw(token: string, raw: string): Promise<void> {
-  await gmail(token, "/messages/send", { method: "POST", body: JSON.stringify({ raw }) });
+async function sendRaw(token: string, raw: string): Promise<string> {
+  return (await gmail<{ id: string }>(token, "/messages/send", { method: "POST", body: JSON.stringify({ raw }), signal: AbortSignal.timeout(GMAIL_TIMEOUT_MS) })).id;
 }
 
 async function rejectionEmail(token: string, taskId: string, reason: string, recipient: string): Promise<void> {
-  const body = `${JSON.stringify({ ok: false, status: "REJECTED", reason, human_action_required: false }, null, 2)}\n`;
+  const body = `${JSON.stringify({ request_id: taskId, command: null, ok: false, status: "REJECTED", reason, error: reason, retryable: false, human_action_required: false }, null, 2)}\n`;
   await sendRaw(token, buildResultEmail(taskId, body, recipient).raw);
 }
 
@@ -250,16 +279,20 @@ async function acceptIncoming(token: string, email: string, message: GmailMessag
     const parsed = parseIncomingTask({ subject, body, from, to, authenticatedEmail: email, seenTaskIds: new Set(Object.keys(ledger.tasks)) });
     if (isReplay(ledger, message.id, parsed.taskId)) throw new Error("DUPLICATE_TASK_ID");
 
-    await mkdir(INBOX_DIR, { recursive: true });
-    const target = join(INBOX_DIR, `miloosh_task_reddit_${parsed.taskId}.json`);
+    await mkdir(TASK_DIR, { recursive: true, mode: 0o700 });
+    await mkdir(RESULT_DIR, { recursive: true, mode: 0o700 });
+    const target = join(TASK_DIR, `miloosh_task_reddit_${parsed.taskId}.json`);
     const existing = await stat(target).then(() => true).catch(() => false);
     if (existing) throw new Error("DUPLICATE_TASK_ID");
     const temporary = `${target}.tmp`;
     await writeFile(temporary, `${JSON.stringify(parsed.task, null, 2)}\n`, { encoding: "utf8", mode: 0o600 });
     await rename(temporary, target);
 
-    ledger.messages[message.id] = { task_id: parsed.taskId, disposition: "accepted", processed_at: new Date().toISOString() };
-    ledger.tasks[parsed.taskId] = { message_id: message.id, sender, accepted_at: new Date().toISOString() };
+    const now = new Date().toISOString();
+    ledger.tasks[parsed.taskId] = { message_id: message.id, sender, command: parsed.task.command, state: "RECEIVED", accepted_at: now, updated_at: now, task_path: target, result_path: join(RESULT_DIR, `result_miloosh_task_reddit_${parsed.taskId}.json`) };
+    await writeLedger(ledger);
+    ledger.messages[message.id] = { task_id: parsed.taskId, disposition: "accepted", processed_at: now };
+    ledger.tasks[parsed.taskId]!.state = "ACCEPTED";
     await writeLedger(ledger);
     await modifyMessage(token, message.id, [labels.processed]);
   } catch (error) {
@@ -271,16 +304,73 @@ async function acceptIncoming(token: string, email: string, message: GmailMessag
   }
 }
 
-async function syncResults(token: string, ledger: TransportLedger): Promise<void> {
-  const files = await readdir(OUTBOX_DIR).catch(() => []);
-  for (const file of files.filter((name) => /^result_miloosh_task_reddit_.+\.json$/.test(name))) {
-    const taskId = file.replace(/^result_miloosh_task_reddit_/, "").replace(/\.json$/, "");
-    const entry = ledger.tasks[taskId];
-    if (!entry || entry.result_sent_at) continue;
-    const resultBody = await readFile(join(OUTBOX_DIR, file), "utf8");
-    await sendRaw(token, buildResultEmail(taskId, resultBody, entry.sender).raw);
-    entry.result_sent_at = new Date().toISOString();
-    await writeLedger(ledger);
+export function structuredFailure(taskId: string, command: string | null, status: string, retryable = false, humanActionRequired = false): string {
+  return `${JSON.stringify({ request_id: taskId, command, ok: false, status, reason: status, error: status, retryable, human_action_required: humanActionRequired }, null, 2)}\n`;
+}
+
+function normalizeWorkerResult(taskId: string, command: RedditTask["command"], value: string): string {
+  try {
+    const parsed = JSON.parse(value) as Record<string, unknown>;
+    return `${JSON.stringify({ request_id: taskId, command, retryable: false, human_action_required: false, ...parsed }, null, 2)}\n`;
+  } catch {
+    return structuredFailure(taskId, command, "WORKER_INVALID_OUTPUT");
+  }
+}
+
+async function writeResult(entry: TransportTaskEntry, body: string): Promise<void> {
+  await mkdir(dirname(entry.result_path), { recursive: true, mode: 0o700 });
+  const temporary = `${entry.result_path}.tmp`;
+  await writeFile(temporary, body, { encoding: "utf8", mode: 0o600 });
+  await rename(temporary, entry.result_path);
+}
+
+async function runWorker(taskPath: string): Promise<{ output: string; timedOut: boolean }> {
+  return new Promise((resolveRun) => {
+    const child = spawn(process.execPath, [resolve("node_modules/tsx/dist/cli.mjs"), resolve("scripts/reddit/worker.ts"), "--task", taskPath], { cwd: resolve("."), stdio: ["ignore", "pipe", "ignore"] });
+    const chunks: Buffer[] = [];
+    child.stdout.on("data", (chunk) => chunks.push(Buffer.from(chunk)));
+    let timedOut = false;
+    const timer = setTimeout(() => { timedOut = true; child.kill("SIGTERM"); }, WORKER_TIMEOUT_MS);
+    child.on("close", () => { clearTimeout(timer); resolveRun({ output: Buffer.concat(chunks).toString("utf8"), timedOut }); });
+    child.on("error", () => { clearTimeout(timer); resolveRun({ output: "", timedOut: false }); });
+  });
+}
+
+export function reconcileRestart(entry: TransportTaskEntry): { action: "execute" | "send" | "fail" | "none"; status?: string } {
+  if (entry.state === "RECEIVED" || entry.state === "ACCEPTED") return { action: "execute" };
+  if (entry.state === "RESULT_READY" || (entry.state === "FAILED" && !entry.result_sent_at)) return { action: "send" };
+  if (entry.state === "EXECUTING") return entry.command === "reddit_reply" || entry.command === "reddit_create_post" ? { action: "fail", status: "AMBIGUOUS_WRITE_NOT_RETRIED" } : { action: "execute" };
+  return { action: "none" };
+}
+
+async function reconcileTasks(token: string, ledger: TransportLedger): Promise<void> {
+  for (const [taskId, entry] of Object.entries(ledger.tasks)) {
+    let action = reconcileRestart(entry);
+    if (action.action === "fail") {
+      await writeResult(entry, structuredFailure(taskId, entry.command, action.status!));
+      entry.state = "FAILED"; entry.error = action.status; entry.updated_at = new Date().toISOString();
+      await writeLedger(ledger); action = { action: "send" };
+    }
+    if (action.action === "execute") {
+      entry.state = "EXECUTING"; entry.updated_at = new Date().toISOString(); await writeLedger(ledger);
+      const run = await runWorker(entry.task_path);
+      const body = run.timedOut ? structuredFailure(taskId, entry.command, "WORKER_TIMEOUT", false, true) : normalizeWorkerResult(taskId, entry.command, run.output);
+      await writeResult(entry, body);
+      const parsed = JSON.parse(body) as { ok?: boolean; status?: string };
+      entry.state = parsed.ok === true ? "RESULT_READY" : "FAILED"; entry.error = parsed.ok ? undefined : parsed.status; entry.updated_at = new Date().toISOString(); await writeLedger(ledger);
+      action = { action: "send" };
+    }
+    if (action.action === "send" && !entry.result_sent_at) {
+      const body = await readFile(entry.result_path, "utf8").catch(() => structuredFailure(taskId, entry.command, "RESULT_FILE_MISSING"));
+      try {
+        entry.terminal_message_id = await sendRaw(token, buildResultEmail(taskId, body, entry.sender).raw);
+        entry.result_sent_at = new Date().toISOString(); entry.updated_at = entry.result_sent_at;
+        if (entry.state !== "FAILED") entry.state = "RESULT_SENT";
+        await writeLedger(ledger);
+      } catch (error) {
+        entry.updated_at = new Date().toISOString(); entry.error = error instanceof Error ? error.message : "RESULT_SEND_FAILED"; await writeLedger(ledger);
+      }
+    }
   }
 }
 
@@ -295,7 +385,7 @@ async function pollOnce(): Promise<void> {
     const message = await gmail<GmailMessage>(token, `/messages/${encodeURIComponent(item.id)}?format=full`);
     await acceptIncoming(token, email, message, ledger, labels);
   }
-  await syncResults(token, ledger);
+  await reconcileTasks(token, ledger);
   process.stdout.write(`${JSON.stringify({ ok: true, status: "POLL_COMPLETE", account: email, messages_checked: listed.messages?.length ?? 0 })}\n`);
 }
 

@@ -9,6 +9,7 @@ import { z } from "zod";
 const STATE_DIR = process.env.MILOOSH_REDDIT_STATE_DIR ?? join(homedir(), ".local", "share", "miloosh-reddit-worker");
 const PROFILE_DIR = join(STATE_DIR, "chrome-profile");
 const ACTION_LOG = join(STATE_DIR, "logs", "actions.jsonl");
+const AUTONOMOUS_POLICY_PATH = join(STATE_DIR, "autonomous-policy.json");
 const APPROVAL_DIR = join(STATE_DIR, "approvals");
 const LOCK_DIR = join(STATE_DIR, "run.lock");
 const DEFAULT_CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -31,6 +32,35 @@ export const taskSchema = z.discriminatedUnion("command", [
 ]);
 
 export type RedditTask = z.infer<typeof taskSchema>;
+
+export type AutonomousPolicy = {
+  autonomous_write_enabled: boolean;
+  max_comments_24h: number;
+  max_posts_24h: number;
+  max_posts_7d: number;
+  min_write_interval_minutes: number;
+  disabled_reason?: string;
+  disabled_at?: string;
+};
+
+export type ActionLogEntry = {
+  timestamp: string;
+  request_id: string | null;
+  command: "reddit_reply" | "reddit_create_post";
+  subreddit: string | null;
+  thread_url: string | null;
+  published_permalink: string;
+  had_miloosh_link: boolean;
+  text_sha256: string;
+};
+
+export const DEFAULT_AUTONOMOUS_POLICY: AutonomousPolicy = {
+  autonomous_write_enabled: false,
+  max_comments_24h: 8,
+  max_posts_24h: 1,
+  max_posts_7d: 3,
+  min_write_interval_minutes: 20,
+};
 
 type WorkerResult = {
   ok: boolean;
@@ -58,6 +88,63 @@ export function approvalId(task: RedditTask): string {
 
 function isWriteTask(task: RedditTask): task is Extract<RedditTask, { command: "reddit_reply" | "reddit_create_post" }> {
   return task.command === "reddit_reply" || task.command === "reddit_create_post";
+}
+
+function taskText(task: Extract<RedditTask, { command: "reddit_reply" | "reddit_create_post" }>): string {
+  return task.command === "reddit_reply" ? task.text : `${task.title}\n\n${task.body}`;
+}
+
+export function textSha256(task: Extract<RedditTask, { command: "reddit_reply" | "reddit_create_post" }>): string {
+  return createHash("sha256").update(taskText(task)).digest("hex");
+}
+
+export function evaluateAutonomousWrite(task: RedditTask, policy: AutonomousPolicy, actions: ActionLogEntry[], now = new Date()): { allowed: boolean; status: string } {
+  if (!isWriteTask(task)) return { allowed: true, status: "READ_ONLY" };
+  if (!policy.autonomous_write_enabled) return { allowed: false, status: "AUTONOMOUS_WRITE_DISABLED" };
+  const time = now.getTime();
+  const since24h = actions.filter((entry) => time - Date.parse(entry.timestamp) < 86_400_000);
+  const since7d = actions.filter((entry) => time - Date.parse(entry.timestamp) < 7 * 86_400_000);
+  const last = [...actions].sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))[0];
+  if (last && time - Date.parse(last.timestamp) < policy.min_write_interval_minutes * 60_000) return { allowed: false, status: "WRITE_INTERVAL_LIMIT" };
+  if (actions.some((entry) => entry.text_sha256 === textSha256(task))) return { allowed: false, status: "DUPLICATE_TEXT" };
+  if (task.command === "reddit_reply") {
+    if (since24h.filter((entry) => entry.command === "reddit_reply").length >= policy.max_comments_24h) return { allowed: false, status: "DAILY_COMMENT_CAP" };
+    if (actions.some((entry) => entry.command === "reddit_reply" && entry.thread_url === task.thread_url)) return { allowed: false, status: "SAME_THREAD_REPLY_REQUIRES_NEW_DIRECT_REPLY" };
+  } else {
+    if (since24h.filter((entry) => entry.command === "reddit_create_post").length >= policy.max_posts_24h) return { allowed: false, status: "DAILY_POST_CAP" };
+    if (since7d.filter((entry) => entry.command === "reddit_create_post").length >= policy.max_posts_7d) return { allowed: false, status: "ROLLING_7_DAY_POST_CAP" };
+  }
+  return { allowed: true, status: "AUTONOMOUS_EXECUTION_ALLOWED" };
+}
+
+async function readPolicy(): Promise<AutonomousPolicy> {
+  return readFile(AUTONOMOUS_POLICY_PATH, "utf8").then((value) => ({ ...DEFAULT_AUTONOMOUS_POLICY, ...JSON.parse(value) } as AutonomousPolicy)).catch(() => ({ ...DEFAULT_AUTONOMOUS_POLICY }));
+}
+
+async function writePolicy(policy: AutonomousPolicy): Promise<void> {
+  await mkdir(STATE_DIR, { recursive: true, mode: 0o700 });
+  await writeFile(AUTONOMOUS_POLICY_PATH, `${JSON.stringify(policy, null, 2)}\n`, { encoding: "utf8", mode: 0o600 });
+  await chmod(AUTONOMOUS_POLICY_PATH, 0o600);
+}
+
+async function readActions(): Promise<ActionLogEntry[]> {
+  return readFile(ACTION_LOG, "utf8").then((value) => value.split("\n").filter(Boolean).map((line) => JSON.parse(line) as ActionLogEntry)).catch(() => []);
+}
+
+async function disableAutonomousWrites(reason: string): Promise<void> {
+  const policy = await readPolicy();
+  await writePolicy({ ...policy, autonomous_write_enabled: false, disabled_reason: reason, disabled_at: new Date().toISOString() });
+}
+
+export function isSafetyShutdownStatus(status: string): boolean {
+  return new Set(["CAPTCHA", "REDDIT_JS_CHALLENGE", "ACCOUNT_VERIFICATION", "SUSPICIOUS_LOGIN", "POSTING_RESTRICTION", "MODERATOR_WARNING", "RATE_LIMIT", "COMMENTS_UNAVAILABLE", "THREAD_LOCKED", "THREAD_REMOVED"]).has(status);
+}
+
+async function authorizeWrite(task: RedditTask): Promise<void> {
+  if (!isWriteTask(task)) return;
+  if (await hasValidApproval(task)) return requireAndConsumeApproval(task);
+  const decision = evaluateAutonomousWrite(task, await readPolicy(), await readActions());
+  if (!decision.allowed) throw new Error(decision.status);
 }
 
 export function requiresWriteApproval(task: RedditTask): boolean {
@@ -111,8 +198,11 @@ async function approveTask(path: string): Promise<void> {
 
 async function firstVisible(locators: Locator[]): Promise<Locator | null> {
   for (const locator of locators) {
-    const candidate = locator.first();
-    if (await candidate.isVisible().catch(() => false)) return candidate;
+    const count = Math.min(await locator.count().catch(() => 0), 20);
+    for (let index = 0; index < count; index += 1) {
+      const candidate = locator.nth(index);
+      if (await candidate.isVisible().catch(() => false)) return candidate;
+    }
   }
   return null;
 }
@@ -179,7 +269,7 @@ async function openThread(page: Page, threadUrl: string) {
   const body = (await page.locator("body").innerText().catch(() => "")).toLowerCase();
   const locked = (await post.getAttribute("is-locked").catch(() => null)) === "true" || /comments are locked/.test(body);
   const removed = /\[removed\]|this post was removed|removed by reddit/.test(body);
-  const composerVisible = await page.locator("shreddit-composer, textarea[placeholder*='comment' i]").first().isVisible().catch(() => false);
+  const composerVisible = await page.locator("shreddit-composer, textarea[placeholder*='comment' i], textarea[placeholder*='conversation' i]").filter({ visible: true }).first().isVisible().catch(() => false);
 
   return {
     title,
@@ -217,24 +307,30 @@ async function status(page: Page, waitSeconds = 0): Promise<WorkerResult> {
   }
   const finalChallenge = await detectChallenge(page);
   if (finalChallenge) return { ok: false, command: "reddit_status", status: finalChallenge, authenticated: false, username: null, current_url: sanitizeRedditUrl(page.url()) };
-  return { ok: session.authenticated, command: "reddit_status", status: session.authenticated ? "AUTHENTICATED" : "LOGIN_REQUIRED", ...session };
+  const policy = await readPolicy();
+  return { ok: session.authenticated, command: "reddit_status", status: session.authenticated ? "AUTHENTICATED" : "LOGIN_REQUIRED", ...session, autonomous_write_enabled: policy.autonomous_write_enabled, autonomous_policy: { max_comments_24h: policy.max_comments_24h, max_posts_24h: policy.max_posts_24h, max_posts_7d: policy.max_posts_7d, min_write_interval_minutes: policy.min_write_interval_minutes }, autonomous_disabled_reason: policy.disabled_reason ?? null };
 }
 
 async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_reply" }>): Promise<WorkerResult> {
-  const session = await requireAuthenticated(page);
+  await requireAuthenticated(page);
   const thread = await openThread(page, task.thread_url);
+  if (thread.locked) return { ok: false, command: task.command, status: "THREAD_LOCKED", ...thread };
+  if (thread.removed) return { ok: false, command: task.command, status: "THREAD_REMOVED", ...thread };
   if (!thread.comments_enabled) return { ok: false, command: task.command, status: "COMMENTS_UNAVAILABLE", ...thread };
+  await authorizeWrite(task);
 
   const opener = await firstVisible([
     page.getByRole("button", { name: /add a comment|join the conversation/i }),
-    page.locator("shreddit-composer"),
+    page.locator("textarea[placeholder*='conversation' i]"),
     page.locator("textarea[placeholder*='comment' i]"),
   ]);
   if (!opener) return { ok: false, command: task.command, status: "COMMENT_COMPOSER_NOT_FOUND", ...thread };
   await opener.click().catch(() => undefined);
+  await page.waitForTimeout(750);
 
   const editor = await firstVisible([
     page.locator("textarea[placeholder*='comment' i]"),
+    page.locator("textarea[placeholder*='conversation' i]"),
     page.locator("shreddit-composer [contenteditable='true']"),
     page.locator("[contenteditable='true'][role='textbox']"),
   ]);
@@ -246,7 +342,6 @@ async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_re
     page.getByRole("button", { name: /^reply$/i }),
   ]);
   if (!submit) return { ok: false, command: task.command, status: "COMMENT_SUBMIT_NOT_FOUND", ...thread };
-  await requireAndConsumeApproval(task);
   await submit.click();
 
   await page.waitForTimeout(2_000);
@@ -258,13 +353,14 @@ async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_re
   }
   const permalinkHref = await exact.locator('a[href*="/comments/"]').last().getAttribute("href").catch(() => null);
   const permalink = permalinkHref ? new URL(permalinkHref, "https://www.reddit.com").toString() : page.url();
-  await appendActionLog({ timestamp: new Date().toISOString(), action: task.command, subreddit: thread.subreddit, source_thread_url: task.thread_url, published_permalink: permalink, exact_text_posted: task.text, username: session.username });
+  await appendActionLog({ timestamp: new Date().toISOString(), request_id: task.request_id ?? null, command: task.command, subreddit: thread.subreddit, thread_url: task.thread_url, published_permalink: permalink, had_miloosh_link: /(?:https?:\/\/)?(?:www\.)?miloosh\.com/i.test(task.text), text_sha256: textSha256(task) });
   return { ok: true, command: task.command, status: "PUBLISHED", permalink, subreddit: thread.subreddit };
 }
 
 async function createPost(page: Page, task: Extract<RedditTask, { command: "reddit_create_post" }>): Promise<WorkerResult> {
-  const session = await requireAuthenticated(page);
+  await requireAuthenticated(page);
   const sub = normalizeSubreddit(task.subreddit);
+  await authorizeWrite(task);
   await page.goto(`https://www.reddit.com/r/${encodeURIComponent(sub)}/submit?type=TEXT`, { waitUntil: "domcontentloaded", timeout: 45_000 });
   const challenge = await detectChallenge(page);
   if (challenge) return { ok: false, command: task.command, status: challenge, current_url: sanitizeRedditUrl(page.url()) };
@@ -281,14 +377,13 @@ async function createPost(page: Page, task: Extract<RedditTask, { command: "redd
 
   const submit = await firstVisible([page.getByRole("button", { name: /^post$/i })]);
   if (!submit || await submit.isDisabled()) return { ok: false, command: task.command, status: "MANDATORY_FIELD_OR_RESTRICTION", current_url: sanitizeRedditUrl(page.url()) };
-  await requireAndConsumeApproval(task);
   await Promise.all([page.waitForURL(/\/comments\//, { timeout: 30_000 }).catch(() => undefined), submit.click()]);
   const postChallenge = await detectChallenge(page);
   if (postChallenge) return { ok: false, command: task.command, status: postChallenge, current_url: sanitizeRedditUrl(page.url()) };
   if (!/\/comments\//.test(page.url())) return { ok: false, command: task.command, status: "AMBIGUOUS_SUBMISSION_NOT_RETRIED", current_url: sanitizeRedditUrl(page.url()) };
 
   const permalink = sanitizeRedditUrl(page.url());
-  await appendActionLog({ timestamp: new Date().toISOString(), action: task.command, subreddit: sub, source_thread_url: null, published_permalink: permalink, exact_text_posted: { title: task.title, body: task.body }, username: session.username });
+  await appendActionLog({ timestamp: new Date().toISOString(), request_id: task.request_id ?? null, command: task.command, subreddit: sub, thread_url: null, published_permalink: permalink, had_miloosh_link: /(?:https?:\/\/)?(?:www\.)?miloosh\.com/i.test(`${task.title}\n${task.body}`), text_sha256: textSha256(task) });
   return { ok: true, command: task.command, status: "PUBLISHED", permalink, subreddit: sub };
 }
 
@@ -385,6 +480,14 @@ async function connectPersistentChrome(): Promise<BrowserContext> {
 async function main(): Promise<void> {
   try {
     await acquireLock();
+    const autonomousIndex = process.argv.indexOf("--set-autonomous");
+    if (autonomousIndex >= 0 && process.argv[autonomousIndex + 1]) {
+      const enabled = process.argv[autonomousIndex + 1] === "true";
+      if (!enabled && process.argv[autonomousIndex + 1] !== "false") throw new Error("INVALID_AUTONOMOUS_VALUE");
+      await writePolicy({ ...await readPolicy(), autonomous_write_enabled: enabled, disabled_reason: undefined, disabled_at: undefined });
+      process.stdout.write(`${JSON.stringify({ ok: true, status: enabled ? "AUTONOMOUS_WRITES_ENABLED" : "AUTONOMOUS_WRITES_DISABLED", autonomous_write_enabled: enabled }, null, 2)}\n`);
+      return;
+    }
     const approvalIndex = process.argv.indexOf("--approve-task");
     if (approvalIndex >= 0 && process.argv[approvalIndex + 1]) {
       await approveTask(process.argv[approvalIndex + 1]!);
@@ -393,7 +496,7 @@ async function main(): Promise<void> {
     const approvalCheckIndex = process.argv.indexOf("--check-approval");
     if (approvalCheckIndex >= 0 && process.argv[approvalCheckIndex + 1]) {
       const task = parseRedditTask(JSON.parse(await readFile(resolve(process.argv[approvalCheckIndex + 1]!), "utf8")));
-      const approved = await hasValidApproval(task);
+      const approved = await hasValidApproval(task) || evaluateAutonomousWrite(task, await readPolicy(), await readActions()).allowed;
       process.stdout.write(`${JSON.stringify({ ok: approved, status: approved ? "EXECUTION_ALLOWED" : "WRITE_APPROVAL_REQUIRED", approval_id: isWriteTask(task) ? approvalId(task) : null }, null, 2)}\n`);
       if (!approved) process.exitCode = 3;
       return;
@@ -402,12 +505,16 @@ async function main(): Promise<void> {
     await mkdir(PROFILE_DIR, { recursive: true, mode: 0o700 });
     const context = await connectPersistentChrome();
     let result = await executeTask(context, task);
-    if (!result.ok) result = { ...result, reason: result.reason ?? result.status, human_action_required: requiresHumanAction(result.status) };
+    if (!result.ok) {
+      if (isSafetyShutdownStatus(result.status)) await disableAutonomousWrites(result.status);
+      result = { ...result, reason: result.reason ?? result.status, retryable: false, human_action_required: requiresHumanAction(result.status) };
+    }
     process.stdout.write(`${JSON.stringify({ request_id: task.request_id ?? null, ...result }, null, 2)}\n`);
     if (!result.ok) process.exitCode = 2;
   } catch (error) {
     const message = error instanceof z.ZodError ? "INVALID_TASK" : error instanceof Error ? error.message : "UNKNOWN_ERROR";
-    process.stdout.write(`${JSON.stringify({ ok: false, status: message, reason: message, human_action_required: requiresHumanAction(message) }, null, 2)}\n`);
+    if (isSafetyShutdownStatus(message)) await disableAutonomousWrites(message);
+    process.stdout.write(`${JSON.stringify({ ok: false, status: message, reason: message, retryable: false, human_action_required: requiresHumanAction(message) }, null, 2)}\n`);
     process.exitCode = 1;
   } finally {
     await rm(LOCK_DIR, { recursive: true, force: true }).catch(() => undefined);

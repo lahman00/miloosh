@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildResultEmail, isReplay, MAX_TASK_BODY_BYTES, parseIncomingTask, type TransportLedger } from "@/scripts/reddit/gmail-transport";
+import { buildResultEmail, isReplay, MAX_TASK_BODY_BYTES, parseIncomingTask, reconcileRestart, structuredFailure, type TransportLedger, type TransportTaskEntry } from "@/scripts/reddit/gmail-transport";
 
 const email = "lahman00@gmail.com";
 const base = { subject: "MILOOSH_REDDIT_TASK test-1", to: email, from: email, authenticatedEmail: email };
@@ -40,14 +40,32 @@ describe("Gmail Reddit transport", () => {
     expect(result.subject).toBe("MILOOSH_REDDIT_RESULT test-1");
     expect(result.body).toBe(success);
     expect(Buffer.from(result.raw, "base64url").toString("utf8")).toContain(success);
+    expect(Buffer.from(result.raw, "base64url").toString("utf8")).toContain("Content-Type: text/plain; charset=UTF-8");
     expect(buildResultEmail("test-1", '{"ok":false,"status":"FAILED"}\n', email).subject).toBe("MILOOSH_REDDIT_ERROR test-1");
   });
 
+  it("never creates an empty structured error body", () => {
+    const body = structuredFailure("test-1", "reddit_status", "WORKER_TIMEOUT", false, true);
+    expect(JSON.parse(body)).toEqual(expect.objectContaining({ request_id: "test-1", command: "reddit_status", ok: false, status: "WORKER_TIMEOUT", reason: "WORKER_TIMEOUT", error: "WORKER_TIMEOUT", retryable: false, human_action_required: true }));
+  });
+
+  it("recovers RESULT_READY and failed sends", () => {
+    const baseEntry: TransportTaskEntry = { message_id: "m1", sender: email, command: "reddit_status", state: "RESULT_READY", accepted_at: "2026-08-31T00:00:00Z", updated_at: "2026-08-31T00:00:00Z", task_path: "/task", result_path: "/result" };
+    expect(reconcileRestart(baseEntry)).toEqual({ action: "send" });
+    expect(reconcileRestart({ ...baseEntry, state: "FAILED" })).toEqual({ action: "send" });
+  });
+
+  it("restarts read execution but never blindly retries an ambiguous write", () => {
+    const baseEntry: TransportTaskEntry = { message_id: "m1", sender: email, command: "reddit_status", state: "EXECUTING", accepted_at: "2026-08-31T00:00:00Z", updated_at: "2026-08-31T00:00:00Z", task_path: "/task", result_path: "/result" };
+    expect(reconcileRestart(baseEntry)).toEqual({ action: "execute" });
+    expect(reconcileRestart({ ...baseEntry, state: "RECEIVED" })).toEqual({ action: "execute" });
+    expect(reconcileRestart({ ...baseEntry, command: "reddit_reply" })).toEqual({ action: "fail", status: "AMBIGUOUS_WRITE_NOT_RETRIED" });
+  });
+
   it("prevents message and task replays", () => {
-    const ledger: TransportLedger = { version: 1, messages: { m1: { task_id: "test-1", disposition: "accepted", processed_at: "2026-08-31T00:00:00Z" } }, tasks: { "test-1": { message_id: "m1", sender: email, accepted_at: "2026-08-31T00:00:00Z" } } };
+    const ledger: TransportLedger = { version: 2, messages: { m1: { task_id: "test-1", disposition: "accepted", processed_at: "2026-08-31T00:00:00Z" } }, tasks: { "test-1": { message_id: "m1", sender: email, command: "reddit_status", state: "ACCEPTED", accepted_at: "2026-08-31T00:00:00Z", updated_at: "2026-08-31T00:00:00Z", task_path: "/task", result_path: "/result" } } };
     expect(isReplay(ledger, "m1", "other")).toBe(true);
     expect(isReplay(ledger, "m2", "test-1")).toBe(true);
     expect(isReplay(ledger, "m2", "new-task")).toBe(false);
   });
 });
-
