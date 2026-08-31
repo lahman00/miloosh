@@ -45,6 +45,7 @@
     "social:morning-review": "tsx scripts/social/morning-review.ts",
     "social:post-publish-review": "tsx scripts/social/post-publish-review.ts",
     "reddit:worker": "tsx scripts/reddit/worker.ts",
+    "reddit:gmail": "tsx scripts/reddit/gmail-transport.ts",
     "test": "vitest run"
   },
   "dependencies": {

@@ -36,6 +36,8 @@ npx tsx scripts/reddit/worker.ts --approve-task /absolute/path/to/miloosh_task_r
 
 The approval expires after ten minutes and stores only the task's SHA-256 hash and expiry. Any copy change produces a different hash. The worker consumes the approval immediately before clicking Reddit's submit button; it will not retry an ambiguous submission.
 
+The Miloosh bridge preflights this approval before opening Reddit. A Gmail-delivered write task remains queued locally and produces no Reddit side effect until its exact approval exists. Read-only tasks do not require approval.
+
 ## Bridge tasks
 
 Place a structured task named `miloosh_task_reddit_<id>.json` in the existing bridge inbox:
@@ -51,3 +53,21 @@ Place a structured task named `miloosh_task_reddit_<id>.json` in the existing br
 The bridge writes `result_miloosh_task_reddit_<id>.json` to its normal outbox and archives the input in `processed`. Reddit JSON tasks bypass the general Claude/Codex implementation loop; only the allowlisted worker contract executes.
 
 Supported commands are `reddit_status`, `reddit_open`, `reddit_reply`, `reddit_create_post`, and `reddit_notifications`. Votes, DMs, joins/leaves, deletions, settings changes, and password fields are rejected.
+
+## Gmail transport
+
+The optional local Gmail transport uses OAuth and the single `gmail.modify` scope. Its refresh token is stored in macOS Keychain under service `com.miloosh.gmail-reddit.oauth`; access tokens remain in process memory only.
+
+Authorize once:
+
+```sh
+npm run reddit:gmail -- authorize
+```
+
+Poll once:
+
+```sh
+npm run reddit:gmail -- poll
+```
+
+Incoming mail must be unread, sent from and addressed to `lahman00@gmail.com`, use subject `MILOOSH_REDDIT_TASK <task-id>`, and contain JSON only (maximum 32 KiB). Accepted mail receives `Miloosh/Reddit/Processed`; rejected mail receives `Miloosh/Reddit/Rejected`. Results are returned as exact worker JSON under `MILOOSH_REDDIT_RESULT <task-id>` or `MILOOSH_REDDIT_ERROR <task-id>`.

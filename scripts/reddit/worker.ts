@@ -60,6 +60,25 @@ function isWriteTask(task: RedditTask): task is Extract<RedditTask, { command: "
   return task.command === "reddit_reply" || task.command === "reddit_create_post";
 }
 
+export function requiresWriteApproval(task: RedditTask): boolean {
+  return isWriteTask(task);
+}
+
+function requiresHumanAction(status: string): boolean {
+  return new Set([
+    "CAPTCHA",
+    "REDDIT_JS_CHALLENGE",
+    "ACCOUNT_VERIFICATION",
+    "SUSPICIOUS_LOGIN",
+    "POSTING_RESTRICTION",
+    "MODERATOR_WARNING",
+    "FLAIR_REQUIRED",
+    "WRITE_APPROVAL_REQUIRED",
+    "WRITE_APPROVAL_EXPIRED",
+    "LOGIN_REQUIRED",
+  ]).has(status);
+}
+
 async function approvalPath(task: RedditTask): Promise<string> {
   return join(APPROVAL_DIR, `${approvalId(task)}.json`);
 }
@@ -72,6 +91,12 @@ async function requireAndConsumeApproval(task: RedditTask): Promise<void> {
     throw new Error("WRITE_APPROVAL_EXPIRED");
   }
   await rm(path, { force: true });
+}
+
+async function hasValidApproval(task: RedditTask): Promise<boolean> {
+  if (!isWriteTask(task)) return true;
+  const approval = await readFile(await approvalPath(task), "utf8").then((value) => JSON.parse(value) as { expires_at?: string }).catch(() => null);
+  return Boolean(approval?.expires_at && Date.parse(approval.expires_at) > Date.now());
 }
 
 async function approveTask(path: string): Promise<void> {
@@ -365,15 +390,24 @@ async function main(): Promise<void> {
       await approveTask(process.argv[approvalIndex + 1]!);
       return;
     }
+    const approvalCheckIndex = process.argv.indexOf("--check-approval");
+    if (approvalCheckIndex >= 0 && process.argv[approvalCheckIndex + 1]) {
+      const task = parseRedditTask(JSON.parse(await readFile(resolve(process.argv[approvalCheckIndex + 1]!), "utf8")));
+      const approved = await hasValidApproval(task);
+      process.stdout.write(`${JSON.stringify({ ok: approved, status: approved ? "EXECUTION_ALLOWED" : "WRITE_APPROVAL_REQUIRED", approval_id: isWriteTask(task) ? approvalId(task) : null }, null, 2)}\n`);
+      if (!approved) process.exitCode = 3;
+      return;
+    }
     const task = await loadTask();
     await mkdir(PROFILE_DIR, { recursive: true, mode: 0o700 });
     const context = await connectPersistentChrome();
-    const result = await executeTask(context, task);
+    let result = await executeTask(context, task);
+    if (!result.ok) result = { ...result, reason: result.reason ?? result.status, human_action_required: requiresHumanAction(result.status) };
     process.stdout.write(`${JSON.stringify({ request_id: task.request_id ?? null, ...result }, null, 2)}\n`);
     if (!result.ok) process.exitCode = 2;
   } catch (error) {
     const message = error instanceof z.ZodError ? "INVALID_TASK" : error instanceof Error ? error.message : "UNKNOWN_ERROR";
-    process.stdout.write(`${JSON.stringify({ ok: false, status: message }, null, 2)}\n`);
+    process.stdout.write(`${JSON.stringify({ ok: false, status: message, reason: message, human_action_required: requiresHumanAction(message) }, null, 2)}\n`);
     process.exitCode = 1;
   } finally {
     await rm(LOCK_DIR, { recursive: true, force: true }).catch(() => undefined);

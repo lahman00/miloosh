@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { approvalId, normalizeSubreddit, parseRedditTask, sanitizeRedditUrl } from "@/scripts/reddit/worker";
+import { approvalId, normalizeSubreddit, parseRedditTask, requiresWriteApproval, sanitizeRedditUrl } from "@/scripts/reddit/worker";
 
 describe("Reddit worker task contract", () => {
   it("accepts all supported read commands", () => {
@@ -13,6 +13,7 @@ describe("Reddit worker task contract", () => {
     const task = parseRedditTask({ command: "reddit_reply", thread_url: "https://reddit.com/r/test/comments/abc/example/", text });
     if (task.command !== "reddit_reply") throw new Error("unexpected task type");
     expect(task.text).toBe(text);
+    expect(requiresWriteApproval(task)).toBe(true);
     expect(approvalId(task)).toHaveLength(64);
     expect(approvalId(task)).not.toBe(approvalId({ ...task, text: `${text}!` }));
   });
@@ -26,6 +27,8 @@ describe("Reddit worker task contract", () => {
     const task = parseRedditTask({ command: "reddit_create_post", subreddit: "preschool", title: "Title", body: "Body" });
     expect(task.command).toBe("reddit_create_post");
     expect(normalizeSubreddit("r/preschool")).toBe("preschool");
+    expect(requiresWriteApproval(task)).toBe(true);
+    expect(requiresWriteApproval(parseRedditTask({ command: "reddit_status" }))).toBe(false);
   });
 
   it("rejects unsafe or unsupported commands", () => {
