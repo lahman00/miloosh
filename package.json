@@ -44,6 +44,7 @@
     "social:report": "tsx scripts/social/report.ts",
     "social:morning-review": "tsx scripts/social/morning-review.ts",
     "social:post-publish-review": "tsx scripts/social/post-publish-review.ts",
+    "reddit:worker": "tsx scripts/reddit/worker.ts",
     "test": "vitest run"
   },
   "dependencies": {
@@ -62,6 +63,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.2",
+    "playwright-core": "^1.62.1",
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
     "typescript": "^5",
