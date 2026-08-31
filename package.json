@@ -35,6 +35,7 @@
     "affiliate:prepare": "tsx scripts/affiliate/prepare.ts",
     "affiliate:status": "tsx scripts/affiliate/status.ts",
     "affiliate:audit": "tsx scripts/affiliate/audit.ts",
+    "affiliate:pipeline-repair-dry-run": "tsx scripts/affiliate/pipeline-repair-dry-run.ts",
     "affiliate:ledger": "tsx scripts/affiliate/ledger.ts",
     "affiliate:matrix": "tsx scripts/affiliate/money-matrix.ts",
     "social:generate": "tsx scripts/social/generate.ts",
