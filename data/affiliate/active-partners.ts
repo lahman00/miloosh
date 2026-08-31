@@ -11,6 +11,14 @@ export type ActivePartner = {
   slug: ActivePartnerSlug;
   status: "active";
   affiliateUrl: string | null;
+  /**
+   * Optional intent-specific tracking asset for pricing-page commercial
+   * surfaces (the pricing-section-cta), used instead of the general
+   * affiliateUrl above only when a verified, account-specific pricing deep
+   * link is on file. Never inferred or constructed -- only ever a real
+   * vendor-issued URL, same evidentiary bar as affiliateUrl itself.
+   */
+  pricingAffiliateUrl?: string;
   blocker: "missing_affiliate_url" | null;
 };
 
@@ -88,11 +96,11 @@ export type ActivePartner = {
  * that account (to rule out a demo or mismatched-partner link), supplied
  * both URLs below stating "these are the tracking links associated with
  * your account." Same evidentiary bar as MailerLite/Close/Omnisend. The
- * homepage URL is the canonical CTA below; the pricing-intent URL
- * (https://www.jotform.com/pricing/?partner=miloosh) is not wired into a
- * second CTA surface, since this resolver returns one affiliateUrl per
- * product regardless of page -- see data/affiliate/canonical-ledger.ts's
- * jotform entry for the full evidence record.
+ * homepage URL is the canonical CTA below and is used by every commercial
+ * surface except the pricing section, which uses the pricing-intent URL
+ * (https://www.jotform.com/pricing/?partner=miloosh) via pricingAffiliateUrl
+ * -- see data/affiliate/canonical-ledger.ts's jotform entry for the full
+ * evidence record.
  */
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
@@ -114,7 +122,7 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "mailerlite", status: "active", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", blocker: null },
   { slug: "omnisend", status: "active", affiliateUrl: "https://your.omnisend.com/PznLej", blocker: null },
   { slug: "wrike", status: "active", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij", blocker: null },
-  { slug: "jotform", status: "active", affiliateUrl: "https://www.jotform.com/?partner=miloosh", blocker: null },
+  { slug: "jotform", status: "active", affiliateUrl: "https://www.jotform.com/?partner=miloosh", pricingAffiliateUrl: "https://www.jotform.com/pricing/?partner=miloosh", blocker: null },
 ] as const;
 
 const ACTIVE_PARTNERS_BY_SLUG = new Map(ACTIVE_PARTNERS.map((partner) => [partner.slug, partner]));

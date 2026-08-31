@@ -111,7 +111,7 @@ export function PricingSection({ software }: { software: Software }) {
         <div className="mt-6 border-t border-white/10 pt-6">
           <TrackedCtaLink
             slug={software.slug}
-            href={getSoftwareCtaUrl(software)}
+            href={getSoftwareCtaUrl(software, "pricing")}
             rel={getSoftwareCtaRel(software)}
             target="_blank"
             variant="primary"

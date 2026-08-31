@@ -66,8 +66,12 @@ export function getConfiguredTrackingParams(): Record<string, string> {
   return ref ? { ref } : {};
 }
 
-function softwareToAffiliateLink(software: Software): AffiliateLink {
-  const registeredPartnerUrl = getActivePartner(software.slug)?.affiliateUrl ?? undefined;
+export type CtaIntent = "pricing";
+
+function softwareToAffiliateLink(software: Software, intent?: CtaIntent): AffiliateLink {
+  const partner = getActivePartner(software.slug);
+  const registeredPartnerUrl =
+    (intent === "pricing" ? partner?.pricingAffiliateUrl : undefined) ?? partner?.affiliateUrl ?? undefined;
   const activation = registeredPartnerUrl ? null : getAffiliateActivation(software.slug);
   const gatedCatalogUrl =
     software.affiliateUrl && hasCurrentActiveRelationship(software.slug) ? software.affiliateUrl : undefined;
@@ -79,8 +83,15 @@ function softwareToAffiliateLink(software: Software): AffiliateLink {
   return { officialUrl: software.website, affiliateUrl };
 }
 
-export function getSoftwareCtaUrl(software: Software): string {
-  const link = softwareToAffiliateLink(software);
+/**
+ * intent="pricing" prefers a partner's verified pricing-intent deep link
+ * (ActivePartner.pricingAffiliateUrl) over its general affiliateUrl, for
+ * commercial CTAs on pricing-focused surfaces (e.g. PricingSection). Falls
+ * back to the general affiliateUrl when no pricing-specific asset is on
+ * file, so this is a safe no-op for every partner that doesn't have one.
+ */
+export function getSoftwareCtaUrl(software: Software, intent?: CtaIntent): string {
+  const link = softwareToAffiliateLink(software, intent);
   const url = preferredUrl(link);
   return isAffiliateLink(link) ? withTrackingParams(url, getConfiguredTrackingParams()) : url;
 }
