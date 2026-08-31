@@ -5,6 +5,7 @@ import { spawn } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { z } from "zod";
+import { evaluateReplyQuality } from "@/scripts/reddit/quality-gate";
 
 const STATE_DIR = process.env.MILOOSH_REDDIT_STATE_DIR ?? join(homedir(), ".local", "share", "miloosh-reddit-worker");
 const PROFILE_DIR = join(STATE_DIR, "chrome-profile");
@@ -22,6 +23,7 @@ const redditUrl = z.string().url().refine((value) => {
   return hostname === "reddit.com" || hostname.endsWith(".reddit.com");
 }, "must be a reddit.com URL");
 const subreddit = z.string().regex(/^[A-Za-z0-9_]{2,21}$/, "invalid subreddit name");
+export const MILOOSH_LINK_PATTERN = /(?:https?:\/\/)?(?:www\.)?miloosh\.com/i;
 
 export const taskSchema = z.discriminatedUnion("command", [
   z.object({ request_id: z.string().min(1).optional(), command: z.literal("reddit_status"), wait_for_login_seconds: z.number().int().min(0).max(900).optional() }).strict(),
@@ -140,8 +142,17 @@ export function isSafetyShutdownStatus(status: string): boolean {
   return new Set(["CAPTCHA", "REDDIT_JS_CHALLENGE", "ACCOUNT_VERIFICATION", "SUSPICIOUS_LOGIN", "POSTING_RESTRICTION", "MODERATOR_WARNING", "RATE_LIMIT", "COMMENTS_UNAVAILABLE", "THREAD_LOCKED", "THREAD_REMOVED"]).has(status);
 }
 
+/**
+ * Quality gate runs before approval/rate-limit checks and applies to EVERY
+ * write path (autonomous or manually pre-approved) — a manually-approved
+ * but low-effort/template draft is just as likely to get AutoModerator-
+ * removed as an autonomous one, so approval never bypasses it.
+ */
 async function authorizeWrite(task: RedditTask): Promise<void> {
   if (!isWriteTask(task)) return;
+  const text = taskText(task);
+  const quality = evaluateReplyQuality({ text, hasMilooshLink: MILOOSH_LINK_PATTERN.test(text), recentActions: await readActions() });
+  if (!quality.allowed) throw new Error(quality.status);
   if (await hasValidApproval(task)) return requireAndConsumeApproval(task);
   const decision = evaluateAutonomousWrite(task, await readPolicy(), await readActions());
   if (!decision.allowed) throw new Error(decision.status);
@@ -353,7 +364,7 @@ async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_re
   }
   const permalinkHref = await exact.locator('a[href*="/comments/"]').last().getAttribute("href").catch(() => null);
   const permalink = permalinkHref ? new URL(permalinkHref, "https://www.reddit.com").toString() : page.url();
-  await appendActionLog({ timestamp: new Date().toISOString(), request_id: task.request_id ?? null, command: task.command, subreddit: thread.subreddit, thread_url: task.thread_url, published_permalink: permalink, had_miloosh_link: /(?:https?:\/\/)?(?:www\.)?miloosh\.com/i.test(task.text), text_sha256: textSha256(task) });
+  await appendActionLog({ timestamp: new Date().toISOString(), request_id: task.request_id ?? null, command: task.command, subreddit: thread.subreddit, thread_url: task.thread_url, published_permalink: permalink, had_miloosh_link: MILOOSH_LINK_PATTERN.test(task.text), text_sha256: textSha256(task) });
   return { ok: true, command: task.command, status: "PUBLISHED", permalink, subreddit: thread.subreddit };
 }
 
@@ -383,7 +394,7 @@ async function createPost(page: Page, task: Extract<RedditTask, { command: "redd
   if (!/\/comments\//.test(page.url())) return { ok: false, command: task.command, status: "AMBIGUOUS_SUBMISSION_NOT_RETRIED", current_url: sanitizeRedditUrl(page.url()) };
 
   const permalink = sanitizeRedditUrl(page.url());
-  await appendActionLog({ timestamp: new Date().toISOString(), request_id: task.request_id ?? null, command: task.command, subreddit: sub, thread_url: null, published_permalink: permalink, had_miloosh_link: /(?:https?:\/\/)?(?:www\.)?miloosh\.com/i.test(`${task.title}\n${task.body}`), text_sha256: textSha256(task) });
+  await appendActionLog({ timestamp: new Date().toISOString(), request_id: task.request_id ?? null, command: task.command, subreddit: sub, thread_url: null, published_permalink: permalink, had_miloosh_link: MILOOSH_LINK_PATTERN.test(`${task.title}\n${task.body}`), text_sha256: textSha256(task) });
   return { ok: true, command: task.command, status: "PUBLISHED", permalink, subreddit: sub };
 }
 
