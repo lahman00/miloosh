@@ -1421,8 +1421,8 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     ownerBlocker: "Requires vendor account registration / partner agreement onboarding.",
     formBlocker: null,
     eligibility: "Vendor partner registration",
-    applicationUrl: "https://www.framer.com/partners",
-    notes: "Covers Zoom, Lucidchart, Rocket.Chat, Teamwork, GitBook, Doodle, Cal.com, and Bloomfire (8 products). Framer moved out 2026-08-28 to its own dedicated record after Framer's own affiliate team replied directly with a more specific application route than this bucket's generic 'vendor partner portal' evidence -- see the framer program."
+    applicationUrl: "https://partner.zoom.com/",
+    notes: "Covers Zoom, Lucidchart, Rocket.Chat, Teamwork, GitBook, Doodle, Cal.com, and Bloomfire (8 products). Framer moved out 2026-08-28 to its own dedicated record after Framer's own affiliate team replied directly with a more specific application route than this bucket's generic 'vendor partner portal' evidence -- see the framer program. applicationUrl corrected 2026-08-31: still pointed to Framer's partner page after Framer's departure, which is stale now that Framer is no longer one of this bucket's products -- replaced with Zoom's own official partner-program hub (partner.zoom.com, confirmed live), following the same convention as sibling portfolio records (e.g. developer-and-enterprise-portfolio -> vercel.com/partners, support-and-crm-portfolio -> nordpass.com/affiliate-program/) of pointing to one bucket member's own partner page as the generic entry point."
   },
   {
     programId: "support-and-crm-portfolio",
