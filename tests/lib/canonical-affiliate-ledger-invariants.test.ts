@@ -87,4 +87,78 @@ describe("canonical affiliate ledger state invariants", () => {
       expect(program?.affiliateUrl, `${id} has a tracking URL but isn't ACTIVE`).toBeNull();
     }
   });
+
+  it("locks the 2026-08-31 six-item reconciliation pass (Trainual/Framer re-verified, Semrush/Hootsuite added, Monday/PartnerStack narrative untouched)", () => {
+    // Trainual: a real PartnerStack invitation/handshake link, re-verified
+    // directly against trainual.com/affiliate -- still no submittable form
+    // and still no account-specific tracking URL anywhere in this repo, so
+    // it must stay non-ACTIVE with a clear "accept the invitation and
+    // generate your own link" owner action, not silently drift to ACTIVE
+    // just because the commission terms are well documented.
+    const trainual = byProgramId.get("trainual");
+    expect(trainual?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(trainual?.affiliateUrl).toBeNull();
+    expect(trainual?.ownerBlocker ?? "").toMatch(/invitation/i);
+    expect(trainual?.ownerBlocker ?? "").toMatch(/tracking url/i);
+    expect(trainual?.evidence.some((e) => e.includes("2026-08-31"))).toBe(true);
+
+    // Framer: re-verified 2026-08-31 against framer.com/partners and
+    // framer.com/legal/affiliates/1.0 -- terms unchanged (90-day cookie,
+    // 50%/12mo, $200 threshold, Stripe via Dub, PPC prohibited). Still no
+    // application submitted and no tracking asset.
+    const framer = byProgramId.get("framer");
+    expect(framer?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(framer?.affiliateUrl).toBeNull();
+    expect(framer?.evidence.some((e) => e.includes("2026-08-31"))).toBe(true);
+
+    // Semrush: genuinely new, real, verifiable Impact.com program, added to
+    // the ledger for the first time this pass. Must never be ACTIVE:
+    // applying requires an authenticated Impact.com session this agent does
+    // not have.
+    const semrush = byProgramId.get("semrush");
+    expect(semrush?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(semrush?.affiliateUrl).toBeNull();
+    expect(semrush?.network).toBe("Impact.com");
+    expect(semrush?.applicationUrl ?? "").toMatch(/^https:\/\/app\.impact\.com\//);
+    expect(semrush?.productSlugs).toEqual(["semrush"]);
+    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("semrush");
+
+    // Hootsuite: carved out of the generic impact-portfolio bucket into its
+    // own dedicated, specifically-evidenced record (the same treatment
+    // Framer/RingCentral/Sprout Social already got) now that direct-fetched
+    // evidence gives it real commission/cookie/application-URL terms.
+    // Impact.com is still the correct network -- unlike Sprout Social/
+    // RingCentral this is not a network correction -- and it must never be
+    // ACTIVE without a real issued tracking link, and must not be left
+    // double-counted inside the generic bucket.
+    const hootsuite = byProgramId.get("hootsuite");
+    expect(hootsuite?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(hootsuite?.affiliateUrl).toBeNull();
+    expect(hootsuite?.network).toBe("Impact.com");
+    expect(hootsuite?.productSlugs).toEqual(["hootsuite"]);
+    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("hootsuite");
+    expect(byProgramId.get("impact-portfolio")?.productSlugs).not.toContain("hootsuite");
+
+    // Monday.com: already-ACTIVE partner whose payout sits on the
+    // network-declined PartnerStack Account #2 (see
+    // data/affiliate/payout-rails.ts) -- the tracking URL itself is still
+    // real and still resolves on-site, so its ACTIVE status and exact URL
+    // must not move without direct evidence of a real tracking-URL problem;
+    // a payout-rail concern is a separate axis, not a reason to deactivate.
+    const monday = byProgramId.get("monday");
+    expect(monday?.status).toBe("ACTIVE");
+    expect(monday?.affiliateUrl).toBe("https://try.monday.com/1p2fpizulcj7");
+    expect(ACTIVE_PARTNERS.find((p) => p.slug === "monday")?.affiliateUrl).toBe(
+      "https://try.monday.com/1p2fpizulcj7"
+    );
+
+    // None of Trainual/Framer/Semrush/Hootsuite may be ACTIVE without a
+    // verified tracking asset -- this reconciliation pass found none for
+    // any of them, so none should claim one.
+    for (const id of ["trainual", "framer", "semrush", "hootsuite"]) {
+      const program = byProgramId.get(id);
+      expect(program?.status, `${id} marked ACTIVE without this test being updated to expect it`).not.toBe("ACTIVE");
+      expect(program?.affiliateUrl, `${id} has a tracking URL but isn't ACTIVE`).toBeNull();
+    }
+  });
 });

@@ -614,18 +614,22 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     network: "PartnerStack",
     productSlugs: ["trainual"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-23",
+    statusUpdatedAt: "2026-08-31",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "Affiliates 10% / Partners 20%",
+    commissionModel: "10% recurring commission on referred accounts for as long as the customer remains a paying Trainual user (Affiliates tier; a separate 20% Partners tier also exists but Miloosh has not been offered it). Directly re-confirmed 2026-08-31 on trainual.com/affiliate: commissions continue for the customer's lifetime unless the affiliate goes 12 consecutive months without a new referral, at which point legacy commissions stop.",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md PartnerStack form submit failure diagnosis", "Re-checked 2026-08-23: trainual.com/affiliate's own page has no application form (only a search widget); the real path is a PartnerStack handshake link (dash.partnerstack.com/handshake?source=trainual&join=trainual&gref=page) which requires PartnerStack login"],
-    ownerBlocker: "Requires an authenticated PartnerStack login to reach the join flow -- account credential entry is owner-only.",
+    evidence: [
+      "docs/affiliate-applications.md PartnerStack form submit failure diagnosis",
+      "Re-checked 2026-08-23: trainual.com/affiliate's own page has no application form (only a search widget); the real path is a PartnerStack handshake link (dash.partnerstack.com/handshake?source=trainual&join=trainual&gref=page) which requires PartnerStack login",
+      "Independently re-verified 2026-08-31 by directly fetching trainual.com/affiliate: page still has no on-page application form -- both the 'Join now!' and 'Become a partner' CTAs still route to the same PartnerStack handshake URL above, confirming this is an existing invitation/handshake link to accept, not a submittable form. No account-specific tracking URL is present on that page or anywhere else in this repository for Trainual."
+    ],
+    ownerBlocker: "This is an existing PartnerStack invitation/handshake link, not a form this agent can submit: the owner must log into (or create) the PartnerStack account, open the handshake link, accept the Trainual invitation there, and then supply the resulting account-specific tracking URL so it can be recorded here. No one may accept the invitation on the owner's behalf.",
     formBlocker: null,
     eligibility: "Form truthfully filled out: website=miloosh.com, Blogger, Trainual customer=No (from the prior in-session attempt).",
     applicationUrl: "https://trainual.com/affiliate",
-    notes: "Corrected diagnosis 2026-08-23: not a UI bug -- the earlier attempt worked from within an authenticated PartnerStack session that has since expired."
+    notes: "Corrected diagnosis 2026-08-23: not a UI bug -- the earlier attempt worked from within an authenticated PartnerStack session that has since expired. Re-confirmed 2026-08-31: still no real tracking URL exists anywhere in this repo for Trainual, so status stays OWNER_ACTION_REQUIRED, not ACTIVE. The invitation was not accepted by this agent."
   },
   {
     programId: "tidio",
@@ -871,13 +875,13 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Impact.com Multi-Program Publisher Account",
     network: "Impact.com",
     productSlugs: [
-      "lastpass", "woocommerce", "hootsuite",
+      "lastpass", "woocommerce",
       "smartsheet", "mailchimp", "bigcommerce", "squarespace",
       "grammarly", "bitwarden", "nextiva", "craft", "keeper",
       "keeper-security", "ecwid", "moz"
     ],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-21",
+    statusUpdatedAt: "2026-08-31",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
@@ -888,7 +892,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     formBlocker: null,
     eligibility: "Requires owner tax & payment credentials",
     applicationUrl: "https://app.impact.com/",
-    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified. Sprout Social and RingCentral were removed 2026-08-28: re-audited and found to expose their own distinct affiliate routes (Sprout Social -> CJ, see the cj-portfolio program; RingCentral -> a direct affiliate contact, currently its own pending-clarification record) rather than being genuinely Impact-modeled -- do not re-add either without new evidence that Impact is in fact the correct network for them."
+    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified. Sprout Social and RingCentral were removed 2026-08-28: re-audited and found to expose their own distinct affiliate routes (Sprout Social -> CJ, see the cj-portfolio program; RingCentral -> a direct affiliate contact, currently its own pending-clarification record) rather than being genuinely Impact-modeled -- do not re-add either without new evidence that Impact is in fact the correct network for them. Hootsuite was moved out 2026-08-31 to its own dedicated record after a direct fetch of hootsuite.com/affiliate-program produced specific, real program terms (exact commission, cookie window, and application URL) -- unlike Sprout Social/RingCentral, Impact.com is confirmed correct for Hootsuite; it simply now has strong enough standalone evidence to warrant its own record instead of this bucket's generic evidence -- see the hootsuite program."
   },
   {
     programId: "cj-portfolio",
@@ -1181,23 +1185,70 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     network: "Dub (Framer's own Creator Program, self-serve link generation via Community profile Links tab)",
     productSlugs: ["framer"],
     status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-28",
+    statusUpdatedAt: "2026-08-31",
     applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "50% of subscription payments for the first 12 months per qualifying referred subscription -- already independently confirmed high-confidence 2026-08-25 directly against Framer's own legal Affiliate Conditions and Help Center (data/revenue/affiliate-programs.ts, framer entry), 3 days before the owner's new direct correspondence below. Paid advertising using affiliate links is explicitly prohibited.",
+    commissionModel: "50% of subscription payments for the first 12 months per qualifying referred subscription -- already independently confirmed high-confidence 2026-08-25 directly against Framer's own legal Affiliate Conditions and Help Center (data/revenue/affiliate-programs.ts, framer entry), and re-confirmed unchanged 2026-08-31 by fetching the same legal page again. Paid advertising using affiliate links is explicitly prohibited.",
     cookieWindow: "90 days",
     evidence: [
       "Independently verified 2026-08-25, confidence: high (data/revenue/affiliate-programs.ts) against framer.com/legal/affiliates/1.0 and framer.com/help: 90-day cookie, 50% of subscription payments for 12 months, monthly payouts (promotions redeemed ~2 months earlier), $200 payout threshold, Stripe payouts via Dub, PPC/paid-advertising with affiliate links prohibited",
       "Owner-reported correspondence, 2026-08-28: Framer's affiliate team separately replied directly confirming an editorial publisher can apply via Creator Dashboard -> Links tab; applications are reviewed based on past content and audience relevance; referral links are generated only once approved -- consistent with, not contradicting, the 2026-08-25 finding above",
       "Owner-reported context, 2026-08-28: Miloosh has also asked Framer to reconfirm current commission/attribution/payout/deep-link/PPC terms directly -- no reply yet to this specific inquiry, though the terms above were already independently sourced from Framer's own legal page",
-      "Previously only modeled generically inside collaboration-and-design-portfolio (vague 'vendor partner portal listings' evidence) -- replaced with this more specific, directly-sourced record"
+      "Previously only modeled generically inside collaboration-and-design-portfolio (vague 'vendor partner portal listings' evidence) -- replaced with this more specific, directly-sourced record",
+      "Re-confirmed 2026-08-31 by directly re-fetching both framer.com/partners and framer.com/legal/affiliates/1.0: terms are unchanged (90-day cookie, 50% of subscription payments for 12 months, $200 payout threshold, Stripe payouts, PPC/search-ads on branded keywords still prohibited); the 'Become a creator' CTA still routes to framer.com/community/?settings=open&settingsTab=links (the Creator Dashboard Links tab), matching the 2026-08-28 correspondence. Still no reply to Miloosh's direct terms-reconfirmation inquiry, and still no application submitted or tracking asset issued."
     ],
     ownerBlocker: "Owner must apply via the Framer Creator Dashboard's Links tab (requires an existing Framer account/login this agent cannot access) and await the application decision.",
     formBlocker: null,
     eligibility: "Editorial publisher, reviewed on past content and audience relevance -- not yet applied",
     applicationUrl: "https://www.framer.com/partners",
-    notes: "Do not mark active or approved -- no application has been submitted, regardless of how well the commercial terms are already documented. No tracking asset exists. Deep-link readiness: Dub-powered self-serve link generation is a real, positive signal once approved -- no URL Builder / manual request step expected, unlike some other pending programs."
+    notes: "Do not mark active or approved -- no application has been submitted, regardless of how well the commercial terms are already documented. No tracking asset exists. Deep-link readiness: Dub-powered self-serve link generation is a real, positive signal once approved -- no URL Builder / manual request step expected, unlike some other pending programs. Re-verified 2026-08-31: terms and application route both still accurate, no change to status or owner action."
+  },
+  {
+    programId: "semrush",
+    programName: "Semrush Affiliate Program",
+    network: "Impact.com",
+    productSlugs: ["semrush"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-31",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Per-product, per-sale commissions on Impact.com, independently confirmed high-confidence both 2026-08-20 (data/revenue/affiliate-programs.ts, semrush entry) and again 2026-08-31 directly against semrush.com/lp/affiliate-program/en/: Semrush One $300-$450 per sale (loyalty-tier scaled), SEO Toolkit $200-$350, AI Visibility Toolkit $100 (no trial commission), Content/Advertising Toolkits $100-$150, Social/Local Toolkits $50-$80, Traffic & Market Toolkit $200-$350 -- plus $10 per free trial for every toolkit except AI Visibility. Loyalty tiers (Basic/Silver/Gold/Platinum, scaled by the affiliate's own quarterly sales volume) and quarterly content bonuses also apply; this is not one flat rate.",
+    cookieWindow: "120 days",
+    evidence: [
+      "Independently verified 2026-08-20, confidence: high (data/revenue/affiliate-programs.ts, semrush entry) directly against semrush.com/kb/97-affiliate-program and semrush.com/lp/affiliate-program/en/",
+      "Re-confirmed 2026-08-31 by directly fetching semrush.com/lp/affiliate-program/en/: same Impact.com network, same application URL (matching io= token), same 120-day cookie, same per-toolkit commission structure, same eligibility bar",
+      "No canonical-ledger.ts or active-partners.ts entry existed for Semrush before this record -- Miloosh has never applied and holds no Semrush tracking asset anywhere in this repository"
+    ],
+    ownerBlocker: "Applying requires an authenticated Impact.com account/session. Miloosh's existing Impact relationships (Shopify, Wix, Omnisend) do not give this agent a usable session, and creating a new Impact account requires owner-only credential entry and eventually tax/payment setup. Owner must log into (or create) an Impact.com account and submit the Semrush application directly at the URL below.",
+    formBlocker: null,
+    eligibility: "Verbatim from Semrush's own program page (2026-08-31): minimum 1,000 unique monthly website visitors, or a social account with roughly 1,000 organic followers/likes/views; reviewed by Semrush's team after application, not self-attested on the form. Miloosh's real traffic numbers are not independently verifiable from this environment (no GA4 Data API access) and must not be misrepresented on any future application.",
+    applicationUrl: "https://app.impact.com/campaign-campaign-info-v2/Semrush.brand?io=DP3hjNntyIpHsEPndkNbE2O5yH9ju8feMzfbzqahAju%2BmiWuC0MVbq7eXPb9iTc0",
+    notes: "New record 2026-08-31 -- real, live, joinable program confirmed by direct fetch, but never applied to and no tracking asset exists. Do not mark ACTIVE or APPROVED_NEEDS_LINK until the owner has actually applied via an authenticated Impact.com session and a real account-specific link is issued. Kept as its own record rather than folded into the impact-portfolio bucket because Semrush's terms are already independently confirmed at high confidence, unlike that bucket's generic evidence -- same treatment already given to Framer, RingCentral, and Sprout Social."
+  },
+  {
+    programId: "hootsuite",
+    programName: "Hootsuite Affiliate Program",
+    network: "Impact.com",
+    productSlugs: ["hootsuite"],
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-08-31",
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Confirmed directly on hootsuite.com/affiliate-program, 2026-08-31: 20% of first-month revenue for each new, qualifying referral who upgrades to a paid Standard plan; a higher (exact figure not stated on-page) rate for referrals who choose the Advanced plan.",
+    cookieWindow: "90 days (stated for both trial/purchase clicks and trial-to-subscription conversions)",
+    evidence: [
+      "Prior low-confidence automated-discovery record (data/revenue/affiliate-programs.ts, hootsuite entry, 2026-08-17): hootsuite.com/affiliate-program returns HTTP 200 with an Impact.com signature; commission terms not parsed at that time",
+      "Independently re-verified 2026-08-31 by directly fetching hootsuite.com/affiliate-program: confirms the Impact.com network, the 20% first-month-revenue commission on Standard-plan upgrades, the 90-day cookie, and the exact application/signup URL below",
+      "Previously only modeled generically inside impact-portfolio (bucket-level 'Impact publisher commission rates across the remaining unresolved SaaS brands' evidence, no Hootsuite-specific terms) -- replaced with this more specific, directly-sourced record; the network assessment (Impact.com) is unchanged, only the evidence quality improved, unlike the Sprout Social/RingCentral corrections which found the wrong network entirely"
+    ],
+    ownerBlocker: "Applying requires an authenticated Impact.com account/session -- the same blocker already tracked for the rest of the impact-portfolio bucket and for Semrush. Owner must log into (or create) an Impact.com account and submit the Hootsuite application at the signup URL below.",
+    formBlocker: null,
+    eligibility: "Per the official page (2026-08-31): the program targets publishers/media networks and thought leaders with business audiences. Large enterprise-focused networks are directed to a separate 'HootPartner' program instead -- Miloosh should apply through this publisher program, not HootPartner.",
+    applicationUrl: "https://app.impact.com/campaign-promo-signup/Hootsuite.brand?execution=e14s1&#/?viewkey=signUpPreStart",
+    notes: "New dedicated record 2026-08-31, carved out of impact-portfolio now that specific, real, current program terms are confirmed. Do NOT add to active-partners.ts and do not mark ACTIVE or APPROVED_NEEDS_LINK -- no application has ever been submitted and no tracking asset exists anywhere in this repository for Hootsuite. data/software/hootsuite.json already exists as a catalog page, so once a real tracking link is issued, activation only needs the standard active-partners.ts + canonical-ledger.ts update, not new editorial content first."
   },
   {
     programId: "buffer",
