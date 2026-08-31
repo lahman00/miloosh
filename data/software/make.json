@@ -4,6 +4,59 @@
   "category": "automation",
   "description": "Make is a visual automation platform where users build multi-step workflows, called scenarios, connecting apps, data sources, and AI models by configuring modules on a canvas.",
   "website": "https://www.make.com/en",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "No time limit; up to 1,000 credits per month."
+      },
+      {
+        "name": "Core",
+        "amount": "9",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per month for 10,000 credits/month with annual billing selected."
+      },
+      {
+        "name": "Pro",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per month for 10,000 credits/month with annual billing selected."
+      },
+      {
+        "name": "Teams",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per month for 10,000 credits/month with annual billing selected."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales for enterprise pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-08-31",
+    "official_source": "https://www.make.com/en/pricing"
+  },
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for teams across many departments — marketing, sales, operations, finance, IT, HR — in organizations ranging from smaller teams to large enterprises.",
   "features": [
     "Thousands of pre-built app integrations",
@@ -13,9 +66,10 @@
     "Centralized management of automations across an organization"
   ],
   "sources": [
-    "https://www.make.com/en"
+    "https://www.make.com/en",
+    "https://www.make.com/en/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-08-31",
   "alternatives": [
     {
       "name": "Zapier",

@@ -4,6 +4,24 @@
   "category": "crm",
   "description": "HubSpot CRM is a customer-relationship platform where businesses store contact and company data, track deals through a sales pipeline, and manage sales, marketing, and service activity, with AI assistance built in.",
   "website": "https://www.hubspot.com/products/crm",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Free CRM",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "HubSpot describes its CRM as 100% free with no expiration. Paid HubSpot products vary by hub, edition, seats, and usage, so Miloosh does not normalize them into one unsupported CRM starting price."
+      }
+    ],
+    "last_verified": "2026-08-31",
+    "official_source": "https://www.hubspot.com/pricing/crm"
+  },
   "platforms": [
     "Web",
     "iOS",
@@ -19,9 +37,10 @@
     "Large third-party app marketplace"
   ],
   "sources": [
-    "https://www.hubspot.com/products/crm"
+    "https://www.hubspot.com/products/crm",
+    "https://www.hubspot.com/pricing/crm"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-08-31",
   "alternatives": [
     {
       "name": "Salesforce",

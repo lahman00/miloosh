@@ -191,7 +191,7 @@ export const PUBLISHED_COMPARISONS: ReadonlyArray<readonly [string, string]> = [
   ["freshdesk", "front"],
   ["freshdesk", "gorgias"],
   ["freshdesk", "help-scout"],
-  ["freshdesk", "intercom"],
+  ["intercom", "freshdesk"],
   ["freshdesk", "zendesk"],
   ["front", "gorgias"],
   ["front", "help-scout"],

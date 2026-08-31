@@ -239,7 +239,7 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     whySeekAlternative: ["The team needs a different balance between ticketing depth and conversational support.", "AI-agent or copilot costs must be evaluated separately from core agent seats.", "Ecommerce order context or cross-team collaboration is central to resolution work."],
     decisions: [
       { heading: "Broader service operations", fit: "Zendesk is the relevant comparison for organizations evaluating wider omnichannel and service-management capability.", alternativeSlug: "zendesk", comparisonSlug: "freshdesk-vs-zendesk" },
-      { heading: "AI-led conversational support", fit: "Intercom is the path when an integrated AI agent and messenger-led support model drive the decision.", alternativeSlug: "intercom", comparisonSlug: "freshdesk-vs-intercom" },
+      { heading: "AI-led conversational support", fit: "Intercom is the path when an integrated AI agent and messenger-led support model drive the decision.", alternativeSlug: "intercom", comparisonSlug: "intercom-vs-freshdesk" },
       { heading: "Simpler shared-inbox workflow", fit: "Help Scout is useful for teams prioritizing an inbox, knowledge base, and straightforward collaboration model.", alternativeSlug: "help-scout", comparisonSlug: "freshdesk-vs-help-scout" },
       { heading: "Ecommerce-specific customer context", fit: "Gorgias is the relevant route for ecommerce and Shopify support teams that need live order and customer data plus order actions inside the support conversation.", alternativeSlug: "gorgias", comparisonSlug: "freshdesk-vs-gorgias" },
     ],

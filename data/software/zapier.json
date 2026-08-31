@@ -4,6 +4,9 @@
   "category": "automation",
   "description": "Zapier is a no-code automation platform that connects thousands of business apps, and increasingly AI models and agents, so users can build automated workflows without writing code.",
   "website": "https://zapier.com",
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for organizations of all sizes — from small/medium businesses to enterprise IT — that want teams to build automations while giving IT centralized governance.",
   "features": [
     "Automated workflows (Zaps) across thousands of connected apps",

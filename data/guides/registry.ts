@@ -1894,7 +1894,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
   ],
   "comparisons": [
     "front-vs-intercom",
-    "freshdesk-vs-intercom",
+    "intercom-vs-freshdesk",
     "help-scout-vs-intercom",
     "front-vs-help-scout"
   ],
