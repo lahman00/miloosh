@@ -31,6 +31,20 @@ export type InboundSocialEvent = {
   /** Miloosh path the visitor landed on, e.g. "/software/wix". Never a full URL (no query string, which could carry other params). */
   landingPath: string;
   timestamp: string;
+  /**
+   * 2026-08-31: mirrors lib/analytics/events.ts's isTest marker, sourced
+   * from the SAME existing ?qa=1 mechanism (lib/analytics/synthetic.ts's
+   * markAndCheckSyntheticQa) that components/SocialLandingCapture.tsx now
+   * checks before firing. Optional (older stored events predate this
+   * field and are treated as false, i.e. real, since they were recorded
+   * before this exclusion existed and there is no way to retroactively
+   * know). Raw storage keeps every event regardless of this flag --
+   * exclusion only ever happens in reporting (summarizeInboundByChannel /
+   * scripts/growth/social-attribution-report.ts), never at write time,
+   * matching the same immutability principle already established in
+   * lib/analytics/human-classification.ts.
+   */
+  isTest?: boolean;
 };
 
 const BLOB_PATHNAME = "social/inbound-clicks.json";
@@ -91,7 +105,7 @@ export function isValidChannel(value: unknown): value is Channel {
  * revenue-click tracking rather than inventing a second opt-in, since
  * both are the same "did we turn on first-party analytics" decision.
  */
-export async function recordInboundSocialEvent(input: { channel: Channel; campaign: string | null; contentId: string | null; landingPath: string }): Promise<void> {
+export async function recordInboundSocialEvent(input: { channel: Channel; campaign: string | null; contentId: string | null; landingPath: string; isTest?: boolean }): Promise<void> {
   if (!isOutboundTrackingEnabled()) return;
   const events = await readEvents();
   events.push({ ...input, timestamp: new Date().toISOString() });
@@ -102,12 +116,24 @@ export async function getInboundSocialEvents(): Promise<InboundSocialEvent[]> {
   return [...(await readEvents())].reverse();
 }
 
+/** True for events proven QA/synthetic/operator traffic via the isTest marker. Older stored events without the field predate this exclusion and are treated as real (false), since there's no way to retroactively know. */
+export function isExcludedSocialEvent(event: InboundSocialEvent): boolean {
+  return event.isTest === true;
+}
+
 export type ChannelAttributionRow = { channel: Channel; landings: number; distinctCampaigns: number; distinctContent: number };
 
-/** Landings grouped by channel — real counts only, busiest first. Never invents a row for a channel with zero real data. */
+/**
+ * Landings grouped by channel — real counts only, busiest first, QA/
+ * synthetic/operator traffic excluded via isExcludedSocialEvent. Never
+ * invents a row for a channel with zero real data. Callers that need the
+ * unfiltered raw event set (e.g. an internal debug view) should use
+ * getInboundSocialEvents() directly instead.
+ */
 export function summarizeInboundByChannel(events: InboundSocialEvent[]): ChannelAttributionRow[] {
   const byChannel = new Map<Channel, { landings: number; campaigns: Set<string>; content: Set<string> }>();
   for (const e of events) {
+    if (isExcludedSocialEvent(e)) continue;
     const row = byChannel.get(e.channel) ?? { landings: 0, campaigns: new Set<string>(), content: new Set<string>() };
     row.landings += 1;
     if (e.campaign) row.campaigns.add(e.campaign);

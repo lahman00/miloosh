@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
 
 /**
  * Phase 1E (2026-08-17) — fires once per page load when the URL carries
@@ -36,6 +37,7 @@ export function SocialLandingCapture() {
       utm_campaign: params.get("utm_campaign"),
       utm_content: params.get("utm_content"),
       path: window.location.pathname,
+      isTest: markAndCheckSyntheticQa(),
     });
 
     fetch("/api/social/landing", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {

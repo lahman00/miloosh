@@ -80,7 +80,11 @@ export default function PrivacyPage() {
               To understand aggregate readership and improve software comparisons, {SITE_NAME}{" "}
               operates a privacy-preserving first-party telemetry system. When you browse pages or
               click an official or affiliate product link, we record anonymous interaction events
-              (such as page path, dwell time, and clicked product links). This system uses ephemeral,
+              (such as page path, dwell time, and clicked product links). If you arrive from a
+              linked community post (for example Reddit or a Facebook group) with source-tracking
+              parameters in the URL, we also record which channel and campaign it came from and
+              which page you landed on, so we can tell which posts are actually driving readers —
+              never which specific person did. This system uses ephemeral,
               pseudonymous client-side tokens (stored in local and session storage) with zero personal
               identifiable information (PII), zero IP address storage, and zero browser fingerprinting.
               This data remains strictly on {SITE_NAME}&apos;s own secure infrastructure and is never

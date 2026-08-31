@@ -18,6 +18,7 @@ type LandingBody = {
   utm_campaign?: unknown;
   utm_content?: unknown;
   path?: unknown;
+  isTest?: unknown;
 };
 
 export async function POST(request: NextRequest) {
@@ -35,7 +36,8 @@ export async function POST(request: NextRequest) {
   const campaign = typeof body.utm_campaign === "string" ? body.utm_campaign.slice(0, 100) : null;
   const contentId = typeof body.utm_content === "string" ? body.utm_content.slice(0, 100) : null;
   const landingPath = body.path.slice(0, 300);
+  const isTest = body.isTest === true;
 
-  await recordInboundSocialEvent({ channel: body.utm_source, campaign, contentId, landingPath });
+  await recordInboundSocialEvent({ channel: body.utm_source, campaign, contentId, landingPath, isTest });
   return NextResponse.json({ recorded: true });
 }

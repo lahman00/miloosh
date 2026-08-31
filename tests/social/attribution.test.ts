@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { recordInboundSocialEvent, getInboundSocialEvents, summarizeInboundByChannel, isValidChannel } from "@/lib/social/attribution";
+import { recordInboundSocialEvent, getInboundSocialEvents, summarizeInboundByChannel, isValidChannel, isExcludedSocialEvent } from "@/lib/social/attribution";
 
 /**
  * Phase 1E (2026-08-17) — inbound social attribution. Same isolation
@@ -81,5 +81,40 @@ describe("summarizeInboundByChannel", () => {
     expect(rows).toHaveLength(2); // only channels with real data — never a fabricated "x: 0" row
     expect(rows[0]).toEqual({ channel: "bluesky", landings: 2, distinctCampaigns: 1, distinctContent: 2 });
     expect(rows[1]).toEqual({ channel: "mastodon", landings: 1, distinctCampaigns: 1, distinctContent: 1 });
+  });
+});
+
+/**
+ * MILOOSH community attribution readback (2026-08-31): QA/synthetic/
+ * operator sessions were previously indistinguishable from real inbound
+ * social landings once recorded (no isTest field existed at all on
+ * InboundSocialEvent, and components/SocialLandingCapture.tsx never
+ * checked the existing ?qa=1 exclusion mechanism before firing).
+ */
+describe("isTest exclusion (QA/synthetic/operator traffic)", () => {
+  it("records isTest:true events in raw storage (immutability — reporting excludes, storage never does)", async () => {
+    await recordInboundSocialEvent({ channel: "reddit", campaign: "a", contentId: "e1", landingPath: "/software/wix", isTest: true });
+    const events = await getInboundSocialEvents();
+    expect(events).toHaveLength(1);
+    expect(events[0]!.isTest).toBe(true);
+    expect(isExcludedSocialEvent(events[0]!)).toBe(true);
+  });
+
+  it("an isTest:true event is invisible to summarizeInboundByChannel", async () => {
+    await recordInboundSocialEvent({ channel: "reddit", campaign: "a", contentId: "e1", landingPath: "/software/wix", isTest: true });
+    await recordInboundSocialEvent({ channel: "reddit", campaign: "a", contentId: "e2", landingPath: "/software/wix", isTest: false });
+
+    const events = await getInboundSocialEvents();
+    expect(events).toHaveLength(2); // both stored
+    const rows = summarizeInboundByChannel(events);
+    expect(rows).toEqual([{ channel: "reddit", landings: 1, distinctCampaigns: 1, distinctContent: 1 }]); // only the real one counted
+  });
+
+  it("an event with no isTest field at all (older stored events, or isTest omitted) is treated as real, not excluded", async () => {
+    await recordInboundSocialEvent({ channel: "x", campaign: null, contentId: null, landingPath: "/software/wix" });
+    const events = await getInboundSocialEvents();
+    expect(events[0]!.isTest).toBeUndefined();
+    expect(isExcludedSocialEvent(events[0]!)).toBe(false);
+    expect(summarizeInboundByChannel(events)).toHaveLength(1);
   });
 });
