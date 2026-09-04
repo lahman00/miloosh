@@ -1,0 +1,75 @@
+{
+  "name": "MaintainX",
+  "slug": "maintainx",
+  "category": "field-service-management",
+  "description": "MaintainX is a mobile-first CMMS (computerized maintenance management system) for creating and tracking work orders, preventive maintenance schedules, and asset and parts records across manufacturing, facilities, and industrial teams.",
+  "website": "https://getmaintainx.com",
+  "best_for": "Maintenance, reliability, and facilities teams that want a mobile-first way for frontline technicians to receive, complete, and document work orders and preventive maintenance without paper checklists.",
+  "platforms": ["Web", "iOS", "Android"],
+  "features": [
+    "Work order creation, assignment, and tracking across multiple sites, with AI-assisted guidance for frontline workers",
+    "Preventive and condition-based maintenance scheduling, including AI-assisted anomaly detection to flag issues before they cause downtime",
+    "Asset management with equipment health tracking and root-cause analysis",
+    "Digital procedures and checklists for enforcing safety and operating standards on every job",
+    "Parts and inventory management with stock alerts, reorder points, and AI-assisted demand prediction",
+    "Purchase orders and API access on higher-tier plans",
+    "Natural-language reporting that generates analytics from a plain-language description of what to measure",
+    "Native iOS and Android mobile apps for technicians in the field"
+  ],
+  "pros": [
+    "Genuinely free-forever Basic plan, not just a time-limited trial",
+    "Mobile-first design built around frontline technicians rather than a desktop tool adapted for mobile",
+    "SOC 2 and ISO 27001:2022 certified, notable for a CMMS at this price point"
+  ],
+  "cons": [
+    "The free Basic plan is capped at 2 work orders with procedures and 2 active repeating work orders, so most real teams will need a paid plan",
+    "Advanced features like asset health insights, IoT integrations, and SSO are reserved for the custom-priced Enterprise plan"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (Basic); paid plans from $20/user/month billed annually (Essential)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Basic", "amount": "0", "currency": "USD", "notes": "Free forever. Limited to 2 work orders with procedures, 2 active repeating work orders, and 1 month of analytics history." },
+      { "name": "Essential", "amount": "20", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "$25/user/month if billed monthly. Unlimited work orders with images, 3 repeating work orders, and 3 months of analytics history." },
+      { "name": "Premium", "amount": "65", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "$75/user/month if billed monthly. Unlimited work orders with procedures and analytics, parts inventory, purchase orders, and API access. MaintainX's most popular plan." },
+      { "name": "Enterprise", "notes": "Custom pricing. Adds asset health insights, resource planning, IoT integrations, multi-site tools, and SSO." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://getmaintainx.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Procore",
+      "slug": "procore",
+      "description": "Construction management software covering project management, financials, and field productivity for general contractors and owners.",
+      "best_for": "Construction firms managing entire projects (budgets, drawings, RFIs, subcontractors) rather than ongoing maintenance work orders for existing equipment and facilities.",
+      "strengths": ["End-to-end construction project management", "Preconstruction and financial tools", "Deep field-to-office document control"]
+    },
+    {
+      "name": "ServiceTitan",
+      "slug": "servicetitan",
+      "description": "Field service management software for residential and commercial trade businesses, covering scheduling, dispatch, and invoicing.",
+      "best_for": "HVAC, plumbing, electrical, and other trade contractors running customer-facing service calls, rather than internal equipment and facilities maintenance teams.",
+      "strengths": ["Dispatch and scheduling for mobile technicians", "Built-in invoicing and payments", "Sales and marketing tools for trade businesses"]
+    }
+  ],
+  "faq": [
+    { "question": "Is MaintainX free?", "answer": "Yes. MaintainX's Basic plan is free forever, though it's capped at 2 work orders with procedures, 2 active repeating work orders, and 1 month of analytics history. Paid plans start at $20/user/month (billed annually) for more usage." },
+    { "question": "Does MaintainX have a free trial?", "answer": "Yes, MaintainX offers a free 30-day trial of its Premium plan with no credit card required." },
+    { "question": "What compliance certifications does MaintainX have?", "answer": "MaintainX has completed a SOC 2 audit, holds ISO 27001:2022 certification for its platform and Montreal office, and states it is GDPR-ready." }
+  ],
+  "tags": ["CMMS", "maintenance management", "work orders", "asset management"],
+  "links": { "pricing": "https://getmaintainx.com/pricing" },
+  "sources": [
+    "https://getmaintainx.com/pricing",
+    "https://getmaintainx.com/",
+    "https://getmaintainx.com/security"
+  ],
+  "accessed_at": "2026-09-05"
+}

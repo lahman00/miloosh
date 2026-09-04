@@ -1,0 +1,69 @@
+{
+  "name": "Tableau",
+  "slug": "tableau",
+  "category": "analytics",
+  "description": "Tableau is a Salesforce-owned business intelligence and data visualization platform for connecting to data and building interactive dashboards, licensed by role (Viewer, Explorer, Creator) across Tableau Cloud, Server, or Desktop.",
+  "website": "https://www.tableau.com",
+  "best_for": "Analysts and BI teams that want deep, highly customizable visual analytics and are willing to license by role (Viewer/Explorer/Creator) rather than pay one flat per-user rate.",
+  "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
+  "features": [
+    "Drag-and-drop visual analytics for building interactive dashboards and worksheets",
+    "Tableau Desktop (Windows and Mac) for authoring, plus Tableau Cloud and Tableau Server for publishing and sharing",
+    "Role-based licensing — Viewer, Explorer, and Creator — matching cost to how much authoring power each person actually needs",
+    "Tableau Prep, included with a Creator license, for preparing and cleaning data before analysis",
+    "Tableau Agent, available to Creator and Explorer seats, for AI-assisted data preparation, calculation-building, and exploration",
+    "Tableau Mobile apps for iOS and Android, included with every license tier",
+    "Data-driven alerts and subscriptions so Viewers can be notified of changes without opening a workbook"
+  ],
+  "pros": [
+    "Role-based licensing (Viewer/Explorer/Creator) lets organizations pay less for people who only need to view or lightly edit dashboards",
+    "Tableau Agent brings AI-assisted data prep, calculation-building, and exploration into both Creator and Explorer seats",
+    "Tableau Desktop supports both Windows and Mac for authoring, unlike some competitors' Windows-only desktop tools"
+  ],
+  "cons": [
+    "Creator, the only role that includes full authoring plus Tableau Desktop and Prep, costs $75/user/month (Standard) or $115/user/month (Enterprise), several times the Viewer rate",
+    "Published per-user rates require annual billing"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15/user/month, billed annually (Viewer, Standard edition)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Viewer", "amount": "15", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Standard edition, billed annually. Includes Tableau Mobile access, commenting, exporting, subscriptions, and data-driven alerts." },
+      { "name": "Explorer", "amount": "42", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Standard edition, billed annually. Adds web-based workbook authoring/editing and Tableau Agent in web authoring." },
+      { "name": "Creator", "amount": "75", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Standard edition, billed annually. Full authoring plus Tableau Desktop and Tableau Prep. Enterprise edition Creator is $115/user/month, billed annually." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.tableau.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Microsoft Power BI",
+      "slug": "microsoft-power-bi",
+      "description": "Microsoft's BI platform, with simple per-user pricing and deep integration into Microsoft 365 and Microsoft Fabric.",
+      "best_for": "Teams already standardized on Microsoft 365 that want lower-cost per-user BI licensing rather than Tableau's role-based tiers.",
+      "strengths": ["Lower published per-user price", "Native Microsoft 365/Teams/Excel integration", "Microsoft Fabric data foundation"]
+    }
+  ],
+  "faq": [
+    { "question": "What's the difference between Tableau Viewer, Explorer, and Creator?", "answer": "Viewer ($15/user/month) can view, comment on, and subscribe to dashboards via web or Tableau Mobile. Explorer ($42/user/month) adds web-based authoring and editing. Creator ($75/user/month, Standard edition) adds full authoring plus Tableau Desktop and Tableau Prep. All prices are billed annually." },
+    { "question": "Does Tableau have a free trial?", "answer": "Yes, Tableau offers a 14-day free trial that can be used without restrictions before a product key or Tableau Cloud sign-in is required." },
+    { "question": "Is there a genuinely free Tableau plan?", "answer": "No. Tableau does not offer a perpetual free tier for its core product; every license (Viewer, Explorer, Creator) is paid, with only a 14-day trial available at no cost." }
+  ],
+  "tags": ["business intelligence", "data visualization", "dashboards", "analytics"],
+  "links": { "pricing": "https://www.tableau.com/pricing" },
+  "sources": [
+    "https://www.tableau.com/pricing",
+    "https://www.tableau.com/pricing/teams-orgs",
+    "https://www.tableau.com/pricing/cloud",
+    "https://help.tableau.com/current/online/en-us/tableau_next_tableau_product_overview.htm",
+    "https://help.tableau.com/current/pro/desktop/en-us/license_activation.htm",
+    "https://www.tableau.com/products/viewer-vs-reader"
+  ],
+  "accessed_at": "2026-09-05"
+}

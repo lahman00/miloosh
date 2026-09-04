@@ -1,0 +1,74 @@
+{
+  "name": "Replit",
+  "slug": "replit",
+  "category": "developer-tools",
+  "description": "Replit is a cloud-based development platform where Replit Agent can build, run, and deploy full applications from natural-language prompts, alongside a browser-based multiplayer IDE with built-in hosting and a database.",
+  "website": "https://replit.com",
+  "best_for": "Builders, including non-professional developers, who want to describe an app in plain language and have it built, hosted, and iterated on entirely in the browser, without setting up local tooling.",
+  "platforms": ["Web", "iOS", "Android"],
+  "features": [
+    "Replit Agent, an AI app builder that writes, evolves, and deploys code from natural-language prompts across websites, mobile apps, data visualizations, and more",
+    "Intelligent model routing that selects an AI model per task",
+    "Built-in hosting, authentication, and database services for shipping apps without separate infrastructure setup",
+    "Multiplayer collaboration for multiple people to work in the same codebase in parallel, with visibility into changes before they merge",
+    "Infinite Canvas for visually exploring and tweaking app designs and applying them directly to the app",
+    "100+ built-in integrations, including OpenAI, Stripe, and Google Workspace",
+    "Native iOS and Android mobile apps for chatting with Agent and editing projects on the go",
+    "Database rollback, up to 28 days on the Pro plan, for recovering from mistakes"
+  ],
+  "pros": [
+    "Starter plan is free and includes a real database and daily Agent credits, not just a stripped-down demo",
+    "Hosting, auth, and a database are built in, so an Agent-built app is already deployable without extra setup",
+    "Mobile app lets you chat with Agent and edit projects from a phone, not just view them"
+  ],
+  "cons": [
+    "The free Starter plan limits you to 1 published live project and one background task running at a time",
+    "Heavier AI usage draws down monthly model credits, so cost can grow with usage beyond the included allowance on Core and Pro"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (Starter); paid plans from $20/month (Core)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Starter", "amount": "0", "currency": "USD", "notes": "Free. Daily complimentary Agent credits, 1 published live project, and one background task at a time, with built-in database access." },
+      { "name": "Core", "amount": "20", "currency": "USD", "billing_period": "monthly", "unit": "per month", "notes": "$17/month if billed annually (about 15% less). Includes $20/month of model usage, unlimited workspaces, and the ability to remove Replit branding." },
+      { "name": "Pro", "amount": "100", "currency": "USD", "billing_period": "monthly", "unit": "per month", "notes": "$95/month if billed annually (about 15% less). Includes $100/month of model usage, up to 10 parallel Agents, up to 15 collaborators and 50 viewers, and 28-day database rollback." },
+      { "name": "Enterprise", "notes": "Custom pricing. Adds SSO/SAML, custom seat limits, single-tenant environments, and static outbound IPs." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://replit.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Cursor",
+      "slug": "cursor",
+      "description": "An AI-first desktop code editor (a VS Code fork) with autonomous Agent mode and access to multiple frontier models.",
+      "best_for": "Professional developers who want AI-assisted coding inside a familiar, local desktop editor rather than a browser-based platform.",
+      "strengths": ["Deep codebase indexing and semantic search", "Choice of multiple frontier AI models", "Familiar VS Code-based editing experience"]
+    },
+    {
+      "name": "GitHub Copilot",
+      "slug": "github-copilot",
+      "description": "GitHub and Microsoft's AI pair programmer, available as an extension inside existing editors like VS Code and JetBrains IDEs.",
+      "best_for": "Developers who want AI code completion inside their existing local IDE rather than moving their whole workflow to the browser.",
+      "strengths": ["Works inside your existing IDE", "Deep GitHub integration", "Broad language and IDE support"]
+    }
+  ],
+  "faq": [
+    { "question": "Is Replit free?", "answer": "Yes. Replit's Starter plan is free and includes daily Agent credits, one published live project, and built-in database access. Paid plans start at $20/month (Core, or $17/month billed annually) for more usage." },
+    { "question": "Does Replit have a mobile app?", "answer": "Yes. The Replit mobile app, available on the Apple App Store and Google Play, lets you chat with Replit Agent and edit projects from a phone; building and submitting native iOS/Android apps still uses Replit's web workflow." },
+    { "question": "Is Replit SOC 2 compliant?", "answer": "Yes. Replit has completed a SOC 2 Type II audit, renewed annually by an independent CPA firm." }
+  ],
+  "tags": ["AI app builder", "cloud IDE", "hosting", "AI agent"],
+  "links": { "pricing": "https://replit.com/pricing" },
+  "sources": [
+    "https://replit.com/pricing",
+    "https://replit.com/",
+    "https://replit.com/mobile"
+  ],
+  "accessed_at": "2026-09-05"
+}

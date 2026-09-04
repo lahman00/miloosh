@@ -1,0 +1,66 @@
+{
+  "name": "Microsoft Power BI",
+  "slug": "microsoft-power-bi",
+  "category": "analytics",
+  "description": "Power BI is Microsoft's business intelligence platform for connecting to data, building interactive reports and dashboards, and sharing them across an organization, with deep integration into Microsoft 365 and Microsoft Fabric.",
+  "website": "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+  "best_for": "Organizations already invested in Microsoft 365 or Microsoft Fabric that want per-user BI licensing and tight integration with Excel, Teams, and SharePoint for report distribution.",
+  "platforms": ["Web", "Windows", "iOS", "Android"],
+  "features": [
+    "Drag-and-drop report canvas for building interactive visual reports",
+    "Copilot in Power BI for natural-language questions that auto-generate visuals and narrative text summaries of report data",
+    "Semantic models with AI-assisted modeling guidance for building reusable, business-ready data models",
+    "OneLake integration for a shared data foundation with consistent security and governance across Fabric workloads",
+    "Embedding and sharing throughout Microsoft 365, including Teams, Excel, PowerPoint, SharePoint, and Outlook",
+    "Connects to data from cloud and on-premises sources",
+    "Template apps for accelerating report building with pre-built solutions",
+    "Power BI Desktop (Windows) for authoring, plus Power BI mobile apps for viewing on the go"
+  ],
+  "pros": [
+    "Pro license ($14/user/month) is inexpensive relative to many enterprise BI tools, and is bundled into Microsoft 365 E5 and Office 365 E5",
+    "Deep, native integration with Excel, Teams, and SharePoint for organizations already on Microsoft 365",
+    "Copilot can auto-generate visuals and narrative summaries from a plain-language question"
+  ],
+  "cons": [
+    "Power BI Desktop, the full report-authoring app, is Windows-only; Mac users are limited to the web-based service",
+    "The published $14 and $24 per-user rates require annual billing to lock in"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$14/user/month, paid yearly (Power BI Pro)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "14", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "notes": "Create interactive reports for personal use, included with a free Microsoft Fabric account; sharing reports with others requires Pro or Premium." },
+      { "name": "Pro", "amount": "14", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid yearly. Included in Microsoft 365 E5 and Office 365 E5 subscriptions." },
+      { "name": "Premium Per User", "amount": "24", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid yearly. Adds larger semantic model sizes, up to 48 refreshes/day (vs. 8/day on Pro), and a 100 GB model memory limit. Available as a $14/user/month add-on for existing Pro licensees." },
+      { "name": "Fabric Capacity", "notes": "Capacity-based licensing (Reservation or Pay-As-You-Go) for organization-wide distribution; publishing content still requires per-author Pro licenses. Reserved annual capacity can save roughly 40.5% versus pay-as-you-go rates." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Tableau",
+      "slug": "tableau",
+      "description": "A BI and data-visualization platform known for deep, flexible visual analytics, with per-user monthly pricing across Viewer, Explorer, and Creator roles.",
+      "best_for": "Teams that prioritize highly customizable visualization and are not already standardized on the Microsoft ecosystem.",
+      "strengths": ["Highly customizable visualizations", "Strong ad hoc/exploratory analytics", "Role-based licensing (Viewer/Explorer/Creator)"]
+    }
+  ],
+  "faq": [
+    { "question": "Is Power BI free?", "answer": "Power BI has a free plan for building reports for personal use, included with a free Microsoft Fabric account, but sharing reports with other people requires a Power BI Pro or Premium Per User license." },
+    { "question": "How much does Power BI Pro cost?", "answer": "Power BI Pro is $14 per user/month, paid yearly. It's also included with Microsoft 365 E5 and Office 365 E5 subscriptions." },
+    { "question": "What does Power BI Premium Per User add over Pro?", "answer": "Premium Per User is $24 per user/month (paid yearly) and adds larger semantic model sizes, up to 48 data refreshes a day versus 8 on Pro, and a 100 GB model memory limit." }
+  ],
+  "tags": ["business intelligence", "data visualization", "reporting", "Microsoft Fabric"],
+  "links": { "pricing": "https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing" },
+  "sources": [
+    "https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing",
+    "https://www.microsoft.com/en-us/power-platform/products/power-bi"
+  ],
+  "accessed_at": "2026-09-05"
+}

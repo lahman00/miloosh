@@ -1,0 +1,66 @@
+{
+  "name": "Fivetran",
+  "slug": "fivetran",
+  "category": "analytics",
+  "description": "Fivetran is an automated data movement platform that replicates data from databases, SaaS applications, and files into a data warehouse or lake, automatically handling schema drift along the way.",
+  "website": "https://www.fivetran.com",
+  "best_for": "Data teams that want reliable, low-maintenance ELT pipelines from hundreds of database and SaaS sources into their warehouse without hand-building and maintaining custom connectors.",
+  "platforms": ["Web"],
+  "features": [
+    "Large catalog of pre-built connectors (700+ on the Standard plan) spanning SaaS applications, databases, SAP, files, and streaming sources",
+    "Automated schema drift handling with automated data type promotion and validation as source schemas change",
+    "Idempotent, cursor-managed sync pipelines designed for data accuracy on every run",
+    "dbt Labs integration for orchestrating transformations after data lands in the warehouse",
+    "Support for data warehouse, data lake (open table format), and database destinations, plus destination-to-destination transfers and reverse-ETL style Activations",
+    "Connector SDK and a by-request program for building custom connectors beyond the pre-built catalog",
+    "SOC 1, SOC 2, ISO 27001, PCI DSS Level 1, HIPAA BAA, and HITRUST compliance certifications"
+  ],
+  "pros": [
+    "Free plan (up to 500K monthly active rows) is usable for small real projects, not just a demo",
+    "Unlimited users on paid plans — cost scales with data volume, not headcount",
+    "Broad compliance coverage (SOC 1/2, ISO 27001, PCI DSS Level 1, HIPAA BAA, HITRUST) available across its plans"
+  ],
+  "cons": [
+    "Pricing is based on Monthly Active Rows, so cost can be harder to predict in advance than a flat per-seat plan, especially as data volume grows",
+    "VPN tunnels and some security features (customer-managed encryption keys, PCI DSS Level 1) require the higher Enterprise or Business Critical plans"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free up to 500K monthly active rows; paid usage from a $5/month base charge (covers up to 1M MAR)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "5", "currency": "USD", "billing_period": "monthly", "per_seat": false },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Up to 500,000 monthly active rows (MAR) for connections, 3,500 MAR for activations, and 5,000 monthly model runs for transformations, at no cost." },
+      { "name": "Standard", "currency": "USD", "billing_period": "monthly", "unit": "per MAR block", "notes": "Unlimited users, 15-minute sync frequency, 700+ connectors. Usage-based billing starting at a $5 base charge covering 1 to 1,000,000 monthly active rows, then scaling with usage. Save up to 22% with an annual contract." },
+      { "name": "Enterprise", "notes": "Adds 1-minute sync frequency, VPN tunnels (annual contract required), custom roles, and SCIM provisioning; custom consumption-based pricing." },
+      { "name": "Business Critical", "notes": "Adds customer-managed encryption keys, PCI DSS Level 1 certification, and private networking; custom consumption-based pricing." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.fivetran.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Segment",
+      "slug": "segment",
+      "description": "Twilio's customer data platform (CDP), which collects first-party customer and event data and can route it into warehouses and other destinations.",
+      "best_for": "Teams whose main data-movement need is streaming product and customer event data into a warehouse or downstream tools, rather than replicating databases and SaaS-application tables.",
+      "strengths": ["Purpose-built customer/event data collection", "Identity resolution and unified customer profiles", "Broad library of destinations beyond warehouses"]
+    }
+  ],
+  "faq": [
+    { "question": "Does Fivetran have a free plan?", "answer": "Yes. Fivetran's Free plan covers up to 500,000 monthly active rows for connections, 3,500 MAR for activations, and 5,000 monthly transformation model runs at no cost." },
+    { "question": "How is Fivetran priced above the free tier?", "answer": "Paid plans bill on Monthly Active Rows (MAR) consumed, starting with a $5 base charge covering 1 to 1,000,000 MAR on the Standard plan, then scaling with usage. Annual contracts can save up to 22% versus paying monthly." },
+    { "question": "Does Fivetran support transformations, or just data movement?", "answer": "Fivetran integrates with dbt Labs to orchestrate transformations after data lands in the destination, in addition to its core connector-based data movement." }
+  ],
+  "tags": ["ELT", "data integration", "data pipeline", "connectors"],
+  "links": { "pricing": "https://www.fivetran.com/pricing" },
+  "sources": [
+    "https://www.fivetran.com/pricing",
+    "https://www.fivetran.com/platform"
+  ],
+  "accessed_at": "2026-09-05"
+}
