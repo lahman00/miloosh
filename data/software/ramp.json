@@ -1,0 +1,76 @@
+{
+  "name": "Ramp",
+  "slug": "ramp",
+  "category": "finance-and-erp",
+  "description": "Ramp is a spend management platform built around a fee-free corporate card, combining expense management, accounts payable automation, procurement, travel, and accounting sync with AI agents that auto-code transactions and flag policy exceptions.",
+  "website": "https://ramp.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Businesses wanting a no-fee corporate card bundled with AI-driven expense management and accounts payable automation, from a free plan up through enterprise procurement.",
+  "pros": [
+    "Free plan available with unlimited physical and virtual cards, no annual fees, and no interest charges on the card",
+    "Zero processing fees on domestic ACH, check, and card AP payments",
+    "Native bidirectional sync with QuickBooks Online, Xero, NetSuite, and Sage Intacct (Workday and Oracle on higher tiers)"
+  ],
+  "cons": [
+    "AI-driven expense automation, NetSuite/Sage Intacct integrations, and a procurement add-on require the $15/user/month Plus plan plus a team-size-based platform fee",
+    "Enterprise tier requires annual billing and a custom sales quote",
+    "Ramp advertises cashback and card rewards but does not publish a single fixed cashback percentage on its pricing or card pages"
+  ],
+  "features": [
+    "Unlimited physical and virtual Visa cards with no personal credit checks or guarantees, usable in 200+ countries with local card issuance in 33 countries",
+    "Preset spend controls by vendor, category, and amount, plus cashback rewards with no annual fees or interest charges",
+    "Expense management with automatic receipt capture at purchase, AI-filled memos/categories, and submission via SMS, Slack, Teams, or the mobile app",
+    "Policy Agent that automatically reviews expenses and surfaces only exceptions",
+    "Accounts payable automation with OCR invoice-data extraction, AI agents for auto-coding, fraud detection, approval routing, and payment scheduling, plus 2-way/3-way PO matching",
+    "Zero processing fees on domestic ACH, check, and card AP payments",
+    "Procurement with AI contract parsing, dynamic approval routing, and auto-generated purchase orders",
+    "Travel booking with policy enforcement at time of booking and automatic rebooking when hotel rates drop by $50 or more",
+    "Native bidirectional accounting sync with QuickBooks Online, Xero, NetSuite, Sage Intacct, Workday, and Oracle"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free; $15/user/month (Plus) plus a team-size-based platform fee",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Corporate card with unlimited physical/virtual cards at no extra cost, expense management with SMS/Slack submission, invoice capture with OCR, basic accounting rules, QuickBooks Online and Xero integrations, and FDIC-insured treasury accounts with free wires." },
+      { "name": "Plus", "amount": "15", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Plus a platform fee based on team size. Save 20% with annual billing. Adds AI-driven automation (expense reviews, approval recommendations, auto-coding), NetSuite and Sage Intacct integrations, a procurement add-on, multi-entity support, and custom user roles." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "annual", "notes": "Custom pricing via sales, billed annually. Adds Workday and Oracle integrations, white-glove support, implementation services, custom development, and locally funded global reimbursements." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://ramp.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Brex",
+      "slug": "brex",
+      "description": "A corporate card and spend management platform with a free entry tier and AI-driven expense automation.",
+      "best_for": "Startups and scaling companies wanting a free corporate card plus bill pay and travel in one platform.",
+      "strengths": ["Free Essentials plan", "AI-powered bill pay and GL coding", "Two-way ERP integrations"]
+    },
+    {
+      "name": "BILL",
+      "slug": "bill",
+      "description": "A financial operations platform combining a free corporate card (BILL Spend & Expense) with paid accounts payable and receivable automation.",
+      "best_for": "SMBs and accounting firms wanting free card-based spend management alongside subscription AP/AR automation.",
+      "strengths": ["BILL Spend & Expense has no per-user software fees", "Deep two-way sync with QuickBooks, Xero, NetSuite, and Sage Intacct", "Procurement with purchase orders and 2-way matching on Corporate plan and above"]
+    },
+    {
+      "name": "Expensify",
+      "slug": "expensify",
+      "description": "An expense management platform with receipt scanning, a commercial card, and in-app travel booking.",
+      "best_for": "Teams wanting simple receipt-driven expense reports, with discounted pricing when paired with the Expensify Card.",
+      "strengths": ["Flat $5/member/month Collect plan", "Up to 50% subscription discount for Expensify Card usage", "45+ accounting and HR integrations"]
+    }
+  ],
+  "sources": [
+    "https://ramp.com/",
+    "https://ramp.com/pricing",
+    "https://ramp.com/security",
+    "https://ramp.com/corporate-cards"
+  ],
+  "accessed_at": "2026-09-05"
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Tipalti",
+  "slug": "tipalti",
+  "category": "finance-and-erp",
+  "description": "Tipalti is a finance automation platform for accounts payable and global mass payments, letting finance teams pay suppliers, freelancers, and partners across many countries and currencies alongside procurement, expense, and treasury management.",
+  "website": "https://tipalti.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Mid-market and enterprise finance teams that need to automate accounts payable and pay a high volume of suppliers, freelancers, or partners across many countries and currencies.",
+  "pros": [
+    "Mass payments reach 200+ countries and territories in 120+ currencies via 50+ payment methods",
+    "Published starting prices ($99/month for Accounts Payable, $249/month for Mass Payments) with unlimited users included on entry plans",
+    "SOC 2 Type II audited annually, with reports available to customers on request"
+  ],
+  "cons": [
+    "Final pricing depends on transaction volume, number of legal entities, and enabled modules, so a full quote requires talking to sales",
+    "More complex environments may require additional professional services fees",
+    "No self-serve numeric pricing is published for Procurement, Expenses, or Treasury add-on modules"
+  ],
+  "features": [
+    "Accounts payable automation: supplier management, AI-assisted invoice capture and PO matching, approval workflows, and payment reconciliation",
+    "Mass payments to 200+ countries and territories in 120+ currencies via 50+ payment methods, with a self-service payee portal and tax-form (W-9/W-8) collection",
+    "Procurement: purchase-order management, approval workflows, and intake management",
+    "Expense management: receipt capture from mobile and web apps, spend limits and custom policies, and global reimbursements to 200 countries in 120+ currencies",
+    "Treasury management: cash visibility and forecasting",
+    "AI agents for invoice capture, PO matching, reporting, bill approvals, purchase requests, tax-form processing, ERP sync resolution, and expense receipt scanning",
+    "Integrations with Oracle NetSuite, Microsoft Dynamics, SAP Business One, Sage, Intuit QuickBooks, and Xero"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$99/month (Accounts Payable); $249/month (Mass Payments)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "99", "currency": "USD", "billing_period": "monthly", "per_seat": false },
+    "tiers": [
+      { "name": "Accounts Payable", "amount": "99", "currency": "USD", "billing_period": "monthly", "notes": "Starting price. Includes unlimited users, a self-service supplier portal, and core automation features; actual cost also depends on transaction volume and enabled modules." },
+      { "name": "Mass Payments", "amount": "249", "currency": "USD", "billing_period": "monthly", "notes": "Starting price. Includes unlimited users, a self-service payee portal, and core automation features; actual cost also depends on transaction volume and enabled modules." },
+      { "name": "Custom quote", "currency": "USD", "notes": "Full pricing depends on per-invoice/per-payment transaction fees, number of legal entities, and which modules (Procurement, Expenses, Treasury) are enabled; complex environments may add professional-services fees." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://tipalti.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "BILL",
+      "slug": "bill",
+      "description": "A financial operations platform combining a free corporate card (BILL Spend & Expense) with paid accounts payable and receivable automation.",
+      "best_for": "SMBs and accounting firms wanting free card-based spend management alongside subscription, per-user AP/AR automation.",
+      "strengths": ["BILL Spend & Expense has no per-user software fees", "Deep two-way sync with QuickBooks, Xero, NetSuite, and Sage Intacct", "Transparent per-user AP & AR pricing starting at $49/user/month"]
+    },
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "description": "A spend management platform combining a fee-free corporate card with AI-driven expense, AP, and procurement automation.",
+      "best_for": "Businesses wanting a free corporate card paired with automated accounts-payable workflows and zero AP processing fees.",
+      "strengths": ["Free plan with no annual fees or interest charges on the card", "Zero processing fees on domestic ACH, check, and card AP payments", "Native bidirectional sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
+    }
+  ],
+  "sources": [
+    "https://tipalti.com/",
+    "https://tipalti.com/pricing/",
+    "https://tipalti.com/legal/customer-dpa/",
+    "https://tipalti.com/product/expenses/"
+  ],
+  "accessed_at": "2026-09-05"
+}

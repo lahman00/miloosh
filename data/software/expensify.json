@@ -1,0 +1,75 @@
+{
+  "name": "Expensify",
+  "slug": "expensify",
+  "category": "finance-and-erp",
+  "description": "Expensify is an expense management platform that uses receipt scanning and its Concierge automation to build expense reports, paired with its own commercial card, bill pay, invoicing, and in-app travel booking.",
+  "website": "https://www.expensify.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Businesses and individuals wanting receipt-scanning-driven expense reports, with subscription discounts for companies that adopt the Expensify Card.",
+  "pros": [
+    "Collect plan is a flat $5/member/month with no annual commitment",
+    "Control plan subscription cost can drop as low as $9/member/month (annual) with heavy Expensify Card usage",
+    "45+ integrations including QuickBooks, NetSuite, Sage Intacct, Xero, Workday, and Gusto"
+  ],
+  "cons": [
+    "Without the Expensify Card, Control plan pricing is $18/member/month annual or $36/member/month pay-per-use",
+    "The deepest subscription discounts require routing company card spend through the Expensify Card",
+    "Advanced controls (custom approval workflows, tax tracking, ERP-grade sync) are gated behind the higher-priced Control plan"
+  ],
+  "features": [
+    "Receipt scanning via mobile app, email forwarding, or drag-and-drop with Concierge-automated categorization",
+    "Expense report submission, multi-level approval workflows, and direct-to-bank reimbursement",
+    "Expensify Visa Commercial Card with cash back and unlimited free virtual cards for Card members",
+    "Bill pay and invoice management",
+    "In-app booking for flights, hotels, cars, and rail with automatic travel-expense sync",
+    "Global reimbursements in local currencies",
+    "45+ integrations, including QuickBooks, NetSuite, Sage Intacct, Xero, Workday, and Gusto"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (individual Submit workspace); $5/member/month (Collect)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "5", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Submit", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free workspace for an individual employee tracking their own expenses, with limited features." },
+      { "name": "Collect", "amount": "5", "currency": "USD", "billing_period": "monthly", "unit": "per active member", "notes": "Flat rate with no annual commitment, including for customers not using the Expensify Card. In effect for signups after April 1, 2025." },
+      { "name": "Control (annual, with Expensify Card)", "amount": "9", "currency": "USD", "billing_period": "annual", "unit": "per member", "notes": "\"As low as\" price; the discount (up to 50%) scales with the share of approved USD expenses charged to the Expensify Card that billing month." },
+      { "name": "Control (annual, no card)", "amount": "18", "currency": "USD", "billing_period": "annual", "unit": "per member", "notes": "Annual subscription without Expensify Card usage." },
+      { "name": "Control (pay-per-use)", "amount": "36", "currency": "USD", "billing_period": "monthly", "unit": "per active member", "notes": "No annual commitment; drops to \"as low as\" $18/member/month with heavy Expensify Card usage." }
+    ],
+    "last_verified": "2026-09-05",
+    "official_source": "https://help.expensify.com/articles/new-expensify/billing-and-subscriptions/explore-plans-subscriptions-and-pricing/Understand-Expensify-Pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "description": "A spend management platform combining a fee-free corporate card with AI-driven expense, AP, and procurement automation.",
+      "best_for": "Businesses wanting a free corporate card paired with automated expense and accounts-payable workflows.",
+      "strengths": ["Free plan with no annual fees or interest charges on the card", "Zero processing fees on domestic ACH, check, and card AP payments", "Native bidirectional sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
+    },
+    {
+      "name": "Brex",
+      "slug": "brex",
+      "description": "A corporate card and spend management platform with a free entry tier and AI-driven expense automation.",
+      "best_for": "Startups and scaling companies wanting a free corporate card plus bill pay and travel in one platform.",
+      "strengths": ["Free Essentials plan", "AI-powered bill pay and GL coding", "Two-way ERP integrations"]
+    },
+    {
+      "name": "Navan",
+      "slug": "navan",
+      "description": "An AI-assisted corporate travel booking and expense management platform, formerly TripActions.",
+      "best_for": "Companies wanting travel booking and expense management combined, with free travel booking for companies up to 300 employees.",
+      "strengths": ["Free travel booking for companies up to 300 employees", "24/7 human travel support", "AI-driven expense categorization and policy-violation flagging"]
+    }
+  ],
+  "sources": [
+    "https://www.expensify.com/",
+    "https://help.expensify.com/articles/new-expensify/billing-and-subscriptions/explore-plans-subscriptions-and-pricing/Understand-Expensify-Pricing",
+    "https://use.expensify.com/blog/collect-plan-pricing-update",
+    "https://help.expensify.com/articles/Unlisted/Compliance-Documentation"
+  ],
+  "accessed_at": "2026-09-05"
+}
