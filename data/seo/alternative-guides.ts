@@ -321,7 +321,7 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     evidenceSources: ["https://woocommerce.com", "https://www.shopify.com"],
   },
   ecwid: {
-    diagnosis: "Ecwid's page lists two alternatives without explaining the decision that actually matters: adding a cart widget to an existing site versus running a dedicated, standalone store.",
+    diagnosis: "Ecwid's page now connects its alternatives to the structural choice searchers actually face: keep an embedded cart model, move to a dedicated hosted store, or take full ownership through an open-source platform.",
     heading: "Choose an Ecwid alternative by store structure",
     introduction: "Ecwid is built to be embedded: a shopping-cart widget added into an existing WordPress, Wix, or custom site, with zero platform transaction fees. The relevant alternatives question is whether that embedded model still fits, or whether the business has outgrown it into needing a dedicated, full-featured store.",
     whySeekAlternative: [
@@ -332,8 +332,9 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     decisions: [
       { heading: "A dedicated, standalone store", fit: "Shopify is the relevant path when a merchant has outgrown embedding a cart widget and wants a full-featured, dedicated store with multichannel selling.", alternativeSlug: "shopify", comparisonSlug: "ecwid-vs-shopify" },
       { heading: "Open-source ownership and customization", fit: "PrestaShop is worth comparing when a merchant wants full platform ownership and customization rather than an embedded, hosted widget.", alternativeSlug: "prestashop", comparisonSlug: "ecwid-vs-prestashop" },
+      { heading: "Stay on WordPress with full store ownership", fit: "WooCommerce is the relevant comparison when the merchant already runs WordPress and wants self-hosted control over checkout, data, themes, and extensions instead of embedding a hosted cart.", alternativeSlug: "woocommerce", comparisonSlug: "ecwid-vs-woocommerce" },
     ],
-    evidenceSources: ["https://www.ecwid.com", "https://www.shopify.com"],
+    evidenceSources: ["https://www.ecwid.com", "https://www.shopify.com", "https://woocommerce.com"],
   },
   hubspot: {
     diagnosis: "HubSpot's page lists two alternatives without explaining the decision that actually separates them: a single AI-enabled platform across departments versus a simpler, sales-focused pipeline tool.",

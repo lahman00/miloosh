@@ -90,6 +90,13 @@
       "description": "An open-source self-hosted commerce platform giving merchants full platform ownership.",
       "best_for": "Merchants wanting full platform ownership and customization.",
       "strengths": ["Thousands of modules/themes", "Self-hosted control", "Optional managed hosting"]
+    },
+    {
+      "name": "WooCommerce",
+      "slug": "woocommerce",
+      "description": "An open-source ecommerce platform built as a WordPress plugin, giving merchants control over hosting, checkout, and store customization.",
+      "best_for": "Merchants already committed to WordPress who want self-hosted ownership and plugin-level customization rather than an embedded hosted cart.",
+      "strengths": ["WordPress-native", "Full checkout and data ownership", "Large theme and extension ecosystem"]
     }
   ]
 }
