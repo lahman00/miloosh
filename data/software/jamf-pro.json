@@ -1,0 +1,79 @@
+{
+  "name": "Jamf Pro",
+  "slug": "jamf-pro",
+  "category": "it-operations",
+  "description": "Jamf Pro is Apple-only device management software that lets IT teams deploy, configure, secure, and patch Mac, iPhone, iPad, and Apple TV devices without user interaction.",
+  "website": "https://www.jamf.com/products/jamf-pro/",
+  "platforms": ["Web", "macOS", "iOS", "iPadOS", "tvOS"],
+  "founded": 2000,
+  "best_for": "IT and security teams that exclusively or primarily manage Apple devices and want deep, Apple-native device management rather than a cross-platform UEM tool.",
+  "features": [
+    "Zero-touch deployment for Mac, iPhone, iPad, and Apple TV, including BYOD",
+    "Smart Groups for dynamic device and user segmentation, with an AI Assistant to help navigate them",
+    "Blueprints built on Declarative Device Management to configure settings, commands, app installs, and restrictions across devices",
+    "Automated inventory collection of hardware, software, and security configuration details",
+    "App lifecycle management and Self Service+, so end users can install apps and updates themselves",
+    "Compliance benchmarks based on industry security baselines, plus remote security commands that don't require user interaction",
+    "Integrations with Microsoft (Entra, Power BI, Security Copilot, Sentinel), Google (Workspace, Cloud Identity, Chrome Enterprise), Okta, and hundreds of tools via the Jamf Marketplace"
+  ],
+  "pros": [
+    "Deep, Apple-native management (Declarative Device Management, zero-touch deployment) built specifically for Mac, iPhone, iPad, and Apple TV",
+    "Free trial available with no credit card required",
+    "More than 20 years focused solely on Apple device management, per Jamf's own company history"
+  ],
+  "cons": [
+    "Apple-only -- Jamf Pro itself does not manage Windows or Android devices",
+    "Jamf's published per-device pricing ($12.50/device/month for Mac, $5.75/device/month for mobile) is for the bundled \"Jamf for Mac\" and \"Jamf for Mobile\" packages that combine Jamf Pro with Jamf Connect and Jamf Protect, not a standalone Jamf Pro price, and every plan still requires contacting sales rather than checking out online"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "tiers": [
+      { "name": "Jamf for Mac", "amount": "12.50", "currency": "USD", "billing_period": "annual", "unit": "per macOS device/month", "notes": "Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Every plan requires contacting sales to purchase -- there is no self-serve checkout." },
+      { "name": "Jamf for Mobile", "amount": "5.75", "currency": "USD", "billing_period": "annual", "unit": "per mobile device/month", "notes": "Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Jamf markets this bundle as covering iOS, iPadOS, visionOS, watchOS, tvOS, and Android -- that cross-platform mobile coverage is attributed to the bundle, not confirmed as a capability of Jamf Pro on its own." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.jamf.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "ManageEngine Endpoint Central",
+      "slug": "manageengine-endpoint-central",
+      "description": "ManageEngine Endpoint Central is a unified endpoint management platform covering Windows, macOS, Linux, iOS, Android, and Chrome OS from one console.",
+      "best_for": "IT teams managing a mixed fleet of Apple and non-Apple devices that want one cross-platform UEM console instead of an Apple-specific tool.",
+      "strengths": ["True cross-platform device management", "Published self-serve per-endpoint pricing", "Bundled patch management, EDR, and asset management"]
+    },
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "NinjaOne is a unified IT operations platform combining RMM, patch management, backup, remote access, and service-desk ticketing for IT teams and MSPs.",
+      "best_for": "IT teams and MSPs that need Windows/macOS/Linux RMM alongside basic mobile device management, not Apple-specific depth.",
+      "strengths": ["Single console for RMM, patching, and backup", "iOS/iPadOS/Android MDM included", "SOC 2 and ISO 27001:2022 certified"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does Jamf Pro manage Windows or Android devices?",
+      "answer": "No. Jamf Pro itself manages Apple devices only -- Mac, iPhone, iPad, and Apple TV. Cross-platform mobile support, including Android, is only mentioned by Jamf in the context of its bundled \"Jamf for Mobile\" package, which combines Jamf Pro with Jamf Connect and Jamf Protect."
+    },
+    {
+      "question": "How much does Jamf Pro cost?",
+      "answer": "Jamf doesn't publish a standalone Jamf Pro price. Its pricing page shows bundle pricing starting at $12.50/Mac device/month or $5.75/mobile device/month (billed annually, 25-device minimum) for packages that include Jamf Pro plus Jamf Connect and Jamf Protect, and every plan requires contacting sales to purchase."
+    }
+  ],
+  "tags": ["MDM", "Apple Device Management", "UEM", "IT Operations"],
+  "links": {
+    "pricing": "https://www.jamf.com/pricing/"
+  },
+  "sources": [
+    "https://www.jamf.com/products/jamf-pro/",
+    "https://www.jamf.com/pricing/",
+    "https://www.jamf.com/request-trial/",
+    "https://www.jamf.com/about/"
+  ],
+  "accessed_at": "2026-09-05"
+}

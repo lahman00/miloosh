@@ -1,0 +1,80 @@
+{
+  "name": "Atera",
+  "slug": "atera",
+  "category": "it-operations",
+  "description": "Atera is an all-in-one IT management platform that combines remote monitoring and management (RMM), ticketing, and patch management with Robin, an autonomous AI agent, priced per technician with unlimited managed endpoints.",
+  "website": "https://www.atera.com",
+  "platforms": ["Web", "Windows", "macOS", "Linux"],
+  "best_for": "IT departments and MSPs that want unlimited-endpoint RMM, ticketing, and patch management billed per technician instead of per device.",
+  "features": [
+    "Per-technician pricing with unlimited managed endpoints instead of per-device fees",
+    "Remote monitoring and management (RMM) with full visibility and control across Windows, macOS, and Linux endpoints",
+    "Built-in ticketing and IT service desk with a self-service portal",
+    "AI Copilot for technicians (script generation, ticket summarization) plus Robin, an autonomous AI agent that Atera says resolves device and cloud incidents end-to-end without technician involvement",
+    "Automated patch management",
+    "IT asset management and network discovery (device and SNMP monitoring, sold as an add-on)",
+    "Analytical reporting dashboards and an App Center marketplace of third-party integrations"
+  ],
+  "pros": [
+    "Unlimited endpoints per technician license rather than per-device billing",
+    "30-day free trial with no credit card required",
+    "AICPA SOC for Service Organizations and ISO 27001 certified, per Atera's own site"
+  ],
+  "cons": [
+    "Network Discovery ($29/month per technician) and the Work From Home remote-access add-on ($5/month per end user) cost extra on top of the per-technician plan price",
+    "Greater compliance and insight tooling requires the $219+/month Master tier rather than the entry Professional tier"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$149/technician/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "149", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Professional", "amount": "149", "currency": "USD", "billing_period": "annual", "unit": "per technician/month", "notes": "Billed annually; $169/technician/month if billed monthly. Unlimited endpoints. For teams managing corporate devices and networks." },
+      { "name": "Master", "amount": "219", "currency": "USD", "billing_period": "annual", "unit": "per technician/month", "notes": "Billed annually; $269/technician/month if billed monthly. For established teams needing greater compliance and more insights." },
+      { "name": "Enterprise", "billing_period": "unknown", "notes": "Custom quote for high-touch, enterprise-level service and integrations. Contact sales." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.atera.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "NinjaOne is a unified IT operations platform combining RMM, patch management, backup, remote access, and service-desk ticketing for IT teams and MSPs.",
+      "best_for": "IT teams and MSPs wanting a single console with quote-based, volume-tiered per-device pricing rather than Atera's flat per-technician model.",
+      "strengths": ["Bundled endpoint, server, and SaaS backup", "AI-driven automated patch management", "SOC 2 and ISO 27001:2022 certified"]
+    },
+    {
+      "name": "ConnectWise RMM",
+      "slug": "connectwise-rmm",
+      "description": "ConnectWise RMM is a cloud-based remote monitoring and management platform for MSPs, built on the wider ConnectWise Platform of PSA, security, and automation tools.",
+      "best_for": "MSPs wanting RMM tightly integrated with ConnectWise's PSA, ScreenConnect remote access, and NOC/Help Desk services.",
+      "strengths": ["ScreenConnect remote access built in", "NOC-tuned intelligent alerting", "Optional NOC and Help Desk staffing add-ons"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "How does Atera's pricing model work?",
+      "answer": "Atera charges per technician rather than per device, so one technician license covers an unlimited number of managed endpoints. As of the last verified date, the Professional plan starts at $149/technician/month billed annually ($169 billed monthly), with a higher Master tier and a custom-quoted Enterprise tier."
+    },
+    {
+      "question": "Does Atera offer a free trial?",
+      "answer": "Yes. Atera offers a 30-day free trial with no credit card required, giving full access to its RMM, ticketing, and AI features before choosing a plan."
+    }
+  ],
+  "tags": ["RMM", "IT Operations", "MSP", "AI"],
+  "links": {
+    "pricing": "https://www.atera.com/pricing/"
+  },
+  "sources": [
+    "https://www.atera.com/",
+    "https://www.atera.com/pricing/",
+    "https://www.atera.com/about-us/"
+  ],
+  "accessed_at": "2026-09-05"
+}

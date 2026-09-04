@@ -1,0 +1,82 @@
+{
+  "name": "TeamViewer",
+  "slug": "teamviewer",
+  "category": "it-operations",
+  "description": "TeamViewer is a remote access and remote support platform that lets technicians connect to, control, and troubleshoot devices across Windows, macOS, Linux, iOS, Android, and Chrome OS, free for personal, non-commercial use and paid for business use.",
+  "website": "https://www.teamviewer.com",
+  "platforms": ["Web", "Windows", "macOS", "Linux", "iOS", "Android", "Chrome OS"],
+  "best_for": "IT teams, MSPs, and support desks needing cross-platform remote access and remote support, plus individuals wanting free personal, non-commercial access to their own devices.",
+  "features": [
+    "Remote access and remote support across Windows, macOS, Linux, iOS, Android, and Chrome OS",
+    "Free for personal, non-commercial use by a single user; paid licensed plans for business and commercial use",
+    "TeamViewer AI credits for AI-assisted troubleshooting and automated session summaries",
+    "Remote printing, file transfer and queuing, session recording and playback, and \"switch sides\" role swapping",
+    "Optional add-ons: Endpoint Protection, Device Monitoring, Asset Management, and AR-powered remote assistance (TeamViewer Assist AR)",
+    "Phone support in 33 languages on paid plans",
+    "TeamViewer Tensor: a custom-quoted enterprise tier adding single sign-on, audit logging/API, and enhanced mass deployment"
+  ],
+  "pros": [
+    "Genuinely free for personal, non-commercial use, not just a time-limited trial",
+    "Available on essentially every major platform (Windows, macOS, Linux, iOS, Android, Chrome OS, and Raspberry Pi, per TeamViewer's own download page)",
+    "Audited for SOC 2 and SOC 3 compliance and ISO/IEC 27001 certified, per TeamViewer's own trust center"
+  ],
+  "cons": [
+    "Business and commercial use requires a paid license -- the free tier is personal, non-commercial use only",
+    "Pricing is shown in the visitor's local currency and TeamViewer runs region-specific promotional coupon discounts, so list prices vary by region and by active promotion"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "69", "currency": "ILS", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Remote Access", "amount": "69.00", "currency": "ILS", "billing_period": "annual", "unit": "per month, billed yearly", "notes": "Figure shown on TeamViewer's Israel/MEA storefront -- teamviewer.com auto-detects visitor region and currency, so a US visitor may see a different, USD-denominated price on the same official pricing page. Access up to 3 unattended devices, 1 licensed user." },
+      { "name": "Business", "amount": "149.00", "currency": "ILS", "billing_period": "annual", "unit": "per month, billed yearly", "notes": "Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 119.20/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 200 unattended devices, 1 licensed user, 14-day free trial available." },
+      { "name": "Premium", "amount": "330.90", "currency": "ILS", "billing_period": "annual", "unit": "per month, billed yearly", "notes": "Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 264.72/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 300 unattended devices, 15 licensed users." },
+      { "name": "Tensor (Enterprise)", "billing_period": "unknown", "notes": "Fully custom-quoted enterprise license. Adds single sign-on, audit log/API, enhanced mass deployment, and a larger AI credit allowance. Contact sales." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.teamviewer.com/en-us/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "NinjaOne is a unified IT operations platform combining RMM, patch management, backup, remote access, and service-desk ticketing for IT teams and MSPs.",
+      "best_for": "IT teams and MSPs wanting remote access bundled into a broader RMM, patching, and backup platform rather than a dedicated remote-support tool.",
+      "strengths": ["Remote access bundled with RMM and patching", "Single console for endpoint management", "SOC 2 and ISO 27001:2022 certified"]
+    },
+    {
+      "name": "Atera",
+      "slug": "atera",
+      "description": "Atera is an all-in-one RMM, ticketing, and patch management platform billed per technician with unlimited managed endpoints, plus a built-in remote-access add-on.",
+      "best_for": "IT teams and MSPs wanting remote access included as part of a broader per-technician RMM and ticketing platform.",
+      "strengths": ["Remote access bundled via the Work From Home add-on", "Unlimited endpoints per technician", "Built-in AI Copilot and autonomous AI agent"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is TeamViewer free?",
+      "answer": "Yes, for personal, non-commercial use by a single user. Business and commercial use requires a paid license; TeamViewer offers a 14-day free trial of its commercial plans."
+    },
+    {
+      "question": "Why does TeamViewer's pricing look different depending on where I check it?",
+      "answer": "TeamViewer's pricing page auto-detects the visitor's region and shows localized currency, and at times region-specific promotional coupon discounts. Check the official pricing page from your own location for the exact current price in your currency."
+    }
+  ],
+  "tags": ["Remote Access", "Remote Support", "IT Operations"],
+  "links": {
+    "pricing": "https://www.teamviewer.com/en-us/pricing/"
+  },
+  "sources": [
+    "https://www.teamviewer.com/en-us/",
+    "https://www.teamviewer.com/en-us/pricing/",
+    "https://www.teamviewer.com/en-us/solutions/roles/personal-use/",
+    "https://www.teamviewer.com/en-us/download/",
+    "https://www.teamviewer.com/en-us/trust-center/"
+  ],
+  "accessed_at": "2026-09-05"
+}
