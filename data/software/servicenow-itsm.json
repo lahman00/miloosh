@@ -1,0 +1,65 @@
+{
+  "name": "ServiceNow ITSM",
+  "slug": "servicenow-itsm",
+  "category": "it-operations",
+  "company": "ServiceNow, Inc.",
+  "description": "ServiceNow IT Service Management (ITSM) is an enterprise IT service management product built on the ServiceNow AI Platform, unifying incident, problem, change, and request management with autonomous AI agents that handle routine work on a shared data model.",
+  "website": "https://www.servicenow.com/products/itsm.html",
+  "platforms": ["Web"],
+  "best_for": "Large enterprises wanting IT service management unified with broader IT operations, asset, and security workflows on a single AI platform and data model.",
+  "features": [
+    "Unified incident, problem, change, and service request management on one platform",
+    "Autonomous AI agents that handle routine requests end-to-end, such as password resets, software provisioning, and troubleshooting",
+    "Omnichannel employee self-service via portal, voice, chat, Microsoft Teams, Slack, and email",
+    "Single CMDB (configuration management database) with dependency mapping to reduce self-inflicted outages",
+    "Autonomous Service Operations linking ITSM with IT Operations Management",
+    "AI agents that automatically assign incident category, subcategory, and configuration items, and link related major incidents or problems"
+  ],
+  "pros": [
+    "Single AI platform and shared data model spanning ITSM, IT operations management, and asset/security workflows",
+    "Deep CMDB and dependency mapping",
+    "Recognized as a Gartner Magic Quadrant Leader for ITSM-enhancing AI capabilities (per ServiceNow)"
+  ],
+  "cons": [
+    "No public pricing — ServiceNow requires a custom quote or demo, with no self-serve checkout",
+    "Enterprise-oriented platform that is typically heavier to implement than SMB-focused ITSM tools"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.servicenow.com/products/itsm.html"
+  },
+  "alternatives": [
+    {
+      "name": "Freshservice",
+      "slug": "freshservice",
+      "description": "A cloud ITSM platform unifying service desk, IT asset management, and IT operations with Freddy AI-assisted ticket resolution and transparent per-agent pricing.",
+      "best_for": "Small and mid-sized IT teams wanting a faster-to-deploy, transparently priced ITSM alternative to ServiceNow.",
+      "strengths": ["Published per-agent pricing", "Quick to deploy", "14-day free trial"]
+    },
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "A unified IT operations platform combining RMM, patch management, backup, and remote access for IT teams and MSPs.",
+      "best_for": "IT teams and MSPs prioritizing endpoint monitoring and patching over enterprise ITSM workflow depth.",
+      "strengths": ["Unified endpoint console", "Autonomous patch management", "Cross-platform remote access"]
+    },
+    {
+      "name": "Zendesk",
+      "slug": "zendesk",
+      "description": "An AI-first customer service platform combining self-learning AI agents with unified ticketing, also used for internal employee and IT service.",
+      "best_for": "Organizations wanting one platform for customer support plus lighter-weight internal IT/employee service.",
+      "strengths": ["AI agents for autonomous ticket resolution", "Omnichannel inbox", "Faster time-to-value than a full enterprise ITSM suite"]
+    }
+  ],
+  "tags": ["ITSM", "IT Operations", "Enterprise"],
+  "sources": [
+    "https://www.servicenow.com/products/itsm.html",
+    "https://www.servicenow.com/ai/use-cases/triage-and-categorize-itsm-incidents.html"
+  ],
+  "accessed_at": "2026-09-05"
+}
