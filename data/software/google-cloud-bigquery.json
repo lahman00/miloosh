@@ -1,0 +1,76 @@
+{
+  "name": "Google Cloud BigQuery",
+  "slug": "google-cloud-bigquery",
+  "category": "analytics",
+  "description": "BigQuery is Google Cloud's fully managed, serverless enterprise data warehouse for SQL analytics at scale, with built-in machine learning, Apache Iceberg interoperability, and Gemini-based agents for natural-language and agentic data workflows, billed on consumption-based compute and storage pricing.",
+  "website": "https://cloud.google.com/bigquery",
+  "company": "Google",
+  "best_for": "Teams that want a fully managed, serverless SQL data warehouse with a genuine ongoing free monthly usage allowance, consumption-based pricing as they scale, and built-in machine learning and AI-agent tooling on the same platform.",
+  "platforms": ["Web"],
+  "features": [
+    "Fully managed, serverless data warehouse with no infrastructure to provision or manage",
+    "BigQuery ML for training, evaluating, and deploying predictive models directly with SQL, plus AI functions for tasks like text summarization and sentiment analysis",
+    "Native read/write interoperability with Apache Iceberg tables across BigQuery and other engines, with automated table maintenance (compaction, clustering) via Google Cloud Lakehouse",
+    "Knowledge Catalog for automatic metadata harvesting, data profiling, data quality checks, and lineage",
+    "Conversational Analytics Agent and other Gemini-based agents for natural-language querying and automating data preparation and pipeline building",
+    "High-throughput streaming ingestion (Storage Write API) alongside batch loading, with batch loads billed for free via the shared slot pool",
+    "Choice of on-demand (pay-per-TiB-scanned) or slot-based capacity pricing across Standard, Enterprise, and Enterprise Plus editions for query compute",
+    "Encryption by default, customer-managed encryption keys, and a stated 99.99% uptime SLA"
+  ],
+  "pros": [
+    "Genuine ongoing free monthly usage: every account gets 10 GB of storage and up to 1 TB of on-demand queries free per month, not just a one-time trial",
+    "A no-credit-card BigQuery sandbox lets you run queries against public or your own datasets while staying within the free tier automatically",
+    "New customers can additionally claim $300 in free credits on top of the standing monthly free allowance"
+  ],
+  "cons": [
+    "No flat starting price: on-demand compute, three slot-based editions, and storage are priced and billed separately, so estimating total monthly cost requires the pricing calculator",
+    "Query costs are based on data scanned, so an unoptimized query (missing partitioning or clustering) can cost more than expected even for a small result set"
+  ],
+  "pricing": {
+    "model": "unknown",
+    "starting_price": "Every account gets 10 GB storage and up to 1 TB of on-demand queries free per month; beyond that, on-demand queries start at $6.25 per TiB scanned and slot-based capacity pricing starts at $0.04 per slot-hour (Standard edition), plus separate storage charges starting around $0.01/GiB. New customers can also claim $300 in free credits. No flat starting price is published.",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true },
+    "tiers": [
+      { "name": "Free tier (all accounts)", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "10 GB storage and up to 1 TB of on-demand query processing free every month, for every account, not just new signups." },
+      { "name": "On-Demand compute", "amount": "6.25", "currency": "USD", "billing_period": "unknown", "unit": "per TiB scanned", "notes": "Default pay-per-query compute pricing (Iowa/us-central1 rate; varies by region). First 1 TiB scanned per month is free, then billed per TiB of data scanned by each query." },
+      { "name": "Standard Edition (slot capacity)", "amount": "0.04", "currency": "USD", "billing_period": "unknown", "unit": "per slot-hour", "notes": "Pay-as-you-go reserved query-processing capacity (Iowa rate); billed per second with a 1-minute minimum. 1-year and 3-year commitments available at lower rates." },
+      { "name": "Enterprise Edition (slot capacity)", "amount": "0.06", "currency": "USD", "billing_period": "unknown", "unit": "per slot-hour", "notes": "Adds BigQuery ML capacity-based pricing and other Enterprise features over Standard edition; same billing structure and commitment discounts." },
+      { "name": "Enterprise Plus Edition (slot capacity)", "amount": "0.10", "currency": "USD", "billing_period": "unknown", "unit": "per slot-hour", "notes": "Highest slot-capacity edition; same billing structure and commitment discounts as Standard/Enterprise." },
+      { "name": "Storage", "amount": "0.01", "currency": "USD", "billing_period": "monthly", "unit": "per GiB", "notes": "Logical storage starts around $0.01/GiB/month (physical storage around $0.02/GiB/month); the first 10 GiB is free every month. Long-term storage (unmodified for 90+ consecutive days) bills at roughly half the active-storage rate. Rates shown are Iowa/us-central1 and vary by region." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://cloud.google.com/bigquery/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Snowflake",
+      "slug": "snowflake",
+      "description": "A cross-cloud data platform for storage, compute, and AI/ML workloads, billed on Snowflake credits rather than Google Cloud's per-TiB-scanned and slot-hour model.",
+      "best_for": "Teams that want a single warehouse platform that runs the same way across AWS, Azure, and Google Cloud, rather than a warehouse built natively into the Google Cloud ecosystem.",
+      "strengths": ["Cross-cloud (AWS/Azure/GCP), not tied to one cloud provider", "Snowflake Marketplace for third-party data sharing", "Independently scalable storage and compute"]
+    },
+    {
+      "name": "Databricks",
+      "slug": "databricks",
+      "description": "A lakehouse platform unifying data engineering, SQL analytics, and machine learning on open formats like Delta Lake and Apache Iceberg, billed in Databricks Units (DBUs) rather than BigQuery's per-TiB-scanned and slot-hour pricing.",
+      "best_for": "Teams whose workloads lean heavily toward data engineering and custom ML model development across multiple clouds, rather than a primarily SQL-first warehouse tied to Google Cloud.",
+      "strengths": ["Runs natively across AWS, Azure, and Google Cloud", "Deep open-format lakehouse support (Delta Lake, Iceberg)", "Unified data engineering + ML/AI platform"]
+    }
+  ],
+  "faq": [
+    { "question": "Is BigQuery free?", "answer": "Every BigQuery account gets 10 GB of storage and up to 1 TB of on-demand query processing free every month. New customers can also claim $300 in additional free credits, and a no-credit-card 'sandbox' mode lets you try queries while staying within the free tier automatically." },
+    { "question": "How is BigQuery priced beyond the free tier?", "answer": "BigQuery bills compute and storage separately. Query compute is either on-demand (starting at $6.25 per TiB of data scanned) or slot-based capacity pricing across Standard, Enterprise, and Enterprise Plus editions (starting at $0.04 per slot-hour for Standard). Storage bills separately, starting around $0.01 per GiB/month for logical storage, with the first 10 GiB free each month." },
+    { "question": "Does using BigQuery require talking to sales?", "answer": "No self-serve tier requires it — you can sign up, query, and scale entirely through the console at published rates. Google Cloud also offers an optional custom quote from its sales team for large projects." }
+  ],
+  "tags": ["data warehouse", "cloud data platform", "SQL analytics", "machine learning"],
+  "links": { "pricing": "https://cloud.google.com/bigquery/pricing" },
+  "sources": [
+    "https://cloud.google.com/bigquery",
+    "https://cloud.google.com/bigquery/pricing"
+  ],
+  "accessed_at": "2026-09-05"
+}

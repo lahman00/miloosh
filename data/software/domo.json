@@ -1,0 +1,72 @@
+{
+  "name": "Domo",
+  "slug": "domo",
+  "category": "analytics",
+  "description": "Domo is a cloud-based data and analytics platform that connects 1,000+ data sources, builds BI dashboards and embedded analytics, and adds AI agents and workflow automation on top of a governed data foundation, billed on a credit-based consumption model.",
+  "website": "https://www.domo.com",
+  "company": "Domo, Inc.",
+  "best_for": "Companies that want one platform combining data integration, BI dashboards, embedded analytics, workflow automation, and AI agents, billed on usage-based credits with unlimited users rather than flat per-seat licenses.",
+  "platforms": ["Web"],
+  "features": [
+    "Connects 1,000+ data sources into a single governed data foundation",
+    "Drag-and-drop ETL and a low-code app builder for building custom BI tools",
+    "Dashboards, visualizations, and embedded analytics for sharing insights inside or outside the organization",
+    "Domo AI: custom AI agents, AI chat, model management, and AI-readiness tooling built on top of connected data",
+    "Workflows, alerts, and scheduled reports for automating recurring business processes",
+    "Credit-based consumption pricing with unlimited users and no per-seat charges",
+    "SSO (SAML/OIDC), multi-factor authentication, IP restrictions, and Bring Your Own Key (BYOK) encryption for enterprise governance and security"
+  ],
+  "pros": [
+    "Unlimited users at every level — cost scales with credit consumption, not headcount",
+    "30-day free trial includes full platform access and unlimited users, with no credit card required",
+    "Domo states current certifications including SOC 1, SOC 2, ISO 27001, ISO 27018, HIPAA, HITRUST, GDPR, and CCPA on its own trust page"
+  ],
+  "cons": [
+    "No published numeric pricing at all — becoming a paying customer requires booking a demo/contacting sales rather than a self-serve checkout",
+    "Credit-based consumption pricing (charged for actions like storing data, updating tables, or running workflows) can be harder to estimate upfront than a flat per-seat plan"
+  ],
+  "pricing": {
+    "model": "unknown",
+    "starting_price": "No published numeric price; Domo uses custom, credit-based consumption pricing available only by booking a demo/contacting sales after the free trial",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "tiers": [
+      { "name": "Free Trial", "amount": "0", "currency": "USD", "billing_period": "unknown", "notes": "30 days, no credit card required. Full platform, unlimited users, onboarding support, self-service education, and one training session." },
+      { "name": "Custom Pricing", "notes": "Credit-based consumption pricing — credits are consumed for actions like storing data, updating tables, running workflows, or ML inference. Unlimited users at every level. Requires booking a demo/contacting sales. Adds a dedicated account team, volume discounts, custom add-ons, support packages, AWS PrivateLink, and an optional HIPAA-compliant environment." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.domo.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Tableau",
+      "slug": "tableau",
+      "description": "A BI and data-visualization platform licensed by role (Viewer/Explorer/Creator) rather than Domo's unlimited-user, credit-based consumption model.",
+      "best_for": "Teams centered on deep, ad hoc visual analytics who are comfortable with per-role licensing instead of a broader connected data/workflow/AI platform.",
+      "strengths": ["Deep, highly customizable visual analytics", "Role-based licensing (Viewer/Explorer/Creator)", "Dedicated authoring apps for Windows and Mac"]
+    },
+    {
+      "name": "Microsoft Power BI",
+      "slug": "microsoft-power-bi",
+      "description": "Microsoft's BI platform, priced per user rather than by consumption credits, with deep Microsoft 365 and Fabric integration.",
+      "best_for": "Organizations already standardized on Microsoft 365 that want simple published per-user BI pricing rather than Domo's broader, consumption-billed data/AI/workflow platform.",
+      "strengths": ["Simple published per-user pricing", "Native Microsoft 365/Teams/Excel integration", "Large existing installed base within Microsoft shops"]
+    }
+  ],
+  "faq": [
+    { "question": "Does Domo have a free plan?", "answer": "Domo doesn't have a perpetual free plan, but it offers a 30-day free trial with full platform access, unlimited users, and no credit card required." },
+    { "question": "How is Domo priced?", "answer": "Domo uses credit-based consumption pricing: credits are consumed for actions like storing data, updating tables, running workflows, or using ML inference. There's no published numeric rate — pricing is custom and requires booking a demo or contacting sales." },
+    { "question": "What compliance certifications does Domo have?", "answer": "Domo states its current certifications include SOC 1, SOC 2, ISO 27001, ISO 27018, HIPAA, HITRUST, GDPR, and CCPA, according to its own trust and security page." }
+  ],
+  "tags": ["business intelligence", "data integration", "embedded analytics", "workflow automation"],
+  "links": { "pricing": "https://www.domo.com/pricing" },
+  "sources": [
+    "https://www.domo.com/",
+    "https://www.domo.com/pricing",
+    "https://www.domo.com/trust"
+  ],
+  "accessed_at": "2026-09-05"
+}

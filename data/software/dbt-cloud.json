@@ -1,0 +1,69 @@
+{
+  "name": "dbt Cloud",
+  "slug": "dbt-cloud",
+  "category": "analytics",
+  "description": "dbt Cloud is dbt Labs' managed platform for building, testing, scheduling, and orchestrating SQL-based data transformations inside a data warehouse, adding a browser IDE, job orchestration, a semantic layer, and governance features for analytics engineering teams.",
+  "website": "https://www.getdbt.com",
+  "company": "dbt Labs",
+  "best_for": "Analytics engineering teams that want a managed platform for building, testing, scheduling, and documenting SQL data transformation models, with a real self-serve paid tier rather than starting at contact-sales pricing.",
+  "platforms": ["Web"],
+  "features": [
+    "Studio IDE, a browser-based environment for building and testing SQL data transformation models",
+    "Job scheduling and orchestration for automating end-to-end transformation pipelines",
+    "Built-in testing for monitoring data pipeline and model health",
+    "dbt Semantic Layer for defining consistent, reusable metrics",
+    "dbt Catalog and lineage for data governance and discovery",
+    "Role-based access control (RBAC) and SSO for managing users and permissions",
+    "Git integration (GitHub, GitLab, or a generic git repo URL) for version-controlled development",
+    "dbt Mesh for managing multi-project architectures across teams (Enterprise tiers)"
+  ],
+  "pros": [
+    "Free Developer plan includes a real, usable seat (up to 3,000 successful model builds/month), not just a stripped-down demo",
+    "The paid Starter plan has a published self-serve price ($100/developer seat/month) rather than starting at a sales conversation",
+    "New signups get a 14-day free trial of the paid Starter plan's features"
+  ],
+  "cons": [
+    "The Starter plan requires five developer seats to start, so the effective minimum spend is $500/month rather than a true single-seat paid tier",
+    "Enterprise and Enterprise+ both require contacting sales, with no published numeric pricing for either"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free Developer plan (1 seat); paid Starter plan is $100/developer seat/month, billed monthly, with a five-seat minimum",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "100", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Developer", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "One developer seat, 1 project, up to 3,000 successful model builds per month, browser IDE, MFA, and job scheduling. Includes a 14-day free trial of the Starter plan." },
+      { "name": "Starter", "amount": "100", "currency": "USD", "billing_period": "monthly", "unit": "per developer seat/month", "notes": "Billed monthly by credit card; requires five developer seats to start. Includes 1 project, up to 15,000 successful model builds/month, 5,000 queried metrics/month, dbt Wizard, basic Catalog, basic Semantic Layer, and API access." },
+      { "name": "Enterprise", "notes": "Custom pricing; contact sales. Custom developer seat count, up to 100,000 model builds/month, 20,000 queried metrics/month, 30 projects, advanced Catalog/Semantic Layer, dbt Copilot, Canvas, Insights, and Mesh." },
+      { "name": "Enterprise+", "notes": "Custom pricing; contact sales. Same usage limits as Enterprise but unlimited projects, plus PrivateLink, IP restrictions, rollback, and hybrid projects." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.getdbt.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Fivetran",
+      "slug": "fivetran",
+      "description": "A managed ELT platform that, alongside data movement, can also orchestrate dbt Core transformation model runs directly (including a free monthly allotment), rather than requiring a separate dedicated transformation product.",
+      "best_for": "Teams that want their data-movement platform to also trigger and run transformation models, rather than operating a dedicated transformation-and-orchestration product like dbt Cloud.",
+      "strengths": ["Combines data movement and dbt Core transformation runs in one platform", "Free tier includes monthly transformation model runs", "One vendor covers both EL and T"]
+    }
+  ],
+  "faq": [
+    { "question": "Is dbt Cloud free?", "answer": "dbt Cloud has a free Developer plan with one seat, 1 project, and up to 3,000 successful model builds per month. Paid plans start with Starter at $100 per developer seat/month (five-seat minimum), with Enterprise and Enterprise+ available at custom, contact-sales pricing." },
+    { "question": "How is dbt Cloud priced above the free plan?", "answer": "The Starter plan bills $100 per developer seat/month, monthly, by credit card, with a minimum of five seats. Enterprise and Enterprise+ both use custom pricing that requires contacting dbt Labs' sales team." },
+    { "question": "What's the difference between dbt Cloud's Enterprise and Enterprise+ plans?", "answer": "Both offer the same usage limits (up to 100,000 model builds/month, 20,000 queried metrics/month) and advanced features like dbt Copilot, Canvas, and Mesh, but Enterprise caps projects at 30 while Enterprise+ allows unlimited projects and adds PrivateLink, IP restrictions, rollback, and hybrid projects." }
+  ],
+  "tags": ["data transformation", "analytics engineering", "orchestration", "semantic layer"],
+  "links": { "pricing": "https://www.getdbt.com/pricing" },
+  "sources": [
+    "https://www.getdbt.com/",
+    "https://www.getdbt.com/pricing",
+    "https://docs.getdbt.com/docs/cloud/about-cloud-setup"
+  ],
+  "accessed_at": "2026-09-05"
+}
