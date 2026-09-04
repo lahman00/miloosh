@@ -1,0 +1,81 @@
+{
+  "name": "Salesloft",
+  "slug": "salesloft",
+  "category": "sales",
+  "description": "Salesloft is a sales engagement platform for running multichannel outreach cadences, tracking conversations, and managing deals, now combined with Clari's forecasting and pipeline-inspection capabilities following the two companies' 2025 merger.",
+  "website": "https://www.salesloft.com",
+  "best_for": "Sales development and account-executive teams that want structured, multichannel outreach cadences plus pipeline and deal visibility in one workspace.",
+  "features": [
+    "Multichannel sales cadences (Cadence) for building and nurturing pipeline",
+    "Conversation intelligence from call and meeting recordings (Conversations)",
+    "Deal management (Deals) with opportunity tracking and visibility",
+    "Forecasting via Clari Forecast, integrated into Salesloft's execution layer after the Clari merger",
+    "Organization-wide pipeline inspection (Inspect)",
+    "Seller workflow prioritization (Rhythm)",
+    "AI agents that interpret revenue signals and trigger next-step actions"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.salesloft.com/pricing"
+  },
+  "pros": [
+    "Since its December 2025 merger with Clari, bundles multichannel sales engagement with Clari's forecasting and pipeline-inspection capabilities",
+    "Holds SOC 2 Type 2 and ISO 27001/27701 certifications and states GDPR and CCPA/CPRA compliance on its security page",
+    "Maintains a public Trust Portal (trust.salesloft.com) for security and privacy documentation"
+  ],
+  "cons": [
+    "No published self-serve pricing; the pricing page has no plan names or numbers and its only call-to-action is \"Talk to Sales\"",
+    "Mid-integration with Clari as of this writing (merger closed December 3, 2025, with full site consolidation targeted for September 15, 2026), so branding and product boundaries are actively shifting",
+    "No free trial is advertised on the pricing page"
+  ],
+  "faq": [
+    {
+      "question": "Does Salesloft publish its pricing?",
+      "answer": "No. Salesloft's pricing page contains no plan names or numeric prices; \"Talk to Sales\" is the only call-to-action."
+    },
+    {
+      "question": "Are Salesloft and Clari the same company?",
+      "answer": "As of the merger's completion, yes. Clari and Salesloft announced a definitive merger agreement in August 2025, and the deal closed on December 3, 2025, forming a combined revenue AI company under CEO Steve Cox. As of this entry's access date, salesloft.com and clari.com still operate as separate product websites, but Clari's press release states the two sites will consolidate into one on September 15, 2026."
+    },
+    {
+      "question": "Is Salesloft SOC 2 certified?",
+      "answer": "Yes. Salesloft's security page states the Salesloft and Drift platform services undergo annual SOC 2 Type 2 examinations by a third-party audit firm, and that its information security program is aligned with ISO 27001 (audited/re-certified annually) and ISO 27701."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.salesloft.com/pricing",
+    "support": "https://support.salesloft.com",
+    "status": "https://status.salesloft.com/"
+  },
+  "tags": ["sales-engagement", "cadences", "conversation-intelligence", "deal-management", "forecasting"],
+  "sources": [
+    "https://www.salesloft.com/pricing",
+    "https://www.salesloft.com/",
+    "https://www.salesloft.com/security-compliance",
+    "https://www.salesloft.com/company/newsroom/clari-salesloft-merger"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Outreach",
+      "slug": "outreach",
+      "description": "A sales engagement platform for building multichannel outreach sequences with conversation intelligence and AI-driven forecasting.",
+      "best_for": "Teams comparing Salesloft's closest direct competitor in cadence-based sales engagement.",
+      "strengths": ["Multichannel sequencing", "Real-time conversation guidance", "AI forecast projection"]
+    },
+    {
+      "name": "Apollo.io",
+      "slug": "apollo-io",
+      "description": "A sales intelligence and engagement platform combining a B2B contact database with sequencing, a dialer, and AI-assisted prospecting.",
+      "best_for": "Teams that want sequencing bundled with contact-data sourcing and published self-serve pricing.",
+      "strengths": ["Published per-seat pricing", "Bundled contact database", "Built-in dialer"]
+    }
+  ]
+}

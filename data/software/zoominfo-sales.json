@@ -1,0 +1,80 @@
+{
+  "name": "ZoomInfo Sales",
+  "slug": "zoominfo-sales",
+  "category": "sales",
+  "description": "ZoomInfo Sales is the B2B sales-intelligence product within the ZoomInfo go-to-market platform, combining a large contact/company database with buyer-intent tracking, website-visitor identification, conversation intelligence, and sales engagement automation.",
+  "website": "https://www.zoominfo.com/products/sales",
+  "platforms": ["Web", "Chrome Extension"],
+  "best_for": "Sales and RevOps teams that want a large B2B contact database combined with intent signals, conversation intelligence, and engagement automation in one platform.",
+  "features": [
+    "Verified B2B database described as 420M+ contacts, 120M+ direct dials, and 145M+ companies, filterable by 300+ attributes",
+    "Buyer-intent tracking and website-visitor identification (WebSights)",
+    "Conversation intelligence via Chorus, analyzing calls, meetings, and emails",
+    "Sales engagement automation and a dialer via Engage, for multi-touch cadences",
+    "Signal-triggered workflows (buying intent, technology installs) that launch automated outreach",
+    "ZoomInfo Copilot, an AI feature for account prioritization and message drafting",
+    "One-click CRM export/sync and a Chrome extension for in-context prospecting"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05"
+  },
+  "pros": [
+    "States a very large contact/company database (420M+ contacts, 145M+ companies) with 300+ filterable attributes, per its product page",
+    "Bundles data, buyer intent, conversation intelligence (Chorus), and engagement automation (Engage) in one platform rather than as separate purchases",
+    "Displays ISO 27701, GDPR, and CCPA compliance badges directly on its own homepage"
+  ],
+  "cons": [
+    "This entry's dedicated pricing page (zoominfo.com/pricing) returned an automated bot-verification challenge that could not be accessed, so no numeric self-serve price could be confirmed firsthand; other pages consistently route to \"Contact Sales\" or a free-trial signup form instead",
+    "Multiple similarly-named ZoomInfo products (Sales, Marketing, Talent, Operations) can make it unclear which specific capabilities are bundled into the Sales product without a sales conversation",
+    "\"Free trial\" is offered as a lead-gen signup rather than a persistent free plan"
+  ],
+  "faq": [
+    {
+      "question": "Does ZoomInfo Sales publish its pricing?",
+      "answer": "Not verifiably. Its dedicated pricing page is gated behind an automated bot-check that this review could not pass, and its other marketing pages route to \"Contact Sales\" or a free-trial signup rather than showing dollar amounts."
+    },
+    {
+      "question": "How large is ZoomInfo's contact database?",
+      "answer": "ZoomInfo's own Sales product page states access to 420M+ global contacts, including 120M+ direct dials, and 145M+ companies, filterable by 300+ attributes."
+    },
+    {
+      "question": "What is Chorus by ZoomInfo?",
+      "answer": "Chorus is ZoomInfo's conversation-intelligence product, listed as a core feature of ZoomInfo Sales for analyzing customer calls, meetings, and emails."
+    }
+  ],
+  "tags": ["sales-intelligence", "b2b-database", "intent-data", "conversation-intelligence", "sales-engagement"],
+  "sources": [
+    "https://www.zoominfo.com/products/sales"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Apollo.io",
+      "slug": "apollo-io",
+      "description": "A sales intelligence and engagement platform combining a B2B contact database with sequencing, a dialer, and AI-assisted prospecting.",
+      "best_for": "Teams that want published self-serve pricing and a bundled dialer/sequencing layer alongside contact data.",
+      "strengths": ["Published per-seat pricing", "Built-in dialer and sequencing", "Free plan available"]
+    },
+    {
+      "name": "Cognism",
+      "slug": "cognism",
+      "description": "A B2B sales intelligence platform built around phone-verified, compliance-vetted contact data, especially for European prospecting.",
+      "best_for": "Teams prioritizing compliance-vetted, phone-verified data over raw database size, especially in Europe.",
+      "strengths": ["Phone-verified mobile data", "EU compliance/DNC coverage", "ISO/SOC 2 certifications"]
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "description": "A revenue intelligence platform that records and analyzes sales calls, emails, and meetings to surface deal risk and inform forecasting.",
+      "best_for": "Teams that want conversation intelligence as a dedicated, standalone product rather than bundled with a data platform.",
+      "strengths": ["Conversation capture and analysis", "Deal risk scoring", "Interaction-grounded forecasting"]
+    }
+  ]
+}
