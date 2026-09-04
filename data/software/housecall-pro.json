@@ -59,8 +59,7 @@
   },
   "pros": [
     "Serves the widest range of trades (50+) of any field-service platform compared here",
-    "Published, transparent pricing across all three tiers, both annual and monthly",
-    "Strong PartnerStack-based affiliate program — up to $320 per qualified lead or $1,000 per signup"
+    "Published, transparent pricing across all three tiers, both annual and monthly"
   ],
   "cons": [
     "Additional-user pricing adds up quickly on larger teams",
@@ -71,10 +70,6 @@
     {
       "question": "How much does Housecall Pro cost?",
       "answer": "Annual billing starts at $59/month for Basic, $149/month for Essentials, and $299/month for MAX; each tier costs more if billed monthly instead."
-    },
-    {
-      "question": "Does Housecall Pro have an affiliate program?",
-      "answer": "Yes — via PartnerStack, affiliates can earn up to $320 per qualified lead or up to $1,000 per referral that signs up, with commission paid the month after a referred lead has been on the platform for over 30 days."
     }
   ],
   "tags": [
