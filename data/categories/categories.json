@@ -103,5 +103,30 @@
     "slug": "field-service-management",
     "name": "Field Service Management",
     "description": "Scheduling, dispatch, and invoicing software for HVAC, plumbing, and other trade businesses."
+  },
+  {
+    "slug": "hr-and-payroll",
+    "name": "HR & Payroll",
+    "description": "Payroll, benefits, hiring, and workforce management for growing teams."
+  },
+  {
+    "slug": "finance-and-erp",
+    "name": "Finance & ERP",
+    "description": "Expense management, corporate cards, spend controls, and enterprise resource planning."
+  },
+  {
+    "slug": "sales",
+    "name": "Sales",
+    "description": "Prospecting, outreach, conversation intelligence, and revenue tools for sales teams."
+  },
+  {
+    "slug": "it-operations",
+    "name": "IT Operations",
+    "description": "IT service management, remote monitoring, and endpoint management for internal IT teams."
+  },
+  {
+    "slug": "legal",
+    "name": "Legal",
+    "description": "Case management and practice management software for law firms."
   }
 ]
