@@ -1,0 +1,82 @@
+{
+  "name": "SAP Concur",
+  "slug": "sap-concur",
+  "category": "finance-and-erp",
+  "description": "SAP Concur is SAP's travel, expense, and invoice management suite, sold as Concur Travel, Concur Expense, and Concur Invoice plus add-ons like ExpenseIt (mobile receipt capture) and Concur Detect (AI-assisted audit). It automates expense reporting, in-policy travel booking, and AP invoice matching/approval, and publishes starting per-report prices for its Base and Plus expense plans while its fullest (Premium) tier and larger contracts are custom-quoted.",
+  "website": "https://www.concur.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Companies that want to automate travel booking, expense reporting, and invoice/AP processing with policy enforcement and audit controls, independent of which core accounting or ERP system they use.",
+  "features": [
+    "Concur Expense: centralized expense tracking and reporting across an organization",
+    "ExpenseIt: mobile receipt capture that automatically matches receipts to card transactions",
+    "Concur Detect: AI/machine-learning analysis of expense reports to speed audits and flag policy violations",
+    "Concur Travel: in-policy trip booking integrated with Concur Expense for cost control",
+    "Concur TripLink: visibility into trips booked outside the managed travel system",
+    "Concur Invoice: automated AP with three-way match and pre-transaction purchase-request controls",
+    "Intelligence/Analytics: near-real-time, customized spend dashboards and reporting",
+    "Mobile app (iOS 12+ and Android 7.0+) for expenses, travel booking, and approvals"
+  ],
+  "pros": [
+    "Base and Plus tiers show real starting prices ($7 and $11 per expense report) rather than a fully opaque quote wall",
+    "Mobile app covers expense capture, travel booking, and approvals from a phone, per SAP Concur's own device-support documentation",
+    "AI-assisted tools (ExpenseIt matching, Concur Detect audit flags) aim to cut manual expense-report review work"
+  ],
+  "cons": [
+    "Actual price varies with contract volume/commitment, and the fullest tier (Premium, adding Concur Travel and Intelligence) is custom-quoted rather than published",
+    "Expense, Travel, and Invoice are separate products, so a full travel + expense + AP deployment is priced and assembled from multiple parts rather than one flat plan"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$7 per expense report (Base plan, unlimited users)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Base",
+        "amount": "7",
+        "currency": "USD",
+        "unit": "per expense report",
+        "notes": "Starting price; unlimited users; Concur Expense, positioned for smaller businesses. SAP Concur notes \"price can vary based on monthly commitment.\""
+      },
+      {
+        "name": "Plus",
+        "amount": "11",
+        "currency": "USD",
+        "unit": "per expense report",
+        "notes": "Starting price; unlimited users; adds ExpenseIt, a user support desk, and reporting."
+      },
+      {
+        "name": "Premium",
+        "notes": "Custom pricing; unlimited users; adds Concur Travel, Intelligence, and additional advanced capabilities. Requires requesting a quote."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.concur.com/about/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system with a native Expense Management module covering expense report submission, approval workflows, and mobile receipt capture.",
+      "best_for": "Companies that would rather use expense management built into their core ERP than run a standalone travel & expense product like Concur.",
+      "strengths": ["Expense management built into the core ERP", "Ties expenses directly to project accounting and invoicing", "One vendor for financials plus expenses"]
+    },
+    {
+      "name": "Odoo",
+      "slug": "odoo",
+      "description": "An open-source, modular business platform with a built-in Expenses app alongside its Accounting, Invoicing, and other finance apps.",
+      "best_for": "Smaller companies that want basic mobile expense capture bundled into a broader, published-pricing business platform rather than a dedicated enterprise T&E product.",
+      "strengths": ["Expenses app bundled at the same per-user price as the rest of Odoo", "Mobile receipt capture", "Published self-serve pricing"]
+    }
+  ],
+  "links": {
+    "pricing": "https://www.concur.com/about/pricing"
+  },
+  "sources": [
+    "https://www.concur.com/about/pricing",
+    "https://www.concur.com/products"
+  ],
+  "accessed_at": "2026-09-05"
+}

@@ -1,0 +1,73 @@
+{
+  "name": "Sage Intacct",
+  "slug": "sage-intacct",
+  "category": "finance-and-erp",
+  "description": "Sage Intacct is Sage's cloud financial management platform for mid-market companies and nonprofits, covering core financials (accounts payable, accounts receivable, cash management, general ledger, order management, and purchasing), automated multi-entity consolidation, a multi-dimensional general ledger, and AI-assisted close tools. Sage positions it for organizations that have outgrown small-business accounting software and need to consolidate multiple entities or track funds and grants.",
+  "website": "https://www.sage.com/en-us/sage-business-cloud/intacct/",
+  "platforms": ["Web"],
+  "best_for": "Growing mid-market companies and nonprofits that have outgrown small-business accounting software and need multi-entity consolidation, dimensional reporting, or dedicated fund/grant accounting.",
+  "features": [
+    "Core financials: accounts payable, accounts receivable, cash management, general ledger, order management, and purchasing",
+    "Automated multi-entity consolidation across currencies and geographies",
+    "Multi-dimensional general ledger for reporting without a bloated chart of accounts",
+    "Real-time, customizable dashboards tracking key metrics and goal progress",
+    "AI-assisted month-end close that tracks tasks and flags issues before they block the close",
+    "AI-based outlier detection for reviewing general-ledger transactions",
+    "Dedicated nonprofit capabilities: fund and grant tracking"
+  ],
+  "pros": [
+    "Purpose-built multi-entity consolidation that Sage says can handle hundreds of entities across currencies and geographies",
+    "Multi-dimensional general ledger aimed specifically at mid-market finance teams' reporting needs",
+    "Dedicated nonprofit fund- and grant-accounting features, not general-purpose accounting adapted after the fact"
+  ],
+  "cons": [
+    "No published self-serve pricing in the US — Sage routes buyers through a scoping call to a written quote",
+    "A bigger step up in cost and implementation effort than small-business accounting tools like QuickBooks or Wave"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Sage Intacct",
+        "notes": "Custom-quote pricing based on which modules/products are included. Sage does not publish self-serve numeric pricing for the US market; buyers go through a scoping call and receive a written quote."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.sage.com/en-us/sage-business-cloud/intacct/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, order management, and multi-subsidiary consolidation.",
+      "best_for": "Companies that need inventory, order management, and broader operational ERP alongside financial consolidation, not just financials.",
+      "strengths": ["Full operational ERP beyond financials", "Multi-subsidiary consolidation (OneWorld)", "Large customer base (44,000+)"]
+    },
+    {
+      "name": "Odoo",
+      "slug": "odoo",
+      "description": "An open-source, modular business platform covering accounting, inventory, manufacturing, and more as individually priced apps.",
+      "best_for": "Smaller organizations that want published, per-user pricing and a lighter-weight app instead of a custom-quoted platform.",
+      "strengths": ["Published self-serve pricing", "Free single-app plan", "Broad app catalog beyond financials"]
+    },
+    {
+      "name": "QuickBooks Online",
+      "slug": "quickbooks-online",
+      "description": "Small-business accounting software for invoicing, expense tracking, and basic financial reporting.",
+      "best_for": "Smaller organizations or single entities that don't yet need multi-entity consolidation or dimensional reporting.",
+      "strengths": ["Low cost", "Easy setup", "Large accountant/bookkeeper ecosystem"]
+    }
+  ],
+  "links": {
+    "pricing": "https://www.sage.com/en-us/sage-business-cloud/intacct/pricing/"
+  },
+  "sources": [
+    "https://www.sage.com/en-us/sage-business-cloud/intacct/",
+    "https://www.sage.com/en-us/sage-business-cloud/intacct/pricing/"
+  ],
+  "accessed_at": "2026-09-05"
+}

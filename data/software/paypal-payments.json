@@ -1,0 +1,73 @@
+{
+  "name": "PayPal Payments",
+  "slug": "paypal-payments",
+  "category": "finance-and-erp",
+  "description": "PayPal Payments is PayPal's business/merchant payment-processing offering — PayPal Checkout, Payment Links, invoicing, in-person card/QR payments, and a virtual terminal for accepting money online and in person. It is billed per transaction with no monthly platform fee, and merchants can reach PayPal's own reported base of up to 400 million active accounts as potential customers. This is distinct from the PayPal consumer wallet app.",
+  "website": "https://www.paypal.com/us/business",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Businesses of any size — from solopreneurs to large enterprises — that want to accept online and in-person payments without a monthly account fee, paying transaction fees only when they actually get paid.",
+  "features": [
+    "PayPal Checkout for online payment acceptance (PayPal, Venmo, cards, Pay Later, digital wallets)",
+    "Payment Links and QR codes to accept payment without a website",
+    "Online invoicing with instant payment collection and automatic reminders",
+    "In-person acceptance via card-present terminals, QR codes, and Tap to Pay",
+    "Virtual Terminal for phone/mail-order card payments",
+    "Fastlane by PayPal: passwordless, autofilled guest checkout",
+    "Built-in Seller Protection on eligible transactions and PCI-compliant encrypted payment processing",
+    "PayPal Business mobile app (iOS/Android) for invoicing, refunds, and account activity"
+  ],
+  "pros": [
+    "No monthly account fee — merchants pay only when a transaction is processed",
+    "PCI-compliant processing, storage, and transmission of card data, per PayPal",
+    "Reaches PayPal's own reported base of up to 400 million active accounts as a pool of customers already familiar with the checkout"
+  ],
+  "cons": [
+    "Standard online rates (e.g., 2.99% + $0.49 per transaction on PayPal Checkout) run higher than the negotiated interchange-plus rates large processors can offer bigger merchants",
+    "Lower custom/interchange-plus rates for high-volume merchants require contacting PayPal rather than being available self-serve"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "2.29% + $0.09 per transaction (in-person, card present/QR) up to 4.99% + $0.49 (Pay Later)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "tiers": [
+      { "name": "PayPal Checkout", "amount": "2.99% + $0.49", "currency": "USD", "unit": "per transaction", "notes": "Standard PayPal/card checkout button rate." },
+      { "name": "Expanded Checkout (cards)", "amount": "2.89% + $0.29", "currency": "USD", "unit": "per transaction", "notes": "Card fields embedded directly on the merchant's own checkout page." },
+      { "name": "PayPal/Venmo payments", "amount": "3.49% + $0.49", "currency": "USD", "unit": "per transaction", "notes": "Paying with a PayPal or Venmo balance/account via Expanded Checkout." },
+      { "name": "Pay Later", "amount": "4.99% + $0.49", "currency": "USD", "unit": "per transaction", "notes": "Buy-now-pay-later option offered at checkout." },
+      { "name": "In-person (card present/QR)", "amount": "2.29% + $0.09", "currency": "USD", "unit": "per transaction", "notes": "Card-present and QR code payments; Tap to Pay starts at the same 2.29% card-present rate." },
+      { "name": "In-person (card keyed in)", "amount": "3.49% + $0.09", "currency": "USD", "unit": "per transaction", "notes": "Manually keyed-in card payments." },
+      { "name": "Invoicing", "amount": "2.99% + $0.49", "currency": "USD", "unit": "per transaction", "notes": "Card payment on a PayPal invoice; PayPal/Venmo invoice payments are 3.49% + $0.49." },
+      { "name": "Virtual Terminal", "amount": "3.39% + $0.29", "currency": "USD", "unit": "per transaction", "notes": "Phone/mail-order card payments entered by the merchant." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.paypal.com/us/business/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "description": "A payments and financial-infrastructure API for accepting payments and managing billing/subscriptions.",
+      "best_for": "Businesses that want deep developer/API control over checkout and billing rather than a hosted, brand-forward checkout experience.",
+      "strengths": ["Broad global payment methods", "Billing/subscription tooling", "Card issuing"]
+    },
+    {
+      "name": "Adyen",
+      "slug": "adyen",
+      "description": "An enterprise fintech platform offering payments, payouts, and financial products on a single API.",
+      "best_for": "Larger enterprises and platforms needing global scale, in-person plus online payments, and consolidated financial operations.",
+      "strengths": ["150+ currencies, 200+ local payment methods", "Global payouts and in-person POS on one API", "Own US/UK/EU banking licenses"]
+    }
+  ],
+  "links": {
+    "pricing": "https://www.paypal.com/us/business/pricing"
+  },
+  "sources": [
+    "https://www.paypal.com/us/business/pricing",
+    "https://www.paypal.com/us/business",
+    "https://www.paypal.com/us/business/accept-payments"
+  ],
+  "accessed_at": "2026-09-05"
+}

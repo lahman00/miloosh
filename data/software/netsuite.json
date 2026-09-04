@@ -1,0 +1,77 @@
+{
+  "name": "NetSuite",
+  "slug": "netsuite",
+  "category": "finance-and-erp",
+  "description": "NetSuite is Oracle's cloud ERP system, unifying accounting, inventory, order management, and multi-subsidiary financial consolidation in one platform. NetSuite describes itself as an \"all-in-one, AI-powered, cloud business management solution,\" used by more than 44,000 customers ranging from pre-revenue startups to fast-growing businesses, per NetSuite's own site.",
+  "website": "https://www.netsuite.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Growing and mid-market companies that want a single cloud system for financials, inventory, and order management instead of stitching together separate tools — including those with multiple subsidiaries or business entities that need consolidated financial reporting.",
+  "features": [
+    "Unified accounting, inventory, order management, and financial reporting in one cloud ERP",
+    "Multi-subsidiary, multi-currency, multi-entity management for global businesses",
+    "Enterprise performance management with real-time dashboards and reporting",
+    "Built-in expense management: mobile receipt capture, expense report submission, and approval workflows tied to project accounting",
+    "Procurement, supply chain, and warehouse management",
+    "Embedded generative-AI features including Case Summary, Item Creation Assistant, and Transaction Matching Assistant",
+    "Native iOS and Android mobile apps for dashboards, approvals, and expense reports"
+  ],
+  "pros": [
+    "Single system spans accounting, inventory, order management, and multi-subsidiary consolidation rather than separate point tools",
+    "Used by more than 44,000 customers, per NetSuite, across company sizes and industries",
+    "Native mobile apps support real-time dashboards, approvals, and expense reporting away from a desk"
+  ],
+  "cons": [
+    "No published pricing — cost depends on the core platform, chosen modules, and user count, confirmed only through a NetSuite sales quote",
+    "Billed as an annual license plus a separate one-time implementation fee, adding upfront cost beyond the subscription itself"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "NetSuite ERP",
+        "notes": "Annual license fee made up of three components — core platform, optional modules, and number of users — plus a one-time implementation fee. NetSuite does not publish specific prices; contact NetSuite sales for a quote."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.netsuite.com/portal/products/erp.shtml"
+  },
+  "alternatives": [
+    {
+      "name": "Odoo",
+      "slug": "odoo",
+      "description": "An open-source, modular business platform covering accounting, inventory, manufacturing, and more as individually priced apps.",
+      "best_for": "Smaller and mid-sized businesses that want to pay only for the ERP modules they actually use, with an open-source/self-hosting option.",
+      "strengths": ["Free single-app plan", "Transparent published per-user pricing", "Open-source core with self-hosting option"]
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting for mid-market companies and nonprofits.",
+      "best_for": "Mid-market finance teams and nonprofits that need strong multi-entity consolidation and fund accounting without a full operational ERP.",
+      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Nonprofit fund/grant accounting"]
+    },
+    {
+      "name": "SAP Cloud ERP",
+      "slug": "sap-cloud-erp",
+      "description": "SAP's cloud ERP line led by SAP S/4HANA Cloud Public Edition, a subscription-priced ERP with embedded AI and industry-specific best-practice processes.",
+      "best_for": "Larger enterprises that want SAP's industry best-practice processes and are prepared for an SAP-led implementation.",
+      "strengths": ["Industry-specific preconfigured processes", "Embedded AI across finance/supply chain/HR", "SAP Activate guided implementation"]
+    },
+    {
+      "name": "QuickBooks Online",
+      "slug": "quickbooks-online",
+      "description": "Small-business accounting software for invoicing, expense tracking, and basic financial reporting.",
+      "best_for": "Small businesses and freelancers with simpler accounting needs than a full ERP.",
+      "strengths": ["Low cost", "Easy setup", "Large accountant/bookkeeper ecosystem"]
+    }
+  ],
+  "sources": [
+    "https://www.netsuite.com/portal/products/erp.shtml",
+    "https://www.netsuite.com/portal/products/professional-services-automation/expense-management.shtml"
+  ],
+  "accessed_at": "2026-09-05"
+}
