@@ -1,0 +1,128 @@
+{
+  "name": "Fireflies.ai",
+  "slug": "fireflies-ai",
+  "category": "sales",
+  "company": "Fireflies.ai Corp",
+  "description": "Fireflies.ai is an AI meeting assistant that joins video calls, dialers, and uploaded audio/video files to transcribe, summarize, and search conversations, with conversation-intelligence analytics, task and contact tracking, and role-specific AI Skills for sales, recruiting, and other teams.",
+  "website": "https://fireflies.ai/",
+  "platforms": ["Web", "Desktop", "iOS", "Android", "Chrome Extension"],
+  "best_for": "Teams across sales, recruiting, marketing, and other functions that want a free-to-start AI meeting notetaker with broad video/dialer coverage, conversation-intelligence analytics, and CRM or project-management integrations.",
+  "features": [
+    "AI Notetaker Bot (fred@fireflies.ai) that auto-joins calendar meetings across Zoom, Google Meet, Microsoft Teams, and 10+ other platforms to record, transcribe, and summarize",
+    "Transcription in 100+ languages with speaker recognition and automatic language detection",
+    "AskFred, a conversational AI assistant that answers questions about past meeting content",
+    "Conversation intelligence analytics -- speaker talk-time tracking, sentiment analysis, and topic trackers -- on the Business plan and above",
+    "Live Assist, providing real-time suggestions, coaching, and answers during live meetings",
+    "200+ AI Skills for automated, role-specific outputs (such as follow-up emails or candidate scoring) across sales, recruiting, marketing, and other functions",
+    "Fireflies MCP Server bringing meeting insights into Claude, ChatGPT, and other AI tools",
+    "Dialer and API support for transcribing calls from Aircall and RingCentral, plus uploaded audio/video files",
+    "CRM, project-management, and applicant-tracking integrations, including Greenhouse and Lever for recruiting teams"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$10/seat/month, billed annually (Pro plan; $18/month billed monthly) — Free plan also available",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "10",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per team",
+        "notes": "Free forever, for individuals starting out. Listed as \"Unlimited transcription*\" (asterisked on the pricing page) but limited to 400 minutes of shared team storage and 20 AI credits/month, with only limited AI summaries. Includes the notetaker bot, 100+ language transcription, meeting search, AskFred, desktop/mobile apps, Chrome extension, and API access."
+      },
+      {
+        "name": "Pro",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "$18/seat/month if billed monthly. Unlimited transcription and AI summaries, 8,000 minutes of storage/seat, 20 AI credits. Adds video recording, downloadable transcripts/recordings, Personal/Email Assistants, AI Skills, Voice Agents, and unlimited integrations."
+      },
+      {
+        "name": "Business",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "$29/seat/month if billed monthly. Marked \"Most Popular.\" Unlimited storage, 30 AI credits. Adds multi-language mode, conversation intelligence, team analytics for admins, public meeting access, and user groups. Volume discounts available for more than 50 seats."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "39",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "Marked \"ANNUAL ONLY\" on the pricing page (no separate monthly rate). Unlimited storage, 50 AI credits. Adds a rules engine, SSO + SCIM, API audit logs, HIPAA compliance, private storage, custom data retention, transcript-and-summary-only mode, a super admin role, and a dedicated account manager. The page's call-to-action for this tier is still \"Contact Us\" rather than self-serve signup."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://fireflies.ai/pricing"
+  },
+  "pros": [
+    "Genuine free-forever plan with unlimited transcription (subject to a shared 400-minute team storage cap and 20 monthly AI credits), not just a time-limited trial",
+    "Publishes exact per-seat pricing, both monthly and annual, for Pro, Business, and even its Enterprise tier ($39/seat/month, annual only), rather than gating all pricing behind a sales call",
+    "States SOC 2 Type II and GDPR compliance company-wide, per its security section, with HIPAA compliance and private storage specifically available on its Enterprise tier"
+  ],
+  "cons": [
+    "The Free plan's \"unlimited transcription\" claim is asterisked and constrained in practice by a shared 400-minute team storage limit and only 20 AI credits per month",
+    "HIPAA compliance, private storage, and custom data retention are listed only under the Enterprise tier in the plan-comparison table, even though the homepage's broader security section markets HIPAA compliance as a general capability",
+    "Enterprise pricing is published as $39/seat/month, but its call-to-action is still \"Contact Us\" rather than self-serve signup, and teams above 50 seats are directed to contact sales for volume discounts regardless of tier"
+  ],
+  "faq": [
+    {
+      "question": "Can I use Fireflies for free?",
+      "answer": "Yes. Its pricing page lists a \"Free forever\" plan with unlimited transcription (asterisked), limited AI summaries, 400 minutes of shared team storage, and 20 AI credits per month."
+    },
+    {
+      "question": "How much does Fireflies cost?",
+      "answer": "On annual billing, Pro is $10/seat/month, Business is $19/seat/month, and Enterprise is $39/seat/month (annual only). Monthly billing is available for Pro ($18) and Business ($29) at higher rates."
+    },
+    {
+      "question": "Is Fireflies SOC 2 compliant?",
+      "answer": "Its security section states SOC 2 Type II and GDPR compliance, while HIPAA compliance and private storage are specifically listed as Enterprise-tier features on its plan-comparison table."
+    }
+  ],
+  "links": {
+    "pricing": "https://fireflies.ai/pricing"
+  },
+  "tags": ["ai-meeting-notetaker", "conversation-intelligence", "call-transcription", "meeting-summaries", "sales-productivity"],
+  "sources": [
+    "https://fireflies.ai/",
+    "https://fireflies.ai/pricing"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Otter.ai",
+      "slug": "otter-ai",
+      "description": "An AI conversational knowledge engine that automatically transcribes meetings, interviews, and conversations into searchable summaries with action items and speaker identification.",
+      "best_for": "Teams and individuals across sales, education, and media wanting automatic transcription with a chat-based search assistant.",
+      "strengths": ["Real-time multilingual transcription", "AI Chat search across meetings", "Bot-free desktop recording option"]
+    },
+    {
+      "name": "Fathom",
+      "slug": "fathom",
+      "description": "An AI meeting notetaker that records, transcribes, and summarizes video calls in real time, with CRM sync and coaching scorecards on paid plans.",
+      "best_for": "Teams wanting a free-forever individual plan plus CRM field sync and AI coaching scorecards on higher tiers.",
+      "strengths": ["Free-forever individual plan", "CRM field sync and Deal View", "AI coaching scorecards"]
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "description": "A revenue intelligence platform that captures and analyzes sales calls, emails, and meetings to surface deal risk, coach reps, and inform forecasting.",
+      "best_for": "Sales organizations wanting deal-risk scoring and org-wide forecasting built on top of captured conversations, not just per-call notes.",
+      "strengths": ["Deal Intelligence and risk scoring", "Org-wide revenue forecasting", "Rep coaching grounded in real calls"]
+    }
+  ]
+}

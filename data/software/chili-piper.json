@@ -1,0 +1,116 @@
+{
+  "name": "Chili Piper",
+  "slug": "chili-piper",
+  "category": "sales",
+  "description": "Chili Piper is a meeting-scheduling and lead-routing platform that automates the path from an inbound web form, chat, or outbound handoff to a booked meeting, qualifying and routing each visitor to the right rep in real time.",
+  "website": "https://www.chilipiper.com/",
+  "platforms": ["Web"],
+  "best_for": "Enterprise B2B teams handling significant inbound traffic (web forms, content, webinars) or outbound-to-AE handoffs who want to remove manual scheduling and lead-routing steps from the path to a booked meeting.",
+  "features": [
+    "Form Concierge, which qualifies and instantly routes inbound leads submitted through web forms",
+    "Chat AI, a 24/7 assistant that answers visitor questions, qualifies them, and books meetings directly from the website",
+    "Distro, which automatically assigns leads generated from content, webinars, and events to the appropriate rep",
+    "Handoff, letting outbound SDRs book a meeting directly onto an account executive's calendar in real time",
+    "A centralized routing and scheduling engine handling qualification, routing, and booking logic across all inbound flows",
+    "ChiliCal, a standalone calendar-scheduling product sold separately from the core routing suite",
+    "Credit-based usage metering (tens of thousands of credits included per year, depending on plan)"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$1,250/month, billed annually at $15,000/year (Routing & Scheduling plan)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": {
+      "amount": "1250",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Routing & Scheduling",
+        "amount": "1250",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per month, billed annually",
+        "notes": "Totals $15,000/year. Up to 15 seats included, then $45/seat/month. Includes 45,000 credits per year. Its plan family is billed annually only; monthly billing is not available."
+      },
+      {
+        "name": "Experiences",
+        "amount": "3500",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per month, billed annually",
+        "notes": "Totals $42,000/year. Up to 30 seats included, then $50/seat/month. Includes 150,000 credits per year. Billed annually only; monthly billing is not available."
+      },
+      {
+        "name": "Chili Data Platform",
+        "notes": "Listed as \"Coming soon\" on the pricing page as of the access date; no price disclosed."
+      },
+      {
+        "name": "ChiliCal Standalone",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "Requires a minimum of 200 seats. The page does not state whether this specific plan is also annual-billing-only."
+      }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.chilipiper.com/pricing"
+  },
+  "pros": [
+    "Publishes real, itemized self-serve pricing (starting price, included seats/credits, and per-seat overage rate) for its two main plans instead of gating everything behind \"contact sales\"",
+    "Certified SOC 2 Type 2 and ISO 27001, and states GDPR and CCPA compliance, per its security page",
+    "Combines inbound form qualification, chat-based booking, event/content lead assignment, and SDR-to-AE handoff in one connected routing engine"
+  ],
+  "cons": [
+    "Its two main plans (Routing & Scheduling, Experiences) require annual billing with no monthly-billing option, and the entry plan totals $15,000/year",
+    "No free trial or free plan is offered, per its pricing page",
+    "ChiliCal Standalone requires a 200-seat minimum, making it impractical to buy for small teams"
+  ],
+  "faq": [
+    {
+      "question": "How much does Chili Piper cost?",
+      "answer": "Its pricing page lists Routing & Scheduling starting at $1,250/month ($15,000/year, up to 15 seats) and Experiences starting at $3,500/month ($42,000/year, up to 30 seats), both billed annually. ChiliCal Standalone is $12/user/month with a 200-seat minimum."
+    },
+    {
+      "question": "Does Chili Piper offer a free trial?",
+      "answer": "No. Its pricing page shows no free trial or free plan; the entry point for its main plans is a $15,000/year annual commitment."
+    },
+    {
+      "question": "Is Chili Piper SOC 2 compliant?",
+      "answer": "Yes. Its security page states it holds a SOC 2 Type 2 report and is ISO 27001 certified, and that it has completed a Salesforce Security Review."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.chilipiper.com/pricing"
+  },
+  "tags": ["meeting-scheduling", "lead-routing", "lead-qualification", "revenue-acceleration", "inbound-conversion"],
+  "sources": [
+    "https://www.chilipiper.com/",
+    "https://www.chilipiper.com/pricing",
+    "https://www.chilipiper.com/security"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Calendly",
+      "slug": "calendly",
+      "description": "A widely used scheduling tool that lets people share a booking link so others can pick an open meeting time automatically.",
+      "best_for": "Teams and individuals wanting simple, standalone meeting scheduling without built-in inbound lead qualification or routing.",
+      "strengths": ["Simple shareable booking links", "Broad calendar and app integrations", "Team and round-robin scheduling pages"]
+    },
+    {
+      "name": "Cal.com",
+      "slug": "cal-com",
+      "description": "An open-source scheduling platform offered as both a hosted service and a self-hostable version for booking meetings.",
+      "best_for": "Teams wanting open-source or self-hosted scheduling with API-level customization.",
+      "strengths": ["Open-source and self-hostable", "API and embed flexibility", "Team round-robin booking"]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "name": "LinkedIn Sales Navigator",
+  "slug": "linkedin-sales-navigator",
+  "category": "sales",
+  "company": "LinkedIn Corporation",
+  "description": "LinkedIn Sales Navigator is a B2B prospecting and social-selling tool built on LinkedIn's own member network, offering advanced lead and account search, AI-powered account and lead insights, InMail messaging, and CRM integrations to help sales professionals find and engage decision-makers.",
+  "website": "https://business.linkedin.com/sales-solutions/sales-navigator",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Individual B2B sellers and sales teams wanting to prospect and research decision-makers directly on LinkedIn's own network, with AI-assisted account insights and InMail outreach; Advanced Plus adds direct CRM sync for teams standardized on Salesforce or similar.",
+  "features": [
+    "Advanced lead and account search with 40+ filters (function, seniority, years at company) to find decision-makers",
+    "InMail messaging, with 50 credits per month included, to reach prospects outside your network",
+    "Account IQ and Lead IQ, AI-generated account and lead research summaries, on Advanced and Advanced Plus plans",
+    "Buyer Intent signals showing which companies are actively showing interest, on Advanced and Advanced Plus plans",
+    "Smart Links for sharing content with prospects and seeing who engages, on Advanced and Advanced Plus plans",
+    "Relationship Explorer and TeamLink for surfacing warm paths into target accounts through a team's combined network",
+    "Advanced CRM integrations with Salesforce, HubSpot, Microsoft Dynamics 365, and Oracle, including direct lead/contact creation, on Advanced Plus",
+    "iOS and Android mobile apps for full access to leads, accounts, and insights from a phone",
+    "Team seat management and centralized billing for sales teams"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$119.99/month per license, or $1,079.88/year per license (Core plan)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": {
+      "amount": "119.99",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Core",
+        "amount": "119.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per license/month",
+        "notes": "Or $1,079.88/year/license, a stated 25% saving versus monthly billing (equivalent to about $89.99/month). Includes 50 InMails/month and 40+ advanced search filters. LinkedIn's own plan comparison lists this tier as best for individual sellers."
+      },
+      {
+        "name": "Advanced",
+        "amount": "159.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per license/month",
+        "notes": "Or $1,799.88/year/license, a stated 6% saving versus monthly billing. Adds Account IQ & Lead IQ AI insights, Buyer Intent signals, Smart Links, and TeamLink. LinkedIn's own plan comparison lists this tier as best for sales teams."
+      },
+      {
+        "name": "Advanced Plus",
+        "notes": "Custom pricing based on team size, CRM integration, and onboarding/training needs; requires requesting a demo. Adds advanced CRM integrations (Salesforce, HubSpot, Microsoft Dynamics 365, Oracle), direct lead/contact creation to CRM, and ROI reporting. Best for sales teams using an integrated CRM, per LinkedIn's own plan comparison."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://business.linkedin.com/sales-solutions/compare-plans"
+  },
+  "pros": [
+    "Publishes exact self-serve monthly and annual per-license pricing for both the Core and Advanced plans rather than requiring a sales call for its two lower tiers",
+    "Built directly on LinkedIn's own member network, with AI-powered Account IQ and Lead IQ research plus Buyer Intent signals on Advanced plans",
+    "iOS and Android apps give full access to leads, accounts, and insights from a phone, per its product page"
+  ],
+  "cons": [
+    "Advanced Plus, the only tier with direct CRM write-back (Salesforce, HubSpot, Microsoft Dynamics 365, Oracle) and ROI reporting, has no published price and requires requesting a demo",
+    "InMail messaging is capped at 50 per month on every tier, including Advanced Plus",
+    "Buyer Intent and Smart Links are withheld from the entry Core plan, available only on Advanced and Advanced Plus"
+  ],
+  "faq": [
+    {
+      "question": "How much does LinkedIn Sales Navigator cost?",
+      "answer": "Core is $119.99/month or $1,079.88/year per license (a stated 25% annual saving); Advanced is $159.99/month or $1,799.88/year per license (a stated 6% annual saving); Advanced Plus is custom-priced and requires requesting a demo."
+    },
+    {
+      "question": "Does LinkedIn Sales Navigator offer a free trial?",
+      "answer": "Its product pages include \"Start your free trial\" calls to action and a dedicated FAQ on how to sign up for a free trial, though the exact trial length is not stated on the marketing pages reviewed."
+    },
+    {
+      "question": "What is Account IQ?",
+      "answer": "Account IQ is described as an AI-powered feature that cuts research time by generating instant account and lead insights, available on the Advanced and Advanced Plus plans."
+    }
+  ],
+  "links": {
+    "pricing": "https://business.linkedin.com/sales-solutions/compare-plans"
+  },
+  "tags": ["sales-intelligence", "social-selling", "prospecting", "b2b-database", "lead-generation"],
+  "sources": [
+    "https://business.linkedin.com/sales-solutions/sales-navigator",
+    "https://business.linkedin.com/sales-solutions/compare-plans"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Apollo.io",
+      "slug": "apollo-io",
+      "description": "A sales intelligence and engagement platform combining a B2B contact database with sequencing, a dialer, and AI-assisted prospecting.",
+      "best_for": "Teams that want a free plan and published self-serve pricing alongside a bundled dialer/sequencing layer.",
+      "strengths": ["Free plan available", "Built-in dialer and sequencing", "Published per-seat pricing"]
+    },
+    {
+      "name": "ZoomInfo Sales",
+      "slug": "zoominfo-sales",
+      "description": "A B2B sales intelligence product combining a large contact/company database with buyer intent, website-visitor tracking, and conversation intelligence.",
+      "best_for": "Teams that want a very large direct-dial contact database alongside intent data and engagement automation.",
+      "strengths": ["Large database coverage", "Buyer intent signals", "Conversation intelligence (Chorus)"]
+    },
+    {
+      "name": "Cognism",
+      "slug": "cognism",
+      "description": "A B2B sales intelligence platform built around phone-verified contact data and buying-intent signals, with a compliance-first approach for European and global prospecting.",
+      "best_for": "Teams prioritizing compliance-vetted, phone-verified mobile numbers over social-network-based prospecting.",
+      "strengths": ["Phone-verified mobile data", "EU compliance/DNC coverage", "ISO/SOC 2 certifications"]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "name": "Consensus",
+  "slug": "consensus",
+  "category": "sales",
+  "description": "Consensus is an AI-powered interactive product demo platform that lets presales, sales, marketing, and customer success teams create on-demand video demos and product tours buyers can self-serve through, while tracking stakeholder viewing behavior and engagement analytics.",
+  "website": "https://www.goconsensus.com/",
+  "platforms": ["Web"],
+  "company": "Consensus Sales, LLC",
+  "best_for": "Presales, sales, and marketing teams that want to scale personalized product demos to every stakeholder in a buying group and track their engagement, without adding headcount for live demo calls.",
+  "features": [
+    "On-demand, shareable AI-powered video demos that let buyers self-serve explore a product",
+    "Interactive Product Tours, including guided or hands-on sandbox-style experiences customizable via prompts",
+    "Live Demo Platform supporting real-time demonstrations with data injection",
+    "AI Agents that operate autonomously to engage buyers with demo content",
+    "Buyer-engagement analytics tracking views, conversion rates, and feature-level interest across a buying group",
+    "AI Content Studio for generating and personalizing demo videos, with AI voiceover, translations, and avatars on higher tiers",
+    "Integrations with marketing and sales tools including Salesforce, HubSpot, Marketo, Gong, Salesloft, and Outreach"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$600/month, billed annually (Starter plan, up to 5 users)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": {
+      "amount": "600",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Starter",
+        "amount": "600",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per month, billed annually",
+        "notes": "For up to 5 users. Includes Video Demos and Product Tours, AI Content Studio - Lite (AI scripting, voiceover, and translations for dynamic tours), embeddable links, unlimited demos, and marketing analytics/integrations (HubSpot, Eloqua, Pardot, Marketo)."
+      },
+      {
+        "name": "Pro",
+        "amount": "1250",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per month, billed annually",
+        "notes": "For up to 10 users. Adds AI Content Studio - Pro (100 AI video minutes/month, 65+ languages, AI avatars), sales analytics (heatmaps, stakeholder discovery, sales leaderboard), personalized sales links, and sales-tool integrations including Highspot, Seismic, Gong, Salesforce, Salesloft, Outreach, plus API access."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom user count and price, billed annually via sales. Adds Simulations, AI one-prompt data/dashboard editing, enterprise analytics, custom reports, SSO, a channel partner portal, and a dedicated CSM."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.goconsensus.com/pricing/"
+  },
+  "pros": [
+    "Publishes real self-serve numeric pricing for its Starter ($600/month, 5 users) and Pro ($1,250/month, 10 users) tiers rather than gating entry pricing behind a sales call",
+    "Includes buyer-engagement analytics (views, conversion rates, feature rankings) starting on its entry Starter tier, with deeper sales-specific analytics (heatmaps, stakeholder discovery, a sales leaderboard) added on Pro",
+    "Lists direct integrations with widely used sales tools, including Salesforce, Gong, Salesloft, Outreach, Highspot, and Seismic, on its own pricing page"
+  ],
+  "cons": [
+    "The Enterprise tier, covering simulations, SSO, and a dedicated CSM, has no published price and requires contacting sales",
+    "No free trial or free plan is offered, per its pricing page",
+    "AI-generated video minutes are capped by plan (100 minutes/month on Pro), so heavier AI-video usage may require the custom Enterprise tier"
+  ],
+  "faq": [
+    {
+      "question": "Does Consensus publish its pricing?",
+      "answer": "Partially. Its pricing page lists Starter at $600/month (up to 5 users) and Pro at $1,250/month (up to 10 users), both billed annually. The Enterprise tier is custom-priced via sales."
+    },
+    {
+      "question": "Does Consensus offer a free trial?",
+      "answer": "No. Its pricing page shows no free trial or free plan for any tier."
+    },
+    {
+      "question": "What is Demolytics?",
+      "answer": "Demolytics is Consensus's name for the analytics that track how individual stakeholders engage with its demo content, described on its site as part of its buyer-intent signal tracking."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.goconsensus.com/pricing/"
+  },
+  "tags": ["demo-automation", "interactive-demos", "sales-enablement", "buyer-engagement", "presales"],
+  "sources": [
+    "https://www.goconsensus.com/",
+    "https://www.goconsensus.com/pricing/"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "description": "A revenue intelligence platform that records and analyzes sales calls, emails, and meetings to surface deal risk and inform forecasting.",
+      "best_for": "Teams whose priority is conversation intelligence across live sales calls rather than scaled, on-demand product demo videos.",
+      "strengths": ["Call recording and analysis", "Deal-risk scoring", "Listed as one of Consensus's own sales-tool integrations"]
+    },
+    {
+      "name": "PandaDoc",
+      "slug": "pandadoc",
+      "description": "A document platform for creating, sending, tracking, and eSigning proposals, quotes, and contracts, with recipient-level engagement analytics.",
+      "best_for": "Teams whose priority is proposal, quote, and contract creation with document-engagement tracking rather than personalized demo videos.",
+      "strengths": ["Proposal and quote creation", "Document engagement tracking", "E-signature workflows"]
+    }
+  ]
+}

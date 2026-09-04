@@ -1,0 +1,130 @@
+{
+  "name": "Fathom",
+  "slug": "fathom",
+  "category": "sales",
+  "description": "Fathom is an AI meeting notetaker that joins video calls to automatically record, transcribe, and summarize conversations in real time, producing instant call summaries, action items, and CRM-ready notes so sales and customer-facing teams can stay present in the conversation instead of typing notes.",
+  "website": "https://fathom.ai/",
+  "platforms": ["Web", "Desktop"],
+  "best_for": "Individuals and sales or customer-facing teams that want free, unlimited automatic meeting transcription and summaries, with CRM sync, deal tracking, and coaching scorecards available on paid team plans.",
+  "features": [
+    "Automatic recording, transcription, and instant AI-generated call summaries delivered immediately after each meeting",
+    "Bot-free capture (in beta) alongside traditional meeting-bot recording, for Zoom, Google Meet, and Microsoft Teams",
+    "\"Ask Fathom\" search across past conversations, plus a conversational meeting assistant on paid plans",
+    "Automatic CRM field sync and a Deal View that pushes call data into Salesforce and HubSpot on the Business plan",
+    "AI Scorecards and coaching metrics for reviewing call performance on the Business plan",
+    "Desktop app plus integrations with Slack, Notion, Asana, ChatGPT, and Claude for working with meeting data",
+    "Clips, playlists, and global search across recorded calls, with team collaboration via comments, folders, and keyword alerts on the Team plan",
+    "Public API and MCP server access for custom integrations"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$16/user/month, billed annually (Premium plan) — Free plan also available",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "16",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Free forever. Includes unlimited recordings and transcriptions (choice of bot-free beta or bot capture), instant AI call summaries, and clips/playlists/search across calls. Covered by Fathom's 90-day guarantee."
+      },
+      {
+        "name": "Premium",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "$20/user/month if billed monthly. No seat minimum. Adds advanced call summaries, AI-generated action items, a conversational meeting assistant, and a custom meeting bot."
+      },
+      {
+        "name": "Team",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "$19/user/month if billed monthly. Minimum 2 users. Adds global search across calls, meeting-highlight playlists, and team collaboration via comments, folders, and keyword alerts."
+      },
+      {
+        "name": "Business",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "$34/user/month if billed monthly. Minimum 2 users. Adds CRM field sync, Deal View, coaching metrics/AI scorecards, and custom call summaries."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing via sales (\"Talk to sales\"). Adds a Launch Assist onboarding program, org-wide security controls, SSO/SCIM provisioning, custom data retention, and a dedicated success manager."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://fathom.ai/pricing"
+  },
+  "pros": [
+    "Genuine free-forever plan with unlimited recordings and transcriptions and instant AI summaries, not just a time-limited trial",
+    "States SOC 2 Type II, GDPR, and HIPAA compliance plus SSO/SCIM support directly on its homepage",
+    "Publishes exact per-seat pricing, both monthly and annual, for every self-serve tier (Premium, Team, Business)"
+  ],
+  "cons": [
+    "Team and Business plans require a 2-user minimum, so a single-person buyer pays the pricier individual Premium rate instead",
+    "CRM field sync, Deal View, and AI coaching scorecards are reserved for the Business tier and above",
+    "Enterprise-only features (org-wide security controls, SSO/SCIM, custom data retention) require contacting sales with no published price"
+  ],
+  "faq": [
+    {
+      "question": "Does Fathom have a free plan?",
+      "answer": "Yes. Fathom's Free plan is described as \"Free forever\" and includes unlimited recordings and transcriptions plus instant AI call summaries, per its pricing page."
+    },
+    {
+      "question": "How much does Fathom cost?",
+      "answer": "On annual billing, Premium is $16/user/month, Team is $15/user/month (2-user minimum), and Business is $25/user/month (2-user minimum). Monthly billing is higher across all tiers, and Enterprise is custom-priced."
+    },
+    {
+      "question": "Is Fathom SOC 2 compliant?",
+      "answer": "Fathom's homepage states \"SOC 2 Type II | GDPR | HIPAA Compliant | SSO / SCIM\" as part of its trust messaging."
+    }
+  ],
+  "links": {
+    "pricing": "https://fathom.ai/pricing"
+  },
+  "tags": ["ai-meeting-notetaker", "conversation-intelligence", "call-transcription", "meeting-summaries", "sales-productivity"],
+  "sources": [
+    "https://fathom.ai/",
+    "https://fathom.ai/pricing"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Otter.ai",
+      "slug": "otter-ai",
+      "description": "An AI conversational knowledge engine that automatically transcribes meetings, interviews, and conversations into searchable summaries with action items and speaker identification.",
+      "best_for": "Teams and individuals across sales, education, and media wanting automatic transcription with a chat-based search assistant.",
+      "strengths": ["Real-time multilingual transcription", "AI Chat search across meetings", "Bot-free desktop recording option"]
+    },
+    {
+      "name": "Fireflies.ai",
+      "slug": "fireflies-ai",
+      "description": "An AI meeting assistant that records, transcribes, and summarizes conversations across video-conferencing and dialer platforms, with CRM and workflow automation.",
+      "best_for": "Teams wanting a meeting notetaker with broad app integrations and voice-analytics add-ons alongside a free plan.",
+      "strengths": ["Broad app/CRM integrations", "AI Super Summaries", "Team analytics dashboards"]
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "description": "A revenue intelligence platform that captures and analyzes sales calls, emails, and meetings to surface deal risk, coach reps, and inform forecasting.",
+      "best_for": "Sales organizations wanting deal-risk scoring and org-wide forecasting built on top of captured conversations, not just per-call notes.",
+      "strengths": ["Deal Intelligence and risk scoring", "Org-wide revenue forecasting", "Rep coaching grounded in real calls"]
+    }
+  ]
+}
