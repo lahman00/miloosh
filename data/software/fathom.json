@@ -2,7 +2,7 @@
   "name": "Fathom",
   "slug": "fathom",
   "category": "sales",
-  "description": "Fathom is an AI meeting notetaker that joins video calls to automatically record, transcribe, and summarize conversations in real time, producing instant call summaries, action items, and CRM-ready notes so sales and customer-facing teams can stay present in the conversation instead of typing notes.",
+  "description": "Fathom is an AI meeting notetaker that joins video calls to automatically record and transcribe conversations, then generates instant call summaries, action items, and CRM-ready notes immediately afterward, so sales and customer-facing teams can stay present in the conversation instead of typing notes.",
   "website": "https://fathom.ai/",
   "platforms": ["Web", "Desktop"],
   "best_for": "Individuals and sales or customer-facing teams that want free, unlimited automatic meeting transcription and summaries, with CRM sync, deal tracking, and coaching scorecards available on paid team plans.",

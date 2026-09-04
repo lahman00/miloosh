@@ -113,7 +113,7 @@
     {
       "name": "Fathom",
       "slug": "fathom",
-      "description": "An AI meeting notetaker that records, transcribes, and summarizes video calls in real time, with CRM sync and coaching scorecards on paid plans.",
+      "description": "An AI meeting notetaker that records and transcribes video calls and generates instant AI summaries immediately afterward, with CRM sync and coaching scorecards on paid plans.",
       "best_for": "Teams wanting a free-forever individual plan plus CRM field sync and AI coaching scorecards on higher tiers.",
       "strengths": ["Free-forever individual plan", "CRM field sync and Deal View", "AI coaching scorecards"]
     },
