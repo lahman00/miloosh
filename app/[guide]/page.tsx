@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const url = `${SITE_URL}/${guide.slug}`;
 
   return {
-    title: `${guide.title} | Miloosh`,
+    title: guide.title,
     description: guide.metaDescription,
     alternates: {
       canonical: url,
@@ -233,7 +233,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     <th className="py-3.5 px-4">Rank & Tool</th>
                     <th className="py-3.5 px-4">Best For</th>
                     <th className="py-3.5 px-4">Starting Price</th>
-                    <th className="py-3.5 px-4">Free Option</th>
+                    <th className="py-3.5 px-4">Trial / Free Option</th>
                     <th className="py-3.5 px-4 text-right">Action</th>
                   </tr>
                 </thead>
@@ -252,13 +252,15 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                         <span className="text-xs text-zinc-400">{p.badge}</span>
                       </td>
                       <td className="py-4 px-4 text-zinc-300 max-w-xs text-xs">
-                        {p.software.bestFor}
+                        {p.summaryBestFor ?? p.software.bestFor}
                       </td>
                       <td className="py-4 px-4 font-semibold text-white">
-                        {p.software.pricing?.startingPrice ?? "Contact sales"}
+                        {p.summaryPrice ?? p.software.pricing?.startingPrice ?? "Contact sales"}
                       </td>
                       <td className="py-4 px-4 text-xs text-zinc-400">
-                        {p.software.pricing?.hasFreeTier ? (
+                        {p.summaryAvailability ? (
+                          <span className="text-zinc-300">{p.summaryAvailability}</span>
+                        ) : p.software.pricing?.hasFreeTier ? (
                           <span className="text-emerald-400 font-semibold">Free Plan</span>
                         ) : p.software.pricing?.freeTrial?.available ? (
                           <span className="text-zinc-300">Free Trial</span>
@@ -352,7 +354,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                   <div>
                     <h5 className="text-xs font-bold text-white uppercase tracking-wider mb-2">Key Strengths</h5>
                     <ul className="space-y-2 text-xs sm:text-sm text-zinc-400">
-                      {p.software.pros?.map((pro, i) => (
+                      {(p.strengths ?? p.software.pros ?? []).map((pro, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                           <span>{pro}</span>
@@ -422,10 +424,9 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
           {/* FAQs */}
           {guide.faqs.length > 0 && (
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+            <div className="mb-12">
               <FaqSection items={guide.faqs} />
-            </section>
+            </div>
           )}
         </Container>
       </main>
