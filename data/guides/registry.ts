@@ -2411,66 +2411,70 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
   "slug": "best-password-manager-for-families",
   "title": "Best Password Managers for Families & Households (2026)",
   "headline": "The 4 Best Family Password Managers & Shared Vault Apps, Compared",
-  "metaDescription": "Discover the best password managers for families: 1Password, Bitwarden, Dashlane, and Keeper evaluated on family vault sharing, emergency access, and parental controls.",
+  "metaDescription": "Compare family password managers from 1Password, Bitwarden, Dashlane, and Keeper on household sharing, recovery, family-plan capacity, and current pricing.",
   "categorySlug": "security",
   "roleName": "Families & Personal Households",
-  "updatedAt": "2026-08-20",
-  "intro": "Families share streaming logins, Wi-Fi passwords, medical portal credentials, and utility accounts. Family password managers provide private personal vaults for each household member alongside shared family folders and emergency recovery access.",
+  "updatedAt": "2026-09-05",
+  "intro": "Families share streaming logins, Wi-Fi passwords, medical portal credentials, and utility accounts. Family password managers combine private personal vaults with controlled sharing and recovery options for household access.",
   "targetAudience": [
     "Parents managing household credentials and teaching kids good cybersecurity hygiene",
-    "Families needing secure shared vaults for streaming, utility, and bank accounts",
-    "Households setting up digital emergency access recovery contacts"
+    "Families needing secure shared vaults for streaming, utility, and other household accounts",
+    "Households planning for password recovery or emergency access"
   ],
   "keyCriteria": [
-    {
-      "title": "Family Plan Pricing & User Accounts",
-      "description": "Flat-rate family plans covering 5 to 6 independent member accounts under a single family subscription."
-    },
-    {
-      "title": "Private Personal Vaults & Shared Folders",
-      "description": "Providing each family member with their own private vault while allowing shared folders for household passwords."
-    },
-    {
-      "title": "Emergency Access & Account Recovery",
-      "description": "Ability for designated family organizers to recover access for children or elderly relatives who forget their master password."
-    },
-    {
-      "title": "Cross-Device Auto-Fill & Biometrics",
-      "description": "Frictionless Face ID, Touch ID, and fingerprint biometrics on iPhones, Androids, iPads, and family laptops."
-    }
+    {"title": "Family Plan Pricing & Capacity", "description": "Current family-plan cost, how many accounts are included, and whether a trial is available."},
+    {"title": "Private Vaults & Sharing", "description": "Private member storage alongside controlled shared vaults, collections, or folders for household credentials."},
+    {"title": "Recovery & Emergency Access", "description": "Practical ways to restore access or designate trusted people before a family member gets locked out."},
+    {"title": "Cross-Device Access", "description": "Reliable password access and autofill across the phones, computers, and browsers a household actually uses."}
   ],
   "products": [
     {
       "slug": "1password",
-      "badge": "Best Overall for Family Account Recovery & Polish",
+      "badge": "Best Overall for Family Recovery & Sharing",
       "ranking": 1,
-      "fitReason": "1Password Families is the most polished family password manager. It includes 5 family accounts, unlimited shared vaults, and a unique Family Organizer recovery feature that allows parents to recover accounts if a family member forgets their master password.",
-      "limitations": "Family plan covers 5 members; additional members cost $1/month per user.",
-      "pricingNote": "1Password Families is $4.99/mo (billed annually at $59.88/yr for up to 5 family members)."
+      "fitReason": "1Password Families includes five seats in the base plan, unlimited shared vaults, simple family admin controls, and organizer-assisted account recovery for family members who lose access.",
+      "limitations": "The current $4.49/month annual-billing price is a first-year promotion for new customers; the regular annual-billing price is $5.99/month.",
+      "pricingNote": "Families is currently $4.49/month with annual billing for new customers in year one; regular price is $5.99/month. A 14-day free trial is available.",
+      "summaryBestFor": "Families prioritizing polished sharing and organizer-managed recovery",
+      "summaryPrice": "$4.49/mo promo; $5.99 regular",
+      "summaryAvailability": "14-day trial",
+      "strengths": ["Five seats in the base Families plan", "Unlimited shared vaults with family admin controls", "Family organizers can help recover member accounts"]
     },
     {
       "slug": "bitwarden",
-      "badge": "Best Value Family Plan with Open-Source Trust",
+      "badge": "Best Value for Up to 6 Family Members",
       "ranking": 2,
-      "fitReason": "Bitwarden Families provides an affordable family subscription, offering 6 user accounts with unlimited shared collections and 1GB encrypted file storage for $40/year total.",
-      "limitations": "Account recovery requires setting up designated emergency access contacts in advance.",
-      "pricingNote": "Families plan is $3.33/mo (billed annually at $40/yr for up to 6 users)."
+      "fitReason": "Bitwarden Families provides six Premium accounts, unlimited sharing and collections, plus 5GB of personal storage and 5GB for family items under one family subscription.",
+      "limitations": "The Families plan supports up to six users; larger households would need a different setup.",
+      "pricingNote": "Families is $3.99/month, billed annually at $47.88 for up to 6 users. Bitwarden offers a free Families trial.",
+      "summaryBestFor": "Households wanting six Premium accounts and flexible shared collections",
+      "summaryPrice": "$3.99/mo (annual)",
+      "summaryAvailability": "Free Families trial",
+      "strengths": ["Six Premium accounts", "Unlimited sharing and unlimited collections", "Emergency Access plus expandable encrypted storage"]
     },
     {
       "slug": "dashlane",
-      "badge": "Best for Bundled VPN & Real-Time Dark Web Alerts",
+      "badge": "Best for Larger Families Needing 10 Accounts",
       "ranking": 3,
-      "fitReason": "Dashlane Friends & Family includes 10 separate premium accounts, real-time dark web monitoring, and unlimited Hotspot Shield VPN protection for all family members.",
-      "limitations": "Higher annual price point ($89.99/yr) than Bitwarden or 1Password.",
-      "pricingNote": "Friends & Family is $7.49/mo (billed annually at $89.99/yr for up to 10 members)."
+      "fitReason": "Dashlane Friends & Family covers 10 accounts with unlimited password storage, unlimited devices, secure sharing, and dark web monitoring. The plan manager gets the Premium account with VPN; other plan members get the Premium feature set except VPN.",
+      "limitations": "VPN access is limited to the plan manager rather than all 10 family members.",
+      "pricingNote": "Friends & Family is billed annually for 10 members. Dashlane's current public pricing page did not expose a numeric USD price during our 2026-09-05 verification, so Miloosh does not publish an unverified amount here.",
+      "summaryBestFor": "Larger households that need up to 10 separate accounts",
+      "summaryPrice": "See current vendor price",
+      "summaryAvailability": "No family trial stated",
+      "strengths": ["Ten accounts under one subscription", "Unlimited passwords, devices, and secure sharing", "Dark web monitoring for the family plan"]
     },
     {
       "slug": "keeper",
-      "badge": "Best for Granular Folder Permissions & 10GB Storage",
+      "badge": "Best for Five Vaults & Included File Storage",
       "ranking": 4,
-      "fitReason": "Keeper Family includes 5 private vaults, 10GB of secure encrypted digital file storage (ideal for family passport photos and tax docs), and BreachWatch breach alerts.",
-      "limitations": "Dark web monitoring requires purchasing the BreachWatch add-on.",
-      "pricingNote": "Keeper Family is $6.24/mo (billed annually at $74.99/yr for 5 users)."
+      "fitReason": "Keeper Family includes five private vaults, 10GB of secure file storage, unlimited password storage, unlimited devices and sync, secure record sharing, and emergency access.",
+      "limitations": "BreachWatch dark-web monitoring is presented separately as a secure add-on on Keeper's current family pricing page.",
+      "pricingNote": "Keeper's current public family pricing page confirms the Family plan structure but did not expose a numeric price in our 2026-09-05 verification, so Miloosh does not publish an unverified amount here.",
+      "summaryBestFor": "Families wanting five private vaults plus 10GB secure file storage",
+      "summaryPrice": "See current vendor price",
+      "summaryAvailability": "Paid family plan",
+      "strengths": ["Five private vaults", "10GB secure file storage included", "Unlimited devices, sync, sharing, and emergency access"]
     }
   ],
   "comparisons": [
@@ -2481,12 +2485,12 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
   ],
   "faqs": [
     {
-      "question": "Can family members see each other private passwords in a family plan?",
-      "answer": "No — each family member receives their own completely private vault encrypted with their own master password. Only passwords placed inside designated 'Shared' folders are visible to other family members."
+      "question": "Can family members see each other's private passwords in a family plan?",
+      "answer": "Family plans are designed around private member storage plus deliberate sharing. For example, 1Password gives each family member a Private vault and separate shared vaults, while Bitwarden Families uses individual vaults plus shared collections."
     },
     {
-      "question": "What happens if a child or family member forgets their master password?",
-      "answer": "In 1Password Families, designated Family Organizers can securely initiate an account recovery to reset the forgotten password without losing any stored credentials."
+      "question": "What happens if a family member forgets their password or loses access?",
+      "answer": "Recovery depends on the provider. In 1Password Families, a family organizer can help recover another member's account. Bitwarden Families includes Emergency Access, which must be configured with another Bitwarden user in advance."
     }
   ]
 }

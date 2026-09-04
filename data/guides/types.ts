@@ -5,6 +5,10 @@ export type GuideProductReview = {
   fitReason: string;
   limitations: string;
   pricingNote: string;
+  summaryBestFor?: string;
+  summaryPrice?: string;
+  summaryAvailability?: string;
+  strengths?: string[];
 };
 
 export type GuideCriterion = {
