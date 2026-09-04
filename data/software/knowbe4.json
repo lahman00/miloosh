@@ -1,0 +1,70 @@
+{
+  "name": "KnowBe4",
+  "slug": "knowbe4",
+  "category": "security",
+  "description": "KnowBe4 is a security awareness training and human risk management platform that combines AI-personalized training content, simulated phishing/vishing attacks, real-time coaching, and email security add-ons to reduce employee-driven security risk.",
+  "website": "https://www.knowbe4.com",
+  "platforms": ["Web"],
+  "best_for": "Security and compliance teams wanting to reduce employee-driven breach risk through phishing simulations, AI-personalized security-awareness training, and behavior-based coaching, with published per-seat list pricing.",
+  "features": [
+    "Security awareness training content personalized by AI to each user's role, risk level, and behavior, with training localized in 35+ languages",
+    "AI-generated phishing and vishing simulation attacks modeled on current attack tactics",
+    "Real-time coaching delivered at the moment of risk, aimed at turning mistakes into teachable moments",
+    "PhishER Plus incident response add-on for triaging and responding to user-reported emails",
+    "Defend (inbound) and Prevent (outbound) email security products",
+    "AIDA (AI Defense Agents) behavior-based detection and Agent Risk Manager for visibility and control over AI agent workforces"
+  ],
+  "pros": [
+    "Publishes real per-seat list pricing broken out by organization size, which is uncommon among security-awareness vendors",
+    "Training content is AI-personalized to role, risk level, and behavior and localized in 35+ languages"
+  ],
+  "cons": [
+    "Published per-seat list pricing requires a 3-year contract term; organizations of 1,001+ users must contact sales for a quote",
+    "List pricing is explicitly dated (\"Pricing as per May 2026\") and may be modified at any time, per KnowBe4's own pricing page"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$2.40/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "2.40", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "SAT Foundation (25-50 users)", "amount": "2.40", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Entry-level training content tier. Requires a 3-year term; monthly-equivalent list price. Higher user-count bands (51-100, 101-250, 251-500, 501-1,000) step down in price per seat." },
+      { "name": "SAT Advanced (25-50 users)", "amount": "3.75", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Adds advanced training content library on top of Foundation. Requires a 3-year term." },
+      { "name": "1,001+ users", "notes": "Contact KnowBe4 for a custom quote; no list price published above the 501-1,000 user band." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.knowbe4.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Duo Security",
+      "slug": "duo-security",
+      "description": "Duo Security, part of Cisco, is an identity and access management platform providing multi-factor authentication, single sign-on, and device trust for securing logins.",
+      "best_for": "Security teams wanting to reduce human-driven breach risk primarily through phishing-resistant access controls (MFA, device trust) rather than through awareness-training content.",
+      "strengths": [
+        "Multi-factor authentication supporting over 1.3 billion monthly authentications",
+        "Single sign-on across applications",
+        "Device trust to restrict access to trusted devices"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does KnowBe4's published pricing reflect what most customers actually pay?",
+      "answer": "The per-seat numbers on KnowBe4's pricing page (for example $2.40/user/month for SAT Foundation at 25-50 users) require committing to a 3-year term, and the page itself states \"Pricing as per May 2026. List pricing may be modified at any time.\" Organizations with 1,001+ users must contact KnowBe4 directly for a quote."
+    }
+  ],
+  "tags": ["Security Awareness Training", "Human Risk Management", "Phishing Simulation", "Security"],
+  "links": {
+    "pricing": "https://www.knowbe4.com/pricing"
+  },
+  "sources": [
+    "https://www.knowbe4.com/",
+    "https://www.knowbe4.com/products/security-awareness-training",
+    "https://www.knowbe4.com/pricing"
+  ],
+  "accessed_at": "2026-09-05"
+}

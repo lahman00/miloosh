@@ -1,0 +1,82 @@
+{
+  "name": "Talkdesk",
+  "slug": "talkdesk",
+  "category": "customer-support",
+  "description": "Talkdesk is a cloud contact center platform, positioned as \"CCaaS for people, CXA for AI,\" that combines traditional contact-center software with autonomous, orchestrated AI agents for specific customer-experience tasks.",
+  "website": "https://www.talkdesk.com",
+  "platforms": ["Web"],
+  "best_for": "Contact centers wanting published per-agent pricing tiers, plus a no-contract small-business plan (Talkdesk Express), alongside autonomous multi-agent AI orchestration.",
+  "features": [
+    "Multi-agent AI orchestration to \"compose, deploy, and orchestrate specialized AI agents, each focused on a specific task, to execute real CX work\"",
+    "Autonomous agent use cases including appointment scheduling/rescheduling, order status/tracking, travel disruption notifications, and payment information management",
+    "Built-in validation and continuous learning mechanisms for AI reliability, per Talkdesk's own site",
+    "Digital engagement (email, chat, SMS, social) with Studio & Routing, APIs, and real-time dashboards",
+    "Voice engagement with speech recognition and voicemail transcription",
+    "Custom reporting, screen recording, and workforce/performance management on higher tiers",
+    "Industry Experience Clouds with industry-specific features for financial services, insurance, healthcare, retail, travel, utilities, and government"
+  ],
+  "pros": [
+    "Publishes four named per-agent pricing tiers ($85-$225/user/month) rather than requiring a quote to see any number",
+    "Talkdesk Express offers 25 licenses plus $100 in usage credit with no contract, for US/Canada businesses under 50 employees"
+  ],
+  "cons": [
+    "Add-ons and personalized recommendations still require contacting sales rather than being priced on the public pricing page",
+    "Talkdesk Express is limited to the US and Canada and to businesses under 50 employees"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$85/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "85", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Digital Essentials", "amount": "85", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Digital engagement (email, chat, SMS, social), Studio & Routing, APIs, real-time dashboards." },
+      { "name": "Voice Essentials", "amount": "105", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Voice engagement, speech recognition, voicemail transcription, routing, APIs." },
+      { "name": "Elite", "amount": "165", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Everything in Essentials plus custom reporting, screen recording, performance management, and workforce management." },
+      { "name": "Industry Experience Clouds", "amount": "225", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Marked \"Best Value\" on Talkdesk's pricing page. Everything in Elite plus industry-specific features (financial services, insurance, healthcare, retail, travel, utilities, government)." },
+      { "name": "Talkdesk Express", "notes": "US & Canada only, for businesses under 50 employees. Includes 25 licenses plus $100 in free usage credit, with no commitment or contract required." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.talkdesk.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Five9",
+      "slug": "five9",
+      "description": "A cloud contact-center-as-a-service (CCaaS) platform for inbound, outbound, and blended customer engagement across voice and digital channels, built around its Genius AI suite.",
+      "best_for": "Contact centers wanting published bundle pricing and a dedicated Genius AI product line as an alternative to Talkdesk.",
+      "strengths": ["Published Digital ($119/seat/mo) and Core ($159/seat/mo) bundle pricing", "Genius AI Agents, Agent Assist, and GenAI Studio", "Omnichannel support across voice, email, chat, social, and SMS"]
+    },
+    {
+      "name": "Genesys Cloud CX",
+      "slug": "genesys-cloud-cx",
+      "description": "An enterprise contact-center-as-a-service (CCaaS) platform unifying contact center, digital channels, workforce engagement, and AI orchestration across voice and digital customer interactions.",
+      "best_for": "Large enterprises wanting a single platform for contact center, digital channels, and workforce management as an alternative to Talkdesk.",
+      "strengths": ["Four published pricing tiers from $75-$240/user/month", "AI Experience tokens bundled per tier for orchestrated AI agents", "Broad enterprise integration ecosystem (Salesforce, ServiceNow, AppFoundry)"]
+    },
+    {
+      "name": "RingCentral",
+      "slug": "ringcentral",
+      "description": "A cloud communications platform (RingEX) that also offers RingCX, an omnichannel AI-powered contact center, alongside its core phone, video, and messaging suite.",
+      "best_for": "Businesses wanting contact-center capability bundled inside a broader unified-communications platform rather than a dedicated, standalone CCaaS product.",
+      "strengths": ["RingCX omnichannel contact center with AI-powered quality management", "Published per-user pricing from $20-$35/month for the core UC suite", "500+ third-party app integrations"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is Talkdesk Express?",
+      "answer": "Talkdesk Express is a self-serve plan for US and Canada businesses under 50 employees, offering 25 licenses plus $100 in free usage credit with no commitment or contract required, according to Talkdesk's own pricing page."
+    }
+  ],
+  "tags": ["Contact Center", "CCaaS", "Customer Support", "Conversational AI"],
+  "links": {
+    "pricing": "https://www.talkdesk.com/pricing/"
+  },
+  "sources": [
+    "https://www.talkdesk.com/",
+    "https://www.talkdesk.com/pricing/"
+  ],
+  "accessed_at": "2026-09-05"
+}

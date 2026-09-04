@@ -1,0 +1,67 @@
+{
+  "name": "Sophos Endpoint",
+  "slug": "sophos-endpoint",
+  "category": "security",
+  "description": "Sophos Endpoint (built on Intercept X technology) is an AI-powered endpoint protection platform that combines deep-learning malware detection, ransomware rollback, and exploit mitigation in a single lightweight agent, with optional EDR and XDR tiers for threat hunting and cross-vector investigation.",
+  "website": "https://www.sophos.com/en-us/products/endpoint-antivirus",
+  "platforms": ["Web", "Windows", "macOS", "Linux"],
+  "best_for": "Security teams wanting prevention-first endpoint protection with built-in ransomware rollback, purchased through a Sophos partner rather than a self-serve online checkout.",
+  "features": [
+    "60+ proprietary exploit mitigations enabled by default to block attack techniques rather than specific exploit variants",
+    "Deep learning models that identify known and never-seen-before malware before execution",
+    "CryptoGuard ransomware protection that monitors file contents for malicious encryption, blocks the offending process, and automatically rolls back affected files",
+    "Adaptive Attack Protection that automatically increases defenses across endpoints when an active, coordinated attack is detected",
+    "Optional Sophos EDR (threat hunting) and Sophos XDR (cross-vector investigation with AI-assisted tools) built on the same agent",
+    "Web Control, Application Control, Peripheral Control, and Data Loss Prevention for attack-surface reduction",
+    "Sophos Fusion telemetry integration enabling Synchronized Security across the wider Sophos product stack"
+  ],
+  "pros": [
+    "60+ exploit mitigations plus CryptoGuard rollback enabled by default with minimal configuration",
+    "30-day free trial available directly from Sophos's site"
+  ],
+  "cons": [
+    "No public price list on Sophos's own site -- Sophos Endpoint is sold through authorized partners or the AWS Marketplace, with pricing available only by quote",
+    "EDR and XDR threat-hunting capabilities are separate, higher tiers built on top of the base Endpoint agent, not included by default"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "tiers": [
+      { "name": "Sophos Endpoint (via partner or AWS Marketplace)", "notes": "No list price is published on Sophos's own site. Sophos's how-to-buy page states it offers \"simple, per-user pricing with no hidden extras\" but directs buyers to \"request a free, no-obligation quote\" from a Sophos sales representative or an authorized partner; also purchasable via AWS Marketplace." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.sophos.com/en-us/products/endpoint-security/how-to-buy"
+  },
+  "alternatives": [
+    {
+      "name": "SentinelOne",
+      "slug": "sentinelone",
+      "description": "An endpoint, cloud, and identity security platform running behavioral and static AI detection models on a single on-device agent to prevent, detect, and autonomously respond to threats.",
+      "best_for": "Security teams wanting a published per-endpoint list price and 1-click rollback as an alternative to Sophos Endpoint.",
+      "strengths": ["Publishes list pricing per endpoint", "Patented 1-click rollback", "On-device AI models that don't depend on a live cloud connection"]
+    },
+    {
+      "name": "CrowdStrike",
+      "slug": "crowdstrike",
+      "description": "CrowdStrike Falcon is an AI-native cybersecurity platform that unifies endpoint detection and response, cloud security, and identity protection.",
+      "best_for": "Security teams wanting published starting list pricing and a next-gen SIEM alongside core endpoint protection.",
+      "strengths": ["Published starting price per device", "Next-gen SIEM", "Identity protection across human, non-human, and AI identities"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does Sophos publish list prices for Sophos Endpoint?",
+      "answer": "No. Sophos's own how-to-buy page states it offers \"simple, per-user pricing with no hidden extras\" but does not publish the actual per-user rate -- buyers must request a quote from Sophos sales or purchase through an authorized partner or the AWS Marketplace."
+    }
+  ],
+  "tags": ["Endpoint Protection", "EDR", "XDR", "Antivirus", "Security"],
+  "sources": [
+    "https://www.sophos.com/en-us/products/endpoint-antivirus",
+    "https://www.sophos.com/en-us/products/endpoint-security/how-to-buy"
+  ],
+  "accessed_at": "2026-09-05"
+}
