@@ -1,0 +1,73 @@
+{
+  "name": "Navan",
+  "slug": "navan",
+  "category": "finance-and-erp",
+  "description": "Navan, formerly TripActions, is an AI-assisted corporate travel booking and expense management platform that combines travel inventory, a corporate card, and automated expense reconciliation in one system.",
+  "website": "https://navan.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Companies wanting travel booking and expense management in one platform, especially organizations under 300 employees that qualify for free travel booking.",
+  "pros": [
+    "Travel booking is free for companies up to 300 employees",
+    "24/7 human travel support for booking changes and travel emergencies",
+    "SOC 1 Type 2, SOC 2 Type 2, ISO 27001, and PCI DSS Level 1 Service Provider certifications, per Navan's own security page"
+  ],
+  "cons": [
+    "Expense management is only free for the first 5 users, then billed at $15/user/month",
+    "Enterprise pricing and features require a custom sales quote",
+    "Published self-serve pricing only covers the Business plan; Enterprise details are not public"
+  ],
+  "features": [
+    "AI-assisted travel booking (flights, hotels, cars, rail) with automatic enforcement of company spend policy at the point of booking",
+    "24/7 human support for booking changes and travel emergencies",
+    "AI-driven expense categorization and reconciliation with real-time flagging of policy violations",
+    "Navan corporate card, Navan Connect (works with existing Visa, Mastercard, and American Express cards), or employee reimbursements",
+    "Navan Rewards: redeemable bonuses for employees who book travel below budget",
+    "Navan Edge: AI travel assistant for flights, hotels, and restaurant recommendations"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (Business travel, up to 300 employees); $15/user/month (expense management after 5 free users)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Business - Travel", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free for companies with up to 300 employees." },
+      { "name": "Business - Expense Management", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Free for the first 5 users." },
+      { "name": "Business - Expense Management (additional users)", "amount": "15", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Applies once a company exceeds 5 expense-management users." },
+      { "name": "Enterprise", "currency": "USD", "notes": "Custom quote via sales (\"Let's talk\" / demo request); for companies above the Business plan's employee threshold or needing enterprise features." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://navan.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "description": "A spend management platform combining a fee-free corporate card with AI-driven expense, AP, and procurement automation.",
+      "best_for": "Businesses wanting a free corporate card paired with automated expense and accounts-payable workflows.",
+      "strengths": ["Free plan with no annual fees or interest charges on the card", "Policy enforcement and price-drop rebooking for travel", "Native bidirectional sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
+    },
+    {
+      "name": "Brex",
+      "slug": "brex",
+      "description": "A corporate card and spend management platform with a free entry tier and AI-driven expense automation.",
+      "best_for": "Startups and scaling companies wanting a free corporate card plus in-app travel booking on one platform.",
+      "strengths": ["Free Essentials plan with travel booking included", "AI-powered bill pay and GL coding", "Two-way ERP integrations"]
+    },
+    {
+      "name": "Expensify",
+      "slug": "expensify",
+      "description": "An expense management platform with receipt scanning, a commercial card, and in-app travel booking.",
+      "best_for": "Teams wanting simple receipt-driven expense reports combined with in-app flight, hotel, car, and rail booking.",
+      "strengths": ["Flat $5/member/month Collect plan", "In-app travel booking with automatic expense sync", "45+ accounting and HR integrations"]
+    }
+  ],
+  "sources": [
+    "https://navan.com/",
+    "https://navan.com/pricing",
+    "https://navan.com/security"
+  ],
+  "accessed_at": "2026-09-05"
+}

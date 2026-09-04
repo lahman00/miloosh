@@ -1,0 +1,74 @@
+{
+  "name": "Brex",
+  "slug": "brex",
+  "category": "finance-and-erp",
+  "description": "Brex is a corporate card and spend management platform that pairs a free entry-level card program with AI-driven expense management, bill pay, travel booking, and business banking for startups through enterprises.",
+  "website": "https://www.brex.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Startups and scaling companies wanting a free corporate card with room to add paid expense-policy automation and ERP integrations as they grow.",
+  "pros": [
+    "Essentials plan is free with no per-user fee and includes accounting integrations, bill pay, and travel booking",
+    "SOC 1 Type II, SOC 2 Type II, and PCI-DSS certified, per Brex's own security page",
+    "AI-generated general ledger coding suggestions and two-way ERP integrations at the Premium tier and above"
+  ],
+  "cons": [
+    "Multiple expense policies, dynamic approval chains, and ERP/HRIS integrations require the $12/user/month Premium plan or higher",
+    "Multi-entity support beyond two entities, local card issuance, and a named account manager require Enterprise, which is contact-sales only",
+    "The Smart Card procurement offering is custom-priced and requires a sales conversation"
+  ],
+  "features": [
+    "Corporate cards with global acceptance, built-in policy enforcement, and higher limits than a typical business card",
+    "AI-driven expense management with automated approvals, real-time expense tracking, and receipt capture",
+    "In-app travel booking and itinerary management",
+    "AI-powered bill pay: automated invoice entry and vendor payment automation, including vendor-specific virtual cards",
+    "Business account with same-hour liquidity and expanded FDIC insurance coverage",
+    "Accounting automation with two-way ERP integrations and AI-generated GL-coding suggestions",
+    "Mobile app for card access, expense submission, reimbursement approvals, and payments"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (Essentials); $12/user/month (Premium)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "12", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Essentials", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Global card acceptance, AI-powered spend rules, up to two entities, accounting integrations, local-currency wires, travel booking, real-time reporting, API access, bill pay, and reimbursements." },
+      { "name": "Premium", "amount": "12", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Adds multiple customizable expense policies, dynamic review chains, AI compliance audits, advanced approvals, multi-entity support (US and international), ERP/HRIS integrations, VAT documentation, and live budgets." },
+      { "name": "Enterprise", "currency": "USD", "notes": "Custom pricing via sales. Adds unlimited entities, local card issuance, a named account manager, an admin center, and customizable implementation services." },
+      { "name": "Smart Card", "currency": "USD", "notes": "Custom pricing via sales, aimed at companies simplifying procurement." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.brex.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "description": "A spend management platform combining a fee-free corporate card with AI-driven expense, AP, and procurement automation.",
+      "best_for": "Businesses wanting a free corporate card paired with automated expense and accounts-payable workflows.",
+      "strengths": ["Free plan with no annual fees or interest charges on the card", "Zero processing fees on domestic ACH, check, and card AP payments", "Native bidirectional sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
+    },
+    {
+      "name": "Expensify",
+      "slug": "expensify",
+      "description": "An expense management platform with receipt scanning, a commercial card, and in-app travel booking.",
+      "best_for": "Teams wanting simple receipt-driven expense reports, with discounted pricing when paired with the Expensify Card.",
+      "strengths": ["Flat $5/member/month Collect plan", "Up to 50% subscription discount for Expensify Card usage", "45+ accounting and HR integrations"]
+    },
+    {
+      "name": "Navan",
+      "slug": "navan",
+      "description": "An AI-assisted corporate travel booking and expense management platform, formerly TripActions.",
+      "best_for": "Companies wanting travel booking and expense management combined, with free travel booking for companies up to 300 employees.",
+      "strengths": ["Free travel booking for companies up to 300 employees", "24/7 human travel support", "AI-driven expense categorization and policy-violation flagging"]
+    }
+  ],
+  "sources": [
+    "https://www.brex.com/",
+    "https://www.brex.com/pricing",
+    "https://www.brex.com/security"
+  ],
+  "accessed_at": "2026-09-05"
+}

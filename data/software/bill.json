@@ -1,0 +1,78 @@
+{
+  "name": "BILL",
+  "slug": "bill",
+  "category": "finance-and-erp",
+  "description": "BILL is a financial operations platform for small and midsize businesses and accounting firms, combining a free corporate card and spend-control product (BILL Spend & Expense) with paid, subscription-based accounts payable and receivable automation (BILL AP & AR).",
+  "website": "https://www.bill.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Small and midsize businesses and accounting firms wanting a free corporate card and budgeting product alongside optional, per-user accounts payable and receivable automation.",
+  "pros": [
+    "BILL Spend & Expense (cards and budgets) has no per-user or subscription software fees",
+    "Deep two-way accounting sync with QuickBooks, Xero, NetSuite, Sage Intacct, and Microsoft Dynamics",
+    "Corporate card credit lines from $1,000 up to $5M for qualifying businesses"
+  ],
+  "cons": [
+    "AP & AR automation is a separate, per-user subscription starting at $49/user/month on top of the free card product",
+    "Enterprise-tier AP & AR pricing and its ERP-grade integrations require contacting sales",
+    "Advertised Divvy Card credit lines are not guaranteed and depend on application approval"
+  ],
+  "features": [
+    "BILL Spend & Expense: free corporate cards (the BILL Divvy Card) with custom budgets, card limits, and automated approval workflows",
+    "Accounts payable automation: bill capture, approval workflows, and vendor payments via ACH, check, or card",
+    "Accounts receivable automation: invoice creation, delivery, and payment collection",
+    "Receipt capture by photo or text with AI-assisted invoice field coding",
+    "Procurement (Corporate plan and above): purchase requests, purchase orders, tolerance rules, and 2-way matching",
+    "Two-way sync with QuickBooks Online/Pro/Premier/Enterprise, Xero, Oracle NetSuite, Sage Intacct, Microsoft Dynamics, and Acumatica",
+    "Multi-entity accounting, single sign-on, and API access on the Enterprise plan"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0/user/month (BILL Spend & Expense); AP & AR automation from $49/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "49", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Spend & Expense", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Free corporate card and budgeting product (formerly Divvy) with no per-user or subscription software fees; monetized through card interchange and payment transaction fees. Includes unlimited free virtual cards and credit lines from $1,000-$5M for approved applicants (not guaranteed)." },
+      { "name": "AP & AR Essentials", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Bill entry, approval workflows, ACH/virtual/credit card vendor payments, W-9 collection, AI invoice coding, and 6 standard user roles." },
+      { "name": "AP & AR Team", "amount": "65", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Adds automatic 2-way sync with QuickBooks Online/Pro/Premier and Xero, plus custom user roles." },
+      { "name": "AP & AR Corporate", "amount": "89", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Most popular self-serve tier. Adds procurement (purchase requests/orders, tolerance rules, 2-way matching) and custom approval policies." },
+      { "name": "AP & AR Enterprise", "currency": "USD", "notes": "Custom pricing via sales. Adds sync with QuickBooks Enterprise, Oracle NetSuite, Sage Intacct, and Microsoft Dynamics, plus SSO, dual control, multi-entity accounting, API access, and priority support." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.bill.com/product/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Tipalti",
+      "slug": "tipalti",
+      "description": "A finance automation platform for accounts payable and global mass payments, built for high-volume international payouts.",
+      "best_for": "Mid-market and enterprise finance teams paying suppliers or partners across many countries and currencies.",
+      "strengths": ["Payments to 200+ countries in 120+ currencies", "Self-service payee portal with tax form collection", "AI agents for invoice capture and PO matching"]
+    },
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "description": "A spend management platform combining a fee-free corporate card with AI-driven expense, AP, and procurement automation.",
+      "best_for": "Businesses wanting a free corporate card paired with automated expense and accounts-payable workflows.",
+      "strengths": ["Free plan with no annual fees or interest charges on the card", "Zero processing fees on domestic ACH, check, and card AP payments", "Native bidirectional sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
+    },
+    {
+      "name": "Expensify",
+      "slug": "expensify",
+      "description": "An expense management platform with receipt scanning, a commercial card, and in-app travel booking.",
+      "best_for": "Teams wanting simple receipt-driven expense reports, with discounted pricing when paired with the Expensify Card.",
+      "strengths": ["Flat $5/member/month Collect plan", "Up to 50% subscription discount for Expensify Card usage", "45+ accounting and HR integrations"]
+    }
+  ],
+  "sources": [
+    "https://www.bill.com/",
+    "https://www.bill.com/pricing",
+    "https://www.bill.com/product/pricing",
+    "https://www.bill.com/product/credit",
+    "https://www.bill.com/product/spend-and-expense",
+    "https://www.bill.com/security"
+  ],
+  "accessed_at": "2026-09-05"
+}
