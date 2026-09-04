@@ -17,6 +17,7 @@ export default function DisclaimerPage() {
     <LegalPageLayout
       title={TITLE}
       path={PATH}
+      lastUpdated="September 4, 2026"
       sections={[
         {
           heading: "Information may change",
@@ -32,11 +33,11 @@ export default function DisclaimerPage() {
           heading: "Verify pricing and features yourself",
           body: (
             <p>
-              {SITE_NAME}{" "}
-              does not track or publish specific pricing figures — they change too
-              often to keep reliably accurate on a periodically reviewed page. Always confirm
-              current pricing, plan limits, and feature availability directly on the official
-              vendor&apos;s own site before making a decision. See our{" "}
+              Where {SITE_NAME} publishes pricing or plan figures, they are sourced from an
+              official vendor page and shown with a verification date where available. Those
+              figures can change after we verify them. Always confirm current pricing, billing
+              terms, plan limits, and feature availability directly on the vendor&apos;s official
+              site before making a decision. See our{" "}
               <Link href="/sources-policy" className="text-white underline underline-offset-4">
                 Sources Policy
               </Link>{" "}

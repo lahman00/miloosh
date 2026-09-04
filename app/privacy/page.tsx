@@ -17,6 +17,7 @@ export default function PrivacyPage() {
     <LegalPageLayout
       title={TITLE}
       path={PATH}
+      lastUpdated="September 4, 2026"
       sections={[
         {
           heading: "Overview",
@@ -34,13 +35,16 @@ export default function PrivacyPage() {
             <>
               <p>
                 {SITE_NAME}{" "}
-                has no user accounts and does not require visitors to create an
-                account. Searching for software or browsing comparisons doesn&apos;t submit any
-                personal data to a server — it all happens directly in your browser.
+                has no user accounts and does not require visitors to create one. Ordinary
+                browsing does not require you to identify yourself. Recommendation answers may be
+                processed by {SITE_NAME}&apos;s infrastructure to generate results, and limited
+                recommendation context may be included in first-party anonymous telemetry when
+                that telemetry is enabled.
               </p>
               <ul className="list-disc space-y-1 pl-5">
                 <li>We do not require or collect account information.</li>
-                <li>We do not store search queries.</li>
+                <li>We do not ask for a name, email address, or phone number to generate recommendations.</li>
+                <li>Optional free-text fields can contain whatever a visitor types; do not enter personal or sensitive information there.</li>
                 <li>Our Contact page opens your own email client — we never receive form data server-side.</li>
               </ul>
             </>
@@ -66,10 +70,12 @@ export default function PrivacyPage() {
           body: (
             <p>
               {SITE_NAME}{" "}
-              describes and compares third-party software products. We link to
-              information about those products, but we don&apos;t control their sites or their
-              privacy practices — review each vendor&apos;s own policy before using their
-              product.
+              describes and compares third-party software products. Some outbound vendor links
+              are affiliate links. After you choose to click one, the destination vendor or
+              affiliate network may use its own cookies or equivalent attribution technology
+              under its own policies. {SITE_NAME} may separately record an anonymous first-party
+              outbound-click event; we do not control or set the destination&apos;s attribution
+              technology. Review each destination&apos;s own privacy and cookie policies.
             </p>
           ),
         },
