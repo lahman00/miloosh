@@ -1,0 +1,80 @@
+{
+  "name": "Genesys Cloud CX",
+  "slug": "genesys-cloud-cx",
+  "category": "customer-support",
+  "description": "Genesys Cloud CX is an enterprise contact-center-as-a-service (CCaaS) platform unifying contact center, digital channels, workforce engagement, and AI orchestration across voice and digital customer interactions.",
+  "website": "https://www.genesys.com/genesys-cloud",
+  "platforms": ["Web"],
+  "best_for": "Large enterprises wanting a single platform for contact center, digital channels, and workforce management, with published named/concurrent/hourly per-user pricing across four tiers.",
+  "features": [
+    "AI orchestration loop (\"Perceive, Reason, Act, Optimize, Govern\") coordinating AI agents and human teams across interactions",
+    "Multi-channel support across voice, email, web chat, SMS, WhatsApp, Facebook Messenger, Instagram, X direct messages, and Apple Messages for Business, with context preserved across channels",
+    "Virtual agents designed to provide always-on, multilingual automated service",
+    "Enterprise integrations with platforms like Salesforce and ServiceNow, plus hundreds of business systems via AppFoundry and open APIs",
+    "AI Experience tokens bundled per tier for copilots, real-time guidance, and personalized employee development",
+    "Four published pricing tiers (Genesys Cloud CX 1-4) scaling from voice-only to omnichannel with advanced AI"
+  ],
+  "pros": [
+    "Publishes four named per-user pricing tiers ($75-$240/user/month) rather than requiring a quote to see any number",
+    "Genesys reports its platform processes 29 billion real-time conversations annually, per its own site"
+  ],
+  "cons": [
+    "Quality management (CX 2), workforce engagement (CX 3), and advanced AI (CX 4) each require stepping up a tier -- the entry CX 1 tier covers voice-only contact centers",
+    "AI Experience tokens are capped per organization/month (250 named/350 concurrent included) with additional tokens purchased separately"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$75/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "75", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Genesys Cloud CX 1", "amount": "75", "currency": "USD", "billing_period": "annual", "unit": "user", "notes": "Named-license pricing for voice-only contact centers." },
+      { "name": "Genesys Cloud CX 2", "amount": "115", "currency": "USD", "billing_period": "annual", "unit": "user", "notes": "Adds omnichannel support with quality assurance (QA)." },
+      { "name": "Genesys Cloud CX 3", "amount": "155", "currency": "USD", "billing_period": "annual", "unit": "user", "notes": "Adds workforce engagement management (WEM)." },
+      { "name": "Genesys Cloud CX 4", "amount": "240", "currency": "USD", "billing_period": "annual", "unit": "user", "notes": "Adds advanced AI and journey management, plus 30 AI Experience tokens per named agent. Concurrent and Hourly Interacting licensing are also available as alternatives to named licensing." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.genesys.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Five9",
+      "slug": "five9",
+      "description": "A cloud contact-center-as-a-service (CCaaS) platform for inbound, outbound, and blended customer engagement across voice and digital channels, built around its Genius AI suite.",
+      "best_for": "Contact centers wanting published bundle pricing and a dedicated Genius AI product line as an alternative to Genesys Cloud CX.",
+      "strengths": ["Published Digital ($119/seat/mo) and Core ($159/seat/mo) bundle pricing", "Genius AI Agents, Agent Assist, and GenAI Studio", "Omnichannel support across voice, email, chat, social, and SMS"]
+    },
+    {
+      "name": "Talkdesk",
+      "slug": "talkdesk",
+      "description": "A cloud contact center platform combining traditional contact-center software with autonomous, orchestrated AI agents for specific customer-experience tasks.",
+      "best_for": "Contact centers wanting published per-agent pricing tiers plus a no-contract small-business plan as an alternative to Genesys Cloud CX.",
+      "strengths": ["Published per-user pricing from $85-$225/month across four tiers", "Talkdesk Express: 25 licenses plus $100 credit with no contract, for businesses under 50 employees", "Autonomous multi-agent AI orchestration for specific CX tasks"]
+    },
+    {
+      "name": "RingCentral",
+      "slug": "ringcentral",
+      "description": "A cloud communications platform (RingEX) that also offers RingCX, an omnichannel AI-powered contact center, alongside its core phone, video, and messaging suite.",
+      "best_for": "Businesses wanting contact-center capability bundled inside a broader unified-communications platform rather than a dedicated, standalone CCaaS product.",
+      "strengths": ["RingCX omnichannel contact center with AI-powered quality management", "Published per-user pricing from $20-$35/month for the core UC suite", "500+ third-party app integrations"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does Genesys Cloud CX offer a free trial?",
+      "answer": "Genesys's own pricing page does not mention a free trial; instead it offers named-license, concurrent, and hourly-interacting billing options across four published per-user tiers."
+    }
+  ],
+  "tags": ["Contact Center", "CCaaS", "Customer Support", "Workforce Engagement"],
+  "links": {
+    "pricing": "https://www.genesys.com/pricing"
+  },
+  "sources": [
+    "https://www.genesys.com/genesys-cloud",
+    "https://www.genesys.com/pricing"
+  ],
+  "accessed_at": "2026-09-05"
+}

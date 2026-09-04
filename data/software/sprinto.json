@@ -1,0 +1,77 @@
+{
+  "name": "Sprinto",
+  "slug": "sprinto",
+  "category": "security",
+  "description": "Sprinto is a compliance automation platform that continuously monitors security controls, digitizes 200+ frameworks, and automates evidence collection to help organizations achieve and maintain certifications such as SOC 2, ISO 27001, HIPAA, and GDPR.",
+  "website": "https://sprinto.com",
+  "platforms": ["Web"],
+  "best_for": "Startups pursuing their first security certification through mid-size teams running a full GRC program, wanting automated compliance monitoring plus built-in vendor-risk, policy, and AI-governance modules.",
+  "features": [
+    "25+ frameworks automated out of the box and 200+ frameworks digitized, with continuous monitoring across 300+ integrations",
+    "Automated evidence collection, audit planning/management, and access to a vetted auditor network, plus bring-your-own-auditor support",
+    "AI-assisted policy drafting and control/policy mapping, with employee policy acknowledgement campaigns",
+    "Automated vendor discovery and inventory, with AI-powered vendor security document reviews for third-party risk management",
+    "AI-powered security questionnaire automation and a public Trust Center with a custom domain",
+    "AI Systems Inventory, AI system reviews, and AI risk assessments for AI governance programs"
+  ],
+  "pros": [
+    "Digitizes 200+ frameworks with 25+ automated out of the box, covering a wide range of regional and niche frameworks beyond the common SOC 2/ISO set",
+    "Bundles vendor risk management, policy management, and AI governance into the same platform as core compliance automation"
+  ],
+  "cons": [
+    "No published pricing -- both Foundation and Growth plans are quote-based, with add-ons (additional frameworks, professional services, enterprise risk/trust/vendor management) sold separately",
+    "Sprinto's own security page describes its infrastructure controls as \"aligned with\" frameworks like SOC 2 and ISO 27001 -- a separate, narrower claim than Sprinto itself holding those certifications -- see FAQ"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Foundation", "notes": "\"For startups on their first certification.\" Includes compliance automation, audit management, policy management, personnel compliance, vendor risk management, risk management, and trust management. No public price; requires contacting sales." },
+      { "name": "Growth", "notes": "\"For teams automating compliance.\" Everything in Foundation plus programmable monitors, custom workflows/API, bring-your-own-controls, internal audit management, and priority support. No public price; requires contacting sales." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://sprinto.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Vanta",
+      "slug": "vanta",
+      "description": "A compliance and trust automation platform providing continuous monitoring, evidence collection, and a trust center across more than 35 frameworks including SOC 2, ISO 27001, HIPAA, and GDPR.",
+      "best_for": "Compliance and security teams comparing agentic, AI-assisted compliance automation platforms alongside Sprinto.",
+      "strengths": ["Broad framework coverage (35+)", "AI agent for policy drafting and questionnaire responses", "Integration-based monitoring across 400+ tools"]
+    },
+    {
+      "name": "Drata",
+      "slug": "drata",
+      "description": "A compliance automation platform for continuous control monitoring and evidence collection across frameworks like SOC 2, ISO 27001, HIPAA, and GDPR.",
+      "best_for": "Compliance teams wanting to map controls once and reuse them across many frameworks, alongside Sprinto.",
+      "strengths": ["Map-once-reuse-everywhere control mapping across frameworks", "AI agent governance module", "Trust Center built into the core platform"]
+    },
+    {
+      "name": "Secureframe",
+      "slug": "secureframe",
+      "description": "A compliance automation platform that helps organizations achieve and maintain certifications such as SOC 2, ISO 27001, HIPAA, PCI DSS, GDPR, and CMMC 2.0 through automated evidence collection and continuous control monitoring.",
+      "best_for": "Compliance teams, including defense contractors needing CMMC support, comparing compliance-automation platforms alongside Sprinto.",
+      "strengths": ["Published starting price ($7,000/year)", "Dedicated CMMC 2.0 Defense package", "In-house compliance experts and an audit partner network"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is Sprinto itself SOC 2 or ISO 27001 certified?",
+      "answer": "That is a separate claim from Sprinto helping customers earn their own certifications. Sprinto's public trust center (trust.sprinto.com) lists Sprinto's own compliance status for ISO 27001, SOC 2, GDPR, ISO 42001, and HIPAA as \"Compliant.\" Separately, Sprinto's main security page describes its underlying AWS infrastructure controls as \"aligned with SOC 2, ISO 27001, PCI DSS Level 1, and FISMA Moderate\" -- a narrower claim about infrastructure alignment rather than a blanket certification of the whole company."
+    }
+  ],
+  "tags": ["Compliance Automation", "GRC", "SOC 2", "AI Governance", "Security"],
+  "links": {
+    "pricing": "https://sprinto.com/pricing/"
+  },
+  "sources": [
+    "https://sprinto.com/",
+    "https://sprinto.com/pricing/",
+    "https://trust.sprinto.com/"
+  ],
+  "accessed_at": "2026-09-05"
+}
