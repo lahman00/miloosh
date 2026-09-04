@@ -63,6 +63,13 @@
       "description": "An AI-assisted corporate travel booking and expense management platform, formerly TripActions.",
       "best_for": "Companies wanting travel booking and expense management combined, with free travel booking for companies up to 300 employees.",
       "strengths": ["Free travel booking for companies up to 300 employees", "24/7 human travel support", "AI-driven expense categorization and policy-violation flagging"]
+    },
+    {
+      "name": "SAP Concur",
+      "slug": "sap-concur",
+      "description": "SAP's travel, expense, and invoice management suite, sold as separate Concur Travel, Concur Expense, and Concur Invoice products.",
+      "best_for": "Larger organizations wanting travel booking, expense, and AP invoice automation as one SAP-integrated suite rather than a standalone expense app.",
+      "strengths": ["Combined travel, expense, and AP invoice suite", "Deep policy enforcement and audit tooling (Concur Detect)", "Established enterprise travel-management network"]
     }
   ],
   "sources": [
