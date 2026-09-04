@@ -1,0 +1,72 @@
+{
+  "name": "Remote",
+  "slug": "remote",
+  "category": "hr-and-payroll",
+  "description": "Remote is a global employment platform offering Employer of Record (EOR), global payroll, Contractor of Record, and contractor management, with Remote stating it owns and operates 100% of its own local legal entities in the countries where it hires rather than handing off to third-party partners.",
+  "website": "https://remote.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Companies hiring employees or contractors in other countries that want a global employment provider with published self-serve monthly pricing and its own owned local entities rather than third-party EOR partners.",
+  "features": [
+    "Employer of Record (EOR): hire without opening a local entity in 90+ countries",
+    "Global Payroll for compliant payroll processing in countries where the company already has its own entity",
+    "Contractor of Record (COR) for compliant management of international contractors",
+    "Contractor Management for onboarding and paying contractors in their own currency, with conversion of contractors to full-time employees",
+    "Professional Employer Organization (PEO) for U.S. hiring administration",
+    "Equity management for granting and administering equity to global team members",
+    "Remote IP Guard for IP-ownership protection in countries with weak default IP-assignment laws",
+    "API, webhooks, and CLI for integrating employment data into internal systems",
+    "Built-in 2FA and SSO for account security"
+  ],
+  "pros": [
+    "Publishes exact self-serve monthly pricing for EOR, Global Payroll, and Contractor Management rather than requiring a quote just to see a price",
+    "States it owns and operates 100% of its own local entities rather than handing off to third-party partners in-country",
+    "ISO 27001 certified, SOC 2 compliant, and CSA STAR Level 1 accredited, per its security and compliance page"
+  ],
+  "cons": [
+    "Contractor of Record, PEO, and Equity are shown only as 'from' floor prices, so the real quote needs a sales conversation",
+    "Global Payroll's per-employee price excludes a separate, undisclosed recurring payroll delivery fee and an entity-setup implementation fee"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$29/employee/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Global Payroll", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "For countries where the company already has its own entity. A separate recurring payroll delivery fee and an entity-setup implementation fee also apply; amounts are not disclosed on the pricing page." },
+      { "name": "Contractor Management", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month", "notes": "Onboard and pay contractors in their own currency." },
+      { "name": "Contractor Management Plus", "amount": "99", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month" },
+      { "name": "Contractor of Record", "amount": "325", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month, starting from", "notes": "Listed as a starting price on the pricing page; the exact quote varies." },
+      { "name": "PEO", "amount": "99", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month, starting from", "notes": "U.S. co-employment. Listed as a starting price; the exact quote varies." },
+      { "name": "Employer of Record (EOR)", "amount": "699", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "Hiring in 90+ countries without opening a local entity; Remote states it owns 100% of its own local entities." },
+      { "name": "Equity", "amount": "39", "currency": "USD", "billing_period": "monthly", "unit": "per month, starting from", "notes": "Listed as a starting price; the exact quote varies." }
+    ],
+    "last_verified": "2026-09-05",
+    "official_source": "https://remote.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Deel",
+      "slug": "deel",
+      "description": "A global people platform for hiring, paying, and managing contractors and employees across borders, combining EOR, PEO, contractor payments, global payroll, and HR under one contract.",
+      "best_for": "Companies wanting EOR and contractor payments bundled with HR and IT device management on a single platform.",
+      "strengths": ["Published per-worker pricing", "Month-to-month billing", "Bundled HR and IT modules"]
+    },
+    {
+      "name": "Papaya Global",
+      "slug": "papaya-global",
+      "description": "A global workforce payments platform offering EOR, Contractor of Record, and global payroll, aimed at enterprises and unifying HRIS/ERP/VMS data through an AI data layer.",
+      "best_for": "Larger enterprises that want AI-driven data unification across existing HRIS/ERP/VMS systems alongside EOR and payroll.",
+      "strengths": ["Enterprise data unification (OneData)", "Liability ownership on contingent workforce", "Published starting prices for EOR and payroll"]
+    }
+  ],
+  "sources": [
+    "https://remote.com",
+    "https://remote.com/pricing",
+    "https://remote.com/employer-of-record",
+    "https://remote.com/why-remote/security-compliance"
+  ],
+  "accessed_at": "2026-09-05"
+}

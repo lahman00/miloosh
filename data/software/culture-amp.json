@@ -1,0 +1,59 @@
+{
+  "name": "Culture Amp",
+  "slug": "culture-amp",
+  "category": "hr-and-payroll",
+  "description": "Culture Amp is an employee experience platform that combines engagement and pulse surveys with continuous performance management, structured review cycles, and AI-assisted people analytics, used by HR and people teams to measure sentiment and run performance programs across an organization.",
+  "website": "https://www.cultureamp.com",
+  "platforms": ["Web"],
+  "best_for": "HR and people teams that want a dedicated employee engagement and performance platform combining survey-based sentiment tracking with continuous feedback and structured review cycles, rather than a performance module bundled into a broader HRIS.",
+  "features": [
+    "Engage: employee engagement, pulse, DEI, and retention surveys built on 40+ ready-to-use templates",
+    "AI-generated comment summaries and benchmarking of survey results against other Culture Amp customers",
+    "Perform: continuous feedback, structured performance reviews, and calibration tools",
+    "360-degree feedback, 1-on-1 conversation tools, and employee shoutouts/recognition",
+    "Develop: goal management, goal alignment, and personal development planning",
+    "Skills coaching and employee development plans",
+    "AI Coach, an in-product assistant that turns engagement data into action plans and assists with writing performance reviews",
+    "Onboarding and offboarding surveys",
+    "Integrations with common HRIS and workplace SaaS platforms"
+  ],
+  "pros": [
+    "Offers separate, purpose-built modules for engagement (Engage), performance (Perform), and development (Develop) rather than one generic module",
+    "Provides 40+ pre-built survey templates plus benchmarking data drawn from other Culture Amp customers"
+  ],
+  "cons": [
+    "Pricing is not published; every plan requires requesting a quote based on employee count, product mix, and service tier",
+    "No free trial or free tier is advertised on the public pricing page"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.cultureamp.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Lattice",
+      "slug": "lattice",
+      "description": "A people management platform combining continuous performance reviews, goal tracking, and engagement surveys with core HRIS record-keeping.",
+      "best_for": "Companies that want performance management and engagement surveys paired with HRIS record-keeping in one platform.",
+      "strengths": ["Combined performance and HRIS", "Goal/OKR tracking", "Engagement surveys"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "A small and mid-sized business HRIS that includes performance management and employee satisfaction surveys alongside core HR record-keeping.",
+      "best_for": "Businesses that want engagement and performance features bundled into a broader HR system of record rather than a dedicated survey and performance platform.",
+      "strengths": ["All-in-one HRIS", "Published per-employee pricing", "Built-in applicant tracking"]
+    }
+  ],
+  "sources": [
+    "https://www.cultureamp.com",
+    "https://www.cultureamp.com/pricing",
+    "https://www.cultureamp.com/products"
+  ],
+  "accessed_at": "2026-09-05"
+}

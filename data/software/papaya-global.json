@@ -1,0 +1,71 @@
+{
+  "name": "Papaya Global",
+  "slug": "papaya-global",
+  "category": "hr-and-payroll",
+  "description": "Papaya Global is a global workforce payments platform providing Employer of Record (EOR), Contractor of Record (COR), self-managed contractor payments, and global payroll processing for enterprises, unifying HRIS/ERP/VMS data through an AI layer called OneData and orchestrating employment and payments across 180+ countries.",
+  "website": "https://www.papayaglobal.com",
+  "platforms": ["Web"],
+  "best_for": "Enterprises that need to employ, pay, and stay compliant with workers, both employees and contractors, across many countries under one platform, with the vendor assuming compliance and misclassification liability.",
+  "features": [
+    "Employer of Record (EOR) employment across 180+ countries, with Papaya assuming compliance liability",
+    "Contractor of Record (COR) service for compliant contractor engagement",
+    "Contingent OS for managing contingent/contractor workforces at scale",
+    "Self-managed contractor payment solution for paying international contractors directly",
+    "Payroll Plus for global payroll processing and payments consolidation",
+    "OneData: an AI layer that maps HRIS, ERP, and VMS systems such as Workday, SAP, and BambooHR into a single data fabric",
+    "Papaya One: an agentic knowledge base covering 95+ jurisdictions for compliance questions, contract review, and compliant document drafting",
+    "AI agents that classify contractors, route payments through corridors, and detect compliance anomalies, with human experts validating decisions",
+    "Worker self-service tools including payslip viewing, invoice submission, worker wallets, and early-payment/factoring options",
+    "OnePay global payments with no platform fee, described as pay-only-when-you-pay with guaranteed FX rates"
+  ],
+  "pros": [
+    "Publishes 'starting from' numeric pricing for EOR, Contractor of Record, contractor payments, and Payroll Plus rather than requiring a quote to see any price",
+    "States it assumes compliance and misclassification liability on its EOR and contingent-workforce products",
+    "Lists SOC 1 & 2 Type II, ISO 27001 & 27701, and CSA STAR compliance, and names J.P. Morgan and Citi as banking rails, on its homepage"
+  ],
+  "cons": [
+    "Published prices are explicitly 'starting from' floors; the actual quote for a given country and role requires contacting sales and can be materially higher",
+    "Workforce OS and Contingent OS bundles show no numeric price at all, only 'Get a Quote'",
+    "No self-serve free trial is offered; onboarding goes through a demo or quote request"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$5/contractor/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "5", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Contractor solution", "amount": "5", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month, starting from", "notes": "Self-managed international contractor payments. Listed as a starting price; exact quote varies." },
+      { "name": "Payroll Plus", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month, starting from", "notes": "Global payroll processing and payments. Listed as a starting price; exact quote varies." },
+      { "name": "Contractor of Record (COR)", "amount": "199", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month, starting from", "notes": "Papaya acts as Contractor of Record for compliance. Listed as a starting price; exact quote varies." },
+      { "name": "Employer of Record (EOR)", "amount": "499", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month, starting from", "notes": "Employment across 180+ countries with Papaya assuming compliance liability. Listed as a starting price; exact quote varies." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.papayaglobal.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Deel",
+      "slug": "deel",
+      "description": "A global people platform for hiring, paying, and managing contractors and employees across borders, combining EOR, PEO, contractor payments, global payroll, and HR under one contract.",
+      "best_for": "Companies wanting EOR and contractor payments bundled with HR and IT device management on a single platform.",
+      "strengths": ["Published per-worker pricing", "Month-to-month billing", "Bundled HR and IT modules"]
+    },
+    {
+      "name": "Remote",
+      "slug": "remote",
+      "description": "A global employment platform offering Employer of Record, contractor management, and global payroll, with self-serve numeric EOR pricing and an owned-entity model in many countries.",
+      "best_for": "Companies wanting a global EOR provider that owns its own local legal entities rather than relying on third-party partners in every country.",
+      "strengths": ["Owned local entities in many countries", "Published self-serve EOR pricing", "Contractor management tools"]
+    }
+  ],
+  "sources": [
+    "https://www.papayaglobal.com",
+    "https://www.papayaglobal.com/pricing/",
+    "https://www.papayaglobal.com/security-and-privacy/"
+  ],
+  "accessed_at": "2026-09-05"
+}
