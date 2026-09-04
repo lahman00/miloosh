@@ -61,8 +61,13 @@ export function parseComparisonSlug(pairSlug: string): { slugA: string; slugB: s
   }
 }
 
+function comparisonDisplayName(software: Software, other: Software): string {
+  if (software.slug === "segment" && other.slug === "adobe-analytics") return "Twilio Segment";
+  return software.name;
+}
+
 export function generateComparisonTitle(softwareA: Software, softwareB: Software): string {
-  return `${softwareA.name} vs ${softwareB.name}`;
+  return `${comparisonDisplayName(softwareA, softwareB)} vs ${comparisonDisplayName(softwareB, softwareA)}`;
 }
 
 /**
@@ -79,10 +84,12 @@ export function generateComparisonMetaDescription(
   const categoryA = getCategoryName(softwareA.category);
   const categoryB = getCategoryName(softwareB.category);
 
+  const nameA = comparisonDisplayName(softwareA, softwareB);
+  const nameB = comparisonDisplayName(softwareB, softwareA);
   const full =
     categoryA === categoryB
-      ? `${softwareA.name} and ${softwareB.name}, compared: real ${lowercaseForSentence(categoryA)} features and platforms from each vendor's own site.`
-      : `${softwareA.name} (${categoryA}) vs ${softwareB.name} (${categoryB}) — real features and platforms, sourced from each vendor's own site.`;
+      ? `${nameA} and ${nameB}, compared: real ${lowercaseForSentence(categoryA)} features and platforms from each vendor's own site.`
+      : `${nameA} (${categoryA}) vs ${nameB} (${categoryB}) — real features and platforms, sourced from each vendor's own site.`;
 
   return truncateAtWord(full, META_DESCRIPTION_MAX_LENGTH);
 }
@@ -106,7 +113,9 @@ function lowercaseForSentence(name: string): string {
 function generateComparisonFactSentence(softwareA: Software, softwareB: Software): string {
   const platformsA = softwareA.platforms?.length ?? 0;
   const platformsB = softwareB.platforms?.length ?? 0;
-  return `${softwareA.name} lists ${softwareA.features.length} features across ${platformsA} platform${platformsA === 1 ? "" : "s"}; ${softwareB.name} lists ${softwareB.features.length} features across ${platformsB} platform${platformsB === 1 ? "" : "s"} — see the full breakdown below, sourced from each vendor's own site rather than ratings or reviews.`;
+  const nameA = comparisonDisplayName(softwareA, softwareB);
+  const nameB = comparisonDisplayName(softwareB, softwareA);
+  return `${nameA} lists ${softwareA.features.length} features across ${platformsA} platform${platformsA === 1 ? "" : "s"}; ${nameB} lists ${softwareB.features.length} features across ${platformsB} platform${platformsB === 1 ? "" : "s"} — see the full breakdown below, sourced from each vendor's own site rather than ratings or reviews.`;
 }
 
 /** Factual, grounded intro — states what's being compared and why, nothing evaluative. */
@@ -118,7 +127,9 @@ export function generateComparisonIntro(softwareA: Software, softwareB: Software
       ? lowercaseForSentence(categoryA)
       : `tools people compare when choosing between ${lowercaseForSentence(categoryA)} and ${lowercaseForSentence(categoryB)}`;
 
-  return `${softwareA.name} and ${softwareB.name} are both ${categoryPhrase} options. ${generateComparisonFactSentence(softwareA, softwareB)}`;
+  const nameA = comparisonDisplayName(softwareA, softwareB);
+  const nameB = comparisonDisplayName(softwareB, softwareA);
+  return `${nameA} and ${nameB} are both ${categoryPhrase} options. ${generateComparisonFactSentence(softwareA, softwareB)}`;
 }
 
 /**
