@@ -1,0 +1,64 @@
+{
+  "name": "Procore",
+  "slug": "procore",
+  "category": "field-service-management",
+  "description": "Procore is a construction management platform covering preconstruction, project management, financials, quality and safety, and field productivity for general contractors, specialty contractors, owners, and government agencies.",
+  "website": "https://www.procore.com",
+  "best_for": "Construction companies and owners that want a single platform connecting the office and the field across budgets, drawings, RFIs, safety, and subcontractor coordination, and that are comfortable with an annual, volume-based contract rather than self-serve per-seat pricing.",
+  "platforms": ["Web", "iOS", "Android"],
+  "features": [
+    "Project management tools for RFIs, submittals, drawings, and daily logs shared between field and office",
+    "Financial management covering budgets, commitments, change orders, and invoicing",
+    "Quality and safety tools for inspections, observations, and incident tracking",
+    "Preconstruction tools for estimating, bid management, and design coordination",
+    "Resource management for scheduling labor, equipment, and materials across projects",
+    "Unlimited users, unlimited data storage, and unlimited 24/7 support included in every contract, per Procore's pricing page",
+    "Native iOS and Android field apps alongside the web platform",
+    "Open API and app marketplace for connecting other construction and business software"
+  ],
+  "pros": [
+    "Unlimited users, storage, and support included in every contract, so headcount growth doesn't add licensing cost",
+    "Covers the full project lifecycle, from preconstruction through closeout, in one connected platform",
+    "Volume-based pricing (via Annual Construction Volume) can scale more predictably than per-seat pricing for large field teams"
+  ],
+  "cons": [
+    "No published self-serve pricing — every contract requires a sales conversation and is quoted around a company's annual construction volume",
+    "No free trial; evaluating Procore means requesting a demo rather than signing up directly"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom — priced on Annual Construction Volume, not a flat rate",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Custom (all plans)", "notes": "Priced around a company's Annual Construction Volume (ACV) — the aggregate dollar value of construction work managed through Procore — plus which Procore products are selected. Every contract includes unlimited users, unlimited data storage, and unlimited support at no extra charge." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.procore.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "MaintainX",
+      "slug": "maintainx",
+      "description": "A mobile-first CMMS for work orders, preventive maintenance, and asset tracking.",
+      "best_for": "Teams focused on maintaining existing equipment and facilities day-to-day, rather than managing the budgets, drawings, and subcontractors of active construction projects.",
+      "strengths": ["Self-serve pricing with a free plan", "Mobile-first work order management", "Fast setup without a sales cycle"]
+    }
+  ],
+  "faq": [
+    { "question": "How much does Procore cost?", "answer": "Procore doesn't publish flat prices. Contracts are quoted based on a company's Annual Construction Volume (the aggregate dollar value of construction work managed through Procore) and which Procore products are selected, with sales handling every quote." },
+    { "question": "Does Procore offer a free trial?", "answer": "Procore's pricing page does not offer a self-serve free trial; prospective customers request a demo or a custom quote instead." },
+    { "question": "What's included in every Procore contract?", "answer": "Per Procore's pricing page, every contract includes unlimited users, unlimited data storage, and unlimited support at no additional charge, with annual contracts for predictable pricing." },
+    { "question": "What compliance certifications does Procore have?", "answer": "Procore maintains SOC 1 Type 2 and SOC 2 Type 2 reports and ISO 27001:2022 certification, plus FedRAMP Class C certification for its government product." }
+  ],
+  "tags": ["construction management", "project management", "construction financials"],
+  "links": { "pricing": "https://www.procore.com/pricing" },
+  "sources": [
+    "https://www.procore.com/pricing",
+    "https://www.procore.com/construction-management-software",
+    "https://www.procore.com/security"
+  ],
+  "accessed_at": "2026-09-05"
+}

@@ -1,0 +1,76 @@
+{
+  "name": "Cursor",
+  "slug": "cursor",
+  "category": "developer-tools",
+  "description": "Cursor is an AI-first code editor, built as a fork of VS Code, that adds agentic coding features like autonomous multi-file edits, predictive AI autocomplete, and chat grounded in a codebase's own context.",
+  "website": "https://cursor.com",
+  "best_for": "Individual developers and engineering teams who want an AI-native desktop editor capable of autonomous, multi-file coding tasks, with access to multiple frontier models rather than being locked to one provider.",
+  "platforms": ["macOS", "Windows", "Linux"],
+  "features": [
+    "Agent mode for autonomous, end-to-end coding tasks, including building, testing, and preparing changes for review, that can run in parallel across repositories",
+    "Tab, a predictive AI autocomplete that suggests multi-line edits rather than single completions",
+    "Composer, Cursor's own in-house frontier coding model, alongside access to third-party frontier models from Anthropic (Claude), OpenAI (GPT), Google (Gemini), and xAI (Grok), with automatic model selection",
+    "Codebase indexing and semantic search so the AI can ground suggestions in a project's actual code",
+    "An 'autonomy slider' for controlling how independently the AI acts, from small targeted edits to fully autonomous runs",
+    "Cloud Agents for running coding tasks outside the local machine",
+    "Bugbot for automated code review on pull requests",
+    "CLI installation for terminal-based usage alongside the desktop editor"
+  ],
+  "pros": [
+    "Free Hobby tier gives real access to Composer and limited Agent use before paying anything",
+    "Access to multiple frontier model providers (Anthropic, OpenAI, Google, xAI) plus Cursor's own Composer model in one editor",
+    "Built on VS Code, so existing extensions, themes, and keybindings mostly carry over"
+  ],
+  "cons": [
+    "All paid plans meter AI usage — even Pro can incur additional on-demand charges once the plan's included usage allowance runs out",
+    "No official web or mobile version; Cursor is a desktop application only"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (Hobby); paid plans from $20/month (Pro)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Hobby", "amount": "0", "currency": "USD", "notes": "Free. Limited Agent requests and access to Composer; no credit card required." },
+      { "name": "Pro", "amount": "20", "currency": "USD", "billing_period": "monthly", "unit": "per month", "notes": "Includes $20 of model usage; on-demand usage billed in arrears beyond that allowance." },
+      { "name": "Pro+", "amount": "60", "currency": "USD", "billing_period": "monthly", "unit": "per month", "notes": "Includes $70 of model usage, roughly 3x Pro's Agent limits." },
+      { "name": "Ultra", "amount": "200", "currency": "USD", "billing_period": "monthly", "unit": "per month", "notes": "Includes $400 of model usage, roughly 20x Pro's Agent limits, plus priority access to new features." },
+      { "name": "Teams (Standard)", "amount": "40", "currency": "USD", "billing_period": "monthly", "unit": "per user/month", "notes": "Adds centralized billing, a team marketplace, shared context/agents, usage analytics, privacy mode, and SAML/OIDC SSO." },
+      { "name": "Enterprise", "notes": "Custom pricing. Adds pooled usage, invoice/PO billing, SCIM, advanced access controls, and audit logs." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://cursor.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "GitHub Copilot",
+      "slug": "github-copilot",
+      "description": "GitHub and Microsoft's AI pair programmer, available as an extension inside existing editors like VS Code, JetBrains IDEs, and Neovim.",
+      "best_for": "Teams who want AI code completion and chat inside the editor they already use, rather than switching to a dedicated AI-first editor.",
+      "strengths": ["Works inside your existing IDE", "Deep GitHub integration", "Broad language and IDE support"]
+    },
+    {
+      "name": "Replit",
+      "slug": "replit",
+      "description": "A cloud-based IDE with an AI agent that can build, run, and host full applications from natural-language prompts, without local setup.",
+      "best_for": "Builders who want to go from idea to a deployed, hosted app entirely in the browser, rather than working in a local desktop editor.",
+      "strengths": ["Cloud IDE with built-in hosting and database", "Browser-based, no local install", "AI Agent builds and deploys full apps, not just code snippets"]
+    }
+  ],
+  "faq": [
+    { "question": "Is Cursor free?", "answer": "Cursor has a free Hobby plan with limited Agent requests and access to Composer. Paid plans start at $20/month (Pro) for a larger usage allowance, with on-demand billing once that allowance is used." },
+    { "question": "Which AI models does Cursor support?", "answer": "Cursor gives access to multiple frontier models, including Anthropic's Claude, OpenAI's GPT, Google's Gemini, and xAI's Grok, plus Cursor's own in-house Composer model, with an automatic model-selection option." },
+    { "question": "What's the difference between Cursor's Pro, Pro+, and Ultra plans?", "answer": "They differ mainly in included usage: Pro includes $20/month of model usage for $20/month, Pro+ includes $70 of usage (about 3x Pro's Agent limits) for $60/month, and Ultra includes $400 of usage (about 20x Pro's limits) for $200/month." }
+  ],
+  "tags": ["AI coding assistant", "code editor", "IDE", "pair programming"],
+  "links": { "pricing": "https://cursor.com/pricing" },
+  "sources": [
+    "https://cursor.com/pricing",
+    "https://cursor.com/features",
+    "https://cursor.com/docs"
+  ],
+  "accessed_at": "2026-09-05"
+}

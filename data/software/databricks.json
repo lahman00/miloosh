@@ -1,0 +1,68 @@
+{
+  "name": "Databricks",
+  "slug": "databricks",
+  "category": "analytics",
+  "description": "Databricks is a cloud-based data intelligence platform built on the lakehouse architecture, unifying data engineering, data warehousing, and AI/ML workloads on open formats like Delta Lake and Apache Iceberg, with governance through Unity Catalog and natural-language analytics via Genie.",
+  "website": "https://www.databricks.com",
+  "best_for": "Data engineering, data science, and analytics teams that want a single lakehouse platform spanning ETL, SQL analytics, and AI/ML model development across AWS, Azure, and GCP, rather than stitching together separate warehouse and data-science tools.",
+  "platforms": ["Web"],
+  "features": [
+    "Lakehouse architecture built on Delta Lake (ACID transactions, time travel) with native Apache Iceberg support for open table formats",
+    "Lakeflow for unified data ingestion and pipeline orchestration across batch and streaming sources",
+    "Serverless SQL analytics for BI and reporting on the same copy of data used for engineering and ML",
+    "Unity Catalog for centralized governance, permissions, lineage, and auditing across data and AI assets",
+    "Genie, a natural-language interface for asking business questions and generating insights grounded in an organization's own data",
+    "Agent Bricks framework for building and orchestrating custom AI agents with third-party or open models",
+    "Databricks Apps for deploying data and AI applications directly on the platform",
+    "Lakebase, a Postgres-based operational database for combining transactional and analytical workloads"
+  ],
+  "pros": [
+    "Runs natively on AWS, Azure, and Google Cloud, so teams aren't locked into one cloud provider",
+    "Built on open formats (Delta Lake, Apache Iceberg) and open-source Apache Spark, reducing proprietary lock-in",
+    "Databricks Free Edition offers a genuinely no-cost way to learn the platform, separate from the time-limited trial"
+  ],
+  "cons": [
+    "Consumption-based DBU pricing makes month-to-month costs harder to predict than a flat per-seat fee",
+    "No published self-serve price list for compute rates — teams must use the pricing calculator or talk to sales to estimate real-world cost"
+  ],
+  "pricing": {
+    "model": "unknown",
+    "starting_price": "Usage-based, billed per Databricks Unit (DBU); no flat starting price is published",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "tiers": [
+      { "name": "Free Edition", "notes": "Perpetually free workspace for learning, prototyping, and experimentation (replaced the retired Community Edition on January 1, 2026); no guaranteed reliability, support, or SLA." },
+      { "name": "Pay-as-you-go", "unit": "per DBU", "notes": "Consumption-based billing per Databricks Unit (DBU), metered per second of compute. Exact per-DBU rate depends on cloud (AWS, Azure, or GCP), region, and workload type. Committed-use discounts are available for larger usage commitments." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.databricks.com/product/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Snowflake",
+      "slug": "snowflake",
+      "description": "A cross-cloud data platform for storage, compute, and increasingly AI/ML workloads, also billed on a consumption basis.",
+      "best_for": "Teams that want a warehouse-first cloud data platform with simple credit-based consumption pricing and strong third-party data sharing/marketplace features.",
+      "strengths": ["Independently scalable storage and compute", "Snowflake Marketplace and data sharing", "Cortex AI for in-platform LLM access"]
+    }
+  ],
+  "faq": [
+    { "question": "Is Databricks free to use?", "answer": "Databricks offers a perpetually free Free Edition for learning, prototyping, and experimentation (which replaced the retired Community Edition on January 1, 2026), plus a 14-day free trial of the full platform for evaluating production workloads." },
+    { "question": "How is Databricks priced?", "answer": "Databricks bills on a consumption basis using Databricks Units (DBUs), a normalized measure of compute metered per second, rather than a flat per-seat or per-plan price. Exact per-DBU rates vary by cloud provider (AWS, Azure, or GCP), region, and workload type, and committed-use discounts are available for larger commitments." },
+    { "question": "Which clouds does Databricks run on?", "answer": "Databricks is available natively on AWS, Azure, and Google Cloud." }
+  ],
+  "tags": ["lakehouse", "data engineering", "data warehouse", "machine learning", "data governance"],
+  "links": { "pricing": "https://www.databricks.com/product/pricing" },
+  "sources": [
+    "https://www.databricks.com/product/pricing",
+    "https://www.databricks.com/product/data-intelligence-platform",
+    "https://www.databricks.com/try/databricks-free-trial",
+    "https://www.databricks.com/learn/free-edition",
+    "https://www.databricks.com/trust/compliance/soc",
+    "https://www.databricks.com/trust/compliance/fedramp"
+  ],
+  "accessed_at": "2026-09-05"
+}

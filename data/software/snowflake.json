@@ -1,0 +1,70 @@
+{
+  "name": "Snowflake",
+  "slug": "snowflake",
+  "category": "analytics",
+  "description": "Snowflake is a fully managed, cross-cloud data platform that separates storage and compute for data warehousing, data engineering, and AI application workloads, billed on a consumption basis.",
+  "website": "https://www.snowflake.com",
+  "best_for": "Teams that want a warehouse-first cloud data platform with independently scalable storage and compute, credit-based consumption pricing, and built-in data sharing, rather than managing their own database infrastructure.",
+  "platforms": ["Web"],
+  "features": [
+    "Multi-cluster, cross-cloud data warehouse with storage and compute billed and scaled independently",
+    "Snowpark for building data pipelines and applications in Python, Java, and Scala that run inside Snowflake",
+    "Openflow for moving and integrating data from external systems into Snowflake",
+    "Cortex AI for querying large language models and building generative AI features directly on governed data, plus vector search",
+    "Snowflake ML for centralized model development and MLOps from a single UI",
+    "Snowflake Notebooks and Streamlit support for building interactive data apps in Python",
+    "Data Clean Rooms and Snowflake Marketplace for privacy-preserving data sharing and access to thousands of third-party data listings",
+    "Horizon governance layer for built-in compliance, security, and access controls"
+  ],
+  "pros": [
+    "Storage and compute scale and bill independently, so idle compute doesn't add cost on top of stored data",
+    "30-day trial includes $400 of free usage credit to test real workloads, not just a stripped-down demo",
+    "Snowflake Marketplace gives direct access to thousands of third-party data listings without separate ETL work"
+  ],
+  "cons": [
+    "No published self-serve price list — per-credit rates depend on cloud, region, and edition and require the pricing calculator or a sales conversation",
+    "No perpetual free tier; after the 30-day/$400 trial ends, a credit card is required to continue"
+  ],
+  "pricing": {
+    "model": "unknown",
+    "starting_price": "Usage-based, billed per Snowflake credit consumed plus separate storage fees; no flat starting price is published",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "tiers": [
+      { "name": "Standard", "notes": "Entry-level edition with core warehousing features, billed per Snowflake credit consumed plus separate storage charges." },
+      { "name": "Enterprise", "notes": "Adds multi-cluster warehouses and extended governance/security features; Snowflake's most commonly recommended edition." },
+      { "name": "Business Critical", "notes": "For regulated industries; adds Tri-Secret Secure encryption and enhanced disaster recovery." },
+      { "name": "Virtual Private Snowflake (VPS)", "notes": "A fully isolated Snowflake environment with Business Critical features in a dedicated deployment." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.snowflake.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Databricks",
+      "slug": "databricks",
+      "description": "A lakehouse platform unifying data engineering, SQL analytics, and machine learning on open formats like Delta Lake and Iceberg.",
+      "best_for": "Teams whose workloads lean heavily toward data engineering, ML/AI model development, and open-format lakehouse architecture rather than a pure SQL warehouse.",
+      "strengths": ["Unified data engineering + ML platform", "Open table format support (Delta Lake, Iceberg)", "Runs natively on AWS, Azure, and GCP"]
+    }
+  ],
+  "faq": [
+    { "question": "Does Snowflake have a free trial?", "answer": "Yes. New accounts get a 30-day free trial with $400 in free usage credit, whichever runs out first." },
+    { "question": "How is Snowflake priced?", "answer": "Snowflake uses consumption-based pricing: compute is billed per Snowflake credit consumed (the rate depends on edition, cloud, and region) and storage is billed separately as a monthly fee based on average compressed data stored." },
+    { "question": "What compliance certifications does Snowflake have?", "answer": "Snowflake maintains ISO 27001 and SOC 2 Type II attestations, along with PCI DSS compliance and a HIPAA compliance report available to customers, among other certifications." }
+  ],
+  "tags": ["data warehouse", "cloud data platform", "data engineering", "data sharing"],
+  "links": { "pricing": "https://www.snowflake.com/pricing/" },
+  "sources": [
+    "https://www.snowflake.com/pricing/",
+    "https://www.snowflake.com/en/product/",
+    "https://www.snowflake.com/en/snowflake-trial/",
+    "https://docs.snowflake.com/en/user-guide/intro-compliance",
+    "https://docs.snowflake.com/en/user-guide/cert-soc-2",
+    "https://docs.snowflake.com/en/user-guide/cert-iso-27001"
+  ],
+  "accessed_at": "2026-09-05"
+}
