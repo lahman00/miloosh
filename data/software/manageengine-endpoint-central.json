@@ -1,0 +1,77 @@
+{
+  "name": "ManageEngine Endpoint Central",
+  "slug": "manageengine-endpoint-central",
+  "category": "it-operations",
+  "description": "ManageEngine Endpoint Central is a unified endpoint management and security platform that patches, secures, and manages Windows, macOS, Linux, iOS, Android, and Chrome OS devices from a single console.",
+  "website": "https://www.manageengine.com/products/desktop-central/",
+  "company": "Zoho Corporation",
+  "platforms": ["Web", "Windows", "macOS", "Linux", "iOS", "Android", "Chrome OS"],
+  "best_for": "IT teams that need to manage and secure a genuinely mixed fleet of Windows, Mac, Linux, and mobile devices from one console with published, self-serve per-endpoint pricing.",
+  "features": [
+    "Automated patch management across Windows, macOS, Linux, and third-party applications, with compliance auditing against 130+ CIS benchmarks",
+    "Software distribution, application control, and OS imaging/deployment",
+    "IT asset management with hardware/software inventory and license and warranty tracking",
+    "Remote troubleshooting and remote desktop sharing",
+    "Ransomware protection with root-cause analysis, data loss prevention, and endpoint privilege management",
+    "Next-generation antivirus and Endpoint Detection and Response (EDR)",
+    "Mobile device management across iOS, iPadOS, Android, and Chrome OS, a Secure Private Access module, and Zia AI automation for routine tasks like vulnerability triage and patch rollout"
+  ],
+  "pros": [
+    "Genuinely cross-platform (Windows, macOS, Linux, iOS, Android, Chrome OS) from one console, unlike Apple-only or Windows-centric tools",
+    "Published, self-serve numeric pricing by endpoint count for both cloud and on-premises deployment",
+    "30-day free trial that manages unlimited endpoints, no credit card required"
+  ],
+  "cons": [
+    "Pricing is banded by edition (Professional/Enterprise/UEM/Security) and endpoint volume, and several security capabilities (EDR, malware protection, ransomware protection, DEX, Secure Private Access) are separately priced add-ons rather than included in the base price",
+    "No permanent free edition is currently advertised -- only a time-limited free trial"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$104/month (Professional, Cloud, 50 endpoints + 1 technician, billed monthly)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "104", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Professional (Cloud)", "amount": "104", "currency": "USD", "billing_period": "monthly", "unit": "per month for 50 endpoints + 1 technician", "notes": "Or $1,045/year billed annually. On-premises licensing is also available ($795/year annual, or $1,987 one-time perpetual plus 20% annual maintenance). Price scales with endpoint count (bands published up to 10,000 endpoints); Professional is one of four editions (Professional/Enterprise/UEM/Security) -- see official source for UEM/Security editions and the exact figure at your scale." },
+      { "name": "Enterprise (Cloud)", "amount": "124", "currency": "USD", "billing_period": "monthly", "unit": "per month for 50 endpoints + 1 technician", "notes": "Or $1,245/year billed annually. Same endpoint-volume and on-premises/cloud structure as Professional, at a higher per-endpoint rate for additional Enterprise-tier features." }
+    ],
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.manageengine.com/products/desktop-central/pricing.html"
+  },
+  "alternatives": [
+    {
+      "name": "Jamf Pro",
+      "slug": "jamf-pro",
+      "description": "Jamf Pro is Apple-only device management software for deploying, configuring, securing, and patching Mac, iPhone, iPad, and Apple TV devices.",
+      "best_for": "Organizations that manage Apple devices exclusively or near-exclusively and want Apple-native depth over broad cross-platform coverage.",
+      "strengths": ["Deep Apple-native management", "Declarative Device Management", "Apple ecosystem integrations (Entra, Okta, Google Workspace)"]
+    },
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "NinjaOne is a unified IT operations platform combining RMM, patch management, backup, remote access, and service-desk ticketing for IT teams and MSPs.",
+      "best_for": "MSPs and IT teams wanting RMM and ticketing bundled together, with quote-based pricing rather than a published per-endpoint price table.",
+      "strengths": ["Unified RMM, backup, and remote access", "AI-driven automated patch management", "SOC 2 and ISO 27001:2022 certified"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does ManageEngine Endpoint Central publish its pricing?",
+      "answer": "Yes. Unlike many RMM/UEM tools in this category, Endpoint Central publishes a full self-serve pricing table by edition (Professional, Enterprise, UEM, Security), endpoint/server count, and deployment type (cloud or on-premises). As of the last verified date, the Professional cloud plan starts at $104/month for 50 endpoints with 1 technician."
+    }
+  ],
+  "tags": ["UEM", "Endpoint Management", "Patch Management", "IT Operations"],
+  "links": {
+    "pricing": "https://www.manageengine.com/products/desktop-central/pricing.html"
+  },
+  "sources": [
+    "https://www.manageengine.com/products/desktop-central/",
+    "https://www.manageengine.com/products/desktop-central/pricing.html",
+    "https://www.manageengine.com/products/desktop-central/download.html",
+    "https://www.manageengine.com/products/desktop-central/mobile-device-management.html",
+    "https://www.manageengine.com/products/desktop-central/linux-management.html"
+  ],
+  "accessed_at": "2026-09-05"
+}

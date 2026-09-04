@@ -1,0 +1,71 @@
+{
+  "name": "ConnectWise RMM",
+  "slug": "connectwise-rmm",
+  "category": "it-operations",
+  "description": "ConnectWise RMM is a cloud-based remote monitoring and management platform, part of the ConnectWise Platform, that gives MSPs centralized patching, alerting, remote access, and automation across endpoints and network devices.",
+  "website": "https://www.connectwise.com/platform/unified-management/rmm",
+  "platforms": ["Web", "Windows", "macOS", "Linux"],
+  "best_for": "MSPs wanting RMM patching, alerting, and remote access consolidated with ConnectWise's own PSA, NOC, and Help Desk services.",
+  "features": [
+    "Automated patch management for operating systems and thousands of third-party applications, with NOC-assessed Windows security updates",
+    "NOC-tuned intelligent alerting designed to reduce false-positive tickets",
+    "Remote troubleshooting and remote access via ScreenConnect integration",
+    "IT automation and workflow orchestration with PowerShell, bash, and batch scripting, plus AI-assisted script and monitor generation through ConnectWise Sidekick for RMM",
+    "Network discovery, monitoring, and topology mapping",
+    "Optional expert services: ConnectWise NOC, Help Desk, and Dedicated Technician teams",
+    "Reports and dashboards (formerly BrightGauge) plus an open API library for custom integrations"
+  ],
+  "pros": [
+    "30-day free trial with no credit card required",
+    "Bundles remote access (ScreenConnect), patching, scripting, and network monitoring in one console",
+    "Optional NOC and Help Desk staffing add-ons for MSPs that want to outsource tier-1 work"
+  ],
+  "cons": [
+    "No published self-serve pricing -- all three packages (Essentials, Pro, Premium) require requesting a quote",
+    "Higher-tier features like Intune integration, virtual machine management, and Microsoft 365 SaaS backup are gated behind the Pro and Premium packages rather than included in Essentials"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "tiers": [
+      { "name": "Essentials", "billing_period": "unknown", "notes": "ScreenConnect remote access, RMM for Windows/Mac/Linux, 500 intelligent alerts, automated Windows and third-party patching, AI-assisted script/monitor generation, Backup and Security dashboards, vulnerability management. No published price -- contact sales for a quote." },
+      { "name": "Pro", "billing_period": "unknown", "notes": "Everything in Essentials plus 1,000+ intelligent alerts, Intune integration, virtual machine management, and basic network monitoring. No published price -- contact sales for a quote." },
+      { "name": "Premium", "billing_period": "unknown", "notes": "Everything in Pro plus unlimited ScreenConnect remote access agents, ScreenConnect Remote Support and camera sharing, cloud monitoring, and Microsoft 365 SaaS backup. No published price -- contact sales for a quote." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.connectwise.com/rmm-packages"
+  },
+  "alternatives": [
+    {
+      "name": "Atera",
+      "slug": "atera",
+      "description": "Atera is an all-in-one RMM, ticketing, and patch management platform billed per technician with unlimited managed endpoints, plus a built-in autonomous AI agent (Robin).",
+      "best_for": "MSPs and IT teams wanting transparent, published per-technician pricing rather than a quote-based package.",
+      "strengths": ["Published self-serve pricing", "Unlimited endpoints per technician", "Built-in AI Copilot and autonomous AI agent"]
+    },
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "NinjaOne is a unified IT operations platform combining RMM, patch management, backup, remote access, and service-desk ticketing for IT teams and MSPs.",
+      "best_for": "IT teams and MSPs wanting RMM, backup, and ticketing unified in one console outside the ConnectWise ecosystem.",
+      "strengths": ["Unified RMM, backup, and remote access console", "AI-driven automated patch management", "SOC 2 and ISO 27001:2022 certified"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does ConnectWise RMM publish its pricing?",
+      "answer": "No. ConnectWise RMM is sold in three packages (Essentials, Pro, Premium), but none list a public price -- you need to request a quote. A 30-day free trial with no credit card required is offered instead."
+    }
+  ],
+  "tags": ["RMM", "MSP", "IT Operations"],
+  "sources": [
+    "https://www.connectwise.com/platform/unified-management/rmm",
+    "https://www.connectwise.com/rmm-packages",
+    "https://www.connectwise.com/platform/rmm/trial"
+  ],
+  "accessed_at": "2026-09-05"
+}

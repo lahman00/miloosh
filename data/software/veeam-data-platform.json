@@ -1,0 +1,81 @@
+{
+  "name": "Veeam Data Platform",
+  "slug": "veeam-data-platform",
+  "category": "it-operations",
+  "description": "Veeam Data Platform is a unified backup, recovery, and cyber-resilience platform that protects virtual, physical, cloud, and SaaS workloads and lets IT teams recover data to any platform with no vendor lock-in.",
+  "website": "https://www.veeam.com/products/veeam-data-platform.html",
+  "platforms": ["Web", "Windows", "Linux", "VMware", "Hyper-V", "AWS", "Azure", "Google Cloud"],
+  "best_for": "IT and data-protection teams wanting one licensed platform to back up, recover, and secure workloads across on-premises hypervisors, physical servers, and multiple public clouds.",
+  "features": [
+    "Backup and recovery across VMware, Hyper-V, physical servers, Kubernetes, and unstructured data",
+    "Multicloud protection for AWS, Azure, and Google Cloud, plus SaaS workloads including Microsoft 365, Entra ID, and Salesforce",
+    "AI-powered threat detection that scans backups and restore points for ransomware and malware before recovery",
+    "Portable, self-describing backup format for cloud-based disaster recovery without a dedicated DR site",
+    "Workload mobility across hypervisors, clouds, and storage with no vendor lock-in",
+    "Governance and compliance automation: immutability, retention policies, DR testing, and audit-ready reporting",
+    "Data sovereignty controls to keep backup data within jurisdictional boundaries"
+  ],
+  "pros": [
+    "Published, self-serve per-pack annual pricing across four editions (Essentials, Foundation, Advanced, Premium)",
+    "Organization-level SOC 2 Type 2, ISO 27001 (plus 27017, 27018, 22301, and 27701), and HIPAA/HITECH Type 2 attestation, per Veeam's own trust center",
+    "Recognized as a Leader in the Gartner Magic Quadrant for Backup and Data Protection Platforms for the 10th consecutive time, per Veeam's own citation of the report"
+  ],
+  "cons": [
+    "Licensing is sold in per-instance packs (5 instances for Essentials, 10 for the other editions) rather than a simple per-seat or flat per-device price, which takes some translation to a specific environment's workload count",
+    "Only annual, per-pack pricing is published -- no monthly billing option is shown"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$475/pack/year (Essentials, 5 instances)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "475", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Essentials", "amount": "475", "currency": "USD", "billing_period": "annual", "unit": "per pack (5 instances)/year", "notes": "Veeam's own comparison describes Essentials as offering the same features as Advanced, for up to 50 workloads -- positioned for small business." },
+      { "name": "Foundation", "amount": "1550", "currency": "USD", "billing_period": "annual", "unit": "per pack (10 instances)/year", "notes": "Marketed as Veeam's \"Most Popular\" edition on its product page. Backup and recovery for every workload." },
+      { "name": "Advanced", "amount": "1890", "currency": "USD", "billing_period": "annual", "unit": "per pack (10 instances)/year", "notes": "Adds proactive monitoring, analytics, and threat insights over Foundation." },
+      { "name": "Premium", "amount": "2275", "currency": "USD", "billing_period": "annual", "unit": "per pack (10 instances)/year", "notes": "Adds orchestrated recovery and full cyber-resilience and compliance orchestration over Advanced." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://store.veeam.com"
+  },
+  "alternatives": [
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "NinjaOne is a unified IT operations platform combining RMM, patch management, backup, remote access, and service-desk ticketing for IT teams and MSPs.",
+      "best_for": "IT teams and MSPs wanting lightweight endpoint, server, and SaaS backup bundled into a broader RMM console rather than a dedicated enterprise data-resilience platform.",
+      "strengths": ["Backup bundled with RMM and patching", "Single console for endpoint management", "SOC 2 and ISO 27001:2022 certified"]
+    },
+    {
+      "name": "ConnectWise RMM",
+      "slug": "connectwise-rmm",
+      "description": "ConnectWise RMM is a cloud-based remote monitoring and management platform for MSPs, part of the ConnectWise Platform, with a Backup Dashboard and Microsoft 365 SaaS backup available on its higher packages.",
+      "best_for": "MSPs wanting basic endpoint and Microsoft 365 backup bundled into their RMM package rather than a dedicated enterprise backup and disaster-recovery platform.",
+      "strengths": ["Microsoft 365 SaaS backup on the Premium package", "Backup Dashboard visibility across managed endpoints", "Bundled with broader RMM, patching, and remote access"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "How is Veeam Data Platform licensed and priced?",
+      "answer": "Veeam sells Veeam Data Platform in per-instance license packs billed annually, across four editions. As of the last verified date, Essentials starts at $475/year for a 5-instance pack, and Foundation, Advanced, and Premium start at $1,550, $1,890, and $2,275/year respectively for 10-instance packs."
+    },
+    {
+      "question": "Is Veeam itself SOC 2 or ISO 27001 certified?",
+      "answer": "Yes. Per Veeam's own trust center, Veeam holds organization-level SOC 2 Type 2 and ISO 27001 (along with 27017, 27018, 22301, and 27701) certifications, plus a HIPAA/HITECH Type 2 attestation, rather than only helping customers achieve their own compliance."
+    }
+  ],
+  "tags": ["Backup", "Data Resilience", "Disaster Recovery", "IT Operations"],
+  "links": {
+    "pricing": "https://store.veeam.com"
+  },
+  "sources": [
+    "https://www.veeam.com/products/veeam-data-platform.html",
+    "https://store.veeam.com/1620/purl-store",
+    "https://www.veeam.com/company/trust-center.html"
+  ],
+  "accessed_at": "2026-09-05"
+}
