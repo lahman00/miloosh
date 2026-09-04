@@ -29,12 +29,38 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Free Suite", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "2 user licenses included. No contract or credit card required. Lead/opportunity/case management, assistive AI." },
-      { "name": "Starter Suite", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Starting price per user/month, billed monthly or annually. Transaction fees apply. Unlimited users, built-in sales flows." },
-      { "name": "Pro Suite", "amount": "100", "currency": "USD", "billing_period": "annual", "notes": "Starting price per user/month, billed annually -- a signed contract is required for this tier. Transaction fees apply. Advanced automation, sales quoting/forecasting." }
+      {
+        "name": "Free Suite",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "2 user licenses included. No contract or credit card required. Lead/opportunity/case management, assistive AI."
+      },
+      {
+        "name": "Starter Suite",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price per user/month, billed monthly or annually. Transaction fees apply. Unlimited users, built-in sales flows."
+      },
+      {
+        "name": "Pro Suite",
+        "amount": "100",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Starting price per user/month, billed annually -- a signed contract is required for this tier. Transaction fees apply. Advanced automation, sales quoting/forecasting."
+      }
     ],
     "last_verified": "2026-08-23",
     "official_source": "https://www.salesforce.com/crm/pricing/"
@@ -76,6 +102,39 @@
         "Zia AI assistant",
         "Deep Zoho-suite integration",
         "No-code workflow automation"
+      ]
+    },
+    {
+      "name": "Close",
+      "slug": "close",
+      "description": "Close is a sales CRM that combines built-in calling, email, and SMS with Chloe, an AI sales agent that qualifies leads, books meetings, and updates records automatically.",
+      "best_for": "Sales teams, since the platform's 2013 launch, wanting to automate outbound outreach and lead qualification while reducing manual admin work.",
+      "strengths": [
+        "Built-in calling, email, and SMS messaging in one workspace",
+        "Chloe AI agent that qualifies inbound leads, calls prospects, answers questions and objections, and books meetings",
+        "Automatic meeting booking and call transcription/summarization"
+      ]
+    },
+    {
+      "name": "Freshsales",
+      "slug": "freshsales",
+      "description": "Freshsales is Freshworks' cloud-based sales CRM that uses Freddy AI for lead scoring, deal recommendations, and automated email writing alongside kanban-style pipeline tracking.",
+      "best_for": "Sales teams at companies of varying sizes — Freshworks reports 74,000+ businesses use the platform — seeking AI-assisted lead management and a 360° customer view.",
+      "strengths": [
+        "AI-assisted lead capture, qualification, and routing",
+        "Kanban-style deal tracking with drag-and-drop cards",
+        "360° customer view across preferred communication channels"
+      ]
+    },
+    {
+      "name": "Copper",
+      "slug": "copper",
+      "description": "Copper is a CRM built for Google Workspace users, integrating directly with Gmail and Google Calendar to manage contacts, deals, and projects for service-based businesses.",
+      "best_for": "Google Workspace users and small to mid-sized service businesses like agencies, consulting, and construction firms wanting minimal setup time.",
+      "strengths": [
+        "Native Gmail, Google Calendar, and Google Drive integration",
+        "Visual drag-and-drop sales pipelines with AI-powered alerts",
+        "Converts closed deals into projects for onboarding and service delivery"
       ]
     }
   ],

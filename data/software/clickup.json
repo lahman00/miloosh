@@ -124,6 +124,39 @@
         "Zoho Invoice billing integration",
         "Affordable at scale"
       ]
+    },
+    {
+      "name": "Jira",
+      "slug": "jira",
+      "description": "Jira is Atlassian's project-management platform for planning, tracking, and delivering work across the software development lifecycle.",
+      "best_for": "Positioned for teams working across the software development lifecycle who want to align work to goals and coordinate across engineering, product, and marketing.",
+      "strengths": [
+        "Align work to goals across cross-functional teams",
+        "Break down projects into tasks with AI-powered assignment",
+        "Track work across boards, lists, timelines, and calendars"
+      ]
+    },
+    {
+      "name": "Notion",
+      "slug": "notion",
+      "description": "Notion combines documents, databases, project tracking, and team knowledge in one flexible workspace.",
+      "best_for": "Positioned for teams of any size, from startups to large enterprises, who want people and AI working together in one connected workspace.",
+      "strengths": [
+        "AI-powered search across connected apps",
+        "AI meeting notes",
+        "Wiki and knowledge base pages"
+      ]
+    },
+    {
+      "name": "Basecamp",
+      "slug": "basecamp",
+      "description": "Basecamp is an all-in-one project management and team communication tool that combines to-do lists, message boards, docs, and chat in one place.",
+      "best_for": "Teams, companies, and nonprofits who want centralized project coordination instead of scattered email, chat apps, and browser tabs.",
+      "strengths": [
+        "Message boards for team-wide discussions",
+        "To-do lists with assignments and due dates",
+        "Card table for Kanban-style workflow tracking"
+      ]
     }
   ],
   "order": 3

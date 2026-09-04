@@ -1,12 +1,14 @@
 import type { FaqItem, Software } from "@/data/software";
 import { getSoftwareFaqItems } from "@/lib/faq";
 
+const CONTENT_YEAR = new Date().getUTCFullYear();
+
 export function generateTitle(software: Software): string {
-  return `Best ${software.name} Alternatives`;
+  return `Best ${software.name} Alternatives (${CONTENT_YEAR})`;
 }
 
 export function generateH1(software: Software): string {
-  return `Best ${software.name} alternatives`;
+  return `Best ${software.name} alternatives in ${CONTENT_YEAR}`;
 }
 
 /**
@@ -58,7 +60,7 @@ export function truncateAtWord(text: string, maxLength: number): string {
  * off mid-word/mid-sentence for zero benefit).
  */
 export function generateMetaDescription(software: Software): string {
-  const prefix = `${software.alternatives.length} ${software.name} alternatives compared: `;
+  const prefix = `${software.alternatives.length} ${software.name} alternatives compared for ${CONTENT_YEAR}: `;
   const budget = META_DESCRIPTION_MAX_LENGTH - prefix.length;
   if (software.description.length <= budget) return `${prefix}${software.description}`;
   return `${prefix}${truncateAtWord(software.description, budget)}`;

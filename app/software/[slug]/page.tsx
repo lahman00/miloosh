@@ -7,6 +7,7 @@ import { Badge } from "@/components/Badge";
 import { Card } from "@/components/Card";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AlternativeCard } from "@/components/AlternativeCard";
+import { AlternativeComparisonTable } from "@/components/AlternativeComparisonTable";
 import { SoftwareCard } from "@/components/SoftwareCard";
 import { SearchForm } from "@/components/SearchForm";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -222,6 +223,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
               {software.alternatives.length} options
             </span>
           </div>
+
+          <AlternativeComparisonTable alternatives={software.alternatives} />
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {software.alternatives.map((alternative, index) => (

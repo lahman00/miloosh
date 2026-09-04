@@ -41,7 +41,7 @@ describe("generateMetaDescription", () => {
   it("always leads with a fixed \"N {Name} alternatives compared\" prefix, never truncated away", () => {
     const s = software({ name: "Notion", description: "Notion combines docs and databases.", alternatives: [{ name: "A" } as never, { name: "B" } as never] });
     const result = generateMetaDescription(s);
-    expect(result.startsWith("2 Notion alternatives compared: ")).toBe(true);
+    expect(result.startsWith(`2 Notion alternatives compared for ${new Date().getUTCFullYear()}: `)).toBe(true);
     expect(result.length).toBeLessThanOrEqual(META_DESCRIPTION_MAX_LENGTH);
     expect(result.endsWith("…")).toBe(false);
   });
@@ -50,7 +50,7 @@ describe("generateMetaDescription", () => {
     const description = "A".repeat(100) + " end.";
     const s = software({ description, alternatives: [{ name: "A" } as never] });
     const result = generateMetaDescription(s);
-    expect(result).toBe(`1 X alternatives compared: ${description}`);
+    expect(result).toBe(`1 X alternatives compared for ${new Date().getUTCFullYear()}: ${description}`);
   });
 
   it("truncates the description (not the prefix) at a word boundary with an ellipsis when it exceeds the remaining budget", () => {
@@ -59,7 +59,7 @@ describe("generateMetaDescription", () => {
     const result = generateMetaDescription(s);
     expect(result.length).toBeLessThanOrEqual(META_DESCRIPTION_MAX_LENGTH);
     expect(result.endsWith("…")).toBe(true);
-    expect(result.startsWith("1 X alternatives compared: ")).toBe(true);
+    expect(result.startsWith(`1 X alternatives compared for ${new Date().getUTCFullYear()}: `)).toBe(true);
   });
 
   /**
