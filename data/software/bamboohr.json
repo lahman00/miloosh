@@ -1,0 +1,75 @@
+{
+  "name": "BambooHR",
+  "slug": "bamboohr",
+  "category": "hr-and-payroll",
+  "description": "BambooHR is an HRIS for small and mid-sized businesses covering employee records, hiring/onboarding, time and benefits tracking, performance management, and payroll, with a named in-product assistant (Bamboo AI) and published per-employee pricing tiers.",
+  "website": "https://www.bamboohr.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Small and mid-sized businesses wanting an HR system of record with hiring, onboarding, and employee-experience tools, plus payroll as an add-on.",
+  "features": [
+    "Centralized employee records with automated reporting and a mobile app",
+    "Applicant tracking system (Hiring) with candidate experience and onboarding task tracking",
+    "Time tracking, benefits enrollment, and payroll automation (payroll available as an add-on, U.S. only)",
+    "Performance management, employee satisfaction surveys, and recognition/awards",
+    "Compensation planning and benchmarking data on higher tiers",
+    "Compliance training courses (course count varies by plan tier)",
+    "Bamboo AI assistant embedded in the platform, with more capability unlocked on higher tiers",
+    "150+ pre-built integrations through the BambooHR marketplace"
+  ],
+  "pros": [
+    "Publishes per-employee pricing across three named tiers instead of requiring a quote for every deal",
+    "Flat-rate pricing option available for companies with 25 or fewer employees",
+    "Offers a self-serve 7-day free trial rather than requiring a sales demo to try the product"
+  ],
+  "cons": [
+    "Performance management, employee community, and higher compliance-training-course counts require upgrading to Pro or Elite",
+    "Compensation management, custom dashboards, and HR benchmarking are reserved for the top Elite tier"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$10/employee/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "10", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Core", "amount": "10", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "For companies over 25 employees; flat rate starting at $250/month for 25 or fewer employees. Includes HR data/reporting, hiring, time off, and a base AI assistant." },
+      { "name": "Pro", "amount": "17", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "Adds performance management, employee community, recognition/rewards, and 15 compliance training courses." },
+      { "name": "Elite", "amount": "25", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "Adds compensation management, custom dashboards/analytics, HR benchmarks, and 300+ compliance training courses." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.bamboohr.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Gusto",
+      "slug": "gusto",
+      "description": "A payroll, benefits, and HR platform focused on small and mid-sized U.S. businesses with payroll as a first-class feature rather than an add-on.",
+      "best_for": "Small businesses that want payroll included in the core product rather than bolted on.",
+      "strengths": ["Payroll-first design", "Published pricing", "Built-in benefits administration"]
+    },
+    {
+      "name": "Rippling",
+      "slug": "rippling",
+      "description": "A modular workforce platform unifying HR, payroll, IT device management, and spend management on one employee record.",
+      "best_for": "Companies wanting to add IT and finance modules alongside HR rather than a dedicated HR-only system.",
+      "strengths": ["Unified employee record", "IT/device management", "Global payroll and EOR"]
+    },
+    {
+      "name": "Greenhouse",
+      "slug": "greenhouse",
+      "description": "A dedicated applicant tracking and hiring platform focused on structured, data-driven recruiting.",
+      "best_for": "Companies whose primary need is a best-in-class ATS rather than an all-in-one HRIS with hiring bundled in.",
+      "strengths": ["Structured interview kits", "Hiring analytics", "Deep ATS integrations"]
+    }
+  ],
+  "sources": [
+    "https://www.bamboohr.com/",
+    "https://www.bamboohr.com/pricing/",
+    "https://www.bamboohr.com/legal/security",
+    "https://www.bamboohr.com/signup/"
+  ],
+  "accessed_at": "2026-09-05"
+}

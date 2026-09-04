@@ -1,0 +1,83 @@
+{
+  "name": "Gusto",
+  "slug": "gusto",
+  "category": "hr-and-payroll",
+  "description": "Gusto is a payroll, benefits, and HR platform built for small and mid-sized U.S. businesses, combining automated payroll tax filing with benefits administration, hiring/onboarding tools, and a mobile app (Gusto Wallet) that gives employees early access to pay and budgeting tools.",
+  "website": "https://gusto.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Small and mid-sized U.S. businesses that want payroll, benefits, and core HR in one platform with published, predictable per-plan pricing.",
+  "features": [
+    "Automated payroll runs with federal, state, and local tax calculation and filing",
+    "Health, dental, vision, life insurance, and 401(k) benefits administration",
+    "Hiring and onboarding tools including custom offer letters, checklists, and digital signatures",
+    "Time tracking that syncs directly with payroll",
+    "Gusto Wallet mobile app: paycheck splitting, savings goals, and on-demand/early pay access for employees",
+    "Gus, an in-app assistant employees and admins can ask payroll, benefits, time-tracking, and HR questions",
+    "Domestic and, on higher plans, global contractor payments",
+    "Compliance alerts and required-training tracking on higher-tier plans"
+  ],
+  "pros": [
+    "Publishes per-plan pricing (base fee plus per-person fee) rather than requiring a sales call for every quote",
+    "No long-term contract; billed month-to-month and cancellable anytime",
+    "New accounts are not charged until the first payroll is actually run"
+  ],
+  "cons": [
+    "Entry-level Simple plan excludes multi-state payroll, next-day direct deposit, and most HR tools, which require upgrading to Plus or Premium",
+    "Add-ons such as tax-advantaged benefits administration, priority support, and expedited payments carry separate charges on top of the base plan"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$49/month + $6/person/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "49", "currency": "USD", "billing_period": "monthly", "per_seat": false },
+    "tiers": [
+      { "name": "Simple", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "per month base fee", "notes": "Plus $6/person/month. Single-state payroll, PTO tracking, and onboarding; excludes multi-state payroll and most HR tools." },
+      { "name": "Plus", "amount": "80", "currency": "USD", "billing_period": "monthly", "unit": "per month base fee", "notes": "Plus $12/person/month. Adds time tracking, workforce cost reports, and expense/reimbursement management." },
+      { "name": "Premium", "amount": "180", "currency": "USD", "billing_period": "monthly", "unit": "per month base fee", "notes": "Plus $22/person/month. Adds unlimited custom admin roles and compliance alerts; state tax registration and global contractor payments are add-ons." }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-05",
+    "official_source": "https://gusto.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Rippling",
+      "slug": "rippling",
+      "description": "A modular workforce platform unifying HR, payroll, IT device management, and spend management on one employee record.",
+      "best_for": "Companies wanting to add IT and finance modules to HR/payroll rather than a payroll-first standalone tool.",
+      "strengths": ["Unified employee record", "IT/device management", "Global payroll and EOR"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "A dedicated HRIS focused on core HR record-keeping, applicant tracking, and employee experience.",
+      "best_for": "Businesses wanting an HR-first system of record with payroll as an add-on rather than the primary product.",
+      "strengths": ["HR-first focus", "Applicant tracking included", "Employee self-service portal"]
+    },
+    {
+      "name": "Deel",
+      "slug": "deel",
+      "description": "A global payroll and compliance platform for hiring and paying international contractors and employees.",
+      "best_for": "Companies whose primary need is compliant global/international payments rather than U.S.-focused SMB payroll.",
+      "strengths": ["Global EOR coverage", "Contractor compliance", "Multi-currency payments"]
+    },
+    {
+      "name": "ADP Workforce Now",
+      "slug": "adp-workforce-now",
+      "description": "A long-established HCM suite from ADP covering payroll, benefits, and HR for small to enterprise employers.",
+      "best_for": "Employers wanting a payroll provider with decades of tax-compliance infrastructure and broad company-size coverage.",
+      "strengths": ["Established payroll tax engine", "Large HR/benefits ecosystem", "Scales to enterprise"]
+    }
+  ],
+  "sources": [
+    "https://gusto.com/pricing",
+    "https://gusto.com/resources/guides/switch-payroll-providers/rippling-pricing",
+    "https://gusto.com/security",
+    "https://gusto.com/product/mobile",
+    "https://support.gusto.com/article/105983845100000/request-access-to-soc-reports-and-bridge-letters"
+  ],
+  "accessed_at": "2026-09-05"
+}

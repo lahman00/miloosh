@@ -1,0 +1,78 @@
+{
+  "name": "Deel",
+  "slug": "deel",
+  "category": "hr-and-payroll",
+  "description": "Deel is a global people platform for hiring, paying, and managing contractors and employees across borders, combining Employer of Record (EOR), U.S. PEO, contractor payments, global payroll, HR, and IT device management under one contract with published per-worker pricing.",
+  "website": "https://www.deel.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Companies hiring or paying contractors and employees in multiple countries who want compliance, payroll, and HR handled under a single vendor with published per-worker pricing.",
+  "features": [
+    "Employer of Record (EOR) employment in 130+ countries",
+    "U.S. PEO co-employment covering all 50 states",
+    "Self-managed international contractor payments in 150+ currencies",
+    "Contractor of Record (CoR) service where Deel manages the contractor engagement and compliance",
+    "Deel HR: HRIS covering onboarding, offboarding, compliance checks, and automated workflows for all worker types",
+    "Deel IT: device management and equipment procurement/redeployment for distributed teams",
+    "Deel AI: in-platform assistant for HR and payroll questions with proactive compliance alerts",
+    "Global payroll processing with local tax and labor-law compliance monitoring across 150+ countries"
+  ],
+  "pros": [
+    "Publishes per-worker pricing for its core products (EOR, PEO, contractor management, CoR) rather than requiring a quote for every deal",
+    "No long-term contract required; billed month-to-month with cancel-anytime terms",
+    "Single vendor covers EOR, contractor payments, global payroll, HR, and IT device management"
+  ],
+  "cons": [
+    "EOR and Contractor-of-Record pricing ($599 and $325 per worker/month respectively) is materially higher than pure payroll or HRIS-only tools, reflecting the added legal-employer and compliance service",
+    "Deel HR/HRIS pricing is not broken out on the public pricing page, so HR-only buyers may need to contact sales to see how it's packaged"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$49/contractor/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "49", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Find Talent (ATS)", "amount": "14", "currency": "USD", "billing_period": "monthly", "unit": "per worker/month", "notes": "Sourcing, screening, and hiring tools." },
+      { "name": "Hire Contractors", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month", "notes": "Self-managed international contractor payments." },
+      { "name": "Contractor of Record", "amount": "325", "currency": "USD", "billing_period": "monthly", "unit": "per contractor/month", "notes": "Deel acts as the Contractor of Record for compliance." },
+      { "name": "US PEO", "amount": "125", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "U.S. co-employment covering all 50 states." },
+      { "name": "EOR", "amount": "599", "currency": "USD", "billing_period": "monthly", "unit": "per employee/month", "notes": "Employer of Record covering employment in 130+ countries. A promotional offer of 3 months free on PEO was listed for new orders with minimum 2-year terms (July 15-December 31, 2026)." }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.deel.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Rippling",
+      "slug": "rippling",
+      "description": "A modular workforce platform unifying HR, payroll, IT device management, and spend management, with global EOR and contractor payments as add-on modules.",
+      "best_for": "Companies wanting global payroll plus domestic IT and finance management on one platform rather than a global-hiring specialist.",
+      "strengths": ["Unified employee record", "IT/device management", "Modular add-ons"]
+    },
+    {
+      "name": "Gusto",
+      "slug": "gusto",
+      "description": "A payroll, benefits, and HR platform focused on small and mid-sized U.S. businesses.",
+      "best_for": "U.S.-only small businesses that don't need international EOR or multi-currency contractor payments.",
+      "strengths": ["Published U.S. payroll pricing", "Simple setup", "Built-in benefits administration"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "A dedicated HRIS focused on core HR record-keeping, hiring, and employee experience for small and mid-sized businesses.",
+      "best_for": "Companies wanting an HR system of record without also buying global EOR or contractor-compliance services.",
+      "strengths": ["HR-first focus", "Applicant tracking included", "Employee self-service"]
+    }
+  ],
+  "sources": [
+    "https://www.deel.com/",
+    "https://www.deel.com/pricing",
+    "https://www.deel.com/security/",
+    "https://www.deel.com/hr-platform/",
+    "https://www.deel.com/blog/soc2-compliance/"
+  ],
+  "accessed_at": "2026-09-05"
+}

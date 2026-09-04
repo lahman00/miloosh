@@ -1,0 +1,72 @@
+{
+  "name": "Paycom",
+  "slug": "paycom",
+  "category": "hr-and-payroll",
+  "description": "Paycom is a single-database HCM platform covering payroll, talent acquisition, talent management, HR management, and time and labor management, built around Beti, an employee-driven payroll tool where employees review and fix their own paycheck data before each run.",
+  "website": "https://www.paycom.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Mid-sized to large employers wanting a single-database HCM suite with employee-driven payroll verification rather than an admin-only payroll process.",
+  "features": [
+    "Beti, an employee-driven payroll tool that has employees review and fix their own hours, expenses, and deductions before payroll is submitted",
+    "Single-database architecture spanning payroll, HR, talent acquisition, talent management, and time/labor management",
+    "Employee Self-Service for employees to manage their own HR functions",
+    "Manager-on-the-Go mobile tools for approvals and management tasks",
+    "IWant, a command-driven search tool for accessing HR and payroll data",
+    "Benefits and COBRA administration",
+    "Performance and compensation management",
+    "Core vs. Complete package tiers across each solution category (Payroll, Talent Acquisition, Time and Labor, Talent Management, HR Management)"
+  ],
+  "pros": [
+    "Single shared database across payroll, HR, talent, and time modules, rather than separately synced systems",
+    "Beti shifts payroll error-checking to employees before submission instead of leaving it entirely to payroll admins",
+    "Ongoing support from a dedicated specialist is included in the quoted price at no extra cost"
+  ],
+  "cons": [
+    "No pricing is published on paycom.com; every quote is customized to workforce size and selected tools after contacting sales",
+    "Paycom's own pricing page states a one-time implementation fee is included in every quote, adding to first-year cost"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "tiers": [
+      { "name": "Core", "notes": "Baseline functionality across Payroll, Talent Acquisition, Time and Labor Management, Talent Management, and HR Management. No published price; requires a custom quote." },
+      { "name": "Complete", "notes": "Expanded functionality across the same five solution categories. No published price; requires a custom quote." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.paycom.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "ADP Workforce Now",
+      "slug": "adp-workforce-now",
+      "description": "ADP's HCM suite for small to midsized businesses, combining payroll, HR, time, and talent management.",
+      "best_for": "Employers wanting an established payroll bureau model rather than employee-driven payroll verification.",
+      "strengths": ["Established payroll tax engine", "Large HR/benefits ecosystem", "Broad company-size coverage"]
+    },
+    {
+      "name": "Paylocity",
+      "slug": "paylocity",
+      "description": "A cloud HCM platform covering payroll, HR, talent, and workforce management, aimed at mid-sized organizations.",
+      "best_for": "Mid-sized employers comparing single-vendor HCM suites with similar breadth to Paycom.",
+      "strengths": ["Unified HCM suite", "Employee engagement tools", "Configurable workflows"]
+    },
+    {
+      "name": "Workday HCM",
+      "slug": "workday-hcm",
+      "description": "An enterprise cloud HCM and finance suite used by large, complex organizations.",
+      "best_for": "Large enterprises needing global HCM depth beyond what a single-database SMB/mid-market platform like Paycom offers.",
+      "strengths": ["Enterprise-scale HCM", "Global workforce support", "Deep financial planning integration"]
+    }
+  ],
+  "sources": [
+    "https://www.paycom.com/",
+    "https://www.paycom.com/pricing/",
+    "https://www.paycom.com/about/security/",
+    "https://apps.apple.com/us/app/paycom/id1207929487"
+  ],
+  "accessed_at": "2026-09-05"
+}

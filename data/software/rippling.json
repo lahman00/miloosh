@@ -1,0 +1,74 @@
+{
+  "name": "Rippling",
+  "slug": "rippling",
+  "category": "hr-and-payroll",
+  "description": "Rippling is a workforce management platform that unifies HR, payroll, IT device/app management, and finance (spend management) on a single employee record, so changes like a new hire, promotion, or termination automatically sync across every connected module.",
+  "website": "https://www.rippling.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Growing companies that want to run HR, payroll, IT device management, and spend management from one system of record instead of stitching together separate point tools.",
+  "features": [
+    "Unified employee record that syncs HR, payroll, benefits, and IT changes automatically across every connected module",
+    "Global payroll, contractor payments, Employer of Record (EOR), and Contractor of Record (CoR) for international teams",
+    "IT device and app management, including automated laptop provisioning/deprovisioning and identity and access management",
+    "Expense management, corporate cards, bill pay, and travel management through the Rippling Spend modules",
+    "Workflow Studio for building no-code custom automations and approval workflows on employee data",
+    "App Studio, a no-code tool for building custom internal applications on top of Rippling's employee data",
+    "Time & attendance, scheduling, performance management, and learning management modules",
+    "Analytics and reporting that span HR, IT, and finance data from the same underlying dataset"
+  ],
+  "pros": [
+    "Single employee record removes manual re-entry across HR, IT, and payroll when a change like a hire or termination happens",
+    "Highly modular: customers can start with one product, such as HRIS, and add Payroll, IT, or Spend management later",
+    "No-code Workflow Studio and App Studio let admins build automations and internal tools without engineering support"
+  ],
+  "cons": [
+    "Rippling's official pricing page does not list per-plan prices; every quote requires submitting company size and module selection to sales",
+    "Per-employee cost scales with each additional module (Payroll, IT, Spend, etc.), so the effective total price isn't visible until a quote is generated"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.rippling.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Gusto",
+      "slug": "gusto",
+      "description": "A payroll, benefits, and HR platform built for small and mid-sized businesses with transparent, published per-plan pricing.",
+      "best_for": "Small businesses wanting straightforward payroll and HR with published pricing rather than a custom platform quote.",
+      "strengths": ["Published per-plan pricing", "Simple setup for small teams", "Built-in benefits administration"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "A dedicated HRIS focused on core HR record-keeping, hiring, and employee experience for small and mid-sized businesses.",
+      "best_for": "Companies wanting a focused HRIS without also buying an IT or spend-management platform.",
+      "strengths": ["HR-first focus", "Applicant tracking included", "Employee self-service"]
+    },
+    {
+      "name": "Deel",
+      "slug": "deel",
+      "description": "A global payroll and compliance platform specializing in hiring, paying, and managing international contractors and employees.",
+      "best_for": "Companies whose primary need is compliant global contractor and EOR payments rather than domestic IT/HR unification.",
+      "strengths": ["Global EOR coverage", "Contractor compliance", "Multi-currency payments"]
+    },
+    {
+      "name": "ADP Workforce Now",
+      "slug": "adp-workforce-now",
+      "description": "A long-established HCM suite from ADP covering payroll, benefits, and HR for small to enterprise employers.",
+      "best_for": "Employers wanting an established payroll provider with decades of tax-compliance infrastructure behind it.",
+      "strengths": ["Established payroll tax engine", "Large HR/benefits ecosystem", "Broad company-size coverage"]
+    }
+  ],
+  "sources": [
+    "https://www.rippling.com/",
+    "https://www.rippling.com/pricing",
+    "https://www.rippling.com/trust/security",
+    "https://apps.apple.com/us/app/rippling-hr-it-finance/id1231325957"
+  ],
+  "accessed_at": "2026-09-05"
+}
