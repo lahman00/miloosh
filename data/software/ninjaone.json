@@ -1,0 +1,69 @@
+{
+  "name": "NinjaOne",
+  "slug": "ninjaone",
+  "category": "it-operations",
+  "description": "NinjaOne is a unified IT operations platform that combines remote monitoring and management (RMM), automated patch management, backup, remote access, and service-desk ticketing for IT teams and managed service providers.",
+  "website": "https://www.ninjaone.com",
+  "platforms": ["Web", "Windows", "macOS", "Linux"],
+  "best_for": "IT teams and managed service providers (MSPs) wanting to consolidate endpoint monitoring, patching, backup, and remote access into a single console.",
+  "features": [
+    "Unified endpoint visibility and control across Windows, macOS, and Linux devices",
+    "Mobile device management (MDM) for iOS, iPadOS, and Android devices",
+    "AI-driven autonomous patch management to accelerate vulnerability remediation",
+    "Endpoint, server, and SaaS backup with compliance support",
+    "Single-click, cross-OS remote control",
+    "Built-in service desk with documentation and ticketing",
+    "Cross-platform scripting support (PowerShell, Bash, and shell commands)"
+  ],
+  "pros": [
+    "Single console spanning RMM, patching, backup, and remote access",
+    "14-day free trial",
+    "SOC 2 compliant and ISO 27001:2022 certified, with FedRAMP Moderate Authorization for regulated environments (per NinjaOne's trust center)"
+  ],
+  "cons": [
+    "No published self-serve pricing — NinjaOne requires requesting a quote, and per-device cost depends on volume and contract terms",
+    "No free plan (trial only)"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.ninjaone.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Freshservice",
+      "slug": "freshservice",
+      "description": "A cloud ITSM platform unifying service desk, IT asset management, and IT operations with Freddy AI-assisted ticket resolution.",
+      "best_for": "IT teams wanting a ticket-first ITSM service desk with transparent per-agent pricing rather than RMM-led endpoint monitoring.",
+      "strengths": ["Transparent published pricing", "ITSM/ITAM/ITOM in one suite", "14-day free trial"]
+    },
+    {
+      "name": "ServiceNow ITSM",
+      "slug": "servicenow-itsm",
+      "description": "An enterprise IT service management suite built on the ServiceNow AI Platform, unifying incident, change, and problem management with autonomous AI agents.",
+      "best_for": "Large enterprises wanting ITSM unified with broader enterprise workflows rather than MSP-focused RMM.",
+      "strengths": ["Enterprise-grade shared CMDB", "Cross-department workflow platform", "Autonomous AI agents for routine requests"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does NinjaOne publish its pricing?",
+      "answer": "No. NinjaOne uses per-device, volume-tiered pricing but does not publish exact rates on its site — you need to request a quote. It does offer a 14-day free trial."
+    }
+  ],
+  "tags": ["RMM", "Endpoint Management", "MSP", "IT Operations"],
+  "links": {
+    "pricing": "https://www.ninjaone.com/pricing/"
+  },
+  "sources": [
+    "https://www.ninjaone.com/",
+    "https://www.ninjaone.com/pricing/",
+    "https://trustpage.ninjaone.com/"
+  ],
+  "accessed_at": "2026-09-05"
+}

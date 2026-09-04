@@ -1,0 +1,88 @@
+{
+  "name": "Freshservice",
+  "slug": "freshservice",
+  "category": "it-operations",
+  "company": "Freshworks Inc.",
+  "description": "Freshservice is Freshworks' cloud-based IT service management (ITSM) platform that unifies the service desk, IT asset management, and IT operations management, with Freddy AI Copilot, Agent, and Insights features for ticket resolution and analytics.",
+  "website": "https://www.freshservice.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "IT teams wanting a quick-to-deploy, ITIL-aligned service desk that unifies ITSM, IT asset management, and IT operations management with AI-assisted ticket resolution.",
+  "features": [
+    "Employee Service Management unifying ITSM, IT asset management (ITAM), and IT operations management (ITOM) on one platform",
+    "Freddy AI Copilot that helps agents resolve tickets faster",
+    "Freddy AI Agent and Freddy AI Insights for automated resolution flows and ticket-trend analytics",
+    "On-call management and major incident coordination across systems",
+    "Continuous asset discovery and lifecycle management",
+    "Low-code orchestration and intelligent ticket routing",
+    "Self-service portal and employee onboarding workflows",
+    "Marketplace integrations including Google Workspace, Microsoft Teams, Slack, AWS, Azure, GitHub, and Okta"
+  ],
+  "pros": [
+    "Publishes transparent per-agent pricing (uncommon among ITSM vendors) with a 14-day free trial",
+    "Unifies ITSM, ITAM, and IT operations management in a single platform"
+  ],
+  "cons": [
+    "Freddy AI Copilot is a paid add-on ($29/agent/month) on the Starter, Growth, and Pro plans; it's only bundled at Enterprise",
+    "Problem management, change management, and major incident management require the Pro tier or higher"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$19/agent/month, billed annually",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Starter", "amount": "19", "currency": "USD", "billing_period": "annual", "unit": "agent", "notes": "Per agent/month, billed annually. Includes incident management, knowledge management, task management, and the support portal. Monthly billing is also available at a higher rate (the pricing page states annual billing saves 20%)." },
+      { "name": "Growth", "amount": "49", "currency": "USD", "billing_period": "annual", "unit": "agent", "notes": "Per agent/month, billed annually. Adds service catalog, SLA management, on-call management, and cloud management." },
+      { "name": "Pro", "amount": "99", "currency": "USD", "billing_period": "annual", "unit": "agent", "notes": "Per agent/month, billed annually. Adds problem management, change management, major incident management, workload management, release management, and employee journeys. Freddy AI Copilot is available as an add-on at $29/agent/month." },
+      { "name": "Enterprise", "notes": "Custom pricing; contact sales. Adds sandbox and audit logs, with Freddy AI Agent and Freddy AI Insights included in the plan." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.freshworks.com/freshservice/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "ServiceNow ITSM",
+      "slug": "servicenow-itsm",
+      "description": "An enterprise IT service management suite built on the ServiceNow AI Platform, unifying incident, change, and problem management with autonomous AI agents.",
+      "best_for": "Large enterprises wanting IT service management unified with broader IT operations, asset, and security workflows on one platform.",
+      "strengths": ["Single enterprise AI platform with a shared CMDB", "Deep IT operations and asset management integration", "Autonomous AI agents for routine requests"]
+    },
+    {
+      "name": "NinjaOne",
+      "slug": "ninjaone",
+      "description": "A unified IT operations platform combining remote monitoring and management (RMM), patch management, backup, and remote access for IT teams and MSPs.",
+      "best_for": "IT teams and managed service providers wanting endpoint monitoring, patching, and remote control rather than a ticket-first service desk.",
+      "strengths": ["Unified endpoint management console", "Autonomous patch management", "Cross-platform remote access"]
+    },
+    {
+      "name": "Zendesk",
+      "slug": "zendesk",
+      "description": "An AI-first customer service platform combining self-learning AI agents with unified ticketing, also used for internal employee and IT service.",
+      "best_for": "Organizations wanting one platform spanning customer support and internal employee/IT service rather than an IT-specific service desk.",
+      "strengths": ["AI agents for autonomous ticket resolution", "Omnichannel inbox", "Employee/IT service use case support"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Does Freshservice offer a free trial?",
+      "answer": "Yes. Freshservice offers 14 days of free, unrestricted access to its features before you need to choose a paid plan."
+    },
+    {
+      "question": "Is Freddy AI included in every Freshservice plan?",
+      "answer": "No. Freddy AI Copilot is a paid add-on ($29/agent/month) on the Starter, Growth, and Pro plans. Freddy AI Agent and Freddy AI Insights are only bundled into the Enterprise plan."
+    }
+  ],
+  "tags": ["ITSM", "IT Operations", "Freshworks", "Help Desk"],
+  "links": {
+    "pricing": "https://www.freshworks.com/freshservice/pricing/"
+  },
+  "sources": [
+    "https://www.freshworks.com/freshservice/",
+    "https://www.freshworks.com/freshservice/pricing/"
+  ],
+  "accessed_at": "2026-09-05"
+}

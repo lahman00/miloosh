@@ -1,0 +1,72 @@
+{
+  "name": "SentinelOne",
+  "slug": "sentinelone",
+  "category": "security",
+  "company": "SentinelOne, Inc.",
+  "description": "SentinelOne Singularity is an endpoint, cloud, and identity security platform that runs behavioral and static AI detection models on a single on-device agent to prevent, detect, and autonomously respond to threats.",
+  "website": "https://www.sentinelone.com",
+  "platforms": ["Web", "Windows", "macOS", "Linux"],
+  "best_for": "Security operations teams wanting autonomous, on-device threat detection and one-click remediation across endpoints, cloud workloads, and identity systems.",
+  "features": [
+    "Behavioral AI and static AI models running on-device to detect ransomware, malware, and zero-day threats",
+    "Autonomous, machine-speed prevention that can kill and quarantine unauthorized processes without waiting on a cloud round-trip",
+    "Patented 1-click rollback to restore an endpoint to its pre-attack state",
+    "Purple AI natural-language threat hunting with AI-generated event summaries",
+    "Singularity Mobile detection for mobile phishing, malware, and zero-day exploits",
+    "Cloud security and identity protection alongside core endpoint protection",
+    "Managed Threat Hunting and Identity Detection & Response on higher tiers"
+  ],
+  "pros": [
+    "Publishes list pricing per endpoint (uncommon among EDR/XDR vendors) with named tiers",
+    "Behavioral and static AI models run on-device, so prevention does not depend on a live cloud connection",
+    "Patented 1-click rollback for fast recovery after an attack"
+  ],
+  "cons": [
+    "Listed prices are not final — actual pricing is agreed through an authorized SentinelOne partner",
+    "No free trial disclosed on the pricing page",
+    "The top Singularity Enterprise tier, including its Agentic AI SOC Analyst feature, is quote-only"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$179.99/endpoint/year",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "179.99", "currency": "USD", "billing_period": "annual", "per_seat": false },
+    "tiers": [
+      { "name": "Singularity Complete", "amount": "179.99", "currency": "USD", "billing_period": "annual", "unit": "endpoint", "notes": "For 5-100 workstations. Includes AI-driven protection, real-time threat detection, 14-day data retention, and the AI Security Assistant. Final pricing is agreed through an authorized SentinelOne partner and may differ from this list price." },
+      { "name": "Singularity Commercial", "amount": "229.99", "currency": "USD", "billing_period": "annual", "unit": "endpoint", "notes": "For 5-100 workstations. Adds Identity Detection & Response, 90-day data retention, and Managed Threat Hunting. Final pricing is agreed through an authorized SentinelOne partner." },
+      { "name": "Singularity Enterprise", "notes": "Contact sales for pricing. Adds an Agentic AI SOC Analyst, full visibility and forensics, and expert-led onboarding." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.sentinelone.com/platform-packages/"
+  },
+  "alternatives": [
+    {
+      "name": "CrowdStrike",
+      "slug": "crowdstrike",
+      "description": "An AI-native cybersecurity platform unifying endpoint detection and response, cloud security, and identity protection.",
+      "best_for": "Security teams wanting a unified EDR/XDR platform with published starting list pricing and a next-gen SIEM.",
+      "strengths": ["Falcon lightweight agent", "Next-gen SIEM", "Identity protection across human, non-human, and AI identities"]
+    },
+    {
+      "name": "Wiz",
+      "slug": "wiz",
+      "description": "An AI-powered cloud security platform providing posture management, vulnerability scanning, and workload protection.",
+      "best_for": "Security teams whose priority is cloud-native posture management and agentless scanning rather than endpoint-agent-based EDR.",
+      "strengths": ["Agentless cloud scanning", "Cloud security posture management", "Security graph context"]
+    }
+  ],
+  "tags": ["EDR", "XDR", "Endpoint Security", "AI Security"],
+  "links": {
+    "pricing": "https://www.sentinelone.com/platform-packages/"
+  },
+  "sources": [
+    "https://www.sentinelone.com/platform-packages/",
+    "https://www.sentinelone.com/platform/singularity-complete/",
+    "https://www.sentinelone.com/platform/",
+    "https://www.sentinelone.com/pricing/"
+  ],
+  "accessed_at": "2026-09-05"
+}

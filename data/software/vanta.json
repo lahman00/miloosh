@@ -1,0 +1,66 @@
+{
+  "name": "Vanta",
+  "slug": "vanta",
+  "category": "security",
+  "description": "Vanta is a compliance and trust automation platform that continuously monitors security controls, automates evidence collection, and helps organizations earn and maintain certifications such as SOC 2, ISO 27001, HIPAA, and GDPR.",
+  "website": "https://www.vanta.com",
+  "platforms": ["Web"],
+  "best_for": "Security and compliance teams wanting continuous, integration-based control monitoring across many frameworks alongside a public-facing trust center.",
+  "features": [
+    "Continuous compliance monitoring across more than 35 frameworks, including SOC 2, ISO 27001, HIPAA, GDPR, and ISO 42001",
+    "Automated evidence collection by pulling data from more than 400 connected tools",
+    "AI agent that drafts security-questionnaire responses and policies",
+    "Trust Center for publishing real-time security posture to prospects and customers",
+    "Third-party/vendor risk monitoring",
+    "Centralized risk register and personnel/access-review management"
+  ],
+  "pros": [
+    "Broad framework coverage (35+) with automated evidence collection from 400+ integrated tools",
+    "Public Trust Center for real-time posture sharing",
+    "Vanta itself holds a SOC 2 Type II attestation and an ISO 27001 certification, per its own security page"
+  ],
+  "cons": [
+    "No public pricing on any of its four tiers — every plan requires contacting sales for a quote",
+    "Vanta automates compliance monitoring but does not itself issue the SOC 2 report or ISO certificate — that still requires an independent third-party auditor/certification body"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Essentials", "notes": "Vanta's entry package, described on its pricing page as \"the fastest, simplest path to compliance.\" No public price listed; contact sales for a quote." },
+      { "name": "Plus", "notes": "Marked \"Most popular\" on Vanta's pricing page and described as \"a strong compliance foundation plus security.\" No public price listed." },
+      { "name": "Professional", "notes": "Described on Vanta's pricing page as \"compliance, risk, and reporting all in one package.\" No public price listed." },
+      { "name": "Enterprise", "notes": "Described on Vanta's pricing page as \"a trust program tailored to your unique needs.\" Contact sales." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.vanta.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Drata",
+      "slug": "drata",
+      "description": "A compliance automation platform for continuous control monitoring and evidence collection across frameworks like SOC 2, ISO 27001, HIPAA, and GDPR.",
+      "best_for": "Compliance and security teams comparing agentic, AI-assisted compliance automation platforms alongside Vanta.",
+      "strengths": ["Map-once-reuse-everywhere control mapping across frameworks", "AI agent governance module for monitoring AI agents", "Trust Center built into the core platform"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is Vanta itself SOC 2 or ISO 27001 certified?",
+      "answer": "That is a separate claim from Vanta helping customers earn their own certifications. Vanta's own security page states that Vanta \"maintains a SOC 2 Type II attestation and an ISO 27001 compliance certification\" for its own organization."
+    }
+  ],
+  "tags": ["Compliance Automation", "GRC", "Trust Management", "Security"],
+  "links": {
+    "pricing": "https://www.vanta.com/pricing"
+  },
+  "sources": [
+    "https://www.vanta.com/",
+    "https://www.vanta.com/company/security",
+    "https://www.vanta.com/pricing"
+  ],
+  "accessed_at": "2026-09-05"
+}
