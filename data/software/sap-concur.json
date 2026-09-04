@@ -69,6 +69,20 @@
       "description": "An open-source, modular business platform with a built-in Expenses app alongside its Accounting, Invoicing, and other finance apps.",
       "best_for": "Smaller companies that want basic mobile expense capture bundled into a broader, published-pricing business platform rather than a dedicated enterprise T&E product.",
       "strengths": ["Expenses app bundled at the same per-user price as the rest of Odoo", "Mobile receipt capture", "Published self-serve pricing"]
+    },
+    {
+      "name": "Expensify",
+      "slug": "expensify",
+      "description": "An expense management platform with receipt scanning, a commercial card, and in-app travel booking.",
+      "best_for": "Teams wanting simple receipt-driven expense reports combined with in-app flight, hotel, car, and rail booking, with published self-serve pricing instead of a per-report quote.",
+      "strengths": ["Flat $5/member/month Collect plan", "In-app travel booking with automatic expense sync", "45+ accounting and HR integrations"]
+    },
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "description": "A spend management platform combining a fee-free corporate card with AI-driven expense, AP, and procurement automation.",
+      "best_for": "Businesses wanting a free corporate card paired with automated expense and accounts-payable workflows, rather than a per-expense-report pricing model.",
+      "strengths": ["Free plan with no annual fees or interest charges on the card", "Policy enforcement and price-drop rebooking for travel", "Native bidirectional sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
     }
   ],
   "links": {

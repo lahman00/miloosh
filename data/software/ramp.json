@@ -64,6 +64,13 @@
       "description": "An expense management platform with receipt scanning, a commercial card, and in-app travel booking.",
       "best_for": "Teams wanting simple receipt-driven expense reports, with discounted pricing when paired with the Expensify Card.",
       "strengths": ["Flat $5/member/month Collect plan", "Up to 50% subscription discount for Expensify Card usage", "45+ accounting and HR integrations"]
+    },
+    {
+      "name": "SAP Concur",
+      "slug": "sap-concur",
+      "description": "SAP's travel, expense, and invoice management suite, sold as separate Concur Travel, Concur Expense, and Concur Invoice products.",
+      "best_for": "Larger organizations wanting travel booking, expense, and AP invoice automation as one SAP-integrated suite, priced per expense report rather than a free card-based model.",
+      "strengths": ["Combined travel, expense, and AP invoice suite", "Deep policy enforcement and audit tooling (Concur Detect)", "Established enterprise travel-management network"]
     }
   ],
   "sources": [
