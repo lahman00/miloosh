@@ -15,6 +15,18 @@ export type AlternativeGuide = {
 };
 
 export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
+  postmark: {
+    diagnosis: "The page ranks near page one for real Postmark-alternative searches, but its current alternative list does not separate a direct transactional-email replacement from a broader marketing-and-CRM platform or a multi-channel communications stack.",
+    heading: "Choose a Postmark alternative by the job around email",
+    introduction: "Postmark is built around transactional email through API and SMTP. The useful alternative decision is whether the team still wants a dedicated email-delivery product, needs marketing and CRM capabilities around email, or is standardizing several programmable communication channels on one platform.",
+    whySeekAlternative: ["The team wants transactional email plus marketing campaign tooling from the same email provider.", "Email needs to sit inside a wider marketing, CRM, SMS, and WhatsApp workflow.", "The engineering stack is consolidating email with programmable messaging, voice, authentication, or customer-data services."],
+    decisions: [
+      { heading: "Transactional email plus marketing campaigns", fit: "SendGrid is the relevant comparison when the requirement remains API/SMTP email delivery but also includes marketing campaign creation and high-volume sending infrastructure.", alternativeSlug: "sendgrid", comparisonSlug: "postmark-vs-sendgrid" },
+      { heading: "Marketing, CRM, and multi-channel messaging", fit: "Brevo fits teams that want transactional email alongside email marketing, CRM, SMS, WhatsApp, automation, and volume-based email pricing.", alternativeSlug: "brevo", comparisonSlug: "postmark-vs-brevo" },
+      { heading: "Broader programmable communications stack", fit: "Twilio is the broader-platform route when email is one part of a developer stack that also needs programmable messaging, voice, authentication, or customer-data tooling.", alternativeSlug: "twilio", comparisonSlug: "postmark-vs-twilio" },
+    ],
+    evidenceSources: ["https://postmarkapp.com/pricing", "https://www.twilio.com/en-us/sendgrid", "https://www.brevo.com/pricing/", "https://www.twilio.com/en-us"],
+  },
   pipedrive: {
     diagnosis: "The existing page names only two broad CRM alternatives and does not route sales teams through the pipeline, automation, and suite-depth decisions reflected in Pipedrive's current plans.",
     heading: "Choose a Pipedrive alternative by sales workflow",
