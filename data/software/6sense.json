@@ -1,0 +1,93 @@
+{
+  "name": "6sense",
+  "slug": "6sense",
+  "category": "sales",
+  "description": "6sense is an account-based marketing and revenue intelligence platform that combines intent data, predictive AI, and workflow automation to help B2B sales and marketing teams identify in-market accounts and orchestrate coordinated outreach across channels.",
+  "website": "https://6sense.com/",
+  "platforms": ["Web"],
+  "best_for": "Enterprise B2B sales and marketing teams running a multi-tool go-to-market stack (CRM, marketing automation, sales engagement, advertising) who want intent data and predictive AI to prioritize which accounts to engage and when.",
+  "features": [
+    "Signalverse data layer aggregating intent, technographic, and third-party buying signals, described as processing one trillion signals daily",
+    "Patented ID resolution and website deanonymization to identify anonymous visitor accounts",
+    "Predictive AI models that identify an account's buying stage and prioritize it for outreach",
+    "RevvyAI conversational AI that turns natural-language questions into account-level GTM intelligence",
+    "Sales Copilot and Account Prioritization surfacing in-market accounts and buying-group contacts to reps",
+    "AI Email Agents and Intelligent Workflows for automated, personalized multichannel outreach orchestration",
+    "Digital advertising activation targeted using live account-level buying-intent data",
+    "Company Graph, a structural map of B2B company relationships built from 13 years of proprietary data"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "tiers": [
+      { "name": "Sales Intelligence + Data Credits + Predictive AI", "notes": "Feature bundle name shown on the pricing page; no public price. Combines contact/company data credits with predictive account scoring." },
+      { "name": "Sales Intelligence + Data Credits", "notes": "Feature bundle name shown on the pricing page; no public price." },
+      { "name": "Sales Intelligence + Predictive AI", "notes": "Feature bundle name shown on the pricing page; no public price." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://6sense.com/pricing/"
+  },
+  "pros": [
+    "Certified for SOC 2 Type 2 across all five trust service criteria, ISO 27001, and ISO 42001 (an AI management system standard), per its trust page",
+    "States GDPR and CCPA/CPRA compliance with a third-party TRUSTe validation letter",
+    "Combines intent data, predictive account scoring, and activation (AI email agents, advertising) in a single platform rather than separate point tools"
+  ],
+  "cons": [
+    "Pricing page shows only unpriced feature bundle names (e.g. \"Sales Intelligence + Predictive AI\") with no numeric self-serve price; every path leads to \"Book a Demo\"",
+    "Built as an orchestration layer over an existing GTM stack, so it is described as most useful to teams already running tools like Salesforce, Gong, or Salesloft that 6sense can connect to",
+    "No free trial is offered, per its pricing page"
+  ],
+  "faq": [
+    {
+      "question": "Does 6sense publish its pricing?",
+      "answer": "No. 6sense's pricing page names three unpriced feature bundles (Sales Intelligence combined with Data Credits and/or Predictive AI) and directs every visitor to \"Book a Demo\" rather than showing dollar amounts."
+    },
+    {
+      "question": "What is Signalverse?",
+      "answer": "Signalverse is 6sense's name for its data layer that aggregates intent data, technographics, and other third-party buying signals, which the company states processes one trillion signals per day."
+    },
+    {
+      "question": "Is 6sense SOC 2 certified?",
+      "answer": "Yes. 6sense's trust page states it holds a SOC 2 Type 2 report covering all five trust service criteria (security, availability, processing integrity, confidentiality, and privacy), verified through annual independent audits."
+    }
+  ],
+  "links": {
+    "pricing": "https://6sense.com/pricing/"
+  },
+  "tags": ["account-based-marketing", "intent-data", "revenue-intelligence", "predictive-ai", "sales-intelligence"],
+  "sources": [
+    "https://6sense.com/",
+    "https://6sense.com/pricing/",
+    "https://6sense.com/platform/",
+    "https://6sense.com/trust/"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Demandbase",
+      "slug": "demandbase",
+      "description": "An account-based marketing platform that identifies and prioritizes in-market accounts and orchestrates coordinated marketing, sales, and advertising programs around them.",
+      "best_for": "Enterprise B2B teams wanting an ABM platform built around a per-user-plus-platform pricing model.",
+      "strengths": ["Buying-group intelligence", "Cross-channel campaign orchestration", "Account-level advertising"]
+    },
+    {
+      "name": "ZoomInfo Sales",
+      "slug": "zoominfo-sales",
+      "description": "A B2B sales intelligence product combining a large contact/company database with buyer intent, website-visitor tracking, and conversation intelligence.",
+      "best_for": "Teams that want a very large contact/company database alongside intent data in one platform.",
+      "strengths": ["Large database coverage", "Buyer intent signals", "Conversation intelligence (Chorus)"]
+    },
+    {
+      "name": "Cognism",
+      "slug": "cognism",
+      "description": "A B2B sales intelligence platform built around phone-verified contact data and buying-intent signals, with a compliance-first approach for European and global prospecting.",
+      "best_for": "Teams prioritizing compliance-vetted, phone-verified data alongside intent signals, especially in Europe.",
+      "strengths": ["Phone-verified mobile data", "Bombora/CB Insights intent partnerships", "EU compliance/DNC coverage"]
+    }
+  ]
+}

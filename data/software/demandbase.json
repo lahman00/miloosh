@@ -1,0 +1,80 @@
+{
+  "name": "Demandbase",
+  "slug": "demandbase",
+  "category": "sales",
+  "description": "Demandbase is an account-based marketing platform, sold as the Demandbase One suite, that identifies and prioritizes in-market accounts, maps buying groups within them, and coordinates marketing, advertising, and sales programs around those shared account priorities.",
+  "website": "https://www.demandbase.com/",
+  "platforms": ["Web"],
+  "best_for": "Enterprise B2B marketing and sales teams that want to align around shared account priorities, run account-level advertising, and measure which go-to-market programs actually drive pipeline and revenue.",
+  "features": [
+    "Account Identification & Prioritization that finds in-market accounts and ranks them by conversion likelihood",
+    "Buying Group Intelligence mapping the decision-making group of contacts within a target account",
+    "Demandbase One suite spanning four modules: Marketing, Sales, Advertising, and Data",
+    "Coordinated campaign activation deploying targeted programs across marketing, advertising, and sales channels",
+    "B2B-native programmatic advertising campaigns run using account-level intent data",
+    "Sales Intelligence showing reps which accounts are actively in-market and who is involved, for focused outreach",
+    "Demandbase AI that prioritizes actions and tracks performance against pipeline goals",
+    "Data Unification connecting account, engagement, and signal data across marketing, sales, and CRM systems"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.demandbase.com/pricing/"
+  },
+  "pros": [
+    "Describes its fee structure openly, even without numbers: \"a clear platform fee that covers all the essential software and services\" plus \"a flat fee per user,\" rather than a fully opaque quote process",
+    "Bundles account identification, buying-group mapping, advertising activation, and sales intelligence under one named suite (Demandbase One) instead of separate point tools",
+    "Lists large, recognizable enterprise customers (including Adobe, Visa, Salesforce, and DocuSign) directly on its own site"
+  ],
+  "cons": [
+    "No published numeric pricing; the pricing page only describes the fee structure (platform fee plus per-user fee) and requires submitting a form to get a customized quote",
+    "No free trial or free plan is offered; its pricing page's calls to action are \"Watch a demo\" and \"Book a meeting\" rather than self-serve signup",
+    "As an account-based orchestration platform, its value depends on integrating with a team's existing CRM, marketing automation, and sales engagement tools"
+  ],
+  "faq": [
+    {
+      "question": "Does Demandbase publish its pricing?",
+      "answer": "No. Demandbase's pricing page describes its structure as a platform fee plus a flat per-user fee but shows no dollar amounts, asking visitors to fill out a form so the company can \"customize a pricing plan.\""
+    },
+    {
+      "question": "What is Demandbase One?",
+      "answer": "Demandbase One is the name of Demandbase's product suite, made up of four modules shown on its own products page: Marketing, Sales, Advertising, and Data, plus Demandbase AI for prioritization."
+    },
+    {
+      "question": "Does Demandbase offer a free trial?",
+      "answer": "Its pricing and product pages show no free trial or free plan; the primary calls to action are booking a demo or a meeting with sales."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.demandbase.com/pricing/"
+  },
+  "tags": ["account-based-marketing", "intent-data", "revenue-intelligence", "b2b-advertising", "sales-intelligence"],
+  "sources": [
+    "https://www.demandbase.com/",
+    "https://www.demandbase.com/pricing/",
+    "https://www.demandbase.com/products/"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "6sense",
+      "slug": "6sense",
+      "description": "An account-based marketing and revenue intelligence platform combining intent data, predictive AI, and workflow automation to prioritize in-market accounts.",
+      "best_for": "Enterprise teams wanting predictive AI account scoring and AI-driven outreach automation alongside intent data.",
+      "strengths": ["Predictive AI account scoring", "RevvyAI conversational intelligence", "AI email agent automation"]
+    },
+    {
+      "name": "ZoomInfo Sales",
+      "slug": "zoominfo-sales",
+      "description": "A B2B sales intelligence product combining a large contact/company database with buyer intent, website-visitor tracking, and conversation intelligence.",
+      "best_for": "Teams that want a very large contact/company database alongside intent data and engagement automation in one platform.",
+      "strengths": ["Large database coverage", "Buyer intent signals", "Conversation intelligence (Chorus)"]
+    }
+  ]
+}
