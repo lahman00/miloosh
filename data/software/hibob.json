@@ -1,0 +1,70 @@
+{
+  "name": "HiBob",
+  "slug": "hibob",
+  "category": "hr-and-payroll",
+  "description": "HiBob (Bob) is an all-in-one HR platform covering core HR record-keeping, hiring and onboarding, performance management, compensation and workforce planning, and payroll for US and UK employees, aimed at mid-market and enterprise organizations with employees spread across multiple countries.",
+  "website": "https://www.hibob.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Mid-market and enterprise companies with employees across multiple countries that want a single HR system covering core HR, talent, compensation/workforce planning, and analytics, with US and UK payroll built in.",
+  "features": [
+    "Core HR record-keeping with employee self-service portal, org charts, and document hub with eSignature",
+    "Hiring and onboarding workflows",
+    "Performance reviews and calibration tools",
+    "Learning management and skills tracking",
+    "US and UK payroll processing plus time and attendance tracking",
+    "Benefits administration",
+    "Compensation cycle management with pay band customization and workforce planning scenarios",
+    "Finance module with dashboards and metrics for headcount forecasting and scenario planning",
+    "\"Your Voice\" anonymous reporting and employee engagement surveys",
+    "Embedded AI for generating performance reviews, job descriptions, and natural-language workforce data queries",
+    "Multi-language support including English, German, Spanish, Hebrew, Dutch, and Swedish"
+  ],
+  "pros": [
+    "Combines core HR, talent, compensation/workforce planning, and a dedicated finance/analytics module in one platform",
+    "SOC 2 Type II and ISO 27001:2022 certified, with reports available under NDA",
+    "Native iOS and Android apps in addition to the web platform"
+  ],
+  "cons": [
+    "No self-serve pricing is published; the pricing page routes to a demo-request form rather than listing plans or a free trial",
+    "Native payroll processing is limited to the US and UK, so employees in other countries need a separate or third-party payroll solution"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.hibob.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Rippling",
+      "slug": "rippling",
+      "description": "A modular workforce platform unifying HR, global payroll, IT device management, and spend management on one employee record.",
+      "best_for": "Companies wanting to add IT and finance modules to a global HR platform rather than a talent- and compensation-focused HRIS.",
+      "strengths": ["Unified employee record", "IT/device management", "Global payroll and EOR"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "An HRIS for small and mid-sized businesses covering employee records, hiring/onboarding, performance, and U.S. payroll as an add-on.",
+      "best_for": "Smaller businesses that want a simpler U.S.-focused HRIS with published per-employee pricing rather than a quote-based global platform.",
+      "strengths": ["Published pricing", "Applicant tracking included", "Simple self-serve setup"]
+    },
+    {
+      "name": "Deel",
+      "slug": "deel",
+      "description": "A global payroll and compliance platform for hiring and paying international contractors and employees.",
+      "best_for": "Companies whose primary need is compliant global contractor/EOR payments rather than a combined HR, talent, and compensation-planning suite.",
+      "strengths": ["Global EOR coverage", "Contractor compliance", "Multi-currency payments"]
+    }
+  ],
+  "sources": [
+    "https://www.hibob.com",
+    "https://www.hibob.com/pricing/",
+    "https://www.hibob.com/hr-platform/",
+    "https://www.hibob.com/security/"
+  ],
+  "accessed_at": "2026-09-05"
+}

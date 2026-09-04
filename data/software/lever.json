@@ -1,0 +1,62 @@
+{
+  "name": "Lever",
+  "slug": "lever",
+  "category": "hr-and-payroll",
+  "description": "Lever is an applicant tracking system (ATS) with built-in candidate relationship management (CRM), owned by Employ Inc., used by talent acquisition teams to source, screen, and manage candidates through hiring with AI-assisted screening and analytics.",
+  "website": "https://www.lever.co",
+  "platforms": ["Web"],
+  "best_for": "Talent acquisition teams at small, mid-sized, and enterprise organizations that want an ATS combined with CRM-style candidate nurturing rather than a bare-bones tracking tool.",
+  "features": [
+    "Combined ATS and CRM in one system for tracking applicants and nurturing passive candidate pipelines",
+    "AI screening that qualifies and ranks candidates by fit and surfaces summaries",
+    "Interview Intelligence: AI-generated interview transcripts and summaries",
+    "Fraud detection with identity verification and resume conflict/risk assessment",
+    "Candidate nurture campaigns with customizable email templates and multi-touch sequences",
+    "Analytics and reporting dashboards for hiring metrics, AI ROI, and feature adoption",
+    "AI Governance: built-in bias screening, compliance checks, and audit trails for AI-generated content such as rejection emails",
+    "Centralized pipeline visibility across candidates, requisitions, and job sites",
+    "Automated scheduling, follow-ups, and offer letter generation"
+  ],
+  "pros": [
+    "Pairs ATS functionality with native CRM-style candidate nurturing rather than requiring a separate sourcing tool",
+    "Publishes explicit SOC 2 Type 2, ISO/IEC 27001, GDPR, and CCPA compliance information on its security page",
+    "Includes AI governance features (bias screening, audit trails) specifically for AI-generated hiring content"
+  ],
+  "cons": [
+    "No pricing is published; every quote requires contacting sales and is tailored to organization size and hiring needs",
+    "No free trial is offered",
+    "Web-only platform with no dedicated mobile app mentioned on the site"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.lever.co/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Greenhouse",
+      "slug": "greenhouse",
+      "description": "A dedicated applicant tracking and hiring platform focused on structured, data-driven recruiting.",
+      "best_for": "Companies wanting structured interview kits and hiring analytics as the primary focus rather than combined ATS/CRM nurture campaigns.",
+      "strengths": ["Structured interview kits", "Hiring analytics", "Deep ATS integrations"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "An HRIS for small and mid-sized businesses with an applicant tracking system bundled into the core HR platform.",
+      "best_for": "Smaller businesses that want hiring bundled into a broader HR system of record rather than a dedicated best-in-class ATS.",
+      "strengths": ["All-in-one HRIS", "Published per-employee pricing", "Applicant tracking included"]
+    }
+  ],
+  "sources": [
+    "https://www.lever.co",
+    "https://www.lever.co/pricing/",
+    "https://www.lever.co/why-lever/",
+    "https://www.lever.co/security/"
+  ],
+  "accessed_at": "2026-09-05"
+}

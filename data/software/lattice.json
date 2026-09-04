@@ -1,0 +1,70 @@
+{
+  "name": "Lattice",
+  "slug": "lattice",
+  "category": "hr-and-payroll",
+  "description": "Lattice is a people management platform built around continuous performance reviews, goal (OKR) tracking, and employee engagement surveys, with add-on compensation and career-growth modules and an AI Agent layered across them, sold as separately priced modules that can be combined.",
+  "website": "https://lattice.com",
+  "platforms": ["Web"],
+  "best_for": "People teams that want to buy performance management, goal tracking, and engagement surveys as separate, transparently priced modules rather than a single bundled HRIS suite.",
+  "features": [
+    "Performance: structured performance reviews and tools to identify high performers",
+    "Goals & OKRs: goal setting and tracking with team alignment",
+    "Engagement: employee engagement surveys with AI-assisted insights",
+    "Grow (add-on): career progression and development planning",
+    "Compensation (add-on): pay planning and compensation review cycles",
+    "Habits: built-in 1:1s, weekly updates, feedback requests, and Q&A boards included with every base product",
+    "AI Agent providing proactive assistance to employees, managers, and leaders",
+    "Integrations with 30+ tools including Workday, Slack, Microsoft Teams, and Salesforce"
+  ],
+  "pros": [
+    "Publishes real per-seat pricing for each module instead of requiring a sales quote for every deal",
+    "Modules (Performance, Goals & OKRs, Engagement, Compensation, Grow) can be purchased individually and combined based on need",
+    "Lists SOC 2, GDPR, and CCPA on its public trust center"
+  ],
+  "cons": [
+    "Billing is annual-only, in USD only, with a $4,000 minimum annual agreement",
+    "No free trial is published; only a sales demo is offered",
+    "Compensation and Grow are paid add-ons on top of the base per-seat module price, so full functionality raises the effective per-seat cost"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$4/seat/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "4", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Engagement", "amount": "4", "currency": "USD", "billing_period": "annual", "unit": "per seat/month, billed annually", "notes": "Base module. Includes Habits (1:1s, weekly updates, feedback, Q&A boards) at no extra cost." },
+      { "name": "Goals & OKRs", "amount": "8", "currency": "USD", "billing_period": "annual", "unit": "per seat/month, billed annually", "notes": "Base module, can be bought standalone or combined with others." },
+      { "name": "Performance", "amount": "10", "currency": "USD", "billing_period": "annual", "unit": "per seat/month, billed annually", "notes": "Base module for performance reviews and identifying high performers." },
+      { "name": "Grow add-on", "amount": "4", "currency": "USD", "billing_period": "annual", "unit": "additional per seat/month, billed annually", "notes": "Add-on on top of a base module; career progression and development tools." },
+      { "name": "Compensation add-on", "amount": "6", "currency": "USD", "billing_period": "annual", "unit": "additional per seat/month, billed annually", "notes": "Add-on on top of a base module; compensation planning and review cycles." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://lattice.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Culture Amp",
+      "slug": "culture-amp",
+      "description": "An employee experience platform combining engagement/pulse surveys with continuous performance management and AI-assisted people analytics.",
+      "best_for": "Companies that want a dedicated engagement-and-performance platform with cross-customer benchmarking rather than modular per-seat pricing.",
+      "strengths": ["Survey benchmarking", "40+ survey templates", "AI comment summaries"]
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "description": "An HRIS for small and mid-sized businesses that includes performance management and satisfaction surveys alongside core HR record-keeping.",
+      "best_for": "Businesses that want performance and engagement features bundled into a core HR system of record rather than purchased as standalone modules.",
+      "strengths": ["All-in-one HRIS", "Published per-employee pricing", "Applicant tracking included"]
+    }
+  ],
+  "sources": [
+    "https://lattice.com",
+    "https://lattice.com/pricing",
+    "https://trustcenter.lattice.com/"
+  ],
+  "accessed_at": "2026-09-05"
+}
