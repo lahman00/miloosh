@@ -1,0 +1,67 @@
+{
+  "name": "Airbyte",
+  "slug": "airbyte",
+  "category": "analytics",
+  "description": "Airbyte is an open-source data integration platform that moves data through ELT pipelines from 600+ connectors into data warehouses, lakes, and other destinations, available both as self-hosted open-source software and as a fully managed Airbyte Cloud service.",
+  "website": "https://airbyte.com",
+  "best_for": "Data teams that want an open-source-first ELT platform they can self-host for free, with the option to move to a fully managed cloud service as data volume, governance, or support needs grow.",
+  "platforms": ["Web", "Self-hosted (open source)"],
+  "features": [
+    "600+ pre-built connectors spanning SaaS applications, databases, APIs, warehouses, and data lakes",
+    "No-code Connector Builder for creating custom integrations without waiting on a vendor-built connector",
+    "Multiple sync modes, including full refresh, incremental append, and log-based change data capture (CDC)",
+    "Automated schema change detection and handling",
+    "Built-in observability with sync health dashboards, record counts, and latency tracking",
+    "Native orchestration integrations with Airflow, Prefect, and Dagster, plus first-class dbt support for transformations",
+    "Multiple ways to manage pipelines: UI, Terraform provider, API, and Python SDK",
+    "A queryable context store that lets AI agents draw on data synced through the same connector catalog"
+  ],
+  "pros": [
+    "The Core edition is open source and can be self-hosted at no cost, not just a time-limited trial",
+    "Airbyte Cloud's Standard plan has a published starting price ($10/month) rather than requiring a sales call to get started",
+    "Airbyte Cloud is SOC 2 Type II and ISO 27001:2017 certified and states GDPR compliance"
+  ],
+  "cons": [
+    "Pro and Enterprise Flex Cloud plans use custom, capacity-based pricing that requires contacting sales — no published numeric rate above the entry Standard plan",
+    "Getting the open-source Core edition for free means running and maintaining the infrastructure yourself, rather than a managed service"
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "Self-hosted Core edition is free (open source); managed Airbyte Cloud's Standard plan starts at $10/month on a volume-based rate",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "10", "currency": "USD", "billing_period": "monthly", "per_seat": false },
+    "tiers": [
+      { "name": "Core (Self-Managed)", "amount": "0", "currency": "USD", "billing_period": "unknown", "notes": "Open-source edition you deploy and run yourself; always free, but you provide and maintain the infrastructure." },
+      { "name": "Standard", "amount": "10", "currency": "USD", "billing_period": "monthly", "notes": "Fully managed Airbyte Cloud, starting at $10/month with volume-based pricing beyond the base. Includes 600+ connectors, CDC, schema propagation, column selection, and syncs as frequent as hourly." },
+      { "name": "Pro", "notes": "Capacity-based pricing via Data Workers. Adds 15-minute syncs, custom mappings, multiple workspaces, SSO, RBAC, field hashing/encryption, row filtering, premium support, and multiple data regions. Requires contacting sales." },
+      { "name": "Enterprise Flex", "notes": "Adds sovereign data movement, on-premises and multi-region deployment, and a hybrid model with a managed control plane. Capacity-based pricing; requires contacting sales." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://airbyte.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Fivetran",
+      "slug": "fivetran",
+      "description": "A fully managed ELT platform with a large pre-built connector catalog and automated schema drift handling, priced on monthly active rows rather than open-source self-hosting.",
+      "best_for": "Teams that want a fully managed, low-maintenance ELT service and are comfortable with usage-based (MAR) pricing rather than an open-source, self-hostable option.",
+      "strengths": ["Large pre-built connector catalog (700+ on Standard)", "Automated schema drift handling", "Free plan up to 500K monthly active rows"]
+    }
+  ],
+  "faq": [
+    { "question": "Is Airbyte free?", "answer": "Airbyte's Core edition is open source and free to self-host on your own infrastructure. Airbyte also offers a fully managed Airbyte Cloud service, where the Standard plan starts at $10/month on volume-based pricing, plus Pro and Enterprise Flex plans with custom, capacity-based pricing." },
+    { "question": "What's the difference between self-hosted Airbyte and Airbyte Cloud?", "answer": "Self-hosted Core is the open-source edition you deploy and operate yourself at no license cost. Airbyte Cloud is Airbyte's fully managed service, adding hosting, faster sync frequencies, SSO/RBAC, premium support, and (on Enterprise Flex) sovereign or hybrid deployment options." },
+    { "question": "Is Airbyte Cloud compliant with security standards?", "answer": "Airbyte states that Airbyte Cloud is SOC 2 Type II and ISO 27001:2017 certified and GDPR compliant, according to its own product pages." }
+  ],
+  "tags": ["ELT", "data integration", "open source", "data pipeline", "connectors"],
+  "links": { "pricing": "https://airbyte.com/pricing" },
+  "sources": [
+    "https://airbyte.com/",
+    "https://airbyte.com/pricing",
+    "https://airbyte.com/product/airbyte-cloud"
+  ],
+  "accessed_at": "2026-09-05"
+}

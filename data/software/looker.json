@@ -1,0 +1,70 @@
+{
+  "name": "Looker",
+  "slug": "looker",
+  "category": "analytics",
+  "description": "Looker is Google Cloud's business intelligence and embedded-analytics platform, built around the LookML semantic layer and Gemini-powered Conversational Analytics agents for natural-language querying, dashboarding, and embedding custom data applications.",
+  "website": "https://cloud.google.com/looker",
+  "company": "Google",
+  "best_for": "Organizations that want a governed, semantic-layer-first BI platform tightly integrated with Google Cloud and BigQuery, and that are comfortable negotiating platform-plus-user pricing with sales rather than buying self-serve.",
+  "platforms": ["Web"],
+  "features": [
+    "LookML semantic layer that defines business logic and metric definitions once, above the underlying cloud data warehouse",
+    "Conversational Analytics: natural-language querying powered by Gemini, including specialized Dashboard Agents embedded directly in BI dashboards",
+    "Embedded analytics via Looker APIs and SDKs for building custom data applications and data-to-UI pipelines inside other products",
+    "Native integration with Google Cloud, including SSO via Google Cloud IAM, private networking, and direct BigQuery integration",
+    "Three per-user license types (Developer, Standard, Viewer) matching cost and capability to how much access each person needs",
+    "Data blending for ad hoc analysis of CSVs and local files alongside governed LookML models"
+  ],
+  "pros": [
+    "Deep native integration with Google Cloud (BigQuery, IAM/SSO, private networking) for teams already on that platform",
+    "LookML semantic layer gives one governed, reusable definition of business metrics shared across dashboards, embedded apps, and AI agents",
+    "Three distinct user license types (Developer/Standard/Viewer) let organizations match cost to what each person actually needs"
+  ],
+  "cons": [
+    "No published numeric pricing anywhere — both platform and per-user licensing require an annual commitment and a custom quote from sales",
+    "Even the entry Standard edition, meant for teams under 50 users, is priced as 'Call sales' with no self-serve signup or trial pricing shown"
+  ],
+  "pricing": {
+    "model": "unknown",
+    "starting_price": "No published numeric price; every edition (Standard, Enterprise, Embed) and every per-user license type is priced as a custom quote from Google Cloud sales, under an annual commitment",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Standard", "notes": "For organizations/teams under 50 users. Includes one production instance, 10 standard users, 2 developer users, upgrades, up to 1,000 query-based API calls/month, and up to 1,000 administrative API calls/month. Annual commitment; priced as 'Call sales'." },
+      { "name": "Enterprise", "notes": "Adds enhanced security features for broader internal BI/analytics use. Includes one production instance, 10 standard users, 2 developer users, upgrades, up to 100,000 query-based API calls/month, and up to 10,000 administrative API calls/month. Annual commitment; priced as 'Call sales'." },
+      { "name": "Embed", "notes": "For deploying and maintaining external analytics and custom applications at scale. Includes one production instance, 10 standard users, 2 developer users, upgrades, up to 500,000 query-based API calls/month, and up to 100,000 administrative API calls/month. Annual commitment; priced as 'Call sales'." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://cloud.google.com/looker/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "Tableau",
+      "slug": "tableau",
+      "description": "A Salesforce-owned BI and visualization platform licensed by role (Viewer/Explorer/Creator) with published per-user rates, rather than Looker's contact-sales platform-plus-user pricing.",
+      "best_for": "Teams that want published, self-serve per-role pricing and deep, flexible visual analytics rather than a semantic-layer-first, contact-sales BI platform tied to Google Cloud.",
+      "strengths": ["Published per-role pricing (Viewer/Explorer/Creator)", "Deep, highly customizable visual analytics", "Dedicated authoring apps for Windows and Mac"]
+    },
+    {
+      "name": "Microsoft Power BI",
+      "slug": "microsoft-power-bi",
+      "description": "Microsoft's BI platform, with simple published per-user pricing and deep integration into Microsoft 365 and Microsoft Fabric, instead of Looker's contact-sales platform-plus-user model.",
+      "best_for": "Organizations already standardized on Microsoft 365 that want low, published per-user BI pricing rather than a contact-sales platform built around Google Cloud and LookML.",
+      "strengths": ["Simple published per-user pricing ($14/user/month Pro)", "Native Microsoft 365/Teams/Excel integration", "Free plan for personal-use reports"]
+    }
+  ],
+  "faq": [
+    { "question": "Is there a free version of Looker?", "answer": "Google Cloud does not publish a free plan or numeric free-trial terms for Looker (Google Cloud core) — its official pricing page prices every edition as 'Call sales.'" },
+    { "question": "How is Looker priced?", "answer": "Looker pricing has two components: platform pricing (Standard, Enterprise, or Embed edition, each requiring an annual commitment) and per-user licensing (Developer, Standard, or Viewer user types). Every edition and license type is priced as a custom quote from Google Cloud sales — no numeric self-serve rate is published." },
+    { "question": "What's included in the Standard edition?", "answer": "Standard includes one production instance, 10 standard users, 2 developer users, upgrades, up to 1,000 query-based API calls per month, and up to 1,000 administrative API calls per month, billed under an annual commitment quoted by sales." }
+  ],
+  "tags": ["business intelligence", "embedded analytics", "semantic layer", "data visualization"],
+  "links": { "pricing": "https://cloud.google.com/looker/pricing" },
+  "sources": [
+    "https://cloud.google.com/looker",
+    "https://cloud.google.com/looker/pricing"
+  ],
+  "accessed_at": "2026-09-05"
+}
