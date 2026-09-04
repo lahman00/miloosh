@@ -1,0 +1,98 @@
+{
+  "name": "Odoo",
+  "slug": "odoo",
+  "category": "finance-and-erp",
+  "description": "Odoo is an open-source, modular business platform that bundles ERP functions — accounting, inventory, manufacturing, CRM, HR, and more — into dozens of individually enabled apps. Odoo describes itself as \"much more than just an Enterprise Resource Planning (ERP) system,\" letting a business start with one free app on Odoo Online and add more apps, still under one per-user price, as it grows.",
+  "website": "https://www.odoo.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Small and mid-sized businesses that want a modular, openly-priced business platform where they pay per user for only the apps (accounting, inventory, CRM, manufacturing, etc.) they actually turn on, with the option to self-host.",
+  "features": [
+    "Modular apps spanning Finance (Accounting, Invoicing, Expenses), Sales/CRM, Inventory, Manufacturing (MRP), HR, Marketing, and Website/eCommerce, natively integrated",
+    "AI-native Accounting app: AI-powered invoice data capture with a reported 98% recognition rate, and automatic bank reconciliation matching a reported 95% of transactions across 28,000+ connected banks",
+    "Inventory app doubling as a warehouse management system with automated replenishment and configurable routes",
+    "Manufacturing app with finite capacity planning and Gantt-chart production scheduling",
+    "Odoo Studio no-code customization, multi-company support, and external API access on the Custom plan",
+    "Choice of Odoo Online, Odoo.sh, or self-hosted on-premise deployment on the Custom plan",
+    "Native iOS and Android mobile apps",
+    "One app free with unlimited users on Odoo Online"
+  ],
+  "pros": [
+    "One App Free plan gives unlimited users on a single app at no cost",
+    "Standard and Custom plans charge one per-user price that covers every app, rather than per-app add-on fees",
+    "Open-source core plus an on-premise/Odoo.sh option for businesses that don't want to run only on Odoo's own cloud"
+  ],
+  "cons": [
+    "Moving from Standard to Custom (multi-company, external API access, Odoo.sh/on-premise) raises the per-user price",
+    "Odoo's own pricing page notes the discounted yearly rate applies only for the first 12 months on initially-ordered users, so renewal pricing can differ"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0 (One App Free, unlimited users); paid plans from $13.50/user/month billed yearly",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "13.50", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": false },
+    "tiers": [
+      {
+        "name": "One App Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "One Odoo app with unlimited users on Odoo Online."
+      },
+      {
+        "name": "Standard",
+        "amount": "13.50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "All apps on Odoo Online. $13.50/user/month billed yearly vs. $16.90/user/month billed monthly. Per Odoo's pricing page: \"The discount is valid for 12 months, for initial users ordered.\""
+      },
+      {
+        "name": "Custom",
+        "amount": "20.40",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "All apps plus Odoo Studio, multi-company support, and external API access; choice of Odoo Online, Odoo.sh, or on-premise hosting. $20.40/user/month billed yearly vs. $25.50/user/month billed monthly."
+      }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.odoo.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, order management, and multi-subsidiary consolidation for larger organizations.",
+      "best_for": "Growing to enterprise companies that need deeper multi-subsidiary financial consolidation than Odoo's Accounting app targets.",
+      "strengths": ["Multi-subsidiary consolidation (OneWorld)", "Enterprise performance management", "Large customer base (44,000+)"]
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting.",
+      "best_for": "Mid-market finance teams and nonprofits needing dedicated fund accounting and dimensional reporting beyond Odoo's Accounting app.",
+      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Nonprofit fund/grant accounting"]
+    },
+    {
+      "name": "Zoho Books",
+      "slug": "zoho-books",
+      "description": "Cloud accounting software for invoicing, expense tracking, and basic financial reporting, part of the wider Zoho apps suite.",
+      "best_for": "Small businesses wanting simpler accounting than Odoo's full ERP, especially if already using other Zoho apps.",
+      "strengths": ["Lower entry cost for accounting-only use", "Part of the broader Zoho suite", "Simple invoicing and expense tracking"]
+    }
+  ],
+  "links": {
+    "pricing": "https://www.odoo.com/pricing"
+  },
+  "sources": [
+    "https://www.odoo.com/pricing",
+    "https://www.odoo.com/erp",
+    "https://www.odoo.com/app/accounting"
+  ],
+  "accessed_at": "2026-09-05"
+}

@@ -1,0 +1,70 @@
+{
+  "name": "SAP Cloud ERP",
+  "slug": "sap-cloud-erp",
+  "category": "finance-and-erp",
+  "description": "SAP Cloud ERP is SAP's cloud ERP line, led by SAP S/4HANA Cloud Public Edition — a subscription-priced, preconfigured ERP with embedded AI across finance, supply chain, HR, and sales processes. SAP positions it around fast, guided go-lives using the SAP Activate methodology, industry-standard best-practice processes, and Public Edition, Private Edition, or two-tier deployment options.",
+  "website": "https://www.sap.com/products/erp/s4hana.html",
+  "platforms": ["Web"],
+  "best_for": "Mid-size and larger companies that want a preconfigured, industry-best-practice cloud ERP with embedded AI across finance, supply chain, HR, and sales, and that are prepared for an SAP-led implementation.",
+  "features": [
+    "Preconfigured, industry-specific best-practice business processes",
+    "Embedded AI across finance, supply chain, HR, and sales processes",
+    "AI-enabled automation for period-end financial close",
+    "End-to-end supply chain visibility connecting production, logistics, and maintenance",
+    "Streamlined core HR, time, and global payroll with self-service AI tools",
+    "SAP Activate guided implementation methodology",
+    "Public Edition, Private Edition, and two-tier deployment options",
+    "Ready-to-use APIs and extensibility tooling for integrations and custom development"
+  ],
+  "pros": [
+    "Preconfigured, industry-specific processes intended to speed up go-live versus building processes from scratch",
+    "SAP reports 30 days or less for delivery of initial scope and 40-60% quicker time-to-value, though SAP notes baseline activation time may vary",
+    "Named a Leader in Gartner's 2025 Magic Quadrant reports for Cloud ERP (Service-Centric Enterprises, Product-Centric Enterprises, and Cloud ERP Finance), per SAP's own citation of Gartner"
+  ],
+  "cons": [
+    "No published pricing — SAP directs buyers to request a quote or demo rather than showing self-serve prices",
+    "Choosing between Public Edition, Private Edition, and a two-tier model adds an architecture decision that a single-deployment ERP wouldn't require"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "SAP S/4HANA Cloud Public Edition",
+        "notes": "Subscription-based pricing model, per SAP. SAP does not publish self-serve numeric pricing; the product page's pricing section links to \"Request a quote.\""
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.sap.com/products/erp/s4hana.html"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, order management, and multi-subsidiary consolidation.",
+      "best_for": "Growing to mid-market companies that want a single ERP vendor without SAP's typical enterprise-scale implementation footprint.",
+      "strengths": ["Large customer base (44,000+)", "Multi-subsidiary consolidation (OneWorld)", "Broad partner/consulting ecosystem"]
+    },
+    {
+      "name": "Odoo",
+      "slug": "odoo",
+      "description": "An open-source, modular business platform covering accounting, inventory, manufacturing, and more as individually priced apps.",
+      "best_for": "Smaller or mid-sized companies that want published per-user pricing and a lighter implementation than an SAP rollout.",
+      "strengths": ["Published self-serve pricing", "Modular, pay-for-what-you-use apps", "Open-source/self-hosting option"]
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting.",
+      "best_for": "Mid-market finance teams that need strong financial consolidation without a full operational ERP the size of S/4HANA.",
+      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Lighter-weight than a full SAP rollout"]
+    }
+  ],
+  "sources": [
+    "https://www.sap.com/products/erp/s4hana.html"
+  ],
+  "accessed_at": "2026-09-05"
+}
