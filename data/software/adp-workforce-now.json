@@ -1,0 +1,65 @@
+{
+  "name": "ADP Workforce Now",
+  "slug": "adp-workforce-now",
+  "category": "hr-and-payroll",
+  "description": "ADP Workforce Now is ADP's HCM suite for small to midsized businesses, combining payroll, HR, time and attendance, talent management, and benefits administration on one platform, sold through packaged tiers that ADP prices per company via a custom quote.",
+  "website": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Small to midsized employers wanting an established payroll provider's tax-compliance infrastructure bundled with HR, time, and talent management in one suite.",
+  "features": [
+    "Continuous payroll calculation with automated tax compliance across jurisdictions",
+    "Embedded AI features including payroll anomaly detection, turnover trend analysis, and generative AI for job descriptions",
+    "Automated hiring, onboarding, and performance-review workflows with configurable business process automation",
+    "Real-time data sync across payroll, HR, time, and benefits modules",
+    "ADP Marketplace integrations with third-party HR, finance, and productivity tools",
+    "Employee self-service via the ADP Mobile Solutions app: pay statements, leave balances, time-off requests, and timesheets",
+    "Packaged tiers (e.g., Select, Plus) that bundle different combinations of payroll, HR, and talent features"
+  ],
+  "pros": [
+    "Backed by ADP's long-established payroll tax engine and compliance infrastructure",
+    "Talent management, time and attendance, and benefits administration are available within the same suite as payroll",
+    "ADP Marketplace offers a large library of pre-built third-party integrations"
+  ],
+  "cons": [
+    "No pricing is published on adp.com; every quote requires contacting ADP sales or calling in for a custom price",
+    "SOC 1/SOC 2 reports and ISO 27001/27701 certifications apply only to select ADP products, services, and locations rather than the entire company blanket-wide, so buyers should confirm coverage for the specific product they're evaluating"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx"
+  },
+  "alternatives": [
+    {
+      "name": "Paychex Flex",
+      "slug": "paychex-flex",
+      "description": "A configurable payroll and HR platform from Paychex serving small to midsized businesses.",
+      "best_for": "Employers comparing established, decades-old payroll providers with similar tax-compliance depth to ADP.",
+      "strengths": ["Established payroll tax engine", "Configurable HR modules", "Broad company-size coverage"]
+    },
+    {
+      "name": "Gusto",
+      "slug": "gusto",
+      "description": "A payroll, benefits, and HR platform focused on small and mid-sized U.S. businesses with published, self-serve pricing.",
+      "best_for": "Smaller employers wanting transparent published pricing instead of a sales-quote process.",
+      "strengths": ["Published per-plan pricing", "Simple self-serve setup", "Built-in benefits administration"]
+    },
+    {
+      "name": "Rippling",
+      "slug": "rippling",
+      "description": "A modular workforce platform unifying HR, payroll, IT device management, and spend management on one employee record.",
+      "best_for": "Companies wanting IT and finance modules alongside payroll/HR rather than a traditional payroll-bureau model.",
+      "strengths": ["Unified employee record", "IT/device management", "Modular add-ons"]
+    }
+  ],
+  "sources": [
+    "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
+    "https://www.adp.com/about-adp/data-security.aspx",
+    "https://apps.apple.com/us/app/adp-mobile-solutions/id444553167"
+  ],
+  "accessed_at": "2026-09-05"
+}

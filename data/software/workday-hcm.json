@@ -1,0 +1,67 @@
+{
+  "name": "Workday HCM",
+  "slug": "workday-hcm",
+  "category": "hr-and-payroll",
+  "description": "Workday Human Capital Management is an enterprise cloud HCM suite covering talent acquisition, talent management, workforce planning, global payroll, and analytics, built on the same unified data platform as Workday's finance products and used by a large share of Fortune 500 companies.",
+  "website": "https://www.workday.com/en-us/products/human-capital-management/overview.html",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Large and complex enterprises wanting HCM unified with financial and operational data on one platform, backed by extensive compliance certifications.",
+  "features": [
+    "Unified data model spanning financial, operational, and workforce information alongside Workday's finance products",
+    "Global payroll management with local compliance support",
+    "Talent acquisition and candidate engagement tools",
+    "Learning and development, internal mobility, and skills-matching tools",
+    "Contingent worker management alongside employee records",
+    "Time tracking and absence management, including AI-driven scheduling and demand forecasting",
+    "Augmented analytics for workforce planning, forecasting, and employee-experience feedback",
+    "Low/no-code app development tools for building custom extensions on Workday data"
+  ],
+  "pros": [
+    "Single data platform shared with Workday's financial management products, avoiding a separate integration layer between HR and finance",
+    "Extensive third-party audited certifications, including SOC 1, SOC 2, ISO 27001, ISO 27018, and FedRAMP Moderate",
+    "Used by a large share of Fortune 500 companies, indicating proven ability to operate at large enterprise scale"
+  ],
+  "cons": [
+    "No pricing is published anywhere on workday.com; every deployment requires a sales conversation and custom quote",
+    "The platform's enterprise scope and configuration depth typically require a longer, more involved implementation than SMB-focused HR/payroll tools"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.workday.com/en-us/products/human-capital-management/overview.html"
+  },
+  "alternatives": [
+    {
+      "name": "Paycom",
+      "slug": "paycom",
+      "description": "A single-database HCM platform covering payroll, talent, HR, and time management, built around employee-driven payroll verification.",
+      "best_for": "Mid-sized organizations wanting single-database HCM breadth without Workday's enterprise financial-planning depth.",
+      "strengths": ["Single-database architecture", "Employee-driven payroll input", "Full HCM suite"]
+    },
+    {
+      "name": "Paylocity",
+      "slug": "paylocity",
+      "description": "A unified HR, payroll, finance, and IT platform for mid-sized organizations with modular products.",
+      "best_for": "Mid-sized employers wanting modular HCM plus finance tools without an enterprise-scale implementation.",
+      "strengths": ["Modular product adoption", "Finance modules included", "Employee experience tools"]
+    },
+    {
+      "name": "ADP Workforce Now",
+      "slug": "adp-workforce-now",
+      "description": "ADP's HCM suite for small to midsized businesses, combining payroll, HR, time, and talent management.",
+      "best_for": "Organizations wanting an established payroll-bureau vendor rather than Workday's finance-unified enterprise platform; note ADP Workforce Now itself targets small-to-midsized employers rather than large enterprise.",
+      "strengths": ["Established payroll tax engine", "Large HR/benefits ecosystem", "Broad company-size coverage"]
+    }
+  ],
+  "sources": [
+    "https://www.workday.com/en-us/products/human-capital-management/overview.html",
+    "https://www.workday.com/en-us/why-workday/trust/compliance.html",
+    "https://security.workday.com/",
+    "https://apps.apple.com/us/app/workday/id316800034"
+  ],
+  "accessed_at": "2026-09-05"
+}

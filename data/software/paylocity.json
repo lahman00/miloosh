@@ -1,0 +1,67 @@
+{
+  "name": "Paylocity",
+  "slug": "paylocity",
+  "category": "hr-and-payroll",
+  "description": "Paylocity is a unified HR, payroll, finance, and IT platform for mid-sized organizations, offering modular products across payroll, time and labor, talent management, benefits, expense/AP automation, and IT asset and access management, priced only through a custom sales quote.",
+  "website": "https://www.paylocity.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Mid-sized employers wanting HR, payroll, and finance modules on one platform and willing to go through a sales quote rather than self-serve published pricing.",
+  "features": [
+    "Core payroll processing with tax services, on-demand pay, and garnishment services",
+    "Time & Labor management including scheduling, attendance, and time collection",
+    "Talent management: recruiting, onboarding, performance, compensation, and learning",
+    "Benefits administration and retirement planning",
+    "Finance modules: expense management, corporate cards, AP automation, guided procurement, and spend analytics with fraud detection",
+    "IT modules for asset management and access/identity management",
+    "Ignite AI features for automation and insights across HR and finance workflows",
+    "Employee experience tools including community, recognition, and employee-voice surveys"
+  ],
+  "pros": [
+    "Customers can implement one or more modules and expand later rather than buying the full suite upfront",
+    "Combines HR/payroll with finance modules (AP automation, spend analytics, corporate cards) not offered by every HR-first competitor",
+    "Mobile app covers paychecks, clock in/out, schedules, and messages for employees"
+  ],
+  "cons": [
+    "No pricing is published on paylocity.com; obtaining even a rough estimate requires submitting a form with company size and contact details",
+    "No named, self-serve pricing tiers are shown, unlike competitors that publish at least a starting per-employee rate"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.paylocity.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "Paycom",
+      "slug": "paycom",
+      "description": "A single-database HCM platform covering payroll, talent, HR, and time management, built around employee-driven payroll verification.",
+      "best_for": "Mid-sized employers comparing single-vendor HCM suites with similar breadth to Paylocity.",
+      "strengths": ["Single-database architecture", "Employee-driven payroll input", "Full HCM suite"]
+    },
+    {
+      "name": "ADP Workforce Now",
+      "slug": "adp-workforce-now",
+      "description": "ADP's HCM suite for small to midsized businesses, combining payroll, HR, time, and talent management.",
+      "best_for": "Employers wanting an established payroll bureau with decades of tax-compliance infrastructure.",
+      "strengths": ["Established payroll tax engine", "Large HR/benefits ecosystem", "Broad company-size coverage"]
+    },
+    {
+      "name": "Rippling",
+      "slug": "rippling",
+      "description": "A modular workforce platform unifying HR, payroll, IT device management, and spend management on one employee record.",
+      "best_for": "Companies wanting IT device management bundled with HR/payroll/finance rather than finance-and-HR without device management.",
+      "strengths": ["Unified employee record", "IT/device management", "Modular add-ons"]
+    }
+  ],
+  "sources": [
+    "https://www.paylocity.com/",
+    "https://www.paylocity.com/pricing/",
+    "https://www.paylocity.com/company/protecting-our-clients/",
+    "https://apps.apple.com/us/app/paylocity/id652438572"
+  ],
+  "accessed_at": "2026-09-05"
+}
