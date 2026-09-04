@@ -1,0 +1,78 @@
+{
+  "name": "Gong",
+  "slug": "gong",
+  "category": "sales",
+  "description": "Gong is a revenue intelligence platform that captures and analyzes sales calls, emails, and meetings to surface deal risk, coach reps, and ground pipeline forecasting in real customer interactions.",
+  "website": "https://www.gong.io",
+  "best_for": "Sales organizations that want conversation-level visibility into deals, including call recording, deal-risk scoring, and forecasting grounded in actual customer interactions.",
+  "features": [
+    "Conversation capture and analysis across calls, email, and meetings, unified into a \"Revenue Graph\"",
+    "Deal Intelligence for pipeline visibility, risk prediction, and automated deal handoffs",
+    "Gong Forecast for org-wide revenue forecasting grounded in captured interactions",
+    "Gong Engage for prioritizing sales engagement activity",
+    "Gong Enable for rep coaching grounded in real call data",
+    "Gong Agents that automate follow-ups, pipeline edits, and forecast corrections",
+    "Free integration with a team's existing tech stack regardless of plan"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.gong.io/pricing/"
+  },
+  "pros": [
+    "Documents a broad certification set on its trust page: SOC 2 Type 2, ISO/IEC 27001:2022, 27017, 27018, 27701, and 42001 (an AI management system standard), plus PCI DSS SAQ D, CSA STAR Registry membership, and participation in the EU-U.S. Data Privacy Framework",
+    "States customer conversation data is never used to train generative models, per its trust page",
+    "Integrating existing tech stack tools is free regardless of plan, per its pricing FAQ"
+  ],
+  "cons": [
+    "No published self-serve pricing; quotes are scaled by company-size band (1-50, 51-1,000, 1,001-9,999, or 10,000+ users) rather than a flat number",
+    "Pricing combines per-user licenses with a separate platform fee, so total cost isn't a single per-seat figure",
+    "No free trial is mentioned on the pricing page"
+  ],
+  "faq": [
+    {
+      "question": "Does Gong publish its pricing?",
+      "answer": "No. Gong's pricing page states licenses are priced per user plus a platform fee based on the number of users supported, with quotes segmented by company-size band, but no dollar amounts are published."
+    },
+    {
+      "question": "Is Gong SOC 2 certified?",
+      "answer": "Yes. Gong's trust page lists SOC 2 Type 2 among its certifications, alongside multiple ISO/IEC standards (27001, 27017, 27018, 27701, and 42001) and PCI DSS SAQ D."
+    },
+    {
+      "question": "Does Gong use customer call data to train AI models?",
+      "answer": "Gong's trust page states: \"Your data is never used to train generative models.\""
+    }
+  ],
+  "links": {
+    "pricing": "https://www.gong.io/pricing/"
+  },
+  "tags": ["conversation-intelligence", "revenue-intelligence", "deal-intelligence", "forecasting", "sales-coaching"],
+  "sources": [
+    "https://www.gong.io/pricing/",
+    "https://www.gong.io/",
+    "https://www.gong.io/platform/trust/"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Clari",
+      "slug": "clari",
+      "description": "A revenue orchestration platform providing AI-driven forecasting, pipeline inspection, and deal-risk signals for enterprise revenue teams.",
+      "best_for": "Teams whose primary need is forecasting and pipeline inspection across a broader revenue-orchestration suite.",
+      "strengths": ["AI-driven forecasting", "Pipeline inspection", "Connected sales-engagement module (Groove)"]
+    },
+    {
+      "name": "ZoomInfo Sales",
+      "slug": "zoominfo-sales",
+      "description": "A B2B sales intelligence product whose Chorus module provides conversation intelligence alongside contact data and buyer intent.",
+      "best_for": "Teams that want conversation intelligence bundled with a large contact database rather than as a standalone product.",
+      "strengths": ["Conversation intelligence (Chorus)", "Bundled contact/company data", "Buyer intent signals"]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "name": "Apollo.io",
+  "slug": "apollo-io",
+  "category": "sales",
+  "description": "Apollo.io is a sales intelligence and engagement platform that combines a B2B contact and company database with email/call sequencing, a built-in dialer, and AI-assisted prospecting tools in a single credit-based subscription.",
+  "website": "https://www.apollo.io",
+  "platforms": ["Web", "Chrome Extension"],
+  "best_for": "Sales teams that want prospect data, multichannel outreach sequences, and a dialer in one platform instead of stitching together separate data and engagement tools.",
+  "features": [
+    "Verified B2B contact and company database accessed via a credit system (1 credit per email, 8 credits per phone number)",
+    "Outbound email/call sequences, with unlimited sequences and A/Z testing on paid plans",
+    "Built-in US dialer with call recording, plus an international dialer and parallel/power dialer as paid add-ons",
+    "AI Assistant, AI Research, and AI-based lead scoring built into every plan",
+    "Chrome, Gmail, and Salesforce browser extensions for in-context prospecting",
+    "Buying-intent topics and website visitor identification (company- and contact-level)",
+    "Waterfall enrichment plus CSV, CRM, and API data enrichment with automated workflows",
+    "Deal/pipeline management, meeting scheduling, and inbound lead routing"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$49/seat/month (billed annually)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": {
+      "amount": "49",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "900 credits per seat per year (granted monthly, ~75/month). Includes AI Assistant (5-chat limit), 2 sequences, basic filters, website visitor ID (20 companies/month), and call recording (150 minutes)."
+      },
+      {
+        "name": "Basic",
+        "amount": "49",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "$65/seat/month if billed monthly. 30,000 credits per seat per year, granted upfront. Adds unlimited sequences, advanced filters, waterfall enrichment, and a 14-day free trial."
+      },
+      {
+        "name": "Professional",
+        "amount": "79",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "Marked \"Most Popular\" on the pricing page. $99/seat/month if billed monthly. 48,000 credits per seat per year. Adds unlimited meeting events, agentic loops, call recording/AI insights (4,000 minutes), and analytics."
+      },
+      {
+        "name": "Organization",
+        "amount": "119",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "Minimum 3 seats, billed annually. 72,000 credits per seat per year. Adds SSO, advanced security configurations, and a \"Talk to Sales\" primary call-to-action despite the published price."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.apollo.io/pricing"
+  },
+  "pros": [
+    "Publishes exact self-serve per-seat pricing for all four tiers, including the top \"Organization\" tier, rather than gating everything behind a sales call",
+    "Free plan includes real usage (900 credits/year, 2 sequences, a dialer with 150 call-recording minutes) rather than only a time-limited trial",
+    "Combines contact data, email/dialer sequencing, and browser extensions for Chrome, Gmail, and Salesforce in one subscription",
+    "States ISO 27001 certification, a SOC 2 report (via A-LIGN), and GDPR compliance as both a data processor and controller"
+  ],
+  "cons": [
+    "Feature access is metered by a credit system on top of the seat price, so heavy use of phone-number reveals (8 credits each) or enrichment can exhaust monthly/annual allowances",
+    "Non-Gmail/Microsoft email accounts cannot be connected for sending until you're on a paid plan",
+    "The Organization tier requires a minimum of 3 seats"
+  ],
+  "faq": [
+    {
+      "question": "Does Apollo.io have a free plan?",
+      "answer": "Yes. Apollo's Free plan is $0 per seat and includes 900 credits per seat per year (granted monthly), 2 sequences, basic filters, and 150 minutes of call recording, according to its pricing page."
+    },
+    {
+      "question": "How much does Apollo.io cost?",
+      "answer": "As of the pricing page's annual-billing view, Basic is $49/seat/month, Professional is $79/seat/month, and Organization is $119/seat/month (minimum 3 seats). Monthly billing is higher ($65 and $99 for Basic and Professional respectively)."
+    },
+    {
+      "question": "Does Apollo.io offer a free trial?",
+      "answer": "Basic and Professional plans show a \"Start 14-day trial\" option on the pricing page. The Free plan itself has no time limit."
+    },
+    {
+      "question": "Is Apollo.io GDPR compliant?",
+      "answer": "Apollo's security page states it is GDPR compliant as both a data processor and a data controller, and that it is ISO 27001 certified with a SOC 2 report available from A-LIGN."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.apollo.io/pricing"
+  },
+  "tags": ["sales-intelligence", "sales-engagement", "b2b-database", "dialer", "prospecting"],
+  "sources": [
+    "https://www.apollo.io/pricing",
+    "https://www.apollo.io/product/security"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "ZoomInfo Sales",
+      "slug": "zoominfo-sales",
+      "description": "A B2B sales intelligence product combining a large contact/company database with buyer intent, website-visitor tracking, and conversation intelligence.",
+      "best_for": "Teams that want the largest published contact/company database alongside intent data and conversation intelligence.",
+      "strengths": ["Large database coverage", "Buyer intent signals", "Conversation intelligence (Chorus)"]
+    },
+    {
+      "name": "Cognism",
+      "slug": "cognism",
+      "description": "A B2B sales intelligence platform built around phone-verified, compliance-vetted contact data, especially for European prospecting.",
+      "best_for": "Teams prioritizing compliance-vetted, phone-verified data over raw database size, especially in Europe.",
+      "strengths": ["Phone-verified mobile data", "EU compliance/DNC coverage", "ISO/SOC 2 certifications"]
+    },
+    {
+      "name": "Outreach",
+      "slug": "outreach",
+      "description": "A sales engagement platform for building multichannel outreach sequences with conversation intelligence and AI-driven forecasting.",
+      "best_for": "Teams whose primary need is structured, multichannel sequence execution rather than contact data sourcing.",
+      "strengths": ["Multichannel sequencing", "Real-time conversation guidance", "AI forecast projection"]
+    },
+    {
+      "name": "Salesloft",
+      "slug": "salesloft",
+      "description": "A sales engagement platform for running multichannel cadences and managing deals, now combined with Clari's forecasting after their 2025 merger.",
+      "best_for": "Teams that want cadence-based sales engagement now paired with Clari's forecasting and pipeline inspection.",
+      "strengths": ["Multichannel cadences", "Deal management", "Post-merger forecasting integration"]
+    }
+  ]
+}

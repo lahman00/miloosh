@@ -1,0 +1,112 @@
+{
+  "name": "PandaDoc",
+  "slug": "pandadoc",
+  "category": "sales",
+  "description": "PandaDoc is a document management platform for creating, sending, tracking, and eSigning proposals, quotes, and contracts, with CPQ, embedded payment collection, and CRM integrations on its higher tiers.",
+  "website": "https://www.pandadoc.com",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Sales and operations teams that want proposal creation, e-signatures, and, on higher tiers, CPQ and payment collection in one connected document workflow.",
+  "features": [
+    "Drag-and-drop document editor with reusable templates and a content library",
+    "Legally-binding eSignatures with configurable signing order and recipient identity verification",
+    "CPQ (configure-price-quote) with a product catalog and rules-based pricing, on the Enterprise plan",
+    "Deal rooms and approval workflows for collaborative agreement negotiation",
+    "Payment collection embedded directly inside documents",
+    "Real-time document tracking, audit trail, and recipient analytics",
+    "CRM integrations (including Salesforce, HubSpot, and Pipedrive) plus webhooks and an API",
+    "Mobile app for creating, tracking, approving, and signing documents on a phone or iPad"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$19/seat/month (billed annually)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": {
+      "amount": "19",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "For small businesses needing basic eSign. Includes 60 documents per year, 5 legally-binding eSignatures/month, 5 documents sent/month, and 24/7 email and chat support. No credit card required."
+      },
+      {
+        "name": "Starter",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "Billed annually (\"Save up to 46%\" vs. monthly billing, exact monthly rate not published on the pricing page). Unlimited document uploads and eSignatures. 14-day free trial, no credit card required."
+      },
+      {
+        "name": "Business",
+        "amount": "49",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per seat/month",
+        "notes": "Marked \"Most Popular.\" Billed annually. Adds custom quotes/sales agreements, CRM integrations, custom branding and content library, deal rooms, approval workflows, web forms, and bulk send."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Per-seat or per-document pricing; contact sales (\"Let's talk\"). Adds CPQ, workflow automation, smart content, single sign-on (SSO), team workspaces, notary, and API access."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.pandadoc.com/pricing/"
+  },
+  "pros": [
+    "Publishes exact self-serve per-seat pricing for the Free, Starter, and Business tiers rather than gating everything behind a sales call",
+    "The Free plan supports real e-signatures (5/month) and document sends, not just a time-limited trial",
+    "States SOC 2 Type II and GDPR compliance on its pricing page, plus eIDAS and U.S. ESIGN Act of 2000 support for electronic signatures"
+  ],
+  "cons": [
+    "Free and Starter plans bill extra per document once you exceed the plan's allowance: $3.50/document on Starter Monthly, $2 on Starter Annual, and $2.60 on Business Monthly, per its pricing FAQ",
+    "CPQ, workflow automation, SSO, and full API access are reserved for the Enterprise (contact-sales) tier",
+    "HIPAA compliance is listed as an optional add-on on the pricing page's feature-comparison table rather than included by default"
+  ],
+  "faq": [
+    {
+      "question": "Does PandaDoc have a free plan?",
+      "answer": "Yes. PandaDoc's Free plan is $0 and includes 60 documents per year, 5 eSignatures/month, and 5 documents sent/month, per its pricing page."
+    },
+    {
+      "question": "How much does PandaDoc cost?",
+      "answer": "On the annual-billing view, Starter is $19/seat/month and Business is $49/seat/month. Enterprise uses per-seat or per-document custom pricing via a sales quote."
+    },
+    {
+      "question": "Will I be charged when I start a PandaDoc trial?",
+      "answer": "No. PandaDoc's pricing FAQ states you are only charged after your 14-day free trial evaluation if you choose to continue."
+    },
+    {
+      "question": "Is PandaDoc SOC 2 certified?",
+      "answer": "PandaDoc's pricing page lists \"SOC 2 Type II compliance\" and states data is encrypted in transit and stored in a SOC, FISMA, and PCI DSS Level 1 compliant cloud."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.pandadoc.com/pricing/"
+  },
+  "tags": ["e-signature", "proposals", "cpq", "document-management", "contracts"],
+  "sources": [
+    "https://www.pandadoc.com/pricing/",
+    "https://www.pandadoc.com/"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Jotform",
+      "slug": "jotform",
+      "description": "A no-code online form builder for collecting submissions, payments, and operational data through customizable forms and workflows.",
+      "best_for": "Teams whose primary need is lightweight, form-based document and payment collection rather than a full proposal/CPQ/e-signature suite.",
+      "strengths": ["No-code form builder", "Large template library", "Payment collection"]
+    }
+  ]
+}

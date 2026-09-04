@@ -1,0 +1,90 @@
+{
+  "name": "Cognism",
+  "slug": "cognism",
+  "category": "sales",
+  "description": "Cognism is a B2B sales intelligence platform built around phone-verified contact data, buying-intent signals, and CRM enrichment, with a compliance-first data-sourcing approach aimed at European and global prospecting.",
+  "website": "https://www.cognism.com",
+  "best_for": "Sales and RevOps teams, especially those prospecting into Europe, that prioritize compliance-vetted, phone-verified contact data over the largest possible raw database.",
+  "features": [
+    "Phone-verified mobile numbers (Diamond Data) validated by a manual research team",
+    "Buying-intent, hiring, job-change, and funding signals, including data partnerships with Bombora and CB Insights",
+    "CRM enrichment that prioritizes data gaps by ICP segment and auto-enriches inbound leads",
+    "Data-as-a-Service delivery via real-time API access or scheduled batch exports",
+    "Automatic suppression against Do-Not-Call and TPS registries across 15+ countries",
+    "Exports and integrations to Salesforce, HubSpot, Pipedrive, and other CRM platforms",
+    "Seat-based Standard and Pro plans, each including 5 seats, on a per-contact credit system"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "tiers": [
+      {
+        "name": "Standard",
+        "notes": "5 seats included. For teams that need core prospecting workflows. Credit-based contact reveals; personalized quote only, no public price."
+      },
+      {
+        "name": "Pro",
+        "notes": "5 seats included. For teams that need advanced prospecting workflows. Personalized quote only, no public price."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.cognism.com/pricing"
+  },
+  "pros": [
+    "Certified for ISO 27001 and ISO 27701 (UKAS-accredited body) and attested for SOC 2 Type II, per its security page",
+    "States GDPR/UK GDPR and CCPA compliance, plus Do-Not-Call/TPS suppression screening across 15+ national registries",
+    "Phone-verified \"Diamond Data\" mobile numbers reviewed by a manual research team rather than automated verification alone"
+  ],
+  "cons": [
+    "No published self-serve pricing or numeric plan cost; the pricing page offers only a personalized quote",
+    "No free trial is offered, only a free data sample, unlike some competitors' time-limited trials",
+    "Standard and Pro plans both include only 5 seats by default, with additional seats presumably requiring a custom quote"
+  ],
+  "faq": [
+    {
+      "question": "Does Cognism publish its pricing?",
+      "answer": "No. Cognism's pricing page names two plans, Standard and Pro (each with 5 seats included), but does not publish numeric prices; it directs prospects to request a personalized quote."
+    },
+    {
+      "question": "Is Cognism GDPR compliant?",
+      "answer": "Cognism states it collects and processes data under the GDPR's legitimate-interest lawful basis (Section 6.1(f)) and commits to notifying clients of a security incident within 72 hours, per its compliance page."
+    },
+    {
+      "question": "What is Cognism's Diamond Data?",
+      "answer": "Diamond Data is Cognism's phone-verified mobile number service, which its compliance page describes as manually validated by a dedicated research team."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.cognism.com/pricing",
+    "support": "https://help.cognism.com"
+  },
+  "tags": ["sales-intelligence", "b2b-database", "intent-data", "compliance", "prospecting"],
+  "sources": [
+    "https://www.cognism.com/pricing",
+    "https://www.cognism.com/",
+    "https://www.cognism.com/security",
+    "https://www.cognism.com/compliance"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Apollo.io",
+      "slug": "apollo-io",
+      "description": "A sales intelligence and engagement platform combining a B2B contact database with sequencing, a dialer, and AI-assisted prospecting.",
+      "best_for": "Teams that want published self-serve pricing and a bundled dialer/sequencing layer alongside contact data.",
+      "strengths": ["Published per-seat pricing", "Built-in dialer and sequencing", "Free plan available"]
+    },
+    {
+      "name": "ZoomInfo Sales",
+      "slug": "zoominfo-sales",
+      "description": "A B2B sales intelligence product combining a large contact/company database with buyer intent, website-visitor tracking, and conversation intelligence.",
+      "best_for": "Teams that want the largest published contact/company database alongside intent data and conversation intelligence.",
+      "strengths": ["Large database coverage", "Buyer intent signals", "Conversation intelligence (Chorus)"]
+    }
+  ]
+}

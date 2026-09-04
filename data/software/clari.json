@@ -1,0 +1,80 @@
+{
+  "name": "Clari",
+  "slug": "clari",
+  "category": "sales",
+  "description": "Clari is a revenue orchestration platform for enterprise sales and RevOps teams, providing AI-driven forecasting, pipeline inspection, and deal-risk signals, alongside sales engagement (Groove) and conversation intelligence (Copilot) modules.",
+  "website": "https://www.clari.com",
+  "best_for": "Enterprise revenue and sales-operations teams that want AI-driven forecasting and pipeline visibility connected to sales engagement and conversation data in one platform.",
+  "features": [
+    "AI-driven forecasting and pipeline inspection (Clari Forecast and Inspect)",
+    "Automated activity capture into the CRM (Capture) to reduce manual data entry",
+    "Sales engagement and cadences via the Groove module",
+    "Conversation intelligence and call coaching via the Copilot module",
+    "Buyer collaboration and mutual action plans (Align)",
+    "Revenue Database (RevDB) unifying CRM, email, calendar, and call data into one revenue graph",
+    "AI \"Action Hub\" recommendations (Guide) and autonomous Revenue AI agents for deal inspection"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing (contact sales)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.clari.com/pricing/"
+  },
+  "pros": [
+    "Combines forecasting, pipeline inspection, sales engagement (Groove), and conversation intelligence (Copilot) in one connected platform rather than separate point tools",
+    "Holds ISO 27001, ISO 27701, and SOC 2 Type II certifications and states GDPR compliance on its security page",
+    "States a large operating scale (revenue managed and number of customer organizations) reflecting enterprise-grade deployment"
+  ],
+  "cons": [
+    "No published self-serve pricing; the pricing page contains no plan names or numbers and leads only to a contact form",
+    "Positioned and priced for large/enterprise revenue teams rather than small sales teams",
+    "As of this writing, Clari is mid-merger with Salesloft (see FAQ), so product boundaries between the two brands are actively changing"
+  ],
+  "faq": [
+    {
+      "question": "Does Clari publish its pricing?",
+      "answer": "No. Clari's pricing page has no plan names or numeric prices; it is entirely a request-a-quote page, so pricing requires contacting sales."
+    },
+    {
+      "question": "Are Clari and Salesloft the same company?",
+      "answer": "As of the merger's completion, yes. Clari and Salesloft announced a definitive merger agreement in August 2025, and the deal closed on December 3, 2025, forming a combined revenue AI company under CEO Steve Cox. As of this entry's access date, clari.com and salesloft.com still operate as separate product websites, but Clari's own press release states the two sites will consolidate into one on September 15, 2026."
+    },
+    {
+      "question": "What is Clari Copilot?",
+      "answer": "Copilot is Clari's conversation-intelligence and coaching module, part of its broader revenue orchestration platform."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.clari.com/pricing/"
+  },
+  "tags": ["revenue-intelligence", "forecasting", "pipeline-management", "conversation-intelligence"],
+  "sources": [
+    "https://www.clari.com/pricing/",
+    "https://www.clari.com/platform/forecasting/",
+    "https://www.clari.com/security/",
+    "https://www.clari.com/press/clari-and-salesloft-announce-agreement-to-merge/",
+    "https://www.salesloft.com/company/newsroom/clari-salesloft-merger"
+  ],
+  "accessed_at": "2026-09-05",
+  "alternatives": [
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "description": "A revenue intelligence platform that records and analyzes sales calls, emails, and meetings to surface deal risk and inform forecasting.",
+      "best_for": "Teams whose primary need is conversation-level deal intelligence and coaching rather than a full sales-engagement/cadence layer.",
+      "strengths": ["Conversation capture and analysis", "Deal risk scoring", "Interaction-grounded forecasting"]
+    },
+    {
+      "name": "Outreach",
+      "slug": "outreach",
+      "description": "A sales engagement platform for building multichannel outreach sequences with conversation intelligence and AI-driven forecasting.",
+      "best_for": "Teams that want a dedicated sales-engagement platform for sequence execution rather than a forecasting-first suite.",
+      "strengths": ["Multichannel sequencing", "Real-time conversation guidance", "AI forecast projection"]
+    }
+  ]
+}
