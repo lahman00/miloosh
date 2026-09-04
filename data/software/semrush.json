@@ -16,7 +16,8 @@
     "Local SEO and Google Business Profile optimization"
   ],
   "sources": [
-    "https://www.semrush.com"
+    "https://www.semrush.com",
+    "https://sproutsocial.com"
   ],
   "accessed_at": "2026-08-04",
   "pricing": {
@@ -58,6 +59,17 @@
         "Free tier",
         "Traffic analytics",
         "Google Ads integration"
+      ]
+    },
+    {
+      "name": "Sprout Social",
+      "slug": "sprout-social",
+      "description": "A social intelligence platform that turns real-time social signals into direction for teams, enabling monitoring, management, and action on social conversations at scale.",
+      "best_for": "Teams prioritizing publishing, engagement, listening, and social analytics over an SEO-centered marketing suite.",
+      "strengths": [
+        "Publishing and scheduling",
+        "Social listening and analytics",
+        "AI-powered inbox"
       ]
     }
   ],
