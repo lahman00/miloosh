@@ -9,7 +9,7 @@ const PATH = "/cookies";
 
 export const metadata: Metadata = {
   title: TITLE,
-  description: `${SITE_NAME}'s actual cookie usage: none until you explicitly consent to analytics, and none for advertising or authentication ever.`,
+  description: `${SITE_NAME}'s cookie usage: analytics cookies only after explicit consent, no advertising or authentication cookies, and separate downstream affiliate attribution after outbound clicks.`,
   alternates: { canonical: PATH },
 };
 
@@ -18,17 +18,15 @@ export default function CookiesPage() {
     <LegalPageLayout
       title={TITLE}
       path={PATH}
+      lastUpdated="September 4, 2026"
       sections={[
         {
           heading: "Current status",
           body: (
             <p>
               {SITE_NAME}{" "}
-              <strong className="text-white">
-                sets no cookies for advertising, authentication, or any other non-essential
-                purpose — ever
-              </strong>
-              . {SITE_NAME} uses Google Analytics (GA4) to understand how visitors use the site,
+              <strong className="text-white">sets no cookies for advertising or authentication</strong>.
+              {" "}{SITE_NAME} uses Google Analytics (GA4) to understand how visitors use the site,
               but{" "}
               <strong className="text-white">
                 the analytics tag doesn&apos;t load and no cookie is set until you explicitly
@@ -92,9 +90,12 @@ export default function CookiesPage() {
           heading: "Third-party sites",
           body: (
             <p>
-              {SITE_NAME} links out to official vendor websites for the products we compare.
-              Once you leave {SITE_NAME}, that site&apos;s own cookie and privacy practices
-              apply — not this one. See our{" "}
+              {SITE_NAME} links out to official vendor websites for the products we compare,
+              and some of those outbound links are affiliate links. {SITE_NAME} may record an
+              anonymous first-party click event when you choose an outbound link. After the click,
+              the destination vendor or affiliate network may separately use cookies or equivalent
+              technology to attribute the referral under its own policy. Those downstream
+              attribution technologies are not cookies set by {SITE_NAME}. See our{" "}
               <Link href="/privacy" className="text-white underline underline-offset-4">
                 Privacy Policy
               </Link>{" "}

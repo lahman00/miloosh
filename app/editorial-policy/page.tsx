@@ -21,6 +21,7 @@ export default function EditorialPolicyPage() {
     <LegalPageLayout
       title={TITLE}
       path={PATH}
+      lastUpdated="September 4, 2026"
       sections={[
         {
           heading: "Official sources first",
@@ -44,6 +45,21 @@ export default function EditorialPolicyPage() {
               before it can be published — required fields, valid category assignments, and
               working cross-references between tools are all checked automatically, and the
               site fails to build if any entry is invalid.
+            </p>
+          ),
+        },
+        {
+          heading: "How recommendations work",
+          body: (
+            <p>
+              The recommendation tool uses deterministic rules over structured product evidence
+              and the needs a visitor selects, such as the job to be done, team context, budget,
+              work style, and preference for simplicity or depth where relevant evidence exists.
+              A match percentage is an evidence-based fit estimate, not a guarantee that every
+              stated requirement has been independently verified. The explanation shown with each
+              result is part of the decision context. Affiliate status, commission, payout,
+              tracking availability, or other commercial fields are excluded from product-fit
+              scoring and ordering.
             </p>
           ),
         },

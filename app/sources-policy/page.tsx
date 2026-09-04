@@ -21,6 +21,7 @@ export default function SourcesPolicyPage() {
     <LegalPageLayout
       title={TITLE}
       path={PATH}
+      lastUpdated="September 4, 2026"
       sections={[
         {
           heading: "Official product pages are our primary source",
@@ -33,13 +34,15 @@ export default function SourcesPolicyPage() {
           ),
         },
         {
-          heading: "We deliberately don't track pricing",
+          heading: "How we handle pricing",
           body: (
             <p>
-              We do not publish specific prices, plan tiers, or discount details. Pricing
-              changes far more often than a periodically reviewed page can stay accurate for, so
-              rather than risk showing a stale number as current fact, we omit pricing entirely
-              and point you to the vendor&apos;s own pricing page instead.
+              {SITE_NAME} may publish specific prices, plan tiers, free-tier or trial details when
+              those figures are recorded from an official vendor pricing page with a verification
+              date. Pricing can change after that date, so published figures are dated snapshots,
+              not guarantees. Confirm the current price, billing basis, plan limits, and offers on
+              the vendor&apos;s own site before purchasing. We do not invent or extrapolate pricing
+              when the official source does not support it.
             </p>
           ),
         },
@@ -76,12 +79,12 @@ export default function SourcesPolicyPage() {
           ),
         },
         {
-          heading: "Unverifiable fields are left blank",
+          heading: "Unknowns stay explicit",
           body: (
             <p>
-              Details like a company&apos;s founding year, its parent company, or specific
-              named strengths and weaknesses are left empty on any entry where no official
-              source clearly states them — never filled in with a plausible-sounding guess.
+              We do not turn missing evidence into a factual claim. When a detail cannot be
+              verified from the cited material, it should remain unknown or be clearly presented
+              as an editorial interpretation rather than as a vendor-stated fact.
             </p>
           ),
         },
