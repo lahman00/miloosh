@@ -67,7 +67,15 @@ describe("autonomous Reddit write policy", () => {
     expect(evaluateAutonomousWrite(reply, enabled, [action("reddit_reply", 2, "other", reply.command === "reddit_reply" ? reply.thread_url : "")], now).status).toBe("SAME_THREAD_REPLY_REQUIRES_NEW_DIRECT_REPLY");
   });
 
-  it("recognizes challenge and thread shutdown conditions", () => {
-    for (const status of ["CAPTCHA", "SUSPICIOUS_LOGIN", "ACCOUNT_VERIFICATION", "POSTING_RESTRICTION", "MODERATOR_WARNING", "THREAD_LOCKED", "THREAD_REMOVED"]) expect(isSafetyShutdownStatus(status)).toBe(true);
+  it("persists only account-level safety shutdown conditions", () => {
+    for (const status of ["CAPTCHA", "REDDIT_JS_CHALLENGE", "SUSPICIOUS_LOGIN", "ACCOUNT_VERIFICATION", "POSTING_RESTRICTION", "MODERATOR_WARNING", "RATE_LIMIT"]) {
+      expect(isSafetyShutdownStatus(status)).toBe(true);
+    }
+  });
+
+  it("does not globally disable autonomous writes for target-scoped thread failures", () => {
+    for (const status of ["COMMENTS_UNAVAILABLE", "THREAD_LOCKED", "THREAD_REMOVED"]) {
+      expect(isSafetyShutdownStatus(status)).toBe(false);
+    }
   });
 });

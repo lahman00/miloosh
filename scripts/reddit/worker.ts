@@ -139,7 +139,7 @@ async function disableAutonomousWrites(reason: string): Promise<void> {
 }
 
 export function isSafetyShutdownStatus(status: string): boolean {
-  return new Set(["CAPTCHA", "REDDIT_JS_CHALLENGE", "ACCOUNT_VERIFICATION", "SUSPICIOUS_LOGIN", "POSTING_RESTRICTION", "MODERATOR_WARNING", "RATE_LIMIT", "COMMENTS_UNAVAILABLE", "THREAD_LOCKED", "THREAD_REMOVED"]).has(status);
+  return new Set(["CAPTCHA", "REDDIT_JS_CHALLENGE", "ACCOUNT_VERIFICATION", "SUSPICIOUS_LOGIN", "POSTING_RESTRICTION", "MODERATOR_WARNING", "RATE_LIMIT"]).has(status);
 }
 
 /**
