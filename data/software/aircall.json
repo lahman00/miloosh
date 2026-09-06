@@ -1,0 +1,112 @@
+{
+  "name": "Aircall",
+  "slug": "aircall",
+  "category": "communication",
+  "description": "Aircall is a cloud business phone and customer-conversation platform for sales and support teams, combining calling, SMS/MMS, IVR, call recording, analytics, AI features, and CRM/helpdesk integrations in desktop and mobile softphones.",
+  "website": "https://aircall.io/",
+  "platforms": [
+    "Web",
+    "Desktop",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Sales and support teams that want a cloud phone system with CRM integrations, call routing, analytics, and optional AI conversation tools without deploying traditional PBX hardware.",
+  "features": [
+    "Cloud calling with IVR, call recording, click-to-dial, SMS/MMS, and local or toll-free numbers",
+    "250+ integrations and API access on the Essentials plan",
+    "Advanced analytics, live monitoring, smart routing, callbacks, Power Dialer, and voicemail drop on Professional",
+    "Desktop, iOS, and Android softphones",
+    "Optional AI Assist, AI Voice Agents, and AI Messaging Agents",
+    "Custom plans for larger deployments with SSO, SLA, onboarding, and developer support"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$30/license/month billed annually (Essentials; 3-license minimum)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "30",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Essentials",
+        "amount": "30",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per license/month",
+        "notes": "3-license minimum; $90/month for 3 licenses, billed annually."
+      },
+      {
+        "name": "Professional",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per license/month",
+        "notes": "3-license minimum; adds advanced analytics, monitoring, smart routing and sales productivity features."
+      },
+      {
+        "name": "Custom",
+        "notes": "Custom pricing with 25-license minimum and additional enterprise controls."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://aircall.io/pricing/"
+  },
+  "pros": [
+    "Published self-serve annual pricing for Essentials and Professional",
+    "Strong CRM/helpdesk integration footprint plus API access",
+    "Native desktop and mobile calling experience"
+  ],
+  "cons": [
+    "Essentials and Professional require at least 3 licenses",
+    "AI features and some channels add separate usage or per-license fees",
+    "Custom plan requires a 25-license minimum"
+  ],
+  "tags": [
+    "cloud-phone",
+    "voip",
+    "contact-center",
+    "sales-calling"
+  ],
+  "links": {
+    "pricing": "https://aircall.io/pricing/"
+  },
+  "sources": [
+    "https://aircall.io/pricing/",
+    "https://aircall.io/"
+  ],
+  "alternatives": [
+    {
+      "name": "Dialpad",
+      "slug": "dialpad",
+      "description": "Cloud business communications with voice, messaging, meetings, and AI features.",
+      "best_for": "Teams wanting integrated UCaaS and AI calling.",
+      "strengths": [
+        "Voice and messaging",
+        "AI features",
+        "Business communications"
+      ]
+    },
+    {
+      "name": "RingCentral",
+      "slug": "ringcentral",
+      "description": "Cloud communications platform for voice, messaging, video, and contact-center workflows.",
+      "best_for": "Organizations wanting a broad unified communications suite.",
+      "strengths": [
+        "Unified communications",
+        "Large integration ecosystem",
+        "Enterprise options"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

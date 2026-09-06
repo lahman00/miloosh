@@ -1,0 +1,102 @@
+{
+  "name": "Workiz",
+  "slug": "workiz",
+  "category": "field-service-management",
+  "description": "Workiz is field-service management software for service businesses, combining scheduling, jobs, estimates, invoices, client management, payments, automation, reporting, and optional AI-powered phone, answering, and marketing tools.",
+  "website": "https://www.workiz.com/",
+  "best_for": "Home-service and field-service teams that want scheduling, dispatch-adjacent job management, quoting, invoicing, payments, and automation in one platform.",
+  "features": [
+    "Scheduling, jobs, estimates, invoices, and client management",
+    "Online payments, service areas, reporting, and custom fields",
+    "Automations and AI-assisted lead/scheduling tools on higher plans",
+    "Service plans, proposals, inventory, flat-rate pricing, checklists, and multi-day jobs on Ultimate",
+    "Open API, equipment tracking, and purchase orders on Ultimate",
+    "Optional Genius Phone, Answering, and Marketing add-ons"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Request pricing",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "tiers": [
+      {
+        "name": "Standard",
+        "notes": "Request pricing; core scheduling, jobs, estimates, invoices, payments, reports, client management, and integrations."
+      },
+      {
+        "name": "Pro",
+        "notes": "Request pricing; adds performance pay, more automations, Genius Leads, Genius Scheduling, and custom reports."
+      },
+      {
+        "name": "Ultimate",
+        "notes": "Request pricing; adds service plans, proposals, inventory, flat rate, checklists, multi-day jobs, franchise tools, API, equipment tracking, and purchase orders."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.workiz.com/pricing-plans/"
+  },
+  "pros": [
+    "Broad field-service workflow from lead/job scheduling through payment",
+    "Higher plan includes API, inventory, equipment, and franchise tools",
+    "Official site offers a free-trial path despite quote-based plan pricing"
+  ],
+  "cons": [
+    "Current plan page does not publish numeric subscription prices",
+    "Many AI/phone/marketing capabilities are separate add-ons",
+    "Ultimate is required for several operational features such as inventory and open API"
+  ],
+  "tags": [
+    "field-service",
+    "scheduling",
+    "invoicing",
+    "home-services"
+  ],
+  "links": {
+    "pricing": "https://www.workiz.com/pricing-plans/"
+  },
+  "sources": [
+    "https://www.workiz.com/pricing-plans/",
+    "https://www.workiz.com/"
+  ],
+  "alternatives": [
+    {
+      "name": "Jobber",
+      "slug": "jobber",
+      "description": "Field-service software for scheduling, quoting, invoicing, and customer management.",
+      "best_for": "Small service businesses wanting a straightforward field-service workflow.",
+      "strengths": [
+        "Scheduling",
+        "Quoting",
+        "Invoicing"
+      ]
+    },
+    {
+      "name": "Housecall Pro",
+      "slug": "housecall-pro",
+      "description": "Field-service platform for home-service businesses with scheduling, dispatch, payments, and customer tools.",
+      "best_for": "Home-service teams wanting a broad operational suite.",
+      "strengths": [
+        "Dispatch",
+        "Payments",
+        "Customer management"
+      ]
+    },
+    {
+      "name": "FieldEdge",
+      "slug": "fieldedge",
+      "description": "Field-service management platform for multi-truck service businesses.",
+      "best_for": "HVAC, plumbing, and electrical contractors needing deeper dispatch and service agreements.",
+      "strengths": [
+        "Dispatch",
+        "Service agreements",
+        "Pricebook"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

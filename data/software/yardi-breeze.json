@@ -1,0 +1,119 @@
+{
+  "name": "Yardi Breeze",
+  "slug": "yardi-breeze",
+  "category": "property-management",
+  "description": "Yardi Breeze is cloud property-management software for residential, commercial, affordable, self-storage, association, and manufactured-housing portfolios, with built-in accounting, leasing, payments, maintenance, communications, and reporting.",
+  "website": "https://www.yardibreeze.com/",
+  "best_for": "Small and midsize property managers that want cloud property management with built-in accounting and published per-unit pricing.",
+  "features": [
+    "Property accounting and financial reporting",
+    "Vacancy, prospect, marketing, and leasing workflows",
+    "Online applications, payments, maintenance requests, and resident tools",
+    "Owner and vendor payments and reporting",
+    "Email and text communications",
+    "Cloud access from supported browsers with automatic updates"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$1/unit/month for residential Breeze; $100/month minimum; annual agreement",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": {
+      "amount": "1",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Residential Breeze",
+        "amount": "1",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per unit/month",
+        "notes": "$100 monthly minimum, based on annual agreement."
+      },
+      {
+        "name": "Residential Breeze Premier",
+        "amount": "1",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per unit/month",
+        "notes": "Terms and minimums apply; published residential minimum is $400/month."
+      },
+      {
+        "name": "Commercial Breeze",
+        "amount": "2",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per unit/month",
+        "notes": "$200 monthly minimum, based on annual agreement."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.yardibreeze.com/residential-features/"
+  },
+  "pros": [
+    "Publishes clear per-unit entry pricing and minimums",
+    "Built-in accounting is part of the core property-management workflow",
+    "Supports multiple property types from one product family"
+  ],
+  "cons": [
+    "Minimum monthly charges apply even to very small portfolios",
+    "Some Premier editions and property types require contacting sales",
+    "Several optional services and features carry additional fees"
+  ],
+  "tags": [
+    "property-management",
+    "rent-collection",
+    "leasing",
+    "property-accounting"
+  ],
+  "links": {
+    "pricing": "https://www.yardibreeze.com/"
+  },
+  "sources": [
+    "https://www.yardibreeze.com/",
+    "https://www.yardibreeze.com/residential-features/",
+    "https://www.yardibreeze.com/faq/"
+  ],
+  "alternatives": [
+    {
+      "name": "Buildium",
+      "slug": "buildium",
+      "description": "Property management software for accounting, leasing, maintenance, and resident operations.",
+      "best_for": "Rental managers wanting an alternative all-in-one property platform.",
+      "strengths": [
+        "Accounting",
+        "Leasing",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "AppFolio",
+      "slug": "appfolio",
+      "description": "Property management platform for leasing, accounting, maintenance, and resident workflows.",
+      "best_for": "Property managers wanting a broader platform with a sales-led buying process.",
+      "strengths": [
+        "Property operations",
+        "Accounting",
+        "Resident workflows"
+      ]
+    },
+    {
+      "name": "Entrata",
+      "slug": "entrata",
+      "description": "Property-management operating system connecting leasing, accounting, resident experience, and maintenance.",
+      "best_for": "Larger multifamily operators needing deeper enterprise workflows.",
+      "strengths": [
+        "Multifamily operations",
+        "Accounting",
+        "Resident experience"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

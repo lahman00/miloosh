@@ -1,0 +1,103 @@
+{
+  "name": "Rent Manager",
+  "slug": "rent-manager",
+  "category": "property-management",
+  "description": "Rent Manager is property-management software from London Computer Systems covering accounting, reporting, marketing and leasing, work orders, mobile workflows, tenant and owner portals, e-signatures, and an integration ecosystem.",
+  "website": "https://www.rentmanager.com/",
+  "company": "London Computer Systems, Inc.",
+  "best_for": "Property management companies that want a customizable property database with integrated accounting, leasing, work orders, portals, and a large integration ecosystem.",
+  "features": [
+    "Integrated property accounting and reporting",
+    "Marketing, online applications, leasing, renewals, and built-in e-signatures",
+    "Work order and maintenance management",
+    "Owner, prospect, and tenant portals plus resident mobile tools",
+    "Custom fields, workflows, reports, and dashboards",
+    "API, Open Access data views, and 200+ integrated providers"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Basic",
+        "notes": "Quote-based bundle with accounting, reporting, work orders, marketing/leasing, applications/eSignatures, portals, and support."
+      },
+      {
+        "name": "Plus",
+        "notes": "Quote-based bundle adding vendor management, custom workflows, survey analytics, mobile app capabilities, and more."
+      },
+      {
+        "name": "Premium",
+        "notes": "Quote-based bundle adding advanced AI-assisted accounting/reporting, video inspections, maintenance scheduling, and dedicated success support."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.rentmanager.com/pricing/"
+  },
+  "pros": [
+    "Highly customizable workflows, fields, dashboards, and integrations",
+    "Accounting, leasing, maintenance, and portals live in one system",
+    "API and Open Access options support custom integrations and reporting"
+  ],
+  "cons": [
+    "No public numeric package pricing",
+    "Customization depth can require more implementation work than simpler tools",
+    "Some communication and AI capabilities depend on add-on services"
+  ],
+  "tags": [
+    "property-management",
+    "property-accounting",
+    "leasing",
+    "maintenance"
+  ],
+  "links": {
+    "pricing": "https://www.rentmanager.com/pricing/",
+    "integrations": "https://www.rentmanager.com/integrations/"
+  },
+  "sources": [
+    "https://www.rentmanager.com/pricing/",
+    "https://www.rentmanager.com/about-rent-manager-2/",
+    "https://www.rentmanager.com/software-customization/",
+    "https://www.rentmanager.com/marketing-leasing/"
+  ],
+  "alternatives": [
+    {
+      "name": "Buildium",
+      "slug": "buildium",
+      "description": "Property management software for rental accounting, leasing, and maintenance.",
+      "best_for": "Property managers wanting a more standardized cloud workflow.",
+      "strengths": [
+        "Accounting",
+        "Leasing",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "AppFolio",
+      "slug": "appfolio",
+      "description": "Property management software covering leasing, accounting, maintenance, and resident operations.",
+      "best_for": "Managers wanting another broad all-in-one platform.",
+      "strengths": [
+        "Property operations",
+        "Accounting",
+        "Resident workflows"
+      ]
+    },
+    {
+      "name": "Yardi Breeze",
+      "slug": "yardi-breeze",
+      "description": "Cloud property-management software with published per-unit pricing.",
+      "best_for": "Smaller portfolios prioritizing simple pricing and quick cloud access.",
+      "strengths": [
+        "Published pricing",
+        "Built-in accounting",
+        "Cloud access"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

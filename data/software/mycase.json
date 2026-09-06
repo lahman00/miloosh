@@ -1,0 +1,128 @@
+{
+  "name": "8am MyCase",
+  "slug": "mycase",
+  "category": "legal",
+  "description": "8am MyCase is cloud legal practice management software that keeps cases, clients, documents, calendaring, time and expenses, billing, payments, client communication, intake, workflows, and higher-tier legal AI in one firm workspace.",
+  "website": "https://www.mycase.com/",
+  "company": "8am",
+  "best_for": "Solo lawyers and growing law firms that want case management, client communication, time tracking, billing, payments, document workflows, and optional embedded legal AI in one cloud platform.",
+  "platforms": [
+    "Web"
+  ],
+  "features": [
+    "Case and contact management with centralized case details, notes, tasks, events, documents, and contacts",
+    "Legal calendaring, time entry, expense tracking, billing, invoicing, and integrated payments",
+    "Secure client portal, messaging, texting, and client communication tools on applicable plans",
+    "Client intake forms, legal CRM, workflow automation, document generation, and unlimited eSignature on Pro",
+    "8am IQ Writing and Document Assistant on Pro and deeper Case/Discovery AI capabilities on Advanced",
+    "Advanced document automation, conflict-check tracking, split billing, desktop drive, and Open API on Advanced",
+    "70+ integrations on Pro and higher, according to current pricing materials"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$50/user/month billed annually (Basic) or $60/user/month billed monthly",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 10
+    },
+    "entry_paid": {
+      "amount": "50",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Basic",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "$60/user/month on month-to-month billing."
+      },
+      {
+        "name": "Pro",
+        "amount": "100",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "$120/user/month monthly. Adds workflows, intake/CRM, unlimited eSignature/document generation, richer communications, premium billing/reporting, 8am IQ writing/document tools, and 70+ integrations."
+      },
+      {
+        "name": "Advanced",
+        "amount": "130",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "$150/user/month monthly. Adds 8am IQ Case and Discovery assistants, advanced document automation, desktop drive, conflict tracking, split billing, and Open API."
+      }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.mycase.com/pricing/"
+  },
+  "pros": [
+    "Publishes exact monthly and annual per-user pricing for all three core plans",
+    "10-day free trial requires no credit card",
+    "Combines legal-specific casework, client communication, billing/payments, and higher-tier AI in one platform"
+  ],
+  "cons": [
+    "No permanent free plan",
+    "Client intake, eSignature, workflows, and several communication tools require Pro rather than Basic",
+    "Advanced AI, open API, conflict tracking, and advanced document automation require the highest Advanced tier"
+  ],
+  "faq": [
+    {
+      "question": "How much does 8am MyCase cost?",
+      "answer": "Basic is $50/user/month billed annually or $60 monthly; Pro is $100 annually or $120 monthly; Advanced is $130 annually or $150 monthly."
+    },
+    {
+      "question": "Does MyCase offer a free trial?",
+      "answer": "Yes. MyCase offers a 10-day no-cost trial with full access and no credit card required."
+    }
+  ],
+  "tags": [
+    "legal-practice-management",
+    "case-management",
+    "legal-billing",
+    "legal-ai"
+  ],
+  "links": {
+    "pricing": "https://www.mycase.com/pricing/"
+  },
+  "sources": [
+    "https://www.mycase.com/pricing/",
+    "https://www.mycase.com/features/",
+    "https://www.mycase.com/",
+    "https://supportcenter.mycase.com/en/articles/12038134-8am-mycase-brand-faq"
+  ],
+  "alternatives": [
+    {
+      "name": "Clio Manage",
+      "slug": "clio-manage",
+      "description": "Cloud legal practice management software for matters, time, billing, documents, and client communications.",
+      "best_for": "Law firms comparing full practice-management platforms with different pricing and workflow models.",
+      "strengths": [
+        "Matter management",
+        "Legal billing",
+        "Client portal"
+      ]
+    },
+    {
+      "name": "Docusign",
+      "slug": "docusign",
+      "description": "Electronic-signature and agreement workflow platform.",
+      "best_for": "Firms that mainly need document execution and e-signature rather than full legal practice management.",
+      "strengths": [
+        "E-signatures",
+        "Audit trails",
+        "Agreement workflows"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

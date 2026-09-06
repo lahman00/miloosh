@@ -1,0 +1,147 @@
+{
+  "name": "Windsurf (now Devin Desktop)",
+  "slug": "windsurf",
+  "category": "developer-tools",
+  "description": "Windsurf is the AI-native code editor now rebranded by Cognition as Devin Desktop. The current product keeps the Windsurf IDE foundation while adding an agent command center for managing multiple coding agents, alongside Cascade agent workflows, editor tooling, extensions, and MCP integrations.",
+  "website": "https://windsurf.com/editor",
+  "company": "Cognition AI, Inc.",
+  "best_for": "Developers and engineering teams that want an AI-first desktop coding environment with agentic code changes and a command center for coordinating multiple software-development agents.",
+  "platforms": [
+    "macOS",
+    "Windows",
+    "Linux"
+  ],
+  "features": [
+    "Full Windsurf IDE experience retained under the Devin Desktop name",
+    "Agent Command Center with Spaces, Kanban-style organization, and multi-agent management",
+    "Cascade agent with Code, Plan, and Ask modes for code changes, planning, questions, and tool use",
+    "Tool calling, checkpoints, linter integration, web search, memories, and rules within Cascade",
+    "Extension ecosystem and language-server support inherited from the editor workflow",
+    "MCP server integrations for external tools and services",
+    "Over-the-air migration from Windsurf with existing plans, pricing, extensions, settings, and in-progress work preserved"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free; paid individual plans from $20/month (Pro)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "20",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free editor plan."
+      },
+      {
+        "name": "Pro",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per month",
+        "notes": "Paid individual plan."
+      },
+      {
+        "name": "Max",
+        "amount": "200",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per month",
+        "notes": "Higher-capacity individual plan."
+      },
+      {
+        "name": "Teams",
+        "amount": "80",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$80/month base plus $40/month per full seat, per the current Devin Desktop/Windsurf product page."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales for enterprise requirements and legacy Windsurf Enterprise arrangements."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://windsurf.com/editor"
+  },
+  "pros": [
+    "Current pricing page retains a permanent free plan plus published individual and team pricing",
+    "Windsurf users migrate to Devin Desktop without losing editor settings, extensions, plan, or pricing",
+    "Agent workflows sit inside a full desktop IDE rather than a browser-only app builder"
+  ],
+  "cons": [
+    "The Windsurf name is being replaced by Devin Desktop, which can create product-name confusion during the transition",
+    "Teams pricing combines a base subscription and per-full-seat charge rather than a simple flat per-seat rate",
+    "The product is aimed at code-centric workflows and is less suitable for nontechnical users wanting pure prompt-to-app building"
+  ],
+  "faq": [
+    {
+      "question": "Is Windsurf still available?",
+      "answer": "Windsurf has been renamed Devin Desktop. Cognition states that Devin Desktop arrives as an over-the-air update and preserves the Windsurf IDE, extensions, settings, plans, pricing, and in-progress work."
+    },
+    {
+      "question": "How much does Windsurf / Devin Desktop cost?",
+      "answer": "The current official product page lists Free at $0, Pro at $20/month, Max at $200/month, Teams at $80/month plus $40/month per full seat, and Enterprise via sales."
+    }
+  ],
+  "tags": [
+    "ai-code-editor",
+    "coding-agent",
+    "ide",
+    "developer-tools"
+  ],
+  "links": {
+    "pricing": "https://windsurf.com/editor",
+    "docs": "https://docs.windsurf.com/"
+  },
+  "sources": [
+    "https://windsurf.com/editor",
+    "https://docs.windsurf.com/",
+    "https://docs.windsurf.com/windsurf/cascade/cascade"
+  ],
+  "alternatives": [
+    {
+      "name": "Cursor",
+      "slug": "cursor",
+      "description": "AI-first desktop code editor with autonomous agent workflows and multiple model providers.",
+      "best_for": "Developers wanting an AI-native editor with deep codebase context and simpler individual pricing.",
+      "strengths": [
+        "Agentic coding",
+        "VS Code foundation",
+        "Multiple AI models"
+      ]
+    },
+    {
+      "name": "Replit",
+      "slug": "replit",
+      "description": "Cloud IDE and AI app builder that can build, run, and deploy applications from the browser.",
+      "best_for": "Builders wanting browser-based development plus built-in hosting rather than a desktop editor.",
+      "strengths": [
+        "Browser IDE",
+        "AI app building",
+        "Built-in deployment"
+      ]
+    },
+    {
+      "name": "GitHub Copilot",
+      "slug": "github-copilot",
+      "description": "AI coding assistant integrated into popular existing IDEs and GitHub workflows.",
+      "best_for": "Teams that want AI assistance without switching to a dedicated AI-first editor.",
+      "strengths": [
+        "IDE extensions",
+        "GitHub integration",
+        "Code assistance"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

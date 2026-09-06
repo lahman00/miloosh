@@ -1,0 +1,94 @@
+{
+  "name": "Geotab",
+  "slug": "geotab",
+  "category": "fleet-management",
+  "description": "Geotab is a fleet telematics platform built around GO vehicle hardware and the MyGeotab software environment. Current GO Core and GO packages cover GPS visibility, routing, maintenance, inspections, fuel insights, safety, compliance, predictive diagnostics, EV analytics, sustainability, and a large partner marketplace.",
+  "website": "https://www.geotab.com/",
+  "best_for": "Fleets that want modular telematics packages, connected GO hardware, compliance and maintenance analytics, EV support, and a broad marketplace of partner solutions.",
+  "features": [
+    "GO Core real-time GPS tracking, live map, trip history, event alerts, and basic routing/dispatch",
+    "Maintenance scheduling by odometer and engine hours plus inspections and work-order management",
+    "Fuel-economy visibility and fleet dashboards in MyGeotab",
+    "GO plan advanced collision-risk management, AI safety scoring, compliance, predictive maintenance, and diagnostics",
+    "EV monitoring, suitability analysis, emissions and sustainability reporting",
+    "Advanced routing and profitability optimization plus video-telematics integrations",
+    "400+ Marketplace integrations and global availability"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "GO Core",
+        "notes": "Entry fleet-intelligence plan; Get Pricing. Includes hardware in the subscription price with no upfront device cost or installation fee on the current software-packages page."
+      },
+      {
+        "name": "GO",
+        "notes": "Full platform adding advanced safety, compliance, predictive maintenance, EV/sustainability, and routing tools; Get Pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.geotab.com/software-packages/"
+  },
+  "pros": [
+    "Clear functional split between GO Core and the fuller GO plan",
+    "Hardware is included in the subscription price on the current package page",
+    "Large Marketplace ecosystem and availability across 130+ countries"
+  ],
+  "cons": [
+    "No public numeric plan price",
+    "Large-fleet pricing and custom configurations require sales contact",
+    "Advanced compliance, safety, predictive maintenance, and sustainability require the higher GO plan"
+  ],
+  "tags": [
+    "fleet-management",
+    "telematics",
+    "gps",
+    "mygeotab"
+  ],
+  "sources": [
+    "https://www.geotab.com/software-packages/",
+    "https://support.geotab.com/help/mygeotab/access-and-administration/feature-availability/rate-plans",
+    "https://www.geotab.com/"
+  ],
+  "alternatives": [
+    {
+      "name": "Samsara",
+      "slug": "samsara",
+      "description": "Connected operations platform combining fleet telematics, cameras, equipment, and workforce tools.",
+      "best_for": "Fleets wanting a broad single-vendor operations platform.",
+      "strengths": [
+        "Telematics",
+        "AI cameras",
+        "Connected operations"
+      ]
+    },
+    {
+      "name": "Motive",
+      "slug": "motive",
+      "description": "AI-powered fleet and physical-operations platform with telematics, compliance, maintenance, and safety.",
+      "best_for": "Commercial fleets prioritizing safety, compliance, and maintenance automation.",
+      "strengths": [
+        "GPS telematics",
+        "Compliance",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "Azuga Fleet",
+      "slug": "azuga-fleet",
+      "description": "GPS fleet tracking with published per-vehicle pricing and safety/maintenance features.",
+      "best_for": "Smaller fleets wanting transparent subscription pricing.",
+      "strengths": [
+        "Published pricing",
+        "Driver scoring",
+        "Vehicle diagnostics"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

@@ -1,0 +1,128 @@
+{
+  "name": "Azuga Fleet",
+  "slug": "azuga-fleet",
+  "category": "fleet-management",
+  "description": "Azuga Fleet is GPS fleet tracking and telematics software with vehicle tracking, driver scoring and rewards, alerts, geofencing, vehicle diagnostics, scheduled maintenance, safety tools, reporting, and higher-tier efficiency and integration features.",
+  "website": "https://azuga.com/",
+  "best_for": "Small and midsize fleets that want GPS tracking, driver safety scoring, maintenance visibility, and unusually transparent per-vehicle subscription pricing.",
+  "features": [
+    "GPS vehicle tracking with two-minute location updates on the published base plan",
+    "Alerts and notifications for events such as speeding and hard braking",
+    "Driver scores and rewards plus geofencing and trip visibility",
+    "Vehicle diagnostics and scheduled maintenance",
+    "Safety features and distracted-driving controls on higher plans",
+    "Fuel-card integration, API integration, route optimization, and enhanced efficiency features on higher plans",
+    "Optional dual-facing AI SafetyCam hardware/service"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$25/vehicle/month (BasicFleet)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "BasicFleet",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per vehicle/month",
+        "notes": "Core tracking, alerts, driver scores/rewards, reports, maintenance, and geofencing."
+      },
+      {
+        "name": "SafeFleet",
+        "amount": "30",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per vehicle/month",
+        "notes": "Adds additional safety and efficiency features."
+      },
+      {
+        "name": "CompleteFleet",
+        "amount": "35",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per vehicle/month",
+        "notes": "Adds the broader tailored fleet feature package."
+      },
+      {
+        "name": "AI SafetyCam",
+        "amount": "49.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "starting price",
+        "notes": "Optional dual-facing AI SafetyCam starts at $49.99/month."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://azuga.com/pricing"
+  },
+  "pros": [
+    "Publishes exact per-vehicle prices for three core fleet plans",
+    "Driver scoring and rewards are part of the core fleet positioning",
+    "Combines tracking with diagnostics and maintenance rather than only location data"
+  ],
+  "cons": [
+    "Location update frequency on the published base plan is less frequent than some premium real-time platforms",
+    "Several safety, fuel, API, and optimization capabilities sit on higher plans",
+    "Camera functionality adds separate cost"
+  ],
+  "tags": [
+    "fleet-management",
+    "gps-tracking",
+    "driver-safety",
+    "vehicle-maintenance"
+  ],
+  "links": {
+    "pricing": "https://azuga.com/pricing"
+  },
+  "sources": [
+    "https://azuga.com/pricing",
+    "https://azuga.com/inquiry/azuga-fleet-pricing",
+    "https://azuga.com/"
+  ],
+  "alternatives": [
+    {
+      "name": "Geotab",
+      "slug": "geotab",
+      "description": "Fleet telematics platform with GO hardware, MyGeotab dashboards, compliance, maintenance, and a large marketplace.",
+      "best_for": "Fleets that prefer a broader ecosystem and sales-configured telematics package.",
+      "strengths": [
+        "Telematics",
+        "Marketplace",
+        "Compliance"
+      ]
+    },
+    {
+      "name": "Verizon Connect",
+      "slug": "verizon-connect",
+      "description": "Reveal-based GPS fleet tracking with near-real-time maps, vehicle history, and reporting.",
+      "best_for": "Fleets wanting an established enterprise tracking vendor.",
+      "strengths": [
+        "Near-real-time GPS",
+        "Vehicle history",
+        "Reporting"
+      ]
+    },
+    {
+      "name": "Samsara",
+      "slug": "samsara",
+      "description": "Connected operations platform spanning fleet telematics, safety cameras, equipment, and workforce tools.",
+      "best_for": "Fleets needing a broader connected-operations stack.",
+      "strengths": [
+        "Telematics",
+        "AI cameras",
+        "Operations platform"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

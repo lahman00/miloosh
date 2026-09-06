@@ -1,0 +1,81 @@
+{
+  "name": "Birdeye",
+  "slug": "birdeye",
+  "category": "marketing",
+  "description": "Birdeye is a multi-location customer-experience and reputation platform covering reviews, listings, social publishing, messaging, surveys, local visibility, marketing automation, ticketing, and AI-assisted customer engagement.",
+  "website": "https://birdeye.com/",
+  "best_for": "Multi-location brands and local businesses that want reviews, listings, messaging, social, surveys, and reputation workflows managed from one platform.",
+  "features": [
+    "Review management and review generation across locations",
+    "Listings and local visibility management",
+    "Social publishing and reputation monitoring",
+    "Messaging, texting, chatbot, surveys, insights, and ticketing",
+    "Marketing automation and AI-assisted local discovery tools",
+    "Multi-location reporting and centralized workflows"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom — based on deployed products, locations, and contract structure",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Custom platform package",
+        "notes": "Birdeye states pricing is customized by products selected, number of locations, and contract structure rather than a fixed seat price."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://birdeye.com/pricing/"
+  },
+  "pros": [
+    "One platform spans reviews, listings, social, messaging, surveys, and local visibility",
+    "Pricing is structured around deployed capabilities and locations rather than seats",
+    "Designed explicitly for multi-location operations"
+  ],
+  "cons": [
+    "No public numeric self-serve price",
+    "Breadth can be more than a single-location business needs",
+    "Exact package economics require a sales conversation"
+  ],
+  "tags": [
+    "reputation-management",
+    "reviews",
+    "local-marketing",
+    "customer-experience"
+  ],
+  "links": {
+    "pricing": "https://birdeye.com/pricing/"
+  },
+  "sources": [
+    "https://birdeye.com/pricing/",
+    "https://birdeye.com/",
+    "https://birdeye.com/ticketing/"
+  ],
+  "alternatives": [
+    {
+      "name": "Sprout Social",
+      "slug": "sprout-social",
+      "description": "Social media management and analytics platform for publishing, engagement, and reporting.",
+      "best_for": "Brands prioritizing social media operations over broader reputation/listings workflows.",
+      "strengths": [
+        "Social publishing",
+        "Engagement",
+        "Analytics"
+      ]
+    },
+    {
+      "name": "Hootsuite",
+      "slug": "hootsuite",
+      "description": "Social media management platform for scheduling, monitoring, and team workflows.",
+      "best_for": "Teams focused primarily on multi-network social management.",
+      "strengths": [
+        "Social scheduling",
+        "Monitoring",
+        "Team workflows"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

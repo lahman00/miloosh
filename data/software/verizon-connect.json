@@ -1,0 +1,91 @@
+{
+  "name": "Verizon Connect",
+  "slug": "verizon-connect",
+  "category": "fleet-management",
+  "description": "Verizon Connect provides GPS fleet management software through its Reveal platform, giving fleets near-real-time vehicle and asset visibility, route and vehicle history, operational reporting, driver and productivity insights, fuel and idling analysis, maintenance support, and connected tracking hardware.",
+  "website": "https://www.verizonconnect.com/",
+  "best_for": "Commercial fleets that want established GPS tracking, near-real-time vehicle visibility, route history, operational reporting, and connected hardware backed by Verizon Connect services.",
+  "features": [
+    "Near-real-time live map for vehicles and assets",
+    "Vehicle route and activity history with breadcrumb-style replays",
+    "Vehicle status, location, heading, ignition, odometer, engine hours, fuel, and diagnostic information",
+    "Fuel and idling analytics plus cost-analysis reporting",
+    "Fleet dispatching and operational visibility for mobile workforces",
+    "Vehicle and asset trackers plus optional connected camera hardware",
+    "Customer portal for billing, contracts, support cases, and subscription management"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales / see plans and pricing",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Reveal / GPS fleet tracking",
+        "notes": "Verizon Connect directs buyers to See plans & pricing / Talk to an expert. No public numeric subscription price was found on the current official GPS fleet-tracking product pages."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.verizonconnect.com/solutions/gps-fleet-tracking-software/"
+  },
+  "pros": [
+    "Established near-real-time fleet tracking with live maps and route history",
+    "Connected hardware and service support are managed within the same vendor ecosystem",
+    "Reveal combines location data with vehicle, fuel, idling, and cost-reporting context"
+  ],
+  "cons": [
+    "No public numeric subscription price on the current product page",
+    "Hardware service visits can carry additional fees depending on the request and contract",
+    "Exact capabilities and economics depend on the subscribed Reveal services and connected devices"
+  ],
+  "tags": [
+    "fleet-management",
+    "gps-tracking",
+    "telematics",
+    "reveal"
+  ],
+  "sources": [
+    "https://www.verizonconnect.com/solutions/gps-fleet-tracking-software/",
+    "https://www.verizonconnect.com/",
+    "https://reveal-help.verizonconnect.com/hc/en-us/articles/42817734466579-View-and-edit-a-vehicle-or-asset-on-the-Overview-tab",
+    "https://reveal-help.verizonconnect.com/hc/en-us/articles/9092501767315-Customer-Portal-overview"
+  ],
+  "alternatives": [
+    {
+      "name": "Samsara",
+      "slug": "samsara",
+      "description": "Connected operations platform spanning telematics, safety, equipment, maintenance, and workforce workflows.",
+      "best_for": "Fleets wanting a broader connected-operations suite around tracking.",
+      "strengths": [
+        "Fleet telematics",
+        "Safety",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "Geotab",
+      "slug": "geotab",
+      "description": "Fleet telematics system with GO hardware, MyGeotab dashboards, compliance, and partner integrations.",
+      "best_for": "Fleets wanting flexible telematics plans and a large ecosystem.",
+      "strengths": [
+        "GPS telematics",
+        "Fleet analytics",
+        "Marketplace"
+      ]
+    },
+    {
+      "name": "Azuga Fleet",
+      "slug": "azuga-fleet",
+      "description": "GPS fleet tracking with published per-vehicle plans, driver scoring, safety, and maintenance tools.",
+      "best_for": "Smaller fleets that prefer transparent entry pricing.",
+      "strengths": [
+        "Published pricing",
+        "Driver scoring",
+        "Maintenance alerts"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

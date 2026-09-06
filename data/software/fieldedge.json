@@ -1,0 +1,99 @@
+{
+  "name": "FieldEdge",
+  "slug": "fieldedge",
+  "category": "field-service-management",
+  "description": "FieldEdge is field-service management software for contractors, with call booking, scheduling, dispatching, work orders, customer management, pricebooks, quoting, service agreements, reporting, mobile licenses, payments, and higher-tier marketing and inventory tools.",
+  "website": "https://fieldedge.com/",
+  "best_for": "HVAC, plumbing, electrical, and other multi-truck service businesses that need dispatch, technician workflows, quoting, pricebooks, customer records, and service agreements.",
+  "features": [
+    "Call booking, scheduling, work orders, jobs, and dispatching",
+    "Customer management and pricebook/flat-rate pricing",
+    "Quotes, service agreements, reporting, and technician time tracking",
+    "Mobile app licenses included by plan",
+    "FieldEdge Payments for invoicing and on-site payment collection",
+    "Higher-tier outbound call recording, Proposal Pro, MarketingEdge, inventory, and customer portal tools"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Request pricing",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Select",
+        "notes": "Request pricing; core dispatching, scheduling, agreements, quotes, customer management, and pricebook tools."
+      },
+      {
+        "name": "Premier",
+        "notes": "Request pricing; adds advanced dispatching, multi-option quotes, advanced agreements, more reporting, and more mobile licenses."
+      },
+      {
+        "name": "Elite",
+        "notes": "Request pricing; adds unlimited saved reports, call recording, Proposal Pro, MarketingEdge, warehouse inventory, and consumer portal."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://fieldedge.com/pricing/"
+  },
+  "pros": [
+    "Purpose-built for multi-truck field-service operations",
+    "Clear feature differences between Select, Premier, and Elite",
+    "Support and onboarding resources are included across plans"
+  ],
+  "cons": [
+    "No public numeric subscription pricing",
+    "Several major sales/marketing/inventory tools are reserved for Elite or priced as add-ons",
+    "Plan selection and exact cost require a demo/sales conversation"
+  ],
+  "tags": [
+    "field-service",
+    "dispatch",
+    "hvac",
+    "plumbing"
+  ],
+  "links": {
+    "pricing": "https://fieldedge.com/pricing/"
+  },
+  "sources": [
+    "https://fieldedge.com/pricing/",
+    "https://fieldedge.com/"
+  ],
+  "alternatives": [
+    {
+      "name": "ServiceTitan",
+      "slug": "servicetitan",
+      "description": "Field-service management platform for residential and commercial trades.",
+      "best_for": "Larger trade businesses wanting extensive operational, sales, and marketing functionality.",
+      "strengths": [
+        "Dispatch",
+        "Invoicing",
+        "Trade-specific operations"
+      ]
+    },
+    {
+      "name": "Jobber",
+      "slug": "jobber",
+      "description": "Field-service software for scheduling, quotes, invoices, and customer management.",
+      "best_for": "Smaller service teams prioritizing simpler workflows.",
+      "strengths": [
+        "Scheduling",
+        "Quoting",
+        "Invoicing"
+      ]
+    },
+    {
+      "name": "Workiz",
+      "slug": "workiz",
+      "description": "Field-service platform combining scheduling, jobs, invoices, automation, and optional AI tools.",
+      "best_for": "Service teams wanting modern automation and phone/AI add-ons.",
+      "strengths": [
+        "Scheduling",
+        "Automation",
+        "Payments"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}
