@@ -1,3 +1,5 @@
+import { CATALOG_EXPANSION_COMPARISONS_2026_09 } from "./comparison-waves/catalog-expansion-2026-09";
+
 /**
  * The exact, curated set of comparison pages this site publishes — not
  * every possible pair of the 34 software entries (that would be 561
@@ -1361,6 +1363,10 @@ export const PUBLISHED_COMPARISONS: ReadonlyArray<readonly [string, string]> = [
   ["omnisend", "zoho-campaigns"],
   ["constant-contact", "zoho-campaigns"],
   ["moosend", "zoho-campaigns"],
+
+  // 2026-09 catalog expansion: curated profiles-first comparison wave.
+  // See data/comparison-waves/catalog-expansion-2026-09.ts for the evidence gate.
+  ...CATALOG_EXPANSION_COMPARISONS_2026_09,
 ];
 
 export function getComparisonSlug(slugA: string, slugB: string): string {
