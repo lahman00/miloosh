@@ -1,0 +1,81 @@
+{
+  "name": "Coupa",
+  "slug": "coupa",
+  "category": "finance-and-erp",
+  "description": "Coupa is a cloud-based business spend management (BSM) platform unifying procurement, sourcing and contracting, services procurement, AP automation, expense management, payments, inventory, and supply chain design/planning, with AI-driven insights and agents it markets under the \"Coupa AI\" brand. Coupa states its platform has processed $9 trillion in transactions across a community of more than 10 million buyers and suppliers, and that 55% of the Fortune 500 work with Coupa.",
+  "website": "https://www.coupa.com",
+  "founded": 2006,
+  "best_for": "Large and enterprise organizations that want to unify procurement, sourcing, AP/invoicing, expense management, payments, and supply chain planning on one platform with centralized spend visibility, rather than a self-serve, per-user product.",
+  "features": [
+    "Intake & Orchestration and Procurement: guided buying, purchase requisitions/orders, and real-time spend tracking across a single platform",
+    "Source-to-Contract: sourcing optimization, supplier evaluation, and contract creation from one workflow",
+    "Services Procurement for tracking, managing, and onboarding contingent/non-employee workforce spend",
+    "AP Automation with compliance-as-a-service to help keep invoice processing current with tax and industry regulations",
+    "Expense management with automated policy workflows aimed at reducing maverick spend",
+    "Payments, with unified visibility across spend, payments, and liquidity",
+    "Inventory management covering on-hand balances and automated fulfillment",
+    "Spend analysis with AI-driven insights and peer benchmarking",
+    "Supply chain design and planning using machine learning and generative-AI scenario modeling",
+    "Coupa AI: AI agents and automation (including a generative-AI agent Coupa calls Navi) applied across procurement, finance, and supply chain workflows"
+  ],
+  "pros": [
+    "Wide product breadth spans procurement, AP, expense, payments, sourcing/contracting, and supply chain planning in one platform, per Coupa",
+    "Coupa reports 3,200+ customers, $1B+ in annual revenue, and that 55% of the Fortune 500 work with Coupa"
+  ],
+  "cons": [
+    "No published pricing tiers or dollar figures anywhere on Coupa's site — Coupa's own /pricing URL redirects to its homepage, and every pricing path leads to \"Get a Custom Demo\" or \"Contact Us\" rather than a self-serve quote",
+    "Positioned and priced for large enterprise spend volumes rather than self-serve small-business use"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Coupa Business Spend Management Platform",
+        "notes": "No self-serve pricing page is published — Coupa's own /pricing URL redirects to its homepage, and every pricing path (\"Get a Custom Demo\", \"Contact Us\") routes to a sales conversation. No tiers, dollar amounts, or per-user figures are disclosed publicly."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.coupa.com/"
+  },
+  "alternatives": [
+    {
+      "name": "SAP Concur",
+      "slug": "sap-concur",
+      "description": "SAP's travel, expense, and invoice management suite with published starting per-report prices on its entry tiers and custom quotes for its fullest tier.",
+      "best_for": "Companies that want to automate travel booking, expense reporting, and invoice/AP processing with policy enforcement and audit controls.",
+      "strengths": ["Published starting prices on entry tiers", "Mobile app for expenses, travel, and approvals", "AI-assisted receipt matching and audit flagging"]
+    },
+    {
+      "name": "Stampli",
+      "slug": "stampli",
+      "description": "An accounts payable automation platform centered on invoice communication and approval collaboration, with AI-assisted coding and matching.",
+      "best_for": "Finance teams that want AP automation and approval collaboration layered onto their existing ERP or accounting system.",
+      "strengths": ["AP-focused rather than full spend-management suite", "Collaboration-centric invoice approval workflow", "Integrates with a wide range of existing ERPs"]
+    },
+    {
+      "name": "BILL",
+      "slug": "bill",
+      "description": "A financial operations platform for small and midsize businesses combining a free corporate card with subscription-based accounts payable and receivable automation.",
+      "best_for": "Small and midsize businesses wanting AP/AR automation and a free corporate card rather than an enterprise spend-management suite.",
+      "strengths": ["Free corporate card product with no subscription fee", "Published self-serve AP & AR pricing tiers", "Two-way sync with QuickBooks, Xero, NetSuite, Sage Intacct, and Microsoft Dynamics"]
+    },
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, and order management with multi-subsidiary financial consolidation.",
+      "best_for": "Growing and mid-market companies wanting procurement and financials built into a single core ERP rather than a standalone spend-management platform.",
+      "strengths": ["Single system for financials, inventory, and procurement", "Multi-subsidiary/multi-currency consolidation", "Large customer base (44,000+) per NetSuite"]
+    }
+  ],
+  "sources": [
+    "https://www.coupa.com/",
+    "https://www.coupa.com/products/procure-to-pay/",
+    "https://www.coupa.com/products/source-to-contract/",
+    "https://www.coupa.com/company/"
+  ],
+  "accessed_at": "2026-09-05"
+}

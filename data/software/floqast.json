@@ -1,0 +1,75 @@
+{
+  "name": "FloQast",
+  "slug": "floqast",
+  "category": "finance-and-erp",
+  "description": "FloQast is a cloud accounting automation platform for corporate accounting and finance teams, built around the financial close process. Positioned as \"Built by accountants for accountants,\" it spans close management (Optimize the Close), reconciliation and journal-entry automation (Automate the Close), audit-evidence collection and risk/control testing (Connected Compliance), and variance analysis/consolidation (Integrated Record-to-Report), with AI Agents that FloQast says require human approval before anything posts to the books.",
+  "website": "https://www.floqast.com",
+  "founded": 2013,
+  "platforms": ["Web"],
+  "best_for": "Corporate accounting and finance teams — controllers, accountants, and auditors — that want to standardize and automate the month-end close, account reconciliation, and audit-evidence collection on top of their existing ERP rather than replace it.",
+  "features": [
+    "Optimize the Close: global month-end close management, checklists, and accounting-operations tracking",
+    "Automate the Close: reconciliation matching, transaction mapping, and journal entry automation",
+    "Connected Compliance: evidence collection, risk management, and AI-assisted control testing for audits",
+    "Integrated Record-to-Report: variance analysis and consolidation",
+    "AI Agents for routine accounting tasks, which FloQast states require human approval before anything is posted (\"Nothing hits your books without human approval. No exceptions.\")",
+    "Native integrations with ERPs including NetSuite, SAP, Workday, and Oracle",
+    "FloQademy training and the FloQast Certified Accountant (FCA) credential for accounting teams"
+  ],
+  "pros": [
+    "FloQast reports being used by 3,500+ global companies",
+    "Pricing is described as scaling with business outcomes rather than seat count — FloQast advertises \"No Per-User Fees\"",
+    "ISO 42001-certified for AI management and states on its security page that it has obtained a SOC 3 report"
+  ],
+  "cons": [
+    "No published pricing — every named package (Close Optimization, Close Automation, Connected Compliance, Compliance Pro, FloQast Reporting, FloQast Transform) routes to a \"Contact Sales\" quote rather than a self-serve price",
+    "No free trial is advertised on FloQast's pricing page"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Close Optimization", "notes": "Custom-quoted; \"Contact Sales\" only, no published price." },
+      { "name": "Close Automation", "notes": "Custom-quoted; \"Contact Sales\" only, no published price." },
+      { "name": "Connected Compliance", "notes": "Custom-quoted; \"Contact Sales\" only, no published price." },
+      { "name": "Compliance Pro", "notes": "Custom-quoted; \"Contact Sales\" only, no published price." },
+      { "name": "FloQast Reporting", "notes": "Custom-quoted; \"Contact Sales\" only, no published price." },
+      { "name": "FloQast Transform", "notes": "Custom-quoted; \"Contact Sales\" only, no published price." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.floqast.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, and order management with multi-subsidiary financial consolidation.",
+      "best_for": "Companies that would rather rely on close and reconciliation capabilities built into their core ERP than add a dedicated close-management layer on top.",
+      "strengths": ["Financial consolidation built into the core ERP", "Multi-subsidiary/multi-currency support", "One vendor for financials plus close reporting"]
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting for mid-market companies and nonprofits.",
+      "best_for": "Mid-market finance teams that want multi-entity consolidation and dimensional reporting native to their accounting system rather than a separate close-automation product.",
+      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Nonprofit fund/grant accounting"]
+    },
+    {
+      "name": "Odoo",
+      "slug": "odoo",
+      "description": "An open-source, modular business platform covering accounting, inventory, manufacturing, and more as individually priced apps.",
+      "best_for": "Smaller businesses that want basic close and accounting workflows bundled into a low-cost, published-pricing platform rather than a dedicated close-management product.",
+      "strengths": ["Transparent published per-user pricing", "Accounting app bundled with the rest of the suite", "Open-source core with self-hosting option"]
+    }
+  ],
+  "sources": [
+    "https://www.floqast.com/",
+    "https://www.floqast.com/pricing/",
+    "https://www.floqast.com/about/",
+    "https://www.floqast.com/security/"
+  ],
+  "accessed_at": "2026-09-05"
+}

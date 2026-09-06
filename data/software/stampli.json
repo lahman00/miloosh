@@ -1,0 +1,68 @@
+{
+  "name": "Stampli",
+  "slug": "stampli",
+  "category": "finance-and-erp",
+  "description": "Stampli is a cloud-based procure-to-pay (P2P) platform centered on accounts payable automation, with optional procurement, vendor management, payments, and expense/card management layered on top. Its Stampli AI codes, matches, and routes invoices, and the company states its platform processes 400,000+ invoices per week and has handled $400B+ in cumulative spend across 1,900+ customers.",
+  "website": "https://www.stampli.com",
+  "best_for": "Finance and AP teams — CFOs, controllers, and approvers — that want AP automation layered onto their existing ERP (QuickBooks, SAP, NetSuite, Microsoft Dynamics, Sage, and others) rather than replacing it, with the option to add procurement, payments, and card spend management.",
+  "features": [
+    "Stampli AI: automated invoice coding, matching, and routing",
+    "Accounts payable automation built around collaborative, invoice-centric communication between AP and approvers",
+    "Procurement controls before purchase commitment, available under \"Stampli Beyond Accounts Payable\"",
+    "Vendor management: self-service portal for vendors to submit information and check payment status",
+    "Payments that carry approval and accounting context through to execution",
+    "Expense and card spend management, including Stampli Cards and reimbursements",
+    "Deep Finance analytics, which Stampli describes as consultant-grade spend analysis",
+    "Native integrations with ERPs including QuickBooks, SAP, Oracle NetSuite, Microsoft Dynamics, and Sage platforms"
+  ],
+  "pros": [
+    "Built specifically to layer onto a company's existing ERP rather than replace it, with ERP integrations Stampli says it builds itself",
+    "Stampli reports 1,900+ customers and $400B+ in cumulative spend processed through the platform"
+  ],
+  "cons": [
+    "No published pricing — Stampli's pricing page routes to a \"Request a Quote\" form rather than any dollar figures or tiers",
+    "No free trial is advertised on Stampli's site"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Accounts Payable", "notes": "Custom-quoted; no published price. Core AP automation: invoice coding, matching, routing, and approvals." },
+      { "name": "Beyond Accounts Payable", "notes": "Custom-quoted; no published price. Adds procurement, direct pay, credit cards, and advanced vendor management on top of the Accounts Payable tier." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.stampli.com/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "BILL",
+      "slug": "bill",
+      "description": "A financial operations platform for small and midsize businesses combining a free corporate card with subscription-based accounts payable and receivable automation.",
+      "best_for": "Small and midsize businesses wanting a free corporate card alongside published, self-serve AP & AR pricing tiers.",
+      "strengths": ["Published self-serve AP & AR pricing", "Free corporate card product", "Two-way sync with QuickBooks, Xero, NetSuite, and Sage Intacct"]
+    },
+    {
+      "name": "Coupa",
+      "slug": "coupa",
+      "description": "An enterprise business spend management platform unifying procurement, sourcing, AP automation, expense, payments, and supply chain planning.",
+      "best_for": "Large enterprises wanting AP automation as part of a much broader spend-management suite rather than an AP-focused point solution.",
+      "strengths": ["Full spend-management suite beyond AP", "Source-to-contract and supply chain planning", "Large enterprise customer base"]
+    },
+    {
+      "name": "Tipalti",
+      "slug": "tipalti",
+      "description": "A finance automation platform for accounts payable and global mass payments, built for high-volume international payouts.",
+      "best_for": "Mid-market and enterprise finance teams paying suppliers or partners across many countries and currencies.",
+      "strengths": ["Payments to 200+ countries in 120+ currencies", "Self-service payee portal with tax form collection", "AI agents for invoice capture and PO matching"]
+    }
+  ],
+  "sources": [
+    "https://www.stampli.com/",
+    "https://www.stampli.com/pricing",
+    "https://www.stampli.com/about-us"
+  ],
+  "accessed_at": "2026-09-05"
+}

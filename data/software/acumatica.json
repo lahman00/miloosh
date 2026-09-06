@@ -1,0 +1,81 @@
+{
+  "name": "Acumatica",
+  "slug": "acumatica",
+  "category": "finance-and-erp",
+  "description": "Acumatica is a cloud ERP platform for small and midmarket businesses, unifying financial management, distribution, manufacturing, project accounting, retail/POS, and CRM in one system. Instead of charging per user, Acumatica prices primarily by which applications a customer implements plus expected transaction volume and resource/data usage, with unlimited user access included under its published Customer Bill of Rights.",
+  "website": "https://www.acumatica.com",
+  "founded": 2008,
+  "best_for": "Small and midmarket companies — including construction, distribution, manufacturing, professional services, and retail businesses — that want unlimited user access to a single cloud ERP without paying per-seat licensing fees.",
+  "features": [
+    "Financial management: multi-entity/intercompany accounting, payroll, and reporting tools",
+    "Distribution and inventory management: sales and purchase order management, warehouse management (WMS), and requisition management",
+    "Manufacturing management: bill of materials/routing, MRP, advanced planning and scheduling, and product configurator",
+    "Project accounting and resource management for professional services firms",
+    "Retail and point-of-sale (POS) with commerce connectors for Amazon, BigCommerce, and Shopify",
+    "Built-in CRM alongside the ERP modules",
+    "Reporting, dashboards, and AI-assisted automation aimed at repetitive tasks and anomaly detection",
+    "Low-code/no-code customization tools",
+    "Unlimited user access included under Acumatica's licensing model rather than sold as per-seat licenses"
+  ],
+  "pros": [
+    "Pricing is based on the applications implemented and actual usage rather than per-user seats, per Acumatica's published Customer Bill of Rights",
+    "Unlimited user access is included rather than priced as a per-seat add-on",
+    "Serves multiple industry verticals (construction, distribution, manufacturing, retail, professional services) with dedicated modules"
+  ],
+  "cons": [
+    "No published dollar pricing — cost depends on which applications, deployment option, and expected transaction/resource volume, confirmed only through a partner or sales quote",
+    "Because pricing is consumption-based rather than a flat per-user list price, cost is harder to estimate upfront without an ROI/pricing calculator or sales conversation"
+  ],
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Acumatica ERP",
+        "notes": "Priced primarily by which applications/modules are implemented, plus expected transaction volumes and resource/data usage as users and transactions grow — not by per-user seat count. Unlimited user access is included. Acumatica publishes no specific dollar figures; pricing is confirmed via Acumatica or an authorized reseller, aided by industry-specific (Construction, Manufacturing, Distribution) online calculators."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.acumatica.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, and order management with multi-subsidiary financial consolidation.",
+      "best_for": "Growing and mid-market companies wanting a single cloud system for financials, inventory, and order management, including multi-subsidiary consolidation.",
+      "strengths": ["Multi-subsidiary/multi-currency consolidation", "Broad module coverage in one suite", "Large customer base (44,000+) per NetSuite"]
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting for mid-market companies and nonprofits.",
+      "best_for": "Mid-market finance teams and nonprofits that need strong multi-entity consolidation and fund accounting without a full operational ERP.",
+      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Nonprofit fund/grant accounting"]
+    },
+    {
+      "name": "SAP Cloud ERP",
+      "slug": "sap-cloud-erp",
+      "description": "SAP's cloud ERP line led by SAP S/4HANA Cloud Public Edition, a subscription-priced ERP with embedded AI and industry-specific best-practice processes.",
+      "best_for": "Larger enterprises that want SAP's industry best-practice processes and are prepared for an SAP-led implementation.",
+      "strengths": ["Industry-specific preconfigured processes", "Embedded AI across finance/supply chain/HR", "SAP Activate guided implementation"]
+    },
+    {
+      "name": "Odoo",
+      "slug": "odoo",
+      "description": "An open-source, modular business platform covering accounting, inventory, manufacturing, and more as individually priced apps.",
+      "best_for": "Smaller and mid-sized businesses that want to pay only for the ERP modules they actually use, with an open-source/self-hosting option.",
+      "strengths": ["Free single-app plan", "Transparent published per-user pricing", "Open-source core with self-hosting option"]
+    }
+  ],
+  "sources": [
+    "https://www.acumatica.com/",
+    "https://www.acumatica.com/pricing/",
+    "https://www.acumatica.com/about/",
+    "https://www.acumatica.com/cloud-erp-software/"
+  ],
+  "accessed_at": "2026-09-05"
+}

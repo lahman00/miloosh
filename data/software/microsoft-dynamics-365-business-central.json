@@ -1,0 +1,74 @@
+{
+  "name": "Microsoft Dynamics 365 Business Central",
+  "slug": "microsoft-dynamics-365-business-central",
+  "category": "finance-and-erp",
+  "description": "Microsoft Dynamics 365 Business Central is Microsoft's cloud ERP for small and midsize businesses, unifying financial management, supply chain and operations, sales and service, and project management, with Microsoft 365 integration and Copilot AI features. Microsoft states Business Central is trusted by 55,000 companies and is sold and supported exclusively through Microsoft's global partner network.",
+  "website": "https://www.microsoft.com/en-us/dynamics-365/products/business-central",
+  "company": "Microsoft",
+  "platforms": ["Web", "Windows", "iOS", "Android"],
+  "best_for": "Small and midsize businesses already invested in the Microsoft ecosystem that want a cloud ERP covering finance, supply chain, sales/service, and project management, purchased and implemented through a Microsoft partner.",
+  "features": [
+    "Financial management: automated invoice processing (Payables Agent), AI-assisted cash flow forecasting, and month-end close reporting",
+    "Supply chain and operations: vendor/purchasing management, AI-assisted inventory forecasting, manufacturing with bills of materials, and warehouse management with barcode scanning",
+    "Sales and service: sales order automation (Sales Order Agent), customer interaction tracking, and service agreement management",
+    "Project management: job costing, timesheet tracking, resource utilization planning, and project profitability insights",
+    "Multi-currency support and global tax compliance features",
+    "Integration with Microsoft 365 apps (Outlook, Excel, Teams) and Microsoft Copilot",
+    "Mobile apps for iOS, Android, and Windows in addition to the web client"
+  ],
+  "pros": [
+    "Publishes real per-user list prices (Essentials, Premium, Team Members) rather than requiring a quote for every tier",
+    "Deep integration with Microsoft 365 and Copilot for organizations already on Microsoft's stack",
+    "30-day free trial available"
+  ],
+  "cons": [
+    "Sold and supported exclusively through Microsoft's partner network rather than directly self-serve, so final price and implementation cost are confirmed through a partner",
+    "List prices rose in November 2025 (Essentials from $70 to $80/user/month, Premium from $100 to $110/user/month), and displayed prices vary by currency/region, with the actual price reflected at checkout"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$80/user/month (Essentials, billed annually)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "80", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Essentials", "amount": "80", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid annually; effective November 2025 (up from $70/user/month). Includes financial, sales, and operations management plus Copilot; unlimited users, customization, and multiple environments/companies per Microsoft's published plan comparison." },
+      { "name": "Premium", "amount": "110", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid annually; effective November 2025 (up from $100/user/month). Adds service management and manufacturing capabilities on top of Essentials." },
+      { "name": "Team Members", "amount": "8", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Limited, read/approval-focused access tier for users who only need to view or update select information rather than full functionality." }
+    ],
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.microsoft.com/en-us/dynamics-365/products/business-central/pricing"
+  },
+  "alternatives": [
+    {
+      "name": "NetSuite",
+      "slug": "netsuite",
+      "description": "Oracle's cloud ERP system unifying accounting, inventory, and order management with multi-subsidiary financial consolidation.",
+      "best_for": "Growing and mid-market companies wanting a single cloud ERP that isn't tied to the Microsoft ecosystem, including multi-subsidiary consolidation.",
+      "strengths": ["Multi-subsidiary/multi-currency consolidation", "Broad module coverage in one suite", "Large customer base (44,000+) per NetSuite"]
+    },
+    {
+      "name": "Acumatica",
+      "slug": "acumatica",
+      "description": "A cloud ERP for small and midmarket businesses that prices by application and usage rather than per user, with unlimited user access included.",
+      "best_for": "Growing companies that want unlimited user access without per-seat licensing, unlike Business Central's per-user pricing.",
+      "strengths": ["Unlimited users included at every tier", "Usage-based rather than per-seat pricing", "Strong construction, distribution, and manufacturing modules"]
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting for mid-market companies and nonprofits.",
+      "best_for": "Mid-market finance teams and nonprofits that need strong multi-entity consolidation and fund accounting without a full operational ERP.",
+      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Nonprofit fund/grant accounting"]
+    }
+  ],
+  "sources": [
+    "https://www.microsoft.com/en-us/dynamics-365/products/business-central",
+    "https://www.microsoft.com/en-us/dynamics-365/products/business-central/pricing",
+    "https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2025/05/06/new-microsoft-dynamics-365-business-central-pricing-effective-november-2025/",
+    "https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-introducing-business-central-mobile-app"
+  ],
+  "accessed_at": "2026-09-05"
+}

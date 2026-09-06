@@ -123,5 +123,10 @@
     "slug": "it-operations",
     "name": "IT Operations",
     "description": "IT service management, remote monitoring, and endpoint management for internal IT teams."
+  },
+  {
+    "slug": "legal",
+    "name": "Legal",
+    "description": "Legal practice management, e-signature, and agreement workflow software for law firms and business teams."
   }
 ]
