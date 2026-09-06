@@ -4,7 +4,11 @@
   "category": "hr-and-payroll",
   "description": "Paychex Flex is Paychex's payroll and HCM platform for small to midsized businesses, covering payroll, time and attendance, benefits, and HR compliance in packaged tiers scaled by employee count, with pricing available only by contacting sales.",
   "website": "https://www.paychex.com/payroll",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Small to midsized employers wanting a long-established payroll provider with tiered HCM packages that scale from a handful of employees up to larger headcounts.",
   "features": [
     "Payroll processing with automated multi-state tax calculation, filing, and payment",
@@ -32,12 +36,23 @@
     "free_plan": false,
     "enterprise_contact_sales": true,
     "tiers": [
-      { "name": "Basic", "notes": "For businesses with 1+ employees. Unlimited payroll processing, HR foundations, time-off accruals, and analytics essentials. No published price; requires contacting sales." },
-      { "name": "Foundations", "notes": "For businesses with 10+ employees. Adds enhanced customer support, enhanced analytics/reports, and LMS essentials." },
-      { "name": "Advanced", "notes": "For businesses with 20+ employees. Adds premium analytics/reports, hiring services, and a custom handbook builder." },
-      { "name": "Complete", "notes": "For businesses with 30+ employees. Adds premium customer support and employee engagement tools such as recognition, collaboration, and performance reviews." }
+      {
+        "name": "Basic",
+        "notes": "For businesses with 1+ employees. Unlimited payroll processing, HR foundations, time-off accruals, and analytics essentials. No published price; requires contacting sales."
+      },
+      {
+        "name": "Foundations",
+        "notes": "For businesses with 10+ employees. Adds enhanced customer support, enhanced analytics/reports, and LMS essentials."
+      },
+      {
+        "name": "Advanced",
+        "notes": "For businesses with 20+ employees. Adds premium analytics/reports, hiring services, and a custom handbook builder."
+      },
+      {
+        "name": "Complete",
+        "notes": "For businesses with 30+ employees. Adds premium customer support and employee engagement tools such as recognition, collaboration, and performance reviews."
+      }
     ],
-    "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",
     "official_source": "https://www.paychex.com/payroll/compare-payroll-solutions"
   },
@@ -47,28 +62,40 @@
       "slug": "adp-workforce-now",
       "description": "ADP's HCM suite for small to midsized businesses, combining payroll, HR, time, and talent management.",
       "best_for": "Employers comparing established, decades-old payroll providers with similar tax-compliance depth to Paychex.",
-      "strengths": ["Established payroll tax engine", "Packaged tiers", "Broad company-size coverage"]
+      "strengths": [
+        "Established payroll tax engine",
+        "Packaged tiers",
+        "Broad company-size coverage"
+      ]
     },
     {
       "name": "Gusto",
       "slug": "gusto",
       "description": "A payroll, benefits, and HR platform focused on small and mid-sized U.S. businesses with published, self-serve pricing.",
       "best_for": "Smaller employers wanting transparent published pricing instead of a sales-quote process.",
-      "strengths": ["Published per-plan pricing", "Simple self-serve setup", "Built-in benefits administration"]
+      "strengths": [
+        "Published per-plan pricing",
+        "Simple self-serve setup",
+        "Built-in benefits administration"
+      ]
     },
     {
       "name": "Paycom",
       "slug": "paycom",
       "description": "A single-database HCM platform covering payroll, talent, HR, and time management, including employee-driven self-service payroll entry.",
       "best_for": "Employers wanting a single-database HCM alternative with employee self-service payroll input.",
-      "strengths": ["Single-database architecture", "Employee-driven payroll input", "Full HCM suite"]
+      "strengths": [
+        "Single-database architecture",
+        "Employee-driven payroll input",
+        "Full HCM suite"
+      ]
     }
   ],
   "sources": [
     "https://www.paychex.com/payroll",
     "https://www.paychex.com/payroll/compare-payroll-solutions",
     "https://www.paychex.com/corporate/security",
-    "https://apps.apple.com/us/app/paychex-flex/id527740152"
+    "https://www.paychex.com/apps/mobile-app"
   ],
   "accessed_at": "2026-09-05"
 }

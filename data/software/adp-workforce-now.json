@@ -4,7 +4,11 @@
   "category": "hr-and-payroll",
   "description": "ADP Workforce Now is ADP's HCM suite for small to midsized businesses, combining payroll, HR, time and attendance, talent management, and benefits administration on one platform, sold through packaged tiers that ADP prices per company via a custom quote.",
   "website": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Small to midsized employers wanting an established payroll provider's tax-compliance infrastructure bundled with HR, time, and talent management in one suite.",
   "features": [
     "Continuous payroll calculation with automated tax compliance across jurisdictions",
@@ -39,27 +43,39 @@
       "slug": "paychex-flex",
       "description": "A configurable payroll and HR platform from Paychex serving small to midsized businesses.",
       "best_for": "Employers comparing established, decades-old payroll providers with similar tax-compliance depth to ADP.",
-      "strengths": ["Established payroll tax engine", "Configurable HR modules", "Broad company-size coverage"]
+      "strengths": [
+        "Established payroll tax engine",
+        "Configurable HR modules",
+        "Broad company-size coverage"
+      ]
     },
     {
       "name": "Gusto",
       "slug": "gusto",
       "description": "A payroll, benefits, and HR platform focused on small and mid-sized U.S. businesses with published, self-serve pricing.",
       "best_for": "Smaller employers wanting transparent published pricing instead of a sales-quote process.",
-      "strengths": ["Published per-plan pricing", "Simple self-serve setup", "Built-in benefits administration"]
+      "strengths": [
+        "Published per-plan pricing",
+        "Simple self-serve setup",
+        "Built-in benefits administration"
+      ]
     },
     {
       "name": "Rippling",
       "slug": "rippling",
       "description": "A modular workforce platform unifying HR, payroll, IT device management, and spend management on one employee record.",
       "best_for": "Companies wanting IT and finance modules alongside payroll/HR rather than a traditional payroll-bureau model.",
-      "strengths": ["Unified employee record", "IT/device management", "Modular add-ons"]
+      "strengths": [
+        "Unified employee record",
+        "IT/device management",
+        "Modular add-ons"
+      ]
     }
   ],
   "sources": [
     "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
     "https://www.adp.com/about-adp/data-security.aspx",
-    "https://apps.apple.com/us/app/adp-mobile-solutions/id444553167"
+    "https://www.adp.com/what-we-offer/products/adp-mobile-solutions.aspx"
   ],
   "accessed_at": "2026-09-05"
 }

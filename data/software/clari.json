@@ -20,7 +20,9 @@
     "has_free_tier": false,
     "status": "contact_sales",
     "free_plan": false,
-    "free_trial": { "available": false },
+    "free_trial": {
+      "available": false
+    },
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",
     "official_source": "https://www.clari.com/pricing/"
@@ -33,7 +35,7 @@
   "cons": [
     "No published self-serve pricing; the pricing page contains no plan names or numbers and leads only to a contact form",
     "Positioned and priced for large/enterprise revenue teams rather than small sales teams",
-    "As of this writing, Clari is mid-merger with Salesloft (see FAQ), so product boundaries between the two brands are actively changing"
+    "Clari and Salesloft completed their merger in December 2025, but their product brands and websites still expose distinct product surfaces, so buyers should verify current packaging during the ongoing integration."
   ],
   "faq": [
     {
@@ -42,7 +44,7 @@
     },
     {
       "question": "Are Clari and Salesloft the same company?",
-      "answer": "As of the merger's completion, yes. Clari and Salesloft announced a definitive merger agreement in August 2025, and the deal closed on December 3, 2025, forming a combined revenue AI company under CEO Steve Cox. As of this entry's access date, clari.com and salesloft.com still operate as separate product websites, but Clari's own press release states the two sites will consolidate into one on September 15, 2026."
+      "answer": "Clari and Salesloft completed their merger on December 3, 2025, forming a combined revenue AI company under CEO Steve Cox. Their product brands and websites continue to expose distinct product experiences, so buyers should verify current packaging and migration details with the vendor."
     },
     {
       "question": "What is Clari Copilot?",
@@ -52,13 +54,18 @@
   "links": {
     "pricing": "https://www.clari.com/pricing/"
   },
-  "tags": ["revenue-intelligence", "forecasting", "pipeline-management", "conversation-intelligence"],
+  "tags": [
+    "revenue-intelligence",
+    "forecasting",
+    "pipeline-management",
+    "conversation-intelligence"
+  ],
   "sources": [
     "https://www.clari.com/pricing/",
     "https://www.clari.com/platform/forecasting/",
     "https://www.clari.com/security/",
     "https://www.clari.com/press/clari-and-salesloft-announce-agreement-to-merge/",
-    "https://www.salesloft.com/company/newsroom/clari-salesloft-merger"
+    "https://www.clari.com/resources/press/"
   ],
   "accessed_at": "2026-09-05",
   "alternatives": [
@@ -67,14 +74,22 @@
       "slug": "gong",
       "description": "A revenue intelligence platform that records and analyzes sales calls, emails, and meetings to surface deal risk and inform forecasting.",
       "best_for": "Teams whose primary need is conversation-level deal intelligence and coaching rather than a full sales-engagement/cadence layer.",
-      "strengths": ["Conversation capture and analysis", "Deal risk scoring", "Interaction-grounded forecasting"]
+      "strengths": [
+        "Conversation capture and analysis",
+        "Deal risk scoring",
+        "Interaction-grounded forecasting"
+      ]
     },
     {
       "name": "Outreach",
       "slug": "outreach",
       "description": "A sales engagement platform for building multichannel outreach sequences with conversation intelligence and AI-driven forecasting.",
       "best_for": "Teams that want a dedicated sales-engagement platform for sequence execution rather than a forecasting-first suite.",
-      "strengths": ["Multichannel sequencing", "Real-time conversation guidance", "AI forecast projection"]
+      "strengths": [
+        "Multichannel sequencing",
+        "Real-time conversation guidance",
+        "AI forecast projection"
+      ]
     }
   ]
 }
