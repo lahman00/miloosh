@@ -140,7 +140,6 @@ describe("Tier B IT-Ops catalog batch (Atera, ConnectWise RMM, Jamf Pro, ManageE
 
   it("Jamf Pro does not claim Windows/Android endpoint management for itself and keeps bundle pricing clearly distinct", () => {
     const jamf = loadRaw("jamf-pro");
-    const haystack = JSON.stringify(jamf).toLowerCase();
     // Jamf Pro is Apple-only -- the product itself must never be described as
     // managing Windows or Android devices (only the "Jamf for Mobile" BUNDLE,
     // which also includes Jamf Connect/Protect, mentions Android, and only
