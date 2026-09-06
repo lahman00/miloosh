@@ -4,7 +4,11 @@
   "category": "hr-and-payroll",
   "description": "Greenhouse is an applicant tracking and hiring platform built around structured hiring, offering interview kits, candidate scorecards, a candidate portal (MyGreenhouse), fraud detection/identity verification tooling (Real Talent), and 100+ pre-built integrations, priced through a custom quote across three named plan tiers.",
   "website": "https://www.greenhouse.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Companies that want a dedicated, structured-hiring applicant tracking system rather than a lightweight hiring module bundled inside a broader HRIS.",
   "features": [
     "Structured hiring workflows with interview kits and candidate scorecards",
@@ -31,11 +35,19 @@
     "free_plan": false,
     "enterprise_contact_sales": true,
     "tiers": [
-      { "name": "Core", "notes": "Positioned as bringing structure to hiring. No published price; requires a custom quote." },
-      { "name": "Plus", "notes": "Positioned as optimizing hiring operations. No published price; requires a custom quote." },
-      { "name": "Pro", "notes": "Positioned for managing hiring complexity at larger scale. No published price; requires a custom quote." }
+      {
+        "name": "Core",
+        "notes": "Positioned as bringing structure to hiring. No published price; requires a custom quote."
+      },
+      {
+        "name": "Plus",
+        "notes": "Positioned as optimizing hiring operations. No published price; requires a custom quote."
+      },
+      {
+        "name": "Pro",
+        "notes": "Positioned for managing hiring complexity at larger scale. No published price; requires a custom quote."
+      }
     ],
-    "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",
     "official_source": "https://www.greenhouse.com/pricing"
   },
@@ -45,28 +57,40 @@
       "slug": "bamboohr",
       "description": "An HRIS for small and mid-sized businesses that includes an applicant tracking system alongside core HR record-keeping.",
       "best_for": "Smaller companies wanting hiring bundled into a broader HRIS rather than a standalone dedicated ATS.",
-      "strengths": ["ATS bundled with HRIS", "Published pricing", "Employee self-service"]
+      "strengths": [
+        "ATS bundled with HRIS",
+        "Published pricing",
+        "Employee self-service"
+      ]
     },
     {
       "name": "Rippling",
       "slug": "rippling",
       "description": "A modular workforce platform whose Rippling Recruiting product adds applicant tracking as an add-on to its core HRIS.",
       "best_for": "Companies already using Rippling for HR/IT that want to add recruiting rather than adopt a separate best-of-breed ATS.",
-      "strengths": ["Unified employee record", "Recruiting as an add-on module", "Automatic new-hire-to-employee handoff"]
+      "strengths": [
+        "Unified employee record",
+        "Recruiting as an add-on module",
+        "Automatic new-hire-to-employee handoff"
+      ]
     },
     {
       "name": "Gusto",
       "slug": "gusto",
       "description": "A payroll, benefits, and HR platform with built-in hiring and onboarding tools such as custom offer letters and checklists.",
       "best_for": "Small businesses wanting basic hiring/onboarding included with payroll rather than a dedicated structured-hiring ATS.",
-      "strengths": ["Hiring tools included with payroll", "Simple offer-letter and onboarding workflow", "Published pricing"]
+      "strengths": [
+        "Hiring tools included with payroll",
+        "Simple offer-letter and onboarding workflow",
+        "Published pricing"
+      ]
     }
   ],
   "sources": [
     "https://www.greenhouse.com/",
     "https://www.greenhouse.com/pricing",
     "https://www.greenhouse.com/security",
-    "https://apps.apple.com/us/app/greenhouse-recruiting/id1112028249"
+    "https://support.greenhouse.io/hc/en-us/articles/360000397992-Greenhouse-Recruiting-mobile-app"
   ],
   "accessed_at": "2026-09-05"
 }

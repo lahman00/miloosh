@@ -4,7 +4,11 @@
   "category": "hr-and-payroll",
   "description": "Workday Human Capital Management is an enterprise cloud HCM suite covering talent acquisition, talent management, workforce planning, global payroll, and analytics, built on the same unified data platform as Workday's finance products and used by a large share of Fortune 500 companies.",
   "website": "https://www.workday.com/en-us/products/human-capital-management/overview.html",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Large and complex enterprises wanting HCM unified with financial and operational data on one platform, backed by extensive compliance certifications.",
   "features": [
     "Unified data model spanning financial, operational, and workforce information alongside Workday's finance products",
@@ -40,28 +44,40 @@
       "slug": "paycom",
       "description": "A single-database HCM platform covering payroll, talent, HR, and time management, built around employee-driven payroll verification.",
       "best_for": "Mid-sized organizations wanting single-database HCM breadth without Workday's enterprise financial-planning depth.",
-      "strengths": ["Single-database architecture", "Employee-driven payroll input", "Full HCM suite"]
+      "strengths": [
+        "Single-database architecture",
+        "Employee-driven payroll input",
+        "Full HCM suite"
+      ]
     },
     {
       "name": "Paylocity",
       "slug": "paylocity",
       "description": "A unified HR, payroll, finance, and IT platform for mid-sized organizations with modular products.",
       "best_for": "Mid-sized employers wanting modular HCM plus finance tools without an enterprise-scale implementation.",
-      "strengths": ["Modular product adoption", "Finance modules included", "Employee experience tools"]
+      "strengths": [
+        "Modular product adoption",
+        "Finance modules included",
+        "Employee experience tools"
+      ]
     },
     {
       "name": "ADP Workforce Now",
       "slug": "adp-workforce-now",
       "description": "ADP's HCM suite for small to midsized businesses, combining payroll, HR, time, and talent management.",
       "best_for": "Organizations wanting an established payroll-bureau vendor rather than Workday's finance-unified enterprise platform; note ADP Workforce Now itself targets small-to-midsized employers rather than large enterprise.",
-      "strengths": ["Established payroll tax engine", "Large HR/benefits ecosystem", "Broad company-size coverage"]
+      "strengths": [
+        "Established payroll tax engine",
+        "Large HR/benefits ecosystem",
+        "Broad company-size coverage"
+      ]
     }
   ],
   "sources": [
     "https://www.workday.com/en-us/products/human-capital-management/overview.html",
     "https://www.workday.com/en-us/why-workday/trust/compliance.html",
     "https://security.workday.com/",
-    "https://apps.apple.com/us/app/workday/id316800034"
+    "https://android.workday.com/"
   ],
   "accessed_at": "2026-09-05"
 }

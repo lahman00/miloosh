@@ -3,7 +3,7 @@
   "slug": "outreach",
   "category": "sales",
   "description": "Outreach is a sales engagement platform for building and running multichannel outreach sequences, with real-time conversation intelligence, deal management, and AI-driven forecasting layered on top.",
-  "website": "https://www.outreach.io",
+  "website": "https://www.outreach.ai",
   "best_for": "Sales development and account-executive teams that want to run, track, and optimize multichannel outreach sequences alongside deal and forecast visibility.",
   "features": [
     "Multichannel sales sequences with automated activity capture across email, calls, and other channels",
@@ -19,7 +19,9 @@
     "has_free_tier": false,
     "status": "contact_sales",
     "free_plan": false,
-    "free_trial": { "available": false },
+    "free_trial": {
+      "available": false
+    },
     "tiers": [
       {
         "name": "Amplify Essentials",
@@ -69,7 +71,13 @@
   "links": {
     "pricing": "https://www.outreach.ai/pricing"
   },
-  "tags": ["sales-engagement", "conversation-intelligence", "forecasting", "sequences", "revenue-orchestration"],
+  "tags": [
+    "sales-engagement",
+    "conversation-intelligence",
+    "forecasting",
+    "sequences",
+    "revenue-orchestration"
+  ],
   "sources": [
     "https://www.outreach.ai/pricing",
     "https://www.outreach.ai/platform",
@@ -82,14 +90,22 @@
       "slug": "salesloft",
       "description": "A sales engagement platform for running multichannel cadences and managing deals, now combined with Clari's forecasting after their 2025 merger.",
       "best_for": "Teams comparing Outreach's closest direct competitor in cadence-based sales engagement.",
-      "strengths": ["Multichannel cadences", "Deal management", "Post-merger forecasting integration"]
+      "strengths": [
+        "Multichannel cadences",
+        "Deal management",
+        "Post-merger forecasting integration"
+      ]
     },
     {
       "name": "Apollo.io",
       "slug": "apollo-io",
       "description": "A sales intelligence and engagement platform combining a B2B contact database with sequencing, a dialer, and AI-assisted prospecting.",
       "best_for": "Teams that want sequencing bundled with contact-data sourcing and published self-serve pricing.",
-      "strengths": ["Published per-seat pricing", "Bundled contact database", "Built-in dialer"]
+      "strengths": [
+        "Published per-seat pricing",
+        "Bundled contact database",
+        "Built-in dialer"
+      ]
     }
   ]
 }
