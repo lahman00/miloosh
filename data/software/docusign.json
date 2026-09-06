@@ -1,0 +1,104 @@
+{
+  "name": "Docusign",
+  "slug": "docusign",
+  "category": "legal",
+  "description": "Docusign eSignature is an electronic-signature and agreement workflow platform for sending, signing, tracking, and managing documents. Its self-serve plans include reusable templates, audit trails, mobile-responsive signing, reminders, and integrations; higher tiers add team collaboration, web forms, payments, bulk send, and more advanced workflow controls.",
+  "website": "https://www.docusign.com/products/electronic-signature",
+  "company": "Docusign, Inc.",
+  "best_for": "Individuals, legal teams, sales teams, and other businesses that need a mature e-signature workflow with audit trails, templates, recipient tracking, integrations, and scalable agreement-management options.",
+  "features": [
+    "Send documents for electronic signature and track envelope status through completion",
+    "Real-time audit trail, reminders, reusable templates, and mobile-responsive signing",
+    "Standard plan collaboration features including shared templates, commenting, branding, and delegated signing",
+    "Business Pro features including web forms, payment collection, advanced form fields, and bulk send",
+    "1,000+ partner integrations plus APIs and connections to cloud storage and productivity platforms",
+    "Enhanced and IAM plans for larger organizations needing custom envelope limits, centralized administration, SSO, and broader agreement workflows"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$11/month (Personal; annual commitment billed monthly)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": {
+      "amount": "11",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Personal",
+        "amount": "11",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per month",
+        "notes": "Annual commitment billed monthly ($132 annual commitment). Includes 5 envelopes per month, agreement storage, AI-assisted summary, reusable templates, and 1,000+ integrations."
+      },
+      {
+        "name": "Standard",
+        "amount": "30",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "Annual commitment billed monthly ($360 per user annually). Includes up to 100 envelopes per user per year plus shared templates, real-time commenting, branding, delegated signing, and team controls."
+      },
+      {
+        "name": "Business Pro",
+        "amount": "45",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "Annual commitment billed monthly ($540 per user annually). Adds web forms, payment collection, advanced fields, data verification, bulk send, and other advanced agreement features."
+      },
+      {
+        "name": "Enhanced plans",
+        "notes": "Contact sales for customized eSignature or IAM packaging, envelope limits, centralized administration, SSO, and advanced enterprise features."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://ecom.docusign.com/plans/esignature"
+  },
+  "pros": [
+    "Publishes clear self-serve pricing for Personal, Standard, and Business Pro in the U.S. storefront",
+    "The same eSignature platform covers solo use through team collaboration, with enhanced plans available for larger organizations",
+    "Official feature tables document audit trails, templates, mobile signing, integrations, and APIs across plans"
+  ],
+  "cons": [
+    "The headline U.S. prices shown are tied to an annual commitment even though payments are billed monthly",
+    "Standard and Business Pro annual plans include up to 100 envelopes per user per year, so high-volume senders may incur overage charges or need a customized plan",
+    "SSO, organization management, custom envelope limits, and several advanced security/workflow capabilities require an Enhanced or higher plan"
+  ],
+  "faq": [
+    {
+      "question": "How much does Docusign eSignature cost?",
+      "answer": "On Docusign's U.S. annual-commitment pricing view, Personal is $11/month, Standard is $30/user/month, and Business Pro is $45/user/month. Enhanced plans use custom sales pricing."
+    },
+    {
+      "question": "Does Docusign have a free plan?",
+      "answer": "Docusign's current eSignature pricing page does not list a permanent free tier. Docusign does offer a free trial for eSignature."
+    }
+  ],
+  "links": {
+    "pricing": "https://ecom.docusign.com/plans/esignature"
+  },
+  "tags": ["e-signature", "agreements", "contracts", "document-workflow", "electronic-signature"],
+  "sources": [
+    "https://ecom.docusign.com/plans/esignature",
+    "https://www.docusign.com/products/electronic-signature",
+    "https://www.docusign.com/products"
+  ],
+  "accessed_at": "2026-09-07",
+  "alternatives": [
+    {
+      "name": "PandaDoc",
+      "slug": "pandadoc",
+      "description": "A document workflow platform for proposals, quotes, contracts, e-signatures, and higher-tier CPQ and payment collection.",
+      "best_for": "Sales and operations teams that want proposal creation and sales-document workflows alongside e-signature.",
+      "strengths": ["Proposal and quote creation", "E-signatures", "CPQ and payment workflows on higher tiers"]
+    }
+  ]
+}

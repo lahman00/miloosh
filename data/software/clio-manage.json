@@ -1,0 +1,73 @@
+{
+  "name": "Clio Manage",
+  "slug": "clio-manage",
+  "category": "legal",
+  "description": "Clio Manage is cloud-based legal practice management software for law firms, covering matter and contact management, calendaring, document management, time tracking and billing, trust and operating account reconciliation, and client communication through secure messaging and a client portal. Clio (Themis Solutions Inc., founded 2008) states its software is used by 400,000+ legal professionals in more than 130 countries, with AI features across the platform branded as Manage AI.",
+  "website": "https://www.clio.com/manage/",
+  "founded": 2008,
+  "company": "Themis Solutions Inc.",
+  "platforms": ["Web", "iOS", "Android"],
+  "best_for": "Law firms of any size that want a single cloud system for matter management, time tracking, trust-compliant billing, and client communication, with an entry-level plan published at a real self-serve starting price.",
+  "features": [
+    "Matter, contact, and document management with unlimited document storage",
+    "Calendaring with AI-assisted capture of calendar events and tasks from court documents",
+    "Time and expense tracking, with online client payments via card, eCheck, Apple Pay, or Google Pay",
+    "Trust and operating account reconciliation built in, without separate bookkeeping software",
+    "Manage AI: AI-drafted bills on a set schedule, document-to-calendar-event conversion, and AI-drafted client updates from matter activity",
+    "Secure client portal plus two-way text, email, and portal messaging",
+    "Custom fields, kanban-style matter stages, and custom roles/permissions on higher tiers",
+    "Multi-currency billing and split billing across payers on higher tiers",
+    "300+ integrations across calendar, email, accounting, and document storage, plus an open API and Zapier support",
+    "Native mobile apps for iOS and Android"
+  ],
+  "pros": [
+    "The entry Starter plan has a real published self-serve starting price ($49/user) rather than a pure quote wall",
+    "Clio reports 400,000+ legal professionals using its software across 130+ countries",
+    "States SOC 2 Type II certification, with client data never used to train AI models per its pricing FAQ"
+  ],
+  "cons": [
+    "Only the entry Starter plan has a published price — Core, Signature, and Elite are all quote-based (\"Get pricing\")",
+    "AI features (Manage AI) and higher-tier capabilities like unlimited custom roles, kanban matter stages, and multi-currency billing require moving up from the Starter plan"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$49/user (Starter plan)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "entry_paid": { "amount": "49", "currency": "USD", "billing_period": "unknown", "per_seat": true },
+    "tiers": [
+      { "name": "Starter", "amount": "49", "currency": "USD", "billing_period": "unknown", "unit": "per user", "notes": "Displayed on Clio's pricing page as \"Starting at $49/user\" without an explicit monthly/annual billing-period label. Includes matter/contact/document management, time and expense tracking, online client payments, and trust/operating account reconciliation." },
+      { "name": "Core", "notes": "Listed as \"Get pricing\" with no published dollar figure. Adds AI-drafted billing, document-to-calendar conversion, AI client updates, and a client portal on top of Starter." },
+      { "name": "Signature", "notes": "Listed as \"Get pricing\" with no published dollar figure. Adds unlimited custom roles/permissions, kanban matter stages, AI-generated profitability/productivity reports, and multi-currency billing on top of Core." },
+      { "name": "Elite", "notes": "Listed as \"Get pricing\" with no published dollar figure. Bundles Clio Manage Signature with Clio Grow's client-intake/CRM suite; Clio advertises this bundle as saving over 17% versus buying separately." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-05",
+    "official_source": "https://www.clio.com/pricing/"
+  },
+  "alternatives": [
+    {
+      "name": "QuickBooks Online",
+      "slug": "quickbooks-online",
+      "description": "Small-business accounting software for invoicing, expense tracking, and basic financial reporting.",
+      "best_for": "Solo practitioners or very small firms that only need basic invoicing and bookkeeping rather than legal-specific matter management and trust accounting.",
+      "strengths": ["Low cost", "Easy setup", "Large accountant/bookkeeper ecosystem"]
+    },
+    {
+      "name": "DocuSign",
+      "slug": "docusign",
+      "description": "An e-signature and agreement management platform for sending, signing, and tracking documents electronically.",
+      "best_for": "Firms that mainly need e-signature and document execution for engagement letters and agreements rather than full matter management.",
+      "strengths": ["Widely recognized e-signature standard", "Strong audit trail for signed documents", "Integrates into many existing document workflows"]
+    }
+  ],
+  "sources": [
+    "https://www.clio.com/manage/",
+    "https://www.clio.com/pricing/",
+    "https://www.clio.com/about/",
+    "https://www.clio.com/pricing/packages/"
+  ],
+  "accessed_at": "2026-09-05"
+}

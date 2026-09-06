@@ -1,0 +1,102 @@
+{
+  "name": "Dropbox",
+  "slug": "dropbox",
+  "category": "productivity",
+  "description": "Dropbox is a cloud content and file-collaboration platform for storing, syncing, sharing, recovering, and transferring files across devices. Team plans add centralized administration, team folders, sharing controls, longer recovery windows, and additional security features; Dropbox also includes PDF editing and limited signature-request capabilities inside its broader content workflow.",
+  "website": "https://www.dropbox.com/",
+  "company": "Dropbox, Inc.",
+  "best_for": "Individuals and teams that need dependable cloud file sync, shared folders and links, version recovery, large-file transfer, and business administration without moving their primary content workflow into a project-management system.",
+  "features": [
+    "Cloud file storage and sync across connected devices",
+    "Shared files, folders, and links with view/edit permissions and sharing controls",
+    "File recovery and version history, with longer recovery windows on higher plans",
+    "Dropbox Transfer for sending large files without requiring recipients to have a Dropbox account",
+    "PDF editing, annotation, self-signing, and limited signature-request capability in current Dropbox plans",
+    "Team folders, groups, roles, centralized billing, and admin controls on business plans",
+    "Dropbox App Center and Business API integrations for connecting third-party productivity, security, and administration tools"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free (Basic, 2 GB); paid pricing varies by region and billing cycle",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true },
+    "tiers": [
+      {
+        "name": "Basic",
+        "amount": "0",
+        "billing_period": "monthly",
+        "notes": "Free plan with 2 GB of storage for storing and sharing files."
+      },
+      {
+        "name": "Plus",
+        "notes": "Paid personal plan. Current published price varies by locale and billing cycle; the plan includes 2 TB storage and 30-day file recovery."
+      },
+      {
+        "name": "Standard",
+        "notes": "Paid team/professional plan with team storage, admin controls, file sharing, PDF editing/signing, and a free-trial option. Published price varies by locale and billing cycle."
+      },
+      {
+        "name": "Advanced",
+        "notes": "Paid team plan for 3 or more people with larger pooled storage, one-year recovery, tiered admin controls, SSO, advanced key management, and additional security capabilities. Published price varies by locale and billing cycle."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales for customized users, storage, enterprise security, integrations, and support."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.dropbox.com/plans"
+  },
+  "pros": [
+    "Maintains a permanent free Basic tier rather than offering only a time-limited trial",
+    "Combines file sync, sharing, recovery, transfer, PDF workflows, and team administration in one content platform",
+    "Official business tooling includes an App Center and Business API for third-party security, compliance, and administration integrations"
+  ],
+  "cons": [
+    "Paid pricing is locale- and billing-cycle-dependent, so the public plan page does not expose one universal price that applies globally",
+    "Advanced controls such as tiered-admin management, SSO, advanced key management, and some security features are limited to higher plans",
+    "Dropbox includes PDF signing and signature-request features, but teams needing a dedicated end-to-end e-signature or contract workflow may still prefer a specialist agreement product"
+  ],
+  "faq": [
+    {
+      "question": "Does Dropbox have a free plan?",
+      "answer": "Yes. Dropbox Basic is a permanent free plan with 2 GB of storage for storing and sharing files."
+    },
+    {
+      "question": "Does Dropbox include electronic signatures?",
+      "answer": "Dropbox's current plan comparison includes PDF signing and limited signature requests inside Dropbox. Dedicated Dropbox Sign settings and integrations remain a distinct workflow, so Miloosh does not treat the core Dropbox product as a full substitute for every specialist e-signature platform."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.dropbox.com/plans",
+    "integrations": "https://help.dropbox.com/integrations/app-center"
+  },
+  "tags": ["cloud-storage", "file-sharing", "file-sync", "collaboration", "document-management"],
+  "sources": [
+    "https://www.dropbox.com/plans",
+    "https://www.dropbox.com/features",
+    "https://www.dropbox.com/features/share",
+    "https://help.dropbox.com/integrations/business-api",
+    "https://help.dropbox.com/plans/dropbox-business"
+  ],
+  "accessed_at": "2026-09-07",
+  "alternatives": [
+    {
+      "name": "Notion",
+      "slug": "notion",
+      "description": "A collaborative workspace combining documents, wikis, databases, and lightweight project organization.",
+      "best_for": "Teams whose priority is structured collaborative knowledge and project content rather than general-purpose file sync and cloud storage.",
+      "strengths": ["Flexible documents and databases", "Team wiki workflows", "Project and knowledge organization"]
+    },
+    {
+      "name": "Confluence",
+      "slug": "confluence",
+      "description": "A team knowledge and documentation platform for creating, organizing, and collaborating on internal content.",
+      "best_for": "Organizations that primarily need a structured team knowledge base instead of a general cloud file repository.",
+      "strengths": ["Structured knowledge spaces", "Team documentation", "Atlassian ecosystem integration"]
+    }
+  ]
+}
