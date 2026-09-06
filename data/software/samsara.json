@@ -1,0 +1,90 @@
+{
+  "name": "Samsara",
+  "slug": "samsara",
+  "category": "fleet-management",
+  "description": "Samsara is a connected-operations platform for fleets and physical operations, combining fleet telematics, real-time GPS tracking, routing and dispatch, fuel and compliance tools, maintenance diagnostics, AI cameras, equipment tracking, workforce apps, reporting, and an open integration platform.",
+  "website": "https://www.samsara.com/",
+  "best_for": "Midmarket and enterprise fleets that want telematics, safety cameras, equipment tracking, maintenance, compliance, routing, and workforce workflows on one connected operations platform.",
+  "features": [
+    "Real-time GPS fleet tracking with live maps, trip history, geofences, speed and harsh-driving visibility",
+    "Routing and dispatch tools with route optimization and commercial navigation",
+    "Fuel, idling, vehicle diagnostics, fault-code monitoring, and preventive maintenance workflows",
+    "FMCSA ELD/HOS compliance and driver/fleet applications",
+    "AI dash cameras, driver coaching, safety reporting, and in-cab alerts",
+    "Equipment, trailer, and asset tracking alongside vehicle telematics",
+    "Open API plus an App Marketplace with 350+ integrations"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales / check prices",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Connected Operations platform",
+        "notes": "Samsara directs buyers to Check our prices / Talk to sales rather than publishing a universal numeric fleet subscription price on its current product pages."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.samsara.com/products"
+  },
+  "pros": [
+    "One platform spans vehicles, trailers, equipment, cameras, maintenance, compliance, and workforce workflows",
+    "Real-time GPS and telematics integrate with safety and maintenance data instead of operating as a standalone tracker",
+    "Open API and a large app marketplace support broader operational integrations"
+  ],
+  "cons": [
+    "No public universal numeric subscription price on the current product pages",
+    "Hardware and solution mix can make total cost dependent on the exact deployment",
+    "The breadth of the platform can be more than a small fleet needs"
+  ],
+  "tags": [
+    "fleet-management",
+    "telematics",
+    "gps-tracking",
+    "driver-safety"
+  ],
+  "sources": [
+    "https://www.samsara.com/products",
+    "https://www.samsara.com/products/telematics",
+    "https://www.samsara.com/products/telematics/gps-fleet-tracking"
+  ],
+  "alternatives": [
+    {
+      "name": "Motive",
+      "slug": "motive",
+      "description": "Fleet operations platform combining telematics, compliance, safety, maintenance, and workforce tools.",
+      "best_for": "Fleets prioritizing integrated telematics, driver safety, compliance, and maintenance.",
+      "strengths": [
+        "Real-time GPS",
+        "Compliance",
+        "Maintenance and safety"
+      ]
+    },
+    {
+      "name": "Geotab",
+      "slug": "geotab",
+      "description": "Fleet telematics platform built around GO hardware, MyGeotab, fleet analytics, compliance, and a large marketplace.",
+      "best_for": "Fleets wanting flexible telematics packages and a broad partner ecosystem.",
+      "strengths": [
+        "GO telematics hardware",
+        "Fleet analytics",
+        "Marketplace integrations"
+      ]
+    },
+    {
+      "name": "Verizon Connect",
+      "slug": "verizon-connect",
+      "description": "GPS fleet-management platform with near-real-time mapping, vehicle history, productivity, and maintenance tools.",
+      "best_for": "Fleets wanting established GPS tracking and operational reporting.",
+      "strengths": [
+        "Near-real-time tracking",
+        "Vehicle history",
+        "Fleet reporting"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

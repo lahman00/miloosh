@@ -1,0 +1,138 @@
+{
+  "name": "Lovable",
+  "slug": "lovable",
+  "category": "developer-tools",
+  "description": "Lovable is an AI software engineer and web-app builder that turns natural-language prompts into websites and web applications. It combines conversational building, visual editing, cloud hosting, authentication and backend services, GitHub sync, integrations, and credit-based AI/application usage inside shared workspaces.",
+  "website": "https://lovable.dev/",
+  "best_for": "Founders, product teams, operators, and nontechnical builders who want to create and publish web applications quickly through prompts and visual editing while retaining ownership of generated code.",
+  "platforms": [
+    "Web"
+  ],
+  "features": [
+    "Prompt-based generation and iterative editing of websites and web applications",
+    "Visual Edits for directly modifying interface elements without writing prompts",
+    "Lovable Cloud for hosting and application infrastructure",
+    "Authentication, database/backend workflows, and integrations including GitHub and payment providers",
+    "Shared workspaces with unlimited members and pooled workspace credits",
+    "GitHub sync so generated code can live in a normal repository",
+    "Built-in payments for eligible Pro-or-higher projects using supported payment providers"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free; Pro from $25/month ($21/month billed annually)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Includes daily build-credit grants, capped monthly, plus limited Cloud/AI grants."
+      },
+      {
+        "name": "Pro",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per workspace/month",
+        "notes": "Official Lovable guide lists $25/month or $21/month billed annually, with 100 base monthly credits plus daily credits and paid-plan capabilities."
+      },
+      {
+        "name": "Business",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "starting per workspace/month",
+        "notes": "Official Lovable guide lists starting at $50/month or $42/month billed annually, adding team/security controls such as SSO and security-center features."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing with volume-based credits and advanced enterprise controls/support."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://lovable.dev/pricing"
+  },
+  "pros": [
+    "Permanent free plan makes it possible to start building before paying",
+    "Workspace pricing is credit-based rather than per-seat, and current plans allow unlimited members",
+    "Generated projects and code remain owned by the customer and can sync to GitHub"
+  ],
+  "cons": [
+    "Credit consumption varies by task complexity and feature, making usage cost less predictable than a fixed message quota",
+    "Lovable primarily generates web applications rather than native iOS/Android binaries",
+    "Apps with significant traffic or AI/cloud usage can consume credits beyond included grants"
+  ],
+  "faq": [
+    {
+      "question": "Is Lovable free?",
+      "answer": "Yes. Lovable has a Free plan with daily build-credit grants and limited monthly Cloud and AI grants. Paid plans add a shared credit balance and additional capabilities."
+    },
+    {
+      "question": "Does Lovable charge per seat?",
+      "answer": "No. Lovable states that workspaces support unlimited members and plans are priced by included credits rather than number of seats."
+    }
+  ],
+  "tags": [
+    "ai-app-builder",
+    "web-app-builder",
+    "no-code",
+    "developer-tools"
+  ],
+  "links": {
+    "pricing": "https://lovable.dev/pricing",
+    "docs": "https://docs.lovable.dev/"
+  },
+  "sources": [
+    "https://lovable.dev/pricing",
+    "https://lovable.dev/guides/lovable-vs-vercel-platform-comparison-guide",
+    "https://docs.lovable.dev/features/workspace",
+    "https://lovable.dev/blog/simplifying-billing"
+  ],
+  "alternatives": [
+    {
+      "name": "Replit",
+      "slug": "replit",
+      "description": "Cloud development platform with AI Agent, browser IDE, hosting, and database services.",
+      "best_for": "Builders who want more direct access to code and a full browser IDE alongside AI generation.",
+      "strengths": [
+        "Cloud IDE",
+        "AI Agent",
+        "Built-in hosting"
+      ]
+    },
+    {
+      "name": "Cursor",
+      "slug": "cursor",
+      "description": "AI-first desktop code editor for professional code-centric development.",
+      "best_for": "Developers who prefer local IDE workflows and granular control over an existing codebase.",
+      "strengths": [
+        "Desktop IDE",
+        "Agentic coding",
+        "Codebase context"
+      ]
+    },
+    {
+      "name": "Windsurf (now Devin Desktop)",
+      "slug": "windsurf",
+      "description": "AI-native desktop editor transitioning to Devin Desktop with multi-agent management.",
+      "best_for": "Developers wanting a desktop coding environment and agent command center.",
+      "strengths": [
+        "AI editor",
+        "Multi-agent workflows",
+        "Developer integrations"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

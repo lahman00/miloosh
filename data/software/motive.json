@@ -1,0 +1,91 @@
+{
+  "name": "Motive",
+  "slug": "motive",
+  "category": "fleet-management",
+  "description": "Motive is an AI-powered physical-operations platform for fleet management, driver safety, equipment monitoring, maintenance, spend, workforce management, and compliance. Its fleet product combines real-time GPS and telematics with diagnostics, routing context, driver workflows, fuel insights, and maintenance automation.",
+  "website": "https://gomotive.com/",
+  "best_for": "Commercial fleets that want telematics, ELD/compliance, driver safety, vehicle maintenance, equipment visibility, and workforce workflows on one operational platform.",
+  "features": [
+    "Real-time GPS tracking with live traffic, weather overlays, historical activity, and driver/vehicle pairing",
+    "ELD, HOS, IFTA, CSA, and driver-qualification compliance workflows",
+    "Vehicle diagnostics, inspections, scheduled maintenance, work orders, parts, and maintenance cost controls",
+    "Fuel, idling, EV utilization, sustainability, and operational efficiency insights",
+    "Driver and Fleet mobile apps for ELD, assignments, checklists, alerts, and fleet visibility",
+    "AI dashcam and driver-safety capabilities integrated with telematics",
+    "Dispatch, equipment monitoring, reefer monitoring, and operational reporting across the Motive platform"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Motive Fleet Management",
+        "notes": "Motive directs buyers to Get started / Contact sales and account-specific billing; no public universal numeric fleet-management subscription price was found on current official product and billing pages."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://gomotive.com/products/fleet-management/"
+  },
+  "pros": [
+    "Combines telematics with compliance, maintenance, safety, equipment, and workforce capabilities",
+    "Real-time tracking data feeds directly into dispatch, maintenance, fuel, and compliance workflows",
+    "Supports fleets from small commercial operations through large enterprise deployments"
+  ],
+  "cons": [
+    "No public universal numeric fleet-management price",
+    "Hardware, cameras, equipment devices, and additional modules can make pricing deployment-specific",
+    "Some adjacent Motive products have separate subscription structures, so the platform should not be treated as one flat plan"
+  ],
+  "tags": [
+    "fleet-management",
+    "telematics",
+    "eld",
+    "maintenance"
+  ],
+  "sources": [
+    "https://gomotive.com/products/fleet-management/",
+    "https://gomotive.com/products/features/gps-fleet-tracking/",
+    "https://gomotive.com/products/maintenance/",
+    "https://helpcenter.gomotive.com/hc/en-us/articles/31800880418205-Billing-Invoices"
+  ],
+  "alternatives": [
+    {
+      "name": "Samsara",
+      "slug": "samsara",
+      "description": "Connected operations platform for fleet telematics, cameras, equipment, maintenance, and workforce workflows.",
+      "best_for": "Fleets wanting a broad connected-operations suite.",
+      "strengths": [
+        "Telematics",
+        "AI cameras",
+        "Equipment and workforce tools"
+      ]
+    },
+    {
+      "name": "Geotab",
+      "slug": "geotab",
+      "description": "Fleet telematics platform with GO hardware, MyGeotab analytics, compliance, and partner integrations.",
+      "best_for": "Fleets prioritizing flexible telematics and a broad ecosystem.",
+      "strengths": [
+        "Telematics",
+        "Analytics",
+        "Marketplace"
+      ]
+    },
+    {
+      "name": "Verizon Connect",
+      "slug": "verizon-connect",
+      "description": "Fleet tracking and operations platform centered on Reveal GPS visibility and reporting.",
+      "best_for": "Fleets focused on GPS tracking, vehicle history, productivity, and operational visibility.",
+      "strengths": [
+        "GPS tracking",
+        "Vehicle history",
+        "Reporting"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

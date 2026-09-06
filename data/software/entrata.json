@@ -1,0 +1,93 @@
+{
+  "name": "Entrata",
+  "slug": "entrata",
+  "category": "property-management",
+  "description": "Entrata is a property-management operating system for multifamily and other residential portfolios, connecting leasing, CRM, accounting, payments, maintenance, renewals, resident operations, and AI-driven workflows in one platform.",
+  "website": "https://www.entrata.com/",
+  "best_for": "Multifamily and large property operators that want leasing, accounting, resident experience, maintenance, payments, and portfolio operations on one connected platform.",
+  "features": [
+    "Leasing and CRM workflows from lead management through signed lease",
+    "Property accounting, accounts payable, budgeting, reporting, and payments",
+    "Maintenance and onsite property-operations workflows",
+    "Resident and prospect experience tools",
+    "Portfolio-wide operational reporting and governance",
+    "AI-assisted and agentic workflows across leasing, accounting, maintenance, renewals, and payments"
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Entrata platform",
+        "notes": "Public product and demo pages direct buyers to a demo/sales process; no public numeric self-serve price was found."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-07",
+    "official_source": "https://www.entrata.com/demo"
+  },
+  "pros": [
+    "Connects CRM, ERP/accounting, leasing, and property operations in one system",
+    "Broad coverage of multifamily workflows including resident-facing experiences",
+    "Current platform emphasizes configurable automation and AI agents across core operations"
+  ],
+  "cons": [
+    "No public self-serve numeric pricing",
+    "Enterprise breadth can be more complex than smaller landlords require",
+    "Evaluation starts with a demo rather than instant self-service signup"
+  ],
+  "tags": [
+    "property-management",
+    "multifamily",
+    "leasing",
+    "property-accounting"
+  ],
+  "links": {
+    "enterprise": "https://www.entrata.com/demo"
+  },
+  "sources": [
+    "https://www.entrata.com/",
+    "https://www.entrata.com/platforms/oxp",
+    "https://www.entrata.com/products/accounting",
+    "https://www.entrata.com/demo"
+  ],
+  "alternatives": [
+    {
+      "name": "AppFolio",
+      "slug": "appfolio",
+      "description": "Property management software for leasing, accounting, maintenance, and resident operations.",
+      "best_for": "Property managers wanting an established all-in-one property platform.",
+      "strengths": [
+        "Property accounting",
+        "Leasing",
+        "Resident operations"
+      ]
+    },
+    {
+      "name": "Buildium",
+      "slug": "buildium",
+      "description": "Property management platform for rental operations, accounting, leasing, and maintenance.",
+      "best_for": "Small and midsize property managers seeking a simpler property-management suite.",
+      "strengths": [
+        "Accounting",
+        "Leasing",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "Yardi Breeze",
+      "slug": "yardi-breeze",
+      "description": "Cloud property-management software with accounting, leasing, payments, and maintenance tools.",
+      "best_for": "Smaller portfolios wanting published per-unit entry pricing.",
+      "strengths": [
+        "Published entry pricing",
+        "Built-in accounting",
+        "Online leasing and payments"
+      ]
+    }
+  ],
+  "accessed_at": "2026-09-07"
+}

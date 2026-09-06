@@ -128,5 +128,10 @@
     "slug": "legal",
     "name": "Legal",
     "description": "Legal practice management, e-signature, and agreement workflow software for law firms and business teams."
+  },
+  {
+    "slug": "fleet-management",
+    "name": "Fleet Management",
+    "description": "GPS tracking, telematics, driver safety, maintenance, compliance, and operational software for vehicle and equipment fleets."
   }
 ]
