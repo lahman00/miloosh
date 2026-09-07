@@ -23,4 +23,12 @@ describe("production URL safety", () => {
     expect(adobe.pricing?.officialSource).toBe("https://business.adobe.com/products/adobe-analytics/pricing.html");
     expect(adobe.sources).toContain("https://business.adobe.com/products/adobe-analytics/pricing.html");
   });
+
+  it("does not link to the removed Power Automate mobile apps", () => {
+    const powerAutomate = getSoftware("power-automate")!;
+    expect(powerAutomate.platforms).not.toContain("iOS");
+    expect(powerAutomate.platforms).not.toContain("Android");
+    expect(powerAutomate.sources.some((source) => source.includes("apps.apple.com"))).toBe(false);
+    expect(powerAutomate.sources).toContain("https://learn.microsoft.com/en-us/power-automate/mobile/overview-mobile");
+  });
 });
