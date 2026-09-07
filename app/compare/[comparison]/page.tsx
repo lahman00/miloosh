@@ -31,7 +31,7 @@ import { getBreadcrumbJsonLd, getComparisonJsonLd } from "@/lib/structured-data"
 import { SITE_URL } from "@/lib/site";
 import { formatIsoDate } from "@/lib/date";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
-import { resolveComparisonCtaUrl, getWixContextForComparison } from "@/lib/wix-funnels";
+import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 
 type ComparePageProps = {
@@ -63,9 +63,15 @@ type ComparePageProps = {
 function ComparisonChoiceCta({ software, otherSlug }: { software: Software; otherSlug: string }) {
   const href = resolveComparisonCtaUrl(software, otherSlug);
   const wixContext = software.slug === "wix" ? getWixContextForComparison(otherSlug) : undefined;
+  const ctaProductName = software.slug === "wix" ? getWixProductLabelForComparison(otherSlug) : software.name;
 
   return (
     <div className="mt-5">
+      {software.slug === "wix" && wixContext === "headless" ? (
+        <p className="mb-3 text-sm leading-6 text-zinc-400">
+          For this comparison, the relevant Wix offering is <span className="font-medium text-zinc-200">Wix Headless</span>.
+        </p>
+      ) : null}
       <TrackedCtaLink
         slug={software.slug}
         href={href}
@@ -76,7 +82,7 @@ function ComparisonChoiceCta({ software, otherSlug }: { software: Software; othe
         ctaLocation="compare-page-choose-card"
         wixContext={wixContext}
       >
-        Visit {software.name}
+        Visit {ctaProductName}
         <ExternalLink className="h-4 w-4" />
       </TrackedCtaLink>
       {shouldShowAffiliateDisclosure(software) ? (
