@@ -47,6 +47,7 @@ import {
   getSoftwareApplicationJsonLd,
 } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
+import { getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -68,8 +69,9 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
     };
   }
 
-  const title = generateTitle(software);
-  const description = generateMetaDescription(software);
+  const serpOverride = getSoftwareSerpOverride(slug);
+  const title = serpOverride?.title ?? generateTitle(software);
+  const description = serpOverride?.description ?? generateMetaDescription(software);
 
   return {
     title,

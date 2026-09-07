@@ -33,6 +33,7 @@ import { formatIsoDate } from "@/lib/date";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
+import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -130,13 +131,15 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
     return { title: "Comparison not found" };
   }
 
+  const serpOverride = getComparisonSerpOverride(comparison);
+
   return {
-    title: data.title,
-    description: data.metaDescription,
+    title: serpOverride?.title ?? data.title,
+    description: serpOverride?.description ?? data.metaDescription,
     alternates: { canonical: `/compare/${comparison}` },
     openGraph: {
-      title: data.title,
-      description: data.metaDescription,
+      title: serpOverride?.title ?? data.title,
+      description: serpOverride?.description ?? data.metaDescription,
     },
   };
 }
@@ -150,6 +153,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
   }
 
   const { softwareA, softwareB } = data;
+  const searchIntentNote = getComparisonSearchIntentNote(comparison);
   const guidedAlternatives = [softwareA, softwareB].filter((software) => getAlternativeGuide(software.slug));
 
   const relatedComparisons = [
@@ -197,6 +201,11 @@ export default async function ComparePage({ params }: ComparePageProps) {
             {data.title}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">{data.intro}</p>
+          {searchIntentNote ? (
+            <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-zinc-400">
+              {searchIntentNote}
+            </p>
+          ) : null}
           <div className="mt-4">
             <ShareButton title={data.title} url={`${SITE_URL}/compare/${comparison}`} />
           </div>

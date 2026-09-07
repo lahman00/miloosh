@@ -77,18 +77,21 @@
   "faq": [
     {
       "question": "What are the best alternatives to Postmark for transactional email?",
-      "answer": "Top alternatives to Postmark include SendGrid (ideal for high-volume combined marketing and transactional sending), Brevo (best for European GDPR compliance with 300 free emails/day), and Amazon SES (best for bare-metal, lowest-cost developer relay infrastructure)."
+      "answer": "Miloosh currently compares SendGrid and Brevo with Postmark. SendGrid covers transactional and marketing email, while Brevo combines transactional email with marketing automation and additional messaging channels."
     },
     {
-      "question": "Does Postmark support European (EU) data residency?",
-      "answer": "Yes — Postmark provides dedicated EU server routing and storage options to ensure European customer data remains within the EU for strict GDPR compliance."
+      "question": "Does Postmark offer EU data residency?",
+      "answer": "No. Postmark says it is a US-based company and stores customer and processed data in the United States. Its EU privacy guidance describes using its DPA and Standard Contractual Clauses for lawful transfers rather than EU-only hosting."
     }
   ],
   "sources": [
     "https://postmarkapp.com/pricing",
-    "https://postmarkapp.com"
+    "https://postmarkapp.com",
+    "https://postmarkapp.com/eu-privacy",
+    "https://postmarkapp.com/support/article/1218-gdpr-faq",
+    "https://postmarkapp.com/dedicated-ips"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-09-07",
   "alternatives": [
     {
       "name": "SendGrid",
@@ -101,7 +104,7 @@
       "name": "Brevo",
       "slug": "brevo",
       "description": "All-in-one messaging platform providing transactional email API, SMS, WhatsApp, and marketing automation.",
-      "best_for": "Businesses needing multi-channel communication alongside transactional emails with generous free daily limits.",
+      "best_for": "Businesses that want transactional email alongside marketing automation and additional messaging channels.",
       "strengths": ["300 free emails/day", "SMS and WhatsApp channels", "Visual automation builder"]
     }
   ]
