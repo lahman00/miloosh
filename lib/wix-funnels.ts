@@ -82,13 +82,12 @@ export function getWixFunnel(context?: WixFunnelContext | null): WixFunnel {
 /**
  * Per-comparison-pair context, keyed by the OTHER product's slug (every
  * one of these pairs is Wix vs. something else). Classified by genuine
- * product fit, not guessed: Contentful, Sanity, Storyblok, and Strapi are
- * all explicitly API-first headless CMSs with no built-in frontend — a
- * reader comparing Wix against one of them is evaluating headless
- * architecture, so those route to the Headless funnel. Every other
- * current Wix comparison (Squarespace, WordPress, Webflow, Ghost,
- * Joomla, Craft CMS, Umbraco) is a "which website builder/CMS for my
- * site" decision for a general audience — Website Builder. Shopify
+ * product fit plus the Wix partner manager's explicit funnel guidance.
+ * Contentful, Sanity, Storyblok, and Strapi are API-first headless CMSs;
+ * Joomla vs Wix is also explicitly assigned to Wix Headless per the Wix
+ * partner manager's correction on 2026-09-02. Those comparisons route
+ * to the Headless funnel. Squarespace, WordPress, Webflow, Ghost, Craft
+ * CMS, and Umbraco remain general website-builder/CMS decisions. Shopify
  * (added 2026-08-17, PUBLISHED_COMPARISONS) is a direct ecommerce-
  * platform decision — routes to the eCommerce funnel, the exact intent
  * that funnel exists for. No current Wix comparison is about domains
@@ -104,7 +103,7 @@ export const WIX_COMPARISON_CONTEXT: Record<string, WixFunnelContext> = {
   wordpress: "website-builder",
   webflow: "website-builder",
   ghost: "website-builder",
-  joomla: "website-builder",
+  joomla: "headless",
   "craft-cms": "website-builder",
   umbraco: "website-builder",
   shopify: "ecommerce",
@@ -113,6 +112,15 @@ export const WIX_COMPARISON_CONTEXT: Record<string, WixFunnelContext> = {
 /** Resolves the right funnel for a Wix comparison page from the OTHER product's slug — falls back to the safe Website Builder default for any pairing not explicitly classified above (e.g. a future comparison added later). */
 export function getWixContextForComparison(otherSlug: string): WixFunnelContext {
   return WIX_COMPARISON_CONTEXT[otherSlug] ?? DEFAULT_CONTEXT;
+}
+
+/** Human-facing Wix product label for a comparison. Keeps the global catalog name as "Wix" while making intent-specific offerings explicit where Wix provided a dedicated funnel. */
+export function getWixProductLabelForComparison(otherSlug: string): string {
+  const context = getWixContextForComparison(otherSlug);
+  if (context === "headless") return "Wix Headless";
+  if (context === "ecommerce") return "Wix eCommerce";
+  if (context === "domain") return "Wix Domains";
+  return "Wix";
 }
 
 /**

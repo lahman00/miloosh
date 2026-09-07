@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { getSoftwareCtaUrl, getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { getSoftware } from "@/data/software";
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
-import { WIX_FUNNELS, WIX_COMPARISON_CONTEXT, resolveComparisonCtaUrl } from "@/lib/wix-funnels";
+import { WIX_FUNNELS, WIX_COMPARISON_CONTEXT, getWixProductLabelForComparison, resolveComparisonCtaUrl } from "@/lib/wix-funnels";
 
 /**
  * Regression coverage for the real Wix affiliate integration.
@@ -86,6 +86,8 @@ describe("resolveComparisonCtaUrl — Wix multi-funnel routing", () => {
     expect(resolveComparisonCtaUrl(wix, "sanity")).toBe(WIX_FUNNELS.headless.url);
     expect(resolveComparisonCtaUrl(wix, "storyblok")).toBe(WIX_FUNNELS.headless.url);
     expect(resolveComparisonCtaUrl(wix, "strapi")).toBe(WIX_FUNNELS.headless.url);
+    expect(resolveComparisonCtaUrl(wix, "joomla")).toBe(WIX_FUNNELS.headless.url);
+    expect(getWixProductLabelForComparison("joomla")).toBe("Wix Headless");
   });
 
   it("routes a general website-builder comparison to the Website Builder funnel", () => {
