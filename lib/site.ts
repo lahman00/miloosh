@@ -1,9 +1,26 @@
 import packageJson from "../package.json";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
-  /\/$/,
-  ""
-);
+export function resolveSiteUrl(
+  rawSiteUrl: string | undefined = process.env.NEXT_PUBLIC_SITE_URL,
+  nodeEnv: string | undefined = process.env.NODE_ENV
+): string {
+  const configured = rawSiteUrl?.trim();
+  const fallback = nodeEnv === "production" ? "https://miloosh.com" : "http://localhost:3000";
+
+  if (!configured) return fallback;
+
+  try {
+    const parsed = new URL(configured);
+    const hostname = parsed.hostname.toLowerCase();
+    const allowed = hostname === "miloosh.com" || hostname === "www.miloosh.com" || hostname === "localhost" || hostname === "127.0.0.1";
+    if (!allowed) return fallback;
+    return configured.replace(/\/$/, "");
+  } catch {
+    return fallback;
+  }
+}
+
+export const SITE_URL = resolveSiteUrl();
 
 export const SITE_NAME = "Miloosh";
 
