@@ -24,8 +24,8 @@
       "available": false
     },
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
-    "official_source": "https://business.adobe.com/products/analytics/pricing.html"
+    "last_verified": "2026-09-07",
+    "official_source": "https://business.adobe.com/products/adobe-analytics/pricing.html"
   },
   "pros": [
     "Deep enterprise cross-channel attribution and multi-dimensional segmentation in Analysis Workspace",
@@ -49,9 +49,9 @@
   ],
   "sources": [
     "https://business.adobe.com/products/analytics/adobe-analytics.html",
-    "https://business.adobe.com/products/analytics/pricing.html"
+    "https://business.adobe.com/products/adobe-analytics/pricing.html"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-09-07",
   "alternatives": [
     {
       "name": "Google Analytics",
