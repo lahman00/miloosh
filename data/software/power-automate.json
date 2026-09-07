@@ -6,9 +6,7 @@
   "website": "https://www.microsoft.com/en-us/power-platform/products/power-automate",
   "platforms": [
     "Web",
-    "Windows",
-    "iOS",
-    "Android"
+    "Windows"
   ],
   "best_for": "Organizations already invested in Microsoft 365 and Azure that need to automate both cloud app workflows and legacy desktop processes with a single low-code platform.",
   "features": [
@@ -19,14 +17,14 @@
     "1,400+ prebuilt, certified connectors including native Microsoft 365 integration",
     "Process mining and task mining to discover automation opportunities",
     "Managed Environments with governance and data-loss-prevention controls",
-    "Mobile app for triggering flows, approvals, and push notifications"
+    "Mobile browser access to the Power Automate portal; approvals remain available through Microsoft Teams and Outlook after the standalone mobile app deprecation"
   ],
   "sources": [
     "https://www.microsoft.com/en-us/power-platform/products/power-automate",
-    "https://apps.apple.com/us/app/power-automate/id1094928825",
-    "https://learn.microsoft.com/en-us/power-platform/release-plan/2023wave1/power-automate/experience-improved-power-automate-mobile-app-ios"
+    "https://learn.microsoft.com/en-us/power-automate/mobile/overview-mobile",
+    "https://learn.microsoft.com/en-us/power-platform/important-changes-coming"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-09-07",
   "alternatives": [
     {
       "name": "Zapier",
