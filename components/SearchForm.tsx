@@ -6,15 +6,7 @@ import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
-
-function slugify(value: string) {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
-}
+import { resolveSoftwareSearchSlug } from "@/lib/software-search-route";
 
 export function SearchForm({ className }: { className?: string }) {
   const router = useRouter();
@@ -23,7 +15,7 @@ export function SearchForm({ className }: { className?: string }) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const slug = slugify(software);
+    const slug = resolveSoftwareSearchSlug(software);
 
     if (!slug) {
       return;
