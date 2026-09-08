@@ -51,6 +51,18 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://airtable.com/pricing", "https://www.airtable.com/platform"],
   },
+  zapier: {
+    diagnosis: "The page lists three credible automation alternatives but does not explain the control-model decision behind them: visual scenario building, technical self-hosting, or a Zoho-centered hybrid environment.",
+    heading: "Choose a Zapier alternative by how automation should be controlled",
+    introduction: "Zapier combines a very broad app catalog with workflows, AI automation, and centralized governance. The useful alternative decision is not simply which platform has more integrations. It is whether the team needs a visual-first scenario canvas, deeper technical control and self-hosting, or automation built around Zoho and on-premises systems.",
+    whySeekAlternative: ["The team wants a highly visual scenario canvas for designing and inspecting multi-step automation.", "Developers need custom code depth, infrastructure control, or self-hosted deployment.", "The organization already relies on Zoho or needs a secure bridge to applications running on its own servers."],
+    decisions: [
+      { heading: "Visual-first scenario building", fit: "Make is the relevant comparison when teams want to build and inspect workflows and AI agents in a visual-first canvas, while still retaining prompt and code options.", alternativeSlug: "make", comparisonSlug: "zapier-vs-make" },
+      { heading: "Technical control and self-hosting", fit: "n8n fits technical teams that want visual workflows with custom code, traceability, and the option to deploy on their own infrastructure.", alternativeSlug: "n8n", comparisonSlug: "zapier-vs-n8n" },
+      { heading: "Zoho and on-premises integration", fit: "Zoho Flow is the closer route for organizations centered on the Zoho ecosystem or connecting cloud workflows to authorized applications running on their own servers.", alternativeSlug: "zoho-flow", comparisonSlug: "zapier-vs-zoho-flow" },
+    ],
+    evidenceSources: ["https://zapier.com/", "https://help.zapier.com/hc/en-us/articles/37518970271245-What-is-Zapier", "https://www.make.com/en", "https://n8n.io/", "https://help.zoho.com/portal/en/kb/flow/user-guide/on-premise-app-integrations/articles/integrating-on-premise-apps-with-zoho-flow"],
+  },
   semrush: {
     diagnosis: "The page compresses a broad SEO and digital-marketing platform into two alternatives, leaving specialist SEO, first-party analytics, and social workflows undifferentiated.",
     heading: "Decide which part of Semrush you actually need",
