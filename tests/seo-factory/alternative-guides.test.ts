@@ -76,7 +76,7 @@ describe("SEO execution cohort alternatives guides", () => {
     // to distinct real jobs (video/slide voiceover, transcript-based
     // editing, multilingual training video) and already have published
     // comparisons -- no new comparison page was created.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "elevenlabs", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "postmark", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike", "zoho-crm"]);
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "elevenlabs", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "pipedrive", "postmark", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike", "zapier", "zoho-crm"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2
