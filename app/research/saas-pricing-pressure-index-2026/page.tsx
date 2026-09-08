@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TrendingUp, FileCheck2, Users } from "lucide-react";
+import { TrendingUp, FileCheck2, Users, ExternalLink } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -11,6 +11,8 @@ import { buildPricingIndex } from "@/lib/pricing-index/build";
 import { SITE_URL } from "@/lib/site";
 
 const PAGE_URL = `${SITE_URL}/research/saas-pricing-pressure-index-2026`;
+const SMART_SME_COVERAGE_URL =
+  "https://smartsme.co.uk/what-business-software-really-costs-in-2026-188-vendor-price-lists-checked/";
 
 export const metadata: Metadata = {
   title: "Miloosh SaaS Pricing Pressure Index 2026",
@@ -173,6 +175,27 @@ export default function PricingPressureIndexPage() {
             </Link>
             .
           </p>
+        </Card>
+
+        <Card className="mt-8 max-w-3xl">
+          <div className="flex items-center gap-2">
+            <ExternalLink className="h-4 w-4 text-zinc-500" />
+            <h2 className="text-sm font-semibold text-white">Independent coverage</h2>
+          </div>
+          <p className="mt-2 text-sm leading-6 text-zinc-400">
+            Smart SME published an independent write-up of this dataset on September 8, 2026,
+            covering the sample, methodology, pricing structure, and selected findings for UK
+            small businesses.
+          </p>
+          <a
+            href={SMART_SME_COVERAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-zinc-300 underline underline-offset-4 transition hover:text-white"
+          >
+            Read Smart SME&apos;s coverage
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
         </Card>
 
         <Card className="mt-8 max-w-3xl">
