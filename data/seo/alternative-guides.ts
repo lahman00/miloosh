@@ -51,6 +51,18 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://airtable.com/pricing", "https://www.airtable.com/platform"],
   },
+  n8n: {
+    diagnosis: "The page identifies mainstream automation substitutes but does not explain why a technical team would move away from n8n's code-friendly, self-hostable model in the first place.",
+    heading: "Decide whether you still need a technical automation platform",
+    introduction: "n8n is built for technical teams that want visual workflows, custom code, traceable AI-agent execution, and a choice between hosted and self-hosted deployment. Alternatives make sense when the organization instead prioritizes broad business-user adoption, diagram-first orchestration across departments, or a Zoho-centered hybrid stack.",
+    whySeekAlternative: ["Nontechnical teams need a larger ready-made app catalog and centrally governed automation without owning infrastructure.", "The primary workflow is collaborative visual orchestration across operations, marketing, finance, and other business teams.", "Zoho applications or privately hosted business systems are the center of the integration environment."],
+    decisions: [
+      { heading: "Business-user adoption with guardrails", fit: "Zapier is the relevant comparison when broad app coverage, fast no-code adoption, and centralized controls for what teams can connect and run matter more than self-hosting.", alternativeSlug: "zapier", comparisonSlug: "zapier-vs-n8n" },
+      { heading: "Diagram-first orchestration", fit: "Make fits organizations that want automation and AI agents designed in a visual-first landscape across many business functions, with prompt and code options available when needed.", alternativeSlug: "make", comparisonSlug: "make-vs-n8n" },
+      { heading: "Zoho-centered hybrid workflows", fit: "Zoho Flow is the closer route when the stack is already Zoho-heavy or workflows must bridge cloud services with authorized applications inside the organization's own network.", alternativeSlug: "zoho-flow", comparisonSlug: "n8n-vs-zoho-flow" },
+    ],
+    evidenceSources: ["https://n8n.io/", "https://n8n.io/pricing/", "https://zapier.com/", "https://www.make.com/en", "https://help.zoho.com/portal/en/kb/flow/user-guide/on-premise-app-integrations/articles/integrating-on-premise-apps-with-zoho-flow"],
+  },
   zapier: {
     diagnosis: "The page lists three credible automation alternatives but does not explain the control-model decision behind them: visual scenario building, technical self-hosting, or a Zoho-centered hybrid environment.",
     heading: "Choose a Zapier alternative by how automation should be controlled",
