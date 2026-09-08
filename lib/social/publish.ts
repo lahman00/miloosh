@@ -58,6 +58,20 @@ export type PublishRunSummary = {
 
 const DAILY_ENTRY_CAP = 20; // hard ceiling a scheduler bug can't cross, mirrors NeeGoHome's MAX_PER_DAY concept at the entry level.
 
+export function buyerQuestionFirstIssues(variant: ChannelVariant): string[] {
+  const firstLine = variant.text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .find(Boolean) ?? "";
+  if (!firstLine.endsWith("?")) {
+    return ["Buyer-question-first policy: the first non-empty line must be a real buyer question ending in '?'."];
+  }
+  if (/[—–]/.test(variant.text)) {
+    return ["Buyer-question-first policy: em/en dash punctuation is not allowed in social copy."];
+  }
+  return [];
+}
+
 /**
  * Overdue-backlog policy (2026-08-17). Without this, any entry with
  * scheduledFor <= now — including one scheduled weeks ago and never run
@@ -234,6 +248,16 @@ export async function publishOneEntry(
     const variant = channel === "linkedin" ? prepareLinkedInVariant(entry) : entry.channels[channel];
     if (!variant) continue;
     const adapter = adapters[channel];
+    // Enforce the buyer-question-first cutover on REAL live publication.
+    // Fake adapters are used by orchestration unit tests, and dry-runs must
+    // remain able to exercise transport/UTM behavior without mutating state.
+    if (!dryRun && adapter === ADAPTERS[channel]) {
+      const buyerQuestionIssues = buyerQuestionFirstIssues(variant);
+      if (buyerQuestionIssues.length) {
+        attempts.push({ channel, result: buildBlockedPublishResult(channel, variant, buyerQuestionIssues) });
+        continue;
+      }
+    }
     if (channel === "linkedin" && adapter === ADAPTERS.linkedin) {
       const issues = linkedinPublishIssues(entry, variant);
       if (issues.length) {

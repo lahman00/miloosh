@@ -1,3 +1,4 @@
+import { buyerQuestionFirstIssues } from "@/lib/social/publish";
 import { describe, it, expect, beforeAll, beforeEach, afterAll, vi } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
@@ -644,5 +645,19 @@ describe("reconcilePendingBufferPosts (via runPublishCycle) — attribution inte
 
     const updated = (await readQueue()).find((e) => e.id === entry.id)!;
     expect(updated.channels.linkedin?.publishResult?.link).toBe(expectedTaggedLink);
+  });
+});
+
+
+describe("buyer-question-first publish gate", () => {
+  it("accepts a real buyer question and rejects announcement-style first lines", () => {
+    const base = { link: null, imageUrl: null, altText: null, hashtags: [], publishResult: null };
+    expect(buyerQuestionFirstIssues({ ...base, text: "What should you use instead of HubSpot?\n\nCompare fit before features." })).toEqual([]);
+    expect(buyerQuestionFirstIssues({ ...base, text: "10 CRM tools compared.\n\nHere is the list." })[0]).toContain("first non-empty line");
+  });
+
+  it("rejects AI-style em/en dash punctuation even when the first line is a question", () => {
+    const base = { link: null, imageUrl: null, altText: null, hashtags: [], publishResult: null };
+    expect(buyerQuestionFirstIssues({ ...base, text: "Is HubSpot worth it?\n\nIt depends — especially on team size." })[0]).toContain("dash punctuation");
   });
 });

@@ -46,7 +46,7 @@ function ideasFromComparisons(): RawIdea[] {
       pillar: "software_decisions",
       topic: `decision-${slug}`,
       sourceSlugs: [slug],
-      headline: `${a.name} vs ${b.name}: what actually differs?`,
+      headline: `Should you choose ${a.name} or ${b.name}?`,
       body: `${a.name} best fits: ${a.bestFor} ${b.name} best fits: ${b.bestFor} The right pick depends on which of those matches how your team actually works, not which tool has more features.`,
       link: url(`/compare/${slug}`),
     });
@@ -90,7 +90,7 @@ function ideasFromAlternatives(): RawIdea[] {
         pillar: "alternatives" as const,
         topic: `alternatives-${s.slug}`,
         sourceSlugs: [s.slug, ...picks.map((p) => p.slug)],
-        headline: `${picks.length} alternatives to ${s.name}, depending on what you actually need.`,
+        headline: `What should you use instead of ${s.name}?`,
         body: `${list}. There's no single "best ${s.name} alternative" — the right one depends on which constraint actually matters to you.`,
         link: url(`/software/${s.slug}`),
       };
@@ -116,7 +116,7 @@ function ideasFromMigration(): RawIdea[] {
       pillar: "migration",
       topic: `migration-${slug}`,
       sourceSlugs: [slug],
-      headline: `Moving from ${a.name} to ${b.name}? Check these ${Math.min(checks.length, 4)} things first.`,
+      headline: `Is it worth switching from ${a.name} to ${b.name}?`,
       body: `Before switching: ${checks.slice(0, 4).join(", ")}. The subscription price is rarely the real cost of a migration.`,
       link: url(`/compare/${slug}`),
     });
@@ -134,7 +134,7 @@ function ideasFromResearch(): RawIdea[] {
     pillar: "miloosh_research" as const,
     topic: `research-${s.slug}-${s.accessedAt}`,
     sourceSlugs: [s.slug],
-    headline: `We verified ${s.name}'s pricing and features on ${formatIsoDate(s.accessedAt)}.`,
+    headline: `How current is ${s.name}'s pricing and feature information?`,
     body: `Every claim on ${s.name}'s page traces back to ${s.sources.length} source${s.sources.length === 1 ? "" : "s"} we checked directly — not a summary of someone else's summary.`,
     link: url(`/software/${s.slug}`),
   }));
@@ -153,7 +153,7 @@ function ideasFromCategories(): RawIdea[] {
       pillar: "category_discovery" as const,
       topic: `category-${category.slug}`,
       sourceSlugs: [category.slug],
-      headline: `${count} ${category.name} tools, compared on real criteria.`,
+      headline: `Which ${category.name.toLowerCase()} tools should you compare?`,
       body: `${category.description} We cover ${count} options in this category — each with sourced pricing, features, and dated verification.`,
       link: url(`/category/${category.slug}`),
     }));
@@ -178,7 +178,7 @@ function ideasFromCommercial(): RawIdea[] {
       pillar: "commercial" as const,
       topic: `commercial-${s.slug}`,
       sourceSlugs: [s.slug],
-      headline: `${s.name}: ${s.bestFor}`,
+      headline: `Is ${s.name} worth considering?`,
       body: `${s.description} ${strategy.ctaPolicy.affiliateCtaSuffix}. ${strategy.affiliateDisclosurePolicy.shortText}`,
       link: url(`/software/${s.slug}`),
     }));
@@ -368,7 +368,7 @@ function renderForChannel(idea: RawIdea, channel: Channel): ChannelVariant {
   let text: string;
   switch (channel) {
     case "linkedin":
-      // Professional insight, slightly longer, strong first two lines, minimal hashtags.
+      // Buyer-question first: the exact decision question is the hook, then the sourced answer.
       text = fitToBudget(`${idea.headline}\n\n${idea.body}`, budget);
       break;
     case "facebook":
@@ -380,8 +380,8 @@ function renderForChannel(idea: RawIdea, channel: Channel): ChannelVariant {
       text = fitToBudget(idea.headline, budget);
       break;
     case "bluesky":
-      // Conversational, compact, less corporate — headline plus as much of the body as actually fits.
-      text = fitToBudget(`${idea.headline.replace(/\.$/, "")} — ${idea.body}`, budget);
+      // Conversational, compact, less corporate: question first, then as much of the answer as fits.
+      text = fitToBudget(`${idea.headline.replace(/\.$/, "")}: ${idea.body}`, budget);
       break;
     case "mastodon":
       // Informational, community-aware, avoid engagement bait — a single
@@ -396,6 +396,11 @@ function renderForChannel(idea: RawIdea, channel: Channel): ChannelVariant {
     default:
       text = fitToBudget(`${idea.headline}\n\n${idea.body}`, budget);
   }
+
+  // Eyal's buyer-question-first rule (2026-09-08): social copy must never
+  // drift back into generic company announcements or AI-style dash punctuation.
+  // The first line is a real buying question; em/en dashes are normalized out.
+  text = text.replace(/\s*[—–]\s*/g, ": ");
 
   return { text, link, imageUrl, altText, hashtags, publishResult: null };
 }

@@ -31,14 +31,14 @@
     "instagram": 0
   },
   "pillarWeights": {
-    "_comment": "Relative weight, not a percentage — the content engine normalizes. Higher = picked more often when generating the queue.",
-    "software_decisions": 3,
-    "pricing_intelligence": 2,
-    "alternatives": 2,
-    "migration": 1,
-    "buyer_education": 2,
-    "miloosh_research": 2,
-    "category_discovery": 1,
+    "_comment": "Buyer-question-first mix. Relative weight, not a percentage. Prioritize real decision, pricing, alternatives, migration and buyer-education questions over company-centric announcements.",
+    "software_decisions": 4,
+    "pricing_intelligence": 4,
+    "alternatives": 3,
+    "migration": 2,
+    "buyer_education": 4,
+    "miloosh_research": 1,
+    "category_discovery": 2,
     "trust_methodology": 1,
     "commercial": 1
   },

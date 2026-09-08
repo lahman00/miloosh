@@ -88,6 +88,24 @@ describe("generateAllRawIdeas", () => {
     const ideas = generateAllRawIdeas();
     expect(ideas.length).toBeGreaterThanOrEqual(80);
   });
+
+  it("every generated social idea starts from a buyer question", () => {
+    for (const idea of generateAllRawIdeas()) {
+      expect(idea.headline.endsWith("?"), `${idea.pillar}: ${idea.headline}`).toBe(true);
+    }
+  });
+
+  it("active-channel variants keep the buyer question first and contain no em/en dashes", () => {
+    for (const idea of generateAllRawIdeas().slice(0, 250)) {
+      const entry = draftQueueEntry(idea, ["linkedin", "facebook"]);
+      for (const channel of ["linkedin", "facebook"] as const) {
+        const text = entry.channels[channel]!.text;
+        const firstLine = text.split(/\r?\n/).map((line) => line.trim()).find(Boolean) ?? "";
+        expect(firstLine.endsWith("?"), `${channel}: ${firstLine}`).toBe(true);
+        expect(text).not.toMatch(/[—–]/);
+      }
+    }
+  });
 });
 
 /**
@@ -145,9 +163,10 @@ describe("renderForChannel (via draftQueueEntry) — platform-native differentia
     expect(entry.channels.linkedin!.text).not.toContain("What's been your experience?");
   });
 
-  it("Bluesky joins headline and body compactly with an em-dash, not LinkedIn's paragraph break", () => {
+  it("Bluesky joins headline and body compactly without AI-style dash punctuation", () => {
     const entry = draftQueueEntry(idea, ["bluesky", "linkedin"]);
     expect(entry.channels.bluesky!.text).not.toContain("\n\n");
+    expect(entry.channels.bluesky!.text).not.toMatch(/[—–]/);
     expect(entry.channels.linkedin!.text).toContain("\n\n");
   });
 });
