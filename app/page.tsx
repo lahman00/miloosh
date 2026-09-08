@@ -60,13 +60,21 @@ export default function Home() {
   // tools people compare most": real click-through data is still near-
   // zero site-wide, so a genuine popularity claim isn't yet supportable --
   // this is an evidence-ranked shortlist, not a usage ranking.
-  const priorityList = buildIndexationPriorityList(200);
+  const priorityList = buildIndexationPriorityList(400);
 
-  const popularSoftwareSlugs = priorityList
+  const rankedSoftwareSlugs = priorityList
     .filter((row) => row.kind === "software")
-    .slice(0, 6)
     .map((row) => row.url.replace("/software/", ""));
-  const popularSoftware = popularSoftwareSlugs.map((slug) => getSoftware(slug)).filter((s): s is NonNullable<typeof s> => s !== undefined);
+  const popularSoftware = rankedSoftwareSlugs
+    .slice(0, 6)
+    .map((slug) => getSoftware(slug))
+    .filter((s): s is NonNullable<typeof s> => s !== undefined);
+
+  const rankedSlugSet = new Set(rankedSoftwareSlugs);
+  const browseSoftware = [
+    ...rankedSoftwareSlugs.map((slug) => getSoftware(slug)).filter((s): s is NonNullable<typeof s> => s !== undefined),
+    ...allSoftware.filter((software) => !rankedSlugSet.has(software.slug)),
+  ].slice(0, 72);
 
   const popularComparisons = priorityList
     .filter((row) => row.kind === "comparison")
@@ -247,11 +255,11 @@ export default function Home() {
           <SectionHeading
             eyebrow="Browse"
             title="Start from a tool you already know"
-            description="Pick a platform below to see its strongest alternatives."
+            description={`Explore ${browseSoftware.length} research-priority tools here, or use the search above and category pages to reach all ${allSoftware.length}.`}
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {allSoftware.map((software) => (
+            {browseSoftware.map((software) => (
               <SoftwareCard key={software.slug} software={software} />
             ))}
           </div>

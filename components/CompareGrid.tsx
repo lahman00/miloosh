@@ -14,18 +14,19 @@ export type CompareGridItem = {
   categoryLabel: string;
 };
 
+const INITIAL_VISIBLE = 72;
+const LOAD_MORE_STEP = 72;
+
 /**
- * Content forensics (2026-08-10) flagged /compare as a single unfiltered
- * list of all 1,107 comparisons — real for crawlers (every link is a real
- * href, present in the server-rendered HTML at initial load, so nothing
- * here removes a single link Googlebot would otherwise see) but a weak
- * experience for a human visitor trying to find one specific pair. This
- * adds a client-side filter over the same static list; the full grid still
- * renders in the initial HTML (useState starts at ""), this only changes
- * what's visible after hydration as someone types.
+ * Keep the full comparison dataset searchable without forcing more than a
+ * thousand cards into the initial HTML. Every published comparison also has
+ * durable crawl links from both software pages (and relevant category pages),
+ * so progressive rendering here improves the human/performance path without
+ * making comparison URLs dependent on client-side discovery.
  */
 export function CompareGrid({ items }: { items: CompareGridItem[] }) {
   const [query, setQuery] = useState("");
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -47,7 +48,10 @@ export function CompareGrid({ items }: { items: CompareGridItem[] }) {
         />
         <input
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setVisibleCount(INITIAL_VISIBLE);
+          }}
           type="search"
           placeholder="Filter by product or category, e.g. Notion or CRM"
           aria-label="Filter comparisons"
@@ -56,11 +60,13 @@ export function CompareGrid({ items }: { items: CompareGridItem[] }) {
       </div>
 
       <p className="mt-4 text-sm text-zinc-500" aria-live="polite">
-        {query.trim() ? `${filtered.length} of ${items.length} comparisons match "${query.trim()}"` : `${items.length} comparisons`}
+        {query.trim()
+          ? `${filtered.length} of ${items.length} comparisons match "${query.trim()}"`
+          : `${items.length} comparisons available`}
       </p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((item) => (
+        {filtered.slice(0, visibleCount).map((item) => (
           <Link
             key={getComparisonSlug(item.slugA, item.slugB)}
             href={`/compare/${getComparisonSlug(item.slugA, item.slugB)}`}
@@ -79,9 +85,24 @@ export function CompareGrid({ items }: { items: CompareGridItem[] }) {
         ))}
       </div>
 
+      {filtered.length > visibleCount ? (
+        <div className="mt-8 text-center">
+          <button
+            type="button"
+            onClick={() => setVisibleCount((count) => count + LOAD_MORE_STEP)}
+            className="min-h-11 rounded-xl border border-white/15 bg-white/5 px-5 text-sm font-medium text-zinc-200 transition hover:border-white/25 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Show more comparisons
+          </button>
+          <p className="mt-3 text-xs text-zinc-500">
+            Showing {Math.min(visibleCount, filtered.length)} of {filtered.length}
+          </p>
+        </div>
+      ) : null}
+
       {filtered.length === 0 ? (
         <p className="mt-8 text-center text-sm text-zinc-500">
-          No comparisons match &ldquo;{query.trim()}&rdquo; — try a product or category name.
+          No comparisons match &ldquo;{query.trim()}&rdquo;. Try a product or category name.
         </p>
       ) : null}
     </div>
