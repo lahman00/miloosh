@@ -16,8 +16,9 @@ function basicAuthHeader(user: string, pass: string): string {
   return `Basic ${Buffer.from(`${user}:${pass}`).toString("base64")}`;
 }
 
-function requestTo(path: string, authHeader?: string): NextRequest {
+function requestTo(path: string, authHeader?: string, host = "miloosh.com"): NextRequest {
   const headers = new Headers();
+  headers.set("host", host);
   if (authHeader) headers.set("authorization", authHeader);
   return new NextRequest(new URL(path, "https://miloosh.com"), { headers });
 }
@@ -64,5 +65,26 @@ describe("internal dashboard access gate (proxy.ts)", () => {
     process.env.INTERNAL_DASHBOARD_PASSWORD = "correct-horse-battery-staple";
     const res = proxy(requestTo("/internal/maintenance", basicAuthHeader("someone-else", "correct-horse-battery-staple")));
     expect(res.status).toBe(401);
+  });
+});
+
+
+describe("legacy production host redirect", () => {
+  it("301 redirects the legacy Vercel alias to the canonical host", () => {
+    const res = proxy(requestTo("/software/postmark", undefined, "flowtemplate-delta.vercel.app"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("https://miloosh.com/software/postmark");
+  });
+
+  it("preserves path and query string on the legacy host redirect", () => {
+    const res = proxy(requestTo("/compare/joomla-vs-wix?ref=test", undefined, "flowtemplate-delta.vercel.app"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("https://miloosh.com/compare/joomla-vs-wix?ref=test");
+  });
+
+  it("does not redirect a normal public Miloosh request", () => {
+    const res = proxy(requestTo("/software/postmark"));
+    expect(res.status).not.toBe(301);
+    expect(res.status).not.toBe(401);
   });
 });

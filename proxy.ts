@@ -19,7 +19,20 @@ import { NextResponse, type NextRequest } from "next/server";
  * Uses Next.js 16's proxy.ts convention. The matcher remains limited to
  * /internal/*; public routes do not pass through this access gate.
  */
+const LEGACY_PUBLIC_HOST = "flowtemplate-delta.vercel.app";
+
 export function proxy(request: NextRequest) {
+  const requestHost = request.headers.get("host")?.split(":", 1)[0]?.toLowerCase();
+
+  if (requestHost === LEGACY_PUBLIC_HOST) {
+    const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, "https://miloosh.com");
+    return NextResponse.redirect(destination, 301);
+  }
+
+  if (!request.nextUrl.pathname.startsWith("/internal/")) {
+    return NextResponse.next();
+  }
+
   const user = process.env.INTERNAL_DASHBOARD_USER;
   const pass = process.env.INTERNAL_DASHBOARD_PASSWORD;
 
@@ -51,5 +64,11 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/internal/:path*",
+  matcher: [
+    "/internal/:path*",
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "flowtemplate-delta.vercel.app" }],
+    },
+  ],
 };
