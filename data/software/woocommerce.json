@@ -4,7 +4,9 @@
   "category": "ecommerce",
   "description": "WooCommerce is an open-source ecommerce platform built as a WordPress plugin, described as \"the most flexible ecommerce platform\" giving merchants full control over their store.",
   "website": "https://woocommerce.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Aimed at merchants, developers, and agencies who want full control/customization of their store on WordPress, from small businesses to larger companies needing multichannel selling.",
   "features": [
     "Full checkout/data ownership (self-hosted on WordPress)",
@@ -14,22 +16,66 @@
     "Multichannel sales sync",
     "Online and offline (in-person) sales support"
   ],
-  "sources": ["https://woocommerce.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://woocommerce.com",
+    "https://woocommerce.com/pricing/"
+  ],
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "Shopify",
       "slug": "shopify",
       "description": "A hosted all-in-one commerce platform with built-in payments and multichannel selling.",
       "best_for": "Merchants who prefer a managed, non-self-hosted solution.",
-      "strengths": ["Integrated checkout", "App marketplace", "POS included"]
+      "strengths": [
+        "Integrated checkout",
+        "App marketplace",
+        "POS included"
+      ]
     },
     {
       "name": "PrestaShop",
       "slug": "prestashop",
       "description": "An open-source, self-hostable storefront platform with optional managed hosting.",
       "best_for": "Merchants wanting open-source ownership outside the WordPress ecosystem.",
-      "strengths": ["Fully customizable modules/themes", "Optional managed hosting", "Expert-partner network"]
+      "strengths": [
+        "Fully customizable modules/themes",
+        "Optional managed hosting",
+        "Expert-partner network"
+      ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "Free core platform",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Core platform",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "WooCommerce core is free and open source with no platform fee or revenue share."
+      },
+      {
+        "name": "Hosting",
+        "amount": "25-350",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "WooCommerce says hosting costs $25-$350/month for most stores, scaling with traffic and performance needs."
+      },
+      {
+        "name": "Extensions",
+        "amount": "29-299",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Optional extensions commonly cost $29-$299/year each."
+      }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-09",
+    "official_source": "https://woocommerce.com/pricing/"
+  }
 }

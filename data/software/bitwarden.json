@@ -23,9 +23,10 @@
   ],
   "sources": [
     "https://bitwarden.com",
-    "https://bitwarden.com/download/"
+    "https://bitwarden.com/download/",
+    "https://bitwarden.com/pricing/business/"
   ],
-  "accessed_at": "2026-08-01",
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "1Password",
@@ -60,5 +61,50 @@
         "Password health score"
       ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$4/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "4",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true,
+      "unit": "user"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Basic personal password management is always free."
+      },
+      {
+        "name": "Teams",
+        "amount": "4",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$4/user/month billed annually; centralized sharing, event logs, directory sync, and SCIM."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "6",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$6/user/month billed annually; adds granular controls, passwordless SSO integration, account recovery, self-hosting, and a free Families plan for users."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-09",
+    "official_source": "https://bitwarden.com/pricing/business/"
+  }
 }

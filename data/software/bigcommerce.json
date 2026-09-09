@@ -4,7 +4,9 @@
   "category": "ecommerce",
   "description": "BigCommerce is an ecommerce platform (\"Commerce built for momentum\") supporting both B2C and B2B storefronts, marketplaces, and social commerce channels.",
   "website": "https://www.bigcommerce.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Serves a range from emerging/SMB brands (via free trial, emerging-brand programs) to enterprise merchants needing B2B features like account-specific pricing and approval workflows.",
   "features": [
     "Drag-and-drop store builder with code-level customization",
@@ -14,22 +16,82 @@
     "600+ app integrations (ERP/CRM/PIM/WMS)",
     "Multi-channel selling via Feedonomics (150+ marketplaces)"
   ],
-  "sources": ["https://www.bigcommerce.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.bigcommerce.com",
+    "https://www.bigcommerce.com/pricing/"
+  ],
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "Shopify",
       "slug": "shopify",
       "description": "An all-in-one hosted commerce platform spanning web, mobile, and POS.",
       "best_for": "Merchants wanting a fast, managed setup from solo founders to enterprises.",
-      "strengths": ["Large app store", "Shop Pay checkout conversion", "Integrated POS"]
+      "strengths": [
+        "Large app store",
+        "Shop Pay checkout conversion",
+        "Integrated POS"
+      ]
     },
     {
       "name": "Ecwid",
       "slug": "ecwid",
       "description": "An ecommerce platform that lets merchants launch a store with no transaction fees and embed selling widgets into existing sites.",
       "best_for": "Sellers wanting to add a store to an existing website rather than rebuild it.",
-      "strengths": ["No transaction fees claim", "Social-commerce sync", "POS included"]
+      "strengths": [
+        "No transaction fees claim",
+        "Social-commerce sync",
+        "POS included"
+      ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$29/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "29",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Core",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$29/month billed annually ($39 monthly); up to $30K trailing-12-month GMV, then auto-upgrades to Growth. Open Payment Provider fee can apply."
+      },
+      {
+        "name": "Growth",
+        "amount": "79",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$79/month billed annually ($105 monthly); up to $100K TTM GMV."
+      },
+      {
+        "name": "Scale",
+        "amount": "299",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$299/month billed annually ($399 monthly); $33,333/month GMV base threshold with 0.9% overage above the cap."
+      },
+      {
+        "name": "Performance",
+        "amount": "1499",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Custom pricing starting at $1,499/month billed annually."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-09",
+    "official_source": "https://www.bigcommerce.com/pricing/"
+  }
 }

@@ -23,9 +23,10 @@
   "sources": [
     "https://trello.com",
     "https://trello.com/platforms",
-    "https://trello.com/guide/trello-101"
+    "https://trello.com/guide/trello-101",
+    "https://trello.com/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "Asana",
@@ -72,5 +73,55 @@
       ]
     }
   ],
-  "order": 4
+  "order": 4,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$5/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "5",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true,
+      "unit": "user"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free for up to 10 collaborators per Workspace; unlimited cards and up to 10 boards per Workspace."
+      },
+      {
+        "name": "Standard",
+        "amount": "5",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$5/user/month billed annually ($6 billed monthly); adds unlimited boards, custom fields, advanced checklists, Planner, and more automation."
+      },
+      {
+        "name": "Premium",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$10/user/month billed annually ($12.50 billed monthly); adds Calendar, Timeline, Table, Dashboard, and Map views plus admin/security features."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "17.50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$17.50/user/month billed annually; adds organization-wide controls and Atlassian Guard Standard."
+      }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-09",
+    "official_source": "https://trello.com/pricing"
+  }
 }

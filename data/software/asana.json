@@ -23,9 +23,10 @@
   "sources": [
     "https://asana.com",
     "https://asana.com/download",
-    "https://asana.com/apps"
+    "https://asana.com/apps",
+    "https://asana.com/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "ClickUp",
@@ -72,5 +73,51 @@
       ]
     }
   ],
-  "order": 5
+  "order": 5,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$10.99/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "10.99",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true,
+      "unit": "user"
+    },
+    "tiers": [
+      {
+        "name": "Personal",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free forever for up to 2 users; unlimited tasks and projects with list, board, and calendar views."
+      },
+      {
+        "name": "Starter",
+        "amount": "10.99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$10.99/user/month billed annually ($13.49 monthly); adds unlimited seats, Timeline/Gantt, reporting dashboards, automations, forms, and custom fields."
+      },
+      {
+        "name": "Advanced",
+        "amount": "24.99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$24.99/user/month billed annually ($30.49 monthly); adds portfolios, goals, workload, approvals, time tracking, and advanced integrations."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales for pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-09",
+    "official_source": "https://asana.com/pricing"
+  }
 }

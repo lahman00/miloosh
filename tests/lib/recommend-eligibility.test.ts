@@ -84,7 +84,7 @@ describe("Hard negative signals — Phase 10 of the rebuild brief", () => {
   });
 
   it("never excludes on budget=free when pricing is undocumented (absence of data is not evidence of exclusion)", () => {
-    const software = getSoftware("calendly"); // pricing.model undefined in this catalog
+    const software = getSoftware("canva"); // pricing.model is still genuinely undocumented in this catalog
     expect(software?.pricing?.model).toBeUndefined();
     expect(isHardExcluded(software!, { ...DEFAULT_ANSWERS, budget: "free" })).toBe(false);
   });

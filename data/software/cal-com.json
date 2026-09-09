@@ -19,9 +19,10 @@
     "Support for 65+ languages"
   ],
   "sources": [
-    "https://cal.com"
+    "https://cal.com",
+    "https://cal.com/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "Calendly",
@@ -46,5 +47,55 @@
       ]
     }
   ],
-  "order": 23
+  "order": 23,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$12/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "12",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true,
+      "unit": "user"
+    },
+    "tiers": [
+      {
+        "name": "Individuals",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free forever for 1 user; unlimited event types and calendars, workflows, Stripe/PayPal payments, Cal Video, and 100+ app integrations."
+      },
+      {
+        "name": "Teams",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$12/user/month billed yearly; adds shared availability, round-robin scheduling, managed event types, routing forms, analytics, and custom APIs."
+      },
+      {
+        "name": "Organizations",
+        "amount": "28",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$28/user/month billed yearly; adds unlimited sub-teams, company subdomain, SAML SSO/SCIM, RBAC, and additional APIs."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom annual pricing; contact sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-09",
+    "official_source": "https://cal.com/pricing"
+  }
 }

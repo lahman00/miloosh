@@ -23,9 +23,10 @@
   ],
   "sources": [
     "https://www.dashlane.com",
-    "https://www.dashlane.com/features"
+    "https://www.dashlane.com/features",
+    "https://support.dashlane.com/hc/en-us/articles/37023818065938-FAQ-about-professional-plan-changes"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "1Password",
@@ -60,5 +61,48 @@
         "Email masking"
       ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$8/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "8",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true,
+      "unit": "user"
+    },
+    "tiers": [
+      {
+        "name": "Omnix Password Management",
+        "amount": "8",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$8/user/month; password and passkey management, secure sharing, password policies, and SSO/SCIM integrations."
+      },
+      {
+        "name": "Omnix Credential Protection",
+        "amount": "4",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$4/user/month; credential risk detection and response rather than a full password-management replacement."
+      },
+      {
+        "name": "Omnix Enterprise",
+        "notes": "Custom pricing for organizations with 50+ employees; combines password management and credential protection."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-09",
+    "official_source": "https://support.dashlane.com/hc/en-us/articles/37023818065938-FAQ-about-professional-plan-changes"
+  }
 }

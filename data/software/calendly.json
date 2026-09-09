@@ -18,9 +18,10 @@
     "AI meeting notetaker for recaps and action items"
   ],
   "sources": [
-    "https://calendly.com"
+    "https://calendly.com",
+    "https://calendly.com/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-09-09",
   "alternatives": [
     {
       "name": "Doodle",
@@ -45,5 +46,54 @@
       ]
     }
   ],
-  "order": 21
+  "order": 21,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$10/seat/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "10",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true,
+      "unit": "seat"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Always free; one event type, one calendar connection, one-on-one scheduling, and customizable booking page."
+      },
+      {
+        "name": "Standard",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "seat",
+        "notes": "$10/seat/month billed yearly; unlimited event types, multiple calendars, automations/reminders, Stripe/PayPal, HubSpot and Mailchimp connections."
+      },
+      {
+        "name": "Teams",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "seat",
+        "notes": "$16/seat/month billed yearly; adds round-robin and team scheduling, routing, centrally managed event types, and Salesforce handoff."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "15000",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Starts at $15,000/year and 50 seats; contact sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-09",
+    "official_source": "https://calendly.com/pricing"
+  }
 }

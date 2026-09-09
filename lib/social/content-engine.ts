@@ -6,8 +6,18 @@ import { shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { formatIsoDate } from "@/lib/date";
 import { SITE_URL } from "@/lib/site";
 import { getSocialStrategy } from "@/lib/social/strategy";
-import { BUYER_EDUCATION_CONCEPTS, TRUST_METHODOLOGY_CONCEPTS } from "@/lib/social/pillars";
-import { CHANNELS, type Channel, type ChannelVariant, type ContentPillar, type SocialQueueEntry } from "@/lib/social/types";
+import {
+  BUYER_EDUCATION_CONCEPTS,
+  TRUST_METHODOLOGY_CONCEPTS,
+} from "@/lib/social/pillars";
+import { BUYER_INTENT_CONCEPTS } from "@/lib/social/buyer-intent";
+import {
+  CHANNELS,
+  type Channel,
+  type ChannelVariant,
+  type ContentPillar,
+  type SocialQueueEntry,
+} from "@/lib/social/types";
 import { ADAPTERS } from "@/lib/social/channels/registry";
 
 /**
@@ -85,7 +95,9 @@ function ideasFromAlternatives(): RawIdea[] {
     .filter((s) => s.alternatives.length >= 2)
     .map((s) => {
       const picks = s.alternatives.slice(0, 3);
-      const list = picks.map((alt) => `${alt.name} (${alt.bestFor.replace(/\.$/, "")})`).join("; ");
+      const list = picks
+        .map((alt) => `${alt.name} (${alt.bestFor.replace(/\.$/, "")})`)
+        .join("; ");
       return {
         pillar: "alternatives" as const,
         topic: `alternatives-${s.slug}`,
@@ -106,8 +118,16 @@ function ideasFromMigration(): RawIdea[] {
     const b = software.get(bSlug);
     if (!a || !b) continue;
     const checks: string[] = [];
-    if (a.pricing?.model !== b.pricing?.model) checks.push(`pricing model (${a.pricing?.model ?? "unknown"} vs ${b.pricing?.model ?? "unknown"})`);
-    if ((a.platforms?.length ?? 0) > 0 && (b.platforms?.length ?? 0) > 0 && a.platforms!.join(",") !== b.platforms!.join(",")) checks.push("platform support");
+    if (a.pricing?.model !== b.pricing?.model)
+      checks.push(
+        `pricing model (${a.pricing?.model ?? "unknown"} vs ${b.pricing?.model ?? "unknown"})`,
+      );
+    if (
+      (a.platforms?.length ?? 0) > 0 &&
+      (b.platforms?.length ?? 0) > 0 &&
+      a.platforms!.join(",") !== b.platforms!.join(",")
+    )
+      checks.push("platform support");
     checks.push("what data actually exports cleanly");
     checks.push("which integrations you'd need to rebuild");
     if (checks.length < 2) continue;
@@ -186,6 +206,14 @@ function ideasFromCommercial(): RawIdea[] {
 
 // ---- Pillars E and H: evergreen banks (not per-product) ---------------
 function ideasFromEvergreen(): RawIdea[] {
+  const buyerIntent = BUYER_INTENT_CONCEPTS.map((c) => ({
+    pillar: "buyer_education" as const,
+    topic: `intent-${c.topic}`,
+    sourceSlugs: [] as string[],
+    headline: c.headline,
+    body: c.body,
+    link: url(c.linkPath),
+  }));
   const buyerEd = BUYER_EDUCATION_CONCEPTS.map((c) => ({
     pillar: "buyer_education" as const,
     topic: c.topic,
@@ -202,7 +230,7 @@ function ideasFromEvergreen(): RawIdea[] {
     body: c.body,
     link: url("/sources-policy"),
   }));
-  return [...buyerEd, ...trust];
+  return [...buyerIntent, ...buyerEd, ...trust];
 }
 
 export function generateAllRawIdeas(): RawIdea[] {
@@ -239,7 +267,10 @@ function shuffle<T>(items: T[]): T[] {
  * topics too frequently." Weighted round-robin across shuffled
  * per-pillar queues.
  */
-export function interleaveByPillarWeight<T extends { pillar: ContentPillar }>(ideas: T[], weights: Record<ContentPillar, number>): T[] {
+export function interleaveByPillarWeight<T extends { pillar: ContentPillar }>(
+  ideas: T[],
+  weights: Record<ContentPillar, number>,
+): T[] {
   const byPillar = new Map<ContentPillar, T[]>();
   for (const idea of ideas) {
     if (!byPillar.has(idea.pillar)) byPillar.set(idea.pillar, []);
@@ -259,7 +290,11 @@ export function interleaveByPillarWeight<T extends { pillar: ContentPillar }>(id
   const pillars = [...byPillar.keys()];
   const ticketsPerRound: Record<string, number> = {};
   const maxWeight = Math.max(...pillars.map((p) => weights[p] ?? 1), 1);
-  for (const p of pillars) ticketsPerRound[p] = Math.max(1, Math.round(((weights[p] ?? 1) / maxWeight) * 3));
+  for (const p of pillars)
+    ticketsPerRound[p] = Math.max(
+      1,
+      Math.round(((weights[p] ?? 1) / maxWeight) * 3),
+    );
   const maxTickets = Math.max(...Object.values(ticketsPerRound));
 
   const result: T[] = [];
@@ -346,11 +381,21 @@ export const IMAGE_SIZE_BY_CHANNEL: Partial<Record<Channel, string>> = {
  * script can pass headline/body recovered from an already-committed
  * variant's text instead of a live RawIdea it doesn't have.
  */
-export function buildCardImageUrlFor(pillar: ContentPillar, channel: Channel, headline: string, body: string): string | null {
+export function buildCardImageUrlFor(
+  pillar: ContentPillar,
+  channel: Channel,
+  headline: string,
+  body: string,
+): string | null {
   const kind = IMAGE_KIND_BY_PILLAR[pillar];
   const size = IMAGE_SIZE_BY_CHANNEL[channel];
   if (!kind || !size) return null;
-  const params = new URLSearchParams({ size, kind, headline: headline.slice(0, 140), sub: body.slice(0, 220) });
+  const params = new URLSearchParams({
+    size,
+    kind,
+    headline: headline.slice(0, 140),
+    sub: body.slice(0, 220),
+  });
   return `${SITE_URL}/api/social/card?${params.toString()}`;
 }
 
@@ -373,7 +418,10 @@ function renderForChannel(idea: RawIdea, channel: Channel): ChannelVariant {
       break;
     case "facebook":
       // Accessible, discussion-friendly.
-      text = fitToBudget(`${idea.headline}\n\n${idea.body}\n\nWhat's been your experience?`, budget);
+      text = fitToBudget(
+        `${idea.headline}\n\n${idea.body}\n\nWhat's been your experience?`,
+        budget,
+      );
       break;
     case "x":
       // Tight, high information density — headline only; the body rarely fits alongside a link in 280 chars.
@@ -381,7 +429,10 @@ function renderForChannel(idea: RawIdea, channel: Channel): ChannelVariant {
       break;
     case "bluesky":
       // Conversational, compact, less corporate: question first, then as much of the answer as fits.
-      text = fitToBudget(`${idea.headline.replace(/\.$/, "")}: ${idea.body}`, budget);
+      text = fitToBudget(
+        `${idea.headline.replace(/\.$/, "")}: ${idea.body}`,
+        budget,
+      );
       break;
     case "mastodon":
       // Informational, community-aware, avoid engagement bait — a single
@@ -405,7 +456,10 @@ function renderForChannel(idea: RawIdea, channel: Channel): ChannelVariant {
   return { text, link, imageUrl, altText, hashtags, publishResult: null };
 }
 
-export function draftQueueEntry(idea: RawIdea, channels: Channel[]): SocialQueueEntry {
+export function draftQueueEntry(
+  idea: RawIdea,
+  channels: Channel[],
+): SocialQueueEntry {
   const now = new Date().toISOString();
   const entryChannels: Partial<Record<Channel, ChannelVariant>> = {};
   for (const channel of channels) {
@@ -422,7 +476,13 @@ export function draftQueueEntry(idea: RawIdea, channels: Channel[]): SocialQueue
     scheduledFor: null,
     channels: entryChannels,
     qaNotes: [],
-    history: [{ state: "IDEA", at: now, note: "Generated by content-engine.ts from real Miloosh data." }],
+    history: [
+      {
+        state: "IDEA",
+        at: now,
+        note: "Generated by content-engine.ts from real Miloosh data.",
+      },
+    ],
   };
 }
 
@@ -433,9 +493,13 @@ export function draftQueueEntry(idea: RawIdea, channels: Channel[]): SocialQueue
  * QA is the next, separate gate, run by qa-gates.ts before anything can
  * reach APPROVED_FOR_AUTO).
  */
-export function generateDraftedQueueEntries(existingTopicLastUsed: Map<string, string>): SocialQueueEntry[] {
+export function generateDraftedQueueEntries(
+  existingTopicLastUsed: Map<string, string>,
+): SocialQueueEntry[] {
   const strategy = getSocialStrategy();
-  const enabledChannels = CHANNELS.filter((c) => strategy.enabledChannels[c] || c === "linkedin" || c === "reddit"); // LinkedIn/Reddit always drafted for manual use even when "enabled" toggle is about automation
+  const enabledChannels = CHANNELS.filter(
+    (c) => strategy.enabledChannels[c] || c === "linkedin" || c === "reddit",
+  ); // LinkedIn/Reddit always drafted for manual use even when "enabled" toggle is about automation
   const cooldownMs = strategy.topicRepeatCooldownDays * 24 * 60 * 60 * 1000;
   const now = Date.now();
 
@@ -449,6 +513,11 @@ export function generateDraftedQueueEntries(existingTopicLastUsed: Map<string, s
 
   const entries = ideas.map((idea) => draftQueueEntry(idea, enabledChannels));
   for (const entry of entries) entry.state = "DRAFTED";
-  for (const entry of entries) entry.history.push({ state: "DRAFTED", at: entry.createdAt, note: "Channel variants rendered for all enabled channels." });
+  for (const entry of entries)
+    entry.history.push({
+      state: "DRAFTED",
+      at: entry.createdAt,
+      note: "Channel variants rendered for all enabled channels.",
+    });
   return entries;
 }
