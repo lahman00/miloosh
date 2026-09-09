@@ -19,18 +19,21 @@ copying them here would go stale immediately.
 | Channel | Status | Real evidence | Blocker |
 |---|---|---|---|
 | Facebook | **ACTIVE** | 8 posts published (2026-08-17 to 2026-08-23), 1/day cadence. 2 of 8 produced any attributed traffic (1 UNRESOLVED, 6 STRONG_HUMAN_EVIDENCE from the CircleCI post). 6 of 8 produced zero attributed clicks. | None — working, real credential, real posts. |
-| LinkedIn | OWNER_BLOCKED | 0 posts (channel disabled at publish time). | Missing `SOCIAL_LINKEDIN_ACCESS_TOKEN`. Content is generated and queued; publishing activates immediately once the token is set. |
+| LinkedIn company page | **ACTIVE** | Miloosh company publishing and direct company-identity comments are live through the authenticated browser workflow. Buyer-question-first posting is now the default. | Keep company cadence controlled and inspect the live page before each new company post to avoid duplicate automation/manual posts. |
 | X / Twitter | DISABLED (deliberate) | — | Disabled in `data/social/social-strategy.json`. No credential investigated this mission — not reconsidered without a real reason to. |
 | Bluesky | DISABLED (deliberate) | — | Same as X — disabled in strategy config, no credential on file. |
 | Mastodon | DISABLED (deliberate) | — | Same. |
 | Threads | DISABLED (deliberate) | — | Same. |
-| Reddit | OWNER_ACTION_REQUIRED | — | Automation intentionally not built (this codebase's own design: manual, per-subreddit human review only — real communities enforce no-self-promo rules that need human judgment, not scripted posting). No Miloosh Reddit account exists. See "Reddit/Q&A research" below for prepared, unposted candidates. |
+| Reddit | **RESEARCH ACTIVE / WRITES PAUSED** | Authenticated Miloosh Reddit browser/worker exists and buyer-intent research is active. Autonomous writes are currently disabled after a CAPTCHA event; the worker must not bypass it. | Continue thread discovery and response preparation. Resume writes only after the CAPTCHA/session issue is legitimately cleared, with per-subreddit rule review. |
 | Pinterest | DEFERRED | — | Requires a real per-post image pipeline Miloosh doesn't have; gated behind a Trial-access review even before that. |
 | YouTube | DEFERRED | — | Requires actual video production, a fundamentally different pipeline than text/image posts. |
 | Instagram | DEFERRED | — | Requires a Business/Creator account, Meta App Review, hosted JPEG images — not a text/link-first platform anyway. |
 | Quora | NOT ATTEMPTED THIS MISSION | — | No account. See "Reddit/Q&A research" below for the same treatment applied here. |
 | Product Hunt | NOT READY | — | See "Launch readiness" below. |
 | Directories (startup/SaaS/tool lists) | RESEARCHED, NOT SUBMITTED | — | Some legitimate targets are free but require an account; Launching Next has a direct free submission form. See "External acquisition reconnaissance" below. |
+| Partnerships / advisor distribution | **ACTIVE** | Existing partner-visibility outreach is live; Pipedrive follow-up sent 2026-09-09. Target is agencies, consultants and operators who repeatedly influence software choice, not generic link exchanges. | Build a qualified pipeline and offer data/decision assets with a soft, problem-specific approach. |
+| Bing / Microsoft Search organic | **ACTIVE VIA INDEXNOW** | Miloosh already has an IndexNow path and clean canonical/sitemap controls. | Submit only materially changed buyer-intent URLs; no paid Bing budget unless explicitly approved. |
+| Chrome extension | EXPERIMENT BACKLOG | Strategic fit is high because it can surface Miloosh at the vendor-evaluation moment. No extension exists yet. | Validate the use case and scope before building; Chrome Web Store is relevant only after a real extension exists. |
 | RSS feed | **ACTIVE** | Live at `/feed.xml`, 30 most-recently-verified software pages, real dated content. | None. |
 | SaaS Stack Cost Calculator | **ACTIVE** | Live at `/tools/saas-cost-calculator`, 59 real-priced products, shareable URL state. | None. |
 | Email capture | **ACTIVE (capture only)** | Live signup form on `/newsletter` and the calculator tool; leads stored with full attribution. | No email provider configured (checked: no RESEND/SENDGRID/MAILCHIMP/POSTMARK/SES env var) — actual sending (welcome email, weekly brief) needs the owner to add one. Zero leads lost waiting for it. |

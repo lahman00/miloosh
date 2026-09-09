@@ -54,3 +54,14 @@ Yes, with real constraints. A founder with zero posting history has more credibi
 ## Not done
 
 Nothing here was posted. No connections were invited. No banner or profile field was changed. This is a draft set for Eyal's own review and edit before any of it goes anywhere.
+
+## Approved operating update — 2026-09-09
+
+Eyal explicitly approved using the personal LinkedIn profile as a Miloosh distribution channel. The objective is credible founder perspective, not a second company feed.
+
+- Target cadence: roughly 2–3 quality posts per week, not daily content-mill behavior.
+- Original personal posts should focus on what building Miloosh reveals about software buying, pricing, migration, verification and decision-making.
+- Occasionally share a Miloosh company-page post. Add only 1–3 original professional sentences that explain why the point matters; never quote or paraphrase the company caption line-by-line.
+- Most personal posts should stand without a link. Mention Miloosh naturally when relevant rather than forcing it into every opening line.
+- No "excited to announce", fake vulnerability, AI-style motivational framing, em/en dashes, or generic engagement bait.
+- A company repost is a supporting format, not the majority of the personal feed.

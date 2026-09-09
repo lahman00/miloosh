@@ -2,6 +2,36 @@
 
 Purpose: current, evidence-backed external opportunities for acquisition, PR, buyer-intent content, and launch distribution. This file is an execution queue, not a vanity backlog.
 
+## 2026-09-09 buyer-intent distribution update
+
+Decision: Miloosh no longer treats Google SEO as the only acquisition surface. Distribution priority is based on **decision-stage buyer intent** and time-to-real-human. A strong buyer question should feed both a permanent Miloosh asset and an external distribution action.
+
+### Current priority order
+
+1. **Buyer-intent decision pages** — alternatives, vs, pricing, cost-at-team-size, free/cheaper/open-source/self-hosted, worth-it, migration and small-team/small-business fit.
+2. **Reddit and community conversations** — identify current threads where buyers are already choosing or switching tools. Answer the actual constraint first; link only when the community rules and the specific thread make a transparent Miloosh link genuinely useful. Reddit is also a content-intelligence source even when posting is blocked.
+3. **Partnership distribution** — agencies, consultants, implementation partners, MSPs, RevOps operators and other advisors who repeatedly help clients choose software. Offer data, decision pages and neutral research they can use, not generic reciprocal-link swaps.
+4. **LinkedIn** — company-page buyer questions plus founder-perspective posts from Eyal. The personal profile may occasionally share a Miloosh company post with 1–3 original professional sentences, never copy the company caption.
+5. **Earned media** — continue data-led pitches around pricing, procurement and switching economics. Lead with a finding, not with Miloosh as a product announcement.
+6. **Bing / Microsoft Search organic discovery** — keep sitemap/canonical quality high and submit materially changed buyer-intent URLs through IndexNow. Paid Bing is deferred until the owner explicitly opens a budget.
+7. **Chrome extension experiment** — validate a lightweight decision companion that can surface verified pricing, alternatives and comparisons while a buyer is visiting a software vendor site. Build only after the organic distribution loop is producing signals.
+
+### Marketplace rule
+
+Do **not** force Miloosh into Shopify App Store, Salesforce AppExchange, Chrome Web Store or AppSumo merely to obtain a listing. Shopify/AppExchange require a real product/integration for that ecosystem. AppSumo is a sales marketplace, not a natural home for the current publication. Chrome Web Store becomes relevant only if Miloosh ships a useful extension.
+
+### Paid-audience rule
+
+Custom Audiences and paid retargeting are deferred. Do not upload scraped/cold contact lists to ad platforms. If paid acquisition is later approved, use only data we have a legitimate basis to use and keep ad targeting separate from editorial ranking.
+
+### Editorial independence rule
+
+Miloosh can publish rankings, comparisons and decision guides, but cannot place itself or a commercially related vendor at the top by fiat. Rankings and recommendations remain evidence-led and affiliate-neutral.
+
+### One-question-many-assets rule
+
+Every strong current buyer question should be evaluated for reuse as: community response, social post, FAQ, decision-guide section, comparison page, keyword candidate, calculator scenario, outreach angle or partner resource. Reuse the insight, not duplicate wording.
+
 ## Scoring
 
 Each opportunity is ranked on:

@@ -37,6 +37,24 @@ export const BUYER_INTENT_CONCEPTS: BuyerIntentConcept[] = [
     linkPath: "/best-crm-for-small-business",
   },
   {
+    topic: "hubspot-six-person-adoption",
+    headline: "What CRM should a 6-person team use if HubSpot already feels like too much?",
+    body: "Separate the jobs the six users must do every day from the integrations the owner wants for reporting. If the sales team cannot log activity, find context, and follow up from desktop or mobile without training overhead, deeper automation will not rescue adoption.",
+    linkPath: "/best-crm-for-small-business",
+  },
+  {
+    topic: "zapier-cheaper-without-maintenance",
+    headline: "What is cheaper than Zapier without becoming a maintenance headache?",
+    body: "That is a better question than simply asking for the cheapest automation tool. Compare billing unit, workflow complexity, failed-run debugging, hosting ownership, and who fixes the system when an API changes. The lowest platform bill can still create the highest operating cost.",
+    linkPath: "/best-automation-software-for-small-business",
+  },
+  {
+    topic: "quickbooks-paying-for-unused-complexity",
+    headline: "Should you keep QuickBooks if most of what you pay for is complexity you do not use?",
+    body: "List the accounting jobs that are actually required: bank feeds, categorization, invoices, contractor payments, tax-ready reports, payroll, inventory, and accountant access. If the real list is short, compare simpler products on those jobs and the migration path instead of paying for theoretical breadth.",
+    linkPath: "/best-accounting-software-for-small-business",
+  },
+  {
     topic: "clickup-too-complicated",
     headline: "Is ClickUp too complicated for a small team?",
     body: "It depends on whether you will actually use the extra structure. If the team only needs owners, due dates, and a shared board, configuration depth can become overhead. If you need docs, dashboards, automations, and custom fields, that same depth can replace other tools.",

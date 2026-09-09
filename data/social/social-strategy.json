@@ -44,6 +44,11 @@
   },
   "blockedTopics": [],
   "campaignPriorities": [
+    "Buyer-intent distribution is the primary organic growth motion: favor real decision questions using alternatives, vs, pricing/cost, cheaper/free, worth-it, migration, open-source/self-hosted and small-team/small-business constraints. Each strong question should map to a permanent Miloosh asset when useful.",
+    "Use Reddit and other communities as current buyer-intent intelligence. Participate only where a transparent answer is allowed and useful; never drop bare links, manipulate votes, or turn anecdotes into vendor facts. If Reddit writes are blocked by CAPTCHA, continue research without bypassing the block.",
+    "Build partnership distribution with agencies, consultants, MSPs, RevOps operators and other advisors who repeatedly influence software selection. Offer neutral data, decision pages and custom research cuts; avoid generic reciprocal-link outreach.",
+    "Treat Bing/Microsoft organic discovery as an active secondary search surface. Submit materially changed buyer-intent pages through IndexNow; paid search remains off until an explicit budget decision.",
+    "Do not pursue Shopify App Store, Salesforce AppExchange, AppSumo or Chrome Web Store listings unless Miloosh has a real product/integration that belongs there. Chrome Web Store becomes a candidate only for a genuine Miloosh browser extension.",
     "Wix is now an approved, active monetization partner (Impact.com, 4 funnels: Website Builder, Domain, Headless, eCommerce) — prioritize genuinely relevant Wix content where editorially justified: Wix vs Squarespace, Wix vs Shopify, website builder buying advice, Wix Headless for AI-assisted development, domain-selection guides. Never insert the affiliate link directly into a social post — link to the relevant Miloosh page; the page itself resolves the correct funnel.",
     "ElevenLabs is an approved, active monetization partner (PartnerStack) — eligible commercial-content candidate: ElevenLabs alternatives, AI voice/text-to-speech/voice-cloning comparisons, pricing research, use-case guides, ElevenLabs vs competitors. If tagging @elevenlabsio on a platform where that handle is valid, only do so for a genuinely relevant post — never gratuitously, and never implying ElevenLabs endorses Miloosh."
   ],
@@ -73,6 +78,8 @@
     }
   },
   "excludedPillarsByChannel": {
-    "facebook": ["commercial"]
+    "facebook": [
+      "commercial"
+    ]
   }
 }
