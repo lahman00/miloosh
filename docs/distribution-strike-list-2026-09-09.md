@@ -18,6 +18,7 @@ Execution queue built from current buyer-intent conversations and partner-fit re
 | Target | Why it fits | Public route | Action |
 |---|---|---|---|
 | Agenticise | UK automation agency publishes current n8n vs Zapier vs Make decision content based on billing unit, scale and maintenance ownership. Strong overlap with Miloosh automation pricing research. | hello@agenticise.co.uk | Personalized data-sharing email sent 2026-09-09. No backlink ask. |
+| Otimiz | AI automation agency runs Zapier, Make and n8n across client work and frames the decision around volume, complexity and workflow ownership. Strong fit for Miloosh automation-pricing source data. | bastien@otimizagency.com | Personalized data-sharing email sent 2026-09-09. No backlink or paid-placement ask. |
 | iFeeltech | IT consultant publishes a 2026 small-business software-stack guide using verified prices and cost scenarios. Natural fit for Miloosh's 188-product pricing dataset and SMB decision pages. | info@ifeeltech.com | Personalized data-sharing email sent 2026-09-09. No reciprocal-link ask. |
 | Pipedrive Affiliate Team | Existing approved relationship and direct relevance to CRM buyer-intent assets. | affiliates@pipedrive.com | Follow-up sent 2026-09-09 asking for partner marketing/editorial contact and data-led collaboration path. |
 | Constant Contact | Existing affiliate + potential Creator/co-marketing path already queried. | affiliates@constantcontact.com | Hold for now; last follow-up was 2026-09-02. Do not over-message. |
