@@ -9,11 +9,12 @@ const matrix = getPartnerMoneyMatrix();
 
 describe("affiliate money matrix readiness semantics", () => {
   it("covers every active partner exactly once", () => {
+    // Historical note; superseded for SurveyMonkey on 2026-09-10 (verified replacement asset).
     // 2026-08-29: SurveyMonkey removed from ACTIVE_PARTNERS (was 20) --
     // fail-closed pending vendor confirmation. Jotform added the same day
     // (back to 20) on the owner's direct first-hand account of the Jotform
     // correspondence. See data/affiliate/active-partners.ts.
-    expect(matrix).toHaveLength(20);
+    expect(matrix).toHaveLength(21);
     expect(new Set(matrix.map((row) => row.slug)).size).toBe(matrix.length);
   });
 

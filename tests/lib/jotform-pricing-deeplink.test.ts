@@ -60,15 +60,15 @@ describe("Jotform pricing-intent deep link", () => {
 
     const surveymonkey = getSoftware("surveymonkey")!;
     expect(getSoftwareCtaUrl(surveymonkey)).toBe(getSoftwareCtaUrl(surveymonkey, "pricing"));
-    expect(getSoftwareCtaUrl(surveymonkey, "pricing")).toBe(surveymonkey.website);
+    expect(getSoftwareCtaUrl(surveymonkey, "pricing")).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
   });
 
-  it("surveymonkey-vs-jotform remains SurveyMonkey direct / Jotform affiliate", () => {
+  it("surveymonkey-vs-jotform remains independently verified SurveyMonkey / Jotform affiliate", () => {
     const surveymonkey = getSoftware("surveymonkey")!;
-    expect(resolveComparisonCtaUrl(surveymonkey, "jotform")).toBe(surveymonkey.website);
+    expect(resolveComparisonCtaUrl(surveymonkey, "jotform")).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
     expect(resolveComparisonCtaUrl(jotform, "surveymonkey")).toBe(HOMEPAGE_URL);
-    expect(getSoftwareCtaRel(surveymonkey)).not.toContain("sponsored");
-    expect(shouldShowAffiliateDisclosure(surveymonkey)).toBe(false);
+    expect(getSoftwareCtaRel(surveymonkey)).toContain("sponsored");
+    expect(shouldShowAffiliateDisclosure(surveymonkey)).toBe(true);
   });
 
   it("pricing-source-link editorial surface resolves to the plain official pricing page, never the affiliate deep link", () => {

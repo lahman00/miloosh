@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowUpDown, ExternalLink } from "lucide-react";
+import { formatIndexMoney } from "@/lib/pricing-index/format";
 import type { PricingIndexProduct } from "@/lib/pricing-index/build";
 
 type SortKey = "name" | "category" | "startingMonthlyEquivalent" | "lastVerified";
@@ -29,9 +30,9 @@ export function PricingIndexTable({ products }: { products: PricingIndexProduct[
       .sort((a, b) => {
         const dir = sortDir === "asc" ? 1 : -1;
         if (sortKey === "startingMonthlyEquivalent") {
-          const av = a.startingMonthlyEquivalent ?? Infinity;
-          const bv = b.startingMonthlyEquivalent ?? Infinity;
-          return (av - bv) * dir;
+          if (a.startingMonthlyEquivalent === null) return b.startingMonthlyEquivalent === null ? a.name.localeCompare(b.name) : 1;
+          if (b.startingMonthlyEquivalent === null) return -1;
+          return (a.startingMonthlyEquivalent - b.startingMonthlyEquivalent) * dir;
         }
         const av = String(a[sortKey] ?? "");
         const bv = String(b[sortKey] ?? "");
@@ -52,6 +53,7 @@ export function PricingIndexTable({ products }: { products: PricingIndexProduct[
     <div>
       <div className="flex flex-wrap items-center gap-3">
         <select
+          aria-label="Filter pricing dataset by category"
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
           className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-white focus:border-white/25 focus:outline-none"
@@ -86,7 +88,7 @@ export function PricingIndexTable({ products }: { products: PricingIndexProduct[
               </th>
               <th className="cursor-pointer px-4 py-3" onClick={() => toggleSort("startingMonthlyEquivalent")}>
                 <span className="inline-flex items-center gap-1">
-                  Starting price <ArrowUpDown className="h-3 w-3" />
+                  Recorded price / USD monthly sort <ArrowUpDown className="h-3 w-3" />
                 </span>
               </th>
               <th className="px-4 py-3">Free tier</th>
@@ -108,9 +110,9 @@ export function PricingIndexTable({ products }: { products: PricingIndexProduct[
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-zinc-400">{p.category}</td>
-                <td className="px-4 py-3 text-zinc-300">{p.startingMonthlyEquivalent !== null ? `$${p.startingMonthlyEquivalent}/mo` : "—"}</td>
-                <td className="px-4 py-3 text-zinc-400">{p.hasFreeTier ? "Yes" : "No"}</td>
-                <td className="px-4 py-3 text-zinc-400">{p.perSeat ? "Yes" : "—"}</td>
+                <td className="px-4 py-3 text-zinc-300">{p.recordedStartingPrice ?? (p.startingMonthlyEquivalent !== null ? `${formatIndexMoney(p.startingMonthlyEquivalent)}/mo` : "Check source")}<span className="block text-xs text-zinc-500">{p.billingPeriod ? `${p.billingPeriod} billing recorded` : "Billing basis not recorded"}</span></td>
+                <td className="px-4 py-3 text-zinc-400">{p.hasFreeTier === null ? "Unknown" : p.hasFreeTier ? "Yes" : "No"}</td>
+                <td className="px-4 py-3 text-zinc-400">{p.perSeat === null ? "Unknown" : p.perSeat ? "Yes" : "No"}</td>
                 <td className="px-4 py-3 text-zinc-500">{p.lastVerified ?? "—"}</td>
                 <td className="px-4 py-3">
                   {p.officialSource ? (

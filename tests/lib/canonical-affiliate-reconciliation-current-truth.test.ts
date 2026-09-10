@@ -7,6 +7,7 @@ describe("canonical affiliate reconciliation current truth", () => {
   const bySlug = new Map(state.records.map(record => [record.slug, record]));
 
   it("classifies every canonical active partner as ACTIVE with a real affiliate URL", () => {
+    // Historical note; superseded for SurveyMonkey on 2026-09-10 (verified replacement asset).
     // 2026-08-29: SurveyMonkey removed (was 20) -- fail-closed pending
     // first-party vendor confirmation the existing tracking asset genuinely
     // belongs to Miloosh on the correct PartnerStack account. See
@@ -14,7 +15,7 @@ describe("canonical affiliate reconciliation current truth", () => {
     // surveymonkey entry (status: PROGRAM_NOT_VERIFIED). Jotform added the
     // same day (back to 20) on the owner's direct first-hand account of the
     // Jotform correspondence -- see canonical-ledger.ts's jotform entry.
-    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(20);
+    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(21);
     for (const slug of ACTIVE_PARTNER_SLUGS) {
       const record = bySlug.get(slug);
       expect(record, `missing reconciliation record for ${slug}`).toBeDefined();
