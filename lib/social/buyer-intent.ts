@@ -188,6 +188,24 @@ export const BUYER_INTENT_CONCEPTS: BuyerIntentConcept[] = [
     linkPath: "/compare/amplitude-vs-mixpanel",
   },
   {
+    topic: "mailchimp-infrequent-sender",
+    headline: "What should you use instead of Mailchimp if you only send email a few times a year?",
+    body: "A recurring subscription can be the wrong pricing model when the list is large but sending is rare. Compare subscriber caps, pay-as-you-go options, credit expiry, send-based pricing, templates, and whether you actually need automation between campaigns.",
+    linkPath: "/best-email-marketing-for-small-business",
+  },
+  {
+    topic: "shopify-real-monthly-cost",
+    headline: "When does Shopify stop being worth the total monthly cost?",
+    body: "Do not compare the base plan alone. Add paid apps, payment or transaction fees, theme or developer work, and the cost of the features you need to bolt on. Then compare that total with the migration and maintenance cost of BigCommerce, Wix, or WooCommerce.",
+    linkPath: "/best-ecommerce-platform-for-small-business",
+  },
+  {
+    topic: "zendesk-overkill-20-person-company",
+    headline: "Is Zendesk overkill for a 20-person company handling about 100 tickets a week?",
+    body: "Possibly. Start with the support jobs you actually need: shared ownership, ticketing, knowledge base, live chat, SLAs, routing, reporting, and integrations. If enterprise workflow depth is not solving a current problem, a lighter help desk may fit better and cost less.",
+    linkPath: "/best-help-desk-for-small-business",
+  },
+  {
     topic: "software-budget-10-person-team",
     headline: "How much should a 10-person company actually spend on software?",
     body: "There is no useful universal number. Build the stack by job, then price each tool at 10 real seats and the usage level you expect. That exposes the difference between a low advertised entry price and the budget the team will actually carry.",

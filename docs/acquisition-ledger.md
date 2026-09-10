@@ -222,3 +222,5 @@ measurement route. For every asset, record the landing URL, UTM source/medium/
 campaign/content where relevant, classified-human sessions, CTA exposure,
 clickers, newsletter signups and affiliate clicks. Do not use raw pageviews or
 bot-heavy traffic as acquisition success.
+- 2026-09-10 — Partner distribution — Soluxe Agency / Liam Colclough — sent a personalized data-sharing note tied to his current n8n vs Zapier vs Make guide. Offered automation pricing/source subset; no backlink, placement, or paid request. Gmail message `1a08991a35d5172a`.
+- 2026-09-10 — Partner distribution — Cheberko / Alex — sent a personalized data-sharing note tied to his current automation comparison and client work. Offered automation pricing/source subset; no backlink, placement, or paid request. Gmail message `1a08991c6c2c5929`.
