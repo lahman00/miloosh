@@ -118,3 +118,9 @@ See the distribution packet for verified URLs, the narrow factual community repl
 4. Measure existing and new experiments at their checkpoints; distribute the existing n8n/automation assets after channel access is restored instead of immediately rewriting them. Preserve the September 17–18 windows of the original 19 experiments.
 5. Await replies from Jotform, Close and MailerLite. Requested clarification and sent pitches do not equal accepted participation, published coverage or revenue.
 6. Remaining canonical targets include protected experiments, an existing asset to distribute, and further research; they are not ready-to-publish pages. Validate current primary-source decision value, relevant active partner routes and a nonduplicate distribution path before promoting another target to execution. No mass publishing, paid spend, fabricated account or community promotion was performed.
+
+## Repository synchronization blocker
+
+- The work is committed locally on growth/work-revenue-20260910. The release code is db8827f292fd6de62afcc9a840557b836e542422; the subsequent execution-log commit is 4eb067f977a5a23452f07038aaa2bded140a0dae.
+- git push to the existing origin and a read-only remote-ref check both returned HTTP 403 with GitHub's explicit account-suspended message. No remote push, pull request, or GitHub backup is claimed. No alternate identity, token or repository was used to bypass the restriction.
+- Owner must resolve the GitHub account suspension before origin synchronization can continue. Existing local commits and the independently verified Vercel production deployment remain available.
