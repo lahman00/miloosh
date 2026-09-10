@@ -33,17 +33,50 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "10", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "10",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Essential task management, unlimited users. Web, desktop and mobile apps, board and table views." },
-      { "name": "Team", "amount": "10", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. Restricted to 2-15 users. AI Essentials, Gantt charts." },
-      { "name": "Business", "amount": "25", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually. Restricted to 5-200 users. Most popular tier. AI Elite starter pack, workspace templates." },
-      { "name": "Pinnacle", "notes": "Contact sales. For 5+ users. Advanced resource/capacity planning, budgeting, advanced reporting." },
-      { "name": "Apex", "notes": "Contact sales. Unlimited whiteboards, Wrike Integrate and Wrike Sync included." }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free task-management plan. Confirm the current feature and access limits with Wrike."
+      },
+      {
+        "name": "Team",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, billed annually. Restricted to 2-15 users. AI Essentials, Gantt charts."
+      },
+      {
+        "name": "Business",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, billed annually. Restricted to 5-200 users. AI Elite starter pack, workspace templates."
+      },
+      {
+        "name": "Pinnacle",
+        "notes": "Contact sales. For 5+ users. Advanced resource/capacity planning, budgeting, advanced reporting."
+      },
+      {
+        "name": "Apex",
+        "notes": "Contact sales. Unlimited whiteboards, Wrike Integrate and Wrike Sync included."
+      }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-23",
+    "last_verified": "2026-09-10",
     "official_source": "https://www.wrike.com/price/"
   },
   "cons": [
