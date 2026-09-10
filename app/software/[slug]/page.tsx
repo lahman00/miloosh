@@ -1,3 +1,5 @@
+import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
+import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -102,6 +104,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
   const alternativeGuide = getAlternativeGuide(software.slug);
+  const buyerChecklist = getBuyerChecklist(software.slug);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -231,6 +234,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             ))}
           </div>
         </section>
+
+        {buyerChecklist ? <DecisionBuyerChecklist checklist={buyerChecklist} /> : null}
 
         {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
 
