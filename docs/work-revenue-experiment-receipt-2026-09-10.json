@@ -1,0 +1,120 @@
+{
+  "registeredAt": "2026-09-10T15:05:43.536Z",
+  "verifiedLiveAt": "2026-09-10T14:57:51.535Z",
+  "deploymentId": "dpl_9wag16EoUH1tncLRoyt2uDzXxGtG",
+  "commit": "db8827f292fd6de62afcc9a840557b836e542422",
+  "conditionalWrite": true,
+  "existingCount": 19,
+  "protectedCount": 19,
+  "existingPreserved": true,
+  "newTotal": 21,
+  "experiments": [
+    {
+      "id": "work-revenue-20260910-wrike",
+      "page": "/software/wrike",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-10T14:57:51.535Z",
+      "reason": "Decision-stage query demand plus an active, relevant affiliate route; user-authorized editorial intervention on the existing canonical page.",
+      "baseline": {
+        "impressions": 187,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 90.94652406417113
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the SEO Factory alternatives cluster for this canonical page and relatedSoftware=[wrike], window 2026-08-10 to 2026-09-06. It is not a page aggregate. The run exposes only eight of eleven query names; do not compare a partial exact-query subset against this cluster. Rebuild the same grouping for follow-up.",
+      "exactChange": "Added licensing, billable-seat and renewal decision checks with vendor citations and a tracked Wrike CTA; corrected monthly price units while retaining annual billing requirement.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "docs/work-revenue-execution-2026-09-10.md",
+        "data/seo/buyer-checklists.ts",
+        "GSC 71 impressions / 0 clicks / 0.00% CTR / position 91.3",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 11 query variant(s): \"wrike alternatives\", \"wrike alternative\", \"alternative to wrike\", \"best wrike alternatives\", \"wrike competitors\", \"alternatives to wrike\", \"wrike alternatives free\", \"alternative wrike\""
+      ],
+      "internalLinksChanged": [
+        "/software/wrike"
+      ],
+      "deploymentTimestamp": "2026-09-10T14:57:51.535Z",
+      "affiliateStatusAtT0": "Wrike ACTIVE; issued URL from canonical registry.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-17T14:57:51.535Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-24T14:57:51.535Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-08T14:57:51.535Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260910-klaviyo",
+      "page": "/software/klaviyo",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-10T14:57:51.535Z",
+      "reason": "Decision-stage query demand plus an active, relevant affiliate route; user-authorized editorial intervention on the existing canonical page.",
+      "baseline": {
+        "impressions": 79,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 81.92405063291139
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the SEO Factory alternatives cluster for this canonical page and relatedSoftware=[klaviyo], window 2026-08-10 to 2026-09-06. It is not a page aggregate. The run exposes only eight of eleven query names; do not compare a partial exact-query subset against this cluster. Rebuild the same grouping for follow-up.",
+      "exactChange": "Added audience/send/SMS/migration and cumulative-billing checks with vendor citations and tracked Omnisend and MailerLite CTAs.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "docs/work-revenue-execution-2026-09-10.md",
+        "data/seo/buyer-checklists.ts",
+        "GSC 37 impressions / 0 clicks / 0.00% CTR / position 80.0",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 11 query variant(s): \"klaviyo alternatives\", \"klaviyo competitors\", \"klaviyo alternative\", \"alternatives to klaviyo\", \"best klaviyo alternatives\", \"klaviyo competitor\", \"who are klaviyo competitors\", \"alternative to klaviyo\""
+      ],
+      "internalLinksChanged": [
+        "/software/omnisend",
+        "/software/mailerlite"
+      ],
+      "deploymentTimestamp": "2026-09-10T14:57:51.535Z",
+      "affiliateStatusAtT0": "Klaviyo NONE; Omnisend and MailerLite ACTIVE; issued URLs from canonical registry.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-17T14:57:51.535Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-24T14:57:51.535Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-08T14:57:51.535Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    }
+  ]
+}

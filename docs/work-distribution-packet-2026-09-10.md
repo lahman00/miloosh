@@ -81,3 +81,11 @@ Reddit: existing write pause/CAPTCHA remains in force. Current searches did not 
 - Black Badger, LayerCrafters, Achievan, Creative Folks IT, Discernix: retrieval failed or contact was not verified. Not contacted.
 
 Warm routes: MailerLite's confirmed partner thread for the Klaviyo checklist; Jotform's invited campaign evaluation; Close's offered onboarding/campaign support. Sending is logged separately only after Gmail confirms it.
+
+## Final execution status — 2026-09-10
+
+Both source-backed buyer checklists are LIVE on miloosh.com. MailerLite partner distribution reply was SENT in the verified existing thread: Gmail 1a08bd378b4ff3f8, thread 1a01f51c7e1e7e29. No editorial placement is claimed.
+
+The four organic variants above remain prepared, not posted. Read-only provider identity checks at 15:02:28 UTC returned Facebook HTTP 401 / OAuthException 190 and Buffer HTTP 401 / UNAUTHENTICATED. Browser sessions are also signed out. Keys exist but are unusable in the checked environment. Restore authorization and reconcile the existing Wrike queue item 8f76701d-8028-4059-a4bc-e10f327955da against actual delivery history before any post.
+
+New 28-day experiments are registered; checkpoints September 17, September 24 and October 8. Do not report QA visits, an email send, or a prepared social post as acquired humans or revenue.

@@ -18,9 +18,14 @@ const cta=computeCtaExposure(clean), products=getAllSoftware(), factory=audit.la
 const protectedPages=new Set<string>(audit.experiments.filter((e:{decision:string})=>e.decision==="MEASURING").map((e:{page:string})=>e.page));
 const selected=new Map<string,typeof factory.opportunities[number] & { targetUrl: string }>();
 for(const opportunity of factory.opportunities){if(!opportunity.targetUrl) continue;const prior=selected.get(opportunity.targetUrl);if(!prior||opportunity.opportunityScore>prior.opportunityScore)selected.set(opportunity.targetUrl,{...opportunity,targetUrl:opportunity.targetUrl});}
-const priority=(page:string)=>page==="/software/wrike"?0:page==="/software/klaviyo"?1:protectedPages.has(page)?1000:10;
-const queue=[...selected.values()].sort((a,b)=>priority(a.targetUrl)-priority(b.targetUrl)||b.opportunityScore-a.opportunityScore);
-const status=(page:string)=>protectedPages.has(page)?"HOLD_MEASUREMENT":["/software/wrike","/software/klaviyo"].includes(page)?"IMPLEMENTED_VERIFY_RELEASE":"REVIEW_REQUIRED";
+const activeSlugs=new Set<string>(ACTIVE_PARTNERS.map(p=>p.slug));
+const revenuePath=(page:string)=>{
+ const product=products.find(p=>page==="/software/"+p.slug);
+ return product ? activeSlugs.has(product.slug)||product.alternatives.some(a=>activeSlugs.has(a.slug)) : (selected.get(page)?.relatedSoftware.some(slug=>activeSlugs.has(slug))??false);
+};
+const priority=(page:string)=>page==="/software/wrike"?0:page==="/software/klaviyo"?1:protectedPages.has(page)?1000:page==="/software/n8n"?2:(selected.get(page)?.gsc.impressions??0)<50?300:revenuePath(page)?10:100;
+const queue=[...selected.values()].sort((a,b)=>priority(a.targetUrl)-priority(b.targetUrl)||b.gsc.impressions-a.gsc.impressions||a.gsc.position-b.gsc.position||b.opportunityScore-a.opportunityScore);
+const status=(page:string)=>protectedPages.has(page)?"HOLD_MEASUREMENT":page==="/software/n8n"?"DISTRIBUTE_EXISTING":["/software/wrike","/software/klaviyo"].includes(page)?"IMPLEMENTED_VERIFY_RELEASE":"REVIEW_REQUIRED";
 const csv=(v:unknown)=>'"'+String(v??"").replaceAll('"','""')+'"';
 fs.writeFileSync("docs/work-revenue-queue-2026-09-10.csv",[
  ["priority","query","canonical_page","impressions","clicks","position","gsc_window","status","distribution_gate","measurement"].map(csv).join(","),
@@ -70,7 +75,7 @@ const report=`# Miloosh revenue execution — 2026-09-10
 
 ## High-intent queue
 
-One representative opportunity per canonical URL is retained below and in the CSV. Query-cluster impressions are not market search volume. Distinct or overlapping query rows were not summed.
+One representative opportunity per canonical URL is retained below and in the CSV. Query-cluster impressions are not market search volume. Distinct or overlapping query rows were not summed. Ranking places the two selected live interventions first, then the recently published n8n asset for distribution, then clusters with at least 50 observed impressions and a structurally relevant active affiliate route, other demand-backed clusters, low-evidence rows, and protected experiments. Within each research band, observed impressions rank before average position. These bands are operating heuristics, not predicted revenue; structural affiliate coverage still requires editorial fit review.
 
 | Rank | Query | Canonical page | Impressions | Clicks | Position | State |
 | --- | --- | --- | --- | --- | --- | --- |

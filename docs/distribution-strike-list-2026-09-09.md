@@ -43,3 +43,17 @@ Execution queue built from current buyer-intent conversations and partner-fit re
 ## Reuse rule
 
 Each P0 question should be evaluated for all of these outputs: community answer, company LinkedIn post, founder LinkedIn observation, FAQ, guide section, comparison-page angle, calculator scenario, earned-media angle and partner resource. Reuse the insight, never copy-paste the same wording across channels.
+
+## September 10 execution follow-through
+
+| Target / route | Evidence and fit | Actual status / next gate |
+| --- | --- | --- |
+| MailerLite Partners / Gloria | Existing confirmed affiliate relationship; current Klaviyo decision checklist includes sourced MailerLite billing guidance. | Warm update SENT to partners@mailerlite.com; Gmail 1a08bd378b4ff3f8. Await reply; no placement claimed. |
+| Jotform / Kristina | Invited video challenge; buyer-focused education is plausible, but company-page eligibility and 5,000-view condition need clarification. | Clarification reply SENT, 1a08b9c163c2401b. Not enrolled. |
+| Close / Michael Taylor | Invited partner-support discussion; calling/SMS/usage costs are material to the small-team CRM asset. | Support reply SENT, 1a08bae1b03d7f5d. Prior August 31 distribution ask acknowledged, not duplicated. |
+| Limbic Ventures | Verified Wrike evaluation, procurement and migration services. | Contact page inspected; no usable form or verified email found. No send and no guessed address. |
+| DIG / Gournay / Cprime | Screened current sites and positioning against a useful editorial/partner route. | Referral-only, weaker current fit, or no verified editorial recipient. No send. |
+| Wrike Community external-communications discussion | Live license ambiguity can be clarified using official documentation. | Not a promotional acquisition route under the community's no-third-party/no-advertising rules. A narrow factual draft is prepared only for an eligible account; no post. |
+| LinkedIn / Facebook company distribution | Four source-backed organic variants and tagged landing URLs prepared. | Provider authentication failed with HTTP 401; browser signed out. Restore authorization and reconcile existing delivery history before publishing. |
+
+Continue to hold all already-sent agency/media targets. Smart SME's existing independent publication and prior thanks are recorded; no duplicate thanks was sent. Detailed route screening and copy: work-distribution-packet-2026-09-10.md.
