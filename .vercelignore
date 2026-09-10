@@ -1,1 +1,6 @@
 /tools/
+
+# Operator-only evidence, local QA and private analytics snapshots must not ship.
+/var/
+/.agents/
+/.env*

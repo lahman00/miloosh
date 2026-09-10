@@ -142,16 +142,16 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
     }
   });
 
-  it("Invariant 13: SurveyMonkey specifically fails closed pending vendor confirmation of the 2026-08-24 tracking asset", () => {
-    const surveymonkey = CANONICAL_AFFILIATE_LEDGER.find((p) => p.programId === "surveymonkey");
-    expect(surveymonkey?.status).toBe("PROGRAM_NOT_VERIFIED");
-    expect(surveymonkey?.affiliateUrl).toBeNull();
-    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("surveymonkey");
-
+  it("Invariant 13: only the September vendor-confirmed SurveyMonkey replacement asset is active", () => {
+    const record = CANONICAL_AFFILIATE_LEDGER.find((p) => p.programId === "surveymonkey");
+    expect(record?.status).toBe("ACTIVE");
+    expect(record?.affiliateUrl).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
+    expect(record?.evidence.join(" ")).toContain("1a0623b44e98ed89");
     const item = software.find((s) => s.slug === "surveymonkey")!;
-    expect(item).toBeDefined();
-    expect(shouldShowAffiliateDisclosure(item)).toBe(false);
-    expect(getSoftwareCtaRel(item)).toBe("noopener noreferrer");
+    expect(getSoftwareCtaUrl(item)).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
+    expect(getSoftwareCtaUrl(item)).not.toContain("jx99ylh3mexb");
+    expect(shouldShowAffiliateDisclosure(item)).toBe(true);
+    expect(getSoftwareCtaRel(item)).toContain("sponsored");
   });
 
   /**
@@ -212,24 +212,23 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
    * MILOOSH PREPARE FINAL LOCAL RELEASE CANDIDATE (2026-08-29), follow-up:
    * with Jotform activated, this compare page now carries the requested
    * "SurveyMonkey direct, Jotform affiliate" split. SurveyMonkey is
-   * unaffected by the Jotform reconciliation -- still PROGRAM_NOT_VERIFIED,
-   * still fails closed. Tested through the real compare-page-choose-card
+   * separately reconciled on 2026-09-10 using a vendor-confirmed replacement asset. Tested through the real compare-page-choose-card
    * resolver (lib/wix-funnels.ts's resolveComparisonCtaUrl), the same
    * surface the mission specified, not just the generic per-product checks
    * above.
    */
-  it("surveymonkey-vs-jotform: SurveyMonkey resolves direct, Jotform resolves to its verified affiliate URL", () => {
+  it("surveymonkey-vs-jotform: both products resolve to their independently verified affiliate URLs", () => {
     const surveymonkey = software.find((s) => s.slug === "surveymonkey")!;
     const jotform = software.find((s) => s.slug === "jotform")!;
     expect(surveymonkey).toBeDefined();
     expect(jotform).toBeDefined();
 
-    expect(resolveComparisonCtaUrl(surveymonkey, "jotform")).toBe(surveymonkey.website);
+    expect(resolveComparisonCtaUrl(surveymonkey, "jotform")).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
     expect(resolveComparisonCtaUrl(jotform, "surveymonkey")).toBe("https://www.jotform.com/?partner=miloosh");
 
-    expect(getSoftwareCtaRel(surveymonkey)).not.toContain("sponsored");
+    expect(getSoftwareCtaRel(surveymonkey)).toContain("sponsored");
     expect(getSoftwareCtaRel(jotform)).toContain("sponsored");
-    expect(shouldShowAffiliateDisclosure(surveymonkey)).toBe(false);
+    expect(shouldShowAffiliateDisclosure(surveymonkey)).toBe(true);
     expect(shouldShowAffiliateDisclosure(jotform)).toBe(true);
   });
 });

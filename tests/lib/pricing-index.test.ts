@@ -16,10 +16,10 @@ describe("buildPricingIndex", () => {
     expect(index.sampleSize).toBeLessThan(index.totalCatalogSize);
   });
 
-  it("every stat's numerator never exceeds its denominator, and denominator equals the sample size", () => {
+  it("every stat's numerator never exceeds its denominator, and denominator excludes missing flags", () => {
     for (const s of index.stats) {
       expect(s.numerator).toBeLessThanOrEqual(s.denominator);
-      expect(s.denominator).toBe(index.sampleSize);
+      expect(s.denominator).toBeLessThanOrEqual(index.sampleSize);
     }
   });
 

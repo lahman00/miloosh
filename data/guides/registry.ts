@@ -521,12 +521,12 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
   {
     slug: "best-crm-for-small-business",
     title: "Best CRM Software for Small Businesses (2026)",
-    headline: "The 4 Best Small Business CRMs, Compared & Ranked",
+    headline: "Small Business CRM: Compare Seats, Workflows and Total Cost",
     metaDescription:
-      "Compare the best CRM software for small businesses: Pipedrive, HubSpot, Zoho CRM, and Freshsales evaluated on lead tracking, ease of adoption, and pricing.",
+      "Compare CRM choices for a 5–10-person team: paid seats, automation requirements, annual cost and a practical trial checklist.",
     categorySlug: "crm",
     roleName: "Small Businesses & Sales Teams",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-10",
     intro:
       "Small businesses need a CRM that reps will actually use: straightforward contact management, automated deal tracking, clear sales reporting, and reasonable per-user pricing.",
     targetAudience: [
@@ -538,7 +538,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       {
         title: "User Adoption & Simplicity",
         description:
-          "An intuitive UI that reps can learn in hours without formal training, ensuring consistent data hygiene.",
+          "Check whether the intended users can complete their essential tasks with acceptable training and administration effort.",
       },
       {
         title: "Pipeline Customization & Automation",
@@ -559,45 +559,53 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
     products: [
       {
         slug: "pipedrive",
+        summaryPrice: "Verify selected seats and tier",
+        summaryAvailability: "Check required user allowance",
         badge: "Best Overall for Sales Teams",
         ranking: 1,
         fitReason:
-          "Pipedrive is engineered by salespeople for sales teams. Its visual pipelines, activity prompts, and customizable automation deliver the highest rep adoption rate among small business CRMs.",
+          "Pipedrive is a candidate for teams centered on sales pipelines and next-action follow-up. Confirm that the selected tier includes the automation and email workflow you require; no comparative adoption-rate claim is made.",
         limitations:
           "Dedicated customer support and ticketing tools require third-party integrations.",
-        pricingNote: "Plans start at $14/seat/mo (annual billing).",
+        pricingNote: "Per-seat pricing depends on currency and billing term. The worksheet uses a clearly labeled EUR annual-billing example; it is not a USD quote.",
       },
       {
         slug: "hubspot",
+        summaryPrice: "Verify selected seats and tier",
+        summaryAvailability: "Check required user allowance",
         badge: "Best All-in-One Growth Platform",
         ranking: 2,
         fitReason:
-          "HubSpot connects marketing, sales, and customer service onto a single unified database. Its free CRM tier gives small teams immediate access to deal boards, email tracking, and contact forms.",
+          "HubSpot connects marketing, sales, and customer service onto a single unified database. Its Sales Hub free tools list two users; larger editing teams need a seat-and-feature quote.",
         limitations:
           "Advanced marketing automation and custom reporting require substantial price jumps to Professional tiers.",
         pricingNote:
-          "Free base plan; Starter Customer Platform from $15/seat/mo.",
+          "Free Sales Hub tools list two users. Check the required paid seat types, tier and current promotional terms.",
       },
       {
         slug: "zoho-crm",
+        summaryPrice: "Verify selected seats and tier",
+        summaryAvailability: "Check required user allowance",
         badge: "Best for Customization on a Budget",
         ranking: 3,
         fitReason:
           "Zoho CRM provides extensive workflow rules, custom modules, AI sales assistant features, and omnichannel communication at an accessible price point for growing teams.",
         limitations:
           "Steeper initial configuration required to tailor workflows to specific team needs.",
-        pricingNote: "Standard $14/seat/mo, Professional $23/seat/mo (annual).",
+        pricingNote: "Check the localized quote and selected edition; do not convert a displayed EUR price into an assumed USD rate.",
       },
       {
         slug: "freshsales",
+        summaryPrice: "Verify selected seats and tier",
+        summaryAvailability: "Check required user allowance",
         badge: "Best for AI Insights & Built-In Telephony",
         ranking: 4,
         fitReason:
           "Freshsales combines visual deal tracking with built-in phone, email, and predictive AI contact scoring, allowing sales reps to execute multi-channel outreach from a single screen.",
         limitations:
-          "Third-party integration marketplace is smaller than HubSpot or Pipedrive.",
+          "Verify the exact required phone, inbox and workflow integrations on the proposed plan.",
         pricingNote:
-          "Free plan for 3 users; Growth $9/seat/mo, Pro $39/seat/mo (annual).",
+          "Check the current regional Freshsales plan quote and user allowance; this worksheet does not re-verify every Freshsales price.",
       },
     ],
     comparisons: [
@@ -617,7 +625,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         question:
           "What is the most affordable CRM for a small team on a tight budget?",
         answer:
-          "Freshsales offers a free tier for up to 3 users and paid plans from $9/seat/month with built-in calling, while Zoho CRM offers comprehensive customization starting at $14/seat/month.",
+          "There is no verified universal cheapest choice. Price the required paid seats, workflow tier, add-ons and setup. HubSpot free tools list two users, so do not assume a five- or ten-editor team is free. The worksheet above provides an annual-cost method and an explicitly labeled regional example.",
       },
     ],
   },
@@ -936,12 +944,12 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
     slug: "best-email-marketing-for-small-business",
     title: "Best Email Marketing Software for Small Business (2026)",
     headline:
-      "The 4 Best Email Newsletter & Marketing Tools for Small Businesses",
+      "Small Business Email Marketing: Compare List Limits and Sending Costs",
     metaDescription:
-      "Find the best email marketing software for small business: Constant Contact, Moosend, Mailchimp, and Brevo evaluated on simplicity, templates, deliverability, and monthly price.",
+      "Compare email tools by contacts, campaign-day limits, prepaid credit expiry and annual cost, including a 2,500-subscriber occasional-sending worksheet.",
     categorySlug: "marketing",
     roleName: "Small Businesses & Local Services",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-10",
     intro:
       "Small business owners need email marketing software that is quick to launch, easy to maintain without a dedicated designer, reliable in hitting customer inboxes, and cost-effective.",
     targetAudience: [
@@ -968,12 +976,14 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       {
         title: "Transparent, Predictable Pricing",
         description:
-          "Clear subscriber tiers without punitive overage penalties or surprise charges for unengaged contacts.",
+          "Check billable-contact definitions, overages, automatic upgrades, credit expiry and the largest campaign-day allowance before comparing totals.",
       },
     ],
     products: [
       {
         slug: "constant-contact",
+        summaryPrice: "Quote actual contacts and sends",
+        summaryAvailability: "Check storage and daily limits",
         badge: "Best Overall for Local Businesses & Event Marketing",
         ranking: 1,
         fitReason:
@@ -981,40 +991,46 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Visual automation workflows are simpler than dedicated enterprise marketing automation platforms.",
         pricingNote:
-          "Lite plan starts at $12/mo; Standard plan is $35/mo with automated email series and contact segmentation.",
+          "Check the current quote for your contact count and required automation; do not apply a starting-tier teaser to a larger list.",
       },
       {
         slug: "moosend",
+        summaryPrice: "Quote actual contacts and sends",
+        summaryAvailability: "Check storage and daily limits",
         badge: "Best Budget-Friendly Newsletter Builder",
         ranking: 2,
         fitReason:
-          "Moosend delivers modern, responsive newsletter templates, visual drag-and-drop automation builders, and reliable deliverability at one of the lowest entry price points on the market.",
+          "Moosend is a candidate for newsletter and automation workflows. Compare the current contact-tier quote and required editor features rather than assuming it is the cheapest or has superior deliverability.",
         limitations:
           "Telephone customer support is reserved for enterprise plans; fewer niche CRM integrations.",
         pricingNote:
-          "Free 30-day trial; Pro plan starts at $9/mo (up to 500 contacts, unlimited emails) billed annually.",
+          "Check current contact-tier pricing, billing term and trial conditions against the full list you intend to import.",
       },
       {
         slug: "mailchimp",
+        summaryPrice: "Quote actual contacts and sends",
+        summaryAvailability: "Check storage and daily limits",
         badge: "Best for Multi-Channel Brand Presence",
         ranking: 3,
         fitReason:
           "Mailchimp offers an AI-assisted creative assistant, extensive pre-built brand templates, and seamless integrations with virtually every website builder and payment processor.",
         limitations:
-          "Pricing can escalate quickly as contact lists grow; contacts who unsubscribe still count toward plan billing thresholds unless permanently deleted.",
+          "Review billable contact counts carefully. Mailchimp says archived contacts do not count toward the billing tier; permanent deletion is not the only way to remove inactive records from that tier.",
         pricingNote:
-          "Free plan up to 500 contacts; Essentials starts at $13/mo; Standard starts at $20/mo.",
+          "Check the current contact tier and sending limits; occasional senders should also compare Pay As You Go credit expiry.",
       },
       {
         slug: "brevo",
+        summaryPrice: "Quote actual contacts and sends",
+        summaryAvailability: "Check storage and daily limits",
         badge: "Best for Combined Email & SMS Marketing",
         ranking: 4,
         fitReason:
-          "Brevo (formerly Sendinblue) prices purely on the volume of emails sent rather than the size of your contact database, making it ideal for small businesses with large contact lists who send occasional newsletters.",
+          "Brevo offers recurring plans and prepaid email credits. Check both sending and contact-storage limits: its entry paid tiers are not unlimited-contact plans.",
         limitations:
-          "Template design interface is slightly more technical than Constant Contact.",
+          "A free daily sending ceiling may prevent a same-day campaign to a large list; paid entry tiers also have contact-storage caps.",
         pricingNote:
-          "Free tier for 300 emails/day; Starter plan begins at $9/mo (5,000 monthly emails with no contact limits).",
+          "Free: 300 daily sends. Starter entry tier: 5,000 monthly sends and up to 500 stored contacts. Check the quote for your actual list.",
       },
     ],
     comparisons: [
@@ -1033,7 +1049,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       {
         question: "What makes Brevo unique for small business pricing?",
         answer:
-          "Brevo charges based on email send volume rather than the total number of contacts in your database. This means you can store 50,000 contacts for free and only pay for the emails you actually send.",
+          "Brevo combines sending allowances with plan-specific contact-storage limits. Its entry Starter tier pairs 5,000 monthly sends with up to 500 contacts. Prepaid email credits are a separate option to evaluate for occasional campaigns, subject to account and feature requirements.",
       },
     ],
   },

@@ -8,6 +8,7 @@ import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupFo
 import { ShareButton } from "@/components/ShareButton";
 import { PricingIndexTable } from "@/components/pricing-index/PricingIndexTable";
 import { buildPricingIndex } from "@/lib/pricing-index/build";
+import { formatIndexMoney } from "@/lib/pricing-index/format";
 import { SITE_URL } from "@/lib/site";
 
 const PAGE_URL = `${SITE_URL}/research/saas-pricing-pressure-index-2026`;
@@ -17,11 +18,11 @@ const SMART_SME_COVERAGE_URL =
 export const metadata: Metadata = {
   title: "Miloosh SaaS Pricing Pressure Index 2026",
   description:
-    "How much SaaS teams really pay in 2026, built from first-party verified pricing across the Miloosh catalog — sample size, methodology, and source links published in full.",
+    "Published SaaS starting prices and documented plan availability, with dated vendor sources, explicit sample sizes, currencies, and modeled-cost limitations.",
   alternates: { canonical: "/research/saas-pricing-pressure-index-2026" },
   openGraph: {
     title: "Miloosh SaaS Pricing Pressure Index 2026",
-    description: "What SaaS teams really pay in 2026 — from verified, first-party pricing data, methodology published in full.",
+    description: "Published SaaS list prices, not customer invoices. Dated sources, sample sizes, and modeled-cost limitations included.",
   },
 };
 
@@ -57,7 +58,7 @@ export default function PricingPressureIndexPage() {
             SaaS Pricing Pressure Index 2026
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            {`What SaaS teams really pay, built from ${index.sampleSize} products with pricing verified directly on each vendor's own site as of ${generatedDate} — not estimated, not scraped from third-party aggregators.`}
+            {`Published SaaS list prices and plan availability from ${index.sampleSize} catalog products. Sources were checked between ${index.verificationWindow.earliest ?? 'an unrecorded date'} and ${index.verificationWindow.latest ?? 'an unrecorded date'}; this view was compiled on ${generatedDate}. These are not customer invoices or evidence of actual spending.`}
           </p>
           <div className="mt-6 flex items-center gap-3">
             <ShareButton title="Miloosh SaaS Pricing Pressure Index 2026" url={PAGE_URL} />
@@ -66,12 +67,12 @@ export default function PricingPressureIndexPage() {
 
         {index.highestModeledCost50Seats ? (
           <Card className="mt-10 max-w-3xl border-white/15 bg-white/[0.03]">
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Headline finding</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Illustrative licensed-seat scenario</p>
             <p className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
-              {`A 50-seat team on ${index.highestModeledCost50Seats.name} costs $${index.highestModeledCost50Seats.cost50.toLocaleString()}/month`}
+              {`50 licensed seats × the recorded ${index.highestModeledCost50Seats.name} starting rate = ${formatIndexMoney(index.highestModeledCost50Seats.cost50)}/month`}
             </p>
             <p className="mt-2 text-sm text-zinc-500">
-              {`Modeled directly from ${index.highestModeledCost50Seats.name}'s own published per-seat rate of $${index.highestModeledCost50Seats.perSeatMonthlyRate}/seat/month — the highest 50-seat figure among the ${index.modeledTeamCosts.length} products in this dataset with an explicit, structurally-recorded per-seat price.`}
+              {`Illustrative arithmetic, not a quote: 50 × ${formatIndexMoney(index.highestModeledCost50Seats.perSeatMonthlyRate)}. Limited to ${index.modeledTeamCosts.length} records explicitly marked USD, monthly and per-seat. Licensed users or agents are not necessarily all employees. Plan caps, seat bundles, minimums, discounts, taxes, usage charges and feature upgrades can change the payable total.`}
             </p>
           </Card>
         ) : null}
@@ -79,38 +80,38 @@ export default function PricingPressureIndexPage() {
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <Card>
             <p className="text-2xl font-semibold text-white">{freeTier.pct}%</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Have a free tier (${freeTier.numerator}/${freeTier.denominator})`}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Documented free tier (${freeTier.numerator}/${freeTier.denominator} known records)`}</p>
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{enterpriseContact.pct}%</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Require contacting sales for enterprise pricing (${enterpriseContact.numerator}/${enterpriseContact.denominator})`}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Enterprise contact-sales flag (${enterpriseContact.numerator}/${enterpriseContact.denominator} known records)`}</p>
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{perSeat.pct}%</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Price explicitly per seat (${perSeat.numerator}/${perSeat.denominator})`}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Explicit per-seat flag (${perSeat.numerator}/${perSeat.denominator} known records)`}</p>
           </Card>
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <Card>
-            <p className="text-2xl font-semibold text-white">{index.medianStartingPrice !== null ? `$${index.medianStartingPrice}` : "—"}</p>
-            <p className="mt-1 text-xs text-zinc-500">Median starting monthly price, sampled products</p>
+            <p className="text-2xl font-semibold text-white">{formatIndexMoney(index.medianStartingPrice)}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Median recorded USD monthly starting rate (${index.monthlyUsdSampleSize} records)`}</p>
           </Card>
           <Card>
-            <p className="text-2xl font-semibold text-white">{index.medianModeledCost10Seats !== null ? `$${index.medianModeledCost10Seats.toLocaleString()}` : "—"}</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Median modeled cost for a 10-seat team (${index.modeledTeamCosts.length} explicitly per-seat products)`}</p>
+            <p className="text-2xl font-semibold text-white">{formatIndexMoney(index.medianModeledCost10Seats)}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Median arithmetic scenario for 10 licensed seats (${index.modeledTeamCosts.length} explicitly per-seat products)`}</p>
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{freeTrial.pct}%</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Offer a free trial (${freeTrial.numerator}/${freeTrial.denominator})`}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Documented free trial (${freeTrial.numerator}/${freeTrial.denominator} known records)`}</p>
           </Card>
         </div>
 
         {index.categoryMedianStartingPrice.length > 0 ? (
           <div className="mt-12">
-            <h2 className="text-lg font-semibold text-white">Median starting price by category</h2>
+            <h2 className="text-lg font-semibold text-white">Median recorded USD monthly rate by category</h2>
             <p className="mt-1 text-xs text-zinc-500">
-              Only categories with at least 3 verified data points — a median from fewer points isn&apos;t a defensible statistic.
+              Only categories with at least 3 explicit USD monthly records are shown. Rates may cover different seats, contacts, usage allowances or features; these medians are not like-for-like quotes or market-wide estimates.
             </p>
             <div className="mt-4 overflow-x-auto rounded-xl border border-white/10">
               <table className="w-full text-left text-sm">
@@ -125,7 +126,7 @@ export default function PricingPressureIndexPage() {
                   {index.categoryMedianStartingPrice.map((c) => (
                     <tr key={c.category} className="border-b border-white/5">
                       <td className="px-4 py-3 text-zinc-300">{c.category}</td>
-                      <td className="px-4 py-3 text-zinc-300">{`$${c.median}/mo`}</td>
+                      <td className="px-4 py-3 text-zinc-300">{`${formatIndexMoney(c.median)}/mo`}</td>
                       <td className="px-4 py-3 text-zinc-500">{c.sampleSize}</td>
                     </tr>
                   ))}
@@ -138,7 +139,7 @@ export default function PricingPressureIndexPage() {
         <div className="mt-12">
           <h2 className="text-lg font-semibold text-white">Full dataset</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            Sort by price, filter by category, or check a product&apos;s free-tier status. Each row links to the Miloosh page and the vendor&apos;s own pricing source.
+            Filter by category or documented free-tier availability. Recorded starting-price text preserves the source currency and unit. Sorting by monthly rate uses only explicit USD monthly records; excluded or unknown-basis rows remain at the end. Each row links to its vendor source.
           </p>
           <div className="mt-4">
             <PricingIndexTable products={index.products} />
@@ -164,7 +165,7 @@ export default function PricingPressureIndexPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Modeled team costs</dt>
               <dd className="mt-1 text-zinc-400">
-                5/10/25/50-seat figures are calculated only for products with an explicit, structurally-recorded per-seat monthly rate — never assumed or extrapolated for flat-rate or usage-based products, which are excluded from those figures entirely.
+                5/10/25/50 licensed-seat figures are arithmetic scenarios using explicit USD monthly per-seat records only. Annual records are excluded because the legacy data mixes annual invoice amounts and monthly equivalents. No foreign-exchange conversion is applied. We do not verify that every starting plan permits every modeled seat count. These are not quotes, invoices, actual customer spending or a representative market sample.
               </dd>
             </div>
           </dl>
@@ -204,7 +205,7 @@ export default function PricingPressureIndexPage() {
             <h2 className="text-sm font-semibold text-white">Get notified when this index updates</h2>
           </div>
           <p className="mt-1 text-xs text-zinc-500">
-            We re-verify pricing continuously. Occasional emails when the dataset materially changes — no spam.
+            Occasional emails when the dataset materially changes. Each product carries its own source-verification date; compilation does not mean every vendor was rechecked today.
           </p>
           <div className="mt-4">
             <NewsletterSignupForm source="pricing-pressure-index" />

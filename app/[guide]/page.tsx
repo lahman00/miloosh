@@ -1,3 +1,4 @@
+import { BuyerDecisionBrief } from "@/components/BuyerDecisionBrief";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -199,7 +200,9 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
             </div>
           </section>
 
-          {/* Evaluation Criteria */}
+          <BuyerDecisionBrief slug={guide.slug} />
+
+        {/* Evaluation Criteria */}
           <section className="mb-14">
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-white mb-2">How We Evaluated Software for {guide.roleName}</h2>

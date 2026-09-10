@@ -14,7 +14,7 @@ import type { Software } from "@/data/software/types";
  * SAMPLE: every catalog entry with a real, sourced `pricing` object
  * (`pricing.status === "verified"` or `"contact_sales"` -- i.e. an entry
  * that was actually checked against the vendor's own page, not merely
- * present). As of this build: 65 of 247 catalog entries. The other 182
+ * present). The current sample size is computed below. Other entries
  * are EXCLUDED, not counted as "no free tier" or any other negative --
  * absence of verified pricing data is not evidence about the product's
  * actual pricing.
@@ -31,13 +31,15 @@ export interface PricingIndexProduct {
   slug: string;
   name: string;
   category: string;
-  hasFreeTier: boolean;
-  hasFreeTrial: boolean;
+  hasFreeTier: boolean | null;
+  hasFreeTrial: boolean | null;
   model: string;
-  perSeat: boolean;
-  enterpriseContactSales: boolean;
+  perSeat: boolean | null;
+  enterpriseContactSales: boolean | null;
   startingMonthlyEquivalent: number | null;
   billingPeriod: string | null;
+  currency: string | null;
+  recordedStartingPrice: string | null;
   lastVerified: string | null;
   officialSource: string | null;
 }
@@ -62,6 +64,8 @@ export interface PricingIndexStat {
 export interface PricingIndex {
   generatedAt: string;
   sampleSize: number;
+  monthlyUsdSampleSize: number;
+  verificationWindow: { earliest: string | null; latest: string | null };
   totalCatalogSize: number;
   inclusionRule: string;
   exclusionRule: string;
@@ -91,20 +95,24 @@ function isVerifiedPricing(software: Software): boolean {
   return status === "verified" || status === "contact_sales";
 }
 
-export function buildPricingIndex(): PricingIndex {
-  const all = getAllSoftware();
+export function buildPricingIndex(all: readonly Software[] = getAllSoftware()): PricingIndex {
   const sample = all.filter(isVerifiedPricing);
 
   const products: PricingIndexProduct[] = sample.map((s) => ({
     slug: s.slug,
     name: s.name,
     category: s.category,
-    hasFreeTier: Boolean(s.pricing?.hasFreeTier || s.pricing?.freePlan),
-    hasFreeTrial: Boolean(s.pricing?.freeTrial?.available),
+    hasFreeTier: s.pricing?.hasFreeTier ?? s.pricing?.freePlan ?? null,
+    hasFreeTrial: s.pricing?.freeTrial?.available ?? null,
     model: s.pricing?.model ?? "unknown",
-    perSeat: Boolean(s.pricing?.entryPaid?.perSeat),
-    enterpriseContactSales: Boolean(s.pricing?.enterpriseContactSales),
-    startingMonthlyEquivalent: s.pricing?.entryPaid ? Number.parseFloat(s.pricing.entryPaid.amount) : null,
+    perSeat: s.pricing?.entryPaid?.perSeat ?? null,
+    enterpriseContactSales: s.pricing?.enterpriseContactSales ?? null,
+    // Annual records mix invoice totals and monthly equivalents in the legacy schema.
+    // Do not guess a conversion or exchange rate: aggregate only explicit USD monthly records.
+    startingMonthlyEquivalent: s.pricing?.entryPaid?.currency === "USD" && s.pricing.entryPaid.billingPeriod === "monthly" && /^\d+(?:\.\d+)?$/.test(s.pricing.entryPaid.amount)
+      ? Number(s.pricing.entryPaid.amount) : null,
+    currency: s.pricing?.entryPaid?.currency ?? null,
+    recordedStartingPrice: s.pricing?.startingPrice ?? null,
     billingPeriod: s.pricing?.entryPaid?.billingPeriod ?? null,
     lastVerified: s.pricing?.lastVerified ?? null,
     officialSource: s.pricing?.officialSource ?? null,
@@ -113,15 +121,16 @@ export function buildPricingIndex(): PricingIndex {
   const withFiniteStartingPrice = products.filter((p) => p.startingMonthlyEquivalent !== null && Number.isFinite(p.startingMonthlyEquivalent));
 
   const stats: PricingIndexStat[] = [
-    stat("Free tier available", products.filter((p) => p.hasFreeTier).length, products.length),
-    stat("Free trial available", products.filter((p) => p.hasFreeTrial).length, products.length),
-    stat("Explicitly per-seat pricing", products.filter((p) => p.perSeat).length, products.length),
-    stat("Enterprise tier requires contacting sales", products.filter((p) => p.enterpriseContactSales).length, products.length),
+    stat("Free tier available", products.filter((p) => p.hasFreeTier === true).length, products.filter((p) => p.hasFreeTier !== null).length),
+    stat("Free trial available", products.filter((p) => p.hasFreeTrial === true).length, products.filter((p) => p.hasFreeTrial !== null).length),
+    stat("Explicitly per-seat pricing", products.filter((p) => p.perSeat === true).length, products.filter((p) => p.perSeat !== null).length),
+    stat("Enterprise tier requires contacting sales", products.filter((p) => p.enterpriseContactSales === true).length, products.filter((p) => p.enterpriseContactSales !== null).length),
     stat("Pricing model: freemium", products.filter((p) => p.model === "freemium").length, products.length),
     stat("Pricing model: paid (no free tier)", products.filter((p) => p.model === "paid").length, products.length),
   ];
 
-  const perSeatProducts = sample.filter((s) => s.pricing?.entryPaid?.perSeat);
+  const comparableSlugs = new Set(withFiniteStartingPrice.map((p) => p.slug));
+  const perSeatProducts = sample.filter((s) => s.pricing?.entryPaid?.perSeat === true && comparableSlugs.has(s.slug));
   const modeledTeamCosts: ModeledTeamCost[] = perSeatProducts
     .map((s) => {
       const rate = Number.parseFloat(s.pricing!.entryPaid!.amount);
@@ -148,12 +157,15 @@ export function buildPricingIndex(): PricingIndex {
     .filter((row) => row.sampleSize >= 3) // a "category median" from 1-2 products is really just an average of a couple points, not a defensible statistic
     .sort((a, b) => b.median - a.median);
 
+  const verificationDates = products.map((p) => p.lastVerified).filter((d): d is string => Boolean(d)).sort();
   return {
+    monthlyUsdSampleSize: withFiniteStartingPrice.length,
+    verificationWindow: { earliest: verificationDates[0] ?? null, latest: verificationDates.at(-1) ?? null },
     generatedAt: new Date().toISOString(),
     sampleSize: sample.length,
     totalCatalogSize: all.length,
-    inclusionRule: "Every catalog entry with pricing.status of \"verified\" or \"contact_sales\" -- i.e. checked directly against the vendor's own current pricing page.",
-    exclusionRule: "Entries with no pricing.status (pricing not yet independently verified) are excluded entirely from every statistic below, never counted as a negative.",
+    inclusionRule: "Every catalog entry with pricing.status of \"verified\" or \"contact_sales\" -- i.e. checked against a vendor pricing source on the row-specific verification date, not necessarily the compilation date.",
+    exclusionRule: "Catalog entries outside the stated pricing-status sample are excluded. Missing availability flags are unknown, not false; each percentage uses only records with that flag documented. USD monthly aggregates exclude annual, one-time, unknown-basis and non-USD records; no exchange rate or annual normalization is inferred.",
     products,
     stats,
     medianStartingPrice: median(withFiniteStartingPrice.map((p) => p.startingMonthlyEquivalent!)),
