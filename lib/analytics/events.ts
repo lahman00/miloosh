@@ -285,35 +285,43 @@ export async function recordFirstPartyEvent(event: FirstPartyEvent): Promise<boo
 }
 
 export async function getAllFirstPartyEvents(): Promise<FirstPartyEvent[]> {
-  const events: FirstPartyEvent[] = [];
-
   if (!hasBlobToken()) {
     return [...readLocalFallback()].sort((a, b) => b.timestamp.localeCompare(a.timestamp));
   }
 
-  try {
-    const { list, get } = await import("@vercel/blob");
-    const { blobs } = await list({ prefix: BLOB_PREFIX, limit: MAX_STORED_EVENTS });
+  const { list, get } = await import("@vercel/blob");
+  const paths: string[] = [];
+  let cursor: string | undefined;
+  do {
+    const page = await list({ prefix: BLOB_PREFIX, limit: 1000, cursor });
+    paths.push(...page.blobs.map((blob) => blob.pathname));
+    cursor = page.hasMore ? page.cursor : undefined;
+    if (page.hasMore && !cursor) throw new Error("Analytics listing is incomplete: missing continuation cursor.");
+  } while (cursor);
 
-    const results = await Promise.all(
-      blobs.map(async (blob): Promise<FirstPartyEvent | null> => {
+  const events: FirstPartyEvent[] = [];
+  let next = 0;
+  let failures = 0;
+  // Bounded reads avoid the request bursts that silently lost events in the
+  // previous reader. A partial read must never masquerade as a complete report.
+  await Promise.all(Array.from({ length: Math.min(8, paths.length) }, async () => {
+    while (next < paths.length) {
+      const pathname = paths[next++];
+      let loaded = false;
+      for (let attempt = 0; attempt < 3 && !loaded; attempt++) {
         try {
-          const res = await get(blob.pathname, { access: "private", useCache: false });
-          if (!res) return null;
-          const text = await new Response(res.stream).text();
-          return JSON.parse(text) as FirstPartyEvent;
+          const response = await get(pathname, { access: "private", useCache: false });
+          if (!response) throw new Error("Analytics event unavailable");
+          const event = JSON.parse(await new Response(response.stream).text()) as FirstPartyEvent;
+          if (!event.type || !event.timestamp || !event.sessionId) throw new Error("Invalid analytics event");
+          events.push(event);
+          loaded = true;
         } catch {
-          return null;
+          if (attempt === 2) failures++;
         }
-      })
-    );
-
-    for (const r of results) {
-      if (r) events.push(r);
+      }
     }
-  } catch {
-    // fallback or empty
-  }
-
+  }));
+  if (failures) throw new Error(`Analytics read incomplete: ${failures} of ${paths.length} events could not be read.`);
   return events.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
 }
