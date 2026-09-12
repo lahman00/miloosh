@@ -82,7 +82,7 @@ All paths below are existing Miloosh assets or existing category/product cluster
 | 7 | Klaviyo, Omnisend*, MailerLite*, Brevo | `/best-email-marketing-for-ecommerce`; L; product pages protected | Eight sources; guest/returning-event and billable-audience matrix; merchant lifecycle resources |
 | 8 | Harvest, Hubstaff*, Toggl Track, Clockify | `/best-time-tracking-for-agencies`; L distinct from freelancers and Wave 1 PM | Seven sources; hours-to-invoice reconciliation; DPM agency audience |
 | 9 | Notion, Confluence, Help Scout, Bloomfire | `/best-knowledge-base-software-for-teams`; M | Primary available; named owner and internal/external access test needed; support resources |
-| 10 | Jotform*, Typeform, Tally, Google Forms | Existing forms product/comparison cluster; M | Partial source review; response/upload/permission acceptance needed; consultant resources |
+| 10 | Catalog: Jotform*, Typeform; prospective Tally and Google Forms are not in the current catalog | Existing forms product/comparison cluster; M | Partial source review and catalog gap; response/upload/permission acceptance needed; consultant resources |
 | 11 | KrispCall*, RingCentral, Aircall, Dialpad | `/best-cloud-phone-system-for-remote-teams`; M with SMB VoIP | Country-specific primary gaps; porting/number/user decision gate; remote-ops resources |
 | 12 | Buffer, Sprout Social, Hootsuite, Later | `/best-social-media-management-for-agencies`; M scheduler overlap | Vendor comparison inspected; 20-channel/two-reviewer quote needed; agency community |
 | 13 | Jobber, Housecall Pro, ServiceTitan | `/best-field-service-software-for-contractors`; L | Primary price/offline gaps; change-order-to-invoice test; trade resources |
@@ -91,7 +91,7 @@ All paths below are existing Miloosh assets or existing category/product cluster
 | 16 | HubSpot, Zoho CRM, Salesforce; no selected verified active asset | CRM category and product cluster; M job mismatch with sales CRM | Donor-specific catalog/primary coverage gap; stewardship versus deal model; nonprofit resources |
 | 17 | Close*, Pipedrive*, HubSpot, Apollo | Sales CRM and sales-outreach cluster; H if repeating #1 | Provider/domain-policy primary review needed; entitlement versus send eligibility; sales-ops community |
 | 18 | Xero, QuickBooks Online, Zoho Books | `/best-accounting-software-for-small-business`; M | Country/entity primary review needed; two-ledger licensing sheet; bookkeeper resources |
-| 19 | Jotform*, Typeform, Tally | Forms product/comparison cluster; H if separate from #10 | Retention/role evidence needed; upload lifecycle gate; operations/security community |
+| 19 | Catalog: Jotform*, Typeform; Tally is a prospective non-catalog candidate | Forms product/comparison cluster; H if separate from #10 | Retention/role and catalog evidence needed; upload lifecycle gate; operations/security community |
 | 20 | WhatConverts*, CallRail, Ruler Analytics | `/best-lead-tracking-for-agencies`; H Wave 1 exact overlap | Already source-backed reconciliation; wait for measurement; attribution resources |
 | 21 | monday*, Wrike*, Asana, Teamwork | `/best-project-management-software-for-small-teams`; M | Capacity-entitlement primary review needed; part-time denominator sheet; delivery-manager audience |
 | 22 | Notion, Confluence, Bloomfire | Knowledge-base guide; H merge with #9 | Guest/revocation evidence needed; offboarding test; support/IT audience |
@@ -99,7 +99,7 @@ All paths below are existing Miloosh assets or existing category/product cluster
 | 24 | Wix*, Webflow, Squarespace, WordPress | Website-builder category and comparisons; M | Localization/URL primary evidence needed; language-switch and canonical test; local-business resources |
 | 25 | Shopify*, WooCommerce, Ecwid | #6 existing ecommerce guide; H | Gateway-specific evidence required; continuity acceptance; merchant resources |
 | 26 | KrispCall*, RingCentral, Aircall | #11 and SMB VoIP guide; H | Country-specific carrier evidence required; number versus permission matrix; remote-ops audience |
-| 27 | Setmore*, Acuity Scheduling, SimplyBook.me | `/best-scheduling-software-for-small-business`; M | Resource/seat/payment primary review needed; room-versus-host collision test; studio resources |
+| 27 | Catalog: Setmore*, Acuity Scheduling; prospective SimplyBook.me is not in the current catalog | `/best-scheduling-software-for-small-business`; M | Resource/seat/payment and catalog review needed; room-versus-host collision test; studio resources |
 | 28 | ElevenLabs*, Descript, Murf, Synthesia | `/best-voice-ai-for-creators`; H Wave 1 exact overlap | Existing primary-backed revision/rights test; wait; creator resources |
 | 29 | Airtable*, Notion, Coda, Smartsheet | `/best-no-code-database-for-operations`; H Wave 1 overlap | Existing role/export framework; wait; operations community |
 | 30 | 1Password, Bitwarden, Keeper | `/best-password-manager-for-businesses`; M | Business-role/sharing primary review needed; client ownership and revoke test; agency IT resources |
@@ -171,25 +171,52 @@ Pain-language examples only: [small-team CRM discussion](https://www.reddit.com/
 
 ## Ranked Wave 3 backlog — exactly twenty research actions, not twenty promised URLs
 
-1. #10: client-intake response/upload/access matrix; complete official plan evidence first.
-2. #23: survey response/export limits; verify current account-independent terms and preserve new verified SurveyMonkey asset.
-3. #13: contractor offline change-order acceptance; confirm primary field and billing constraints.
-4. #11: remote shared-number portability by one declared country; no universal SMS promise.
-5. #12: twenty-channel/two-reviewer social quote; no live social or queue changes.
-6. #21: part-time capacity denominator and permission test in the existing small-team PM guide.
-7. #9: internal/external knowledge ownership and guest access in the current knowledge guide.
-8. #27: class/room resource collisions in the existing small-business scheduling guide.
-9. #14: freelancer accountant handover after choosing a jurisdiction from real audience evidence.
-10. #19: add attachment lifecycle evidence to #10, not a competing forms URL.
-11. #24: multilingual website routing and translation ownership; verify official limits first.
-12. #17: outbound sequence entitlement versus sending eligibility; complement, do not rewrite Wave 2 CRM.
-13. #30: client vault ownership and contractor revocation in the business password guide.
-14. #26: country-specific SMS registration evidence merged into #11.
-15. #18: two-entity accounting license and export boundaries after country selection.
-16. #22: offboarding evidence merged into #9.
-17. #16: establish donor-job catalog coverage before deciding a nonprofit page is justified.
-18. #3: measure the existing low-volume email worksheet; only fix a demonstrated gap, no new slug.
-19. #25: provider-supported recurring-payment migration evidence after Wave 2 ecommerce cooldown; no early rewrite.
-20. #2: measure Wave 1 project-management engagement before proposing a consultant expansion.
+The two tables below join on rank and contain all requested backlog fields. Research sequencing considers evidence dependencies and protected cohorts, not just the raw opportunity score. Difficulty is a qualitative editorial estimate from the inspected competitive context and/or breadth of the query, **not measured KD**. H/M/L denote high/medium/low; unmeasured demand stays unknown. Existing routes below are reuse targets, not permission to rewrite an active cohort. A product-page research target is not an assertion that a new guide URL is already justified.
+
+| Rank / candidate | Buyer | Query theme | Intent | Observed evidence | Commercial fit | Catalog fit | Affiliate fit | Content gap | SERP difficulty estimate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 / #10 | Consultant/ops lead, 2–10 users | Client intake uploads and access | Plan selection | Inspected WorkflowCompass comparison; exact-query GSC unknown | H: upgrade boundary | Jotform, Typeform; Tally/Google Forms absent | Jotform active | Response, attachment and role limits in one decision | M–H: established form comparisons |
+| 2 / #23 | Research coordinator, 1–4 | Survey response limits and export | Upgrade/renewal | Existing catalog/comparison coverage; current primary limits not yet verified | H: paid response access | Jotform, SurveyMonkey, Typeform | Jotform and SurveyMonkey active | Distinguish collecting responses from accessing/exporting them | M–H, provisional; focused SERP review still needed |
+| 3 / #13 | Trade owner/dispatcher, 2–10 | Offline job changes to invoices | Replacement | Baadigi comparison inspected; offline behavior unverified | H: lost workflow handoff | Jobber, Housecall Pro, ServiceTitan | None | Approved change order through offline sync to invoice | M–H: specialist comparison coverage |
+| 4 / #11 | Remote ops lead, 3–15 | Shared number portability and SMS | Provider selection | KrispCall official number page inspected; no country-specific proof | H: number migration | KrispCall, RingCentral, Aircall, Dialpad | KrispCall active | Number availability versus portability and permitted messaging | M–H: strong vendor content |
+| 5 / #12 | Agency social lead, 2–6 | Twenty channels, two reviewers | Renewal | Buffer's Sprout comparison inspected; unit distinction already covered | H: channel/seat quote | Buffer, Sprout Social, Hootsuite, Later | None | Equivalent approval workflow rather than unlike-plan price comparison | H: vendor comparisons already strong |
+| 6 / #21 | Delivery manager, 6–20 | Part-time contractor capacity | Tier upgrade | Catalog/current guide only; exact-query demand not established | H: resource-plan entitlement | monday, Wrike, Asana, Teamwork | monday and Wrike active | Explicit availability denominator and restricted visibility | M–H, provisional |
+| 7 / #9 | Support/ops lead, 5–20 | Internal/external knowledge permissions | Platform selection | Ferndesk content inspected; ownership gap needs primary proof | H: permission tier | Notion, Confluence, Help Scout, Bloomfire | None | Named owner, audience boundary and stale-answer workflow | H: existing strong niche coverage |
+| 8 / #27 | Studio manager, 2–10 | Class, room and resource booking | Purchase | Catalog/current guide; primary collision behavior not verified | H: paid resource scope | Setmore, Acuity; SimplyBook.me absent | Setmore active | Room capacity separate from staff calendar availability | M–H, provisional |
+| 9 / #14 | Freelancer plus accountant | Accountant access and export | Purchase/renewal | NerdWallet guide inspected; country unselected | H: handover and records | FreshBooks, Wave, Xero, QuickBooks | None | One declared jurisdiction and reproducible handover | H: established financial publishers |
+| 10 / #19 | Ops/security lead, 3–12 | Forms attachment retention and access | Plan/permission review | Catalog plus #10 adjacent review; retention evidence incomplete | H: governance tier | Jotform, Typeform; Tally absent | Jotform active | Follow an attachment from submission to deletion/export | M–H; merge with #10 |
+| 11 / #24 | Owner/marketer, 1–4 | Multilingual builder URLs and ownership | Builder choice | Catalog/category only; localized-query demand unknown | H: language capability | Wix, Webflow, Squarespace, WordPress | Wix active | Translation owner, language URLs and form consistency | H, provisional: broad builder competition |
+| 12 / #17 | Sales ops, 5–15 senders | Sequence entitlement versus sending limits | Outreach purchase | Adjacent CRM snapshot; no exact-guide baseline or policy audit | H: seat/usage purchase | Close, Pipedrive, HubSpot, Apollo (`apollo-io`) | Close and Pipedrive active | Plan features do not grant deliverability or consent | H; overlap requires narrow scope |
+| 13 / #30 | Agency IT owner, 5–20 | Client vault handover and revocation | Business-plan selection | Catalog/current guide only; role facts not yet researched | H: ownership and access | 1Password, Bitwarden, Keeper | None | Client-owned vault and contractor offboarding test | H, provisional: security vendor authority |
+| 14 / #26 | Cross-border ops, 3–12 | Business SMS registration by country | Phone-plan selection | Adjacent official #11 source, not registration proof | H: eligible usage | KrispCall, RingCentral, Aircall | KrispCall active | Number purchased versus messaging actually permitted | M–H; merge with #11 |
+| 15 / #18 | Owner/bookkeeper, 2–5 | Two entities and separate ledgers | Expansion | Catalog/current guide only; country and billing evidence missing | H: second subscription | Xero, QuickBooks, Zoho Books | None | Entity boundary and independent export ownership | H, provisional |
+| 16 / #22 | IT/ops owner, 10–30 | Knowledge guest revocation and exports | Renewal/access review | #9 adjacent SERP review; direct offboarding evidence missing | H: permission tier | Notion, Confluence, Bloomfire | None | Revoke user, inherited links and exported copies distinctly | M–H; merge with #9 |
+| 17 / #16 | Fundraising lead, 3–10 | Small nonprofit donor CRM | Shortlist | Catalog gap only; no authenticated donor-intent demand | M: job fit not proven | Generic HubSpot/Zoho/Salesforce, donor coverage incomplete | None established for this shortlist | Stewardship and gifts are not sales deals | H, provisional; specialist catalog gap |
+| 18 / #3 | Association admin, 1–3 | Large list, infrequent email | Renewal/prepaid | EmailToolTester inspected; existing Sept 10 worksheet owns intent | H: billing model | MailerLite, Moosend, GetResponse, Constant Contact, Brevo | First four active | Already covered; only measured new objections justify changes | H; high internal duplication risk |
+| 19 / #25 | Subscription-store operator, 2–8 | Recurring-payment migration | Platform exit | Adjacent WooCommerce GSC cluster and #6 research, not gateway proof | H: migration risk | Shopify, WooCommerce, Ecwid | Shopify active | Gateway-supported continuity of recurring agreements | H; protect Wave 2 and merge |
+| 20 / #2 | Consultant delivery lead, 2–10 | Client approvals across engagements | PM purchase | DPM and G2 inspected; protected Wave 1 already adds acceptance value | H: client-access tier | monday, Wrike, ClickUp, Asana, Teamwork | monday and Wrike active | No established incremental gap until measurement | H; high internal duplication risk |
+
+| Rank | Unique Miloosh angle | Recommended URL / research destination | Distribution route | Next action |
+| --- | --- | --- | --- | --- |
+| 1 | Response/upload/role acceptance matrix | Reuse `/software/jotform` and its published comparison cluster; new guide URL deferred | Consultant resource editor, eligibility unverified | Verify current official upload, response, access and export rules; map the existing canonical comparison before drafting |
+| 2 | Can collected responses still be read and exported? | `/compare/surveymonkey-vs-jotform` | Research/operations resource pages, recipient unverified | Research current limits; preserve the current verified assets; check experiment cooldown before editing |
+| 3 | Offline change-order-to-invoice test | `/best-field-service-software-for-contractors` | Trade-operations resources | Verify vendor offline, approval, role and billing constraints |
+| 4 | One-country porting and permitted-use matrix | `/best-cloud-phone-system-for-remote-teams` | Remote-operations community/resource editor | Select country from real audience evidence, then verify carrier/number eligibility |
+| 5 | Equal-workflow channel/approver quote | `/best-social-media-management-for-agencies` | Agency resource editors | Verify two-reviewer permissions on twenty channels; no changes to real social accounts or queues |
+| 6 | Capacity denominator for mixed availability | `/best-project-management-software-for-small-teams` | Delivery-manager community | Verify part-time capacity and permission entitlements in official docs |
+| 7 | Named content owner plus audience access | `/best-knowledge-base-software-for-teams` | Support Driven, membership/rules gate | Collect primary ownership, guest and stale-content behavior evidence |
+| 8 | Staff slot versus physical room collision | `/best-scheduling-software-for-small-business` | Studio/small-business resource pages | Verify class capacity, resources and payment rules; resolve catalog gaps |
+| 9 | Accountant handover with explicit jurisdiction | `/best-accounting-software-for-freelancers` | Freelancer/accountant resources | Establish audience country before legal/tax-sensitive editorial research |
+| 10 | Attachment lifecycle from intake to exit | Merge into rank 1's existing Jotform research cluster | Operations/security resources | Research retention, permissions and exports; no second competing forms URL |
+| 11 | Language URL and content-owner acceptance | `/software/wix` research cluster; guide slug deferred | Multilingual small-business resources | Verify official localization limits and existing intent owner before selecting a guide route |
+| 12 | Feature entitlement versus permitted sending | `/software/close` research cluster; preserve Wave 2 CRM | Sales-operations resources | Verify provider limits, opt-outs and domain policy; check existing experiments before any edit |
+| 13 | Contractor loses access without losing client ownership | `/best-password-manager-for-businesses` | Agency IT resources | Verify vault ownership, export and revocation under current business tiers |
+| 14 | Country number versus registered messaging | Merge into `/best-cloud-phone-system-for-remote-teams` | Country-specific remote-ops resources | Collect official carrier/registration evidence, not a universal SMS promise |
+| 15 | Separate legal entity, separate licensed ledger | `/best-accounting-software-for-small-business` | Bookkeeper resources | Select jurisdiction, then verify multi-entity billing and export boundaries |
+| 16 | Guest revocation and inherited-link test | Merge into `/best-knowledge-base-software-for-teams` | Support/IT communities | Collect exact offboarding evidence before merging into rank 7 |
+| 17 | Donor stewardship rather than a renamed deal pipeline | `/category/crm` research entry; no nonprofit URL approved | Nonprofit technology resources | Establish genuine catalog/job fit and demand; drop if neither is supported |
+| 18 | Measure the existing low-frequency billing worksheet | `/best-email-marketing-for-small-business` | Association resources | Collect existing-page outcomes; only fix an evidenced gap, never clone the worksheet |
+| 19 | Five data families plus provider-supported recurring continuity | `/best-ecommerce-platform-for-small-business`, after cooldown | Merchant/payment resources | Verify gateway-specific continuity and await the Wave 2 checkpoint |
+| 20 | Client-scoped work and approvals already in Wave 1 | `/best-project-management-for-agencies`, protected | DPM consultant/agency audience | Measure Wave 1 first; no consultant expansion without incremental evidence |
 
 #15, #20, #28 and #29 are explicitly held outside this twenty-action backlog because their core intervention already exists in protected Wave 1. All rankings remain editorial hypotheses to revalidate with authentic page-level outcomes.

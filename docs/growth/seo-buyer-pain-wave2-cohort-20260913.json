@@ -1,13 +1,13 @@
 {
   "cohortId": "buyer-intent-wave2-20260913",
   "schemaVersion": 1,
-  "status": "AWAITING_DEPLOYMENT",
+  "status": "MEASURING_MANUAL",
   "measurementMode": "MANUAL_COHORT_NOT_RUNTIME_SEO_FACTORY_EXPERIMENT",
   "baselineCommit": "858ce0312007a681c4632c51053d6897c9e35a9c",
-  "applicationCommit": null,
-  "deploymentId": null,
-  "deploymentUrl": null,
-  "publicationTimestamp": null,
+  "applicationCommit": "495ed9e2579d7e632a0677fe903dfda398508d50",
+  "deploymentId": "dpl_F4MtjWoDq2tnwzTFMjzd8ddvGTzq",
+  "deploymentUrl": "https://flowtemplate-843f86nlv-lahman001.vercel.app",
+  "publicationTimestamp": "2026-09-12T22:25:13.254Z",
   "sourceCheckDateUtc": "2026-09-12",
   "sourceCheckDateIsrael": "2026-09-13",
   "gscSnapshot": {
@@ -26,7 +26,7 @@
     "affiliateRankingBias": false
   },
   "cooldown": {
-    "until": null,
+    "until": "2026-10-10T22:25:13.254Z",
     "policy": "No major rewrite before the 28-day checkpoint except a factual, technical, legal or trust correction."
   },
   "measurementInstructions": {
@@ -169,7 +169,7 @@
       "checkpoints": [
         {
           "daysAfterPublication": 7,
-          "dueAt": null,
+          "dueAt": "2026-09-19T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -187,7 +187,7 @@
         },
         {
           "daysAfterPublication": 14,
-          "dueAt": null,
+          "dueAt": "2026-09-26T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -205,7 +205,7 @@
         },
         {
           "daysAfterPublication": 28,
-          "dueAt": null,
+          "dueAt": "2026-10-10T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -343,7 +343,7 @@
       "checkpoints": [
         {
           "daysAfterPublication": 7,
-          "dueAt": null,
+          "dueAt": "2026-09-19T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -361,7 +361,7 @@
         },
         {
           "daysAfterPublication": 14,
-          "dueAt": null,
+          "dueAt": "2026-09-26T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -379,7 +379,7 @@
         },
         {
           "daysAfterPublication": 28,
-          "dueAt": null,
+          "dueAt": "2026-10-10T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -536,7 +536,7 @@
       "checkpoints": [
         {
           "daysAfterPublication": 7,
-          "dueAt": null,
+          "dueAt": "2026-09-19T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -554,7 +554,7 @@
         },
         {
           "daysAfterPublication": 14,
-          "dueAt": null,
+          "dueAt": "2026-09-26T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -572,7 +572,7 @@
         },
         {
           "daysAfterPublication": 28,
-          "dueAt": null,
+          "dueAt": "2026-10-10T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -740,7 +740,7 @@
       "checkpoints": [
         {
           "daysAfterPublication": 7,
-          "dueAt": null,
+          "dueAt": "2026-09-19T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -758,7 +758,7 @@
         },
         {
           "daysAfterPublication": 14,
-          "dueAt": null,
+          "dueAt": "2026-09-26T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -776,7 +776,7 @@
         },
         {
           "daysAfterPublication": 28,
-          "dueAt": null,
+          "dueAt": "2026-10-10T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -956,7 +956,7 @@
       "checkpoints": [
         {
           "daysAfterPublication": 7,
-          "dueAt": null,
+          "dueAt": "2026-09-19T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -974,7 +974,7 @@
         },
         {
           "daysAfterPublication": 14,
-          "dueAt": null,
+          "dueAt": "2026-09-26T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -992,7 +992,7 @@
         },
         {
           "daysAfterPublication": 28,
-          "dueAt": null,
+          "dueAt": "2026-10-10T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -1147,7 +1147,7 @@
       "checkpoints": [
         {
           "daysAfterPublication": 7,
-          "dueAt": null,
+          "dueAt": "2026-09-19T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -1165,7 +1165,7 @@
         },
         {
           "daysAfterPublication": 14,
-          "dueAt": null,
+          "dueAt": "2026-09-26T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -1183,7 +1183,7 @@
         },
         {
           "daysAfterPublication": 28,
-          "dueAt": null,
+          "dueAt": "2026-10-10T22:25:13.254Z",
           "status": "NOT_DUE",
           "metrics": {
             "indexed": null,
@@ -1201,5 +1201,354 @@
         }
       ]
     }
-  ]
+  ],
+  "publicationTimestampBasis": "First independently verified live-serving timestamp, not the exact alias-promotion instant (which was not exposed).",
+  "deploymentCreatedAt": "2026-09-12T22:22:10.891Z",
+  "deploymentSourceEvidence": "Local application commit supplied to authorized direct Vercel deployment; live full rendered guide copy matches that input. Vercel CLI inspect did not expose source SHA metadata.",
+  "productionAlias": "https://miloosh.com",
+  "liveVerification": {
+    "checkedAt": "2026-09-12T22:25:13.254Z",
+    "origin": "https://miloosh.com",
+    "result": "PASS",
+    "pages": [
+      {
+        "slug": "best-crm-for-sales-teams",
+        "status": 200,
+        "canonical": "https://miloosh.com/best-crm-for-sales-teams",
+        "h1": "Best CRM for Sales Teams: Seats, Follow-Ups & Cost",
+        "faqs": 6,
+        "commercialCtas": 8,
+        "disclosure": true
+      },
+      {
+        "slug": "best-help-desk-for-small-business",
+        "status": 200,
+        "canonical": "https://miloosh.com/best-help-desk-for-small-business",
+        "h1": "Best Help Desk for Small Business: Seats, SLA & AI",
+        "faqs": 6,
+        "commercialCtas": 8,
+        "disclosure": false
+      },
+      {
+        "slug": "best-automation-software-for-small-business",
+        "status": 200,
+        "canonical": "https://miloosh.com/best-automation-software-for-small-business",
+        "h1": "Best Small-Business Automation: Tasks vs Executions",
+        "faqs": 6,
+        "commercialCtas": 8,
+        "disclosure": false
+      },
+      {
+        "slug": "best-email-marketing-for-ecommerce",
+        "status": 200,
+        "canonical": "https://miloosh.com/best-email-marketing-for-ecommerce",
+        "h1": "Best Ecommerce Email Marketing: Events, Lists & Cost",
+        "faqs": 6,
+        "commercialCtas": 8,
+        "disclosure": true
+      },
+      {
+        "slug": "best-ecommerce-platform-for-small-business",
+        "status": 200,
+        "canonical": "https://miloosh.com/best-ecommerce-platform-for-small-business",
+        "h1": "Best Ecommerce Platform: Stay, Embed or Migrate?",
+        "faqs": 6,
+        "commercialCtas": 8,
+        "disclosure": true
+      },
+      {
+        "slug": "best-time-tracking-for-agencies",
+        "status": 200,
+        "canonical": "https://miloosh.com/best-time-tracking-for-agencies",
+        "h1": "Best Agency Time Tracking: From Hours to Invoices",
+        "faqs": 6,
+        "commercialCtas": 8,
+        "disclosure": true
+      }
+    ],
+    "commercialCtas": 48,
+    "affiliateCtas": 14,
+    "directCtas": 34,
+    "editorialSources": 42,
+    "relatedRoutes": [
+      {
+        "path": "/software/pipedrive",
+        "status": 200
+      },
+      {
+        "path": "/software/salesforce",
+        "status": 200
+      },
+      {
+        "path": "/software/hubspot",
+        "status": 200
+      },
+      {
+        "path": "/software/close",
+        "status": 200
+      },
+      {
+        "path": "/compare/salesforce-vs-pipedrive",
+        "status": 200
+      },
+      {
+        "path": "/compare/hubspot-vs-pipedrive",
+        "status": 200
+      },
+      {
+        "path": "/compare/pipedrive-vs-close",
+        "status": 200
+      },
+      {
+        "path": "/compare/hubspot-vs-close",
+        "status": 200
+      },
+      {
+        "path": "/best-crm-for-small-business",
+        "status": 200
+      },
+      {
+        "path": "/best-automation-software-for-small-business",
+        "status": 200
+      },
+      {
+        "path": "/software/help-scout",
+        "status": 200
+      },
+      {
+        "path": "/software/freshdesk",
+        "status": 200
+      },
+      {
+        "path": "/software/zendesk",
+        "status": 200
+      },
+      {
+        "path": "/software/intercom",
+        "status": 200
+      },
+      {
+        "path": "/compare/freshdesk-vs-help-scout",
+        "status": 200
+      },
+      {
+        "path": "/compare/help-scout-vs-zendesk",
+        "status": 200
+      },
+      {
+        "path": "/compare/freshdesk-vs-zendesk",
+        "status": 200
+      },
+      {
+        "path": "/compare/help-scout-vs-intercom",
+        "status": 200
+      },
+      {
+        "path": "/best-customer-service-software-for-startups",
+        "status": 200
+      },
+      {
+        "path": "/software/zapier",
+        "status": 200
+      },
+      {
+        "path": "/software/make",
+        "status": 200
+      },
+      {
+        "path": "/software/n8n",
+        "status": 200
+      },
+      {
+        "path": "/software/zoho-flow",
+        "status": 200
+      },
+      {
+        "path": "/compare/zapier-vs-make",
+        "status": 200
+      },
+      {
+        "path": "/compare/zapier-vs-n8n",
+        "status": 200
+      },
+      {
+        "path": "/compare/make-vs-n8n",
+        "status": 200
+      },
+      {
+        "path": "/compare/zapier-vs-zoho-flow",
+        "status": 200
+      },
+      {
+        "path": "/best-crm-for-sales-teams",
+        "status": 200
+      },
+      {
+        "path": "/best-help-desk-for-small-business",
+        "status": 200
+      },
+      {
+        "path": "/software/klaviyo",
+        "status": 200
+      },
+      {
+        "path": "/software/omnisend",
+        "status": 200
+      },
+      {
+        "path": "/software/mailerlite",
+        "status": 200
+      },
+      {
+        "path": "/software/brevo",
+        "status": 200
+      },
+      {
+        "path": "/compare/omnisend-vs-klaviyo",
+        "status": 200
+      },
+      {
+        "path": "/compare/mailerlite-vs-brevo",
+        "status": 200
+      },
+      {
+        "path": "/compare/brevo-vs-klaviyo",
+        "status": 200
+      },
+      {
+        "path": "/best-ecommerce-platform-for-small-business",
+        "status": 200
+      },
+      {
+        "path": "/best-email-marketing-for-small-business",
+        "status": 200
+      },
+      {
+        "path": "/software/shopify",
+        "status": 200
+      },
+      {
+        "path": "/software/woocommerce",
+        "status": 200
+      },
+      {
+        "path": "/software/wix",
+        "status": 200
+      },
+      {
+        "path": "/software/ecwid",
+        "status": 200
+      },
+      {
+        "path": "/compare/wix-vs-shopify",
+        "status": 200
+      },
+      {
+        "path": "/compare/shopify-vs-woocommerce",
+        "status": 200
+      },
+      {
+        "path": "/compare/ecwid-vs-shopify",
+        "status": 200
+      },
+      {
+        "path": "/best-email-marketing-for-ecommerce",
+        "status": 200
+      },
+      {
+        "path": "/best-help-desk-for-ecommerce",
+        "status": 200
+      },
+      {
+        "path": "/software/harvest",
+        "status": 200
+      },
+      {
+        "path": "/software/hubstaff",
+        "status": 200
+      },
+      {
+        "path": "/software/toggl-track",
+        "status": 200
+      },
+      {
+        "path": "/software/clockify",
+        "status": 200
+      },
+      {
+        "path": "/compare/hubstaff-vs-harvest",
+        "status": 200
+      },
+      {
+        "path": "/compare/toggl-track-vs-harvest",
+        "status": 200
+      },
+      {
+        "path": "/compare/hubstaff-vs-toggl-track",
+        "status": 200
+      },
+      {
+        "path": "/compare/clockify-vs-harvest",
+        "status": 200
+      },
+      {
+        "path": "/best-project-management-for-agencies",
+        "status": 200
+      },
+      {
+        "path": "/best-time-tracking-for-freelancers",
+        "status": 200
+      }
+    ],
+    "categoryInboundPaths": [
+      "/category/crm",
+      "/category/customer-support",
+      "/category/automation",
+      "/category/marketing",
+      "/category/ecommerce",
+      "/category/productivity"
+    ],
+    "sitemap": "PASS",
+    "vendorDestinationsFetched": 0,
+    "mutations": 0,
+    "aliasIndependentlyInspected": true,
+    "deploymentStatus": "READY",
+    "protectedDeploymentRead": {
+      "method": "Existing Vercel CLI authenticated GET; no protection change",
+      "path": "/best-crm-for-sales-teams",
+      "status": 200,
+      "expectedGuidePresent": true,
+      "secretValuesPrinted": false
+    },
+    "browser": {
+      "pages": 6,
+      "viewports": [
+        {
+          "width": 390,
+          "height": 844
+        },
+        {
+          "width": 1280,
+          "height": 900
+        }
+      ],
+      "checks": 12,
+      "pageHorizontalOverflow": 0,
+      "missingInPageTargets": 0,
+      "errorLogEntries": 0
+    },
+    "runtimeErrorScan": {
+      "checkedAt": "2026-09-12T22:26:09.845Z",
+      "level": "error",
+      "lookback": "1h",
+      "limit": 100,
+      "entries": 0,
+      "scope": "Point-in-time scan of this deployment only, not a monitoring guarantee"
+    },
+    "robots": {
+      "status": 200,
+      "guidesAllowed": true
+    },
+    "indexingConfirmed": false
+  }
 }
