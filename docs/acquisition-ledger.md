@@ -251,3 +251,13 @@ bot-heavy traffic as acquisition success.
 - Social backlog safety — existing publisher already prevents a stale catch-up burst: >24h entries are requeued instead of published as-is, maximum five stale requeues per run, maximum three requeue attempts, plus the existing Facebook daily publication cap. The 293 scheduled backlog items were therefore not bulk-deleted or force-published.
 - GSC freshness blocker — the service-account and `CRON_SECRET` remain Vercel Sensitive values available to runtime but intentionally unavailable to local CLI/env pull. `vercel env run` confirmed sensitive values cannot be pulled. The protected `/api/growth/gsc-query` route remains authenticated; security was not weakened to obtain a fresh local report.
 - Repository sync — GitHub connector continues to return HTTP 403 / account suspended. No alternate identity or repository was used to bypass it; local commits and Vercel production remain available.
+
+## 2026-09-12 new-channel distribution wave
+
+- New directories — SubmitStartup, Visalytica, AppStackBuilder, Ignlab Launch, LaunchFree and ToolPromote accepted free Miloosh submissions for review. No paid fast-track or site badge was purchased/added.
+- New live directory — CurlShip accepted Miloosh via its documented submission API, HTTP 201, free listing ID `3120`. This is a live listing; no badge was added to Miloosh.
+- New research distribution — data-led pitches SENT to TrulyCritic (`1a096fd5aebfc220`), SaaSTracker (`1a096fd7708240cd`), Ren Hao SEO Insights (`1a097283b29f9601`) and EveryAny.One (`1a09729741afa98e`). No paid/favorable placement requested.
+- LaunchFree confirmation — first-party receipt Gmail `1a09721c70bfc4ae` confirms the submission entered its review queue.
+- Auth-gated sources — StartupBase, IndieTools, directree, HereIsMySaaS and 10015 were not called completed; each requires owner/account authentication. Linkrena and SaaSWall magic-link/login completion remained pending because no login email had arrived.
+- Policy skips — badge-required free tiers and paid fast-track routes were skipped to preserve the user's no-visual-change / no-unapproved-spend constraints.
+- Durable source-by-source status: `docs/new-distribution-sources-2026-09-12.md`.
