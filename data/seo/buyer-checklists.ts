@@ -88,5 +88,47 @@ export const BUYER_CHECKLISTS: Record<string, BuyerChecklist> = {
       { slug: "setmore", fit: "Evaluate Setmore when the core requirement is service booking for a small team. Verify whether Free covers the team or whether Pro features such as SMS reminders and two-way calendar sync are required." },
     ],
   },
+  woocommerce: {
+    title: "Before replacing WooCommerce, compare total operating cost — not just the core plugin",
+    introduction: "WooCommerce's core platform is free, but a real store can also carry hosting, paid extensions, payment processing, development, and maintenance costs. Compare the same operating model before deciding that a hosted platform is cheaper or more expensive.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "What are you actually paying beyond WooCommerce core?", answer: "WooCommerce currently describes its core platform as free with no monthly platform subscription. Its own pricing guide separates hosting, payment processing, extensions, development, and maintenance as additional cost categories. Build a current annual total from your own invoices rather than treating zero platform fee as zero store cost.", source: "https://woocommerce.com/pricing/", sourceLabel: "WooCommerce pricing model" },
+      { question: "Which extensions are required to reproduce the store?", answer: "WooCommerce's marketplace includes paid extensions for subscriptions, bookings, product bundles, coupons, tax, payments, and other workflows. Inventory the extensions and custom code the store depends on, then classify each as required, replaceable, or removable before comparing another platform.", source: "https://woocommerce.com/products/", sourceLabel: "WooCommerce extension marketplace" },
+      { question: "Does a hosted alternative remove work or only move the bill?", answer: "A hosted platform can bundle hosting, SSL, storefront tooling, and platform operations into the subscription, while apps and payment-provider fees can still add cost. Compare the same catalog, staff access, checkout, subscriptions, integrations, and migration work; do not compare WooCommerce core alone with another vendor's full plan price.", source: "https://woocommerce.com/documentation/products/extensions/", sourceLabel: "WooCommerce extension documentation" },
+    ],
+    options: [
+      { slug: "shopify", fit: "Evaluate Shopify when you want hosting and the commerce platform bundled into a managed subscription. Compare the current plan, staff accounts, third-party payment fees, required apps, and migration work against the full WooCommerce operating cost." },
+    ],
+  },
+  teamwork: {
+    title: "Before replacing Teamwork, check whether client billing and delivery controls are part of the job",
+    introduction: "Agency project management can combine tasks, capacity, client collaboration, time, rates, budgets, and invoicing. Compare the same delivery workflow before substituting a lower-priced general project tool.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "Do you use Teamwork for client users and approvals, not only tasks?", answer: "Teamwork's current pricing matrix includes client users and proofing alongside project-management features. Record how many clients need access, what they must approve or edit, and whether a replacement can reproduce that workflow without turning every external collaborator into a paid internal user.", source: "https://www.teamwork.com/pricing/", sourceLabel: "Teamwork pricing and client collaboration" },
+      { question: "Are time, budgets, retainers, and invoices part of the workflow?", answer: "Teamwork currently lists billable versus non-billable time, timesheets, time budgets and retainers, cost tracking, and client invoicing across its paid feature set. If those functions matter, compare the exact tier and replacement stack needed to recreate them rather than evaluating task boards alone.", source: "https://www.teamwork.com/pricing/", sourceLabel: "Teamwork finance and delivery features" },
+      { question: "Who owns rates and profitability data?", answer: "Teamwork documents site-wide billable and cost rates plus project, role, and client-role overrides. Before migrating, identify which rates, permissions, historical time entries, and profitability reports must survive, and export a representative project before moving the full account.", source: "https://support.teamwork.com/projects/finance/user-rates", sourceLabel: "Teamwork user rates" },
+    ],
+    options: [
+      { slug: "wrike", fit: "Evaluate Wrike when cross-functional project visibility, workload planning, and structured work management are central. Validate client-access and billing requirements separately." },
+      { slug: "monday", fit: "Evaluate monday.com when flexible visual workflows and configurable project tracking matter more than agency-specific finance features. Rebuild one client workflow before switching." },
+      { slug: "hubstaff", fit: "Evaluate Hubstaff when time capture, attendance, budgets, and workforce reporting are the primary pain. Confirm whether you still need a separate system for broader client project management." },
+    ],
+  },
+  doodle: {
+    title: "Before replacing Doodle, decide whether the job is group polling or appointment booking",
+    introduction: "Doodle serves more than one scheduling pattern. A group poll, a booking page, and a multi-staff appointment calendar are different jobs, so compare the workflow you actually use rather than a generic scheduling feature list.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "Is group consensus the core requirement?", answer: "Doodle's Group Poll lets an organizer propose several times, collect participant availability, and select a final option. Participants can take part without an account. If that consensus workflow is the main job, test it explicitly before replacing Doodle with a booking-first tool.", source: "https://doodle.com/en/product/polls/", sourceLabel: "Doodle Group Poll" },
+      { question: "Could the free account cover the actual scheduling pattern?", answer: "Doodle currently says a free account can create group meetings, a booking page, and a sign-up sheet, while Professional plans add capabilities such as calendar synchronization, tracking, branding, and an ad-free experience. Verify the current feature limit before paying or migrating.", source: "https://help.doodle.com/en/articles/9457366-how-much-does-doodle-cost", sourceLabel: "Doodle pricing and plan scope" },
+      { question: "Do you instead need a service-business booking calendar for several staff?", answer: "If customers need to self-book named staff, receive reminders, and optionally pay in advance, compare appointment-first tools on staff calendars, reminders, payments, recurring appointments, and calendar sync. That is a different decision from replacing a group poll feature.", source: "https://help.doodle.com/en", sourceLabel: "Doodle scheduling product areas" },
+    ],
+    options: [
+      { slug: "setmore", fit: "Evaluate Setmore when the primary requirement is customer appointment booking for a service team. Its current product pages document staff calendars, booking pages, email reminders, payments, and Pro text reminders; verify the exact plan needed for your staff count and integrations." },
+    ],
+  },
+
 };
 export function getBuyerChecklist(slug: string): BuyerChecklist | undefined { return BUYER_CHECKLISTS[slug]; }

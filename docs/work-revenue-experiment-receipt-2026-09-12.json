@@ -1,0 +1,288 @@
+{
+  "registeredAt": "2026-09-12T17:49:41.178Z",
+  "verifiedLiveAt": "2026-09-12T17:49:39.127Z",
+  "deploymentId": "dpl_H2ae6nfG5RYAcgvKJG8T6LAkztq6",
+  "commit": "23148ff5627b58966423e72d98baa18bd42d8406",
+  "conditionalWrite": true,
+  "existingCount": 21,
+  "unrelatedExistingPreserved": true,
+  "closedAsInconclusive": [
+    "work-revenue-20260910-klaviyo"
+  ],
+  "newTotal": 26,
+  "experiments": [
+    {
+      "id": "work-revenue-20260912-smartsheet",
+      "page": "/software/smartsheet",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T17:49:39.127Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 199,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 82.01507537688443
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added buyer checks for paid editors versus viewers, automation tier requirements, proofing needs and billable seats; links to official Smartsheet sources and relevant active Wrike/Airtable alternatives.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_H2ae6nfG5RYAcgvKJG8T6LAkztq6",
+        "commit 23148ff5627b58966423e72d98baa18bd42d8406",
+        "GSC 63 impressions / 0 clicks / 0.00% CTR / position 81.6",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 19 query variant(s): \"smartsheet alternatives\", \"smartsheet alternative\", \"smartsheet competitors\", \"alternatives to smartsheet\", \"free smartsheet alternative\", \"simple alternative to smartsheet\", \"smartsheet alternative simple\", \"free alternatives to smartsheet\""
+      ],
+      "internalLinksChanged": [
+        "/software/wrike",
+        "/software/airtable"
+      ],
+      "deploymentTimestamp": "2026-09-12T17:49:39.127Z",
+      "affiliateStatusAtT0": "Smartsheet not active; Wrike and Airtable ACTIVE; canonical issued URLs.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T17:49:39.127Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260912-ecwid",
+      "page": "/software/ecwid",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T17:49:39.127Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 175,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 72.62285714285714
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added buyer checks for embedded-store versus full-platform needs, product/catalog migration, checkout/payment requirements and ownership trade-offs; links to official Ecwid sources and active Shopify alternative.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_H2ae6nfG5RYAcgvKJG8T6LAkztq6",
+        "commit 23148ff5627b58966423e72d98baa18bd42d8406",
+        "GSC 67 impressions / 0 clicks / 0.00% CTR / position 69.1",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 5 query variant(s): \"ecwid alternatives\", \"ecwid alternative\", \"ecwid alternative free\", \"ecwid competitors\", \"alternatives to ecwid\""
+      ],
+      "internalLinksChanged": [
+        "/software/shopify"
+      ],
+      "deploymentTimestamp": "2026-09-12T17:49:39.127Z",
+      "affiliateStatusAtT0": "Ecwid not active; Shopify ACTIVE; canonical issued URL.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T17:49:39.127Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260912-zoho-crm",
+      "page": "/software/zoho-crm",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T17:49:39.127Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 72,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 86.44444444444444
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added buyer checks for required CRM customization, admin ownership, sales workflow scope and migration acceptance; links to official Zoho sources and active Pipedrive/Close alternatives.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_H2ae6nfG5RYAcgvKJG8T6LAkztq6",
+        "commit 23148ff5627b58966423e72d98baa18bd42d8406",
+        "GSC 22 impressions / 0 clicks / 0.00% CTR / position 85.4",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: insufficient real query demand; an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 8 query variant(s): \"alternative to zoho crm\", \"zoho crm alternatives\", \"alternatives to zoho crm\", \"zoho crm alternative\", \"zoho crm alternative for real-time feedback\", \"zoho crm alternative for client reviews\", \"zoho crm competitors\", \"zoho crm plus alternatives\""
+      ],
+      "internalLinksChanged": [
+        "/software/pipedrive",
+        "/software/close"
+      ],
+      "deploymentTimestamp": "2026-09-12T17:49:39.127Z",
+      "affiliateStatusAtT0": "Zoho CRM not active; Pipedrive and Close ACTIVE; canonical issued URLs.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T17:49:39.127Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260912-calendly",
+      "page": "/software/calendly",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T17:49:39.127Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 59,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 85.08474576271186
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added buyer checks for booking workflow complexity, routing, reminders, payments and team requirements; links to official Calendly sources and active Setmore alternative.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_H2ae6nfG5RYAcgvKJG8T6LAkztq6",
+        "commit 23148ff5627b58966423e72d98baa18bd42d8406",
+        "GSC 27 impressions / 0 clicks / 0.00% CTR / position 87.6",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 6 query variant(s): \"calendly competitors\", \"calendly alternatives\", \"calendly alternative multiple calendars\", \"calendly competitor\", \"alternative calendly\", \"calendly alternative multiple calenders\""
+      ],
+      "internalLinksChanged": [
+        "/software/setmore"
+      ],
+      "deploymentTimestamp": "2026-09-12T17:49:39.127Z",
+      "affiliateStatusAtT0": "Calendly has no verified active program; Setmore ACTIVE; organic-only program restrictions remain in force.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T17:49:39.127Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260912-klaviyo",
+      "page": "/software/klaviyo",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T17:49:39.127Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 79,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 81.92405063291139
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Continues audience/send/SMS/migration checks and corrects MailerLite scope using first-party capability documentation; ranking/order unchanged; MailerLite and Omnisend remain independently evaluated active alternatives.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_H2ae6nfG5RYAcgvKJG8T6LAkztq6",
+        "commit 23148ff5627b58966423e72d98baa18bd42d8406",
+        "GSC 37 impressions / 0 clicks / 0.00% CTR / position 80.0",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 11 query variant(s): \"klaviyo alternatives\", \"klaviyo competitors\", \"klaviyo alternative\", \"alternatives to klaviyo\", \"best klaviyo alternatives\", \"klaviyo competitor\", \"who are klaviyo competitors\", \"alternative to klaviyo\""
+      ],
+      "internalLinksChanged": [
+        "/software/omnisend",
+        "/software/mailerlite"
+      ],
+      "deploymentTimestamp": "2026-09-12T17:49:39.127Z",
+      "affiliateStatusAtT0": "Klaviyo NONE; Omnisend and MailerLite ACTIVE; canonical issued URLs.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T17:49:39.127Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T17:49:39.127Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    }
+  ]
+}

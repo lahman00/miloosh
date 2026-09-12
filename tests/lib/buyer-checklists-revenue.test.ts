@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { BUYER_CHECKLISTS } from "@/data/seo/buyer-checklists";
 import { getActivePartner } from "@/data/affiliate/active-partners";
 
-const TARGETS = ["smartsheet", "ecwid", "zoho-crm", "calendly"] as const;
+const TARGETS = ["smartsheet", "ecwid", "zoho-crm", "calendly", "woocommerce", "teamwork", "doodle"] as const;
 
 describe("source-backed revenue buyer checklists", () => {
   it("uses dated first-party sources and no empty decision checks", () => {
