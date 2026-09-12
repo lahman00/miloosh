@@ -1,4 +1,5 @@
 import { BUYER_PAIN_BRIEFS } from "./buyer-pain-briefs";
+import { BUYER_PAIN_WAVE2_BRIEFS } from "./buyer-pain-wave2-briefs";
 
 /** Original decision worksheets. Vendor facts are sourced; modeled examples are not test results. */
 export type BuyerDecisionBrief = {
@@ -14,6 +15,7 @@ export type BuyerDecisionBrief = {
 
 export const BUYER_DECISION_BRIEFS: Readonly<Record<string, BuyerDecisionBrief>> = {
   ...BUYER_PAIN_BRIEFS,
+  ...BUYER_PAIN_WAVE2_BRIEFS,
   "best-crm-for-small-business": {
     heading: "Which CRM fits a 5–10-person team without a full-time administrator?",
     updatedAt: "2026-09-10",

@@ -1,0 +1,1205 @@
+{
+  "cohortId": "buyer-intent-wave2-20260913",
+  "schemaVersion": 1,
+  "status": "AWAITING_DEPLOYMENT",
+  "measurementMode": "MANUAL_COHORT_NOT_RUNTIME_SEO_FACTORY_EXPERIMENT",
+  "baselineCommit": "858ce0312007a681c4632c51053d6897c9e35a9c",
+  "applicationCommit": null,
+  "deploymentId": null,
+  "deploymentUrl": null,
+  "publicationTimestamp": null,
+  "sourceCheckDateUtc": "2026-09-12",
+  "sourceCheckDateIsrael": "2026-09-13",
+  "gscSnapshot": {
+    "runId": "2026-09-11T22-00-31-992Z-da621029",
+    "windowStart": "2026-08-12",
+    "windowEnd": "2026-09-08",
+    "queryPageRows": 2727,
+    "guidePageMetricsAvailable": false,
+    "reason": "Fresh local service account unavailable; available trusted cached records do not establish exact-guide baselines. Unknown is not zero."
+  },
+  "guardrails": {
+    "autonomyLevel": 0,
+    "massPublishing": false,
+    "privateBlobWrites": false,
+    "wave1Rewrites": false,
+    "affiliateRankingBias": false
+  },
+  "cooldown": {
+    "until": null,
+    "policy": "No major rewrite before the 28-day checkpoint except a factual, technical, legal or trust correction."
+  },
+  "measurementInstructions": {
+    "gsc": "Use exact canonical page filters and completed windows; allow reporting lag. Only authenticated page-filtered data establishes measurements. Unknown remains null.",
+    "indexing": "Use URL Inspection evidence; HTTP 200 and sitemap inclusion prove indexability, not indexing.",
+    "firstParty": "Use stored visitor classification, exclude synthetic QA and report classification method. Deduplicate eligible visitor/path outbound clickers rather than counting raw events.",
+    "cta": "Report role-guide-summary-table and role-guide-card-cta separately; impressions require actual visibility.",
+    "newsletter": "Count confirmed attributable signups, not form opens or unconfirmed submissions.",
+    "revenue": "Partner-confirmed conversions only; affiliate clicks are not revenue. Paid revenue needs partner-side paid conversion evidence.",
+    "runtime": "Durable manual measurement plan; existing private numeric-baseline experiment registry unchanged. No autonomous scheduler enabled."
+  },
+  "pages": [
+    {
+      "slug": "best-crm-for-sales-teams",
+      "canonicalUrl": "https://miloosh.com/best-crm-for-sales-teams",
+      "intervention": "The seven-rep acceptance sheet: who can do what, on which paid tier?",
+      "originalDecisionMechanism": "Illustrative seven-rep plus one-manager role-to-entitlement sheet",
+      "commercial": {
+        "activePartners": [
+          "pipedrive",
+          "close"
+        ],
+        "directProducts": [
+          "salesforce",
+          "hubspot"
+        ],
+        "ctaLocations": [
+          "role-guide-summary-table",
+          "role-guide-card-cta"
+        ],
+        "ctaPlacements": 8,
+        "disclosure": true,
+        "rationale": "Relevant next step after the fit and plan caveat; canonical resolver unchanged."
+      },
+      "links": {
+        "existingCategoryInbound": "/category/crm",
+        "newGuideInbound": [
+          "/best-automation-software-for-small-business"
+        ],
+        "software": [
+          "/software/pipedrive",
+          "/software/salesforce",
+          "/software/hubspot",
+          "/software/close"
+        ],
+        "comparisons": [
+          "/compare/salesforce-vs-pipedrive",
+          "/compare/hubspot-vs-pipedrive",
+          "/compare/pipedrive-vs-close",
+          "/compare/hubspot-vs-close"
+        ],
+        "relatedGuides": [
+          {
+            "href": "/best-crm-for-small-business",
+            "label": "Broader small-business CRM cost worksheet"
+          },
+          {
+            "href": "/best-automation-software-for-small-business",
+            "label": "Price and validate the workflow connecting your CRM"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "pipedrive",
+          "title": "Pipedrive current plans and email-sync entitlement",
+          "url": "https://www.pipedrive.com/en/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Pipedrive current plans and email-sync entitlement",
+          "citedSections": [
+            "A cheap entry tier is not a sequence-enabled team quote"
+          ]
+        },
+        {
+          "id": "close-pricing",
+          "title": "Close plans and Workflow entitlement",
+          "url": "https://close.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Close plans and Workflow entitlement",
+          "citedSections": [
+            "A cheap entry tier is not a sequence-enabled team quote"
+          ]
+        },
+        {
+          "id": "close-usage",
+          "title": "Close variable calling, SMS and phone-number costs",
+          "url": "https://help.close.com/account-management/variable-usage-costs-calling-sms-phone-numbers-ai-tools",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Close variable calling, SMS and phone-number costs",
+          "citedSections": [
+            "A cheap entry tier is not a sequence-enabled team quote"
+          ]
+        },
+        {
+          "id": "close-plans",
+          "title": "Close organization plan and billing rules",
+          "url": "https://help.close.com/account-management/plans-and-billing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Close organization plan and billing rules",
+          "citedSections": [
+            "Keep the manager in the calculation"
+          ]
+        },
+        {
+          "id": "hubspot",
+          "title": "HubSpot Sales Hub users, seats and onboarding",
+          "url": "https://www.hubspot.com/pricing/sales",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "HubSpot Sales Hub users, seats and onboarding",
+          "citedSections": [
+            "A cheap entry tier is not a sequence-enabled team quote",
+            "Keep the manager in the calculation"
+          ]
+        },
+        {
+          "id": "salesforce",
+          "title": "Salesforce current sales editions and API pricing",
+          "url": "https://www.salesforce.com/sales/pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Salesforce current sales editions and API pricing",
+          "citedSections": [
+            "A cheap entry tier is not a sequence-enabled team quote"
+          ]
+        }
+      ],
+      "prePublicationMetrics": {
+        "indexed": null,
+        "gscImpressions": null,
+        "gscClicks": null,
+        "gscCtr": null,
+        "gscAveragePosition": null,
+        "classifiedHumanPageVisits": null,
+        "ctaImpressions": null,
+        "uniqueOutboundClickers": null,
+        "affiliateClickers": null,
+        "newsletterSignups": null,
+        "verifiedPartnerConversions": null
+      },
+      "historicalMetricsStatus": "UNKNOWN_NOT_ZERO",
+      "checkpoints": [
+        {
+          "daysAfterPublication": 7,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 14,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 28,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        }
+      ]
+    },
+    {
+      "slug": "best-help-desk-for-small-business",
+      "canonicalUrl": "https://miloosh.com/best-help-desk-for-small-business",
+      "intervention": "Price three replying agents, two internal advisers and one real SLA",
+      "originalDecisionMechanism": "Three agents plus two advisers: equivalent-scope purchase gates",
+      "commercial": {
+        "activePartners": [],
+        "directProducts": [
+          "help-scout",
+          "freshdesk",
+          "zendesk",
+          "intercom"
+        ],
+        "ctaLocations": [
+          "role-guide-summary-table",
+          "role-guide-card-cta"
+        ],
+        "ctaPlacements": 8,
+        "disclosure": false,
+        "rationale": "Relevant next step after the fit and plan caveat; canonical resolver unchanged."
+      },
+      "links": {
+        "existingCategoryInbound": "/category/customer-support",
+        "newGuideInbound": [
+          "/best-automation-software-for-small-business"
+        ],
+        "software": [
+          "/software/help-scout",
+          "/software/freshdesk",
+          "/software/zendesk",
+          "/software/intercom"
+        ],
+        "comparisons": [
+          "/compare/freshdesk-vs-help-scout",
+          "/compare/help-scout-vs-zendesk",
+          "/compare/freshdesk-vs-zendesk",
+          "/compare/help-scout-vs-intercom"
+        ],
+        "relatedGuides": [
+          {
+            "href": "/best-customer-service-software-for-startups",
+            "label": "Support selection for a startup operating model"
+          },
+          {
+            "href": "/best-automation-software-for-small-business",
+            "label": "Check routing automation cost and failure handling"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "helpscout-pricing",
+          "title": "Help Scout plans, SLA and user allowances",
+          "url": "https://www.helpscout.com/pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Help Scout plans, SLA and user allowances",
+          "citedSections": [
+            "Compare channel scope and SLA scope independently"
+          ]
+        },
+        {
+          "id": "helpscout-light",
+          "title": "Help Scout Light User restrictions and eligibility",
+          "url": "https://docs.helpscout.com/article/1464-light-users",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Help Scout Light User restrictions and eligibility",
+          "citedSections": [
+            "An internal adviser is not a spare agent"
+          ]
+        },
+        {
+          "id": "freshdesk",
+          "title": "Freshdesk current tiers, SLA and AI session allowances",
+          "url": "https://www.freshworks.com/freshdesk/pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Freshdesk current tiers, SLA and AI session allowances",
+          "citedSections": [
+            "Compare channel scope and SLA scope independently",
+            "Keep the AI invoice separate from the service result"
+          ]
+        },
+        {
+          "id": "zendesk",
+          "title": "Zendesk Support and Suite pricing scopes",
+          "url": "https://www.zendesk.com/pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Zendesk Support and Suite pricing scopes",
+          "citedSections": [
+            "Compare channel scope and SLA scope independently"
+          ]
+        },
+        {
+          "id": "intercom",
+          "title": "Intercom seat types and Fin outcome definition",
+          "url": "https://www.intercom.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Intercom seat types and Fin outcome definition",
+          "citedSections": [
+            "An internal adviser is not a spare agent",
+            "Keep the AI invoice separate from the service result"
+          ]
+        }
+      ],
+      "prePublicationMetrics": {
+        "indexed": null,
+        "gscImpressions": null,
+        "gscClicks": null,
+        "gscCtr": null,
+        "gscAveragePosition": null,
+        "classifiedHumanPageVisits": null,
+        "ctaImpressions": null,
+        "uniqueOutboundClickers": null,
+        "affiliateClickers": null,
+        "newsletterSignups": null,
+        "verifiedPartnerConversions": null
+      },
+      "historicalMetricsStatus": "UNKNOWN_NOT_ZERO",
+      "checkpoints": [
+        {
+          "daysAfterPublication": 7,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 14,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 28,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        }
+      ]
+    },
+    {
+      "slug": "best-automation-software-for-small-business",
+      "canonicalUrl": "https://miloosh.com/best-automation-software-for-small-business",
+      "intervention": "One thousand events, three actions: four different billing ledgers",
+      "originalDecisionMechanism": "Illustrative billing-unit arithmetic — not equivalent plan allowances",
+      "commercial": {
+        "activePartners": [],
+        "directProducts": [
+          "zapier",
+          "make",
+          "n8n",
+          "zoho-flow"
+        ],
+        "ctaLocations": [
+          "role-guide-summary-table",
+          "role-guide-card-cta"
+        ],
+        "ctaPlacements": 8,
+        "disclosure": false,
+        "rationale": "Relevant next step after the fit and plan caveat; canonical resolver unchanged."
+      },
+      "links": {
+        "existingCategoryInbound": "/category/automation",
+        "newGuideInbound": [
+          "/best-crm-for-sales-teams",
+          "/best-help-desk-for-small-business"
+        ],
+        "software": [
+          "/software/zapier",
+          "/software/make",
+          "/software/n8n",
+          "/software/zoho-flow"
+        ],
+        "comparisons": [
+          "/compare/zapier-vs-make",
+          "/compare/zapier-vs-n8n",
+          "/compare/make-vs-n8n",
+          "/compare/zapier-vs-zoho-flow"
+        ],
+        "relatedGuides": [
+          {
+            "href": "/best-crm-for-sales-teams",
+            "label": "Validate the sales workflow your automation serves"
+          },
+          {
+            "href": "/best-help-desk-for-small-business",
+            "label": "Separate ticket routing from customer-service ownership"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "zapier-tasks",
+          "title": "Zapier task measurement and exemptions",
+          "url": "https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Zapier task measurement and exemptions",
+          "citedSections": [
+            "The units are not interchangeable"
+          ]
+        },
+        {
+          "id": "zapier-replay",
+          "title": "Zapier replay behavior and task consumption",
+          "url": "https://help.zapier.com/hc/en-us/articles/8496241726989-Replay-Zap-runs",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Zapier replay behavior and task consumption",
+          "citedSections": [
+            "Test the failure after the side effect"
+          ]
+        },
+        {
+          "id": "make-credits",
+          "title": "Make credit billing model",
+          "url": "https://help.make.com/credits",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Make credit billing model",
+          "citedSections": [
+            "The units are not interchangeable"
+          ]
+        },
+        {
+          "id": "make-features",
+          "title": "Make trigger, bundle and feature credit consumption",
+          "url": "https://help.make.com/how-features-use-credits",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Make trigger, bundle and feature credit consumption",
+          "citedSections": [
+            "The units are not interchangeable"
+          ]
+        },
+        {
+          "id": "n8n-pricing",
+          "title": "n8n execution-based pricing",
+          "url": "https://n8n.io/pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "n8n execution-based pricing",
+          "citedSections": [
+            "The units are not interchangeable"
+          ]
+        },
+        {
+          "id": "n8n-community",
+          "title": "n8n Community edition feature boundaries",
+          "url": "https://docs.n8n.io/deploy/host-n8n/community-edition-features",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "n8n Community edition feature boundaries",
+          "citedSections": [
+            "Choose who operates it before choosing where it runs"
+          ]
+        },
+        {
+          "id": "zoho-tasks",
+          "title": "Zoho Flow task allowances and plan model",
+          "url": "https://www.zoho.com/flow/pricing.html",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Zoho Flow task allowances and plan model",
+          "citedSections": [
+            "The units are not interchangeable"
+          ]
+        }
+      ],
+      "prePublicationMetrics": {
+        "indexed": null,
+        "gscImpressions": null,
+        "gscClicks": null,
+        "gscCtr": null,
+        "gscAveragePosition": null,
+        "classifiedHumanPageVisits": null,
+        "ctaImpressions": null,
+        "uniqueOutboundClickers": null,
+        "affiliateClickers": null,
+        "newsletterSignups": null,
+        "verifiedPartnerConversions": null
+      },
+      "historicalMetricsStatus": "UNKNOWN_NOT_ZERO",
+      "checkpoints": [
+        {
+          "daysAfterPublication": 7,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 14,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 28,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        }
+      ]
+    },
+    {
+      "slug": "best-email-marketing-for-ecommerce",
+      "canonicalUrl": "https://miloosh.com/best-email-marketing-for-ecommerce",
+      "intervention": "The event-and-eligibility check before you buy a recovery flow",
+      "originalDecisionMechanism": "Buyer-run store-event acceptance matrix",
+      "commercial": {
+        "activePartners": [
+          "omnisend",
+          "mailerlite"
+        ],
+        "directProducts": [
+          "klaviyo",
+          "brevo"
+        ],
+        "ctaLocations": [
+          "role-guide-summary-table",
+          "role-guide-card-cta"
+        ],
+        "ctaPlacements": 8,
+        "disclosure": true,
+        "rationale": "Relevant next step after the fit and plan caveat; canonical resolver unchanged."
+      },
+      "links": {
+        "existingCategoryInbound": "/category/marketing",
+        "newGuideInbound": [
+          "/best-ecommerce-platform-for-small-business"
+        ],
+        "software": [
+          "/software/klaviyo",
+          "/software/omnisend",
+          "/software/mailerlite",
+          "/software/brevo"
+        ],
+        "comparisons": [
+          "/compare/omnisend-vs-klaviyo",
+          "/compare/mailerlite-vs-brevo",
+          "/compare/brevo-vs-klaviyo"
+        ],
+        "relatedGuides": [
+          {
+            "href": "/best-ecommerce-platform-for-small-business",
+            "label": "Check the store and migration underneath your email flows"
+          },
+          {
+            "href": "/best-email-marketing-for-small-business",
+            "label": "For a large list with only occasional campaigns"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "klaviyo-shopify",
+          "title": "Klaviyo Shopify event and data reference",
+          "url": "https://help.klaviyo.com/hc/en-us/articles/115005080447",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Klaviyo Shopify event and data reference",
+          "citedSections": [
+            "A store integration is not a promise about every shopper",
+            "Stay, simplify or migrate without manufacturing a revenue win"
+          ]
+        },
+        {
+          "id": "klaviyo-billing",
+          "title": "Klaviyo active-profile billing definition",
+          "url": "https://help.klaviyo.com/hc/en-us/articles/24263920096027",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Klaviyo active-profile billing definition",
+          "citedSections": [
+            "Reconcile the audience before comparing prices"
+          ]
+        },
+        {
+          "id": "omnisend-contacts",
+          "title": "Omnisend recipients, subscribers and billable contacts",
+          "url": "https://support.omnisend.com/en/articles/4222802-recipients-vs-subscribers-understand-contact-count",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Omnisend recipients, subscribers and billable contacts",
+          "citedSections": [
+            "Reconcile the audience before comparing prices"
+          ]
+        },
+        {
+          "id": "omnisend-plans",
+          "title": "Omnisend 2026 email allowance and exhaustion rules",
+          "url": "https://support.omnisend.com/en/articles/3533018-omnisend-pricing-plans-2026",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Omnisend 2026 email allowance and exhaustion rules",
+          "citedSections": [
+            "Add campaigns and automations in the same month"
+          ]
+        },
+        {
+          "id": "mailerlite-shopify",
+          "title": "MailerLite Shopify checkout trigger and customer restrictions",
+          "url": "https://www.mailerlite.com/help/how-to-set-up-the-mailerlite-integration-for-shopify",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "MailerLite Shopify checkout trigger and customer restrictions",
+          "citedSections": [
+            "A store integration is not a promise about every shopper",
+            "Stay, simplify or migrate without manufacturing a revenue win"
+          ]
+        },
+        {
+          "id": "mailerlite-billing",
+          "title": "MailerLite billing-cycle active subscriber counts",
+          "url": "https://www.mailerlite.com/help/plan-and-billing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "MailerLite billing-cycle active subscriber counts",
+          "citedSections": [
+            "Reconcile the audience before comparing prices"
+          ]
+        },
+        {
+          "id": "brevo-plans",
+          "title": "Brevo contact, send and automation limits",
+          "url": "https://help.brevo.com/hc/en-us/articles/208589409-About-Brevo-s-pricing-plans",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Brevo contact, send and automation limits",
+          "citedSections": [
+            "Reconcile the audience before comparing prices"
+          ]
+        },
+        {
+          "id": "brevo-woocommerce",
+          "title": "Brevo WooCommerce store data and automation",
+          "url": "https://help.brevo.com/hc/en-us/articles/209579245-Brevo-plugin-for-WooCommerce-Sync-your-store-and-automate-your-marketing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Brevo WooCommerce store data and automation",
+          "citedSections": [
+            "Reconcile the audience before comparing prices"
+          ]
+        }
+      ],
+      "prePublicationMetrics": {
+        "indexed": null,
+        "gscImpressions": null,
+        "gscClicks": null,
+        "gscCtr": null,
+        "gscAveragePosition": null,
+        "classifiedHumanPageVisits": null,
+        "ctaImpressions": null,
+        "uniqueOutboundClickers": null,
+        "affiliateClickers": null,
+        "newsletterSignups": null,
+        "verifiedPartnerConversions": null
+      },
+      "historicalMetricsStatus": "UNKNOWN_NOT_ZERO",
+      "checkpoints": [
+        {
+          "daysAfterPublication": 7,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 14,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 28,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        }
+      ]
+    },
+    {
+      "slug": "best-ecommerce-platform-for-small-business",
+      "canonicalUrl": "https://miloosh.com/best-ecommerce-platform-for-small-business",
+      "intervention": "Stay, embed or replatform: five data families must pass",
+      "originalDecisionMechanism": "Five independent migration gates — pass each before cutover",
+      "commercial": {
+        "activePartners": [
+          "shopify",
+          "wix"
+        ],
+        "directProducts": [
+          "woocommerce",
+          "ecwid"
+        ],
+        "ctaLocations": [
+          "role-guide-summary-table",
+          "role-guide-card-cta"
+        ],
+        "ctaPlacements": 8,
+        "disclosure": true,
+        "rationale": "Relevant next step after the fit and plan caveat; canonical resolver unchanged."
+      },
+      "links": {
+        "existingCategoryInbound": "/category/ecommerce",
+        "newGuideInbound": [
+          "/best-email-marketing-for-ecommerce"
+        ],
+        "software": [
+          "/software/shopify",
+          "/software/woocommerce",
+          "/software/wix",
+          "/software/ecwid"
+        ],
+        "comparisons": [
+          "/compare/wix-vs-shopify",
+          "/compare/shopify-vs-woocommerce",
+          "/compare/ecwid-vs-shopify"
+        ],
+        "relatedGuides": [
+          {
+            "href": "/best-email-marketing-for-ecommerce",
+            "label": "Recheck email events after a store migration"
+          },
+          {
+            "href": "/best-help-desk-for-ecommerce",
+            "label": "Plan customer-support continuity for the store"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "shopify-migration",
+          "title": "Shopify WooCommerce migration methods and limits",
+          "url": "https://help.shopify.com/en/manual/migrating-to-shopify/migrating-from-woocommerce",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Shopify WooCommerce migration methods and limits",
+          "citedSections": [
+            "Do not turn one broken extension into an unnecessary rebuild",
+            "Treat products, customers and historical orders as separate transfers",
+            "Price the cutover, not only the first subscription month"
+          ]
+        },
+        {
+          "id": "shopify-pricing",
+          "title": "Shopify plans and payment-related cost context",
+          "url": "https://www.shopify.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Shopify plans and payment-related cost context",
+          "citedSections": [
+            "Price the cutover, not only the first subscription month"
+          ]
+        },
+        {
+          "id": "woocommerce-pricing",
+          "title": "WooCommerce platform and operating-cost context",
+          "url": "https://woocommerce.com/pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "WooCommerce platform and operating-cost context",
+          "citedSections": [
+            "Do not turn one broken extension into an unnecessary rebuild"
+          ]
+        },
+        {
+          "id": "woocommerce-csv",
+          "title": "WooCommerce product CSV and variation import",
+          "url": "https://woocommerce.com/document/product-csv-importer-exporter/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "WooCommerce product CSV and variation import",
+          "citedSections": [
+            "Treat products, customers and historical orders as separate transfers"
+          ]
+        },
+        {
+          "id": "woocommerce-subscriptions",
+          "title": "WooCommerce subscription migration dependencies",
+          "url": "https://woocommerce.com/document/subscriptions/migrating-subscribers-woocommerce-subscriptions/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "WooCommerce subscription migration dependencies",
+          "citedSections": [
+            "Subscriptions and commercial limits can decide the shortlist"
+          ]
+        },
+        {
+          "id": "wix-plans",
+          "title": "Wix commerce-enabled plan selection",
+          "url": "https://www.wix.com/plans",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Wix commerce-enabled plan selection",
+          "citedSections": [
+            "Subscriptions and commercial limits can decide the shortlist"
+          ]
+        },
+        {
+          "id": "wix-migration",
+          "title": "Wix store migration options and transfer fees",
+          "url": "https://support.wix.com/en/article/wix-stores-migrating-from-other-ecommerce-platforms-to-wix-stores",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Wix store migration options and transfer fees",
+          "citedSections": [
+            "Subscriptions and commercial limits can decide the shortlist",
+            "Price the cutover, not only the first subscription month"
+          ]
+        },
+        {
+          "id": "ecwid-pricing",
+          "title": "Ecwid product, staff and subscription plan limits",
+          "url": "https://www.ecwid.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Ecwid product, staff and subscription plan limits",
+          "citedSections": [
+            "Do not turn one broken extension into an unnecessary rebuild",
+            "Subscriptions and commercial limits can decide the shortlist"
+          ]
+        },
+        {
+          "id": "ecwid-import",
+          "title": "Ecwid modern data import and variations",
+          "url": "https://support.ecwid.com/hc/en-us/articles/8573955701916-Intro-to-data-import",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Ecwid modern data import and variations",
+          "citedSections": [
+            "Treat products, customers and historical orders as separate transfers"
+          ]
+        }
+      ],
+      "prePublicationMetrics": {
+        "indexed": null,
+        "gscImpressions": null,
+        "gscClicks": null,
+        "gscCtr": null,
+        "gscAveragePosition": null,
+        "classifiedHumanPageVisits": null,
+        "ctaImpressions": null,
+        "uniqueOutboundClickers": null,
+        "affiliateClickers": null,
+        "newsletterSignups": null,
+        "verifiedPartnerConversions": null
+      },
+      "historicalMetricsStatus": "UNKNOWN_NOT_ZERO",
+      "checkpoints": [
+        {
+          "daysAfterPublication": 7,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 14,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 28,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        }
+      ]
+    },
+    {
+      "slug": "best-time-tracking-for-agencies",
+      "canonicalUrl": "https://miloosh.com/best-time-tracking-for-agencies",
+      "intervention": "The agency hours ledger: capture is only the first stage",
+      "originalDecisionMechanism": "Illustrative agency reconciliation — hours are not cash receipts",
+      "commercial": {
+        "activePartners": [
+          "hubstaff"
+        ],
+        "directProducts": [
+          "harvest",
+          "toggl-track",
+          "clockify"
+        ],
+        "ctaLocations": [
+          "role-guide-summary-table",
+          "role-guide-card-cta"
+        ],
+        "ctaPlacements": 8,
+        "disclosure": true,
+        "rationale": "Relevant next step after the fit and plan caveat; canonical resolver unchanged."
+      },
+      "links": {
+        "existingCategoryInbound": "/category/productivity",
+        "newGuideInbound": [],
+        "software": [
+          "/software/harvest",
+          "/software/hubstaff",
+          "/software/toggl-track",
+          "/software/clockify"
+        ],
+        "comparisons": [
+          "/compare/hubstaff-vs-harvest",
+          "/compare/toggl-track-vs-harvest",
+          "/compare/hubstaff-vs-toggl-track",
+          "/compare/clockify-vs-harvest"
+        ],
+        "relatedGuides": [
+          {
+            "href": "/best-project-management-for-agencies",
+            "label": "Connect project scope and client approvals to the agency workflow"
+          },
+          {
+            "href": "/best-time-tracking-for-freelancers",
+            "label": "For solo billing rather than an agency approval chain"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "harvest-pricing",
+          "title": "Harvest current Teams and Enterprise plans and usage charges",
+          "url": "https://www.getharvest.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Harvest current Teams and Enterprise plans and usage charges",
+          "citedSections": [
+            "A timer plan and an approval plan are not the same purchase"
+          ]
+        },
+        {
+          "id": "harvest-approval",
+          "title": "Harvest submitting, approving and locking time",
+          "url": "https://support.getharvest.com/hc/en-us/articles/360048181832-Submitting-and-approving-timesheets",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Harvest submitting, approving and locking time",
+          "citedSections": [
+            "A timer plan and an approval plan are not the same purchase"
+          ]
+        },
+        {
+          "id": "toggl-pricing",
+          "title": "Toggl current billable-rate and approval tiers",
+          "url": "https://toggl.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Toggl current billable-rate and approval tiers",
+          "citedSections": [
+            "A timer plan and an approval plan are not the same purchase"
+          ]
+        },
+        {
+          "id": "toggl-licenses",
+          "title": "Toggl license-based billing rules",
+          "url": "https://support.toggl.com/en-us/article/basic-information-on-toggl-track-pricing-1jk9e2l/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Toggl license-based billing rules",
+          "citedSections": [
+            "Count licenses even when a person does not track"
+          ]
+        },
+        {
+          "id": "clockify-standard",
+          "title": "Clockify Standard approval, invoicing and lock controls",
+          "url": "https://clockify.me/standard-plan/features",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Clockify Standard approval, invoicing and lock controls",
+          "citedSections": [
+            "A timer plan and an approval plan are not the same purchase"
+          ]
+        },
+        {
+          "id": "hubstaff-seats",
+          "title": "Hubstaff per-seat billing, owners and package exceptions",
+          "url": "https://support.hubstaff.com/per-seat-pricing/",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Hubstaff per-seat billing, owners and package exceptions",
+          "citedSections": [
+            "Count licenses even when a person does not track"
+          ]
+        },
+        {
+          "id": "hubstaff-pricing",
+          "title": "Hubstaff current plans and add-on context",
+          "url": "https://hubstaff.com/pricing",
+          "dateCheckedUtc": "2026-09-12",
+          "factSupported": "Hubstaff current plans and add-on context",
+          "citedSections": [
+            "Count licenses even when a person does not track"
+          ]
+        }
+      ],
+      "prePublicationMetrics": {
+        "indexed": null,
+        "gscImpressions": null,
+        "gscClicks": null,
+        "gscCtr": null,
+        "gscAveragePosition": null,
+        "classifiedHumanPageVisits": null,
+        "ctaImpressions": null,
+        "uniqueOutboundClickers": null,
+        "affiliateClickers": null,
+        "newsletterSignups": null,
+        "verifiedPartnerConversions": null
+      },
+      "historicalMetricsStatus": "UNKNOWN_NOT_ZERO",
+      "checkpoints": [
+        {
+          "daysAfterPublication": 7,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 14,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        },
+        {
+          "daysAfterPublication": 28,
+          "dueAt": null,
+          "status": "NOT_DUE",
+          "metrics": {
+            "indexed": null,
+            "gscImpressions": null,
+            "gscClicks": null,
+            "gscCtr": null,
+            "gscAveragePosition": null,
+            "classifiedHumanPageVisits": null,
+            "ctaImpressions": null,
+            "uniqueOutboundClickers": null,
+            "affiliateClickers": null,
+            "newsletterSignups": null,
+            "verifiedPartnerConversions": null
+          }
+        }
+      ]
+    }
+  ]
+}
