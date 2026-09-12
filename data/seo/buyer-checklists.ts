@@ -28,7 +28,64 @@ export const BUYER_CHECKLISTS: Record<string, BuyerChecklist> = {
     ],
     options: [
       { slug: "omnisend", fit: "Evaluate Omnisend for an ecommerce email and SMS workflow. Test store events, consent records, and the flows that matter to your shop." },
-      { slug: "mailerlite", fit: "Evaluate MailerLite when campaigns, signup forms, and a simpler email workflow cover the requirement. Validate required integrations and automation limits first." },
+      { slug: "mailerlite", fit: "Evaluate MailerLite when email marketing, forms, landing pages or websites, ecommerce integrations, digital products, and automation are relevant to the workflow. Validate the exact plan limits, integrations, API or MCP requirements, and migration scope before switching." },
+    ],
+  },
+
+  smartsheet: {
+    title: "Before replacing Smartsheet, check which collaborators need paid Member seats",
+    introduction: "Compare the same editors, external guests, automations, and workload controls in every quote. A lower per-seat number is not comparable if the required collaborator role or workflow is different.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "Who actually needs a paid Member seat?", answer: "Smartsheet's current user-subscription model distinguishes paid Members from free Contributors. Business and Enterprise plans also support free external Guests. Map each real collaborator to the minimum role that can complete the required work instead of pricing every viewer or commenter as a full Member.", source: "https://help.smartsheet.com/articles/2483245-User-Subscription-Model-System-Admin-overview", sourceLabel: "Smartsheet user subscription model" },
+      { question: "Does the selected plan include the controls you rely on?", answer: "Smartsheet currently lists Pro for 1–10 Members with unlimited Contributors, while Business starts at 3 Members and adds unlimited Guests, workload tracking, admin capabilities, and unlimited automations. Price the plan that contains the required workflow, not the lowest advertised tier.", source: "https://www.smartsheet.com/pricing", sourceLabel: "Smartsheet pricing" },
+      { question: "Could provisional access become a paid seat later?", answer: "Smartsheet's provisional-membership model can give users full functionality before a later reconciliation decision. Review provisional users before reconciliation and document which people should become paid Members versus free Guests or Contributors.", source: "https://www.smartsheet.com/content-center/product-insights/product-updates/smartsheet-user-subscription", sourceLabel: "Smartsheet provisional membership and reconciliation" },
+    ],
+    options: [
+      { slug: "wrike", fit: "Evaluate Wrike when client review, project visibility, and structured work management matter. Re-price the exact license types and renewal timing for the same people." },
+      { slug: "airtable", fit: "Evaluate Airtable when the core requirement is a flexible data/workflow layer rather than a conventional project plan. Validate editor, commenter, and automation needs on the selected plan." },
+      { slug: "monday", fit: "Evaluate monday.com when the team values customizable boards and workflow automation. Compare the same paid users, guests, and required automations before switching." },
+    ],
+  },
+  ecwid: {
+    title: "Before replacing Ecwid, price the catalog, staff access, and migration together",
+    introduction: "Use your real catalog size, staff count, selling channels, and subscription requirements. Migration cost and missing commerce features can outweigh a cheaper headline platform price.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "Which Ecwid plan actually fits the catalog?", answer: "Ecwid currently lists up to 10 products on Starter, 100 on Venture, 2,500 on Business, and unlimited products on Unlimited. Business also adds marketplace selling, subscriptions, multilingual stores, and two staff accounts; Unlimited removes the product and staff-account caps.", source: "https://www.ecwid.com/pricing", sourceLabel: "Ecwid pricing and plan limits" },
+      { question: "What is the current renewal amount in your billing currency?", answer: "Ecwid changed Venture, Business, and Unlimited pricing after March 2, 2026. Its help center lists USD monthly prices of $35, $65, and $149, with lower monthly equivalents on annual billing. Ecwid also supports several billing currencies, so use the account's actual currency and renewal date rather than converting a headline price yourself.", source: "https://support.ecwid.com/hc/en-us/articles/25122701806108-Changes-to-the-Ecwid-plan-pricing-after-March-2-2026", sourceLabel: "Ecwid March 2026 pricing update" },
+      { question: "Would a migration replace a feature you currently use?", answer: "Before moving, inventory the features tied to the current plan: subscriptions, marketplaces, multilingual catalog, staff accounts, POS, app integrations, custom checkout, and URL controls. Test products, variants, customers, redirects, payments, tax settings, and one complete order flow before changing the live store.", source: "https://support.ecwid.com/hc/en-us/articles/207100729-Ecwid-plans-and-features", sourceLabel: "Ecwid plan feature matrix" },
+    ],
+    options: [
+      { slug: "shopify", fit: "Evaluate Shopify when you want a dedicated commerce platform with unlimited products and a larger ecosystem. Include staff-account needs, payment-provider fees, apps, and migration work in the quote." },
+      { slug: "wix", fit: "Evaluate Wix when the website editor and storefront need to live in one managed site-building workflow. Verify the commerce plan, payment requirements, catalog needs, and migration path before switching." },
+    ],
+  },
+  "zoho-crm": {
+    title: "Before replacing Zoho CRM, identify the first workflow that forces a paid edition",
+    introduction: "Do not compare CRM starting prices until you know which users need access and whether the required workflow depends on paid email, calling, process automation, portals, or customization.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "Does the free edition cover the real team?", answer: "Zoho CRM currently lists its free edition for up to three users. It includes core contact/deal activity, reminders, basic workflows, reports, APIs, and import/export. A larger editing team should be priced on the paid edition it actually needs rather than treated as a free deployment.", source: "https://www.zoho.com/en-us/crm/zohocrm-pricing.html", sourceLabel: "Zoho CRM pricing" },
+      { question: "Is Standard enough, or does the process require Professional?", answer: "Zoho describes Standard for small teams and includes email integration, built-in calling, multiple pipelines, forecasting, forms, and custom modules. Professional is positioned for growing teams needing deeper process automation and adds process management, inventory, CPQ, portals, and other advanced workflow capabilities. Match the requirement to the edition before comparing cost.", source: "https://www.zoho.com/en-us/crm/zohocrm-pricing.html", sourceLabel: "Zoho CRM edition capabilities" },
+      { question: "Can the replacement pass the same acceptance test?", answer: "Use the same sanitized sample and require each candidate to reproduce lead assignment, email history, the next follow-up, one automation, one manager report, and the needed export. Record pass, partial, or fail before migrating the full database.", source: "https://www.zoho.com/crm/complete-feature-list.html", sourceLabel: "Zoho CRM feature comparison" },
+    ],
+    options: [
+      { slug: "pipedrive", fit: "Evaluate Pipedrive when a sales-first pipeline and activity workflow is the priority. Check the exact tier needed for email sync, automations, reporting, and the team's paid seats." },
+      { slug: "close", fit: "Evaluate Close when calling, email, and outbound sales execution need to stay inside the CRM. Verify current communication allowances, automation limits, and paid users before comparing totals." },
+    ],
+  },
+  calendly: {
+    title: "Before replacing Calendly, separate host seats from invitees and routing needs",
+    introduction: "A scheduling quote should count the people who host or connect calendars, not every meeting invitee. Then check whether simple booking, reminders, routing, payments, or team administration is the actual requirement.",
+    verifiedAt: "2026-09-12",
+    checks: [
+      { question: "Could the Free plan handle the workflow?", answer: "Calendly's current Free plan lists one event type, one calendar connection, one-on-one scheduling, and a customizable booking page. If the workflow needs only one host and one event type, verify that before paying for a larger plan.", source: "https://calendly.com/pricing", sourceLabel: "Calendly pricing" },
+      { question: "Who needs a paid Calendly seat?", answer: "Calendly states that Standard seats are required for users who connect calendars and host Calendly meetings; invitees do not require a seat. Standard currently lists unlimited event types, multiple calendars, automations/reminders, and Stripe or PayPal connections. Count hosts separately from attendees.", source: "https://calendly.com/pricing", sourceLabel: "Calendly Standard plan and seat rule" },
+      { question: "Do you need routing and admin controls, or just booking?", answer: "Calendly positions Teams for team scheduling, lead routing, and admin controls. For a simpler booking workflow, Setmore's Free plan currently supports up to four users with email reminders, while Pro adds SMS reminders, two-way calendar sync, recurring appointments, and other advanced scheduling features. Compare the exact requirement rather than plan names.", source: "https://calendly.com/help/choose-the-right-calendly-plan-for-your-team", sourceLabel: "Calendly plan guidance" },
+    ],
+    options: [
+      { slug: "setmore", fit: "Evaluate Setmore when the core requirement is service booking for a small team. Verify whether Free covers the team or whether Pro features such as SMS reminders and two-way calendar sync are required." },
     ],
   },
 };

@@ -50,7 +50,7 @@ export function getChannelHealth(channel: Channel): { status: ChannelHealthStatu
   if (!adapter.isConfigured()) {
     return { status: "NEEDS_OWNER_AUTH", detail: `Missing env: ${adapter.missingEnv().join(", ")}` };
   }
-  return { status: "CONNECTED", detail: "Configured and enabled." };
+  return { status: "READY", detail: "Configured and enabled; provider authentication has not been live-verified by this synchronous check." };
 }
 
 export function getAllChannelHealth(): Record<Channel, { status: ChannelHealthStatus; detail: string }> {
