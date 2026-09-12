@@ -1,0 +1,176 @@
+{
+  "registeredAt": "2026-09-12T18:03:03.436Z",
+  "verifiedLiveAt": "2026-09-12T18:03:01.478Z",
+  "deploymentId": "dpl_HeEp3zgxbhk8dvs8A8XX797S6wB2",
+  "commit": "8c70d6acb25624cfe6f3b4ec3a8f2a789927b863",
+  "conditionalWrite": true,
+  "existingCount": 26,
+  "existingPreserved": true,
+  "newTotal": 29,
+  "experiments": [
+    {
+      "id": "work-revenue-20260912-wave2-woocommerce",
+      "page": "/software/woocommerce",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T18:03:01.478Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 49,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 83.40816326530613
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added total-operating-cost, required-extension and managed-platform decision checks with official WooCommerce sources; active Shopify alternative retained only as a buyer-fit option.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_HeEp3zgxbhk8dvs8A8XX797S6wB2",
+        "commit 8c70d6acb25624cfe6f3b4ec3a8f2a789927b863",
+        "GSC 29 impressions / 0 clicks / 0.00% CTR / position 82.9",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 9 query variant(s): \"woocommerce alternatives\", \"alternative to woocommerce dashboard\", \"woocommerce agency alternative\", \"alternative of woocommerce\", \"woocommerce alternative\", \"alternative woocommerce\", \"alternatives to woocommerce\", \"best woocommerce alternative\""
+      ],
+      "internalLinksChanged": [
+        "/software/shopify"
+      ],
+      "deploymentTimestamp": "2026-09-12T18:03:01.478Z",
+      "affiliateStatusAtT0": "WooCommerce not active; Shopify ACTIVE; canonical issued URL.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T18:03:01.478Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T18:03:01.478Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T18:03:01.478Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260912-wave2-teamwork",
+      "page": "/software/teamwork",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T18:03:01.478Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 24,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 81.66666666666667
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added client-access, billable-time/budgets/invoicing and rate-ownership decision checks with official Teamwork sources; active Wrike, monday.com and Hubstaff alternatives retained as distinct-fit options.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_HeEp3zgxbhk8dvs8A8XX797S6wB2",
+        "commit 8c70d6acb25624cfe6f3b4ec3a8f2a789927b863",
+        "GSC 13 impressions / 0 clicks / 0.00% CTR / position 81.9",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: insufficient real query demand; an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 8 query variant(s): \"teamwork alternatives\", \"teamwork alternative\", \"teamwork.com alternatives\", \"alternatives to teamwork\", \"teamwork project manager alternatives\", \"alternative to teamwork\", \"teamwork com alternatives\", \"what are the top alternatives to teamwork\""
+      ],
+      "internalLinksChanged": [
+        "/software/wrike",
+        "/software/monday",
+        "/software/hubstaff"
+      ],
+      "deploymentTimestamp": "2026-09-12T18:03:01.478Z",
+      "affiliateStatusAtT0": "Teamwork not active; Wrike, monday.com and Hubstaff ACTIVE; canonical issued URLs.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T18:03:01.478Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T18:03:01.478Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T18:03:01.478Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    },
+    {
+      "id": "work-revenue-20260912-wave2-doodle",
+      "page": "/software/doodle",
+      "intervention": "SOURCE_BACKED_BUYER_CHECKLIST",
+      "recordedAt": "2026-09-12T18:03:01.478Z",
+      "reason": "Decision-stage query evidence plus source-backed incremental buyer value on the existing canonical page; no new URL or visual treatment.",
+      "baseline": {
+        "impressions": 59,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 86.54237288135593
+      },
+      "measurementWindowDays": 28,
+      "result": null,
+      "decision": "MEASURING",
+      "diagnosis": "Baseline is the latest available authenticated SEO Factory query cluster for this canonical page, window 2026-08-10 to 2026-09-06. It is not market search volume or a page aggregate. Follow-up must rebuild the same grouping.",
+      "exactChange": "Added group-poll versus appointment-booking, free-versus-professional and service-team workflow decision checks with official Doodle sources; active Setmore alternative retained for appointment-first use cases.",
+      "evidenceSources": [
+        "seo-factory/runs/2026-09-09T22-00-32-730Z-4c471476.json",
+        "data/seo/buyer-checklists.ts",
+        "deployment dpl_HeEp3zgxbhk8dvs8A8XX797S6wB2",
+        "commit 8c70d6acb25624cfe6f3b4ec3a8f2a789927b863",
+        "GSC 18 impressions / 0 clicks / 0.00% CTR / position 88.8",
+        "Existing inventory: yes",
+        "Matching GSC pages for query: 1",
+        "Publication blockers: insufficient real query demand; an existing canonical page should be improved first; insufficient first-party factual evidence; incremental decision value not established; SEO Factory v1 autonomy is Level 0 (analysis only)",
+        "Clustered 20 query variant(s): \"doodle alternative\", \"doodle alternatives\", \"alternative for doodle\", \"doodle free alternatives\", \"microsoft doodle alternative\", \"alternatives to doodle\", \"free doodle alternative\", \"doodle free alternative\""
+      ],
+      "internalLinksChanged": [
+        "/software/setmore"
+      ],
+      "deploymentTimestamp": "2026-09-12T18:03:01.478Z",
+      "affiliateStatusAtT0": "Doodle not active; Setmore ACTIVE and organic-only promotion restrictions remain in force.",
+      "checkpoints": [
+        {
+          "days": 7,
+          "dueAt": "2026-09-19T18:03:01.478Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 14,
+          "dueAt": "2026-09-26T18:03:01.478Z",
+          "kind": "DIRECTIONAL",
+          "measuredAt": null
+        },
+        {
+          "days": 28,
+          "dueAt": "2026-10-10T18:03:01.478Z",
+          "kind": "PRIMARY",
+          "measuredAt": null
+        }
+      ]
+    }
+  ]
+}

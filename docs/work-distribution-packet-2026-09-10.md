@@ -89,3 +89,12 @@ Both source-backed buyer checklists are LIVE on miloosh.com. MailerLite partner 
 The four organic variants above remain prepared, not posted. Read-only provider identity checks at 15:02:28 UTC returned Facebook HTTP 401 / OAuthException 190 and Buffer HTTP 401 / UNAUTHENTICATED. Browser sessions are also signed out. Keys exist but are unusable in the checked environment. Restore authorization and reconcile the existing Wrike queue item 8f76701d-8028-4059-a4bc-e10f327955da against actual delivery history before any post.
 
 New 28-day experiments are registered; checkpoints September 17, September 24 and October 8. Do not report QA visits, an email send, or a prepared social post as acquired humans or revenue.
+
+## 2026-09-12 continuation
+
+- Live intent assets added with no visual/layout changes: Smartsheet, Ecwid, Zoho CRM, Calendly, WooCommerce, Teamwork and Doodle.
+- monday.com distribution SENT in verified partner-support thread for the Teamwork buyer checklist: Gmail `1a096cb6053dd18b`; tagged asset `https://miloosh.com/software/teamwork?utm_source=monday_partner&utm_medium=referral&utm_campaign=teamwork_buyer_checks_20260912`.
+- Facebook is not connected despite configured variables: read-only Graph identity probe returned OAuth code 190. Do not attempt publication until authorization is restored and the same probe succeeds.
+- LinkedIn remains owner-auth blocked. Do not label queued/manual-ready LinkedIn copy as published.
+- Existing stale-backlog controls are sufficient to prevent a catch-up burst; do not bulk publish or delete scheduled entries merely because their shared schedule is old.
+- SurveyMonkey reported the first affiliate-link click. Treat as a distribution signal only; no signup/revenue claim.
