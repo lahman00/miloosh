@@ -10,6 +10,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { getAllRoleGuides, getRoleGuide } from "@/data/guides/registry";
+import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
 import { getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
@@ -165,6 +166,15 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
             </p>
           </header>
 
+          <nav aria-label="On this page" className="mb-8 flex flex-wrap gap-2 text-sm">
+            {[
+              { href: "#quick-comparison", label: "Compare the shortlist" },
+              ...(BUYER_DECISION_BRIEFS[guide.slug] ? [{ href: "#buyer-decision-worksheet", label: "Decision worksheet" }] : []),
+              { href: "#product-shortlist", label: "Fit and tradeoffs" },
+              { href: "#buyer-questions", label: "Buying questions" },
+            ].map((item) => <a key={item.href} href={item.href} className="rounded-full border border-white/15 px-4 py-2 text-zinc-300 hover:border-emerald-400/50 hover:text-white">{item.label}</a>)}
+          </nav>
+
           {/* Affiliate Disclosure Notice */}
           {hasAnyAffiliate && (
             <div className="mb-8 p-4 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-zinc-400 flex items-start gap-3">
@@ -227,15 +237,16 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
           </section>
 
           {/* Quick Comparison Summary Table */}
-          <section className="mb-14">
+          <section id="quick-comparison" className="mb-14 scroll-mt-24">
             <h2 className="text-2xl font-bold text-white mb-4">Quick Comparison Summary</h2>
-            <div className="overflow-x-auto border border-white/10 rounded-2xl bg-white/[0.02]">
+            <p id="comparison-scroll-help" className="mb-3 text-xs text-zinc-400 sm:hidden">Swipe or scroll the table sideways to see plan details and visit links.</p>
+            <div role="region" aria-label="Software shortlist comparison" aria-describedby="comparison-scroll-help" tabIndex={0} className="overflow-x-auto border border-white/10 rounded-2xl bg-white/[0.02]">
               <table className="w-full text-left text-sm">
                 <thead className="bg-white/5 text-zinc-300 font-semibold border-b border-white/10 text-xs uppercase tracking-wider">
                   <tr>
                     <th className="py-3.5 px-4">Rank & Tool</th>
                     <th className="py-3.5 px-4">Best For</th>
-                    <th className="py-3.5 px-4">Starting Price</th>
+                    <th className="py-3.5 px-4">Pricing / Plan Context</th>
                     <th className="py-3.5 px-4">Trial / Free Option</th>
                     <th className="py-3.5 px-4 text-right">Action</th>
                   </tr>
@@ -292,7 +303,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
           </section>
 
           {/* Detailed Product Reviews */}
-          <section className="mb-14 space-y-8">
+          <section id="product-shortlist" className="mb-14 space-y-8 scroll-mt-24">
             <h2 className="text-2xl font-bold text-white">In-Depth Software Reviews</h2>
 
             {reviewedProducts.map((p) => (
@@ -427,7 +438,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
           {/* FAQs */}
           {guide.faqs.length > 0 && (
-            <div className="mb-12">
+            <div id="buyer-questions" className="mb-12 scroll-mt-24">
               <FaqSection items={guide.faqs} />
             </div>
           )}

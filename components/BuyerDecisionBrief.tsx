@@ -1,11 +1,12 @@
 import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
+import Link from "next/link";
 
 /** Server-rendered, source-linked editorial content; no tracking or outbound affiliate requests. */
 export function BuyerDecisionBrief({ slug }: { slug: string }) {
   const brief = BUYER_DECISION_BRIEFS[slug];
   if (!brief) return null;
   return (
-    <section id="buyer-decision-worksheet" aria-labelledby="buyer-decision-title" className="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8">
+    <section id="buyer-decision-worksheet" aria-labelledby="buyer-decision-title" className="my-12 scroll-mt-24 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8">
       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Decision worksheet · sources checked {brief.updatedAt}</p>
       <h2 id="buyer-decision-title" className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">{brief.heading}</h2>
       <p className="mt-4 max-w-4xl text-base leading-7 text-zinc-300">{brief.introduction}</p>
@@ -28,6 +29,10 @@ export function BuyerDecisionBrief({ slug }: { slug: string }) {
       <p className="mt-3 max-w-4xl text-xs leading-6 text-zinc-400">{brief.table.note}</p>
       <h3 className="mt-8 text-lg font-semibold text-white">Before you choose: a buyer-run acceptance checklist</h3>
       <ul className="mt-3 max-w-4xl list-disc space-y-2 pl-5 text-sm leading-7 text-zinc-300">{brief.checklist.map((item) => <li key={item}>{item}</li>)}</ul>
+      {brief.relatedGuides?.length ? <nav aria-label="Related buying decisions" className="mt-8 max-w-4xl">
+        <h3 className="text-lg font-semibold text-white">The next decision in your workflow</h3>
+        <ul className="mt-3 space-y-3 text-sm leading-6">{brief.relatedGuides.map((guide) => <li key={guide.href}><Link href={guide.href} className="text-emerald-400 underline underline-offset-4 hover:text-emerald-300">{guide.label}</Link></li>)}</ul>
+      </nav> : null}
       <h3 className="mt-8 text-base font-semibold text-white">First-party sources and verification scope</h3>
       <p className="mt-2 text-xs leading-6 text-zinc-400">The checks apply to this worksheet’s cited facts, not a fresh audit of every feature in every product profile. Vendor prices and limits can change. Arithmetic and selection criteria are Miloosh editorial analysis.</p>
       <ul className="mt-3 space-y-2 text-xs leading-6 text-zinc-300">{brief.sources.map((source) => <li id={`decision-source-${source.id}`} key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{source.title}</a></li>)}</ul>

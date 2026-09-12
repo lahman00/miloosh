@@ -1,3 +1,5 @@
+import { BUYER_PAIN_BRIEFS } from "./buyer-pain-briefs";
+
 /** Original decision worksheets. Vendor facts are sourced; modeled examples are not test results. */
 export type BuyerDecisionBrief = {
   heading: string;
@@ -7,9 +9,11 @@ export type BuyerDecisionBrief = {
   table: { caption: string; headers: string[]; rows: string[][]; note: string };
   checklist: string[];
   sources: { id: string; title: string; url: string }[];
+  relatedGuides?: { href: string; label: string }[];
 };
 
 export const BUYER_DECISION_BRIEFS: Readonly<Record<string, BuyerDecisionBrief>> = {
+  ...BUYER_PAIN_BRIEFS,
   "best-crm-for-small-business": {
     heading: "Which CRM fits a 5–10-person team without a full-time administrator?",
     updatedAt: "2026-09-10",
