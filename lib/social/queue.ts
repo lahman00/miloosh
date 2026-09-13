@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
-import { type QueueState, type SocialQueueEntry, isValidQueueTransition } from "@/lib/social/types";
+import { type QueueState, type SocialQueueEntry, QUEUE_STATES, isValidQueueTransition } from "@/lib/social/types";
 
 /**
  * Content queue persistence — same storage strategy as
@@ -21,11 +21,40 @@ function hasBlobToken(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
+/** Validate identity/lifecycle structure without dropping legacy optional fields. */
+function assertQueueShape(value: unknown): asserts value is SocialQueueEntry[] {
+  if (!Array.isArray(value)) throw new Error("Invalid social queue: expected an array.");
+  const ids = new Set<string>();
+  for (const item of value) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) {
+      throw new Error("Invalid social queue: entry is not an object.");
+    }
+    const record = item as Record<string, unknown>;
+    if (typeof record.id !== "string" || !record.id.trim() || ids.has(record.id)
+      || typeof record.state !== "string" || !(QUEUE_STATES as readonly string[]).includes(record.state)
+      || typeof record.topic !== "string" || !Array.isArray(record.history)
+      || !Array.isArray(record.sourceSlugs) || !record.sourceSlugs.every((slug) => typeof slug === "string")
+      || !record.channels || typeof record.channels !== "object" || Array.isArray(record.channels)) {
+      throw new Error("Invalid social queue: identity, lifecycle or record structure failed validation.");
+    }
+    ids.add(record.id);
+  }
+}
+
+function parseQueue(text: string): SocialQueueEntry[] {
+  const value: unknown = JSON.parse(text);
+  assertQueueShape(value);
+  return value;
+}
+
 function readLocalFallback(): SocialQueueEntry[] {
   try {
-    return JSON.parse(fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8")) as SocialQueueEntry[];
-  } catch {
-    return [];
+    return parseQueue(fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8"));
+  } catch (error: unknown) {
+    // Only an absent first-run file is empty. Corrupt JSON and permission errors
+    // must stop read-modify-write callers instead of silently discarding history.
+    if ((error as NodeJS.ErrnoException)?.code === "ENOENT") return [];
+    throw new Error("Unable to read local social queue; refusing to treat an error as an empty queue.");
   }
 }
 
@@ -41,15 +70,19 @@ export async function readQueue(): Promise<SocialQueueEntry[]> {
     // useCache: false — same reasoning as affiliate-pipeline.ts: a read
     // immediately following a write must never see a stale CDN copy.
     const result = await get(BLOB_PATHNAME, { access: "private", useCache: false });
-    if (!result || result.statusCode !== 200) return [];
+    // The SDK returns null for an absent object; other response states are errors.
+    if (result === null) return [];
+    if (!result || result.statusCode !== 200) throw new Error("Unexpected social queue storage response.");
     const text = await new Response(result.stream).text();
-    return JSON.parse(text) as SocialQueueEntry[];
+    return parseQueue(text);
   } catch {
-    return [];
+    // Do not expose provider errors that may contain URLs or credentials.
+    throw new Error("Unable to read remote social queue; refusing to treat an error as an empty queue.");
   }
 }
 
 export async function writeQueue(entries: SocialQueueEntry[]): Promise<void> {
+  assertQueueShape(entries);
   if (!hasBlobToken()) {
     writeLocalFallback(entries);
     return;

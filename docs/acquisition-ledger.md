@@ -261,3 +261,14 @@ bot-heavy traffic as acquisition success.
 - Auth-gated sources — StartupBase, IndieTools, directree, HereIsMySaaS and 10015 were not called completed; each requires owner/account authentication. Linkrena and SaaSWall magic-link/login completion remained pending because no login email had arrived.
 - Policy skips — badge-required free tiers and paid fast-track routes were skipped to preserve the user's no-visual-change / no-unapproved-spend constraints.
 - Durable source-by-source status: `docs/new-distribution-sources-2026-09-12.md`.
+
+
+## 2026-09-13 — distribution and infrastructure, guides frozen
+
+- Agency by Agency: SENT to info@agencybyagency.com; Gmail 1a09966d4c78f4ee; asset /best-time-tracking-for-agencies; UTM agencybyagency / referral / buyer_guides_distribution_20260913. New remit-specific resource pitch after current mailbox and ledger deduplication. No placement, backlink, traffic, endorsement or revenue is claimed.
+- Operations Nation: SENT to community@operationsnation.com; Gmail 1a09966fb360f0ad; asset /best-no-code-database-for-operations; UTM operationsnation / referral / buyer_guides_distribution_20260913. New remit-specific resource pitch after current mailbox and ledger deduplication. No placement, backlink, traffic, endorsement or revenue is claimed.
+- Support Driven: SENT to community@supportdriven.com; Gmail 1a099672a1350dc9; asset /best-help-desk-for-small-business; UTM supportdriven / referral / buyer_guides_distribution_20260913. New remit-specific resource pitch after current mailbox and ledger deduplication. No placement, backlink, traffic, endorsement or revenue is claimed.
+- Prior Startup88 submission receipt re-read (Gmail 1a097e2d11c6922a): in review, NOT a confirmed live listing. No paid upgrade.
+- New-directory screens: Startup Buffer stopped at an explicit human-verification challenge; Tools.so browser timed out; Crowdstax and Dir Hub require login. No completed submission or account signup claimed. FeedMyStartup offers an email submission route but its browser form did not become accessible at first read.
+- Security patch 141ee10 was already deployed before this session. Independent production npm audit of that lockfile returned zero known production dependency vulnerabilities; no universal security guarantee.
+- New infrastructure repair: social queue read errors no longer become false empty history. Reproduced eight failing cases before fix; 15 regression tests now included. Read-only compatibility check accepted all 2,485 live records; no social queue write or post. Guide content and visual files unchanged.
