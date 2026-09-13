@@ -23,16 +23,42 @@ This fix does not implement cross-process compare-and-swap and does not claim to
 - Full lint, TypeScript, data validation, production build and diff whitespace checks passed.
 - Data validation: 354 software records, 27 categories, 1,348 comparisons; zero problems.
 - Protected content hash check: 9 guide/related files identical. The release diff contains no guide, page, component or CSS change.
-- Deployment: not yet promoted at the time this initial receipt was written; append verified release receipt below.
+- Deployment and public alias verified after promotion; see final release receipt below.
 
 ## Already completed security remediation — reverified, not newly authored
 The current production at session start is `dpl_8vEN8Y44HAP2eGQydhquWUWg5JjS`, security commit `141ee10`, Next.js 16.3.5 and Sharp 0.35.4. `vercel inspect https://miloosh.com` independently resolved that deployment. Fresh `npm audit --omit=dev` returned exit 0 and zero known vulnerabilities in production dependencies. This is limited to npm advisories at the check time, not a full application penetration test. Vercel reported no runtime errors in the selected six-hour window.
 
 ## Directory screening and follow-through
-Startup Buffer: explicit Cloudflare human-verification challenge; stopped, no bypass. Tools.so: page-load timeout; not submitted. Crowdstax/Dir Hub: login required; not submitted. FeedMyStartup: published email route exists but browser access gate prevents form completion at the initial check. The Digital Project Manager contribution route requires a personal LinkedIn profile and truthful practitioner context; not fabricated. Existing Startup88 email confirms review only; no paid upsell accepted.
+Startup Buffer: explicit Cloudflare human-verification challenge; stopped, no bypass. Tools.so: page-load timeout; not submitted. Crowdstax/Dir Hub: login required; not submitted. FeedMyStartup: browser eventually loaded; its embedded Google Form explicitly no longer accepts responses. The published email route exists, but no article submission was sent. The Digital Project Manager contribution route requires a personal LinkedIn profile and truthful practitioner context; not fabricated. Existing Startup88 email confirms review only; no paid upsell accepted.
 
 ## Evidence locations
 Private runtime receipts are under `var/distribution-infra/` and excluded by `.vercelignore`: before/after failure tests, full test/lint/type/build logs, production audit, protected hashes and message IDs. No secrets are committed.
 
 ## Remaining gates
 Actual publisher acceptance or new backlinks require external action. Existing social-account authorization and payout verification are not fixed by this release. No unattended monitoring was configured. GitHub account suspension remains an external owner gate; no alternate identity/repository or forced push was used.
+
+
+## Verified release receipt
+
+- Application commit: `38d1b2cba5dc3fe7c982119a795d85c1226910c0`.
+- Deployment: `dpl_4HmzKxG4Cn4kLV5hbmRmYfAWw6GT`, Production / READY.
+- Immutable URL: https://flowtemplate-877op5sly-lahman001.vercel.app
+- Staged deployment was built READY and a protected guide GET returned 200 using the authorized Vercel CLI path before promotion.
+- Immediately before promotion, public `miloosh.com` still resolved the expected security deployment. No intervening production change was overwritten.
+- Promotion completed successfully; an independent `vercel inspect https://miloosh.com` resolved the new deployment.
+- Read-only public verification at 2026-09-13T06:33:08.928020Z: 12/12 protected guide URLs returned HTTP 200, one H1, correct canonical and no noindex signal. No commercial outbound link was followed.
+- Full lint, TypeScript, data validation, local build and remote build passed. Full suite: 165 files, 1,487 tests. No test suppression or reduced coverage.
+- Post-promotion Vercel error scan returned no runtime errors in the selected one-hour project window. This is point-in-time evidence, not ongoing monitoring or a guarantee.
+- Release input audit: 1,073 uploaded source files; `var/`, `.env*` and `.agents/` excluded. No private audit snapshots or credentials shipped.
+- Application/visual diff against Wave 2: zero changes to `app`, `components`, `data/guides`, or `public`. No experiment registry, social queue state, credential, DNS or payment-setting write was performed.
+
+## Confirmed distribution follow-through, not new placements
+
+- Operations Nation returned an automatic receipt acknowledging the inquiry, Gmail `1a0996705c39fa23`, 2026-09-13T06:14:19Z. It says a team response may take a few days; it is NOT an editorial acceptance.
+- Existing SaaSHub listing https://www.saashub.com/miloosh rendered live. DOM read-back at 2026-09-13T06:31:09.034Z found a direct homepage link with empty rel, a pricing-research link with rel=nofollow and a second official-site link with rel=nofollow. No new listing, vote, review, badge or link was created by this session. No ranking/indexation benefit is inferred.
+- CurlShip's documented listing-read endpoint initially returned HTTP 200 but the follow-up record read returned 403. Current detailed listing verification is therefore incomplete; no resubmission or new backlink is claimed.
+- Startup88 prior confirmation remains review-only. New directory submissions completed this session: zero. Blocked/closed/login-required forms are not counted as submissions.
+
+## Next permitted work
+
+Await the three new resource-pitch decisions rather than sending immediate follow-ups. Recheck replies or pending directory confirmations before any new submission; log each verified public URL separately from an application receipt. Keep content cohorts unchanged until their valid measurement window, except necessary factual/security corrections. This session did not create any new scheduled automation.
