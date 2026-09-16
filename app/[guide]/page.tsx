@@ -14,6 +14,7 @@ import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
 import { getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { getWixAffiliateUrl } from "@/lib/wix-funnels";
 import { SITE_URL } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -71,7 +72,10 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
       return {
         ...item,
         software,
-        ctaUrl: getSoftwareCtaUrl(software),
+        ctaUrl:
+          guide.slug === "best-ecommerce-platform-for-small-business" && software.slug === "wix"
+            ? getWixAffiliateUrl("ecommerce")
+            : getSoftwareCtaUrl(software),
         ctaRel: getSoftwareCtaRel(software),
         hasAffiliate: shouldShowAffiliateDisclosure(software),
       };
