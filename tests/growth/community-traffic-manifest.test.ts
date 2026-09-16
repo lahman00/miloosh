@@ -43,13 +43,24 @@ describe("community traffic manifest", () => {
     }
   });
 
-  it("has source-backed pricing and no comparison placeholder for every money page", () => {
+  it("requires verified pricing or an explicit nonnumeric regional quote contract", () => {
     for (const page of manifest.pages) {
       const products = page.page_type === "software"
         ? [getSoftware(page.slug)!]
         : [getComparisonBySlug(page.slug)!.softwareA, getComparisonBySlug(page.slug)!.softwareB];
       for (const product of products) {
-        expect(product.pricing?.status, `${page.slug}: ${product.slug}`).toMatch(/^(verified|contact_sales|free_only)$/);
+        if (page.pricing_status === "regional_quote_required") {
+          // חוסר מחיר אינו אישור למחיר מומצא: החריג חייב להיות מסומן ונטול סכומי תשלום.
+          expect(product.pricing?.status).toBe("unknown");
+          expect(product.pricing?.entryPaid).toBeUndefined();
+          expect(product.pricing?.startingPrice).toMatch(/regional.*quote/i);
+          for (const tier of product.pricing?.tiers ?? []) {
+            expect(tier.amount === undefined || (tier.name === "Free" && tier.amount === "0")).toBe(true);
+          }
+        } else {
+          expect(page.pricing_status).toBe("complete");
+          expect(product.pricing?.status, `${page.slug}: ${product.slug}`).toMatch(/^(verified|contact_sales|free_only)$/);
+        }
         expect(product.pricing?.officialSource, `${page.slug}: ${product.slug}`).toMatch(/^https:\/\//);
         expect(product.pricing?.lastVerified, `${page.slug}: ${product.slug}`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       }

@@ -4,22 +4,53 @@
   "category": "ecommerce",
   "description": "Shopify is an all-in-one commerce platform that lets businesses build an online store, process payments, and sell across web, mobile, social, and in-person channels.",
   "website": "https://www.shopify.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "pricing": {
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 3 },
+    "free_trial": {
+      "available": true,
+      "days": 3
+    },
     "entry_paid": {
       "amount": "29",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true
     },
     "tiers": [
-      { "name": "Basic", "amount": "29", "currency": "USD", "billing_period": "annual", "notes": "$39/mo if billed monthly instead. 2% fee on 3rd-party payment providers." },
-      { "name": "Grow", "amount": "79", "currency": "USD", "billing_period": "monthly", "notes": "Up to 5 staff accounts, 1% 3rd-party payment fee." },
-      { "name": "Advanced", "amount": "299", "currency": "USD", "billing_period": "monthly", "notes": "Up to 15 staff accounts, 0.6% 3rd-party payment fee." },
-      { "name": "Plus", "amount": "2300", "currency": "USD", "billing_period": "monthly", "notes": "Starting price ('from'), for complex/high-volume businesses — likely negotiated above this for most merchants." }
+      {
+        "name": "Basic",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Monthly equivalent with annual billing, not the annual total. $39/mo if billed monthly instead. 2% fee on 3rd-party payment providers."
+      },
+      {
+        "name": "Grow",
+        "amount": "79",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Monthly equivalent with annual billing, not the annual total. Up to 5 staff accounts, 1% 3rd-party payment fee."
+      },
+      {
+        "name": "Advanced",
+        "amount": "299",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Monthly equivalent with annual billing, not the annual total. Up to 15 staff accounts, 0.6% 3rd-party payment fee."
+      },
+      {
+        "name": "Plus",
+        "amount": "2300",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price ('from'), for complex/high-volume businesses — likely negotiated above this for most merchants."
+      }
     ],
     "last_verified": "2026-08-17",
     "official_source": "https://www.shopify.com/pricing"
@@ -33,7 +64,9 @@
     "21,000+ app ecosystem",
     "Shipping/international tools (Shopify Markets)"
   ],
-  "sources": ["https://www.shopify.com"],
+  "sources": [
+    "https://www.shopify.com"
+  ],
   "accessed_at": "2026-08-01",
   "affiliate_url": "https://shopify.pxf.io/L0EG9O",
   "alternatives": [
@@ -42,14 +75,22 @@
       "slug": "bigcommerce",
       "description": "An ecommerce platform supporting both B2C and B2B storefronts, marketplaces, and social commerce channels.",
       "best_for": "Businesses needing B2B account/pricing workflows alongside a standard storefront.",
-      "strengths": ["No-cost-per-transaction B2B tooling", "600+ enterprise integrations", "Multi-channel via Feedonomics"]
+      "strengths": [
+        "No-cost-per-transaction B2B tooling",
+        "600+ enterprise integrations",
+        "Multi-channel via Feedonomics"
+      ]
     },
     {
       "name": "WooCommerce",
       "slug": "woocommerce",
       "description": "An open-source ecommerce platform built as a WordPress plugin, giving merchants full control over their store.",
       "best_for": "WordPress users/developers wanting full customization ownership.",
-      "strengths": ["Self-hosted flexibility", "Any payment processor", "Large plugin ecosystem"]
+      "strengths": [
+        "Self-hosted flexibility",
+        "Any payment processor",
+        "Large plugin ecosystem"
+      ]
     }
   ]
 }

@@ -4,26 +4,42 @@
   "category": "cms",
   "description": "Wix is a website-builder platform that lets users create professional websites quickly without coding skills, with hosting included.",
   "website": "https://www.wix.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "pricing": {
-    "status": "verified",
+    "status": "unknown",
     "free_plan": true,
-    "entry_paid": {
-      "amount": "17.77",
-      "currency": "USD",
-      "billing_period": "annual",
-      "annual_billing_required": true
-    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "notes": "No credit card required." },
-      { "name": "Light", "amount": "17.77", "billing_period": "annual", "notes": "GEO CAVEAT: Wix's pricing page explicitly states prices/currency vary by visitor location; this fetch displayed GST-inclusive pricing (a non-US indicator), so the '$' figures here are NOT confirmed as the standard US rate — reference only. Displayed price is for a yearly subscription paid in full; monthly billing also available at a higher rate." },
-      { "name": "Core", "amount": "29.77", "billing_period": "annual" },
-      { "name": "Business", "amount": "39.77", "billing_period": "annual", "notes": "Includes free domain for 1 year, 100GB storage, standard eCommerce." },
-      { "name": "Business Elite", "amount": "159.77", "billing_period": "annual" }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "notes": "A free website is not a payment-enabled store."
+      },
+      {
+        "name": "Light",
+        "notes": "For a website without accepting payments through the site. Confirm current regional pricing."
+      },
+      {
+        "name": "Core",
+        "notes": "Includes accepting payments and basic ecommerce. Confirm the required features and current regional quote."
+      },
+      {
+        "name": "Business",
+        "notes": "Includes accepting payments and standard ecommerce. Match required features to the local quote."
+      },
+      {
+        "name": "Business Elite",
+        "notes": "Advanced ecommerce tier. Confirm required features and current regional pricing before upgrading."
+      }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-17",
-    "official_source": "https://www.wix.com/pricing"
+    "last_verified": "2026-09-17",
+    "official_source": "https://www.wix.com/plans",
+    "starting_price": "Regional pricing; confirm your local plan quote"
   },
   "best_for": "Wix positions itself for small business owners, entrepreneurs, creatives, and individuals seeking an accessible way to establish an online presence, including a free plan.",
   "features": [
@@ -34,7 +50,10 @@
     "Hosting included",
     "SEO tools"
   ],
-  "sources": ["https://www.wix.com", "https://www.wix.com/mobile/wix-app"],
+  "sources": [
+    "https://www.wix.com",
+    "https://www.wix.com/mobile/wix-app"
+  ],
   "accessed_at": "2026-08-01",
   "affiliate_url": "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb",
   "alternatives": [
@@ -43,14 +62,22 @@
       "slug": "squarespace",
       "description": "A template-driven website builder with integrated commerce and marketing tools.",
       "best_for": "Entrepreneurs and creatives wanting a design-forward all-in-one site.",
-      "strengths": ["Polished templates", "Integrated invoicing/scheduling", "Mobile app for management"]
+      "strengths": [
+        "Polished templates",
+        "Integrated invoicing/scheduling",
+        "Mobile app for management"
+      ]
     },
     {
       "name": "WordPress",
       "slug": "wordpress",
       "description": "An open-source CMS with block editing and a large plugin ecosystem.",
       "best_for": "Users wanting deep customization and self-hosting.",
-      "strengths": ["Extensibility via plugins", "Open-source", "Large community/theme library"]
+      "strengths": [
+        "Extensibility via plugins",
+        "Open-source",
+        "Large community/theme library"
+      ]
     }
   ]
 }

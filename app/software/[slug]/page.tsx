@@ -1,3 +1,4 @@
+import { StorePlanFit } from "@/components/StorePlanFit";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
 import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
 import type { Metadata } from "next";
@@ -239,6 +240,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
 
         {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
 
+        <StorePlanFit slug={software.slug} />
         <PricingSection software={software} />
 
         <Card className="mt-14">

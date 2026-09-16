@@ -110,7 +110,7 @@ export function PricingIndexTable({ products }: { products: PricingIndexProduct[
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-zinc-400">{p.category}</td>
-                <td className="px-4 py-3 text-zinc-300">{p.recordedStartingPrice ?? (p.startingMonthlyEquivalent !== null ? `${formatIndexMoney(p.startingMonthlyEquivalent)}/mo` : "Check source")}<span className="block text-xs text-zinc-500">{p.billingPeriod ? `${p.billingPeriod} billing recorded` : "Billing basis not recorded"}</span></td>
+                <td className="px-4 py-3 text-zinc-300">{p.recordedStartingPrice ?? (p.startingMonthlyEquivalent !== null ? `${formatIndexMoney(p.startingMonthlyEquivalent)}/mo` : "Check source")}<span className="block text-xs text-zinc-500">{p.annualBillingRequired === true ? "Monthly equivalent; annual billing required" : p.billingPeriod ? `${p.billingPeriod} billing recorded` : "Billing basis not recorded"}</span></td>
                 <td className="px-4 py-3 text-zinc-400">{p.hasFreeTier === null ? "Unknown" : p.hasFreeTier ? "Yes" : "No"}</td>
                 <td className="px-4 py-3 text-zinc-400">{p.perSeat === null ? "Unknown" : p.perSeat ? "Yes" : "No"}</td>
                 <td className="px-4 py-3 text-zinc-500">{p.lastVerified ?? "—"}</td>

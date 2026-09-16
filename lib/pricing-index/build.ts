@@ -38,6 +38,7 @@ export interface PricingIndexProduct {
   enterpriseContactSales: boolean | null;
   startingMonthlyEquivalent: number | null;
   billingPeriod: string | null;
+  annualBillingRequired?: boolean | null;
   currency: string | null;
   recordedStartingPrice: string | null;
   lastVerified: string | null;
@@ -114,6 +115,7 @@ export function buildPricingIndex(all: readonly Software[] = getAllSoftware()): 
     currency: s.pricing?.entryPaid?.currency ?? null,
     recordedStartingPrice: s.pricing?.startingPrice ?? null,
     billingPeriod: s.pricing?.entryPaid?.billingPeriod ?? null,
+    annualBillingRequired: s.pricing?.entryPaid?.annualBillingRequired ?? null,
     lastVerified: s.pricing?.lastVerified ?? null,
     officialSource: s.pricing?.officialSource ?? null,
   }));
