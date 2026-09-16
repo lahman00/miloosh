@@ -8,7 +8,7 @@ import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupFo
 export const metadata: Metadata = {
   title: "Miloosh Software Brief: Interest List",
   description:
-    "Verified software pricing changes, plan changes, and migration warnings — sourced the same way as every Miloosh page, Join the interest list; email delivery has not launched yet.",
+    "Join the interest list for Miloosh’s planned software-buying brief, covering sourced pricing changes, plan limits and migration warnings. Email delivery has not launched yet.",
   alternates: { canonical: "/newsletter" },
 };
 

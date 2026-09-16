@@ -11,7 +11,7 @@ const event = (overrides: Partial<StoredOutboundEvent> = {}): StoredOutboundEven
 });
 const blob = (value: unknown) => ({ statusCode: 200, stream: new Response(JSON.stringify(value)).body });
 
-beforeEach(() => { vi.stubEnv("BLOB_READ_WRITE_TOKEN", "unit-test-only"); vi.clearAllMocks(); });
+beforeEach(() => { vi.stubEnv("BLOB_READ_WRITE_TOKEN", "unit-test-only"); vi.resetAllMocks(); });
 afterEach(() => { vi.unstubAllEnvs(); vi.restoreAllMocks(); });
 
 describe("complete outbound store reads", () => {
@@ -35,9 +35,26 @@ describe("complete outbound store reads", () => {
     expect(r.status).toBe("UNAVAILABLE"); expect(r.listingComplete).toBe(false);
     expect(formatOutboundLedger(r)).toContain("UNAVAILABLE, not zero");
   });
-  it("marks a later pagination failure incomplete", async () => {
+  it("preserves readable events after a later listing failure without miscounting unattempted reads", async () => {
     mocks.list.mockResolvedValueOnce({ blobs: [{ pathname: "a" }], hasMore: true, cursor: "next" }).mockRejectedValueOnce(new Error("test"));
-    expect((await readOutboundEventsDetailed()).status).toBe("PARTIAL");
+    mocks.get.mockImplementation(async () => blob(event()));
+    const r = await readOutboundEventsDetailed();
+    expect(r.status).toBe("PARTIAL"); expect(r.listingComplete).toBe(false);
+    expect(r.events).toHaveLength(1); expect(r.recordsListed).toBe(1); expect(r.failedReads).toBe(0);
+    expect(mocks.get).toHaveBeenCalledOnce();
+  });
+  it("counts actual failed object reads separately after pagination fails", async () => {
+    mocks.list.mockResolvedValueOnce({ blobs: [{ pathname: "a" }, { pathname: "b" }], hasMore: true, cursor: "next" }).mockRejectedValueOnce(new Error("listing failed"));
+    mocks.get.mockResolvedValueOnce(blob(event())).mockRejectedValueOnce(new Error("object failed"));
+    const r = await readOutboundEventsDetailed();
+    expect(r.status).toBe("PARTIAL"); expect(r.recordsListed).toBe(2);
+    expect(r.events).toHaveLength(1); expect(r.failedReads).toBe(1);
+  });
+  it("does not count a denied initial listing as a failed object read", async () => {
+    mocks.list.mockRejectedValue(new Error("listing denied"));
+    const r = await readOutboundEventsDetailed();
+    expect(r.status).toBe("UNAVAILABLE"); expect(r.failedReads).toBe(0);
+    expect(mocks.get).not.toHaveBeenCalled();
   });
   it("preserves readable records when an object fails", async () => {
     mocks.list.mockResolvedValue({ blobs: [{ pathname: "a" }, { pathname: "b" }], hasMore: false });

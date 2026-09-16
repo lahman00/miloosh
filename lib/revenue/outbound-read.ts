@@ -44,14 +44,21 @@ export async function readOutboundEventsDetailed(): Promise<OutboundReadResult> 
       const { list, get } = await import("@vercel/blob");
       const cursors = new Set<string>();
       let cursor: string | undefined;
-      for (let page = 0; page < 20; page++) {
-        const batch = await list({ prefix: "outbound-clicks/", limit: 500, cursor });
-        for (const blob of batch.blobs) paths.add(blob.pathname);
-        if (!batch.hasMore) { result.listingComplete = true; break; }
-        if (!batch.cursor || cursors.has(batch.cursor)) break;
-        cursors.add(batch.cursor);
-        cursor = batch.cursor;
+      let listingFailed = false;
+      try {
+        for (let page = 0; page < 20; page++) {
+          const batch = await list({ prefix: "outbound-clicks/", limit: 500, cursor });
+          for (const blob of batch.blobs) paths.add(blob.pathname);
+          if (!batch.hasMore) { result.listingComplete = true; break; }
+          if (!batch.cursor || cursors.has(batch.cursor)) break;
+          cursors.add(batch.cursor);
+          cursor = batch.cursor;
+        }
+      } catch {
+        // כשל בעמוד המשך אינו מוחק נתיבים שכבר נמצאו. קוראים את הזמין ומסמנים חלקי.
+        listingFailed = true;
       }
+      if (listingFailed && paths.size === 0) return result;
       result.recordsListed = paths.size;
       const names = [...paths];
       for (let offset = 0; offset < names.length; offset += 10) {
@@ -66,9 +73,8 @@ export async function readOutboundEventsDetailed(): Promise<OutboundReadResult> 
         }));
       }
     } catch {
-      // A list failure is distinct from an empty, successfully read store.
+      // כשל תשתית נפרד מקריאות אירועים שנוסו ונכשלו; אין להמציא ספירת כשלים.
       result.recordsListed = paths.size;
-      result.failedReads += Math.max(1, paths.size - result.events.length);
       result.status = paths.size || result.events.length ? "PARTIAL" : "UNAVAILABLE";
       return result;
     }
@@ -120,7 +126,7 @@ export function formatOutboundLedger(read: OutboundReadResult, now = new Date())
     ["ALL TIME", undefined, iso(nowMs + 1)],
   ];
   const lines = ["OUTBOUND EVENT LEDGER (separate from identified first-party visitors)",
-    `Read status: ${read.status}; backend: ${read.backend}; listed: ${read.recordsListed}; failed: ${read.failedReads}`,
+    `Read status: ${read.status}; backend: ${read.backend}; listed: ${read.recordsListed}; listing_complete: ${read.listingComplete}; failed_object_reads: ${read.failedReads}`,
     "Events are not unique people, conversions, or revenue. Do not add this store to first-party counts: overlap is unknown."];
   if (read.status === "UNAVAILABLE") return [...lines, "Counts: UNAVAILABLE, not zero."].join("\n");
   if (read.status === "PARTIAL") lines.push("INCOMPLETE READ: counts below cover readable records only; do not use as complete totals.");
