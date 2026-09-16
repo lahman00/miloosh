@@ -1,5 +1,6 @@
 import { getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/events";
-import { getOutboundEvents, type StoredOutboundEvent } from "@/lib/revenue/events";
+import type { StoredOutboundEvent } from "@/lib/revenue/events";
+import { readOutboundEventsDetailed, formatOutboundLedger } from "@/lib/revenue/outbound-read";
 import { LEGACY_CONTAMINATED_SESSIONS, isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
 import { classifySessions, classifyVisitors, summarizeBuckets, type TrafficBucket } from "@/lib/analytics/human-classification";
 
@@ -514,9 +515,11 @@ export function computePeriodMetrics(
   periodName: string,
   events: FirstPartyEvent[],
   allHistoricalEvents: FirstPartyEvent[] = [],
-  legacyClicks: StoredOutboundEvent[] = [],
+  _legacyClicks: StoredOutboundEvent[] = [],
   includeSynthetic = false
 ): PeriodSummary {
+  // Preserve the exported call signature; ID-less events have a separate ledger.
+  void _legacyClicks;
   const visitors = new Set<string>();
   const sessions = new Set<string>();
   const sessionsByVisitor = new Map<string, Set<string>>();
@@ -653,15 +656,7 @@ export function computePeriodMetrics(
     exitPageCounts.set(path, (exitPageCounts.get(path) ?? 0) + 1);
   }
 
-  // Include legacy historical outbound events if present and not already in first-party
-  if (legacyClicks.length > 0 && events.length === 0) {
-    for (const lc of legacyClicks) {
-      outboundCounts.set(lc.url, (outboundCounts.get(lc.url) ?? 0) + 1);
-      if (lc.destination === "affiliate") {
-        affiliateCounts.set(lc.softwareSlug, (affiliateCounts.get(lc.softwareSlug) ?? 0) + 1);
-      }
-    }
-  }
+  // The ID-less outbound ledger is reported separately; never blend it into visitor metrics.
 
   // Include multi-page visitors into engaged
   const multiPageVisitors = new Set<string>();
@@ -797,9 +792,11 @@ export function computePeriodMetrics(
 export async function generateAnalyticsReport() {
   const includeSynthetic = process.argv.includes("--include-synthetic");
   const events = await getAllFirstPartyEvents();
-  const legacyClicks = await getOutboundEvents();
+  const outboundRead = await readOutboundEventsDetailed();
+  const legacyClicks = outboundRead.events;
 
   const now = new Date();
+  console.log(formatOutboundLedger(outboundRead, now) + "\n");
   const todayStr = now.toISOString().slice(0, 10);
   const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
   const yesterdayStr = yesterday.toISOString().slice(0, 10);
@@ -827,7 +824,7 @@ export async function generateAnalyticsReport() {
   }
 
   console.log("========================================================================================");
-  console.log("                      MILOOSH REAL HUMAN USAGE & FUNNEL REPORT                          ");
+  console.log("                      MILOOSH FIRST-PARTY USAGE & FUNNEL REPORT                          ");
   console.log("========================================================================================\n");
 
   for (const p of periods) {
@@ -905,7 +902,7 @@ export async function generateAnalyticsReport() {
   console.log("========================================================================================");
   console.log(" HISTORICAL DATA PROVENANCE:");
   console.log(" - First-Party Analytics Layer: Deployed live with zero PII, anonymous visitor/session IDs.");
-  console.log(` - Legacy Outbound Click Log: ${legacyClicks.length} total events in Blob store.`);
+  console.log(` - Outbound Event Log: ${legacyClicks.length} readable events (${outboundRead.backend}; ${outboundRead.status}).`);
   if (legacyClicks.some(c => c.softwareSlug === "pipedrive")) {
     console.log("   * Note: 2026-08-19 Pipedrive click recorded during controlled production verification test.");
   }

@@ -6,10 +6,10 @@ import { Badge } from "@/components/Badge";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getAllSoftware } from "@/data/software";
 import {
-  getOutboundEvents,
   isOutboundTrackingEnabled,
   summarizeOutboundEventsByProduct,
 } from "@/lib/revenue/events";
+import { readOutboundEventsDetailed, countOutboundLedger } from "@/lib/revenue/outbound-read";
 
 /**
  * Sprint 9 Tasks 7-8 — private admin report over the local, first-party
@@ -35,8 +35,10 @@ const DESTINATION_LABEL: Record<string, string> = {
 
 export default async function OutboundClicksReportPage() {
   const trackingEnabled = isOutboundTrackingEnabled();
-  const events = await getOutboundEvents();
-  const summary = summarizeOutboundEventsByProduct(events);
+  const read = await readOutboundEventsDetailed();
+  const events = read.events;
+  const counts = countOutboundLedger(events);
+  const summary = summarizeOutboundEventsByProduct(events.filter((event) => event.isTest !== undefined));
   const softwareBySlug = new Map(getAllSoftware().map((item) => [item.slug, item]));
 
   const totalOfficial = summary.reduce((sum, row) => sum + row.officialClicks, 0);
@@ -63,12 +65,9 @@ export default async function OutboundClicksReportPage() {
             ). See <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm">docs/revenue.md</code>.
           </p>
           <p className="mt-3 text-sm leading-6 text-zinc-500">
-            The three totals below exclude QA/test clicks (this project&apos;s{" "}
-            <code className="rounded bg-white/10 px-1 py-0.5">?qa=1</code> convention) so a real
-            first click can&apos;t hide inside routine verification noise — test clicks are
-            reported separately, never discarded. Every row in the table below is a real,
-            individually recorded event; each is tagged <strong className="text-white">real</strong>{" "}
-            or <strong className="text-amber-300">test</strong> explicitly.
+            Totals include only events explicitly marked non-test. This does not prove human traffic,
+            unique visitors, conversions or revenue. Missing test markers remain unclassified.
+            Do not add these counts to the separate first-party analytics store: overlap is unknown.
           </p>
         </header>
 
@@ -77,36 +76,39 @@ export default async function OutboundClicksReportPage() {
             <p className="text-sm leading-6 text-zinc-400">
               Tracking is off, which is this project&apos;s default (see the privacy-policy
               prerequisite in <code className="rounded bg-white/10 px-1 py-0.5">docs/revenue.md</code>).
-              No clicks are being recorded right now, so the tables below will stay empty until
-              it&apos;s turned on.
+              New clicks are not being recorded right now. Existing historical records can still appear below.
             </p>
           </Card>
         ) : null}
 
+        <Card className="mt-6">
+          <p className="text-sm text-zinc-300">Read status: {read.status} ({read.backend}). Unclassified events: {counts.unclassified}. Recorded events: {counts.stored}.</p>
+          {read.status !== "COMPLETE" ? <p role="alert" className="mt-2 text-sm text-amber-300">{read.status === "UNAVAILABLE" ? "Measurement unavailable, not zero traffic." : "Incomplete read. Displayed counts cover readable records only."}</p> : null}
+        </Card>
         <section className="mt-10 grid gap-6 sm:grid-cols-4">
           <Card>
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Official-site clicks
             </p>
-            <p className="mt-2 text-3xl font-bold text-white">{totalOfficial}</p>
+            <p className="mt-2 text-3xl font-bold text-white">{read.status === "UNAVAILABLE" ? "Unavailable" : totalOfficial}</p>
           </Card>
           <Card className="border-emerald-500/20">
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Affiliate-link clicks
             </p>
-            <p className="mt-2 text-3xl font-bold text-white">{totalAffiliate}</p>
+            <p className="mt-2 text-3xl font-bold text-white">{read.status === "UNAVAILABLE" ? "Unavailable" : totalAffiliate}</p>
           </Card>
           <Card>
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Vendor-link clicks
             </p>
-            <p className="mt-2 text-3xl font-bold text-white">{totalVendorLink}</p>
+            <p className="mt-2 text-3xl font-bold text-white">{read.status === "UNAVAILABLE" ? "Unavailable" : totalVendorLink}</p>
           </Card>
           <Card className="border-amber-500/20">
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Test clicks (excluded above)
             </p>
-            <p className="mt-2 text-3xl font-bold text-amber-300">{totalTest}</p>
+            <p className="mt-2 text-3xl font-bold text-amber-300">{read.status === "UNAVAILABLE" ? "Unavailable" : totalTest}</p>
           </Card>
         </section>
 
@@ -115,7 +117,7 @@ export default async function OutboundClicksReportPage() {
 
           {summary.length === 0 ? (
             <Card className="mt-8">
-              <p className="text-sm text-zinc-400">No outbound clicks recorded yet.</p>
+              <p className="text-sm text-zinc-400">{read.status === "COMPLETE" ? "No classified outbound clicks in this view." : "Measurement is incomplete or unavailable; do not infer zero traffic."}</p>
             </Card>
           ) : (
             <Card className="mt-8 overflow-x-auto">
@@ -125,7 +127,7 @@ export default async function OutboundClicksReportPage() {
                   <span>Official</span>
                   <span>Affiliate</span>
                   <span>Vendor link</span>
-                  <span>Total (real)</span>
+                  <span>Total (non-test)</span>
                   <span>Test</span>
                 </div>
                 <div className="divide-y divide-white/10">
@@ -158,7 +160,7 @@ export default async function OutboundClicksReportPage() {
 
           {events.length === 0 ? (
             <Card className="mt-8">
-              <p className="text-sm text-zinc-400">No outbound clicks recorded yet.</p>
+              <p className="text-sm text-zinc-400">{read.status === "COMPLETE" ? "No classified outbound clicks in this view." : "Measurement is incomplete or unavailable; do not infer zero traffic."}</p>
             </Card>
           ) : (
             <Card className="mt-8 overflow-x-auto">
@@ -193,8 +195,8 @@ export default async function OutboundClicksReportPage() {
                       <span className="text-zinc-400">{event.sourcePage}</span>
                       <span className="text-zinc-400">{event.timestamp}</span>
                       <span>
-                        <Badge className={event.isTest ? "border-amber-500/30 text-amber-300" : "border-emerald-500/30 text-emerald-300"}>
-                          {event.isTest ? "test" : "real"}
+                        <Badge className={event.isTest === false ? "border-emerald-500/30 text-emerald-300" : "border-amber-500/30 text-amber-300"}>
+                          {event.isTest === true ? "test" : event.isTest === false ? "non-test" : "unclassified"}
                         </Badge>
                       </span>
                     </div>

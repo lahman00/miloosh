@@ -6,9 +6,9 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupForm";
 
 export const metadata: Metadata = {
-  title: "Miloosh Weekly Software Brief",
+  title: "Miloosh Software Brief: Interest List",
   description:
-    "Verified software pricing changes, plan changes, and migration warnings — sourced the same way as every Miloosh page, no fluff.",
+    "Verified software pricing changes, plan changes, and migration warnings — sourced the same way as every Miloosh page, Join the interest list; email delivery has not launched yet.",
   alternates: { canonical: "/newsletter" },
 };
 
@@ -38,11 +38,11 @@ export default function NewsletterPage() {
             <Mail className="h-5 w-5" strokeWidth={2.25} />
           </span>
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Miloosh Weekly Software Brief
+            Miloosh Software Brief: Interest List
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
             Short, verified software-buying intelligence — built from the same sourced-and-dated
-            research behind every Miloosh page. No affiliate spam, no invented trends.
+            research behind every Miloosh page. Join the interest list for a planned software-buying brief. Sending is not active yet, and no weekly schedule is promised.
           </p>
         </header>
 

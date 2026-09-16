@@ -82,11 +82,10 @@ export type SubscribeInput = {
 };
 
 /**
- * Records (or updates) a lead. Never throws -- a storage hiccup must
- * never turn a real signup into a user-visible error; the caller still
- * reports success to the visitor and this is best-effort persistence,
- * same discipline as recordOutboundEvent. Returns the lead so the API
- * route can build the unsubscribe link.
+ * Records (or updates) a lead. Unlike best-effort click telemetry, a
+ * subscription must only report success after persistence succeeds.
+ * Throws a generic error on write failure; the route returns a retryable
+ * response without exposing addresses, tokens or provider errors.
  */
 export async function recordNewsletterLead(input: SubscribeInput): Promise<NewsletterLead> {
   const normalizedEmail = input.email.trim().toLowerCase();
@@ -115,7 +114,7 @@ export async function recordNewsletterLead(input: SubscribeInput): Promise<Newsl
       leads.push(lead);
       writeLocalFallback(leads);
     } catch {
-      // Local dev/test filesystem hiccup -- never crash the caller over it.
+      throw new Error("Newsletter storage unavailable");
     }
     return lead;
   }
@@ -129,7 +128,7 @@ export async function recordNewsletterLead(input: SubscribeInput): Promise<Newsl
       contentType: "application/json",
     });
   } catch {
-    // Store unreachable/misconfigured/transient error -- best-effort, never 500 the route.
+    throw new Error("Newsletter storage unavailable");
   }
   return lead;
 }

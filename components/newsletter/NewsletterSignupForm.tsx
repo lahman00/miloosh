@@ -47,7 +47,9 @@ export function NewsletterSignupForm({ source }: { source: string }) {
           isTest,
         }),
       });
-      setStatus(res.ok ? "done" : "error");
+      const result: unknown = await res.json();
+      const subscribed = !!result && typeof result === "object" && "subscribed" in result && result.subscribed === true;
+      setStatus(res.ok && subscribed ? "done" : "error");
     } catch {
       setStatus("error");
     }
@@ -57,7 +59,7 @@ export function NewsletterSignupForm({ source }: { source: string }) {
     return (
       <div className="flex items-center gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-sm text-emerald-300">
         <CheckCircle2 className="h-5 w-5 shrink-0" />
-        You&apos;re on the list. We&apos;ll only email you when there&apos;s something real to share.
+        Your interest is saved. Email delivery has not launched yet; there is no welcome email to wait for.
       </div>
     );
   }
@@ -69,6 +71,8 @@ export function NewsletterSignupForm({ source }: { source: string }) {
           <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
           <input
             type="email"
+            aria-label="Email address"
+            autoComplete="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -81,10 +85,11 @@ export function NewsletterSignupForm({ source }: { source: string }) {
           disabled={!consent || status === "submitting"}
           className="shrink-0 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {status === "submitting" ? "Subscribing…" : "Subscribe"}
+          {status === "submitting" ? "Saving…" : "Join the interest list"}
         </button>
       </div>
 
+      <p className="text-xs text-zinc-400">Email delivery is not active yet. Joining records your interest; no immediate email is promised.</p>
       <label className="flex items-start gap-2 text-xs text-zinc-500">
         <input
           type="checkbox"
@@ -102,7 +107,7 @@ export function NewsletterSignupForm({ source }: { source: string }) {
         </span>
       </label>
 
-      {status === "error" ? <p className="text-xs text-red-400">Something went wrong — please try again.</p> : null}
+      {status === "error" ? <p role="alert" className="text-xs text-red-400">We could not confirm your registration was saved. Please try again.</p> : null}
     </form>
   );
 }

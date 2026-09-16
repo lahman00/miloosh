@@ -1,3 +1,4 @@
+import { EcommerceDecisionKit } from "@/components/EcommerceDecisionKit";
 import { BuyerDecisionBrief } from "@/components/BuyerDecisionBrief";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -173,6 +174,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
           <nav aria-label="On this page" className="mb-8 flex flex-wrap gap-2 text-sm">
             {[
               { href: "#quick-comparison", label: "Compare the shortlist" },
+              ...(guide.slug === "best-ecommerce-platform-for-small-business" ? [{ href: "#store-decision-kit", label: "Free store checklist" }] : []),
               ...(BUYER_DECISION_BRIEFS[guide.slug] ? [{ href: "#buyer-decision-worksheet", label: "Decision worksheet" }] : []),
               { href: "#product-shortlist", label: "Fit and tradeoffs" },
               { href: "#buyer-questions", label: "Buying questions" },
@@ -189,56 +191,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
             </div>
           )}
 
-          {/* Overview & Target Audience */}
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="md:col-span-2 space-y-4">
-              <h2 className="text-2xl font-bold text-white">Why This Role Decision Matters</h2>
-              <p className="text-zinc-300 leading-relaxed text-base sm:text-lg">
-                {guide.intro}
-              </p>
-            </div>
-
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-              <h3 className="font-semibold text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
-                <Star className="w-4 h-4 text-amber-400" />
-                Who This Guide Is For
-              </h3>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-zinc-400">
-                {guide.targetAudience.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
-          <BuyerDecisionBrief slug={guide.slug} />
-
-        {/* Evaluation Criteria */}
-          <section className="mb-14">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">How We Evaluated Software for {guide.roleName}</h2>
-              <p className="text-zinc-400 text-sm sm:text-base">
-                Generic feature lists fail to capture role-specific realities. We evaluated each platform against four critical dimensions that directly impact daily operations.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {guide.keyCriteria.map((criterion, idx) => (
-                <div key={idx} className="p-5 rounded-xl border border-white/10 bg-white/[0.02] flex flex-col justify-between">
-                  <div>
-                    <div className="w-8 h-8 rounded-lg bg-white/10 font-bold text-white flex items-center justify-center text-sm mb-3">
-                      {idx + 1}
-                    </div>
-                    <h3 className="font-semibold text-white mb-2 text-base">{criterion.title}</h3>
-                    <p className="text-xs text-zinc-400 leading-relaxed">{criterion.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          {guide.slug === "best-ecommerce-platform-for-small-business" ? <EcommerceDecisionKit /> : null}
 
           {/* Quick Comparison Summary Table */}
           <section id="quick-comparison" className="mb-14 scroll-mt-24">
@@ -303,6 +256,57 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          {/* Overview & Target Audience */}
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="md:col-span-2 space-y-4">
+              <h2 className="text-2xl font-bold text-white">Why This Role Decision Matters</h2>
+              <p className="text-zinc-300 leading-relaxed text-base sm:text-lg">
+                {guide.intro}
+              </p>
+            </div>
+
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+              <h3 className="font-semibold text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                <Star className="w-4 h-4 text-amber-400" />
+                Who This Guide Is For
+              </h3>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-zinc-400">
+                {guide.targetAudience.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <BuyerDecisionBrief slug={guide.slug} />
+
+        {/* Evaluation Criteria */}
+          <section className="mb-14">
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-white mb-2">How We Evaluated Software for {guide.roleName}</h2>
+              <p className="text-zinc-400 text-sm sm:text-base">
+                Generic feature lists fail to capture role-specific realities. We evaluated each platform against four critical dimensions that directly impact daily operations.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {guide.keyCriteria.map((criterion, idx) => (
+                <div key={idx} className="p-5 rounded-xl border border-white/10 bg-white/[0.02] flex flex-col justify-between">
+                  <div>
+                    <div className="w-8 h-8 rounded-lg bg-white/10 font-bold text-white flex items-center justify-center text-sm mb-3">
+                      {idx + 1}
+                    </div>
+                    <h3 className="font-semibold text-white mb-2 text-base">{criterion.title}</h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed">{criterion.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 

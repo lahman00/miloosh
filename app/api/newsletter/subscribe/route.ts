@@ -50,6 +50,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ subscribed: false, reason: "invalid_json" }, { status: 400 });
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return NextResponse.json({ subscribed: false, reason: "invalid_body" }, { status: 400 });
+  }
+
   const email = typeof body.email === "string" ? body.email.trim() : "";
   // Explicit, un-pre-checked consent is required server-side too, not just
   // in the form's own disabled-until-checked UI -- a client could bypass
@@ -70,17 +74,21 @@ export async function POST(request: NextRequest) {
   const visitorId = typeof body.visitorId === "string" ? body.visitorId : undefined;
   const sessionId = typeof body.sessionId === "string" ? body.sessionId : "s_anon";
 
-  await recordNewsletterLead({
-    email,
-    source: body.source,
-    landingPath: typeof body.landingPath === "string" ? body.landingPath : undefined,
-    utmSource: typeof body.utmSource === "string" ? body.utmSource : undefined,
-    utmMedium: typeof body.utmMedium === "string" ? body.utmMedium : undefined,
-    utmCampaign: typeof body.utmCampaign === "string" ? body.utmCampaign : undefined,
-    utmContent: typeof body.utmContent === "string" ? body.utmContent : undefined,
-    visitorId,
-    isTest,
-  });
+  try {
+    await recordNewsletterLead({
+      email,
+      source: body.source,
+      landingPath: typeof body.landingPath === "string" ? body.landingPath : undefined,
+      utmSource: typeof body.utmSource === "string" ? body.utmSource : undefined,
+      utmMedium: typeof body.utmMedium === "string" ? body.utmMedium : undefined,
+      utmCampaign: typeof body.utmCampaign === "string" ? body.utmCampaign : undefined,
+      utmContent: typeof body.utmContent === "string" ? body.utmContent : undefined,
+      visitorId,
+      isTest,
+    });
+  } catch {
+    return NextResponse.json({ subscribed: false, reason: "storage_unavailable" }, { status: 503 });
+  }
 
   // Behavioral marker only -- no email address in the anonymous analytics stream.
   await recordFirstPartyEvent({
