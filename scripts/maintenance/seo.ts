@@ -126,12 +126,24 @@ function checkOrphanRisk(): MaintenanceIssue[] {
   const home = readSourceFile("app/page.tsx");
   const compareIndex = readSourceFile("app/compare/page.tsx");
 
-  if (!/\{allSoftware\.map\(/.test(home)) {
+  const hasDirectSoftwareHub = /\{allSoftware\.map\(/.test(home);
+  const hasCategoryHub = /\{allCategories\.map\(/.test(home);
+  const categoryPage = readSourceFile("app/category/[slug]/page.tsx");
+  const categoryPagesRenderSoftware = /\{software\.map\(/.test(categoryPage);
+  const categorySlugs = new Set(getAllCategories().map((category) => category.slug));
+  const everySoftwareHasCategoryPath = getAllSoftware().every((software) => categorySlugs.has(software.category));
+
+  // The homepage intentionally uses category hubs plus a curated software grid
+  // instead of rendering 350+ software links at once. That is still a complete
+  // crawl path when every category is linked from home and every software entry
+  // is rendered on its category page. Only fail if neither discovery model is
+  // complete.
+  if (!hasDirectSoftwareHub && !(hasCategoryHub && categoryPagesRenderSoftware && everySoftwareHasCategoryPath)) {
     issues.push({
       id: "seo-orphan-risk-software",
       severity: "critical",
-      title: "Homepage may no longer link every software page",
-      description: "app/page.tsx no longer contains the expected `{allSoftware.map(` pattern in its browse section — every software page could become unreachable except via search/sitemap.",
+      title: "Software pages may have lost a complete internal discovery path",
+      description: "Neither a direct all-software homepage hub nor a complete homepage → category → software path could be verified from the current source/data.",
       location: "app/page.tsx",
     });
   }
