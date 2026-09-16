@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { get as getBlob, list as listBlobs, put as putBlob } from "@vercel/blob";
 import { randomUUID, createHash } from "node:crypto";
 
 /**
@@ -21,9 +22,8 @@ import { randomUUID, createHash } from "node:crypto";
  * address) collected for a stated purpose (the newsletter) -- a
  * fundamentally different category from the anonymous, no-PII first-
  * party analytics store (lib/analytics/events.ts) and never merged with
- * it. Stored `access: "private"` (never a public Blob URL). An
- * unsubscribe always works, is never a dark pattern, and consent is
- * never pre-checked -- see app/api/newsletter/subscribe/route.ts and
+ * it. Stored `access: "private"` (never a public Blob URL). Unsubscribe
+ * failures must remain explicit; consent is never pre-checked -- see app/api/newsletter/subscribe/route.ts and
  * components/newsletter/NewsletterSignupForm.tsx.
  */
 
@@ -42,33 +42,6 @@ export type NewsletterLead = {
   unsubscribedAt: string | null;
 };
 
-const BLOB_PREFIX = "newsletter-leads/";
-const LOCAL_FALLBACK_PATH = path.join(process.cwd(), "var", "newsletter-leads.json");
-const MAX_STORED_LOCAL_LEADS = 5000;
-
-function hasBlobToken(): boolean {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
-}
-
-function emailKey(email: string): string {
-  return createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
-}
-
-function readLocalFallback(): NewsletterLead[] {
-  try {
-    const contents = fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8");
-    const parsed: unknown = JSON.parse(contents);
-    return Array.isArray(parsed) ? (parsed as NewsletterLead[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeLocalFallback(leads: NewsletterLead[]): void {
-  fs.mkdirSync(path.dirname(LOCAL_FALLBACK_PATH), { recursive: true });
-  fs.writeFileSync(LOCAL_FALLBACK_PATH, JSON.stringify(leads.slice(-MAX_STORED_LOCAL_LEADS), null, 2));
-}
-
 export type SubscribeInput = {
   email: string;
   source: string;
@@ -81,134 +54,170 @@ export type SubscribeInput = {
   isTest?: boolean;
 };
 
-/**
- * Records (or updates) a lead. Unlike best-effort click telemetry, a
- * subscription must only report success after persistence succeeds.
- * Throws a generic error on write failure; the route returns a retryable
- * response without exposing addresses, tokens or provider errors.
- */
-export async function recordNewsletterLead(input: SubscribeInput): Promise<NewsletterLead> {
-  const normalizedEmail = input.email.trim().toLowerCase();
-  const existing = await getLeadByEmail(normalizedEmail);
+const BLOB_PREFIX = "newsletter-leads/";
+const LOCAL_FALLBACK_PATH = path.join(process.cwd(), "var", "newsletter-leads.json");
+const storageError = () => new Error("Newsletter storage unavailable");
+const hasBlobToken = () => Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+const emailKey = (email: string) => createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
+const blobPath = (email: string) => `${BLOB_PREFIX}${emailKey(email)}.json`;
+const validDate = (value: unknown): value is string => typeof value === "string" && Number.isFinite(Date.parse(value));
 
-  const lead: NewsletterLead = {
-    email: normalizedEmail,
-    consentedAt: new Date().toISOString(),
-    source: input.source,
-    landingPath: input.landingPath,
-    utmSource: input.utmSource,
-    utmMedium: input.utmMedium,
-    utmCampaign: input.utmCampaign,
-    utmContent: input.utmContent,
-    visitorId: input.visitorId,
-    isTest: input.isTest,
+// רשומה פגומה אינה רשומה חסרה; אין לדלג עליה או לדרוס אותה בשקט.
+function checkedLead(value: unknown): NewsletterLead {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw storageError();
+  const row = value as Record<string, unknown>;
+  if (typeof row.email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(row.email)
+    || row.email !== row.email.trim().toLowerCase() || !validDate(row.consentedAt)
+    || typeof row.source !== "string" || !row.source
+    || typeof row.unsubscribeToken !== "string" || !row.unsubscribeToken
+    || !(row.unsubscribedAt === null || validDate(row.unsubscribedAt))
+    || !(row.isTest === undefined || typeof row.isTest === "boolean")) throw storageError();
+  for (const key of ["landingPath", "utmSource", "utmMedium", "utmCampaign", "utmContent", "visitorId"]) {
+    if (row[key] !== undefined && typeof row[key] !== "string") throw storageError();
+  }
+  return value as NewsletterLead;
+}
+
+function readLocalFallback(): NewsletterLead[] {
+  let contents: string;
+  try { contents = fs.readFileSync(LOCAL_FALLBACK_PATH, "utf8"); }
+  catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw storageError();
+  }
+  try {
+    const rows: unknown = JSON.parse(contents);
+    if (!Array.isArray(rows)) throw storageError();
+    return rows.map(checkedLead);
+  } catch { throw storageError(); }
+}
+
+function writeLocalFallback(leads: NewsletterLead[]): void {
+  const temp = `${LOCAL_FALLBACK_PATH}.${randomUUID()}.tmp`;
+  try {
+    fs.mkdirSync(path.dirname(LOCAL_FALLBACK_PATH), { recursive: true });
+    // אין חיתוך רשומות. החלפה אטומית שומרת את המקור במקרה של כתיבה שנכשלה.
+    fs.writeFileSync(temp, JSON.stringify(leads, null, 2), { encoding: "utf8", mode: 0o600, flag: "wx" });
+    fs.renameSync(temp, LOCAL_FALLBACK_PATH);
+  } catch { throw storageError(); }
+  finally { try { fs.unlinkSync(temp); } catch { /* בדרך כלל הקובץ כבר הועבר. */ } }
+}
+
+type StoredLead = { lead: NewsletterLead; etag: string; pathname: string };
+
+async function readBlobRecord(pathname: string): Promise<StoredLead | null> {
+  try {
+    const result = await getBlob(pathname, { access: "private", useCache: false });
+    // בגרסת SDK המותקנת null מוחזר רק בעקבות HTTP 404. יתר הכשלים נזרקים.
+    if (result === null) return null;
+    if (result.statusCode !== 200) throw storageError();
+    const lead = checkedLead(JSON.parse(await new Response(result.stream).text()));
+    if (blobPath(lead.email) !== pathname) throw storageError();
+    return { lead, pathname, etag: result.blob.etag };
+  } catch { throw storageError(); }
+}
+
+async function listBlobPaths(): Promise<string[]> {
+  try {
+    const paths = new Set<string>(), seenCursors = new Set<string>();
+    let cursor: string | undefined;
+    // הגבול מונע ריצה בלתי מוגבלת; הגעה אליו היא שגיאה, לעולם לא רשימה מלאה.
+    for (let page = 0; page < 100; page++) {
+      const batch = await listBlobs({ prefix: BLOB_PREFIX, limit: 1000, cursor });
+      for (const blob of batch.blobs) {
+        if (!/^newsletter-leads\/[a-f0-9]{64}\.json$/.test(blob.pathname)) throw storageError();
+        paths.add(blob.pathname);
+      }
+      if (!batch.hasMore) return [...paths];
+      if (!batch.cursor || seenCursors.has(batch.cursor)) throw storageError();
+      seenCursors.add(batch.cursor); cursor = batch.cursor;
+    }
+    throw storageError();
+  } catch { throw storageError(); }
+}
+
+async function saveBlobLead(lead: NewsletterLead, existing: StoredLead | null): Promise<void> {
+  try {
+    if (existing && !existing.etag) throw storageError();
+    await putBlob(blobPath(lead.email), JSON.stringify(lead), {
+      access: "private", addRandomSuffix: false, contentType: "application/json",
+      // יצירה אינה דורסת מתחרה; עדכון מותר רק אם הגרסה שנקראה עדיין תקפה.
+      ...(existing ? { ifMatch: existing.etag } : { allowOverwrite: false }),
+    });
+  } catch { throw storageError(); }
+}
+
+function newLead(input: SubscribeInput, existing: NewsletterLead | null): NewsletterLead {
+  return {
+    email: input.email.trim().toLowerCase(), consentedAt: new Date().toISOString(), source: input.source,
+    landingPath: input.landingPath, utmSource: input.utmSource, utmMedium: input.utmMedium,
+    utmCampaign: input.utmCampaign, utmContent: input.utmContent, visitorId: input.visitorId, isTest: input.isTest,
     unsubscribeToken: existing?.unsubscribeToken ?? randomUUID(),
-    // Re-subscribing (even after a prior unsubscribe) clears the
-    // unsubscribe timestamp -- a fresh, explicit consent action.
+    // רק הרשמה חדשה עם הסכמה מפורשת במסלול השרת מפעילה מחדש את הרשומה.
     unsubscribedAt: null,
   };
+}
 
+export async function recordNewsletterLead(input: SubscribeInput): Promise<NewsletterLead> {
+  const email = input.email.trim().toLowerCase();
   if (!hasBlobToken()) {
-    try {
-      const leads = readLocalFallback().filter((l) => l.email !== normalizedEmail);
-      leads.push(lead);
-      writeLocalFallback(leads);
-    } catch {
-      throw new Error("Newsletter storage unavailable");
-    }
+    // מקומית הקריאה והכתיבה סינכרוניות באותו תהליך; אין הבטחת נעילה בין תהליכים.
+    const leads = readLocalFallback();
+    const lead = checkedLead(newLead(input, leads.find(l => l.email === email) ?? null));
+    writeLocalFallback([...leads.filter(l => l.email !== email), lead]);
     return lead;
   }
-
-  try {
-    const { put } = await import("@vercel/blob");
-    await put(`${BLOB_PREFIX}${emailKey(normalizedEmail)}.json`, JSON.stringify(lead), {
-      access: "private",
-      addRandomSuffix: false,
-      allowOverwrite: true,
-      contentType: "application/json",
-    });
-  } catch {
-    throw new Error("Newsletter storage unavailable");
-  }
+  const stored = await readBlobRecord(blobPath(email));
+  const lead = checkedLead(newLead(input, stored?.lead ?? null));
+  await saveBlobLead(lead, stored);
   return lead;
 }
 
 export async function getLeadByEmail(email: string): Promise<NewsletterLead | null> {
-  const normalizedEmail = email.trim().toLowerCase();
-  if (!hasBlobToken()) {
-    return readLocalFallback().find((l) => l.email === normalizedEmail) ?? null;
-  }
-  try {
-    const { head, get } = await import("@vercel/blob");
-    const pathname = `${BLOB_PREFIX}${emailKey(normalizedEmail)}.json`;
-    await head(pathname); // throws if the object doesn't exist -- cheaper than a full get() just to check
-    const result = await get(pathname, { access: "private", useCache: false });
-    if (!result || result.statusCode !== 200) return null;
-    return JSON.parse(await new Response(result.stream).text()) as NewsletterLead;
-  } catch {
-    return null;
-  }
+  const normalized = email.trim().toLowerCase();
+  if (!hasBlobToken()) return readLocalFallback().find(l => l.email === normalized) ?? null;
+  return (await readBlobRecord(blobPath(normalized)))?.lead ?? null;
 }
 
-/**
- * Marks a lead unsubscribed by their real unsubscribe token, not by a
- * guessable email lookup -- app/newsletter/unsubscribe/page.tsx is the
- * only caller. Never fabricates success: returns false if no lead
- * matches the token (an already-unsubscribed or invalid link shows an
- * honest "not found" state, not a fake confirmation).
- */
+// true פירושו העדפה שנשמרה כמוסרת; false פירושו חיפוש מלא ללא התאמה.
+// כשל אחסון נזרק בנפרד ומוצג במסך כמצב זמני, לא כקישור שגוי.
 export async function unsubscribeByToken(token: string): Promise<boolean> {
+  if (typeof token !== "string" || !token.trim() || token.length > 256) return false;
   if (!hasBlobToken()) {
-    const leads = readLocalFallback();
-    const lead = leads.find((l) => l.unsubscribeToken === token);
+    const leads = readLocalFallback(), lead = leads.find(l => l.unsubscribeToken === token);
     if (!lead) return false;
-    lead.unsubscribedAt = new Date().toISOString();
-    writeLocalFallback(leads);
+    if (lead.unsubscribedAt) return true;
+    lead.unsubscribedAt = new Date().toISOString(); writeLocalFallback(leads); return true;
+  }
+  let failedRead = false;
+  for (const pathname of await listBlobPaths()) {
+    let stored: StoredLead | null;
+    try {
+      stored = await readBlobRecord(pathname);
+      if (!stored) throw storageError();
+    } catch { failedRead = true; continue; }
+    if (stored.lead.unsubscribeToken !== token) continue;
+    if (stored.lead.unsubscribedAt) return true;
+    await saveBlobLead({ ...stored.lead, unsubscribedAt: new Date().toISOString() }, stored);
     return true;
   }
-
-  try {
-    const { list, put, get } = await import("@vercel/blob");
-    const { blobs } = await list({ prefix: BLOB_PREFIX });
-    for (const blob of blobs) {
-      const result = await get(blob.pathname, { access: "private", useCache: false });
-      if (!result || result.statusCode !== 200) continue;
-      const lead = JSON.parse(await new Response(result.stream).text()) as NewsletterLead;
-      if (lead.unsubscribeToken !== token) continue;
-      lead.unsubscribedAt = new Date().toISOString();
-      await put(blob.pathname, JSON.stringify(lead), { access: "private", addRandomSuffix: false, allowOverwrite: true, contentType: "application/json" });
-      return true;
-    }
-    return false;
-  } catch {
-    return false;
-  }
+  if (failedRead) throw storageError();
+  return false;
 }
 
-/** Full lead list -- powers a future /internal report. Active (non-unsubscribed) leads only unless includeUnsubscribed is set. */
 export async function getAllNewsletterLeads(includeUnsubscribed = false): Promise<NewsletterLead[]> {
-  let leads: NewsletterLead[];
-  if (!hasBlobToken()) {
-    leads = readLocalFallback();
-  } else {
-    try {
-      const { list, get } = await import("@vercel/blob");
-      const { blobs } = await list({ prefix: BLOB_PREFIX });
-      const results = await Promise.all(
-        blobs.map(async (blob) => {
-          try {
-            const result = await get(blob.pathname, { access: "private", useCache: false });
-            if (!result || result.statusCode !== 200) return null;
-            return JSON.parse(await new Response(result.stream).text()) as NewsletterLead;
-          } catch {
-            return null;
-          }
-        })
-      );
-      leads = results.filter((l): l is NewsletterLead => l !== null);
-    } catch {
-      leads = [];
+  const leads: NewsletterLead[] = [];
+  if (!hasBlobToken()) leads.push(...readLocalFallback());
+  else {
+    const paths = await listBlobPaths();
+    for (let start = 0; start < paths.length; start += 8) {
+      const batch = await Promise.all(paths.slice(start, start + 8).map(async pathname => {
+        const stored = await readBlobRecord(pathname);
+        if (!stored) throw storageError();
+        return stored.lead;
+      }));
+      leads.push(...batch);
     }
   }
-  return includeUnsubscribed ? leads : leads.filter((l) => !l.unsubscribedAt);
+  return includeUnsubscribed ? leads : leads.filter(l => !l.unsubscribedAt);
 }
