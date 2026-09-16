@@ -1,3 +1,4 @@
+import { WooCommerceRepairCheck } from "@/components/WooCommerceRepairCheck";
 import { StorePlanFit } from "@/components/StorePlanFit";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
 import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
@@ -241,6 +242,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
 
         <StorePlanFit slug={software.slug} />
+        <WooCommerceRepairCheck slug={software.slug} />
         <PricingSection software={software} />
 
         <Card className="mt-14">

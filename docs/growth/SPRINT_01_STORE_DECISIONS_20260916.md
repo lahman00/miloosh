@@ -13,7 +13,7 @@ The local GSC snapshots are from August 9/13; do not present them as September p
 | 01 | Decision kit: repair, embed or migrate? | `/best-ecommerce-platform-for-small-business` | Decision | IMPLEMENTED_LOCAL | Ungated worksheet and four fit paths; local QA required |
 | 02 | Wix versus Shopify for a website-led small store | `/compare/wix-vs-shopify` | Decision | QUEUED | Top answer by site-led versus commerce-led workflow |
 | 03 | The cheapest plan that accepts the required payments | `/software/wix` | Decision | VERIFY_FIRST | Current regional entitlement, not a generic lowest price |
-| 04 | When not to leave WooCommerce after a plugin problem | `/software/woocommerce` | Decision | QUEUED | Cost and owner of a scoped repair |
+| 04 | When not to leave WooCommerce after a plugin problem | `/software/woocommerce` | Decision | IMPLEMENTED_LOCAL | Repair-before-replatform panel with official conflict-testing and staging guidance; no invented repair price |
 | 05 | Keep the website, replace the commerce layer | `/compare/ecwid-vs-shopify` | Decision | QUEUED | Embedding versus rebuilding; preserve distinct intent |
 | 06 | Year-one quote for a small store, not monthly marketing prices | `/best-ecommerce-platform-for-small-business` | Decision | IMPLEMENTED_LOCAL | Blank cost comparison in downloadable worksheet; no invented rates |
 | 07 | Staff roles that change the payable plan | `/compare/wix-vs-shopify` | Decision | VERIFY_FIRST | Owner, editor and fulfillment access on current tiers |
