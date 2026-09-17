@@ -277,3 +277,17 @@ bot-heavy traffic as acquisition success.
 - New-directory screens: Startup Buffer stopped at an explicit human-verification challenge; Tools.so browser timed out; Crowdstax and Dir Hub require login. No completed submission or account signup claimed. FeedMyStartup offers an email submission route but its browser form did not become accessible at first read.
 - Security patch 141ee10 was already deployed before this session. Independent production npm audit of that lockfile returned zero known production dependency vulnerabilities; no universal security guarantee.
 - New infrastructure repair: social queue read errors no longer become false empty history. Reproduced eight failing cases before fix; 15 regression tests now included. Read-only compatibility check accepted all 2,485 live records; no social queue write or post. Guide content and visual files unchanged.
+
+
+## 2026-09-17 — week-1 evidence reconciliation and merchant-focused outreach
+
+- FreshBooks: SENT_VERIFIED; from hello@miloosh.com; Gmail `1a0af0bfd8e99f31`; מענה לשאלת מקורות התנועה אחרי אישור; לא הומצא פילוח קמפיינים. No publication or revenue claimed.
+- HyNote: SENT_VERIFIED_AWAITING_TERMS; from hello@miloosh.com; Gmail `1a0af13a4dbff057`; בקשת הסכם מלא, משך גישת הבדיקה, היעדר חיוב אוטומטי וזכאות לתשלום לישראלים. No publication or revenue claimed.
+- Retail Minded: SENT_VERIFIED_AWAITING_DECISION; from hello@miloosh.com; Gmail `1a0af1974233f46d`; הצעת מדריך החלטה לחנות קטנה: לתקן את האתר, להוסיף מכירה או לעבור. No publication or revenue claimed.
+- SmallBusiness.co.uk: SENT_VERIFIED_AWAITING_DECISION; from hello@miloosh.com; Gmail `1a0af1f1a4d8f438`; הצעת מאמר על תיקון מול מעבר חנות, ללא דירוג מוצרים או קישורי שותפים. No publication or revenue claimed.
+- LaunchFree: existing LIVE listing independently reverified at https://launchfree.io/listings/miloosh.html; link rel `noopener; no nofollow observed`. NOT a new Sep 17 placement.
+- PublishYourSaaS: existing LIVE listing independently reverified at https://publishyoursaas.com/listing/miloosh-com; link rel `nofollow noreferrer`. NOT a new Sep 17 placement.
+- CurlShip: existing LIVE listing independently reverified at https://curlship.com/l/3120; link rel `noopener nofollow`. NOT a new Sep 17 placement.
+- Measurement: 97 tests passed; complete production analytics read. Lifetime confirmed-plus-strong visitor count 45; raw traffic and affiliate clicks are not conversions or revenue. Root-level guide_view instrumentation gap identified, not fixed/deployed.
+- Partner registry: 78 rows exported; 24 active/content-pending rows reviewed for sprint relevance, not freshly account-verified. FreshBooks email approval supersedes stale local PENDING_REVIEW; tracking link activation not claimed.
+- Full week-1 report: `docs/growth/WEEK1_EXECUTION_20260917_HE.md`. Evidence: central `02-Operations/week1-20260917/EVIDENCE_REGISTER.json`. No 85–90% completion claim; no spend, signup, production deploy, or duplicate social post.
