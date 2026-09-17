@@ -22,10 +22,11 @@ export function EcommerceDecisionKit() {
         <div><dt className="font-semibold text-white">Keep the website, change commerce</dt><dd className="mt-1 text-sm leading-6 text-zinc-300"><a href="#ecwid" className="text-emerald-300 underline underline-offset-4">Evaluate embedded commerce with Ecwid</a>. Check product limits, staff needs and the checkout experience on the proposed tier.</dd></div>
       </dl>
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <a href="/resources/ecommerce-platform-decision-checklist.html" download className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 hover:bg-zinc-200">Download the free decision checklist</a>
+        <a href="/resources/ecommerce-platform-decision-checklist.html" aria-describedby="worksheet-access-note" className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 hover:bg-zinc-200">Open the free decision checklist</a>
+        <a href="/resources/ecommerce-platform-decision-checklist.html" download className="text-sm text-emerald-300 underline underline-offset-4">Download the free decision checklist</a>
         <Link href="/compare/wix-vs-shopify" className="text-sm text-emerald-300 underline underline-offset-4">Compare Wix and Shopify</Link>
       </div>
-      <p className="mt-3 text-xs leading-6 text-zinc-400">Printable HTML worksheet, no signup required. Use your own plan quote and a safe test store. The recommendations are editorial fit judgments, not benchmark results.</p>
+      <p id="worksheet-access-note" className="mt-3 text-xs leading-6 text-zinc-400">Open the worksheet in your browser or download a printable HTML copy. No email required; no signup required. Use your own plan quote and a safe test store. The recommendations are editorial fit judgments, not benchmark results.</p>
       <details className="mt-5 border-t border-white/10 pt-4">
         <summary className="cursor-pointer text-sm font-semibold text-zinc-200">Two documented constraints to check before committing</summary>
         <p className="mt-3 text-sm leading-7 text-zinc-300">Wix’s documented Cart2Cart route requires a payment-enabled plan to import store orders. The guide lists limits of 1,000 products and 1,000 orders for that import route; this is not a statement about Wix’s overall catalog capacity. Installation can be free while the migration itself is paid. Review the demo and quote first; the optional target-data cleanup is irreversible and can delete existing records of the selected types. <a href="https://support.wix.com/en/article/wix-stores-migrating-from-other-ecommerce-platforms-to-wix-stores" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Wix source</a>.</p>
