@@ -14,6 +14,9 @@ describe("user-first merchant decision kit", () => {
     const html = renderToStaticMarkup(createElement(EcommerceDecisionKit));
     expect(html).toContain('download=""'); expect(html).toContain('no signup required');
     for (const slug of ["wix", "shopify", "woocommerce", "ecwid"]) expect(html).toContain(`href="#${slug}"`);
+    expect(html).toContain("Quote first or checkout first?");
+    expect(html).toContain("Treat that as an elimination gate");
+    expect(html).toContain("not claims that Wix, Shopify, WooCommerce or Ecwid supports every service, quote or payment-provider combination");
     expect(fs.existsSync('public/resources/ecommerce-platform-decision-checklist.html')).toBe(true);
   });
   it("keeps the worksheet private-by-design, no tracking or forced opt-in", () => {

@@ -7,6 +7,14 @@ export function EcommerceDecisionKit() {
       <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300">Small-store decision kit</p>
       <h2 id="store-decision-kit-title" className="mt-3 text-2xl font-bold text-white">Fix your current store or switch platforms?</h2>
       <p className="mt-3 text-sm leading-7 text-zinc-300">Name the problem before moving the store. Compare a focused repair, a new commerce layer on the existing website, and a full migration. Then check the catalog, checkout and records each route must preserve.</p>
+      <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.02] p-4">
+        <h3 className="font-semibold text-white">Before you compare platforms: how does the sale actually happen?</h3>
+        <ul className="mt-2 space-y-2 text-sm leading-7 text-zinc-300">
+          <li><strong className="text-white">Quote first or checkout first?</strong> Separate products customers can buy at a fixed price from installation or service work that needs an inquiry or quote first. For quote-first work, map how the request is approved and how payment happens afterward before choosing a platform.</li>
+          <li><strong className="text-white">Must you keep a payment provider?</strong> Treat that as an elimination gate. Confirm the exact provider, your business country and the intended payment flow are supported on the exact plan you would buy before shortlisting a platform.</li>
+        </ul>
+        <p className="mt-2 text-xs leading-6 text-zinc-400">These are buyer checks, not claims that Wix, Shopify, WooCommerce or Ecwid supports every service, quote or payment-provider combination.</p>
+      </div>
       <dl className="mt-5 grid gap-4 sm:grid-cols-2">
         <div><dt className="font-semibold text-white">Website first, with a supported store</dt><dd className="mt-1 text-sm leading-6 text-zinc-300"><a href="#wix" className="text-emerald-300 underline underline-offset-4">Evaluate Wix</a> when keeping website and store management together is the priority. Prove the required commerce plan and payment support first.</dd></div>
         <div><dt className="font-semibold text-white">Commerce operations first</dt><dd className="mt-1 text-sm leading-6 text-zinc-300"><a href="#shopify" className="text-emerald-300 underline underline-offset-4">Evaluate Shopify</a> when a managed commerce-led rebuild fits. Quote the required apps and a separate method for each data family.</dd></div>
