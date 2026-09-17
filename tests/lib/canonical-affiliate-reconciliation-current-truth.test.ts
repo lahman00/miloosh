@@ -15,7 +15,8 @@ describe("canonical affiliate reconciliation current truth", () => {
     // surveymonkey entry (status: PROGRAM_NOT_VERIFIED). Jotform added the
     // same day (back to 20) on the owner's direct first-hand account of the
     // Jotform correspondence -- see canonical-ledger.ts's jotform entry.
-    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(21);
+    // FreshBooks added 2026-09-17 from direct first-party approval and issued URL.
+    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(22);
     for (const slug of ACTIVE_PARTNER_SLUGS) {
       const record = bySlug.get(slug);
       expect(record, `missing reconciliation record for ${slug}`).toBeDefined();

@@ -14,7 +14,8 @@ describe("affiliate money matrix readiness semantics", () => {
     // fail-closed pending vendor confirmation. Jotform added the same day
     // (back to 20) on the owner's direct first-hand account of the Jotform
     // correspondence. See data/affiliate/active-partners.ts.
-    expect(matrix).toHaveLength(21);
+    // FreshBooks added 2026-09-17 from direct first-party approval and issued URL.
+    expect(matrix).toHaveLength(22);
     expect(new Set(matrix.map((row) => row.slug)).size).toBe(matrix.length);
   });
 

@@ -44,6 +44,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "hubstaff",
       "close",
       "surveymonkey",
+      "freshbooks", // First-party welcome to hello@miloosh.com; payout readiness remains UNVERIFIED.
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",

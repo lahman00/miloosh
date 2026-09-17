@@ -21,7 +21,7 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     title: "1. PartnerStack payout verification — hello@miloosh.com",
     priority: 1,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
-    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey"],
+    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks"],
     comparisonsAffected: 0,
     commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity; first-party partner mail corroborates the other relationships assigned to this account. SurveyMonkey restored 2026-09-10 using a different, vendor-confirmed replacement asset; the old tracking asset stays unverified. Payout-profile completion remains unverified.",
     preFilledFields: { "Account email": "hello@miloosh.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },

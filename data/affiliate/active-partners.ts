@@ -2,7 +2,7 @@ export const ACTIVE_PARTNER_SLUGS = [
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
-  "mailerlite", "omnisend", "wrike", "jotform", "surveymonkey",
+  "mailerlite", "omnisend", "wrike", "jotform", "surveymonkey", "freshbooks",
 ] as const;
 
 export type ActivePartnerSlug = (typeof ACTIVE_PARTNER_SLUGS)[number];
@@ -95,7 +95,10 @@ export type ActivePartner = {
  * -- see data/affiliate/canonical-ledger.ts's jotform entry for the full
  * evidence record.
  */
+// FreshBooks: approval and exact asset in Gmail 1a0a27bf25150cef (2026-09-15),
+// read directly 2026-09-17. Link activation is not payout or revenue verification.
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
+  { slug: "freshbooks", status: "active", affiliateUrl: "https://partner.freshbooks.com/gg7ovvifr1bd", blocker: null },
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
   { slug: "todoist", status: "active", affiliateUrl: "https://get.todoist.io/dobo71f2y038", blocker: null },
   { slug: "moosend", status: "active", affiliateUrl: "https://trymoo.moosend.com/4jis9o5bx8wx", blocker: null },
