@@ -48,3 +48,15 @@ https://support.ecwid.com/hc/en-us/articles/207808335-Ecwid-plans-and-features-f
 נמשכה ישירות כתובת `https://www.ecwid.com/pricing` מהאתר הרשמי של Ecwid. ב-HTML האנגלי העדכני, כרטיס Starter כולל `price-US` של 5 גם במסלול חודשי וגם כשווי חודשי בחיוב שנתי, עד 10 מוצרים. אותו HTML מציג Venture 35, Business 65 ו-Unlimited 149 דולר בחיוב חודשי. זהו מקור ראשון ישיר ולא תוצאת קהילה.
 החריג נשמר: Ecwid שנרשם דרך Wix משתמש במערך תוכניות נפרד לפי מסמך Ecwid הרשמי ל-Wix, ולכן מחיר Starter הישיר אינו מוצג כמחיר Wix.
 מקור: https://www.ecwid.com/pricing — קריאה ישירה 2026-09-17.
+## ביקוש מאומת נוסף: Ecwid מול WooCommerce
+ביצוא הרשמי של Search Console לאותו חלון 18.08–14.09 הופיעה השאילתה `woocommerce vs ecwid` עם 9 הופעות, 0 קליקים ומיקום ממוצע 65.44. זהו אות ביקוש אמיתי אך קטן; אין להסיק ממנו נפח חיפוש חודשי או סיכוי דירוג.
+נוספו גם `ecwid alternatives` עם 15 הופעות, `woocommerce alternatives` עם 14, וגרסאות נוספות סביב חלופות Ecwid. היצוא מוגבל ל-1000 שורות ולכן אלה אינן כל השאילתות.
+היעד הקנוני הקיים לשאלת ההשוואה הוא `/compare/ecwid-vs-woocommerce`; לא נוצר URL חדש.
+
+### מקורות רשמיים למסלול ההחלטה
+https://support.ecwid.com/hc/en-us/articles/115005872689-Guide-to-using-Ecwid-App-Market — Ecwid מתעדת שאפליקציות מוסיפות פונקציונליות ומחברות מערכות חיצוניות, וחלקן בתשלום או בחיוב חיצוני.
+https://support.ecwid.com/hc/en-us/articles/207101259-Adding-your-Ecwid-store-to-WordPress-site — Ecwid מתעדת התקנה/חיבור של חנות Ecwid לאתר WordPress וניהול דרך Ecwid admin.
+https://support.ecwid.com/hc/en-us/articles/115004678945-Ecwid-for-any-website — Ecwid מתעדת הוספת החנות לאתר קיים, כולל WordPress, Wix ופלטפורמות נוספות.
+https://woocommerce.com/pricing/ — WooCommerce מתעדת שאין דמי פלטפורמה חודשיים ל-core, אך עלויות עיבוד תשלום, אחסון ותוספים הן קווי עלות נפרדים.
+https://woocommerce.com/document/start-with-woocommerce-in-5-steps/ — WooCommerce מתעדת בחירת hosting, התקנת WordPress והפעלת WooCommerce כחלק מהקמת החנות.
+המקורות נקראו ב-17 בספטמבר 2026. הקטע שנבנה הוא תיעוד-מבוסס, לא benchmark מעשי ולא הבטחת עלות כוללת נמוכה יותר.

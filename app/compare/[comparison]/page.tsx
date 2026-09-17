@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SearchForm } from "@/components/SearchForm";
 import { WixShopifyBuyerChecks } from "@/components/WixShopifyBuyerChecks";
 import { ShopifyWooMigrationRecords } from "@/components/ShopifyWooMigrationRecords";
+import { EcwidWooStructureChoice } from "@/components/EcwidWooStructureChoice";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { ButtonLink } from "@/components/ButtonLink";
 import { getSoftware, type Software } from "@/data/software";
@@ -219,6 +220,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
 
         <WixShopifyBuyerChecks comparison={comparison} />
         <ShopifyWooMigrationRecords comparison={comparison} />
+        <EcwidWooStructureChoice comparison={comparison} />
 
         <section className="mt-14 grid gap-6 sm:grid-cols-2">
           <Card>
