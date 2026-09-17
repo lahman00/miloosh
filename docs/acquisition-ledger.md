@@ -291,3 +291,12 @@ bot-heavy traffic as acquisition success.
 - Measurement: 97 tests passed; complete production analytics read. Lifetime confirmed-plus-strong visitor count 45; raw traffic and affiliate clicks are not conversions or revenue. Root-level guide_view instrumentation gap identified, not fixed/deployed.
 - Partner registry: 78 rows exported; 24 active/content-pending rows reviewed for sprint relevance, not freshly account-verified. FreshBooks email approval supersedes stale local PENDING_REVIEW; tracking link activation not claimed.
 - Full week-1 report: `docs/growth/WEEK1_EXECUTION_20260917_HE.md`. Evidence: central `02-Operations/week1-20260917/EVIDENCE_REGISTER.json`. No 85–90% completion claim; no spend, signup, production deploy, or duplicate social post.
+
+
+## Verified follow-through 2026-09-17: guide tracking and FreshBooks
+
+- Root-level buyer-guide analytics: LIVE_VERIFIED, 34 canonical guide templates; no historic backfill.
+- FreshBooks: direct vendor approval and exact issued link read from Gmail 1a0a27bf25150cef; active registry and existing CTAs reconciled. No product claims or rankings changed. Payout configuration remains UNVERIFIED; no conversion or revenue claim.
+- Final production: dpl_9L2YLn7j5d6SccPrqaF4HhShrTN5; source c4cd915f111fa49592e94cc23bb1de649a9902ec. 1608 tests passed, 13 candidate and 13 live browser checks passed.
+- Retail Minded: automatic out-of-office through 2026-09-22, message 1a0af1a5832a9317; not editorial acceptance. No repeat follow-up sent.
+- Evidence: central 02-Operations/week1-20260917/CONTINUATION_STATUS_HE.md and release manifests. Prior missing-link and guide-event blockers are superseded by this verified execution.
