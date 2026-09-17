@@ -2,9 +2,13 @@
   "name": "Ecwid",
   "slug": "ecwid",
   "category": "ecommerce",
-  "description": "Ecwid by Lightspeed is an ecommerce platform that enables merchants to launch a standalone store or embed shopping cart widgets into existing websites with zero platform transaction fees.",
+  "description": "Ecwid by Lightspeed is an ecommerce platform that lets merchants launch a standalone store or embed commerce into an existing website. Ecwid says it does not add its own transaction fee; payment processors still charge their own processing fees.",
   "website": "https://www.ecwid.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Small businesses, creators, and existing website owners wanting to add ecommerce checkout to WordPress, Wix, or custom sites without migrating platforms.",
   "features": [
     "Embeddable shopping cart widget for existing websites (WordPress, Wix, Squarespace)",
@@ -15,88 +19,100 @@
     "Support for physical products, digital downloads, and recurring subscriptions"
   ],
   "pricing": {
-    "model": "freemium",
-    "starting_price": "$14.08/month",
-    "has_free_tier": true,
+    "starting_price": "$5 USD/month for direct Ecwid signup; Wix signups use a separate plan lineup.",
     "status": "verified",
-    "free_trial": {
-      "available": true
-    },
-    "entry_paid": {
-      "amount": "14.08",
-      "currency": "USD",
-      "billing_period": "monthly"
-    },
     "tiers": [
       {
-        "name": "Free",
-        "amount": "0",
+        "name": "Starter",
+        "notes": "Direct Ecwid signup: $5 USD/month and up to 10 products. Ecwid also shows a $5/month equivalent with annual billing. Wix signups use a separate plan lineup.",
+        "amount": "5",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Up to 5 products, customizable instant site, and zero platform transaction fees."
+        "billing_period": "monthly"
       },
       {
         "name": "Venture",
-        "amount": "14.08",
+        "amount": "35",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Billed annually at $14.08/mo (or $19/mo monthly); adds up to 100 products, digital goods (up to 25GB), and Facebook/Instagram shops."
+        "notes": "USD excluding tax when billed monthly. Ecwid also lists $29/month equivalent with annual billing ($348/year). Up to 100 products."
       },
       {
         "name": "Business",
-        "amount": "29.08",
+        "amount": "65",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Billed annually at $29.08/mo (or $39/mo monthly); adds up to 2,500 products, abandoned cart recovery, and Amazon/eBay marketplace sync."
+        "notes": "USD excluding tax when billed monthly. Ecwid also lists $49/month equivalent with annual billing ($588/year). Up to 2,500 products."
       },
       {
         "name": "Unlimited",
-        "amount": "82.50",
+        "amount": "149",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Billed annually at $82.50/mo (or $99/mo monthly); adds unlimited products, custom branded mobile app (ShopApp), and POS integration."
+        "notes": "USD excluding tax when billed monthly. Ecwid also lists $119/month equivalent with annual billing ($1,428/year). Unlimited products on the direct Ecwid lineup."
       }
     ],
-    "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
-    "official_source": "https://www.ecwid.com/pricing"
+    "last_verified": "2026-09-17",
+    "official_source": "https://www.ecwid.com/pricing",
+    "model": "paid",
+    "has_free_tier": false,
+    "free_plan": false,
+    "entry_paid": {
+      "amount": "5",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": false
+    }
   },
   "pros": [
     "Easily embeds into any pre-existing website or CMS without requiring a full site redesign or store migration",
-    "Zero platform transaction fees charged by Ecwid across all plan tiers",
+    "Ecwid says it does not charge additional transaction fees; payment-provider processing fees are separate.",
     "Multi-channel inventory synchronization spanning social commerce, online marketplaces, and physical POS"
   ],
   "cons": [
-    "Free plan is capped at 5 physical products and excludes digital downloads",
+    "Wix users who sign up for Ecwid through Wix use a separate plan lineup, so plan names, product limits, and billing can differ from direct Ecwid signup.",
     "Storefront design and layout flexibility is more restricted compared to dedicated full-site builders like Shopify",
     "Advanced SEO URL editing and product filters require upgrading to the Business tier"
   ],
   "sources": [
     "https://www.ecwid.com/pricing",
-    "https://www.ecwid.com"
+    "https://support.ecwid.com/hc/en-us/articles/25122701806108-Changes-to-the-Ecwid-plan-pricing-after-March-2-2026",
+    "https://support.ecwid.com/hc/en-us/articles/207808335-Ecwid-plans-and-features-for-Wix",
+    "https://support.ecwid.com/hc/en-us/articles/115005902569-Adding-products-to-your-store"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-09-17",
   "alternatives": [
     {
       "name": "Shopify",
       "slug": "shopify",
       "description": "An all-in-one hosted commerce platform with its own storefront, checkout, and POS.",
       "best_for": "Merchants wanting a dedicated, full-featured store rather than an embedded widget.",
-      "strengths": ["Shop Pay checkout", "Large app ecosystem", "Integrated multichannel tools"]
+      "strengths": [
+        "Shop Pay checkout",
+        "Large app ecosystem",
+        "Integrated multichannel tools"
+      ]
     },
     {
       "name": "PrestaShop",
       "slug": "prestashop",
       "description": "An open-source self-hosted commerce platform giving merchants full platform ownership.",
       "best_for": "Merchants wanting full platform ownership and customization.",
-      "strengths": ["Thousands of modules/themes", "Self-hosted control", "Optional managed hosting"]
+      "strengths": [
+        "Thousands of modules/themes",
+        "Self-hosted control",
+        "Optional managed hosting"
+      ]
     },
     {
       "name": "WooCommerce",
       "slug": "woocommerce",
       "description": "An open-source ecommerce platform built as a WordPress plugin, giving merchants control over hosting, checkout, and store customization.",
       "best_for": "Merchants already committed to WordPress who want self-hosted ownership and plugin-level customization rather than an embedded hosted cart.",
-      "strengths": ["WordPress-native", "Full checkout and data ownership", "Large theme and extension ecosystem"]
+      "strengths": [
+        "WordPress-native",
+        "Full checkout and data ownership",
+        "Large theme and extension ecosystem"
+      ]
     }
   ]
 }

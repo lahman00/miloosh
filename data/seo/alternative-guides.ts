@@ -359,7 +359,7 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
   ecwid: {
     diagnosis: "Ecwid's page now connects its alternatives to the structural choice searchers actually face: keep an embedded cart model, move to a dedicated hosted store, or take full ownership through an open-source platform.",
     heading: "Choose an Ecwid alternative by store structure",
-    introduction: "Ecwid is built to be embedded: a shopping-cart widget added into an existing WordPress, Wix, or custom site, with zero platform transaction fees. The relevant alternatives question is whether that embedded model still fits, or whether the business has outgrown it into needing a dedicated, full-featured store.",
+    introduction: "Ecwid is built to be embedded: a shopping-cart widget added into an existing WordPress, Wix, or custom site. Ecwid says it does not add its own transaction fees, while payment processors still charge their own processing fees. The relevant alternatives question is whether that embedded model still fits, or whether the business has outgrown it into needing a dedicated, full-featured store.",
     whySeekAlternative: [
       "The business has outgrown adding a cart to an existing site and needs a dedicated, standalone store.",
       "Multichannel selling, apps, and a broader ecommerce feature set matter more than embedding into a site that already exists.",

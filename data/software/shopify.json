@@ -28,21 +28,21 @@
         "amount": "29",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Monthly equivalent with annual billing, not the annual total. $39/mo if billed monthly instead. 2% fee on 3rd-party payment providers."
+        "notes": "Monthly equivalent with annual billing, not the annual total. $39/mo if billed monthly instead. Shopify lists a 2% third-party payment-provider transaction fee on this plan; that fee is separate from the provider’s own processing charge."
       },
       {
         "name": "Grow",
         "amount": "79",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Monthly equivalent with annual billing, not the annual total. Up to 5 staff accounts, 1% 3rd-party payment fee."
+        "notes": "Monthly equivalent with annual billing, not the annual total. Shopify lists a 1% third-party payment-provider transaction fee on this plan; that fee is separate from the provider’s own processing charge. Up to 5 staff accounts."
       },
       {
         "name": "Advanced",
         "amount": "299",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Monthly equivalent with annual billing, not the annual total. Up to 15 staff accounts, 0.6% 3rd-party payment fee."
+        "notes": "Monthly equivalent with annual billing, not the annual total. Shopify lists a 0.6% third-party payment-provider transaction fee on this plan; that fee is separate from the provider’s own processing charge. Up to 15 staff accounts."
       },
       {
         "name": "Plus",
@@ -53,7 +53,8 @@
       }
     ],
     "last_verified": "2026-08-17",
-    "official_source": "https://www.shopify.com/pricing"
+    "official_source": "https://www.shopify.com/pricing",
+    "model": "paid"
   },
   "best_for": "Positioned for businesses of all sizes — from solo entrepreneurs launching their first store to large enterprises.",
   "features": [

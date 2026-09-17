@@ -33,10 +33,22 @@ describe("Shopify/WooCommerce migration record gates", () => {
     expect(html).not.toContain("all variants will migrate");
   });
 
+  it("separates payment-provider cost from the platform subscription without a universal fee claim", () => {
+    const html = render();
+    expect(html).toContain("Price the payment path separately");
+    expect(html).toContain("third-party transaction fee");
+    expect(html).toContain("separate from the provider&#x27;s own processing charge");
+    expect(html).toContain("hosting, payment processing, extensions, development and maintenance");
+    expect(html).toContain("Do not treat one published percentage as universal");
+  });
+
   it("uses only official documentation and internal planning links", () => {
     const html = render();
     expect(html).toContain('href="https://help.shopify.com/en/manual/migrating-to-shopify/migrating-from-woocommerce"');
     expect(html).toContain('href="https://woocommerce.com/document/product-csv-importer-exporter/"');
+    expect(html).toContain('href="https://help.shopify.com/en/manual/payments/third-party-providers"');
+    expect(html).toContain('href="https://help.shopify.com/en/manual/your-account/manage-billing/billing-charges/types-of-charges/third-party-charges/third-party-transaction-fees"');
+    expect(html).toContain('href="https://woocommerce.com/pricing/"');
     expect(html).toContain('href="/best-ecommerce-platform-for-small-business#store-decision-kit"');
     expect(html).not.toMatch(/pxf\.io|<form|<script|aggregateRating|guaranteed|\$\d/);
   });

@@ -44,7 +44,7 @@ export function PricingSection({ software }: { software: Software }) {
       ) : null}
 
       {pricing.status === "unknown" ? (
-        <p className="mt-4 text-sm leading-7 text-amber-200">Paid pricing is not verified. Confirm the current plan, currency and billing term on the vendor&apos;s official pricing page.</p>
+        <p className="mt-4 text-sm leading-7 text-amber-200">Pricing is partially verified. Confirm the current plan, currency and billing term on the vendor&apos;s official pricing page.</p>
       ) : null}
 
       {pricing.freePlan !== undefined ? (
@@ -95,7 +95,7 @@ export function PricingSection({ software }: { software: Software }) {
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         {pricing.lastVerified ? (
-          <Badge className="border-white/10 bg-white/5 text-zinc-400">{pricing.status === "unknown" ? "Pricing reviewed; paid amount unverified" : "Pricing checked"} {formatIsoDate(pricing.lastVerified)}</Badge>
+          <Badge className="border-white/10 bg-white/5 text-zinc-400">{pricing.status === "unknown" ? "Pricing reviewed; some paid details unverified" : "Pricing checked"} {formatIsoDate(pricing.lastVerified)}</Badge>
         ) : null}
         {pricing.officialSource ? (
           <TrackedVendorLink

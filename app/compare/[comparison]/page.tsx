@@ -173,6 +173,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
   ).slice(0, 4);
 
   const relatedSoftware = getComparisonRelatedSoftware(softwareA, softwareB, 3);
+  const isStoreComparison = softwareA.category === "ecommerce" || softwareB.category === "ecommerce";
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -297,7 +298,11 @@ export default async function ComparePage({ params }: ComparePageProps) {
             </span>
             <h2 className="text-2xl font-semibold text-white">Key differences</h2>
           </div>
-          {data.keyDifferences.length > 0 ? (
+          {isStoreComparison ? (
+            <p className="mt-4 leading-7 text-zinc-400">
+              The feature summaries above use each vendor&apos;s own terminology; unmatched wording is not proof that the other platform lacks a capability. For a store-platform decision, verify the requirements that matter to your workflow in the cited vendor sources instead of treating wording differences as a capability matrix.
+            </p>
+          ) : data.keyDifferences.length > 0 ? (
             <ul className="mt-4 space-y-3">
               {data.keyDifferences.map((difference) => (
                 <li key={difference} className="flex items-start gap-2 text-zinc-400">

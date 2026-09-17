@@ -53,3 +53,25 @@ describe("generateComparisonIntro (regression: the second sentence used to be id
     expect(intro).toContain("B lists 2 features across 2 platforms");
   });
 });
+
+
+describe("comparison constraints disclosure", () => {
+  it("does not claim that vendors never document product limitations", async () => {
+    const { CONS_DISCLOSURE } = await import("@/lib/comparison");
+    expect(CONS_DISCLOSURE).toContain("missing or differently worded vendor marketing copy");
+    expect(CONS_DISCLOSURE).toContain("documented plan limits");
+    expect(CONS_DISCLOSURE).not.toContain("No vendor's official site documents");
+  });
+});
+
+
+describe("pricing model labels", () => {
+  it("renders pricing models as buyer-facing labels rather than raw schema values", async () => {
+    const { generateComparisonRows } = await import("@/lib/comparison");
+    const { getSoftware } = await import("@/data/software");
+    const shopify = getSoftware("shopify")!;
+    const woo = getSoftware("woocommerce")!;
+    const row = generateComparisonRows(shopify, woo).find((item) => item.label === "Pricing model");
+    expect(row).toEqual({ label: "Pricing model", a: "Paid plans", b: "Open source" });
+  });
+});

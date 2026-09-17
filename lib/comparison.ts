@@ -144,7 +144,7 @@ export function generateProsList(software: Software): string[] {
 }
 
 export const CONS_DISCLOSURE =
-  "We don't publish a \"cons\" list for either product. No vendor's official site documents its own product's weaknesses, so there's no sourced basis for one — and we'd rather say that plainly than invent one.";
+  "We don't infer weaknesses from missing or differently worded vendor marketing copy. Use documented plan limits, migration requirements, and other sourced constraints as decision inputs; anything not supported by a source remains unverified.";
 
 /**
  * Grounded in the vendor's own stated positioning (best_for) — never an
@@ -215,6 +215,15 @@ function formatList(values: string[] | undefined): string {
   return values && values.length > 0 ? values.join(", ") : "Not yet documented";
 }
 
+function formatPricingModel(model: string | undefined): string {
+  if (!model || model === "unknown") return "Not yet documented";
+  if (model === "paid") return "Paid plans";
+  if (model === "freemium") return "Free + paid plans";
+  if (model === "open_source") return "Open source";
+  if (model === "free") return "Free";
+  return model;
+}
+
 export function generateComparisonRows(softwareA: Software, softwareB: Software): ComparisonRow[] {
   const rows: ComparisonRow[] = [
     {
@@ -237,8 +246,8 @@ export function generateComparisonRows(softwareA: Software, softwareB: Software)
   if (softwareA.pricing?.model || softwareB.pricing?.model) {
     rows.push({
       label: "Pricing model",
-      a: softwareA.pricing?.model ?? "Not yet documented",
-      b: softwareB.pricing?.model ?? "Not yet documented",
+      a: formatPricingModel(softwareA.pricing?.model),
+      b: formatPricingModel(softwareB.pricing?.model),
     });
   }
 

@@ -79,8 +79,8 @@ describe("small-store plan clarity", () => {
   });
   it("shows the unknown price status next to the reviewed date", () => {
     const html = renderToStaticMarkup(createElement(PricingSection, { software: mapSoftware(softwareRawSchema.parse(wix)) }));
-    expect(html).toContain("Paid pricing is not verified.");
-    expect(html).toContain("Pricing reviewed; paid amount unverified");
+    expect(html).toContain("Pricing is partially verified.");
+    expect(html).toContain("Pricing reviewed; some paid details unverified");
     expect(html).not.toContain("17.77"); expect(html).not.toContain("29.77");
   });
   it("excludes unverified Wix prices and preserves Shopify annual conditions in the index", () => {

@@ -36,11 +36,20 @@ export function ShopifyWooMigrationRecords({ comparison }: { comparison: string 
         <p className="mt-2 text-sm leading-7 text-zinc-300">After import, reconcile the sample row by row: option names and values, variant SKU, price, inventory, weight and images. If the Shopify store uses multiple locations, its migration guide directs inventory quantities to the separate inventory CSV rather than treating the product CSV as the whole inventory move.</p>
       </div>
 
+      <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.02] p-4">
+        <h3 className="font-semibold text-white">Price the payment path separately</h3>
+        <p className="mt-2 text-sm leading-7 text-zinc-300">If the store needs a third-party payment provider, verify that provider for the business country and checkout flow before choosing the platform. Shopify documents a third-party transaction fee that is separate from the provider&apos;s own processing charge, and the Shopify rate depends on the selected plan and payment method. Do not treat one published percentage as universal.</p>
+        <p className="mt-2 text-sm leading-7 text-zinc-300">WooCommerce core does not have a monthly platform subscription, but that does not make the full store free: hosting, payment processing, extensions, development and maintenance remain separate cost lines. Compare the same payment provider and the same operating workload on both sides.</p>
+      </div>
+
       <p className="mt-5 text-sm leading-7 text-zinc-300">Treat each row above as its own acceptance gate and owner. If one gate is unresolved, keep it in the migration quote instead of hiding it inside the platform subscription. <Link href="/best-ecommerce-platform-for-small-business#store-decision-kit" className="text-sky-300 underline underline-offset-4">Use the store decision checklist</Link> to record the unresolved work.</p>
       <p className="mt-4 text-xs leading-6 text-zinc-400">Documentation checked September 17, 2026. This is a planning checklist, not a hands-on migration result or a guarantee that rankings, historical records or integrations will be preserved.</p>
       <p className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs">
         <a href="https://help.shopify.com/en/manual/migrating-to-shopify/migrating-from-woocommerce" target="_blank" rel="noopener noreferrer" className="text-zinc-400 underline underline-offset-4 hover:text-zinc-200">Shopify WooCommerce migration guide</a>
         <a href="https://woocommerce.com/document/product-csv-importer-exporter/" target="_blank" rel="noopener noreferrer" className="text-zinc-400 underline underline-offset-4 hover:text-zinc-200">WooCommerce product CSV documentation</a>
+        <a href="https://help.shopify.com/en/manual/payments/third-party-providers" target="_blank" rel="noopener noreferrer" className="text-zinc-400 underline underline-offset-4 hover:text-zinc-200">Shopify third-party payment providers</a>
+        <a href="https://help.shopify.com/en/manual/your-account/manage-billing/billing-charges/types-of-charges/third-party-charges/third-party-transaction-fees" target="_blank" rel="noopener noreferrer" className="text-zinc-400 underline underline-offset-4 hover:text-zinc-200">Shopify third-party transaction fees</a>
+        <a href="https://woocommerce.com/pricing/" target="_blank" rel="noopener noreferrer" className="text-zinc-400 underline underline-offset-4 hover:text-zinc-200">WooCommerce pricing model</a>
       </p>
     </section>
   );
