@@ -200,6 +200,23 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
       expect(isSyntheticOrTestEvent({ type: "page_view", path: "/", visitorId: "v_1", sessionId: "s_1", timestamp: "", isTest: true })).toBe(true);
       expect(isSyntheticOrTestEvent({ type: "page_view", path: "/", visitorId: "v_real_human_123", sessionId: "s_real_session_456", timestamp: "" })).toBe(false);
     });
+
+    it("reports internal CTA actions by distinct visitors and excludes synthetic QA", () => {
+      const now = new Date().toISOString();
+      const targetPath = "/best-ecommerce-platform-for-small-business#quick-comparison";
+      const ctaName = "store-decision-kit-quick-comparison";
+      const events: FirstPartyEvent[] = [
+        { type: "internal_cta_click", path: "/best-ecommerce-platform-for-small-business", targetPath, ctaName, visitorId: "v_a", sessionId: "s_a", timestamp: now },
+        { type: "internal_cta_click", path: "/best-ecommerce-platform-for-small-business", targetPath, ctaName, visitorId: "v_a", sessionId: "s_a", timestamp: now },
+        { type: "internal_cta_click", path: "/best-ecommerce-platform-for-small-business", targetPath, ctaName, visitorId: "v_b", sessionId: "s_b", timestamp: now },
+        { type: "internal_cta_click", path: "/best-ecommerce-platform-for-small-business", targetPath, ctaName, visitorId: "v_qa", sessionId: "s_qa", timestamp: now, isTest: true },
+      ];
+
+      const summary = computePeriodMetrics("TEST", events, events);
+      expect(summary.meaningfulClickers).toBe(2);
+      expect(summary.outboundClickers).toBe(0);
+      expect(summary.topInternalCtas).toEqual([{ ctaName, targetPath, visitors: 2 }]);
+    });
   });
 
   describe("Recommend Engine Integrity Patch (2026-08-21): synthetic QA exclusion & Recommend funnel", () => {

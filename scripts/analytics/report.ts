@@ -459,6 +459,7 @@ export interface PeriodSummary {
   topGuides: { slug: string; views: number }[];
   topOutboundDestinations: { url: string; clicks: number }[];
   topAffiliateProducts: { slug: string; clicks: number }[];
+  topInternalCtas: { ctaName: string; targetPath: string; visitors: number }[];
   recommendFunnel: RecommendFunnelSummary;
 }
 
@@ -558,6 +559,7 @@ export function computePeriodMetrics(
   const guideCounts = new Map<string, number>();
   const outboundCounts = new Map<string, number>();
   const affiliateCounts = new Map<string, number>();
+  const internalCtaVisitors = new Map<string, Set<string>>();
 
   let totalPageViews = 0;
 
@@ -630,6 +632,9 @@ export function computePeriodMetrics(
       rfComparisonOpenersP.add(e.visitorId); rfComparisonOpenersS.add(e.sessionId); rfComparisonOpenersE++;
     } else if (e.type === "internal_cta_click") {
       meaningfulClickers.add(e.visitorId);
+      const internalKey = `${e.ctaName ?? "(unnamed)"}|||${e.targetPath}`;
+      if (!internalCtaVisitors.has(internalKey)) internalCtaVisitors.set(internalKey, new Set<string>());
+      internalCtaVisitors.get(internalKey)!.add(e.visitorId);
     } else if (e.type === "outbound_click") {
       meaningfulClickers.add(e.visitorId);
       outboundClickers.add(e.visitorId);
@@ -747,6 +752,13 @@ export function computePeriodMetrics(
   const topGuides = [...guideCounts.entries()].map(([slug, views]) => ({ slug, views })).sort((a, b) => b.views - a.views).slice(0, 10);
   const topOutboundDestinations = [...outboundCounts.entries()].map(([url, clicks]) => ({ url, clicks })).sort((a, b) => b.clicks - a.clicks).slice(0, 10);
   const topAffiliateProducts = [...affiliateCounts.entries()].map(([slug, clicks]) => ({ slug, clicks })).sort((a, b) => b.clicks - a.clicks).slice(0, 10);
+  const topInternalCtas = [...internalCtaVisitors.entries()]
+    .map(([key, visitorIds]) => {
+      const [ctaName, targetPath] = key.split("|||") as [string, string];
+      return { ctaName, targetPath, visitors: visitorIds.size };
+    })
+    .sort((a, b) => b.visitors - a.visitors)
+    .slice(0, 10);
 
   return {
     periodName,
@@ -775,6 +787,7 @@ export function computePeriodMetrics(
     topGuides,
     topOutboundDestinations,
     topAffiliateProducts,
+    topInternalCtas,
     recommendFunnel: {
       visitors: { people: rfVisitorsP.size, sessions: rfVisitorsS.size, events: rfVisitorsE },
       starters: { people: rfStartersP.size, sessions: rfStartersS.size, events: rfStartersE },
@@ -879,6 +892,10 @@ export async function generateAnalyticsReport() {
     if (p.topAffiliateProducts.length > 0) {
       console.log(`\n  Top Affiliate Products Clicked:`);
       p.topAffiliateProducts.forEach((item, i) => console.log(`    ${i + 1}. ${item.slug} (${item.clicks} clicks)`));
+    }
+    if (p.topInternalCtas.length > 0) {
+      console.log(`\n  Top Internal CTA Actions (distinct visitors):`);
+      p.topInternalCtas.forEach((item, i) => console.log(`    ${i + 1}. ${item.ctaName} -> ${item.targetPath} (${item.visitors} visitors)`));
     }
 
     const rf = p.recommendFunnel;

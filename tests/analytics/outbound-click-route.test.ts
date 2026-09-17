@@ -4,6 +4,7 @@ import path from "node:path";
 import { NextRequest } from "next/server";
 import { POST, __test__ } from "@/app/api/outbound-click/route";
 import { getSoftware } from "@/data/software";
+import { getWixAffiliateUrl } from "@/lib/wix-funnels";
 import { getOutboundEvents } from "@/lib/revenue/events";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
 
@@ -81,6 +82,20 @@ describe("POST /api/outbound-click — legacy and first-party pipelines agree on
     const firstParty = await getAllFirstPartyEvents();
     const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
     expect(fpEvent?.isTest).toBeFalsy();
+  });
+
+  it("records the dedicated Wix ecommerce funnel when the ecommerce guide supplies wixContext", async () => {
+    const expectedUrl = getWixAffiliateUrl("ecommerce");
+    const res = await post({ slug: "wix", kind: "cta", sourcePage: "/best-ecommerce-platform-for-small-business", ctaLocation: "role-guide-summary-table", wixContext: "ecommerce", visitorId: "v_wix_ecom", sessionId: "s_wix_ecom" });
+    expect(res.status).toBe(202);
+
+    const legacy = await getOutboundEvents();
+    expect(legacy.find((e) => e.softwareSlug === "wix")?.url).toBe(expectedUrl);
+
+    const firstParty = await getAllFirstPartyEvents();
+    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "wix");
+    expect(fpEvent && "url" in fpEvent ? fpEvent.url : null).toBe(expectedUrl);
+    expect(fpEvent && "ctaLocation" in fpEvent ? fpEvent.ctaLocation : null).toBe("role-guide-summary-table");
   });
 
   it("a vendor-link click also propagates isTest to both pipelines", async () => {

@@ -248,6 +248,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                           rel={p.ctaRel}
                           target="_blank"
                           ctaLocation="role-guide-summary-table"
+                          wixContext={guide.slug === "best-ecommerce-platform-for-small-business" && p.software.slug === "wix" ? "ecommerce" : undefined}
                           variant="secondary"
                           size="md"
                         >
@@ -347,6 +348,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                       rel={p.ctaRel}
                       target="_blank"
                       ctaLocation="role-guide-card-cta"
+                      wixContext={guide.slug === "best-ecommerce-platform-for-small-business" && p.software.slug === "wix" ? "ecommerce" : undefined}
                       variant="primary"
                     >
                       Visit {p.software.name} <ExternalLink className="w-4 h-4 ml-1.5" />

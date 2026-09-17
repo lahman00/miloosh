@@ -1,12 +1,22 @@
 import Link from "next/link";
+import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 
-/** Proposed buyer checks, not a claim of hands-on merchant testing. No new tracking or form gate. */
+/** Proposed buyer checks, not a claim of hands-on merchant testing. No form gate; the comparison shortcut logs only an internal navigation event. */
 export function EcommerceDecisionKit() {
   return (
     <section id="store-decision-kit" aria-labelledby="store-decision-kit-title" className="mb-10 scroll-mt-24 rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.03] p-5 sm:p-7">
       <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300">Small-store decision kit</p>
       <h2 id="store-decision-kit-title" className="mt-3 text-2xl font-bold text-white">Fix your current store or switch platforms?</h2>
       <p className="mt-3 text-sm leading-7 text-zinc-300">Name the problem before moving the store. Compare a focused repair, a new commerce layer on the existing website, and a full migration. Then check the catalog, checkout and records each route must preserve.</p>
+      <TrackedInternalCtaLink
+        href="#quick-comparison"
+        sourcePath="/best-ecommerce-platform-for-small-business"
+        targetPath="/best-ecommerce-platform-for-small-business#quick-comparison"
+        ctaName="store-decision-kit-quick-comparison"
+        className="mt-4 inline-flex rounded-xl border border-emerald-400/30 px-4 py-2 text-sm font-semibold text-emerald-300 hover:border-emerald-300 hover:text-emerald-200"
+      >
+        Ready to compare platforms? Jump to plans, trial status, and vendor links
+      </TrackedInternalCtaLink>
       <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.02] p-4">
         <h3 className="font-semibold text-white">Before you compare platforms: how does the sale actually happen?</h3>
         <ul className="mt-2 space-y-2 text-sm leading-7 text-zinc-300">
