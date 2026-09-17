@@ -18,7 +18,7 @@ The local GSC snapshots are from August 9/13; do not present them as September p
 | 06 | Year-one quote for a small store, not monthly marketing prices | `/best-ecommerce-platform-for-small-business` | Decision | IMPLEMENTED_LOCAL | Blank cost comparison in downloadable worksheet; no invented rates |
 | 07 | Staff roles that change the payable plan | `/compare/wix-vs-shopify` | Decision | VERIFY_FIRST | Owner, editor and fulfillment access on current tiers |
 | 08 | Catalog options that need a supported import path | `/compare/shopify-vs-woocommerce` | Decision | VERIFY_FIRST | Representative variations, not only product count |
-| 09 | Wix migration app: installation price versus migration quote | `/software/wix` | Decision | VERIFY_FIRST | Route-specific limits; do not confuse with catalog limits |
+| 09 | Wix migration app: installation price versus migration quote | `/software/wix` | Decision | IMPLEMENTED_LOCAL | Product CSV separated from order migration; free app install separated from paid Cart2Cart migration quote; route limits kept distinct from overall store capacity |
 | 10 | Existing orders and customers: which records actually move? | `/compare/shopify-vs-woocommerce` | Decision | VERIFY_FIRST | Separate product, customer and order gates |
 | 11 | Recurring subscriptions that make switching risky | `/best-ecommerce-platform-for-small-business` | Decision | VERIFY_FIRST | Provider-supported continuity; no payment credential shortcuts |
 | 12 | When a managed Shopify store reduces the right workload | `/software/shopify` | Decision | QUEUED | Name responsibility removed and work retained |

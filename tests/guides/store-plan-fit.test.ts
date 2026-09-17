@@ -25,6 +25,16 @@ describe("small-store plan clarity", () => {
     expect(html).toContain("Light does not accept payments"); expect(html).toContain("Core or Business");
     expect(html).toContain("separate purchase"); expect(html).toContain("not Wix Studio or Wix Headless pricing");
   });
+  it("separates Wix product CSV import from order migration and migration pricing", () => {
+    const html = render("wix");
+    expect(html).toContain("Separate product import from order migration");
+    expect(html).toContain("That CSV route is documented for products, not order history");
+    expect(html).toContain("available data varies by source platform");
+    expect(html).toContain("Free app installation is not free migration");
+    expect(html).toContain("1,000-product and 1,000-order limits belong to that Cart2Cart route, not to Wix Stores overall");
+    expect(html).toContain('href="https://support.wix.com/en/article/wix-stores-importing-products-from-another-ecommerce-platform"');
+    expect(html).toContain('href="https://support.wix.com/en/article/wix-stores-migrating-from-other-ecommerce-platforms-to-wix-stores"');
+  });
   it("does not treat additional staff limits as a ban on the owner", () => {
     const html = render("shopify");
     expect(html).toContain("additional Shopify admin staff"); expect(html).toContain("store owner and collaborator");
