@@ -1,4 +1,5 @@
 import { WooCommerceRepairCheck } from "@/components/WooCommerceRepairCheck";
+import { EcwidIntegrationDecision } from "@/components/EcwidIntegrationDecision";
 import { StorePlanFit } from "@/components/StorePlanFit";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
 import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
@@ -246,6 +247,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
 
         <StorePlanFit slug={software.slug} />
         <WooCommerceRepairCheck slug={software.slug} />
+        <EcwidIntegrationDecision slug={software.slug} />
         <PricingSection software={software} />
 
         <Card className="mt-14">
