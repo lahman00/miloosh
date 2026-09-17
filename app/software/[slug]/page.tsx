@@ -27,6 +27,7 @@ import { CTA_COPY_EXPERIMENT_ID, getCtaCopyLabel } from "@/lib/experiments/cta-c
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getRelatedSoftware } from "@/lib/related";
+import { getStoreRelatedSoftware } from "@/lib/store-related";
 import { getComparisonSlug, getComparisonsInvolving } from "@/data/comparisons";
 import {
   getSoftwareCtaRel,
@@ -96,7 +97,9 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
     notFound();
   }
 
-  const relatedSoftware = getRelatedSoftware(software, 3);
+  const relatedSoftware = software.category === "ecommerce"
+    ? getStoreRelatedSoftware([software], 3, true)
+    : getRelatedSoftware(software, 3);
   const faqItems = generateFaq(software);
   const comparisons = getComparisonsInvolving(software.slug)
     .map(([slugA, slugB]) => {

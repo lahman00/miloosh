@@ -28,7 +28,7 @@ import {
   getComparisonBySlug,
   type ComparisonData,
 } from "@/lib/comparison";
-import { getRelatedSoftware } from "@/lib/related";
+import { getComparisonRelatedSoftware } from "@/lib/store-related";
 import { getBreadcrumbJsonLd, getComparisonJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { formatIsoDate } from "@/lib/date";
@@ -172,11 +172,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
     new Map(relatedComparisons.map((pair) => [getComparisonSlug(pair[0], pair[1]), pair])).values()
   ).slice(0, 4);
 
-  const excludeSlugs = new Set([softwareA.slug, softwareB.slug]);
-  const relatedSoftware = [...getRelatedSoftware(softwareA, 3), ...getRelatedSoftware(softwareB, 3)]
-    .filter((item) => !excludeSlugs.has(item.slug))
-    .filter((item, index, all) => all.findIndex((other) => other.slug === item.slug) === index)
-    .slice(0, 3);
+  const relatedSoftware = getComparisonRelatedSoftware(softwareA, softwareB, 3);
 
   return (
     <main className="flex-1 py-16 sm:py-20">

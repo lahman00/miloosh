@@ -1,5 +1,10 @@
 # Acquisition Ledger
 
+## עדכון מאומת — 17 בספטמבר 2026
+גישה לנתוני Google עובדת דרך הממשק המחובר ויצוא CSV; חוסר תצורת API מקומית אינו חוסר גישה לדוח. ראיות: `docs/growth/ACQUISITION_EVIDENCE_20260917_HE.md`.
+חבילת תוכן חדשה לפוסט היומי של החברה: `data/social/READY_STORE_DECISION_20260917.md`, מוכנה לבדיקה ולא פורסמה במסגרת ספרינט הקונים. המשימה היומית הקיימת נשארת בעלת הפרסום היחיד בכל רשת.
+החשבון הקיים ברדיט אומת, אך כללי כל קהילה קובעים בנפרד. r/ecommerce אסר AI ולכן שימש למחקר בלבד. נתוני וסטטוס הערוצים ההיסטוריים בהמשך אינם תחליף לבדיקה עדכנית.
+
 MILOOSH PEOPLE NOW mission (2026-08-23). The canonical record of every
 distribution channel and asset Miloosh has, or could have, for acquiring real
 human visitors — what's live, what's ready, what's blocked, and why. Real
