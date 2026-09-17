@@ -30,6 +30,12 @@ export function ShopifyWooMigrationRecords({ comparison }: { comparison: string 
         </div>
       </div>
 
+      <div className="mt-5 rounded-xl border border-sky-400/20 bg-sky-400/[0.04] p-4">
+        <h3 className="font-semibold text-white">Test a representative variable product before you quote the catalog migration</h3>
+        <p className="mt-2 text-sm leading-7 text-zinc-300">Do not validate the catalog with one simple product. Use at least one variable product that has multiple option values, child variants, distinct SKUs, prices and stock. Shopify&apos;s WooCommerce mapping requires multiple attribute values to become separate rows with one option value per row. WooCommerce&apos;s built-in CSV format likewise represents a variable parent separately from its variation rows and links children back to the parent by ID or SKU.</p>
+        <p className="mt-2 text-sm leading-7 text-zinc-300">After import, reconcile the sample row by row: option names and values, variant SKU, price, inventory, weight and images. If the Shopify store uses multiple locations, its migration guide directs inventory quantities to the separate inventory CSV rather than treating the product CSV as the whole inventory move.</p>
+      </div>
+
       <p className="mt-5 text-sm leading-7 text-zinc-300">Treat each row above as its own acceptance gate and owner. If one gate is unresolved, keep it in the migration quote instead of hiding it inside the platform subscription. <Link href="/best-ecommerce-platform-for-small-business#store-decision-kit" className="text-sky-300 underline underline-offset-4">Use the store decision checklist</Link> to record the unresolved work.</p>
       <p className="mt-4 text-xs leading-6 text-zinc-400">Documentation checked September 17, 2026. This is a planning checklist, not a hands-on migration result or a guarantee that rankings, historical records or integrations will be preserved.</p>
       <p className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs">

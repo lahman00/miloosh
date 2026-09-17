@@ -23,6 +23,16 @@ describe("Shopify/WooCommerce migration record gates", () => {
     expect(html).toContain("importing redirects by CSV");
     expect(html).toContain("not a hands-on migration result");
   });
+  it("requires a representative variable product and field reconciliation before quoting the catalog move", () => {
+    const html = render();
+    expect(html).toContain("Test a representative variable product before you quote the catalog migration");
+    expect(html).toContain("one option value per row");
+    expect(html).toContain("links children back to the parent by ID or SKU");
+    for (const field of ["variant SKU", "price", "inventory", "weight", "images"]) expect(html).toContain(field);
+    expect(html).toContain("separate inventory CSV");
+    expect(html).not.toContain("all variants will migrate");
+  });
+
   it("uses only official documentation and internal planning links", () => {
     const html = render();
     expect(html).toContain('href="https://help.shopify.com/en/manual/migrating-to-shopify/migrating-from-woocommerce"');

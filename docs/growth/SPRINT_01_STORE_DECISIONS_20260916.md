@@ -17,7 +17,7 @@ The local GSC snapshots are from August 9/13; do not present them as September p
 | 05 | Keep the website, replace the commerce layer | `/compare/ecwid-vs-shopify` | Decision | QUEUED | Embedding versus rebuilding; preserve distinct intent |
 | 06 | Year-one quote for a small store, not monthly marketing prices | `/best-ecommerce-platform-for-small-business` | Decision | IMPLEMENTED_LOCAL | Blank cost comparison in downloadable worksheet; no invented rates |
 | 07 | Staff roles that change the payable plan | `/compare/wix-vs-shopify` | Decision | VERIFY_FIRST | Owner, editor and fulfillment access on current tiers |
-| 08 | Catalog options that need a supported import path | `/compare/shopify-vs-woocommerce` | Decision | VERIFY_FIRST | Representative variations, not only product count |
+| 08 | Catalog options that need a supported import path | `/compare/shopify-vs-woocommerce` | Decision | IMPLEMENTED_LOCAL | Representative variable-product sample now checks attribute-to-option rows, parent/variation linkage, SKU, price, stock, weight and images |
 | 09 | Wix migration app: installation price versus migration quote | `/software/wix` | Decision | IMPLEMENTED_LOCAL | Product CSV separated from order migration; free app install separated from paid Cart2Cart migration quote; route limits kept distinct from overall store capacity |
 | 10 | Existing orders and customers: which records actually move? | `/compare/shopify-vs-woocommerce` | Decision | IMPLEMENTED_LOCAL | Products, customers, historical orders and URL redirects separated into distinct migration gates using current official Shopify/WooCommerce documentation |
 | 11 | Recurring subscriptions that make switching risky | `/best-ecommerce-platform-for-small-business` | Decision | VERIFY_FIRST | Provider-supported continuity; no payment credential shortcuts |
@@ -35,7 +35,7 @@ The local GSC snapshots are from August 9/13; do not present them as September p
 | 23 | Small-store support workflow after replatforming | `/best-help-desk-for-ecommerce` | Decision | QUEUED | Adjacent store-workflow decision, not a new helpdesk cluster |
 | 24 | Store events that must survive an email-platform change | `/best-email-marketing-for-ecommerce` | Decision | QUEUED | Adjacent post-migration validation; no new tool ranking |
 | 25 | How to run a safe pre-purchase checkout test | `/best-ecommerce-platform-for-small-business` | Support | QUEUED | Documented procedures; no live test-mode disruption |
-| 26 | How to reconcile a sample catalog after import | `/compare/shopify-vs-woocommerce` | Support | QUEUED | Add a practical section, not a duplicate article |
+| 26 | How to reconcile a sample catalog after import | `/compare/shopify-vs-woocommerce` | Support | IMPLEMENTED_LOCAL | Same canonical page now includes a row-by-row post-import sample check; multi-location inventory is kept separate |
 | 27 | How to document an app-dependent requirement | `/software/shopify` | Support | QUEUED | Requirement, quoted plan, evidence and owner |
 | 28 | How to keep opt-out status during a store migration | `/best-email-marketing-for-ecommerce` | Support | VERIFY_FIRST | Preserve suppression; verify each provider workflow |
 | 29 | How to make a stay-or-switch decision sheet | `/best-ecommerce-platform-for-small-business` | Support | IMPLEMENTED_LOCAL | Eight checks, blank cost model and unresolved-gate fields |
