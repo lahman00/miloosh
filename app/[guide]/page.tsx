@@ -1,3 +1,4 @@
+import { RoleGuideAnalytics } from "@/components/RoleGuideAnalytics";
 import { EcommerceDecisionKit } from "@/components/EcommerceDecisionKit";
 import { BuyerDecisionBrief } from "@/components/BuyerDecisionBrief";
 import type { Metadata } from "next";
@@ -141,6 +142,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
   return (
     <>
+      <RoleGuideAnalytics guideSlug={guide.slug} />
       <JsonLd data={itemListSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
