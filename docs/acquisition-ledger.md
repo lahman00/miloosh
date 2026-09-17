@@ -300,3 +300,9 @@ bot-heavy traffic as acquisition success.
 - Final production: dpl_9L2YLn7j5d6SccPrqaF4HhShrTN5; source c4cd915f111fa49592e94cc23bb1de649a9902ec. 1608 tests passed, 13 candidate and 13 live browser checks passed.
 - Retail Minded: automatic out-of-office through 2026-09-22, message 1a0af1a5832a9317; not editorial acceptance. No repeat follow-up sent.
 - Evidence: central 02-Operations/week1-20260917/CONTINUATION_STATUS_HE.md and release manifests. Prior missing-link and guide-event blockers are superseded by this verified execution.
+
+
+## 2026-09-17 evening — Ignlab pending submission verified live
+
+- Ignlab Launch: previous Sep 12 submission now independently verified as a public listing at https://launch.ignlab.net/t/miloosh . Detail title, canonical, normal directory search discoverability and outbound https://miloosh.com/ link verified. Outbound rel is `noopener nofollow ugc`. No re-submission, account claim, payment, badge, vote or review. Visible Sep 17 date is not independently established as the first publication date. Traffic, conversions and revenue remain unverified.
+- Evidence: central `02-Operations/revenue-sprint-20260917-evening/ignlab-listing.json` and `ignlab-browser-readback.json`. Do not report this as new again.

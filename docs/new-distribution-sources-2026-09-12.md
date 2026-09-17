@@ -9,7 +9,7 @@ Scope: channels not present in the prior Miloosh distribution history. No paid p
 | SubmitStartup.io | SUBMITTED | Browser confirmation: Miloosh is in the review queue | Check approval email; do not buy featured placement |
 | Visalytica | SUBMITTED | Redirected to `/submit/thanks?name=Miloosh`; review stated 1–2 weeks | Check approval email only |
 | AppStackBuilder | SUBMITTED | Browser confirmation: `Tool submitted successfully!` | Wait for review / launch page; no optional badge |
-| Ignlab Launch | SUBMITTED | Browser confirmation: tool is in review queue | Private edit token stored locally only; never expose it |
+| Ignlab Launch | LIVE_VERIFIED 2026-09-17 | Prior Sep 12 submission; public detail and outbound link verified at https://launch.ignlab.net/t/miloosh | No resubmission; first publication date and traffic unverified; private edit token remains local |
 | CurlShip | LIVE | API HTTP 201; listing ID `3120`, free tier | Measure referral traffic from listing; no badge |
 | LaunchFree | SUBMITTED | Browser confirmation + Gmail `1a09721c70bfc4ae` | Review expected by publisher; no paid upgrade |
 | ToolPromote | SUBMITTED | Review reference `TP-MTYTERPJ-6R9S` | Check approval email; Standard free listing only |
