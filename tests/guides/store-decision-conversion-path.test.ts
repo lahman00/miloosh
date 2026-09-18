@@ -28,10 +28,18 @@ describe("small-store conversion path", () => {
   it("keeps Wix ecommerce routing aligned in both guide CTA surfaces", () => {
     const page = fs.readFileSync("app/[guide]/page.tsx", "utf8");
     const routing = 'wixContext={guide.slug === "best-ecommerce-platform-for-small-business" && p.software.slug === "wix" ? "ecommerce" : undefined}';
-    expect(page.split(routing)).toHaveLength(3);
+    expect(page.split(routing)).toHaveLength(4);
     expect(page).toContain('guide.slug === "best-ecommerce-platform-for-small-business" && software.slug === "wix"');
     expect(page).toContain('getWixAffiliateUrl("ecommerce")');
-    expect(page).toContain('ctaLocation="role-guide-summary-table"');
+    expect(page.match(/ctaLocation="role-guide-summary-table"/g)).toHaveLength(2);
     expect(page).toContain('ctaLocation="role-guide-card-cta"');
+  });
+
+  it("keeps the vendor action visible in the first table column on mobile", () => {
+    const page = fs.readFileSync("app/[guide]/page.tsx", "utf8");
+    expect(page).toContain('className="mt-3 sm:hidden"');
+    expect(page).toContain('className="hidden py-3.5 px-4 text-right sm:table-cell">Action</th>');
+    expect(page).toContain('className="hidden py-4 px-4 text-right sm:table-cell"');
+    expect(page).toContain("Vendor links are available beside each tool");
   });
 });

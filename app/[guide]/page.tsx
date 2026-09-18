@@ -198,7 +198,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
           {/* Quick Comparison Summary Table */}
           <section id="quick-comparison" className="mb-14 scroll-mt-24">
             <h2 className="text-2xl font-bold text-white mb-4">Quick Comparison Summary</h2>
-            <p id="comparison-scroll-help" className="mb-3 text-xs text-zinc-400 sm:hidden">Swipe or scroll the table sideways to see plan details and visit links.</p>
+            <p id="comparison-scroll-help" className="mb-3 text-xs text-zinc-400 sm:hidden">Swipe or scroll the table sideways for plan details. Vendor links are available beside each tool.</p>
             <div role="region" aria-label="Software shortlist comparison" aria-describedby="comparison-scroll-help" tabIndex={0} className="overflow-x-auto border border-white/10 rounded-2xl bg-white/[0.02]">
               <table className="w-full text-left text-sm">
                 <thead className="bg-white/5 text-zinc-300 font-semibold border-b border-white/10 text-xs uppercase tracking-wider">
@@ -207,7 +207,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     <th className="py-3.5 px-4">Best For</th>
                     <th className="py-3.5 px-4">Pricing / Plan Context</th>
                     <th className="py-3.5 px-4">Trial / Free Option</th>
-                    <th className="py-3.5 px-4 text-right">Action</th>
+                    <th className="hidden py-3.5 px-4 text-right sm:table-cell">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/10">
@@ -223,6 +223,20 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                           </Link>
                         </div>
                         <span className="text-xs text-zinc-400">{p.badge}</span>
+                        <div className="mt-3 sm:hidden">
+                          <TrackedCtaLink
+                            slug={p.software.slug}
+                            href={p.ctaUrl}
+                            rel={p.ctaRel}
+                            target="_blank"
+                            ctaLocation="role-guide-summary-table"
+                            wixContext={guide.slug === "best-ecommerce-platform-for-small-business" && p.software.slug === "wix" ? "ecommerce" : undefined}
+                            variant="secondary"
+                            size="md"
+                          >
+                            Visit Site <ExternalLink className="w-3 h-3 ml-1" />
+                          </TrackedCtaLink>
+                        </div>
                       </td>
                       <td className="py-4 px-4 text-zinc-300 max-w-xs text-xs">
                         {p.summaryBestFor ?? p.software.bestFor}
@@ -241,7 +255,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                           <span className="text-zinc-500">Paid only</span>
                         )}
                       </td>
-                      <td className="py-4 px-4 text-right">
+                      <td className="hidden py-4 px-4 text-right sm:table-cell">
                         <TrackedCtaLink
                           slug={p.software.slug}
                           href={p.ctaUrl}
