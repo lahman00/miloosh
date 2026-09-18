@@ -73,6 +73,15 @@ describe("Client-side visitor/session identity — Phase 12 session integrity", 
     expect(source).not.toMatch(/sessionStorage\.getItem\(/);
   });
 
+  it("TrackedCtaLink records middle-button outbound activations without treating right-clicks as clicks", async () => {
+    const fs = await import("node:fs");
+    const source = fs.readFileSync("components/TrackedCtaLink.tsx", "utf8");
+    expect(source).toContain("onAuxClick={(event) =>");
+    expect(source).toContain("onAuxClick?.(event)");
+    expect(source).toContain("if (event.button === 1) reportOutboundClick();");
+    expect(source).not.toContain("if (event.button === 2) reportOutboundClick();");
+  });
+
   it("a fresh sessionStorage (simulating a new tab/session) produces a new sessionId, while visitorId (localStorage) persists", async () => {
     const { getOrCreateVisitorId, getOrCreateSessionId } = await import("@/lib/analytics/track");
     const visitorBefore = getOrCreateVisitorId();

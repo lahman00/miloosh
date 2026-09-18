@@ -41,7 +41,7 @@ type TrackedCtaLinkProps = ComponentProps<typeof ButtonLink> & {
  * way. See lib/revenue/events.ts — recording itself stays a no-op unless
  * NEXT_PUBLIC_REVENUE_TRACKING_ENABLED=true.
  */
-export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, ctaCopyExperiment, children, ...props }: TrackedCtaLinkProps) {
+export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxClick, ctaCopyExperiment, children, ...props }: TrackedCtaLinkProps) {
   const pathname = usePathname();
   const linkRef = useRef<HTMLAnchorElement>(null);
   const hasFiredImpression = useRef(false);
@@ -117,26 +117,34 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, ctaCopy
     return () => observer.disconnect();
   }, [pathname, slug, ctaLocation, variantResolved, experimentId, variant]);
 
+  const reportOutboundClick = () => {
+    const visitorId = getStoredVisitorId();
+    const sessionId = getStoredSessionId();
+    const isTest = markAndCheckSyntheticQa();
+    void fetch("/api/outbound-click", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        slug, kind: "cta", sourcePage: pathname, ctaLocation, wixContext, visitorId, sessionId, isTest,
+        ...(experimentId ? { experimentId, variant } : {}),
+      }),
+      keepalive: true,
+    }).catch(() => {
+      // Best-effort only — a tracking failure must never affect the user's click.
+    });
+  };
+
   return (
     <ButtonLink
       {...props}
       ref={linkRef}
       onClick={(event) => {
         onClick?.(event);
-        const visitorId = getStoredVisitorId();
-        const sessionId = getStoredSessionId();
-        const isTest = markAndCheckSyntheticQa();
-        void fetch("/api/outbound-click", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            slug, kind: "cta", sourcePage: pathname, ctaLocation, wixContext, visitorId, sessionId, isTest,
-            ...(experimentId ? { experimentId, variant } : {}),
-          }),
-          keepalive: true,
-        }).catch(() => {
-          // Best-effort only — a tracking failure must never affect the user's click.
-        });
+        reportOutboundClick();
+      }}
+      onAuxClick={(event) => {
+        onAuxClick?.(event);
+        if (event.button === 1) reportOutboundClick();
       }}
     >
       {renderedChildren}
