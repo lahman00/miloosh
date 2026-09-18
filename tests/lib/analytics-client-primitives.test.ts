@@ -54,6 +54,25 @@ describe("Client-side visitor/session identity — Phase 12 session integrity", 
     expect(second).toBe(first);
   });
 
+  it("stored visitor/session identity reads fail closed when browser storage throws", async () => {
+    const throwingStorage = { getItem: () => { throw new Error("storage blocked"); } };
+    (globalThis as unknown as { localStorage: typeof throwingStorage }).localStorage = throwingStorage;
+    (globalThis as unknown as { sessionStorage: typeof throwingStorage }).sessionStorage = throwingStorage;
+
+    const { getStoredVisitorId, getStoredSessionId } = await import("@/lib/analytics/track");
+    expect(getStoredVisitorId()).toBeUndefined();
+    expect(getStoredSessionId()).toBeUndefined();
+  });
+
+  it("TrackedCtaLink uses fail-closed identity readers instead of direct storage access", async () => {
+    const fs = await import("node:fs");
+    const source = fs.readFileSync("components/TrackedCtaLink.tsx", "utf8");
+    expect(source).toContain("getStoredVisitorId()");
+    expect(source).toContain("getStoredSessionId()");
+    expect(source).not.toMatch(/localStorage\.getItem\(/);
+    expect(source).not.toMatch(/sessionStorage\.getItem\(/);
+  });
+
   it("a fresh sessionStorage (simulating a new tab/session) produces a new sessionId, while visitorId (localStorage) persists", async () => {
     const { getOrCreateVisitorId, getOrCreateSessionId } = await import("@/lib/analytics/track");
     const visitorBefore = getOrCreateVisitorId();

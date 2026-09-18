@@ -42,6 +42,27 @@ export function getOrCreateSessionId(): string {
 }
 
 /**
+ * Read the existing anonymous identity without creating one. Outbound CTA
+ * tracking uses these helpers so disabled/blocked browser storage cannot
+ * prevent the best-effort click POST from being attempted.
+ */
+export function getStoredVisitorId(): string | undefined {
+  try {
+    return localStorage.getItem("miloosh_vid") ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+export function getStoredSessionId(): string | undefined {
+  try {
+    return sessionStorage.getItem("miloosh_sid") ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
  * Fire-and-forget: sends one analytics event with the visitor/session IDs
  * and the isTest synthetic marker automatically attached. Never throws,
  * never blocks the caller — a tracking failure must never affect the

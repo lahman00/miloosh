@@ -6,7 +6,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import type { WixFunnelContext } from "@/lib/wix-funnels";
 import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
-import { trackEvent } from "@/lib/analytics/track";
+import { getStoredSessionId, getStoredVisitorId, trackEvent } from "@/lib/analytics/track";
 import { assignCtaCopyVariant, type CtaCopyVariant } from "@/lib/experiments/cta-copy-experiment";
 
 type TrackedCtaLinkProps = ComponentProps<typeof ButtonLink> & {
@@ -62,7 +62,7 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, ctaCopy
   useEffect(() => {
     if (!ctaCopyExperiment) return;
     try {
-      const visitorId = localStorage.getItem("miloosh_vid");
+      const visitorId = getStoredVisitorId();
       if (visitorId) setVariant(assignCtaCopyVariant(visitorId));
     } finally {
       setVariantResolved(true);
@@ -123,8 +123,8 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, ctaCopy
       ref={linkRef}
       onClick={(event) => {
         onClick?.(event);
-        const visitorId = typeof localStorage !== "undefined" ? localStorage.getItem("miloosh_vid") ?? undefined : undefined;
-        const sessionId = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("miloosh_sid") ?? undefined : undefined;
+        const visitorId = getStoredVisitorId();
+        const sessionId = getStoredSessionId();
         const isTest = markAndCheckSyntheticQa();
         void fetch("/api/outbound-click", {
           method: "POST",
