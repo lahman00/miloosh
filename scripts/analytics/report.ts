@@ -804,12 +804,38 @@ export function computePeriodMetrics(
 
 export async function generateAnalyticsReport() {
   const includeSynthetic = process.argv.includes("--include-synthetic");
+  const allowLocal = process.argv.includes("--allow-local");
+  const productionAnalyticsReadable = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
   const events = await getAllFirstPartyEvents();
   const outboundRead = await readOutboundEventsDetailed();
   const legacyClicks = outboundRead.events;
 
   const now = new Date();
   console.log(formatOutboundLedger(outboundRead, now) + "\n");
+
+  // The local fallback is a development/QA store, not a readable view of the
+  // production Blob dataset. Reporting an empty local array as "0 live users"
+  // turns an unavailable denominator into a false measurement claim. Fail
+  // closed by default; --allow-local exists only for explicitly local debugging.
+  if (!productionAnalyticsReadable && !allowLocal) {
+    console.log("========================================================================================");
+    console.log(" FIRST-PARTY LIVE DATA: UNAVAILABLE");
+    console.log("========================================================================================");
+    console.log(" Production Blob access is not configured in this process.");
+    console.log(` Local fallback events visible here: ${events.length} (development/QA only; not production traffic).`);
+    console.log(" Live visitors, sessions, engagement, outbound clickers and affiliate clickers are UNKNOWN — not zero.");
+    console.log(" No live funnel rates are printed because the production denominator cannot be verified.");
+    console.log(" Use a production-authorized read environment for live metrics, or --allow-local only for local debugging.");
+    console.log("========================================================================================\n");
+    return;
+  }
+
+  if (!productionAnalyticsReadable && allowLocal) {
+    console.log("========================================================================================");
+    console.log(" WARNING --allow-local ACTIVE: metrics below come from the LOCAL FALLBACK only.");
+    console.log(" They are development/QA diagnostics and must never be reported as production usage.");
+    console.log("========================================================================================\n");
+  }
   const todayStr = now.toISOString().slice(0, 10);
   const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
   const yesterdayStr = yesterday.toISOString().slice(0, 10);
