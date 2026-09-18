@@ -16,6 +16,7 @@ describe("Wix and Shopify scoped buyer checks", () => {
     expect(page.indexOf("<ComparisonTable data={data}")).toBeLessThan(page.indexOf("<WixShopifyBuyerChecks comparison={comparison}"));
     expect(page).toContain('alternates: { canonical: `/compare/${comparison}` }');
     expect(page).toContain('ctaLocation="compare-page-choose-card"');
+    expect(page).toContain('id="vendor-choice"');
   });
   it("preserves distinct workflow fit and a stay-or-embed alternative", () => {
     const html = render();
@@ -23,6 +24,8 @@ describe("Wix and Shopify scoped buyer checks", () => {
     expect(html).toContain("Start with Shopify when commerce leads");
     expect(html).toContain("WooCommerce"); expect(html).toContain("Ecwid");
     expect(html).toContain('/best-ecommerce-platform-for-small-business#store-decision-kit');
+    expect(html).toContain('href="#vendor-choice"');
+    expect(html).toContain("Jump to the Wix and Shopify choice cards");
     expect(html).toContain("editorial judgments, not hands-on benchmarks");
   });
   it("qualifies vendor claims with nearby official sources", () => {
@@ -40,7 +43,7 @@ describe("Wix and Shopify scoped buyer checks", () => {
     const html = render();
     expect(html).not.toMatch(/pxf\.io|<form|<script|aggregateRating|guaranteed|\$\d/);
     const links = [...html.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
-    expect(links).toHaveLength(3);
+    expect(links).toHaveLength(4);
     expect(links.filter(link => link.startsWith("https://"))).toHaveLength(2);
   });
   it("retains the guide's route-capacity distinction and ungated checklist", () => {

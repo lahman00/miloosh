@@ -321,7 +321,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
           )}
         </Card>
 
-        <section className="mt-14 grid gap-6 sm:grid-cols-2">
+        <section id="vendor-choice" className="mt-14 grid scroll-mt-24 gap-6 sm:grid-cols-2">
           <Card>
             <h2 className="text-lg font-semibold text-white">Choose {softwareA.name} if…</h2>
             <p className="mt-4 leading-7 text-zinc-400">{data.whoShouldChooseA}</p>
