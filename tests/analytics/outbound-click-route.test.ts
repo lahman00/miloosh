@@ -11,8 +11,9 @@ import { getAllFirstPartyEvents } from "@/lib/analytics/events";
 /**
  * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21) — Phase
  * 11: the old outbound-click pipeline (lib/revenue/events.ts) and the new
- * first-party analytics pipeline (lib/analytics/events.ts) must agree on
- * isTest for the same click — this route writes to both. Same local-file
+ * first-party analytics pipeline (lib/analytics/events.ts) must preserve the
+ * same explicit test marker, while first-party also preserves the contract's
+ * missing/unknown state instead of collapsing it to false. Same local-file
  * isolation discipline as tests/lib/click-tracker.test.ts.
  *
  * Use a real NextRequest here rather than casting a Web Request. The route
@@ -55,7 +56,7 @@ function post(body: unknown): Promise<Response> {
   );
 }
 
-describe("POST /api/outbound-click — legacy and first-party pipelines agree on isTest", () => {
+describe("POST /api/outbound-click — preserves explicit and unknown isTest states", () => {
   it("a synthetic QA click (isTest:true) is recorded isTest:true in BOTH pipelines, using the same anonymous session", async () => {
     const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", ctaLocation: "software-page-cta", visitorId: "v_qa_click", sessionId: "s_qa_click", isTest: true });
     expect(res.status).toBe(202);
@@ -71,17 +72,45 @@ describe("POST /api/outbound-click — legacy and first-party pipelines agree on
     expect(fpEvent?.sessionId).toBe("s_qa_click");
   });
 
-  it("a real/unknown-human click is recorded isTest:false (or absent) in both pipelines", async () => {
-    const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", visitorId: "v_real_click", sessionId: "s_real_click" });
+  it("keeps a missing test marker unknown in first-party analytics while preserving the legacy boolean", async () => {
+    const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", visitorId: "v_unknown_click", sessionId: "s_unknown_click" });
     expect(res.status).toBe(202);
 
     const legacy = await getOutboundEvents();
     const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
-    expect(legacyEvent?.isTest).toBeFalsy();
+    expect(legacyEvent?.isTest).toBe(false);
 
     const firstParty = await getAllFirstPartyEvents();
     const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
-    expect(fpEvent?.isTest).toBeFalsy();
+    expect(fpEvent).toBeDefined();
+    expect(Object.prototype.hasOwnProperty.call(fpEvent, "isTest")).toBe(false);
+  });
+
+  it("preserves an explicit isTest:false marker in first-party analytics", async () => {
+    const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", visitorId: "v_explicit_real", sessionId: "s_explicit_real", isTest: false });
+    expect(res.status).toBe(202);
+
+    const legacy = await getOutboundEvents();
+    const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
+    expect(legacyEvent?.isTest).toBe(false);
+
+    const firstParty = await getAllFirstPartyEvents();
+    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
+    expect(fpEvent?.isTest).toBe(false);
+  });
+
+  it("keeps a missing test marker unknown for vendor-link first-party events too", async () => {
+    const res = await post({ slug: "pipedrive", kind: "vendor-link", sourcePage: "/software/pipedrive", ctaLocation: "pricing-source-link", visitorId: "v_vendor_unknown", sessionId: "s_vendor_unknown" });
+    expect(res.status).toBe(202);
+
+    const legacy = await getOutboundEvents();
+    const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
+    expect(legacyEvent?.isTest).toBe(false);
+
+    const firstParty = await getAllFirstPartyEvents();
+    const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
+    expect(fpEvent).toBeDefined();
+    expect(Object.prototype.hasOwnProperty.call(fpEvent, "isTest")).toBe(false);
   });
 
   it("records the dedicated Wix ecommerce funnel when the ecommerce guide supplies wixContext", async () => {

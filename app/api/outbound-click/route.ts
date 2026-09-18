@@ -130,10 +130,11 @@ export async function POST(request: NextRequest) {
   const resolvedCtaLocation = normalizeCtaLocation(typeof ctaLocation === "string" ? ctaLocation : undefined);
   const visitorId = typeof body.visitorId === "string" ? body.visitorId : "v_anon";
   const sessionId = typeof body.sessionId === "string" ? body.sessionId : "s_anon";
-  // Analytics Zero-Drop Production Proof Mega Mission (2026-08-21) Phase
-  // 11: propagated to both the legacy outbound-click pipeline and first-party
-  // analytics, so a synthetic QA click never gets counted as a real conversion.
+  // Legacy analytics require a boolean flag, but first-party analytics preserve
+  // the measurement contract's third state: marker missing/unknown. A missing
+  // marker must not be rewritten as an explicit human-looking `false`.
   const isTest = body.isTest === true;
+  const firstPartyIsTest = typeof body.isTest === "boolean" ? body.isTest : undefined;
   // Experiment labels are descriptive only and never branch destination logic.
   const experimentId = typeof body.experimentId === "string" ? body.experimentId : undefined;
   const variant = typeof body.variant === "string" ? body.variant : undefined;
@@ -155,7 +156,7 @@ export async function POST(request: NextRequest) {
       visitorId,
       sessionId,
       timestamp: new Date().toISOString(),
-      isTest,
+      isTest: firstPartyIsTest,
       ...experimentFields,
     });
   } else {
@@ -176,7 +177,7 @@ export async function POST(request: NextRequest) {
       visitorId,
       sessionId,
       timestamp: new Date().toISOString(),
-      isTest,
+      isTest: firstPartyIsTest,
       ...experimentFields,
     });
   }
