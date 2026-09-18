@@ -52,4 +52,14 @@ describe("partner materials audit", () => {
       expect(record!.affiliateUrl).not.toBe("UNKNOWN");
     }
   });
+
+  it("scopes SurveyMonkey's August fail-close only to the retired old asset", () => {
+    const record = PARTNER_MATERIAL_AUDIT.find((item) => item.slug === "surveymonkey");
+    const evidence = record?.evidence.join(" ") ?? "";
+    expect(record?.affiliateUrl).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
+    expect(evidence).toContain("OLD asset https://try.partnerstack.com/jx99ylh3mexb");
+    expect(evidence).toContain("replacement asset https://get.surveymonkey.com/tbaic7ngidg4");
+    expect(evidence).not.toContain("this asset is genuinely Miloosh's own");
+  });
+
 });
