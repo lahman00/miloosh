@@ -33,6 +33,7 @@ describe("WooCommerce repair-before-migration check", () => {
   it("is integrated before pricing without changing Wix routing code", () => {
     const page = fs.readFileSync("app/software/[slug]/page.tsx", "utf8");
     expect(page.indexOf("<WooCommerceRepairCheck slug={software.slug} />")).toBeGreaterThan(-1);
+    expect(page.indexOf("<WooCommerceRepairCheck slug={software.slug} />")).toBeLessThan(page.indexOf('SectionHeading title="Top alternatives"'));
     expect(page.indexOf("<WooCommerceRepairCheck slug={software.slug} />")).toBeLessThan(page.indexOf("<PricingSection software={software} />"));
     const wix = fs.readFileSync("lib/wix-funnels.ts", "utf8");
     expect(wix).toContain("2097924");

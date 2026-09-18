@@ -225,6 +225,9 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </Card>
         </section>
 
+        <WooCommerceRepairCheck slug={software.slug} />
+        <EcwidIntegrationDecision slug={software.slug} />
+
         <section className="mt-14">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading title="Top alternatives" description={generateComparisonIntro(software)} />
@@ -246,8 +249,6 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
 
         <StorePlanFit slug={software.slug} />
-        <WooCommerceRepairCheck slug={software.slug} />
-        <EcwidIntegrationDecision slug={software.slug} />
         <PricingSection software={software} />
 
         <Card className="mt-14">

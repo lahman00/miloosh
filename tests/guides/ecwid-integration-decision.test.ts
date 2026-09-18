@@ -7,6 +7,7 @@ describe("Ecwid integration buyer guidance", () => {
     const page = fs.readFileSync("app/software/[slug]/page.tsx", "utf8");
     expect(component).toContain('slug !== "ecwid"');
     expect(page).toContain("<EcwidIntegrationDecision slug={software.slug} />");
+    expect(page.indexOf("<EcwidIntegrationDecision slug={software.slug} />")).toBeLessThan(page.indexOf('SectionHeading title="Top alternatives"'));
   });
 
   it("uses a selection checklist rather than an invented app ranking", () => {
