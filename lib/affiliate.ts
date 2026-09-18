@@ -29,6 +29,7 @@ import { getAffiliateActivation, hasCurrentActiveRelationship } from "@/lib/reve
 export type AffiliateLink = {
   officialUrl: string;
   affiliateUrl?: string;
+  allowAdditionalTrackingParams?: boolean;
 };
 
 export function preferredUrl(link: AffiliateLink): string {
@@ -80,7 +81,11 @@ function softwareToAffiliateLink(software: Software, intent?: CtaIntent): Affili
     (activation?.isActive ? activation.affiliateUrl ?? undefined : undefined) ??
     gatedCatalogUrl;
 
-  return { officialUrl: software.website, affiliateUrl };
+  return {
+    officialUrl: software.website,
+    affiliateUrl,
+    allowAdditionalTrackingParams: partner?.allowAdditionalTrackingParams ?? true,
+  };
 }
 
 /**
@@ -93,7 +98,9 @@ function softwareToAffiliateLink(software: Software, intent?: CtaIntent): Affili
 export function getSoftwareCtaUrl(software: Software, intent?: CtaIntent): string {
   const link = softwareToAffiliateLink(software, intent);
   const url = preferredUrl(link);
-  return isAffiliateLink(link) ? withTrackingParams(url, getConfiguredTrackingParams()) : url;
+  return isAffiliateLink(link) && link.allowAdditionalTrackingParams !== false
+    ? withTrackingParams(url, getConfiguredTrackingParams())
+    : url;
 }
 
 export function getSoftwareCtaRel(software: Software): string {

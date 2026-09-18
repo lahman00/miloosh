@@ -19,6 +19,12 @@ export type ActivePartner = {
    * vendor-issued URL, same evidentiary bar as affiliateUrl itself.
    */
   pricingAffiliateUrl?: string;
+  /**
+   * False only when first-party program evidence requires the issued tracking
+   * asset to remain byte-for-byte unchanged. Global Miloosh tracking params
+   * must not be appended to those partner URLs.
+   */
+  allowAdditionalTrackingParams?: boolean;
   blocker: "missing_affiliate_url" | null;
 };
 
@@ -119,7 +125,7 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "omnisend", status: "active", affiliateUrl: "https://your.omnisend.com/PznLej", blocker: null },
   { slug: "wrike", status: "active", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij", blocker: null },
   { slug: "jotform", status: "active", affiliateUrl: "https://www.jotform.com/?partner=miloosh", pricingAffiliateUrl: "https://www.jotform.com/pricing/?partner=miloosh", blocker: null },
-  { slug: "surveymonkey", status: "active", affiliateUrl: "https://get.surveymonkey.com/tbaic7ngidg4", blocker: null },
+  { slug: "surveymonkey", status: "active", affiliateUrl: "https://get.surveymonkey.com/tbaic7ngidg4", allowAdditionalTrackingParams: false, blocker: null },
 ] as const;
 
 const ACTIVE_PARTNERS_BY_SLUG = new Map(ACTIVE_PARTNERS.map((partner) => [partner.slug, partner]));

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partners";
@@ -139,6 +139,16 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
         expect(shouldShowAffiliateDisclosure(item), `${slug} (${program.programId}, status ${program.status}) shows affiliate disclosure without being ACTIVE`).toBe(false);
         expect(getSoftwareCtaRel(item), `${slug} (${program.programId}, status ${program.status}) renders rel=sponsored without being ACTIVE`).not.toContain("sponsored");
       }
+    }
+  });
+
+  it("SurveyMonkey keeps the vendor-issued tracking asset exact even when a global ref is configured", () => {
+    const item = software.find((s) => s.slug === "surveymonkey")!;
+    vi.stubEnv("NEXT_PUBLIC_AFFILIATE_REF", "must-not-be-appended");
+    try {
+      expect(getSoftwareCtaUrl(item)).toBe("https://get.surveymonkey.com/tbaic7ngidg4");
+    } finally {
+      vi.unstubAllEnvs();
     }
   });
 

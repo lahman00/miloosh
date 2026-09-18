@@ -35,6 +35,14 @@ describe("small-store conversion path", () => {
     expect(page).toContain('ctaLocation="role-guide-card-cta"');
   });
 
+  it("explains the intent-specific Wix product label on comparison choice cards", () => {
+    const page = fs.readFileSync("app/compare/[comparison]/page.tsx", "utf8");
+    expect(page).toContain('software.slug === "wix" && ctaProductName !== software.name');
+    expect(page).toContain('For this comparison, the relevant Wix offering is');
+    expect(page).toContain('{ctaProductName}</span>.');
+    expect(page).not.toContain('wixContext === "headless" ?');
+  });
+
   it("keeps the vendor action visible in the first table column on mobile", () => {
     const page = fs.readFileSync("app/[guide]/page.tsx", "utf8");
     expect(page).toContain('className="mt-3 sm:hidden"');

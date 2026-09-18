@@ -104,6 +104,8 @@ describe("resolveComparisonCtaUrl — Wix multi-funnel routing", () => {
   it("routes the Wix vs Shopify comparison (2026-08-17) to the eCommerce funnel, not the generic default", () => {
     const wix = getSoftware("wix")!;
     expect(resolveComparisonCtaUrl(wix, "shopify")).toBe(WIX_FUNNELS.ecommerce.url);
+    expect(getWixProductLabelForComparison("shopify")).toBe("Wix eCommerce");
+    expect(getWixProductLabelForComparison("squarespace")).toBe("Wix");
   });
 
   it("no current Wix comparison is domain-registrar-specific — honest gap, not forced (no domain-registrar product exists in the catalog yet)", () => {

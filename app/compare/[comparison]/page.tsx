@@ -71,9 +71,9 @@ function ComparisonChoiceCta({ software, otherSlug }: { software: Software; othe
 
   return (
     <div className="mt-5">
-      {software.slug === "wix" && wixContext === "headless" ? (
+      {software.slug === "wix" && ctaProductName !== software.name ? (
         <p className="mb-3 text-sm leading-6 text-zinc-400">
-          For this comparison, the relevant Wix offering is <span className="font-medium text-zinc-200">Wix Headless</span>.
+          For this comparison, the relevant Wix offering is <span className="font-medium text-zinc-200">{ctaProductName}</span>.
         </p>
       ) : null}
       <TrackedCtaLink
