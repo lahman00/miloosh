@@ -41,6 +41,13 @@ import type {
 /** Below this matchPercent, a "top" result isn't a strong match — informational only, doesn't hide the result, just flags low confidence. Matches the rebuild brief's "never pretend certainty" requirement (Phase 11). */
 const LOW_CONFIDENCE_MATCH_PERCENT = 40;
 
+export function hasDiscriminatingAnswers(answers: RecommendationAnswers): boolean {
+  return answers.teamSize !== "unspecified" || (answers.budget !== "unspecified" && answers.budget !== "flexible") ||
+    answers.companyStage !== "unspecified" || answers.workStyle === "remote" || answers.workStyle === "hybrid" ||
+    answers.requiredIntegrations.length > 0 || answers.needsAi || answers.difficultyPreference !== "no-preference" ||
+    (answers.primaryNeed === "time_tracking" && answers.monitoringSensitivity !== "no-preference");
+}
+
 function computeConfidence(
   eligibleCount: number,
   topMatchPercent: number | null,
@@ -60,6 +67,10 @@ function computeConfidence(
       };
     }
     return { confidence: "none", confidenceNote: "Nothing in our verified dataset matched. Try answering at least one question." };
+  }
+
+  if (!hasDiscriminatingAnswers(answers)) {
+    return { confidence: "low", confidenceNote: "You selected a category without enough constraints to distinguish buyer fit. These are eligible options, not a personalized best pick. Equal scores are ordered alphabetically, not by suitability or affiliate status." };
   }
 
   if (topMatchPercent !== null && topMatchPercent < LOW_CONFIDENCE_MATCH_PERCENT) {
@@ -110,7 +121,10 @@ export function getRecommendations(
       software,
       rank: index + 1,
       scoring,
-      explanation: buildExplanation(software, scoring),
+      explanation: hasDiscriminatingAnswers(answers) ? buildExplanation(software, scoring) : {
+        whyItMatched: `${software.name} is eligible for the selected category; category eligibility alone does not establish fit for your business.`,
+        tradeoff: "Add your actual constraints and verify plan requirements before choosing or switching.",
+      },
       pros: generateProsList(software),
       consDisclosure: CONS_DISCLOSURE,
       relatedComparisonSlugs,

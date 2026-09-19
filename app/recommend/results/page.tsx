@@ -9,6 +9,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { TrackedRecommendationLink } from "@/components/recommend/TrackedRecommendationLink";
 import { TrackedComparisonLink } from "@/components/recommend/TrackedComparisonLink";
 import { RecommendResultsAnalytics } from "@/components/recommend/RecommendResultsAnalytics";
+import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { getCategoryName } from "@/data/categories";
 import { getComparisonBySlug } from "@/lib/comparison";
 import { getRecommendations } from "@/lib/recommend/engine";
@@ -104,7 +105,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
         />
 
         <header className="mt-6 max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-white min-[360px]:text-4xl sm:text-5xl">
             {confidence === "none" ? "No strong match yet" : `Your top ${recommendations.length} recommendation${recommendations.length === 1 ? "" : "s"}`}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
@@ -131,6 +132,15 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
           </div>
         ) : null}
 
+        {answers.primaryNeed === "ecommerce_platform" ? (
+          <p className="mt-6 max-w-2xl text-sm leading-6 text-zinc-300">
+            This shortlist does not evaluate your existing platform, catalog, SEO migration risk, or fulfillment workflows. Before rebuilding, use the{" "}
+            <TrackedInternalCtaLink href="/best-ecommerce-platform-for-small-business#store-decision-kit" sourcePath="/recommend/results" targetPath="/best-ecommerce-platform-for-small-business#store-decision-kit" ctaName="recommend-store-decision-kit" className="underline underline-offset-4">
+              stay, repair, embed, or migrate decision checklist
+            </TrackedInternalCtaLink>.
+          </p>
+        ) : null}
+
         <div className="mt-14 space-y-10">
           {recommendations.map((rec) => {
             const positiveFactors = rec.scoring.factors.filter((f) => f.direction === "positive");
@@ -148,10 +158,10 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
               <Card key={rec.software.slug} className="overflow-hidden">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       <Badge>#{rec.rank} pick</Badge>
                       <Badge className="border-emerald-500/30 text-emerald-300">
-                        {rec.scoring.matchPercent}% match
+                        {rec.scoring.matchPercent}% of scored criteria
                       </Badge>
                       <span className="text-xs uppercase tracking-wider text-zinc-500">
                         {getCategoryName(rec.software.category)}

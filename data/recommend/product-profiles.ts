@@ -287,7 +287,9 @@ export const PRODUCT_PROFILES: readonly ProductProfile[] = [
   // ---- website_builder (from category: cms — the 4 products whose own stored description explicitly
   // calls itself a "website builder" with hosting included, distinct from a CMS a developer or content
   // team runs) ----
-  { slug: "wix", domains: ["website_builder"] },
+  // Wix Stores commerce eligibility, verified 2026-09-19:
+  // https://www.wix.com/ecommerce/website (eligibility only, not a ranking boost).
+  { slug: "wix", domains: ["website_builder", "ecommerce_platform"] },
   { slug: "squarespace", domains: ["website_builder"] },
   { slug: "webflow", domains: ["website_builder"] },
   { slug: "weebly", domains: ["website_builder"] },
