@@ -68,10 +68,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-zinc-950 font-sans text-white antialiased">
         <JsonLd data={getOrganizationJsonLd()} />
-        <Analytics />
         <FirstPartyAnalytics />
         <SocialLandingCapture />
         <Navbar />
+        <Analytics />
         {children}
         <Footer />
       </body>

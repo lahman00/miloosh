@@ -4,7 +4,7 @@ import { buttonClasses } from "@/lib/button-styles";
 import { SITE_NAME } from "@/lib/site";
 
 /**
- * Non-blocking bottom banner shown only while consent is "unset" (first
+ * Non-blocking in-flow banner shown only while consent is "unset" (first
  * visit, or storage was cleared). Declining is exactly as easy as
  * accepting — same size, same row — since a banner that makes "no" harder
  * to find than "yes" isn't really offering a real choice.
@@ -20,7 +20,7 @@ export function ConsentBanner({
     <div
       role="region"
       aria-label="Cookie consent"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-zinc-950"
+      className="border-b border-white/10 bg-zinc-950"
     >
       <Container className="flex flex-col items-start gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-2xl text-sm leading-6 text-zinc-400">
