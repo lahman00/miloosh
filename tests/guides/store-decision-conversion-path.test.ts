@@ -25,6 +25,25 @@ describe("small-store conversion path", () => {
     expect(trackEvent).toHaveBeenCalledWith({ type: "internal_cta_click", path: "/best-ecommerce-platform-for-small-business", targetPath: "/best-ecommerce-platform-for-small-business#quick-comparison", ctaName: "store-decision-kit-quick-comparison" });
   });
 
+  it("tracks the checklist and comparison next steps as meaningful internal CTAs", () => {
+    const source = fs.readFileSync("components/EcommerceDecisionKit.tsx", "utf8");
+    expect(source).toContain('ctaName="store-decision-kit-open-checklist"');
+    expect(source).toContain('ctaName="store-decision-kit-download-checklist"');
+    expect(source).toContain('ctaName="store-decision-kit-wix-shopify-comparison"');
+    expect(source).not.toContain('<a href="/resources/ecommerce-platform-decision-checklist.html"');
+    expect(source).not.toContain('<Link href="/compare/wix-vs-shopify"');
+
+    for (const [href, targetPath, ctaName] of [
+      ["/resources/ecommerce-platform-decision-checklist.html", "/resources/ecommerce-platform-decision-checklist.html", "store-decision-kit-open-checklist"],
+      ["/resources/ecommerce-platform-decision-checklist.html", "/resources/ecommerce-platform-decision-checklist.html", "store-decision-kit-download-checklist"],
+      ["/compare/wix-vs-shopify", "/compare/wix-vs-shopify", "store-decision-kit-wix-shopify-comparison"],
+    ] as const) {
+      const element = TrackedInternalCtaLink({ href, sourcePath: "/best-ecommerce-platform-for-small-business", targetPath, ctaName, children: ctaName });
+      (element.props as { onClick: () => void }).onClick();
+      expect(trackEvent).toHaveBeenCalledWith({ type: "internal_cta_click", path: "/best-ecommerce-platform-for-small-business", targetPath, ctaName });
+    }
+  });
+
   it("keeps Wix ecommerce routing aligned in both guide CTA surfaces", () => {
     const page = fs.readFileSync("app/[guide]/page.tsx", "utf8");
     const routing = 'wixContext={guide.slug === "best-ecommerce-platform-for-small-business" && p.software.slug === "wix" ? "ecommerce" : undefined}';

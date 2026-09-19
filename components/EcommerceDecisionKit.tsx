@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 
 /** Proposed buyer checks, not a claim of hands-on merchant testing. No form gate; the comparison shortcut logs only an internal navigation event. */
@@ -32,9 +31,35 @@ export function EcommerceDecisionKit() {
         <div><dt className="font-semibold text-white">Keep the website, change commerce</dt><dd className="mt-1 text-sm leading-6 text-zinc-300"><a href="#ecwid" className="text-emerald-300 underline underline-offset-4">Evaluate embedded commerce with Ecwid</a>. Check product limits, staff needs and the checkout experience on the proposed tier.</dd></div>
       </dl>
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <a href="/resources/ecommerce-platform-decision-checklist.html" aria-describedby="worksheet-access-note" className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 hover:bg-zinc-200">Open the free decision checklist</a>
-        <a href="/resources/ecommerce-platform-decision-checklist.html" download className="text-sm text-emerald-300 underline underline-offset-4">Download the free decision checklist</a>
-        <Link href="/compare/wix-vs-shopify" className="text-sm text-emerald-300 underline underline-offset-4">Compare Wix and Shopify</Link>
+        <TrackedInternalCtaLink
+          href="/resources/ecommerce-platform-decision-checklist.html"
+          sourcePath="/best-ecommerce-platform-for-small-business"
+          targetPath="/resources/ecommerce-platform-decision-checklist.html"
+          ctaName="store-decision-kit-open-checklist"
+          aria-describedby="worksheet-access-note"
+          className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 hover:bg-zinc-200"
+        >
+          Open the free decision checklist
+        </TrackedInternalCtaLink>
+        <TrackedInternalCtaLink
+          href="/resources/ecommerce-platform-decision-checklist.html"
+          sourcePath="/best-ecommerce-platform-for-small-business"
+          targetPath="/resources/ecommerce-platform-decision-checklist.html"
+          ctaName="store-decision-kit-download-checklist"
+          download
+          className="text-sm text-emerald-300 underline underline-offset-4"
+        >
+          Download the free decision checklist
+        </TrackedInternalCtaLink>
+        <TrackedInternalCtaLink
+          href="/compare/wix-vs-shopify"
+          sourcePath="/best-ecommerce-platform-for-small-business"
+          targetPath="/compare/wix-vs-shopify"
+          ctaName="store-decision-kit-wix-shopify-comparison"
+          className="text-sm text-emerald-300 underline underline-offset-4"
+        >
+          Compare Wix and Shopify
+        </TrackedInternalCtaLink>
       </div>
       <p id="worksheet-access-note" className="mt-3 text-xs leading-6 text-zinc-400">Open the worksheet in your browser or download a printable HTML copy. No email required; no signup required. Use your own plan quote and a safe test store. The recommendations are editorial fit judgments, not benchmark results.</p>
       <details className="mt-5 border-t border-white/10 pt-4">
