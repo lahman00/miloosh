@@ -1,124 +1,58 @@
-import { execSync } from "node:child_process";
-import { verifyProjectIdentity, ProjectIdentityError } from "@/lib/project-guard";
+import { execFileSync } from "node:child_process";
+import { verifyProjectIdentity } from "@/lib/project-guard";
 
 export interface DeploymentRecord {
-  id: string;
-  url: string;
-  status: "Ready" | "Error" | "Building" | "Canceled" | "Unknown";
-  environment: string;
-  aliases: string[];
+  id: string; url: string; status: string; environment: string;
+  aliases: string[]; sourceSha: string | null;
 }
 
+/** Resolve the LIVE alias, never the newest (possibly unpromoted) build.
+ * Existing CLI auth stays in Vercel; only non-secret metadata is returned. */
 export function getLatestProductionDeployment(): DeploymentRecord {
-  try {
-    const rawOutput = execSync("vercel ls --prod", { encoding: "utf8" });
-    const lines = rawOutput.split("\n").map(l => l.trim()).filter(Boolean);
+  const raw = execFileSync("vercel", ["api", "/v13/deployments/miloosh.com", "--raw"], {
+    encoding: "utf8", stdio: ["ignore", "pipe", "ignore"], timeout: 45000, maxBuffer: 16 * 1024 * 1024,
+  });
+  const record = JSON.parse(raw);
+  return {
+    id: record.id, url: `https://${record.url}`, status: record.readyState,
+    environment: record.target, aliases: record.alias ?? [],
+    sourceSha: record.meta?.githubCommitSha ?? record.gitSource?.sha ?? null,
+  };
+}
 
-    for (const url of lines) {
-      if (!url.startsWith("https://flowtemplate-")) continue;
-
-      try {
-        const inspectRaw = execSync(`vercel inspect ${url} 2>&1`, { encoding: "utf8" });
-        const cleanInspect = inspectRaw.replace(/[\u001b\x1b]\[[0-9;]*[a-zA-Z]/g, "");
-        const idMatch = cleanInspect.match(/id\s+([a-zA-Z0-9_]+)/);
-        const id = (idMatch && idMatch[1]) ? idMatch[1] : "";
-
-        let status: DeploymentRecord["status"] = "Unknown";
-        if (cleanInspect.includes("● Ready") || cleanInspect.includes("status\t● Ready")) status = "Ready";
-        else if (cleanInspect.includes("● Error") || cleanInspect.includes("status\t● Error")) status = "Error";
-        else if (cleanInspect.includes("● Building") || cleanInspect.includes("status\t● Building")) status = "Building";
-
-        const aliasMatches = cleanInspect.match(/https:\/\/[a-zA-Z0-9\.\-]+/g) || [];
-        const aliases = Array.from(new Set(aliasMatches.filter(a => a !== url)));
-
-        // If this is the latest deployment, return it
-        return {
-          id,
-          url,
-          status,
-          environment: "Production",
-          aliases
-        };
-      } catch {
-        // continue to next deployment
-      }
-    }
-  } catch (err: unknown) {
-    console.error("Failed to run vercel CLI:", (err as Error).message);
-  }
-
-  throw new Error("No production deployment record found in vercel ls --prod");
+export function deploymentFailures(record: DeploymentRecord, expectedSha: string): string[] {
+  const failures: string[] = [];
+  if (!/^dpl_[a-zA-Z0-9]+$/.test(record.id ?? "")) failures.push("Missing deployment identity");
+  if (record.status !== "READY") failures.push("Live deployment is not READY");
+  if (record.environment !== "production") failures.push("Live deployment is not Production");
+  if (!record.aliases.includes("miloosh.com")) failures.push("Canonical alias is not assigned to this deployment");
+  if (!/^[a-f0-9]{40}$/i.test(expectedSha) || record.sourceSha !== expectedSha) failures.push("Live source SHA does not match the expected commit (or is unknown)");
+  return failures;
 }
 
 export async function verifyLiveDeployment(expectedCommit?: string) {
-  console.log("================================================================");
-  console.log("             MILOOSH VERCEL DEPLOYMENT GUARD                    ");
-  console.log("================================================================\n");
-
-  try {
-    const identity = verifyProjectIdentity();
-    console.log(`✓ Project identity confirmed: ${identity.repoSlug}\n`);
-  } catch (err) {
-    console.error(err instanceof ProjectIdentityError ? `❌ ${err.message}` : err);
-    process.exit(1);
-  }
-
-  const currentLocalHead = execSync("git rev-parse HEAD", { encoding: "utf8" }).trim();
-  const currentOriginHead = execSync("git rev-parse origin/main", { encoding: "utf8" }).trim();
-
-  console.log(`Local HEAD:        ${currentLocalHead}`);
-  console.log(`Origin/main HEAD:  ${currentOriginHead}`);
-  if (expectedCommit) {
-    console.log(`Expected Commit:   ${expectedCommit}`);
-  }
-
+  verifyProjectIdentity();
+  if (expectedCommit && !/^[a-f0-9]{7,40}$/i.test(expectedCommit)) throw Error("Expected commit must be a Git SHA");
+  const expectedSha = execFileSync("git", ["rev-parse", "--verify", `${expectedCommit ?? "HEAD"}^{commit}`], { encoding: "utf8" }).trim();
   const deployment = getLatestProductionDeployment();
-  console.log(`\nLatest Vercel Production Deployment:`);
-  console.log(`  ID:          ${deployment.id}`);
-  console.log(`  URL:         ${deployment.url}`);
-  console.log(`  Status:      ${deployment.status}`);
-  console.log(`  Environment: ${deployment.environment}`);
-  console.log(`  Aliases:     ${deployment.aliases.join(", ")}`);
-
-  if (deployment.status !== "Ready") {
-    console.error(`\n❌ DEPLOYMENT FAILED: Latest production deployment status is ${deployment.status} (expected: Ready)`);
-    process.exit(1);
-  }
-
-  // Verify direct deployment URL
-  console.log(`\nVerifying direct deployment URL (${deployment.url})...`);
-  try {
-    const res = await fetch(deployment.url, { method: "HEAD", headers: { "User-Agent": "MilooshDeploymentGuard/1.0" } });
-    if (res.status !== 200) {
-      console.error(`❌ HTTP ${res.status} returned from direct deployment URL!`);
-      process.exit(1);
-    }
-    console.log(`  ✓ Direct deployment URL returned HTTP 200`);
-  } catch (err: unknown) {
-    console.error(`❌ Failed to fetch direct deployment URL: ${(err as Error).message}`);
-    process.exit(1);
-  }
-
-  // Verify canonical production domain
-  console.log(`\nVerifying canonical production domain (https://miloosh.com)...`);
-  try {
-    const res = await fetch("https://miloosh.com", { method: "HEAD", headers: { "User-Agent": "MilooshDeploymentGuard/1.0" } });
-    if (res.status !== 200) {
-      console.error(`❌ HTTP ${res.status} returned from https://miloosh.com!`);
-      process.exit(1);
-    }
-    console.log(`  ✓ Canonical production domain returned HTTP 200`);
-  } catch (err: unknown) {
-    console.error(`❌ Failed to fetch canonical domain: ${(err as Error).message}`);
-    process.exit(1);
-  }
-
-  console.log(`\n================================================================`);
-  console.log(`✅ DEPLOYMENT GUARD PASSED: Production is verified READY & LIVE`);
-  console.log(`================================================================\n`);
+  const failures = deploymentFailures(deployment, expectedSha);
+  const response = await fetch("https://miloosh.com", {
+    method: "HEAD", redirect: "manual", signal: AbortSignal.timeout(20000),
+    headers: { "User-Agent": "MilooshDeploymentGuard/1.0" },
+  });
+  if (response.status !== 200) failures.push(`Canonical endpoint returned HTTP ${response.status}; redirects/login pages are not a pass`);
+  // Detect a concurrent alias promotion during verification.
+  const after = getLatestProductionDeployment();
+  if (after.id !== deployment.id || after.sourceSha !== deployment.sourceSha) failures.push("Production changed during verification");
+  console.log(JSON.stringify({ expectedSha, deployment, canonicalHttpStatus: response.status, failures }, null, 2));
+  if (failures.length) throw Error("Deployment guard BLOCKED: " + failures.join("; "));
+  console.log("DEPLOYMENT GUARD PASSED: exact source, READY production alias and canonical HTTP 200 verified");
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const expected = process.argv[2];
-  verifyLiveDeployment(expected);
+  verifyLiveDeployment(process.argv[2]).catch(() => {
+    // Never echo CLI/auth error objects. Unreadable metadata is not a pass.
+    console.error("Deployment verification failed or evidence unavailable.");
+    process.exitCode = 1;
+  });
 }
