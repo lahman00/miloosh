@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 
 /**
  * Sprint 8 Phase 4 (architecture) / Sprint 9 Task 6 (real sink) / Phase 11
@@ -92,7 +93,7 @@ export type StoredOutboundEvent = OutboundEvent & {
 };
 
 const BLOB_PREFIX = "outbound-clicks/";
-const LOCAL_FALLBACK_PATH = path.join(process.cwd(), "var", "outbound-clicks.json");
+const LOCAL_FALLBACK_PATH = analyticsLocalPath("outbound-clicks.json");
 /** Read-side safety cap — the most recent events a single list() call will pull. See the module header for why "most recent" is best-effort, not guaranteed, once total volume exceeds this. */
 const MAX_STORED_EVENTS = 5000;
 

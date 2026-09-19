@@ -1,4 +1,5 @@
 import { getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/events";
+import { sequentialFunnel } from "@/lib/analytics/sequential-funnel";
 import type { StoredOutboundEvent } from "@/lib/revenue/events";
 import { readOutboundEventsDetailed, formatOutboundLedger } from "@/lib/revenue/outbound-read";
 import { LEGACY_CONTAMINATED_SESSIONS, isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
@@ -693,72 +694,11 @@ export function computePeriodMetrics(
   // didn't reach results, undercounting real high-intent behavior. rfVisitorsP
   // already tracks every RECOMMEND_TOUCH_TYPES event (recommend_started included),
   // computed unconditionally above regardless of period, so it's a strict superset.
-  const highIntentVisitors = new Set([...rfVisitorsP, ...comparisonVisitors, ...softwareVisitors]);
   const meaningfulCount = meaningfulClickers.size;
   const outboundCount = outboundClickers.size;
   const affiliateCount = affiliateClickers.size;
 
-  // Reach metrics above are independent cohorts. A visitor can land directly on a
-  // high-intent page without first viewing 2+ pages. Keep the funnel below strictly
-  // sequential by intersecting each stage with the previous one; otherwise dividing
-  // unrelated cohorts can produce impossible step conversions greater than 100%.
-  const intersect = (left: Set<string>, right: Set<string>) =>
-    new Set([...left].filter((visitorId) => right.has(visitorId)));
-  const strictEngaged = intersect(visitors, engagedVisitors);
-  const strictMultiPage = intersect(strictEngaged, multiPageVisitors);
-  const strictHighIntent = intersect(strictMultiPage, highIntentVisitors);
-  const strictMeaningful = intersect(strictHighIntent, meaningfulClickers);
-  const strictOutbound = intersect(strictMeaningful, outboundClickers);
-  const strictAffiliate = intersect(strictOutbound, affiliateClickers);
-  const pctOfVisitors = (count: number) =>
-    totalVisitorsCount > 0 ? `${((count / totalVisitorsCount) * 100).toFixed(1)}%` : "N/A";
-  const stepConversion = (count: number, previousCount: number) =>
-    previousCount > 0 ? `${((count / previousCount) * 100).toFixed(1)}%` : "N/A";
-
-  const funnel = [
-    {
-      stage: "1. REAL VISITORS",
-      uniquePeople: totalVisitorsCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? "100.0%" : "N/A",
-      conversionFromPrev: totalVisitorsCount > 0 ? "100.0%" : "N/A"
-    },
-    {
-      stage: "2. ENGAGED VISITORS (>10s / Multi-Page)",
-      uniquePeople: strictEngaged.size,
-      pctOfTotalVisitors: pctOfVisitors(strictEngaged.size),
-      conversionFromPrev: stepConversion(strictEngaged.size, totalVisitorsCount)
-    },
-    {
-      stage: "3. VIEWED 2+ PAGES AFTER ENGAGEMENT",
-      uniquePeople: strictMultiPage.size,
-      pctOfTotalVisitors: pctOfVisitors(strictMultiPage.size),
-      conversionFromPrev: stepConversion(strictMultiPage.size, strictEngaged.size)
-    },
-    {
-      stage: "4. HIGH-INTENT EVALUATION AFTER 2+ PAGES",
-      uniquePeople: strictHighIntent.size,
-      pctOfTotalVisitors: pctOfVisitors(strictHighIntent.size),
-      conversionFromPrev: stepConversion(strictHighIntent.size, strictMultiPage.size)
-    },
-    {
-      stage: "5. MEANINGFUL CTA CLICK AFTER HIGH-INTENT",
-      uniquePeople: strictMeaningful.size,
-      pctOfTotalVisitors: pctOfVisitors(strictMeaningful.size),
-      conversionFromPrev: stepConversion(strictMeaningful.size, strictHighIntent.size)
-    },
-    {
-      stage: "6. CLICKED OUT TO VENDOR AFTER CTA",
-      uniquePeople: strictOutbound.size,
-      pctOfTotalVisitors: pctOfVisitors(strictOutbound.size),
-      conversionFromPrev: stepConversion(strictOutbound.size, strictMeaningful.size)
-    },
-    {
-      stage: "7. CLICKED AFFILIATE LINK AFTER VENDOR EXIT",
-      uniquePeople: strictAffiliate.size,
-      pctOfTotalVisitors: pctOfVisitors(strictAffiliate.size),
-      conversionFromPrev: stepConversion(strictAffiliate.size, strictOutbound.size)
-    }
-  ];
+  const funnel = sequentialFunnel(events, allHistoricalEvents.length ? allHistoricalEvents : events, includeSynthetic);
   const topLandingPages = [...landingPageCounts.entries()].map(([path, visits]) => ({ path, visits })).sort((a, b) => b.visits - a.visits).slice(0, 10);
   const topExitPages = [...exitPageCounts.entries()].map(([path, exits]) => ({ path, exits })).sort((a, b) => b.exits - a.exits).slice(0, 10);
   const topPages = [...pageCounts.entries()].map(([path, views]) => ({ path, views })).sort((a, b) => b.views - a.views).slice(0, 10);
@@ -808,7 +748,7 @@ export function computePeriodMetrics(
       visitors: { people: rfVisitorsP.size, sessions: rfVisitorsS.size, events: rfVisitorsE },
       starters: { people: rfStartersP.size, sessions: rfStartersS.size, events: rfStartersE },
       completers: { people: rfCompletersP.size, sessions: rfCompletersS.size, events: rfCompletersE },
-      completionRate: rfStartersP.size > 0 ? `${((rfCompletersP.size / rfStartersP.size) * 100).toFixed(1)}%` : "0.0%",
+      completionRate: rfStartersP.size > 0 ? `${((rfCompletersP.size / rfStartersP.size) * 100).toFixed(1)}%` : "N/A",
       resultViewers: { people: rfResultViewersP.size, sessions: rfResultViewersS.size, events: rfResultViewersE },
       productOpeners: { people: rfProductOpenersP.size, sessions: rfProductOpenersS.size, events: rfProductOpenersE },
       comparisonOpeners: { people: rfComparisonOpenersP.size, sessions: rfComparisonOpenersS.size, events: rfComparisonOpenersE },
@@ -885,6 +825,7 @@ export async function generateAnalyticsReport() {
   for (const p of periods) {
     console.log(`----------------------------------------------------------------------------------------`);
     console.log(` PERIOD: ${p.periodName}`);
+    console.log(`  OBSERVED REACH BELOW: anonymous IDs, not verified people; excludes explicit synthetic events only.`);
     console.log(`----------------------------------------------------------------------------------------`);
     console.log(`  - Unique Visitors:         ${p.uniqueVisitors.toString().padEnd(6)} |  - New vs Returning:     ${p.newVisitors} new / ${p.returningVisitors} ret`);
     console.log(`  - Sessions:                ${p.sessions.toString().padEnd(6)} |  - Total Page Views:     ${p.totalPageViews}`);
@@ -894,7 +835,7 @@ export async function generateAnalyticsReport() {
     console.log(`  - Recommend Tool Users:    ${p.recommendUsers.toString().padEnd(6)} |  - Meaningful Clickers:  ${p.meaningfulClickers}`); // any Recommend touch (started/results/completed/etc) — see RECOMMEND FUNNEL below for the full breakdown
     console.log(`  - Outbound Clickers:       ${p.outboundClickers.toString().padEnd(6)} |  - Affiliate Clickers:    ${p.affiliateClickers}\n`);
 
-    console.log(`  CANONICAL HUMAN FUNNEL:`);
+    console.log(`  SEQUENTIAL HUMAN-ESTIMATE FUNNEL (session-classified; QA, automation, suspicious and unresolved excluded):`);
     p.funnel.forEach(f => {
       console.log(`    ${f.stage.padEnd(54)}: ${f.uniquePeople.toString().padStart(4)} people | ${f.pctOfTotalVisitors.padStart(6)} of visitors | ${f.conversionFromPrev.padStart(6)} step conversion`);
     });
@@ -941,14 +882,14 @@ export async function generateAnalyticsReport() {
     }
 
     const rf = p.recommendFunnel;
-    console.log(`\n  RECOMMEND FUNNEL (synthetic/legacy-contaminated excluded${includeSynthetic ? " -- DISABLED, --include-synthetic active" : ""}):`);
+    console.log(`\n  RECOMMEND REACH (independent observed cohorts, NOT a sequential human funnel${includeSynthetic ? " -- DEBUG includes synthetic" : ""}):`);
     console.log(`    ${"".padEnd(32)}   PEOPLE   SESSIONS   EVENTS`);
     const rfRow = (label: string, m: RecommendFunnelMetric) =>
       console.log(`    ${label.padEnd(32)} ${m.people.toString().padStart(8)} ${m.sessions.toString().padStart(10)} ${m.events.toString().padStart(8)}`);
-    rfRow("Real Recommend Visitors", rf.visitors);
+    rfRow("Observed Recommend IDs", rf.visitors);
     rfRow("Recommend Starters", rf.starters);
     rfRow("Recommend Completers", rf.completers);
-    console.log(`    ${"Completion Rate".padEnd(32)} ${rf.completionRate.padStart(8)}`);
+    console.log(`    ${"Observed completers / starters".padEnd(32)} ${rf.completionRate.padStart(8)} (independent reach, NOT a conversion rate)`);
     rfRow("Result Viewers", rf.resultViewers);
     rfRow("Product Openers", rf.productOpeners);
     rfRow("Comparison Openers", rf.comparisonOpeners);

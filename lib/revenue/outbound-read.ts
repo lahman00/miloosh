@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import path from "node:path";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import type { StoredOutboundEvent } from "@/lib/revenue/events";
 
 export type OutboundReadResult = {
@@ -31,7 +31,7 @@ export async function readOutboundEventsDetailed(): Promise<OutboundReadResult> 
   };
   if (backend === "local") {
     try {
-      const raw: unknown = JSON.parse(fs.readFileSync(path.join(process.cwd(), "var", "outbound-clicks.json"), "utf8"));
+      const raw: unknown = JSON.parse(fs.readFileSync(analyticsLocalPath("outbound-clicks.json"), "utf8"));
       if (!Array.isArray(raw)) return result;
       result.recordsListed = raw.length;
       result.events = raw.filter(validEvent);

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
+import { getStoredSessionId, getStoredVisitorId } from "@/lib/analytics/track";
 
 type TrackedVendorLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   slug: string;
@@ -20,17 +21,12 @@ type TrackedVendorLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "hre
  * Synthetic QA marking intentionally matches TrackedCtaLink so production
  * verification can never inflate real vendor-link counts.
  */
-export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, ...props }: TrackedVendorLinkProps) {
+export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, onAuxClick, ...props }: TrackedVendorLinkProps) {
   const pathname = usePathname();
-
-  return (
-    <a
-      {...props}
-      href={href}
-      onClick={(event) => {
-        onClick?.(event);
-        const visitorId = typeof localStorage !== "undefined" ? localStorage.getItem("miloosh_vid") ?? undefined : undefined;
-        const sessionId = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("miloosh_sid") ?? undefined : undefined;
+  const reportOutboundClick = () => {
+      try {
+        const visitorId = getStoredVisitorId();
+        const sessionId = getStoredSessionId();
         const isTest = markAndCheckSyntheticQa();
 
         void fetch("/api/outbound-click", {
@@ -49,6 +45,22 @@ export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, 
         }).catch(() => {
           // Best-effort analytics only. Never block the user's navigation.
         });
+      } catch {
+        // Disabled browser APIs must not interfere with native navigation.
+      }
+  };
+
+  return (
+    <a
+      {...props}
+      href={href}
+      onClick={(event) => {
+        onClick?.(event);
+        reportOutboundClick();
+      }}
+      onAuxClick={(event) => {
+        onAuxClick?.(event);
+        if (event.button === 1) reportOutboundClick();
       }}
     >
       {children}

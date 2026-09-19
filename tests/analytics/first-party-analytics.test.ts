@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import { isBotUserAgent, isInternalOrSyntheticTraffic } from "@/lib/analytics/bot-filter";
 import { recordFirstPartyEvent, getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/events";
 import { computePeriodMetrics, isSyntheticOrTestEvent, computeRecommendDomainBreakdown, computeCtaExposure, computeAcquisitionSourceBreakdown, computeAcquisitionMilestones, computeCtaExperimentReport } from "@/scripts/analytics/report";
 import { LEGACY_CONTAMINATED_SESSIONS, isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
 import fs from "node:fs";
-import path from "node:path";
 
 describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
-  const localStorePath = path.join(process.cwd(), "var", "first-party-analytics.json");
+  const localStorePath = analyticsLocalPath("first-party-analytics.json");
 
   beforeEach(() => {
     try {

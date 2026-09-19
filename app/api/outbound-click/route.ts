@@ -1,4 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { classifyRequest } from "@/lib/analytics/bot-filter";
+import { CTA_COPY_EXPERIMENT_ID } from "@/lib/experiments/cta-copy-experiment";
 import { getSoftware } from "@/data/software";
 import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { trackSoftwareCtaClick, trackVendorLinkClick } from "@/lib/revenue/click-tracker";
@@ -48,6 +50,7 @@ function isWixContext(value: unknown): value is WixFunnelContext {
  */
 const KNOWN_CTA_LOCATIONS = new Set([
   "software-page-cta",
+  "buyer-checklist-cta",
   "pricing-section-cta",
   "alternative-decision-guide",
   "compare-page-choose-card",
@@ -107,14 +110,20 @@ function resolveVendorLinkUrl(software: SoftwareRecord, ctaLocation?: string): s
 }
 
 export async function POST(request: NextRequest) {
+  if (classifyRequest(request.headers).kind !== "PASS") {
+    return NextResponse.json({ ok: true, recorded: false }, { status: 202 });
+  }
   let body: OutboundClickBody;
 
   try {
-    body = (await request.json()) as OutboundClickBody;
+    const raw = await request.text();
+    if (Buffer.byteLength(raw, "utf8") > 8192) return NextResponse.json({ error: "payload too large" }, { status: 413 });
+    body = JSON.parse(raw) as OutboundClickBody;
   } catch {
     return NextResponse.json({ error: "invalid JSON body" }, { status: 400 });
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ error: "invalid body" }, { status: 400 });
   const { slug, kind, ctaLocation, wixContext } = body;
 
   if (typeof slug !== "string") {
@@ -128,16 +137,14 @@ export async function POST(request: NextRequest) {
 
   const sourcePage = resolveOutboundSourcePage(request.headers.get("referer"), request.nextUrl.origin, body.sourcePage);
   const resolvedCtaLocation = normalizeCtaLocation(typeof ctaLocation === "string" ? ctaLocation : undefined);
-  const visitorId = typeof body.visitorId === "string" ? body.visitorId : "v_anon";
-  const sessionId = typeof body.sessionId === "string" ? body.sessionId : "s_anon";
-  // Legacy analytics require a boolean flag, but first-party analytics preserve
-  // the measurement contract's third state: marker missing/unknown. A missing
-  // marker must not be rewritten as an explicit human-looking `false`.
-  const isTest = body.isTest === true;
+  const visitorId = typeof body.visitorId === "string" && /^v_[a-zA-Z0-9_-]{1,62}$/.test(body.visitorId) ? body.visitorId : "v_anon";
+  const sessionId = typeof body.sessionId === "string" && /^s_[a-zA-Z0-9_-]{1,62}$/.test(body.sessionId) ? body.sessionId : "s_anon";
+  // Preserve unknown markers in both sinks, never manufacture explicit false.
+  const isTest = typeof body.isTest === "boolean" ? body.isTest : undefined;
   const firstPartyIsTest = typeof body.isTest === "boolean" ? body.isTest : undefined;
   // Experiment labels are descriptive only and never branch destination logic.
-  const experimentId = typeof body.experimentId === "string" ? body.experimentId : undefined;
-  const variant = typeof body.variant === "string" ? body.variant : undefined;
+  const experimentId = body.experimentId === CTA_COPY_EXPERIMENT_ID ? body.experimentId : undefined;
+  const variant = body.variant === "control" || body.variant === "treatment" ? body.variant : undefined;
   const experimentFields = experimentId && variant ? { experimentId, variant } : {};
 
   if (kind === "vendor-link") {
@@ -160,7 +167,7 @@ export async function POST(request: NextRequest) {
       ...experimentFields,
     });
   } else {
-    const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software);
+    const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, resolvedCtaLocation === "pricing-section-cta" ? "pricing" : undefined);
     await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest);
 
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");

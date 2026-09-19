@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import fs from "node:fs";
-import path from "node:path";
 import { POST } from "@/app/api/analytics/event/route";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
 
@@ -26,7 +26,7 @@ function post(body: unknown, headers: Record<string, string> = {}): Promise<Resp
 }
 
 describe("POST /api/analytics/event — end-to-end route behavior", () => {
-  const localStorePath = path.join(process.cwd(), "var", "first-party-analytics.json");
+  const localStorePath = analyticsLocalPath("first-party-analytics.json");
 
   beforeEach(() => {
     try {

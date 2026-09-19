@@ -26,6 +26,9 @@
 const SYNTHETIC_QA_STORAGE_KEY = "miloosh_qa";
 const QA_RUN_STORAGE_KEY = "miloosh_qa_run";
 const MAX_QA_RUN_LENGTH = 64;
+// Document-scoped fallback survives client navigation when storage is denied.
+// A new document/tab is a distinct key; nothing is persisted or fingerprinted.
+const memoryMarkers = new WeakMap<Window, { qa: boolean; run?: string }>();
 
 function sanitizeQaRun(value: string): string {
   return value.replace(/[^a-zA-Z0-9_-]/g, "").slice(0, MAX_QA_RUN_LENGTH);
@@ -39,21 +42,28 @@ function sanitizeQaRun(value: string): string {
  * earlier ones in the same tab session).
  */
 export function markAndCheckSyntheticQa(): boolean {
+  if (typeof window === "undefined") return false;
+  const params = new URLSearchParams(window.location.search);
+  const previous = memoryMarkers.get(window);
+  const explicit = params.get("qa") === "1";
+  const marker = {
+    qa: explicit || previous?.qa === true,
+    run: explicit && params.get("qaRun") ? sanitizeQaRun(params.get("qaRun")!) : previous?.run,
+  };
+  memoryMarkers.set(window, marker);
   try {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("qa") === "1") {
+    if (marker.qa) {
       sessionStorage.setItem(SYNTHETIC_QA_STORAGE_KEY, "1");
       const qaRun = params.get("qaRun");
       if (qaRun) {
         sessionStorage.setItem(QA_RUN_STORAGE_KEY, sanitizeQaRun(qaRun));
       }
     }
-    return sessionStorage.getItem(SYNTHETIC_QA_STORAGE_KEY) === "1";
+    marker.qa = marker.qa || sessionStorage.getItem(SYNTHETIC_QA_STORAGE_KEY) === "1";
+    marker.run = marker.run ?? sessionStorage.getItem(QA_RUN_STORAGE_KEY) ?? undefined;
+    return marker.qa;
   } catch {
-    // sessionStorage unavailable (private browsing, disabled storage) —
-    // fail closed to "not marked" rather than throwing; this only affects
-    // the exclusion mechanism, never the page itself.
-    return false;
+    return marker.qa;
   }
 }
 
@@ -64,8 +74,8 @@ export function markAndCheckSyntheticQa(): boolean {
  */
 export function getSyntheticQaRun(): string | undefined {
   try {
-    return sessionStorage.getItem(QA_RUN_STORAGE_KEY) ?? undefined;
+    return sessionStorage.getItem(QA_RUN_STORAGE_KEY) ?? (typeof window !== "undefined" ? memoryMarkers.get(window)?.run : undefined);
   } catch {
-    return undefined;
+    return typeof window !== "undefined" ? memoryMarkers.get(window)?.run : undefined;
   }
 }

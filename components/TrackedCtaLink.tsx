@@ -118,6 +118,7 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
   }, [pathname, slug, ctaLocation, variantResolved, experimentId, variant]);
 
   const reportOutboundClick = () => {
+    try {
     const visitorId = getStoredVisitorId();
     const sessionId = getStoredSessionId();
     const isTest = markAndCheckSyntheticQa();
@@ -132,6 +133,9 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
     }).catch(() => {
       // Best-effort only — a tracking failure must never affect the user's click.
     });
+    } catch {
+      // Browser API denial must not interfere with native navigation.
+    }
   };
 
   return (

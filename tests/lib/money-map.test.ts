@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import fs from "node:fs";
 import path from "node:path";
 import { buildMoneyMap, summarizeMoneyMapOutboundEvents } from "@/lib/revenue/money-map";
@@ -11,7 +12,7 @@ import type { StoredOutboundEvent } from "@/lib/revenue/events";
  * click-log path — never a live network call.
  */
 
-const LOG_FILE = path.join(process.cwd(), "var", "outbound-clicks.json");
+const LOG_FILE = analyticsLocalPath("outbound-clicks.json");
 let realBackup: string | null = null;
 let realFlag: string | undefined;
 

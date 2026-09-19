@@ -28,7 +28,7 @@ import { recordFirstPartyEvent, type FirstPartyEvent, type FirstPartyEventType }
 const MAX_PAYLOAD_BYTES = 8192; // generous for this event shape; guards against abuse, not legitimate use
 const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
   "page_view", "engaged_view", "software_view", "comparison_view", "category_view", "guide_view",
-  "recommend_use", "outbound_click", "internal_cta_click", "recommend_started", "recommend_need_selected",
+  "recommend_use", "internal_cta_click", "recommend_started", "recommend_need_selected",
   "recommend_completed", "recommend_result_viewed", "recommend_product_open", "recommend_comparison_open",
   "cta_impression", "newsletter_signup",
 ];
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
   }
 
   const rawBody = await request.text();
-  if (rawBody.length > MAX_PAYLOAD_BYTES) {
+  if (Buffer.byteLength(rawBody, "utf8") > MAX_PAYLOAD_BYTES) {
     console.warn(`[analytics] REJECTED_VALIDATION: payload too large (${rawBody.length} bytes)`);
     return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION" }, { status: 413 });
   }
@@ -54,11 +54,12 @@ export async function POST(request: NextRequest) {
   }
 
   if (
+    !body || typeof body !== "object" || Array.isArray(body) ||
     typeof body.type !== "string" ||
     !VALID_EVENT_TYPES.includes(body.type as FirstPartyEventType) ||
-    typeof body.visitorId !== "string" || body.visitorId.length === 0 ||
-    typeof body.sessionId !== "string" || body.sessionId.length === 0 ||
-    typeof body.path !== "string"
+    typeof body.visitorId !== "string" || !/^v_[a-zA-Z0-9_-]{1,62}$/.test(body.visitorId) ||
+    typeof body.sessionId !== "string" || !/^s_[a-zA-Z0-9_-]{1,62}$/.test(body.sessionId) ||
+    typeof body.path !== "string" || !body.path.startsWith("/") || body.path.startsWith("//")
   ) {
     return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "missing_or_invalid_fields" }, { status: 400 });
   }
@@ -70,8 +71,8 @@ export async function POST(request: NextRequest) {
   // margin for clock/timer slop, not for a fabricated fast value.
   if (body.type === "engaged_view") {
     const claimed = (body as { durationSeconds?: unknown }).durationSeconds;
-    if (typeof claimed !== "number" || claimed < 8) {
-      console.warn(`[analytics] REJECTED_VALIDATION: engaged_view claimed durationSeconds=${String(claimed)}, below the 10s dwell floor`);
+    if (typeof claimed !== "number" || !Number.isFinite(claimed) || claimed < 8) {
+      console.warn("[analytics] REJECTED_VALIDATION: invalid engagement duration or below dwell floor");
       return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "implausible_engagement_timing" }, { status: 400 });
     }
   }
@@ -84,13 +85,29 @@ export async function POST(request: NextRequest) {
   const rawQaRun = typeof body.qaRun === "string" ? body.qaRun.replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 64) : undefined;
   const qaRun = isTest && rawQaRun ? rawQaRun : undefined;
 
+  // Copy the public event vocabulary only, never arbitrary client fields (email,
+  // headers, tokens, answers, etc.). Outbounds have a separate canonical resolver.
+  const fields: Record<string, unknown> = {};
+  const record = body as unknown as Record<string, unknown>;
+  const labels = ["softwareSlug", "comparisonSlug", "categorySlug", "guideSlug", "domain", "confidence", "source", "queryOrCategory", "ctaName", "ctaLocation", "experimentId", "variant", "utmSource", "utmMedium", "utmCampaign", "utmContent", "trafficSource"];
+  for (const key of labels) {
+    const value = record[key];
+    if (typeof value === "string" && /^[a-zA-Z0-9_-]{1,100}$/.test(value)) fields[key] = value;
+  }
+  for (const key of ["durationSeconds", "resultCount", "rank"]) {
+    const value = record[key];
+    if (typeof value === "number" && Number.isFinite(value) && value >= 0) fields[key] = value;
+  }
+  if (typeof record.referrerHost === "string" && /^[a-zA-Z0-9.-]{1,253}$/.test(record.referrerHost)) fields.referrerHost = record.referrerHost;
+  if (typeof record.targetPath === "string" && record.targetPath.startsWith("/") && !record.targetPath.startsWith("//")) fields.targetPath = record.targetPath.split(/[?#]/)[0].slice(0, 300);
   const sanitizedEvent: FirstPartyEvent = {
-    ...body,
+    ...fields,
+    type: body.type,
     timestamp: new Date().toISOString(),
-    path: String(body.path).slice(0, 300),
+    path: String(body.path).split(/[?#]/)[0].slice(0, 300),
     visitorId: String(body.visitorId).slice(0, 64),
     sessionId: String(body.sessionId).slice(0, 64),
-    isTest,
+    isTest: typeof body.isTest === "boolean" ? body.isTest : undefined,
     qaRun,
   } as FirstPartyEvent;
 

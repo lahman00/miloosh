@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeAll, beforeEach, afterAll, afterEach } from "vitest";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import fs from "node:fs";
 import path from "node:path";
 import { trackSoftwareCtaClick, trackVendorLinkClick } from "@/lib/revenue/click-tracker";
@@ -19,7 +20,7 @@ import { WIX_FUNNELS } from "@/lib/wix-funnels";
  * throwaway log file, clean up after.
  */
 
-const LOG_FILE = path.join(process.cwd(), "var", "outbound-clicks.json");
+const LOG_FILE = analyticsLocalPath("outbound-clicks.json");
 
 let realBackup: string | null = null;
 let realFlag: string | undefined;
@@ -131,7 +132,7 @@ describe("trackSoftwareCtaClick — Wix funnel dimensions", () => {
     const keys = Object.keys(event).sort();
     // "isTest" added by the Analytics Zero-Drop Production Proof Mega Mission
     // (2026-08-21) Phase 11 — a boolean synthetic-QA marker, not PII.
-    expect(keys).toEqual(["affiliateFunnel", "affiliateProgram", "campaignId", "ctaLocation", "destination", "isTest", "network", "softwareSlug", "sourcePage", "timestamp", "type", "url"]);
+    expect(keys).toEqual(["affiliateFunnel", "affiliateProgram", "campaignId", "ctaLocation", "destination", "network", "softwareSlug", "sourcePage", "timestamp", "type", "url"]);
   });
 
   it("a plain official-site click (no affiliate link) carries no affiliate dimensions", async () => {

@@ -83,8 +83,13 @@ export function trackEvent(data: Record<string, unknown>): void {
     });
     if (typeof navigator !== "undefined" && navigator.sendBeacon) {
       const blob = new Blob([body], { type: "application/json" });
-      navigator.sendBeacon("/api/analytics/event", blob);
-    } else {
+      try {
+        if (navigator.sendBeacon("/api/analytics/event", blob)) return;
+      } catch {
+        // Browser refused to enqueue. Fall back once, never resend an accepted beacon.
+      }
+    }
+    {
       fetch("/api/analytics/event", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

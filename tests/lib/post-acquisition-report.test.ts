@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import fs from "node:fs";
 import path from "node:path";
 import { buildPostAcquisitionTable } from "@/scripts/growth/post-acquisition-report";
@@ -10,7 +11,7 @@ import type { ChannelVariant, SocialQueueEntry } from "@/lib/social/types";
  * Proves post-level attribution joins utm_content to the social queue only
  * after canonical human qualification. A flat non-test hit is not enough.
  */
-const ANALYTICS_PATH = path.join(process.cwd(), "var", "first-party-analytics.json");
+const ANALYTICS_PATH = analyticsLocalPath("first-party-analytics.json");
 const QUEUE_PATH = path.join(process.cwd(), "var", "agents", "social-queue.json");
 
 let analyticsBackup: string | null = null;

@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 
 /**
  * First-party privacy-respecting analytics event definitions and storage.
@@ -224,7 +225,7 @@ export type FirstPartyEvent =
   | NewsletterSignupEvent;
 
 const BLOB_PREFIX = "first-party-analytics/";
-const LOCAL_FALLBACK_PATH = path.join(process.cwd(), "var", "first-party-analytics.json");
+const LOCAL_FALLBACK_PATH = analyticsLocalPath("first-party-analytics.json");
 const MAX_STORED_EVENTS = 10000;
 
 function hasBlobToken(): boolean {

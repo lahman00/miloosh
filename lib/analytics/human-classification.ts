@@ -231,6 +231,10 @@ export function classifySessions(events: readonly FirstPartyEvent[]): SessionCla
       return { ...base, bucket: "SUSPICIOUS", reasonCode: "UNKNOWN", evidence: `Legacy session, circumstantial only (not independently corroborated): ${legacyEntry.reason}` };
     }
 
+    if (!s.visitorId || !s.sessionId || /^v_anon(?:_|$)/.test(s.visitorId) || /^s_anon(?:_|$)/.test(s.sessionId)) {
+      return { ...base, bucket: "UNRESOLVED", reasonCode: "UNKNOWN", evidence: "Missing or fallback identity cannot establish a distinct human session." };
+    }
+
     // 2. Real campaign attribution + genuine progressive engagement -- the strongest positive signal available.
     if (s.hasUtmContent && s.distinctEventTypes.size >= 3 && s.hasStrongEngagement && !isPartOfBurst) {
       const evidence = `Carries real utm_content; ${s.distinctEventTypes.size} distinct event types (${[...s.distinctEventTypes].join(", ")}) over ${dwellMs}ms dwell -- a progressive engagement funnel, not a single flat hit.`;

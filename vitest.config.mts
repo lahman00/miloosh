@@ -12,6 +12,7 @@ export default defineConfig({
   test: {
     include: ["tests/**/*.test.ts"],
     environment: "node",
+    setupFiles: ["tests/analytics-store-setup.ts"],
     fileParallelism: false,
   },
   resolve: {

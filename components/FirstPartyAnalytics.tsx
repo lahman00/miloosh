@@ -93,8 +93,8 @@ export function FirstPartyAnalytics() {
       if (comparisonSlug) {
         trackEvent({ type: "comparison_view", path: pathname, comparisonSlug });
       }
-    } else if (pathname.startsWith("/categories/")) {
-      const categorySlug = pathname.replace("/categories/", "").split("/")[0];
+    } else if (pathname.startsWith("/category/")) {
+      const categorySlug = pathname.replace("/category/", "").split("/")[0];
       if (categorySlug) {
         trackEvent({ type: "category_view", path: pathname, categorySlug });
       }

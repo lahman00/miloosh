@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
+import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest } from "next/server";
@@ -21,8 +22,8 @@ import { getAllFirstPartyEvents } from "@/lib/analytics/events";
  * validation; a plain Request does not provide that production contract.
  */
 
-const LEGACY_LOG_FILE = path.join(process.cwd(), "var", "outbound-clicks.json");
-const FIRST_PARTY_LOG_FILE = path.join(process.cwd(), "var", "first-party-analytics.json");
+const LEGACY_LOG_FILE = analyticsLocalPath("outbound-clicks.json");
+const FIRST_PARTY_LOG_FILE = analyticsLocalPath("first-party-analytics.json");
 
 let realFlag: string | undefined;
 
@@ -49,6 +50,7 @@ function post(body: unknown): Promise<Response> {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        "user-agent": "Mozilla/5.0 Chrome/128.0.0.0 Safari/537.36",
         referer: "https://miloosh.com/software/pipedrive",
       },
       body: JSON.stringify(body),
@@ -72,13 +74,13 @@ describe("POST /api/outbound-click — preserves explicit and unknown isTest sta
     expect(fpEvent?.sessionId).toBe("s_qa_click");
   });
 
-  it("keeps a missing test marker unknown in first-party analytics while preserving the legacy boolean", async () => {
+  it("keeps a missing test marker unknown in both sinks", async () => {
     const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", visitorId: "v_unknown_click", sessionId: "s_unknown_click" });
     expect(res.status).toBe(202);
 
     const legacy = await getOutboundEvents();
     const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
-    expect(legacyEvent?.isTest).toBe(false);
+    expect(legacyEvent?.isTest).toBeUndefined();
 
     const firstParty = await getAllFirstPartyEvents();
     const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
@@ -105,7 +107,7 @@ describe("POST /api/outbound-click — preserves explicit and unknown isTest sta
 
     const legacy = await getOutboundEvents();
     const legacyEvent = legacy.find((e) => e.softwareSlug === "pipedrive");
-    expect(legacyEvent?.isTest).toBe(false);
+    expect(legacyEvent?.isTest).toBeUndefined();
 
     const firstParty = await getAllFirstPartyEvents();
     const fpEvent = firstParty.find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
