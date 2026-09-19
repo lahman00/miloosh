@@ -441,21 +441,42 @@ async function acquireLock(): Promise<void> {
   } catch (error) {
     const code = error instanceof Error && "code" in error ? (error as NodeJS.ErrnoException).code : null;
     if (code !== "EEXIST") throw error;
-    const storedPid = Number((await readFile(join(LOCK_DIR, "pid"), "utf8").catch(() => "0")).trim());
+    const pidFile = await readFile(join(LOCK_DIR, "pid"), "utf8").catch(() => null);
+    const storedPid = pidFile === null ? NaN : Number(pidFile.trim());
+    // An unparseable or missing pid means we cannot verify who owns this lock --
+    // never seize or delete it on a guess, only on confirmed evidence the owner is dead.
+    if (!Number.isInteger(storedPid) || storedPid <= 0) throw new Error("REDDIT_LOCK_UNVERIFIED");
     let active = false;
-    if (storedPid > 0) {
-      try {
-        process.kill(storedPid, 0);
-        active = true;
-      } catch {
-        active = false;
-      }
+    try {
+      process.kill(storedPid, 0);
+      active = true;
+    } catch {
+      active = false;
     }
     if (active) throw new Error("REDDIT_WORKER_BUSY");
     await rm(LOCK_DIR, { recursive: true, force: true });
     await mkdir(LOCK_DIR);
   }
   await writeFile(join(LOCK_DIR, "pid"), `${process.pid}\n`, { encoding: "utf8", mode: 0o600 });
+}
+
+const CLI_FLAGS_WITH_VALUE = ["--task", "--set-autonomous", "--approve-task", "--check-approval"] as const;
+
+/** Rejects malformed or combined CLI invocations before any lock/stdin is touched. */
+function validCliArgs(argv: string[]): boolean {
+  const consumed = new Set<number>();
+  const modesPresent: string[] = [];
+  for (const flag of CLI_FLAGS_WITH_VALUE) {
+    const index = argv.indexOf(flag);
+    if (index === -1) continue;
+    const value = argv[index + 1];
+    if (!value || value.startsWith("-")) return false;
+    modesPresent.push(flag);
+    consumed.add(index);
+    consumed.add(index + 1);
+  }
+  if (modesPresent.length > 1) return false;
+  return argv.every((_, index) => consumed.has(index));
 }
 
 async function cdpIsReady(): Promise<boolean> {
@@ -489,8 +510,20 @@ async function connectPersistentChrome(): Promise<BrowserContext> {
 }
 
 async function main(): Promise<void> {
+  const args = process.argv.slice(2);
+  if (args.includes("--help") || args.includes("-h")) {
+    process.stdout.write(`${JSON.stringify({ ok: true, status: "HELP", usage: "reddit_status | reddit_open | reddit_reply | reddit_create_post | reddit_notifications via stdin JSON, or --task <path>, --set-autonomous <true|false>, --approve-task <path>, --check-approval <path>" }, null, 2)}\n`);
+    return;
+  }
+  if (!validCliArgs(args)) {
+    process.stdout.write(`${JSON.stringify({ ok: false, status: "INVALID_CLI_ARGUMENTS", reason: "INVALID_CLI_ARGUMENTS", retryable: false, human_action_required: false }, null, 2)}\n`);
+    process.exitCode = 1;
+    return;
+  }
+  let lockAcquired = false;
   try {
     await acquireLock();
+    lockAcquired = true;
     const autonomousIndex = process.argv.indexOf("--set-autonomous");
     if (autonomousIndex >= 0 && process.argv[autonomousIndex + 1]) {
       const enabled = process.argv[autonomousIndex + 1] === "true";
@@ -528,7 +561,7 @@ async function main(): Promise<void> {
     process.stdout.write(`${JSON.stringify({ ok: false, status: message, reason: message, retryable: false, human_action_required: requiresHumanAction(message) }, null, 2)}\n`);
     process.exitCode = 1;
   } finally {
-    await rm(LOCK_DIR, { recursive: true, force: true }).catch(() => undefined);
+    if (lockAcquired) await rm(LOCK_DIR, { recursive: true, force: true }).catch(() => undefined);
   }
 }
 
