@@ -31,7 +31,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">{title}</h3>
+      <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">{title}</h3>
       <ul className="mt-4 space-y-2.5">
         {links.map((link) => (
           <li key={link.name}>
@@ -60,7 +60,7 @@ export function Footer() {
               <Image src="/logo-icon.png" alt="" width={22} height={20} />
               {SITE_NAME}
             </Link>
-            <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-500">{SITE_TAGLINE}</p>
+            <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-400">{SITE_TAGLINE}</p>
           </div>
 
           <FooterColumn title="Product" links={productLinks} />
@@ -69,11 +69,11 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-zinc-400">
             © {new Date().getFullYear()} {SITE_NAME} — independent comparisons, not affiliated
             with the listed brands.
           </p>
-          <p className="text-xs text-zinc-600">
+          <p className="text-xs text-zinc-400">
             v{SITE_VERSION} · {freshness.softwareCount} tools across {freshness.categoryCount}{" "}
             categories · sources last verified {formatIsoDate(freshness.latestAccessedAt)}
           </p>

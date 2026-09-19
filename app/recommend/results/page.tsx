@@ -32,7 +32,7 @@ type ResultsPageProps = {
 const DIRECTION_STYLES: Record<ScoreFactor["direction"], string> = {
   positive: "text-emerald-400",
   negative: "text-red-400",
-  informational: "text-zinc-500",
+  informational: "text-zinc-400",
 };
 
 function FactorRow({ factor }: { factor: ScoreFactor }) {
@@ -43,7 +43,7 @@ function FactorRow({ factor }: { factor: ScoreFactor }) {
           {factor.points > 0 ? `+${factor.points}` : factor.points}
         </span>{" "}
         {factor.label}
-        <span className="block text-xs text-zinc-500">{factor.explanation}</span>
+        <span className="block text-xs text-zinc-400">{factor.explanation}</span>
       </span>
     </li>
   );
@@ -163,7 +163,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                       <Badge className="border-emerald-500/30 text-emerald-300">
                         {rec.scoring.matchPercent}% of scored criteria
                       </Badge>
-                      <span className="text-xs uppercase tracking-wider text-zinc-500">
+                      <span className="text-xs uppercase tracking-wider text-zinc-400">
                         {getCategoryName(rec.software.category)}
                       </span>
                     </div>
@@ -195,14 +195,14 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
 
                 <div className="mt-8 grid gap-8 lg:grid-cols-2">
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
                       Why we recommended it
                     </h3>
                     <ul className="mt-3 divide-y divide-white/10">
                       {positiveFactors.length > 0 ? (
                         positiveFactors.map((factor) => <FactorRow key={factor.label} factor={factor} />)
                       ) : (
-                        <li className="py-2 text-sm text-zinc-500">
+                        <li className="py-2 text-sm text-zinc-400">
                           No strong positive signals from your answers — this was simply the
                           closest match available.
                         </li>
@@ -211,7 +211,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
 
                     {negativeFactors.length > 0 ? (
                       <>
-                        <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                        <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-400">
                           What counted against it
                         </h3>
                         <ul className="mt-3 divide-y divide-white/10">
@@ -224,7 +224,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
 
                     {informationalFactors.length > 0 ? (
                       <>
-                        <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                        <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-400">
                           Not used in this score
                         </h3>
                         <ul className="mt-3 divide-y divide-white/10">
@@ -235,7 +235,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                       </>
                     ) : null}
 
-                    <p className="mt-4 text-xs text-zinc-500">
+                    <p className="mt-4 text-xs text-zinc-400">
                       Score: {rec.scoring.totalScore} of {rec.scoring.maxPossibleScore} possible
                       points for your answers.
                     </p>
@@ -259,11 +259,11 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                       <Ban className="h-4 w-4 text-zinc-500" />
                       Cons
                     </div>
-                    <p className="mt-2 text-sm leading-6 text-zinc-500">{rec.consDisclosure}</p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-400">{rec.consDisclosure}</p>
 
                     {relatedComparisons.length > 0 ? (
                       <>
-                        <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                        <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-400">
                           See it compared
                         </h3>
                         <div className="mt-3 flex flex-wrap gap-2">

@@ -252,7 +252,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                         ) : p.software.pricing?.freeTrial?.available ? (
                           <span className="text-zinc-300">Free Trial</span>
                         ) : (
-                          <span className="text-zinc-500">Paid only</span>
+                          <span className="text-zinc-400">Paid only</span>
                         )}
                       </td>
                       <td className="hidden py-4 px-4 text-right sm:table-cell">
@@ -408,7 +408,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-3">
                       {p.pricingNote}
                     </p>
-                    <div className="text-xs text-zinc-500">
+                    <div className="text-xs text-zinc-400">
                       Platforms: {p.software.platforms?.join(", ") ?? "Web"}
                     </div>
                   </div>

@@ -9,7 +9,7 @@ export function Breadcrumbs({
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex flex-wrap items-center gap-1.5 text-sm text-zinc-500"
+      className="flex flex-wrap items-center gap-1.5 text-sm text-zinc-400"
     >
       {items.map((item, index) => (
         <span key={item.name} className="flex items-center gap-1.5">

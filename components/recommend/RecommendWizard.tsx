@@ -83,7 +83,7 @@ export function RecommendWizard() {
             />
             <span
               className={`hidden text-xs font-medium sm:block ${
-                index === step ? "text-white" : "text-zinc-500"
+                index === step ? "text-white" : "text-zinc-400"
               }`}
             >
               {label}
@@ -96,7 +96,7 @@ export function RecommendWizard() {
         {step === 0 ? (
           <fieldset>
             <legend className="text-sm font-semibold text-white">What are you trying to do?</legend>
-            <p className="mt-1 text-xs text-zinc-500">
+            <p className="mt-1 text-xs text-zinc-400">
               Pick the one that&apos;s closest — you can fine-tune the details next.
             </p>
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -222,7 +222,7 @@ export function RecommendWizard() {
 
             <fieldset>
               <legend className="text-sm font-semibold text-white">
-                Industry <span className="font-normal text-zinc-500">(optional)</span>
+                Industry <span className="font-normal text-zinc-400">(optional)</span>
               </legend>
               <input
                 value={answers.industry}
@@ -232,7 +232,7 @@ export function RecommendWizard() {
                 aria-label="Industry"
                 className="mt-3 min-h-12 w-full rounded-xl border border-white/15 bg-white/5 px-4 text-sm text-white outline-none placeholder:text-zinc-500 focus:border-accent focus:bg-white/[0.07] focus-visible:ring-2 focus-visible:ring-accent"
               />
-              <p className="mt-2 text-xs text-zinc-500">
+              <p className="mt-2 text-xs text-zinc-400">
                 We collect this, but no product in our dataset is tagged by industry yet — so it
                 won&apos;t affect your results. We&apos;d rather tell you that than pretend it
                 does.
@@ -246,7 +246,7 @@ export function RecommendWizard() {
             <fieldset>
               <legend className="text-sm font-semibold text-white">
                 Tools you need it to work with{" "}
-                <span className="font-normal text-zinc-500">(optional, comma-separated)</span>
+                <span className="font-normal text-zinc-400">(optional, comma-separated)</span>
               </legend>
               <input
                 value={integrationsInput}
@@ -294,7 +294,7 @@ export function RecommendWizard() {
                 <legend className="flex items-center gap-2 text-sm font-semibold text-white">
                   <ShieldQuestion className="h-4 w-4" /> Employee monitoring
                 </legend>
-                <p className="mt-1 text-xs text-zinc-500">
+                <p className="mt-1 text-xs text-zinc-400">
                   Some time trackers include screenshots or activity monitoring. Does that matter to you?
                 </p>
                 <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -321,7 +321,7 @@ export function RecommendWizard() {
       </div>
 
       {step === 0 && answers.primaryNeed === null ? (
-        <p className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
+        <p className="mt-4 flex items-center gap-2 text-xs text-zinc-400">
           <Compass className="h-3.5 w-3.5 shrink-0" /> Pick a need above, or continue with &quot;Not sure yet.&quot;
         </p>
       ) : null}

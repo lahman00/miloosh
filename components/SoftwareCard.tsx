@@ -10,7 +10,7 @@ export function SoftwareCard({ software }: { software: Software }) {
       <Card className="flex h-full flex-col group-hover:border-white/25 group-hover:bg-white/[0.05]">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-400">
               {getCategoryName(software.category)}
             </p>
             <h3 className="mt-2 text-xl font-semibold text-white">{software.name}</h3>

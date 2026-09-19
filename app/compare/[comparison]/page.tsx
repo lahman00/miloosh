@@ -90,7 +90,7 @@ function ComparisonChoiceCta({ software, otherSlug }: { software: Software; othe
         <ExternalLink className="h-4 w-4" />
       </TrackedCtaLink>
       {shouldShowAffiliateDisclosure(software) ? (
-        <p className="mt-2 text-center text-xs text-zinc-500">
+        <p className="mt-2 text-center text-xs text-zinc-400">
           This is an affiliate link. See our{" "}
           <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
             Affiliate Disclosure
@@ -287,7 +287,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
                   <Ban className="h-4 w-4 text-zinc-500" />
                   Cons
                 </div>
-                <p className="mt-2 text-sm leading-6 text-zinc-500">{CONS_DISCLOSURE}</p>
+                <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
               </Card>
             ))}
           </div>
@@ -363,10 +363,10 @@ export default async function ComparePage({ params }: ComparePageProps) {
         <section className="mt-14 grid gap-6 sm:grid-cols-2">
           {[softwareA, softwareB].map((software) => (
             <Card key={software.slug}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
                 {software.name} sources
               </h3>
-              <p className="mt-1 text-xs text-zinc-500">
+              <p className="mt-1 text-xs text-zinc-400">
                 Last verified {formatIsoDate(software.accessedAt)}
               </p>
               <ul className="mt-3 space-y-2">
