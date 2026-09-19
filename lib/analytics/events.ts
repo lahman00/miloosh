@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
+import type { EcommerceSituation } from "@/lib/recommend/types";
 
 /**
  * First-party privacy-respecting analytics event definitions and storage.
@@ -26,6 +27,7 @@ export type FirstPartyEventType =
   | "internal_cta_click"
   | "recommend_started"
   | "recommend_need_selected"
+  | "recommend_ecommerce_situation_selected"
   | "recommend_completed"
   | "recommend_result_viewed"
   | "recommend_product_open"
@@ -151,6 +153,11 @@ export interface RecommendCompletedEvent extends BaseAnalyticsEvent {
   domain: string;
 }
 
+export interface RecommendEcommerceSituationSelectedEvent extends BaseAnalyticsEvent {
+  type: "recommend_ecommerce_situation_selected";
+  situation: EcommerceSituation;
+}
+
 export interface RecommendResultViewedEvent extends BaseAnalyticsEvent {
   type: "recommend_result_viewed";
   domain: string;
@@ -217,6 +224,7 @@ export type FirstPartyEvent =
   | InternalCtaClickEvent
   | RecommendStartedEvent
   | RecommendNeedSelectedEvent
+  | RecommendEcommerceSituationSelectedEvent
   | RecommendCompletedEvent
   | RecommendResultViewedEvent
   | RecommendProductOpenEvent

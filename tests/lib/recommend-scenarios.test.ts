@@ -45,6 +45,10 @@ function assertStructurallySound(result: ReturnType<typeof getRecommendations>, 
 
 describe("Recommend scenario matrix — realistic buyer situations across every domain", () => {
   const scenarios: Array<{ name: string; input: RecommendationAnswers }> = [
+    { name: "new small online store", input: answers({ primaryNeed: "ecommerce_platform", ecommerceSituation: "new", teamSize: "small", difficultyPreference: "simple" }) },
+    { name: "repair existing store", input: answers({ primaryNeed: "ecommerce_platform", ecommerceSituation: "repair", teamSize: "solo", budget: "low" }) },
+    { name: "embed commerce in existing website", input: answers({ primaryNeed: "ecommerce_platform", ecommerceSituation: "embed", teamSize: "small" }) },
+    { name: "migrate growing store", input: answers({ primaryNeed: "ecommerce_platform", ecommerceSituation: "migrate", companyStage: "growth" }) },
     { name: "SMB CRM", input: answers({ primaryNeed: "crm", teamSize: "small", companyStage: "growth" }) },
     { name: "startup CRM free budget", input: answers({ primaryNeed: "crm", companyStage: "startup", budget: "free" }) },
     { name: "sales-heavy CRM enterprise", input: answers({ primaryNeed: "crm", companyStage: "enterprise", difficultyPreference: "powerful" }) },

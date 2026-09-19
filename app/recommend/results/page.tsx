@@ -9,7 +9,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { TrackedRecommendationLink } from "@/components/recommend/TrackedRecommendationLink";
 import { TrackedComparisonLink } from "@/components/recommend/TrackedComparisonLink";
 import { RecommendResultsAnalytics } from "@/components/recommend/RecommendResultsAnalytics";
-import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
+import { EcommerceSituationGuidance } from "@/components/recommend/EcommerceSituationGuidance";
 import { getCategoryName } from "@/data/categories";
 import { getComparisonBySlug } from "@/lib/comparison";
 import { getRecommendations } from "@/lib/recommend/engine";
@@ -76,6 +76,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
   }
 
   const { recommendations, confidence, confidenceNote } = getRecommendations(answers, 3);
+  const repairFirst = answers.primaryNeed === "ecommerce_platform" && answers.ecommerceSituation === "repair";
 
   recordRecommendationEvent({ type: "recommendation_generated", answersSummary });
   for (const rec of recommendations) {
@@ -106,7 +107,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
 
         <header className="mt-6 max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-white min-[360px]:text-4xl sm:text-5xl">
-            {confidence === "none" ? "No strong match yet" : `Your top ${recommendations.length} recommendation${recommendations.length === 1 ? "" : "s"}`}
+            {confidence === "none" ? "No strong match yet" : repairFirst ? "Research options — repair first" : `Your top ${recommendations.length} recommendation${recommendations.length === 1 ? "" : "s"}`}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
             Ranked by a deterministic score computed from our verified dataset — no AI, no
@@ -133,12 +134,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
         ) : null}
 
         {answers.primaryNeed === "ecommerce_platform" ? (
-          <p className="mt-6 max-w-2xl text-sm leading-6 text-zinc-300">
-            This shortlist does not evaluate your existing platform, catalog, SEO migration risk, or fulfillment workflows. Before rebuilding, use the{" "}
-            <TrackedInternalCtaLink href="/best-ecommerce-platform-for-small-business#store-decision-kit" sourcePath="/recommend/results" targetPath="/best-ecommerce-platform-for-small-business#store-decision-kit" ctaName="recommend-store-decision-kit" className="underline underline-offset-4">
-              stay, repair, embed, or migrate decision checklist
-            </TrackedInternalCtaLink>.
-          </p>
+          <EcommerceSituationGuidance situation={answers.ecommerceSituation} productSlugs={recommendations.map((rec) => rec.software.slug)} />
         ) : null}
 
         <div className="mt-14 space-y-10">
@@ -159,7 +155,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <div className="flex flex-wrap items-center gap-3">
-                      <Badge>#{rec.rank} pick</Badge>
+                      <Badge>{repairFirst ? `Option ${rec.rank}` : `#${rec.rank} pick`}</Badge>
                       <Badge className="border-emerald-500/30 text-emerald-300">
                         {rec.scoring.matchPercent}% of scored criteria
                       </Badge>
@@ -196,7 +192,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
                 <div className="mt-8 grid gap-8 lg:grid-cols-2">
                   <div>
                     <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-                      Why we recommended it
+                      {repairFirst ? "How this option scored" : "Why we recommended it"}
                     </h3>
                     <ul className="mt-3 divide-y divide-white/10">
                       {positiveFactors.length > 0 ? (

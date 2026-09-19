@@ -5,6 +5,8 @@ import {
   AI_KEYWORDS,
   ANY_SIZE_KEYWORDS,
   DIFFICULTY_KEYWORDS,
+  EMBED_KEYWORDS,
+  MIGRATE_KEYWORDS,
   getCompanyStageKeywords,
   getTeamSizeKeywords,
   matchesAny,
@@ -55,10 +57,33 @@ const POINTS = {
   INTEGRATION_MISMATCH: -5,
   DIFFICULTY_MATCH: 8,
   DIFFICULTY_MISMATCH: -6,
+  // Small text-evidence signal, below domain (30) and team-size (10) fit.
+  // Award once, regardless of keyword count; absence never subtracts points.
+  ECOMMERCE_SITUATION_MATCH: 6,
 } as const;
 
 function searchableText(software: Software): string {
   return [software.name, software.description, software.bestFor, ...software.features].join(" ");
+}
+
+function scoreEmbedFit(answers: RecommendationAnswers, text: string): ScoreFactor[] {
+  if (answers.primaryNeed !== "ecommerce_platform" || answers.ecommerceSituation !== "embed" || !matchesAny(text, EMBED_KEYWORDS)) return [];
+  return [{
+    label: "Stored text describes embedded commerce",
+    points: POINTS.ECOMMERCE_SITUATION_MATCH,
+    direction: "positive",
+    explanation: "Its own stored description/features mention embedding commerce in an existing website. Check compatibility with your actual site; this is a text signal, not a verified integration.",
+  }];
+}
+
+function scoreMigrationFit(answers: RecommendationAnswers, text: string): ScoreFactor[] {
+  if (answers.primaryNeed !== "ecommerce_platform" || answers.ecommerceSituation !== "migrate" || !matchesAny(text, MIGRATE_KEYWORDS)) return [];
+  return [{
+    label: "Stored text mentions migration",
+    points: POINTS.ECOMMERCE_SITUATION_MATCH,
+    direction: "positive",
+    explanation: "Its own stored positioning/features mention migration. This does not confirm that your products, orders, customers or URLs can move safely.",
+  }];
 }
 
 /**
@@ -362,6 +387,7 @@ function computeMaxPossibleScore(answers: RecommendationAnswers): number {
   if (answers.workStyle === "remote") max += POINTS.WORK_STYLE_REMOTE_MATCH;
   max += answers.requiredIntegrations.filter((i) => i.trim().length > 0).length * POINTS.INTEGRATION_MATCH;
   if (answers.difficultyPreference !== "no-preference") max += POINTS.DIFFICULTY_MATCH;
+  if (answers.primaryNeed === "ecommerce_platform" && (answers.ecommerceSituation === "embed" || answers.ecommerceSituation === "migrate")) max += POINTS.ECOMMERCE_SITUATION_MATCH;
 
   return max;
 }
@@ -379,6 +405,8 @@ export function scoreSoftwareForAnswers(software: Software, answers: Recommendat
     ...scoreIntegrations(answers, text),
     ...scoreDifficulty(answers, text),
     ...scoreIndustry(answers),
+    ...scoreEmbedFit(answers, text),
+    ...scoreMigrationFit(answers, text),
   ];
 
   const totalScore = factors.reduce((sum, factor) => sum + factor.points, 0);

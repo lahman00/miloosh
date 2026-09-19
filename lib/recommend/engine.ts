@@ -69,6 +69,10 @@ function computeConfidence(
     return { confidence: "none", confidenceNote: "Nothing in our verified dataset matched. Try answering at least one question." };
   }
 
+  if (answers.primaryNeed === "ecommerce_platform" && answers.ecommerceSituation === "repair") {
+    return { confidence: "low", confidenceNote: "Repair first: these products are research options, not a recommendation to replace your store. Diagnose the current problem before comparing platforms. If you use WooCommerce, start with the WooCommerce repair check; use the store decision checklist before committing to a switch." };
+  }
+
   if (!hasDiscriminatingAnswers(answers)) {
     return { confidence: "low", confidenceNote: "You selected a category without enough constraints to distinguish buyer fit. These are eligible options, not a personalized best pick. Equal scores are ordered alphabetically, not by suitability or affiliate status." };
   }
@@ -121,7 +125,10 @@ export function getRecommendations(
       software,
       rank: index + 1,
       scoring,
-      explanation: hasDiscriminatingAnswers(answers) ? buildExplanation(software, scoring) : {
+      explanation: answers.primaryNeed === "ecommerce_platform" && answers.ecommerceSituation === "repair" ? {
+        whyItMatched: `${software.name} is an eligible research option, not a recommended replacement for your existing store.`,
+        tradeoff: "The score cannot diagnose your current store. Repairing or keeping it may be the better decision.",
+      } : hasDiscriminatingAnswers(answers) ? buildExplanation(software, scoring) : {
         whyItMatched: `${software.name} is eligible for the selected category; category eligibility alone does not establish fit for your business.`,
         tradeoff: "Add your actual constraints and verify plan requirements before choosing or switching.",
       },

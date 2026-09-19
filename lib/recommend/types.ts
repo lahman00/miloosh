@@ -34,6 +34,9 @@ export type WorkStyle = "remote" | "office" | "hybrid" | "unspecified";
 export type DifficultyPreference = "simple" | "powerful" | "no-preference";
 /** Only asked when primaryNeed === "time_tracking" — see Phase 6's "employee monitoring sensitivity" requirement. Adaptive: hidden for every other domain. */
 export type MonitoringSensitivity = "prefer-lightweight" | "comfortable" | "no-preference";
+/** Ecommerce-only context. Never an eligibility gate or a claim that switching is necessary. */
+export const ECOMMERCE_SITUATIONS = ["new", "repair", "embed", "migrate", "not-sure"] as const;
+export type EcommerceSituation = (typeof ECOMMERCE_SITUATIONS)[number];
 
 export type RecommendationAnswers = {
   primaryNeed: RecommendDomain | null;
@@ -48,6 +51,7 @@ export type RecommendationAnswers = {
   needsAi: boolean;
   difficultyPreference: DifficultyPreference;
   monitoringSensitivity: MonitoringSensitivity;
+  ecommerceSituation: EcommerceSituation;
 };
 
 export type ScoreFactorDirection = "positive" | "negative" | "informational";

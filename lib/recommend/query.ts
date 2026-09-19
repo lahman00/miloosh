@@ -8,6 +8,7 @@ import type {
   WorkStyle,
 } from "@/lib/recommend/types";
 import { RECOMMEND_DOMAINS, type RecommendDomain } from "@/lib/recommend/domains";
+import { ECOMMERCE_SITUATIONS } from "@/lib/recommend/types";
 
 /**
  * Sprint 10, rebuilt 2026-08-21 — the wizard (client component) hands
@@ -29,6 +30,7 @@ export const DEFAULT_ANSWERS: RecommendationAnswers = {
   needsAi: false,
   difficultyPreference: "no-preference",
   monitoringSensitivity: "no-preference",
+  ecommerceSituation: "not-sure",
 };
 
 const TEAM_SIZES: TeamSize[] = ["solo", "small", "medium", "large", "unspecified"];
@@ -38,7 +40,7 @@ const WORK_STYLES: WorkStyle[] = ["remote", "office", "hybrid", "unspecified"];
 const DIFFICULTY_PREFERENCES: DifficultyPreference[] = ["simple", "powerful", "no-preference"];
 const MONITORING_SENSITIVITIES: MonitoringSensitivity[] = ["prefer-lightweight", "comfortable", "no-preference"];
 
-function pick<T extends string>(value: string | null, allowed: T[], fallback: T): T {
+function pick<T extends string>(value: string | null, allowed: readonly T[], fallback: T): T {
   return allowed.includes(value as T) ? (value as T) : fallback;
 }
 
@@ -60,6 +62,9 @@ export function answersToSearchParams(answers: RecommendationAnswers): URLSearch
   params.set("ai", answers.needsAi ? "1" : "0");
   params.set("difficulty", answers.difficultyPreference);
   if (answers.monitoringSensitivity !== "no-preference") params.set("monitoring", answers.monitoringSensitivity);
+  if (answers.primaryNeed === "ecommerce_platform" && answers.ecommerceSituation !== "not-sure") {
+    params.set("ecommerceSituation", answers.ecommerceSituation);
+  }
   return params;
 }
 
@@ -88,6 +93,9 @@ export function searchParamsToAnswers(
     needsAi: get("ai") === "1",
     difficultyPreference: pick(get("difficulty"), DIFFICULTY_PREFERENCES, DEFAULT_ANSWERS.difficultyPreference),
     monitoringSensitivity: pick(get("monitoring"), MONITORING_SENSITIVITIES, DEFAULT_ANSWERS.monitoringSensitivity),
+    ecommerceSituation: get("need") === "ecommerce_platform"
+      ? pick(get("ecommerceSituation"), ECOMMERCE_SITUATIONS, DEFAULT_ANSWERS.ecommerceSituation)
+      : "not-sure",
   };
 }
 

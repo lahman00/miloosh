@@ -43,12 +43,21 @@ export function RecommendWizard() {
   }
 
   function selectPrimaryNeed(domain: RecommendationAnswers["primaryNeed"]) {
-    update("primaryNeed", domain);
+    setAnswers((prev) => ({
+      ...prev,
+      primaryNeed: domain,
+      ecommerceSituation: domain === "ecommerce_platform" ? prev.ecommerceSituation : "not-sure",
+    }));
     trackEvent({
       type: "recommend_need_selected",
       path: "/recommend",
       domain: domain ?? "not_sure",
     });
+  }
+
+  function selectEcommerceSituation(situation: RecommendationAnswers["ecommerceSituation"]) {
+    update("ecommerceSituation", situation);
+    trackEvent({ type: "recommend_ecommerce_situation_selected", path: "/recommend", situation });
   }
 
   function handleSubmit() {
@@ -94,6 +103,7 @@ export function RecommendWizard() {
 
       <div className="mt-8 min-h-[22rem]">
         {step === 0 ? (
+          <div className="space-y-8">
           <fieldset>
             <legend className="text-sm font-semibold text-white">What are you trying to do?</legend>
             <p className="mt-1 text-xs text-zinc-400">
@@ -121,6 +131,23 @@ export function RecommendWizard() {
               />
             </div>
           </fieldset>
+          {answers.primaryNeed === "ecommerce_platform" ? (
+            <fieldset>
+              <legend className="text-sm font-semibold text-white">What best describes your situation?</legend>
+              <div className="mt-3 grid grid-cols-1 gap-3">
+                {([
+                  ["new", "Starting from scratch"],
+                  ["repair", "Fixing the store I already have"],
+                  ["embed", "Keeping my website, changing the commerce layer"],
+                  ["migrate", "Moving an existing store to a different platform"],
+                  ["not-sure", "Not sure yet"],
+                ] as const).map(([value, label]) => (
+                  <OptionButton key={value} title={label} selected={answers.ecommerceSituation === value} onClick={() => selectEcommerceSituation(value)} />
+                ))}
+              </div>
+            </fieldset>
+          ) : null}
+          </div>
         ) : null}
 
         {step === 1 ? (

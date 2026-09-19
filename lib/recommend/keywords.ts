@@ -15,6 +15,17 @@
 
 import type { TeamSize, CompanyStage, DifficultyPreference } from "@/lib/recommend/types";
 
+/** Checked against product-owned text on 2026-09-19, not alternatives[].
+ * Ecwid: "embed commerce into an existing website" / "Embeddable shopping cart".
+ * BigCommerce's "embedded providers" describes payments, not keeping a website.
+ * PrestaShop's embed wording belongs to its Ecwid alternative, not PrestaShop.
+ */
+export const EMBED_KEYWORDS = ["\\bembed commerce\\b", "\\bembeddable shopping cart\\b"];
+/** Shift4Shop best_for: "migrate an online store"; PrestaShop features: "migration".
+ * Text evidence only; neither proves a supported migration for this buyer's records.
+ */
+export const MIGRATE_KEYWORDS = ["\\bmigrate an online store\\b", "\\bmigration\\b"];
+
 export const AI_KEYWORDS = ["\\bai\\b", "artificial intelligence", "machine learning", "\\bai-powered\\b", "\\bai agent"];
 
 /**
