@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deploymentFailures, type DeploymentRecord } from "@/scripts/deployment/verify-deployment";
+import { deploymentFailures, verifiedAliases, type DeploymentRecord } from "@/scripts/deployment/verify-deployment";
 const sha = "a".repeat(40);
 const record: DeploymentRecord = { id: "dpl_verified", url: "https://example.vercel.app", status: "READY", environment: "production", aliases: ["miloosh.com"], sourceSha: sha };
 describe("release source and alias identity", () => {
@@ -8,4 +8,10 @@ describe("release source and alias identity", () => {
     { sourceSha: "b".repeat(40) }, { sourceSha: null }, { status: "BUILDING" },
     { environment: "preview" }, { aliases: ["example.vercel.app"] }, { id: "" },
   ])("rejects %j despite a possible HTTP 200", change => expect(deploymentFailures({ ...record, ...change }, sha).length).toBeGreaterThan(0));
+  it("uses the current alias record when deployment metadata is stale after promotion", () => {
+    expect(verifiedAliases(record.id, ["project.vercel.app"], { alias: "miloosh.com", deploymentId: record.id })).toContain("miloosh.com");
+  });
+  it.each([{}, { alias: "other.example", deploymentId: record.id }, { alias: "miloosh.com", deploymentId: "dpl_other" }])("never trusts an old canonical alias claim: %j", assignment => {
+    expect(verifiedAliases(record.id, ["miloosh.com"], assignment)).not.toContain("miloosh.com");
+  });
 });

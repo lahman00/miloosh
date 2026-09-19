@@ -6,6 +6,14 @@ export interface DeploymentRecord {
   aliases: string[]; sourceSha: string | null;
 }
 
+export function verifiedAliases(id: string, reported: string[], assignment: { alias?: string; deploymentId?: string }): string[] {
+  // Deployment.alias can remain the build-time list after promotion. The
+  // canonical alias record is the authoritative current assignment instead.
+  const aliases = reported.filter(alias => alias !== "miloosh.com");
+  if (assignment.alias === "miloosh.com" && assignment.deploymentId === id) aliases.push("miloosh.com");
+  return aliases;
+}
+
 /** Resolve the LIVE alias, never the newest (possibly unpromoted) build.
  * Existing CLI auth stays in Vercel; only non-secret metadata is returned. */
 export function getLatestProductionDeployment(): DeploymentRecord {
@@ -13,9 +21,12 @@ export function getLatestProductionDeployment(): DeploymentRecord {
     encoding: "utf8", stdio: ["ignore", "pipe", "ignore"], timeout: 45000, maxBuffer: 16 * 1024 * 1024,
   });
   const record = JSON.parse(raw);
+  const assignment = JSON.parse(execFileSync("vercel", ["api", "/v4/aliases/miloosh.com", "--raw"], {
+    encoding: "utf8", stdio: ["ignore", "pipe", "ignore"], timeout: 45000, maxBuffer: 1024 * 1024,
+  }));
   return {
     id: record.id, url: `https://${record.url}`, status: record.readyState,
-    environment: record.target, aliases: record.alias ?? [],
+    environment: record.target, aliases: verifiedAliases(record.id, record.alias ?? [], assignment),
     sourceSha: record.meta?.githubCommitSha ?? record.gitSource?.sha ?? null,
   };
 }
@@ -44,6 +55,7 @@ export async function verifyLiveDeployment(expectedCommit?: string) {
   // Detect a concurrent alias promotion during verification.
   const after = getLatestProductionDeployment();
   if (after.id !== deployment.id || after.sourceSha !== deployment.sourceSha) failures.push("Production changed during verification");
+  if (!after.aliases.includes("miloosh.com")) failures.push("Canonical alias assignment changed during verification");
   console.log(JSON.stringify({ expectedSha, deployment, canonicalHttpStatus: response.status, failures }, null, 2));
   if (failures.length) throw Error("Deployment guard BLOCKED: " + failures.join("; "));
   console.log("DEPLOYMENT GUARD PASSED: exact source, READY production alias and canonical HTTP 200 verified");
