@@ -201,6 +201,29 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
       expect(isSyntheticOrTestEvent({ type: "page_view", path: "/", visitorId: "v_real_human_123", sessionId: "s_real_session_456", timestamp: "" })).toBe(false);
     });
 
+    it("keeps the canonical funnel strictly sequential instead of dividing unrelated cohorts", () => {
+      const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
+      const events: FirstPartyEvent[] = [
+        { type: "page_view", path: "/compare/wix-vs-shopify", visitorId: "v_a", sessionId: "s_a", timestamp: t(0) },
+        { type: "comparison_view", path: "/compare/wix-vs-shopify", comparisonSlug: "wix-vs-shopify", visitorId: "v_a", sessionId: "s_a", timestamp: t(1) },
+        { type: "page_view", path: "/", visitorId: "v_b", sessionId: "s_b", timestamp: t(0) },
+        { type: "page_view", path: "/about", visitorId: "v_b", sessionId: "s_b", timestamp: t(1) },
+      ];
+
+      const summary = computePeriodMetrics("TEST", events, events);
+      expect(summary.comparisonVisitors).toBe(1);
+      expect(summary.multiPageVisitors).toBe(1);
+      expect(summary.funnel[2]).toMatchObject({ uniquePeople: 1, conversionFromPrev: "100.0%" });
+      expect(summary.funnel[3]).toMatchObject({ uniquePeople: 0, conversionFromPrev: "0.0%" });
+      expect(summary.funnel.every((stage) => stage.conversionFromPrev === "N/A" || Number.parseFloat(stage.conversionFromPrev) <= 100)).toBe(true);
+    });
+
+    it("prints N/A rather than a fabricated zero percent when a funnel denominator does not exist", () => {
+      const summary = computePeriodMetrics("EMPTY", [], []);
+      expect(summary.funnel[0]).toMatchObject({ pctOfTotalVisitors: "N/A", conversionFromPrev: "N/A" });
+      expect(summary.funnel[1]).toMatchObject({ pctOfTotalVisitors: "N/A", conversionFromPrev: "N/A" });
+    });
+
     it("reports internal CTA actions by distinct visitors and excludes synthetic QA", () => {
       const now = new Date().toISOString();
       const targetPath = "/best-ecommerce-platform-for-small-business#quick-comparison";

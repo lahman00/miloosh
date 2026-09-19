@@ -693,56 +693,72 @@ export function computePeriodMetrics(
   // didn't reach results, undercounting real high-intent behavior. rfVisitorsP
   // already tracks every RECOMMEND_TOUCH_TYPES event (recommend_started included),
   // computed unconditionally above regardless of period, so it's a strict superset.
-  const highIntentCount = new Set([...rfVisitorsP, ...comparisonVisitors, ...softwareVisitors]).size;
+  const highIntentVisitors = new Set([...rfVisitorsP, ...comparisonVisitors, ...softwareVisitors]);
   const meaningfulCount = meaningfulClickers.size;
   const outboundCount = outboundClickers.size;
   const affiliateCount = affiliateClickers.size;
+
+  // Reach metrics above are independent cohorts. A visitor can land directly on a
+  // high-intent page without first viewing 2+ pages. Keep the funnel below strictly
+  // sequential by intersecting each stage with the previous one; otherwise dividing
+  // unrelated cohorts can produce impossible step conversions greater than 100%.
+  const intersect = (left: Set<string>, right: Set<string>) =>
+    new Set([...left].filter((visitorId) => right.has(visitorId)));
+  const strictEngaged = intersect(visitors, engagedVisitors);
+  const strictMultiPage = intersect(strictEngaged, multiPageVisitors);
+  const strictHighIntent = intersect(strictMultiPage, highIntentVisitors);
+  const strictMeaningful = intersect(strictHighIntent, meaningfulClickers);
+  const strictOutbound = intersect(strictMeaningful, outboundClickers);
+  const strictAffiliate = intersect(strictOutbound, affiliateClickers);
+  const pctOfVisitors = (count: number) =>
+    totalVisitorsCount > 0 ? `${((count / totalVisitorsCount) * 100).toFixed(1)}%` : "N/A";
+  const stepConversion = (count: number, previousCount: number) =>
+    previousCount > 0 ? `${((count / previousCount) * 100).toFixed(1)}%` : "N/A";
 
   const funnel = [
     {
       stage: "1. REAL VISITORS",
       uniquePeople: totalVisitorsCount,
-      pctOfTotalVisitors: "100.0%",
-      conversionFromPrev: "100.0%"
+      pctOfTotalVisitors: totalVisitorsCount > 0 ? "100.0%" : "N/A",
+      conversionFromPrev: totalVisitorsCount > 0 ? "100.0%" : "N/A"
     },
     {
       stage: "2. ENGAGED VISITORS (>10s / Multi-Page)",
-      uniquePeople: engagedCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? `${((engagedCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%",
-      conversionFromPrev: totalVisitorsCount > 0 ? `${((engagedCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%"
+      uniquePeople: strictEngaged.size,
+      pctOfTotalVisitors: pctOfVisitors(strictEngaged.size),
+      conversionFromPrev: stepConversion(strictEngaged.size, totalVisitorsCount)
     },
     {
-      stage: "3. VIEWED 2+ PAGES",
-      uniquePeople: multiPageCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? `${((multiPageCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%",
-      conversionFromPrev: engagedCount > 0 ? `${((multiPageCount / engagedCount) * 100).toFixed(1)}%` : "0.0%"
+      stage: "3. VIEWED 2+ PAGES AFTER ENGAGEMENT",
+      uniquePeople: strictMultiPage.size,
+      pctOfTotalVisitors: pctOfVisitors(strictMultiPage.size),
+      conversionFromPrev: stepConversion(strictMultiPage.size, strictEngaged.size)
     },
     {
-      stage: "4. HIGH-INTENT EVALUATION (Software/Compare/Recommend)",
-      uniquePeople: highIntentCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? `${((highIntentCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%",
-      conversionFromPrev: multiPageCount > 0 ? `${((highIntentCount / multiPageCount) * 100).toFixed(1)}%` : "0.0%"
+      stage: "4. HIGH-INTENT EVALUATION AFTER 2+ PAGES",
+      uniquePeople: strictHighIntent.size,
+      pctOfTotalVisitors: pctOfVisitors(strictHighIntent.size),
+      conversionFromPrev: stepConversion(strictHighIntent.size, strictMultiPage.size)
     },
     {
-      stage: "5. MEANINGFUL CTA CLICK",
-      uniquePeople: meaningfulCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? `${((meaningfulCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%",
-      conversionFromPrev: highIntentCount > 0 ? `${((meaningfulCount / highIntentCount) * 100).toFixed(1)}%` : "0.0%"
+      stage: "5. MEANINGFUL CTA CLICK AFTER HIGH-INTENT",
+      uniquePeople: strictMeaningful.size,
+      pctOfTotalVisitors: pctOfVisitors(strictMeaningful.size),
+      conversionFromPrev: stepConversion(strictMeaningful.size, strictHighIntent.size)
     },
     {
-      stage: "6. CLICKED OUT TO VENDOR",
-      uniquePeople: outboundCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? `${((outboundCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%",
-      conversionFromPrev: meaningfulCount > 0 ? `${((outboundCount / meaningfulCount) * 100).toFixed(1)}%` : "0.0%"
+      stage: "6. CLICKED OUT TO VENDOR AFTER CTA",
+      uniquePeople: strictOutbound.size,
+      pctOfTotalVisitors: pctOfVisitors(strictOutbound.size),
+      conversionFromPrev: stepConversion(strictOutbound.size, strictMeaningful.size)
     },
     {
-      stage: "7. CLICKED AFFILIATE LINK",
-      uniquePeople: affiliateCount,
-      pctOfTotalVisitors: totalVisitorsCount > 0 ? `${((affiliateCount / totalVisitorsCount) * 100).toFixed(1)}%` : "0.0%",
-      conversionFromPrev: outboundCount > 0 ? `${((affiliateCount / outboundCount) * 100).toFixed(1)}%` : "0.0%"
+      stage: "7. CLICKED AFFILIATE LINK AFTER VENDOR EXIT",
+      uniquePeople: strictAffiliate.size,
+      pctOfTotalVisitors: pctOfVisitors(strictAffiliate.size),
+      conversionFromPrev: stepConversion(strictAffiliate.size, strictOutbound.size)
     }
   ];
-
   const topLandingPages = [...landingPageCounts.entries()].map(([path, visits]) => ({ path, visits })).sort((a, b) => b.visits - a.visits).slice(0, 10);
   const topExitPages = [...exitPageCounts.entries()].map(([path, exits]) => ({ path, exits })).sort((a, b) => b.exits - a.exits).slice(0, 10);
   const topPages = [...pageCounts.entries()].map(([path, views]) => ({ path, views })).sort((a, b) => b.views - a.views).slice(0, 10);
