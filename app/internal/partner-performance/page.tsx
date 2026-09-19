@@ -1,7 +1,7 @@
 import { NETWORK_PERFORMANCE_SIGNALS } from "@/data/affiliate/network-performance-signals";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
 import { computeMoneyPriorityQueue } from "@/lib/growth/money-priority-engine";
-import { getOutboundEvents } from "@/lib/revenue/events";
+import { readOutboundEventsDetailed } from "@/lib/revenue/outbound-read";
 import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
 
 export const dynamic = "force-dynamic";
@@ -16,11 +16,15 @@ function displayNetwork(row: { networkClickActivity: boolean; networkClickFloor:
 }
 
 export default async function PartnerPerformancePage() {
-  const [firstPartyEvents, revenueLogEvents, seoRun] = await Promise.all([
+  if (!process.env.BLOB_READ_WRITE_TOKEN) return <Unavailable />;
+  const evidence = await Promise.all([
     getAllFirstPartyEvents(),
-    getOutboundEvents(),
+    readOutboundEventsDetailed(),
     readLatestSeoFactoryRun(),
-  ]);
+  ]).catch(() => null);
+  if (!evidence || evidence[1].status !== "COMPLETE") return <Unavailable />;
+  const [firstPartyEvents, revenueRead, seoRun] = evidence;
+  const revenueLogEvents = revenueRead.events;
 
   const queue = computeMoneyPriorityQueue(firstPartyEvents, seoRun?.opportunities ?? [], revenueLogEvents, NETWORK_PERFORMANCE_SIGNALS);
   const humanAffiliateClicks = queue.reduce((sum, row) => sum + row.eligibleHumanAffiliateClicks, 0);
@@ -115,6 +119,18 @@ export default async function PartnerPerformancePage() {
         eligible-human evidence because that sink intentionally stores no visitorId/sessionId. Vendor/network click
         signals remain separate evidence. Conversion, commission and revenue remain unverified until first-party
         network evidence exists.
+      </p>
+    </main>
+  );
+}
+
+function Unavailable() {
+  return (
+    <main className="mx-auto max-w-5xl px-6 py-10 text-zinc-100">
+      <h1 className="text-3xl font-bold">Partner performance</h1>
+      <p role="alert" className="mt-4 text-amber-300">
+        UNKNOWN — complete production analytics are unavailable. This is not zero traffic or revenue.
+        No evidence-based priority ranking can be calculated from an unavailable or partial read.
       </p>
     </main>
   );

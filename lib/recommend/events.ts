@@ -89,6 +89,18 @@ export function getRecommendationEvents(): StoredRecommendationEvent[] {
   return [...readLog()].reverse();
 }
 
+/** Legacy file-only telemetry is not a durable production data source. */
+export function readRecommendationEventsDetailed(): { status: "available" | "unavailable"; events: StoredRecommendationEvent[]; note: string } {
+  if (process.env.VERCEL === "1") return { status: "unavailable", events: [], note: "UNKNOWN: the legacy recommendation log is local-file-only, not durable on Vercel. Use the first-party analytics report for production recommendation interactions." };
+  try {
+    const parsed: unknown = JSON.parse(fs.readFileSync(LOG_FILE, "utf8"));
+    if (!Array.isArray(parsed)) throw Error("invalid log");
+    return { status: "available", events: (parsed as StoredRecommendationEvent[]).slice().reverse(), note: "Local diagnostic observations only; not verified human traffic or complete production totals." };
+  } catch {
+    return { status: "unavailable", events: [], note: "UNKNOWN: the local recommendation log is missing, unreadable or invalid; no zero inferred." };
+  }
+}
+
 export type RecommendationSummaryRow = {
   softwareSlug: string;
   timesShown: number;

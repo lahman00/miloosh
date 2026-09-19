@@ -1,7 +1,7 @@
 import { NETWORK_PERFORMANCE_SIGNALS } from "@/data/affiliate/network-performance-signals";
 import { computeMoneyPriorityQueue } from "@/lib/growth/money-priority-engine";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
-import { getOutboundEvents } from "@/lib/revenue/events";
+import { readOutboundEventsDetailed } from "@/lib/revenue/outbound-read";
 import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
 
 /**
@@ -22,8 +22,19 @@ import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
  *   npx tsx --env-file=.env.local scripts/growth/money-priority-report.ts
  */
 async function main() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.error("MONEY PRIORITY = UNKNOWN — production analytics unavailable; not zero.");
+    process.exitCode = 1;
+    return;
+  }
   const events = await getAllFirstPartyEvents();
-  const revenueLogEvents = await getOutboundEvents();
+  const revenueRead = await readOutboundEventsDetailed();
+  if (revenueRead.status !== "COMPLETE") {
+    console.error("MONEY PRIORITY = UNKNOWN — complete outbound evidence unavailable; not zero.");
+    process.exitCode = 1;
+    return;
+  }
+  const revenueLogEvents = revenueRead.events;
   const seoRun = await readLatestSeoFactoryRun();
   const seoOpportunities = seoRun?.opportunities ?? [];
 
@@ -60,7 +71,7 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
+main().catch(() => {
+  console.error("MONEY PRIORITY = UNKNOWN — evidence read failed; not zero.");
   process.exit(1);
 });

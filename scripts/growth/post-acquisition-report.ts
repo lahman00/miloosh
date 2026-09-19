@@ -114,6 +114,11 @@ export async function buildPostAcquisitionTable(includeSynthetic = false): Promi
 }
 
 async function main() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.error("POST ACQUISITION = UNKNOWN — production analytics unavailable; not zero.");
+    process.exitCode = 1;
+    return;
+  }
   const includeSynthetic = process.argv.includes("--include-synthetic");
   const rows = await buildPostAcquisitionTable(includeSynthetic);
   console.log("========================================================================================");
@@ -130,5 +135,8 @@ async function main() {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main();
+  main().catch(() => {
+    console.error("POST ACQUISITION = UNKNOWN — evidence read failed; not zero.");
+    process.exitCode = 1;
+  });
 }

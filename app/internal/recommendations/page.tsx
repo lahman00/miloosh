@@ -5,7 +5,7 @@ import { Card } from "@/components/Card";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getAllSoftware } from "@/data/software";
 import { isOutboundTrackingEnabled } from "@/lib/revenue/events";
-import { getRecommendationEvents, summarizeRecommendationEventsByProduct } from "@/lib/recommend/events";
+import { readRecommendationEventsDetailed, summarizeRecommendationEventsByProduct } from "@/lib/recommend/events";
 
 /**
  * Sprint 10 Phase 7 — private admin report for recommendation-engine
@@ -22,7 +22,8 @@ export const dynamic = "force-dynamic";
 
 export default function RecommendationAnalyticsPage() {
   const trackingEnabled = isOutboundTrackingEnabled();
-  const events = getRecommendationEvents();
+  const read = readRecommendationEventsDetailed();
+  const events = read.events;
   const summary = summarizeRecommendationEventsByProduct(events);
   const softwareBySlug = new Map(getAllSoftware().map((item) => [item.slug, item]));
 
@@ -49,25 +50,26 @@ export default function RecommendationAnalyticsPage() {
             .
           </p>
         </header>
+        <p className="mt-6 max-w-3xl text-sm text-amber-200">{read.note}</p>
 
         <section className="mt-10 grid gap-6 sm:grid-cols-3">
           <Card>
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Recommendations generated
             </p>
-            <p className="mt-2 text-3xl font-bold text-white">{generatedCount}</p>
+            <p className="mt-2 text-3xl font-bold text-white">{read.status === "available" ? generatedCount : "UNKNOWN"}</p>
           </Card>
           <Card>
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Products shown
             </p>
-            <p className="mt-2 text-3xl font-bold text-white">{shownCount}</p>
+            <p className="mt-2 text-3xl font-bold text-white">{read.status === "available" ? shownCount : "UNKNOWN"}</p>
           </Card>
           <Card>
             <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
               Result clicks
             </p>
-            <p className="mt-2 text-3xl font-bold text-white">{clickedCount}</p>
+            <p className="mt-2 text-3xl font-bold text-white">{read.status === "available" ? clickedCount : "UNKNOWN"}</p>
           </Card>
         </section>
 
@@ -79,7 +81,7 @@ export default function RecommendationAnalyticsPage() {
 
           {summary.length === 0 ? (
             <Card className="mt-8">
-              <p className="text-sm text-zinc-400">No recommendation events recorded yet.</p>
+              <p className="text-sm text-zinc-400">{read.status === "available" ? "No observations in this local log." : "Production totals are unavailable from this legacy log."}</p>
             </Card>
           ) : (
             <Card className="mt-8 overflow-x-auto">

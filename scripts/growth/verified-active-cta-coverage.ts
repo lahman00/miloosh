@@ -41,6 +41,11 @@ function isOutboundClick(event: { type: string }): event is OutboundClickEvent {
 }
 
 async function main() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !process.argv.includes("--allow-local")) {
+    console.error("CTA COVERAGE = UNKNOWN — production analytics unavailable; not zero. Use --allow-local only for local diagnostics.");
+    process.exitCode = 1;
+    return;
+  }
   const events = await getAllFirstPartyEvents();
   const clicks = events.filter(isOutboundClick);
   const software = getAllSoftware();
@@ -86,14 +91,15 @@ async function main() {
   }
 
   console.log("================================================================");
-  console.log("   VERIFIED ACTIVE PARTNER CTA COVERAGE (real click log data)   ");
+  console.log("   VERIFIED ACTIVE PARTNER CTA COVERAGE (observed events, NOT verified humans)   ");
+  if (process.argv.includes("--allow-local")) console.log("LOCAL DIAGNOSTIC ONLY — not production totals");
   console.log("================================================================\n");
   console.log(`${rows.length} verified active partner(s), ${clicks.length} total outbound_click events in the log.\n`);
 
   rows.sort((a, b) => b.totalClicks - a.totalClicks);
 
   for (const row of rows) {
-    console.log(`${row.name} [${row.slug}] -- status: ${row.status} -- ${row.totalClicks} real click(s), ${row.totalTestClicks} test click(s)`);
+    console.log(`${row.name} [${row.slug}] -- status: ${row.status} -- ${row.totalClicks} non-test/unknown-marker observation(s), ${row.totalTestClicks} test click(s)`);
     console.log(`  Tracking asset: ${row.trackingAsset ?? "MISSING -- should not be possible for an ACTIVE_PARTNERS entry, investigate"}`);
     if (row.byLocation.length === 0) {
       console.log(`  No recorded outbound clicks for this product yet.`);
