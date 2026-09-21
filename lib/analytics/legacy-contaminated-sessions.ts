@@ -1,7 +1,9 @@
 /**
- * Recommend Engine Integrity Patch (2026-08-21) — sessions recorded before
- * the isTest synthetic marker existed (see lib/analytics/synthetic.ts),
- * whose provenance was investigated and could not be proven organic.
+ * Recommend Engine Integrity Patch (2026-08-21) — known contaminated
+ * analytics sessions that must be excluded from real-human reporting.
+ * Most historical entries predate the isTest synthetic marker; newer entries
+ * may also be added when a production QA session was independently proven but
+ * accidentally ran without the marker.
  *
  * This is NOT a mechanism for silently pruning inconvenient data. Every
  * entry here required a real forensic look at the raw stored events
@@ -97,6 +99,23 @@ export const LEGACY_CONTAMINATED_SESSIONS: readonly LegacyContaminatedSession[] 
       "Confirms the lesson from the prior entry needs restating, not that it failed: opening a REUSED " +
       "browser tab against production requires navigating with ?qa=1 on the very first load, before any " +
       "other interaction, not after.",
+  },
+  {
+    sessionId: "s_53morplxmu9mz6tp",
+    visitorId: "v_mm60sswfmu01znvf",
+    classification: "CONFIRMED_OPERATOR_QA",
+    investigatedAt: "2026-09-20",
+    reason:
+      "10 events from 2026-09-20T09:51:09.527Z to 2026-09-20T09:53:54.150Z, single visitor+session: " +
+      "recommend_started + page_view:/recommend -> engaged_view -> recommend_need_selected(domain ecommerce_platform) -> " +
+      "recommend_ecommerce_situation_selected(situation repair) -> recommend_completed -> recommend_use + " +
+      "recommend_result_viewed(confidence low, resultCount 3) + page_view:/recommend/results -> engaged_view. " +
+      "This is independently corroborated by RECOMMEND_LIVE_QA_VERIFICATION_20260920.md, written immediately after " +
+      "the manual production QA pass, which records the same flow: open /recommend, choose Build an online store, " +
+      "select Fixing the store I already have, complete the wizard, and inspect the repair-first result. The stored " +
+      "events are incorrectly isTest:false because that manual QA pass omitted ?qa=1. Classified CONFIRMED_OPERATOR_QA " +
+      "and excluded non-destructively at report time so the single repair selection can never be reported as real buyer " +
+      "behavior. This is evidence of a QA-marking process failure, not evidence about merchant intent.",
   },
 ];
 

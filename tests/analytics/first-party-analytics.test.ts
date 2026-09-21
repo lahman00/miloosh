@@ -287,6 +287,25 @@ describe("First-Party Analytics, Bot Defense & Funnel Suite", () => {
       expect(debugSummary.uniqueVisitors).toBe(1);
     });
 
+    it("excludes the confirmed 2026-09-20 unmarked production QA session from real metrics", () => {
+      const qaSession = LEGACY_CONTAMINATED_SESSIONS.find((s) => s.sessionId === "s_53morplxmu9mz6tp");
+      expect(qaSession).toBeDefined();
+      expect(qaSession?.classification).toBe("CONFIRMED_OPERATOR_QA");
+
+      const now = new Date().toISOString();
+      const event = {
+        type: "recommend_ecommerce_situation_selected",
+        path: "/recommend",
+        situation: "repair",
+        visitorId: qaSession!.visitorId,
+        sessionId: qaSession!.sessionId,
+        timestamp: now,
+      } as FirstPartyEvent;
+
+      expect(isSyntheticOrTestEvent(event)).toBe(true);
+      expect(isSyntheticOrTestEvent(event, true)).toBe(false);
+    });
+
     it("Recommend funnel counts starters, completers, result viewers, product/comparison openers as distinct people/sessions/events", () => {
       const t = (offsetMs: number) => new Date(Date.now() + offsetMs).toISOString();
       const events: FirstPartyEvent[] = [
