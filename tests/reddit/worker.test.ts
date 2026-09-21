@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { approvalId, DEFAULT_AUTONOMOUS_POLICY, evaluateAutonomousWrite, isSafetyShutdownStatus, normalizeSubreddit, parseRedditTask, requiresWriteApproval, sanitizeRedditUrl, textSha256, type ActionLogEntry } from "@/scripts/reddit/worker";
+import { approvalId, DEFAULT_AUTONOMOUS_POLICY, evaluateAutonomousWrite, isRedditCommentReadbackMatch, isSafetyShutdownStatus, normalizeRedditCommentReadback, normalizeSubreddit, parseRedditTask, requiresWriteApproval, sanitizeRedditUrl, textSha256, type ActionLogEntry } from "@/scripts/reddit/worker";
 
 describe("Reddit worker task contract", () => {
   it("accepts all supported read commands", () => {
@@ -39,6 +39,14 @@ describe("Reddit worker task contract", () => {
 
   it("never returns challenge tokens or query parameters in Reddit URLs", () => {
     expect(sanitizeRedditUrl("https://www.reddit.com/?js_challenge=1&token=secret#fragment")).toBe("https://www.reddit.com/");
+  });
+
+  it("verifies a hydrated Reddit comment from normalized readback without requiring exact DOM whitespace", () => {
+    const taskText = ["Before committing to the move, isolate the actual cause.", "", "Then compare migration risk."].join("\n");
+    const rendered = ["Academic_Annual_8088", "•", "just now", "", "Before committing to the move, isolate the actual cause. Then compare migration risk."].join("\n");
+    expect(normalizeRedditCommentReadback(taskText)).toBe("Before committing to the move, isolate the actual cause. Then compare migration risk.");
+    expect(isRedditCommentReadbackMatch(rendered, taskText, "Academic_Annual_8088")).toBe(true);
+    expect(isRedditCommentReadbackMatch(rendered, taskText, "someone_else")).toBe(false);
   });
 });
 

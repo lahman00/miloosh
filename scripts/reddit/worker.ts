@@ -79,6 +79,18 @@ export function normalizeSubreddit(value: string): string {
   return value.replace(/^r\//i, "");
 }
 
+export function normalizeRedditCommentReadback(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+export function isRedditCommentReadbackMatch(rendered: string, taskText: string, username: string | null): boolean {
+  if (!username) return false;
+  const normalizedRendered = normalizeRedditCommentReadback(rendered);
+  const normalizedTask = normalizeRedditCommentReadback(taskText);
+  const stablePrefix = normalizedTask.slice(0, Math.min(180, normalizedTask.length));
+  return Boolean(stablePrefix && normalizedRendered.includes(username) && normalizedRendered.includes(stablePrefix));
+}
+
 export function sanitizeRedditUrl(value: string): string {
   const url = new URL(value);
   return `${url.origin}${url.pathname}`;
@@ -280,7 +292,10 @@ async function openThread(page: Page, threadUrl: string) {
   const body = (await page.locator("body").innerText().catch(() => "")).toLowerCase();
   const locked = (await post.getAttribute("is-locked").catch(() => null)) === "true" || /comments are locked/.test(body);
   const removed = /\[removed\]|this post was removed|removed by reddit/.test(body);
-  const composerVisible = await page.locator("shreddit-composer, textarea[placeholder*='comment' i], textarea[placeholder*='conversation' i]").filter({ visible: true }).first().isVisible().catch(() => false);
+  const composerVisible = Boolean(await firstVisible([
+    page.locator("shreddit-composer"),
+    page.getByPlaceholder(/add a comment|join the conversation/i),
+  ]));
 
   return {
     title,
@@ -323,7 +338,7 @@ async function status(page: Page, waitSeconds = 0): Promise<WorkerResult> {
 }
 
 async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_reply" }>): Promise<WorkerResult> {
-  await requireAuthenticated(page);
+  const { username } = await requireAuthenticated(page);
   const thread = await openThread(page, task.thread_url);
   if (thread.locked) return { ok: false, command: task.command, status: "THREAD_LOCKED", ...thread };
   if (thread.removed) return { ok: false, command: task.command, status: "THREAD_REMOVED", ...thread };
@@ -332,21 +347,30 @@ async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_re
 
   const opener = await firstVisible([
     page.getByRole("button", { name: /add a comment|join the conversation/i }),
-    page.locator("textarea[placeholder*='conversation' i]"),
-    page.locator("textarea[placeholder*='comment' i]"),
+    page.getByPlaceholder(/add a comment|join the conversation/i),
+    page.locator("shreddit-composer"),
   ]);
   if (!opener) return { ok: false, command: task.command, status: "COMMENT_COMPOSER_NOT_FOUND", ...thread };
   await opener.click().catch(() => undefined);
   await page.waitForTimeout(750);
 
   const editor = await firstVisible([
-    page.locator("textarea[placeholder*='comment' i]"),
-    page.locator("textarea[placeholder*='conversation' i]"),
+    page.locator("shreddit-composer textarea"),
     page.locator("shreddit-composer [contenteditable='true']"),
-    page.locator("[contenteditable='true'][role='textbox']"),
+    page.getByPlaceholder(/add a comment|join the conversation/i),
+    page.locator("[contenteditable='true'][role='textbox']:not([aria-label*='search' i])"),
   ]);
   if (!editor) return { ok: false, command: task.command, status: "COMMENT_EDITOR_NOT_FOUND", ...thread };
   await editor.fill(task.text);
+
+  // The shared Reddit session has proven capable of losing authentication between the
+  // initial gate and Submit. Fail closed immediately before the irreversible click.
+  const preSubmitChallenge = await detectChallenge(page);
+  if (preSubmitChallenge) return { ok: false, command: task.command, status: preSubmitChallenge, current_url: sanitizeRedditUrl(page.url()) };
+  const preSubmitSession = await getSession(page);
+  if (!preSubmitSession.authenticated || !preSubmitSession.username || preSubmitSession.username !== username) {
+    return { ok: false, command: task.command, status: "LOGIN_REQUIRED_BEFORE_SUBMIT", current_url: sanitizeRedditUrl(page.url()) };
+  }
 
   const submit = await firstVisible([
     page.getByRole("button", { name: /^comment$/i }),
@@ -358,8 +382,31 @@ async function reply(page: Page, task: Extract<RedditTask, { command: "reddit_re
   await page.waitForTimeout(2_000);
   const challenge = await detectChallenge(page);
   if (challenge) return { ok: false, command: task.command, status: challenge, current_url: sanitizeRedditUrl(page.url()) };
-  const exact = page.locator("shreddit-comment").filter({ hasText: task.text }).first();
-  if (!(await exact.isVisible().catch(() => false))) {
+
+  let exact = page.locator("shreddit-comment").filter({ hasText: task.text }).first();
+  let verified = await exact.isVisible().catch(() => false);
+
+  // Reddit can acknowledge the write before the newly-created comment is fully hydrated
+  // into the page DOM. Never click Submit again. Instead, poll read-only for the already
+  // submitted comment and verify a stable text prefix plus the authenticated username.
+  if (!verified) {
+    for (let attempt = 0; attempt < 8 && !verified; attempt += 1) {
+      await page.waitForTimeout(1_000);
+      const comments = page.locator("shreddit-comment");
+      const count = Math.min(await comments.count().catch(() => 0), 500);
+      for (let index = 0; index < count; index += 1) {
+        const candidate = comments.nth(index);
+        const rendered = await candidate.innerText().catch(() => "");
+        if (isRedditCommentReadbackMatch(rendered, task.text, username)) {
+          exact = candidate;
+          verified = true;
+          break;
+        }
+      }
+    }
+  }
+
+  if (!verified) {
     return { ok: false, command: task.command, status: "AMBIGUOUS_SUBMISSION_NOT_RETRIED", current_url: sanitizeRedditUrl(page.url()) };
   }
   const permalinkHref = await exact.locator('a[href*="/comments/"]').last().getAttribute("href").catch(() => null);
