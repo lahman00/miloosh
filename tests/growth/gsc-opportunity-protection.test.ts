@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readProtectedExperimentSlugs, mineGscOpportunities } from "@/scripts/growth/gsc-opportunity-miner";
+import { buildGscOpportunity, readProtectedExperimentSlugs } from "@/scripts/growth/gsc-opportunity-miner";
 
 describe("GSC opportunity experiment protection", () => {
   it("protects both legacy cohort members and currently measuring receipt pages", () => {
@@ -11,11 +11,16 @@ describe("GSC opportunity experiment protection", () => {
     expect(protectedSlugs.has("klaviyo")).toBe(true);
   });
 
-  it("marks current GSC opportunities as protected when their page is measuring", () => {
-    const ecwid = mineGscOpportunities().allOpportunities.find((item) => item.targetSlug === "ecwid");
+  it("marks a measuring page as protected independent of the mutable local GSC snapshot", () => {
+    const protectedSlugs = readProtectedExperimentSlugs();
+    const ecwid = buildGscOpportunity({
+      url: "https://miloosh.com/software/ecwid",
+      queryCluster: ["ecwid pricing"],
+      baseline: { impressions: 24, clicks: 0, bestPosition: 14.2 },
+    }, protectedSlugs);
 
-    expect(ecwid).toBeDefined();
-    expect(ecwid?.isProtected).toBe(true);
-    expect(ecwid?.recommendedAction).toContain("Protected experiment cohort");
+    expect(ecwid.isProtected).toBe(true);
+    expect(ecwid.opportunityType).toBe("STRIKING_DISTANCE");
+    expect(ecwid.recommendedAction).toContain("Protected experiment cohort");
   });
 });

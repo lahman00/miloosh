@@ -35,13 +35,55 @@ export interface GscOpportunity {
   recommendedAction: string;
 }
 
-interface ExperimentItem {
+export interface ExperimentItem {
   url: string;
   queryCluster?: string[];
   baseline?: {
     impressions?: number;
     clicks?: number;
     bestPosition?: number;
+  };
+}
+
+export function buildGscOpportunity(item: ExperimentItem, protectedCohort: Set<string>): GscOpportunity {
+  const url = item.url;
+  const slug = url.split("/").pop() ?? "";
+  const imp = item.baseline?.impressions ?? 0;
+  const clicks = item.baseline?.clicks ?? 0;
+  const pos = Number((item.baseline?.bestPosition ?? 0).toFixed(1));
+  const queries = item.queryCluster ?? [];
+  const isProtected = protectedCohort.has(slug);
+
+  let type: GscOpportunity["opportunityType"] = "QUERY_EXPANSION";
+  let action = "";
+
+  if (pos >= 8 && pos <= 30) {
+    type = "STRIKING_DISTANCE";
+    action = isProtected
+      ? "Protected experiment cohort: baseline locked; do not edit on-page content during experiment window."
+      : "Striking distance keyword: deepen substitute comparison bridges and update verified pricing schema to improve SERP rank.";
+  } else if (imp >= 20 && clicks === 0) {
+    type = "HIGH_IMPRESSION_ZERO_CLICK";
+    action = isProtected
+      ? "Protected experiment cohort: active measurement underway; observe without modifying page copy."
+      : "High impressions with 0 clicks: optimize meta description and schema rich snippets to increase CTR.";
+  } else {
+    type = "QUERY_EXPANSION";
+    action = isProtected
+      ? "Protected cohort: monitor query impressions."
+      : "Expand relevant direct substitute comparisons aligned with high-volume search queries.";
+  }
+
+  return {
+    targetSlug: slug,
+    url,
+    baselineImpressions: imp,
+    baselineClicks: clicks,
+    baselinePosition: pos,
+    isProtected,
+    opportunityType: type,
+    trackedQueries: queries,
+    recommendedAction: action,
   };
 }
 
@@ -63,45 +105,7 @@ export function mineGscOpportunities(): {
   const protectedCohort = readProtectedExperimentSlugs();
 
   for (const item of items) {
-    const url = item.url as string;
-    const slug = url.split("/").pop() ?? "";
-    const imp = item.baseline?.impressions ?? 0;
-    const clicks = item.baseline?.clicks ?? 0;
-    const pos = Number((item.baseline?.bestPosition ?? 0).toFixed(1));
-    const queries = item.queryCluster ?? [];
-    const isProtected = protectedCohort.has(slug);
-
-    let type: GscOpportunity["opportunityType"] = "QUERY_EXPANSION";
-    let action = "";
-
-    if (pos >= 8 && pos <= 30) {
-      type = "STRIKING_DISTANCE";
-      action = isProtected
-        ? "Protected experiment cohort: baseline locked; do not edit on-page content during experiment window."
-        : "Striking distance keyword: deepen substitute comparison bridges and update verified pricing schema to improve SERP rank.";
-    } else if (imp >= 20 && clicks === 0) {
-      type = "HIGH_IMPRESSION_ZERO_CLICK";
-      action = isProtected
-        ? "Protected experiment cohort: active measurement underway; observe without modifying page copy."
-        : "High impressions with 0 clicks: optimize meta description and schema rich snippets to increase CTR.";
-    } else {
-      type = "QUERY_EXPANSION";
-      action = isProtected
-        ? "Protected cohort: monitor query impressions."
-        : "Expand relevant direct substitute comparisons aligned with high-volume search queries.";
-    }
-
-    opportunities.push({
-      targetSlug: slug,
-      url,
-      baselineImpressions: imp,
-      baselineClicks: clicks,
-      baselinePosition: pos,
-      isProtected,
-      opportunityType: type,
-      trackedQueries: queries,
-      recommendedAction: action
-    });
+    opportunities.push(buildGscOpportunity(item, protectedCohort));
   }
 
   const striking = opportunities.filter(o => o.opportunityType === "STRIKING_DISTANCE");
