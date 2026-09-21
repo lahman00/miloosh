@@ -24,10 +24,11 @@ import { trackEvent } from "@/lib/analytics/track";
 
 const STEPS = ["What you need", "Your team", "Budget & industry", "Fine-tune"] as const;
 
-export function RecommendWizard() {
+export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialAnswers?: RecommendationAnswers }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<RecommendationAnswers>(DEFAULT_ANSWERS);
+  const [answers, setAnswers] = useState<RecommendationAnswers>(initialAnswers);
+  const [showNeedChoices, setShowNeedChoices] = useState(initialAnswers.primaryNeed !== "ecommerce_platform");
   const [integrationsInput, setIntegrationsInput] = useState("");
 
   const isLastStep = step === STEPS.length - 1;
@@ -104,6 +105,17 @@ export function RecommendWizard() {
       <div className="mt-8 min-h-[22rem]">
         {step === 0 ? (
           <div className="space-y-8">
+          {!showNeedChoices && answers.primaryNeed === "ecommerce_platform" ? (
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <p className="text-sm leading-6 text-zinc-300">
+                You&apos;re evaluating an ecommerce platform decision. Start with the situation you&apos;re in.
+              </p>
+              <Button type="button" variant="ghost" className="mt-2 px-0" onClick={() => setShowNeedChoices(true)}>
+                Choose a different type of software
+              </Button>
+            </div>
+          ) : null}
+          {showNeedChoices ? (
           <fieldset>
             <legend className="text-sm font-semibold text-white">What are you trying to do?</legend>
             <p className="mt-1 text-xs text-zinc-400">
@@ -131,6 +143,7 @@ export function RecommendWizard() {
               />
             </div>
           </fieldset>
+          ) : null}
           {answers.primaryNeed === "ecommerce_platform" ? (
             <fieldset>
               <legend className="text-sm font-semibold text-white">What best describes your situation?</legend>

@@ -3,6 +3,7 @@ import { Compass } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RecommendWizard } from "@/components/recommend/RecommendWizard";
+import { initialRecommendAnswers } from "@/lib/recommend/query";
 
 export const metadata: Metadata = {
   title: "Find your software",
@@ -11,7 +12,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/recommend" },
 };
 
-export default function RecommendPage() {
+export default async function RecommendPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const initialAnswers = initialRecommendAnswers(await searchParams);
+
   return (
     <main className="flex-1 py-16 sm:py-20">
       <Container size="narrow">
@@ -32,7 +39,7 @@ export default function RecommendPage() {
         </header>
 
         <div className="mt-12">
-          <RecommendWizard />
+          <RecommendWizard initialAnswers={initialAnswers} />
         </div>
       </Container>
     </main>

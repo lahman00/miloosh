@@ -33,6 +33,35 @@ export const DEFAULT_ANSWERS: RecommendationAnswers = {
   ecommerceSituation: "not-sure",
 };
 
+/**
+ * Preserve explicit buyer input first. For the existing ecommerce-decision
+ * distribution campaign only, prefill the broad ecommerce domain when the
+ * URL did not already name a need. This aligns the landing experience with
+ * the promise that sent the visitor here without inventing a repair/embed/
+ * migrate answer or logging a synthetic user selection.
+ */
+export function initialRecommendAnswers(
+  params: URLSearchParams | Record<string, string | string[] | undefined>
+): RecommendationAnswers {
+  const get = (key: string): string | null => {
+    if (params instanceof URLSearchParams) return params.get(key);
+    const value = params[key];
+    return Array.isArray(value) ? (value[0] ?? null) : (value ?? null);
+  };
+
+  if (get("need") || get("utm_campaign") !== "ecommerce-decision") {
+    return searchParamsToAnswers(params);
+  }
+
+  if (params instanceof URLSearchParams) {
+    const contextual = new URLSearchParams(params);
+    contextual.set("need", "ecommerce_platform");
+    return searchParamsToAnswers(contextual);
+  }
+
+  return searchParamsToAnswers({ ...params, need: "ecommerce_platform" });
+}
+
 const TEAM_SIZES: TeamSize[] = ["solo", "small", "medium", "large", "unspecified"];
 const BUDGETS: Budget[] = ["free", "low", "flexible", "unspecified"];
 const COMPANY_STAGES: CompanyStage[] = ["startup", "growth", "enterprise", "unspecified"];

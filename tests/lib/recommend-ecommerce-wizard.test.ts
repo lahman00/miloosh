@@ -15,6 +15,7 @@ vi.mock("react", async importOriginal => ({
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: mocks.push }) }));
 vi.mock("@/lib/analytics/track", () => ({ trackEvent: mocks.track }));
 import { RecommendWizard } from "@/components/recommend/RecommendWizard";
+import { DEFAULT_ANSWERS, initialRecommendAnswers } from "@/lib/recommend/query";
 import { ECOMMERCE_SITUATIONS } from "@/lib/recommend/types";
 
 type Element = React.ReactElement<{ title?: string; selected?: boolean; children?: React.ReactNode; onClick?: () => void }>;
@@ -24,11 +25,35 @@ function elements(node: React.ReactNode): Element[] {
   const element = node as Element;
   return [element, ...elements(element.props.children)];
 }
-function render() { mocks.cursor = 0; return elements(RecommendWizard()); }
+function render() { mocks.cursor = 0; return elements(RecommendWizard({})); }
+function renderWithInitial(initialAnswers: typeof DEFAULT_ANSWERS) {
+  mocks.cursor = 0;
+  return elements(RecommendWizard({ initialAnswers }));
+}
 function option(title: string) { return render().find(e => e.props.title === title)!; }
 function button(text: string) { return render().find(e => React.Children.toArray(e.props.children).includes(text))!; }
 beforeEach(() => { vi.stubGlobal("React", React); mocks.values = []; mocks.cursor = 0; mocks.track.mockClear(); mocks.push.mockClear(); });
 afterEach(() => vi.unstubAllGlobals());
+describe("campaign-aligned Recommend entry", () => {
+  it("prefills ecommerce only for the existing ecommerce-decision campaign", () => {
+    expect(initialRecommendAnswers({ utm_campaign: "ecommerce-decision" }).primaryNeed).toBe("ecommerce_platform");
+    expect(initialRecommendAnswers({ utm_campaign: "profile-cta" }).primaryNeed).toBeNull();
+    expect(initialRecommendAnswers({ utm_campaign: "ecommerce-decision", need: "crm" }).primaryNeed).toBe("crm");
+  });
+
+  it("shows the ecommerce decision first and keeps other software choices available on demand", () => {
+    const initial = { ...DEFAULT_ANSWERS, primaryNeed: "ecommerce_platform" as const };
+    const rendered = renderWithInitial(initial);
+    expect(rendered.find(e => e.props.title === "Fixing the store I already have")).toBeDefined();
+    expect(rendered.find(e => e.props.title === "Plan and track work")).toBeUndefined();
+    expect(mocks.track).not.toHaveBeenCalled();
+
+    rendered.find(e => React.Children.toArray(e.props.children).includes("Choose a different type of software"))!.props.onClick!();
+    expect(renderWithInitial(initial).find(e => e.props.title === "Plan and track work")).toBeDefined();
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+});
+
 describe("wizard situation state and one event per selection", () => {
   it("only shows the question for ecommerce in Step 0", () => {
     expect(option("Starting from scratch")).toBeUndefined();
