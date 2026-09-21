@@ -23,6 +23,7 @@ import { DEFAULT_ANSWERS, answersToSearchParams } from "@/lib/recommend/query";
 import { trackEvent } from "@/lib/analytics/track";
 
 const STEPS = ["What you need", "Your team", "Budget & industry", "Fine-tune"] as const;
+const STEP_KEYS = ["what_you_need", "your_team", "budget_industry", "fine_tune"] as const;
 
 export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialAnswers?: RecommendationAnswers }) {
   const router = useRouter();
@@ -38,6 +39,12 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
     // the start of a wizard session, not each step transition.
     trackEvent({ type: "recommend_started", path: "/recommend" });
   }, []);
+
+  useEffect(() => {
+    // Step-level telemetry lets the conversion funnel identify where real
+    // sessions stop without collecting any free-text answer or PII.
+    trackEvent({ type: "recommend_step_viewed", path: "/recommend", source: STEP_KEYS[step], rank: step + 1 });
+  }, [step]);
 
   function update<K extends keyof RecommendationAnswers>(key: K, value: RecommendationAnswers[K]) {
     setAnswers((prev) => ({ ...prev, [key]: value }));

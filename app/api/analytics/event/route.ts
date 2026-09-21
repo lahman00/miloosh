@@ -29,7 +29,7 @@ import { recordFirstPartyEvent, type FirstPartyEvent, type FirstPartyEventType }
 const MAX_PAYLOAD_BYTES = 8192; // generous for this event shape; guards against abuse, not legitimate use
 const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
   "page_view", "engaged_view", "software_view", "comparison_view", "category_view", "guide_view",
-  "recommend_use", "internal_cta_click", "recommend_started", "recommend_need_selected",
+  "recommend_use", "internal_cta_click", "recommend_started", "recommend_step_viewed", "recommend_need_selected",
   "recommend_ecommerce_situation_selected",
   "recommend_completed", "recommend_result_viewed", "recommend_product_open", "recommend_comparison_open",
   "cta_impression", "newsletter_signup",
@@ -91,6 +91,12 @@ export async function POST(request: NextRequest) {
   // headers, tokens, answers, etc.). Outbounds have a separate canonical resolver.
   const fields: Record<string, unknown> = {};
   const record = body as unknown as Record<string, unknown>;
+  if (body.type === "recommend_step_viewed") {
+    const allowedSteps = ["what_you_need", "your_team", "budget_industry", "fine_tune"] as const;
+    if (!allowedSteps.includes(record.source as (typeof allowedSteps)[number]) || !Number.isInteger(record.rank) || Number(record.rank) < 1 || Number(record.rank) > allowedSteps.length) {
+      return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "invalid_recommend_step" }, { status: 400 });
+    }
+  }
   if (body.type === "recommend_ecommerce_situation_selected") {
     if (!ECOMMERCE_SITUATIONS.includes(record.situation as EcommerceSituation)) {
       return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "invalid_situation" }, { status: 400 });

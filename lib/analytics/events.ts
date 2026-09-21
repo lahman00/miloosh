@@ -26,6 +26,7 @@ export type FirstPartyEventType =
   | "outbound_click"
   | "internal_cta_click"
   | "recommend_started"
+  | "recommend_step_viewed"
   | "recommend_need_selected"
   | "recommend_ecommerce_situation_selected"
   | "recommend_completed"
@@ -142,6 +143,14 @@ export interface RecommendStartedEvent extends BaseAnalyticsEvent {
   type: "recommend_started";
 }
 
+export interface RecommendStepViewedEvent extends BaseAnalyticsEvent {
+  type: "recommend_step_viewed";
+  /** 1-based wizard step; bounded server-side to the four current steps. */
+  rank: number;
+  /** Stable non-free-text step key, e.g. "your_team". */
+  source: string;
+}
+
 export interface RecommendNeedSelectedEvent extends BaseAnalyticsEvent {
   type: "recommend_need_selected";
   /** A RecommendDomain value, or "not_sure" for the explicit "Not sure yet" option. */
@@ -223,6 +232,7 @@ export type FirstPartyEvent =
   | OutboundClickEvent
   | InternalCtaClickEvent
   | RecommendStartedEvent
+  | RecommendStepViewedEvent
   | RecommendNeedSelectedEvent
   | RecommendEcommerceSituationSelectedEvent
   | RecommendCompletedEvent
