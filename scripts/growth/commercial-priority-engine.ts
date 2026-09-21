@@ -4,6 +4,10 @@ import { mineGscOpportunities } from "./gsc-opportunity-miner";
 import fs from "node:fs";
 import path from "node:path";
 
+export function hasActionableStrikingDistanceEvidence(impressions: number): boolean {
+  return impressions >= 10;
+}
+
 export interface PriorityActionItem {
   rank: number;
   type: "AFFILIATE_MONETIZATION" | "STRIKING_DISTANCE_SEO" | "ROLE_GUIDE_EXPANSION" | "DATA_FRESHNESS" | "COMPARISON_BRIDGE";
@@ -32,18 +36,21 @@ export function runCommercialPriorityEngine(): {
 
   // 1. High-traffic striking distance SEO opportunities
   for (const g of gscAudit.strikingDistanceOpportunities) {
-    if (!g.isProtected) {
+    // Do not let tiny directional samples outrank better-supported growth work.
+    // A favorable average position across fewer than 10 impressions is useful
+    // for monitoring, but it is not enough evidence to trigger an intervention.
+    if (!g.isProtected && hasActionableStrikingDistanceEvidence(g.baselineImpressions)) {
       items.push({
         rank: 0,
         type: "STRIKING_DISTANCE_SEO",
         title: `Optimize SERP rank for striking distance target: ${g.targetSlug}`,
         target: g.url,
         category: "seo",
-        priorityScore: 92 + Math.min(g.baselineImpressions, 8),
-        confidence: "HIGH",
+        priorityScore: Math.min(92, 70 + Math.min(g.baselineImpressions, 22)),
+        confidence: g.baselineImpressions >= 20 ? "HIGH" : "MEDIUM",
         effort: "LOW",
-        rationale: `Currently ranks in position ${g.baselinePosition} with ${g.baselineImpressions} impressions. Small factual updates and schema optimization can push this to page 1.`,
-        exactAction: `Deepen direct competitor comparison bridges and verify structured pricing schema.`
+        rationale: `Observed average position ${g.baselinePosition} across ${g.baselineImpressions} impressions. Treat this as a measured opportunity signal, not a ranking forecast.`,
+        exactAction: `Verify query fit and evidence first; then consider one controlled factual or structured-data improvement without changing an active experiment.`
       });
     }
   }
