@@ -24,6 +24,8 @@ export type AttributionKeyCount = {
   contentId: string | null;
   landingPath: string;
   count: number;
+  explicitNonTestCount: number;
+  unknownMarkerCount: number;
   firstSeen: string;
   lastSeen: string;
 };
@@ -31,9 +33,17 @@ export type AttributionKeyCount = {
 export type SocialAttributionReport = {
   generatedAt: string;
   trackingEnabled: boolean;
-  totalRealEvents: number | "NOT_MEASURED";
+  readStatus: "COMPLETE" | "UNAVAILABLE" | "NOT_MEASURED";
+  /** Observed records after explicit QA/test exclusion. This is not a human count. */
+  totalObservedEvents: number | "UNKNOWN" | "NOT_MEASURED";
+  /** Backward-compatible alias for observed, non-excluded records. */
+  totalRealEvents: number | "UNKNOWN" | "NOT_MEASURED";
+  totalExplicitNonTestEvents: number | "UNKNOWN" | "NOT_MEASURED";
+  totalUnknownMarkerEvents: number | "UNKNOWN" | "NOT_MEASURED";
   totalExcludedTestEvents: number;
-  byAttributionKey: AttributionKeyCount[] | "NOT_MEASURED";
+  /** isTest=false does not prove a human; browser/operator provenance can still be unknown. */
+  humanAttribution: "UNKNOWN";
+  byAttributionKey: AttributionKeyCount[] | "UNKNOWN" | "NOT_MEASURED";
 };
 
 function attributionKey(e: InboundSocialEvent): string {
@@ -42,30 +52,56 @@ function attributionKey(e: InboundSocialEvent): string {
 
 export async function buildSocialAttributionReport(): Promise<SocialAttributionReport> {
   const trackingEnabled = isOutboundTrackingEnabled();
-  const allEvents = await getInboundSocialEvents();
-  const excludedCount = allEvents.filter(isExcludedSocialEvent).length;
 
   if (!trackingEnabled) {
-    // Tracking is off site-wide -- any events currently in storage (e.g.
-    // from a prior period when it was on) are historical, not a live
-    // measurement of "now". Reporting anything but NOT_MEASURED here would
-    // imply live measurement capability that does not currently exist.
+    const allEvents = await getInboundSocialEvents();
     return {
       generatedAt: new Date().toISOString(),
       trackingEnabled,
+      readStatus: "NOT_MEASURED",
+      totalObservedEvents: "NOT_MEASURED",
       totalRealEvents: "NOT_MEASURED",
-      totalExcludedTestEvents: excludedCount,
+      totalExplicitNonTestEvents: "NOT_MEASURED",
+      totalUnknownMarkerEvents: "NOT_MEASURED",
+      totalExcludedTestEvents: allEvents.filter(isExcludedSocialEvent).length,
+      humanAttribution: "UNKNOWN",
       byAttributionKey: "NOT_MEASURED",
     };
   }
 
-  const realEvents = allEvents.filter((e) => !isExcludedSocialEvent(e));
+  let allEvents: InboundSocialEvent[];
+  try {
+    allEvents = await getInboundSocialEvents({ strict: true });
+  } catch {
+    return {
+      generatedAt: new Date().toISOString(),
+      trackingEnabled,
+      readStatus: "UNAVAILABLE",
+      totalObservedEvents: "UNKNOWN",
+      totalRealEvents: "UNKNOWN",
+      totalExplicitNonTestEvents: "UNKNOWN",
+      totalUnknownMarkerEvents: "UNKNOWN",
+      totalExcludedTestEvents: 0,
+      humanAttribution: "UNKNOWN",
+      byAttributionKey: "UNKNOWN",
+    };
+  }
+
+  const excludedCount = allEvents.filter(isExcludedSocialEvent).length;
+  const observedEvents = allEvents.filter((e) => !isExcludedSocialEvent(e));
+  const explicitNonTestCount = observedEvents.filter((e) => e.isTest === false).length;
+  const unknownMarkerCount = observedEvents.filter((e) => e.isTest === undefined).length;
   const byKey = new Map<string, AttributionKeyCount>();
-  for (const e of realEvents) {
+
+  for (const e of observedEvents) {
     const key = attributionKey(e);
     const existing = byKey.get(key);
+    const explicit = e.isTest === false ? 1 : 0;
+    const unknown = e.isTest === undefined ? 1 : 0;
     if (existing) {
       existing.count += 1;
+      existing.explicitNonTestCount += explicit;
+      existing.unknownMarkerCount += unknown;
       if (e.timestamp < existing.firstSeen) existing.firstSeen = e.timestamp;
       if (e.timestamp > existing.lastSeen) existing.lastSeen = e.timestamp;
     } else {
@@ -76,6 +112,8 @@ export async function buildSocialAttributionReport(): Promise<SocialAttributionR
         contentId: e.contentId,
         landingPath: e.landingPath,
         count: 1,
+        explicitNonTestCount: explicit,
+        unknownMarkerCount: unknown,
         firstSeen: e.timestamp,
         lastSeen: e.timestamp,
       });
@@ -85,8 +123,13 @@ export async function buildSocialAttributionReport(): Promise<SocialAttributionR
   return {
     generatedAt: new Date().toISOString(),
     trackingEnabled,
-    totalRealEvents: realEvents.length,
+    readStatus: "COMPLETE",
+    totalObservedEvents: observedEvents.length,
+    totalRealEvents: observedEvents.length,
+    totalExplicitNonTestEvents: explicitNonTestCount,
+    totalUnknownMarkerEvents: unknownMarkerCount,
     totalExcludedTestEvents: excludedCount,
+    humanAttribution: "UNKNOWN",
     byAttributionKey: [...byKey.values()].sort((a, b) => b.count - a.count),
   };
 }
@@ -99,6 +142,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`Generated: ${report.generatedAt}`);
     console.log(`Tracking enabled: ${report.trackingEnabled}`);
     console.log(`Excluded QA/synthetic/operator events: ${report.totalExcludedTestEvents}\n`);
+
+    if (report.byAttributionKey === "UNKNOWN") {
+      console.log("social attribution ledger: UNKNOWN (read unavailable)");
+      return;
+    }
 
     if (report.byAttributionKey === "NOT_MEASURED") {
       console.log("totalRealEvents: NOT_MEASURED");

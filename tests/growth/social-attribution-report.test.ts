@@ -35,6 +35,28 @@ afterAll(() => {
 });
 
 describe("buildSocialAttributionReport", () => {
+  it("preserves UNKNOWN when the local ledger cannot be read", async () => {
+    process.env.NEXT_PUBLIC_REVENUE_TRACKING_ENABLED = "true";
+    fs.mkdirSync(path.dirname(LOG_FILE), { recursive: true });
+    fs.writeFileSync(LOG_FILE, "{broken");
+    expect(await buildSocialAttributionReport()).toMatchObject({
+      readStatus: "UNAVAILABLE", totalObservedEvents: "UNKNOWN", byAttributionKey: "UNKNOWN",
+    });
+  });
+
+  it("separates missing markers from explicit non-test records without asserting humans", async () => {
+    process.env.NEXT_PUBLIC_REVENUE_TRACKING_ENABLED = "true";
+    const event = { channel: "reddit" as const, campaign: "launch", contentId: "post", landingPath: "/recommend" };
+    await recordInboundSocialEvent(event);
+    await recordInboundSocialEvent({ ...event, isTest: false });
+    await recordInboundSocialEvent({ ...event, isTest: true });
+    expect(await buildSocialAttributionReport()).toMatchObject({
+      readStatus: "COMPLETE", totalObservedEvents: 2, totalExplicitNonTestEvents: 1,
+      totalUnknownMarkerEvents: 1, totalExcludedTestEvents: 1, humanAttribution: "UNKNOWN",
+      byAttributionKey: [{ count: 2, explicitNonTestCount: 1, unknownMarkerCount: 1 }],
+    });
+  });
+
   it("reports NOT_MEASURED, not 0, when tracking is disabled — even with historical events in storage", async () => {
     process.env.NEXT_PUBLIC_REVENUE_TRACKING_ENABLED = "true";
     await recordInboundSocialEvent({ channel: "bluesky", campaign: "a", contentId: "e1", landingPath: "/software/wix" });

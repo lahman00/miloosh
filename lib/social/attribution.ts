@@ -36,9 +36,8 @@ export type InboundSocialEvent = {
    * from the SAME existing ?qa=1 mechanism (lib/analytics/synthetic.ts's
    * markAndCheckSyntheticQa) that components/SocialLandingCapture.tsx now
    * checks before firing. Optional (older stored events predate this
-   * field and are treated as false, i.e. real, since they were recorded
-   * before this exclusion existed and there is no way to retroactively
-   * know). Raw storage keeps every event regardless of this flag --
+   * field retain UNKNOWN test provenance; false also does not establish
+   * a human). Raw storage keeps every event regardless of this flag --
    * exclusion only ever happens in reporting (summarizeInboundByChannel /
    * scripts/growth/social-attribution-report.ts), never at write time,
    * matching the same immutability principle already established in
@@ -55,10 +54,23 @@ function hasBlobToken(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
-function readLocalFallback(): InboundSocialEvent[] {
+function parseEvents(text: string): InboundSocialEvent[] {
+  const parsed: unknown = JSON.parse(text);
+  if (!Array.isArray(parsed) || parsed.some((event) =>
+    !event || !isValidChannel(event.channel) || typeof event.landingPath !== "string" ||
+    typeof event.timestamp !== "string" || !Number.isFinite(Date.parse(event.timestamp)) ||
+    (event.campaign !== null && typeof event.campaign !== "string") ||
+    (event.contentId !== null && typeof event.contentId !== "string") ||
+    (event.isTest !== undefined && typeof event.isTest !== "boolean")
+  )) throw new Error("Invalid social inbound ledger");
+  return parsed as InboundSocialEvent[];
+}
+
+function readLocalFallback(strict: boolean): InboundSocialEvent[] {
   try {
-    return JSON.parse(fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8")) as InboundSocialEvent[];
-  } catch {
+    return parseEvents(fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8"));
+  } catch (error) {
+    if (strict && (error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
     return [];
   }
 }
@@ -68,15 +80,18 @@ function writeLocalFallback(events: InboundSocialEvent[]): void {
   fs.writeFileSync(LOCAL_FALLBACK_PATH, JSON.stringify(events, null, 2));
 }
 
-async function readEvents(): Promise<InboundSocialEvent[]> {
-  if (!hasBlobToken()) return readLocalFallback();
+async function readEvents(strict = false): Promise<InboundSocialEvent[]> {
+  if (!hasBlobToken()) return readLocalFallback(strict);
   try {
     const { get } = await import("@vercel/blob");
     const result = await get(BLOB_PATHNAME, { access: "private", useCache: false });
-    if (!result || result.statusCode !== 200) return [];
+    // A missing object is an empty ledger; failed/partial reads are unavailable.
+    if (!result) return [];
+    if (result.statusCode !== 200) throw new Error("Social inbound ledger unavailable");
     const text = await new Response(result.stream).text();
-    return JSON.parse(text) as InboundSocialEvent[];
-  } catch {
+    return parseEvents(text);
+  } catch (error) {
+    if (strict) throw error;
     return [];
   }
 }
@@ -112,11 +127,11 @@ export async function recordInboundSocialEvent(input: { channel: Channel; campai
   await writeEvents(events.slice(-MAX_STORED_EVENTS));
 }
 
-export async function getInboundSocialEvents(): Promise<InboundSocialEvent[]> {
-  return [...(await readEvents())].reverse();
+export async function getInboundSocialEvents(options: { strict?: boolean } = {}): Promise<InboundSocialEvent[]> {
+  return [...(await readEvents(options.strict))].reverse();
 }
 
-/** True for events proven QA/synthetic/operator traffic via the isTest marker. Older stored events without the field predate this exclusion and are treated as real (false), since there's no way to retroactively know. */
+/** Excludes explicit tests only. Missing markers remain unknown; false does not prove a human. */
 export function isExcludedSocialEvent(event: InboundSocialEvent): boolean {
   return event.isTest === true;
 }
@@ -124,7 +139,7 @@ export function isExcludedSocialEvent(event: InboundSocialEvent): boolean {
 export type ChannelAttributionRow = { channel: Channel; landings: number; distinctCampaigns: number; distinctContent: number };
 
 /**
- * Landings grouped by channel — real counts only, busiest first, QA/
+ * Observed landings grouped by channel, busiest first, QA/
  * synthetic/operator traffic excluded via isExcludedSocialEvent. Never
  * invents a row for a channel with zero real data. Callers that need the
  * unfiltered raw event set (e.g. an internal debug view) should use

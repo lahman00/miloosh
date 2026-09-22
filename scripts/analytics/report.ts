@@ -28,7 +28,7 @@ export interface DomainFunnelRow {
 export function computeRecommendDomainBreakdown(events: FirstPartyEvent[], includeSynthetic = false): DomainFunnelRow[] {
   const sorted = [...events].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
   const byDomain = new Map<string, { completers: Set<string>; resultViewers: Set<string>; productOpeners: Set<string>; comparisonOpeners: Set<string>; outboundClickersAfter: Set<string> }>();
-  const lastDomainTouchByVisitor = new Map<string, string>();
+  const lastDomainTouchBySession = new Map<string, string>();
 
   function bucket(domain: string) {
     if (!byDomain.has(domain)) {
@@ -39,19 +39,20 @@ export function computeRecommendDomainBreakdown(events: FirstPartyEvent[], inclu
 
   for (const e of sorted) {
     if (isSyntheticOrTestEvent(e, includeSynthetic)) continue;
+    const sessionKey = JSON.stringify([e.visitorId, e.sessionId]);
 
     if (e.type === "recommend_completed" && e.domain) {
       bucket(e.domain).completers.add(e.visitorId);
-      lastDomainTouchByVisitor.set(e.visitorId, e.domain);
+      lastDomainTouchBySession.set(sessionKey, e.domain);
     } else if (e.type === "recommend_result_viewed" && e.domain) {
       bucket(e.domain).resultViewers.add(e.visitorId);
-      lastDomainTouchByVisitor.set(e.visitorId, e.domain);
+      lastDomainTouchBySession.set(sessionKey, e.domain);
     } else if (e.type === "recommend_product_open" && e.domain) {
       bucket(e.domain).productOpeners.add(e.visitorId);
     } else if (e.type === "recommend_comparison_open" && e.domain) {
       bucket(e.domain).comparisonOpeners.add(e.visitorId);
     } else if (e.type === "outbound_click") {
-      const domain = lastDomainTouchByVisitor.get(e.visitorId);
+      const domain = lastDomainTouchBySession.get(sessionKey);
       if (domain) bucket(domain).outboundClickersAfter.add(e.visitorId);
     }
   }
@@ -545,10 +546,11 @@ export function computePeriodMetrics(
   const rfComparisonOpenersP = new Set<string>(), rfComparisonOpenersS = new Set<string>(); let rfComparisonOpenersE = 0;
   const rfOutboundAfterP = new Set<string>(), rfOutboundAfterS = new Set<string>(); let rfOutboundAfterE = 0;
   const rfAffiliateAfterP = new Set<string>(), rfAffiliateAfterS = new Set<string>(); let rfAffiliateAfterE = 0;
-  const firstRecommendTouchByVisitor = new Map<string, string>();
+  const recommendSessions = new Set<string>();
   const RECOMMEND_TOUCH_TYPES = new Set([
     "recommend_use", "recommend_started", "recommend_need_selected", "recommend_completed",
     "recommend_result_viewed", "recommend_product_open", "recommend_comparison_open",
+    "recommend_ecommerce_situation_selected",
   ]);
 
   const landingPageCounts = new Map<string, number>();
@@ -579,6 +581,7 @@ export function computePeriodMetrics(
 
   for (const e of sortedEvents) {
     if (isSyntheticOrTestEvent(e, includeSynthetic)) continue;
+    const sessionKey = JSON.stringify([e.visitorId, e.sessionId]);
 
     // Track landing page: first page view per session
     if (!sessions.has(e.sessionId) && e.type === "page_view") {
@@ -597,9 +600,7 @@ export function computePeriodMetrics(
       rfVisitorsP.add(e.visitorId);
       rfVisitorsS.add(e.sessionId);
       rfVisitorsE++;
-      if (!firstRecommendTouchByVisitor.has(e.visitorId)) {
-        firstRecommendTouchByVisitor.set(e.visitorId, e.timestamp);
-      }
+      recommendSessions.add(sessionKey);
     }
 
     if (e.type === "page_view") {
@@ -644,10 +645,9 @@ export function computePeriodMetrics(
         affiliateClickers.add(e.visitorId);
         affiliateCounts.set(e.softwareSlug, (affiliateCounts.get(e.softwareSlug) ?? 0) + 1);
       }
-      // Phase 8 — "after Recommend": this visitor touched Recommend at
-      // some earlier point (sortedEvents is chronological, so any touch
-      // already recorded happened strictly before this click's timestamp).
-      if (firstRecommendTouchByVisitor.has(e.visitorId)) {
+      // Require an earlier observed Recommend touch in this visitor/session
+      // pair; another visit or tab must not receive attribution for this click.
+      if (recommendSessions.has(sessionKey)) {
         rfOutboundAfterP.add(e.visitorId); rfOutboundAfterS.add(e.sessionId); rfOutboundAfterE++;
         if (e.destination === "affiliate") {
           rfAffiliateAfterP.add(e.visitorId); rfAffiliateAfterS.add(e.sessionId); rfAffiliateAfterE++;

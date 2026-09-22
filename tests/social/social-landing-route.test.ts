@@ -62,10 +62,10 @@ describe("POST /api/social/landing — isTest wiring", () => {
     expect(events[0]!.isTest).not.toBe(true);
   });
 
-  it("a non-boolean isTest value is coerced to false, never treated as true", async () => {
+  it("a non-boolean isTest value remains unknown, never treated as proven non-test", async () => {
     const res = await postLanding({ utm_source: "reddit", utm_medium: "social", utm_campaign: "c", utm_content: "id1", path: "/software/wix", isTest: "yes" });
     expect(res.status).toBe(200);
     const events = await getInboundSocialEvents();
-    expect(events[0]!.isTest).toBe(false);
+    expect(events[0]!.isTest).toBeUndefined();
   });
 });
