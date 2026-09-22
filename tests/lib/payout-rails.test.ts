@@ -56,4 +56,15 @@ describe("payout rail integrity", () => {
       );
     }
   });
+
+  it("keeps vendor-confirmed incomplete MailerLite and Jotform payout rails as owner action required", () => {
+    expect(PAYOUT_RAILS.find((rail) => rail.id === "mailerlite-tipalti")?.readiness).toBe("OWNER_ACTION_REQUIRED");
+    expect(PAYOUT_RAILS.find((rail) => rail.id === "jotform-tremendous")?.readiness).toBe("OWNER_ACTION_REQUIRED");
+  });
+
+  it("does not over-promote the PartnerStack business rail just because PayPal is connected", () => {
+    expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-hello")?.readiness).toBe("UNVERIFIED");
+    expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal")?.readiness).toBe("OWNER_ACTION_REQUIRED");
+  });
+
 });

@@ -48,8 +48,8 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
-    methodGuidance: "Prefer a real local Israeli bank through Airwallex if direct deposit is desired and the dashboard accepts it; otherwise use an actually available PayPal/Stripe option. Do not enter the Payoneer USD receiving account as Airwallex direct-deposit banking: PartnerStack says foreign-currency accounts and virtual banks are unsupported for that route.",
-    notes: "PartnerStack Support explicitly confirmed that hello@miloosh.com is the account containing Airtable/Pipedrive partnerships and activity. First-party partner mail to hello@miloosh.com corroborates the other relationships assigned here. Dashboard payout readiness is not yet verified. SurveyMonkey re-added 2026-09-10 following vendor confirmation of the replacement asset on the business account, documented in docs/surveymonkey-reconciliation-2026-09-10.md. Its payout profile remains UNVERIFIED.",
+    methodGuidance: "PartnerStack Support confirmed a PayPal account is already connected to hello@miloosh.com. Do not replace a working payout provider merely to optimize rails. Verify the account's tax/receipt profile and withdrawal readiness before marking this rail VERIFIED.",
+    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed, so this rail remains UNVERIFIED rather than being promoted to VERIFIED. First-party partner mail corroborates the relationships assigned here.",
   },
   {
     id: "partnerstack-personal",
@@ -58,8 +58,8 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     partnerSlugs: ["monday", "whatconverts", "elevenlabs", "wrike"],
     readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "partnerstack-personal-payout-rail",
-    methodGuidance: "Do not replace or deactivate any of the four existing live tracking URLs, and do not re-apply to any program from Account #1, until PartnerStack confirms whether Account #2's existing links remain commission-payable despite the account-level decline. Verify the payout provider separately in this PartnerStack account once resolved. If direct deposit is used, the same Airwallex restrictions apply; Payoneer USD receiving details should not be used as Airwallex bank details.",
-    notes: "MILOOSH SUPER MISSION (2026-08-27) -- PartnerStack Support (Nina R, ticket #121396, first-party reply 2026-08-26 19:37 EDT) confirmed this account's own network-level application status is DECLINED, even though it individually shows 'Partnered with' monday.com/WhatConverts/ElevenLabs/Wrike/Zendesk. PartnerStack's own recommendation: consolidate onto Account #1 (hello@miloosh.com, network-approved) and re-apply to these four programs from there; closing Account #2 was suggested but NOT executed -- this is an owner decision (risks losing the four existing referral links/tracking history if done before re-establishing them under Account #1). Do not close Account #2 or send any reply to PartnerStack without the owner's explicit direction. This does not change the four partnerships' ACTIVE status in the canonical ledger (their tracking URLs are still real and still resolve correctly on-site) -- it specifically means their PAYOUT path is now confirmed at risk, not merely unverified. UPDATE 2026-08-28: owner has now directly asked PartnerStack (a) whether Account #2's existing links remain commission-payable despite the decline, and (b) whether these programs can be re-applied for from Account #1 while Account #2's links stay active -- no reply yet, so no assumption is made either way. Direct migration/re-approval inquiries were also sent to ElevenLabs, WhatConverts, and monday.com individually. Wrike was not sent a separate inquiry in this update. ZENDESK GAP (found on re-audit): PartnerStack's portal shows Account #2 as 'Partnered with' Zendesk too, but Zendesk has never been added to this partnerSlugs list, has no canonical-ledger.ts entry, and no tracking URL for it has ever been verified or recorded anywhere in this repository -- Miloosh is not currently using any Zendesk affiliate link. Not added here or marked active because no tracking asset has been verified; flagged for the owner to check directly in the Account #2 dashboard. Zendesk is a real, high-relevance product for Miloosh (12 published Zoho Desk comparisons already reference it) if a real link is ever confirmed.",
+    methodGuidance: "PartnerStack Support confirmed the declined network application does not affect existing partnerships or commissions. Keep the four live tracking URLs active. The legacy account has no payment provider connected and needs its tax-registered location completed before withdrawals; do not close it until any migration preserves attribution.",
+    notes: "PartnerStack Support confirmed on 2026-09-01 that the legacy account's DECLINED network application does not affect commissions or existing partnerships. On 2026-09-14 Support confirmed lahman00@gmail.com has no payment provider connected and must add its tax-registered location before a method can be connected or commissions withdrawn. This rail is OWNER_ACTION_REQUIRED for payout setup, not because the live referral links are invalid. Zendesk still has no verified Miloosh tracking URL and is not included as an active partner."
   },
   {
     id: "impact",
@@ -86,20 +86,20 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     label: "MailerLite / Tipalti",
     accountIdentity: "MailerLite affiliate account",
     partnerSlugs: ["mailerlite"],
-    readiness: "UNVERIFIED",
+    readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "mailerlite-tipalti-payout",
     methodGuidance: "Prefer PayPal when operationally acceptable: MailerLite's current affiliate page says it covers PayPal transaction fees, while Direct Deposit and Wire Transfer fees are borne by the affiliate. Use another method only if the live Tipalti flow or owner preference makes it preferable.",
-    notes: "MailerLite is active; payout-profile completion inside its Trackdesk/Tipalti flow remains unverified.",
+    notes: "MailerLite Affiliate Operations confirmed on 2026-09-14 that billing details are already added in Trackdesk but no payment method has been selected; embedded Tipalti setup is therefore a confirmed owner action.",
   },
   {
     id: "jotform-tremendous",
     label: "Jotform / Tremendous",
     accountIdentity: "Jotform partner account 'Eyal_hello' (hello@miloosh.com)",
     partnerSlugs: ["jotform"],
-    readiness: "UNVERIFIED",
+    readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "jotform-tremendous-payout",
     methodGuidance: "Jotform's program page documents payouts via Tremendous; confirm the live payout method/profile directly in the Jotform partner dashboard before assuming any specific method is already configured.",
-    notes: "Jotform activated 2026-08-29 on the owner's direct first-hand account of Jotform Affiliate Marketing Specialist Anna Scheucher's approval and account-specific tracking links -- see data/affiliate/canonical-ledger.ts's jotform entry. Payout-profile completion inside the Jotform/Tremendous flow has not been separately verified.",
+    notes: "Jotform activated 2026-08-29 with account-specific tracking links. Jotform Affiliate Marketing confirmed on 2026-09-14 that payout setup has not been completed yet, so this rail is a confirmed owner action.",
   },
 ] as const;
 
