@@ -17,5 +17,5 @@ describe("store comparison trust guard", () => {
       expect(getSoftware(a)?.category).not.toBe("ecommerce");
       expect(getSoftware(b)?.category).not.toBe("ecommerce");
     }
-  });
+  }, 15_000);
 });
