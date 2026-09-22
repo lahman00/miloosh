@@ -25,11 +25,20 @@ import { trackEvent } from "@/lib/analytics/track";
 const STEPS = ["What you need", "Your team", "Budget & industry", "Fine-tune"] as const;
 const STEP_KEYS = ["what_you_need", "your_team", "budget_industry", "fine_tune"] as const;
 
-export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialAnswers?: RecommendationAnswers }) {
+export function RecommendWizard({
+  initialAnswers = DEFAULT_ANSWERS,
+  fastEcommerceEntry = false,
+}: {
+  initialAnswers?: RecommendationAnswers;
+  fastEcommerceEntry?: boolean;
+}) {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<RecommendationAnswers>(initialAnswers);
   const [showNeedChoices, setShowNeedChoices] = useState(initialAnswers.primaryNeed !== "ecommerce_platform");
+  const [ecommerceSituationTouched, setEcommerceSituationTouched] = useState(
+    initialAnswers.primaryNeed === "ecommerce_platform" && initialAnswers.ecommerceSituation !== "not-sure"
+  );
   const [integrationsInput, setIntegrationsInput] = useState("");
 
   const isLastStep = step === STEPS.length - 1;
@@ -51,10 +60,11 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
   }
 
   function selectPrimaryNeed(domain: RecommendationAnswers["primaryNeed"]) {
+    setEcommerceSituationTouched(false);
     setAnswers((prev) => ({
       ...prev,
       primaryNeed: domain,
-      ecommerceSituation: domain === "ecommerce_platform" ? prev.ecommerceSituation : "not-sure",
+      ecommerceSituation: "not-sure",
     }));
     trackEvent({
       type: "recommend_need_selected",
@@ -63,9 +73,26 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
     });
   }
 
+  function completeRecommendation(finalAnswers: RecommendationAnswers) {
+    trackEvent({
+      type: "recommend_completed",
+      path: "/recommend",
+      domain: finalAnswers.primaryNeed ?? "not_sure",
+    });
+
+    const params = answersToSearchParams(finalAnswers);
+    router.push(`/recommend/results?${params.toString()}`);
+  }
+
   function selectEcommerceSituation(situation: RecommendationAnswers["ecommerceSituation"]) {
-    update("ecommerceSituation", situation);
+    const nextAnswers = { ...answers, ecommerceSituation: situation };
+    setAnswers(nextAnswers);
+    setEcommerceSituationTouched(true);
     trackEvent({ type: "recommend_ecommerce_situation_selected", path: "/recommend", situation });
+
+    if (fastEcommerceEntry) {
+      completeRecommendation(nextAnswers);
+    }
   }
 
   function handleSubmit() {
@@ -78,14 +105,7 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
         .slice(0, 10),
     };
 
-    trackEvent({
-      type: "recommend_completed",
-      path: "/recommend",
-      domain: finalAnswers.primaryNeed ?? "not_sure",
-    });
-
-    const params = answersToSearchParams(finalAnswers);
-    router.push(`/recommend/results?${params.toString()}`);
+    completeRecommendation(finalAnswers);
   }
 
   return (
@@ -115,7 +135,9 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
           {!showNeedChoices && answers.primaryNeed === "ecommerce_platform" ? (
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
               <p className="text-sm leading-6 text-zinc-300">
-                You&apos;re evaluating an ecommerce platform decision. Start with the situation you&apos;re in.
+                {fastEcommerceEntry
+                  ? "One choice gets you to the research. We won’t assume you need to migrate."
+                  : "You’re evaluating an ecommerce platform decision. Start with the situation you’re in."}
               </p>
               <Button type="button" variant="ghost" className="mt-2 px-0" onClick={() => setShowNeedChoices(true)}>
                 Choose a different type of software
@@ -153,16 +175,25 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
           ) : null}
           {answers.primaryNeed === "ecommerce_platform" ? (
             <fieldset>
-              <legend className="text-sm font-semibold text-white">What best describes your situation?</legend>
+              <legend className="text-sm font-semibold text-white">What are you trying to do with your store?</legend>
+              <p className="mt-1 text-xs text-zinc-400">
+                Choose the closest match. {fastEcommerceEntry ? "One click takes you straight to the options." : "You can fine-tune the details next."}
+              </p>
               <div className="mt-3 grid grid-cols-1 gap-3">
                 {([
-                  ["new", "Starting from scratch"],
-                  ["repair", "Fixing the store I already have"],
-                  ["embed", "Keeping my website, changing the commerce layer"],
-                  ["migrate", "Moving an existing store to a different platform"],
-                  ["not-sure", "Not sure yet"],
-                ] as const).map(([value, label]) => (
-                  <OptionButton key={value} title={label} selected={answers.ecommerceSituation === value} onClick={() => selectEcommerceSituation(value)} />
+                  ["new", "Launch my first online store", "I don’t have a store yet."],
+                  ["repair", "Fix my current store", "Checkout, apps, speed, tracking, or operations are the problem."],
+                  ["embed", "Keep my site, change how I sell", "Keep the website and content, but use a different commerce engine."],
+                  ["migrate", "Move to another platform", "I already expect a full store migration."],
+                  ["not-sure", "Help me diagnose it", "I’m not sure whether I should repair, embed, or migrate."],
+                ] as const).map(([value, label, description]) => (
+                  <OptionButton
+                    key={value}
+                    title={label}
+                    description={description}
+                    selected={ecommerceSituationTouched && answers.ecommerceSituation === value}
+                    onClick={() => selectEcommerceSituation(value)}
+                  />
                 ))}
               </div>
             </fieldset>
@@ -390,7 +421,11 @@ export function RecommendWizard({ initialAnswers = DEFAULT_ANSWERS }: { initialA
             <ArrowRight className="h-4 w-4" />
           </Button>
         ) : (
-          <Button type="button" onClick={() => setStep((current) => Math.min(STEPS.length - 1, current + 1))}>
+          <Button
+            type="button"
+            onClick={() => setStep((current) => Math.min(STEPS.length - 1, current + 1))}
+            disabled={step === 0 && answers.primaryNeed === "ecommerce_platform" && !ecommerceSituationTouched}
+          >
             Next
             <ArrowRight className="h-4 w-4" />
           </Button>

@@ -17,7 +17,10 @@ export default async function RecommendPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const initialAnswers = initialRecommendAnswers(await searchParams);
+  const params = await searchParams;
+  const initialAnswers = initialRecommendAnswers(params);
+  const campaign = Array.isArray(params.utm_campaign) ? params.utm_campaign[0] : params.utm_campaign;
+  const fastEcommerceEntry = campaign === "ecommerce-decision" && initialAnswers.primaryNeed === "ecommerce_platform";
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -29,17 +32,17 @@ export default async function RecommendPage({
             <Compass className="h-5 w-5" strokeWidth={2.25} />
           </span>
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Find your software
+            {fastEcommerceEntry ? "What should you do with your store?" : "Find your software"}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            Answer a few questions and we&apos;ll match you against our verified dataset — no AI
-            guessing, no invented facts. Every recommendation comes with the exact reasons behind
-            it.
+            {fastEcommerceEntry
+              ? "Pick the situation closest to yours. We’ll show research options immediately — no signup, no forced migration."
+              : "Answer a few questions and we’ll match you against our verified dataset — no AI guessing, no invented facts. Every recommendation comes with the exact reasons behind it."}
           </p>
         </header>
 
         <div className="mt-12">
-          <RecommendWizard initialAnswers={initialAnswers} />
+          <RecommendWizard initialAnswers={initialAnswers} fastEcommerceEntry={fastEcommerceEntry} />
         </div>
       </Container>
     </main>
