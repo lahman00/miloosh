@@ -11,6 +11,7 @@ const productLinks = [
   { name: "Categories", href: "/#categories" },
   { name: "Browse", href: "/#browse" },
   { name: "Compare", href: "/compare" },
+  { name: "Decision guides", href: "/guides" },
   { name: "Find my software", href: "/recommend" },
   { name: "Cost calculator", href: "/tools/saas-cost-calculator" },
   { name: "Pricing Pressure Index", href: "/research/saas-pricing-pressure-index-2026" },

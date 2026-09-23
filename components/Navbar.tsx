@@ -25,6 +25,9 @@ export function Navbar() {
           <Link href="/compare" className="transition hover:text-accent-hover">
             Compare
           </Link>
+          <Link href="/guides" className="transition hover:text-accent-hover">
+            Guides
+          </Link>
         </nav>
 
         <Link
