@@ -3,6 +3,7 @@ import { EcwidIntegrationDecision } from "@/components/EcwidIntegrationDecision"
 import { StorePlanFit } from "@/components/StorePlanFit";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
 import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
+import { getRoleGuidesForSoftware } from "@/data/guides/registry";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -112,6 +113,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
   const alternativeGuide = getAlternativeGuide(software.slug);
   const buyerChecklist = getBuyerChecklist(software.slug);
   const searchIntentNote = getSoftwareSearchIntentNote(software.slug);
+  const decisionGuides = getRoleGuidesForSoftware(software.slug);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -278,6 +280,28 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         </Card>
 
         <FaqSection items={faqItems} />
+
+        {decisionGuides.length > 0 ? (
+          <section className="mt-14">
+            <SectionHeading
+              eyebrow="Decision guides"
+              title={`Buying guides featuring ${software.name}`}
+              description="Use-case guides that include this tool in a sourced shortlist or decision workflow."
+            />
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {decisionGuides.map((guide) => (
+                <Link
+                  key={guide.slug}
+                  href={`/${guide.slug}`}
+                  className="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 transition hover:border-white/25 hover:bg-white/[0.05]"
+                >
+                  <span className="text-sm font-medium text-white">{guide.title}</span>
+                  <span className="mt-1 block text-xs leading-5 text-zinc-500">{guide.roleName}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <Card className="mt-14">
           <div className="flex items-center gap-3">
