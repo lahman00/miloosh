@@ -53,7 +53,7 @@ import {
   getSoftwareApplicationJsonLd,
 } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
-import { getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
+import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -111,6 +111,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
     .filter((item): item is NonNullable<typeof item> => item !== null);
   const alternativeGuide = getAlternativeGuide(software.slug);
   const buyerChecklist = getBuyerChecklist(software.slug);
+  const searchIntentNote = getSoftwareSearchIntentNote(software.slug);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -138,6 +139,17 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-zinc-400">{generateIntro(software)}</p>
+
+          {searchIntentNote ? (
+            <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-zinc-400">
+              {searchIntentNote.text}{" "}
+              {searchIntentNote.href && searchIntentNote.linkLabel ? (
+                <Link href={searchIntentNote.href} className="font-medium text-white underline underline-offset-4">
+                  {searchIntentNote.linkLabel}
+                </Link>
+              ) : null}
+            </p>
+          ) : null}
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="inline-flex items-center gap-2 text-sm font-medium text-zinc-300">

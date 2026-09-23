@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { GSC_SITEMAP_SUPPRESSED_COMPARISONS, shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real
@@ -26,10 +27,13 @@ describe("sitemap lastModified coverage", () => {
     }
   });
 
-  it("every comparison page entry has a lastModified date equal to the MORE RECENT of its two products' accessedAt", () => {
+  it("every submitted comparison has a lastModified date equal to the MORE RECENT of its two products' accessedAt", () => {
     const entries = sitemap();
     const softwareBySlug = new Map(getAllSoftware().map((s) => [s.slug, s]));
-    for (const [slugA, slugB] of PUBLISHED_COMPARISONS.slice(0, 25)) {
+    const submitted = PUBLISHED_COMPARISONS.filter(([slugA, slugB]) =>
+      shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB))
+    ).slice(0, 25);
+    for (const [slugA, slugB] of submitted) {
       const slug = getComparisonSlug(slugA, slugB);
       const entry = entries.find((e) => e.url.endsWith(`/compare/${slug}`));
       const a = softwareBySlug.get(slugA)!;
@@ -38,6 +42,20 @@ describe("sitemap lastModified coverage", () => {
       expect(entry?.lastModified, `${slug} missing from sitemap`).toBeTruthy();
       expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe(expected);
     }
+  });
+
+  it("suppresses only the GSC-proven old zero-visibility cohort from sitemap submission", () => {
+    const entries = sitemap();
+    const comparisonUrls = entries.filter((e) => e.url.includes("/compare/")).map((e) => e.url);
+    expect(GSC_SITEMAP_SUPPRESSED_COMPARISONS).toHaveLength(804);
+    expect(comparisonUrls).toHaveLength(PUBLISHED_COMPARISONS.length - 804);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/notion-vs-confluence"))).toBe(false);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/docker-vs-vercel"))).toBe(true);
+  });
+
+  it("includes the public decision-guide hub so discovered guides have a crawlable internal-link path", () => {
+    const entries = sitemap();
+    expect(entries.some((entry) => entry.url.endsWith("/guides"))).toBe(true);
   });
 
   it("no entry's lastModified is ever in the future (a sign of a fabricated/placeholder date, not a real one)", () => {

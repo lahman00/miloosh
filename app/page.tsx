@@ -24,6 +24,7 @@ import { SoftwareCard } from "@/components/SoftwareCard";
 import { CategoryCard } from "@/components/CategoryCard";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
+import { getRoleGuide } from "@/data/guides/registry";
 import { getSoftwareByCategory } from "@/lib/related";
 import { getComparisonSlug } from "@/data/comparisons";
 import { parseComparisonSlug } from "@/lib/comparison";
@@ -76,9 +77,34 @@ export default function Home() {
     ...allSoftware.filter((software) => !rankedSlugSet.has(software.slug)),
   ].slice(0, 72);
 
-  const popularComparisons = priorityList
-    .filter((row) => row.kind === "comparison")
-    .slice(0, 6)
+  const comparisonPriorityRows = priorityList.filter((row) => row.kind === "comparison");
+  const quickWinComparisonRows = comparisonPriorityRows
+    .filter(
+      (row) =>
+        row.evidenceType === "CACHED" &&
+        (row.gscImpressions ?? 0) >= 5 &&
+        (row.gscPosition ?? Number.POSITIVE_INFINITY) >= 4 &&
+        (row.gscPosition ?? Number.POSITIVE_INFINITY) <= 40
+    )
+    .sort((a, b) => {
+      const opportunity = (row: typeof a) =>
+        (row.gscImpressions ?? 0) * Math.max(0, 40 - (row.gscPosition ?? 40));
+      return opportunity(b) - opportunity(a);
+    });
+
+  // Blend durable demand with near-page-one opportunities. The first three
+  // preserve the highest-demand comparison signals; the remaining slots
+  // strengthen pages Google is already testing in roughly positions 4-40.
+  // Dedupe by URL because Adobe Analytics vs Segment currently qualifies
+  // for both cohorts.
+  const featuredComparisonRows = [
+    ...comparisonPriorityRows.slice(0, 3),
+    ...quickWinComparisonRows,
+  ]
+    .filter((row, index, rows) => rows.findIndex((candidate) => candidate.url === row.url) === index)
+    .slice(0, 6);
+
+  const popularComparisons = featuredComparisonRows
     .map((row) => {
       const parsed = parseComparisonSlug(row.url.replace("/compare/", ""));
       if (!parsed) return null;
@@ -87,6 +113,18 @@ export default function Home() {
       return softwareA && softwareB ? { softwareA, softwareB } : null;
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
+
+  const homepageGuideSlugs = [
+    "best-crm-for-startups",
+    "best-ecommerce-platform-for-small-business",
+    "best-crm-for-consultants",
+    "best-customer-service-software-for-startups",
+    "best-project-management-for-agencies",
+    "best-password-manager-for-businesses",
+  ] as const;
+  const homepageGuides = homepageGuideSlugs
+    .map((slug) => getRoleGuide(slug))
+    .filter((guide): guide is NonNullable<typeof guide> => guide !== undefined);
 
   const stats = [
     { icon: LayoutGrid, value: String(allSoftware.length), label: "Tools covered" },
@@ -215,6 +253,39 @@ export default function Home() {
                 category={category}
                 count={getSoftwareByCategory(category.slug).length}
               />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="guides" className="scroll-mt-16 py-20 sm:py-28">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Decision guides"
+              title="Start with the decision you need to make"
+              description="Practical buying and switching guides for common software decisions."
+            />
+            <Link
+              href="/guides"
+              className="hidden shrink-0 text-sm font-medium text-zinc-400 transition hover:text-accent-hover sm:block"
+            >
+              View all decision guides →
+            </Link>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {homepageGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/${guide.slug}`}
+                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/25 hover:bg-white/[0.05]"
+              >
+                <h3 className="font-semibold text-white">{guide.title}</h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-400">
+                  {guide.metaDescription}
+                </p>
+              </Link>
             ))}
           </div>
         </Container>

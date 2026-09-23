@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import {
   getComparisonSearchIntentNote,
   getComparisonSerpOverride,
+  getSoftwareSearchIntentNote,
   getSoftwareSerpOverride,
 } from "@/data/seo/serp-overrides";
 
@@ -21,6 +22,21 @@ describe("GSC-backed SERP opportunity fixes", () => {
     expect(corpus).toContain("https://postmarkapp.com/eu-privacy");
   });
 
+  it("aligns the highest-impression software pages with alternatives and competitor intent", () => {
+    for (const slug of ["semrush", "freshdesk", "intercom", "front", "buffer", "help-scout"]) {
+      const meta = getSoftwareSerpOverride(slug);
+      expect(meta?.title).toMatch(/Alternatives & Competitors \(2026\)/);
+      expect(meta?.description).toMatch(/alternatives and competitors/i);
+    }
+  });
+
+  it("disambiguates Freshdesk from Freshservice using the observed GSC query mix", () => {
+    const note = getSoftwareSearchIntentNote("freshdesk");
+    expect(note?.text).toContain("Freshdesk and Freshservice are different products");
+    expect(note?.href).toBe("/software/freshservice");
+    expect(getSoftwareSearchIntentNote("semrush")).toBeUndefined();
+  });
+
   it("disambiguates Adobe Analytics from the Adobe segmentation feature", () => {
     const meta = getComparisonSerpOverride("adobe-analytics-vs-segment");
     expect(meta?.title).toBe("Adobe Analytics vs Twilio Segment (2026)");
@@ -28,6 +44,15 @@ describe("GSC-backed SERP opportunity fixes", () => {
     expect(getComparisonSearchIntentNote("adobe-analytics-vs-segment")).toContain(
       "not a guide to creating or comparing segments inside Adobe Analytics"
     );
+  });
+
+  it("adds GSC-backed metadata for comparisons already near page one", () => {
+    expect(getComparisonSerpOverride("docker-vs-vercel")?.title).toContain("Docker vs Vercel (2026)");
+    expect(getComparisonSerpOverride("github-vs-render")?.title).toContain("Code Hosting vs App Deployment");
+    expect(getComparisonSerpOverride("microsoft-teams-vs-signal")?.title).toContain("Work Chat vs Private Messaging");
+    expect(getComparisonSerpOverride("canva-vs-lucidchart")?.title).toContain("Design vs Diagramming");
+    expect(getComparisonSerpOverride("google-chat-vs-signal")?.title).toContain("Work Chat vs Private Messaging");
+    expect(getComparisonSerpOverride("jenkins-vs-sentry")?.title).toContain("CI/CD vs Error Monitoring");
   });
 
   it("does not override protected or unrelated pages", () => {
