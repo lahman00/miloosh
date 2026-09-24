@@ -8,10 +8,11 @@
  * a month before the latest GSC performance data (through 2026-09-21).
  *
  * These 804 routes remain published, internally linkable, canonical, and
- * indexable. They are ONLY suppressed from sitemap submission so the sitemap
- * focuses crawl discovery on URLs that either have demonstrated Search signal
- * or are still inside a reasonable discovery grace period. New comparisons
- * default to INCLUDED because this is a suppression list, not an allowlist.
+ * indexable. They are the historical suppression cohort used to focus crawl
+ * discovery on URLs with demonstrated Search signal or a reasonable discovery
+ * grace period. Explicit current decision priorities can override suppression
+ * without erasing the underlying GSC evidence. New comparisons default to
+ * INCLUDED because this is a suppression list, not an allowlist.
  */
 export const GSC_SITEMAP_SUPPRESSED_COMPARISONS = [
   "notion-vs-confluence",
@@ -822,6 +823,36 @@ export const GSC_SITEMAP_SUPPRESSED_COMPARISONS = [
 
 const GSC_SITEMAP_SUPPRESSED_SET = new Set<string>(GSC_SITEMAP_SUPPRESSED_COMPARISONS);
 
+/**
+ * Current small-store decision cluster. These pages remain priority discovery
+ * targets even when the historical GSC cohort recorded zero visibility.
+ *
+ * Keep the historical suppression list intact as evidence; this explicit
+ * override records the editorial decision to keep the core Shopify,
+ * WooCommerce and Ecwid decision paths in active discovery.
+ */
+export const GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS = [
+  "ecwid-vs-shopify",
+  "ecwid-vs-woocommerce",
+  "shopify-vs-woocommerce",
+] as const;
+
+const GSC_SITEMAP_PRIORITY_INCLUDE_SET = new Set<string>(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS);
+
+export function isComparisonDiscoverySuppressed(slug: string): boolean {
+  return GSC_SITEMAP_SUPPRESSED_SET.has(slug) && !GSC_SITEMAP_PRIORITY_INCLUDE_SET.has(slug);
+}
+
+/**
+ * Priority discovery cohort used for sitemap submission and high-authority
+ * directory surfaces. Suppressed routes remain live and retain contextual
+ * links from their two software pages, so this is crawl prioritization —
+ * not deletion, noindex, or orphaning.
+ */
+export function shouldPrioritizeComparisonDiscovery(slug: string): boolean {
+  return !isComparisonDiscoverySuppressed(slug);
+}
+
 export function shouldSubmitComparisonToSitemap(slug: string): boolean {
-  return !GSC_SITEMAP_SUPPRESSED_SET.has(slug);
+  return shouldPrioritizeComparisonDiscovery(slug);
 }
