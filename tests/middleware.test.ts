@@ -69,7 +69,7 @@ describe("internal dashboard access gate (proxy.ts)", () => {
 });
 
 
-describe("legacy production host redirect", () => {
+describe("canonical public host redirects", () => {
   it("301 redirects the legacy Vercel alias to the canonical host", () => {
     const res = proxy(requestTo("/software/postmark", undefined, "flowtemplate-delta.vercel.app"));
     expect(res.status).toBe(301);
@@ -80,6 +80,18 @@ describe("legacy production host redirect", () => {
     const res = proxy(requestTo("/compare/joomla-vs-wix?ref=test", undefined, "flowtemplate-delta.vercel.app"));
     expect(res.status).toBe(301);
     expect(res.headers.get("location")).toBe("https://miloosh.com/compare/joomla-vs-wix?ref=test");
+  });
+
+  it("301 redirects www to the apex canonical host while preserving path and query", () => {
+    const res = proxy(requestTo("/software/woocommerce?source=search", undefined, "www.miloosh.com"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("https://miloosh.com/software/woocommerce?source=search");
+  });
+
+  it("301 redirects the alternate public Vercel hostname to the apex canonical host", () => {
+    const res = proxy(requestTo("/software/ecwid", undefined, "flowtemplate-lahman001.vercel.app"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("https://miloosh.com/software/ecwid");
   });
 
   it("does not redirect a normal public Miloosh request", () => {
