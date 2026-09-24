@@ -16,7 +16,10 @@ import { getBreadcrumbJsonLd, getCategoryJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { generateCategorySynthesis, getCategoryFeaturedComparisons } from "@/lib/category";
-import { shouldPrioritizeComparisonDiscovery } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import {
+  GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
+  shouldPrioritizeComparisonDiscovery,
+} from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getRoleGuidesForCategory } from "@/data/guides/registry";
 
 type CategoryPageProps = {
@@ -24,6 +27,8 @@ type CategoryPageProps = {
     slug: string;
   }>;
 };
+
+const explicitDiscoveryPriority = new Set<string>(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS);
 
 export function generateStaticParams() {
   return getAllCategories().map((category) => ({ slug: category.slug }));
@@ -59,8 +64,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const software = getSoftwareByCategory(category.slug);
   const categorySlugs = new Set(software.map((item) => item.slug));
   const roleGuides = getRoleGuidesForCategory(category.slug);
-  const featuredComparisons = getCategoryFeaturedComparisons(category.slug, 12)
+  const featuredComparisons = getCategoryFeaturedComparisons(category.slug, PUBLISHED_COMPARISONS.length)
     .filter((item) => shouldPrioritizeComparisonDiscovery(item.comparisonSlug))
+    .sort(
+      (a, b) =>
+        Number(explicitDiscoveryPriority.has(b.comparisonSlug)) -
+          Number(explicitDiscoveryPriority.has(a.comparisonSlug)) ||
+        b.score - a.score ||
+        a.comparisonSlug.localeCompare(b.comparisonSlug)
+    )
     .slice(0, 6);
   const comparisons = PUBLISHED_COMPARISONS.filter(
     ([slugA, slugB]) =>
@@ -72,7 +84,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       const softwareB = getSoftware(slugB);
       return softwareA && softwareB ? { softwareA, softwareB } : null;
     })
-    .filter((item): item is NonNullable<typeof item> => item !== null);
+    .filter((item): item is NonNullable<typeof item> => item !== null)
+    .sort((a, b) => {
+      const slugA = getComparisonSlug(a.softwareA.slug, a.softwareB.slug);
+      const slugB = getComparisonSlug(b.softwareA.slug, b.softwareB.slug);
+      return Number(explicitDiscoveryPriority.has(slugB)) - Number(explicitDiscoveryPriority.has(slugA));
+    });
 
   return (
     <main className="flex-1 py-16 sm:py-20">
