@@ -2,6 +2,11 @@ import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import {
+  GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
+  GSC_SITEMAP_SUPPRESSED_COMPARISONS,
+  shouldSubmitComparisonToSitemap,
+} from "@/data/seo/gsc-sitemap-comparison-cohort";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real
@@ -11,9 +16,8 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
  * limited crawl trust. Fixed using real per-entry data already tracked
  * (software.accessedAt, guide.updatedAt) -- never a fabricated or
  * build-time-only placeholder for content that has real per-entry dates
- * available. This test proves every software and comparison entry gets a
- * genuine, real lastModified value, not a systemic silent gap like the
- * meta-description one found earlier in the same investigation.
+ * available. This test proves every software and submitted comparison entry
+ * gets a genuine, real lastModified value.
  */
 describe("sitemap lastModified coverage", () => {
   it("every software page entry has a real lastModified date matching its own accessedAt", () => {
@@ -26,10 +30,13 @@ describe("sitemap lastModified coverage", () => {
     }
   });
 
-  it("every comparison page entry has a lastModified date equal to the MORE RECENT of its two products' accessedAt", () => {
+  it("every submitted comparison has a lastModified date equal to the MORE RECENT of its two products' accessedAt", () => {
     const entries = sitemap();
     const softwareBySlug = new Map(getAllSoftware().map((s) => [s.slug, s]));
-    for (const [slugA, slugB] of PUBLISHED_COMPARISONS.slice(0, 25)) {
+    const submitted = PUBLISHED_COMPARISONS.filter(([slugA, slugB]) =>
+      shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB))
+    ).slice(0, 25);
+    for (const [slugA, slugB] of submitted) {
       const slug = getComparisonSlug(slugA, slugB);
       const entry = entries.find((e) => e.url.endsWith(`/compare/${slug}`));
       const a = softwareBySlug.get(slugA)!;
@@ -38,6 +45,19 @@ describe("sitemap lastModified coverage", () => {
       expect(entry?.lastModified, `${slug} missing from sitemap`).toBeTruthy();
       expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe(expected);
     }
+  });
+
+  it("suppresses the GSC-proven old zero-visibility cohort except explicit current decision priorities", () => {
+    const entries = sitemap();
+    const comparisonUrls = entries.filter((e) => e.url.includes("/compare/")).map((e) => e.url);
+    expect(GSC_SITEMAP_SUPPRESSED_COMPARISONS).toHaveLength(804);
+    expect(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS).toHaveLength(3);
+    expect(comparisonUrls).toHaveLength(PUBLISHED_COMPARISONS.length - 804 + 3);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/notion-vs-confluence"))).toBe(false);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/docker-vs-vercel"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/ecwid-vs-shopify"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/ecwid-vs-woocommerce"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/shopify-vs-woocommerce"))).toBe(true);
   });
 
   it("no entry's lastModified is ever in the future (a sign of a fabricated/placeholder date, not a real one)", () => {

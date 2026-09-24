@@ -5,6 +5,7 @@ import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -55,7 +56,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const comparisonPages: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/compare`, changeFrequency: "weekly", priority: 0.7 },
-    ...PUBLISHED_COMPARISONS.map(([slugA, slugB]) => {
+    ...PUBLISHED_COMPARISONS.filter(([slugA, slugB]) =>
+      shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB))
+    ).map(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);
       const softwareB = softwareBySlug.get(slugB);
       const dates = [softwareA, softwareB].filter((s): s is NonNullable<typeof s> => Boolean(s)).map((s) => toDate(s.accessedAt));
