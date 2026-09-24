@@ -25,6 +25,8 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getRoleGuide } from "@/data/guides/registry";
+import { FIRST_REVENUE_SUPPORTING_GUIDES } from "@/data/guides/first-revenue";
+import { FIRST_REVENUE_PAGES } from "@/data/revenue/first-revenue-cohort";
 import { getSoftwareByCategory } from "@/lib/related";
 import { getComparisonSlug } from "@/data/comparisons";
 import { parseComparisonSlug } from "@/lib/comparison";
@@ -114,15 +116,12 @@ export default function Home() {
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
 
-  const homepageGuideSlugs = [
-    "best-ecommerce-platform-for-small-business",
-    "best-crm-for-sales-teams",
-    "best-project-management-for-agencies",
-    "best-email-marketing-for-ecommerce",
-    "best-lead-tracking-for-agencies",
-  ] as const;
-  const homepageGuides = homepageGuideSlugs
-    .map((slug) => getRoleGuide(slug))
+  const firstRevenueSoftware = FIRST_REVENUE_PAGES
+    .map((target) => getSoftware(target.slug))
+    .filter((software): software is NonNullable<typeof software> => software !== undefined);
+
+  const homepageGuides = FIRST_REVENUE_SUPPORTING_GUIDES
+    .map((support) => getRoleGuide(support.guideSlug))
     .filter((guide): guide is NonNullable<typeof guide> => guide !== undefined);
 
   const stats = [
@@ -194,6 +193,21 @@ export default function Home() {
           {stats.map((stat) => (
             <StatItem key={stat.label} {...stat} />
           ))}
+        </Container>
+      </section>
+
+      <section className="py-20 sm:py-24">
+        <Container>
+          <SectionHeading
+            eyebrow="Buyer decisions"
+            title="Five buyer-ready product pages"
+            description="Go straight to current pricing context, fit and non-fit guidance, drawbacks, alternatives, and the vendor handoff."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {firstRevenueSoftware.map((software) => (
+              <SoftwareCard key={software.slug} software={software} />
+            ))}
+          </div>
         </Container>
       </section>
 
