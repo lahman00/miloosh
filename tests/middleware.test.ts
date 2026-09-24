@@ -16,10 +16,10 @@ function basicAuthHeader(user: string, pass: string): string {
   return `Basic ${Buffer.from(`${user}:${pass}`).toString("base64")}`;
 }
 
-function requestTo(path: string, authHeader?: string): NextRequest {
+function requestTo(path: string, authHeader?: string, baseUrl = "https://miloosh.com"): NextRequest {
   const headers = new Headers();
   if (authHeader) headers.set("authorization", authHeader);
-  return new NextRequest(new URL(path, "https://miloosh.com"), { headers });
+  return new NextRequest(new URL(path, baseUrl), { headers });
 }
 
 describe("internal dashboard access gate (proxy.ts)", () => {
@@ -64,5 +64,25 @@ describe("internal dashboard access gate (proxy.ts)", () => {
     process.env.INTERNAL_DASHBOARD_PASSWORD = "correct-horse-battery-staple";
     const res = proxy(requestTo("/internal/maintenance", basicAuthHeader("someone-else", "correct-horse-battery-staple")));
     expect(res.status).toBe(401);
+  });
+});
+
+describe("canonical public host normalization (proxy.ts)", () => {
+  it("permanently redirects www to the apex host while preserving path and query", () => {
+    const res = proxy(requestTo("/software/woocommerce?source=test", undefined, "https://www.miloosh.com"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("https://miloosh.com/software/woocommerce?source=test");
+  });
+
+  it("permanently redirects the legacy public Vercel hostname to the apex host", () => {
+    const res = proxy(requestTo("/software/ecwid", undefined, "https://flowtemplate-delta.vercel.app"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("https://miloosh.com/software/ecwid");
+  });
+
+  it("does not redirect an ordinary public request already on the canonical host", () => {
+    const res = proxy(requestTo("/software/ecwid"));
+    expect(res.status).not.toBe(301);
+    expect(res.headers.get("location")).toBeNull();
   });
 });
