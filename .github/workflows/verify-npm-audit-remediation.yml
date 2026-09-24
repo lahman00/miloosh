@@ -1,4 +1,5 @@
 name: Verify npm audit remediation
+# second-pass: validate npm ci against remediated lockfile
 
 on:
   push:
