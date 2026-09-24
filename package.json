@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "verify:deployment": "tsx scripts/deployment/verify-deployment.ts",
-    "analytics:report": "tsx scripts/analytics/report.ts",
+    "analytics:report": "tsx scripts/analytics/report.ts",\n    "analytics:first-revenue": "tsx scripts/analytics/first-revenue.ts",
     "validate:data": "tsx scripts/validate-data.ts",
     "audit:growth": "tsx scripts/growth/commercial-audit.ts",
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",
