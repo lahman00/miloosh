@@ -4,6 +4,31 @@ export type SerpMetadataOverride = {
 };
 
 const SOFTWARE_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
+  airtable: {
+    title: "Airtable Pricing & Alternatives (2026): Notion, Monday",
+    description:
+      "Check Airtable pricing, buyer fit, drawbacks and alternatives, including Airtable vs Notion and Monday, using current vendor-sourced facts.",
+  },
+  todoist: {
+    title: "Todoist Pricing & Alternatives (2026): TickTick, Microsoft To Do",
+    description:
+      "Check Todoist pricing, buyer fit, drawbacks and alternatives, including Todoist vs TickTick and Microsoft To Do, using current vendor-sourced facts.",
+  },
+  close: {
+    title: "Close CRM Pricing & Alternatives (2026): Pipedrive, HubSpot",
+    description:
+      "Check Close CRM pricing, buyer fit, drawbacks and alternatives, including Close vs Pipedrive and HubSpot, using current vendor-sourced facts.",
+  },
+  setmore: {
+    title: "Setmore Pricing & Alternatives (2026): Calendly, Acuity",
+    description:
+      "Check Setmore pricing, buyer fit, drawbacks and alternatives, including Setmore vs Calendly and Acuity Scheduling, using current vendor-sourced facts.",
+  },
+  elevenlabs: {
+    title: "ElevenLabs Pricing & Alternatives (2026): Murf AI, Descript",
+    description:
+      "Check ElevenLabs pricing, buyer fit, drawbacks and alternatives, including ElevenLabs vs Murf AI and Descript, using current vendor-sourced facts.",
+  },
   postmark: {
     title: "Best Postmark Alternatives (2026)",
     description:
