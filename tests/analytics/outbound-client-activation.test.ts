@@ -18,10 +18,22 @@ describe.each([TrackedVendorLink, TrackedCtaLink])("native outbound activation: 
     const event = { button, preventDefault: vi.fn() };
     const element = link();
     if (button === 0) element.props.onClick(event); else element.props.onAuxClick(event);
-    expect(fetch).toHaveBeenCalledTimes(button === 2 ? 0 : 1);
+
+    const calls = vi.mocked(fetch).mock.calls;
+    const outboundCalls = calls.filter(([url]) => url === "/api/outbound-click");
+    const analyticsCalls = calls.filter(([url]) => url === "/api/analytics/event");
+
+    expect(outboundCalls).toHaveLength(button === 2 ? 0 : 1);
+    expect(analyticsCalls).toHaveLength(button !== 2 && Component === TrackedCtaLink ? 1 : 0);
     expect(event.preventDefault).not.toHaveBeenCalled();
     expect(element.props.href).toBe("https://example.invalid/never-navigate");
-    if (button !== 2) expect(JSON.parse(vi.mocked(fetch).mock.calls[0][1]!.body as string).isTest).toBe(true);
+
+    if (button !== 2) {
+      expect(JSON.parse(outboundCalls[0]![1]!.body as string).isTest).toBe(true);
+      if (Component === TrackedCtaLink) {
+        expect(JSON.parse(analyticsCalls[0]![1]!.body as string).type).toBe("cta_click");
+      }
+    }
   });
   it("tracking rejection or synchronous denial never throws into navigation", async () => {
     vi.mocked(fetch).mockRejectedValueOnce(Error("offline"));

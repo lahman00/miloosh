@@ -119,6 +119,13 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
 
   const reportOutboundClick = () => {
     try {
+    trackEvent({
+      type: "cta_click",
+      path: pathname,
+      softwareSlug: slug,
+      ctaLocation,
+      ...(experimentId ? { experimentId, variant } : {}),
+    });
     const visitorId = getStoredVisitorId();
     const sessionId = getStoredSessionId();
     const isTest = markAndCheckSyntheticQa();

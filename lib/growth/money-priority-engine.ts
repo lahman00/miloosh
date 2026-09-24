@@ -98,6 +98,7 @@ const PRE_CLICK_FUNNEL_TYPES = new Set<FirstPartyEvent["type"]>([
   "recommend_product_open",
   "recommend_comparison_open",
   "cta_impression",
+  "cta_click",
 ]);
 
 function findLedgerEntry(slug: string) {

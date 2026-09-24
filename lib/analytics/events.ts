@@ -34,6 +34,7 @@ export type FirstPartyEventType =
   | "recommend_product_open"
   | "recommend_comparison_open"
   | "cta_impression"
+  | "cta_click"
   | "newsletter_signup";
 
 export interface BaseAnalyticsEvent {
@@ -208,6 +209,19 @@ export interface CtaImpressionEvent extends BaseAnalyticsEvent {
 }
 
 /**
+ * First Revenue Sprint (2026-09-25) — the browser-side decision to click a
+ * commercial CTA. This stays separate from outbound_click, which is recorded
+ * by the server-side merchant-handoff endpoint.
+ */
+export interface CtaClickEvent extends BaseAnalyticsEvent {
+  type: "cta_click";
+  softwareSlug: string;
+  ctaLocation?: string;
+  experimentId?: string;
+  variant?: string;
+}
+
+/**
  * MILOOSH PEOPLE NOW mission (2026-08-23) — the behavioral marker that a
  * newsletter signup happened, joinable to the rest of the funnel by
  * visitorId/sessionId. Deliberately carries NO email address or any
@@ -240,6 +254,7 @@ export type FirstPartyEvent =
   | RecommendProductOpenEvent
   | RecommendComparisonOpenEvent
   | CtaImpressionEvent
+  | CtaClickEvent
   | NewsletterSignupEvent;
 
 const BLOB_PREFIX = "first-party-analytics/";

@@ -1,6 +1,7 @@
 import { RoleGuideAnalytics } from "@/components/RoleGuideAnalytics";
 import { EcommerceDecisionKit } from "@/components/EcommerceDecisionKit";
 import { BuyerDecisionBrief } from "@/components/BuyerDecisionBrief";
+import { FirstRevenueDecisionPanel } from "@/components/FirstRevenueDecisionPanel";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,6 +14,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { getAllRoleGuides, getRoleGuide } from "@/data/guides/registry";
 import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
+import { FIRST_REVENUE_GUIDE_SLUGS } from "@/data/guides/first-revenue";
 import { getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
@@ -85,6 +87,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
     .filter((item) => item !== null);
 
   const hasAnyAffiliate = reviewedProducts.some((p) => p.hasAffiliate);
+  const isFirstRevenueMoneyPage = FIRST_REVENUE_GUIDE_SLUGS.has(guide.slug);
 
   // Structured Data Schema
   const itemListSchema = {
@@ -175,6 +178,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
           <nav aria-label="On this page" className="mb-8 flex flex-wrap gap-2 text-sm">
             {[
+              ...(isFirstRevenueMoneyPage ? [{ href: "#buyer-decision", label: "Choose by fit & price" }] : []),
               { href: "#quick-comparison", label: "Compare the shortlist" },
               ...(guide.slug === "best-ecommerce-platform-for-small-business" ? [{ href: "#store-decision-kit", label: "Free store checklist" }] : []),
               ...(BUYER_DECISION_BRIEFS[guide.slug] ? [{ href: "#buyer-decision-worksheet", label: "Decision worksheet" }] : []),
@@ -194,6 +198,32 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
           )}
 
           {guide.slug === "best-ecommerce-platform-for-small-business" ? <EcommerceDecisionKit /> : null}
+
+          {isFirstRevenueMoneyPage ? (
+            <FirstRevenueDecisionPanel
+              categorySlug={guide.categorySlug}
+              products={reviewedProducts.map((product, index) => {
+                const alternative = reviewedProducts[(index + 1) % reviewedProducts.length];
+                return {
+                  slug: product.software.slug,
+                  name: product.software.name,
+                  ranking: product.ranking,
+                  badge: product.badge,
+                  price: product.summaryPrice ?? product.software.pricing?.startingPrice ?? "Check current pricing",
+                  chooseIf: product.fitReason,
+                  skipIf: product.limitations,
+                  alternativeName: alternative?.software.name ?? null,
+                  alternativeSlug: alternative?.software.slug ?? null,
+                  ctaUrl: product.ctaUrl,
+                  ctaRel: product.ctaRel,
+                  wixContext:
+                    guide.slug === "best-ecommerce-platform-for-small-business" && product.software.slug === "wix"
+                      ? "ecommerce"
+                      : undefined,
+                };
+              })}
+            />
+          ) : null}
 
           {/* Quick Comparison Summary Table */}
           <section id="quick-comparison" className="mb-14 scroll-mt-24">
