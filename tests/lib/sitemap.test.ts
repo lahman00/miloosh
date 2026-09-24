@@ -2,7 +2,11 @@ import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
-import { GSC_SITEMAP_SUPPRESSED_COMPARISONS, shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import {
+  GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
+  GSC_SITEMAP_SUPPRESSED_COMPARISONS,
+  shouldSubmitComparisonToSitemap,
+} from "@/data/seo/gsc-sitemap-comparison-cohort";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real
@@ -44,13 +48,17 @@ describe("sitemap lastModified coverage", () => {
     }
   });
 
-  it("suppresses only the GSC-proven old zero-visibility cohort from sitemap submission", () => {
+  it("suppresses the GSC-proven old zero-visibility cohort except explicit current decision priorities", () => {
     const entries = sitemap();
     const comparisonUrls = entries.filter((e) => e.url.includes("/compare/")).map((e) => e.url);
     expect(GSC_SITEMAP_SUPPRESSED_COMPARISONS).toHaveLength(804);
-    expect(comparisonUrls).toHaveLength(PUBLISHED_COMPARISONS.length - 804);
+    expect(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS).toHaveLength(3);
+    expect(comparisonUrls).toHaveLength(PUBLISHED_COMPARISONS.length - 804 + 3);
     expect(comparisonUrls.some((url) => url.endsWith("/compare/notion-vs-confluence"))).toBe(false);
     expect(comparisonUrls.some((url) => url.endsWith("/compare/docker-vs-vercel"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/ecwid-vs-shopify"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/ecwid-vs-woocommerce"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/shopify-vs-woocommerce"))).toBe(true);
   });
 
   it("includes the public decision-guide hub so discovered guides have a crawlable internal-link path", () => {

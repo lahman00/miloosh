@@ -16,6 +16,7 @@ import { getBreadcrumbJsonLd, getCategoryJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { generateCategorySynthesis, getCategoryFeaturedComparisons } from "@/lib/category";
+import { shouldPrioritizeComparisonDiscovery } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getRoleGuidesForCategory } from "@/data/guides/registry";
 
 type CategoryPageProps = {
@@ -58,9 +59,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const software = getSoftwareByCategory(category.slug);
   const categorySlugs = new Set(software.map((item) => item.slug));
   const roleGuides = getRoleGuidesForCategory(category.slug);
-  const featuredComparisons = getCategoryFeaturedComparisons(category.slug, 6);
+  const featuredComparisons = getCategoryFeaturedComparisons(category.slug, 12)
+    .filter((item) => shouldPrioritizeComparisonDiscovery(item.comparisonSlug))
+    .slice(0, 6);
   const comparisons = PUBLISHED_COMPARISONS.filter(
-    ([slugA, slugB]) => categorySlugs.has(slugA) || categorySlugs.has(slugB)
+    ([slugA, slugB]) =>
+      (categorySlugs.has(slugA) || categorySlugs.has(slugB)) &&
+      shouldPrioritizeComparisonDiscovery(getComparisonSlug(slugA, slugB))
   )
     .map(([slugA, slugB]) => {
       const softwareA = getSoftware(slugA);
@@ -206,7 +211,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <section className="mt-14">
             <SectionHeading
               eyebrow="Directory"
-              title={`All ${category.name.toLowerCase()} comparisons`}
+              title={`More ${category.name.toLowerCase()} comparisons`}
             />
             <div className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {comparisons.map(({ softwareA, softwareB }) => (
