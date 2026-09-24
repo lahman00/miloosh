@@ -7,7 +7,8 @@ import { SearchForm } from "@/components/SearchForm";
 import { CompareGrid } from "@/components/CompareGrid";
 import { JsonLd } from "@/components/JsonLd";
 import { getSoftware } from "@/data/software";
-import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
+import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { shouldPrioritizeComparisonDiscovery } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getCategoryName } from "@/data/categories";
 import { getBreadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
@@ -20,11 +21,20 @@ export const metadata: Metadata = {
 };
 
 export default function ComparePage() {
-  const comparisons = PUBLISHED_COMPARISONS.map(([slugA, slugB]) => {
+  const comparisons = PUBLISHED_COMPARISONS.map(([slugA, slugB], sourceIndex) => {
     const softwareA = getSoftware(slugA);
     const softwareB = getSoftware(slugB);
-    return softwareA && softwareB ? { softwareA, softwareB } : null;
-  }).filter((item): item is NonNullable<typeof item> => item !== null);
+    if (!softwareA || !softwareB) return null;
+    const comparisonSlug = getComparisonSlug(slugA, slugB);
+    return {
+      softwareA,
+      softwareB,
+      sourceIndex,
+      discoveryPriority: shouldPrioritizeComparisonDiscovery(comparisonSlug),
+    };
+  })
+    .filter((item): item is NonNullable<typeof item> => item !== null)
+    .sort((a, b) => Number(b.discoveryPriority) - Number(a.discoveryPriority) || a.sourceIndex - b.sourceIndex);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
