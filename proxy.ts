@@ -17,14 +17,19 @@ import { NextResponse, type NextRequest } from "next/server";
  * were simply forgotten.
  *
  * Uses Next.js 16's proxy.ts convention. The matcher remains limited to
- * /internal/*; public routes do not pass through this access gate.
+ * /internal/* plus known non-canonical public hosts. Public requests on the
+ * canonical host do not pass through this access gate.
  */
-const LEGACY_PUBLIC_HOST = "flowtemplate-delta.vercel.app";
+const NON_CANONICAL_PUBLIC_HOSTS = new Set([
+  "www.miloosh.com",
+  "flowtemplate-delta.vercel.app",
+  "flowtemplate-lahman001.vercel.app",
+]);
 
 export function proxy(request: NextRequest) {
   const requestHost = request.headers.get("host")?.split(":", 1)[0]?.toLowerCase();
 
-  if (requestHost === LEGACY_PUBLIC_HOST) {
+  if (requestHost && NON_CANONICAL_PUBLIC_HOSTS.has(requestHost)) {
     const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, "https://miloosh.com");
     return NextResponse.redirect(destination, 301);
   }
@@ -68,7 +73,15 @@ export const config = {
     "/internal/:path*",
     {
       source: "/:path*",
+      has: [{ type: "host", value: "www.miloosh.com" }],
+    },
+    {
+      source: "/:path*",
       has: [{ type: "host", value: "flowtemplate-delta.vercel.app" }],
+    },
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "flowtemplate-lahman001.vercel.app" }],
     },
   ],
 };
