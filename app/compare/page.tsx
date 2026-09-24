@@ -8,7 +8,10 @@ import { CompareGrid } from "@/components/CompareGrid";
 import { JsonLd } from "@/components/JsonLd";
 import { getSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
-import { shouldPrioritizeComparisonDiscovery } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import {
+  GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
+  shouldPrioritizeComparisonDiscovery,
+} from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getCategoryName } from "@/data/categories";
 import { getBreadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
@@ -20,6 +23,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare" },
 };
 
+const explicitDiscoveryPriority = new Set<string>(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS);
+
 export default function ComparePage() {
   const comparisons = PUBLISHED_COMPARISONS.map(([slugA, slugB], sourceIndex) => {
     const softwareA = getSoftware(slugA);
@@ -30,11 +35,17 @@ export default function ComparePage() {
       softwareA,
       softwareB,
       sourceIndex,
+      explicitDiscoveryPriority: explicitDiscoveryPriority.has(comparisonSlug),
       discoveryPriority: shouldPrioritizeComparisonDiscovery(comparisonSlug),
     };
   })
     .filter((item): item is NonNullable<typeof item> => item !== null)
-    .sort((a, b) => Number(b.discoveryPriority) - Number(a.discoveryPriority) || a.sourceIndex - b.sourceIndex);
+    .sort(
+      (a, b) =>
+        Number(b.explicitDiscoveryPriority) - Number(a.explicitDiscoveryPriority) ||
+        Number(b.discoveryPriority) - Number(a.discoveryPriority) ||
+        a.sourceIndex - b.sourceIndex
+    );
 
   return (
     <main className="flex-1 py-16 sm:py-20">
