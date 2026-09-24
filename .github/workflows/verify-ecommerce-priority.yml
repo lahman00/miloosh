@@ -39,5 +39,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Generate dependency audit-fix candidate
+        run: npm audit fix --package-lock-only --ignore-scripts
+
+      - name: Show candidate lockfile diff
+        run: git diff -- package-lock.json
+
       - name: Dependency audit
         run: npm audit --audit-level=moderate
