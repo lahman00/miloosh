@@ -1,7 +1,6 @@
 import { RoleGuideAnalytics } from "@/components/RoleGuideAnalytics";
 import { EcommerceDecisionKit } from "@/components/EcommerceDecisionKit";
 import { BuyerDecisionBrief } from "@/components/BuyerDecisionBrief";
-import { FirstRevenueDecisionPanel } from "@/components/FirstRevenueDecisionPanel";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,7 +13,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { getAllRoleGuides, getRoleGuide } from "@/data/guides/registry";
 import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
-import { FIRST_REVENUE_GUIDE_SLUGS } from "@/data/guides/first-revenue";
+import { getFirstRevenueSupportForGuide } from "@/data/guides/first-revenue";
 import { getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
@@ -87,7 +86,8 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
     .filter((item) => item !== null);
 
   const hasAnyAffiliate = reviewedProducts.some((p) => p.hasAffiliate);
-  const isFirstRevenueMoneyPage = FIRST_REVENUE_GUIDE_SLUGS.has(guide.slug);
+  const firstRevenueSupport = getFirstRevenueSupportForGuide(guide.slug);
+  const firstRevenuePrimary = firstRevenueSupport ? getSoftware(firstRevenueSupport.primarySlug) : null;
 
   // Structured Data Schema
   const itemListSchema = {
@@ -178,7 +178,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
           <nav aria-label="On this page" className="mb-8 flex flex-wrap gap-2 text-sm">
             {[
-              ...(isFirstRevenueMoneyPage ? [{ href: "#buyer-decision", label: "Choose by fit & price" }] : []),
+              ...(firstRevenueSupport ? [{ href: "#first-revenue-primary", label: "Review primary product" }] : []),
               { href: "#quick-comparison", label: "Compare the shortlist" },
               ...(guide.slug === "best-ecommerce-platform-for-small-business" ? [{ href: "#store-decision-kit", label: "Free store checklist" }] : []),
               ...(BUYER_DECISION_BRIEFS[guide.slug] ? [{ href: "#buyer-decision-worksheet", label: "Decision worksheet" }] : []),
@@ -199,30 +199,28 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
           {guide.slug === "best-ecommerce-platform-for-small-business" ? <EcommerceDecisionKit /> : null}
 
-          {isFirstRevenueMoneyPage ? (
-            <FirstRevenueDecisionPanel
-              categorySlug={guide.categorySlug}
-              products={reviewedProducts.map((product, index) => {
-                const alternative = reviewedProducts[(index + 1) % reviewedProducts.length];
-                return {
-                  slug: product.software.slug,
-                  name: product.software.name,
-                  ranking: product.ranking,
-                  badge: product.badge,
-                  price: product.summaryPrice ?? product.software.pricing?.startingPrice ?? "Check current pricing",
-                  chooseIf: product.fitReason,
-                  skipIf: product.limitations,
-                  alternativeName: alternative?.software.name ?? null,
-                  alternativeSlug: alternative?.software.slug ?? null,
-                  ctaUrl: product.ctaUrl,
-                  ctaRel: product.ctaRel,
-                  wixContext:
-                    guide.slug === "best-ecommerce-platform-for-small-business" && product.software.slug === "wix"
-                      ? "ecommerce"
-                      : undefined,
-                };
-              })}
-            />
+          {firstRevenueSupport && firstRevenuePrimary ? (
+            <section
+              id="first-revenue-primary"
+              className="mb-10 scroll-mt-24 rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.04] p-5 sm:p-6"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+                Supporting decision hub
+              </p>
+              <h2 className="mt-2 text-2xl font-bold text-white">
+                Continue to the {firstRevenuePrimary.name} buyer page
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-400">
+                Use this guide to compare the category. For the final product decision, the primary page concentrates
+                current pricing context, drawbacks, fit and non-fit criteria, alternatives, and the vendor handoff.
+              </p>
+              <Link
+                href={"/software/" + firstRevenuePrimary.slug}
+                className="mt-4 inline-flex rounded-xl bg-white px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200"
+              >
+                Review {firstRevenuePrimary.name}
+              </Link>
+            </section>
           ) : null}
 
           {/* Quick Comparison Summary Table */}
