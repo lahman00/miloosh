@@ -2,6 +2,7 @@ import { WooCommerceRepairCheck } from "@/components/WooCommerceRepairCheck";
 import { EcwidIntegrationDecision } from "@/components/EcwidIntegrationDecision";
 import { StorePlanFit } from "@/components/StorePlanFit";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
+import { FirstRevenueSoftwarePanel } from "@/components/FirstRevenueSoftwarePanel";
 import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
 import { getRoleGuidesForSoftware } from "@/data/guides/registry";
 import type { Metadata } from "next";
@@ -162,6 +163,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             <ShareButton title={`${software.name} alternatives — Miloosh`} url={`${SITE_URL}/software/${software.slug}`} />
           </div>
         </header>
+
+        <FirstRevenueSoftwarePanel software={software} />
 
         <section className="mt-14 grid gap-6 lg:grid-cols-[2fr_1fr]">
           <Card>
