@@ -25,7 +25,7 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
   if (!target || !shouldShowAffiliateDisclosure(software)) return null;
 
   const price = priceLine(software);
-  const watchouts = software.cons.slice(0, 2);
+  const watchouts = software.cons?.slice(0, 2) ?? [];
   const alternatives = software.alternatives.slice(0, 3);
 
   return (
