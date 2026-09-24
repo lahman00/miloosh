@@ -115,12 +115,11 @@ export default function Home() {
     .filter((item): item is NonNullable<typeof item> => item !== null);
 
   const homepageGuideSlugs = [
-    "best-crm-for-startups",
     "best-ecommerce-platform-for-small-business",
-    "best-crm-for-consultants",
-    "best-customer-service-software-for-startups",
+    "best-crm-for-sales-teams",
     "best-project-management-for-agencies",
-    "best-password-manager-for-businesses",
+    "best-email-marketing-for-ecommerce",
+    "best-lead-tracking-for-agencies",
   ] as const;
   const homepageGuides = homepageGuideSlugs
     .map((slug) => getRoleGuide(slug))
