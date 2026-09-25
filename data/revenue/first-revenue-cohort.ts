@@ -70,7 +70,7 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     buyingCheck: "Price the plan your real team can use: Solo is a one-user offer. Check whether your process needs workflows or dialing features before using the lowest advertised rate in your budget.",
     priority: 3,
     baseline: { impressions: 93, clicks: 0, position: 68.3 },
-    ctaLabel: "Try Close free",
+    ctaLabel: "Start Close's free trial",
     notFor: "Skip it if your sales workflow does not benefit from built-in calling, email and SMS, or if usage-based communications costs are a poor fit.",
     switchingCheck: "Import a sample of leads, contacts and activity history into the trial. Check custom fields, email sequences and whether your existing phone numbers and call recordings can move before committing the whole sales team.",
     queries: [

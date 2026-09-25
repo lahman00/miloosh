@@ -29,6 +29,16 @@ describe("five canonical buyer pages: pricing and offer integrity", () => {
   });
   it("states per-seat pricing and the free plan for Setmore",()=>expect(firstRevenuePriceLine(getSoftware("setmore")!)).toContain("Free plan available. Paid-plan snapshot: USD 5/month per seat."));
   it("gives Close specific limitations instead of hiding an empty cons array",()=>expect(getSoftware("close")!.cons).toHaveLength(2));
+  it("discloses Close's trial-only offer instead of implying a permanent free plan",()=>{
+    const pricing = getSoftware("close")!.pricing!;
+    expect(pricing.freePlan).toBeFalsy();
+    expect(pricing.hasFreeTier).toBeFalsy();
+    expect(pricing.freeTrial?.available).toBe(true);
+    const text = firstRevenuePriceLine(getSoftware("close")!);
+    expect(text).toContain("14-day free trial, no permanent free plan.");
+    expect(text).not.toContain("Free plan available");
+    expect(FIRST_REVENUE_PAGES.find((p) => p.slug === "close")?.ctaLabel).toBe("Start Close's free trial");
+  });
   it("does not promise the Business trial length to a Todoist Pro buyer", () => {
     const pricing = getSoftware("todoist")!.pricing!;
     expect(pricing.freeTrial?.available).toBe(true);

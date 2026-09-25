@@ -4,7 +4,13 @@ import type { Software } from "@/data/software";
 export function firstRevenuePriceLine(software: Software): string | null {
   const p = software.pricing;
   if (!p) return null;
-  const free = p.freePlan || p.hasFreeTier ? "Free plan available. " : "";
+  const free = p.freePlan || p.hasFreeTier
+    ? "Free plan available. "
+    : p.freeTrial?.available
+      ? p.freeTrial.days
+        ? `${p.freeTrial.days}-day free trial, no permanent free plan. `
+        : "Free trial available, no permanent free plan. "
+      : "";
   if (p.status === "verified" && p.entryPaid) {
     const entry = p.entryPaid;
     const unit = { monthly: "/month", annual: "/year", one_time: " one-time", unknown: "" }[entry.billingPeriod];
