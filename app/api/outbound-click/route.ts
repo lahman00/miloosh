@@ -169,7 +169,9 @@ export async function POST(request: NextRequest) {
       ...experimentFields,
     });
   } else {
-    const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, resolvedCtaLocation === "pricing-section-cta" ? "pricing" : undefined);
+    const pricingIntent = resolvedCtaLocation === "pricing-section-cta" ||
+      resolvedCtaLocation === "money-page-decision-card" || resolvedCtaLocation === "money-page-sticky-cta";
+    const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, pricingIntent ? "pricing" : undefined);
     await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest);
 
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");

@@ -96,7 +96,7 @@ export default async function FirstRevenueFunnelPage() {
 
       <section className="mt-8">
         <h2 className="text-xl font-semibold">Source to page CTA</h2>
-        <p className="mt-2 text-xs text-zinc-400">First-party store only; attribution uses the same page, visitor and session. These handoffs overlap the outbound ledger above and must not be added to it. No merchant load or sale is inferred.</p>
+        <p className="mt-2 text-xs text-zinc-400">First-party store only; money-page events inherit the earliest preceding landing page in the same visitor/session, including arrival through a supporting guide. QA-marked sessions are excluded. These are recorded non-test events, not verified human counts. These handoffs overlap the outbound ledger above and must not be added to it. No merchant load or sale is inferred.</p>
         {rows.map(({ page, sourceRows }) => (
           <div key={page.slug} className="mt-4 overflow-auto rounded-xl border border-zinc-800 p-4">
             <h3 className="font-semibold">{page.slug}</h3>

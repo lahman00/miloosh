@@ -20,7 +20,8 @@ export function summarizeFirstRevenuePage(
     return Number.isFinite(ms) && ms >= lo && ms <= hi;
   };
   const scoped = analytics?.filter((e) => e.path === path && inWindow(e.timestamp)) ?? null;
-  const nonTest = scoped?.filter((e) => e.isTest === false) ?? null;
+  const qaSessions = new Set(analytics?.filter((e) => e.isTest === true).map((e) => e.sessionId));
+  const nonTest = scoped?.filter((e) => e.isTest === false && !qaSessions.has(e.sessionId)) ?? null;
   const sameProduct = (e: FirstPartyEvent) => "softwareSlug" in e && e.softwareSlug === slug;
   const primary = (e: FirstPartyEvent) => sameProduct(e) &&
     "ctaLocation" in e && e.ctaLocation === PRIMARY_REVENUE_CTA;
@@ -29,15 +30,29 @@ export function summarizeFirstRevenuePage(
     e.type === "affiliate_link_click" && e.destination === "affiliate" && inWindow(e.timestamp),
   ) : null;
   const sourceRows = new Map<string, { source: string; medium: string; campaign: string; content: string; visits: number; ctaClicks: number; recordedHandoffs: number }>();
-  const visits = nonTest?.filter((e): e is PageViewEvent => e.type === "page_view") ?? [];
+  // Attribution is captured only on the session's landing page. Search the
+  // complete supplied history, not just this money page/reporting window:
+  // Google -> supporting guide -> money page must not become "unknown".
+  // A later QA marker contaminates the entire session, including earlier
+  // unmarked events. These are recorded non-test events, not verified humans.
+  const visits = analytics?.filter((e): e is PageViewEvent =>
+    e.type === "page_view" && e.isTest === false && !qaSessions.has(e.sessionId) &&
+    Number.isFinite(Date.parse(e.timestamp)),
+  ).sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp)) ?? [];
   const stableId = (e: FirstPartyEvent) => !/^s_anon(?:_|$)/.test(e.sessionId) && !/^v_anon(?:_|$)/.test(e.visitorId);
-  const touchFor = (e: FirstPartyEvent) => stableId(e) ? visits.filter((v) =>
-    v.sessionId === e.sessionId && v.visitorId === e.visitorId && Date.parse(v.timestamp) <= Date.parse(e.timestamp),
-  ).sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp))[0] : undefined;
+  const identity = (e: FirstPartyEvent) => JSON.stringify([e.visitorId, e.sessionId]);
+  const landingByIdentity = new Map<string, PageViewEvent>();
+  for (const visit of visits) {
+    if (stableId(visit) && !landingByIdentity.has(identity(visit))) landingByIdentity.set(identity(visit), visit);
+  }
+  const touchFor = (e: FirstPartyEvent) => {
+    const landing = stableId(e) ? landingByIdentity.get(identity(e)) : undefined;
+    return landing && Date.parse(landing.timestamp) <= Date.parse(e.timestamp) ? landing : undefined;
+  };
   for (const event of nonTest ?? []) {
     if (event.type !== "page_view" && !sameProduct(event)) continue;
     if (!["page_view", "cta_click", "outbound_click"].includes(event.type)) continue;
-    const touch = event.type === "page_view" ? event : touchFor(event);
+    const touch = touchFor(event);
     const dims = {
       source: touch?.utmSource || touch?.referrerHost || touch?.trafficSource || "unknown",
       medium: touch?.utmMedium || "unknown", campaign: touch?.utmCampaign || "none", content: touch?.utmContent || "none",

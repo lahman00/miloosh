@@ -5,6 +5,7 @@ import path from "node:path";
 import { NextRequest } from "next/server";
 import { POST, __test__ } from "@/app/api/outbound-click/route";
 import { getSoftware } from "@/data/software";
+import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { getWixAffiliateUrl } from "@/lib/wix-funnels";
 import { getOutboundEvents } from "@/lib/revenue/events";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
@@ -59,6 +60,16 @@ function post(body: unknown): Promise<Response> {
 }
 
 describe("POST /api/outbound-click — preserves explicit and unknown isTest states", () => {
+  it.each(["money-page-decision-card", "money-page-sticky-cta"])("%s records the same verified pricing-intent destination the link renders", async (ctaLocation) => {
+    // Jotform has distinct verified homepage/pricing assets; the five current
+    // money pages fall back to their issued general assets, never invented URLs.
+    for (const slug of ["jotform", "airtable", "todoist", "close", "setmore", "elevenlabs"]) {
+      const expected = getSoftwareCtaUrl(getSoftware(slug)!, "pricing");
+      await post({ slug, kind: "cta", ctaLocation, isTest: true });
+      expect((await getOutboundEvents()).find((e) => e.softwareSlug === slug)).toMatchObject({ url: expected, ctaLocation, destination: "affiliate" });
+      expect((await getAllFirstPartyEvents()).find((e) => e.type === "outbound_click" && e.softwareSlug === slug)).toMatchObject({ url: expected, ctaLocation, destination: "affiliate" });
+    }
+  });
   it("a synthetic QA click (isTest:true) is recorded isTest:true in BOTH pipelines, using the same anonymous session", async () => {
     const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", ctaLocation: "software-page-cta", visitorId: "v_qa_click", sessionId: "s_qa_click", isTest: true });
     expect(res.status).toBe(202);

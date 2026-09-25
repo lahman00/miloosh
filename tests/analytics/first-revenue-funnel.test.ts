@@ -34,4 +34,36 @@ describe("canonical first-revenue funnel", () => {
     expect(r.sourceRows?.find((x)=>x.source==="unknown")?.ctaClicks).toBe(1);
   });
   it("rejects invalid reporting windows",()=>expect(()=>summarizeFirstRevenuePage("airtable",[],ledger(),"bad")).toThrow());
+  it("preserves landing UTMs through a supporting guide, even before the reporting window", () => {
+    const r = summarizeFirstRevenuePage("airtable", [
+      event("page_view", { path: "/best-no-code-database-for-operations", timestamp: "2026-09-24T20:00:00Z", utmSource: "newsletter", utmMedium: "email", utmCampaign: "operations", utmContent: "buyer-guide" }),
+      event("page_view"), event("cta_click"), event("outbound_click", { destination: "affiliate" }),
+    ], ledger(), until);
+    expect(r.sourceRows).toEqual([{ source: "newsletter", medium: "email", campaign: "operations", content: "buyer-guide", visits: 1, ctaClicks: 1, recordedHandoffs: 1 }]);
+    expect(r.pageViews).toBe(1); // The supporting guide is not another money-page visit.
+  });
+  it("keeps organic search attribution through internal navigation without inventing UTMs", () => {
+    const r = summarizeFirstRevenuePage("airtable", [
+      event("page_view", { path: "/", timestamp: "2026-09-25T08:00:00Z", referrerHost: "www.google.com", trafficSource: "organic_search" }),
+      event("page_view"), event("cta_click"),
+    ], ledger(), until);
+    expect(r.sourceRows?.[0]).toMatchObject({ source: "www.google.com", campaign: "none", ctaClicks: 1 });
+  });
+  it("does not borrow attribution from later, other-visitor, other-session or anonymous events", () => {
+    for (const extra of [
+      { timestamp: "2026-09-25T09:30:00Z" }, { visitorId: "v_somebody_else" },
+      { sessionId: "s_somebody_else" }, { visitorId: "v_anon", sessionId: "s_anon" },
+    ]) {
+      const r = summarizeFirstRevenuePage("airtable", [event("page_view", { path: "/", utmSource: "must-not-leak", ...extra }), event("cta_click")], ledger(), until);
+      expect(r.sourceRows?.find((x) => x.ctaClicks)?.source).toBe("unknown");
+    }
+  });
+  it("quarantines a session from source attribution when QA is discovered later or on another page", () => {
+    const r = summarizeFirstRevenuePage("airtable", [event("page_view", { utmSource: "qa" }), event("cta_click"), event("page_view", { path: "/", timestamp: "2026-09-26T00:00:00Z", isTest: true })], ledger(), until);
+    expect(r.sourceRows).toEqual([]);
+    expect(r.pageViews).toBe(0);
+    expect(r.ctaClicks).toBe(0);
+    // Legacy ledger has no session identity, so it cannot inherit this filter.
+    expect(r.merchantHandoffs).toBe(1);
+  });
 });
