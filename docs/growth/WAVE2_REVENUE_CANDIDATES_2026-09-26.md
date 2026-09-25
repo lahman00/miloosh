@@ -49,6 +49,6 @@ Ranking: observed impressions and position first, then intent (alternatives/pric
 
 ## Review items (not implemented)
 
-1. **Editorial independence:** the buyer checklists for Klaviyo, Calendly, Doodle and WooCommerce list only active partners as options. Growth OS §4 requires keeping non-partner options and the do-not-switch path visible. An editor should confirm that these pages still show non-partner alternatives elsewhere, or add them. This must not be driven by commission.
+1. **Editorial independence (checked, mitigated):** the buyer checklists for Klaviyo, Calendly, Doodle and WooCommerce list only active partners as options. The same software pages also render non-partner catalog alternatives: Klaviyo shows Mailchimp and ActiveCampaign, Calendly shows Doodle and Cal.com, Doodle shows Calendly and Cal.com, and WooCommerce shows PrestaShop. So non-partner paths remain visible. An editor may still add a non-partner or do-not-switch option to the checklist itself, based on fit rather than commission.
 2. **Evidence gap:** Zapier and Canva are `REJECTED` in the ledger, citing a "vendor rejection log" that `docs/affiliate-applications.md` does not contain. The status is conservative (non-monetized), but the owner should confirm it.
 3. **Before any Wave-2 action:** the five cohort pages are currently crawled but not indexed. Wave-2 work should wait for the cohort's 14/28-day review windows. It should use existing URLs only, one intent owner per query.
