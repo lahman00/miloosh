@@ -170,7 +170,8 @@ export async function POST(request: NextRequest) {
     });
   } else {
     const pricingIntent = resolvedCtaLocation === "pricing-section-cta" ||
-      resolvedCtaLocation === "money-page-decision-card" || resolvedCtaLocation === "money-page-sticky-cta";
+      resolvedCtaLocation === "money-page-decision-card" || resolvedCtaLocation === "money-page-sticky-cta" ||
+      resolvedCtaLocation === "vendor-link-pricing";
     const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, pricingIntent ? "pricing" : undefined);
     await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest);
 

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Activity,
   Building2,
@@ -16,6 +14,9 @@ import type { ComponentType } from "react";
 import type { LucideProps } from "lucide-react";
 import type { Software } from "@/data/software";
 import { TrackedVendorLink } from "@/components/TrackedVendorLink";
+import { TrackedCtaLink } from "@/components/TrackedCtaLink";
+import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
+import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 
 type VendorLinkDef = {
   label: string;
@@ -37,6 +38,9 @@ type VendorLinkDef = {
  * synthetic QA on a vendor source from being misreported as real traffic.
  */
 export function VendorLinksBlock({ software }: { software: Software }) {
+  // Narrow buyer-sprint scope. Editorial/source links and all other products
+  // keep their existing direct behavior; no guessed deep links are introduced.
+  const commercialAffiliate = Boolean(getFirstRevenuePage(software.slug)) && shouldShowAffiliateDisclosure(software);
   const candidates: Array<{ label: string; url?: string; icon: ComponentType<LucideProps> }> = [
     { label: "Pricing", url: software.links?.pricing, icon: DollarSign },
     { label: "Free trial", url: software.links?.trial, icon: Rocket },
@@ -65,8 +69,25 @@ export function VendorLinksBlock({ software }: { software: Software }) {
       <ul className="mt-3 space-y-2">
         {links.map((link) => {
           const ctaLocation = `vendor-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`;
+          const isCommercial = commercialAffiliate && (link.label === "Pricing" || link.label === "Free trial");
           return (
             <li key={link.label}>
+              {isCommercial ? (
+                <TrackedCtaLink
+                  slug={software.slug}
+                  href={getSoftwareCtaUrl(software, link.label === "Pricing" ? "pricing" : undefined)}
+                  ctaLocation={ctaLocation}
+                  target="_blank"
+                  rel={getSoftwareCtaRel(software)}
+                  aria-label={`${software.name} ${link.label}`}
+                  variant="secondary"
+                  className="w-full"
+                >
+                  <link.icon className="h-4 w-4 shrink-0" />
+                  {link.label}
+                  <ExternalLink className="h-3 w-3 shrink-0" />
+                </TrackedCtaLink>
+              ) : (
               <TrackedVendorLink
                 slug={software.slug}
                 href={link.url}
@@ -79,10 +100,14 @@ export function VendorLinksBlock({ software }: { software: Software }) {
                 {link.label}
                 <ExternalLink className="h-3 w-3 shrink-0 text-zinc-600" />
               </TrackedVendorLink>
+              )}
             </li>
           );
         })}
       </ul>
+      {commercialAffiliate && links.some((link) => link.label === "Pricing" || link.label === "Free trial") ? (
+        <p className="mt-3 text-xs leading-5 text-zinc-500">Pricing and trial buttons use our affiliate referral link. Choose your plan on the vendor site; Miloosh may earn a commission.</p>
+      ) : null}
     </div>
   );
 }

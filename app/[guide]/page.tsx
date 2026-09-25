@@ -215,10 +215,10 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                 current pricing context, drawbacks, fit and non-fit criteria, alternatives, and the vendor handoff.
               </p>
               <Link
-                href={"/software/" + firstRevenuePrimary.slug}
+                href={"/software/" + firstRevenuePrimary.slug + "#buying-decision"}
                 className="mt-4 inline-flex rounded-xl bg-white px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200"
               >
-                Review {firstRevenuePrimary.name}
+                Review {firstRevenuePrimary.name} pricing and alternatives
               </Link>
             </section>
           ) : null}

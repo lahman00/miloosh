@@ -28,8 +28,7 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": {
-      "available": true,
-      "days": 14
+      "available": true
     },
     "entry_paid": {
       "amount": "5",
@@ -50,7 +49,7 @@
         "amount": "5",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Billed at $5/month annually ($60/year) or $7/month monthly. Includes 300 active personal projects, 150 filter views, calendar layout, task reminders, full activity history, and AI Task Assist."
+        "notes": "Billed at $5/month annually ($60/year) or $7/month monthly. 7-day free trial. Includes 300 active personal projects, 150 filter views, calendar layout, custom task reminders, full activity history, and AI Task Assist."
       },
       {
         "name": "Business",
@@ -58,10 +57,10 @@
         "currency": "USD",
         "billing_period": "monthly",
         "unit": "user",
-        "notes": "Billed at $8/user/month annually ($96/user/year) or $10/user/month monthly. Includes shared team workspace, 500 team projects, team activity logs, role permissions, and centralized billing."
+        "notes": "Billed at $8/user/month annually ($96/user/year) or $10/user/month monthly. 14-day free trial. Includes shared team workspace, 500 team projects, team activity logs, role permissions, and centralized billing."
       }
     ],
-    "last_verified": "2026-08-19",
+    "last_verified": "2026-09-25",
     "official_source": "https://todoist.com/pricing"
   },
   "pros": [
@@ -95,7 +94,8 @@
     "https://todoist.com",
     "https://www.todoist.com/downloads",
     "https://www.todoist.com/features",
-    "https://todoist.com/pricing"
+    "https://todoist.com/pricing",
+    "https://www.todoist.com/help/account-and-billing/plans/todoist-plans-pricing-and-billing-faq-Vq2z0HWL6"
   ],
   "accessed_at": "2026-08-19",
   "alternatives": [

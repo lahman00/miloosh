@@ -60,7 +60,7 @@ function post(body: unknown): Promise<Response> {
 }
 
 describe("POST /api/outbound-click — preserves explicit and unknown isTest states", () => {
-  it.each(["money-page-decision-card", "money-page-sticky-cta"])("%s records the same verified pricing-intent destination the link renders", async (ctaLocation) => {
+  it.each(["money-page-decision-card", "money-page-sticky-cta", "vendor-link-pricing"])("%s records the same verified pricing-intent destination the link renders", async (ctaLocation) => {
     // Jotform has distinct verified homepage/pricing assets; the five current
     // money pages fall back to their issued general assets, never invented URLs.
     for (const slug of ["jotform", "airtable", "todoist", "close", "setmore", "elevenlabs"]) {
