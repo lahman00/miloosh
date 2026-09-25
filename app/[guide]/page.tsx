@@ -383,7 +383,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     </h3>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-start gap-2 sm:items-end">
                     <TrackedCtaLink
                       slug={p.software.slug}
                       href={p.ctaUrl}
@@ -395,6 +395,15 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     >
                       Visit {p.software.name} <ExternalLink className="w-4 h-4 ml-1.5" />
                     </TrackedCtaLink>
+                    {p.hasAffiliate ? (
+                      <p className="text-xs text-zinc-400">
+                        This is an affiliate link. See our{" "}
+                        <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
+                          Affiliate Disclosure
+                        </Link>
+                        .
+                      </p>
+                    ) : null}
                   </div>
                 </div>
 
