@@ -13,6 +13,13 @@ function ledger(extra: Record<string, unknown> = {}): OutboundReadResult {
 }
 
 describe("canonical first-revenue funnel", () => {
+  it("quarantines identified ledger handoffs without bleeding QA into another visitor", () => {
+    const events = [event("page_view"), event("cta_click"), event("page_view", { visitorId: "v_qa_other", isTest: true })];
+    expect(summarizeFirstRevenuePage("airtable", events, ledger({ visitorId: "v_customer", sessionId: "s_customer" }), until).merchantHandoffs).toBe(1);
+    expect(summarizeFirstRevenuePage("airtable", events, ledger(), until).pageViews).toBe(1);
+    events.push(event("page_view", { path: "/", isTest: true }));
+    expect(summarizeFirstRevenuePage("airtable", events, ledger({ visitorId: "v_customer", sessionId: "s_customer" }), until).merchantHandoffs).toBe(0);
+  });
   it("counts all commercial CTAs on the exact primary page, not support/comparison pages", () => {
     const events = [event("page_view"), event("cta_impression"), event("cta_click"), event("cta_click", { path: "/compare/monday-vs-airtable" }), event("cta_click", { ctaLocation: "pricing-section-cta" })];
     const r = summarizeFirstRevenuePage("airtable", events, ledger(), until);
