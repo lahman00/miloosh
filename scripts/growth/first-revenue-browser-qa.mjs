@@ -80,7 +80,7 @@ try {
           if (a && new URL(a.href).origin !== location.origin) {
             e.preventDefault(); window.__buyerNativeClicks.push({trusted:e.isTrusted,href:a.href});
           }
-        }, true);
+        }); // Bubble AFTER React's root listener; cancel native navigation only.
       })()`);
       const placements = [
         ['div.fixed.inset-x-0.bottom-0 a[rel~=sponsored]', 'money-page-sticky-cta'],
@@ -110,6 +110,10 @@ try {
         assert.equal(out[0].body.isTest, true);
         assert.equal(out[0].body.sessionId, clicks[0].body.sessionId);
         assert.equal(out[0].body.visitorId, clicks[0].body.visitorId);
+        assert.equal(out[0].body.eventId, clicks[0].body.eventId);
+        assert.deepEqual(out[0].body.acquisition, clicks[0].body.acquisition);
+        assert.equal(out[0].body.acquisition.sessionId, out[0].body.sessionId);
+        assert.equal(out[0].body.acquisition.landingPath, `/software/${slug}`);
       }
       evaluate(`document.querySelector('#buying-decision a[href="#buyer-alternatives"]').scrollIntoView({block:'center',behavior:'instant'})`);
       browser("click", '#buying-decision a[href="#buyer-alternatives"]');

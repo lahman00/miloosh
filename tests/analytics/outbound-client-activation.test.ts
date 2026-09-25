@@ -14,6 +14,20 @@ afterEach(() => vi.unstubAllGlobals());
 
 describe.each([TrackedVendorLink, TrackedCtaLink])("native outbound activation: %s", Component => {
   function link() { return Component({ slug: "wix", href: "https://example.invalid/never-navigate", ctaLocation: "software-page-cta", children: "Visit vendor" }); }
+  it.each([0, 1])("does not claim a handoff when button %i activation was cancelled", button => {
+    const element = link();
+    const event = { button, defaultPrevented: true };
+    if (button === 0) element.props.onClick(event); else element.props.onAuxClick(event);
+    expect(fetch).not.toHaveBeenCalled();
+  });
+  it("respects a caller's cancellation and preserves modifier-click native behavior", () => {
+    const event = { defaultPrevented: false, metaKey: true };
+    const element = Component({ slug: "wix", href: "https://example.invalid/never-navigate", ctaLocation: "software-page-cta", children: "Visit", onClick: () => { event.defaultPrevented = true; } });
+    element.props.onClick(event);
+    expect(fetch).not.toHaveBeenCalled();
+    link().props.onClick({ metaKey: true, defaultPrevented: false });
+    expect(vi.mocked(fetch).mock.calls.filter(([url]) => url === "/api/outbound-click")).toHaveLength(1);
+  });
   it.each([0, 1, 2])("records button %i only once and does not prevent native navigation", button => {
     const event = { button, preventDefault: vi.fn() };
     const element = link();

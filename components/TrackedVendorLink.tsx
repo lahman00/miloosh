@@ -60,11 +60,11 @@ export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, 
       href={href}
       onClick={(event) => {
         onClick?.(event);
-        reportOutboundClick();
+        if (!event.defaultPrevented) reportOutboundClick();
       }}
       onAuxClick={(event) => {
         onAuxClick?.(event);
-        if (event.button === 1) reportOutboundClick();
+        if (event.button === 1 && !event.defaultPrevented) reportOutboundClick();
       }}
     >
       {children}
