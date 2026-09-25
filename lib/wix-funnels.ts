@@ -17,8 +17,8 @@
  * 2026-08-17.
  */
 
-import type { Software } from "@/data/software";
-import { getSoftwareCtaUrl } from "@/lib/affiliate";
+import { getSoftware, type Software } from "@/data/software";
+import { getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 
 export const WIX_CONTEXTS = ["website-builder", "domain", "headless", "ecommerce"] as const;
 
@@ -70,8 +70,10 @@ export const WIX_FUNNELS: Record<WixFunnelContext, WixFunnel> = {
 
 const DEFAULT_CONTEXT: WixFunnelContext = "website-builder";
 
-/** The one function that turns "what is this content actually about" into the correct tracking link. Unknown/omitted context safely falls back to Website Builder — never guesses toward a narrower funnel. */
+/** The one function that turns "what is this content actually about" into the correct tracking link. Unknown/omitted context safely falls back to Website Builder — never guesses toward a narrower funnel. Gated on the same check that drives sponsored rel and disclosure: if Wix is ever deactivated, every funnel falls back to the official site rather than becoming an undisclosed affiliate link. */
 export function getWixAffiliateUrl(context?: WixFunnelContext | null): string {
+  const wix = getSoftware("wix");
+  if (!wix || !shouldShowAffiliateDisclosure(wix)) return wix?.website ?? "https://www.wix.com";
   return WIX_FUNNELS[context ?? DEFAULT_CONTEXT].url;
 }
 
