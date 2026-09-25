@@ -7,6 +7,7 @@ import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
+import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -33,7 +34,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const softwarePages: MetadataRoute.Sitemap = allSoftware.map((software) => ({
     url: `${SITE_URL}/software/${software.slug}`,
-    lastModified: toDate(software.accessedAt),
+    lastModified: getFirstRevenuePage(software.slug)
+      ? latestOf([toDate(software.accessedAt), toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)])
+      : toDate(software.accessedAt),
     changeFrequency: "monthly",
     priority: 0.8,
   }));

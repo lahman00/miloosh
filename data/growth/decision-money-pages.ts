@@ -1,3 +1,7 @@
+/** Historical comparison enhancement cohort, NOT the active conversion campaign.
+ * Primary targets and query evidence: data/revenue/first-revenue-cohort.ts.
+ * Keep existing URLs/indexability; do not distribute this as a second five-page sprint.
+ */
 export type DecisionMoneyPageConfig = {
   comparison: string;
   updatedAt: string;

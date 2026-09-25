@@ -25,14 +25,12 @@
     "starting_price": "$5/user/month",
     "has_free_tier": true,
     "status": "verified",
-    "free_trial": {
-      "available": true
-    },
     "entry_paid": {
       "amount": "5",
       "currency": "USD",
       "billing_period": "monthly",
-      "unit": "user"
+      "per_seat": true,
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -48,20 +46,13 @@
         "currency": "USD",
         "billing_period": "monthly",
         "unit": "user",
-        "notes": "Billed annually at $5/user/mo (or $12/user/mo monthly); adds 2-way Google/Office calendar sync, SMS reminders, and recurring appointments (1-2 users)."
-      },
-      {
-        "name": "Team",
-        "amount": "5",
-        "currency": "USD",
-        "billing_period": "monthly",
-        "unit": "user",
-        "notes": "Billed annually at $5/user/mo (or $9/user/mo monthly); includes all Pro features for 3+ team staff members."
+        "notes": "USD 5 per user/month with annual billing (USD 60 per user/year); USD 12 per user/month when billed monthly. No Pro user-count cap is listed; each staff calendar is a billable user. Includes SMS reminders and two-way calendar sync."
       }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-20",
-    "official_source": "https://www.setmore.com/pricing"
+    "official_source": "https://www.setmore.com/pricing",
+    "free_plan": true
   },
   "pros": [
     "Generous Free tier supporting up to 4 staff calendars and unlimited online appointment bookings",
@@ -69,7 +60,7 @@
     "Native video meeting integrations with Zoom, Google Meet, and Teleport for virtual client consultations"
   ],
   "cons": [
-    "Two-way synchronization with Google Calendar and Office 365 requires a paid Pro or Team subscription",
+    "Two-way calendar synchronization requires a paid Pro subscription.",
     "Automated SMS appointment reminders are restricted to paid plans",
     "Intake form customization and recurring service packages are less flexible than Acuity Scheduling"
   ],

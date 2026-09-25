@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
+import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import {
@@ -28,7 +29,10 @@ describe("sitemap lastModified coverage", () => {
     for (const s of software) {
       const entry = entries.find((e) => e.url.endsWith(`/software/${s.slug}`));
       expect(entry?.lastModified, `${s.slug} missing from sitemap`).toBeTruthy();
-      expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe(s.accessedAt);
+      const expected = getFirstRevenuePage(s.slug)
+        ? [s.accessedAt, FIRST_REVENUE_CONTENT_UPDATED_AT].sort().at(-1)
+        : s.accessedAt;
+      expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe(expected);
     }
   });
 

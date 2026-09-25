@@ -32,10 +32,10 @@
       },
       {
         "name": "Creator",
-        "amount": "11",
+        "amount": "22",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "121k credits/month. Page showed a first-month 50%-off promo ($22 -> $11); $11/mo is the standard ongoing rate."
+        "notes": "USD 22/month ongoing on monthly billing; the displayed USD 11 is a 50%-off first-month offer, not the renewal price. Includes 121,000 credits/month. Taxes are extra."
       },
       {
         "name": "Pro",

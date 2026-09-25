@@ -6,29 +6,18 @@ import type { Software } from "@/data/software";
 import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 
-function priceLine(software: Software): string | null {
-  const pricing = software.pricing;
-  if (!pricing) return null;
-  if (pricing.entryPaid) {
-    const billing = pricing.entryPaid.billingPeriod === "unknown" ? "" : `/${pricing.entryPaid.billingPeriod}`;
-    const seat = pricing.entryPaid.perSeat ? " per seat" : "";
-    const free = pricing.freePlan ? "Free plan available. " : "";
-    return `${free}Paid plans start at ${pricing.entryPaid.currency} ${pricing.entryPaid.amount}${billing}${seat}.`;
-  }
-  if (pricing.freePlan) return "A free plan is available. Check the official pricing page for current paid-plan terms.";
-  if (pricing.status === "contact_sales") return "Pricing is quote-based. Contact the vendor for current terms.";
-  return null;
-}
+import { firstRevenuePriceLine } from "@/lib/revenue/first-revenue-price";
 
 export function FirstRevenueSoftwarePanel({ software }: { software: Software }) {
   const target = getFirstRevenuePage(software.slug);
   if (!target || !shouldShowAffiliateDisclosure(software)) return null;
 
-  const price = priceLine(software);
+  const price = firstRevenuePriceLine(software);
   const watchouts = software.cons?.slice(0, 2) ?? [];
   const alternatives = software.alternatives.slice(0, 3);
 
   return (
+    <section id="buying-decision" className="scroll-mt-24">
     <Card className="mt-8 border-emerald-400/20 bg-emerald-400/[0.04]">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">Buyer decision</p>
       <h2 className="mt-2 text-2xl font-semibold text-white">Should you choose {software.name}?</h2>
@@ -44,10 +33,21 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
         </div>
       </div>
 
+      <div className="mt-4 rounded-xl border border-white/10 p-4">
+        <p className="text-sm font-semibold text-white">Before you commit</p>
+        <p className="mt-2 text-sm leading-6 text-zinc-300">{target.buyingCheck}</p>
+      </div>
+
       {price ? (
         <div className="mt-4 rounded-xl border border-white/10 bg-black/10 p-4">
           <p className="text-sm font-semibold text-white">Price check</p>
           <p className="mt-2 text-sm leading-6 text-zinc-300">{price}</p>
+          {software.pricing?.officialSource ? (
+            <p className="mt-2 text-xs leading-5 text-zinc-400">
+              <a href={software.pricing.officialSource} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Vendor pricing source</a>
+              {" "}for billing terms, regional rates and applicable taxes. Introductory offers are not renewal prices.
+            </p>
+          ) : null}
         </div>
       ) : null}
 
@@ -95,5 +95,6 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
         </p>
       </div>
     </Card>
+    </section>
   );
 }
