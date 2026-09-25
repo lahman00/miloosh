@@ -28,13 +28,15 @@ export default async function SoftwareMoneyLayout({
       <div className="pb-36">{children}</div>
 
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-zinc-950/95 px-4 py-3 shadow-2xl backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        {/* Narrow phones stack the terms above a full-width button, so the
+            billing commitment is never squeezed into a one-word column. */}
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-white">{software.name}: ready to decide?</p>
+            <p className="hidden truncate text-sm font-semibold text-white sm:block">{software.name}: ready to decide?</p>
             <p className="text-xs leading-5 text-zinc-400">
               {price ? price : "Check current plans and terms on the vendor site."}
+              <span className="ml-2 text-[10px] text-zinc-400 sm:ml-0 sm:block">Affiliate link</span>
             </p>
-            <p className="text-[10px] text-zinc-400">Affiliate link</p>
           </div>
           <TrackedCtaLink
             slug={software.slug}
@@ -43,7 +45,7 @@ export default async function SoftwareMoneyLayout({
             target="_blank"
             variant="primary"
             ctaLocation="money-page-sticky-cta"
-            className="shrink-0"
+            className="w-full sm:w-auto sm:shrink-0"
           >
             {target.ctaLabel}
             <ExternalLink className="h-4 w-4" />
