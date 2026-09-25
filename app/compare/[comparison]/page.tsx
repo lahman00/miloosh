@@ -341,11 +341,14 @@ export default async function ComparePage({ params }: ComparePageProps) {
 
         {decisionPages.length + guidedAlternatives.length > 0 ? (
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-400">
-            {decisionPages.map((software) => (
-              <Link key={software.slug} href={`/software/${software.slug}#buying-decision`} className="underline underline-offset-4 hover:text-white">
-                {software.name} alternatives, pricing and fit
-              </Link>
-            ))}
+            {decisionPages.map((software) => {
+              const other = software.slug === softwareA.slug ? softwareB : softwareA;
+              return (
+                <Link key={software.slug} href={`/software/${software.slug}#buying-decision`} className="underline underline-offset-4 hover:text-white">
+                  {software.name} pricing, alternatives and fit — beyond {other.name}
+                </Link>
+              );
+            })}
             {guidedAlternatives.map((software) => (
               <Link key={software.slug} href={`/software/${software.slug}#alternative-decision-heading`} className="underline underline-offset-4 hover:text-white">
                 Explore the {software.name} alternatives decision guide

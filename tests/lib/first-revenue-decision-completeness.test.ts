@@ -114,14 +114,17 @@ describe("five money pages: search title alignment", () => {
 });
 
 describe("comparison pages route deciders into the money-page buyer panel", () => {
-  it.each([["coda-vs-airtable", "Airtable"], ["pipedrive-vs-close", "Close"], ["acuity-scheduling-vs-setmore", "Setmore"], ["todoist-vs-ticktick", "Todoist"], ["elevenlabs-vs-murf-ai", "ElevenLabs"]])(
-    "%s links %s to #buying-decision with descriptive text",
-    async (comparison, name) => {
+  it.each([["coda-vs-airtable", "Airtable", "Coda"], ["pipedrive-vs-close", "Close", "Pipedrive"], ["acuity-scheduling-vs-setmore", "Setmore", "Acuity Scheduling"], ["todoist-vs-ticktick", "Todoist", "TickTick"], ["elevenlabs-vs-murf-ai", "ElevenLabs", "Murf AI"]])(
+    "%s links %s to #buying-decision with descriptive, per-pair anchor text (not one template repeated verbatim)",
+    async (comparison, name, otherName) => {
       const { default: ComparePage } = await import("@/app/compare/[comparison]/page");
       const html = decode(renderToStaticMarkup(await ComparePage({ params: Promise.resolve({ comparison }) })));
       const slug = getSoftware(name.toLowerCase())?.slug ?? "close";
       expect(html).toContain(`href="/software/${slug}#buying-decision"`);
-      expect(html).toContain(`${name} alternatives, pricing and fit`);
+      // The anchor names the actual comparison partner, so the same product's
+      // link reads differently across its ~9-17 referring comparison pages
+      // instead of one string reused verbatim everywhere.
+      expect(html).toContain(`${name} pricing, alternatives and fit — beyond ${otherName}`);
       expect(html).not.toContain(`href="/software/${slug}#alternative-decision-heading"`);
     },
   );
