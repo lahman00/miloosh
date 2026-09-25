@@ -33,6 +33,17 @@ describe("canonical first-revenue funnel", () => {
     expect(r.sourceRows?.find((x)=>x.source==="x")).toMatchObject({visits:1,ctaClicks:1,recordedHandoffs:1,content:"airtable-seat-cost"});
     expect(r.sourceRows?.find((x)=>x.source==="unknown")?.ctaClicks).toBe(1);
   });
+  it("separates decision-card exposure from the always-visible sticky bar without changing totals", () => {
+    const sticky = { ctaLocation: "money-page-sticky-cta" };
+    const r = summarizeFirstRevenuePage("airtable", [
+      event("page_view"), event("engaged_view", { durationSeconds: 12 }),
+      event("cta_impression", sticky), event("cta_impression"), event("cta_impression", { ctaLocation: "pricing-section-cta" }),
+      event("cta_click", sticky), event("cta_impression", { ...sticky, isTest: true, sessionId: "s_qa" }),
+    ], ledger(), until);
+    expect([r.engagedViews, r.ctaImpressions, r.primaryCtaImpressions, r.stickyCtaImpressions]).toEqual([1, 3, 1, 1]);
+    expect([r.ctaClicks, r.primaryCtaClicks, r.stickyCtaClicks]).toEqual([1, 0, 1]);
+    expect(summarizeFirstRevenuePage("airtable", null, null, until).stickyCtaImpressions).toBeNull();
+  });
   it("rejects invalid reporting windows",()=>expect(()=>summarizeFirstRevenuePage("airtable",[],ledger(),"bad")).toThrow());
   it("preserves landing UTMs through a supporting guide, even before the reporting window", () => {
     const r = summarizeFirstRevenuePage("airtable", [

@@ -46,6 +46,7 @@ export default async function FirstRevenueFunnelPage() {
         sale, approved a commission, or paid revenue. Downstream conversion remains NOT VERIFIED
         until first-party network evidence exists. Counts include the same product&apos;s commercial CTAs on the exact primary page, including the hero, pricing and buyer-decision placements.
         Tests and events without an explicit non-test marker are excluded from the funnel.
+        The sticky bar is visible on load, so &ldquo;CTA seen&rdquo; roughly tracks page views; use the decision-card column for exposure to the full buyer decision. Placement columns are subsets of the totals and must not be added to them.
       </p>
 
       {!analytics || !handoffComplete ? (
@@ -62,8 +63,11 @@ export default async function FirstRevenueFunnelPage() {
               <th className="px-4 py-3">GSC impressions</th>
               <th className="px-4 py-3">GSC clicks</th>
               <th className="px-4 py-3">Recorded page views</th>
+              <th className="px-4 py-3">Engaged views</th>
               <th className="px-4 py-3">CTA seen</th>
               <th className="px-4 py-3">CTA clicks</th>
+              <th className="px-4 py-3">Decision card seen / clicked</th>
+              <th className="px-4 py-3">Sticky bar seen / clicked</th>
               <th className="px-4 py-3">Merchant handoffs</th>
               <th className="px-4 py-3">Unclassified handoffs</th>
               <th className="px-4 py-3">Unclassified analytics</th>
@@ -71,7 +75,7 @@ export default async function FirstRevenueFunnelPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-800 bg-zinc-900/40">
-            {rows.map(({ page, pageViews, ctaImpressions, ctaClicks, merchantHandoffs, unclassifiedHandoffs, unclassifiedAnalytics }) => (
+            {rows.map(({ page, pageViews, engagedViews, ctaImpressions, ctaClicks, primaryCtaImpressions, primaryCtaClicks, stickyCtaImpressions, stickyCtaClicks, merchantHandoffs, unclassifiedHandoffs, unclassifiedAnalytics }) => (
               <tr key={page.slug}>
                 <td className="px-4 py-3">
                   <a className="font-semibold text-white hover:underline" href={"/software/" + page.slug}>
@@ -82,8 +86,11 @@ export default async function FirstRevenueFunnelPage() {
                 <td className="px-4 py-3 font-mono">{page.baseline.impressions}</td>
                 <td className="px-4 py-3 font-mono">{page.baseline.clicks}</td>
                 <td className="px-4 py-3 font-mono">{analytics ? pageViews : "UNAVAILABLE"}</td>
+                <td className="px-4 py-3 font-mono">{analytics ? engagedViews : "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono">{analytics ? ctaImpressions : "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono">{analytics ? ctaClicks : "UNAVAILABLE"}</td>
+                <td className="px-4 py-3 font-mono">{analytics ? `${primaryCtaImpressions} / ${primaryCtaClicks}` : "UNAVAILABLE"}</td>
+                <td className="px-4 py-3 font-mono">{analytics ? `${stickyCtaImpressions} / ${stickyCtaClicks}` : "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono">{merchantHandoffs ?? "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono text-zinc-500">{unclassifiedHandoffs ?? "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono text-zinc-500">{unclassifiedAnalytics ?? "UNAVAILABLE"}</td>

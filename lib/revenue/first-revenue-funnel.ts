@@ -3,6 +3,8 @@ import type { OutboundReadResult } from "@/lib/revenue/outbound-read";
 import { FIRST_REVENUE_CAPTURED_AT, type FirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 
 export const PRIMARY_REVENUE_CTA = "money-page-decision-card";
+/** Always in the viewport, so its impressions track page views rather than decision-card exposure. */
+export const STICKY_REVENUE_CTA = "money-page-sticky-cta";
 
 /** Separate complete evidence, missing evidence, and explicitly non-test events. */
 export function summarizeFirstRevenuePage(
@@ -23,8 +25,10 @@ export function summarizeFirstRevenuePage(
   const qaSessions = new Set(analytics?.filter((e) => e.isTest === true).map((e) => e.sessionId));
   const nonTest = scoped?.filter((e) => e.isTest === false && !qaSessions.has(e.sessionId)) ?? null;
   const sameProduct = (e: FirstPartyEvent) => "softwareSlug" in e && e.softwareSlug === slug;
-  const primary = (e: FirstPartyEvent) => sameProduct(e) &&
-    "ctaLocation" in e && e.ctaLocation === PRIMARY_REVENUE_CTA;
+  const at = (location: string) => (e: FirstPartyEvent) => sameProduct(e) &&
+    "ctaLocation" in e && e.ctaLocation === location;
+  const primary = at(PRIMARY_REVENUE_CTA);
+  const sticky = at(STICKY_REVENUE_CTA);
   const handoffs = outbound?.status === "COMPLETE" ? outbound.events.filter((e) =>
     e.sourcePage === path && e.softwareSlug === slug &&
     e.type === "affiliate_link_click" && e.destination === "affiliate" && inWindow(e.timestamp),
@@ -69,6 +73,10 @@ export function summarizeFirstRevenuePage(
     ctaImpressions: nonTest?.filter((e) => e.type === "cta_impression" && sameProduct(e)).length ?? null,
     ctaClicks: nonTest?.filter((e) => e.type === "cta_click" && sameProduct(e)).length ?? null,
     primaryCtaClicks: nonTest?.filter((e) => e.type === "cta_click" && primary(e)).length ?? null,
+    engagedViews: nonTest?.filter((e) => e.type === "engaged_view").length ?? null,
+    primaryCtaImpressions: nonTest?.filter((e) => e.type === "cta_impression" && primary(e)).length ?? null,
+    stickyCtaImpressions: nonTest?.filter((e) => e.type === "cta_impression" && sticky(e)).length ?? null,
+    stickyCtaClicks: nonTest?.filter((e) => e.type === "cta_click" && sticky(e)).length ?? null,
     merchantHandoffs: handoffs?.filter((e) => e.isTest === false).length ?? null,
     unclassifiedHandoffs: handoffs?.filter((e) => e.isTest === undefined).length ?? null,
     unclassifiedAnalytics: scoped?.filter((e) => e.isTest === undefined).length ?? null,
