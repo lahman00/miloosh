@@ -78,7 +78,7 @@ describe("Client-side visitor/session identity — Phase 12 session integrity", 
     const source = fs.readFileSync("components/TrackedCtaLink.tsx", "utf8");
     expect(source).toContain("onAuxClick={(event) =>");
     expect(source).toContain("onAuxClick?.(event)");
-    expect(source).toContain("if (event.button === 1) reportOutboundClick();");
+    expect(source).toContain("if (event.button === 1 && !event.defaultPrevented) reportOutboundClick();");
     expect(source).not.toContain("if (event.button === 2) reportOutboundClick();");
   });
 
