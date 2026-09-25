@@ -15,6 +15,14 @@ beforeEach(() => { vi.stubEnv("BLOB_READ_WRITE_TOKEN", "unit-test-only"); vi.res
 afterEach(() => { vi.unstubAllEnvs(); vi.restoreAllMocks(); });
 
 describe("complete outbound store reads", () => {
+  it("marks retention-capped local evidence partial without inventing failed reads", async () => {
+    vi.stubEnv("BLOB_READ_WRITE_TOKEN", "");
+    vi.spyOn(fs, "readFileSync").mockReturnValue(JSON.stringify(Array(5000).fill(event())));
+    const result = await readOutboundEventsDetailed();
+    expect(result.status).toBe("PARTIAL");
+    expect(result.failedReads).toBe(0);
+    expect(result.events).toHaveLength(5000);
+  });
   it("paginates and deduplicates object IDs, not identical independent events", async () => {
     mocks.list.mockResolvedValueOnce({ blobs: [{ pathname: "a" }], hasMore: true, cursor: "next" })
       .mockResolvedValueOnce({ blobs: [{ pathname: "a" }, { pathname: "b" }], hasMore: false });

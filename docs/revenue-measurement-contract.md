@@ -72,6 +72,9 @@ bounded object reads, and refuse to present incomplete first-party reads as a
 complete zero dataset. Corrupt/unreadable local data is not overwritten. Local
 fallback retains only the most recent 10,000 first-party / 5,000 legacy records;
 it is not a durable lifetime archive. Production Blob is the intended store.
+At either local retention ceiling, complete history is conservatively unavailable
+(first-party reader throws; detailed outbound reader reports PARTIAL). A full
+array does not prove which earlier events were discarded.
 
 `summarizeFirstRevenuePage` uses one explicit window, exact cohort path/product,
 and only explicitly non-test records. Null/unavailable differs from zero.
@@ -81,6 +84,10 @@ legacy rows cannot inherit that filter. Unknown markers remain separately
 reported. Source rows use embedded first touch, then earlier same-identity
 landing evidence, otherwise unknown. Do not divide independent store totals
 into a conversion rate when denominator coverage is unknown.
+Legacy Money Map now uses the detailed outbound reader too: absent/partial
+evidence is UNAVAILABLE, excluded from its click score, and unknown QA markers
+are separately counted rather than called non-test. It remains a historical
+opportunity heuristic, not the canonical five-page funnel or a new cohort.
 
 localhost/Preview is forced into QA; bot/prefetch/cron classification remains
 separate. Cross-site requests are rejected, bodies are capped while streaming,

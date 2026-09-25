@@ -1,7 +1,8 @@
 import { getAllSoftware, type Software } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { getActivePartner } from "@/data/affiliate/active-partners";
-import { getOutboundEvents, type StoredOutboundEvent } from "@/lib/revenue/events";
+import type { StoredOutboundEvent } from "@/lib/revenue/events";
+import { readOutboundEventsDetailed, type OutboundReadResult } from "@/lib/revenue/outbound-read";
 import { GoogleSearchConsoleClient, type SearchAnalyticsRow } from "@/scripts/agents/seo/lib/google-search-console-client";
 import { recentAndPriorWindows } from "@/scripts/agents/seo/lib/date-windows";
 import { SITE_URL } from "@/lib/site";
@@ -96,9 +97,11 @@ export type MoneyMapDataset = {
   gscFetchNote: string;
   totalPagesAnalyzed: number;
   /** Non-test revenue-log events included in page-level click evidence. */
-  totalOutboundEventsSitewide: number;
+  totalOutboundEventsSitewide: number | null;
   /** QA/test revenue-log events deliberately excluded from all page metrics and scoring. */
-  totalTestOutboundEventsSitewide: number;
+  totalTestOutboundEventsSitewide: number | null;
+  totalUnclassifiedOutboundEventsSitewide: number | null;
+  outboundReadStatus: OutboundReadResult["status"];
   pages: MoneyMapPage[];
 };
 
@@ -106,6 +109,7 @@ export type MoneyMapOutboundSummary = {
   clicksBySourcePage: Map<string, MoneyMapClickMetrics>;
   nonTestEvents: number;
   excludedTestEvents: number;
+  unclassifiedEvents: number;
 };
 
 /**
@@ -118,12 +122,14 @@ export function summarizeMoneyMapOutboundEvents(events: readonly StoredOutboundE
   const clicksBySourcePage = new Map<string, MoneyMapClickMetrics>();
   let nonTestEvents = 0;
   let excludedTestEvents = 0;
+  let unclassifiedEvents = 0;
 
   for (const event of events) {
     if (event.isTest) {
       excludedTestEvents += 1;
       continue;
     }
+    if (event.isTest !== false) { unclassifiedEvents++; continue; }
 
     nonTestEvents += 1;
     const existing = clicksBySourcePage.get(event.sourcePage) ?? {
@@ -137,7 +143,7 @@ export function summarizeMoneyMapOutboundEvents(events: readonly StoredOutboundE
     clicksBySourcePage.set(event.sourcePage, existing);
   }
 
-  return { clicksBySourcePage, nonTestEvents, excludedTestEvents };
+  return { clicksBySourcePage, nonTestEvents, excludedTestEvents, unclassifiedEvents };
 }
 
 // ---------------------------------------------------------------------
@@ -279,7 +285,7 @@ function buildScoreComponents(page: {
 
   // 6. Non-test revenue-log outbound evidence (weight 1, deliberately low).
   if (page.clicksAvailability === "unavailable") {
-    components.push({ label: "Non-test outbound-log evidence", weight: 1, value: null, availability: "unavailable", note: "Outbound-click log unavailable in this run." });
+    components.push({ label: "Non-test outbound-log evidence", weight: 1, value: null, availability: "unavailable", note: "Outbound-click log unavailable in this run; no measured count. Stored events are not human-qualified." });
   } else {
     const value = page.clicks.affiliateClicks > 0 ? 10 : page.clicks.officialClicks > 0 ? 3 : 0;
     components.push({
@@ -364,9 +370,10 @@ export async function buildMoneyMap(): Promise<MoneyMapDataset> {
   const softwareBySlug = new Map(software.map((item) => [item.slug, item]));
 
   const { rows: gscByUrl, availability: gscFetchAvailability, note: gscFetchNote } = await fetchLiveGscByPage();
-  const outboundEvents = await getOutboundEvents();
-  const outboundSummary = summarizeMoneyMapOutboundEvents(outboundEvents);
-  const clicksAvailability: DataAvailability = "real";
+  const outbound = await readOutboundEventsDetailed();
+  const completeOutbound = outbound.status === "COMPLETE";
+  const outboundSummary = summarizeMoneyMapOutboundEvents(completeOutbound ? outbound.events : []);
+  const clicksAvailability: DataAvailability = completeOutbound ? "real" : "unavailable";
 
   const pages: MoneyMapPage[] = [];
 
@@ -446,8 +453,10 @@ export async function buildMoneyMap(): Promise<MoneyMapDataset> {
     gscFetchAvailability,
     gscFetchNote,
     totalPagesAnalyzed: pages.length,
-    totalOutboundEventsSitewide: outboundSummary.nonTestEvents,
-    totalTestOutboundEventsSitewide: outboundSummary.excludedTestEvents,
+    totalOutboundEventsSitewide: completeOutbound ? outboundSummary.nonTestEvents : null,
+    totalTestOutboundEventsSitewide: completeOutbound ? outboundSummary.excludedTestEvents : null,
+    totalUnclassifiedOutboundEventsSitewide: completeOutbound ? outboundSummary.unclassifiedEvents : null,
+    outboundReadStatus: outbound.status,
     pages,
   };
 }

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
-import type { StoredOutboundEvent } from "@/lib/revenue/events";
+import { MAX_LOCAL_OUTBOUND_EVENTS, type StoredOutboundEvent } from "@/lib/revenue/events";
 
 export type OutboundReadResult = {
   status: "COMPLETE" | "PARTIAL" | "UNAVAILABLE";
@@ -38,7 +38,8 @@ export async function readOutboundEventsDetailed(): Promise<OutboundReadResult> 
       result.recordsListed = raw.length;
       result.events = raw.filter(validEvent);
       result.failedReads = raw.length - result.events.length;
-      result.listingComplete = true;
+      // At the retention ceiling, prior truncation cannot be ruled out.
+      result.listingComplete = raw.length < MAX_LOCAL_OUTBOUND_EVENTS;
     } catch { return result; }
   } else {
     const paths = new Set<string>();

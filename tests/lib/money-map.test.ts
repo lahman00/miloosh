@@ -41,11 +41,18 @@ function outbound(overrides: Partial<StoredOutboundEvent> = {}): StoredOutboundE
     url: "https://example.test/pipedrive",
     sourcePage: "/software/pipedrive",
     timestamp: "2026-08-25T08:00:00.000Z",
+    isTest: false,
     ...overrides,
   };
 }
 
 describe("Money Map outbound-log truth", () => {
+  it("keeps absent QA markers unclassified, not explicitly non-test", () => {
+    const summary = summarizeMoneyMapOutboundEvents([outbound({ isTest: undefined })]);
+    expect(summary.nonTestEvents).toBe(0);
+    expect(summary.unclassifiedEvents).toBe(1);
+    expect(summary.clicksBySourcePage.size).toBe(0);
+  });
   it("excludes QA/test events from all page click metrics while preserving an excluded count", () => {
     const summary = summarizeMoneyMapOutboundEvents([
       outbound(),
@@ -138,8 +145,10 @@ describe("buildMoneyMap", () => {
     for (const page of data.pages) {
       expect(page.clicks.totalClicks).toBe(0);
     }
-    expect(data.totalOutboundEventsSitewide).toBe(0);
-    expect(data.totalTestOutboundEventsSitewide).toBe(0);
+    expect(data.totalOutboundEventsSitewide).toBeNull();
+    expect(data.totalTestOutboundEventsSitewide).toBeNull();
+    expect(data.outboundReadStatus).toBe("UNAVAILABLE");
+    expect(data.pages.every(page => page.clicksAvailability === "unavailable")).toBe(true);
   });
 
   it("labels the score component as non-test outbound-log evidence rather than human evidence", async () => {

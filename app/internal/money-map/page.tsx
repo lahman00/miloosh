@@ -87,8 +87,9 @@ export default async function MoneyMapPageRoute() {
             {data.gscFetchNote}
           </p>
           <p className="mt-2 text-sm leading-6 text-zinc-500">
-            Revenue outbound log: {data.totalOutboundEventsSitewide} non-test event(s) included;{" "}
-            {data.totalTestOutboundEventsSitewide} QA/test event(s) excluded. These stored events are not
+            Revenue outbound log ({data.outboundReadStatus}): {data.totalOutboundEventsSitewide ?? "UNAVAILABLE"} explicitly non-test event(s) included;{" "}
+            {data.totalTestOutboundEventsSitewide ?? "UNAVAILABLE"} QA/test event(s) excluded;{" "}
+            {data.totalUnclassifiedOutboundEventsSitewide ?? "UNAVAILABLE"} unclassified event(s) excluded. These stored events are not
             human-qualified because this revenue log carries no session classifier.
           </p>
         </header>
@@ -149,7 +150,7 @@ export default async function MoneyMapPageRoute() {
                       <RowGsc page={page} />
                     </span>
                     <span className="text-zinc-400">
-                      {page.clicks.totalClicks} ({page.clicks.affiliateClicks} affiliate)
+                      {page.clicksAvailability === "unavailable" ? "UNAVAILABLE" : `${page.clicks.totalClicks} (${page.clicks.affiliateClicks} affiliate)`}
                     </span>
                     <span>
                       {page.bucket ? (

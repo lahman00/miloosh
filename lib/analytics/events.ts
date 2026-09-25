@@ -329,7 +329,9 @@ export async function recordFirstPartyEvent(event: FirstPartyEvent): Promise<boo
 
 export async function getAllFirstPartyEvents(): Promise<FirstPartyEvent[]> {
   if (!hasBlobToken()) {
-    return [...readLocalFallback()].sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+    const events = readLocalFallback();
+    if (events.length >= MAX_STORED_EVENTS) throw new Error("Local analytics retention ceiling reached: complete history unavailable");
+    return [...events].sort((a, b) => b.timestamp.localeCompare(a.timestamp));
   }
 
   const { list, get } = await import("@vercel/blob");

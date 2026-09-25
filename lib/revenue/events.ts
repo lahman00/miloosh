@@ -118,7 +118,8 @@ export type StoredOutboundEvent = OutboundEvent & {
 const BLOB_PREFIX = "outbound-clicks/";
 const LOCAL_FALLBACK_PATH = analyticsLocalPath("outbound-clicks.json");
 /** Read-side safety cap — the most recent events a single list() call will pull. See the module header for why "most recent" is best-effort, not guaranteed, once total volume exceeds this. */
-const MAX_STORED_EVENTS = 5000;
+export const MAX_LOCAL_OUTBOUND_EVENTS = 5000;
+const MAX_STORED_EVENTS = MAX_LOCAL_OUTBOUND_EVENTS;
 
 /**
  * Off unless NEXT_PUBLIC_REVENUE_TRACKING_ENABLED=true is set (see
@@ -137,10 +138,11 @@ function readLocalFallback(): StoredOutboundEvent[] {
   try {
     const contents = fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8");
     const parsed: unknown = JSON.parse(contents);
-    return Array.isArray(parsed) ? (parsed as StoredOutboundEvent[]) : [];
-  } catch {
-    // No log yet — the default, expected state until the first real click.
-    return [];
+    if (!Array.isArray(parsed)) throw new Error("Invalid outbound store");
+    return parsed as StoredOutboundEvent[];
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw new Error("Local outbound store unavailable");
   }
 }
 
@@ -204,7 +206,8 @@ export async function recordOutboundEvent(event: OutboundEvent, sourcePage: stri
 }
 
 /**
- * Full event log, most recent first. Powers the /internal/outbound-clicks
+ * @deprecated Legacy best-effort API. Use readOutboundEventsDetailed for reports.
+ * Full event log, most recent first. Formerly powered /internal/outbound-clicks.
  * report. One list() call plus one get() per listed blob — see the module
  * header for why this trades read cost for write-side safety. A single
  * unreadable/corrupt blob is skipped, not fatal to the whole report.
