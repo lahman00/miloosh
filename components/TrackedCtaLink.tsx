@@ -8,6 +8,7 @@ import type { WixFunnelContext } from "@/lib/wix-funnels";
 import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
 import { getStoredSessionId, getStoredVisitorId, trackEvent } from "@/lib/analytics/track";
 import { assignCtaCopyVariant, type CtaCopyVariant } from "@/lib/experiments/cta-copy-experiment";
+import { observeCtaExposure } from "@/lib/analytics/cta-exposure";
 
 type TrackedCtaLinkProps = ComponentProps<typeof ButtonLink> & {
   /** The software slug this CTA points at — resolved server-side, never trusted from the client alone. */
@@ -44,7 +45,7 @@ type TrackedCtaLinkProps = ComponentProps<typeof ButtonLink> & {
 export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxClick, ctaCopyExperiment, children, ...props }: TrackedCtaLinkProps) {
   const pathname = usePathname();
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const hasFiredImpression = useRef(false);
+  const exposure = useRef<{ key: string; fired: boolean } | null>(null);
 
   // MILOOSH CTA CONVERSION OPTIMIZATION MISSION (2026-08-23) — `variant` is
   // always "control" on the server render AND the initial client render
@@ -99,22 +100,14 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
     // assignment is known so the impression is never mis-attributed to
     // "control" purely because this effect happened to run before the
     // assignment effect above did.
-    if (!node || hasFiredImpression.current || !variantResolved) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting && !hasFiredImpression.current) {
-            hasFiredImpression.current = true;
-            trackEvent({ type: "cta_impression", path: pathname, softwareSlug: slug, ctaLocation, ...(experimentId ? { experimentId, variant } : {}) });
-            observer.disconnect();
-          }
-        }
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
+    const key = JSON.stringify([pathname, slug, ctaLocation, experimentId, variant]);
+    if (exposure.current?.key !== key) exposure.current = { key, fired: false };
+    if (!node || exposure.current.fired || !variantResolved) return;
+    return observeCtaExposure(node, () => {
+      if (exposure.current?.key !== key || exposure.current.fired) return;
+      exposure.current.fired = true;
+      trackEvent({ type: "cta_impression", path: pathname, softwareSlug: slug, ctaLocation, ...(experimentId ? { experimentId, variant } : {}) });
+    });
   }, [pathname, slug, ctaLocation, variantResolved, experimentId, variant]);
 
   const reportOutboundClick = () => {

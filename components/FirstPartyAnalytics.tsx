@@ -52,6 +52,7 @@ function captureLandingAttribution(): { referrerHost?: string; utmSource?: strin
 
 export function FirstPartyAnalytics() {
   const pathname = usePathname();
+  const lastReportedPath = useRef<string | null>(null);
   const dwellTimerRef = useRef<NodeJS.Timeout | null>(null);
   // 2026-08-22 engaged_view forensics: this ref is set fresh every time the
   // effect (re)runs, i.e. exactly when the 10-second dwell timer is armed.
@@ -74,37 +75,42 @@ export function FirstPartyAnalytics() {
     // Skip if running in headless automation or prerender
     if (typeof window === "undefined") return;
 
-    // 1. Page view — attribution fields only attached on this tab
-    // session's first page view (see captureLandingAttribution above).
-    trackEvent({
-      type: "page_view",
-      path: pathname,
-      ...captureLandingAttribution(),
-    });
+    // React StrictMode replays setup/cleanup in development. Do not turn the
+    // replay into a second visit; real A -> B -> A navigation still counts.
+    if (lastReportedPath.current !== pathname) {
+      lastReportedPath.current = pathname;
+      // 1. Page view — attribution fields only attached on this tab
+      // session's first page view (see captureLandingAttribution above).
+      trackEvent({
+        type: "page_view",
+        path: pathname,
+        ...captureLandingAttribution(),
+      });
 
-    // 2. Specialized page views
-    if (pathname.startsWith("/software/")) {
-      const softwareSlug = pathname.replace("/software/", "").split("/")[0];
-      if (softwareSlug) {
-        trackEvent({ type: "software_view", path: pathname, softwareSlug });
+      // 2. Specialized page views
+      if (pathname.startsWith("/software/")) {
+        const softwareSlug = pathname.replace("/software/", "").split("/")[0];
+        if (softwareSlug) {
+          trackEvent({ type: "software_view", path: pathname, softwareSlug });
+        }
+      } else if (pathname.startsWith("/compare/") && pathname !== "/compare") {
+        const comparisonSlug = pathname.replace("/compare/", "").split("/")[0];
+        if (comparisonSlug) {
+          trackEvent({ type: "comparison_view", path: pathname, comparisonSlug });
+        }
+      } else if (pathname.startsWith("/category/")) {
+        const categorySlug = pathname.replace("/category/", "").split("/")[0];
+        if (categorySlug) {
+          trackEvent({ type: "category_view", path: pathname, categorySlug });
+        }
+      } else if (pathname.startsWith("/guides/") || pathname.startsWith("/alternatives/")) {
+        const guideSlug = pathname.replace(/^\/(guides|alternatives)\//, "").split("/")[0];
+        if (guideSlug) {
+          trackEvent({ type: "guide_view", path: pathname, guideSlug });
+        }
+      } else if (pathname.startsWith("/recommend/results")) {
+        trackEvent({ type: "recommend_use", path: pathname });
       }
-    } else if (pathname.startsWith("/compare/") && pathname !== "/compare") {
-      const comparisonSlug = pathname.replace("/compare/", "").split("/")[0];
-      if (comparisonSlug) {
-        trackEvent({ type: "comparison_view", path: pathname, comparisonSlug });
-      }
-    } else if (pathname.startsWith("/category/")) {
-      const categorySlug = pathname.replace("/category/", "").split("/")[0];
-      if (categorySlug) {
-        trackEvent({ type: "category_view", path: pathname, categorySlug });
-      }
-    } else if (pathname.startsWith("/guides/") || pathname.startsWith("/alternatives/")) {
-      const guideSlug = pathname.replace(/^\/(guides|alternatives)\//, "").split("/")[0];
-      if (guideSlug) {
-        trackEvent({ type: "guide_view", path: pathname, guideSlug });
-      }
-    } else if (pathname.startsWith("/recommend/results")) {
-      trackEvent({ type: "recommend_use", path: pathname });
     }
 
     // 3. Engaged view timer (>10 seconds on page)
