@@ -6,7 +6,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import type { WixFunnelContext } from "@/lib/wix-funnels";
 import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
-import { getStoredSessionId, getStoredVisitorId, trackEvent } from "@/lib/analytics/track";
+import { getStoredSessionId, getStoredVisitorId, getTrackingAttribution, trackEvent } from "@/lib/analytics/track";
 import { assignCtaCopyVariant, type CtaCopyVariant } from "@/lib/experiments/cta-copy-experiment";
 import { observeCtaExposure } from "@/lib/analytics/cta-exposure";
 import { createEventId } from "@/lib/analytics/event-id";
@@ -129,6 +129,7 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        ...getTrackingAttribution(pathname),
         eventId, slug, kind: "cta", sourcePage: pathname, ctaLocation, wixContext, visitorId, sessionId, isTest,
         ...(experimentId ? { experimentId, variant } : {}),
       }),

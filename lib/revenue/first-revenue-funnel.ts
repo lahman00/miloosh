@@ -2,6 +2,7 @@ import type { FirstPartyEvent, PageViewEvent } from "@/lib/analytics/events";
 import type { OutboundReadResult } from "@/lib/revenue/outbound-read";
 import { FIRST_REVENUE_CAPTURED_AT, type FirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
+import { sanitizeAcquisition } from "@/lib/analytics/acquisition";
 
 // Same synthetic-ID-prefix convention scripts/analytics/report.ts's
 // isSyntheticOrTestEvent and lib/analytics/human-classification.ts's
@@ -70,6 +71,10 @@ export function summarizeFirstRevenuePage(
     if (stableId(visit) && !landingByIdentity.has(identity(visit))) landingByIdentity.set(identity(visit), visit);
   }
   const touchFor = (e: FirstPartyEvent) => {
+    // New handoffs carry a session-bound snapshot even if the landing POST
+    // failed. Never borrow source from a different/later session's page view.
+    const acquisition = sanitizeAcquisition(e.acquisition, e.sessionId, Date.parse(e.timestamp));
+    if (acquisition) return acquisition;
     const landing = stableId(e) ? landingByIdentity.get(identity(e)) : undefined;
     return landing && Date.parse(landing.timestamp) <= Date.parse(e.timestamp) ? landing : undefined;
   };

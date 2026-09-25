@@ -5,6 +5,7 @@ import { getSoftware } from "@/data/software";
 import { getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { validEventId } from "@/lib/analytics/event-id";
 import { recordFirstPartyEvent } from "@/lib/analytics/events";
+import { analyticsPath, sanitizeAcquisition } from "@/lib/analytics/acquisition";
 import { trackSoftwareCtaClick, trackVendorLinkClick } from "@/lib/revenue/click-tracker";
 import { resolveOutboundSourcePage } from "@/lib/revenue/source-page";
 import { WIX_CONTEXTS, getWixAffiliateUrl, type WixFunnelContext } from "@/lib/wix-funnels";
@@ -21,6 +22,8 @@ import { WIX_CONTEXTS, getWixAffiliateUrl, type WixFunnelContext } from "@/lib/w
 
 type OutboundClickBody = {
   eventId?: unknown;
+  acquisition?: unknown;
+  previousPath?: unknown;
   slug?: unknown;
   kind?: unknown;
   sourcePage?: unknown;
@@ -158,6 +161,11 @@ export async function POST(request: NextRequest) {
   const experimentId = body.experimentId === CTA_COPY_EXPERIMENT_ID ? body.experimentId : undefined;
   const variant = body.variant === "control" || body.variant === "treatment" ? body.variant : undefined;
   const experimentFields = experimentId && variant ? { experimentId, variant } : {};
+  const context = {
+    visitorId, sessionId,
+    acquisition: sanitizeAcquisition(body.acquisition, sessionId),
+    previousPath: analyticsPath(body.previousPath),
+  };
 
   const vendor = kind === "vendor-link";
   const location = vendor ? resolvedCtaLocation || "vendor-link" : resolvedCtaLocation;
@@ -170,18 +178,17 @@ export async function POST(request: NextRequest) {
   // prevent the identity-bearing event from being attempted (or vice versa).
   // 202 means the tracking request was handled, NOT that a merchant loaded.
   const results = await Promise.allSettled([
-    vendor ? trackVendorLinkClick(software, url, sourcePage, location, isTest, eventId) :
-      trackSoftwareCtaClick(software, url, sourcePage, location, isTest, eventId),
+    vendor ? trackVendorLinkClick(software, url, sourcePage, location, isTest, eventId, context) :
+      trackSoftwareCtaClick(software, url, sourcePage, location, isTest, eventId, context),
     recordFirstPartyEvent({
       eventId,
+      ...context,
       type: "outbound_click",
       softwareSlug: software.slug,
       destination: !vendor && shouldShowAffiliateDisclosure(software) ? "affiliate" : "official",
       url,
       ctaLocation: location,
       path: sourcePage,
-      visitorId,
-      sessionId,
       timestamp: new Date().toISOString(),
       isTest,
       ...experimentFields,

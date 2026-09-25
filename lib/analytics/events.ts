@@ -4,6 +4,8 @@ import { randomUUID } from "node:crypto";
 import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import type { EcommerceSituation } from "@/lib/recommend/types";
 import { eventFingerprint, putAnalyticsEvent } from "@/lib/analytics/event-persistence";
+import type { AcquisitionContext } from "@/lib/analytics/acquisition";
+import type { TrafficSource } from "@/lib/analytics/attribution";
 
 /**
  * First-party privacy-respecting analytics event definitions and storage.
@@ -40,6 +42,8 @@ export type FirstPartyEventType =
 
 export interface BaseAnalyticsEvent {
   eventId?: string;
+  acquisition?: AcquisitionContext;
+  previousPath?: string;
   type: FirstPartyEventType;
   visitorId: string;
   sessionId: string;
@@ -77,7 +81,7 @@ export interface PageViewEvent extends BaseAnalyticsEvent {
    */
   utmContent?: string;
   /** Normalized via lib/analytics/attribution.ts — never computed ad hoc elsewhere. */
-  trafficSource?: "organic_search" | "social" | "referral" | "direct" | "unknown";
+  trafficSource?: TrafficSource;
 }
 
 export interface EngagedViewEvent extends BaseAnalyticsEvent {

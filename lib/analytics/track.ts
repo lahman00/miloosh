@@ -2,6 +2,9 @@
 
 import { markAndCheckSyntheticQa, getSyntheticQaRun } from "@/lib/analytics/synthetic";
 import { createEventId, validEventId } from "@/lib/analytics/event-id";
+import { currentBrowserSession, getBrowserSession } from "@/lib/analytics/browser-session";
+
+const memoryVisitors = new WeakMap<Window, string>();
 
 /**
  * Recommend Engine Integrity Patch (2026-08-21) — the shared client-side
@@ -18,17 +21,22 @@ export function getOrCreateVisitorId(): string {
   try {
     const key = "miloosh_vid";
     let vid = localStorage.getItem(key);
-    if (!vid) {
+    if (!vid || !/^v_[a-zA-Z0-9_-]{1,62}$/.test(vid)) {
       vid = "v_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
       localStorage.setItem(key, vid);
     }
     return vid;
   } catch {
-    return "v_anon_" + Math.random().toString(36).slice(2, 10);
+    const previous = typeof window !== "undefined" ? memoryVisitors.get(window) : undefined;
+    const visitor = previous ?? "v_anon_" + createEventId();
+    if (typeof window !== "undefined") memoryVisitors.set(window, visitor);
+    return visitor;
   }
 }
 
 export function getOrCreateSessionId(): string {
+  const session = getBrowserSession(typeof window !== "undefined" ? window.location.pathname : "/unknown");
+  if (session) return session.sessionId;
   try {
     const key = "miloosh_sid";
     let sid = sessionStorage.getItem(key);
@@ -51,16 +59,24 @@ export function getStoredVisitorId(): string | undefined {
   try {
     return localStorage.getItem("miloosh_vid") ?? undefined;
   } catch {
-    return undefined;
+    return typeof window !== "undefined" ? memoryVisitors.get(window) : undefined;
   }
 }
 
 export function getStoredSessionId(): string | undefined {
+  const current = currentBrowserSession();
+  if (current) return current.sessionId;
   try {
     return sessionStorage.getItem("miloosh_sid") ?? undefined;
   } catch {
     return undefined;
   }
+}
+
+/** Repeated on click/handoff so a lost landing beacon cannot erase the source. */
+export function getTrackingAttribution(pathname: string) {
+  const current = getBrowserSession(pathname);
+  return current ? { acquisition: current.acquisition, previousPath: current.previousPath } : {};
 }
 
 /**
@@ -72,11 +88,20 @@ export function getStoredSessionId(): string | undefined {
 export function trackEvent(data: Record<string, unknown>): void {
   try {
     const isTest = markAndCheckSyntheticQa();
+    const context = getTrackingAttribution(typeof data.path === "string" ? data.path : "/unknown");
+    const acquisition = context.acquisition;
     const body = JSON.stringify({
       ...data,
+      ...context,
+      // Preserve the legacy page-view fields while making the new snapshot
+      // independently available on every funnel event.
+      ...(data.type === "page_view" && acquisition ? {
+        referrerHost: acquisition.referrerHost, utmSource: acquisition.utmSource, utmMedium: acquisition.utmMedium,
+        utmCampaign: acquisition.utmCampaign, utmContent: acquisition.utmContent, trafficSource: acquisition.trafficSource,
+      } : {}),
       eventId: validEventId(data.eventId) ? data.eventId : createEventId(),
       visitorId: getOrCreateVisitorId(),
-      sessionId: getOrCreateSessionId(),
+      sessionId: currentBrowserSession()?.sessionId ?? getOrCreateSessionId(),
       isTest,
       // Analytics Zero-Drop Production Proof Mega Mission (2026-08-21)
       // Phase 5: qaRun only ever attached alongside isTest:true — a real/

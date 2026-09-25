@@ -170,13 +170,14 @@ describe("Traffic source attribution — Phase 8", () => {
     expect(normalizeTrafficSource({ referrerHost: "www.reddit.com" })).toBe("social");
   });
 
-  it("classifies no referrer at all as direct", () => {
-    expect(normalizeTrafficSource({})).toBe("direct");
+  it("only an explicitly observed empty referrer is direct; missing evidence stays unknown", () => {
+    expect(normalizeTrafficSource({ referrerObserved: true })).toBe("direct");
+    expect(normalizeTrafficSource({})).toBe("unknown");
   });
 
-  it("classifies internal navigation (referrer is miloosh.com itself) as direct, not referral", () => {
-    expect(normalizeTrafficSource({ referrerHost: "miloosh.com" })).toBe("direct");
-    expect(normalizeTrafficSource({ referrerHost: "www.miloosh.com" })).toBe("direct");
+  it("does not infer external acquisition from an internal referrer", () => {
+    expect(normalizeTrafficSource({ referrerHost: "miloosh.com" })).toBe("unknown");
+    expect(normalizeTrafficSource({ referrerHost: "www.miloosh.com" })).toBe("unknown");
   });
 
   it("classifies an unrecognized external host as referral", () => {

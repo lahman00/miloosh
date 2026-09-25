@@ -3,6 +3,7 @@ import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { ECOMMERCE_SITUATIONS, type EcommerceSituation } from "@/lib/recommend/types";
 import { recordFirstPartyEvent, type FirstPartyEvent, type FirstPartyEventType } from "@/lib/analytics/events";
 import { validEventId } from "@/lib/analytics/event-id";
+import { analyticsPath, sanitizeAcquisition } from "@/lib/analytics/acquisition";
 
 /**
  * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21).
@@ -122,6 +123,8 @@ export async function POST(request: NextRequest) {
   const sanitizedEvent: FirstPartyEvent = {
     ...fields,
     ...(body.eventId ? { eventId: body.eventId } : {}),
+    acquisition: sanitizeAcquisition(body.acquisition, body.sessionId),
+    previousPath: analyticsPath(body.previousPath),
     type: body.type,
     timestamp: new Date().toISOString(),
     path: String(body.path).split(/[?#]/)[0].slice(0, 300),

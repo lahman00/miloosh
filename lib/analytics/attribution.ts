@@ -16,7 +16,7 @@
  * needed for this bucket model).
  */
 
-export type TrafficSource = "organic_search" | "social" | "referral" | "direct" | "unknown";
+export type TrafficSource = "organic_search" | "social" | "email" | "paid" | "referral" | "direct" | "unknown";
 
 const SEARCH_ENGINE_HOST_PATTERNS = [
   /(^|\.)google\.[a-z.]+$/,
@@ -60,14 +60,19 @@ export function normalizeTrafficSource(params: {
   referrerHost?: string;
   utmSource?: string;
   utmMedium?: string;
+  /** Only true when the browser actually read an empty referrer, not when data is missing. */
+  referrerObserved?: boolean;
 }): TrafficSource {
   const utmMedium = params.utmMedium?.toLowerCase();
   const utmSource = params.utmSource?.toLowerCase();
 
   if (utmMedium) {
-    if (utmMedium.includes("organic")) return "organic_search";
-    if (utmMedium.includes("social")) return "social";
-    if (utmMedium.includes("referral") || utmMedium.includes("affiliate") || utmMedium.includes("cpc") || utmMedium.includes("paid")) return "referral";
+    if (/^(social|organic_social|social_organic|paid_social|social_paid|social-network)$/.test(utmMedium)) return "social";
+    if (/^(organic|organic_search|seo)$/.test(utmMedium)) return "organic_search";
+    if (/^(email|e-mail|newsletter)$/.test(utmMedium)) return "email";
+    if (/^(cpc|ppc|paid|paid_search|display|cpm)$/.test(utmMedium)) return "paid";
+    if (/^(referral|affiliate)$/.test(utmMedium)) return "referral";
+    return "unknown";
   }
 
   if (utmSource) {
@@ -77,8 +82,8 @@ export function normalizeTrafficSource(params: {
   }
 
   const referrerHost = params.referrerHost?.toLowerCase();
-  if (!referrerHost) return "direct";
-  if (matchesAny(referrerHost, OWN_HOST_PATTERNS)) return "direct";
+  if (!referrerHost) return params.referrerObserved ? "direct" : "unknown";
+  if (matchesAny(referrerHost, OWN_HOST_PATTERNS)) return "unknown";
   if (matchesAny(referrerHost, SEARCH_ENGINE_HOST_PATTERNS)) return "organic_search";
   if (matchesAny(referrerHost, SOCIAL_HOST_PATTERNS)) return "social";
   return "referral";

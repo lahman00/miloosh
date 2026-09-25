@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
-import { getStoredSessionId, getStoredVisitorId } from "@/lib/analytics/track";
+import { getOrCreateVisitorId, getStoredSessionId, getTrackingAttribution } from "@/lib/analytics/track";
 import { createEventId } from "@/lib/analytics/event-id";
 
 type TrackedVendorLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
@@ -26,7 +26,8 @@ export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, 
   const pathname = usePathname();
   const reportOutboundClick = () => {
       try {
-        const visitorId = getStoredVisitorId();
+        const attribution = getTrackingAttribution(pathname);
+        const visitorId = getOrCreateVisitorId();
         const sessionId = getStoredSessionId();
         const isTest = markAndCheckSyntheticQa();
 
@@ -34,6 +35,7 @@ export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, 
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            ...attribution,
             eventId: createEventId(),
             slug,
             kind: "vendor-link",

@@ -3,52 +3,6 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics/track";
-import { extractReferrerHost, normalizeTrafficSource } from "@/lib/analytics/attribution";
-
-const ATTRIBUTION_CAPTURED_KEY = "miloosh_attribution_captured";
-
-/**
- * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21) Phase 8:
- * attribution is a landing-page property, not a per-pageview one — UTM
- * params only ever appear on the entry URL, and re-deriving traffic
- * source from an internal navigation's absent referrer/UTMs would
- * wrongly reclassify an already-attributed session as "direct" on its
- * second page view. Captured once per browser tab session (sessionStorage-
- * gated, same pattern as lib/analytics/synthetic.ts's QA marker).
- *
- * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) real gap:
- * every social post's link is already tagged with utm_content=<queue
- * entry id> at publish time (lib/social/utm.ts) — a genuine, unique
- * per-post identifier — but nothing ever read utm_content out of the
- * landing URL, so true post-level attribution ("which specific post
- * brought this visitor") was structurally impossible despite the tag
- * existing on every link. Added alongside the other three UTM fields,
- * same capture/cap/privacy treatment.
- */
-function captureLandingAttribution(): { referrerHost?: string; utmSource?: string; utmMedium?: string; utmCampaign?: string; utmContent?: string; trafficSource: ReturnType<typeof normalizeTrafficSource> } | null {
-  try {
-    if (sessionStorage.getItem(ATTRIBUTION_CAPTURED_KEY) === "1") return null;
-    sessionStorage.setItem(ATTRIBUTION_CAPTURED_KEY, "1");
-
-    const params = new URLSearchParams(window.location.search);
-    const referrerHost = extractReferrerHost(document.referrer);
-    const utmSource = params.get("utm_source")?.slice(0, 64) || undefined;
-    const utmMedium = params.get("utm_medium")?.slice(0, 64) || undefined;
-    const utmCampaign = params.get("utm_campaign")?.slice(0, 64) || undefined;
-    const utmContent = params.get("utm_content")?.slice(0, 64) || undefined;
-
-    return {
-      referrerHost,
-      utmSource,
-      utmMedium,
-      utmCampaign,
-      utmContent,
-      trafficSource: normalizeTrafficSource({ referrerHost, utmSource, utmMedium }),
-    };
-  } catch {
-    return null;
-  }
-}
 
 export function FirstPartyAnalytics() {
   const pathname = usePathname();
@@ -79,12 +33,11 @@ export function FirstPartyAnalytics() {
     // replay into a second visit; real A -> B -> A navigation still counts.
     if (lastReportedPath.current !== pathname) {
       lastReportedPath.current = pathname;
-      // 1. Page view — attribution fields only attached on this tab
-      // session's first page view (see captureLandingAttribution above).
+      // 1. Page view — the shared sender captures session acquisition once
+      // and repeats its bounded snapshot on subsequent funnel events.
       trackEvent({
         type: "page_view",
         path: pathname,
-        ...captureLandingAttribution(),
       });
 
       // 2. Specialized page views

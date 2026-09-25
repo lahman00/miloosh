@@ -34,10 +34,13 @@ function resolveAffiliateDimensions(slug: string, url: string): Pick<OutboundEve
   return {};
 }
 
-export async function trackSoftwareCtaClick(software: Software, resolvedUrl: string, sourcePage: string, ctaLocation?: string, isTest?: boolean, eventId?: string): Promise<boolean | undefined> {
+export type ClickContext = Pick<OutboundEvent, "visitorId" | "sessionId" | "acquisition" | "previousPath">;
+
+export async function trackSoftwareCtaClick(software: Software, resolvedUrl: string, sourcePage: string, ctaLocation?: string, isTest?: boolean, eventId?: string, context?: ClickContext): Promise<boolean | undefined> {
   const isAffiliate = shouldShowAffiliateDisclosure(software);
 
   const event: OutboundEvent = {
+    ...context,
     type: isAffiliate ? "affiliate_link_click" : "official_site_click",
     softwareSlug: software.slug,
     destination: isAffiliate ? "affiliate" : "official",
@@ -51,9 +54,10 @@ export async function trackSoftwareCtaClick(software: Software, resolvedUrl: str
   return recordOutboundEvent(event, sourcePage);
 }
 
-export async function trackVendorLinkClick(software: Software, url: string, sourcePage: string, ctaLocation?: string, isTest?: boolean, eventId?: string): Promise<boolean | undefined> {
+export async function trackVendorLinkClick(software: Software, url: string, sourcePage: string, ctaLocation?: string, isTest?: boolean, eventId?: string, context?: ClickContext): Promise<boolean | undefined> {
   return recordOutboundEvent(
     {
+      ...context,
       type: "vendor_link_click",
       softwareSlug: software.slug,
       destination: "official",

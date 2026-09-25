@@ -3,6 +3,7 @@ import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import { eventFingerprint, putAnalyticsEvent } from "@/lib/analytics/event-persistence";
+import type { AcquisitionContext } from "@/lib/analytics/acquisition";
 
 /**
  * Sprint 8 Phase 4 (architecture) / Sprint 9 Task 6 (real sink) / Phase 11
@@ -53,6 +54,11 @@ export type OutboundEventType = "official_site_click" | "affiliate_link_click" |
 
 export type OutboundEvent = {
   eventId?: string;
+  /** Present on new browser handoffs only; never backfilled onto legacy rows. */
+  visitorId?: string;
+  sessionId?: string;
+  acquisition?: AcquisitionContext;
+  previousPath?: string;
   type: OutboundEventType;
   /** The software entry this click relates to. */
   softwareSlug: string;
