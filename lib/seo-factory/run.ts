@@ -4,6 +4,7 @@ import { getAllCategories } from "@/data/categories";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { ACTIVE_PARTNER_SLUGS } from "@/data/affiliate/active-partners";
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { buildMoneyMap } from "@/lib/revenue/money-map";
 import { computeInboundCounts } from "@/scripts/agents/growth/internal-link-opportunity";
 import { GoogleSearchConsoleClient, type SearchAnalyticsRow } from "@/scripts/agents/seo/lib/google-search-console-client";
@@ -102,6 +103,16 @@ function median(values: number[]): number | null {
   return sorted.length % 2 ? sorted[middle]! : (sorted[middle - 1]! + sorted[middle]!) / 2;
 }
 
+const CLOSED_RELATIONSHIP_STATUSES = new Set(["REJECTED", "NOT_ELIGIBLE", "PROGRAM_ENDED", "NO_REAL_PROGRAM_FOUND"]);
+
+/** Public program exists and Miloosh's current relationship is not closed. A rejected or ended relationship is not "viable" affiliate readiness. */
+export function viableAffiliateProgramSlugs(): Set<string> {
+  const closed = new Set(
+    CURRENT_AFFILIATE_LEDGER.filter((row) => CLOSED_RELATIONSHIP_STATUSES.has(row.status)).flatMap((row) => row.productSlugs),
+  );
+  return new Set(AFFILIATE_PROGRAMS.filter((program) => program.programExists === "yes" && !closed.has(program.slug)).map((program) => program.slug));
+}
+
 export async function runSeoFactory(options: { persist?: boolean } = {}): Promise<SeoFactoryRun> {
   const client = GoogleSearchConsoleClient.fromEnv();
   if (!client) throw new Error("SEO Factory fails closed: Google Search Console credentials are unavailable in this runtime.");
@@ -123,7 +134,7 @@ export async function runSeoFactory(options: { persist?: boolean } = {}): Promis
   const moneyByUrl = new Map(moneyMap.pages.map((page) => [page.url, page.moneyScore]));
   const inbound = computeInboundCounts(software);
   const active = new Set<string>(ACTIVE_PARTNER_SLUGS);
-  const viable = new Set(AFFILIATE_PROGRAMS.filter((program) => program.programExists === "yes").map((program) => program.slug));
+  const viable = viableAffiliateProgramSlugs();
   const queryPages = new Map<string, SearchAnalyticsRow[]>();
   for (const row of rows) {
     const query = normalizeQuery(row.keys[0] ?? "");

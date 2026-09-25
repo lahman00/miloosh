@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { assessPublicationThreshold, experimentIsCoolingDown } from "@/lib/seo-factory/policy";
-import { clusterOpportunities, computeOpportunityScore, selectCanonicalWinner, suppressActiveExperimentRecommendations } from "@/lib/seo-factory/run";
+import { clusterOpportunities, computeOpportunityScore, selectCanonicalWinner, suppressActiveExperimentRecommendations, viableAffiliateProgramSlugs } from "@/lib/seo-factory/run";
 import type { ScoreComponent, SeoOpportunity } from "@/lib/seo-factory/types";
 
 function opportunity(overrides: Partial<SeoOpportunity> = {}): SeoOpportunity {
@@ -74,5 +74,20 @@ describe("SEO Factory scoring and safety policy", () => {
     expect(experimentIsCoolingDown("2026-08-01T00:00:00Z", 28, now)).toBe(true);
     expect(experimentIsCoolingDown("2026-07-01T00:00:00Z", 28, now)).toBe(false);
     expect(experimentIsCoolingDown("not-a-date", 28, now)).toBe(true);
+  });
+});
+
+describe("affiliate viability respects the current relationship", () => {
+  const viable = viableAffiliateProgramSlugs();
+
+  it("does not score rejected or ended relationships as viable", () => {
+    for (const slug of ["clickup", "help-scout", "brevo", "webflow", "bigcommerce", "coda"]) {
+      expect(viable.has(slug), slug).toBe(false);
+    }
+  });
+
+  it("keeps pending relationships viable without treating them as active", () => {
+    expect(viable.has("activecampaign")).toBe(true);
+    expect(viable.has("woocommerce")).toBe(true);
   });
 });
