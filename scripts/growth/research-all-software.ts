@@ -1,6 +1,8 @@
 import { getAllSoftware } from "@/data/software";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
+import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import type { AffiliateProgramRelationship, CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -14,16 +16,7 @@ export interface CompleteSoftwareAffiliateRecord {
   commission: string;
   applicationUrl: string | null;
   affiliateUrl: string | null;
-  status:
-    | "ACTIVE"
-    | "PENDING_REVIEW"
-    | "REJECTED"
-    | "READY_AND_VERIFIED"
-    | "BLOCKED_FORM_DEFECT"
-    | "OWNER_ACTION_REQUIRED"
-    | "NO_REAL_PROGRAM_FOUND"
-    | "EDITORIALLY_UNSUITABLE"
-    | "PROGRAM_NOT_VERIFIED";
+  status: CanonicalLedgerStatus | "EDITORIALLY_UNSUITABLE";
   evidenceSource: string;
   notes: string;
 }
@@ -33,43 +26,14 @@ export function researchAllCatalogSoftware(): CompleteSoftwareAffiliateRecord[] 
   const progMap = new Map(AFFILIATE_PROGRAMS.map(p => [p.slug, p]));
   const activeMap = new Map(ACTIVE_PARTNERS.map(p => [p.slug as string, p]));
 
-  // Active verified set
-  const activeSet = new Set([
-    "constant-contact", "todoist", "moosend", "volza", "pipedrive",
-    "getresponse", "airtable", "monday", "whatconverts", "elevenlabs",
-    "krispcall", "setmore", "hubstaff"
-  ]);
-
-  // Known pending set
-  const pendingSet = new Set([
-    "freshdesk", "freshsales", "freshbooks", "close", "clickup",
-    "help-scout", "amplitude", "toggl-track", "wrike", "zendesk"
-  ]);
-
-  // Known rejected set
-  const rejectedSet = new Set([
-    "webflow", "activecampaign", "kit", "brevo", "hubspot",
-    "n8n", "loom", "zapier", "canva"
-  ]);
-
-  // Known form blocked set
-  const formBlockedSet = new Set([
-    "xero", "trainual", "tidio"
-  ]);
-
-  // Owner action required map
-  const ownerBlockedMap: Record<string, string> = {
-    "semrush": "Impact.com dashboard login & W-8/W-9 tax submission required.",
-    "lastpass": "Impact.com dashboard login & W-8/W-9 tax submission required.",
-    "woocommerce": "Impact.com / Automattic publisher login required.",
-    "zoho-crm": "Direct vendor account creation with password required.",
-    "zoho-books": "Direct vendor account creation with password required.",
-    "zoho-projects": "Direct vendor account creation with password required.",
-    "zoho-desk": "Direct vendor account creation with password required.",
-    "gohighlevel": "Direct vendor account creation with password required.",
-    "quickbooks-online": "US-audience restriction; gives customer discount rather than affiliate payout.",
-    "miro": "PartnerStack Account #1 check found 0 results. Requires owner account verification."
-  };
+  // Relationship state comes from the operational ledger so vendor decisions
+  // cannot drift from a hard-coded snapshot. The sets below only classify
+  // catalog products that have no ledger relationship.
+  const ledgerBySlug = new Map<string, AffiliateProgramRelationship>(
+    CURRENT_AFFILIATE_LEDGER.flatMap((relationship) =>
+      relationship.productSlugs.map((slug) => [slug, relationship] as const),
+    ),
+  );
 
   // Editorial unsuitable
   const editorialUnsuitableSet = new Set([
@@ -155,42 +119,27 @@ export function researchAllCatalogSoftware(): CompleteSoftwareAffiliateRecord[] 
     let evidenceSource = "Direct official vendor research";
     let notes = prog?.notes ?? "";
 
-    if (activeSet.has(slug) && active?.affiliateUrl) {
+    const relationship = ledgerBySlug.get(slug);
+
+    if (relationship?.status === "ACTIVE" && active?.affiliateUrl) {
       status = "ACTIVE";
       programExists = "yes";
-      networkName = prog?.networkName ?? "PartnerStack";
-      commission = prog?.commissionModel ?? "Active Partner Terms";
+      networkName = relationship.network;
+      commission = prog?.commissionModel ?? relationship.commissionModel;
       affiliateUrl = active.affiliateUrl;
-      evidenceSource = "data/affiliate/active-partners.ts & live PartnerStack dashboard";
+      evidenceSource = "data/affiliate/active-partners.ts & data/affiliate/canonical-ledger.ts";
       notes = `Verified live active affiliate partner. URL: ${active.affiliateUrl}`;
-    } else if (pendingSet.has(slug)) {
-      status = "PENDING_REVIEW";
-      programExists = "yes";
-      networkName = prog?.networkName ?? "PartnerStack";
-      commission = prog?.commissionModel ?? "Submitted Offer Terms";
-      evidenceSource = "docs/affiliate-applications.md & PartnerStack application logs";
-      notes = "Application submitted and currently in vendor review. Do not re-apply.";
-    } else if (rejectedSet.has(slug)) {
-      status = "REJECTED";
-      programExists = "yes";
-      networkName = prog?.networkName ?? "PartnerStack / Direct";
-      commission = "N/A (Rejected)";
-      evidenceSource = "docs/affiliate-applications.md first-party vendor decline emails";
-      notes = "Vendor reviewed and declined application. Do not re-apply without new credentials.";
-    } else if (formBlockedSet.has(slug)) {
-      status = "BLOCKED_FORM_DEFECT";
-      programExists = "yes";
-      networkName = "PartnerStack";
-      commission = directInfo?.commission ?? prog?.commissionModel ?? "Disclosed Offer Terms";
-      evidenceSource = "docs/affiliate-applications.md PartnerStack form UI diagnosis";
-      notes = "Application truthfully filled out; blocked by PartnerStack UI coordinate/keyboard submit button failure.";
-    } else if (ownerBlockedMap[slug]) {
-      status = "OWNER_ACTION_REQUIRED";
-      programExists = "yes";
-      networkName = prog?.networkName ?? "Impact / Direct";
-      commission = prog?.commissionModel ?? "Disclosed Offer Terms";
-      evidenceSource = "docs/affiliate-applications.md & vendor registration terms";
-      notes = ownerBlockedMap[slug]!;
+    } else if (relationship) {
+      // Any non-ACTIVE ledger state (or ACTIVE without a registry URL) is
+      // reported as recorded; never upgraded by the research notes below.
+      status = relationship.status === "ACTIVE" ? "APPROVED_NEEDS_LINK" : relationship.status;
+      programExists = ["NO_REAL_PROGRAM_FOUND", "PROGRAM_ENDED"].includes(relationship.status) ? "no" : "yes";
+      networkName = relationship.network;
+      commission = relationship.commissionModel;
+      applicationUrl = relationship.applicationUrl;
+      affiliateUrl = null;
+      evidenceSource = `data/affiliate/current-affiliate-truth.ts programId ${relationship.programId}`;
+      notes = relationship.ownerBlocker ?? relationship.notes;
     } else if (editorialUnsuitableSet.has(slug)) {
       status = "EDITORIALLY_UNSUITABLE";
       programExists = "no";
@@ -206,12 +155,13 @@ export function researchAllCatalogSoftware(): CompleteSoftwareAffiliateRecord[] 
       evidenceSource = "Official vendor website 404 / FOSS repository";
       notes = "Free open-source software project or verified 404 on official /affiliates endpoint.";
     } else if (directInfo) {
-      status = "READY_AND_VERIFIED";
-      programExists = "yes";
+      // Unsourced hard-coded notes: useful leads, not verified program terms.
+      status = "PROGRAM_NOT_VERIFIED";
+      programExists = "unknown";
       networkName = directInfo.network;
       commission = directInfo.commission;
       applicationUrl = directInfo.appUrl;
-      evidenceSource = "Official vendor affiliate page";
+      evidenceSource = "Unsourced research note in scripts/growth/research-all-software.ts (2026-08-21); re-verify on the official page before use";
       notes = directInfo.notes;
     } else if (prog && prog.programExists === "yes" && prog.applicationUrl) {
       status = "READY_AND_VERIFIED";
