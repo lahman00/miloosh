@@ -50,7 +50,15 @@ export default function TermsPage() {
               All product names, logos, and brands referenced on this site — including but not
               limited to the tools and alternatives listed in our comparisons — are the
               trademarks of their respective owners. {SITE_NAME} is an independent site and is
-              not affiliated with, sponsored by, or endorsed by any of them. See our full{" "}
+              not affiliated with, sponsored by, or endorsed by any of them, except where a
+              commercial affiliate relationship is explicitly disclosed in our{" "}
+              <Link
+                href="/affiliate-disclosure"
+                className="text-white underline underline-offset-4"
+              >
+                Affiliate Disclosure
+              </Link>
+              . See our full{" "}
               <Link
                 href="/trademark-notice"
                 className="text-white underline underline-offset-4"

@@ -79,8 +79,13 @@ export default function AboutPage() {
               body: (
                 <p>
                   {SITE_NAME} is not affiliated with, sponsored by, or endorsed by any of the
-                  software vendors named on this site. Product names, logos, and brands mentioned
-                  here are the property of their respective owners.
+                  software vendors named on this site, except where a commercial affiliate
+                  relationship is explicitly disclosed — see our{" "}
+                  <Link href="/affiliate-disclosure" className="text-white underline underline-offset-4">
+                    Affiliate Disclosure
+                  </Link>
+                  . Product names, logos, and brands mentioned here are the property of their
+                  respective owners.
                 </p>
               ),
             },

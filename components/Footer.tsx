@@ -71,8 +71,12 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-zinc-400">
-            © {new Date().getFullYear()} {SITE_NAME} — independent comparisons, not affiliated
-            with the listed brands.
+            © {new Date().getFullYear()} {SITE_NAME} — independent comparisons. Some outbound
+            links are disclosed affiliate links; see our{" "}
+            <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-white">
+              Affiliate Disclosure
+            </Link>
+            .
           </p>
           <p className="text-xs text-zinc-400">
             v{SITE_VERSION} · {freshness.softwareCount} tools across {freshness.categoryCount}{" "}
