@@ -14,6 +14,10 @@ export type FirstRevenuePage = {
   ctaLabel: string;
   notFor: string;
   buyingCheck: string;
+  /** A proposed pre-switch buyer test, not a claim that Miloosh ran a migration. */
+  switchingCheck: string;
+  /** Existing published head-to-heads for measured "X vs Y" queries that the top-three alternatives table does not already cover. */
+  measuredComparisons?: string[];
   queries: FirstRevenueQuery[];
 };
 
@@ -29,8 +33,10 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     buyingCheck: "Rebuild one real workflow with linked records and a form. Count who genuinely needs edit access, then check the required record and automation limits before choosing a paid tier.",
     priority: 1,
     baseline: { impressions: 329, clicks: 1, position: 78.4 },
-    ctaLabel: "Check Airtable pricing",
+    ctaLabel: "Try Airtable free",
     notFor: "Skip it if you mainly need a lightweight task list or a docs-first workspace rather than structured relational data.",
+    switchingCheck: "Export one real view to CSV and import it into the option you are considering. Check how linked records, attachments, automations and interfaces come across before moving a team; plan to rebuild whatever does not transfer.",
+    measuredComparisons: ["coda-vs-airtable"],
     queries: [
       { query: "airtable alternatives", evidence: "measured-gsc" },
       { query: "airtable alternative", evidence: "measured-gsc" },
@@ -48,8 +54,9 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     buyingCheck: "Try your real task-capture and weekly-planning routine first. Pay for a specific limit or planning feature you need, not for a replacement company wiki or a complex project reporting system.",
     priority: 2,
     baseline: { impressions: 167, clicks: 0, position: 69.9 },
-    ctaLabel: "Check Todoist pricing",
+    ctaLabel: "Try Todoist free",
     notFor: "Skip it if your team needs a broader project system with deep reporting, built-in time tracking, or a company wiki.",
+    switchingCheck: "Move one real project with recurring tasks, labels and reminders first. Confirm due dates and recurrence survive the import before retiring your current app, and keep the old list read-only until a full week runs cleanly.",
     queries: [
       { query: "todoist alternative", evidence: "measured-gsc" },
       { query: "todoist alternatives", evidence: "measured-gsc" },
@@ -65,6 +72,7 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     baseline: { impressions: 93, clicks: 0, position: 68.3 },
     ctaLabel: "Try Close free",
     notFor: "Skip it if your sales workflow does not benefit from built-in calling, email and SMS, or if usage-based communications costs are a poor fit.",
+    switchingCheck: "Import a sample of leads, contacts and activity history into the trial. Check custom fields, email sequences and whether your existing phone numbers and call recordings can move before committing the whole sales team.",
     queries: [
       { query: "close alternatives", evidence: "measured-gsc" },
     ],
@@ -74,8 +82,9 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     buyingCheck: "Run through booking, rescheduling and reminders from a customer device. Compare Free with Pro using your actual staff-calendar count and your need for two-way sync or SMS.",
     priority: 4,
     baseline: { impressions: 80, clicks: 0, position: 70.0 },
-    ctaLabel: "Check Setmore pricing",
+    ctaLabel: "Try Setmore free",
     notFor: "Skip it if you need paid-plan features such as two-way calendar sync or SMS reminders but are committed to a free-only setup.",
+    switchingCheck: "List future bookings, services and staff calendars before switching. Decide how existing appointments move and when clients get the new booking link, so nobody books into a calendar you are about to retire.",
     queries: [
       { query: "setmore alternatives", evidence: "measured-gsc" },
       { query: "setmore alternative", evidence: "measured-gsc" },
@@ -88,8 +97,9 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     buyingCheck: "Test a representative script and budget for revisions. Separate commercial-use requirements and cloning needs from voice quality, and compare renewal pricing rather than the first-month offer.",
     priority: 5,
     baseline: { impressions: 67, clicks: 0, position: 73.2 },
-    ctaLabel: "Check ElevenLabs pricing",
+    ctaLabel: "Try ElevenLabs free",
     notFor: "Skip it if you need unrestricted commercial use on a free plan or predictable high-volume usage without credit limits.",
+    switchingCheck: "Keep original voice samples, scripts and exported audio outside the platform. If you switch later, plan to rebuild any cloned voice from those samples and re-test pronunciation before re-rendering a series.",
     queries: [
       { query: "elevenlabs alternatives", evidence: "measured-gsc" },
     ],

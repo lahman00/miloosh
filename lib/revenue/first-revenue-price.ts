@@ -16,6 +16,13 @@ export function firstRevenuePriceLine(software: Software): string | null {
   return p.status === "contact_sales" ? "Request a quote for your requirements." : null;
 }
 
+/** The catalog tier behind the entry price, whose sourced notes carry the monthly-billing rate and plan limits. */
+export function firstRevenueEntryTier(software: Software) {
+  const p = software.pricing;
+  if (p?.status !== "verified" || !p.entryPaid || p.entryPaid.amount === "0") return undefined;
+  return p.tiers?.find((tier) => tier.amount === p.entryPaid!.amount && tier.currency === p.entryPaid!.currency && tier.notes);
+}
+
 /** Compact but never hides the billing commitment in a sticky mobile CTA. */
 export function firstRevenueCompactPrice(software: Software): string | null {
   const p = software.pricing;

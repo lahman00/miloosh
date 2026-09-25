@@ -266,7 +266,9 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
 
         <StorePlanFit slug={software.slug} />
-        <PricingSection software={software} />
+        <div id="plans" className="scroll-mt-24">
+          <PricingSection software={software} />
+        </div>
 
         <Card className="mt-14">
           <div className="flex items-center gap-3">

@@ -2,24 +2,32 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
-import type { Software } from "@/data/software";
+import { getSoftware, type Software } from "@/data/software";
 import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getComparisonSlug, getComparisonsInvolving } from "@/data/comparisons";
 import { formatIsoDate } from "@/lib/date";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 
-import { firstRevenuePriceLine } from "@/lib/revenue/first-revenue-price";
+import { firstRevenueEntryTier, firstRevenuePriceLine } from "@/lib/revenue/first-revenue-price";
 
 export function FirstRevenueSoftwarePanel({ software }: { software: Software }) {
   const target = getFirstRevenuePage(software.slug);
   if (!target || !shouldShowAffiliateDisclosure(software)) return null;
 
   const price = firstRevenuePriceLine(software);
+  const entryTier = firstRevenueEntryTier(software);
   const watchouts = software.cons?.slice(0, 2) ?? [];
   const alternatives = software.alternatives.slice(0, 3);
   const comparisons = new Map(getComparisonsInvolving(software.slug).map(([a, b]) => [
     a === software.slug ? b : a, getComparisonSlug(a, b),
   ]));
+  const published = new Map(getComparisonsInvolving(software.slug).map(([a, b]) => [getComparisonSlug(a, b), [a, b]]));
+  const measuredComparisons = (target.measuredComparisons ?? []).flatMap((slug) => {
+    const pair = published.get(slug);
+    const [first, second] = pair?.map((item) => getSoftware(item)) ?? [];
+    const other = first?.slug === software.slug ? second : first;
+    return first && second && other && !alternatives.some((alternative) => alternative.slug === other.slug) ? [{ slug, label: `${first.name} vs ${second.name}` }] : [];
+  });
 
   return (
     <section id="buying-decision" className="scroll-mt-24">
@@ -51,12 +59,20 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
         <div id="buyer-price-check" className="mt-4 scroll-mt-24 rounded-xl border border-white/10 bg-black/10 p-4">
           <p className="text-sm font-semibold text-white">Price check</p>
           <p className="mt-2 text-sm leading-6 text-zinc-300">{price}</p>
+          {entryTier?.notes ? (
+            <p className="mt-2 text-sm leading-6 text-zinc-300">
+              <span className="font-medium text-white">{entryTier.name} plan terms on record:</span> {entryTier.notes}
+            </p>
+          ) : null}
           {software.pricing?.officialSource ? (
             <p className="mt-2 text-xs leading-5 text-zinc-400">
               <a href={software.pricing.officialSource} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Vendor pricing source</a>
               {" "}for billing terms, regional rates and applicable taxes. Introductory offers are not renewal prices.
               {software.pricing.lastVerified ? ` Catalog pricing checked ${formatIsoDate(software.pricing.lastVerified)}.` : ""}
             </p>
+          ) : null}
+          {software.pricing?.tiers?.length ? (
+            <a href="#plans" className="mt-2 inline-block py-2 text-sm text-emerald-300 underline underline-offset-4">All {software.name} plans and limits</a>
           ) : null}
         </div>
       ) : null}
@@ -69,6 +85,11 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
           </ul>
         </div>
       ) : null}
+
+      <div className="mt-4 rounded-xl border border-white/10 p-4">
+        <p className="text-sm font-semibold text-white">Switching check</p>
+        <p className="mt-2 text-sm leading-6 text-zinc-300">{target.switchingCheck}</p>
+      </div>
 
       {alternatives.length > 0 ? (
         <div id="buyer-alternatives" className="mt-4 scroll-mt-24">
@@ -91,6 +112,17 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
               })}
             </tbody>
           </table>
+          {measuredComparisons.length > 0 ? (
+            <p className="mt-3 text-sm leading-6 text-zinc-400">
+              Also compared head-to-head:{" "}
+              {measuredComparisons.map(({ slug, label }, index) => (
+                <span key={slug}>
+                  {index > 0 ? ", " : null}
+                  <Link href={`/compare/${slug}`} className="inline-block py-2 text-emerald-300 underline underline-offset-4">{label}</Link>
+                </span>
+              ))}
+            </p>
+          ) : null}
         </div>
       ) : null}
 
@@ -108,6 +140,7 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
           <ExternalLink className="h-4 w-4" />
         </TrackedCtaLink>
         <p className="mt-3 text-xs leading-5 text-zinc-500">
+          Opens {software.name}&apos;s site in a new tab; confirm the current plan and billing term there before paying.{" "}
           Affiliate link. Miloosh may earn a commission if you buy through this link. Editorial ranking and comparison criteria are independent of commissions.
         </p>
       </div>
