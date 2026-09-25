@@ -23,7 +23,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare" },
 };
 
-const explicitDiscoveryPriority = new Set<string>(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS);
+const explicitDiscoveryPriority = new Map<string, number>(
+  GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS.map((slug, index) => [slug, index])
+);
 
 export default function ComparePage() {
   const comparisons = PUBLISHED_COMPARISONS.map(([slugA, slugB], sourceIndex) => {
@@ -35,16 +37,21 @@ export default function ComparePage() {
       softwareA,
       softwareB,
       sourceIndex,
-      explicitDiscoveryPriority: explicitDiscoveryPriority.has(comparisonSlug),
+      explicitDiscoveryPriority: explicitDiscoveryPriority.get(comparisonSlug) ?? null,
       discoveryPriority: shouldPrioritizeComparisonDiscovery(comparisonSlug),
     };
   })
     .filter((item): item is NonNullable<typeof item> => item !== null)
     .sort(
-      (a, b) =>
-        Number(b.explicitDiscoveryPriority) - Number(a.explicitDiscoveryPriority) ||
-        Number(b.discoveryPriority) - Number(a.discoveryPriority) ||
-        a.sourceIndex - b.sourceIndex
+      (a, b) => {
+        const aRank = a.explicitDiscoveryPriority ?? Number.POSITIVE_INFINITY;
+        const bRank = b.explicitDiscoveryPriority ?? Number.POSITIVE_INFINITY;
+        return (
+          aRank - bRank ||
+          Number(b.discoveryPriority) - Number(a.discoveryPriority) ||
+          a.sourceIndex - b.sourceIndex
+        );
+      }
     );
 
   return (
