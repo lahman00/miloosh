@@ -4,6 +4,7 @@ import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { generateTitle, generateMetaDescription } from "@/lib/generators";
 import { generateComparisonTitle, generateComparisonMetaDescription } from "@/lib/comparison";
 import { LEGAL_PAGES } from "@/lib/legal";
@@ -244,7 +245,7 @@ function checkDuplicateComparisons(): MaintenanceIssue[] {
   return issues;
 }
 
-async function run() {
+export async function auditSeo() {
   const softwareTitles = getAllSoftware().map((s) => ({ label: `/software/${s.slug}`, value: generateTitle(s) }));
   const categoryTitles = getAllCategories().map((c) => ({ label: `/category/${c.slug}`, value: c.name }));
   const comparisonTitles = PUBLISHED_COMPARISONS.map(([a, b]) => {
@@ -293,7 +294,10 @@ async function run() {
     ...getAllSoftware().map((s) => `${SITE_URL}/software/${s.slug}`),
     ...getAllCategories().map((c) => `${SITE_URL}/category/${c.slug}`),
     ...getAllRoleGuides().map((g) => `${SITE_URL}/${g.slug}`),
-    ...PUBLISHED_COMPARISONS.map(([a, b]) => `${SITE_URL}/compare/${getComparisonSlug(a, b)}`),
+    // Indexable does not imply selected for sitemap submission. Honor the
+    // existing evidence-backed suppression policy, not a second URL policy.
+    ...PUBLISHED_COMPARISONS.map(([a, b]) => getComparisonSlug(a, b))
+      .filter(shouldSubmitComparisonToSitemap).map(slug => `${SITE_URL}/compare/${slug}`),
     ...LEGAL_PAGES.map((p) => `${SITE_URL}${p.href}`),
   ];
   for (const expected of expectedUrls) {
@@ -362,11 +366,11 @@ async function run() {
   ];
 
   return {
-    summary: `Checked ${softwareTitles.length + categoryTitles.length + comparisonTitles.length + legalTitles.length + staticTitles.length} page titles, ${softwareDescriptions.length + comparisonDescriptions.length} meta descriptions, ${sitemapEntries.length} sitemap entries, and internal reference integrity. Found ${issues.length} issue(s).`,
+    summary: `Checked ${softwareTitles.length + categoryTitles.length + comparisonTitles.length + roleGuideTitles.length + legalTitles.length + staticTitles.length} page titles, ${softwareDescriptions.length + comparisonDescriptions.length + roleGuideDescriptions.length} meta descriptions, ${sitemapEntries.length} sitemap entries, and internal reference integrity. Found ${issues.length} issue(s).`,
     issues,
     data: {
       pagesChecked:
-        softwareTitles.length + categoryTitles.length + comparisonTitles.length + legalTitles.length + staticTitles.length,
+        softwareTitles.length + categoryTitles.length + comparisonTitles.length + roleGuideTitles.length + legalTitles.length + staticTitles.length,
       sitemapEntryCount: sitemapEntries.length,
       checkedCategories: [
         "duplicate titles",
@@ -384,7 +388,7 @@ async function run() {
 }
 
 export async function executeSeoAgent() {
-  const report = await runAgent("seo", run, { escalateCriticalToFailure: true });
+  const report = await runAgent("seo", auditSeo, { escalateCriticalToFailure: true });
   writeReport(report);
   return report;
 }
@@ -393,6 +397,7 @@ async function main() {
   const report = await executeSeoAgent();
   console.log(`[seo] ${report.summary}`);
   console.log(`[seo] run status: ${report.run.status}`);
+  if (report.run.status === "failure") process.exitCode = 1;
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
