@@ -10,10 +10,9 @@
  * Privacy: only a referrer HOSTNAME is ever stored, never the full
  * referrer URL (which can carry a sensitive query string from the
  * referring page) — see the module header on PageViewEvent in
- * lib/analytics/events.ts. UTM values are capped and only three of the
- * standard five are captured (source/medium/campaign — no term/content,
- * which are more likely to carry incidental sensitive detail and aren't
- * needed for this bucket model).
+ * lib/analytics/events.ts. The acquisition boundary keeps bounded campaign
+ * labels (source/medium/campaign/content), not utm_term or full query strings.
+ * Campaign labels must never be populated with personal information.
  */
 
 export type TrafficSource = "organic_search" | "social" | "email" | "paid" | "referral" | "direct" | "unknown";

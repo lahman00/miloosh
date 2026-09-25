@@ -1,5 +1,14 @@
 # Revenue intelligence (Sprint 8) — architecture, not a live feature
 
+> Historical Sprint 8 design, **not current operational truth**. The “nothing
+> live” statement and catalog-field activation instructions below are obsolete.
+> Current relationship/link authority is `data/affiliate/active-partners.ts`
+> plus `data/affiliate/canonical-ledger.ts`, resolved through `lib/affiliate.ts`.
+> A catalog `affiliateUrl` alone cannot activate a relationship. Current funnel
+> semantics: [revenue measurement contract](revenue-measurement-contract.md).
+> Current five-page cohort: `data/revenue/first-revenue-cohort.ts`. Historical
+> scoring is not measured GSC demand, verified approval, or a second cohort.
+
 Sprint 8 asked for the research and scoring behind Miloosh's future
 revenue strategy, plus the architecture a real implementation would sit on.
 **Nothing here is live.** No tracking is enabled, no affiliate link is
