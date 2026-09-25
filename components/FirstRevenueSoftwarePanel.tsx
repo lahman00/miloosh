@@ -98,9 +98,9 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
       {alternatives.length > 0 ? (
         <div id="buyer-alternatives" className="mt-4 scroll-mt-24">
           <h3 className="text-sm font-semibold text-white">Which alternative fits your reason for switching?</h3>
-          <table className="mt-3 w-full table-fixed text-left text-sm leading-6 text-zinc-300">
+          <table className="mt-3 w-full table-auto sm:table-fixed text-left text-sm leading-6 text-zinc-300">
             <caption className="sr-only">Alternatives to {software.name}, matched to the buying requirement. Existing editorial order is unchanged.</caption>
-            <thead><tr className="border-b border-white/10"><th scope="col" className="w-1/3 py-3 pr-3 text-white">Option</th><th scope="col" className="py-3 text-white">When to compare</th></tr></thead>
+            <thead><tr className="border-b border-white/10"><th scope="col" className="sm:w-1/3 py-3 pr-3 text-white">Option</th><th scope="col" className="py-3 text-white">When to compare</th></tr></thead>
             <tbody>
               {alternatives.map((alternative) => {
                 const comparison = comparisons.get(alternative.slug);

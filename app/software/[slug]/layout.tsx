@@ -35,7 +35,7 @@ export default async function SoftwareMoneyLayout({
             <p className="hidden truncate text-sm font-semibold text-white sm:block">{software.name}: ready to decide?</p>
             <p className="text-xs leading-5 text-zinc-400">
               {price ? price : "Check current plans and terms on the vendor site."}
-              <span className="ml-2 text-[10px] text-zinc-400 sm:ml-0 sm:block">Affiliate link</span>
+              <span className="block text-xs text-zinc-400">Affiliate link</span>
             </p>
           </div>
           <TrackedCtaLink

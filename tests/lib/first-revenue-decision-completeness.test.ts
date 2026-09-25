@@ -74,6 +74,11 @@ describe("five money pages: buyer-decision completeness", () => {
     expect(layout).toContain('className="w-full sm:w-auto sm:shrink-0"');
     expect(layout).toContain("Affiliate link");
     expect(layout).not.toMatch(/truncate[^"]*">\s*\{price/);
+    // The disclosure must read as its own line at every width, in the same
+    // size as the price text beside it -- not a 10px fragment that only
+    // gets its own line at sm+ and otherwise reads as a trailing word.
+    expect(layout).not.toContain("text-[10px]");
+    expect(layout).toMatch(/<span className="block text-xs text-zinc-400">Affiliate link<\/span>/);
   });
 });
 
