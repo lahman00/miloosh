@@ -4,30 +4,33 @@ export type SerpMetadataOverride = {
 };
 
 const SOFTWARE_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
+  // First-revenue cohort: every measured decision query is alternatives-led
+  // (data/revenue/first-revenue-cohort.ts), and the H1 is "Best X alternatives".
+  // Named competitors must be ones the page actually compares.
   airtable: {
-    title: "Airtable Pricing & Alternatives (2026): Notion, Monday",
+    title: "Airtable Alternatives & Pricing (2026): Notion, Coda, Monday",
     description:
-      "Check Airtable pricing, buyer fit, drawbacks and alternatives, including Airtable vs Notion and Monday, using current vendor-sourced facts.",
+      "Compare Airtable alternatives and competitors, including Notion, Coda and Monday, with current pricing, record limits, buyer fit and switching checks.",
   },
   todoist: {
-    title: "Todoist Pricing & Alternatives (2026): TickTick, Microsoft To Do",
+    title: "Todoist Alternatives & Pricing (2026): TickTick, Any.do, Things",
     description:
-      "Check Todoist pricing, buyer fit, drawbacks and alternatives, including Todoist vs TickTick and Microsoft To Do, using current vendor-sourced facts.",
+      "Compare the best Todoist alternatives, including TickTick, Any.do and Things, with Todoist pricing, free-plan limits, buyer fit and switching checks.",
   },
   close: {
-    title: "Close CRM Pricing & Alternatives (2026): Pipedrive, HubSpot",
+    title: "Close CRM Alternatives & Pricing (2026): Pipedrive, HubSpot",
     description:
-      "Check Close CRM pricing, buyer fit, drawbacks and alternatives, including Close vs Pipedrive and HubSpot, using current vendor-sourced facts.",
+      "Compare Close CRM alternatives, including Pipedrive, HubSpot and Freshsales, with current Close pricing, plan limits, buyer fit and switching checks.",
   },
   setmore: {
-    title: "Setmore Pricing & Alternatives (2026): Calendly, Acuity",
+    title: "Setmore Alternatives & Pricing (2026): Acuity, Calendly",
     description:
-      "Check Setmore pricing, buyer fit, drawbacks and alternatives, including Setmore vs Calendly and Acuity Scheduling, using current vendor-sourced facts.",
+      "Compare Setmore alternatives, including Acuity Scheduling, Calendly and Doodle, with Setmore pricing, free-plan limits, buyer fit and switching checks.",
   },
   elevenlabs: {
-    title: "ElevenLabs Pricing & Alternatives (2026): Murf AI, Descript",
+    title: "ElevenLabs Alternatives & Pricing (2026): Murf AI, Descript",
     description:
-      "Check ElevenLabs pricing, buyer fit, drawbacks and alternatives, including ElevenLabs vs Murf AI and Descript, using current vendor-sourced facts.",
+      "Compare ElevenLabs alternatives, including Murf AI, Descript and Synthesia, with current ElevenLabs pricing, credit limits, buyer fit and switching checks.",
   },
   postmark: {
     title: "Best Postmark Alternatives (2026)",
