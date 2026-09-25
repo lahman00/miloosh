@@ -85,6 +85,25 @@ describe("POST /api/outbound-click — preserves explicit and unknown isTest sta
     expect(fpEvent?.sessionId).toBe("s_qa_click");
   });
 
+  /**
+   * First-Revenue War Room (2026-09-26): the legacy outbound-click sink used
+   * to drop visitorId/sessionId entirely, so a handoff recorded there could
+   * never be cross-referenced against a session a QA marker was discovered
+   * on later (see lib/revenue/first-revenue-funnel.ts's isQaSession). Both
+   * sinks must now carry the same identity for the same real click.
+   */
+  it("carries visitorId and sessionId into the legacy outbound sink too, not just first-party", async () => {
+    await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", ctaLocation: "software-page-cta", visitorId: "v_legacy_identity", sessionId: "s_legacy_identity", isTest: false });
+
+    const legacyEvent = (await getOutboundEvents()).find((e) => e.softwareSlug === "pipedrive");
+    expect(legacyEvent?.visitorId).toBe("v_legacy_identity");
+    expect(legacyEvent?.sessionId).toBe("s_legacy_identity");
+
+    const fpEvent = (await getAllFirstPartyEvents()).find((e) => e.type === "outbound_click" && "softwareSlug" in e && e.softwareSlug === "pipedrive");
+    expect(fpEvent?.visitorId).toBe("v_legacy_identity");
+    expect(fpEvent?.sessionId).toBe("s_legacy_identity");
+  });
+
   it("keeps a missing test marker unknown in both sinks", async () => {
     const res = await post({ slug: "pipedrive", kind: "cta", sourcePage: "/software/pipedrive", visitorId: "v_unknown_click", sessionId: "s_unknown_click" });
     expect(res.status).toBe(202);

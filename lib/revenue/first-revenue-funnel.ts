@@ -1,6 +1,15 @@
 import type { FirstPartyEvent, PageViewEvent } from "@/lib/analytics/events";
 import type { OutboundReadResult } from "@/lib/revenue/outbound-read";
 import { FIRST_REVENUE_CAPTURED_AT, type FirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
+import { isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
+
+// Same synthetic-ID-prefix convention scripts/analytics/report.ts's
+// isSyntheticOrTestEvent and lib/analytics/human-classification.ts's
+// classifySessions already check -- duplicated intentionally (lib/ doesn't
+// import from scripts/) so this funnel stays self-sufficient on a raw,
+// unfiltered event set rather than relying on its own narrower isTest-only
+// check, which missed synthetic-ID and legacy-contaminated sessions.
+const isSyntheticId = (id: string) => /^(v|s)_(test_|synthetic_|anon_test)/.test(id);
 
 export const PRIMARY_REVENUE_CTA = "money-page-decision-card";
 /** Always in the viewport, so its impressions track page views rather than decision-card exposure. */
@@ -22,8 +31,13 @@ export function summarizeFirstRevenuePage(
     return Number.isFinite(ms) && ms >= lo && ms <= hi;
   };
   const scoped = analytics?.filter((e) => e.path === path && inWindow(e.timestamp)) ?? null;
-  const qaSessions = new Set(analytics?.filter((e) => e.isTest === true).map((e) => e.sessionId));
-  const nonTest = scoped?.filter((e) => e.isTest === false && !qaSessions.has(e.sessionId)) ?? null;
+  const qaSessions = new Set(
+    analytics
+      ?.filter((e) => e.isTest === true || isSyntheticId(e.visitorId) || isSyntheticId(e.sessionId) || isLegacyContaminatedSession(e.sessionId))
+      .map((e) => e.sessionId),
+  );
+  const isQaSession = (sessionId: string) => qaSessions.has(sessionId) || isSyntheticId(sessionId) || isLegacyContaminatedSession(sessionId);
+  const nonTest = scoped?.filter((e) => e.isTest === false && !isQaSession(e.sessionId)) ?? null;
   const sameProduct = (e: FirstPartyEvent) => "softwareSlug" in e && e.softwareSlug === slug;
   const at = (location: string) => (e: FirstPartyEvent) => sameProduct(e) &&
     "ctaLocation" in e && e.ctaLocation === location;
@@ -31,7 +45,13 @@ export function summarizeFirstRevenuePage(
   const sticky = at(STICKY_REVENUE_CTA);
   const handoffs = outbound?.status === "COMPLETE" ? outbound.events.filter((e) =>
     e.sourcePage === path && e.softwareSlug === slug &&
-    e.type === "affiliate_link_click" && e.destination === "affiliate" && inWindow(e.timestamp),
+    e.type === "affiliate_link_click" && e.destination === "affiliate" && inWindow(e.timestamp) &&
+    // A handoff carrying the same session a QA marker was found on (even
+    // discovered later, or on a different page) is quarantined the same
+    // way first-party events already are. Older stored events with no
+    // sessionId at all (recorded before this field existed) can't be
+    // checked and keep their current, unretouched behavior.
+    !(e.sessionId && isQaSession(e.sessionId)),
   ) : null;
   const sourceRows = new Map<string, { source: string; medium: string; campaign: string; content: string; visits: number; ctaClicks: number; recordedHandoffs: number }>();
   // Attribution is captured only on the session's landing page. Search the
@@ -40,7 +60,7 @@ export function summarizeFirstRevenuePage(
   // A later QA marker contaminates the entire session, including earlier
   // unmarked events. These are recorded non-test events, not verified humans.
   const visits = analytics?.filter((e): e is PageViewEvent =>
-    e.type === "page_view" && e.isTest === false && !qaSessions.has(e.sessionId) &&
+    e.type === "page_view" && e.isTest === false && !isQaSession(e.sessionId) &&
     Number.isFinite(Date.parse(e.timestamp)),
   ).sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp)) ?? [];
   const stableId = (e: FirstPartyEvent) => !/^s_anon(?:_|$)/.test(e.sessionId) && !/^v_anon(?:_|$)/.test(e.visitorId);

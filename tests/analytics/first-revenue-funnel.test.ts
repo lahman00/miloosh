@@ -74,7 +74,30 @@ describe("canonical first-revenue funnel", () => {
     expect(r.sourceRows).toEqual([]);
     expect(r.pageViews).toBe(0);
     expect(r.ctaClicks).toBe(0);
-    // Legacy ledger has no session identity, so it cannot inherit this filter.
+    // This ledger fixture carries no sessionId at all (pre-fix shape), so it
+    // genuinely cannot inherit the filter -- there is nothing to match against.
     expect(r.merchantHandoffs).toBe(1);
+  });
+  it("quarantines a merchant handoff once it carries the same session a QA marker was found on", () => {
+    const r = summarizeFirstRevenuePage("airtable", [
+      event("page_view"), event("cta_click"),
+      event("page_view", { path: "/", timestamp: "2026-09-26T00:00:00Z", isTest: true }),
+    ], ledger({ sessionId: "s_customer", visitorId: "v_customer" }), until);
+    expect(r.merchantHandoffs).toBe(0);
+  });
+  it("does not quarantine a handoff whose own session was never marked QA", () => {
+    const r = summarizeFirstRevenuePage("airtable", [
+      event("page_view"), event("cta_click"),
+      event("page_view", { sessionId: "s_other", visitorId: "v_other", path: "/", timestamp: "2026-09-26T00:00:00Z", isTest: true }),
+    ], ledger({ sessionId: "s_customer", visitorId: "v_customer" }), until);
+    expect(r.merchantHandoffs).toBe(1);
+  });
+  it("excludes synthetic-ID-prefixed sessions and known legacy-contaminated sessions even without an explicit isTest marker", () => {
+    const r = summarizeFirstRevenuePage("airtable", [
+      event("page_view", { visitorId: "v_synthetic_bot", sessionId: "s_synthetic_bot", isTest: false }),
+      event("cta_click", { visitorId: "v_synthetic_bot", sessionId: "s_synthetic_bot", isTest: false }),
+    ], ledger(), until);
+    expect(r.pageViews).toBe(0);
+    expect(r.ctaClicks).toBe(0);
   });
 });

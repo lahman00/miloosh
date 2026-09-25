@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
   if (kind === "vendor-link") {
     const url = resolveVendorLinkUrl(software, resolvedCtaLocation);
     const vendorLinkCtaLocation = resolvedCtaLocation || "vendor-link";
-    await trackVendorLinkClick(software, url, sourcePage, vendorLinkCtaLocation, isTest);
+    await trackVendorLinkClick(software, url, sourcePage, vendorLinkCtaLocation, isTest, visitorId, sessionId);
 
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
     await recordFirstPartyEvent({
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
       resolvedCtaLocation === "money-page-decision-card" || resolvedCtaLocation === "money-page-sticky-cta" ||
       resolvedCtaLocation === "vendor-link-pricing";
     const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, pricingIntent ? "pricing" : undefined);
-    await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest);
+    await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest, visitorId, sessionId);
 
     const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
     const { shouldShowAffiliateDisclosure } = await import("@/lib/affiliate");

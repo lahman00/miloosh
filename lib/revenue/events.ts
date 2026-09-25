@@ -83,6 +83,21 @@ export type OutboundEvent = {
    * internal-only marker rather than an actual outbound navigation.
    */
   isTest?: boolean;
+  /**
+   * First-Revenue War Room (2026-09-26) — session-quarantine gap fix: this
+   * pipeline had no visitor/session identity at all, so a handoff couldn't
+   * be cross-referenced against a session a QA marker was only discovered
+   * on later (a real, already-documented failure mode — see
+   * lib/analytics/legacy-contaminated-sessions.ts). The same values
+   * TrackedCtaLink already sends and app/api/outbound-click/route.ts
+   * already validates for the first-party pipeline are now threaded
+   * through here too. Optional and absent on every event recorded before
+   * this field existed; those older stored events keep their current
+   * behavior (isTest-flag only, no retroactive quarantine) rather than
+   * being reinterpreted.
+   */
+  visitorId?: string;
+  sessionId?: string;
 };
 
 export type StoredOutboundEvent = OutboundEvent & {

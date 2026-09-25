@@ -20,7 +20,9 @@ function validEvent(value: unknown): value is StoredOutboundEvent {
     && typeof e.url === "string" && /^https?:\/\//.test(e.url)
     && typeof e.sourcePage === "string" && e.sourcePage.startsWith("/")
     && typeof e.timestamp === "string" && Number.isFinite(Date.parse(e.timestamp))
-    && (e.isTest === undefined || typeof e.isTest === "boolean");
+    && (e.isTest === undefined || typeof e.isTest === "boolean")
+    && (e.visitorId === undefined || typeof e.visitorId === "string")
+    && (e.sessionId === undefined || typeof e.sessionId === "string");
 }
 
 /** Read-only: preserve partial-read evidence; never turn a storage error into zero traffic. */
