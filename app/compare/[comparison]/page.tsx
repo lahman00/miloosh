@@ -36,6 +36,7 @@ import { formatIsoDate } from "@/lib/date";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
+import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
 
 type ComparePageProps = {
@@ -157,7 +158,10 @@ export default async function ComparePage({ params }: ComparePageProps) {
 
   const { softwareA, softwareB } = data;
   const searchIntentNote = getComparisonSearchIntentNote(comparison);
-  const guidedAlternatives = [softwareA, softwareB].filter((software) => getAlternativeGuide(software.slug));
+  // A reader deciding between the pair lands on the product's buyer decision
+  // (price, fit, switching check, alternatives), not the generic page top.
+  const decisionPages = [softwareA, softwareB].filter((software) => getFirstRevenuePage(software.slug));
+  const guidedAlternatives = [softwareA, softwareB].filter((software) => !getFirstRevenuePage(software.slug) && getAlternativeGuide(software.slug));
 
   const relatedComparisons = [
     ...getComparisonsInvolving(softwareA.slug),
@@ -335,8 +339,13 @@ export default async function ComparePage({ params }: ComparePageProps) {
           </Card>
         </section>
 
-        {guidedAlternatives.length > 0 ? (
+        {decisionPages.length + guidedAlternatives.length > 0 ? (
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-400">
+            {decisionPages.map((software) => (
+              <Link key={software.slug} href={`/software/${software.slug}#buying-decision`} className="underline underline-offset-4 hover:text-white">
+                {software.name} alternatives, pricing and fit
+              </Link>
+            ))}
             {guidedAlternatives.map((software) => (
               <Link key={software.slug} href={`/software/${software.slug}#alternative-decision-heading`} className="underline underline-offset-4 hover:text-white">
                 Explore the {software.name} alternatives decision guide
