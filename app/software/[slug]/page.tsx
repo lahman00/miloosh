@@ -54,7 +54,7 @@ import {
   getFaqJsonLd,
   getSoftwareApplicationJsonLd,
 } from "@/lib/structured-data";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 
 type SoftwarePageProps = {
@@ -86,6 +86,14 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
     description,
     alternates: { canonical: `/software/${slug}` },
     openGraph: {
+      title,
+      description,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
       title,
       description,
     },

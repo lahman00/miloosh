@@ -6,6 +6,7 @@ import { getSoftware } from "@/data/software";
 import { getComparisonsInvolving, getComparisonSlug } from "@/data/comparisons";
 import { FIRST_REVENUE_PAGES } from "@/data/revenue/first-revenue-cohort";
 import { getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
+import { SITE_NAME } from "@/lib/site";
 import { FirstRevenueSoftwarePanel } from "@/components/FirstRevenueSoftwarePanel";
 import { firstRevenueEntryTier } from "@/lib/revenue/first-revenue-price";
 
@@ -73,6 +74,18 @@ describe("five money pages: buyer-decision completeness", () => {
     expect(layout).toContain('className="w-full sm:w-auto sm:shrink-0"');
     expect(layout).toContain("Affiliate link");
     expect(layout).not.toMatch(/truncate[^"]*">\s*\{price/);
+  });
+});
+
+describe("five money pages: social metadata is not the sitewide fallback", () => {
+  it.each(FIRST_REVENUE_PAGES)("$slug's Twitter Card and Open Graph carry the page's own alternatives-led title, not the homepage's", async ({ slug }) => {
+    const { generateMetadata } = await import("@/app/software/[slug]/page");
+    const meta = await generateMetadata({ params: Promise.resolve({ slug }) });
+    const serpOverride = getSoftwareSerpOverride(slug)!;
+    expect(meta.twitter?.title).toBe(serpOverride.title);
+    expect(meta.twitter?.description).toBe(serpOverride.description);
+    expect(meta.openGraph?.title).toBe(serpOverride.title);
+    expect(meta.openGraph?.siteName).toBe(SITE_NAME);
   });
 });
 
