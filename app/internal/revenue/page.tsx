@@ -88,7 +88,7 @@ export default function RevenueDashboardPage() {
                 <Card key={`${signal.partnerSlug}-${signal.observedAt}`}>
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <h3 className="text-lg font-semibold text-white">{item?.name ?? signal.partnerSlug}</h3>
-                    <Badge>{signal.signal === "CLICK_MILESTONE" ? `${signal.clickFloor}+ clicks` : "New clicks"}</Badge>
+                    <Badge>{signal.signal === "CLICK_MILESTONE" ? `${signal.clickFloor}+ clicks` : signal.signal === "REFERRAL_SIGNUP_NOTIFICATION" ? "Signup notice (unpaid)" : "New clicks"}</Badge>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-zinc-400">{signal.summary}</p>
                   <p className="mt-2 text-xs leading-5 text-zinc-500">

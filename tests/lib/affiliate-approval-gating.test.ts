@@ -67,6 +67,15 @@ describe("affiliate approval gating (pending is never approval)", () => {
     }
   });
 
+  it("keeps the cloro signup notice a notification, not a sale or an active partner", () => {
+    const cloro = NETWORK_PERFORMANCE_SIGNALS.filter(({ partnerSlug }) => partnerSlug === "cloro");
+    expect(cloro).toHaveLength(1);
+    expect(cloro[0]?.signal).toBe("REFERRAL_SIGNUP_NOTIFICATION");
+    expect(cloro[0]?.summary).toMatch(/not evidence of a paid customer/);
+    expect(activeSlugs.has("cloro")).toBe(false);
+    expect(CURRENT_AFFILIATE_LEDGER.some((row) => row.productSlugs.includes("cloro") && row.status === "ACTIVE")).toBe(false);
+  });
+
   it("never lets a network signal claim a conversion or revenue", () => {
     for (const signal of NETWORK_PERFORMANCE_SIGNALS) {
       expect(signal.provesConversion).toBe(false);

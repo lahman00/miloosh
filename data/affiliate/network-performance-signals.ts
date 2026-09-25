@@ -3,7 +3,8 @@ export type NetworkPerformanceSignal = {
   observedAt: string;
   source: "first-party-email";
   network: string;
-  signal: "CLICK_MILESTONE" | "NEW_CLICKS";
+  /** REFERRAL_SIGNUP_NOTIFICATION: a vendor notice that a referred account signed up. Not a paid customer, commission or payout. */
+  signal: "CLICK_MILESTONE" | "NEW_CLICKS" | "REFERRAL_SIGNUP_NOTIFICATION";
   clickFloor: number | null;
   summary: string;
   provesConversion: false;
@@ -39,6 +40,19 @@ export const NETWORK_PERFORMANCE_SIGNALS: readonly NetworkPerformanceSignal[] = 
     signal: "NEW_CLICKS",
     clickFloor: null,
     summary: "WhatConverts reported new referral-link clicks; no exact count was provided.",
+    provesConversion: false,
+    provesRevenue: false,
+  },
+  {
+    // Recorded in docs/work-revenue-execution-2026-09-10.md; the email's own
+    // date is not in the repo. cloro has no catalog page or ledger record.
+    partnerSlug: "cloro",
+    observedAt: "2026-09-10",
+    source: "first-party-email",
+    network: "cloro (program/network not recorded in repo)",
+    signal: "REFERRAL_SIGNUP_NOTIFICATION",
+    clickFloor: null,
+    summary: "cloro notified Miloosh of one referred signup. This is not evidence of a paid customer, an approved commission or a payout, and does not identify a verified external human.",
     provesConversion: false,
     provesRevenue: false,
   },
