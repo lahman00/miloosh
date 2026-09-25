@@ -6,6 +6,8 @@ import { getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliat
 import { validEventId } from "@/lib/analytics/event-id";
 import { recordFirstPartyEvent } from "@/lib/analytics/events";
 import { analyticsPath, sanitizeAcquisition } from "@/lib/analytics/acquisition";
+import { KNOWN_CTA_LOCATIONS, normalizeCtaLocation } from "@/lib/analytics/cta-locations";
+import { isCrossOriginEvent, isNonProductionEvent, readEventBody } from "@/lib/analytics/ingest";
 import { trackSoftwareCtaClick, trackVendorLinkClick } from "@/lib/revenue/click-tracker";
 import { resolveOutboundSourcePage } from "@/lib/revenue/source-page";
 import { WIX_CONTEXTS, getWixAffiliateUrl, type WixFunnelContext } from "@/lib/wix-funnels";
@@ -54,33 +56,6 @@ function isWixContext(value: unknown): value is WixFunnelContext {
  * sentinel rather than stored verbatim -- unbounded arbitrary strings
  * must never become unbounded analytics cardinality.
  */
-const KNOWN_CTA_LOCATIONS = new Set([
-  "software-page-cta",
-  "buyer-checklist-cta",
-  "pricing-section-cta",
-  "alternative-decision-guide",
-  "compare-page-choose-card",
-  "role-guide-card-cta",
-  "role-guide-summary-table",
-  "money-page-decision-card",
-  "money-page-sticky-cta",
-  "pricing-source-link",
-  "vendor-link-pricing",
-  "vendor-link-free-trial",
-  "vendor-link-documentation",
-  "vendor-link-support",
-  "vendor-link-integrations",
-  "vendor-link-status-page",
-  "vendor-link-community",
-  "vendor-link-current-deals",
-  "vendor-link-enterprise-contact",
-  "vendor-link",
-]);
-
-function normalizeCtaLocation(value: string | undefined): string | undefined {
-  if (value === undefined) return undefined;
-  return KNOWN_CTA_LOCATIONS.has(value) ? value : "unknown-cta-location";
-}
 
 type SoftwareRecord = NonNullable<ReturnType<typeof getSoftware>>;
 
@@ -118,18 +93,13 @@ function resolveVendorLinkUrl(software: SoftwareRecord, ctaLocation?: string): s
 }
 
 export async function POST(request: NextRequest) {
+  if (isCrossOriginEvent(request)) return NextResponse.json({ error: "cross-origin event rejected" }, { status: 403 });
   if (classifyRequest(request.headers).kind !== "PASS") {
     return NextResponse.json({ ok: true, recorded: false }, { status: 202 });
   }
-  let body: OutboundClickBody;
-
-  try {
-    const raw = await request.text();
-    if (Buffer.byteLength(raw, "utf8") > 8192) return NextResponse.json({ error: "payload too large" }, { status: 413 });
-    body = JSON.parse(raw) as OutboundClickBody;
-  } catch {
-    return NextResponse.json({ error: "invalid JSON body" }, { status: 400 });
-  }
+  const input = await readEventBody(request);
+  if (!input.ok) return NextResponse.json({ error: input.reason }, { status: input.status });
+  const body = input.body as OutboundClickBody;
 
   if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ error: "invalid body" }, { status: 400 });
   const { slug, kind, ctaLocation, wixContext } = body;
@@ -156,7 +126,7 @@ export async function POST(request: NextRequest) {
   const visitorId = typeof body.visitorId === "string" && /^v_[a-zA-Z0-9_-]{1,62}$/.test(body.visitorId) ? body.visitorId : "v_anon";
   const sessionId = typeof body.sessionId === "string" && /^s_[a-zA-Z0-9_-]{1,62}$/.test(body.sessionId) ? body.sessionId : "s_anon";
   // Preserve unknown markers in both sinks, never manufacture explicit false.
-  const isTest = typeof body.isTest === "boolean" ? body.isTest : undefined;
+  const isTest = isNonProductionEvent(request) ? true : typeof body.isTest === "boolean" ? body.isTest : undefined;
   // Experiment labels are descriptive only and never branch destination logic.
   const experimentId = body.experimentId === CTA_COPY_EXPERIMENT_ID ? body.experimentId : undefined;
   const variant = body.variant === "control" || body.variant === "treatment" ? body.variant : undefined;

@@ -4,6 +4,9 @@ import { ECOMMERCE_SITUATIONS, type EcommerceSituation } from "@/lib/recommend/t
 import { recordFirstPartyEvent, type FirstPartyEvent, type FirstPartyEventType } from "@/lib/analytics/events";
 import { validEventId } from "@/lib/analytics/event-id";
 import { analyticsPath, sanitizeAcquisition } from "@/lib/analytics/acquisition";
+import { normalizeCtaLocation } from "@/lib/analytics/cta-locations";
+import { isCrossOriginEvent, isNonProductionEvent, readEventBody } from "@/lib/analytics/ingest";
+import { getSoftware } from "@/data/software";
 
 /**
  * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21).
@@ -28,7 +31,6 @@ import { analyticsPath, sanitizeAcquisition } from "@/lib/analytics/acquisition"
  * is where a real investigation should look (`vercel logs`).
  */
 
-const MAX_PAYLOAD_BYTES = 8192; // generous for this event shape; guards against abuse, not legitimate use
 const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
   "page_view", "engaged_view", "software_view", "comparison_view", "category_view", "guide_view",
   "recommend_use", "internal_cta_click", "recommend_started", "recommend_step_viewed", "recommend_need_selected",
@@ -38,24 +40,16 @@ const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
 ];
 
 export async function POST(request: NextRequest) {
+  if (isCrossOriginEvent(request)) return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "cross_origin" }, { status: 403 });
   const classification = classifyRequest(request.headers);
   if (classification.kind !== "PASS") {
     console.warn(`[analytics] ${classification.kind}: ${classification.reason}`);
     return NextResponse.json({ recorded: false, classification: classification.kind });
   }
 
-  const rawBody = await request.text();
-  if (Buffer.byteLength(rawBody, "utf8") > MAX_PAYLOAD_BYTES) {
-    console.warn(`[analytics] REJECTED_VALIDATION: payload too large (${rawBody.length} bytes)`);
-    return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION" }, { status: 413 });
-  }
-
-  let body: Partial<FirstPartyEvent>;
-  try {
-    body = JSON.parse(rawBody);
-  } catch {
-    return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "invalid_json" }, { status: 400 });
-  }
+  const input = await readEventBody(request);
+  if (!input.ok) return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: input.reason }, { status: input.status });
+  const body = input.body as Partial<FirstPartyEvent>;
 
   if (
     !body || typeof body !== "object" || Array.isArray(body) ||
@@ -63,7 +57,7 @@ export async function POST(request: NextRequest) {
     !VALID_EVENT_TYPES.includes(body.type as FirstPartyEventType) ||
     typeof body.visitorId !== "string" || !/^v_[a-zA-Z0-9_-]{1,62}$/.test(body.visitorId) ||
     typeof body.sessionId !== "string" || !/^s_[a-zA-Z0-9_-]{1,62}$/.test(body.sessionId) ||
-    typeof body.path !== "string" || !body.path.startsWith("/") || body.path.startsWith("//")
+    !analyticsPath(body.path)
   ) {
     return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "missing_or_invalid_fields" }, { status: 400 });
   }
@@ -85,7 +79,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const isTest = body.isTest === true;
+  const isTest = body.isTest === true || isNonProductionEvent(request);
   // Phase 5: qaRun is re-validated server-side, never trusted from the
   // client alone, and — same rule as the client enforces — can only ever
   // be present on an isTest:true event. A spoofed isTest:false + qaRun
@@ -97,6 +91,11 @@ export async function POST(request: NextRequest) {
   // headers, tokens, answers, etc.). Outbounds have a separate canonical resolver.
   const fields: Record<string, unknown> = {};
   const record = body as unknown as Record<string, unknown>;
+  if (["cta_impression", "cta_click", "software_view", "recommend_product_open"].includes(body.type)) {
+    if (typeof record.softwareSlug !== "string" || !getSoftware(record.softwareSlug)) {
+      return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "unknown_software" }, { status: 400 });
+    }
+  }
   if (body.type === "recommend_step_viewed") {
     const allowedSteps = ["what_you_need", "your_team", "budget_industry", "fine_tune"] as const;
     if (!allowedSteps.includes(record.source as (typeof allowedSteps)[number]) || !Number.isInteger(record.rank) || Number(record.rank) < 1 || Number(record.rank) > allowedSteps.length) {
@@ -109,7 +108,8 @@ export async function POST(request: NextRequest) {
     }
     fields.situation = record.situation;
   }
-  const labels = ["softwareSlug", "comparisonSlug", "categorySlug", "guideSlug", "domain", "confidence", "source", "queryOrCategory", "ctaName", "ctaLocation", "experimentId", "variant", "utmSource", "utmMedium", "utmCampaign", "utmContent", "trafficSource"];
+  const labels = ["softwareSlug", "comparisonSlug", "categorySlug", "guideSlug", "domain", "confidence", "source", "queryOrCategory", "ctaName", "experimentId", "variant", "utmSource", "utmMedium", "utmCampaign", "utmContent", "trafficSource"];
+  fields.ctaLocation = normalizeCtaLocation(typeof record.ctaLocation === "string" ? record.ctaLocation : undefined);
   for (const key of labels) {
     const value = record[key];
     if (typeof value === "string" && /^[a-zA-Z0-9_-]{1,100}$/.test(value)) fields[key] = value;
@@ -127,10 +127,10 @@ export async function POST(request: NextRequest) {
     previousPath: analyticsPath(body.previousPath),
     type: body.type,
     timestamp: new Date().toISOString(),
-    path: String(body.path).split(/[?#]/)[0].slice(0, 300),
+    path: analyticsPath(body.path)!,
     visitorId: String(body.visitorId).slice(0, 64),
     sessionId: String(body.sessionId).slice(0, 64),
-    isTest: typeof body.isTest === "boolean" ? body.isTest : undefined,
+    isTest: isTest ? true : typeof body.isTest === "boolean" ? body.isTest : undefined,
     qaRun,
   } as FirstPartyEvent;
 
