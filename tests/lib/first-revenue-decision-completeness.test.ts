@@ -40,6 +40,19 @@ describe("five money pages: buyer-decision completeness", () => {
     if (/free/i.test(ctaLabel)) expect(software.pricing?.freePlan || software.pricing?.freeTrial?.available).toBe(true);
   });
 
+  it("does not claim a Close cost mechanism the catalog never documents", () => {
+    const page = FIRST_REVENUE_PAGES.find((p) => p.slug === "close")!;
+    expect(page.notFor).not.toMatch(/usage-based/i);
+    const close = getSoftware("close")!;
+    // Every clause in notFor must trace to something the catalog actually
+    // documents (Close is billed per seat; automated workflows are
+    // Growth/Scale-only), not an invented pricing mechanism.
+    expect(close.pricing?.entryPaid?.perSeat).toBe(true);
+    expect(close.cons?.some((c) => /Growth or Scale/.test(c))).toBe(true);
+    expect(page.notFor).toMatch(/per-seat/i);
+    expect(page.notFor).toMatch(/Growth\/Scale/i);
+  });
+
   it("links measured head-to-heads only through existing published comparisons", () => {
     for (const page of FIRST_REVENUE_PAGES) {
       const published = getComparisonsInvolving(page.slug).map(([a, b]) => getComparisonSlug(a, b));

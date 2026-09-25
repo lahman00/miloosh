@@ -16,7 +16,11 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
 
   const price = firstRevenuePriceLine(software);
   const entryTier = firstRevenueEntryTier(software);
-  const watchouts = software.cons?.slice(0, 2) ?? [];
+  // No artificial cap: every cohort product has 2-3 sourced cons today, and
+  // truncating to the first 2 silently dropped a con that mattered exactly
+  // when it contradicted this panel's own "free" framing (e.g. ElevenLabs's
+  // 3rd con is that its free plan restricts commercial use).
+  const watchouts = software.cons ?? [];
   const alternatives = software.alternatives.slice(0, 3);
   const comparisons = new Map(getComparisonsInvolving(software.slug).map(([a, b]) => [
     a === software.slug ? b : a, getComparisonSlug(a, b),

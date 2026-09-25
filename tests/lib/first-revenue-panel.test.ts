@@ -40,6 +40,12 @@ describe("five money-page decision panels", () => {
       expect(getComparisonsInvolving(slug).map(([a, b]) => getComparisonSlug(a, b))).toContain(href[1]);
     }
   });
+  it("shows every sourced con, not just the first two, so a free-plan caveat is never silently dropped", () => {
+    const software = getSoftware("elevenlabs")!;
+    expect(software.cons).toHaveLength(3);
+    const html = renderToStaticMarkup(React.createElement(FirstRevenueSoftwarePanel, { software }));
+    for (const con of software.cons ?? []) expect(html).toContain(con.replaceAll("&", "&amp;"));
+  });
   it("does not add the money panel to unrelated products", () => {
     expect(renderToStaticMarkup(React.createElement(FirstRevenueSoftwarePanel, { software: getSoftware("notion")! }))).toBe("");
   });

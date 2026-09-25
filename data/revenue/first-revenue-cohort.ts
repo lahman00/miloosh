@@ -71,7 +71,7 @@ export const FIRST_REVENUE_PAGES: FirstRevenuePage[] = [
     priority: 3,
     baseline: { impressions: 93, clicks: 0, position: 68.3 },
     ctaLabel: "Start Close's free trial",
-    notFor: "Skip it if your sales workflow does not benefit from built-in calling, email and SMS, or if usage-based communications costs are a poor fit.",
+    notFor: "Skip it if your sales workflow does not benefit from built-in calling, email and SMS, or if per-seat pricing and the Growth/Scale-only gate on automated workflows don't fit your team's plan.",
     switchingCheck: "Import a sample of leads, contacts and activity history into the trial. Check custom fields, email sequences and whether your existing phone numbers and call recordings can move before committing the whole sales team.",
     queries: [
       { query: "close alternatives", evidence: "measured-gsc" },
