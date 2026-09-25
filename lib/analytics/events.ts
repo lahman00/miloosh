@@ -275,9 +275,13 @@ function readLocalFallback(): FirstPartyEvent[] {
   try {
     const contents = fs.readFileSync(LOCAL_FALLBACK_PATH, "utf-8");
     const parsed: unknown = JSON.parse(contents);
-    return Array.isArray(parsed) ? (parsed as FirstPartyEvent[]) : [];
-  } catch {
-    return [];
+    if (!Array.isArray(parsed)) throw new Error("Invalid local analytics store");
+    return parsed as FirstPartyEvent[];
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+    // Corruption/unreadable evidence is not a zero-event dataset. In particular,
+    // an append must not overwrite the only remaining copy with a fresh array.
+    throw new Error("Local analytics store unavailable", { cause: error });
   }
 }
 
@@ -304,8 +308,8 @@ export async function recordFirstPartyEvent(event: FirstPartyEvent): Promise<boo
     try {
       appendLocalFallback(event);
       return true;
-    } catch (error) {
-      console.error(`[analytics] local fallback write failed for event type "${event.type}":`, error);
+    } catch {
+      console.error(`[analytics] local fallback write failed for event type "${event.type}"`);
       return false;
     }
   }
@@ -329,14 +333,18 @@ export async function getAllFirstPartyEvents(): Promise<FirstPartyEvent[]> {
   }
 
   const { list, get } = await import("@vercel/blob");
-  const paths: string[] = [];
+  const listedPaths = new Set<string>();
+  const seenCursors = new Set<string>();
   let cursor: string | undefined;
   do {
     const page = await list({ prefix: BLOB_PREFIX, limit: 1000, cursor });
-    paths.push(...page.blobs.map((blob) => blob.pathname));
+    for (const blob of page.blobs) listedPaths.add(blob.pathname);
     cursor = page.hasMore ? page.cursor : undefined;
     if (page.hasMore && !cursor) throw new Error("Analytics listing is incomplete: missing continuation cursor.");
+    if (cursor && seenCursors.has(cursor)) throw new Error("Analytics listing is incomplete: repeated continuation cursor.");
+    if (cursor) seenCursors.add(cursor);
   } while (cursor);
+  const paths = [...listedPaths];
 
   const events: FirstPartyEvent[] = [];
   let next = 0;
@@ -352,7 +360,9 @@ export async function getAllFirstPartyEvents(): Promise<FirstPartyEvent[]> {
           const response = await get(pathname, { access: "private", useCache: false });
           if (!response) throw new Error("Analytics event unavailable");
           const event = JSON.parse(await new Response(response.stream).text()) as FirstPartyEvent;
-          if (!event.type || !event.timestamp || !event.sessionId) throw new Error("Invalid analytics event");
+          if (!event || typeof event.type !== "string" || typeof event.timestamp !== "string" ||
+              !Number.isFinite(Date.parse(event.timestamp)) || typeof event.sessionId !== "string" ||
+              typeof event.visitorId !== "string" || typeof event.path !== "string") throw new Error("Invalid analytics event");
           events.push(event);
           loaded = true;
         } catch {

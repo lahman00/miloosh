@@ -7,6 +7,23 @@ const response = (value: unknown) => ({ stream: new Response(JSON.stringify(valu
 beforeEach(() => { vi.stubEnv("BLOB_READ_WRITE_TOKEN", "test-token"); blob.list.mockReset(); blob.get.mockReset(); });
 afterEach(() => vi.unstubAllEnvs());
 describe("complete production analytics reads", () => {
+  it("counts each listed object once while preserving distinct objects with identical payloads", async () => {
+    blob.list.mockResolvedValueOnce({ blobs: [{ pathname: "one" }], hasMore: true, cursor: "next" })
+      .mockResolvedValueOnce({ blobs: [{ pathname: "one" }, { pathname: "two" }], hasMore: false });
+    blob.get.mockImplementation(async () => response(event("2026-09-10T00:00:00Z")));
+    expect(await getAllFirstPartyEvents()).toHaveLength(2);
+    expect(blob.get).toHaveBeenCalledTimes(2);
+  });
+  it("refuses a cycling continuation instead of hanging or returning partial evidence", async () => {
+    blob.list.mockResolvedValue({ blobs: [], hasMore: true, cursor: "loop" });
+    await expect(getAllFirstPartyEvents()).rejects.toThrow("repeated continuation cursor");
+    expect(blob.list).toHaveBeenCalledTimes(2);
+  });
+  it("refuses malformed timestamps rather than reporting a complete dataset", async () => {
+    blob.list.mockResolvedValue({ blobs: [{ pathname: "invalid" }], hasMore: false });
+    blob.get.mockImplementation(async () => response(event("not-a-date")));
+    await expect(getAllFirstPartyEvents()).rejects.toThrow("Analytics read incomplete");
+  });
   it("includes events after the first Blob page and sorts by event time", async () => {
     blob.list.mockResolvedValueOnce({ blobs: [{ pathname: "old" }], hasMore: true, cursor: "next-page" }).mockResolvedValueOnce({ blobs: [{ pathname: "new" }], hasMore: false });
     blob.get.mockImplementation(async (path: string) => response(event(path === "old" ? "2026-09-01T00:00:00Z" : "2026-09-10T00:00:00Z")));
