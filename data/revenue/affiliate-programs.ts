@@ -78,7 +78,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     commissionModel: "Tiered 20-30% recurring commission (starts at 20%, climbs based on new business and retention) for up to 12 months per referred customer; official page cites an average of $1,350 per referral",
     recurrence: "recurring",
     notes:
-      "REJECTED 2026-08-20: owner-provided first-party PartnerStack email, subject \"Updates to your ActiveCampaign Application\": \"After careful consideration, ActiveCampaign has declined your application.\" Do not reapply without new evidence. See the affiliate pipeline (slug: activecampaign) for full history.",
+      "First application REJECTED 2026-08-20: owner-provided first-party PartnerStack email, subject \"Updates to your ActiveCampaign Application\": \"After careful consideration, ActiveCampaign has declined your application.\" Updated 2026-09-26: a re-application was submitted and is PENDING vendor review (owner-verified; see data/affiliate/canonical-ledger.ts programId activecampaign). Pending is not approval: no affiliate link until a verified approval and exact issued tracking asset exist.",
     sourceUrls: ["https://activecampaign.com/partner/affiliate"],
     applicationUrl: "https://activecampaign.partnerstack.com/",
     payoutThreshold: "$100",
@@ -205,7 +205,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     commissionModel: null,
     recurrence: "unknown",
     notes:
-      "Low confidence: Canva's official Help Center affiliate pages returned 403 Forbidden on every direct fetch attempt (including 2026-08-14), so the network name and any commission figures still come from third-party sources, not a directly-verified Canva page. Multiple independent sources agree the only path is applying to Canva's 'Canvassador' program first, and at least one source described that program as currently closed to new applicants — unconfirmed directly, but real enough to exclude Canva from a ready-to-apply batch until the official page can actually be read.",
+      "RELATIONSHIP STATUS: recorded REJECTED 2026-08-19 in data/affiliate/canonical-ledger.ts; the cited first-party decline is not locatable in docs/affiliate-applications.md (evidence gap, 2026-09-26 audit). Treat as non-monetized until the owner confirms the relationship state. Low confidence: Canva's official Help Center affiliate pages returned 403 Forbidden on every direct fetch attempt (including 2026-08-14), so the network name and any commission figures still come from third-party sources, not a directly-verified Canva page. Multiple independent sources agree the only path is applying to Canva's 'Canvassador' program first, and at least one source described that program as currently closed to new applicants — unconfirmed directly, but real enough to exclude Canva from a ready-to-apply batch until the official page can actually be read.",
     sourceUrls: ["https://www.canva.com/help/canva-affiliate-marketing-program/"],
     applicationUrl: "https://www.canva.com/help/canva-affiliate-marketing-program/",
     confidence: "low",
@@ -508,7 +508,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
       "30% recurring commission per successful referral (up to $1,000+ per sale), tiered by monthly signup volume (Starter 0-29/mo = 30% recurring up to 1 year; Sprocket 30-99/mo; Elite 100+/mo = custom)",
     recurrence: "recurring",
     notes:
-      "Consumer/content-creator affiliate program managed via Impact.com, 180-day cookie window. Full commission tables live inside Impact's 'Affiliate Tool,' not the public page.",
+      "RELATIONSHIP STATUS: REJECTED 2026-08-19 (docs/affiliate-applications.md 'Known Rejected'; see data/affiliate/canonical-ledger.ts). Program-research notes below describe the public program only. Consumer/content-creator affiliate program managed via Impact.com, 180-day cookie window. Full commission tables live inside Impact's 'Affiliate Tool,' not the public page.",
     sourceUrls: [
       "https://www.hubspot.com/partners/affiliates",
       "https://www.hubspot.com/partners/affiliates/program-policies",
@@ -704,7 +704,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     countryRestrictions: null,
     commissionModel: "30% commission on all n8n Cloud referrals for 12 months, based on n8n's net earnings per subscription",
     recurrence: "recurring",
-    notes: "Monthly PayPal payouts, EUR 100 minimum payout; paid ad campaigns are explicitly prohibited for affiliates.",
+    notes: "RELATIONSHIP STATUS: REJECTED 2026-08-19 (docs/affiliate-applications.md 'Known Rejected'; see data/affiliate/canonical-ledger.ts). Program-research notes below describe the public program only. Monthly PayPal payouts, EUR 100 minimum payout; paid ad campaigns are explicitly prohibited for affiliates.",
     sourceUrls: ["https://n8n.io/affiliates/", "https://support.n8n.io/article/do-you-have-an-affiliates-program"],
     applicationUrl: "https://dash.partnerstack.com/application?company=n8n&group=affiliates2025",
     payoutThreshold: "€100",
@@ -1062,7 +1062,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     commissionModel: null,
     recurrence: "unknown",
     notes:
-      "Official 'Partner Program' covers Solution Partners (agencies — has an unspecified referral program, no published commission %) and Integration Partners (developer tier based on active users, no cash commission structure). No public 'sign up for a link' cash affiliate program was found on official pages.",
+      "RELATIONSHIP STATUS: recorded REJECTED 2026-08-19 in data/affiliate/canonical-ledger.ts; the cited first-party decline is not locatable in docs/affiliate-applications.md (evidence gap, 2026-09-26 audit). Treat as non-monetized until the owner confirms the relationship state. Official 'Partner Program' covers Solution Partners (agencies — has an unspecified referral program, no published commission %) and Integration Partners (developer tier based on active users, no cash commission structure). No public 'sign up for a link' cash affiliate program was found on official pages.",
     sourceUrls: [
       "https://zapier.com/l/partners",
       "https://zapier.com/blog/solution-partner-program/",
@@ -1355,7 +1355,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     countryRestrictions: null,
     commissionModel: null,
     recurrence: "unknown",
-    notes: "Found via automated discovery: brevo.com/affiliates (and /partners) return HTTP 200 with a PartnerStack signature and commission/cookie/payout language. Commission specifics not read.",
+    notes: "RELATIONSHIP STATUS: REJECTED 2026-08-19 (first-party Brevo PartnerStack message: application not approved; see data/affiliate/canonical-ledger.ts). Program-research notes below describe the public program only. Found via automated discovery: brevo.com/affiliates (and /partners) return HTTP 200 with a PartnerStack signature and commission/cookie/payout language. Commission specifics not read.",
     sourceUrls: ["https://www.brevo.com/affiliates", "https://www.brevo.com/partners"],
     applicationUrl: "https://www.brevo.com/affiliates",
     confidence: "medium",
@@ -1467,7 +1467,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     countryRestrictions: null,
     commissionModel: null,
     recurrence: "unknown",
-    notes: "Found via automated discovery: helpscout.com/referral returns HTTP 200 with a PartnerStack signature (no commission-language keywords matched beyond the network signature itself — confirm terms manually).",
+    notes: "RELATIONSHIP STATUS: REJECTED 2026-08-24 (first-party PartnerStack decline email; see data/affiliate/canonical-ledger.ts). Program-research notes below describe the public program only. Found via automated discovery: helpscout.com/referral returns HTTP 200 with a PartnerStack signature (no commission-language keywords matched beyond the network signature itself — confirm terms manually).",
     sourceUrls: ["https://www.helpscout.com/referral"],
     applicationUrl: "https://www.helpscout.com/referral",
     confidence: "low",
@@ -1647,7 +1647,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     countryRestrictions: null,
     commissionModel: "Official WooCommerce page: up to 30% commission on a user's first paid purchase and 10% for returning customers. Exact brand-specific terms are available for review only after signup.",
     recurrence: "unknown",
-    notes: "Direct first-party verification 2026-09-18: woocommerce.com/affiliates is the Automattic Affiliate Program entry point and its signup links route to Impact. The page explicitly targets bloggers/educators, influencers, developers and people with an established audience; Automattic verifies the account after signup. Public page states a 30-day conversion period and that payments are managed from the affiliate dashboard after payment information is configured, but it does not expose a payout threshold or the complete brand-specific terms before signup. Application/terms acceptance remains owner-gated; no application was submitted and WooCommerce remains a non-sponsored editorial option until an approved Miloosh tracking asset exists.",
+    notes: "Direct first-party verification 2026-09-18: woocommerce.com/affiliates is the Automattic Affiliate Program entry point and its signup links route to Impact. The page explicitly targets bloggers/educators, influencers, developers and people with an established audience; Automattic verifies the account after signup. Public page states a 30-day conversion period and that payments are managed from the affiliate dashboard after payment information is configured, but it does not expose a payout threshold or the complete brand-specific terms before signup. Updated 2026-09-26: the Automattic application is IN REVIEW (see data/affiliate/canonical-ledger.ts programId automattic); the earlier 'no application was submitted' state is superseded. WooCommerce remains a non-sponsored editorial option until verified approval and an approved Miloosh tracking asset exist.",
     sourceUrls: ["https://woocommerce.com/affiliates"],
     applicationUrl: "https://woocommerce.com/affiliates",
     cookieDuration: "30-day conversion period",

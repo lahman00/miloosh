@@ -453,6 +453,30 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     notes: "Covers both Freshdesk and Freshsales. Awaiting vendor decision."
   },
   {
+    programId: "automattic",
+    programName: "Automattic Affiliate Program (WooCommerce)",
+    network: "Impact.com",
+    productSlugs: ["woocommerce"],
+    status: "PENDING_REVIEW",
+    statusUpdatedAt: "2026-09-26",
+    // Exact submission date is not recorded in the repo.
+    applicationSubmittedAt: null,
+    decisionAt: null,
+    affiliateUrl: null,
+    commissionModel: "Official WooCommerce page: up to 30% on a user's first paid purchase, 10% for returning customers; brand-specific terms visible only after signup",
+    cookieWindow: "30-day conversion period",
+    evidence: [
+      "data/revenue/affiliate-programs.ts woocommerce entry: woocommerce.com/affiliates verified 2026-09-18 as the Automattic Affiliate Program entry point, routing to Impact",
+      "docs/growth/receipts/20260925-first-revenue/buyer-funnel-delta.md: 'Automattic remains IN REVIEW; no Automattic/WordPress/WooCommerce affiliate activation was added'",
+      "Owner-verified fact restated 2026-09-26: Automattic application is in review",
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Application submitted; Automattic account verification in review",
+    applicationUrl: "https://woocommerce.com/affiliates",
+    notes: "Carved out of impact-portfolio on 2026-09-26 because the application is now in review rather than awaiting owner action. WordPress is deliberately not mapped here: no repo evidence confirms which WordPress product the Automattic program would cover for Miloosh. No affiliate URL, active-partner entry or sponsored CTA until verified approval and an exact issued tracking asset."
+  },
+  {
     programId: "freshbooks",
     programName: "FreshBooks Affiliate Program",
     network: "PartnerStack",
@@ -700,19 +724,23 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "ActiveCampaign Affiliate Program",
     network: "PartnerStack",
     productSlugs: ["activecampaign"],
-    status: "REJECTED",
-    statusUpdatedAt: "2026-08-20",
-    applicationSubmittedAt: "2026-08-18",
-    decisionAt: "2026-08-20",
+    status: "PENDING_REVIEW",
+    statusUpdatedAt: "2026-09-26",
+    // Exact re-application timestamp is not recorded in the repo; see evidence.
+    applicationSubmittedAt: null,
+    decisionAt: null,
     affiliateUrl: null,
     commissionModel: "20-30% recurring (prior program claim)",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md first-party decline email: 'After careful consideration, ActiveCampaign has declined your application'"],
+    evidence: [
+      "Historical: first application submitted 2026-08-18; docs/affiliate-applications.md first-party decline email dated 2026-08-20: 'After careful consideration, ActiveCampaign has declined your application'",
+      "Owner-verified fact recorded 2026-09-26: a new ActiveCampaign re-application was submitted and is pending vendor review",
+    ],
     ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Declined by vendor",
+    eligibility: "Re-application submitted; awaiting vendor decision",
     applicationUrl: "https://activecampaign.partnerstack.com/",
-    notes: "Vendor declined. Do not re-apply."
+    notes: "The 2026-08-20 outcome applied to the first application only and is retained in evidence. The current re-application is undecided: no affiliate URL, no active-partner registry entry and no sponsored CTA until a verified approval and an exact issued tracking asset are on file."
   },
   {
     programId: "superhuman",
@@ -875,7 +903,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Impact.com Multi-Program Publisher Account",
     network: "Impact.com",
     productSlugs: [
-      "lastpass", "woocommerce",
+      "lastpass",
       "smartsheet", "mailchimp", "bigcommerce", "squarespace",
       "grammarly", "bitwarden", "nextiva", "craft", "keeper",
       "keeper-security", "ecwid", "moz"
@@ -892,7 +920,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     formBlocker: null,
     eligibility: "Requires owner tax & payment credentials",
     applicationUrl: "https://app.impact.com/",
-    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified. Sprout Social and RingCentral were removed 2026-08-28: re-audited and found to expose their own distinct affiliate routes (Sprout Social -> CJ, see the cj-portfolio program; RingCentral -> a direct affiliate contact, currently its own pending-clarification record) rather than being genuinely Impact-modeled -- do not re-add either without new evidence that Impact is in fact the correct network for them. Hootsuite was moved out 2026-08-31 to its own dedicated record after a direct fetch of hootsuite.com/affiliate-program produced specific, real program terms (exact commission, cookie window, and application URL) -- unlike Sprout Social/RingCentral, Impact.com is confirmed correct for Hootsuite; it simply now has strong enough standalone evidence to warrant its own record instead of this bucket's generic evidence -- see the hootsuite program."
+    notes: "Shopify and Wix were removed from this unresolved portfolio on 2026-08-24 after approval and exact tracking URLs were verified. Sprout Social and RingCentral were removed 2026-08-28: re-audited and found to expose their own distinct affiliate routes (Sprout Social -> CJ, see the cj-portfolio program; RingCentral -> a direct affiliate contact, currently its own pending-clarification record) rather than being genuinely Impact-modeled -- do not re-add either without new evidence that Impact is in fact the correct network for them. Hootsuite was moved out 2026-08-31 to its own dedicated record after a direct fetch of hootsuite.com/affiliate-program produced specific, real program terms (exact commission, cookie window, and application URL) -- unlike Sprout Social/RingCentral, Impact.com is confirmed correct for Hootsuite; it simply now has strong enough standalone evidence to warrant its own record instead of this bucket's generic evidence -- see the hootsuite program. WooCommerce was moved out 2026-09-26 to the dedicated automattic record because that application is in review, not awaiting owner action."
   },
   {
     programId: "cj-portfolio",
