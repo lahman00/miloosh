@@ -18,7 +18,9 @@ import { ShareButton } from "@/components/ShareButton";
 import { VendorLinksBlock } from "@/components/VendorLinksBlock";
 import { PricingSection } from "@/components/PricingSection";
 import { AlternativeDecisionGuide } from "@/components/AlternativeDecisionGuide";
+import { FirstRevenueDecisionPanel } from "@/components/FirstRevenueDecisionPanel";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
+import { getFirstRevenueEntry } from "@/data/revenue/first-revenue-cohort";
 import { CTA_COPY_EXPERIMENT_ID, getCtaCopyLabel } from "@/lib/experiments/cta-copy-experiment";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
@@ -100,6 +102,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
   const alternativeGuide = getAlternativeGuide(software.slug);
+  const firstRevenueEntry = getFirstRevenueEntry(software.slug);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -137,6 +140,10 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             <ShareButton title={`${software.name} alternatives — Miloosh`} url={`${SITE_URL}/software/${software.slug}`} />
           </div>
         </header>
+
+        {firstRevenueEntry ? (
+          <FirstRevenueDecisionPanel software={software} cohort={firstRevenueEntry} />
+        ) : null}
 
         <section className="mt-14 grid gap-6 lg:grid-cols-[2fr_1fr]">
           <Card>
