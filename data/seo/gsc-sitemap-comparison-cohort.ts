@@ -832,6 +832,11 @@ const GSC_SITEMAP_SUPPRESSED_SET = new Set<string>(GSC_SITEMAP_SUPPRESSED_COMPAR
  * WooCommerce and Ecwid decision paths in active discovery.
  */
 export const GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS = [
+  "wix-vs-shopify",
+  "monday-vs-airtable",
+  "constant-contact-vs-getresponse",
+  "mailerlite-vs-moosend",
+  "surveymonkey-vs-jotform",
   "ecwid-vs-shopify",
   "ecwid-vs-woocommerce",
   "shopify-vs-woocommerce",

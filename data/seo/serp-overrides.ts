@@ -67,6 +67,31 @@ const SOFTWARE_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
 };
 
 const COMPARISON_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
+  "wix-vs-shopify": {
+    title: "Wix vs Shopify (2026): Pricing, Drawbacks & Best Fit",
+    description:
+      "Compare Wix vs Shopify pricing, buyer fit, drawbacks, migration considerations and alternatives using current vendor-sourced facts.",
+  },
+  "monday-vs-airtable": {
+    title: "Monday vs Airtable (2026): Pricing, Limits & Best Fit",
+    description:
+      "Compare Monday vs Airtable pricing, seat and record limits, buyer fit, drawbacks and alternatives using current vendor-sourced facts.",
+  },
+  "constant-contact-vs-getresponse": {
+    title: "Constant Contact vs GetResponse (2026): Pricing & Fit",
+    description:
+      "Compare Constant Contact vs GetResponse pricing, automation depth, support, drawbacks and buyer fit using current vendor-sourced facts.",
+  },
+  "mailerlite-vs-moosend": {
+    title: "MailerLite vs Moosend (2026): Pricing, Automation & Fit",
+    description:
+      "Compare MailerLite vs Moosend pricing, free-plan tradeoffs, automation limits, drawbacks and buyer fit using current vendor-sourced facts.",
+  },
+  "surveymonkey-vs-jotform": {
+    title: "SurveyMonkey vs Jotform (2026): Pricing, Limits & Fit",
+    description:
+      "Compare SurveyMonkey vs Jotform pricing, survey and form limits, drawbacks, alternatives and buyer fit using current vendor-sourced facts.",
+  },
   "adobe-analytics-vs-segment": {
     title: "Adobe Analytics vs Twilio Segment (2026)",
     description:

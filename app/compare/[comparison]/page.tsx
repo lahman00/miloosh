@@ -14,6 +14,7 @@ import { SearchForm } from "@/components/SearchForm";
 import { WixShopifyBuyerChecks } from "@/components/WixShopifyBuyerChecks";
 import { ShopifyWooMigrationRecords } from "@/components/ShopifyWooMigrationRecords";
 import { EcwidWooStructureChoice } from "@/components/EcwidWooStructureChoice";
+import { DecisionMoneyPanel } from "@/components/DecisionMoneyPanel";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { ButtonLink } from "@/components/ButtonLink";
 import { getSoftware, type Software } from "@/data/software";
@@ -37,6 +38,7 @@ import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliat
 import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
+import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -157,6 +159,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
 
   const { softwareA, softwareB } = data;
   const searchIntentNote = getComparisonSearchIntentNote(comparison);
+  const decisionMoneyPage = getDecisionMoneyPage(comparison);
   const guidedAlternatives = [softwareA, softwareB].filter((software) => getAlternativeGuide(software.slug));
 
   const relatedComparisons = [
@@ -221,6 +224,10 @@ export default async function ComparePage({ params }: ComparePageProps) {
         <WixShopifyBuyerChecks comparison={comparison} />
         <ShopifyWooMigrationRecords comparison={comparison} />
         <EcwidWooStructureChoice comparison={comparison} />
+
+        {decisionMoneyPage ? (
+          <DecisionMoneyPanel config={decisionMoneyPage} softwareA={softwareA} softwareB={softwareB} />
+        ) : null}
 
         <section className="mt-14 grid gap-6 sm:grid-cols-2">
           <Card>

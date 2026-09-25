@@ -6,6 +6,7 @@ import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -61,9 +62,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ).map(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);
       const softwareB = softwareBySlug.get(slugB);
-      const dates = [softwareA, softwareB].filter((s): s is NonNullable<typeof s> => Boolean(s)).map((s) => toDate(s.accessedAt));
+      const comparisonSlug = getComparisonSlug(slugA, slugB);
+      const moneyPage = getDecisionMoneyPage(comparisonSlug);
+      const dates = [softwareA, softwareB]
+        .filter((s): s is NonNullable<typeof s> => Boolean(s))
+        .map((s) => toDate(s.accessedAt));
+      if (moneyPage) dates.push(toDate(moneyPage.updatedAt));
       return {
-        url: `${SITE_URL}/compare/${getComparisonSlug(slugA, slugB)}`,
+        url: `${SITE_URL}/compare/${comparisonSlug}`,
         ...(dates.length > 0 ? { lastModified: latestOf(dates) } : {}),
         changeFrequency: "monthly" as const,
         priority: 0.75,

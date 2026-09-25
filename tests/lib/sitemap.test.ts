@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
+import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import {
   GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
@@ -42,7 +43,11 @@ describe("sitemap lastModified coverage", () => {
       const entry = entries.find((e) => e.url.endsWith(`/compare/${slug}`));
       const a = softwareBySlug.get(slugA)!;
       const b = softwareBySlug.get(slugB)!;
-      const expected = [a.accessedAt, b.accessedAt].sort().at(-1);
+      const moneyPage = getDecisionMoneyPage(slug);
+      const expected = [a.accessedAt, b.accessedAt, moneyPage?.updatedAt]
+        .filter((date): date is string => Boolean(date))
+        .sort()
+        .at(-1);
       expect(entry?.lastModified, `${slug} missing from sitemap`).toBeTruthy();
       expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe(expected);
     }
@@ -52,13 +57,41 @@ describe("sitemap lastModified coverage", () => {
     const entries = sitemap();
     const comparisonUrls = entries.filter((e) => e.url.includes("/compare/")).map((e) => e.url);
     expect(GSC_SITEMAP_SUPPRESSED_COMPARISONS).toHaveLength(804);
-    expect(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS).toHaveLength(3);
-    expect(comparisonUrls).toHaveLength(PUBLISHED_COMPARISONS.length - 804 + 3);
+    expect(GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS).toHaveLength(8);
+    const suppressedPriorityOverrides = GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS.filter((slug) =>
+      GSC_SITEMAP_SUPPRESSED_COMPARISONS.includes(
+        slug as (typeof GSC_SITEMAP_SUPPRESSED_COMPARISONS)[number]
+      )
+    ).length;
+    expect(comparisonUrls).toHaveLength(
+      PUBLISHED_COMPARISONS.length - 804 + suppressedPriorityOverrides
+    );
     expect(comparisonUrls.some((url) => url.endsWith("/compare/notion-vs-confluence"))).toBe(false);
     expect(comparisonUrls.some((url) => url.endsWith("/compare/docker-vs-vercel"))).toBe(true);
     expect(comparisonUrls.some((url) => url.endsWith("/compare/ecwid-vs-shopify"))).toBe(true);
     expect(comparisonUrls.some((url) => url.endsWith("/compare/ecwid-vs-woocommerce"))).toBe(true);
     expect(comparisonUrls.some((url) => url.endsWith("/compare/shopify-vs-woocommerce"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/wix-vs-shopify"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/monday-vs-airtable"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/constant-contact-vs-getresponse"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/mailerlite-vs-moosend"))).toBe(true);
+    expect(comparisonUrls.some((url) => url.endsWith("/compare/surveymonkey-vs-jotform"))).toBe(true);
+  });
+
+  it("uses the real 2026-09-25 content-update date for the five focused money pages", () => {
+    const entries = sitemap();
+    const moneyPages = [
+      "wix-vs-shopify",
+      "monday-vs-airtable",
+      "constant-contact-vs-getresponse",
+      "mailerlite-vs-moosend",
+      "surveymonkey-vs-jotform",
+    ];
+    for (const slug of moneyPages) {
+      const entry = entries.find((e) => e.url.endsWith(`/compare/${slug}`));
+      expect(entry?.lastModified).toBeTruthy();
+      expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe("2026-09-25");
+    }
   });
 
   it("includes the public decision-guide hub so discovered guides have a crawlable internal-link path", () => {
