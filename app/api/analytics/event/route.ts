@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { ECOMMERCE_SITUATIONS, type EcommerceSituation } from "@/lib/recommend/types";
 import { recordFirstPartyEvent, type FirstPartyEvent, type FirstPartyEventType } from "@/lib/analytics/events";
+import { validEventId } from "@/lib/analytics/event-id";
 
 /**
  * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21).
@@ -66,6 +67,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "missing_or_invalid_fields" }, { status: 400 });
   }
 
+  if (body.eventId !== undefined && !validEventId(body.eventId)) {
+    return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "invalid_event_id" }, { status: 400 });
+  }
+
   // Defense-in-depth: the client now sends the real elapsed time (see
   // components/FirstPartyAnalytics.tsx), but a modified/replayed/scripted
   // client could still claim any value. An engaged_view genuinely cannot
@@ -116,6 +121,7 @@ export async function POST(request: NextRequest) {
   if (typeof record.targetPath === "string" && record.targetPath.startsWith("/") && !record.targetPath.startsWith("//")) fields.targetPath = record.targetPath.split(/[?#]/)[0].slice(0, 300);
   const sanitizedEvent: FirstPartyEvent = {
     ...fields,
+    ...(body.eventId ? { eventId: body.eventId } : {}),
     type: body.type,
     timestamp: new Date().toISOString(),
     path: String(body.path).split(/[?#]/)[0].slice(0, 300),

@@ -175,7 +175,7 @@ describe("trackSoftwareCtaClick — Wix funnel dimensions", () => {
     }
   });
 
-  it("a persistence failure (write throws) is swallowed — the request never sees it", async () => {
+  it("a persistence failure returns false without throwing into navigation", async () => {
     vi.spyOn(fs, "writeFileSync").mockImplementation(() => {
       throw new Error("simulated disk failure");
     });
@@ -183,7 +183,7 @@ describe("trackSoftwareCtaClick — Wix funnel dimensions", () => {
 
     await expect(
       trackSoftwareCtaClick(todoist, "https://get.todoist.io/dobo71f2y038", "/software/todoist", "software-page-cta")
-    ).resolves.toBeUndefined();
+    ).resolves.toBe(false);
   });
 });
 

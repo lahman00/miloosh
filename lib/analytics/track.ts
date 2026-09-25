@@ -1,6 +1,7 @@
 "use client";
 
 import { markAndCheckSyntheticQa, getSyntheticQaRun } from "@/lib/analytics/synthetic";
+import { createEventId, validEventId } from "@/lib/analytics/event-id";
 
 /**
  * Recommend Engine Integrity Patch (2026-08-21) — the shared client-side
@@ -73,6 +74,7 @@ export function trackEvent(data: Record<string, unknown>): void {
     const isTest = markAndCheckSyntheticQa();
     const body = JSON.stringify({
       ...data,
+      eventId: validEventId(data.eventId) ? data.eventId : createEventId(),
       visitorId: getOrCreateVisitorId(),
       sessionId: getOrCreateSessionId(),
       isTest,

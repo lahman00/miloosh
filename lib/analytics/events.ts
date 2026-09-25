@@ -3,6 +3,7 @@ import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import type { EcommerceSituation } from "@/lib/recommend/types";
+import { eventFingerprint, putAnalyticsEvent } from "@/lib/analytics/event-persistence";
 
 /**
  * First-party privacy-respecting analytics event definitions and storage.
@@ -38,6 +39,7 @@ export type FirstPartyEventType =
   | "newsletter_signup";
 
 export interface BaseAnalyticsEvent {
+  eventId?: string;
   type: FirstPartyEventType;
   visitorId: string;
   sessionId: string;
@@ -277,6 +279,8 @@ function readLocalFallback(): FirstPartyEvent[] {
 
 function appendLocalFallback(event: FirstPartyEvent): void {
   const events = readLocalFallback();
+  const fingerprint = eventFingerprint(event);
+  if (fingerprint && events.some(stored => eventFingerprint(stored) === fingerprint)) return;
   events.push(event);
   fs.mkdirSync(path.dirname(LOCAL_FALLBACK_PATH), { recursive: true });
   fs.writeFileSync(LOCAL_FALLBACK_PATH, JSON.stringify(events.slice(-MAX_STORED_EVENTS), null, 2));
@@ -303,17 +307,14 @@ export async function recordFirstPartyEvent(event: FirstPartyEvent): Promise<boo
   }
 
   try {
-    const { put } = await import("@vercel/blob");
     const datePrefix = event.timestamp.slice(0, 10); // YYYY-MM-DD
-    await put(`${BLOB_PREFIX}${datePrefix}/${randomUUID()}.json`, JSON.stringify(event), {
-      access: "private",
-      addRandomSuffix: false,
-      allowOverwrite: false,
-      contentType: "application/json",
-    });
-    return true;
-  } catch (error) {
-    console.error(`[analytics] Blob write failed for event type "${event.type}":`, error);
+    const fingerprint = eventFingerprint(event);
+    const pathname = fingerprint ? `${BLOB_PREFIX}id/${fingerprint}.json` : `${BLOB_PREFIX}${datePrefix}/${randomUUID()}.json`;
+    const stored = await putAnalyticsEvent(pathname, event);
+    if (!stored) console.error(`[analytics] Blob write unconfirmed for event type "${event.type}"`);
+    return stored;
+  } catch {
+    console.error(`[analytics] Blob write failed for event type "${event.type}"`);
     return false;
   }
 }

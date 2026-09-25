@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
 import { getStoredSessionId, getStoredVisitorId } from "@/lib/analytics/track";
+import { createEventId } from "@/lib/analytics/event-id";
 
 type TrackedVendorLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   slug: string;
@@ -33,6 +34,7 @@ export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, 
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            eventId: createEventId(),
             slug,
             kind: "vendor-link",
             sourcePage: pathname,

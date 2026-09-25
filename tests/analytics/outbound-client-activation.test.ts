@@ -31,7 +31,11 @@ describe.each([TrackedVendorLink, TrackedCtaLink])("native outbound activation: 
     if (button !== 2) {
       expect(JSON.parse(outboundCalls[0]![1]!.body as string).isTest).toBe(true);
       if (Component === TrackedCtaLink) {
-        expect(JSON.parse(analyticsCalls[0]![1]!.body as string).type).toBe("cta_click");
+        const click = JSON.parse(analyticsCalls[0]![1]!.body as string);
+        const handoff = JSON.parse(outboundCalls[0]![1]!.body as string);
+        expect(click.type).toBe("cta_click");
+        expect(click.eventId).toBe(handoff.eventId);
+        expect(click.eventId).toMatch(/^[a-zA-Z0-9_-]{16,64}$/);
       }
     }
   });

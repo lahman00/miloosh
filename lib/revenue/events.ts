@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
+import { eventFingerprint, putAnalyticsEvent } from "@/lib/analytics/event-persistence";
 
 /**
  * Sprint 8 Phase 4 (architecture) / Sprint 9 Task 6 (real sink) / Phase 11
@@ -51,6 +52,7 @@ import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 export type OutboundEventType = "official_site_click" | "affiliate_link_click" | "vendor_link_click";
 
 export type OutboundEvent = {
+  eventId?: string;
   type: OutboundEventType;
   /** The software entry this click relates to. */
   softwareSlug: string;
@@ -138,6 +140,8 @@ function readLocalFallback(): StoredOutboundEvent[] {
 
 function appendLocalFallback(event: StoredOutboundEvent): void {
   const events = readLocalFallback();
+  const fingerprint = eventFingerprint(event);
+  if (fingerprint && events.some(stored => eventFingerprint(stored) === fingerprint)) return;
   events.push(event);
   fs.mkdirSync(path.dirname(LOCAL_FALLBACK_PATH), { recursive: true });
   fs.writeFileSync(LOCAL_FALLBACK_PATH, JSON.stringify(events.slice(-MAX_STORED_EVENTS), null, 2));
@@ -157,7 +161,7 @@ function appendLocalFallback(event: StoredOutboundEvent): void {
  * affiliate-pipeline.ts's readAffiliatePipeline(), applied here to the
  * write side instead of the read side.
  */
-export async function recordOutboundEvent(event: OutboundEvent, sourcePage: string): Promise<void> {
+export async function recordOutboundEvent(event: OutboundEvent, sourcePage: string): Promise<boolean | undefined> {
   if (!isOutboundTrackingEnabled()) {
     return;
   }
@@ -171,27 +175,25 @@ export async function recordOutboundEvent(event: OutboundEvent, sourcePage: stri
   if (!hasBlobToken()) {
     try {
       appendLocalFallback(stored);
+      return true;
     } catch {
-      // Local dev/test filesystem hiccup — never crash the caller over it.
+      console.error("[outbound] local write failed");
+      return false;
     }
-    return;
   }
 
   try {
-    const { put } = await import("@vercel/blob");
-    await put(`${BLOB_PREFIX}${randomUUID()}.json`, JSON.stringify(stored), {
-      access: "private",
-      addRandomSuffix: false,
-      // A fresh random UUID should never collide with an existing object;
-      // refusing to overwrite is a cheap extra guard against silently
-      // clobbering a different event if it somehow did.
-      allowOverwrite: false,
-      contentType: "application/json",
-    });
+    const fingerprint = eventFingerprint(stored);
+    const pathname = fingerprint ? `${BLOB_PREFIX}id/${fingerprint}.json` : `${BLOB_PREFIX}${randomUUID()}.json`;
+    const confirmed = await putAnalyticsEvent(pathname, stored);
+    if (!confirmed) console.error("[outbound] Blob write unconfirmed");
+    return confirmed;
   } catch {
     // Store unreachable/misconfigured/transient error — this is
     // best-effort analytics, not a critical path. Never let it 500 the
     // route that's supposed to just be forwarding a click.
+    console.error("[outbound] Blob write failed");
+    return false;
   }
 }
 

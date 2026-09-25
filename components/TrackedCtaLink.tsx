@@ -9,6 +9,7 @@ import { markAndCheckSyntheticQa } from "@/lib/analytics/synthetic";
 import { getStoredSessionId, getStoredVisitorId, trackEvent } from "@/lib/analytics/track";
 import { assignCtaCopyVariant, type CtaCopyVariant } from "@/lib/experiments/cta-copy-experiment";
 import { observeCtaExposure } from "@/lib/analytics/cta-exposure";
+import { createEventId } from "@/lib/analytics/event-id";
 
 type TrackedCtaLinkProps = ComponentProps<typeof ButtonLink> & {
   /** The software slug this CTA points at — resolved server-side, never trusted from the client alone. */
@@ -112,7 +113,9 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
 
   const reportOutboundClick = () => {
     try {
+    const eventId = createEventId();
     trackEvent({
+      eventId,
       type: "cta_click",
       path: pathname,
       softwareSlug: slug,
@@ -126,7 +129,7 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        slug, kind: "cta", sourcePage: pathname, ctaLocation, wixContext, visitorId, sessionId, isTest,
+        eventId, slug, kind: "cta", sourcePage: pathname, ctaLocation, wixContext, visitorId, sessionId, isTest,
         ...(experimentId ? { experimentId, variant } : {}),
       }),
       keepalive: true,

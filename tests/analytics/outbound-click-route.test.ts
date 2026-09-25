@@ -60,6 +60,21 @@ function post(body: unknown): Promise<Response> {
 }
 
 describe("POST /api/outbound-click — preserves explicit and unknown isTest states", () => {
+  it("exact concurrent replay writes once in each sink; a separate activation writes again", async () => {
+    const body = { slug: "todoist", kind: "cta", visitorId: "v_replay", sessionId: "s_replay", isTest: true, eventId: "click-activation-12345", ctaLocation: "money-page-decision-card" };
+    await Promise.all([post(body), post(body), post(body)]);
+    expect(await getOutboundEvents()).toHaveLength(1);
+    expect(await getAllFirstPartyEvents()).toHaveLength(1);
+    await post({ ...body, eventId: "separate-activation-56789" });
+    expect(await getOutboundEvents()).toHaveLength(2);
+    expect(await getAllFirstPartyEvents()).toHaveLength(2);
+  });
+  it("rejects unknown click kinds and malformed replay IDs before either write", async () => {
+    expect((await post({ slug: "todoist", kind: "invented" })).status).toBe(400);
+    expect((await post({ slug: "todoist", kind: "cta", eventId: "../unsafe" })).status).toBe(400);
+    expect(await getOutboundEvents()).toHaveLength(0);
+    expect(await getAllFirstPartyEvents()).toHaveLength(0);
+  });
   it.each(["money-page-decision-card", "money-page-sticky-cta", "vendor-link-pricing"])("%s records the same verified pricing-intent destination the link renders", async (ctaLocation) => {
     // Jotform has distinct verified homepage/pricing assets; the five current
     // money pages fall back to their issued general assets, never invented URLs.

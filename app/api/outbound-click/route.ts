@@ -2,7 +2,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { CTA_COPY_EXPERIMENT_ID } from "@/lib/experiments/cta-copy-experiment";
 import { getSoftware } from "@/data/software";
-import { getSoftwareCtaUrl } from "@/lib/affiliate";
+import { getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { validEventId } from "@/lib/analytics/event-id";
+import { recordFirstPartyEvent } from "@/lib/analytics/events";
 import { trackSoftwareCtaClick, trackVendorLinkClick } from "@/lib/revenue/click-tracker";
 import { resolveOutboundSourcePage } from "@/lib/revenue/source-page";
 import { WIX_CONTEXTS, getWixAffiliateUrl, type WixFunnelContext } from "@/lib/wix-funnels";
@@ -18,6 +20,7 @@ import { WIX_CONTEXTS, getWixAffiliateUrl, type WixFunnelContext } from "@/lib/w
  */
 
 type OutboundClickBody = {
+  eventId?: unknown;
   slug?: unknown;
   kind?: unknown;
   sourcePage?: unknown;
@@ -128,6 +131,14 @@ export async function POST(request: NextRequest) {
   if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ error: "invalid body" }, { status: 400 });
   const { slug, kind, ctaLocation, wixContext } = body;
 
+  if (kind !== undefined && kind !== "cta" && kind !== "vendor-link") {
+    return NextResponse.json({ error: "unknown click kind" }, { status: 400 });
+  }
+  if (body.eventId !== undefined && !validEventId(body.eventId)) {
+    return NextResponse.json({ error: "invalid event id" }, { status: 400 });
+  }
+  const eventId = validEventId(body.eventId) ? body.eventId : undefined;
+
   if (typeof slug !== "string") {
     return NextResponse.json({ error: "slug is required" }, { status: 400 });
   }
@@ -143,58 +154,45 @@ export async function POST(request: NextRequest) {
   const sessionId = typeof body.sessionId === "string" && /^s_[a-zA-Z0-9_-]{1,62}$/.test(body.sessionId) ? body.sessionId : "s_anon";
   // Preserve unknown markers in both sinks, never manufacture explicit false.
   const isTest = typeof body.isTest === "boolean" ? body.isTest : undefined;
-  const firstPartyIsTest = typeof body.isTest === "boolean" ? body.isTest : undefined;
   // Experiment labels are descriptive only and never branch destination logic.
   const experimentId = body.experimentId === CTA_COPY_EXPERIMENT_ID ? body.experimentId : undefined;
   const variant = body.variant === "control" || body.variant === "treatment" ? body.variant : undefined;
   const experimentFields = experimentId && variant ? { experimentId, variant } : {};
 
-  if (kind === "vendor-link") {
-    const url = resolveVendorLinkUrl(software, resolvedCtaLocation);
-    const vendorLinkCtaLocation = resolvedCtaLocation || "vendor-link";
-    await trackVendorLinkClick(software, url, sourcePage, vendorLinkCtaLocation, isTest, visitorId, sessionId);
+  const vendor = kind === "vendor-link";
+  const location = vendor ? resolvedCtaLocation || "vendor-link" : resolvedCtaLocation;
+  const pricingIntent = location === "pricing-section-cta" || location === "money-page-decision-card" ||
+    location === "money-page-sticky-cta" || location === "vendor-link-pricing";
+  const url = vendor ? resolveVendorLinkUrl(software, location) :
+    slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, pricingIntent ? "pricing" : undefined);
 
-    const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
-    await recordFirstPartyEvent({
+  // Independent sinks start together. A rejected/slow legacy write must not
+  // prevent the identity-bearing event from being attempted (or vice versa).
+  // 202 means the tracking request was handled, NOT that a merchant loaded.
+  const results = await Promise.allSettled([
+    vendor ? trackVendorLinkClick(software, url, sourcePage, location, isTest, eventId) :
+      trackSoftwareCtaClick(software, url, sourcePage, location, isTest, eventId),
+    recordFirstPartyEvent({
+      eventId,
       type: "outbound_click",
       softwareSlug: software.slug,
-      destination: "official",
+      destination: !vendor && shouldShowAffiliateDisclosure(software) ? "affiliate" : "official",
       url,
-      ctaLocation: vendorLinkCtaLocation,
+      ctaLocation: location,
       path: sourcePage,
       visitorId,
       sessionId,
       timestamp: new Date().toISOString(),
-      isTest: firstPartyIsTest,
+      isTest,
       ...experimentFields,
-    });
-  } else {
-    const pricingIntent = resolvedCtaLocation === "pricing-section-cta" ||
-      resolvedCtaLocation === "money-page-decision-card" || resolvedCtaLocation === "money-page-sticky-cta" ||
-      resolvedCtaLocation === "vendor-link-pricing";
-    const url = slug === "wix" && isWixContext(wixContext) ? getWixAffiliateUrl(wixContext) : getSoftwareCtaUrl(software, pricingIntent ? "pricing" : undefined);
-    await trackSoftwareCtaClick(software, url, sourcePage, resolvedCtaLocation, isTest, visitorId, sessionId);
+    }),
+  ]);
+  const state = (result: PromiseSettledResult<boolean | undefined>) =>
+    result.status === "rejected" || result.value === false ? "FAILED" :
+      result.value === true ? "RECORDED" : "DISABLED";
+  const sinks = { legacy: state(results[0]), firstParty: state(results[1]) };
 
-    const { recordFirstPartyEvent } = await import("@/lib/analytics/events");
-    const { shouldShowAffiliateDisclosure } = await import("@/lib/affiliate");
-    const isAffiliate = shouldShowAffiliateDisclosure(software);
-
-    await recordFirstPartyEvent({
-      type: "outbound_click",
-      softwareSlug: software.slug,
-      destination: isAffiliate ? "affiliate" : "official",
-      url,
-      ctaLocation: resolvedCtaLocation,
-      path: sourcePage,
-      visitorId,
-      sessionId,
-      timestamp: new Date().toISOString(),
-      isTest: firstPartyIsTest,
-      ...experimentFields,
-    });
-  }
-
-  return NextResponse.json({ ok: true }, { status: 202 });
+  return NextResponse.json({ ok: true, recorded: sinks.firstParty === "RECORDED", sinks }, { status: 202 });
 }
 
 export const __test__ = { resolveVendorLinkUrl, normalizeCtaLocation, KNOWN_CTA_LOCATIONS };
