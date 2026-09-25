@@ -57,6 +57,7 @@ const KNOWN_CTA_LOCATIONS = new Set([
   "role-guide-card-cta",
   "role-guide-summary-table",
   "money-page-decision-card",
+  "money-page-sticky-cta",
   "pricing-source-link",
   "vendor-link-pricing",
   "vendor-link-free-trial",

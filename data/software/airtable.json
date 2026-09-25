@@ -23,7 +23,8 @@
   "sources": [
     "https://airtable.com",
     "https://www.airtable.com/product",
-    "https://www.airtable.com/downloads"
+    "https://www.airtable.com/downloads",
+    "https://www.airtable.com/pricing"
   ],
   "accessed_at": "2026-07-31",
   "pricing": {
@@ -32,13 +33,44 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true },
-    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "20",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "1,000 records per base, up to 5 editors, 1 GB of attachments per base, 100 automation runs." },
-      { "name": "Team", "amount": "20", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually. 50,000 records per base, 20 GB attachments per base, 25,000 automation runs." },
-      { "name": "Business", "amount": "45", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually. 125,000 records per base, 100 GB attachments, SAML SSO, admin panel." },
-      { "name": "Enterprise Scale", "notes": "Contact sales. 500,000 records per base, 1,000 GB attachments, enterprise API, audit logs." }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "1,000 records per base, up to 5 editors, 1 GB of attachments per base, 100 automation runs."
+      },
+      {
+        "name": "Team",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per seat/month, billed annually. 50,000 records per base, 20 GB attachments per base, 25,000 automation runs.",
+        "unit": "seat"
+      },
+      {
+        "name": "Business",
+        "amount": "45",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per seat/month, billed annually. 125,000 records per base, 100 GB attachments, SAML SSO, admin panel.",
+        "unit": "seat"
+      },
+      {
+        "name": "Enterprise Scale",
+        "notes": "Contact sales. 500,000 records per base, 1,000 GB attachments, enterprise API, audit logs."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-23",

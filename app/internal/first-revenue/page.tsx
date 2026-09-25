@@ -6,6 +6,7 @@ import {
 } from "@/data/revenue/first-revenue-cohort";
 import { getAllFirstPartyEvents } from "@/lib/analytics/events";
 import { readOutboundEventsDetailed } from "@/lib/revenue/outbound-read";
+import { summarizeFirstRevenuePage } from "@/lib/revenue/first-revenue-funnel";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -14,54 +15,17 @@ export const metadata: Metadata = {
 };
 
 export default async function FirstRevenueFunnelPage() {
-  const evidence = await Promise.all([
+  const evidence = await Promise.allSettled([
     getAllFirstPartyEvents(),
     readOutboundEventsDetailed(),
-  ]).catch(() => null);
-
-  const analytics = evidence?.[0] ?? null;
-  const outboundRead = evidence?.[1] ?? null;
+  ]);
+  const analytics = evidence[0].status === "fulfilled" ? evidence[0].value : null;
+  const outboundRead = evidence[1].status === "fulfilled" ? evidence[1].value : null;
   const handoffComplete = outboundRead?.status === "COMPLETE";
-  const since = FIRST_REVENUE_CAPTURED_AT;
-
-  const rows = FIRST_REVENUE_PAGES.map((page) => {
-    const path = `/software/${page.slug}`;
-    const eligibleAnalytics = analytics?.filter(
-      (event) => event.isTest !== true && event.timestamp >= since,
-    ) ?? [];
-
-    const pageViews = eligibleAnalytics.filter(
-      (event) => event.type === "page_view" && event.path === path,
-    ).length;
-    const ctaImpressions = eligibleAnalytics.filter(
-      (event) => event.type === "cta_impression" && event.softwareSlug === page.slug,
-    ).length;
-    const ctaClicks = eligibleAnalytics.filter(
-      (event) => event.type === "cta_click" && event.softwareSlug === page.slug,
-    ).length;
-
-    const merchantHandoffs = handoffComplete
-      ? outboundRead.events.filter(
-          (event) =>
-            event.timestamp >= since &&
-            event.isTest === false &&
-            event.softwareSlug === page.slug &&
-            event.type === "affiliate_link_click",
-        ).length
-      : null;
-
-    const unclassifiedHandoffs = handoffComplete
-      ? outboundRead.events.filter(
-          (event) =>
-            event.timestamp >= since &&
-            event.isTest === undefined &&
-            event.softwareSlug === page.slug &&
-            event.type === "affiliate_link_click",
-        ).length
-      : null;
-
-    return { page, pageViews, ctaImpressions, ctaClicks, merchantHandoffs, unclassifiedHandoffs };
-  });
+  const until = new Date().toISOString();
+  const rows = FIRST_REVENUE_PAGES.map((page) => ({
+    page, ...summarizeFirstRevenuePage(page.slug, analytics, outboundRead, until),
+  }));
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-10 text-zinc-100">
@@ -74,13 +38,14 @@ export default async function FirstRevenueFunnelPage() {
         below are the captured Search Console baseline for {FIRST_REVENUE_GSC_WINDOW.startDate} to{" "}
         {FIRST_REVENUE_GSC_WINDOW.endDate}. First-party visits and CTA events are counted from{" "}
         {FIRST_REVENUE_CAPTURED_AT} onward, so the two windows are intentionally not combined into
-        one conversion rate.
+        one conversion rate. Query evidence is property-wide and does not assert a query-to-page landing match.
       </p>
       <p className="mt-2 max-w-5xl text-xs leading-5 text-zinc-500">
         Merchant handoff means Miloosh recorded a non-test affiliate-link handoff at the server
         endpoint. It does not prove that the merchant loaded the page, created an account, made a
         sale, approved a commission, or paid revenue. Downstream conversion remains NOT VERIFIED
-        until first-party network evidence exists.
+        until first-party network evidence exists. Counts include the same product&apos;s commercial CTAs on the exact primary page, including the hero, pricing and buyer-decision placements.
+        Tests and events without an explicit non-test marker are excluded from the funnel.
       </p>
 
       {!analytics || !handoffComplete ? (
@@ -96,16 +61,17 @@ export default async function FirstRevenueFunnelPage() {
               <th className="px-4 py-3">Primary page</th>
               <th className="px-4 py-3">GSC impressions</th>
               <th className="px-4 py-3">GSC clicks</th>
-              <th className="px-4 py-3">Recorded visits</th>
+              <th className="px-4 py-3">Recorded page views</th>
               <th className="px-4 py-3">CTA seen</th>
               <th className="px-4 py-3">CTA clicks</th>
               <th className="px-4 py-3">Merchant handoffs</th>
               <th className="px-4 py-3">Unclassified handoffs</th>
+              <th className="px-4 py-3">Unclassified analytics</th>
               <th className="px-4 py-3">Downstream conversion</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-800 bg-zinc-900/40">
-            {rows.map(({ page, pageViews, ctaImpressions, ctaClicks, merchantHandoffs, unclassifiedHandoffs }) => (
+            {rows.map(({ page, pageViews, ctaImpressions, ctaClicks, merchantHandoffs, unclassifiedHandoffs, unclassifiedAnalytics }) => (
               <tr key={page.slug}>
                 <td className="px-4 py-3">
                   <a className="font-semibold text-white hover:underline" href={"/software/" + page.slug}>
@@ -120,12 +86,28 @@ export default async function FirstRevenueFunnelPage() {
                 <td className="px-4 py-3 font-mono">{analytics ? ctaClicks : "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono">{merchantHandoffs ?? "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-mono text-zinc-500">{unclassifiedHandoffs ?? "UNAVAILABLE"}</td>
+                <td className="px-4 py-3 font-mono text-zinc-500">{unclassifiedAnalytics ?? "UNAVAILABLE"}</td>
                 <td className="px-4 py-3 font-semibold text-amber-300">NOT VERIFIED</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Source to page CTA</h2>
+        <p className="mt-2 text-xs text-zinc-400">First-party store only; attribution uses the same page, visitor and session. These handoffs overlap the outbound ledger above and must not be added to it. No merchant load or sale is inferred.</p>
+        {rows.map(({ page, sourceRows }) => (
+          <div key={page.slug} className="mt-4 overflow-auto rounded-xl border border-zinc-800 p-4">
+            <h3 className="font-semibold">{page.slug}</h3>
+            {sourceRows === null ? <p>UNAVAILABLE</p> : sourceRows.length === 0 ? <p className="text-sm text-zinc-400">No explicit non-test events in this window.</p> : (
+              <table className="mt-3 w-full text-left text-xs"><thead><tr><th>Source / medium</th><th>Campaign / content</th><th>Visits</th><th>CTA clicks</th><th>Recorded handoffs</th></tr></thead><tbody>
+                {sourceRows.map((row) => <tr key={JSON.stringify([row.source,row.medium,row.campaign,row.content])}><td className="py-2">{row.source} / {row.medium}</td><td>{row.campaign} / {row.content}</td><td>{row.visits}</td><td>{row.ctaClicks}</td><td>{row.recordedHandoffs}</td></tr>)}
+              </tbody></table>
+            )}
+          </div>
+        ))}
+      </section>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {FIRST_REVENUE_PAGES.map((page) => (

@@ -4,7 +4,11 @@
   "category": "crm",
   "description": "Close is a sales CRM that combines built-in calling, email, and SMS with Chloe, an AI sales agent that qualifies leads, books meetings, and updates records automatically.",
   "website": "https://www.close.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Sales teams, since the platform's 2013 launch, wanting to automate outbound outreach and lead qualification while reducing manual admin work.",
   "features": [
     "Built-in calling, email, and SMS messaging in one workspace",
@@ -18,7 +22,8 @@
   "sources": [
     "https://www.close.com",
     "https://close.com/chloe",
-    "https://close.com/blog/introducing-chloe"
+    "https://close.com/blog/introducing-chloe",
+    "https://www.close.com/pricing"
   ],
   "accessed_at": "2026-08-21",
   "pricing": {
@@ -27,13 +32,50 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
     "tiers": [
-      { "name": "Solo", "amount": "9", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($19/user/month billed monthly). Limited to 1 user, 10k leads max." },
-      { "name": "Essentials", "amount": "35", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($49/user/month billed monthly). Unlimited contacts and leads, team features." },
-      { "name": "Growth", "amount": "99", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($109/user/month billed monthly). Automated workflows, power dialer." },
-      { "name": "Scale", "amount": "139", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed annually ($149/user/month billed monthly). Predictive dialer, advanced permissions." }
+      {
+        "name": "Solo",
+        "amount": "9",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, billed annually ($19/user/month billed monthly). Limited to 1 user, 10k leads max.",
+        "unit": "seat"
+      },
+      {
+        "name": "Essentials",
+        "amount": "35",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, billed annually ($49/user/month billed monthly). Unlimited contacts and leads, team features.",
+        "unit": "seat"
+      },
+      {
+        "name": "Growth",
+        "amount": "99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, billed annually ($109/user/month billed monthly). Automated workflows, power dialer.",
+        "unit": "seat"
+      },
+      {
+        "name": "Scale",
+        "amount": "139",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, billed annually ($149/user/month billed monthly). Predictive dialer, advanced permissions.",
+        "unit": "seat"
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-22",
@@ -45,28 +87,48 @@
       "slug": "pipedrive",
       "description": "A sales-focused CRM built around a visual, pipeline-first workflow.",
       "best_for": "Sales teams wanting a simple, activity-based pipeline tool.",
-      "strengths": ["Visual pipeline", "Ease of use", "Sales automation"]
+      "strengths": [
+        "Visual pipeline",
+        "Ease of use",
+        "Sales automation"
+      ]
     },
     {
       "name": "HubSpot",
       "slug": "hubspot",
       "description": "An all-in-one CRM platform with marketing, sales, and service hubs.",
       "best_for": "Growing businesses wanting an integrated marketing-to-sales CRM suite.",
-      "strengths": ["Free CRM tier", "Marketing automation", "Extensive integrations"]
+      "strengths": [
+        "Free CRM tier",
+        "Marketing automation",
+        "Extensive integrations"
+      ]
     },
     {
       "name": "Freshsales",
       "slug": "freshsales",
       "description": "A Freshworks CRM using Freddy AI for lead scoring and automated email writing.",
       "best_for": "Sales teams wanting AI-assisted lead management and a 360° customer view.",
-      "strengths": ["Freddy AI scoring", "Kanban pipeline", "Built-in phone and email"]
+      "strengths": [
+        "Freddy AI scoring",
+        "Kanban pipeline",
+        "Built-in phone and email"
+      ]
     },
     {
       "name": "Zoho CRM",
       "slug": "zoho-crm",
       "description": "A cloud-based sales platform using the Zia AI assistant to manage leads, deals, and customer relationships with omnichannel engagement and no-code workflow automation.",
       "best_for": "Businesses wanting CRM bundled with a much wider suite of Zoho apps rather than a calling-first standalone sales tool.",
-      "strengths": ["Zia AI assistant", "Deep Zoho-suite integration", "No-code workflow automation"]
+      "strengths": [
+        "Zia AI assistant",
+        "Deep Zoho-suite integration",
+        "No-code workflow automation"
+      ]
     }
+  ],
+  "cons": [
+    "Solo is limited to one user and 10,000 leads; its entry price is not a team-plan quote.",
+    "Automated workflows are not included in Solo or Essentials and require Growth or Scale."
   ]
 }
