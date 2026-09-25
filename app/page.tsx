@@ -28,6 +28,8 @@ import { getSoftwareByCategory } from "@/lib/related";
 import { getComparisonSlug } from "@/data/comparisons";
 import { parseComparisonSlug } from "@/lib/comparison";
 import { buildIndexationPriorityList } from "@/scripts/growth/indexation-priority";
+import { FIRST_REVENUE_PRIMARY_SLUGS } from "@/data/revenue/first-revenue-cohort";
+import { FIRST_REVENUE_SUPPORTING_GUIDES } from "@/data/guides/first-revenue";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -67,6 +69,9 @@ export default function Home() {
     .slice(0, 6)
     .map((row) => row.url.replace("/software/", ""));
   const popularSoftware = popularSoftwareSlugs.map((slug) => getSoftware(slug)).filter((s): s is NonNullable<typeof s> => s !== undefined);
+  const firstRevenueSoftware = FIRST_REVENUE_PRIMARY_SLUGS
+    .map((slug) => getSoftware(slug))
+    .filter((software): software is NonNullable<typeof software> => software !== undefined);
 
   const popularComparisons = priorityList
     .filter((row) => row.kind === "comparison")
@@ -149,6 +154,32 @@ export default function Home() {
           {stats.map((stat) => (
             <StatItem key={stat.label} {...stat} />
           ))}
+        </Container>
+      </section>
+
+      <section className="py-20 sm:py-28">
+        <Container>
+          <SectionHeading
+            eyebrow="Buyer decisions"
+            title="Five tools with current decision-stage research"
+            description="Start with pricing, fit, drawbacks and alternatives on the five primary software pages currently prioritized from measured search demand."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {firstRevenueSoftware.map((software) => (
+              <SoftwareCard key={software.slug} software={software} />
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {FIRST_REVENUE_SUPPORTING_GUIDES.map((guide) => (
+              <Link
+                key={guide.guideSlug}
+                href={`/${guide.guideSlug}`}
+                className="rounded-full border border-white/10 px-3 py-2 text-sm text-zinc-400 transition hover:border-white/25 hover:text-white"
+              >
+                Decision guide for {guide.primarySlug}
+              </Link>
+            ))}
+          </div>
         </Container>
       </section>
 
