@@ -17,9 +17,8 @@ import { getSoftware } from "@/data/software";
  *   INTERNAL_INFRA       — Vercel platform/prefetch noise, not a real request. Discarded, not stored.
  *   REJECTED_VALIDATION — malformed/missing/oversized payload, or an engaged_view whose claimed
  *                         durationSeconds is implausibly below the 10-second dwell threshold
- *                         (see components/FirstPartyAnalytics.tsx's 2026-08-22 header — a real,
- *                         reproducible-in-theory browser behavior, not a guessed edge case: tab
- *                         duplication copies sessionStorage but not the in-memory dwell timer).
+ *                         (see lib/analytics/engaged-view.ts; the browser now measures cumulative
+ *                         foreground time, but server validation cannot prove attention).
  *                         Discarded, not stored.
  *   FAILED_STORAGE       — passed every check, but the write itself failed. User experience unaffected either way.
  *   SYNTHETIC_QA         — passed every check, isTest:true, STORED (excluded from real-human reports by default).
