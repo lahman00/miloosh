@@ -6,6 +6,7 @@ import type { EcommerceSituation } from "@/lib/recommend/types";
 import { eventFingerprint, putAnalyticsEvent } from "@/lib/analytics/event-persistence";
 import type { AcquisitionContext } from "@/lib/analytics/acquisition";
 import type { TrafficSource } from "@/lib/analytics/attribution";
+import type { ResearchEventType } from "@/lib/analytics/research";
 
 /**
  * First-party privacy-respecting analytics event definitions and storage.
@@ -19,6 +20,7 @@ import type { TrafficSource } from "@/lib/analytics/attribution";
  */
 
 export type FirstPartyEventType =
+  | ResearchEventType
   | "page_view"
   | "engaged_view"
   | "software_view"
@@ -59,6 +61,14 @@ export interface BaseAnalyticsEvent {
    * operator chose, sanitized to [a-zA-Z0-9_-] before storage.
    */
   qaRun?: string;
+}
+
+export interface ResearchEvent extends BaseAnalyticsEvent {
+  type: ResearchEventType;
+  /** Known canonical destination only; no search/query string. */
+  targetPath?: string;
+  /** Host only, never full external URL or query. */
+  sourceHost?: string;
 }
 
 export interface PageViewEvent extends BaseAnalyticsEvent {
@@ -242,6 +252,7 @@ export interface NewsletterSignupEvent extends BaseAnalyticsEvent {
 }
 
 export type FirstPartyEvent =
+  | ResearchEvent
   | PageViewEvent
   | EngagedViewEvent
   | SoftwareViewEvent

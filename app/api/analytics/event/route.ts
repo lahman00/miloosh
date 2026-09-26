@@ -7,6 +7,7 @@ import { analyticsPath, sanitizeAcquisition } from "@/lib/analytics/acquisition"
 import { normalizeCtaLocation } from "@/lib/analytics/cta-locations";
 import { isCrossOriginEvent, isNonProductionEvent, readEventBody } from "@/lib/analytics/ingest";
 import { getSoftware } from "@/data/software";
+import { RESEARCH_EVENTS, validResearchEvent } from "@/lib/analytics/research";
 
 /**
  * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21).
@@ -31,6 +32,7 @@ import { getSoftware } from "@/data/software";
  */
 
 const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
+  ...RESEARCH_EVENTS,
   "page_view", "engaged_view", "software_view", "comparison_view", "category_view", "guide_view",
   "recommend_use", "internal_cta_click", "recommend_started", "recommend_step_viewed", "recommend_need_selected",
   "recommend_ecommerce_situation_selected",
@@ -90,6 +92,10 @@ export async function POST(request: NextRequest) {
   // headers, tokens, answers, etc.). Outbounds have a separate canonical resolver.
   const fields: Record<string, unknown> = {};
   const record = body as unknown as Record<string, unknown>;
+  if ((RESEARCH_EVENTS as readonly string[]).includes(body.type)) {
+    if (!validResearchEvent(record)) return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "invalid_research_event" }, { status: 400 });
+    if (body.type === "research_source_click") fields.sourceHost = record.sourceHost;
+  }
   if (["cta_impression", "cta_click", "software_view", "recommend_product_open"].includes(body.type)) {
     if (typeof record.softwareSlug !== "string" || !getSoftware(record.softwareSlug)) {
       return NextResponse.json({ recorded: false, classification: "REJECTED_VALIDATION", reason: "unknown_software" }, { status: 400 });

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics/track";
 import { observeEngagedView } from "@/lib/analytics/engaged-view";
+import { isResearchPath, researchLinkEvent } from "@/lib/analytics/research";
 
 export function FirstPartyAnalytics() {
   const pathname = usePathname();
@@ -25,7 +26,9 @@ export function FirstPartyAnalytics() {
       });
 
       // 2. Specialized page views
-      if (pathname.startsWith("/software/")) {
+      if (isResearchPath(pathname)) {
+        trackEvent({ type: "research_page_view", path: pathname });
+      } else if (pathname.startsWith("/software/")) {
         const softwareSlug = pathname.replace("/software/", "").split("/")[0];
         if (softwareSlug) {
           trackEvent({ type: "software_view", path: pathname, softwareSlug });
@@ -55,6 +58,22 @@ export function FirstPartyAnalytics() {
     return observeEngagedView(durationSeconds => {
       trackEvent({ type: "engaged_view", path: pathname, durationSeconds });
     });
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isResearchPath(pathname)) return;
+    const clicked = (event: MouseEvent) => {
+      if (event.type === "auxclick" && event.button !== 1) return;
+      const anchor = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("main a[href]") : null;
+      // Commercial outbound wrappers already own their telemetry. Never click,
+      // intercept navigation, copy link text, or send the full external URL.
+      if (!anchor || anchor.dataset.milooshLink === "commercial") return;
+      const data = researchLinkEvent(pathname, anchor.href, window.location.origin);
+      if (data) trackEvent(data);
+    };
+    document.addEventListener("click", clicked);
+    document.addEventListener("auxclick", clicked);
+    return () => { document.removeEventListener("click", clicked); document.removeEventListener("auxclick", clicked); };
   }, [pathname]);
 
   return null;

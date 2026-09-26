@@ -4,6 +4,7 @@ import http from "node:http";
 import { spawn, execFile } from "node:child_process";
 import { promisify } from "node:util";
 import assert from "node:assert/strict";
+import { authorityBrowserProof } from "./authority-browser-proof";
 
 const output = "var/growth/google-command/browser";
 const session = `miloosh-control-${process.pid}`;
@@ -19,8 +20,8 @@ async function listen(server: http.Server) {
 async function main() {
   fs.mkdirSync(output, { recursive: true });
   const dashboard = http.createServer((req, res) => {
-    if (req.method !== "GET" || req.url !== "/") { res.writeHead(404).end(); return; }
-    res.setHeader("Content-Type", "text/html; charset=utf-8"); res.end(fs.readFileSync("var/growth/google-command/index.html"));
+    if (req.method !== "GET" || !["/", "/authority/"].includes(req.url ?? "")) { res.writeHead(404).end(); return; }
+    res.setHeader("Content-Type", "text/html; charset=utf-8"); res.end(fs.readFileSync(req.url === "/authority/" ? "var/growth/authority/index.html" : "var/growth/google-command/index.html"));
   });
   const reportPort = await listen(dashboard);
   const portProbe = http.createServer(), appPort = await listen(portProbe);
@@ -47,6 +48,18 @@ async function main() {
       assert.equal(report.overflow, false); assert.equal(report.unsafe, false);
       assert.equal(report.h1, "Google intelligence & revenue");
       await browser("screenshot", path.resolve(output, `command-${width}.png`));
+      await browser("open", `http://127.0.0.1:${reportPort}/authority/`);
+      await browser("snapshot", "-i", "-s", "main");
+      const authority = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelector('h1')?.textContent})")).result;
+      assert.equal(authority.overflow, false); assert.equal(authority.h1, "Authority impact control room");
+      await browser("screenshot", path.resolve(output, `authority-${width}.png`));
+      const researchRoute = "/research/saas-pricing-pressure-index-2026";
+      await browser("open", `http://127.0.0.1:${appPort}${researchRoute}?qa=1&qaRun=authority-control-room`);
+      await browser("snapshot", "-i", "-s", "main");
+      const research = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,canonical:document.querySelector('link[rel=canonical]')?.href,h1:document.querySelector('h1')?.textContent})")).result;
+      assert.equal(research.overflow, false); assert.equal(research.canonical, `https://miloosh.com${researchRoute}`); assert(research.h1);
+      await browser("screenshot", path.resolve(output, `research-${width}.png`));
+      results.push({ route: researchRoute, width, ...research });
       for (const route of ["/software/jotform", "/software/hubspot", "/compare/pipedrive-vs-close"]) {
         await browser("open", `http://127.0.0.1:${appPort}${route}?qa=1&qaRun=command-center`);
         const result = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,canonical:document.querySelector('link[rel=canonical]')?.href,commercial:[...document.querySelectorAll('[data-miloosh-link=\"commercial\"]')].map(a=>({slug:a.dataset.softwareSlug,location:a.dataset.ctaLocation,href:a.href,rel:a.rel})),vendor:document.querySelectorAll('[data-miloosh-link=\"editorial-vendor\"]').length})")).result;
@@ -55,8 +68,9 @@ async function main() {
         if (route.endsWith("hubspot")) assert(result.commercial.filter((a: { slug: string }) => a.slug === "hubspot").every((a: { rel: string }) => !a.rel.includes("sponsored")));
         results.push({ route, width, ...result });
       }
-      console.log(`Control room + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
+      console.log(`Two control rooms + research + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
     }
+    await authorityBrowserProof(`http://127.0.0.1:${appPort}`, output);
     fs.writeFileSync(path.join(output, "latest.json"), JSON.stringify({ capturedAt: new Date().toISOString(), merchantNavigations: 0, analyticsWrites: 0, viewports: [1440, 390, 320], results }, null, 2));
   } finally { child.kill("SIGTERM"); await browser("close"); dashboard.closeAllConnections(); await new Promise<void>(resolve => dashboard.close(() => resolve())); }
 }
