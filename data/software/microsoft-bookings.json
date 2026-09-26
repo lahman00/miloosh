@@ -55,5 +55,45 @@
         "Video meeting links"
       ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$7.00",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products-b",
+    "tiers": [
+      {
+        "name": "Microsoft 365 Business Basic (cheapest plan that includes Bookings)",
+        "amount": "7.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Rate shown is 'user/month, paid yearly' i.e. billed under a 12-month annual commitment; list price as of Sep 2026. This is the cheapest Microsoft 365 plan that includes Microsoft Bookings. Month-to-month (no annual commitment) pricing is not published as an exact figure on Microsoft's official comparison page, so no number is stated for it here."
+      },
+      {
+        "name": "Microsoft 365 Business Standard with Copilot",
+        "amount": "23.50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Billed under annual commitment. Now bundles Microsoft 365 Copilot Business by default following Microsoft's July 1, 2026 commercial packaging/pricing update."
+      },
+      {
+        "name": "Microsoft 365 Business Premium with Copilot",
+        "amount": "32.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Billed under annual commitment. Also bundles Copilot by default post-July 2026 repackaging."
+      }
+    ]
+  },
+  "cons": [
+    "Microsoft Bookings is not sold as a standalone product with its own price — it only ships bundled inside specific Microsoft 365 subscriptions (Business Basic, Business Standard, Business Premium, and select Enterprise/Education/Frontline/Teams plans, per Microsoft's own Bookings overview and service-description docs). To get Bookings for even a single scheduler, a business must buy a full per-user Microsoft 365 license for every staff member on the tenant, starting at $7.00/user/month for Business Basic (billed annually) — there is no cheaper 'scheduling-only' seat.",
+    "Bookings has no built-in way to collect online payments or deposits at the time of booking today: the product's original payment-button integration was removed, and Microsoft's own community support forum (learn.microsoft.com/answers) has multiple threads from users confirming 'they took away the Payment Button' with no clear advance communication from Microsoft. Businesses that need to charge for appointments up front must bolt on a third-party processor (e.g., Stripe, PayPal, Square) outside of Bookings itself.",
+    "The Microsoft 365 commercial suites that carry Bookings just went through a documented packaging and pricing overhaul effective July 1, 2026 (acknowledged directly on Microsoft's own pricing page, which points customers to Microsoft's Licensing public FAQ for details): Business Standard and Business Premium now bundle Copilot AI by default, pushing their list prices to $23.50 and $32.00/user/month respectively. Existing Bookings customers on these plans inherit this recent, Microsoft-driven cost and packaging shift rather than being able to opt out of the AI bundling to keep a lower price."
   ]
 }

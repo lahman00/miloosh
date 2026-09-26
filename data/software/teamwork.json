@@ -69,5 +69,61 @@
         "Affordable at scale"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9.99",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.teamwork.com/pricing/",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "per user/month",
+        "notes": "Permanently free plan; capped at max 5 users, 5 projects, 100MB storage, 100 automations, 150 API requests/min. Billing basis: n/a."
+      },
+      {
+        "name": "Basics",
+        "amount": "9.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "Minimum 3 users required (i.e. a minimum charge of $29.97/user-month billed annually). 300 projects, 100GB storage, 5,000 automations. 14-day free trial, no card required. Billing basis: monthly (billed annually; annual pricing is ~29% cheaper than paying month-to-month)."
+      },
+      {
+        "name": "Accelerate",
+        "amount": "24.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "Minimum 5 users required (minimum $124.95/user-month billed annually). 600 projects, 250GB storage, 20,000 automations. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Optimize",
+        "amount": "Contact sales",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "per user",
+        "notes": "No public price at all — 'Let's talk' / book-a-demo only. Unlimited projects, 500GB storage, 100,000 automations, financial/resource-planning features. Billing basis: n/a."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "Contact sales",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "per user",
+        "notes": "No public price — 'Let's talk' / book-a-demo only. Adds SSO, dedicated success manager, priority support, 1,000GB storage. Billing basis: n/a."
+      }
+    ]
+  },
+  "cons": [
+    "The two self-serve paid tiers require mandatory minimum seat purchases rather than true per-seat flexibility: Teamwork's own plan-comparison table (teamwork.com/pricing/) lists 'Basics' at a minimum of 3 users and 'Accelerate' at a minimum of 5 users, so a solo user or 2-person team cannot buy a single paid seat — they must pay for at least 3 seats on Basics (≈$29.97/user-month billed annually, at $9.99/user/mo) or 5 seats on Accelerate (≈$124.95/user-month billed annually, at $24.99/user/mo) even if fewer people actually use the account.",
+    "Core services-business features are walled off behind fully custom, non-public pricing: quotes, CRM-pipeline-to-project conversion, multi-currency financial budgets, revenue/cost/profitability insights, and the Salesforce/NetSuite integrations are gated to the 'Optimize' and 'Enterprise' tiers, and both show no price at all on the pricing page — just 'Let's talk' / 'Book a demo' — so a team that specifically needs profitability or resource-capacity reporting cannot get a transparent quote without going through a sales conversation.",
+    "TeamworkAI (the Scout, Flo, Remi, Kash and Jack AI teammates, plus AI chat/wizard/automation features) is bundled at no extra charge only 'for an introductory period' per Teamwork's own pricing page; the page states usage-based AI credits are coming (the live page currently says November 2026, while Teamwork's own machine-readable pricing snapshot at teamwork.com/pricing.md — last-modified the same day — says September 2026), meaning AI capabilities currently included in the sticker price are explicitly documented to shift to metered, additional-cost billing in the near term."
   ]
 }

@@ -4,7 +4,11 @@
   "category": "marketing",
   "description": "An email & SMS marketing platform combining marketing analytics, automations, and AI tools to help businesses drive revenue through integrated customer communications.",
   "website": "https://mailchimp.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for small to mid-sized businesses (retail/e-commerce, hospitality, nonprofits, professional services, content creators) who want an easy-to-use email/SMS marketing tool without needing extensive marketing experience.",
   "features": [
     "Drag-and-drop email builder with 300+ templates and AI content generation",
@@ -14,7 +18,9 @@
     "Audience segmentation and personalization",
     "300+ native integrations (Shopify, WooCommerce, Stripe, Salesforce, Zapier)"
   ],
-  "sources": ["https://mailchimp.com"],
+  "sources": [
+    "https://mailchimp.com"
+  ],
   "accessed_at": "2026-08-01",
   "alternatives": [
     {
@@ -22,14 +28,70 @@
       "slug": "activecampaign",
       "description": "An autonomous marketing platform where AI agents handle email, SMS, WhatsApp, and CRM tasks backed by customer data.",
       "best_for": "Growing businesses that want to automate marketing and sales work and reduce manual effort.",
-      "strengths": ["Active Intelligence AI", "Visual automation builder", "1,000+ integrations"]
+      "strengths": [
+        "Active Intelligence AI",
+        "Visual automation builder",
+        "1,000+ integrations"
+      ]
     },
     {
       "name": "Klaviyo",
       "slug": "klaviyo",
       "description": "An AI marketing and service platform built as an autonomous B2C CRM unifying customer data with omnichannel automation.",
       "best_for": "Consumer/B2C brands, especially e-commerce retailers, wanting unified customer data and marketing.",
-      "strengths": ["Composer AI campaign generation", "Omnichannel marketing", "Unified customer data platform"]
+      "strengths": [
+        "Composer AI campaign generation",
+        "Omnichannel marketing",
+        "Unified customer data platform"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$13",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://mailchimp.com/pricing/marketing/",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, up to 250 contacts",
+        "notes": "1 seat, 1 audience, max 500 sends/month or 250/day. Cut in half from 500 contacts / 1,000 sends effective Feb 17, 2026."
+      },
+      {
+        "name": "Essentials",
+        "amount": "13",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, entry tier up to 500 contacts (price rises with contact-count tier, e.g. ~$75/mo at 5,000 contacts)",
+        "notes": "3 seats, 3 audiences, monthly sends = 10x contact limit, email/chat support only."
+      },
+      {
+        "name": "Standard",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, entry tier up to 500 contacts (price rises with contact-count tier, e.g. ~$100/mo at 5,000 contacts)",
+        "notes": "5 seats, 5 audiences, monthly sends = 12x contact limit, up to 200 automation flows. Confirmed live on official pricing calculator (default 0-500 contact tier)."
+      },
+      {
+        "name": "Premium",
+        "amount": "350",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, entry tier ~10,000 contacts, scales up to 200,000 contacts then custom/contact-sales beyond 250,000",
+        "notes": "Unlimited seats and audiences, phone + priority support, monthly sends = 15x contact limit."
+      }
+    ]
+  },
+  "cons": [
+    "Free plan was cut in half effective February 17, 2026 — down from 500 contacts/1,000 monthly sends to just 250 contacts and 500 sends per month (max 250/day), with only 1 seat and 1 audience, making it far less usable for even very small lists than it was a few months earlier.",
+    "There is a steep structural jump between the mid-tier and top-tier plan: Standard starts at $20/month (500-contact entry tier) but Premium — the only plan with phone support, unlimited seats/audiences, and predictive segmentation — starts at roughly $350/month with a minimum entry point around 10,000 contacts, leaving no gradual bridge between the two; self-serve annual billing is also only offered for Standard/Premium accounts with 10,000+ contacts, so smaller customers must pay monthly or contact sales.",
+    "Long-tenured customers were hit with a documented price increase in 2026: accounts still on pre-May-2019 'legacy' plans (never migrated to Essentials/Standard/Premium) saw an 11-13% price increase on billing cycles after April 13, 2026 — the second Mailchimp pricing change within the first four months of 2026, following the January free-plan cut."
   ]
 }

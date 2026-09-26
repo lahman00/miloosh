@@ -4,7 +4,10 @@
   "category": "developer-tools",
   "description": "GitLab describes itself as \"an intelligent orchestration platform for DevSecOps,\" an end-to-end platform covering the software lifecycle from planning to security to deployment.",
   "website": "https://about.gitlab.com",
-  "platforms": ["Web", "Linux"],
+  "platforms": [
+    "Web",
+    "Linux"
+  ],
   "best_for": "Targets enterprises, small businesses, and public-sector organizations, with named industry solutions for financial services, telecom, automotive, aerospace, education, and government.",
   "features": [
     "Built-in CI/CD pipelines",
@@ -14,7 +17,11 @@
     "GitLab Pages (static site hosting)",
     "Epics, iterations, and agile planning tools"
   ],
-  "sources": ["https://about.gitlab.com", "https://about.gitlab.com/features/", "https://about.gitlab.com/install/"],
+  "sources": [
+    "https://about.gitlab.com",
+    "https://about.gitlab.com/features/",
+    "https://about.gitlab.com/install/"
+  ],
   "accessed_at": "2026-08-01",
   "alternatives": [
     {
@@ -22,14 +29,62 @@
       "slug": "github",
       "description": "A developer platform combining source control, CI/CD (Actions), and AI coding assistance (Copilot).",
       "best_for": "Teams of any size, from learners to enterprises, building software collaboratively.",
-      "strengths": ["Large ecosystem/Marketplace", "GitHub Actions automation", "Copilot AI assistance"]
+      "strengths": [
+        "Large ecosystem/Marketplace",
+        "GitHub Actions automation",
+        "Copilot AI assistance"
+      ]
     },
     {
       "name": "Bitbucket",
       "slug": "bitbucket",
       "description": "Atlassian's Git platform centered on Jira integration and built-in Pipelines CI/CD.",
       "best_for": "Jira-centric teams wanting tight planning-to-code integration.",
-      "strengths": ["Native Jira workflow", "Cloud and self-hosted options", "Snyk-based security scanning"]
+      "strengths": [
+        "Native Jira workflow",
+        "Cloud and self-hosted options",
+        "Snyk-based security scanning"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$29",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://about.gitlab.com/pricing/",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Cloud (GitLab.com) and Self-Managed both offer Free at $0/user/month. Cloud Free is capped at 5 users per top-level private group, 400 CI/CD compute minutes/month, and 10 GiB storage."
+      },
+      {
+        "name": "Premium",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user/month",
+        "notes": "Available for both GitLab.com (Cloud) and Self-Managed. Includes $12 of 'GitLab Credits' per user/month bundled in. Marked 'Most popular' on the official pricing page. Billing basis: annually (quoted as monthly rate, billed yearly)."
+      },
+      {
+        "name": "Ultimate",
+        "amount": "custom",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "contact sales",
+        "notes": "As of this check (Sept 2026), about.gitlab.com/pricing shows no public per-seat number for Ultimate -- only 'Get custom pricing' / 'Contact us for custom pricing'. Multiple third-party trackers (e.g. GForge, eesel AI, costbench.com) report GitLab previously listed Ultimate publicly at $99/user/month and has since removed that public figure in favor of a sales-quote model. Treat $99 as historical/third-party-reported, not currently confirmed on the official page. Billing basis: n/a."
+      }
+    ]
+  },
+  "cons": [
+    "Ultimate-tier pricing is no longer public: the official pricing page (about.gitlab.com/pricing) now shows only \"Get custom pricing\" / \"Contact us for custom pricing\" for Ultimate, with no dollar figure -- a documented shift away from the previously listed $99/user/month rate (per third-party trackers such as GForge's Nov 2025 pricing analysis), forcing prospective buyers into a sales negotiation to learn their real cost.",
+    "Compute minutes, storage, and GitLab Duo AI usage are metered add-ons billed on top of the per-seat price once included allowances run out: the official page lists Compute Minutes at $10 per 1,000 minutes (one-time purchase) and Storage at $5/month per 10 GiB (billed annually), while the Free tier caps out at 400 compute minutes/month and 10 GiB storage -- so a growing team's real monthly cost is seat price plus variable usage overage, not a flat number.",
+    "GitLab.com's Free tier restricts private collaboration to 5 users per top-level group, and Premium/Ultimate subscriptions are billed annually by default (per-seat), meaning a team can't simply pay month-to-month at the list per-user rate -- a real user complaint quoted in GForge's article states GitLab \"doesn't allow monthly payments... I had to pay a whole year up front,\" which raises the upfront cash commitment relative to month-to-month competitors."
   ]
 }

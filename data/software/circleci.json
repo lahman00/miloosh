@@ -57,5 +57,53 @@
         "DORA-metrics analytics"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$15",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://circleci.com/pricing/",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat (includes 30,000 credits/month, up to 5 active users)",
+        "notes": "No credit card required. Up to 6,000 build minutes/month on the small Docker resource class equivalent, 30x concurrency, 1GB network + 2GB storage included. Credits expire monthly and do not roll over."
+      },
+      {
+        "name": "Performance",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat starting price, includes 30,000 credits + 5 active users",
+        "notes": "Additional active users cost $15/user/month each. Additional credits cost $15 per 25,000-credit pack (~$0.0006/credit). 80x concurrency. Included monthly credits expire and do not roll over; separately purchased credit packs roll over and expire after 12 months."
+      },
+      {
+        "name": "Scale",
+        "amount": "Custom",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "custom quote",
+        "notes": "Unlimited concurrency, custom credit/user allotments, 50GB network + 200GB storage included, GPU/largest resource classes, enterprise controls, optional 24/7 support add-on. Requires contacting sales. Billing basis: annual (billed annually)."
+      },
+      {
+        "name": "Server (self-hosted)",
+        "amount": "Custom",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "custom quote",
+        "notes": "Separate self-hosted deployment option shown under a 'Server' tab on the pricing page; no public numbers given. Billing basis: contact sales."
+      }
+    ]
+  },
+  "cons": [
+    "The included monthly credit allotment (30,000 credits on both Free and Performance plans) expires at the end of each billing month and does not roll over -- unused capacity is simply lost every month, unlike separately purchased credit packs which roll over for 12 months (source: circleci.com/pricing/ and circleci.com/docs/guides/plans-pricing/credits/).",
+    "macOS/iOS builds carry a steep resource-class multiplier: CircleCI's own price list shows the macOS 'M4 Pro Medium' resource class costs 200 credits/minute versus 10 credits/minute for the Linux Docker Medium class -- a 20x cost multiplier for the same wall-clock build time, making mobile/macOS pipelines dramatically more expensive to run than equivalent Linux jobs (source: circleci.com/pricing/price-list/).",
+    "The Performance plan's per-seat surcharge stacks on top of usage-based credit billing: only 5 active users are included in the $15/month starting price, and every additional active user costs a flat $15/month regardless of how much compute they actually consume -- so a team's bill grows on two independent axes (seats and credits) rather than a single predictable metric (source: circleci.com/pricing/)."
   ]
 }

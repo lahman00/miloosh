@@ -62,5 +62,51 @@
       ]
     }
   ],
-  "order": 2
+  "order": 2,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$7.25",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://slack.com/pricing",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "per workspace",
+        "notes": "Message and file history limited to 90 days; up to 10 app/service integrations; 1:1 huddles only; basic AI features (Slackbot, search, summaries). Billing basis: n/a."
+      },
+      {
+        "name": "Pro",
+        "amount": "7.25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per active user/month",
+        "notes": "$8.75/user/month if billed monthly instead of annually (~20% premium). Unlimited message history, unlimited app integrations, group huddles, Slack Connect with external orgs. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Business+",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per active user/month",
+        "notes": "$18/user/month if billed monthly (~20% premium). Adds SAML-based SSO, SCIM provisioning, custom retention/compliance exports, 24/7 support with 4-hour response SLA. Pricing/features updated June 2025 (effective at first renewal after 2025-08-17); the standalone Slack AI add-on was discontinued and folded into this tier. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Enterprise+",
+        "billing_period": "unknown",
+        "unit": "contact sales",
+        "notes": "No public per-seat price; fully custom quote. Adds unlimited workspaces, org-wide SCIM/SSO, data residency, legal holds, information barriers, enterprise-grade AI/search. Billing basis: custom."
+      }
+    ]
+  },
+  "cons": [
+    "The Free plan's message and file history is capped at 90 days of visibility (confirmed on Slack's own pricing page), not the older 10,000-message cap some legacy free workspaces had — older content becomes inaccessible after 90 days unless you upgrade to a paid plan.",
+    "Basic identity/security controls that many mid-size orgs need — SAML-based single sign-on and SCIM user provisioning — are gated behind the Business+ tier ($15/user/month billed annually, $18/user/month billed monthly), which is roughly double the Pro plan's price ($7.25/$8.75 per user/month); there is no self-serve tier between Pro and Business+ for SSO.",
+    "In a June 2025 pricing/packaging overhaul, Slack discontinued the standalone Slack AI add-on for new purchases and raised Business+ pricing to fold AI features into that tier; existing standalone-AI-add-on customers keep access only until their first renewal after August 17, 2025, after which they must move to a paid plan that bundles it (per Slack's own help-center announcement)."
+  ]
 }

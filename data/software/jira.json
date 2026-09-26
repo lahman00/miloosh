@@ -25,21 +25,33 @@
       "slug": "linear",
       "description": "A product development system combining issue tracking, planning, and AI agent collaboration.",
       "best_for": "Teams wanting a faster, more opinionated issue tracker",
-      "strengths": ["Fast interface", "AI-native workflows", "Visual roadmaps"]
+      "strengths": [
+        "Fast interface",
+        "AI-native workflows",
+        "Visual roadmaps"
+      ]
     },
     {
       "name": "Asana",
       "slug": "asana",
       "description": "A work-management platform focused on projects, tasks, timelines, and team coordination.",
       "best_for": "Teams wanting a more general-purpose work-management tool",
-      "strengths": ["Work Graph", "Multiple views", "Cross-functional coordination"]
+      "strengths": [
+        "Work Graph",
+        "Multiple views",
+        "Cross-functional coordination"
+      ]
     },
     {
       "name": "ClickUp",
       "slug": "clickup",
       "description": "A project-management platform with tasks, dashboards, documents, and workflow automation.",
       "best_for": "Teams wanting an all-in-one workspace beyond issue tracking",
-      "strengths": ["Task hierarchy", "Dashboards", "Automation"]
+      "strengths": [
+        "Task hierarchy",
+        "Dashboards",
+        "Automation"
+      ]
     },
     {
       "name": "Zoho Projects",
@@ -52,5 +64,52 @@
         "Affordable at scale"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9.05",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.atlassian.com/software/jira/pricing",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "flat, up to 10 users",
+        "notes": "Free forever for up to 10 users. Includes unlimited goals/projects/tasks/forms, 150 automation steps per subscription per month, 2 GB storage, community-only support. Billing basis: n/a."
+      },
+      {
+        "name": "Standard",
+        "amount": "9.05",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user / month",
+        "notes": "Verified on official pricing calculator at a team size of 1-11 users, monthly billing. This is a volume-tiered per-seat price: it drops to $7.91/user/month when the calculator is set to 300 users. Annual billing is sold in flat user-count bands rather than a simple per-seat rate, e.g. $900/year total for the '1-10 users' tier (any headcount 1-10 pays the same $900), $23,500/year for the '201-300' tier. 9/5 regional support, no uptime SLA."
+      },
+      {
+        "name": "Premium",
+        "amount": "18.30",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user / month",
+        "notes": "Verified on official pricing calculator at 1-11 users, monthly billing; drops to $14.54/user/month at 300 users (same volume-tiering as Standard). Annual billing uses the same banded structure, e.g. $1,850/year for the '1-10 users' tier. Includes 99.9% uptime SLA and 24/7 support for critical issues."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "custom / contact sales",
+        "notes": "No public price. Billed annually only (not offered on monthly billing), and the pricing calculator only reveals an Enterprise line once you enter 801+ users; below that it just says to contact sales. 99.95% uptime SLA, 24/7 support for all issues."
+      }
+    ]
+  },
+  "cons": [
+    "Per-seat price is not a fixed number but a volume-tiered rate that changes with the team-size figure you enter: on the official calculator, monthly billing shows Standard at $9.05/user/month and Premium at $18.30/user/month for a small team, but the same plans drop to $7.91 and $14.54 per user/month once the team size is set to 300 -- and annual billing is sold in discrete user-count bands (e.g. a flat $900/year covers any headcount from 1-10 users on Standard, $23,500/year covers any headcount from 201-300), so two teams of very different sizes within a band pay identically and crossing a band boundary jumps the whole invoice.",
+    "No uptime SLA and no 24/7 support until the Premium tier: the Free and Standard plans carry no guaranteed uptime SLA at all (per Atlassian's own comparison table), and Standard support is limited to '9/5 regional support' business hours -- 24/7 support (for critical issues) and the first SLA (99.9%) only start on Premium, with full 24/7 support on everything only at Enterprise (99.95% SLA).",
+    "Enterprise has zero public pricing and a self-serve barrier: it is billed annually only (no monthly option), sold exclusively through 'Contact sales,' and the online pricing calculator won't even surface an Enterprise price line unless you enter 801 or more users -- so there is no way to get a standard list price for an enterprise deployment without going through a sales conversation."
   ]
 }

@@ -67,5 +67,49 @@
         "Deluge scripting for custom logic"
       ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Contact sales (no public list price)",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.workato.com/pricing",
+    "tiers": [
+      {
+        "name": "Standard",
+        "amount": "Custom quote",
+        "billing_period": "unknown",
+        "unit": "custom contract (usage/task-based consumption)",
+        "notes": "Entry platform edition: app integration & process automation, recipe lifecycle management, dev/test/prod environments, 1 Standard Workbot, SAML SSO/MFA, encryption at rest/transit, 30-day log retention, 1 concurrency. No public price listed. Billing basis: not publicly stated."
+      },
+      {
+        "name": "Business MCP",
+        "amount": "Custom quote",
+        "billing_period": "unknown",
+        "unit": "custom contract (usage/task-based consumption)",
+        "notes": "Everything in Standard plus pre-built MCP servers, AI/MCP Gateway, Enterprise Skill builder, data integration (ETL/ELT/reverse ETL), API platform, 10 Enterprise Workbots, 3 on-prem connectivity agents (OPAs). No public price listed. Billing basis: not publicly stated."
+      },
+      {
+        "name": "Enterprise MCP",
+        "amount": "Custom quote",
+        "billing_period": "unknown",
+        "unit": "custom contract (usage/task-based consumption)",
+        "notes": "Everything in Business MCP plus Data Pipelines, Event Streams, Intelligent Document Processing, AI by Workato, Insights, unlimited Enterprise Workbots, enhanced security, 90-day log retention, 10 OPAs, 15 concurrency. No public price listed. Billing basis: not publicly stated."
+      },
+      {
+        "name": "Workato ONE",
+        "amount": "Custom quote",
+        "billing_period": "unknown",
+        "unit": "custom contract (usage/task-based consumption)",
+        "notes": "Top edition: everything in Enterprise MCP plus Agent Studio, Workato Knowledge Base, Workato GO (Employee Assistant, Enterprise Search, Action Board), 30 OPAs, 30 concurrency. No public price listed. Billing basis: not publicly stated."
+      }
+    ]
+  },
+  "cons": [
+    "No public list pricing exists anywhere on the official site: all four platform editions (Standard, Business MCP, Enterprise MCP, Workato ONE) are gated behind \"Schedule a demo\" / \"Get a quote\" with the page itself stating pricing \"may vary based on your contract terms\" -- combined with usage/task-based billing, this makes costs impossible to know upfront, and third-party review aggregation (G2, cited via Integrate.io's review) reports buyers seeing automation costs \"doubling within 6-12 months\" as task volume grows.",
+    "The platform has documented hard caps on data-handling that make it a poor fit for heavy ETL/data-pipeline use: CSV parsing is capped at 50,000 records and the Lookup Table feature maxes out at 100,000 rows, reflecting that Workato is built primarily for business-process/app integration rather than purpose-built data transformation -- teams needing complex joins, data masking, or deduplication hit these ceilings.",
+    "There is no self-serve, ongoing free plan: the official pricing page's only calls-to-action are demo/quote requests (no listed free tier), so unlike self-serve iPaaS competitors (e.g., Zapier, Airbyte), evaluating Workato requires a sales-assisted trial or demo rather than an instant sign-up with published usage limits."
   ]
 }

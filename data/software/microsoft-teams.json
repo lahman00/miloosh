@@ -59,5 +59,77 @@
       ]
     }
   ],
-  "order": 8
+  "order": 8,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$4",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.microsoft.com/en-us/microsoft-teams/compare-microsoft-teams-business-options",
+    "tiers": [
+      {
+        "name": "Microsoft Teams (Free)",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "per user",
+        "notes": "Group meetings capped at 60 minutes and 100 participants; 5 GB cloud storage per user; 1:1 calls up to 30 hours. Billing basis: n/a."
+      },
+      {
+        "name": "Microsoft Teams Essentials",
+        "amount": "4.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "Lowest real paid Teams-specific plan. Annual subscription, auto-renews. Org size limited to 1-300 employees. Unlocks 30-hour group meetings, 300 participants, 1TB storage/user. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Microsoft 365 Business Basic",
+        "amount": "7.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "Includes Teams plus web/mobile Office apps. $5.40/user/month variant available without Teams. Capped at 1-300 employees. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Microsoft 365 Business Standard (with Copilot)",
+        "amount": "23.50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "As of the Sept 2026 page, Business Standard is listed bundled with Copilot by default; $20.30/user/month variant without Teams. Capped at 1-300 employees. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Microsoft Teams Enterprise",
+        "amount": "8.55",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "Standalone Teams plan for orgs over 300 users (no per-org user cap shown). Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Microsoft 365 E3",
+        "amount": "36.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "$27.45/user/month variant without Teams. Billing basis: monthly (billed annually)."
+      },
+      {
+        "name": "Microsoft 365 E5",
+        "amount": "57.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user/month",
+        "notes": "$48.45/user/month variant without Teams. Billing basis: monthly (billed annually)."
+      }
+    ]
+  },
+  "cons": [
+    "Business-tier Teams plans are hard-capped at 300 seats: Microsoft's own comparison page lists \"Number of users: 1-300 employees\" for Teams Essentials ($4/user/month), Microsoft 365 Business Basic ($7/user/month), and Business Standard ($23.50/user/month) alike. Any organization that grows past 300 employees must migrate off these plans entirely to an Enterprise-tier plan (Microsoft Teams Enterprise at $8.55/user/month, or Microsoft 365 E3/E5 at $36/$57 per user/month) -- a hard structural cliff, not a soft limit.",
+    "Downgrading back to free is not possible after upgrading: Microsoft's own Teams pricing FAQ states \"once you upgrade and convert from a free account to a paid account, you can't revert to the free version using the same email address\" -- a new free account requires a completely different email address for every admin and user. Anyone who trials the free tier before committing to a paid seat faces a one-way conversion with no official downgrade path on the same account.",
+    "AI features (Copilot) are priced and discounted separately from the core product, with a dated, temporary offer rather than a stable price: the Business Copilot add-on's official page shows \"Originally starting from $21.00 now starting from $18.00,\" explicitly valid only for commitments made \"between July 1, 2026, and December 31, 2026,\" require an annual commitment, and state that \"promotional pricing applies to the first year only.\" The equivalent Enterprise Copilot add-on carries no such discount at a flat $30.00/user/month. Buyers who want AI in Teams face both an extra per-seat charge on top of any plan price and a pricing window Microsoft has already set to change."
+  ]
 }

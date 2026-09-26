@@ -43,5 +43,69 @@
       ]
     }
   ],
-  "order": 47
+  "order": 47,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$29",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://ahrefs.com/pricing",
+    "tiers": [
+      {
+        "name": "Ahrefs Free (Webmaster Tools)",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "flat",
+        "notes": "Free forever; lets you check rankings, backlinks and run site audits, but only for websites you can verify ownership of (not for competitor research). Billing basis: n/a."
+      },
+      {
+        "name": "Starter",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, 1 user",
+        "notes": "Entry paid tier for keyword research and competitor analysis; cannot purchase extra credit top-ups."
+      },
+      {
+        "name": "Lite",
+        "amount": "129",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, 1 user included",
+        "notes": "5 projects, 750 tracked keywords; up to 2 extra users at $40/mo each."
+      },
+      {
+        "name": "Standard",
+        "amount": "249",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, 1 user included",
+        "notes": "20 projects, 2,000 tracked keywords; up to 5 extra users at $60/mo each."
+      },
+      {
+        "name": "Advanced",
+        "amount": "449",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, 1 user included",
+        "notes": "50 projects, 5,000 tracked keywords, API/MCP access; up to 10 extra users at $80/mo each."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "1499",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat, custom",
+        "notes": "Requires annual commitment; uncapped API access and custom features. Exact per-seat/enterprise terms beyond the $1,499/mo headline are not publicly itemized."
+      }
+    ]
+  },
+  "cons": [
+    "No free trial of the full product exists: Ahrefs' own Help Center states \"We don't provide any free trials\" -- the only no-cost option is the permanently-limited Ahrefs Free (Webmaster Tools) tier, which only works for websites you can verify ownership of, so you cannot trial competitor research, keyword, or content tools without paying.",
+    "Every paid tier (Lite $129/mo, Standard $249/mo, Advanced $449/mo) includes only 1 user by default; additional seats are extra and capped per tier -- up to 2 more users at $40/mo each on Lite, up to 5 more at $60/mo on Standard, and up to 10 more at $80/mo on Advanced -- so a small team's real monthly cost is well above the headline single-seat price.",
+    "There is a steep, uncushioned jump from the Advanced plan ($449/mo) to Enterprise ($1,499/mo), and Enterprise explicitly requires an annual commitment (no month-to-month option) with pricing details beyond the $1,499/mo headline not made public, making it hard to budget precisely before talking to sales."
+  ]
 }

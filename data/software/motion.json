@@ -58,5 +58,53 @@
         "Cross-platform sync"
       ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$19",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.usemotion.com/pricing",
+    "tiers": [
+      {
+        "name": "Pro AI",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "Includes 7,500 AI credits/seat/month; overage billed at $0.25 per 100 additional credits."
+      },
+      {
+        "name": "Pro AI (paid annually)",
+        "amount": "12.73",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "33% cheaper than the monthly rate per Motion's own pricing page, but the discount requires paying the full year upfront in a single charge rather than in monthly installments. Billing basis: monthly rate, but charged as one lump-sum annual payment (~$153/seat for the year)."
+      },
+      {
+        "name": "Business AI",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "Includes 15,000 AI credits/seat/month; overage billed at $0.19 per 100 additional credits. Adds capacity planning, Gantt/timeline views, time tracking, permissions, central billing, priority support."
+      },
+      {
+        "name": "Business AI (paid annually)",
+        "amount": "19.43",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "33% cheaper than the monthly rate, same single-upfront-payment structure as Pro AI's annual option. Billing basis: monthly rate, but charged as one lump-sum annual payment (~$233/seat for the year)."
+      }
+    ]
+  },
+  "cons": [
+    "Motion's AI usage is metered, not unlimited: Pro AI includes 7,500 AI credits/seat/month and Business AI includes 15,000 credits/seat/month, and once those are used up you pay overage fees ($0.25 per 100 credits on Pro AI, $0.19 per 100 on Business AI) or wait for the next billing cycle — so the advertised $19 or $29 per-seat price is not a hard ceiling on cost for anyone doing heavy AI-assisted planning.",
+    "There is no permanent free plan, only a 7-day free trial, and per the official pricing page and a detailed third-party breakdown (usecarly.com), the trial requires entering credit card details upfront; when the 7 days end there is no automatic fallback to a free tier — the paid plan you selected starts billing automatically.",
+    "The 33%-cheaper annual rate isn't spread across 12 monthly charges — it's billed as a single lump-sum payment for the full year up front (roughly $153/seat for Pro AI or $233/seat for Business AI), which is a real structural gotcha for buyers expecting a lower recurring monthly charge rather than one large upfront bill."
   ]
 }

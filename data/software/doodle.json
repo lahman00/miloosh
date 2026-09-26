@@ -46,5 +46,69 @@
       ]
     }
   ],
-  "order": 22
+  "order": 22,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://doodle.com/en/premium",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "flat",
+        "notes": "Limited to 1 Group Poll, 1 Booking Page, 1 1:1, and 'Basic' Sign-up Sheets. Billing basis: N/A (no card required)."
+      },
+      {
+        "name": "Pro (billed monthly)",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat/month",
+        "notes": "No annual commitment; unlimited polls/booking pages/1:1s, ad-free, Zoom/Teams/Webex integration."
+      },
+      {
+        "name": "Pro (billed annually)",
+        "amount": "11",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat/month",
+        "notes": "Equivalent to USD 132/year; a 26% discount vs. the monthly price, per Doodle's own toggle. Billing basis: monthly, billed annually."
+      },
+      {
+        "name": "Team (billed monthly, 2-seat minimum)",
+        "amount": "21",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat/month",
+        "notes": "Live pricing widget shows this drops to USD 19/seat/month once seat count reaches 6, confirming volume-tiered per-seat pricing."
+      },
+      {
+        "name": "Team (billed annually, 2-seat minimum)",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat/month",
+        "notes": "24% discount vs. monthly billing at the 2-seat minimum; Doodle's Help Center cites further volume breaks (~USD 14/seat annually at 6-20 seats, ~USD 13 at 21+), consistent with the live calculator's behavior but not independently re-verified at every seat count. Billing basis: monthly, billed annually."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "15000",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "flat (starting floor, fully custom above it)",
+        "notes": "For orgs with 50+ employees. Only a starting floor is published; adds SSO/SAML/OIDC, MFA, dedicated CSM, 99.9% SLA. No further public numbers -- final price requires contacting sales. Billing basis: yearly."
+      }
+    ]
+  },
+  "cons": [
+    "The free plan is capped at just one active Group Poll, one Booking Page, and one 1:1 link at a time (plus only 'Basic' Sign-up Sheets) -- anyone who needs a second concurrent poll or booking page must upgrade to Pro, since the free tier isn't a usage trial but a hard 1-of-each ceiling.",
+    "The Team plan (Admin Console, roles/permissions, custom branding, Stripe payment collection, AI meeting descriptions) enforces a 2-seat minimum, so a solo user cannot buy those collaboration/admin features alone; Team also carries a real monthly-vs-annual gap (USD 21/seat/month billed monthly vs. USD 16/seat/month billed annually at 2 seats, per Doodle's own pricing toggle -- a ~24% surcharge for not committing annually).",
+    "Security/compliance features that many buyers need at mid-size scale -- SSO (SAML/OIDC), MFA, role-based access, and a 99.9% SLA -- are entirely gated behind the custom-quote Enterprise tier, which publishes only a 'starts at USD 15,000/year' floor with no per-seat or per-org number; there is no self-serve path to those features at the Team price point, so budgeting for them requires a sales conversation."
+  ]
 }

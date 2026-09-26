@@ -4,7 +4,9 @@
   "category": "analytics",
   "description": "PostHog is a product intelligence platform that combines product analytics, web analytics, session replay, feature flags, experiments, and a customer data pipeline so teams can understand and improve user behavior.",
   "website": "https://posthog.com/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Product teams and developers at companies of any size wanting analytics, experimentation, and data infrastructure in one platform, with SDKs for Next.js, React, Python, and 20+ other frameworks/languages.",
   "features": [
     "Product analytics and web analytics",
@@ -15,7 +17,9 @@
     "Customer data platform (CDP) for routing event data to other tools",
     "Managed data warehouse for querying product data"
   ],
-  "sources": ["https://posthog.com/"],
+  "sources": [
+    "https://posthog.com/"
+  ],
   "accessed_at": "2026-08-04",
   "alternatives": [
     {
@@ -23,21 +27,89 @@
       "slug": "amplitude",
       "description": "A product analytics platform combining analytics, feedback, experimentation, and feature management.",
       "best_for": "Product, data, and engineering teams needing analytics with feature experimentation.",
-      "strengths": ["Instant query results", "Session replay and heatmaps", "Feature experimentation"]
+      "strengths": [
+        "Instant query results",
+        "Session replay and heatmaps",
+        "Feature experimentation"
+      ]
     },
     {
       "name": "Mixpanel",
       "slug": "mixpanel",
       "description": "A product intelligence platform combining analytics, session replay, experiments, and AI-powered insights.",
       "best_for": "Product, data, and engineering teams wanting fast, data-driven product decisions.",
-      "strengths": ["Fast querying", "Session Replay", "Metric Trees"]
+      "strengths": [
+        "Fast querying",
+        "Session Replay",
+        "Metric Trees"
+      ]
     },
     {
       "name": "Segment",
       "slug": "segment",
       "description": "Twilio's customer data platform for collecting, unifying, and activating first-party customer data.",
       "best_for": "Organizations that primarily need a data pipeline to unify and route customer data across many tools.",
-      "strengths": ["550+ destination integrations", "Unified customer profiles", "Real-time activation"]
+      "strengths": [
+        "550+ destination integrations",
+        "Unified customer profiles",
+        "Real-time activation"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://posthog.com/pricing",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat",
+        "notes": "Resets every month, forever; no credit card required. Includes 1M product-analytics events, 5K session recordings, 1M feature-flag requests, 100K error-tracking exceptions, 1,500 survey responses, 1M data-warehouse rows, 10GB logs ingested, plus smaller allowances for AI/other products."
+      },
+      {
+        "name": "Pay-as-you-go — Product Analytics (per event, after 1M free events/mo)",
+        "amount": "0.0000500 (1-2M events) stepping down to 0.0000090 (250M+ events)",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per event",
+        "notes": "Step-down usage pricing confirmed on posthog.com/docs/product-analytics/pricing: $0.0000500/event (1-2M), $0.0000343/event (2-15M), $0.0000295/event (15-50M), $0.0000218/event (50-100M), $0.0000150/event (100-250M), $0.0000090/event (250M+). Other products (session replay, feature flags, error tracking, surveys, etc.) are metered and billed separately by their own unit. No per-seat charge on any plan — team members are unlimited."
+      },
+      {
+        "name": "Boost (platform package, optional flat add-on)",
+        "amount": "250",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat",
+        "notes": "Confirmed on posthog.com/platform-packages. Adds unlimited projects, white labeling, HIPAA BAA, SSO enforcement, 2FA requirement. Activity-log retention only 7 days; session-replay retention 12 months; no stated priority-support SLA."
+      },
+      {
+        "name": "Scale (platform package, optional flat add-on)",
+        "amount": "750",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "flat",
+        "notes": "Adds SAML/OIDC SSO, approvals workflow, and priority support with an 8-hour target response time. Activity-log retention 2 months; session-replay retention 12 months."
+      },
+      {
+        "name": "Enterprise (platform package)",
+        "amount": "Custom",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "flat",
+        "notes": "Page explicitly says \"Custom pricing\" with a \"Talk to a human\" CTA — no public number. Adds RBAC, property access control, SCIM provisioning, dedicated account manager; retention extends to 60 months for activity logs and session replay. Billing basis: contact_sales."
+      }
+    ]
+  },
+  "cons": [
+    "Enterprise-grade security and governance controls are not covered by usage-based billing — they're gated behind separate flat platform packages: SSO enforcement and a HIPAA BAA require the $250/month Boost package, SAML/OIDC SSO requires the $750/month Scale package, and RBAC plus SCIM provisioning are only available on the Enterprise package, which has no public price and requires contacting sales.",
+    "Support responsiveness and data retention scale sharply with price tier rather than with usage: the $250/month Boost tier retains activity logs for only 7 days and states no support SLA at all, an 8-hour 'target' (not guaranteed) response time only starts at the $750/month Scale tier, and full 60-month retention plus a dedicated account manager require custom, contact-sales-only Enterprise pricing.",
+    "Total cost is hard to forecast because PostHog meters 13+ products independently (analytics events, session recordings, feature-flag requests, error-tracking exceptions, survey responses, data-warehouse rows, log GB, AI credits, etc.), each with its own free-tier ceiling and its own per-unit rate, rather than one simple flat or per-seat price."
   ]
 }

@@ -4,7 +4,13 @@
   "category": "ai",
   "description": "ChatGPT is OpenAI's AI assistant app, offering chat, voice, vision, and agentic \"Work\"/\"Codex\" capabilities for asking questions, researching, and creating documents.",
   "website": "https://openai.com/chatgpt/",
-  "platforms": ["Web", "iOS", "Android", "macOS", "Windows"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android",
+    "macOS",
+    "Windows"
+  ],
   "best_for": "Positioned by OpenAI as a general assistant for chatting, searching, research/analysis, document/spreadsheet/presentation creation (\"Work\"), and software development with local files and terminals (\"Codex\").",
   "features": [
     "Voice input/conversation",
@@ -28,14 +34,93 @@
       "slug": "perplexity",
       "description": "An AI answer engine that researches the open web in real time and returns concise, cited answers.",
       "best_for": "People who want real-time, cited answers to questions rather than a list of links.",
-      "strengths": ["Inline citations", "Real-time web grounding", "Multi-model choice"]
+      "strengths": [
+        "Inline citations",
+        "Real-time web grounding",
+        "Multi-model choice"
+      ]
     },
     {
       "name": "Gemini",
       "slug": "gemini",
       "description": "Google DeepMind's family of AI models for building and using intelligent agents across text, image, video, and audio.",
       "best_for": "Developers, enterprises, and consumers already in the Google ecosystem needing agentic or long-context reasoning.",
-      "strengths": ["Long-context processing", "Google Search AI Mode integration", "Agentic coding tools"]
+      "strengths": [
+        "Long-context processing",
+        "Google Search AI Mode integration",
+        "Agentic coding tools"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://chatgpt.com/pricing/",
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "No cost. Unlimited text chat 'subject to abuse guardrails'; limited uploads, image generation, voice, deep research, memory/context."
+      },
+      {
+        "name": "Go",
+        "amount": "8",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Monthly billing only (OpenAI's own FAQ lists monthly plans for Go, Plus, Business; annual only for Business/Enterprise). May include ads per the plan's own footnote."
+      },
+      {
+        "name": "Plus",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Annual option available at $16.67/user/month (effectively ~$200/year, i.e. ~2 months free vs monthly). Page states 'Limits apply' rather than a published hard usage cap."
+      },
+      {
+        "name": "Pro (entry tier)",
+        "amount": "100",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Displayed as the 'From' price on the Pro card; sits between Plus ($20) and the higher Pro tier ($200)."
+      },
+      {
+        "name": "Pro (top tier)",
+        "amount": "200",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Top individual tier. Usage described as 'Unlimited subject to abuse guardrails' -- no published numeric cap."
+      },
+      {
+        "name": "Business",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per user",
+        "notes": "Minimum 2 seats (per OpenAI FAQ). Annual billing available at $20/user/month (~$240/user/year)."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "custom / contact sales",
+        "notes": "No public per-seat price. Sold only via annual contract through OpenAI sales; invoicing available as a payment option. Billing basis: annual (contract)."
+      }
+    ]
+  },
+  "cons": [
+    "ChatGPT's paid tiers do not publish hard usage caps: Plus ($20/month) usage is gated only by an unspecified 'Limits apply' note, and even the top $200/month Pro tier is capped as 'Unlimited subject to abuse guardrails' rather than a stated message/token quota, so a subscriber cannot know in advance exactly how much usage a given plan buys (per OpenAI's own official pricing/comparison page).",
+    "There is a steep price gap in the individual lineup: after Free ($0) and Plus ($20/month), the next real capability upgrade is Pro, which starts at $100/month and runs to $200/month -- a 5x to 10x jump from Plus with no $30-$60 mid-tier for individual users (the $8/month Go plan sits below Plus, not between Plus and Pro).",
+    "On OpenAI's own plan-comparison table, the Free, Go, and Plus consumer tiers are listed as 'Content is used to train our models,' with a separate 'Opt-out available' control -- meaning conversation data is used for model training by default unless the user proactively finds and enables the opt-out, rather than training use being opt-in."
   ]
 }
