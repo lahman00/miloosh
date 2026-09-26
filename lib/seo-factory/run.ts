@@ -1,4 +1,5 @@
 import { createHash, randomUUID } from "node:crypto";
+import { experimentProtection, reservedProtection } from "@/lib/google-war/protection";
 import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
@@ -87,12 +88,11 @@ export function clusterOpportunities(items: SeoOpportunity[]): SeoOpportunity[] 
 }
 
 export function suppressActiveExperimentRecommendations(items: SeoOpportunity[], experiments: Array<{ page: string; decision: string; measurementWindowDays: number; recordedAt: string }>): SeoOpportunity[] {
-  const active = new Map(experiments.filter((item) => item.decision === "MEASURING").map((item) => [item.page, item]));
+  const active = new Map([...reservedProtection(), ...experimentProtection(experiments, new Date().toISOString(), "SEO Factory experiment store")].map(item => [item.page, item]));
   return items.map((item) => {
     const experiment = active.get(item.existingUrl ?? item.targetUrl ?? "");
     if (!experiment || !["CREATE", "IMPROVE", "MERGE", "REDIRECT", "META_TEST", "REFRESH"].includes(item.action)) return item;
-    const measurementEnds = new Date(new Date(experiment.recordedAt).getTime() + experiment.measurementWindowDays * 86_400_000).toISOString();
-    return { ...item, action: "WAIT", recommendation: `Active SEO experiment is measuring until ${measurementEnds}; suppress another major intervention unless a factual, technical, legal, or indexability defect is confirmed.` };
+    return { ...item, action: "WAIT", recommendation: `${experiment.state === "ACTIVE_EXPERIMENT" ? "Active SEO experiment" : "Protected page"}: ${experiment.state}; checkpoint ${experiment.until ?? "explicit review required"}. ${experiment.reason}. Suppress another major intervention unless a factual, technical, legal, or indexability defect is confirmed.` };
   });
 }
 

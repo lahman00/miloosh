@@ -1,0 +1,3769 @@
+{
+  "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+  "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+  "window": {
+    "start": "2026-08-07",
+    "end": "2026-09-23"
+  },
+  "rows": [
+    {
+      "url": "https://miloosh.com/",
+      "clicks": 2,
+      "impressions": 107,
+      "ctr": 0.019,
+      "position": 14.4
+    },
+    {
+      "url": "https://miloosh.com/software/intercom",
+      "clicks": 1,
+      "impressions": 1757,
+      "ctr": 0.001,
+      "position": 86
+    },
+    {
+      "url": "https://miloosh.com/software/airtable",
+      "clicks": 1,
+      "impressions": 329,
+      "ctr": 0.003,
+      "position": 78.4
+    },
+    {
+      "url": "https://miloosh.com/software/vercel",
+      "clicks": 1,
+      "impressions": 209,
+      "ctr": 0.005,
+      "position": 74.7
+    },
+    {
+      "url": "https://miloosh.com/software/mattermost",
+      "clicks": 1,
+      "impressions": 150,
+      "ctr": 0.006999999999999999,
+      "position": 61.3
+    },
+    {
+      "url": "https://miloosh.com/software/jenkins",
+      "clicks": 1,
+      "impressions": 135,
+      "ctr": 0.006999999999999999,
+      "position": 68.9
+    },
+    {
+      "url": "https://miloosh.com/software/docker",
+      "clicks": 1,
+      "impressions": 129,
+      "ctr": 0.008,
+      "position": 75.6
+    },
+    {
+      "url": "https://miloosh.com/software/tailscale",
+      "clicks": 1,
+      "impressions": 51,
+      "ctr": 0.02,
+      "position": 59.1
+    },
+    {
+      "url": "https://miloosh.com/compare/github-copilot-vs-perplexity",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 11
+    },
+    {
+      "url": "https://miloosh.com/software/semrush",
+      "clicks": 0,
+      "impressions": 1957,
+      "ctr": 0,
+      "position": 77.3
+    },
+    {
+      "url": "https://miloosh.com/software/freshdesk",
+      "clicks": 0,
+      "impressions": 1685,
+      "ctr": 0,
+      "position": 80.3
+    },
+    {
+      "url": "https://miloosh.com/software/front",
+      "clicks": 0,
+      "impressions": 634,
+      "ctr": 0,
+      "position": 75.8
+    },
+    {
+      "url": "https://miloosh.com/software/buffer",
+      "clicks": 0,
+      "impressions": 587,
+      "ctr": 0,
+      "position": 83.6
+    },
+    {
+      "url": "https://miloosh.com/software/mulesoft",
+      "clicks": 0,
+      "impressions": 511,
+      "ctr": 0,
+      "position": 77.3
+    },
+    {
+      "url": "https://miloosh.com/software/help-scout",
+      "clicks": 0,
+      "impressions": 498,
+      "ctr": 0,
+      "position": 73.4
+    },
+    {
+      "url": "https://miloosh.com/software/clickup",
+      "clicks": 0,
+      "impressions": 468,
+      "ctr": 0,
+      "position": 84.9
+    },
+    {
+      "url": "https://miloosh.com/software/salesforce",
+      "clicks": 0,
+      "impressions": 466,
+      "ctr": 0,
+      "position": 75.6
+    },
+    {
+      "url": "https://miloosh.com/software/ecwid",
+      "clicks": 0,
+      "impressions": 408,
+      "ctr": 0,
+      "position": 74.3
+    },
+    {
+      "url": "https://miloosh.com/software/sprout-social",
+      "clicks": 0,
+      "impressions": 387,
+      "ctr": 0,
+      "position": 81
+    },
+    {
+      "url": "https://miloosh.com/software/confluence",
+      "clicks": 0,
+      "impressions": 371,
+      "ctr": 0,
+      "position": 67.7
+    },
+    {
+      "url": "https://miloosh.com/software/pipedrive",
+      "clicks": 0,
+      "impressions": 351,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://miloosh.com/software/n8n",
+      "clicks": 0,
+      "impressions": 296,
+      "ctr": 0,
+      "position": 85.8
+    },
+    {
+      "url": "https://miloosh.com/software/basecamp",
+      "clicks": 0,
+      "impressions": 293,
+      "ctr": 0,
+      "position": 85
+    },
+    {
+      "url": "https://miloosh.com/software/whimsical",
+      "clicks": 0,
+      "impressions": 286,
+      "ctr": 0,
+      "position": 65.6
+    },
+    {
+      "url": "https://miloosh.com/software/tidio",
+      "clicks": 0,
+      "impressions": 282,
+      "ctr": 0,
+      "position": 86.5
+    },
+    {
+      "url": "https://miloosh.com/software/scribe",
+      "clicks": 0,
+      "impressions": 273,
+      "ctr": 0,
+      "position": 69.8
+    },
+    {
+      "url": "https://miloosh.com/software/umbraco",
+      "clicks": 0,
+      "impressions": 265,
+      "ctr": 0,
+      "position": 61.6
+    },
+    {
+      "url": "https://miloosh.com/software/zoho-crm",
+      "clicks": 0,
+      "impressions": 265,
+      "ctr": 0,
+      "position": 81
+    },
+    {
+      "url": "https://miloosh.com/software/zapier",
+      "clicks": 0,
+      "impressions": 261,
+      "ctr": 0,
+      "position": 85.8
+    },
+    {
+      "url": "https://miloosh.com/software/smartsheet",
+      "clicks": 0,
+      "impressions": 259,
+      "ctr": 0,
+      "position": 80.8
+    },
+    {
+      "url": "https://miloosh.com/software/github",
+      "clicks": 0,
+      "impressions": 252,
+      "ctr": 0,
+      "position": 76.2
+    },
+    {
+      "url": "https://miloosh.com/software/activecampaign",
+      "clicks": 0,
+      "impressions": 251,
+      "ctr": 0,
+      "position": 78.2
+    },
+    {
+      "url": "https://miloosh.com/software/fullstory",
+      "clicks": 0,
+      "impressions": 241,
+      "ctr": 0,
+      "position": 63.9
+    },
+    {
+      "url": "https://miloosh.com/software/marketo-engage",
+      "clicks": 0,
+      "impressions": 239,
+      "ctr": 0,
+      "position": 67.6
+    },
+    {
+      "url": "https://miloosh.com/software/wrike",
+      "clicks": 0,
+      "impressions": 238,
+      "ctr": 0,
+      "position": 88.4
+    },
+    {
+      "url": "https://miloosh.com/software/lucidchart",
+      "clicks": 0,
+      "impressions": 235,
+      "ctr": 0,
+      "position": 80.7
+    },
+    {
+      "url": "https://miloosh.com/software/ringcentral",
+      "clicks": 0,
+      "impressions": 234,
+      "ctr": 0,
+      "position": 68.3
+    },
+    {
+      "url": "https://miloosh.com/software/firebase",
+      "clicks": 0,
+      "impressions": 224,
+      "ctr": 0,
+      "position": 71.5
+    },
+    {
+      "url": "https://miloosh.com/software/segment",
+      "clicks": 0,
+      "impressions": 221,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/software/lastpass",
+      "clicks": 0,
+      "impressions": 208,
+      "ctr": 0,
+      "position": 72.3
+    },
+    {
+      "url": "https://miloosh.com/software/calendly",
+      "clicks": 0,
+      "impressions": 204,
+      "ctr": 0,
+      "position": 82.1
+    },
+    {
+      "url": "https://miloosh.com/software/netlify",
+      "clicks": 0,
+      "impressions": 191,
+      "ctr": 0,
+      "position": 74.4
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-analytics-vs-segment",
+      "clicks": 0,
+      "impressions": 189,
+      "ctr": 0,
+      "position": 34.1
+    },
+    {
+      "url": "https://miloosh.com/software/copy-ai",
+      "clicks": 0,
+      "impressions": 187,
+      "ctr": 0,
+      "position": 79.1
+    },
+    {
+      "url": "https://miloosh.com/software/hotjar",
+      "clicks": 0,
+      "impressions": 184,
+      "ctr": 0,
+      "position": 84.6
+    },
+    {
+      "url": "https://miloosh.com/software/contentful",
+      "clicks": 0,
+      "impressions": 182,
+      "ctr": 0,
+      "position": 74.8
+    },
+    {
+      "url": "https://miloosh.com/software/directus",
+      "clicks": 0,
+      "impressions": 179,
+      "ctr": 0,
+      "position": 63.3
+    },
+    {
+      "url": "https://miloosh.com/software/webex",
+      "clicks": 0,
+      "impressions": 177,
+      "ctr": 0,
+      "position": 69.5
+    },
+    {
+      "url": "https://miloosh.com/software/toggl-track",
+      "clicks": 0,
+      "impressions": 177,
+      "ctr": 0,
+      "position": 73.9
+    },
+    {
+      "url": "https://miloosh.com/software/synthesia",
+      "clicks": 0,
+      "impressions": 170,
+      "ctr": 0,
+      "position": 73.8
+    },
+    {
+      "url": "https://miloosh.com/software/ifttt",
+      "clicks": 0,
+      "impressions": 169,
+      "ctr": 0,
+      "position": 70.1
+    },
+    {
+      "url": "https://miloosh.com/software/opencart",
+      "clicks": 0,
+      "impressions": 169,
+      "ctr": 0,
+      "position": 73.3
+    },
+    {
+      "url": "https://miloosh.com/software/todoist",
+      "clicks": 0,
+      "impressions": 167,
+      "ctr": 0,
+      "position": 69.9
+    },
+    {
+      "url": "https://miloosh.com/software/plausible",
+      "clicks": 0,
+      "impressions": 167,
+      "ctr": 0,
+      "position": 71.6
+    },
+    {
+      "url": "https://miloosh.com/software/crazy-egg",
+      "clicks": 0,
+      "impressions": 165,
+      "ctr": 0,
+      "position": 63.2
+    },
+    {
+      "url": "https://miloosh.com/software/jasper",
+      "clicks": 0,
+      "impressions": 165,
+      "ctr": 0,
+      "position": 71.5
+    },
+    {
+      "url": "https://miloosh.com/software/klaviyo",
+      "clicks": 0,
+      "impressions": 165,
+      "ctr": 0,
+      "position": 79.2
+    },
+    {
+      "url": "https://miloosh.com/software/drupal",
+      "clicks": 0,
+      "impressions": 163,
+      "ctr": 0,
+      "position": 71.8
+    },
+    {
+      "url": "https://miloosh.com/software/matomo",
+      "clicks": 0,
+      "impressions": 163,
+      "ctr": 0,
+      "position": 77.6
+    },
+    {
+      "url": "https://miloosh.com/software/miro",
+      "clicks": 0,
+      "impressions": 162,
+      "ctr": 0,
+      "position": 81.8
+    },
+    {
+      "url": "https://miloosh.com/software/crowdstrike",
+      "clicks": 0,
+      "impressions": 160,
+      "ctr": 0,
+      "position": 69.4
+    },
+    {
+      "url": "https://miloosh.com/software/evernote",
+      "clicks": 0,
+      "impressions": 159,
+      "ctr": 0,
+      "position": 79.3
+    },
+    {
+      "url": "https://miloosh.com/software/doodle",
+      "clicks": 0,
+      "impressions": 152,
+      "ctr": 0,
+      "position": 83.7
+    },
+    {
+      "url": "https://miloosh.com/software/power-automate",
+      "clicks": 0,
+      "impressions": 149,
+      "ctr": 0,
+      "position": 82.7
+    },
+    {
+      "url": "https://miloosh.com/software/deepl",
+      "clicks": 0,
+      "impressions": 145,
+      "ctr": 0,
+      "position": 71.1
+    },
+    {
+      "url": "https://miloosh.com/software/adyen",
+      "clicks": 0,
+      "impressions": 141,
+      "ctr": 0,
+      "position": 70.6
+    },
+    {
+      "url": "https://miloosh.com/software/okta",
+      "clicks": 0,
+      "impressions": 139,
+      "ctr": 0,
+      "position": 74.4
+    },
+    {
+      "url": "https://miloosh.com/software/gorgias",
+      "clicks": 0,
+      "impressions": 135,
+      "ctr": 0,
+      "position": 82.4
+    },
+    {
+      "url": "https://miloosh.com/software/braze",
+      "clicks": 0,
+      "impressions": 132,
+      "ctr": 0,
+      "position": 73.5
+    },
+    {
+      "url": "https://miloosh.com/software/coda",
+      "clicks": 0,
+      "impressions": 129,
+      "ctr": 0,
+      "position": 64.4
+    },
+    {
+      "url": "https://miloosh.com/software/algolia",
+      "clicks": 0,
+      "impressions": 124,
+      "ctr": 0,
+      "position": 75.3
+    },
+    {
+      "url": "https://miloosh.com/software/1password",
+      "clicks": 0,
+      "impressions": 123,
+      "ctr": 0,
+      "position": 70.9
+    },
+    {
+      "url": "https://miloosh.com/software/ticktick",
+      "clicks": 0,
+      "impressions": 122,
+      "ctr": 0,
+      "position": 63.3
+    },
+    {
+      "url": "https://miloosh.com/software/fathom-analytics",
+      "clicks": 0,
+      "impressions": 117,
+      "ctr": 0,
+      "position": 65.6
+    },
+    {
+      "url": "https://miloosh.com/software/craft-cms",
+      "clicks": 0,
+      "impressions": 117,
+      "ctr": 0,
+      "position": 68.6
+    },
+    {
+      "url": "https://miloosh.com/software/microsoft-onenote",
+      "clicks": 0,
+      "impressions": 117,
+      "ctr": 0,
+      "position": 74.1
+    },
+    {
+      "url": "https://miloosh.com/software/gitbook",
+      "clicks": 0,
+      "impressions": 116,
+      "ctr": 0,
+      "position": 71.4
+    },
+    {
+      "url": "https://miloosh.com/software/kayako",
+      "clicks": 0,
+      "impressions": 115,
+      "ctr": 0,
+      "position": 51.8
+    },
+    {
+      "url": "https://miloosh.com/software/signal",
+      "clicks": 0,
+      "impressions": 113,
+      "ctr": 0,
+      "position": 129.5
+    },
+    {
+      "url": "https://miloosh.com/software/plaid",
+      "clicks": 0,
+      "impressions": 111,
+      "ctr": 0,
+      "position": 62.1
+    },
+    {
+      "url": "https://miloosh.com/software/auth0",
+      "clicks": 0,
+      "impressions": 110,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/software/document360",
+      "clicks": 0,
+      "impressions": 107,
+      "ctr": 0,
+      "position": 71.6
+    },
+    {
+      "url": "https://miloosh.com/software/superhuman",
+      "clicks": 0,
+      "impressions": 106,
+      "ctr": 0,
+      "position": 71.2
+    },
+    {
+      "url": "https://miloosh.com/software/salesforce-commerce-cloud",
+      "clicks": 0,
+      "impressions": 106,
+      "ctr": 0,
+      "position": 73.4
+    },
+    {
+      "url": "https://miloosh.com/software/zoho-projects",
+      "clicks": 0,
+      "impressions": 105,
+      "ctr": 0,
+      "position": 72.2
+    },
+    {
+      "url": "https://miloosh.com/software/woocommerce",
+      "clicks": 0,
+      "impressions": 104,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "url": "https://miloosh.com/software/strapi",
+      "clicks": 0,
+      "impressions": 103,
+      "ctr": 0,
+      "position": 68.1
+    },
+    {
+      "url": "https://miloosh.com/software/amplitude",
+      "clicks": 0,
+      "impressions": 101,
+      "ctr": 0,
+      "position": 70.8
+    },
+    {
+      "url": "https://miloosh.com/software/reclaim-ai",
+      "clicks": 0,
+      "impressions": 100,
+      "ctr": 0,
+      "position": 62.7
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-clickup",
+      "clicks": 0,
+      "impressions": 100,
+      "ctr": 0,
+      "position": 78.8
+    },
+    {
+      "url": "https://miloosh.com/software/zeplin",
+      "clicks": 0,
+      "impressions": 98,
+      "ctr": 0,
+      "position": 50.7
+    },
+    {
+      "url": "https://miloosh.com/software/google-chat",
+      "clicks": 0,
+      "impressions": 97,
+      "ctr": 0,
+      "position": 65.9
+    },
+    {
+      "url": "https://miloosh.com/software/perplexity",
+      "clicks": 0,
+      "impressions": 97,
+      "ctr": 0,
+      "position": 74.9
+    },
+    {
+      "url": "https://miloosh.com/software/keap",
+      "clicks": 0,
+      "impressions": 97,
+      "ctr": 0,
+      "position": 79.5
+    },
+    {
+      "url": "https://www.miloosh.com/software/elastic",
+      "clicks": 0,
+      "impressions": 95,
+      "ctr": 0,
+      "position": 74.9
+    },
+    {
+      "url": "https://miloosh.com/software/close",
+      "clicks": 0,
+      "impressions": 93,
+      "ctr": 0,
+      "position": 68.3
+    },
+    {
+      "url": "https://miloosh.com/software/google-meet",
+      "clicks": 0,
+      "impressions": 90,
+      "ctr": 0,
+      "position": 73.9
+    },
+    {
+      "url": "https://miloosh.com/software/snyk",
+      "clicks": 0,
+      "impressions": 87,
+      "ctr": 0,
+      "position": 74.9
+    },
+    {
+      "url": "https://miloosh.com/software/mixpanel",
+      "clicks": 0,
+      "impressions": 87,
+      "ctr": 0,
+      "position": 75.4
+    },
+    {
+      "url": "https://miloosh.com/software/linear",
+      "clicks": 0,
+      "impressions": 86,
+      "ctr": 0,
+      "position": 77.4
+    },
+    {
+      "url": "https://miloosh.com/software/slite",
+      "clicks": 0,
+      "impressions": 85,
+      "ctr": 0,
+      "position": 63.8
+    },
+    {
+      "url": "https://miloosh.com/software/bitbucket",
+      "clicks": 0,
+      "impressions": 84,
+      "ctr": 0,
+      "position": 68.3
+    },
+    {
+      "url": "https://miloosh.com/software/sketch",
+      "clicks": 0,
+      "impressions": 81,
+      "ctr": 0,
+      "position": 71.8
+    },
+    {
+      "url": "https://miloosh.com/software/setmore",
+      "clicks": 0,
+      "impressions": 80,
+      "ctr": 0,
+      "position": 70
+    },
+    {
+      "url": "https://miloosh.com/software/wiz",
+      "clicks": 0,
+      "impressions": 79,
+      "ctr": 0,
+      "position": 58.7
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-coda",
+      "clicks": 0,
+      "impressions": 79,
+      "ctr": 0,
+      "position": 68
+    },
+    {
+      "url": "https://miloosh.com/software/google-analytics",
+      "clicks": 0,
+      "impressions": 79,
+      "ctr": 0,
+      "position": 89
+    },
+    {
+      "url": "https://miloosh.com/compare/craft-cms-vs-wordpress",
+      "clicks": 0,
+      "impressions": 78,
+      "ctr": 0,
+      "position": 61.9
+    },
+    {
+      "url": "https://miloosh.com/software/clockify",
+      "clicks": 0,
+      "impressions": 78,
+      "ctr": 0,
+      "position": 72.5
+    },
+    {
+      "url": "https://miloosh.com/software/bitwarden",
+      "clicks": 0,
+      "impressions": 76,
+      "ctr": 0,
+      "position": 65.8
+    },
+    {
+      "url": "https://miloosh.com/software/weebly",
+      "clicks": 0,
+      "impressions": 76,
+      "ctr": 0,
+      "position": 71.6
+    },
+    {
+      "url": "https://miloosh.com/software/heap",
+      "clicks": 0,
+      "impressions": 73,
+      "ctr": 0,
+      "position": 52.8
+    },
+    {
+      "url": "https://miloosh.com/software/adobe-commerce",
+      "clicks": 0,
+      "impressions": 72,
+      "ctr": 0,
+      "position": 81.3
+    },
+    {
+      "url": "https://miloosh.com/software/ghost",
+      "clicks": 0,
+      "impressions": 70,
+      "ctr": 0,
+      "position": 73.5
+    },
+    {
+      "url": "https://miloosh.com/software/elevenlabs",
+      "clicks": 0,
+      "impressions": 67,
+      "ctr": 0,
+      "position": 73.2
+    },
+    {
+      "url": "https://miloosh.com/software/shift4shop",
+      "clicks": 0,
+      "impressions": 66,
+      "ctr": 0,
+      "position": 63.9
+    },
+    {
+      "url": "https://miloosh.com/software/rapidapi",
+      "clicks": 0,
+      "impressions": 65,
+      "ctr": 0,
+      "position": 61.4
+    },
+    {
+      "url": "https://miloosh.com/software/docusaurus",
+      "clicks": 0,
+      "impressions": 65,
+      "ctr": 0,
+      "position": 64.2
+    },
+    {
+      "url": "https://miloosh.com/software/crisp",
+      "clicks": 0,
+      "impressions": 63,
+      "ctr": 0,
+      "position": 77.8
+    },
+    {
+      "url": "https://miloosh.com/software/pipedream",
+      "clicks": 0,
+      "impressions": 61,
+      "ctr": 0,
+      "position": 66
+    },
+    {
+      "url": "https://miloosh.com/software/prestashop",
+      "clicks": 0,
+      "impressions": 61,
+      "ctr": 0,
+      "position": 71.1
+    },
+    {
+      "url": "https://miloosh.com/software/guru",
+      "clicks": 0,
+      "impressions": 60,
+      "ctr": 0,
+      "position": 62.4
+    },
+    {
+      "url": "https://miloosh.com/software/zendesk",
+      "clicks": 0,
+      "impressions": 60,
+      "ctr": 0,
+      "position": 83.9
+    },
+    {
+      "url": "https://miloosh.com/software/sanity",
+      "clicks": 0,
+      "impressions": 57,
+      "ctr": 0,
+      "position": 67.1
+    },
+    {
+      "url": "https://miloosh.com/software/postmark",
+      "clicks": 0,
+      "impressions": 57,
+      "ctr": 0,
+      "position": 68.1
+    },
+    {
+      "url": "https://miloosh.com/software/freshsales",
+      "clicks": 0,
+      "impressions": 57,
+      "ctr": 0,
+      "position": 74.6
+    },
+    {
+      "url": "https://miloosh.com/software/joomla",
+      "clicks": 0,
+      "impressions": 56,
+      "ctr": 0,
+      "position": 62.6
+    },
+    {
+      "url": "https://miloosh.com/software/storyblok",
+      "clicks": 0,
+      "impressions": 53,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "url": "https://miloosh.com/compare/contentful-vs-sanity",
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 73.5
+    },
+    {
+      "url": "https://miloosh.com/software/duo-security",
+      "clicks": 0,
+      "impressions": 49,
+      "ctr": 0,
+      "position": 57.5
+    },
+    {
+      "url": "https://miloosh.com/software/twilio",
+      "clicks": 0,
+      "impressions": 49,
+      "ctr": 0,
+      "position": 82.4
+    },
+    {
+      "url": "https://miloosh.com/compare/confluence-vs-obsidian",
+      "clicks": 0,
+      "impressions": 47,
+      "ctr": 0,
+      "position": 56.8
+    },
+    {
+      "url": "https://miloosh.com/software/reamaze",
+      "clicks": 0,
+      "impressions": 47,
+      "ctr": 0,
+      "position": 62.6
+    },
+    {
+      "url": "https://miloosh.com/software/archbee",
+      "clicks": 0,
+      "impressions": 45,
+      "ctr": 0,
+      "position": 40.1
+    },
+    {
+      "url": "https://miloosh.com/software/asana",
+      "clicks": 0,
+      "impressions": 42,
+      "ctr": 0,
+      "position": 63
+    },
+    {
+      "url": "https://miloosh.com/software/kong",
+      "clicks": 0,
+      "impressions": 42,
+      "ctr": 0,
+      "position": 67.4
+    },
+    {
+      "url": "https://miloosh.com/software/keeper-security",
+      "clicks": 0,
+      "impressions": 42,
+      "ctr": 0,
+      "position": 67.5
+    },
+    {
+      "url": "https://miloosh.com/software/figma",
+      "clicks": 0,
+      "impressions": 39,
+      "ctr": 0,
+      "position": 108.1
+    },
+    {
+      "url": "https://miloosh.com/software/shopware",
+      "clicks": 0,
+      "impressions": 38,
+      "ctr": 0,
+      "position": 68.2
+    },
+    {
+      "url": "https://miloosh.com/software/craft",
+      "clicks": 0,
+      "impressions": 37,
+      "ctr": 0,
+      "position": 62.1
+    },
+    {
+      "url": "https://miloosh.com/software/runway",
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 76.1
+    },
+    {
+      "url": "https://miloosh.com/software/mkdocs",
+      "clicks": 0,
+      "impressions": 35,
+      "ctr": 0,
+      "position": 36.9
+    },
+    {
+      "url": "https://miloosh.com/software/zeroheight",
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 29.1
+    },
+    {
+      "url": "https://miloosh.com/compare/discord-vs-google-meet",
+      "clicks": 0,
+      "impressions": 32,
+      "ctr": 0,
+      "position": 38.5
+    },
+    {
+      "url": "https://miloosh.com/software/bloomfire",
+      "clicks": 0,
+      "impressions": 32,
+      "ctr": 0,
+      "position": 55.1
+    },
+    {
+      "url": "https://miloosh.com/software/teamwork",
+      "clicks": 0,
+      "impressions": 32,
+      "ctr": 0,
+      "position": 81.6
+    },
+    {
+      "url": "https://miloosh.com/software/readme",
+      "clicks": 0,
+      "impressions": 31,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "url": "https://miloosh.com/software/apigee",
+      "clicks": 0,
+      "impressions": 31,
+      "ctr": 0,
+      "position": 72.3
+    },
+    {
+      "url": "https://miloosh.com/software/youcanbookme",
+      "clicks": 0,
+      "impressions": 31,
+      "ctr": 0,
+      "position": 74.7
+    },
+    {
+      "url": "https://miloosh.com/software/read-the-docs",
+      "clicks": 0,
+      "impressions": 30,
+      "ctr": 0,
+      "position": 66.8
+    },
+    {
+      "url": "https://miloosh.com/software/nutshell",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 47.8
+    },
+    {
+      "url": "https://miloosh.com/software/shortcut",
+      "clicks": 0,
+      "impressions": 27,
+      "ctr": 0,
+      "position": 51.4
+    },
+    {
+      "url": "https://miloosh.com/software/squarespace",
+      "clicks": 0,
+      "impressions": 27,
+      "ctr": 0,
+      "position": 74.6
+    },
+    {
+      "url": "https://miloosh.com/software/zoho-desk",
+      "clicks": 0,
+      "impressions": 27,
+      "ctr": 0,
+      "position": 74.7
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-teamwork",
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 62.6
+    },
+    {
+      "url": "https://miloosh.com/compare/canva-vs-affinity",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 63.1
+    },
+    {
+      "url": "https://miloosh.com/compare/power-automate-vs-uipath",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 73.3
+    },
+    {
+      "url": "https://www.miloosh.com/compare/docusaurus-vs-mkdocs",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 73.5
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-asana",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 82.1
+    },
+    {
+      "url": "https://miloosh.com/software/shopify",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 130
+    },
+    {
+      "url": "https://miloosh.com/compare/github-vs-render",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "url": "https://miloosh.com/compare/canva-vs-miro",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 63.6
+    },
+    {
+      "url": "https://miloosh.com/compare/evernote-vs-microsoft-onenote",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 76.9
+    },
+    {
+      "url": "https://miloosh.com/software/telegram",
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 60.8
+    },
+    {
+      "url": "https://miloosh.com/software/hootsuite",
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 79.4
+    },
+    {
+      "url": "https://miloosh.com/software/zoho-flow",
+      "clicks": 0,
+      "impressions": 21,
+      "ctr": 0,
+      "position": 65.3
+    },
+    {
+      "url": "https://miloosh.com/compare/docker-vs-vercel",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 15.4
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-trello",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 80.6
+    },
+    {
+      "url": "https://miloosh.com/software/wordpress",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "url": "https://miloosh.com/software/nordpass",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 66.1
+    },
+    {
+      "url": "https://miloosh.com/software/rocket-chat",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 95.3
+    },
+    {
+      "url": "https://miloosh.com/compare/asana-vs-clockify",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 59.1
+    },
+    {
+      "url": "https://miloosh.com/compare/jira-vs-teamwork",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 65.2
+    },
+    {
+      "url": "https://miloosh.com/compare/sanity-vs-webflow",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "url": "https://miloosh.com/compare/chatgpt-vs-claude",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 137.5
+    },
+    {
+      "url": "https://miloosh.com/software/helpjuice",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 56.3
+    },
+    {
+      "url": "https://miloosh.com/compare/gitbook-vs-read-the-docs",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 62.5
+    },
+    {
+      "url": "https://miloosh.com/software/claude",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 64.5
+    },
+    {
+      "url": "https://www.miloosh.com/compare/intercom-vs-zendesk",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 82.9
+    },
+    {
+      "url": "https://miloosh.com/compare/microsoft-teams-vs-signal",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 11.5
+    },
+    {
+      "url": "https://miloosh.com/compare/zapier-vs-zoho-flow",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 54.9
+    },
+    {
+      "url": "https://miloosh.com/compare/sanity-vs-wordpress",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 60.3
+    },
+    {
+      "url": "https://miloosh.com/software/stripe",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 62.8
+    },
+    {
+      "url": "https://miloosh.com/compare/freshdesk-vs-zendesk",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 74.9
+    },
+    {
+      "url": "https://miloosh.com/compare/canva-vs-lucidchart",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 10.1
+    },
+    {
+      "url": "https://miloosh.com/compare/google-chat-vs-signal",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 16.5
+    },
+    {
+      "url": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 29.7
+    },
+    {
+      "url": "https://miloosh.com/software/happyfox",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 49.2
+    },
+    {
+      "url": "https://miloosh.com/compare/zapier-vs-tray-ai",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 52.8
+    },
+    {
+      "url": "https://miloosh.com/compare/cloudflare-vs-crowdstrike",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 57.1
+    },
+    {
+      "url": "https://miloosh.com/compare/joomla-vs-umbraco",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 68.2
+    },
+    {
+      "url": "https://miloosh.com/software/uipath",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 70.6
+    },
+    {
+      "url": "https://www.miloosh.com/compare/basecamp-vs-teamwork",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 76.5
+    },
+    {
+      "url": "https://miloosh.com/software/mailchimp",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 82.1
+    },
+    {
+      "url": "https://miloosh.com/terms",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 5.7
+    },
+    {
+      "url": "https://miloosh.com/compare/amplitude-vs-segment",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 53.1
+    },
+    {
+      "url": "https://miloosh.com/software/liveagent",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 62.2
+    },
+    {
+      "url": "https://miloosh.com/software/hubspot",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 81
+    },
+    {
+      "url": "https://miloosh.com/software/adobe-analytics",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 71.8
+    },
+    {
+      "url": "https://miloosh.com/privacy",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 3.8
+    },
+    {
+      "url": "https://miloosh.com/contact",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 4.9
+    },
+    {
+      "url": "https://miloosh.com/category/documentation",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 25.2
+    },
+    {
+      "url": "https://miloosh.com/compare/n8n-vs-workato",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 68.8
+    },
+    {
+      "url": "https://miloosh.com/software/wix",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 69.6
+    },
+    {
+      "url": "https://miloosh.com/compare/apigee-vs-kong",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 70.6
+    },
+    {
+      "url": "https://miloosh.com/software/tray-ai",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 72.1
+    },
+    {
+      "url": "https://miloosh.com/software/canva",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 72.3
+    },
+    {
+      "url": "https://www.miloosh.com/compare/ticktick-vs-microsoft-onenote",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 28.4
+    },
+    {
+      "url": "https://miloosh.com/compare/datadog-vs-render",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "url": "https://miloosh.com/compare/zapier-vs-pipedream",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 50.4
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-microsoft-onenote",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 52.2
+    },
+    {
+      "url": "https://miloosh.com/compare/google-chat-vs-google-meet",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 52.3
+    },
+    {
+      "url": "https://miloosh.com/compare/ahrefs-vs-google-analytics",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 59.1
+    },
+    {
+      "url": "https://miloosh.com/compare/fathom-analytics-vs-matomo",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 60.2
+    },
+    {
+      "url": "https://miloosh.com/compare/calendly-vs-cal-com",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 62.2
+    },
+    {
+      "url": "https://www.miloosh.com/compare/acuity-scheduling-vs-setmore",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 63.7
+    },
+    {
+      "url": "https://miloosh.com/software/slack",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 65.8
+    },
+    {
+      "url": "https://miloosh.com/compare/monday-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 65.9
+    },
+    {
+      "url": "https://www.miloosh.com/compare/monday-vs-basecamp",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 66.1
+    },
+    {
+      "url": "https://miloosh.com/software/anydo",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 72.3
+    },
+    {
+      "url": "https://miloosh.com/compare/algolia-vs-elastic",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 77.1
+    },
+    {
+      "url": "https://miloosh.com/software/gemini",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 82.1
+    },
+    {
+      "url": "https://www.miloosh.com/compare/1password-vs-duo-security",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 22.9
+    },
+    {
+      "url": "https://www.miloosh.com/compare/clickup-vs-shortcut",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 48.8
+    },
+    {
+      "url": "https://miloosh.com/software/swaggerhub",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 54.8
+    },
+    {
+      "url": "https://miloosh.com/compare/contentful-vs-webflow",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 62.6
+    },
+    {
+      "url": "https://miloosh.com/compare/posthog-vs-segment",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 63.9
+    },
+    {
+      "url": "https://miloosh.com/compare/trello-vs-linear",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 66.4
+    },
+    {
+      "url": "https://miloosh.com/compare/basecamp-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 68.9
+    },
+    {
+      "url": "https://miloosh.com/compare/hubstaff-vs-clickup",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 72.3
+    },
+    {
+      "url": "https://miloosh.com/about",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 2.4
+    },
+    {
+      "url": "https://miloosh.com/compare/jenkins-vs-sentry",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 14
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-ticktick",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 29.1
+    },
+    {
+      "url": "https://miloosh.com/compare/doodle-vs-microsoft-bookings",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 40
+    },
+    {
+      "url": "https://miloosh.com/compare/microsoft-teams-vs-otter-ai",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 50.3
+    },
+    {
+      "url": "https://miloosh.com/compare/microsoft-teams-vs-ringcentral",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 54.6
+    },
+    {
+      "url": "https://miloosh.com/compare/slack-vs-ringcentral",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 57.3
+    },
+    {
+      "url": "https://miloosh.com/compare/smartsheet-vs-teamwork",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 63.6
+    },
+    {
+      "url": "https://miloosh.com/compare/intercom-vs-zoho-desk",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 69.1
+    },
+    {
+      "url": "https://miloosh.com/compare/marketo-engage-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 70.7
+    },
+    {
+      "url": "https://miloosh.com/compare/google-meet-vs-signal",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 5.2
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-superhuman",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 5.8
+    },
+    {
+      "url": "https://miloosh.com/compare/crowdstrike-vs-tailscale",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 7.8
+    },
+    {
+      "url": "https://miloosh.com/compare/elastic-vs-supabase",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 8.3
+    },
+    {
+      "url": "https://miloosh.com/compare/shopware-vs-woocommerce",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 42.7
+    },
+    {
+      "url": "https://miloosh.com/software/chatgpt",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 51.5
+    },
+    {
+      "url": "https://miloosh.com/compare/linear-vs-shortcut",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 55.7
+    },
+    {
+      "url": "https://miloosh.com/compare/miro-vs-lucidchart",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 56.3
+    },
+    {
+      "url": "https://miloosh.com/software/savvycal",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 57.3
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-shortcut",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "url": "https://miloosh.com/compare/netlify-vs-render",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 62.5
+    },
+    {
+      "url": "https://miloosh.com/compare/marketo-engage-vs-activecampaign",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 63.8
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-gitbook",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 66.8
+    },
+    {
+      "url": "https://miloosh.com/compare/claude-vs-runway",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 69.3
+    },
+    {
+      "url": "https://miloosh.com/compare/contentful-vs-wordpress",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 79.7
+    },
+    {
+      "url": "https://miloosh.com/compare/callrail-vs-hubspot",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 86.2
+    },
+    {
+      "url": "https://miloosh.com/software/otter-ai",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 87.2
+    },
+    {
+      "url": "https://www.miloosh.com/software/microsoft-teams",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 88.8
+    },
+    {
+      "url": "https://miloosh.com/disclaimer",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "url": "https://miloosh.com/category/ai",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 16.2
+    },
+    {
+      "url": "https://miloosh.com/compare",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 17.2
+    },
+    {
+      "url": "https://miloosh.com/compare/render-vs-sentry",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 21.2
+    },
+    {
+      "url": "https://miloosh.com/compare/make-vs-power-automate",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "url": "https://miloosh.com/compare/doodle-vs-motion",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 39
+    },
+    {
+      "url": "https://miloosh.com/compare/sketch-vs-marvel",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 42.4
+    },
+    {
+      "url": "https://miloosh.com/compare/marketo-engage-vs-sprout-social",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "url": "https://www.miloosh.com/compare/datadog-vs-firebase",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 45.4
+    },
+    {
+      "url": "https://miloosh.com/compare/docusaurus-vs-read-the-docs",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 47.4
+    },
+    {
+      "url": "https://miloosh.com/software/motion",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 48.4
+    },
+    {
+      "url": "https://miloosh.com/compare/mattermost-vs-zoom",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "url": "https://www.miloosh.com/compare/smartsheet-vs-teamwork",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 63.2
+    },
+    {
+      "url": "https://miloosh.com/compare/figma-vs-marvel",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 64.4
+    },
+    {
+      "url": "https://miloosh.com/compare/hotjar-vs-posthog",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 64.4
+    },
+    {
+      "url": "https://miloosh.com/compare/calendly-vs-savvycal",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-microsoft-onenote",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 69.8
+    },
+    {
+      "url": "https://miloosh.com/compare/circleci-vs-gitlab",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 71.4
+    },
+    {
+      "url": "https://miloosh.com/compare/bigcommerce-vs-salesforce-commerce-cloud",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 71.8
+    },
+    {
+      "url": "https://miloosh.com/compare/freshdesk-vs-front",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 76.8
+    },
+    {
+      "url": "https://miloosh.com/compare/calendly-vs-doodle",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "url": "https://miloosh.com/compare/zapier-vs-make",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 86.8
+    },
+    {
+      "url": "https://miloosh.com/compare/umbraco-vs-wix",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 4.3
+    },
+    {
+      "url": "https://miloosh.com/compare/deepl-vs-perplexity",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5.8
+    },
+    {
+      "url": "https://miloosh.com/affiliate-disclosure",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/klaviyo-vs-sprout-social",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 26.3
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-commerce-vs-shopware",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 30.8
+    },
+    {
+      "url": "https://miloosh.com/software/posthog",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "url": "https://www.miloosh.com/compare/slack-vs-mattermost",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "url": "https://www.miloosh.com/cookies",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 36
+    },
+    {
+      "url": "https://miloosh.com/compare/read-the-docs-vs-readme",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 36.8
+    },
+    {
+      "url": "https://miloosh.com/category/security",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 37.3
+    },
+    {
+      "url": "https://miloosh.com/compare/read-the-docs-vs-slab",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 40.5
+    },
+    {
+      "url": "https://www.miloosh.com/compare/microsoft-bookings-vs-reclaim-ai",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 44.8
+    },
+    {
+      "url": "https://miloosh.com/compare/buffer-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 54.3
+    },
+    {
+      "url": "https://miloosh.com/compare/crazy-egg-vs-google-analytics",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 55.3
+    },
+    {
+      "url": "https://miloosh.com/compare/n8n-vs-tray-ai",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-motion",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 57.5
+    },
+    {
+      "url": "https://miloosh.com/compare/evernote-vs-airtable",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "url": "https://miloosh.com/compare/mattermost-vs-rocket-chat",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 61.5
+    },
+    {
+      "url": "https://miloosh.com/compare/confluence-vs-gitbook",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 62.5
+    },
+    {
+      "url": "https://miloosh.com/compare/algolia-vs-supabase",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 68.3
+    },
+    {
+      "url": "https://miloosh.com/compare/discord-vs-mattermost",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 68.5
+    },
+    {
+      "url": "https://miloosh.com/compare/figma-vs-miro",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "url": "https://miloosh.com/compare/bitbucket-vs-circleci",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 71.8
+    },
+    {
+      "url": "https://miloosh.com/compare/cal-com-vs-acuity-scheduling",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 72.5
+    },
+    {
+      "url": "https://miloosh.com/software/ahrefs",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 75.8
+    },
+    {
+      "url": "https://miloosh.com/compare/zapier-vs-workato",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 83.5
+    },
+    {
+      "url": "https://miloosh.com/compare/weebly-vs-woocommerce",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 85.5
+    },
+    {
+      "url": "https://miloosh.com/trademark-notice",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "url": "https://miloosh.com/corrections-policy",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5.7
+    },
+    {
+      "url": "https://miloosh.com/category/design",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/compare/mulesoft-vs-rapidapi",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/category/communication",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 6.3
+    },
+    {
+      "url": "https://miloosh.com/compare/gitlab-vs-postman",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 6.3
+    },
+    {
+      "url": "https://miloosh.com/ai-usage",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "url": "https://miloosh.com/compare/sentry-vs-snyk",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.7
+    },
+    {
+      "url": "https://miloosh.com/compare/bitwarden-vs-duo-security",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 20.3
+    },
+    {
+      "url": "https://miloosh.com/compare/mattermost-vs-google-meet",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 23.7
+    },
+    {
+      "url": "https://www.miloosh.com/compare/canva-vs-sketch",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 24.3
+    },
+    {
+      "url": "https://miloosh.com/compare/bigcommerce-vs-shopware",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 46.7
+    },
+    {
+      "url": "https://miloosh.com/compare/archbee-vs-document360",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 48
+    },
+    {
+      "url": "https://miloosh.com/compare/things-vs-craft",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 49
+    },
+    {
+      "url": "https://miloosh.com/compare/klaviyo-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 49.7
+    },
+    {
+      "url": "https://miloosh.com/compare/crisp-vs-liveagent",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 50
+    },
+    {
+      "url": "https://miloosh.com/compare/crowdstrike-vs-duo-security",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 50
+    },
+    {
+      "url": "https://miloosh.com/compare/brevo-vs-klaviyo",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 51.3
+    },
+    {
+      "url": "https://miloosh.com/compare/constant-contact-vs-klaviyo",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 51.3
+    },
+    {
+      "url": "https://miloosh.com/software/whatconverts",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "url": "https://miloosh.com/compare/marketo-engage-vs-braze",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 53.7
+    },
+    {
+      "url": "https://miloosh.com/compare/postmark-vs-sendgrid",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 54
+    },
+    {
+      "url": "https://miloosh.com/compare/things-vs-superhuman",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "url": "https://miloosh.com/compare/snyk-vs-wiz",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 56.3
+    },
+    {
+      "url": "https://miloosh.com/software/notion",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 59.3
+    },
+    {
+      "url": "https://miloosh.com/software/tettra",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 59.3
+    },
+    {
+      "url": "https://miloosh.com/compare/drupal-vs-sanity",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 61
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-craft",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 61.7
+    },
+    {
+      "url": "https://miloosh.com/compare/ahrefs-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "url": "https://www.miloosh.com/compare/wrike-vs-zoho-projects",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 62.3
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-analytics-vs-amplitude",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 62.7
+    },
+    {
+      "url": "https://miloosh.com/compare/power-automate-vs-zoho-flow",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 64.7
+    },
+    {
+      "url": "https://miloosh.com/compare/fullstory-vs-posthog",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "url": "https://www.miloosh.com/compare/amplitude-vs-plausible",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 65.3
+    },
+    {
+      "url": "https://miloosh.com/compare/semrush-vs-hootsuite",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "url": "https://miloosh.com/compare/jira-vs-linear",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 68.3
+    },
+    {
+      "url": "https://www.miloosh.com/compare/nutshell-vs-zoho-crm",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 70.3
+    },
+    {
+      "url": "https://miloosh.com/compare/front-vs-help-scout",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 70.7
+    },
+    {
+      "url": "https://miloosh.com/compare/trello-vs-jira",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/compare/constant-contact-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 75.3
+    },
+    {
+      "url": "https://miloosh.com/compare/whatconverts-vs-google-analytics",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 77.3
+    },
+    {
+      "url": "https://miloosh.com/software/zoom",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 78.3
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-monday",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "url": "https://miloosh.com/compare/constant-contact-vs-marketo-engage",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "url": "https://www.miloosh.com/compare/adobe-commerce-vs-salesforce-commerce-cloud",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 89.3
+    },
+    {
+      "url": "https://miloosh.com/compare/adyen-vs-stripe",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 89.7
+    },
+    {
+      "url": "https://miloosh.com/software/jobber",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "url": "https://miloosh.com/compare/nordpass-vs-okta",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/software/harvest",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/category/analytics",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-clockify",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "url": "https://miloosh.com/compare/coda-vs-superhuman",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/gemini-vs-runway",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/hootsuite-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/software/sentry",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://miloosh.com/compare/bitbucket-vs-jenkins",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-craft",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "url": "https://miloosh.com/software/appfolio",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "url": "https://miloosh.com/compare/crowdstrike-vs-keeper-security",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 17.5
+    },
+    {
+      "url": "https://miloosh.com/software/gohighlevel",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 18
+    },
+    {
+      "url": "https://miloosh.com/software/moosend",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 19
+    },
+    {
+      "url": "https://miloosh.com/software/freshbooks",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "url": "https://miloosh.com/compare/cal-com-vs-motion",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "url": "https://miloosh.com/compare/confluence-vs-stack-overflow-for-teams",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 32.5
+    },
+    {
+      "url": "https://miloosh.com/compare/coda-vs-craft",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 33.5
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-clockify",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 34.5
+    },
+    {
+      "url": "https://miloosh.com/compare/contentful-vs-craft-cms",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 39
+    },
+    {
+      "url": "https://miloosh.com/compare/crazy-egg-vs-posthog",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 43.5
+    },
+    {
+      "url": "https://miloosh.com/compare/calendly-vs-motion",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "url": "https://miloosh.com/compare/document360-vs-read-the-docs",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "url": "https://miloosh.com/compare/power-automate-vs-workato",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "url": "https://miloosh.com/software/xero",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 45.5
+    },
+    {
+      "url": "https://miloosh.com/compare/things-vs-ticktick",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 49
+    },
+    {
+      "url": "https://miloosh.com/compare/superhuman-vs-front",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 51
+    },
+    {
+      "url": "https://www.miloosh.com/compare/make-vs-zoho-flow",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 51.5
+    },
+    {
+      "url": "https://miloosh.com/compare/dashlane-vs-lastpass",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "url": "https://miloosh.com/compare/twilio-vs-workos",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "url": "https://miloosh.com/compare/evernote-vs-things",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 53.5
+    },
+    {
+      "url": "https://miloosh.com/compare/chatgpt-vs-elevenlabs",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 54.5
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-todoist",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 57
+    },
+    {
+      "url": "https://miloosh.com/compare/mattermost-vs-telegram",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 58.5
+    },
+    {
+      "url": "https://miloosh.com/compare/matomo-vs-plausible",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 59.5
+    },
+    {
+      "url": "https://miloosh.com/compare/guru-vs-stack-overflow-for-teams",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 60
+    },
+    {
+      "url": "https://miloosh.com/category/accounting",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 60.5
+    },
+    {
+      "url": "https://miloosh.com/compare/midjourney-vs-runway",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 60.5
+    },
+    {
+      "url": "https://www.miloosh.com/compare/prestashop-vs-salesforce-commerce-cloud",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 60.5
+    },
+    {
+      "url": "https://miloosh.com/compare/sketch-vs-miro",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 61
+    },
+    {
+      "url": "https://miloosh.com/compare/notion-vs-trello",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 61.5
+    },
+    {
+      "url": "https://miloosh.com/compare/crisp-vs-help-scout",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 63.5
+    },
+    {
+      "url": "https://miloosh.com/software/callrail",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "url": "https://www.miloosh.com/compare/opencart-vs-shift4shop",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 66.5
+    },
+    {
+      "url": "https://miloosh.com/compare/amplitude-vs-hotjar",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "url": "https://miloosh.com/compare/hubstaff-vs-asana",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 67.5
+    },
+    {
+      "url": "https://miloosh.com/compare/github-vs-netlify",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 68.5
+    },
+    {
+      "url": "https://miloosh.com/software/dashlane",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 68.5
+    },
+    {
+      "url": "https://miloosh.com/compare/gorgias-vs-zoho-desk",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 69.5
+    },
+    {
+      "url": "https://www.miloosh.com/compare/trello-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 69.5
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 70
+    },
+    {
+      "url": "https://miloosh.com/compare/kong-vs-rapidapi",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 71
+    },
+    {
+      "url": "https://miloosh.com/compare/front-vs-intercom",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://www.miloosh.com/compare/mulesoft-vs-twilio",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/compare/kong-vs-twilio",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "url": "https://miloosh.com/compare/happyfox-vs-tidio",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "url": "https://miloosh.com/compare/braze-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 76.5
+    },
+    {
+      "url": "https://www.miloosh.com/compare/reamaze-vs-zendesk",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "url": "https://miloosh.com/compare/asana-vs-toggl-track",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://miloosh.com/compare/ghost-vs-wordpress",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://miloosh.com/compare/n8n-vs-ifttt",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://www.miloosh.com/compare/contentful-vs-umbraco",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://www.miloosh.com/compare/help-scout-vs-intercom",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://miloosh.com/compare/circleci-vs-github",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 81
+    },
+    {
+      "url": "https://miloosh.com/compare/adyen-vs-rapidapi",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 82
+    },
+    {
+      "url": "https://miloosh.com/compare/clickup-vs-basecamp",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 82.5
+    },
+    {
+      "url": "https://miloosh.com/compare/help-scout-vs-intercom",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 84.5
+    },
+    {
+      "url": "https://miloosh.com/compare/semrush-vs-activecampaign",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 85
+    },
+    {
+      "url": "https://miloosh.com/compare/figma-vs-canva",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "url": "https://miloosh.com/software/getresponse",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "url": "https://miloosh.com/compare/copper-vs-freshsales",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 90
+    },
+    {
+      "url": "https://miloosh.com/compare/braze-vs-klaviyo",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 90.5
+    },
+    {
+      "url": "https://miloosh.com/compare/linear-vs-wrike",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 92
+    },
+    {
+      "url": "https://miloosh.com/software/quickbooks-online",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 93
+    },
+    {
+      "url": "https://miloosh.com/compare/ticktick-vs-craft",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "url": "https://miloosh.com/compare/brevo-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "url": "https://www.miloosh.com/about",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "url": "https://www.miloosh.com/compare/postmark-vs-workos",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "url": "https://miloosh.com/compare/bitbucket-vs-sentry",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "url": "https://miloosh.com/compare/elastic-vs-postmark",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "url": "https://miloosh.com/software/brevo",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "url": "https://www.miloosh.com/compare/plausible-vs-segment",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "url": "https://miloosh.com/compare/crazy-egg-vs-segment",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "url": "https://miloosh.com/compare/postmark-vs-twilio",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "url": "https://miloosh.com/compare/tailscale-vs-wiz",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "url": "https://miloosh.com/category/cms",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/compare/getresponse-vs-mailchimp",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/compare/pipedream-vs-power-automate",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/compare/sanity-vs-squarespace",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://miloosh.com/compare/pipedream-vs-tray-ai",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "url": "https://miloosh.com/compare/squarespace-vs-umbraco",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "url": "https://www.miloosh.com/category/project-management",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "url": "https://www.miloosh.com/compare/nuclino-vs-scribe",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "url": "https://miloosh.com/accessibility",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/category/marketing",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/compare/constant-contact-vs-buffer",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/compare/fullstory-vs-segment",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/compare/lucidchart-vs-balsamiq",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/compare/marketo-engage-vs-buffer",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/compare/pipedream-vs-workato",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "url": "https://miloosh.com/category/knowledge-base",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/activecampaign-vs-buffer",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/jenkins-vs-render",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/pipedream-vs-zoho-flow",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/read-the-docs-vs-zeroheight",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/rocket-chat-vs-signal",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://www.miloosh.com/sources-policy",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "url": "https://miloosh.com/compare/crazy-egg-vs-fathom-analytics",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://miloosh.com/compare/datadog-vs-snyk",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://miloosh.com/compare/duo-security-vs-tailscale",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://miloosh.com/compare/guru-vs-scribe",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://miloosh.com/compare/marketo-engage-vs-klaviyo",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://www.miloosh.com/compare/contentful-vs-craft-cms",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "url": "https://miloosh.com/compare/bitbucket-vs-vercel",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "url": "https://miloosh.com/compare/braze-vs-buffer",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "url": "https://miloosh.com/compare/cloudflare-vs-duo-security",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "url": "https://miloosh.com/compare/postman-vs-render",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "url": "https://www.miloosh.com/compare/nuclino-vs-slite",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "url": "https://miloosh.com/compare/craft-cms-vs-squarespace",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "url": "https://miloosh.com/compare/bigcommerce-vs-weebly",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 19
+    },
+    {
+      "url": "https://miloosh.com/compare/bitbucket-vs-netlify",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20
+    },
+    {
+      "url": "https://miloosh.com/compare/things-vs-microsoft-onenote",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 24
+    },
+    {
+      "url": "https://miloosh.com/compare/prestashop-vs-shopify",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 31
+    },
+    {
+      "url": "https://miloosh.com/compare/constant-contact-vs-activecampaign",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "url": "https://miloosh.com/compare/appfolio-vs-doorloop",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "url": "https://miloosh.com/compare/stack-overflow-for-teams-vs-knowledgeowl",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 41
+    },
+    {
+      "url": "https://www.miloosh.com/compare/setmore-vs-youcanbookme",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 41
+    },
+    {
+      "url": "https://miloosh.com/compare/guru-vs-tettra",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 49
+    },
+    {
+      "url": "https://miloosh.com/compare/trello-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 51
+    },
+    {
+      "url": "https://miloosh.com/compare/airtable-vs-ticktick",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "url": "https://miloosh.com/compare/nuclino-vs-read-the-docs",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "url": "https://www.miloosh.com/compare/elevenlabs-vs-runway",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "url": "https://miloosh.com/best-email-marketing-for-ecommerce",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-reclaim-ai",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "url": "https://miloosh.com/compare/crisp-vs-freshdesk",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "url": "https://miloosh.com/compare/algolia-vs-kong",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "url": "https://miloosh.com/compare/chatgpt-vs-github-copilot",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-analytics-vs-heap",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 59
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-analytics-vs-matomo",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 59
+    },
+    {
+      "url": "https://miloosh.com/compare/monday-vs-shortcut",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 60
+    },
+    {
+      "url": "https://miloosh.com/compare/teamwork-vs-zoho-projects",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 60
+    },
+    {
+      "url": "https://www.miloosh.com/compare/cal-com-vs-savvycal",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 60
+    },
+    {
+      "url": "https://miloosh.com/compare/cal-com-vs-reclaim-ai",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "url": "https://www.miloosh.com/compare/copper-vs-zoho-crm",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "url": "https://www.miloosh.com/compare/crazy-egg-vs-mixpanel",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "url": "https://miloosh.com/compare/help-scout-vs-reamaze",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "url": "https://miloosh.com/compare/strapi-vs-wix",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "url": "https://miloosh.com/compare/todoist-vs-evernote",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "url": "https://miloosh.com/software/acuity-scheduling",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "url": "https://miloosh.com/compare/close-vs-copper",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "url": "https://miloosh.com/software/postman",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "url": "https://miloosh.com/compare/linear-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 66
+    },
+    {
+      "url": "https://miloosh.com/compare/ticktick-vs-clockify",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 66
+    },
+    {
+      "url": "https://miloosh.com/compare/jira-vs-smartsheet",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "url": "https://www.miloosh.com/software/postman",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "url": "https://miloosh.com/software/buildium",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 68
+    },
+    {
+      "url": "https://www.miloosh.com/compare/amplitude-vs-posthog",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "url": "https://miloosh.com/compare/keeper-security-vs-nordpass",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 70
+    },
+    {
+      "url": "https://miloosh.com/software/things",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 70
+    },
+    {
+      "url": "https://miloosh.com/compare/google-meet-vs-webex",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 71
+    },
+    {
+      "url": "https://miloosh.com/compare/directus-vs-storyblok",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/compare/hotjar-vs-mixpanel",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/compare/zoom-vs-otter-ai",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 72
+    },
+    {
+      "url": "https://miloosh.com/compare/ifttt-vs-power-automate",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "url": "https://miloosh.com/compare/motion-vs-savvycal",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 74
+    },
+    {
+      "url": "https://miloosh.com/compare/front-vs-zoho-desk",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 76
+    },
+    {
+      "url": "https://www.miloosh.com/compare/salesforce-commerce-cloud-vs-shift4shop",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 76
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-commerce-vs-bigcommerce",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "url": "https://miloosh.com/compare/contentful-vs-directus",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "url": "https://miloosh.com/compare/trello-vs-basecamp",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "url": "https://www.miloosh.com/compare/front-vs-intercom",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "url": "https://miloosh.com/compare/google-chat-vs-ringcentral",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "url": "https://miloosh.com/compare/scribe-vs-slite",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 79
+    },
+    {
+      "url": "https://miloosh.com/compare/zapier-vs-uipath",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 79
+    },
+    {
+      "url": "https://miloosh.com/compare/reamaze-vs-zoho-desk",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 80
+    },
+    {
+      "url": "https://miloosh.com/compare/storyblok-vs-strapi",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 81
+    },
+    {
+      "url": "https://www.miloosh.com/compare/drupal-vs-wordpress",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 81
+    },
+    {
+      "url": "https://miloosh.com/compare/slack-vs-microsoft-teams",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "url": "https://miloosh.com/software/cal-com",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 85
+    },
+    {
+      "url": "https://miloosh.com/compare/adobe-analytics-vs-plausible",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "url": "https://miloosh.com/compare/asana-vs-linear",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 94
+    },
+    {
+      "url": "https://miloosh.com/compare/gorgias-vs-intercom",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 96
+    },
+    {
+      "url": "https://miloosh.com/software/midjourney",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 97
+    }
+  ]
+}
