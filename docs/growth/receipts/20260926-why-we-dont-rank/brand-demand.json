@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-09-26",
+  "method": "Live GSC Performance report, filtered to queries containing 'miloosh', full 3-month window (2026-08-07 to 2026-09-23).",
+  "result": {
+    "impressions": 0,
+    "clicks": 0,
+    "queriesFound": 0
+  },
+  "finding": "Zero. Not a single recorded impression for ANY query containing the word 'miloosh' -- not 'miloosh', not 'miloosh reviews', not 'miloosh software', nothing -- across the entire measurement window. There is no measurable branded search demand for Miloosh at all.",
+  "corroboration": "This is independently consistent with a first-hand fact already on record in this engagement: HubSpot's affiliate program declined Miloosh's application with the displayed reason 'Low reach (traffic, followers)' (owner-observed 2026-09-26). Two independent signals -- Google's own query data and a real vendor's own rejection reason -- both point to the same underlying fact: Miloosh currently has no external brand recognition.",
+  "interpretation": "Zero branded demand at ~2 months of age is not unusual for a brand-new site and is not itself a defect -- but it directly supports the domain-trust hypothesis (Lane D) as a real, current constraint: Google (and external parties like HubSpot) currently have no signal that people know or seek out Miloosh by name, which is consistent with new-domain ranking discounts applying broadly rather than a page-level content problem."
+}

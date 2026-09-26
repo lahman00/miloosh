@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-09-26",
+  "method": "Live web search for 4 representative query families spanning the competitiveness spectrum found in Phase IV's research: two 'alternatives' head-terms for massive, market-leading SaaS brands (clickup, salesforce), one 'alternative' query for a mid-tier developer tool (n8n), and one comparison query for a niche/specialist product (umbraco vs wordpress). Structure and domain type recorded, not scraped content.",
+  "queryFamilies": {
+    "clickup alternatives": {
+      "resultComposition": ["smartsuite.com (competing vendor's own blog)", "thedigitalprojectmanager.com (established, high-authority editorial review site)", "salesforce.com/compare (massive brand, direct competitor)", "clickup.com/blog (the vendor itself, capturing its own churn-intent query)", "g2.com (major review/directory platform)", "airtable.com/articles (competing vendor's own blog)", "goodday.work/blog (smaller competing vendor's blog)", "larksuite.com/blog (competing vendor's blog)", "alternativeto.net (dedicated, high-authority alternatives directory)"],
+      "domainTypeSummary": "100% of the observed results are either massive brands (Salesforce, ClickUp itself), a huge review/directory platform (G2), a dedicated alternatives directory (AlternativeTo), a high-authority editorial review site, or competing vendors' own content-marketing blogs. Zero independent third-party comparison sites of Miloosh's type and size."
+    },
+    "salesforce alternatives": {
+      "resultComposition": ["creatio.com (competing vendor blog)", "zendesk.com (massive brand, direct competitor)", "juro.com (unrelated SaaS vendor's content-marketing blog)", "teamgate.com (competing vendor blog)", "salesforce.com itself", "convergehub.com (competing vendor blog)", "larksuite.com/blog (competing vendor blog)", "forbes.com/advisor (massive, extremely high-authority media brand)", "alternativeto.net (directory)"],
+      "domainTypeSummary": "Same pattern, with an even higher-authority media brand present (Forbes). Zero independent third-party comparison sites."
+    },
+    "n8n alternative": {
+      "resultComposition": ["composio.dev (competing AI/automation vendor blog)", "github.com/topics (a tag/topic aggregation page, not real competing content)", "zenml.io/blog (competing vendor blog)", "vellum.ai/blog (competing vendor blog)", "marketermilk.com/blog (a marketing-focused content site, adjacent but not a direct competitor)", "getdynamiq.ai (competing vendor blog)", "alternativeto.net (directory, appearing 3 times across pagination)"],
+      "domainTypeSummary": "No Salesforce/Forbes-level giants for this smaller, more specialized product -- but still dominated entirely by competing vendors' own content marketing plus the AlternativeTo directory. No independent third-party editorial sites at all."
+    },
+    "umbraco vs wordpress": {
+      "resultComposition": ["sam-solutions.com (digital agency blog)", "brightminded.com (digital agency blog)", "illustrate.digital (digital agency blog)", "rtcamp.com (WordPress-focused development agency)", "multidots.com (digital agency blog)", "marceldigital.com (digital agency blog)", "wearegecko.co.uk (digital agency blog)", "intuitiv.net (digital agency blog)", "mawazo.ca (small business/agency blog)"],
+      "domainTypeSummary": "COMPLETELY DIFFERENT competitive landscape: zero massive brands, zero vendor self-promotion (no umbraco.com or wordpress.com), zero major directories or media brands. The entire result set is small-to-mid digital agencies writing this as portfolio/expertise content -- a genuinely winnable competitive set for an independent site."
+    }
+  },
+  "keyFinding": "Query competitiveness varies enormously by how mainstream the base product is, not just by category or query type. 'Alternatives to [massive market-leading brand]' queries are structurally near-unwinnable for a new independent site regardless of content quality -- the SERP is occupied by the vendor itself, competing vendors' content-marketing budgets, massive media brands, and dedicated directories. Comparison queries for less-mainstream, more specialized products (like Umbraco, ~0.1% CMS market share) face dramatically weaker competition -- small agencies, not giants. This directly validates the Phase IV Umbraco intervention as strategically correct (a genuinely winnable query, not just a high-volume one), and gives a concrete prioritization rule for future waves: prioritize comparison-intent queries for specialist/niche products over alternatives-intent queries for household-name SaaS brands.",
+  "copyrightNote": "No result page content was reproduced verbatim beyond what a normal search-results listing already discloses (title, domain, general topic) -- consistent with this session's standing copyright discipline."
+}

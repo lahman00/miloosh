@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-09-26",
+  "note": "This session executed real changes to 1 page's SERP metadata (already logged as a Phase IV commit) plus 1 sitewide infrastructure change (Organization schema). Neither is a per-URL 'treatment cohort' in the Wave 1-3 software-content sense -- see executive-summary.md for why a large treatment/control cohort was not forced this session.",
+  "treatments": [
+    {
+      "url": "/compare/umbraco-vs-wordpress",
+      "primaryIntervention": "SNIPPET (already executed in Phase IV, commit 5514726; preserved and not touched again this session)",
+      "query": "umbraco vs wordpress",
+      "impressionsAtTreatment": 0,
+      "positionAtTreatment": null,
+      "date": "2026-09-26 (Phase IV)"
+    },
+    {
+      "url": "sitewide (all pages, via app/layout.tsx)",
+      "primaryIntervention": "TRUST_EVIDENCE (Organization schema: logo, description, contactPoint)",
+      "date": "2026-09-26 (this session, commit 075d3ec)",
+      "rationale": "Part 11's entity-consistency gap -- real, zero-fabrication structured-data enrichment using already-existing site constants."
+    }
+  ],
+  "whyNoLargeTreatmentCohortThisSession": "Part 34 asks for 10-15 treatment pages. This session's own evidence (domain-pattern.json, brand-demand.json, authority-gap.json) converged on a domain-level, not page-level, explanation for most of the deep-ranking cohort -- meaning further per-page snippet/content edits on the remaining 29 competitive-cohort URLs would very likely repeat Phase IV's own finding (13 of 15 already correctly aligned, no safe edit identified) rather than produce a new, defensible improvement. Forcing a 10-15-page treatment cohort onto pages where the diagnosed problem is domain trust (not page content) would not be evidence-backed execution -- it would be exactly the 'SEO theater' this mission's own success criteria explicitly reject."
+}

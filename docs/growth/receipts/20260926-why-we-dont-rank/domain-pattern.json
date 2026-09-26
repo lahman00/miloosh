@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-09-26",
+  "method": "Median/mean GSC position for every software page with real, confirmed demand (impressions>0) and NOT in a not-indexed state, grouped by category, categories with n>=3.",
+  "results": [
+    {"category": "accounting", "n": 3, "median": 45.5, "mean": 55.2},
+    {"category": "knowledge-base", "n": 5, "median": 62.4, "mean": 63.4},
+    {"category": "documentation", "n": 9, "median": 64.2, "mean": 56.4},
+    {"category": "api", "n": 9, "median": 68.1, "mean": 68.6},
+    {"category": "security", "n": 13, "median": 68.5, "mean": 67.5},
+    {"category": "developer-tools", "n": 6, "median": 68.6, "mean": 60.7},
+    {"category": "communication", "n": 10, "median": 68.9, "mean": 76.9},
+    {"category": "cms", "n": 12, "median": 69.3, "mean": 70.0},
+    {"category": "scheduling", "n": 8, "median": 69.3, "mean": 69.7},
+    {"category": "productivity", "n": 12, "median": 70.6, "mean": 64.0},
+    {"category": "automation", "n": 8, "median": 71.3, "mean": 74.8},
+    {"category": "analytics", "n": 11, "median": 71.6, "mean": 67.4},
+    {"category": "ecommerce", "n": 10, "median": 73.3, "mean": 79.0},
+    {"category": "ai", "n": 9, "median": 74.9, "mean": 75.4},
+    {"category": "crm", "n": 7, "median": 75.6, "mean": 65.4},
+    {"category": "customer-support", "n": 13, "median": 75.8, "mean": 72.8},
+    {"category": "design", "n": 6, "median": 76.5, "mean": 77.6},
+    {"category": "marketing", "n": 14, "median": 77.8, "mean": 66.6},
+    {"category": "project-management", "n": 8, "median": 79.1, "mean": 74.5}
+  ],
+  "overall": {"median": 71.2, "n": 176},
+  "finding": "19 completely unrelated software categories -- from accounting to AI to ecommerce -- all sit within a narrow 45.5-79.1 median-position band, with the site-wide median at 71.2. If page-level content quality or competitive gap were the dominant explanation, this session would expect wide variance across categories (some categories where Miloosh's content genuinely outcompetes rivals, others where it doesn't). Instead, the band is strikingly narrow and consistently deep across every category tested. This is real, quantified support for a DOMAIN-LEVEL (not page-level) explanation: a new, low-trust domain gets a roughly uniform ranking ceiling applied across its entire content, regardless of topic.",
+  "caveat": "This is an association, not proof of causation -- consistent with a domain-trust ceiling, but also consistent with (and not fully distinguishable from) uniformly high competition across all of Miloosh's categories, since B2B SaaS comparison content is broadly competitive everywhere. Reported as strong supporting evidence for Lane D, not as definitive proof."
+}

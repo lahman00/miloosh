@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-09-26",
+  "auditedPages": {
+    "note": "Applied the LOW_INFORMATION_GAIN test (Part 5) to the 15 Tier-A pages already researched in Phase IV: does the page provide anything beyond a vendor-feature summary (seat math, pricing thresholds, migration guidance, buyer-specific tradeoffs)?",
+    "findings": [
+      {"page": "mulesoft", "verdict": "LOW_INFORMATION_GAIN", "reason": "Zero cons documented; pricing is 'contact sales' with no structured detail beyond that. The page currently only lists features and a generic alternatives comparison -- no buyer-decision logic." },
+      {"page": "umbraco", "verdict": "MODERATE", "reason": "Has real, structured tiered pricing (Free/Starter EUR45/Standard EUR280/Professional EUR730/Enterprise custom) and a genuine differentiator (.NET vs PHP), but no seat-math or migration-specific guidance." },
+      {"page": "most other Tier-A pages (clickup, salesforce, confluence, n8n, basecamp, tidio, zapier, github, activecampaign, segment, lastpass, webex, coda)", "verdict": "MODERATE", "reason": "All are fd=A (real pricing tiers, real cons, real sourced features) -- genuinely more complete than a bare vendor summary -- but none currently include seat-math, plan-gate-specific buyer logic, or a migration checklist. They answer 'what does this cost and what are its limits' but not 'at what point does this specific constraint bind for MY team.'"}
+    ]
+  },
+  "overallVerdict": "Most researched pages sit at MODERATE information gain: real, sourced, structured facts (a genuine step above a vendor's own marketing page or a thin listicle entry) but not yet the kind of buyer-specific decision logic (seat-math thresholds, migration checklists, 'test this during your trial') that would make Miloosh's pages genuinely irreplaceable rather than merely well-sourced.",
+  "part6_realInformationGainBuilt": "Not executed this session as a new page feature -- see changes.md for reasoning. The one content change this session (Umbraco SERP overrides) was intent-alignment, not information-gain-depth work. A calculator or seat-math feature was considered (Part 28) but no Tier-A candidate had sufficiently complete, verified numeric tier data AND a genuine threshold-style question to compute (see next-wave.md)."
+}

@@ -1,13 +1,31 @@
 import { getSoftware, type Software } from "@/data/software";
 import { getCategory, type Category } from "@/data/categories";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 
+/**
+ * Why We Don't Rank War (2026-09-26) — Part 11/12 entity-consistency gap:
+ * this previously carried only name/url. logo, description and a real
+ * contact point are all already-established, real, public facts elsewhere
+ * on the site (the actual shipped logo asset, the About page's own
+ * description, and the Contact page's real working email) — this just
+ * wires them into structured data rather than inventing anything new. No
+ * sameAs is added: no real Miloosh social profiles exist in this codebase
+ * to cite, and fabricating one would be exactly the fake E-E-A-T theater
+ * this mission explicitly prohibits.
+ */
 export function getOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
+    logo: `${SITE_URL}/logo-icon.png`,
+    description: SITE_DESCRIPTION,
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: SITE_EMAIL,
+      contactType: "customer support",
+    },
   };
 }
 
