@@ -1,0 +1,295 @@
+{
+  "events": {
+    "capturedAt": "2026-09-26T20:29:08.083Z",
+    "evidence": [
+      {
+        "width": 1440,
+        "researchViews": 1,
+        "sourceHost": "www.algolia.com",
+        "decisionPath": "/software/algolia",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "algolia",
+        "ctaLocation": "software-page-cta",
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      },
+      {
+        "width": 390,
+        "researchViews": 1,
+        "sourceHost": "www.algolia.com",
+        "decisionPath": "/software/algolia",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "algolia",
+        "ctaLocation": "software-page-cta",
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      }
+    ]
+  },
+  "layout": {
+    "capturedAt": "2026-09-26T20:29:08.093Z",
+    "merchantNavigations": 0,
+    "analyticsWrites": 0,
+    "viewports": [
+      1440,
+      390,
+      320
+    ],
+    "results": [
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "width": 1440,
+        "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+        "h1": "SaaS Pricing Pressure Index 2026",
+        "overflow": false
+      },
+      {
+        "route": "/software/jotform",
+        "width": 1440,
+        "canonical": "https://miloosh.com/software/jotform",
+        "commercial": [
+          {
+            "href": "https://www.jotform.com/?partner=miloosh",
+            "location": "software-page-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          },
+          {
+            "href": "https://www.jotform.com/pricing/?partner=miloosh",
+            "location": "pricing-section-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          }
+        ],
+        "overflow": false,
+        "vendor": 3
+      },
+      {
+        "route": "/software/hubspot",
+        "width": 1440,
+        "canonical": "https://miloosh.com/software/hubspot",
+        "commercial": [
+          {
+            "href": "https://www.hubspot.com/products/crm",
+            "location": "software-page-cta",
+            "rel": "noopener noreferrer",
+            "slug": "hubspot"
+          },
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "alternative-decision-guide",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://www.salesforce.com/crm/",
+            "location": "alternative-decision-guide",
+            "rel": "noopener noreferrer",
+            "slug": "salesforce"
+          }
+        ],
+        "overflow": false,
+        "vendor": 1
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "width": 1440,
+        "canonical": "https://miloosh.com/compare/pipedrive-vs-close",
+        "commercial": [
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://refer.close.com/0alqdg4so8rm",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "close"
+          }
+        ],
+        "overflow": false,
+        "vendor": 0
+      },
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "width": 390,
+        "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+        "h1": "SaaS Pricing Pressure Index 2026",
+        "overflow": false
+      },
+      {
+        "route": "/software/jotform",
+        "width": 390,
+        "canonical": "https://miloosh.com/software/jotform",
+        "commercial": [
+          {
+            "href": "https://www.jotform.com/?partner=miloosh",
+            "location": "software-page-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          },
+          {
+            "href": "https://www.jotform.com/pricing/?partner=miloosh",
+            "location": "pricing-section-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          }
+        ],
+        "overflow": false,
+        "vendor": 3
+      },
+      {
+        "route": "/software/hubspot",
+        "width": 390,
+        "canonical": "https://miloosh.com/software/hubspot",
+        "commercial": [
+          {
+            "href": "https://www.hubspot.com/products/crm",
+            "location": "software-page-cta",
+            "rel": "noopener noreferrer",
+            "slug": "hubspot"
+          },
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "alternative-decision-guide",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://www.salesforce.com/crm/",
+            "location": "alternative-decision-guide",
+            "rel": "noopener noreferrer",
+            "slug": "salesforce"
+          }
+        ],
+        "overflow": false,
+        "vendor": 1
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "width": 390,
+        "canonical": "https://miloosh.com/compare/pipedrive-vs-close",
+        "commercial": [
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://refer.close.com/0alqdg4so8rm",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "close"
+          }
+        ],
+        "overflow": false,
+        "vendor": 0
+      },
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "width": 320,
+        "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+        "h1": "SaaS Pricing Pressure Index 2026",
+        "overflow": false
+      },
+      {
+        "route": "/software/jotform",
+        "width": 320,
+        "canonical": "https://miloosh.com/software/jotform",
+        "commercial": [
+          {
+            "href": "https://www.jotform.com/?partner=miloosh",
+            "location": "software-page-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          },
+          {
+            "href": "https://www.jotform.com/pricing/?partner=miloosh",
+            "location": "pricing-section-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          }
+        ],
+        "overflow": false,
+        "vendor": 3
+      },
+      {
+        "route": "/software/hubspot",
+        "width": 320,
+        "canonical": "https://miloosh.com/software/hubspot",
+        "commercial": [
+          {
+            "href": "https://www.hubspot.com/products/crm",
+            "location": "software-page-cta",
+            "rel": "noopener noreferrer",
+            "slug": "hubspot"
+          },
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "alternative-decision-guide",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://www.salesforce.com/crm/",
+            "location": "alternative-decision-guide",
+            "rel": "noopener noreferrer",
+            "slug": "salesforce"
+          }
+        ],
+        "overflow": false,
+        "vendor": 1
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "width": 320,
+        "canonical": "https://miloosh.com/compare/pipedrive-vs-close",
+        "commercial": [
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://refer.close.com/0alqdg4so8rm",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "close"
+          }
+        ],
+        "overflow": false,
+        "vendor": 0
+      }
+    ]
+  }
+}

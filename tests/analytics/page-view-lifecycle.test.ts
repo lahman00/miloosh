@@ -2,21 +2,22 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const hooks = vi.hoisted(() => ({
   path: "/software/airtable", refs: [] as { current: unknown }[], index: 0,
-  effect: undefined as (() => void | (() => void)) | undefined,
+  effects: [] as Array<() => void | (() => void)>,
   track: vi.fn(),
 }));
 vi.mock("react", () => ({
   useRef: (value: unknown) => hooks.refs[hooks.index++] ?? (hooks.refs[hooks.index - 1] = { current: value }),
-  useEffect: (fn: typeof hooks.effect) => { hooks.effect = fn; },
+  useEffect: (fn: () => void | (() => void)) => { hooks.effects.push(fn); },
 }));
 vi.mock("next/navigation", () => ({ usePathname: () => hooks.path }));
 vi.mock("@/lib/analytics/track", () => ({ trackEvent: hooks.track }));
 import { FirstPartyAnalytics } from "@/components/FirstPartyAnalytics";
 
 function mount(path = hooks.path) {
-  hooks.path = path; hooks.index = 0;
+  hooks.path = path; hooks.index = 0; hooks.effects = [];
   FirstPartyAnalytics();
-  return hooks.effect!();
+  const cleanups = hooks.effects.map(effect => effect());
+  return () => cleanups.forEach(cleanup => cleanup?.());
 }
 let visibility: DocumentVisibilityState;
 function setVisibility(state: DocumentVisibilityState) {
@@ -37,6 +38,13 @@ beforeEach(() => {
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
 describe("page view effect lifecycle", () => {
+  it("research StrictMode replay keeps one ordinary and one research view", () => {
+    const cleanup = mount("/research/saas-pricing-pressure-index-2026"); cleanup();
+    const finalCleanup = mount();
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "page_view")).toHaveLength(1);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "research_page_view")).toHaveLength(1);
+    finalCleanup();
+  });
   it("a background tab never fabricates an engaged view", () => {
     setVisibility("hidden");
     const cleanup = mount();

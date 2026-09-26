@@ -1,0 +1,338 @@
+{
+  "window": {
+    "start": "2026-08-07",
+    "end": "2026-09-23"
+  },
+  "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+  "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+  "scope": null,
+  "method": "Unweighted median of per-page GSC average positions; historical demand sample, not a domain authority score or current indexation proof",
+  "categories": [
+    {
+      "category": "accounting",
+      "n": 3,
+      "median": 45.5,
+      "members": [
+        "https://miloosh.com/software/freshbooks",
+        "https://miloosh.com/software/quickbooks-online",
+        "https://miloosh.com/software/xero"
+      ]
+    },
+    {
+      "category": "ai",
+      "n": 12,
+      "median": 74.35,
+      "members": [
+        "https://miloosh.com/software/chatgpt",
+        "https://miloosh.com/software/claude",
+        "https://miloosh.com/software/copy-ai",
+        "https://miloosh.com/software/deepl",
+        "https://miloosh.com/software/elevenlabs",
+        "https://miloosh.com/software/gemini",
+        "https://miloosh.com/software/jasper",
+        "https://miloosh.com/software/midjourney",
+        "https://miloosh.com/software/otter-ai",
+        "https://miloosh.com/software/perplexity",
+        "https://miloosh.com/software/runway",
+        "https://miloosh.com/software/synthesia"
+      ]
+    },
+    {
+      "category": "analytics",
+      "n": 13,
+      "median": 71.6,
+      "members": [
+        "https://miloosh.com/software/adobe-analytics",
+        "https://miloosh.com/software/amplitude",
+        "https://miloosh.com/software/crazy-egg",
+        "https://miloosh.com/software/fathom-analytics",
+        "https://miloosh.com/software/fullstory",
+        "https://miloosh.com/software/google-analytics",
+        "https://miloosh.com/software/heap",
+        "https://miloosh.com/software/hotjar",
+        "https://miloosh.com/software/matomo",
+        "https://miloosh.com/software/mixpanel",
+        "https://miloosh.com/software/plausible",
+        "https://miloosh.com/software/posthog",
+        "https://miloosh.com/software/segment"
+      ]
+    },
+    {
+      "category": "api",
+      "n": 10,
+      "median": 69.35,
+      "members": [
+        "https://miloosh.com/software/adyen",
+        "https://miloosh.com/software/algolia",
+        "https://miloosh.com/software/apigee",
+        "https://miloosh.com/software/kong",
+        "https://miloosh.com/software/mulesoft",
+        "https://miloosh.com/software/plaid",
+        "https://miloosh.com/software/postmark",
+        "https://miloosh.com/software/rapidapi",
+        "https://miloosh.com/software/stripe",
+        "https://miloosh.com/software/twilio"
+      ]
+    },
+    {
+      "category": "automation",
+      "n": 8,
+      "median": 71.35,
+      "members": [
+        "https://miloosh.com/software/ifttt",
+        "https://miloosh.com/software/n8n",
+        "https://miloosh.com/software/pipedream",
+        "https://miloosh.com/software/power-automate",
+        "https://miloosh.com/software/tray-ai",
+        "https://miloosh.com/software/uipath",
+        "https://miloosh.com/software/zapier",
+        "https://miloosh.com/software/zoho-flow"
+      ]
+    },
+    {
+      "category": "cms",
+      "n": 13,
+      "median": 69,
+      "members": [
+        "https://miloosh.com/software/contentful",
+        "https://miloosh.com/software/craft-cms",
+        "https://miloosh.com/software/directus",
+        "https://miloosh.com/software/drupal",
+        "https://miloosh.com/software/ghost",
+        "https://miloosh.com/software/joomla",
+        "https://miloosh.com/software/sanity",
+        "https://miloosh.com/software/squarespace",
+        "https://miloosh.com/software/storyblok",
+        "https://miloosh.com/software/strapi",
+        "https://miloosh.com/software/umbraco",
+        "https://miloosh.com/software/wix",
+        "https://miloosh.com/software/wordpress"
+      ]
+    },
+    {
+      "category": "communication",
+      "n": 10,
+      "median": 68.9,
+      "members": [
+        "https://miloosh.com/software/google-chat",
+        "https://miloosh.com/software/google-meet",
+        "https://miloosh.com/software/mattermost",
+        "https://miloosh.com/software/ringcentral",
+        "https://miloosh.com/software/rocket-chat",
+        "https://miloosh.com/software/signal",
+        "https://miloosh.com/software/slack",
+        "https://miloosh.com/software/telegram",
+        "https://miloosh.com/software/webex",
+        "https://miloosh.com/software/zoom"
+      ]
+    },
+    {
+      "category": "crm",
+      "n": 9,
+      "median": 75.6,
+      "members": [
+        "https://miloosh.com/software/close",
+        "https://miloosh.com/software/freshsales",
+        "https://miloosh.com/software/gohighlevel",
+        "https://miloosh.com/software/hubspot",
+        "https://miloosh.com/software/keap",
+        "https://miloosh.com/software/nutshell",
+        "https://miloosh.com/software/pipedrive",
+        "https://miloosh.com/software/salesforce",
+        "https://miloosh.com/software/zoho-crm"
+      ]
+    },
+    {
+      "category": "customer-support",
+      "n": 13,
+      "median": 75.8,
+      "members": [
+        "https://miloosh.com/software/crisp",
+        "https://miloosh.com/software/freshdesk",
+        "https://miloosh.com/software/front",
+        "https://miloosh.com/software/gorgias",
+        "https://miloosh.com/software/happyfox",
+        "https://miloosh.com/software/help-scout",
+        "https://miloosh.com/software/intercom",
+        "https://miloosh.com/software/kayako",
+        "https://miloosh.com/software/liveagent",
+        "https://miloosh.com/software/reamaze",
+        "https://miloosh.com/software/tidio",
+        "https://miloosh.com/software/zendesk",
+        "https://miloosh.com/software/zoho-desk"
+      ]
+    },
+    {
+      "category": "design",
+      "n": 7,
+      "median": 72.3,
+      "members": [
+        "https://miloosh.com/software/canva",
+        "https://miloosh.com/software/figma",
+        "https://miloosh.com/software/lucidchart",
+        "https://miloosh.com/software/miro",
+        "https://miloosh.com/software/sketch",
+        "https://miloosh.com/software/whimsical",
+        "https://miloosh.com/software/zeplin"
+      ]
+    },
+    {
+      "category": "developer-tools",
+      "n": 9,
+      "median": 71.5,
+      "members": [
+        "https://miloosh.com/software/bitbucket",
+        "https://miloosh.com/software/docker",
+        "https://miloosh.com/software/firebase",
+        "https://miloosh.com/software/github",
+        "https://miloosh.com/software/jenkins",
+        "https://miloosh.com/software/netlify",
+        "https://miloosh.com/software/postman",
+        "https://miloosh.com/software/sentry",
+        "https://miloosh.com/software/vercel"
+      ]
+    },
+    {
+      "category": "documentation",
+      "n": 10,
+      "median": 64,
+      "members": [
+        "https://miloosh.com/software/archbee",
+        "https://miloosh.com/software/document360",
+        "https://miloosh.com/software/docusaurus",
+        "https://miloosh.com/software/mkdocs",
+        "https://miloosh.com/software/read-the-docs",
+        "https://miloosh.com/software/readme",
+        "https://miloosh.com/software/scribe",
+        "https://miloosh.com/software/slite",
+        "https://miloosh.com/software/swaggerhub",
+        "https://miloosh.com/software/zeroheight"
+      ]
+    },
+    {
+      "category": "ecommerce",
+      "n": 10,
+      "median": 73.35,
+      "members": [
+        "https://miloosh.com/software/adobe-commerce",
+        "https://miloosh.com/software/ecwid",
+        "https://miloosh.com/software/opencart",
+        "https://miloosh.com/software/prestashop",
+        "https://miloosh.com/software/salesforce-commerce-cloud",
+        "https://miloosh.com/software/shift4shop",
+        "https://miloosh.com/software/shopify",
+        "https://miloosh.com/software/shopware",
+        "https://miloosh.com/software/weebly",
+        "https://miloosh.com/software/woocommerce"
+      ]
+    },
+    {
+      "category": "knowledge-base",
+      "n": 6,
+      "median": 60.849999999999994,
+      "members": [
+        "https://miloosh.com/software/bloomfire",
+        "https://miloosh.com/software/confluence",
+        "https://miloosh.com/software/gitbook",
+        "https://miloosh.com/software/guru",
+        "https://miloosh.com/software/helpjuice",
+        "https://miloosh.com/software/tettra"
+      ]
+    },
+    {
+      "category": "marketing",
+      "n": 15,
+      "median": 77.3,
+      "members": [
+        "https://miloosh.com/software/activecampaign",
+        "https://miloosh.com/software/ahrefs",
+        "https://miloosh.com/software/braze",
+        "https://miloosh.com/software/brevo",
+        "https://miloosh.com/software/buffer",
+        "https://miloosh.com/software/callrail",
+        "https://miloosh.com/software/getresponse",
+        "https://miloosh.com/software/hootsuite",
+        "https://miloosh.com/software/klaviyo",
+        "https://miloosh.com/software/mailchimp",
+        "https://miloosh.com/software/marketo-engage",
+        "https://miloosh.com/software/moosend",
+        "https://miloosh.com/software/semrush",
+        "https://miloosh.com/software/sprout-social",
+        "https://miloosh.com/software/whatconverts"
+      ]
+    },
+    {
+      "category": "productivity",
+      "n": 14,
+      "median": 70.6,
+      "members": [
+        "https://miloosh.com/software/airtable",
+        "https://miloosh.com/software/anydo",
+        "https://miloosh.com/software/clockify",
+        "https://miloosh.com/software/coda",
+        "https://miloosh.com/software/craft",
+        "https://miloosh.com/software/evernote",
+        "https://miloosh.com/software/harvest",
+        "https://miloosh.com/software/microsoft-onenote",
+        "https://miloosh.com/software/notion",
+        "https://miloosh.com/software/superhuman",
+        "https://miloosh.com/software/things",
+        "https://miloosh.com/software/ticktick",
+        "https://miloosh.com/software/todoist",
+        "https://miloosh.com/software/toggl-track"
+      ]
+    },
+    {
+      "category": "project-management",
+      "n": 9,
+      "median": 80.8,
+      "members": [
+        "https://miloosh.com/software/asana",
+        "https://miloosh.com/software/basecamp",
+        "https://miloosh.com/software/clickup",
+        "https://miloosh.com/software/linear",
+        "https://miloosh.com/software/shortcut",
+        "https://miloosh.com/software/smartsheet",
+        "https://miloosh.com/software/teamwork",
+        "https://miloosh.com/software/wrike",
+        "https://miloosh.com/software/zoho-projects"
+      ]
+    },
+    {
+      "category": "scheduling",
+      "n": 9,
+      "median": 70,
+      "members": [
+        "https://miloosh.com/software/acuity-scheduling",
+        "https://miloosh.com/software/cal-com",
+        "https://miloosh.com/software/calendly",
+        "https://miloosh.com/software/doodle",
+        "https://miloosh.com/software/motion",
+        "https://miloosh.com/software/reclaim-ai",
+        "https://miloosh.com/software/savvycal",
+        "https://miloosh.com/software/setmore",
+        "https://miloosh.com/software/youcanbookme"
+      ]
+    },
+    {
+      "category": "security",
+      "n": 13,
+      "median": 68.5,
+      "members": [
+        "https://miloosh.com/software/1password",
+        "https://miloosh.com/software/auth0",
+        "https://miloosh.com/software/bitwarden",
+        "https://miloosh.com/software/crowdstrike",
+        "https://miloosh.com/software/dashlane",
+        "https://miloosh.com/software/duo-security",
+        "https://miloosh.com/software/keeper-security",
+        "https://miloosh.com/software/lastpass",
+        "https://miloosh.com/software/nordpass",
+        "https://miloosh.com/software/okta",
+        "https://miloosh.com/software/snyk",
+        "https://miloosh.com/software/tailscale",
+        "https://miloosh.com/software/wiz"
+      ]
+    }
+  ]
+}

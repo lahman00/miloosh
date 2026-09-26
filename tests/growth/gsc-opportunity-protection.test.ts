@@ -20,7 +20,7 @@ describe("GSC opportunity experiment protection", () => {
     }, protectedSlugs);
 
     expect(ecwid.isProtected).toBe(true);
-    expect(ecwid.opportunityType).toBe("STRIKING_DISTANCE");
+    expect(ecwid.opportunityType).toBe("HOLD");
     expect(ecwid.recommendedAction).toContain("Protected experiment cohort");
   });
 });

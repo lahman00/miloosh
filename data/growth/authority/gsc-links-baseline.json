@@ -1,0 +1,19 @@
+{
+  "capturedAt":"2026-09-26T19:46:20Z",
+  "property":"sc-domain:miloosh.com",
+  "source":"Authenticated GSC Links UI, independently read by Codex; complete linking-domain and target-page drilldowns",
+  "sourceUrl":"https://search.google.com/search-console/links?resource_id=sc-domain%3Amiloosh.com",
+  "window":null,
+  "totalExternalLinks":100,
+  "domains":[{"domain":"vercel.app","linkingPages":93,"targetPages":1},{"domain":"hypestar.org","linkingPages":2,"targetPages":1},{"domain":"qevra.app","linkingPages":2,"targetPages":1},{"domain":"launchfree.io","linkingPages":1,"targetPages":1},{"domain":"roasty.tech","linkingPages":1,"targetPages":1},{"domain":"saashub.com","linkingPages":1,"targetPages":1}],
+  "targets":[{"url":"https://miloosh.com/","incomingLinks":100,"linkingSites":6}],
+  "completeDisplayedDomainRows":6,
+  "completeDisplayedTargetRows":1,
+  "homepageLinks":100,
+  "deepLinks":0,
+  "infrastructureCandidateLinks":93,
+  "otherReportedLinks":7,
+  "otherDomains":5,
+  "interpretation":"vercel.app is an infrastructure-noise candidate, not a verified classification of each source URL. The other seven are non-vercel GSC reported links, not seven independently endorsed/editorial links. GSC Links is sampled/delayed, not exhaustive or a ranking score. Public Smart SME and SaaSHub deep links exist despite absent GSC target rows.",
+  "reconciliation":"Claude top-five summary omitted sixth domain saashub.com. Complete table sums to 100. Supersedes approximate six/four narrative for this capture only."
+}

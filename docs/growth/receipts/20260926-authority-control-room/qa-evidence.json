@@ -1,0 +1,243 @@
+{
+  "capturedAt": "2026-09-26T20:35:33.369Z",
+  "implementationSha": "651d04a6291b6906bd4ff3505dbd1a0452c22c51",
+  "buildId": "tsJ2LEmp_wCtbMsKU5FIN",
+  "artifactHash": "eb79d4cc2840625ede40fc02ea296b32f3cbc12d4d5cb73d4a419804290b6a68",
+  "primaryRunner": {
+    "productionChanged": false,
+    "results": [
+      {
+        "name": "typecheck",
+        "start": "2026-09-26T20:13:48.635Z",
+        "end": "2026-09-26T20:13:51.784Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "lint",
+        "start": "2026-09-26T20:13:51.785Z",
+        "end": "2026-09-26T20:14:14.990Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "tests",
+        "start": "2026-09-26T20:14:14.991Z",
+        "end": "2026-09-26T20:17:41.709Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "static-gate-tests",
+        "start": "2026-09-26T20:17:41.709Z",
+        "end": "2026-09-26T20:17:42.053Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "data",
+        "start": "2026-09-26T20:17:42.053Z",
+        "end": "2026-09-26T20:17:42.597Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "affiliate",
+        "start": "2026-09-26T20:17:42.597Z",
+        "end": "2026-09-26T20:17:43.026Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "build",
+        "start": "2026-09-26T20:17:43.026Z",
+        "end": "2026-09-26T20:21:51.763Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "static",
+        "start": "2026-09-26T20:21:51.766Z",
+        "end": "2026-09-26T20:22:19.038Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "query-store",
+        "start": "2026-09-26T20:22:19.039Z",
+        "end": "2026-09-26T20:22:20.010Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "google-war",
+        "start": "2026-09-26T20:22:20.011Z",
+        "end": "2026-09-26T20:22:49.559Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "command-center",
+        "start": "2026-09-26T20:22:49.560Z",
+        "end": "2026-09-26T20:24:17.121Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "browser-smoke",
+        "start": "2026-09-26T20:24:17.124Z",
+        "end": "2026-09-26T20:25:23.982Z",
+        "exitCode": 1,
+        "error": null
+      }
+    ]
+  },
+  "reruns": {
+    "browserSmoke": {
+      "exitCode": 0,
+      "proof": "2026-09-26T20:29:08.093Z",
+      "eventProof": "2026-09-26T20:29:08.083Z"
+    },
+    "typecheck": 0,
+    "lint": 0,
+    "diffCheck": 0
+  },
+  "tests": {
+    "full": 2285,
+    "files": 253,
+    "focused": 67,
+    "python": 11
+  },
+  "crawl": {
+    "initialCount": 1782,
+    "initialFailures": [
+      {
+        "route": "/",
+        "error": "Navigation did not complete; no retry or zero-imputation"
+      },
+      {
+        "route": "/about",
+        "error": "Navigation did not complete; no retry or zero-imputation"
+      },
+      {
+        "route": "/accessibility",
+        "error": "Navigation did not complete; no retry or zero-imputation"
+      },
+      {
+        "route": "/category/documentation",
+        "error": "Navigation did not complete; no retry or zero-imputation"
+      },
+      {
+        "route": "/category/ecommerce",
+        "error": "Navigation did not complete; no retry or zero-imputation"
+      },
+      {
+        "route": "/category/field-service-management",
+        "error": "Navigation did not complete; no retry or zero-imputation"
+      }
+    ],
+    "recheck": {
+      "capturedAt": "2026-09-26T20:32:17.809Z",
+      "scope": "EXPLICIT_FAILED_ROUTE_RECHECK",
+      "origin": "http://127.0.0.1:3294",
+      "artifactHash": "eb79d4cc2840625ede40fc02ea296b32f3cbc12d4d5cb73d4a419804290b6a68",
+      "expected": 6,
+      "inspected": 6,
+      "complete": true,
+      "blockedRequests": 9,
+      "merchantNavigations": 0,
+      "writes": 0,
+      "failures": [],
+      "rows": [
+        {
+          "route": "/",
+          "status": 200,
+          "finalPath": "/",
+          "canonical": [
+            "https://miloosh.com"
+          ],
+          "h1Count": 1,
+          "noindex": false,
+          "metadataMatches": true,
+          "commercialLinksChecked": 0,
+          "ctaBlocks": [],
+          "overflow": false
+        },
+        {
+          "route": "/about",
+          "status": 200,
+          "finalPath": "/about",
+          "canonical": [
+            "https://miloosh.com/about"
+          ],
+          "h1Count": 1,
+          "noindex": false,
+          "metadataMatches": true,
+          "commercialLinksChecked": 0,
+          "ctaBlocks": [],
+          "overflow": false
+        },
+        {
+          "route": "/accessibility",
+          "status": 200,
+          "finalPath": "/accessibility",
+          "canonical": [
+            "https://miloosh.com/accessibility"
+          ],
+          "h1Count": 1,
+          "noindex": false,
+          "metadataMatches": true,
+          "commercialLinksChecked": 0,
+          "ctaBlocks": [],
+          "overflow": false
+        },
+        {
+          "route": "/category/documentation",
+          "status": 200,
+          "finalPath": "/category/documentation",
+          "canonical": [
+            "https://miloosh.com/category/documentation"
+          ],
+          "h1Count": 1,
+          "noindex": false,
+          "metadataMatches": true,
+          "commercialLinksChecked": 0,
+          "ctaBlocks": [],
+          "overflow": false
+        },
+        {
+          "route": "/category/ecommerce",
+          "status": 200,
+          "finalPath": "/category/ecommerce",
+          "canonical": [
+            "https://miloosh.com/category/ecommerce"
+          ],
+          "h1Count": 1,
+          "noindex": false,
+          "metadataMatches": true,
+          "commercialLinksChecked": 0,
+          "ctaBlocks": [],
+          "overflow": false
+        },
+        {
+          "route": "/category/field-service-management",
+          "status": 200,
+          "finalPath": "/category/field-service-management",
+          "canonical": [
+            "https://miloosh.com/category/field-service-management"
+          ],
+          "h1Count": 1,
+          "noindex": false,
+          "metadataMatches": true,
+          "commercialLinksChecked": 0,
+          "ctaBlocks": [],
+          "overflow": false
+        }
+      ]
+    },
+    "finalUniqueRoutes": 1782,
+    "unresolved": [],
+    "rawInitialSha256": "6a749e2296d557c5bc25ab200615182a4f67fd54b09359d2860f71b19e141b49"
+  },
+  "productionChanged": false
+}

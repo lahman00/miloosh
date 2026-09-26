@@ -37,6 +37,7 @@ import {
   repeatedBuyerText,
 } from "@/lib/google-war/quality";
 import { indexingEligibility, prioritize } from "@/lib/google-war/priority";
+import { resolveEvidence, classifyInspectionEvidence } from "@/lib/google-war/resolver";
 
 const read = (file: string) => JSON.parse(fs.readFileSync(file, "utf8"));
 const arg = (name: string, fallback: string) => {
@@ -175,7 +176,6 @@ function main() {
       observations,
     );
     const deltas = inspectionDeltas(history);
-    const inspections = new Map(deltas.map((d) => [d.url, d.current]));
     const active = new Set(ACTIVE_PARTNERS.map((p) => p.slug as string));
     const search = new Map(snapshot.rows.map((r) => [r.url, r]));
     // Missing or malformed request history fails closed; never assume no requests.
@@ -209,8 +209,8 @@ function main() {
         const item =
           g.kind === "software" ? software.get(node.products[0]) : undefined;
         const metric = search.get(`https://miloosh.com${g.path}`) ?? null;
-        const inspection =
-          inspections.get(`https://miloosh.com${g.path}`) ?? null;
+        const resolved = resolveEvidence(`https://miloosh.com${g.path}`, history.map(classifyInspectionEvidence), snapshot, now);
+        const inspection = resolved.inspected;
         const protectedBy = protectionFor(g.path, protections);
         const depth = item ? scoreFactualDepth(item) : null;
         const relationships = node.products.map((slug) => ({
@@ -225,7 +225,7 @@ function main() {
           clicks: metric?.clicks ?? null,
           ctr: metric?.ctr ?? null,
           position: metric?.position ?? null,
-          index: indexState(inspection),
+          index: resolved.state === "INDEXED" && !resolved.rankingEligible ? "UNKNOWN" : resolved.state,
           bucket: depth?.bucket ?? null,
           inbound: g.contentSources,
           depth: g.homeDepth,
@@ -255,6 +255,7 @@ function main() {
           indexation: {
             state: indexState(inspection),
             observation: inspection,
+            resolution: resolved,
           },
           technical: {
             localArtifactPass: technicalPass,

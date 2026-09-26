@@ -1,0 +1,266 @@
+[
+  {
+    "id": "qevra-home",
+    "source": "Qevra",
+    "type": "DIRECTORY",
+    "targetUrl": "https://miloosh.com/",
+    "externalUrl": "https://qevra.app/s/miloosh",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T19:49:24.207Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "DOFOLLOW",
+        "evidence": "HTTP 200; exact homepage anchor Visit site, no rel attribute. Existing placement, not newly earned today; no ranking-value inference."
+      }
+    ]
+  },
+  {
+    "id": "saashub-home",
+    "source": "SaaSHub",
+    "type": "DIRECTORY",
+    "targetUrl": "https://miloosh.com/",
+    "externalUrl": "https://www.saashub.com/miloosh",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T19:49:24.378Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "MIXED",
+        "evidence": "HTTP 200; homepage anchors observed both without nofollow and with nofollow. Existing placement; normalized bare apex to homepage."
+      }
+    ]
+  },
+  {
+    "id": "hypestar-home",
+    "source": "HypeStar",
+    "type": "DIRECTORY",
+    "targetUrl": "https://miloosh.com/",
+    "externalUrl": "https://hypestar.org/project/miloosh",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T19:49:24.377Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "NOFOLLOW",
+        "evidence": "HTTP 200; three homepage anchors have nofollow, two also ugc. Existing placement, not newly earned today."
+      }
+    ]
+  },
+  {
+    "id": "saashub-research",
+    "source": "SaaSHub",
+    "type": "DIRECTORY",
+    "targetUrl": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+    "externalUrl": "https://www.saashub.com/miloosh",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T19:49:24.378Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "NOFOLLOW",
+        "evidence": "HTTP 200; Blog anchor points exactly to the pricing-pressure research page, rel=nofollow. Newly documented, not evidence of a new placement date."
+      }
+    ]
+  },
+  {
+    "id": "smartsme-research",
+    "source": "Smart SME",
+    "type": "EDITORIAL",
+    "targetUrl": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+    "externalUrl": "https://smartsme.co.uk/what-business-software-really-costs-in-2026-188-vendor-price-lists-checked/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T19:49:24.278Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "DOFOLLOW",
+        "evidence": "HTTP 200; two anchors point exactly to the research URL without rel restrictions. Article displays September 8, 2026 publication date; not a newly earned link today. Placement-target pair counted once, not twice."
+      }
+    ]
+  },
+  {
+    "id": "reddit-crm-calls",
+    "source": "Reddit r/CRMSoftware",
+    "type": "COMMUNITY",
+    "targetUrl": null,
+    "externalUrl": "https://www.reddit.com/r/CRMSoftware/comments/1wqtnwo/comment/pc7sr55/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T18:25:56Z",
+        "status": "UNVERIFIED",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Antigravity EXECUTED_LIVE claim used thread OPENED/removed=false; retained as report only."
+      },
+      {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Signed-out web-fetch target permalink shows Comment removed by moderator; cache time may differ from browser observation."
+      },
+      {
+        "at": "2026-09-26T19:49:00Z",
+        "status": "UNVERIFIED",
+        "method": "AUTHENTICATED_BROWSER",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Authenticated Chrome exposes exact pc7sr55 text and Miloosh disclosure, no hyperlink. Independent fresh logged-out browser hit Prove your humanity and stopped. Conflicting audience observations; not asserted publicly live or definitively removed."
+      }
+    ]
+  },
+  {
+    "id": "reddit-crm-budget",
+    "source": "Reddit r/CRMSoftware",
+    "type": "COMMUNITY",
+    "targetUrl": null,
+    "externalUrl": "https://www.reddit.com/r/CRMSoftware/comments/1uyrghz/comment/pc81v6w/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T18:59:24Z",
+        "status": "UNVERIFIED",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Antigravity reports independently checked live; original thread OPENED status is not target visibility proof."
+      },
+      {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Signed-out public exact permalink displays Comment removed by moderator. Authenticated browser subsequently also displayed Comment removed by Reddit at exact pc81v6w. No removal cause inferred."
+      }
+    ]
+  },
+  {
+    "id": "reddit-saas-direct",
+    "source": "Reddit r/SaaS",
+    "type": "COMMUNITY",
+    "targetUrl": "https://miloosh.com/compare/intercom-alternatives",
+    "externalUrl": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T18:25:07Z",
+        "status": "UNVERIFIED",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Updated Antigravity evidence and owner report removed. Historical target is nonexistent; retained for broken-target alert, not a suggested URL. No fresh public target capture supplied in this observation."
+      },
+      {
+        "at": "2026-09-26T20:02:00Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Independent signed-out exact pc5germ permalink fetch exposes Comment removed by moderator. No removal cause inferred; preserves historical invalid target."
+      }
+    ]
+  },
+  {
+    "id": "saasmag-pending",
+    "source": "SaaS Mag",
+    "type": "OUTREACH",
+    "targetUrl": "https://miloosh.com/best-help-desk-for-small-business",
+    "externalUrl": "https://www.saasmag.com/contributions/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "PENDING",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Prior submission receipt exists; no acceptance or public article. No outreach in this task."
+      }
+    ]
+  },
+  {
+    "id": "bootstrapped-founder-pending",
+    "source": "The Bootstrapped Founder",
+    "type": "OUTREACH",
+    "targetUrl": "https://miloosh.com/best-ecommerce-platform-for-small-business",
+    "externalUrl": "https://thebootstrappedfounder.com/contact/",
+    "firstObserved": "2026-09-26",
+    "utm": {
+      "source": "bootstrapped_founder",
+      "medium": "referral",
+      "campaign": "authority_war_2_20260926"
+    },
+    "observations": [
+      {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "PENDING",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Preserved prior SENT receipt from committed offsite ledger; no reply, permission, placement or current live link inferred. No outreach in this task."
+      }
+    ]
+  },
+  {
+    "id": "supportdriven-pending",
+    "source": "Support Driven",
+    "type": "OUTREACH",
+    "targetUrl": "https://miloosh.com/best-help-desk-for-small-business",
+    "externalUrl": "https://www.supportdriven.com/",
+    "firstObserved": "2026-09-26",
+    "utm": {
+      "source": "supportdriven",
+      "medium": "referral",
+      "campaign": "authority_war_2_20260926"
+    },
+    "observations": [
+      {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "PENDING",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Preserved prior SENT receipt from committed offsite ledger; no reply, permission, placement or current live link inferred. No outreach in this task."
+      }
+    ]
+  }
+]

@@ -4,7 +4,8 @@ import { hasActionableStrikingDistanceEvidence, runCommercialPriorityEngine } fr
 describe("commercial priority evidence floor", () => {
   it("does not treat tiny striking-distance samples as actionable", () => {
     expect(hasActionableStrikingDistanceEvidence(9)).toBe(false);
-    expect(hasActionableStrikingDistanceEvidence(10)).toBe(true);
+    expect(hasActionableStrikingDistanceEvidence(99)).toBe(false);
+    expect(hasActionableStrikingDistanceEvidence(100)).toBe(true);
   });
 
   it("does not promote current sub-10-impression striking-distance signals", () => {

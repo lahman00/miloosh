@@ -1,0 +1,14 @@
+{
+  "capturedAt":"2026-09-26T19:46:20Z",
+  "source":"Authenticated GSC Performance UI independently checked by Codex; chart range and query-contains filter visibly confirmed. Zero in observable filtered data; anonymous/omitted queries and reporting lag prevent a universal no-brand-demand claim.",
+  "window":{"start":"2026-08-07","end":"2026-09-24"},
+  "scope":{"property":"sc-domain:miloosh.com","searchType":"web","country":null,"device":null,"timezone":"America/Los_Angeles","dataState":"unknown"},
+  "filter":{"dimension":"query","operator":"contains","expression":"miloosh"},
+  "impressions":0,
+  "clicks":0,
+  "displayedCtr":"0%",
+  "computedCtr":null,
+  "queriesFound":0,
+  "uiPreset":"3 months; actual available chart span 49 days, not a full three-month measurement",
+  "previousCommittedWindow":{"start":"2026-08-07","end":"2026-09-23","impressions":0,"clicks":0,"source":"docs/growth/receipts/20260926-why-we-dont-rank/brand-demand.json; committed UI report, not a new independent capture"}
+}

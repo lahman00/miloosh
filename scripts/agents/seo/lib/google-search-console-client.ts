@@ -65,6 +65,9 @@ export type SearchAnalyticsQuery = {
   dimensions: Array<"query" | "page" | "date" | "country" | "device">;
   rowLimit?: number;
   startRow?: number;
+  type?: "web" | "image" | "video" | "news";
+  dataState?: "final";
+  dimensionFilterGroups?: Array<{ groupType: "and"; filters: Array<{ dimension: "query"; operator: "contains"; expression: string }> }>;
 };
 
 export type UrlInspectionResult = {

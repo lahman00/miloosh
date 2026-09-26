@@ -214,12 +214,12 @@ const COMPARISON_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
     description:
       "Compare Umbraco's .NET-based CMS with WordPress's PHP publishing platform, including pricing, hosting model, and buyer fit using current vendor-sourced facts.",
   },
-  "umbraco-vs-joomla": {
+  "joomla-vs-umbraco": {
     title: "Umbraco vs Joomla (2026): .NET CMS vs Open-Source PHP CMS",
     description:
       "Compare Umbraco's .NET-based CMS with Joomla's free, open-source PHP CMS, including pricing, hosting, and buyer fit using current vendor-sourced facts.",
   },
-  "umbraco-vs-drupal": {
+  "drupal-vs-umbraco": {
     title: "Umbraco vs Drupal (2026): .NET CMS vs API-First Drupal",
     description:
       "Compare Umbraco's .NET-based CMS with Drupal's API-first, open-source platform, including pricing, structure, and buyer fit using current vendor-sourced facts.",

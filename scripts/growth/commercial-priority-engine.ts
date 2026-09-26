@@ -4,8 +4,8 @@ import { mineGscOpportunities } from "./gsc-opportunity-miner";
 import fs from "node:fs";
 import path from "node:path";
 
-export function hasActionableStrikingDistanceEvidence(impressions: number): boolean {
-  return impressions >= 10;
+export function hasActionableStrikingDistanceEvidence(impressions: number | null): impressions is number {
+  return impressions !== null && impressions >= 100;
 }
 
 export interface PriorityActionItem {
@@ -37,7 +37,7 @@ export function runCommercialPriorityEngine(): {
   // 1. High-traffic striking distance SEO opportunities
   for (const g of gscAudit.strikingDistanceOpportunities) {
     // Do not let tiny directional samples outrank better-supported growth work.
-    // A favorable average position across fewer than 10 impressions is useful
+    // A favorable average position across fewer than 100 impressions is useful
     // for monitoring, but it is not enough evidence to trigger an intervention.
     if (!g.isProtected && hasActionableStrikingDistanceEvidence(g.baselineImpressions)) {
       items.push({
