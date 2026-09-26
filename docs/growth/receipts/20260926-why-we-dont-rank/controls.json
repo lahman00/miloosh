@@ -1,0 +1,4 @@
+{
+  "generatedAt": "2026-09-26",
+  "note": "Given no large per-page treatment cohort was executed this session (see treatments.json), no dedicated control cohort was constructed either. The natural comparison points remain: (1) the 29 other competitive-cohort URLs (competitive-cohort.json), all left untouched, which will show whether the domain-level pattern (domain-pattern.json) persists or shifts over time independent of any per-page edit; (2) every other page on the site, which received the Organization-schema change simultaneously (a sitewide, non-differential change, so it has no meaningful control by construction -- this is expected and appropriate for a genuine sitewide infrastructure fix, not a per-page experiment)."
+}

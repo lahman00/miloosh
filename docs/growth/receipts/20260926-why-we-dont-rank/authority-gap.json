@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-26",
+  "method": "Pulled directly from GSC's own Links report (search-console/links) for the miloosh.com property -- first-party, authoritative data, not a third-party backlink-crawler estimate.",
+  "externalLinks": {
+    "total": 100,
+    "topLinkedPage": { "url": "https://miloosh.com/", "links": 100 },
+    "note": "GSC's own report shows the homepage as the only page with any recorded external link at all -- no /software/*, /compare/*, or /best-* page has a single recorded external inbound link."
+  },
+  "topLinkingSites": [
+    { "domain": "vercel.app", "links": 93, "assessment": "Almost certainly NOT a genuine editorial endorsement -- vercel.app is Vercel's own preview/deployment subdomain space, and 93 of the 100 total external links (93%) come from this single domain. This strongly suggests infrastructure/preview-deployment self-links rather than real third-party citations." },
+    { "domain": "hypestar.org", "links": 2, "assessment": "Real external domain, not previously documented in this engagement's offsite ledger -- worth the user's own investigation." },
+    { "domain": "qevra.app", "links": 2, "assessment": "This independently CONFIRMS one of the two claims in the Antigravity offsite ledger that Phase II could not verify (docs/growth/receipts/20260926-google-war-phase2/offsite-handoff.json listed the Qevra directory listing as 'UNVERIFIED_CLAIMED_EXECUTED'). Google's own Links report now shows 2 real links from qevra.app -- the Qevra listing claim is CONFIRMED REAL." },
+    { "domain": "launchfree.io", "links": 1 },
+    { "domain": "roasty.tech", "links": 1, "assessment": "Real external domain, not previously documented -- worth the user's own investigation." }
+  ],
+  "topAnchorText": ["browse", "categories", "how it works", "miloosh", "miloosh com"],
+  "anchorTextAssessment": "All generic, navigational, or branded anchors -- consistent with directory-listing-style links (which typically just use the site name as anchor text) rather than topical editorial citations (e.g. 'best CRM alternatives' or 'software comparison tool').",
+  "keyFinding": "Excluding the likely-infrastructure vercel.app links, Miloosh has approximately 6 real external links total, from 4 distinct real domains, ALL pointing to the homepage, none pointing to any individual content page. This is not 'low authority' -- it is close to zero measurable external authority at the individual-page level, for every single page on the site. This is hard, first-party, quantified confirmation of the Domain/Entity Trust Gap hypothesis (Lane D), directly consistent with the zero-branded-demand finding (brand-demand.json) and HubSpot's real rejection reason ('Low reach').",
+  "reddit_offsite_verification_bonus": "This data does not confirm or refute the Antigravity ledger's OTHER 'EXECUTED_LIVE' claim (a Reddit comment) -- Reddit links would not necessarily appear in GSC's Links report the same way a followed directory link does, and no reddit.com domain appears in this list regardless. That claim remains unverified."
+}

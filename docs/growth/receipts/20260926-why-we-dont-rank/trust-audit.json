@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-09-26",
+  "part11_entityConsistency": {
+    "sitewideOrganizationSchema": {
+      "before": "name and url only",
+      "after": "added logo, description, and contactPoint (email) -- all wired from already-existing, real, public constants (the actual shipped logo asset, the About page's own description, the Contact page's real working email). Executed this session, see changes.md.",
+      "sameAs_socialProfiles": "None added -- no real Miloosh social media profiles exist anywhere in this codebase to cite. Fabricating one would be exactly the fake E-E-A-T theater this mission explicitly prohibits."
+    },
+    "aboutPage": "Substantive and real (not a stub) -- explains methodology (how alternatives are picked), states real data coverage numbers dynamically, discloses independence/affiliate relationships, links to a real Sources Policy. No fake credentials or invented team bios found or added."
+  },
+  "part12_editorialTrustPages": {
+    "editorialPolicy": "Exists, substantive (137 lines)",
+    "sourcesPolicy": "Exists, substantive (126 lines)",
+    "correctionsPolicy": "Exists, substantive (93 lines)",
+    "assessment": "This trust infrastructure is already reasonably mature for a 2-month-old independent site -- better than many far larger sites. No changes made or needed here this session; the real gap found was at the structured-data layer (Organization schema), not the content layer."
+  },
+  "part13_sourceCitationUX": {
+    "note": "Every /software/{slug} page already displays a real 'Sources' section citing the exact official vendor URL(s) the page's facts were sourced from, with an access/verification date -- confirmed via this session's earlier browser checks (e.g. the Umbraco page render showed 'The facts on this page come from Umbraco's own official site, accessed August 4, 2026' plus the actual docs.umbraco.com URLs). This already meets the 'make verification practical' bar Part 13 asks for. Not changed this session."
+  },
+  "overallAssessment": "The content-level trust infrastructure (About, policies, per-page sourcing) was already solid. The one real, fixable gap found was structural-data-layer entity information (Organization schema missing logo/description/contact) -- fixed this session. The much larger, harder-to-fix trust signal -- external validation (backlinks, brand search demand, third-party citations) -- is close to zero (see authority-gap.json, brand-demand.json) and cannot be fixed by any on-page or schema change; it requires real external growth over time."
+}
