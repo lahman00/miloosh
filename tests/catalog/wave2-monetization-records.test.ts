@@ -146,3 +146,60 @@ describe("Pipedrive buyer-decision record", () => {
     expect(pipedrive().alternatives.map((alternative) => alternative.slug)).toEqual(["hubspot", "salesforce", "zoho-crm", "freshsales", "close"]);
   });
 });
+
+describe("Wrike buyer-decision record", () => {
+  const wrike = () => load("wrike");
+
+  it("never invents a Wrike commission rate", () => {
+    const relationship = CURRENT_AFFILIATE_LEDGER.find((entry) => entry.programId === "wrike");
+    expect(relationship?.status).toBe("ACTIVE");
+    expect(relationship?.commissionModel).not.toMatch(/\d+(?:\.\d+)?\s*%/);
+    expect(relationship?.commissionModel).toMatch(/not disclosed/i);
+    expect(JSON.stringify(wrike())).not.toMatch(/commission|\d+\s*%/i);
+  });
+
+  it("keeps a free plan, a 14-day trial and annual-billed per-user monthly rates", () => {
+    const pricing = wrike().pricing!;
+    expect(pricing.freePlan).toBe(true);
+    expect(pricing.hasFreeTier).toBe(true);
+    expect(pricing.freeTrial).toEqual({ available: true, days: 14 });
+    expect(pricing.entryPaid).toEqual({ amount: "10", currency: "USD", billingPeriod: "monthly", perSeat: true, annualBillingRequired: true });
+    const [free, team, business, pinnacle, apex] = pricing.tiers!;
+    expect([free!.name, free!.amount]).toEqual(["Free", "0"]);
+    expect([team!.name, team!.amount, team!.billingPeriod]).toEqual(["Team", "10", "monthly"]);
+    expect(team!.notes).toContain("billed annually");
+    expect(team!.notes).toContain("2-15 users");
+    expect([business!.name, business!.amount, business!.billingPeriod]).toEqual(["Business", "25", "monthly"]);
+    expect(business!.notes).toContain("billed annually");
+    expect(business!.notes).toContain("5-200 users");
+    expect(pinnacle!.notes).toContain("resource/capacity planning");
+    expect([pinnacle!.amount, apex!.amount]).toEqual([undefined, undefined]);
+    expect(pricing.enterpriseContactSales).toBe(true);
+  });
+
+  it("does not contradict the Team plan's annual billing in its cons", () => {
+    const cons = wrike().cons ?? [];
+    // The 2026-08-23 con said annual billing starts at Business; the 2026-09-10 verified entry plan (Team) is annual-billed.
+    expect(cons.join(" ")).not.toMatch(/from Business tier upward/i);
+    expect(cons.some((con) => con.includes("Team") && con.includes("billed annually"))).toBe(true);
+  });
+
+  it("carries the sourced seat, license, capacity-planning and renewal limits", () => {
+    const cons = (wrike().cons ?? []).join(" ");
+    expect(cons).toContain("groups of five up to 30 users");
+    expect(cons).toContain("External users are paid full users");
+    expect(cons).toContain("Pinnacle");
+    expect(cons).toContain("take effect at renewal");
+    expect(wrike().features.find((feature) => feature.startsWith("Resource allocation"))).toContain("Pinnacle");
+    for (const source of ["https://www.wrike.com/price/", "https://help.wrike.com/hc/en-us/articles/209603989-Types-of-Licenses-in-Wrike"]) {
+      expect(wrike().sources).toContain(source);
+    }
+  });
+
+  it("renders the Wrike price as monthly per seat with the annual requirement", () => {
+    const html = renderPricing(wrike());
+    expect(html).toContain("/ monthly / seat");
+    expect(html).toContain("Annual billing required at this price.");
+    expect(html).not.toContain("/ annual");
+  });
+});

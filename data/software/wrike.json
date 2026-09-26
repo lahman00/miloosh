@@ -14,7 +14,7 @@
   "best_for": "Marketing, product, operations, and PMO teams at mid-size to large enterprises coordinating complex, cross-functional work.",
   "features": [
     "Interactive Gantt charts for timeline planning",
-    "Resource allocation and workload management",
+    "Resource allocation and workload management (advanced resource/capacity planning is listed on the contact-sales Pinnacle plan)",
     "Custom request forms for work intake",
     "Online proofing and approval workflows",
     "AI-driven dashboards and reporting",
@@ -24,7 +24,10 @@
   ],
   "sources": [
     "https://www.wrike.com",
-    "https://www.wrike.com/features/"
+    "https://www.wrike.com/features/",
+    "https://www.wrike.com/price/",
+    "https://help.wrike.com/hc/en-us/articles/209603989-Types-of-Licenses-in-Wrike",
+    "https://help.wrike.com/hc/en-us/articles/209605689-Purchasing-Upgrading-and-Managing-Subscription"
   ],
   "accessed_at": "2026-08-04",
   "pricing": {
@@ -81,7 +84,11 @@
   },
   "cons": [
     "Team and Business tiers have hard user-count ranges (Team: 2-15, Business: 5-200) rather than open per-seat pricing -- outgrowing the range means moving up a full tier, not just adding seats.",
-    "Annual billing is required from Business tier upward, per the vendor's own pricing page."
+    "The listed Team (US$10) and Business (US$25) per-user rates are billed annually, so the entry paid plan is a yearly commitment, not a one-month charge.",
+    "Seats are sold in bundles (groups of five up to 30 users, ten from 30 to 100, and 25 above that), so the billable seat count can exceed your exact headcount.",
+    "External users are paid full users and contributors are paid limited-access licenses; only viewers are free, with narrower permissions.",
+    "Advanced resource/capacity planning, budgeting and advanced reporting are listed on Pinnacle, a contact-sales plan; confirm which workload features a Team or Business quote actually includes.",
+    "Seat reductions and downgrades generally take effect at renewal, so a mid-term switch can mean paying for Wrike and its replacement at the same time."
   ],
   "alternatives": [
     {
