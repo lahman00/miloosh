@@ -4,6 +4,7 @@ import { LEGAL_PAGES } from "@/lib/legal";
 import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
+import { getFirstRevenueSupportForGuide } from "@/data/guides/first-revenue";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
@@ -53,7 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const roleGuidePages: MetadataRoute.Sitemap = getAllRoleGuides().map((guide) => ({
     url: `${SITE_URL}/${guide.slug}`,
-    lastModified: toDate(guide.updatedAt),
+    // These five guides gained the visible primary-page handoff panel on
+    // this recorded content date. Do not refresh unrelated guides at build time.
+    lastModified: getFirstRevenueSupportForGuide(guide.slug)
+      ? latestOf([toDate(guide.updatedAt), toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)])
+      : toDate(guide.updatedAt),
     changeFrequency: "monthly",
     priority: 0.85,
   }));

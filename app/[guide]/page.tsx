@@ -19,6 +19,7 @@ import { getCategoryName } from "@/data/categories";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { getWixAffiliateUrl } from "@/lib/wix-funnels";
 import { SITE_URL } from "@/lib/site";
+import { getBreadcrumbJsonLd, getFaqJsonLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -105,43 +106,12 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
     })),
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: guide.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: categoryName,
-        item: `${SITE_URL}/category/${guide.categorySlug}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: guide.title,
-        item: `${SITE_URL}/${guide.slug}`,
-      },
-    ],
-  };
+  const faqSchema = getFaqJsonLd(guide.faqs);
+  const breadcrumbSchema = getBreadcrumbJsonLd([
+    { name: "Home", url: SITE_URL },
+    { name: categoryName, url: `${SITE_URL}/category/${guide.categorySlug}` },
+    { name: guide.title, url: `${SITE_URL}/${guide.slug}` },
+  ]);
 
   return (
     <>

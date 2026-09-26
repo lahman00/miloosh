@@ -7,12 +7,14 @@ export function SectionHeading({
   description,
   align = "left",
   className,
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
   className?: string;
+  as?: "h1" | "h2" | "h3";
 }) {
   return (
     <div
@@ -23,14 +25,14 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2
+      <Heading
         className={cn(
           "text-3xl font-bold tracking-tight text-white sm:text-4xl",
           eyebrow ? "mt-3" : undefined
         )}
       >
         {title}
-      </h2>
+      </Heading>
       {description ? (
         <p className="mt-4 text-base leading-7 text-zinc-400 sm:text-lg">{description}</p>
       ) : null}

@@ -41,7 +41,7 @@ describe("sitemap lastModified coverage", () => {
     const softwareBySlug = new Map(getAllSoftware().map((s) => [s.slug, s]));
     const submitted = PUBLISHED_COMPARISONS.filter(([slugA, slugB]) =>
       shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB))
-    ).slice(0, 25);
+    );
     for (const [slugA, slugB] of submitted) {
       const slug = getComparisonSlug(slugA, slugB);
       const entry = entries.find((e) => e.url.endsWith(`/compare/${slug}`));
@@ -82,7 +82,7 @@ describe("sitemap lastModified coverage", () => {
     expect(comparisonUrls.some((url) => url.endsWith("/compare/surveymonkey-vs-jotform"))).toBe(true);
   });
 
-  it("uses the real 2026-09-25 content-update date for the five focused money pages", () => {
+  it("preserves the recorded historical comparison update date after the primary cohort moved to software pages", () => {
     const entries = sitemap();
     const moneyPages = [
       "wix-vs-shopify",

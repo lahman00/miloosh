@@ -21,6 +21,7 @@ export default function GuidesPage() {
     <main className="flex-1 py-16 sm:py-20">
       <Container>
         <SectionHeading
+          as="h1"
           eyebrow="Decision guides"
           title="Start with the job, not the software logo"
           description={`${guides.length} practical guides for common buying and switching decisions, built from the same sourced product dataset as our comparisons.`}
