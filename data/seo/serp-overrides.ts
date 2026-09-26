@@ -130,6 +130,75 @@ const COMPARISON_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
     description:
       "Jenkins vs Sentry: compare CI/CD automation with application error monitoring, including workflows, integrations, platform fit, and buyer tradeoffs.",
   },
+  // Google Indexation Factory Wave 2 mission (2026-09-26) comparison-page
+  // treatment cohort -- each pair confirmed "Crawled - currently not
+  // indexed" via live GSC URL Inspection before this change, chosen where
+  // at least one side already has real, sourced pricing/cons from this
+  // wave's software-page treatment (data/software/*.json), so the
+  // comparison page's auto-generated pricing table and pros/cons section
+  // were already deepened as a side effect -- these titles/descriptions
+  // align search intent with that now-real content rather than a generic
+  // "compare these two tools" framing.
+  "directus-vs-strapi": {
+    title: "Directus vs Strapi (2026): Pricing, Licensing & Fit",
+    description:
+      "Compare Directus vs Strapi pricing, licensing terms, database-wrapper versus schema-first architecture, and buyer fit using current vendor-sourced facts.",
+  },
+  "crazy-egg-vs-matomo": {
+    title: "Crazy Egg vs Matomo (2026): Heatmaps vs Analytics",
+    description:
+      "Compare Crazy Egg vs Matomo pricing, self-hosting requirements, CRO tooling versus traffic analytics, and buyer fit using current vendor-sourced facts.",
+  },
+  "gorgias-vs-kayako": {
+    title: "Gorgias vs Kayako (2026): Pricing & AI Fees Compared",
+    description:
+      "Compare Gorgias vs Kayako pricing, per-resolution AI fees, ecommerce fit, and buyer tradeoffs using current vendor-sourced facts.",
+  },
+  "1password-vs-auth0": {
+    title: "1Password vs Auth0 (2026): Vault vs Developer Auth",
+    description:
+      "Compare 1Password vs Auth0: credential vaulting versus developer authentication APIs, current pricing, and which one actually fits the job.",
+  },
+  "circleci-vs-jenkins": {
+    title: "CircleCI vs Jenkins (2026): Managed vs Self-Hosted CI/CD",
+    description:
+      "Compare CircleCI vs Jenkins pricing, hosting responsibility, plugin-security burden, and buyer fit using current vendor-sourced facts.",
+  },
+  "keeper-security-vs-okta": {
+    title: "Keeper Security vs Okta (2026): Vault vs Workforce Identity",
+    description:
+      "Compare Keeper Security vs Okta: password vaulting versus full workforce identity and access management, current pricing, and buyer fit.",
+  },
+  "kong-vs-plaid": {
+    title: "Kong vs Plaid (2026): API Gateway vs Financial Data",
+    description:
+      "Compare Kong vs Plaid: general API management versus financial account and transaction data access, pricing transparency, and buyer fit.",
+  },
+  "microsoft-teams-vs-mattermost": {
+    title: "Microsoft Teams vs Mattermost (2026): Pricing & Fit",
+    description:
+      "Compare Microsoft Teams vs Mattermost pricing transparency, self-hosted data sovereignty, and buyer fit using current vendor-sourced facts.",
+  },
+  "obsidian-vs-evernote": {
+    title: "Obsidian vs Evernote (2026): Local Files vs Cloud Notes",
+    description:
+      "Compare Obsidian vs Evernote pricing, local-first versus cloud-synced storage, and buyer fit using current vendor-sourced facts.",
+  },
+  "okta-vs-wiz": {
+    title: "Okta vs Wiz (2026): Identity vs Cloud Security",
+    description:
+      "Compare Okta vs Wiz: workforce identity and access management versus cloud security posture management, current pricing, and buyer fit.",
+  },
+  "things-vs-toggl-track": {
+    title: "Things vs Toggl Track (2026): Tasks vs Time Tracking",
+    description:
+      "Compare Things vs Toggl Track: one-time-purchase task management versus subscription time tracking, current pricing, and buyer fit.",
+  },
+  "close-vs-nutshell": {
+    title: "Close vs Nutshell (2026): CRM Pricing & Fit",
+    description:
+      "Compare Close vs Nutshell CRM pricing, automation depth, and buyer fit using current vendor-sourced facts.",
+  },
 };
 
 export function getSoftwareSerpOverride(slug: string): SerpMetadataOverride | undefined {
