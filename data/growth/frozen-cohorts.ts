@@ -60,6 +60,21 @@ export const FROZEN_COHORTS: readonly FrozenCohort[] = [
       "google-meet", "snyk", "mixpanel", "slite", "bitbucket", "linear", "clockify",
     ],
   },
+  {
+    wave: "master-google-war-wave3-20260926",
+    reason:
+      "20 real GSC-confirmed crawled-not-indexed pages given pricing/cons/decision-guide treatment (selected from the merged growth:google-war system's CONTENT_DEPTH_GAP classification, cross-validated against the independently-built remediation-queue.ts), plus a 10-page untouched control baseline, both left in place for a later before/after comparison.",
+    treatment: [
+      "sketch", "google-analytics", "wiz", "weebly", "heap",
+      "adobe-commerce", "ghost", "shift4shop", "docusaurus", "rapidapi",
+      "crisp", "pipedream", "prestashop", "guru", "zendesk",
+      "freshsales", "joomla", "storyblok", "tailscale", "duo-security",
+    ],
+    control: [
+      "keeper-security", "figma", "mkdocs", "reamaze", "archbee",
+      "kong", "shopware", "craft", "runway", "zeroheight",
+    ],
+  },
 ];
 
 export function isFrozenSlug(slug: string): boolean {
