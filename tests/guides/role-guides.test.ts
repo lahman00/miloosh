@@ -56,6 +56,19 @@ describe("Role & Use-Case Software Engine", () => {
     }
   });
 
+  it("keeps every Pipedrive entry's pricingNote traceable to the current catalog tiers, not stale tier names", () => {
+    const pipedrive = getSoftware("pipedrive")!;
+    const tierNames = new Set(pipedrive.pricing?.tiers?.map((t) => t.name));
+    expect(tierNames).toEqual(new Set(["Lite", "Growth", "Premium", "Ultimate"]));
+    for (const guide of getRoleGuidesForSoftware("pipedrive")) {
+      const entry = guide.products.find((p) => p.slug === "pipedrive")!;
+      if (!entry.pricingNote) continue;
+      expect(entry.pricingNote).not.toContain("Essential $");
+      expect(entry.pricingNote).not.toContain("Advanced $");
+      expect(entry.fitReason + entry.limitations).not.toMatch(/widely favored|fraction of the cost/i);
+    }
+  });
+
   it("tests helper lookup functions getRoleGuide, getRoleGuidesForCategory, getRoleGuidesForSoftware", () => {
     const agencyGuide = getRoleGuide("best-time-tracking-for-agencies");
     expect(agencyGuide).toBeDefined();

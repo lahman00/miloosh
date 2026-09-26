@@ -1006,11 +1006,11 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Activity-Based Startup Sales",
         ranking: 1,
         fitReason:
-          "Pipedrive is engineered around activity-based selling, making it well suited for startup sales reps. Its visual drag-and-drop pipeline, AI Sales Assistant, and automated email sync keep founders focused on revenue-generating actions.",
+          "Pipedrive is engineered around activity-based selling, making it well suited for startup sales reps. Its visual drag-and-drop pipeline, AI Sales Assistant, and lead/calendar/pipeline management keep founders focused on revenue-generating actions on the entry tier.",
         limitations:
-          "Native marketing automation and transactional email tools require third-party integrations.",
+          "Full email sync and marketing automation are gated to the Growth tier and above; the entry Lite plan covers lead, calendar and pipeline management only.",
         pricingNote:
-          "Essential $14/user/mo; Advanced $29/user/mo (includes email sync and workflow automation); Professional $49/user/mo (billed annually).",
+          "Lite $14/seat/mo; Growth $39/seat/mo (full email sync, automations and nurturing sequences); Premium $59/seat/mo — all billed annually.",
       },
       {
         slug: "hubspot",
@@ -1056,7 +1056,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       {
         question: "Why do startups choose Pipedrive over HubSpot?",
         answer:
-          "Startups often choose Pipedrive for its dedicated focus on outbound sales execution and activity-based selling. While HubSpot offers a broader all-in-one marketing suite, Pipedrive delivers a faster, cleaner deal pipeline at a fraction of the cost once paid tiers are required.",
+          "Startups often choose Pipedrive for its dedicated focus on outbound sales execution and activity-based selling, rather than HubSpot's broader all-in-one marketing suite. Compare both vendors' current per-seat pricing for the tier your team actually needs before deciding; no cost-comparison claim is made here.",
       },
       {
         question: "Can an early-stage startup use HubSpot CRM completely free?",
@@ -1110,11 +1110,11 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Custom Property & Listing Pipelines",
         ranking: 1,
         fitReason:
-          "Pipedrive is widely favored by real estate teams for its customizable visual pipelines. Agents can configure dedicated pipelines for Buyers, Sellers, and Escrow Closings, while mobile geolocation helps locate nearby clients between showings.",
+          "Pipedrive's customizable visual pipelines can be configured for Buyers, Sellers, and Escrow Closings, and mobile geolocation helps locate nearby clients between showings; no claim is made about real-estate-specific adoption share.",
         limitations:
           "Requires Zapier or webhook configuration for direct MLS and Zillow auto-ingestion.",
         pricingNote:
-          "Essential $14/user/mo; Advanced $29/user/mo (includes email templates and 2-way sync); Professional $49/user/mo.",
+          "Lite $14/seat/mo; Growth $39/seat/mo (full email sync and automations); Premium $59/seat/mo — all billed annually.",
       },
       {
         slug: "hubspot",
