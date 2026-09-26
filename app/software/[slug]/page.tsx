@@ -3,12 +3,13 @@ import { EcwidIntegrationDecision } from "@/components/EcwidIntegrationDecision"
 import { StorePlanFit } from "@/components/StorePlanFit";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
 import { FirstRevenueSoftwarePanel } from "@/components/FirstRevenueSoftwarePanel";
+import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getBuyerChecklist } from "@/data/seo/buyer-checklists";
 import { getRoleGuidesForSoftware } from "@/data/guides/registry";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, Check, ExternalLink, GitCompare, Scale } from "lucide-react";
+import { Ban, BookOpen, Check, ExternalLink, GitCompare, Scale } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Badge } from "@/components/Badge";
 import { Card } from "@/components/Card";
@@ -187,6 +188,22 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
                 </li>
               ))}
             </ul>
+
+            {software.cons?.length && !getFirstRevenuePage(software.slug) ? (
+              <div className="mt-6 border-t border-white/10 pt-6">
+                <h3 className="flex items-center gap-2 text-sm font-medium text-zinc-300">
+                  <Ban className="h-4 w-4 text-zinc-500" />
+                  Watch before buying
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {software.cons.map((con) => (
+                    <li key={con} className="text-sm leading-6 text-zinc-400">
+                      {con}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </Card>
 
           <Card className="flex flex-col">
