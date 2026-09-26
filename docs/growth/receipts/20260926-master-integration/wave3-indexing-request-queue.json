@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-09-26",
+  "quotaStatus": "EXHAUSTED as of this session's earlier check (docs/growth/receipts/20260926-indexation-factory-wave2/indexing-request-queue.json)",
+  "quotaCheckMethod": "Not re-checked live for Wave 3. The same calendar day (2026-09-26) already had one real, authenticated GSC 'Request Indexing' attempt (directus) return the quota-exceeded dialog. Per the standing rule to never spam/retry the same quota on the same day, no further live attempt was made this session.",
+  "actionTaken": "Zero indexing requests submitted for Wave 3. The ranked queue below is prepared for the next available quota window, not executed.",
+  "note_on_indexingRequest_status": "growth:google-war's own latest.json now reports indexingRequest.status = PROTECTED for all 20 of these URLs, because this session's earlier reconciliation made reservedProtection() iterate ALL FROZEN_COHORTS -- including this wave's own freshly-added cohort. This is correct, intentional behavior, not a bug: it keeps the AUTOMATED system from ever auto-queuing a repeat request against a wave's own reserved measurement cohort. This file is a deliberate, human-reviewed exception to that automatic conservatism -- the same pattern Wave 2 used for 'directus', which was also a reserved cohort member yet still manually queued (and actually attempted) for its one legitimate post-treatment indexing request.",
+  "rankedQueueForNextWindow": [
+    { "rank": 1, "slug": "sketch", "url": "https://miloosh.com/software/sketch", "gscImpressions": 81, "gscPosition": 71.8 },
+    { "rank": 2, "slug": "google-analytics", "url": "https://miloosh.com/software/google-analytics", "gscImpressions": 79, "gscPosition": 89.0 },
+    { "rank": 3, "slug": "wiz", "url": "https://miloosh.com/software/wiz", "gscImpressions": 79, "gscPosition": 58.7 },
+    { "rank": 4, "slug": "weebly", "url": "https://miloosh.com/software/weebly", "gscImpressions": 76, "gscPosition": 71.6 },
+    { "rank": 5, "slug": "heap", "url": "https://miloosh.com/software/heap", "gscImpressions": 73, "gscPosition": 52.8 },
+    { "rank": 6, "slug": "adobe-commerce", "url": "https://miloosh.com/software/adobe-commerce", "gscImpressions": 72, "gscPosition": 81.3 },
+    { "rank": 7, "slug": "ghost", "url": "https://miloosh.com/software/ghost", "gscImpressions": 70, "gscPosition": 73.5 },
+    { "rank": 8, "slug": "shift4shop", "url": "https://miloosh.com/software/shift4shop", "gscImpressions": 66, "gscPosition": 63.9 },
+    { "rank": 9, "slug": "docusaurus", "url": "https://miloosh.com/software/docusaurus", "gscImpressions": 65, "gscPosition": 64.2 },
+    { "rank": 10, "slug": "rapidapi", "url": "https://miloosh.com/software/rapidapi", "gscImpressions": 65, "gscPosition": 61.4 },
+    { "rank": 11, "slug": "crisp", "url": "https://miloosh.com/software/crisp", "gscImpressions": 63, "gscPosition": 77.8 },
+    { "rank": 12, "slug": "pipedream", "url": "https://miloosh.com/software/pipedream", "gscImpressions": 61, "gscPosition": 66.0 },
+    { "rank": 13, "slug": "prestashop", "url": "https://miloosh.com/software/prestashop", "gscImpressions": 61, "gscPosition": 71.1 },
+    { "rank": 14, "slug": "guru", "url": "https://miloosh.com/software/guru", "gscImpressions": 60, "gscPosition": 62.4 },
+    { "rank": 15, "slug": "zendesk", "url": "https://miloosh.com/software/zendesk", "gscImpressions": 60, "gscPosition": 83.9 },
+    { "rank": 16, "slug": "freshsales", "url": "https://miloosh.com/software/freshsales", "gscImpressions": 57, "gscPosition": 74.6 },
+    { "rank": 17, "slug": "joomla", "url": "https://miloosh.com/software/joomla", "gscImpressions": 56, "gscPosition": 62.6 },
+    { "rank": 18, "slug": "storyblok", "url": "https://miloosh.com/software/storyblok", "gscImpressions": 53, "gscPosition": 69.0 },
+    { "rank": 19, "slug": "tailscale", "url": "https://miloosh.com/software/tailscale", "gscImpressions": 51, "gscPosition": 59.1 },
+    { "rank": 20, "slug": "duo-security", "url": "https://miloosh.com/software/duo-security", "gscImpressions": 49, "gscPosition": 57.5 }
+  ],
+  "explicitlyExcludedFromQueue": {
+    "controls": "All 10 Wave-3 control-cohort slugs (keeper-security, figma, mkdocs, reamaze, archbee, kong, shopware, craft, runway, zeroheight) -- requesting indexing for them would itself be an intervention that contaminates the untouched baseline.",
+    "protectedAndFrozen": "All Wave 1 + Wave 2 treatment/control slugs and all legacy experiment-protected slugs -- none should be re-requested by this wave."
+  },
+  "instructionForNextWave": "Do not retry today (2026-09-26). When quota is confirmed available on a fresh day (verified by one real attempt before any bulk submission), submit rank 1 through as many as the quota allows, one URL at a time, stopping immediately on any exhaustion signal and recording the exact point reached."
+}

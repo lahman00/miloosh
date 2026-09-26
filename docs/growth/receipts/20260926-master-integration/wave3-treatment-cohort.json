@@ -1,0 +1,44 @@
+{
+  "wave": "master-google-war-wave3-20260926",
+  "selectionMethod": "growth:google-war CONTENT_DEPTH_GAP classification, cross-validated against remediation-queue.ts's independent GSC-demand x factual-depth-deficiency crossing",
+  "excludedFromSelection": [
+    "All Wave 1 (indexation-recovery-20260926) treatment + control slugs",
+    "All Wave 2 (indexation-factory-wave2-20260926) treatment + control slugs",
+    "This wave's own 10-slug control cohort",
+    "All legacy/active-experiment protected slugs (readProtectedExperimentSlugs())"
+  ],
+  "treatment": [
+    { "slug": "sketch", "factualDepthScoreAfter": 85 },
+    { "slug": "google-analytics", "factualDepthScoreAfter": 96 },
+    { "slug": "wiz", "factualDepthScoreAfter": 89 },
+    { "slug": "weebly", "factualDepthScoreAfter": 85 },
+    { "slug": "heap", "factualDepthScoreAfter": 85 },
+    { "slug": "adobe-commerce", "factualDepthScoreAfter": 92 },
+    { "slug": "ghost", "factualDepthScoreAfter": 85 },
+    { "slug": "shift4shop", "factualDepthScoreAfter": 86 },
+    { "slug": "docusaurus", "factualDepthScoreAfter": 85 },
+    { "slug": "rapidapi", "factualDepthScoreAfter": 85 },
+    { "slug": "crisp", "factualDepthScoreAfter": 90 },
+    { "slug": "pipedream", "factualDepthScoreAfter": 87 },
+    { "slug": "prestashop", "factualDepthScoreAfter": 85 },
+    { "slug": "guru", "factualDepthScoreAfter": 94 },
+    { "slug": "zendesk", "factualDepthScoreAfter": 96 },
+    { "slug": "freshsales", "factualDepthScoreAfter": 90 },
+    { "slug": "joomla", "factualDepthScoreAfter": 88 },
+    { "slug": "storyblok", "factualDepthScoreAfter": 86 },
+    { "slug": "tailscale", "factualDepthScoreAfter": 95 },
+    { "slug": "duo-security", "factualDepthScoreAfter": 93 }
+  ],
+  "beforeState": "All 20 were factual-depth grade C or D (score < 60) prior to this session's edits, per the live scoring pass run before any pricing/cons content was written. Exact pre-edit per-slug scores were not separately archived as a file this session; the qualifying condition for selection was CONTENT_DEPTH_GAP classification in growth:google-war's latest.json, which requires grade C/D.",
+  "afterState": "All 20 now score 85-96, grade A (>=80), verified via scoreFactualDepth() against the current data/software/{slug}.json content on 2026-09-26.",
+  "control": [
+    "keeper-security", "figma", "mkdocs", "reamaze", "archbee",
+    "kong", "shopware", "craft", "runway", "zeroheight"
+  ],
+  "controlPurpose": "Left completely untouched -- no pricing/cons edits, no new alternative guides, no indexing requests -- to serve as a before/after comparison baseline against the treatment cohort's indexation-state deltas in a later GSC snapshot.",
+  "guidesAdded": 20,
+  "guidesFile": "data/seo/alternative-guides.ts",
+  "guideCommit": "cabd9fc",
+  "contentCommit": "e8ea156",
+  "cohortRegistryCommit": "81045e5"
+}
