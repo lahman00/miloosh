@@ -276,3 +276,11 @@ describe("WhatConverts buyer-decision record", () => {
     expect(answer).not.toMatch(/\$\d/);
   });
 });
+
+describe("Pipedrive feature list plan gates", () => {
+  it("does not present Growth-gated email sync or automation as entry-plan features", () => {
+    const features = load("pipedrive").features;
+    expect(features.find((feature) => feature.startsWith("Two-way email sync"))).toContain("from Growth");
+    expect(features.find((feature) => feature.startsWith("Workflow automation"))).toContain("from Growth");
+  });
+});
