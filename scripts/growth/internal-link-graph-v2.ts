@@ -67,7 +67,7 @@ function main() {
     .map((s) => ({ slug: s.slug, total: inboundSoftware.get(s.slug) ?? 0 }))
     .sort((a, b) => b.total - a.total);
   const orphans = combined.filter((r) => r.total === 0);
-  console.log(`\nCombined inbound (alternatives + comparisons + decision guides), true orphans: ${orphans.length}`);
+  console.log(`\nZero contextual references (alternatives + comparisons + decision guides): ${orphans.length}. NOT true orphans: category/hub HTML is excluded here. Run growth:google-war for the rendered graph.`);
   console.log(`Top 10 most-linked products (combined):`);
   for (const r of combined.slice(0, 10)) console.log(`  ${r.slug}: ${r.total}`);
 }

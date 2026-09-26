@@ -1,6 +1,7 @@
 import { getSoftware } from "@/data/software";
 import { buildIndexationPriorityList } from "@/scripts/growth/indexation-priority";
 import { scoreFactualDepth, type FactualDepthRow } from "@/scripts/growth/factual-depth-audit";
+import { loadProtection, protectionFor } from "@/lib/google-war/protection";
 
 /**
  * GOOGLE INDEXATION QUALITY WAR mission (2026-08-22), Phase 4 — crosses
@@ -33,10 +34,12 @@ export interface RemediationCandidate {
 }
 
 export function buildRemediationQueue(maxCandidates = 10): RemediationCandidate[] {
+  const protectedPages = loadProtection();
   const indexationRows = buildIndexationPriorityList(500).filter((r) => r.kind === "software" && r.evidenceType === "CACHED");
 
   const candidates: RemediationCandidate[] = [];
   for (const row of indexationRows) {
+    if (protectionFor(row.url, protectedPages).length) continue;
     const slug = row.url.replace("/software/", "");
     const software = getSoftware(slug);
     if (!software || row.gscImpressions === undefined || row.gscPosition === undefined) continue;

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "/software/pipedrive",
+    "requestedAt": "2026-09-26T00:00:00Z",
+    "precision": "day",
+    "source": "docs/growth/receipts/20260926-google-demand-capture/tier-a-actions.md: reported authenticated UI confirmation; exact request time unavailable"
+  },
+  {
+    "url": "/software/wrike",
+    "requestedAt": "2026-09-26T00:00:00Z",
+    "precision": "day",
+    "source": "docs/growth/receipts/20260926-google-demand-capture/tier-a-actions.md: reported authenticated UI confirmation; exact request time unavailable"
+  }
+]

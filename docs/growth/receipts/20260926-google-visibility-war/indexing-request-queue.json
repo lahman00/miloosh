@@ -1,0 +1,3904 @@
+{
+  "generatedAt": "2026-09-26T10:47:11.839Z",
+  "requestsSent": 0,
+  "history": [
+    {
+      "url": "/software/pipedrive",
+      "requestedAt": "2026-09-26T00:00:00Z",
+      "precision": "day",
+      "source": "docs/growth/receipts/20260926-google-demand-capture/tier-a-actions.md: reported authenticated UI confirmation; exact request time unavailable"
+    },
+    {
+      "url": "/software/wrike",
+      "requestedAt": "2026-09-26T00:00:00Z",
+      "precision": "day",
+      "source": "docs/growth/receipts/20260926-google-demand-capture/tier-a-actions.md: reported authenticated UI confirmation; exact request time unavailable"
+    }
+  ],
+  "ready": [],
+  "rows": [
+    {
+      "url": "/software/semrush",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/intercom",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/freshdesk",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/front",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/buffer",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/mulesoft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/help-scout",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/clickup",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/salesforce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/ecwid",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/sprout-social",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/confluence",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/pipedrive",
+      "status": "PROTECTED",
+      "lastRequestedAt": "2026-09-26T00:00:00Z",
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/airtable",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/n8n",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/basecamp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/whimsical",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/tidio",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/scribe",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/umbraco",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zoho-crm",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zapier",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/smartsheet",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/github",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/activecampaign",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/fullstory",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/marketo-engage",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/wrike",
+      "status": "PROTECTED",
+      "lastRequestedAt": "2026-09-26T00:00:00Z",
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/lucidchart",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/ringcentral",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/firebase",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/segment",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/vercel",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/lastpass",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/calendly",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/netlify",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-segment",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/copy-ai",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/hotjar",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/contentful",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/directus",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/toggl-track",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/webex",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/synthesia",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/ifttt",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/opencart",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/plausible",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/todoist",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/crazy-egg",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/jasper",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/klaviyo",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/drupal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/matomo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/miro",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/crowdstrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/evernote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/doodle",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/mattermost",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/power-automate",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/deepl",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/adyen",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/okta",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/gorgias",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/jenkins",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/braze",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/coda",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/docker",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/algolia",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/1password",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/ticktick",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/craft-cms",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/fathom-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/microsoft-onenote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/gitbook",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/kayako",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/signal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/plaid",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/auth0",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/document360",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/salesforce-commerce-cloud",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/superhuman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zoho-projects",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/woocommerce",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/strapi",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/amplitude",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-clickup",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/reclaim-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zeplin",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/google-chat",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/keap",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/perplexity",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/close",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/google-meet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/mixpanel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/snyk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/linear",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/slite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/bitbucket",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/sketch",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-coda",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/google-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/wiz",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/craft-cms-vs-wordpress",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/bitwarden",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/weebly",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/heap",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/adobe-commerce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/ghost",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/elevenlabs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/shift4shop",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/docusaurus",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/rapidapi",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/crisp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/pipedream",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/prestashop",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/guru",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zendesk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/freshsales",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/postmark",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/sanity",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/joomla",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/storyblok",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/contentful-vs-sanity",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/tailscale",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/duo-security",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/twilio",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/confluence-vs-obsidian",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/reamaze",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/archbee",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/asana",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/keeper-security",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/kong",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/figma",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/shopware",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/craft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/runway",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/mkdocs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zeroheight",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/discord-vs-google-meet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/bloomfire",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/teamwork",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/apigee",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/readme",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/youcanbookme",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/read-the-docs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/nutshell",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/shortcut",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/squarespace",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zoho-desk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-teamwork",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/canva-vs-affinity",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-asana",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/power-automate-vs-uipath",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/canva-vs-miro",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/evernote-vs-microsoft-onenote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/github-vs-render",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/hootsuite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/telegram",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zoho-flow",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-trello",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/docker-vs-vercel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/wordpress",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/nordpass",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/rocket-chat",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/asana-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/chatgpt-vs-claude",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/jira-vs-teamwork",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/sanity-vs-webflow",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gitbook-vs-read-the-docs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/claude",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/helpjuice",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/microsoft-teams-vs-signal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/sanity-vs-wordpress",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zapier-vs-zoho-flow",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshdesk-vs-zendesk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/stripe",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/canva-vs-lucidchart",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/cloudflare-vs-crowdstrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/google-chat-vs-signal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/joomla-vs-umbraco",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mkdocs-vs-read-the-docs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zapier-vs-tray-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/happyfox",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/uipath",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/amplitude-vs-segment",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/hubspot",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/liveagent",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/adobe-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/apigee-vs-kong",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/n8n-vs-workato",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/canva",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/tray-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ahrefs-vs-google-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/algolia-vs-elastic",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/calendly-vs-cal-com",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/datadog-vs-render",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/fathom-analytics-vs-matomo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/google-chat-vs-google-meet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-microsoft-onenote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zapier-vs-pipedream",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/anydo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/gemini",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/slack",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/basecamp-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/contentful-vs-webflow",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-clickup",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/posthog-vs-segment",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-linear",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/swaggerhub",
+      "status": "PROTECTED",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/doodle-vs-microsoft-bookings",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/intercom-vs-zoho-desk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/jenkins-vs-sentry",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/marketo-engage-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/microsoft-teams-vs-otter-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/microsoft-teams-vs-ringcentral",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-ticktick",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/slack-vs-ringcentral",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/smartsheet-vs-teamwork",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/callrail-vs-hubspot",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/claude-vs-runway",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-shortcut",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/contentful-vs-wordpress",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crowdstrike-vs-tailscale",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/google-meet-vs-signal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/linear-vs-shortcut",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/marketo-engage-vs-activecampaign",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/miro-vs-lucidchart",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/netlify-vs-render",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-gitbook",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/shopware-vs-woocommerce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-superhuman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/chatgpt",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/otter-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/savvycal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bigcommerce-vs-salesforce-commerce-cloud",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/calendly-vs-doodle",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/calendly-vs-savvycal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/circleci-vs-gitlab",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/docusaurus-vs-read-the-docs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/doodle-vs-motion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/figma-vs-marvel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshdesk-vs-front",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hotjar-vs-posthog",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/make-vs-power-automate",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/marketo-engage-vs-sprout-social",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mattermost-vs-zoom",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-microsoft-onenote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/render-vs-sentry",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/sketch-vs-marvel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zapier-vs-make",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/motion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-commerce-vs-shopware",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bitbucket-vs-circleci",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/buffer-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/cal-com-vs-acuity-scheduling",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/confluence-vs-gitbook",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crazy-egg-vs-google-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/deepl-vs-perplexity",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/discord-vs-mattermost",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/evernote-vs-airtable",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/figma-vs-miro",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/klaviyo-vs-sprout-social",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mattermost-vs-rocket-chat",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/n8n-vs-tray-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/read-the-docs-vs-readme",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/read-the-docs-vs-slab",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-motion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/umbraco-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/weebly-vs-woocommerce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zapier-vs-workato",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/ahrefs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/posthog",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-amplitude",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adyen-vs-stripe",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ahrefs-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/archbee-vs-document360",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bigcommerce-vs-shopware",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bitwarden-vs-duo-security",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/brevo-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-monday",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-marketo-engage",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crisp-vs-liveagent",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crowdstrike-vs-duo-security",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/drupal-vs-sanity",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/front-vs-help-scout",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/fullstory-vs-posthog",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gitlab-vs-postman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/jira-vs-linear",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/klaviyo-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/marketo-engage-vs-braze",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mattermost-vs-google-meet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mulesoft-vs-rapidapi",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-craft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/postmark-vs-sendgrid",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/power-automate-vs-zoho-flow",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/semrush-vs-hootsuite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/snyk-vs-wiz",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/things-vs-craft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/things-vs-superhuman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-jira",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/whatconverts-vs-google-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/notion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/tettra",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/whatconverts",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/zoom",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adyen-vs-rapidapi",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/amplitude-vs-hotjar",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/asana-vs-toggl-track",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bitbucket-vs-jenkins",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/braze-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/braze-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/cal-com-vs-motion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/calendly-vs-motion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/chatgpt-vs-elevenlabs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/circleci-vs-github",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-basecamp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-todoist",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/coda-vs-craft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/coda-vs-superhuman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/confluence-vs-stack-overflow-for-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/contentful-vs-craft-cms",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/copper-vs-freshsales",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crazy-egg-vs-posthog",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crisp-vs-help-scout",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crowdstrike-vs-keeper-security",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/dashlane-vs-lastpass",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/document360-vs-read-the-docs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/evernote-vs-things",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/figma-vs-canva",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/front-vs-intercom",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gemini-vs-runway",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ghost-vs-wordpress",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/github-vs-netlify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gorgias-vs-zoho-desk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/guru-vs-stack-overflow-for-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/happyfox-vs-tidio",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/help-scout-vs-intercom",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hootsuite-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-asana",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/kong-vs-rapidapi",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/kong-vs-twilio",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/linear-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/matomo-vs-plausible",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mattermost-vs-telegram",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/midjourney-vs-runway",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/n8n-vs-ifttt",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/nordpass-vs-okta",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-trello",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/power-automate-vs-workato",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/semrush-vs-activecampaign",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/sketch-vs-miro",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/things-vs-ticktick",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-craft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/twilio-vs-workos",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/appfolio",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/callrail",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/dashlane",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/freshbooks",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/getresponse",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/gohighlevel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/harvest",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/jobber",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/moosend",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/quickbooks-online",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/sentry",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/xero",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-email-marketing-for-ecommerce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/activecampaign-vs-buffer",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-heap",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-matomo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-plausible",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-commerce-vs-bigcommerce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-ticktick",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/algolia-vs-kong",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/appfolio-vs-doorloop",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/asana-vs-linear",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bigcommerce-vs-weebly",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bitbucket-vs-netlify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bitbucket-vs-sentry",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bitbucket-vs-vercel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/braze-vs-buffer",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/brevo-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/cal-com-vs-reclaim-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/chatgpt-vs-github-copilot",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/close-vs-copper",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/cloudflare-vs-duo-security",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-activecampaign",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-buffer",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/contentful-vs-directus",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/craft-cms-vs-squarespace",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crazy-egg-vs-fathom-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crazy-egg-vs-segment",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/crisp-vs-freshdesk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/directus-vs-storyblok",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/duo-security-vs-tailscale",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/front-vs-zoho-desk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/fullstory-vs-segment",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/github-copilot-vs-perplexity",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/google-chat-vs-ringcentral",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/google-meet-vs-webex",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gorgias-vs-intercom",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/guru-vs-scribe",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/guru-vs-tettra",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/help-scout-vs-reamaze",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hotjar-vs-mixpanel",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ifttt-vs-power-automate",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/jenkins-vs-render",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/jira-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/keeper-security-vs-nordpass",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/linear-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/lucidchart-vs-balsamiq",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/marketo-engage-vs-buffer",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/marketo-engage-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-shortcut",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/motion-vs-savvycal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/nuclino-vs-read-the-docs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedream-vs-power-automate",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedream-vs-tray-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedream-vs-workato",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedream-vs-zoho-flow",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/postman-vs-render",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/postmark-vs-twilio",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/prestashop-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/read-the-docs-vs-zeroheight",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/reamaze-vs-zoho-desk",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/rocket-chat-vs-signal",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/sanity-vs-squarespace",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/scribe-vs-slite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/slack-vs-microsoft-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/squarespace-vs-umbraco",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/stack-overflow-for-teams-vs-knowledgeowl",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/storyblok-vs-strapi",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/strapi-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/tailscale-vs-wiz",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/teamwork-vs-zoho-projects",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/things-vs-microsoft-onenote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ticktick-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ticktick-vs-craft",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-evernote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-reclaim-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-basecamp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zapier-vs-uipath",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/zoom-vs-otter-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/acuity-scheduling",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/brevo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/buildium",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/cal-com",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/midjourney",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/postman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/things",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-accounting-software-for-freelancers",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-accounting-software-for-small-business",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-cloud-phone-system-for-remote-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-crm-for-consultants",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-crm-for-real-estate",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-crm-for-sales-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-crm-for-small-business",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-crm-for-startups",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-ecommerce-platform-for-small-business",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-email-marketing-for-small-business",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-lead-tracking-for-agencies",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-no-code-database-for-operations",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-project-management-for-agencies",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-project-management-for-software-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-project-management-software-for-small-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-scheduling-software-for-consultants",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-scheduling-software-for-small-business",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-task-management-for-individuals",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-time-tracking-for-agencies",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-time-tracking-for-freelancers",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-voice-ai-for-creators",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/best-voip-phone-system-for-small-business",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/acuity-scheduling-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/adobe-commerce-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-microsoft-onenote",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-notion",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-pipedrive",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-smartsheet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/airtable-vs-superhuman",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/asana-vs-monday",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/asana-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/basecamp-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/bigcommerce-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/brevo-vs-getresponse",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/cal-com-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/calendly-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-airtable",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/clickup-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/close-vs-freshsales",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/close-vs-keap",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/close-vs-nutshell",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/close-vs-zoho-crm",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/coda-vs-airtable",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/coda-vs-todoist",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-ahrefs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-braze",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-brevo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-getresponse",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-hootsuite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-moosend",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-sprout-social",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/constant-contact-vs-zoho-campaigns",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/contentful-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/copy-ai-vs-elevenlabs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/craft-cms-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/deepl-vs-elevenlabs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/doodle-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ecwid-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-descript",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-gemini",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-grammarly",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-jasper",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-midjourney",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-murf-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-otter-ai",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-perplexity",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-runway",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/elevenlabs-vs-synthesia",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshbooks-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshbooks-vs-harvest",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshbooks-vs-toggl-track",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshbooks-vs-wave",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/freshbooks-vs-zoho-books",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-activecampaign",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-ahrefs",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-braze",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-buffer",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-hootsuite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-marketo-engage",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-semrush",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-sprout-social",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/getresponse-vs-zoho-campaigns",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/ghost-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gohighlevel-vs-close",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/gohighlevel-vs-pipedrive",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubspot-vs-close",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubspot-vs-pipedrive",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-clockify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-harvest",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-monday",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-time-doctor",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-todoist",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/hubstaff-vs-toggl-track",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/jira-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/joomla-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-dialpad",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-google-meet",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-microsoft-teams",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-nextiva",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-ringcentral",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-webex",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/krispcall-vs-zoom",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mailerlite-vs-brevo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mailerlite-vs-getresponse",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mailerlite-vs-moosend",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/mailerlite-vs-zoho-campaigns",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/microsoft-bookings-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-airtable",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-basecamp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-jira",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-linear",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-pipedrive",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/monday-vs-zoho-projects",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-activecampaign",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-braze",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-brevo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-getresponse",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-marketo-engage",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/moosend-vs-zoho-campaigns",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/motion-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/notion-vs-todoist",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/omnisend-vs-brevo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/omnisend-vs-klaviyo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/omnisend-vs-mailchimp",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/omnisend-vs-zoho-campaigns",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/opencart-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-close",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-copper",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-freshsales",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-keap",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-nutshell",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-whatconverts",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/pipedrive-vs-zoho-crm",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/quickbooks-online-vs-freshbooks",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/reclaim-ai-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/salesforce-commerce-cloud-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/salesforce-vs-close",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/salesforce-vs-pipedrive",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/sanity-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/savvycal-vs-setmore",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/setmore-vs-hubspot",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/setmore-vs-youcanbookme",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/shift4shop-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/shopify-vs-weebly",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/shopify-vs-woocommerce",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/shortcut-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/smartsheet-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/squarespace-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/storyblok-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/surveymonkey-vs-jotform",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/surveymonkey-vs-qualtrics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/surveymonkey-vs-typeform",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/teamwork-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-airtable",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-anydo",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-asana",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-things",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/todoist-vs-ticktick",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-monday",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-todoist",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/trello-vs-wrike",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/volza-vs-google-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/webflow-vs-wix",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/whatconverts-vs-callrail",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/whatconverts-vs-hubspot",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/whatconverts-vs-ruler-analytics",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/wix-vs-shopify",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/wix-vs-wordpress",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/wrike-vs-zoho-projects",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/compare/xero-vs-freshbooks",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/constant-contact",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/hubstaff",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/jotform",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/krispcall",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/mailerlite",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/monday",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/omnisend",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/surveymonkey",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    },
+    {
+      "url": "/software/volza",
+      "status": "NOT_ELIGIBLE",
+      "lastRequestedAt": null,
+      "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+    }
+  ],
+  "rule": "Requires recorded production improvement + fresh production verification, technical pass, high value, confirmed non-index inclusion, no protection and no recent request. No submission mechanism."
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "url": "https://miloosh.com/software/airtable",
+    "checkedAt": "2026-09-25T12:19:56.247132+00:00",
+    "source": "Authenticated UI export: gsc-inspections.json; panel-scoped normalization; crawl time is displayed text with UNKNOWN timezone",
+    "verdict": null,
+    "coverageState": "Crawled - currently not indexed",
+    "lastCrawlTime": "8 באוג׳ 2026, 6:13:28",
+    "googleCanonical": "https://miloosh.com/software/airtable",
+    "userCanonical": "https://miloosh.com/software/airtable",
+    "pageFetchState": "SUCCESSFUL",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED"
+  },
+  {
+    "url": "https://miloosh.com/software/todoist",
+    "checkedAt": "2026-09-25T12:20:01.014227+00:00",
+    "source": "Authenticated UI export: gsc-inspections.json; panel-scoped normalization; crawl time is displayed text with UNKNOWN timezone",
+    "verdict": null,
+    "coverageState": "Crawled - currently not indexed",
+    "lastCrawlTime": "10 באוג׳ 2026, 5:49:39",
+    "googleCanonical": "https://miloosh.com/software/todoist",
+    "userCanonical": "https://miloosh.com/software/todoist",
+    "pageFetchState": "SUCCESSFUL",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED"
+  },
+  {
+    "url": "https://miloosh.com/software/close",
+    "checkedAt": "2026-09-25T12:20:05.770439+00:00",
+    "source": "Authenticated UI export: gsc-inspections.json; panel-scoped normalization; crawl time is displayed text with UNKNOWN timezone",
+    "verdict": null,
+    "coverageState": "Crawled - currently not indexed",
+    "lastCrawlTime": "10 באוג׳ 2026, 10:48:14",
+    "googleCanonical": "https://miloosh.com/software/close",
+    "userCanonical": "https://miloosh.com/software/close",
+    "pageFetchState": "SUCCESSFUL",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED"
+  },
+  {
+    "url": "https://miloosh.com/software/setmore",
+    "checkedAt": "2026-09-25T12:20:10.700507+00:00",
+    "source": "Authenticated UI export: gsc-inspections.json; panel-scoped normalization; crawl time is displayed text with UNKNOWN timezone",
+    "verdict": null,
+    "coverageState": "Crawled - currently not indexed",
+    "lastCrawlTime": "17 באוג׳ 2026, 21:41:49",
+    "googleCanonical": "https://miloosh.com/software/setmore",
+    "userCanonical": "https://miloosh.com/software/setmore",
+    "pageFetchState": "SUCCESSFUL",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED"
+  },
+  {
+    "url": "https://miloosh.com/software/elevenlabs",
+    "checkedAt": "2026-09-25T12:20:15.563312+00:00",
+    "source": "Authenticated UI export: gsc-inspections.json; panel-scoped normalization; crawl time is displayed text with UNKNOWN timezone",
+    "verdict": null,
+    "coverageState": "Crawled - currently not indexed",
+    "lastCrawlTime": "2 בספט׳ 2026, 1:34:29",
+    "googleCanonical": "https://miloosh.com/software/elevenlabs",
+    "userCanonical": "https://miloosh.com/software/elevenlabs",
+    "pageFetchState": "SUCCESSFUL",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED"
+  }
+]

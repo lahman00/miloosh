@@ -1,26 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-
-const LEGACY_PROTECTED_COHORT = new Set([
-  "pipedrive", "airtable", "semrush", "freshdesk", "buffer",
-  "ringcentral", "help-scout", "intercom", "front"
-]);
+import { loadProtection } from "@/lib/google-war/protection";
 
 export function readProtectedExperimentSlugs(root = process.cwd()): Set<string> {
-  const protectedSlugs = new Set(LEGACY_PROTECTED_COHORT);
-  const docsDir = path.join(root, "docs");
-  if (!fs.existsSync(docsDir)) return protectedSlugs;
-
-  for (const filename of fs.readdirSync(docsDir).filter((name) => /^work-revenue-experiment-receipt-.*\.json$/.test(name))) {
-    const receiptPath = path.join(docsDir, filename);
-    const receipt = JSON.parse(fs.readFileSync(receiptPath, "utf-8")) as { experiments?: Array<{ page?: string; decision?: string }> };
-    for (const experiment of receipt.experiments ?? []) {
-      if (experiment.decision !== "MEASURING" || !experiment.page?.startsWith("/software/")) continue;
-      protectedSlugs.add(experiment.page.slice("/software/".length));
-    }
-  }
-
-  return protectedSlugs;
+  return new Set(loadProtection(root).filter(p => p.page.startsWith("/software/")).map(p => p.page.slice("/software/".length)));
 }
 
 export interface GscOpportunity {

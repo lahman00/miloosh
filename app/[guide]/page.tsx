@@ -1,6 +1,7 @@
 import { RoleGuideAnalytics } from "@/components/RoleGuideAnalytics";
 import { EcommerceDecisionKit } from "@/components/EcommerceDecisionKit";
 import { BuyerDecisionBrief } from "@/components/BuyerDecisionBrief";
+import { RelatedDecisionPaths } from "@/components/RelatedDecisionPaths";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -468,6 +469,8 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
               </div>
             </section>
           )}
+
+          <RelatedDecisionPaths page={`/${guide.slug}`} />
 
           {/* FAQs */}
           {guide.faqs.length > 0 && (
