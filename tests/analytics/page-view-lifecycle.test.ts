@@ -18,17 +18,53 @@ function mount(path = hooks.path) {
   FirstPartyAnalytics();
   return hooks.effect!();
 }
+let visibility: DocumentVisibilityState;
+function setVisibility(state: DocumentVisibilityState) {
+  visibility = state;
+  document.dispatchEvent(new Event("visibilitychange"));
+}
 beforeEach(() => {
   hooks.refs = []; hooks.path = "/software/airtable"; hooks.track.mockClear();
-  vi.useFakeTimers();
+  vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout", "Date", "performance"] });
   vi.stubGlobal("window", { location: { search: "" } });
-  vi.stubGlobal("document", { referrer: "https://www.google.com/" });
+  visibility = "visible";
+  const page = new EventTarget();
+  Object.defineProperty(page, "visibilityState", { get: () => visibility });
+  vi.stubGlobal("document", page);
   const store = new Map();
   vi.stubGlobal("sessionStorage", { getItem: (key: string) => store.get(key), setItem: (key: string, value: string) => store.set(key, value) });
 });
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
 describe("page view effect lifecycle", () => {
+  it("a background tab never fabricates an engaged view", () => {
+    setVisibility("hidden");
+    const cleanup = mount();
+    vi.advanceTimersByTime(60_000);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "engaged_view")).toHaveLength(0);
+    setVisibility("visible");
+    vi.advanceTimersByTime(10_000);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "engaged_view")).toHaveLength(1);
+    cleanup?.();
+  });
+  it("excludes hidden time and reports just one foreground-duration event", () => {
+    const cleanup = mount();
+    vi.advanceTimersByTime(4_000);
+    setVisibility("hidden");
+    vi.advanceTimersByTime(60_000);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "engaged_view")).toHaveLength(0);
+    setVisibility("visible");
+    vi.advanceTimersByTime(5_999);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "engaged_view")).toHaveLength(0);
+    vi.advanceTimersByTime(1);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "engaged_view")).toEqual([
+      [{ type: "engaged_view", path: "/software/airtable", durationSeconds: 10 }],
+    ]);
+    setVisibility("hidden"); setVisibility("visible");
+    vi.advanceTimersByTime(20_000);
+    expect(hooks.track.mock.calls.filter(([e]) => e.type === "engaged_view")).toHaveLength(1);
+    cleanup?.();
+  });
   it("StrictMode setup -> cleanup -> setup records one visit and one dwell", () => {
     const cleanup = mount(); cleanup?.(); mount();
     vi.advanceTimersByTime(10001);
