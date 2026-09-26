@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { getAllSoftware, getSoftware, type Software } from "@/data/software";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { ALTERNATIVE_GUIDES } from "@/data/seo/alternative-guides";
@@ -7,12 +9,16 @@ import { isFrozenSlug, frozenCohortFor } from "@/data/growth/frozen-cohorts";
 
 /**
  * GOOGLE INDEXATION FACTORY, WAVE 2 mission (2026-09-26) — a permanent,
- * reusable readiness check, distinct from (and not a replacement for) the
- * separate `lib/google-war/quality.ts` system on the unmerged
- * codex/google-visibility-war-20260926 branch, which this wave's own
- * receipt documents as a parallel, non-merged effort. Named and located
- * differently on purpose to avoid a collision if that branch is merged
- * later.
+ * reusable readiness check. Originally built as a standalone tool, distinct
+ * from the separate `lib/google-war/quality.ts` system on the then-unmerged
+ * codex/google-visibility-war-20260926 branch. The Master Google Domination
+ * reconciliation (2026-09-26) merged that branch in and unified the two
+ * systems' overlapping primitives (see data/growth/frozen-cohorts.ts, now
+ * shared with lib/google-war/protection.ts, and countInboundLinks below,
+ * which now prefers google-war's real rendered-HTML authority graph over
+ * this tool's own cruder static count). This remains the simpler,
+ * URL-level companion to growth:google-war's portfolio-level engine, per
+ * that mission's own stated ideal model — not a competing source of truth.
  *
  * This measures MILOOSH'S OWN readiness for a page to be worth indexing —
  * it is explicitly NOT a prediction of whether Google will actually index
@@ -37,15 +43,46 @@ export interface ReadinessResult {
   reasons: ReadinessReason[];
 }
 
+type AuthorityGraphRow = {
+  path: string;
+  relevantInboundLinks: number;
+  orphan: boolean;
+};
+
+let authorityGraphCache: Map<string, AuthorityGraphRow> | null | undefined;
+
 /**
- * Real inbound-link sources this repo can actually count today: a
- * product's own `alternatives[]` mentions, PUBLISHED_COMPARISONS
- * pairings, and AlternativeDecisionGuide decision links (each renders one
- * /software/{slug} link). Mirrors scripts/growth/internal-link-graph-v2.ts's
- * counting logic so the two tools never silently disagree on what counts
- * as an inbound link — if that logic changes, update both.
+ * Master Google Domination reconciliation (2026-09-26) — prefers
+ * lib/google-war/graph.ts's real rendered-HTML authority graph
+ * (var/growth/google-war/authority-graph.json, produced by
+ * `npm run growth:google-war`) when it exists: it counts links actually
+ * emitted in the built HTML, weighted by relevance, not just entries in
+ * static data files. This is the same "rendered HTML wins over static
+ * analysis" lesson the mission's own Part 8 (Pipedrive) and Part 5
+ * (9 reversed orphans) findings established. Falls back to the cruder
+ * static count (alternatives[]/PUBLISHED_COMPARISONS/guide decisions) when
+ * no build has been run yet, so this tool stays usable standalone.
  */
-function countInboundLinks(slug: string, all: Software[]): number {
+function loadAuthorityGraph(root = process.cwd()): Map<string, AuthorityGraphRow> | null {
+  if (authorityGraphCache !== undefined) return authorityGraphCache;
+  const file = path.join(root, "var/growth/google-war/authority-graph.json");
+  if (!fs.existsSync(file)) {
+    authorityGraphCache = null;
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(fs.readFileSync(file, "utf8")) as { rows?: AuthorityGraphRow[] };
+    const map = new Map<string, AuthorityGraphRow>();
+    for (const row of parsed.rows ?? []) map.set(row.path, row);
+    authorityGraphCache = map;
+    return map;
+  } catch {
+    authorityGraphCache = null;
+    return null;
+  }
+}
+
+function countInboundLinksStatic(slug: string, all: Software[]): number {
   let count = 0;
   for (const s of all) {
     for (const alt of s.alternatives) {
@@ -61,6 +98,13 @@ function countInboundLinks(slug: string, all: Software[]): number {
     }
   }
   return count;
+}
+
+function countInboundLinks(slug: string, all: Software[]): number {
+  const graph = loadAuthorityGraph();
+  const row = graph?.get(`/software/${slug}`);
+  if (row) return row.relevantInboundLinks;
+  return countInboundLinksStatic(slug, all);
 }
 
 const STALE_PRICING_DAYS = 180;
