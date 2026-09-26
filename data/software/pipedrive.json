@@ -9,7 +9,7 @@
     "iOS",
     "Android"
   ],
-  "best_for": "Pipedrive positions itself for small to mid-sized sales teams who want a straightforward, adaptable alternative to more complex enterprise CRM systems.",
+  "best_for": "Small to mid-sized sales teams whose daily work is moving deals through a visual pipeline with an owned next activity on every deal, and who want a sales-focused CRM rather than a combined marketing-and-service suite.",
   "features": [
     "Kanban-style customizable pipeline view",
     "Lead and deal management with centralized contact history",
@@ -19,7 +19,8 @@
     "Real-time sales reporting and forecasting"
   ],
   "sources": [
-    "https://www.pipedrive.com"
+    "https://www.pipedrive.com",
+    "https://www.pipedrive.com/en/pricing"
   ],
   "accessed_at": "2026-07-31",
   "pricing": {
@@ -29,16 +30,44 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "14", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "entry_paid": { "amount": "14", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Lite", "amount": "14", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$168/seat/year). Lead, calendar and pipeline management." },
-      { "name": "Growth", "amount": "39", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$468/seat/year). Full email sync, automations and nurturing sequences." },
-      { "name": "Premium", "amount": "59", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$708/seat/year). Lead generation/routing, AI-powered multi-email tools, e-signatures." },
-      { "name": "Ultimate", "amount": "79", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$948/seat/year). Sandbox account, extended phone support, security alerts." }
+      { "name": "Lite", "amount": "14", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Per seat/month, billed annually (US$168/seat/year). Lead, calendar and pipeline management." },
+      { "name": "Growth", "amount": "39", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Per seat/month, billed annually (US$468/seat/year). Full email sync, automations and nurturing sequences." },
+      { "name": "Premium", "amount": "59", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Per seat/month, billed annually (US$708/seat/year). Lead generation/routing, AI-powered multi-email tools, e-signatures." },
+      { "name": "Ultimate", "amount": "79", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Per seat/month, billed annually (US$948/seat/year). Sandbox account, extended phone support, security alerts." }
     ],
     "last_verified": "2026-08-22",
     "official_source": "https://www.pipedrive.com/en/pricing"
   },
+  "cons": [
+    "No permanent free plan: evaluation runs on a 14-day trial, and every paid tier is priced per seat.",
+    "The Lite entry price does not cover full email sync, automations or nurturing sequences; Pipedrive lists those from Growth (US$39 per seat per month, billed annually), so a follow-up-automation requirement should be priced on Growth, not Lite.",
+    "Listed rates are per seat per month on annual billing (Lite is US$168 per seat per year), so the first invoice is a yearly commitment multiplied by the paid seat count; regional currency pricing, add-ons and taxes need a separate quote.",
+    "Sales-focused scope: teams that need marketing and customer-service tools on the same customer record should also price a broader suite such as HubSpot."
+  ],
+  "faq": [
+    {
+      "question": "What are the best Pipedrive alternatives?",
+      "answer": "It depends on why you are leaving. HubSpot fits teams that want marketing and service tools alongside the CRM and a free starting tier. Salesforce fits larger organizations standardizing one platform across departments. Zoho CRM fits businesses already in the Zoho suite. Freshsales and Close stay sales-first: Freshsales adds Freddy AI lead scoring, and Close puts calling, email and SMS inside the CRM. If Pipedrive's pipeline already works and the gap is email automation, check Growth before migrating."
+    },
+    {
+      "question": "Does Pipedrive have a free plan?",
+      "answer": "No. Pipedrive offers a 14-day free trial, not a permanent free plan. When Miloosh last checked its pricing (August 22, 2026), paid plans started at Lite for US$14 per seat per month, billed annually. If a free CRM is a hard requirement, HubSpot's free tier is the closest alternative covered here."
+    },
+    {
+      "question": "Which Pipedrive plan includes email sync and automations?",
+      "answer": "Growth. Pipedrive lists full email sync, automations and nurturing sequences under Growth (US$39 per seat per month, billed annually). Lite covers lead, calendar and pipeline management. Compare the Growth quote when automated follow-up is required, rather than using Lite's entry price."
+    },
+    {
+      "question": "How much does Pipedrive cost for a five-person sales team?",
+      "answer": "With the annual-billing rates Miloosh last checked (August 22, 2026), five Lite seats come to 5 × US$14 = US$70 a month, or US$840 a year. Five Growth seats come to 5 × US$39 = US$195 a month, or US$2,340 a year. This is list-price arithmetic, not a quote. Confirm the payable seat count, currency, add-ons and taxes with Pipedrive."
+    },
+    {
+      "question": "Should I switch away from Pipedrive or stay?",
+      "answer": "Name the missing capability first. A lower starting price elsewhere is not enough reason to migrate. If the gap is email sync or automation on Lite, upgrading within Pipedrive may be the lower-disruption fix. If you need marketing and service in one customer record, compare HubSpot. If process control justifies a named CRM administrator, compare Salesforce. Before switching, export a small sample and confirm that owners, stages, deal values and activities survive the export. Record your renewal date too."
+    }
+  ],
   "alternatives": [
     {
       "name": "HubSpot",
@@ -71,6 +100,28 @@
         "Zia AI assistant",
         "Deep Zoho-suite integration",
         "No-code workflow automation"
+      ]
+    },
+    {
+      "name": "Freshsales",
+      "slug": "freshsales",
+      "description": "Freshworks' sales CRM, pairing kanban-style deal tracking with Freddy AI lead scoring, deal recommendations and AI email writing.",
+      "best_for": "Sales teams that want to stay sales-first but prefer AI-assisted lead scoring and a 360° customer view to Pipedrive's activity-led pipeline",
+      "strengths": [
+        "Freddy AI lead scoring",
+        "Kanban deal tracking",
+        "360° customer view"
+      ]
+    },
+    {
+      "name": "Close",
+      "slug": "close",
+      "description": "A sales CRM with built-in calling, email and SMS in one workspace, plus an AI agent for inbound lead qualification and meeting booking.",
+      "best_for": "Outbound sales teams whose daily work is calls, email and SMS that should stay inside the CRM rather than in connected tools",
+      "strengths": [
+        "Built-in calling and SMS",
+        "Call transcription and summaries",
+        "Pipeline and sales reporting"
       ]
     }
   ],
