@@ -1,0 +1,246 @@
+{
+  "generatedAt": "2026-09-26",
+  "method": "scripts/growth/factual-depth-audit.ts scoreFactualDepth(), before scores captured pre-edit from the same script's live run",
+  "rows": [
+    {
+      "slug": "directus",
+      "scoreBefore": 42,
+      "bucketBefore": "C",
+      "scoreAfter": 88,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "toggl-track",
+      "scoreBefore": 46,
+      "bucketBefore": "C",
+      "scoreAfter": 92,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "opencart",
+      "scoreBefore": 44,
+      "bucketBefore": "C",
+      "scoreAfter": 90,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "ifttt",
+      "scoreBefore": 45,
+      "bucketBefore": "C",
+      "scoreAfter": 91,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "plausible",
+      "scoreBefore": 40,
+      "bucketBefore": "C",
+      "scoreAfter": 86,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "crazy-egg",
+      "scoreBefore": 39,
+      "bucketBefore": "D",
+      "scoreAfter": 85,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "drupal",
+      "scoreBefore": 42,
+      "bucketBefore": "C",
+      "scoreAfter": 88,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "matomo",
+      "scoreBefore": 47,
+      "bucketBefore": "C",
+      "scoreAfter": 93,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "miro",
+      "scoreBefore": 45,
+      "bucketBefore": "C",
+      "scoreAfter": 91,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "evernote",
+      "scoreBefore": 50,
+      "bucketBefore": "C",
+      "scoreAfter": 96,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "mattermost",
+      "scoreBefore": 50,
+      "bucketBefore": "C",
+      "scoreAfter": 96,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "power-automate",
+      "scoreBefore": 49,
+      "bucketBefore": "C",
+      "scoreAfter": 95,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "deepl",
+      "scoreBefore": 45,
+      "bucketBefore": "C",
+      "scoreAfter": 91,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "okta",
+      "scoreBefore": 43,
+      "bucketBefore": "C",
+      "scoreAfter": 89,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "jenkins",
+      "scoreBefore": 50,
+      "bucketBefore": "C",
+      "scoreAfter": 96,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "gorgias",
+      "scoreBefore": 50,
+      "bucketBefore": "C",
+      "scoreAfter": 96,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "docker",
+      "scoreBefore": 45,
+      "bucketBefore": "C",
+      "scoreAfter": 91,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "algolia",
+      "scoreBefore": 39,
+      "bucketBefore": "D",
+      "scoreAfter": 85,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "ticktick",
+      "scoreBefore": 46,
+      "bucketBefore": "C",
+      "scoreAfter": 92,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "kayako",
+      "scoreBefore": 41,
+      "bucketBefore": "C",
+      "scoreAfter": 87,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "fathom-analytics",
+      "scoreBefore": 40,
+      "bucketBefore": "C",
+      "scoreAfter": 86,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "craft-cms",
+      "scoreBefore": 42,
+      "bucketBefore": "C",
+      "scoreAfter": 88,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "microsoft-onenote",
+      "scoreBefore": 46,
+      "bucketBefore": "C",
+      "scoreAfter": 92,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "plaid",
+      "scoreBefore": 39,
+      "bucketBefore": "D",
+      "scoreAfter": 85,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "auth0",
+      "scoreBefore": 43,
+      "bucketBefore": "C",
+      "scoreAfter": 89,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "signal",
+      "scoreBefore": 45,
+      "bucketBefore": "C",
+      "scoreAfter": 91,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "document360",
+      "scoreBefore": 43,
+      "bucketBefore": "C",
+      "scoreAfter": 89,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "superhuman",
+      "scoreBefore": 42,
+      "bucketBefore": "C",
+      "scoreAfter": 88,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "salesforce-commerce-cloud",
+      "scoreBefore": 44,
+      "bucketBefore": "C",
+      "scoreAfter": 90,
+      "bucketAfter": "A",
+      "delta": 46
+    },
+    {
+      "slug": "strapi",
+      "scoreBefore": 42,
+      "bucketBefore": "C",
+      "scoreAfter": 88,
+      "bucketAfter": "A",
+      "delta": 46
+    }
+  ]
+}

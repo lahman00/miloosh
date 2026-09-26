@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-09-26",
+  "testFile": "tests/seo-factory/alternative-guides.test.ts",
+  "method": "5-word-shingle Jaccard similarity across each guide entry's full text (heading + introduction + whySeekAlternative + decision.fit), threshold <0.08, run pairwise across all 74 entries (44 pre-existing + 30 new this wave)",
+  "ruleFollowed": "Never lower the threshold to make a failing pair pass -- rewrite the content until it is genuinely distinct.",
+  "collisionsFound": [
+    {
+      "pair": ["plausible", "fathom-analytics"],
+      "similarityBeforeFix": 0.0862,
+      "threshold": 0.08,
+      "rootCause": "Both are privacy-first analytics competitors of near-identical market positioning; first drafts both leaned on a generic 'no free tier' framing and named the same three cross-reference products (google-analytics, matomo, and each other) with similar sentence structure.",
+      "fix": "Rewrote fathom-analytics's entire diagnosis/introduction/whySeekAlternative/decisions around a different, more specific real fact set (the credit-card-upfront trial auto-billing gotcha and the strict pageview step-ladder billing) rather than the shared 'no free tier' framing plausible's entry already used.",
+      "similarityAfterFix": "below 0.08 (test passes)"
+    },
+    {
+      "pair": ["evernote", "microsoft-onenote"],
+      "similarityBeforeFix": 0.0896,
+      "threshold": 0.08,
+      "rootCause": "Both are notes apps sharing obsidian and notion as decision targets; first drafts used near-identical phrasing for the Obsidian decision ('notes stored as local Markdown files') and similar overall structure.",
+      "fix": "Rewrote microsoft-onenote's entire entry around a single, concrete technical fact -- the fixed 2GB-per-notebook ceiling that no paid Microsoft 365 tier raises -- with distinct sentence structure and vocabulary throughout, rather than mirroring evernote's local-first/repricing framing.",
+      "similarityAfterFix": "below 0.08 (test passes)"
+    }
+  ],
+  "finalResult": "All 74 x 73 / 2 = 2,701 pairwise comparisons pass under the unmodified <0.08 threshold."
+}

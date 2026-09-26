@@ -1,0 +1,426 @@
+{
+  "generatedAt": "2026-09-26",
+  "count": 30,
+  "products": [
+    {
+      "slug": "directus",
+      "name": "Directus",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://directus.com/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "strapi",
+        "craft-cms",
+        "drupal"
+      ]
+    },
+    {
+      "slug": "toggl-track",
+      "name": "Toggl Track",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://toggl.com/track/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "hubstaff",
+        "harvest",
+        "asana"
+      ]
+    },
+    {
+      "slug": "opencart",
+      "name": "OpenCart",
+      "pricingStatus": "free_only",
+      "pricingOfficialSource": "https://www.opencart.com/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "prestashop",
+        "shopify",
+        "salesforce-commerce-cloud"
+      ]
+    },
+    {
+      "slug": "plausible",
+      "name": "Plausible Analytics",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://plausible.io/#pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "google-analytics",
+        "matomo",
+        "crazy-egg"
+      ]
+    },
+    {
+      "slug": "crazy-egg",
+      "name": "Crazy Egg",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.crazyegg.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "google-analytics",
+        "plausible",
+        "matomo"
+      ]
+    },
+    {
+      "slug": "drupal",
+      "name": "Drupal",
+      "pricingStatus": "free_only",
+      "pricingOfficialSource": "https://new.drupal.org",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "craft-cms",
+        "directus",
+        "wordpress"
+      ]
+    },
+    {
+      "slug": "matomo",
+      "name": "Matomo",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://matomo.org/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "google-analytics",
+        "fathom-analytics",
+        "crazy-egg"
+      ]
+    },
+    {
+      "slug": "miro",
+      "name": "Miro",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://miro.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "lucidchart",
+        "figma",
+        "sketch"
+      ]
+    },
+    {
+      "slug": "evernote",
+      "name": "Evernote",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://evernote.com/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "obsidian",
+        "notion",
+        "coda"
+      ]
+    },
+    {
+      "slug": "mattermost",
+      "name": "Mattermost",
+      "pricingStatus": "contact_sales",
+      "pricingOfficialSource": "https://mattermost.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "slack",
+        "microsoft-teams",
+        "discord"
+      ]
+    },
+    {
+      "slug": "power-automate",
+      "name": "Power Automate",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.microsoft.com/en-us/power-platform/products/power-automate/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "zapier",
+        "uipath",
+        "ifttt"
+      ]
+    },
+    {
+      "slug": "deepl",
+      "name": "DeepL",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.deepl.com/en/pro",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "chatgpt",
+        "gemini",
+        "claude"
+      ]
+    },
+    {
+      "slug": "okta",
+      "name": "Okta",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.okta.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "auth0",
+        "cloudflare",
+        "1password"
+      ]
+    },
+    {
+      "slug": "jenkins",
+      "name": "Jenkins",
+      "pricingStatus": "free_only",
+      "pricingOfficialSource": "https://www.jenkins.io/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "circleci",
+        "github",
+        "gitlab"
+      ]
+    },
+    {
+      "slug": "gorgias",
+      "name": "Gorgias",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.gorgias.com/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "freshdesk",
+        "crisp",
+        "zoho-desk"
+      ]
+    },
+    {
+      "slug": "docker",
+      "name": "Docker",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.docker.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "github",
+        "gitlab",
+        "supabase"
+      ]
+    },
+    {
+      "slug": "algolia",
+      "name": "Algolia",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.algolia.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "kong",
+        "mulesoft",
+        "rapidapi"
+      ]
+    },
+    {
+      "slug": "ticktick",
+      "name": "TickTick",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://ticktick.com/about/upgrade",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "todoist",
+        "things",
+        "notion"
+      ]
+    },
+    {
+      "slug": "kayako",
+      "name": "Kayako",
+      "pricingStatus": "contact_sales",
+      "pricingOfficialSource": "https://kayako.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "freshdesk",
+        "help-scout",
+        "zendesk"
+      ]
+    },
+    {
+      "slug": "fathom-analytics",
+      "name": "Fathom Analytics",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://usefathom.com/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "google-analytics",
+        "matomo",
+        "plausible"
+      ]
+    },
+    {
+      "slug": "craft-cms",
+      "name": "Craft CMS",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://craftcms.com/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "drupal",
+        "directus",
+        "wordpress"
+      ]
+    },
+    {
+      "slug": "microsoft-onenote",
+      "name": "Microsoft OneNote",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "evernote",
+        "notion",
+        "obsidian"
+      ]
+    },
+    {
+      "slug": "plaid",
+      "name": "Plaid",
+      "pricingStatus": "contact_sales",
+      "pricingOfficialSource": "https://plaid.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "stripe",
+        "rapidapi",
+        "kong"
+      ]
+    },
+    {
+      "slug": "auth0",
+      "name": "Auth0",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://auth0.com/pricing",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "okta",
+        "1password",
+        "duo-security"
+      ]
+    },
+    {
+      "slug": "signal",
+      "name": "Signal",
+      "pricingStatus": "free_only",
+      "pricingOfficialSource": "https://signal.org/donate/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "telegram",
+        "discord",
+        "microsoft-teams"
+      ]
+    },
+    {
+      "slug": "document360",
+      "name": "Document360",
+      "pricingStatus": "contact_sales",
+      "pricingOfficialSource": "https://document360.com/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "readme",
+        "docusaurus",
+        "mkdocs"
+      ]
+    },
+    {
+      "slug": "superhuman",
+      "name": "Superhuman Mail",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://superhuman.com/plans/mail",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "toggl-track",
+        "todoist",
+        "evernote"
+      ]
+    },
+    {
+      "slug": "salesforce-commerce-cloud",
+      "name": "Salesforce Commerce Cloud",
+      "pricingStatus": "contact_sales",
+      "pricingOfficialSource": "https://www.salesforce.com/commerce/pricing/",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "bigcommerce",
+        "shopify",
+        "opencart"
+      ]
+    },
+    {
+      "slug": "strapi",
+      "name": "Strapi",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://strapi.io/pricing-cloud",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "directus",
+        "drupal",
+        "craft-cms"
+      ]
+    },
+    {
+      "slug": "ifttt",
+      "name": "IFTTT",
+      "pricingStatus": "verified",
+      "pricingOfficialSource": "https://ifttt.com/plans",
+      "pricingLastVerified": "2026-09-26",
+      "consAdded": 3,
+      "hasDecisionGuide": true,
+      "decisionGuideAlternatives": [
+        "zapier",
+        "make",
+        "pipedream"
+      ]
+    }
+  ]
+}

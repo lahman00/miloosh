@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-09-26",
+  "count": 12,
+  "note": "Comparison-page content (pricing table, pros/cons) is auto-generated from data/software/*.json on both sides via app/compare/[comparison]/page.tsx -- it is not separately hand-authored data. Every pair below has at least one side treated in this wave's software-treatment cohort, so its pricing table and pros/cons section were already deepened as a side effect of that commit. This commit's own contribution is the SEO title/description override (data/seo/serp-overrides.ts COMPARISON_OVERRIDES), aligning search intent (title/description) with that now-real content.",
+  "pairs": [
+    { "slug": "directus-vs-strapi", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": true },
+    { "slug": "crazy-egg-vs-matomo", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": true },
+    { "slug": "gorgias-vs-kayako", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": true },
+    { "slug": "1password-vs-auth0", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "auth0" },
+    { "slug": "circleci-vs-jenkins", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "jenkins" },
+    { "slug": "keeper-security-vs-okta", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "okta" },
+    { "slug": "kong-vs-plaid", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "plaid" },
+    { "slug": "microsoft-teams-vs-mattermost", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "mattermost" },
+    { "slug": "obsidian-vs-evernote", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "evernote" },
+    { "slug": "okta-vs-wiz", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "okta" },
+    { "slug": "things-vs-toggl-track", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "toggl-track" },
+    { "slug": "close-vs-nutshell", "gscStatus": "CRAWLED_NOT_INDEXED", "bothSidesTreated": false, "treatedSide": "neither -- close is an active affiliate partner, chosen for that commercial relevance rather than being in this wave's software-treatment cohort" }
+  ],
+  "verifiedLive": {
+    "method": "curl + browser render at 1440/390/320 for crazy-egg-vs-matomo (representative sample)",
+    "confirmed": "Pros and cons section renders real, distinct sourced content for BOTH sides; no horizontal overflow at any width; zero console errors; SERP override title confirmed live in browser tab title"
+  },
+  "excludedFromCohort": {
+    "reason": "Any comparison pair involving a Wave-1 frozen treatment/control slug, this wave's own control slug, or a protected experiment slug was excluded, to avoid a new inbound link or a fresh-content signal reaching a page that must stay an untouched measurement baseline.",
+    "examplesExcluded": ["deepl-vs-jasper (jasper is Wave-1 treatment, frozen)", "okta-vs-workos (workos is Wave-1 control, frozen)", "doodle-vs-reclaim-ai (doodle is protected, reclaim-ai is this wave's control)", "plaid-vs-twilio (twilio is Wave-1 control, frozen)"]
+  }
+}

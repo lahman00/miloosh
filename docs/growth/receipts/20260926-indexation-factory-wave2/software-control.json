@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-09-26",
+  "purpose": "Deliberately untouched comparison baseline for a future before/after read against the treatment cohort. No content, pricing, cons, or guide edits were made to any of these 12 products this session, and none should be made while this wave's measurement window is open -- see data/growth/frozen-cohorts.ts.",
+  "products": [
+    "reclaim-ai", "zeplin", "amplitude", "google-chat", "keap",
+    "google-meet", "snyk", "mixpanel", "slite", "bitbucket", "linear", "clockify"
+  ],
+  "note": "elastic was excluded from the final control cohort after live GSC inspection showed a materially different status ('URL is unknown to Google', never crawled) rather than CRAWLED_NOT_INDEXED -- see baseline.json's elastic_excludedCandidate field. The real, final 12-product control cohort is: reclaim-ai, zeplin, amplitude, google-chat, keap, google-meet, snyk, mixpanel, slite, bitbucket, linear, clockify."
+}
