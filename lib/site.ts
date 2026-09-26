@@ -4,17 +4,23 @@ export function resolveSiteUrl(
   rawSiteUrl: string | undefined = process.env.NEXT_PUBLIC_SITE_URL,
   nodeEnv: string | undefined = process.env.NODE_ENV
 ): string {
+  // A production build always describes the public apex, including local
+  // release builds and previews. Environment input must not fork canonicals.
+  const canonical = "https://miloosh.com";
+  if (nodeEnv === "production") return canonical;
+
   const configured = rawSiteUrl?.trim();
-  const fallback = nodeEnv === "production" ? "https://miloosh.com" : "http://localhost:3000";
+  const fallback = "http://localhost:3000";
 
   if (!configured) return fallback;
 
   try {
     const parsed = new URL(configured);
     const hostname = parsed.hostname.toLowerCase();
-    const allowed = hostname === "miloosh.com" || hostname === "www.miloosh.com" || hostname === "localhost" || hostname === "127.0.0.1";
-    if (!allowed) return fallback;
-    return configured.replace(/\/$/, "");
+    if (!["http:", "https:"].includes(parsed.protocol) || parsed.username || parsed.password) return fallback;
+    if (hostname === "miloosh.com" || hostname === "www.miloosh.com") return canonical;
+    if (hostname === "localhost" || hostname === "127.0.0.1") return parsed.origin;
+    return fallback;
   } catch {
     return fallback;
   }

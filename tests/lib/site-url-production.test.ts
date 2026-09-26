@@ -18,6 +18,23 @@ describe("production URL safety", () => {
     expect(resolveSiteUrl("https://miloosh.com/", "production")).toBe("https://miloosh.com");
   });
 
+  it.each([
+    "http://www.miloosh.com/software/airtable?ref=qa#pricing",
+    "https://miloosh.com:8443/base/",
+    "http://localhost:3000",
+    "https://127.0.0.1:4000",
+    "ftp://miloosh.com",
+    "https://user:password@miloosh.com/path",
+  ])("keeps production canonicals on the HTTPS apex origin for %s", (configured) => {
+    expect(resolveSiteUrl(configured, "production")).toBe("https://miloosh.com");
+  });
+
+  it("allows a local development origin without propagating URL paths or queries", () => {
+    expect(resolveSiteUrl("http://localhost:4000/base?qa=1#x", "development")).toBe("http://localhost:4000");
+    expect(resolveSiteUrl("https://www.miloosh.com/", "development")).toBe("https://miloosh.com");
+    expect(resolveSiteUrl("ftp://localhost", "development")).toBe("http://localhost:3000");
+  });
+
   it("pins Adobe Analytics to the current live Adobe pricing route", () => {
     const adobe = getSoftware("adobe-analytics")!;
     expect(adobe.pricing?.officialSource).toBe("https://business.adobe.com/products/adobe-analytics/pricing.html");

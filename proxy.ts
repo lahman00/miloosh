@@ -30,11 +30,15 @@ export function proxy(request: NextRequest) {
   const requestHost = request.headers.get("host")?.split(":", 1)[0]?.toLowerCase();
 
   if (requestHost && NON_CANONICAL_PUBLIC_HOSTS.has(requestHost)) {
-    const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, "https://miloosh.com");
+    // Assign path/query separately: resolving a //path against a base URL
+    // would treat attacker-controlled path text as a new hostname.
+    const destination = new URL("https://miloosh.com");
+    destination.pathname = request.nextUrl.pathname;
+    destination.search = request.nextUrl.search;
     return NextResponse.redirect(destination, 301);
   }
 
-  if (!request.nextUrl.pathname.startsWith("/internal/")) {
+  if (request.nextUrl.pathname !== "/internal" && !request.nextUrl.pathname.startsWith("/internal/")) {
     return NextResponse.next();
   }
 
@@ -44,7 +48,10 @@ export function proxy(request: NextRequest) {
   const unauthorized = () =>
     new NextResponse("Authentication required.", {
       status: 401,
-      headers: { "WWW-Authenticate": 'Basic realm="Miloosh internal"' },
+      headers: {
+        "WWW-Authenticate": 'Basic realm="Miloosh internal"',
+        "X-Robots-Tag": "noindex, nofollow",
+      },
     });
 
   if (!user || !pass) {
@@ -65,7 +72,9 @@ export function proxy(request: NextRequest) {
     return unauthorized();
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return response;
 }
 
 export const config = {
