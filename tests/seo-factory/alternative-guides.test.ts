@@ -93,7 +93,15 @@ describe("SEO execution cohort alternatives guides", () => {
     // decision below uses each product's own real `alternatives` array
     // and an already-published comparison; no new comparison page was
     // created for any of the 14.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "contentful", "copy-ai", "ecwid", "elevenlabs", "firebase", "freshdesk", "front", "fullstory", "help-scout", "hotjar", "hubspot", "intercom", "jasper", "lastpass", "lucidchart", "marketo-engage", "mulesoft", "n8n", "netlify", "perplexity", "pipedrive", "postmark", "ringcentral", "salesforce", "scribe", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "synthesia", "tidio", "todoist", "vercel", "whimsical", "woocommerce", "wrike", "zapier", "zoho-crm"]);
+    // Google Indexation Factory Wave 2 mission (2026-09-26) added 30 more
+    // entries -- the next real-demand x factual-depth-deficient tier from
+    // remediation-queue.ts, each individually live-GSC-confirmed
+    // "Crawled - currently not indexed" before any edit, explicitly
+    // excluding all 14 Wave-1 treatment slugs, all 10 Wave-1 control
+    // slugs, and all 9 experiment-protected slugs so both cohorts stay
+    // clean measurement baselines. Every decision uses an already-
+    // published comparison; no new comparison page was created.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "algolia", "auth0", "buffer", "clickup", "confluence", "contentful", "copy-ai", "craft-cms", "crazy-egg", "deepl", "directus", "docker", "document360", "drupal", "ecwid", "elevenlabs", "evernote", "fathom-analytics", "firebase", "freshdesk", "front", "fullstory", "gorgias", "help-scout", "hotjar", "hubspot", "ifttt", "intercom", "jasper", "jenkins", "kayako", "lastpass", "lucidchart", "marketo-engage", "matomo", "mattermost", "microsoft-onenote", "miro", "mulesoft", "n8n", "netlify", "okta", "opencart", "perplexity", "pipedrive", "plaid", "plausible", "postmark", "power-automate", "ringcentral", "salesforce", "salesforce-commerce-cloud", "scribe", "semrush", "setmore", "signal", "smartsheet", "sprout-social", "squarespace", "strapi", "superhuman", "synthesia", "ticktick", "tidio", "todoist", "toggl-track", "vercel", "whimsical", "woocommerce", "wrike", "zapier", "zoho-crm"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2
