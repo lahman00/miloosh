@@ -9,7 +9,7 @@ import { getRoleGuidesForSoftware } from "@/data/guides/registry";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Ban, BookOpen, Check, ExternalLink, GitCompare, Scale } from "lucide-react";
+import { Ban, BookOpen, Check, ExternalLink, GitCompare, Scale, ThumbsUp } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Badge } from "@/components/Badge";
 import { Card } from "@/components/Card";
@@ -188,6 +188,22 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
                 </li>
               ))}
             </ul>
+
+            {software.pros?.length ? (
+              <div className="mt-6 border-t border-white/10 pt-6">
+                <h3 className="flex items-center gap-2 text-sm font-medium text-zinc-300">
+                  <ThumbsUp className="h-4 w-4 text-zinc-500" />
+                  Why buyers choose it
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {software.pros.map((pro) => (
+                    <li key={pro} className="text-sm leading-6 text-zinc-400">
+                      {pro}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             {software.cons?.length && !getFirstRevenuePage(software.slug) ? (
               <div className="mt-6 border-t border-white/10 pt-6">
