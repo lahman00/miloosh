@@ -65,9 +65,9 @@ Do not edit Claude's treatment content from this lane. In base commit `551472603
 
 | Receipt / override key | Actual emitted canonical route | Observed local title | Result |
 |---|---|---|---|
-| `/compare/umbraco-vs-wordpress` | Same | `Umbraco vs WordPress (2026): .NET CMS vs PHP Publishing | Miloosh` | Expected title renders; production still unverified here |
-| `/compare/umbraco-vs-joomla` | `/compare/joomla-vs-umbraco` | `Joomla vs Umbraco | Miloosh` | Expected title does not render |
-| `/compare/umbraco-vs-drupal` | `/compare/drupal-vs-umbraco` | `Drupal vs Umbraco | Miloosh` | Expected title does not render |
+| `/compare/umbraco-vs-wordpress` | Same | `Umbraco vs WordPress (2026): .NET CMS vs PHP Publishing \| Miloosh` | Expected title renders; production still unverified here |
+| `/compare/umbraco-vs-joomla` | `/compare/joomla-vs-umbraco` | `Joomla vs Umbraco \| Miloosh` | Expected title does not render |
+| `/compare/umbraco-vs-drupal` | `/compare/drupal-vs-umbraco` | `Drupal vs Umbraco \| Miloosh` | Expected title does not render |
 
 `data/seo/serp-overrides.ts` uses an exact-key lookup; `app/compare/[comparison]/page.tsx` passes the emitted route key. The two reversed keys therefore miss. Claude should reconcile keys and receipts in his content lane. The control room canonicalizes protection/ownership, preserves the original reported route in verification, and marks these results `WAIT_INTERVENTION_VERIFICATION`. It does not silently activate the content.
 
