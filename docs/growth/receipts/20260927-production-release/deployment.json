@@ -1,0 +1,40 @@
+{
+  "status": "READY_AND_PROMOTED",
+  "project": "flowtemplate",
+  "projectId": "prj_qMLMDaP1jSepfNMw9cs7WhZk6KIf",
+  "scope": "lahman001",
+  "framework": "Next.js 16.3.5",
+  "branch": "codex/miloosh-master-release-20260927",
+  "sourceSha": "a925c0e7e129c09c2ca38f5e352d8edbc4afb9ab",
+  "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+  "deploymentUrl": "https://flowtemplate-f56v5bbjb-lahman001.vercel.app",
+  "createdAt": "2026-09-26T22:45:31.681Z",
+  "readyAt": "2026-09-26T22:47:57.671Z",
+  "promotedAt": "2026-09-26T22:50:25.901Z",
+  "productionUrl": "https://miloosh.com",
+  "method": "Existing Vercel CLI authentication; explicit project; production --skip-domain; authenticated staged GET checks; explicit promote; independent source/alias/HTTP guard",
+  "integratedResearchCommit": "981a491381da45bd61df0ddbe2e80e6c2135f76b",
+  "localBuildId": "z3Lmr1xOSasx6EYov7lyK",
+  "localArtifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+  "rollback": {
+    "deploymentId": "dpl_3F95X1y4KARafdQ88oewqf8kYo23",
+    "url": "https://flowtemplate-mwkxkm1a0-lahman001.vercel.app",
+    "sourceSha": "f5ed1b23035cbda81c222fb8b8bd24d3962a7b71"
+  },
+  "uploadPrivacy": {
+    "reportedFileCount": 1461,
+    "privateRegularFiles": 0,
+    "excluded": [
+      "var/",
+      ".agents/",
+      ".env*",
+      ".next-miloosh-qa/",
+      "tools/"
+    ]
+  },
+  "githubPush": false,
+  "environmentChanges": false,
+  "credentialsExposed": false,
+  "socialSourceChangedFromPriorProduction": false,
+  "note": "CLI-uploaded clean source snapshot. Source SHA metadata and canonical alias independently verified. Later receipt/evidence-only commit is not a second application deployment."
+}

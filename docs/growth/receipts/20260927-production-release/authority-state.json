@@ -1,0 +1,728 @@
+{
+  "generatedAt": "2026-09-26T22:54:53.911Z",
+  "registry": [
+    {
+      "id": "qevra-home",
+      "source": "Qevra",
+      "type": "DIRECTORY",
+      "targetUrl": "https://miloosh.com/",
+      "externalUrl": "https://qevra.app/s/miloosh",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T19:49:24.207Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "DOFOLLOW",
+          "evidence": "HTTP 200; exact homepage anchor Visit site, no rel attribute. Existing placement, not newly earned today; no ranking-value inference."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "DOFOLLOW",
+          "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
+        }
+      ],
+      "status": "VERIFIED_LIVE",
+      "rejectionReason": null,
+      "disposition": "VERIFIED_LIVE",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": true,
+      "rel": "DOFOLLOW",
+      "targetKind": "HOMEPAGE",
+      "verificationMethod": "PUBLIC_HTTP"
+    },
+    {
+      "id": "saashub-home",
+      "source": "SaaSHub",
+      "type": "DIRECTORY",
+      "targetUrl": "https://miloosh.com/",
+      "externalUrl": "https://www.saashub.com/miloosh",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T19:49:24.378Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "MIXED",
+          "evidence": "HTTP 200; homepage anchors observed both without nofollow and with nofollow. Existing placement; normalized bare apex to homepage."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "MIXED",
+          "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
+        }
+      ],
+      "status": "VERIFIED_LIVE",
+      "rejectionReason": null,
+      "disposition": "VERIFIED_LIVE",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": true,
+      "rel": "MIXED",
+      "targetKind": "HOMEPAGE",
+      "verificationMethod": "PUBLIC_HTTP"
+    },
+    {
+      "id": "hypestar-home",
+      "source": "HypeStar",
+      "type": "DIRECTORY",
+      "targetUrl": "https://miloosh.com/",
+      "externalUrl": "https://hypestar.org/project/miloosh",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T19:49:24.377Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "NOFOLLOW",
+          "evidence": "HTTP 200; three homepage anchors have nofollow, two also ugc. Existing placement, not newly earned today."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "NOFOLLOW",
+          "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
+        }
+      ],
+      "status": "VERIFIED_LIVE",
+      "rejectionReason": null,
+      "disposition": "VERIFIED_LIVE",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": true,
+      "rel": "NOFOLLOW",
+      "targetKind": "HOMEPAGE",
+      "verificationMethod": "PUBLIC_HTTP"
+    },
+    {
+      "id": "saashub-research",
+      "source": "SaaSHub",
+      "type": "DIRECTORY",
+      "targetUrl": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "externalUrl": "https://www.saashub.com/miloosh",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T19:49:24.378Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "NOFOLLOW",
+          "evidence": "HTTP 200; Blog anchor points exactly to the pricing-pressure research page, rel=nofollow. Newly documented, not evidence of a new placement date."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "NOFOLLOW",
+          "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
+        }
+      ],
+      "status": "VERIFIED_LIVE",
+      "rejectionReason": null,
+      "disposition": "VERIFIED_LIVE",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": true,
+      "rel": "NOFOLLOW",
+      "targetKind": "DEEP_LINK",
+      "verificationMethod": "PUBLIC_HTTP"
+    },
+    {
+      "id": "smartsme-research",
+      "source": "Smart SME",
+      "type": "EDITORIAL",
+      "targetUrl": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "externalUrl": "https://smartsme.co.uk/what-business-software-really-costs-in-2026-188-vendor-price-lists-checked/",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T19:49:24.278Z",
+          "status": "VERIFIED_LIVE",
+          "method": "PUBLIC_HTTP",
+          "exactTargetVerified": true,
+          "linkPresent": true,
+          "rel": "DOFOLLOW",
+          "evidence": "HTTP 200; two anchors point exactly to the research URL without rel restrictions. Article displays September 8, 2026 publication date; not a newly earned link today. Placement-target pair counted once, not twice."
+        }
+      ],
+      "status": "VERIFIED_LIVE",
+      "rejectionReason": null,
+      "disposition": "VERIFIED_LIVE",
+      "lastVerified": "2026-09-26T19:49:24.278Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": true,
+      "rel": "DOFOLLOW",
+      "targetKind": "DEEP_LINK",
+      "verificationMethod": "PUBLIC_HTTP"
+    },
+    {
+      "id": "reddit-crm-calls",
+      "source": "Reddit r/CRMSoftware",
+      "type": "COMMUNITY",
+      "targetUrl": null,
+      "externalUrl": "https://www.reddit.com/r/CRMSoftware/comments/1wqtnwo/comment/pc7sr55/",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T18:25:56Z",
+          "status": "UNVERIFIED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Antigravity EXECUTED_LIVE claim used thread OPENED/removed=false; retained as report only."
+        },
+        {
+          "at": "2026-09-26T19:46:20Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Signed-out web-fetch target permalink shows Comment removed by moderator; cache time may differ from browser observation."
+        },
+        {
+          "at": "2026-09-26T19:49:00Z",
+          "status": "UNVERIFIED",
+          "method": "AUTHENTICATED_BROWSER",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Authenticated Chrome exposes exact pc7sr55 text and Miloosh disclosure, no hyperlink. Independent fresh logged-out browser hit Prove your humanity and stopped. Conflicting audience observations; not asserted publicly live or definitively removed."
+        },
+        {
+          "at": "2026-09-26T21:24:09Z",
+          "status": "UNVERIFIED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "2026-09-27 integration reconciliation: owner/Antigravity live-community-evidence.json reports exact comment live, no link. Independent signed-out permalink re-fetch still shows Comment removed by moderator; cache freshness is unknown. No new public-visible text proof supplied. Preserve prior audience/removal evidence; do not count as verified authority."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
+        }
+      ],
+      "status": "REMOVED",
+      "rejectionReason": null,
+      "disposition": "REMOVED",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "targetKind": "MENTION_ONLY",
+      "verificationMethod": "PUBLIC_WEB_FETCH"
+    },
+    {
+      "id": "reddit-crm-budget",
+      "source": "Reddit r/CRMSoftware",
+      "type": "COMMUNITY",
+      "targetUrl": null,
+      "externalUrl": "https://www.reddit.com/r/CRMSoftware/comments/1uyrghz/comment/pc81v6w/",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T18:59:24Z",
+          "status": "UNVERIFIED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Antigravity reports independently checked live; original thread OPENED status is not target visibility proof."
+        },
+        {
+          "at": "2026-09-26T19:46:20Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Signed-out public exact permalink displays Comment removed by moderator. Authenticated browser subsequently also displayed Comment removed by Reddit at exact pc81v6w. No removal cause inferred."
+        },
+        {
+          "at": "2026-09-26T21:24:09Z",
+          "status": "UNVERIFIED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "2026-09-27 integration reconciliation: owner/Antigravity live-community-evidence.json reports exact comment live, no link. Independent signed-out permalink re-fetch still shows Comment removed by moderator; cache freshness is unknown. No new public-visible text proof supplied. Preserve prior audience/removal evidence; do not count as verified authority."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
+        }
+      ],
+      "status": "REMOVED",
+      "rejectionReason": null,
+      "disposition": "REMOVED",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "targetKind": "MENTION_ONLY",
+      "verificationMethod": "PUBLIC_WEB_FETCH"
+    },
+    {
+      "id": "reddit-saas-direct",
+      "source": "Reddit r/SaaS",
+      "type": "COMMUNITY",
+      "targetUrl": "https://miloosh.com/compare/intercom-alternatives",
+      "externalUrl": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T18:25:07Z",
+          "status": "UNVERIFIED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Updated Antigravity evidence and owner report removed. Historical target is nonexistent; retained for broken-target alert, not a suggested URL. No fresh public target capture supplied in this observation."
+        },
+        {
+          "at": "2026-09-26T20:02:00Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Independent signed-out exact pc5germ permalink fetch exposes Comment removed by moderator. No removal cause inferred; preserves historical invalid target."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
+        }
+      ],
+      "status": "REMOVED",
+      "rejectionReason": null,
+      "disposition": "REMOVED",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "targetKind": "DEEP_LINK",
+      "verificationMethod": "PUBLIC_WEB_FETCH"
+    },
+    {
+      "id": "saasmag-pending",
+      "source": "SaaS Mag",
+      "type": "OUTREACH",
+      "targetUrl": "https://miloosh.com/best-help-desk-for-small-business",
+      "externalUrl": "https://www.saasmag.com/contributions/",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T19:46:20Z",
+          "status": "PENDING",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": null,
+          "rel": "UNKNOWN",
+          "evidence": "Prior submission receipt exists; no acceptance or public article. No outreach in this task."
+        }
+      ],
+      "status": "PENDING",
+      "rejectionReason": null,
+      "disposition": "PENDING",
+      "lastVerified": null,
+      "stale": true,
+      "conflict": false,
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "targetKind": "DEEP_LINK",
+      "verificationMethod": "REPORTED"
+    },
+    {
+      "id": "bootstrapped-founder-pending",
+      "source": "The Bootstrapped Founder",
+      "type": "OUTREACH",
+      "targetUrl": "https://miloosh.com/best-ecommerce-platform-for-small-business",
+      "externalUrl": "https://thebootstrappedfounder.com/contact/",
+      "firstObserved": "2026-09-26",
+      "utm": {
+        "source": "bootstrapped_founder",
+        "medium": "referral",
+        "campaign": "authority_war_2_20260926"
+      },
+      "observations": [
+        {
+          "at": "2026-09-26T19:46:20Z",
+          "status": "PENDING",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": null,
+          "rel": "UNKNOWN",
+          "evidence": "Preserved prior SENT receipt from committed offsite ledger; no reply, permission, placement or current live link inferred. No outreach in this task."
+        }
+      ],
+      "status": "PENDING",
+      "rejectionReason": null,
+      "disposition": "PENDING",
+      "lastVerified": null,
+      "stale": true,
+      "conflict": false,
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "targetKind": "DEEP_LINK",
+      "verificationMethod": "REPORTED"
+    },
+    {
+      "id": "supportdriven-pending",
+      "source": "Support Driven",
+      "type": "OUTREACH",
+      "targetUrl": "https://miloosh.com/best-help-desk-for-small-business",
+      "externalUrl": "https://www.supportdriven.com/",
+      "firstObserved": "2026-09-26",
+      "utm": {
+        "source": "supportdriven",
+        "medium": "referral",
+        "campaign": "authority_war_2_20260926"
+      },
+      "observations": [
+        {
+          "at": "2026-09-26T19:46:20Z",
+          "status": "PENDING",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": null,
+          "rel": "UNKNOWN",
+          "evidence": "Preserved prior SENT receipt from committed offsite ledger; no reply, permission, placement or current live link inferred. No outreach in this task."
+        }
+      ],
+      "status": "PENDING",
+      "rejectionReason": null,
+      "disposition": "PENDING",
+      "lastVerified": null,
+      "stale": true,
+      "conflict": false,
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "targetKind": "DEEP_LINK",
+      "verificationMethod": "REPORTED"
+    },
+    {
+      "id": "saascomparely-rejected",
+      "source": "SaaSComparely",
+      "type": "OUTREACH",
+      "targetUrl": null,
+      "externalUrl": "https://www.saascomparely.org/write-for-us",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T21:24:09Z",
+          "status": "REJECTED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": null,
+          "rel": "UNKNOWN",
+          "rejectionReason": "PAID_DOFOLLOW",
+          "evidence": "Owner's 2026-09-27 master-release instruction: reject the paid guest post + dofollow backlink offer. REJECTED_PAID_DOFOLLOW; not earned authority. No placement claimed, no purchase or outreach performed."
+        }
+      ],
+      "status": "REJECTED",
+      "rejectionReason": "PAID_DOFOLLOW",
+      "disposition": "REJECTED_PAID_DOFOLLOW",
+      "lastVerified": null,
+      "stale": true,
+      "conflict": false,
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "targetKind": "MENTION_ONLY",
+      "verificationMethod": "REPORTED"
+    },
+    {
+      "id": "reddit-smallbusiness-pc8wg5e",
+      "source": "Reddit smallbusiness bespoke-equipment CRM",
+      "type": "COMMUNITY",
+      "targetUrl": null,
+      "externalUrl": "https://www.reddit.com/r/smallbusiness/comments/1jnzj8m/comment/pc8wg5e/",
+      "firstObserved": "2026-09-26",
+      "utm": null,
+      "observations": [
+        {
+          "at": "2026-09-26T22:21:34.611Z",
+          "status": "UNVERIFIED",
+          "method": "REPORTED",
+          "exactTargetVerified": false,
+          "linkPresent": null,
+          "rel": "UNKNOWN",
+          "evidence": "Owner and parallel overnight authority ledger report a published zero-link Miloosh comment. That claim alone does not independently establish public visibility."
+        },
+        {
+          "at": "2026-09-26T22:21:35.611Z",
+          "status": "REMOVED",
+          "method": "PUBLIC_WEB_FETCH",
+          "exactTargetVerified": true,
+          "linkPresent": false,
+          "rel": "UNKNOWN",
+          "evidence": "Exact public permalink renders Comment removed by moderator and does not expose Academic_Annual_8088 text. Public fetch/cache evidence conflicts with source-reported live status; no write or cause inferred."
+        }
+      ],
+      "status": "REMOVED",
+      "rejectionReason": null,
+      "disposition": "REMOVED",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "stale": false,
+      "conflict": false,
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "targetKind": "MENTION_ONLY",
+      "verificationMethod": "PUBLIC_WEB_FETCH"
+    }
+  ],
+  "deepLinkBaseline": {
+    "scope": "Independently verified placement-target pairs, not GSC link totals; no exhaustive-web claim",
+    "capturedAt": "2026-09-26T22:54:53.911Z",
+    "homepagePlacements": 3,
+    "deepLinkPlacements": 2,
+    "supportedUrls": [
+      "https://miloosh.com/",
+      "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+    ],
+    "liveMentionsWithoutLinks": 0,
+    "unresolved": 3
+  },
+  "alerts": [
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/CRMSoftware/comments/1wqtnwo/comment/pc7sr55/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    },
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/CRMSoftware/comments/1uyrghz/comment/pc81v6w/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    },
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    },
+    {
+      "code": "BROKEN_DEEP_LINK_TARGET",
+      "target": "https://miloosh.com/compare/intercom-alternatives",
+      "reason": "Target absent from emitted route set; historical record retained"
+    },
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/smallbusiness/comments/1jnzj8m/comment/pc8wg5e/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    }
+  ],
+  "indexingQueueUpdatedAt": "2026-09-26T23:01:53.217Z",
+  "indexingQueue": [
+    {
+      "url": "https://miloosh.com/research",
+      "state": "WAIT_REQUEST_HISTORY",
+      "requestsMade": 0
+    },
+    {
+      "url": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "state": "WAIT_REQUEST_HISTORY",
+      "requestsMade": 0
+    },
+    {
+      "url": "https://miloosh.com/research/customer-support-pricing-2026",
+      "state": "ALREADY_REQUESTED",
+      "requestsMade": 0
+    },
+    {
+      "url": "https://miloosh.com/research/crm-plan-gates-2026",
+      "state": "ALREADY_REQUESTED",
+      "requestsMade": 0
+    }
+  ],
+  "brandHistory": [
+    {
+      "capturedAt": "2026-09-26T19:46:20Z",
+      "source": "Authenticated GSC Performance UI independently checked by Codex; chart range and query-contains filter visibly confirmed. Zero in observable filtered data; anonymous/omitted queries and reporting lag prevent a universal no-brand-demand claim.",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "scope": {
+        "property": "sc-domain:miloosh.com",
+        "searchType": "web",
+        "country": null,
+        "device": null,
+        "timezone": "America/Los_Angeles",
+        "dataState": "unknown"
+      },
+      "filter": {
+        "dimension": "query",
+        "operator": "contains",
+        "expression": "miloosh"
+      },
+      "impressions": 0,
+      "clicks": 0
+    },
+    {
+      "capturedAt": "2026-09-26T22:27:00Z",
+      "source": "Authenticated GSC browser UI independently rechecked during production release preflight. Approximate minute capture. Same filtered window as earlier baseline; no period-on-period movement claim. UI zero position/CTR from zero impressions are not computed measurements.",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "scope": {
+        "property": "sc-domain:miloosh.com",
+        "searchType": "web",
+        "country": null,
+        "device": null,
+        "timezone": "America/Los_Angeles",
+        "dataState": "unknown"
+      },
+      "filter": {
+        "dimension": "query",
+        "operator": "contains",
+        "expression": "miloosh"
+      },
+      "impressions": 0,
+      "clicks": 0
+    }
+  ],
+  "brandedSearchMovement": {
+    "status": "INCOMPATIBLE_WINDOWS",
+    "firstObservedBrandSignal": false
+  },
+  "referralTraffic": {
+    "status": "UNKNOWN",
+    "reason": "Complete first-party export unavailable; not zero sessions"
+  },
+  "researchRevenue": {
+    "status": "UNKNOWN",
+    "reason": "Complete first-party export unavailable; no inferred conversions"
+  },
+  "domainPositionMovement": {
+    "status": "UNKNOWN",
+    "reason": "No matching previous snapshot; reported Claude medians lack reproducible membership/window and are not a comparison baseline"
+  },
+  "gscLiveRecheck": {
+    "captureApproxUtc": "2026-09-26T22:27:00Z",
+    "method": "Authenticated GSC browser UI",
+    "links": {
+      "totalExternalLinks": 100,
+      "domains": [
+        [
+          "vercel.app",
+          93
+        ],
+        [
+          "hypestar.org",
+          2
+        ],
+        [
+          "qevra.app",
+          2
+        ],
+        [
+          "launchfree.io",
+          1
+        ],
+        [
+          "roasty.tech",
+          1
+        ],
+        [
+          "saashub.com",
+          1
+        ]
+      ],
+      "homepage": 100,
+      "deepTargets": 0
+    },
+    "brand": {
+      "filter": "query contains miloosh",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "searchType": "web",
+      "impressions": 0,
+      "clicks": 0,
+      "ctr": null,
+      "position": null,
+      "warning": "Filtered data may be partial; zero in this scope is not zero universal demand."
+    },
+    "overview": {
+      "indexed": 218,
+      "notIndexed": 1705,
+      "scope": "GSC overview property counts; snapshot date not shown; not comparable to local inspected-commercial sample"
+    }
+  },
+  "outreachPerformed": false,
+  "sourceScope": "Public exact-placement evidence takes precedence over requested status labels. Five live placement-target pairs: three homepage and two deep-link pairs; not five independent domains.",
+  "canonicalStatusSummary": {
+    "SaaSHub": "VERIFIED_LIVE",
+    "Qevra": "VERIFIED_LIVE",
+    "HypeStar": "VERIFIED_LIVE",
+    "CRM_Reddit_1": "REMOVED",
+    "CRM_Reddit_2": "REMOVED",
+    "smallbusiness_Reddit": "REMOVED",
+    "rSaaS": "REMOVED",
+    "SaaSComparely": "REJECTED_PAID_DOFOLLOW"
+  },
+  "newLinkEarningClaim": false,
+  "notes": [
+    "Fresh public Reddit pages showed moderator removal; no inference about why. Authenticated/owner views are not public-live evidence.",
+    "GSC 100 reported links include 93 vercel.app infrastructure candidates. The remaining 7 are reported links, not 7 verified editorial endorsements.",
+    "No complete analytics export; referral/research traffic and conversions remain UNKNOWN.",
+    "Re:amaze control-protocol review suppresses only the affected cohort contrast; membership unchanged."
+  ]
+}

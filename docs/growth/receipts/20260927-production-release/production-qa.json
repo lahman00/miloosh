@@ -1,0 +1,436 @@
+{
+  "verdict": "RELEASE_GREEN",
+  "applicationSourceSha": "a925c0e7e129c09c2ca38f5e352d8edbc4afb9ab",
+  "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+  "local": {
+    "capturedAt": "2026-09-26T22:42:58.330Z",
+    "origin": "http://127.0.0.1:65490",
+    "artifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+    "expected": 1785,
+    "inspected": 1785,
+    "complete": true,
+    "failures": [
+      {
+        "route": "/",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/about",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/best-automation-software-for-small-business",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/category/ecommerce",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/category/field-service-management",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/category/hr-and-payroll",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/1password-vs-snyk",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/1password-vs-tailscale",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/1password-vs-wiz",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/acuity-scheduling-vs-setmore",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/acuity-scheduling-vs-youcanbookme",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/acumatica-vs-microsoft-dynamics-365-business-central",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/adobe-analytics-vs-hotjar",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/adobe-analytics-vs-matomo",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/adobe-analytics-vs-mixpanel",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/adyen-vs-stripe",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/affinity-vs-framer",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/apigee-vs-mulesoft",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/bitbucket-vs-docker",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/bitbucket-vs-gitlab",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/bitwarden-vs-okta",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/buildium-vs-rent-manager",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/buildium-vs-yardi-breeze",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/calendly-vs-reclaim-ai",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/chatgpt-vs-gemini",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/chatgpt-vs-github-copilot",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/circleci-vs-render",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/clickup-vs-jira",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/clickup-vs-linear",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/clockify-vs-harvest",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/coda-vs-smartsheet",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/contentful-vs-drupal",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/contentful-vs-wordpress",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/crisp-vs-freshdesk",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/dashlane-vs-wiz",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/ecwid-vs-salesforce-commerce-cloud",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/ecwid-vs-shopify",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/ecwid-vs-woocommerce",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      },
+      {
+        "route": "/compare/geotab-vs-samsara",
+        "error": "Navigation/inspection did not complete (TimeoutError); no automatic retry or zero-imputation"
+      }
+    ],
+    "blockedRequests": 3561,
+    "writes": 0,
+    "merchantNavigations": 0
+  },
+  "recheck": {
+    "capturedAt": "2026-09-26T22:43:53.875Z",
+    "origin": "http://127.0.0.1:65490",
+    "artifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+    "expected": 39,
+    "inspected": 39,
+    "complete": true,
+    "failures": [],
+    "blockedRequests": 76,
+    "writes": 0,
+    "merchantNavigations": 0
+  },
+  "production": {
+    "capturedAt": "2026-09-26T23:07:10.516Z",
+    "origin": "https://miloosh.com",
+    "artifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+    "expected": 1785,
+    "inspected": 1785,
+    "complete": true,
+    "failures": [],
+    "blockedRequests": 3561,
+    "writes": 0,
+    "merchantNavigations": 0
+  },
+  "differences": [],
+  "commercialLinks": 4138,
+  "noindexRows": 0,
+  "nonSingleH1": [],
+  "dynamic": {
+    "capturedAt": "2026-09-26T23:05:03.394Z",
+    "path": "/recommend",
+    "rows": [
+      {
+        "width": 1440,
+        "status": 200,
+        "title": "Find your software | Miloosh",
+        "canonical": "https://miloosh.com/recommend",
+        "h1": "Find your software",
+        "overflow": false,
+        "controls": 36,
+        "errors": []
+      },
+      {
+        "width": 390,
+        "status": 200,
+        "title": "Find your software | Miloosh",
+        "canonical": "https://miloosh.com/recommend",
+        "h1": "Find your software",
+        "overflow": false,
+        "controls": 36,
+        "errors": []
+      },
+      {
+        "width": 320,
+        "status": 200,
+        "title": "Find your software | Miloosh",
+        "canonical": "https://miloosh.com/recommend",
+        "h1": "Find your software",
+        "overflow": false,
+        "controls": 36,
+        "errors": []
+      }
+    ],
+    "formSubmissions": 0,
+    "productionWrites": 0,
+    "merchantRequests": 0
+  },
+  "artifactChecksums": {
+    "var/growth/google-command/crawl/latest.json": "848ed28c1d1bb3f058512c555ea354496712b6ed1697eafda4da20da74a3b199",
+    "var/growth/google-command/crawl/recheck.json": "30e9f0d97765cce3a9f37d2e61b46e91b3a739240d0ab98c5c977f894fb6eb34",
+    "var/growth/google-command/production-crawl/latest.json": "7c75161df251f294faa38987b198d49b0f60c6c6f63bdbed2120ff520258e3d4",
+    "var/growth/google-command/production/health.json": "7edf94fa59ca313716da977ea8d97e894d65204a5d0e04bf429df4f515e6ebff",
+    "var/growth/google-command/production/browser/authority-events.json": "5ae186dff92d57e86585dfb4c86bb57b01f133ae531694b5f92e779a6c3d1358",
+    "var/growth/google-command/production/mobile/latest.json": "af15fe879af7e21265dfcb1c2e49c899ae478cd4f0c0405d9cf91b2d57c40860"
+  },
+  "gates": [
+    {
+      "name": "typecheck",
+      "start": "2026-09-26T22:31:36.204Z",
+      "end": "2026-09-26T22:31:44.674Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "lint",
+      "start": "2026-09-26T22:31:44.674Z",
+      "end": "2026-09-26T22:31:54.565Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "tests",
+      "start": "2026-09-26T22:31:54.565Z",
+      "end": "2026-09-26T22:33:19.267Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "static-gate-tests",
+      "start": "2026-09-26T22:33:19.267Z",
+      "end": "2026-09-26T22:33:19.580Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "data",
+      "start": "2026-09-26T22:33:19.580Z",
+      "end": "2026-09-26T22:33:20.126Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "affiliate",
+      "start": "2026-09-26T22:33:20.126Z",
+      "end": "2026-09-26T22:33:20.638Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "build",
+      "start": "2026-09-26T22:33:20.638Z",
+      "end": "2026-09-26T22:34:24.042Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "static",
+      "start": "2026-09-26T22:34:24.042Z",
+      "end": "2026-09-26T22:34:45.561Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "query-store",
+      "start": "2026-09-26T22:34:45.562Z",
+      "end": "2026-09-26T22:34:47.260Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "google-war",
+      "start": "2026-09-26T22:34:47.263Z",
+      "end": "2026-09-26T22:36:57.545Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "command-center",
+      "start": "2026-09-26T22:36:57.558Z",
+      "end": "2026-09-26T22:38:10.840Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "browser-smoke",
+      "start": "2026-09-26T22:38:10.841Z",
+      "end": "2026-09-26T22:40:51.163Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "diff-check",
+      "start": "2026-09-26T22:40:51.168Z",
+      "end": "2026-09-26T22:40:51.222Z",
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "tests": {
+    "vitest": {
+      "files": 258,
+      "passed": 2331,
+      "failed": 0
+    },
+    "pythonStaticGate": {
+      "passed": 11,
+      "failed": 0
+    },
+    "postIndexEvidenceFocused": {
+      "files": 3,
+      "passed": 29,
+      "failed": 0
+    }
+  },
+  "additionalGates": {
+    "npmAudit": {
+      "vulnerabilities": 0
+    },
+    "maintenanceSeo": {
+      "issues": 0,
+      "titles": 1778,
+      "descriptions": 1736,
+      "sitemapEntries": 987
+    },
+    "indexationReadiness": {
+      "pass": 165,
+      "warn": 54,
+      "fail": 5,
+      "protected": 130,
+      "failures": [
+        "apigee",
+        "datadog",
+        "read-the-docs",
+        "stripe",
+        "supabase"
+      ],
+      "classification": "Pre-existing factual-depth advisories; not introduced technical regressions"
+    },
+    "affiliateAudit": {
+      "exitCode": 0,
+      "activePartners": 22,
+      "advisories": 99
+    },
+    "renderedCtaAudit": {
+      "checked": 4138,
+      "blockingFindings": 0
+    },
+    "internalLinkAudit": {
+      "products": 354,
+      "averageInbound": 10.3,
+      "weakNodes": 9
+    },
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "build": "PASS",
+    "dataValidation": "PASS",
+    "googleWar": "PASS",
+    "strictCommandAndAuthority": "PASS",
+    "diffCheck": "PASS"
+  },
+  "earlyRuntimeLogs": {
+    "since": "2026-09-26T22:50:25Z",
+    "error": {
+      "checkedAt": "2026-09-26T22:55:51.132Z",
+      "returnedRows": 0
+    },
+    "http5xx": {
+      "checkedAt": "2026-09-26T22:55:56.627Z",
+      "returnedRows": 0
+    },
+    "limitPerQuery": 100,
+    "rawMessagesExposed": false,
+    "scope": "CLI-visible bounded logs only; not an exhaustive uptime guarantee."
+  },
+  "comparisonNote": "All 1,785 production rows matched resolved local rows for status, final path, canonical, H1 count, robots/noindex, metadata, commercial link count, overflow, runtime errors and CTA blockers. Original 39 local timeouts retained; explicit same-artifact single-worker recheck passed all 39. Production needed no failed-route recheck.",
+  "representativeHealth": "research-production.json",
+  "browserAndMobile": "tracking-qa.json",
+  "mutationSafety": {
+    "applicationWrites": 0,
+    "merchantRequests": 0,
+    "socialActions": 0,
+    "blobWrites": 0,
+    "credentialsChanged": 0,
+    "githubPush": false
+  },
+  "nonBlockingLimits": [
+    "The pre-existing /categories route is 404; supported navigation uses /#categories and /category/crm.",
+    "Complete first-party analytics export unavailable; production persistence/conversion not inferred from mocked browser proof.",
+    "Four Reddit placements publicly removed; no unsupported LIVE labels.",
+    "Re:amaze inherited control-protocol deviation suppresses only its cohort contrast.",
+    "Google indexing requests accepted, not proof of indexing."
+  ]
+}

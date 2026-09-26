@@ -1,10 +1,10 @@
 [
   {
     "url": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
-    "source": "Read-only Vercel alias inspection plus independent public HTML and sitemap GET. Existing production asset only, not deployment of new instrumentation.",
-    "deploymentId": "dpl_3F95X1y4KARafdQ88oewqf8kYo23",
-    "deployedAt": "2026-09-25T19:25:29.179Z",
-    "verifiedAt": "2026-09-26T20:13:15.923Z",
+    "source": "Exact promoted release and independent public HTML/canonical/sitemap GET verified. Existing asset preserved, new instrumentation verified with intercepted client requests. No new indexing request for this URL; prior request history remains unknown.",
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "deployedAt": "2026-09-26T22:50:25.901Z",
+    "verifiedAt": "2026-09-26T22:50:53.290Z",
     "httpStatus": 200,
     "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
     "indexable": true,
@@ -13,5 +13,54 @@
     "quotaCheckedAt": null,
     "requestHistoryComplete": false,
     "previousRequests": []
+  },
+  {
+    "url": "https://miloosh.com/research",
+    "source": "Promoted release, HTTP 200, exact canonical and live sitemap independently verified. No indexing request authorized or performed for the hub; prior request history unknown.",
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "deployedAt": "2026-09-26T22:50:25.901Z",
+    "verifiedAt": "2026-09-26T22:50:53.290Z",
+    "httpStatus": 200,
+    "canonical": "https://miloosh.com/research",
+    "indexable": true,
+    "inSitemap": true,
+    "quotaRemaining": null,
+    "quotaCheckedAt": null,
+    "requestHistoryComplete": false,
+    "previousRequests": []
+  },
+  {
+    "url": "https://miloosh.com/research/customer-support-pricing-2026",
+    "source": "Production HTML/schema/sitemap/headers verified on the exact promoted release. Authenticated GSC UI accepted one indexing request at 2026-09-26T22:52:22Z. Known accepted request is sufficient to prevent another request; not a claim of indexed status or a numeric remaining quota.",
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "deployedAt": "2026-09-26T22:50:25.901Z",
+    "verifiedAt": "2026-09-26T22:50:53.290Z",
+    "httpStatus": 200,
+    "canonical": "https://miloosh.com/research/customer-support-pricing-2026",
+    "indexable": true,
+    "inSitemap": true,
+    "quotaRemaining": null,
+    "quotaCheckedAt": null,
+    "requestHistoryComplete": true,
+    "previousRequests": [
+      "https://miloosh.com/research/customer-support-pricing-2026"
+    ]
+  },
+  {
+    "url": "https://miloosh.com/research/crm-plan-gates-2026",
+    "source": "Production HTML/schema/sitemap/headers verified on the exact promoted release. Authenticated GSC UI accepted one indexing request at 2026-09-26T22:53:52Z. Known accepted request is sufficient to prevent another request; not a claim of indexed status or a numeric remaining quota.",
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "deployedAt": "2026-09-26T22:50:25.901Z",
+    "verifiedAt": "2026-09-26T22:50:53.290Z",
+    "httpStatus": 200,
+    "canonical": "https://miloosh.com/research/crm-plan-gates-2026",
+    "indexable": true,
+    "inSitemap": true,
+    "quotaRemaining": null,
+    "quotaCheckedAt": null,
+    "requestHistoryComplete": true,
+    "previousRequests": [
+      "https://miloosh.com/research/crm-plan-gates-2026"
+    ]
   }
 ]

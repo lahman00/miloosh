@@ -1,0 +1,34 @@
+{
+  "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+  "scope": "Only two owner-authorized new research URLs; authenticated GSC browser UI, one request each after production verification.",
+  "requests": [
+    {
+      "url": "https://miloosh.com/research/customer-support-pricing-2026",
+      "observedAt": "2026-09-26T22:52:22Z",
+      "attempts": 1,
+      "accepted": 1,
+      "result": "INDEXING_REQUEST_ACCEPTED",
+      "ui": "התקבלה בקשה ליצירת אינדקס; כתובת האתר נוספה לתור הסריקה בעדיפות",
+      "indexed": false,
+      "quotaRemaining": null
+    },
+    {
+      "url": "https://miloosh.com/research/crm-plan-gates-2026",
+      "observedAt": "2026-09-26T22:53:52Z",
+      "attempts": 1,
+      "accepted": 1,
+      "result": "INDEXING_REQUEST_ACCEPTED",
+      "ui": "התקבלה בקשה ליצירת אינדקס; כתובת האתר נוספה לתור הסריקה בעדיפות",
+      "indexed": false,
+      "quotaRemaining": null
+    }
+  ],
+  "totalAttempts": 2,
+  "totalAccepted": 2,
+  "quotaExhaustionObserved": false,
+  "remainingQuota": null,
+  "requestsRepeated": 0,
+  "interpretation": "Accepted into Google's priority crawl queue; NOT proof of completed crawl or indexing. No numeric quota was exposed. Both requests accepted; no CAPTCHA was manually solved.",
+  "persistentReplayGuard": "data/growth/authority/indexing-proofs.json; both ALREADY_REQUESTED",
+  "reportCounterNote": "Authority report requestsMade=0 counts writes by the read-only report generator, not these two recorded manual browser submissions."
+}

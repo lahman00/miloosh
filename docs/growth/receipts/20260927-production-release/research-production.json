@@ -1,0 +1,498 @@
+{
+  "capturedAt": "2026-09-26T22:50:53.290Z",
+  "origin": "https://miloosh.com",
+  "artifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+  "rows": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Miloosh — Software research you can verify.",
+      "description": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence.",
+      "canonical": [
+        "https://miloosh.com"
+      ],
+      "schemas": [
+        "Organization"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Miloosh — Software research you can verify."
+        },
+        {
+          "property": "og:description",
+          "content": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence."
+        },
+        {
+          "property": "og:site_name",
+          "content": "Miloosh"
+        },
+        {
+          "property": "og:locale",
+          "content": "en_US"
+        },
+        {
+          "property": "og:image",
+          "content": "https://miloosh.com/opengraph-image?0ef0595a414c51bf"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Miloosh — Software research you can verify."
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/software/pipedrive",
+      "status": 200,
+      "title": "Best Pipedrive Alternatives | Miloosh",
+      "description": "5 Pipedrive alternatives compared: Pipedrive is a sales-focused CRM built around a visual pipeline, letting sales teams track leads and deals as they move…",
+      "canonical": [
+        "https://miloosh.com/software/pipedrive"
+      ],
+      "schemas": [
+        "Organization",
+        "BreadcrumbList",
+        "ItemList",
+        "FAQPage"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Best Pipedrive Alternatives"
+        },
+        {
+          "property": "og:description",
+          "content": "5 Pipedrive alternatives compared: Pipedrive is a sales-focused CRM built around a visual pipeline, letting sales teams track leads and deals as they move…"
+        },
+        {
+          "property": "og:site_name",
+          "content": "Miloosh"
+        },
+        {
+          "property": "og:locale",
+          "content": "en_US"
+        },
+        {
+          "property": "og:image",
+          "content": "https://miloosh.com/software/pipedrive/opengraph-image?edf3164e43a82cdf"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Software profile"
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/software/freshdesk",
+      "status": 200,
+      "title": "Best Freshdesk Alternatives & Competitors (2026) | Miloosh",
+      "description": "Compare Freshdesk alternatives and competitors for customer support and help desk workflows using current vendor-sourced features, platforms, pricing, and fit.",
+      "canonical": [
+        "https://miloosh.com/software/freshdesk"
+      ],
+      "schemas": [
+        "Organization",
+        "BreadcrumbList",
+        "ItemList",
+        "FAQPage"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Best Freshdesk Alternatives & Competitors (2026)"
+        },
+        {
+          "property": "og:description",
+          "content": "Compare Freshdesk alternatives and competitors for customer support and help desk workflows using current vendor-sourced features, platforms, pricing, and fit."
+        },
+        {
+          "property": "og:site_name",
+          "content": "Miloosh"
+        },
+        {
+          "property": "og:locale",
+          "content": "en_US"
+        },
+        {
+          "property": "og:image",
+          "content": "https://miloosh.com/software/freshdesk/opengraph-image?edf3164e43a82cdf"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Software profile"
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/compare/pipedrive-vs-close",
+      "status": 200,
+      "title": "Pipedrive vs Close | Miloosh",
+      "description": "Pipedrive and Close, compared: real CRM features and platforms from each vendor's own site.",
+      "canonical": [
+        "https://miloosh.com/compare/pipedrive-vs-close"
+      ],
+      "schemas": [
+        "Organization",
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Pipedrive vs Close"
+        },
+        {
+          "property": "og:description",
+          "content": "Pipedrive and Close, compared: real CRM features and platforms from each vendor's own site."
+        },
+        {
+          "property": "og:image",
+          "content": "https://miloosh.com/compare/pipedrive-vs-close/opengraph-image?f160f0d88679d036"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Software comparison"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/guides",
+      "status": 200,
+      "title": "Software Decision Guides | Miloosh",
+      "description": "Browse Miloosh decision guides for common software buying, switching, and replacement decisions, with sourced product research and dated pricing notes.",
+      "canonical": [
+        "https://miloosh.com/guides"
+      ],
+      "schemas": [
+        "Organization"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Miloosh — Software research you can verify."
+        },
+        {
+          "property": "og:description",
+          "content": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence."
+        },
+        {
+          "property": "og:site_name",
+          "content": "Miloosh"
+        },
+        {
+          "property": "og:locale",
+          "content": "en_US"
+        },
+        {
+          "property": "og:image",
+          "content": "https://miloosh.com/opengraph-image?0ef0595a414c51bf"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Miloosh — Software research you can verify."
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/category/crm",
+      "status": 200,
+      "title": "CRM | Miloosh",
+      "description": "Track leads, deals, and customer relationships. Compare 10 crm tools.",
+      "canonical": [
+        "https://miloosh.com/category/crm"
+      ],
+      "schemas": [
+        "Organization",
+        "BreadcrumbList",
+        "CollectionPage"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Miloosh — Software research you can verify."
+        },
+        {
+          "property": "og:description",
+          "content": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence."
+        },
+        {
+          "property": "og:site_name",
+          "content": "Miloosh"
+        },
+        {
+          "property": "og:locale",
+          "content": "en_US"
+        },
+        {
+          "property": "og:image",
+          "content": "https://miloosh.com/category/crm/opengraph-image?fcdf3691e3f81cef"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Software category"
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/research",
+      "status": 200,
+      "title": "Research | Miloosh",
+      "description": "Miloosh's original, source-verified research: datasets built from our own software catalog and each vendor's own pricing page, published with methodology and a downloadable dataset.",
+      "canonical": [
+        "https://miloosh.com/research"
+      ],
+      "schemas": [
+        "Organization"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Research"
+        },
+        {
+          "property": "og:description",
+          "content": "Miloosh's original, source-verified research: datasets built from our own software catalog and each vendor's own pricing page, published with methodology and a downloadable dataset."
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/research/saas-pricing-pressure-index-2026",
+      "status": 200,
+      "title": "Miloosh SaaS Pricing Pressure Index 2026 | Miloosh",
+      "description": "Published SaaS starting prices and documented plan availability, with dated vendor sources, explicit sample sizes, currencies, and modeled-cost limitations.",
+      "canonical": [
+        "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+      ],
+      "schemas": [
+        "Organization"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Miloosh SaaS Pricing Pressure Index 2026"
+        },
+        {
+          "property": "og:description",
+          "content": "Published SaaS list prices, not customer invoices. Dated sources, sample sizes, and modeled-cost limitations included."
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/research/customer-support-pricing-2026",
+      "status": 200,
+      "title": "Customer Support Pricing Benchmark 2026 | Miloosh",
+      "description": "How 16 customer support platforms bill for AI-handled conversations, verified against each vendor's own pricing page: who publishes a per-resolution AI rate, who bundles it, and where the underlying seat price is undisclosed.",
+      "canonical": [
+        "https://miloosh.com/research/customer-support-pricing-2026"
+      ],
+      "schemas": [
+        "Organization",
+        "Dataset"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "Customer Support Pricing Benchmark 2026"
+        },
+        {
+          "property": "og:description",
+          "content": "How 16 customer support platforms bill for AI-handled conversations, verified against each vendor's own pricing page: who publishes a per-resolution AI rate, who bundles it, and where the underlying seat price is undisclosed."
+        },
+        {
+          "property": "og:url",
+          "content": "https://miloosh.com/research/customer-support-pricing-2026"
+        },
+        {
+          "property": "og:type",
+          "content": "article"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/research/crm-plan-gates-2026",
+      "status": 200,
+      "title": "CRM Plan-Gate Dataset 2026 | Miloosh",
+      "description": "Which CRM plan you actually need for two-way email sync, workflow automation, and sales sequences, across 7 vendors -- verified against each vendor's own pricing page and help documentation. Not a best-CRM ranking.",
+      "canonical": [
+        "https://miloosh.com/research/crm-plan-gates-2026"
+      ],
+      "schemas": [
+        "Organization",
+        "Dataset"
+      ],
+      "openGraph": [
+        {
+          "property": "og:title",
+          "content": "CRM Plan-Gate Dataset 2026"
+        },
+        {
+          "property": "og:description",
+          "content": "Which CRM plan you actually need for two-way email sync, workflow automation, and sales sequences, across 7 vendors -- verified against each vendor's own pricing page and help documentation. Not a best-CRM ranking."
+        },
+        {
+          "property": "og:url",
+          "content": "https://miloosh.com/research/crm-plan-gates-2026"
+        },
+        {
+          "property": "og:type",
+          "content": "article"
+        }
+      ],
+      "expectedMatches": true
+    },
+    {
+      "route": "/categories",
+      "status": 404,
+      "expectedMatches": true,
+      "note": "Pre-existing unsupported route; navbar uses /#categories; /category/crm verified above. No invented new route."
+    }
+  ],
+  "downloads": [
+    {
+      "slug": "customer-support-pricing-2026",
+      "jsonStatus": 200,
+      "csvStatus": 200,
+      "rows": 16,
+      "jsonType": "application/json",
+      "csvType": "text/csv; charset=utf-8",
+      "csvBytes": 3540,
+      "disposition": "attachment; filename=\"customer-support-pricing-benchmark-2026.csv\"",
+      "exactLocalRows": true
+    },
+    {
+      "slug": "crm-plan-gates-2026",
+      "jsonStatus": 200,
+      "csvStatus": 200,
+      "rows": 7,
+      "jsonType": "application/json",
+      "csvType": "text/csv; charset=utf-8",
+      "csvBytes": 8565,
+      "disposition": "attachment; filename=\"crm-plan-gates-dataset-2026.csv\"",
+      "exactLocalRows": true
+    }
+  ],
+  "sitemap": {
+    "status": 200,
+    "researchPaths": [
+      "/research",
+      "/research/saas-pricing-pressure-index-2026",
+      "/research/customer-support-pricing-2026",
+      "/research/crm-plan-gates-2026"
+    ]
+  },
+  "writes": 0,
+  "scope": "Production research and representative health. /categories was independently 404 before release; real navigation uses /#categories and /category/crm.",
+  "sourceDate": "2026-09-27",
+  "datasetDates": "Both new Dataset.dateModified values equal the verified content date, not build clock.",
+  "robotHeaderChecks": {
+    "bothNewResearchRoutes": {
+      "httpStatus": 200,
+      "xRobotsTag": null
+    }
+  },
+  "supportCorrection": "AI-usage public-rate coverage corrected from 5/16 to 9/16 with explicit correction notes.",
+  "crm": "7-vendor feature/plan-gate dataset, explicitly not a ranking.",
+  "controlIsolation": "Re:amaze and Tidio catalog files and both cohort registries byte-identical to a0c950d intake. Incoming research pricing retained in research-only snapshots.",
+  "authorityHandoff": "docs/growth/receipts/20260927-research-night/authority-handoff.json"
+}

@@ -43,7 +43,7 @@
         "Only Intercom's disclosed AI rate can be turned into a full monthly-cost formula from public information alone -- the other 8 disclosed rates each have a missing input (an undisclosed allowance, an undisclosed seat price, or a variable/tier-dependent rate)"
       ],
       "audience": ["SaaS founders and operators evaluating a support-platform switch", "Finance/RevOps modeling support-tool TCO", "SaaS pricing researchers (the audience already engaged via the existing SaaS Mag article)"],
-      "pitchAngle": "Most customer-support vendors still don't price their AI separately from seats -- and the ones that do use four different, non-interchangeable billing units.",
+      "pitchAngle": "9 of 16 support platforms publish a distinct AI-usage rate, but a rate alone is not a complete bill: allowances, base-seat costs, and non-interchangeable billing units still matter.",
       "deepLinkTarget": "https://miloosh.com/research/customer-support-pricing-2026 (the AI-usage-pricing table or the Intercom crossing scenario)",
       "claimsThatMustNotBeMade": [
         "Do NOT use the old '5 of 16' figure -- it is now '9 of 16' as of 2026-09-27",
@@ -53,6 +53,15 @@
       ]
     }
   ],
+  "productionVerification": {
+    "verifiedAt": "2026-09-26T22:50:53.290Z",
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "sourceSha": "a925c0e7e129c09c2ca38f5e352d8edbc4afb9ab",
+    "canonicalOrigin": "https://miloosh.com",
+    "bothAssetUrlsAndFourDownloads": "HTTP 200, exact canonical, Dataset and Organization schema, source-date metadata, JSON rows 16/7 and CSV rows 16/7 verified live",
+    "outreachSent": false,
+    "supportPitchCorrection": "Removed the contradictory 'most do not' claim: 9 of 16 is a majority. Use the corrected verified counts above."
+  },
   "communityAngles": [
     "Share both datasets' CSV/JSON downloads directly in SaaS-pricing, RevOps, or customer-support-ops communities as a primary-sourced reference",
     "Invite corrections via the site's existing corrections-policy contact channel if a vendor's plan structure has changed since verification"
