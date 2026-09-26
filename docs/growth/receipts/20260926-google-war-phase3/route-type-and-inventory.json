@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-09-26",
+  "part4_routeTypeDistribution": {
+    "source": "var/growth/google-war/latest.md 'By route type' section, computed from the now-populated indexation state (1225/1736 rows real, up from 31/1736)",
+    "software": { "total": 354, "INDEXED": 20, "DISCOVERED_NOT_INDEXED": 136, "CRAWLED_NOT_INDEXED": 21, "UNKNOWN": 177 },
+    "comparison": { "total": 1348, "INDEXED": 2, "DISCOVERED_NOT_INDEXED": 627, "CRAWLED_NOT_INDEXED": 390, "UNKNOWN": 329 },
+    "guide": { "total": 34, "DISCOVERED_NOT_INDEXED": 14, "CRAWLED_NOT_INDEXED": 15, "UNKNOWN": 5 },
+    "observation": "Comparison inventory (1348 URLs) dominates the DISCOVERED_NOT_INDEXED population by sheer count (627 of the 777 sitewide) -- consistent with comparisons being the largest single inventory class by a wide margin."
+  },
+  "part11_37_38_inventorySaturation": {
+    "criticalFinding": "100% of software DISCOVERED_NOT_INDEXED pages (136/136) and 100% of comparison DISCOVERED_NOT_INDEXED pages (627/627) have ZERO observed GSC impressions. By contrast, only 4.8% of CRAWLED_NOT_INDEXED software pages (1/21) and 70.5% of CRAWLED_NOT_INDEXED comparison pages (275/390) show zero impressions.",
+    "interpretation": "Google is not crawling the DISCOVERED_NOT_INDEXED population because, as far as this site's own GSC data shows, there is no external search demand for almost any of it. This is NOT evidence of a technical, architectural, or crawl-budget defect -- it is consistent with Google's crawler behaving rationally given the demand signal it has. This directly falsifies the implicit premise behind selecting a 'high-value DISCOVERED_NOT_INDEXED treatment cohort' (Part 15): there is no real-demand subset of the DISCOVERED population to select from.",
+    "totalInventoryContext": "80.3% of the entire comparison inventory (1082 of 1348 URLs) shows zero observed impressions, regardless of known indexation state -- a very large zero-demand long tail that predates and is broader than just the DISCOVERED_NOT_INDEXED bucket.",
+    "part37_redTeamAnswer": "Part 37 asks: 'Would a human reasonably want every one of these ~1,923 URLs in Google?' For the 627 zero-demand DISCOVERED comparison pages specifically, the honest, evidence-backed answer is: probably not most of them. These read as combinatorial pairings (every published comparison pair) rather than pages responding to an observed real buyer question. This is not a recommendation to delete or noindex them -- zero observed impressions is not proof of zero possible future value, and deletion/consolidation decisions require the stronger evidence bar Part 12 sets -- but it is a real, honest answer to the red-team question, not a defense of the inventory."
+  },
+  "part5_urlAge": {
+    "method": "Compared each software page's data/software/{slug}.json 'accessed_at' field (last data-research date, a proxy for recency -- not necessarily exact first-publish date) across the three real indexation-state groups.",
+    "results": {
+      "INDEXED": { "n": 20, "medianAccessedAt": "2026-08-01" },
+      "CRAWLED_NOT_INDEXED": { "n": 21, "medianAccessedAt": "2026-08-04" },
+      "DISCOVERED_NOT_INDEXED": { "n": 136, "medianAccessedAt": "2026-09-05" }
+    },
+    "finding": "DISCOVERED_NOT_INDEXED software pages are substantially newer on median (over a month later) than both INDEXED and CRAWLED_NOT_INDEXED pages. Combined with the zero-demand finding above, age is a real, honest, partial explanation for the DISCOVERED_NOT_INDEXED population: newer AND undemanded pages simply haven't earned a crawl yet, which is a fundamentally different situation from a page Google has actively examined and rejected (CRAWLED_NOT_INDEXED). Per Part 5's own instruction, this is recorded as a real confound, not invented as a crawl-quality problem.",
+    "caveat": "accessed_at reflects when a product's data was last researched, not a verified first-publish date for the page itself -- a reasonable but imperfect age proxy."
+  },
+  "part6_sitemapAnalysis": {
+    "sitemapUrls": 984,
+    "publicHtmlPages": 1782,
+    "sitemapCoverage": "984/1782 (55.2%) of all crawlable public pages are actually listed in the sitemap.",
+    "sitemapMembershipVsIndexationState": {
+      "in_sitemap": { "INDEXED": 21, "CRAWLED_NOT_INDEXED": 182, "DISCOVERED_NOT_INDEXED": 387 },
+      "not_in_sitemap": { "INDEXED": 1, "CRAWLED_NOT_INDEXED": 244, "DISCOVERED_NOT_INDEXED": 390 }
+    },
+    "finding": "95% of confirmed-indexed pages (21/22) are sitemap-listed -- sitemap membership correlates strongly with eventually getting indexed. But sitemap listing does NOT reliably produce a crawl: 569 of the 984 sitemap-listed URLs with known state (58%) are still DISCOVERED_NOT_INDEXED or CRAWLED_NOT_INDEXED. This supports Part 6's concern that a large volume of low-priority inventory is being submitted with the same freshness/priority signal as high-value pages, diluting the sitemap's usefulness as a prioritization surface -- without proving it, since demand (not sitemap presence) looks like the dominant factor per the inventory-saturation finding above.",
+    "noActionTaken": "Per Part 36's own caution ('do NOT mass-remove URLs immediately... only execute if evidence strongly supports it and rollback is easy'), this session did not modify the sitemap. A controlled sitemap-priority experiment is real, evidence-motivated backlog, not executed this session given the risk profile of touching a sitewide production surface without a longer observation window planned in advance."
+  },
+  "part27_28_rankingWar": {
+    "strikingDistance_pos8to30_impr10plus": {
+      "total": 7,
+      "unprotectedSafeCandidates": ["compare/github-vs-render", "compare/docker-vs-vercel"],
+      "note": "Both unprotected candidates already have thoughtful, specific (non-generic) SERP title/description overrides from a prior mission, and both underlying products (render, docker, vercel) already received real content-depth treatment (render in this session's own Phase II Group 1; docker and vercel in Wave 2/1 respectively). No further content or snippet edit was made this session -- rewriting an already-good, already-enriched snippet without new evidence of what's specifically wrong would be guessing, not evidence-based iteration. Recorded as 'nothing further to do without new evidence,' not silently skipped."
+    },
+    "highImpressionDeepRanking_pos50to100_impr100plus": {
+      "total": 85,
+      "topUnprotectedCandidates": ["mulesoft (511 impr)", "clickup (468 impr)", "salesforce (466 impr)", "sprout-social (387 impr)", "confluence (371 impr)", "n8n (296 impr)", "basecamp (293 impr)", "tidio (282 impr)", "umbraco (265 impr)"],
+      "note": "A real, substantial, unprotected candidate pool exists here (this list continues well past the 9 shown). Not treated this session given time already spent -- flagged as the strongest concrete backlog item for a Wave 4/ranking-focused session, since Part 28 explicitly frames this as investigation of intent/authority/competitive-SERP factors distinct from indexation work already covered."
+    }
+  }
+}

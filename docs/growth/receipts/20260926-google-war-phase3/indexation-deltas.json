@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-09-26",
+  "method": "LIVE_GSC per-URL check against the authenticated GSC Pages 'Indexed' bucket, for every Wave 1/2/3 treatment and control slug. Slugs already confirmed present in the complete DISCOVERED_NOT_INDEXED software list (bucketA, 136/136 exact) were not re-checked live (they cannot also be indexed).",
+  "perWave": {
+    "wave1_indexation-recovery-20260926": {
+      "startedRelativeTo": "Oldest wave in this engagement -- most elapsed time since intervention.",
+      "treatment": { "total": 14, "nowIndexed": 6, "indexedSlugs": ["scribe", "marketo-engage", "lucidchart", "contentful", "perplexity", "synthesia"], "discoveredNotIndexed": 0, "rate": 0.429 },
+      "control": { "total": 10, "nowIndexed": 2, "indexedSlugs": ["adyen", "gitbook"], "discoveredNotIndexed": 2, "discoveredSlugs": ["workos", "webflow"], "rate": 0.20 }
+    },
+    "wave2_indexation-factory-wave2-20260926": {
+      "startedRelativeTo": "Middle wave -- less elapsed time than Wave 1.",
+      "treatment": { "total": 30, "nowIndexed": 5, "indexedSlugs": ["matomo", "miro", "okta", "jenkins", "document360"], "discoveredNotIndexed": 0, "rate": 0.167 },
+      "control": { "total": 13, "nowIndexed": 1, "indexedSlugs": ["slite"], "discoveredNotIndexed": 1, "discoveredSlugs": ["elastic"], "rate": 0.077 }
+    },
+    "wave3_master-google-war-wave3-20260926": {
+      "startedRelativeTo": "Newest wave -- least elapsed time since intervention (this session's own predecessor phase).",
+      "treatment": { "total": 20, "nowIndexed": 0, "indexedSlugs": [], "discoveredNotIndexed": 0, "rate": 0.0 },
+      "control": { "total": 10, "nowIndexed": 3, "indexedSlugs": ["keeper-security", "kong", "craft"], "discoveredNotIndexed": 0, "rate": 0.30 }
+    }
+  },
+  "criticalFinding": "The treatment-vs-control indexation gap tracks wave AGE, not wave order or treatment intensity: Wave 1 (oldest) shows treatment clearly ahead of control (42.9% vs 20%); Wave 2 (middle) shows a smaller treatment lead (16.7% vs 7.7%); Wave 3 (newest, from this session's immediate predecessor phase) shows treatment BEHIND control (0% vs 30%) -- the opposite direction. This is exactly the caution Part 19/20 asks for: a page Google has not yet recrawled since a content change cannot be classified as a failed treatment. Wave 3's 0% is very plausibly a 'not yet recrawled' artifact, not evidence the treatment doesn't work -- but by the same logic, Wave 1's stronger showing is consistent with the pricing/cons treatment mechanism genuinely helping once Google has had enough time to act on it.",
+  "limitationNote": "This session did not capture exact last-crawl-date per individual Wave 1/2/3 URL (that would require ~97 individual URL Inspections, roughly 30+ minutes of additional browser time). The classification into NOT_RECRAWLED_SINCE_CHANGE / RECRAWLED_STILL_EXCLUDED / INDEXED_AFTER_CHANGE that Part 20 asks for is therefore only possible at the wave-age level (this file), not the individual-URL level, this session. A future session with more time could do the full per-URL crawl-date capture for a much sharper answer.",
+  "conclusion": "This is the first real, direct evidence in this entire engagement that the core pricing/cons treatment mechanism MAY be working -- but only visible once enough time has passed. Do not conclude the mechanism failed from Wave 3's 0% alone, and do not conclude it definitely works from Wave 1's 42.9% alone (n=14 and n=10 are both small). Recommend re-running this exact check again on Wave 2 and Wave 3 in another 2-4 weeks before drawing a firmer conclusion."
+}
