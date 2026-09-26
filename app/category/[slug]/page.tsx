@@ -21,6 +21,7 @@ import {
   shouldPrioritizeComparisonDiscovery,
 } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getRoleGuidesForCategory } from "@/data/guides/registry";
+import { getCategoryBuyingGuide } from "@/data/seo/category-buying-guides";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -64,6 +65,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const software = getSoftwareByCategory(category.slug);
   const categorySlugs = new Set(software.map((item) => item.slug));
   const roleGuides = getRoleGuidesForCategory(category.slug);
+  const buyingGuide = getCategoryBuyingGuide(category.slug);
+  const softwareBySlug = new Map(software.map((item) => [item.slug, item]));
   const featuredComparisons = getCategoryFeaturedComparisons(category.slug, PUBLISHED_COMPARISONS.length)
     .filter((item) => shouldPrioritizeComparisonDiscovery(item.comparisonSlug))
     .sort(
@@ -117,6 +120,40 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             {generateCategorySynthesis(category, software)}
           </p>
         </header>
+
+        {buyingGuide ? (
+          <section className="mt-14">
+            <SectionHeading
+              eyebrow="Buying guide"
+              title={`${category.name} covers more than one job`}
+              description={buyingGuide.intro}
+            />
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {buyingGuide.dimensions.map((dimension) => (
+                <Card key={dimension.label}>
+                  <h3 className="text-base font-semibold text-white">{dimension.label}</h3>
+                  <p className="mt-2 text-sm leading-6 text-zinc-400">{dimension.description}</p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {dimension.memberSlugs.map((memberSlug) => {
+                      const member = softwareBySlug.get(memberSlug);
+                      if (!member) return null;
+                      return (
+                        <li key={memberSlug}>
+                          <Link
+                            href={`/software/${memberSlug}`}
+                            className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-300 transition hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
+                          >
+                            {member.name}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </Card>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="mt-14">
           <SectionHeading
