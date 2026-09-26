@@ -805,18 +805,21 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     network: "Impact.com",
     productSlugs: ["hubspot"],
     status: "REJECTED",
-    statusUpdatedAt: "2026-08-19",
+    statusUpdatedAt: "2026-09-26",
     applicationSubmittedAt: null,
     decisionAt: "2026-08-19",
     affiliateUrl: null,
     commissionModel: "30% recurring up to 1 year",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md vendor rejection log"],
+    evidence: [
+      "docs/affiliate-applications.md vendor rejection log",
+      "Owner directly observed the application status in the HubSpot partner account on 2026-09-26: DECLINED, displayed reason \"Low reach (traffic, followers)\""
+    ],
     ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Declined by vendor",
+    eligibility: "Declined by vendor -- displayed reason: Low reach (traffic, followers)",
     applicationUrl: "https://www.hubspot.com/partners/affiliates",
-    notes: "Vendor declined. Do not re-apply."
+    notes: "Vendor declined. Do not re-apply. Owner-confirmed 2026-09-26 that the account's own displayed decline reason is low reach (traffic/followers) -- reapplying only makes sense after real growth in traffic and audience, not before."
   },
   {
     programId: "n8n",
