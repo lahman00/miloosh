@@ -11,6 +11,20 @@
     "Linux"
   ],
   "best_for": "Serves organizations of any scale that want a free, self-hosted, highly extensible continuous integration and delivery server, from a simple CI setup to a comprehensive delivery hub for many project types.",
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.jenkins.io/"
+  },
+  "cons": [
+    "No official cloud or SaaS offering exists from the Jenkins project itself — infrastructure provisioning, scaling, upgrades, and maintenance are entirely the self-hoster's responsibility, with no vendor support included.",
+    "The plugin ecosystem has a high volume of security advisories, frequently affecting a dozen or more plugins at once in a single disclosure, and since most plugins are community-maintained, patch timeliness varies.",
+    "Staying current requires an active upgrade cadence even on the stable LTS track, which ships incremental releases roughly every 4 weeks with only important bug and security fixes — meaning security fixes still require regular manual upgrades, not a hands-off subscription."
+  ],
   "features": [
     "Hundreds of plugins integrating nearly every CI/CD toolchain component",
     "Web-based configuration UI with real-time error checking and built-in help",

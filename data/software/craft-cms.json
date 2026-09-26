@@ -9,6 +9,30 @@
     "Self-hosted"
   ],
   "best_for": "Agencies and developers building multi-site or e-commerce projects who want flexible content modeling without being locked into a rigid page structure.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$279",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "279", "currency": "USD", "billing_period": "one_time", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Solo", "amount": "0", "currency": "USD", "billing_period": "one_time", "notes": "Free forever, one user account only; Craft's own pricing page describes it as not recommended for professional client work." },
+      { "name": "Team (self-hosted license)", "amount": "279", "currency": "USD", "billing_period": "one_time", "notes": "Up to 5 user accounts, 1 user group. $99/yr renewal after year 1 to keep receiving new-version updates and developer support. Free if hosted on Craft Cloud." },
+      { "name": "Pro (self-hosted license)", "amount": "399", "currency": "USD", "billing_period": "one_time", "notes": "Unlimited users and groups, branded control panel. Same $99/yr renewal terms as Team. Free if hosted on Craft Cloud." },
+      { "name": "Enterprise (self-hosted license)", "currency": "USD", "billing_period": "unknown", "notes": "Custom pricing; adds first-party SAML SSO, a custom license agreement, and dedicated premium support. Contact sales." },
+      { "name": "Craft Cloud Team (hosting)", "amount": "130", "currency": "USD", "billing_period": "monthly", "notes": "$120/mo if paid annually. Includes the Craft Team edition license, 2 environments, and 10GB asset storage." },
+      { "name": "Craft Cloud Pro (hosting)", "amount": "260", "currency": "USD", "billing_period": "monthly", "notes": "$240/mo if paid annually. Includes the Craft Pro edition license, 3 environments, and 20GB asset storage." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://craftcms.com/pricing"
+  },
+  "cons": [
+    "If a new Craft version ships while your license's renewal is current but you don't deploy the update before that eligibility window expires, the license is permanently capped at the older version even if you pay a later renewal.",
+    "Craft Cloud hosting is priced on top of the license as a separate recurring fee (Team $130/mo, Pro $260/mo, or ~8% less billed annually) — the license itself is free on Craft Cloud, but the hosting cost is materially higher than commodity hosting.",
+    "First-party SAML SSO is gated to the custom-quoted Enterprise tier, which has no public price."
+  ],
   "features": [
     "Customizable field types and flexible content modeling",
     "Multi-site support with unlimited localization, translated into 25 languages in the control panel",

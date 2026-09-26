@@ -6,6 +6,28 @@
   "website": "https://www.okta.com",
   "platforms": ["Web"],
   "best_for": "Positioned for enterprises, governments, and public sector agencies across industries (financial services, healthcare, manufacturing, retail, travel, technology, energy), as well as small businesses and developers.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$6",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "6", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Starter", "amount": "6", "currency": "USD", "billing_period": "monthly", "unit": "per user, billed annually", "notes": "Includes SSO, MFA, and Universal Directory. Adaptive MFA, Privileged Access, Device Access, and Lifecycle Management are all sold as separate paid add-ons, not included." },
+      { "name": "Essentials", "amount": "17", "currency": "USD", "billing_period": "monthly", "unit": "per user, billed annually", "notes": "Adds Adaptive MFA, Privileged Access, Lifecycle Management, and Access Governance. Identity Security Posture Management and Identity Threat Protection remain unavailable even as add-ons." },
+      { "name": "Professional", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales. Adds Device Access, Identity Security Posture Management, and Identity Threat Protection." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales. Adds API Access Management and Access Gateway." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.okta.com/pricing/"
+  },
+  "cons": [
+    "All Workforce Identity suites are billed annually only, with a $1,500/year minimum contract regardless of actual seat count — a small team on the $6/user Starter plan hits this floor at around 21 users.",
+    "On the entry Starter suite, core security capabilities most buyers expect — Adaptive MFA, Privileged Access, Device Access, and Lifecycle Management — are all sold as separate paid add-ons, not bundled at $6/user.",
+    "Identity Security Posture Management and Identity Threat Protection are completely unavailable on Starter or Essentials, not even purchasable as add-ons — they require Professional or Enterprise, both contact-sales only."
+  ],
   "features": [
     "Single Sign-On (SSO) across a large integration network",
     "Adaptive Multi-Factor Authentication (MFA)",

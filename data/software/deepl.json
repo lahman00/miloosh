@@ -6,6 +6,29 @@
   "website": "https://www.deepl.com/en/translator",
   "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
   "best_for": "Enterprise organizations requiring secure, high-volume translation, legal and financial services needing specialized terminology, healthcare and life-sciences industries, and marketing/localization and customer-support teams.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "€7.49",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "7.49", "currency": "EUR", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "EUR", "billing_period": "monthly", "unit": "per user", "notes": "50,000 characters/month, 1 file translation/month (max 5MB), 1 glossary." },
+      { "name": "Individual", "amount": "7.49", "currency": "EUR", "billing_period": "annual", "unit": "per user, billed annually (16% cheaper than monthly)", "notes": "300,000 characters/month, 3 file translations/month (max 30MB), 30 minutes of DeepL Voice/month included." },
+      { "name": "Team", "amount": "24.99", "currency": "EUR", "billing_period": "annual", "unit": "per user, billed annually", "notes": "1,000,000 characters/user/month, 5 glossaries, team admin/analytics. SSO is only available for organizations with 50+ users." },
+      { "name": "Business", "amount": "49.99", "currency": "EUR", "billing_period": "annual", "unit": "per user, billed annually", "notes": "Unlimited characters under fair use, translation memory, and a 99.0% availability SLA." },
+      { "name": "Enterprise", "currency": "EUR", "billing_period": "unknown", "notes": "Contact sales. Custom limits, 99.9% availability SLA, and bring-your-own-key." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.deepl.com/en/pro"
+  },
+  "cons": [
+    "The permanent Free tier is capped hard at 50,000 characters/month, 1 file translation/month, and a 5MB max file size — too small for regular business use.",
+    "SSO is gated even on the paid Team plan to organizations with 50+ users; smaller Team-tier customers pay per seat but get no SSO option.",
+    "The advertised per-seat prices all require annual billing, and even the Business plan's own SLA is only 99.0% uptime — full 99.9% availability requires upgrading to custom-priced Enterprise."
+  ],
   "features": [
     "Text translation supporting 100+ languages",
     "DeepL Voice for real-time translation of meetings and conversations",

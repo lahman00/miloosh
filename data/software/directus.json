@@ -9,6 +9,28 @@
     "Self-hosted"
   ],
   "best_for": "Development and content teams that want to turn an existing SQL database into a governed API and content backend without vendor lock-in.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$99",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "99", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Core", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "3 user seats, 25 collections, 5 flows, AI Assistant, community support. Free forever self-hosted for organizations under $5M annual revenue and fewer than 50 employees." },
+      { "name": "Cloud Hosting Add-on", "amount": "99", "currency": "USD", "billing_period": "monthly", "notes": "Optional add-on for Directus Cloud hosting on top of the Core or Team plan instead of self-hosting." },
+      { "name": "Team", "amount": "499", "currency": "USD", "billing_period": "monthly", "notes": "$499/mo requires an annual commitment; $599/mo is available month-to-month with no commitment. Includes 10 SSO seats (extra seats $50/seat/mo), up to 100 collections, 20 flows, and SAML/OIDC SSO." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales. Custom SSO seats, 200+ collections, unlimited flows, and premium support." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://directus.com/pricing"
+  },
+  "cons": [
+    "In 2026 Directus replaced its Business Source License with a new proprietary Monospace Sustainable Core License — each version only becomes true open source (GPLv3) four years after release, and the new terms bar building a directly competing product.",
+    "The free Core tier is hard-capped at just 3 user seats, 25 collections, and 5 flows — any growth past that forces an upgrade straight to the $499-599/month Team plan.",
+    "SSO (SAML/OIDC) is entirely unavailable below the Team plan, and even on Team only 10 SSO seats are included, with additional seats costing $50/seat/month."
+  ],
   "features": [
     "Instant REST and GraphQL API generation from an existing database",
     "No-code admin interface (Studio) for content management and data governance",

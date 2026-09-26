@@ -6,6 +6,29 @@
   "website": "https://plausible.io/",
   "platforms": ["Web"],
   "best_for": "Ecommerce, SaaS, digital agencies, content creators, and enterprises wanting cookieless, GDPR-friendly analytics without cookie banners, including white-label options.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$9",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Starter", "amount": "9", "currency": "USD", "billing_period": "monthly", "unit": "up to 10,000 pageviews/month", "notes": "For solo use, 1 site, no team or sharing, 3-year data retention. Price scales up automatically as monthly pageviews grow past 10,000. Annual billing gives roughly 2 months free." },
+      { "name": "Growth", "amount": "14", "currency": "USD", "billing_period": "monthly", "unit": "up to 10,000 pageviews/month", "notes": "Everything in Starter plus up to 3 sites, 3 team members, and shared dashboard links." },
+      { "name": "Business", "amount": "19", "currency": "USD", "billing_period": "monthly", "unit": "up to 10,000 pageviews/month", "notes": "Everything in Growth plus up to 10 sites, 10 team members, 5-year retention, the Stats API, and revenue attribution." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "monthly", "notes": "Contact sales. 10+ sites/team members, SSO, managed proxy, and priority support." },
+      { "name": "Self-hosted Community Edition", "amount": "0", "currency": "USD", "billing_period": "one_time", "notes": "Open-source codebase; self-host free with no pageview cap, but no official hosted support." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://plausible.io/#pricing"
+  },
+  "cons": [
+    "No permanent free tier for the hosted Cloud product — only a 30-day free trial; after that even a single low-traffic site costs at least $9/month.",
+    "Every hosted tier's price scales with monthly pageviews, so cost rises automatically as traffic grows past the 10,000/month starting bracket — there's no flat unlimited-traffic price.",
+    "Team collaboration such as inviting members or sharing a dashboard link is unavailable on the cheapest Starter tier ($9/month) — it is explicitly solo-use only, requiring an upgrade to Growth ($14/month) to add one teammate."
+  ],
   "features": [
     "Automatic scroll-depth tracking across all pages without setup",
     "AI-tool traffic monitoring to identify visits from ChatGPT, Perplexity, Claude, and similar services",

@@ -9,6 +9,28 @@
     "Windows"
   ],
   "best_for": "Organizations already invested in Microsoft 365 and Azure that need to automate both cloud app workflows and legacy desktop processes with a single low-code platform.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Power Automate Premium", "amount": "15", "currency": "USD", "billing_period": "monthly", "unit": "per user, paid yearly", "notes": "Cloud flows, attended desktop flows, standard/premium/custom connectors, and process/task mining." },
+      { "name": "Power Automate Process", "amount": "150", "currency": "USD", "billing_period": "monthly", "unit": "per bot, paid yearly", "notes": "Unattended desktop flows (RPA); one bot equals one machine executing one unattended run at a time." },
+      { "name": "Power Automate Hosted Process", "amount": "215", "currency": "USD", "billing_period": "monthly", "unit": "per bot, paid yearly", "notes": "Same as Process plus a Microsoft-hosted VM on Azure." },
+      { "name": "Process Mining Add-on", "amount": "5000", "currency": "USD", "billing_period": "monthly", "unit": "per tenant, paid yearly", "notes": "Requires the Premium plan as a prerequisite." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.microsoft.com/en-us/power-platform/products/power-automate/pricing"
+  },
+  "cons": [
+    "Unattended RPA is excluded from the $15/user/month Premium plan entirely — it requires the separate $150/bot/month Process plan (or $215/bot/month Hosted Process), a 10-14x price increase for one feature.",
+    "The Process Mining add-on costs a flat $5,000/tenant/month and can only be purchased on top of an existing Premium subscription, with no per-user or lower-volume option.",
+    "Every listed price requires annual commitment, and Microsoft's own pricing page states actual list price varies by currency, country, and organizational factors — the displayed figures are for marketing purposes only."
+  ],
   "features": [
     "Cloud flows for connecting apps and services (DPA)",
     "Desktop flows for attended and unattended RPA on legacy systems",

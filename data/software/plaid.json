@@ -6,6 +6,27 @@
   "website": "https://plaid.com",
   "platforms": ["Web"],
   "best_for": "Plaid targets fintech companies, banks, lenders, payment processors, and organizations in consumer lending, insurance, healthcare, and gaming that need to build financial products.",
+  "pricing": {
+    "model": "unknown",
+    "has_free_tier": true,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true },
+    "tiers": [
+      { "name": "Sandbox", "amount": "0", "currency": "USD", "billing_period": "unknown", "notes": "Free test-data environment with no live bank data; unlimited use for building and testing integrations." },
+      { "name": "Trial", "amount": "0", "currency": "USD", "billing_period": "unknown", "unit": "per connected account", "notes": "New US/Canada teams get free production access to real bank data, capped at 10 connected accounts total; removing an account does not free up the cap." },
+      { "name": "Pay-as-you-go", "currency": "USD", "billing_period": "monthly", "unit": "per API call or per connected account", "notes": "No minimum commitment; exact per-call/per-account rates are not published and only appear after applying for production access." },
+      { "name": "Growth", "currency": "USD", "billing_period": "annual", "notes": "Requires a 12-month commitment and a minimum spend not publicly disclosed; adds discounted rates and dashboard SSO." },
+      { "name": "Custom/Enterprise", "currency": "USD", "billing_period": "annual", "notes": "Sales-negotiated; adds beta product access, volume discounts, and dedicated account management." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://plaid.com/pricing/"
+  },
+  "cons": [
+    "No public pricing exists for any paid tier — Plaid's own pricing page and billing docs require applying for production access before any rate is shown, and the Growth/Custom tiers require talking to sales.",
+    "The free Trial is hard-capped at 10 connected accounts for the life of the team, and removing an account does not restore capacity toward that cap, per Plaid's own billing documentation.",
+    "Growth and Custom tiers require a 12-month minimum-spend commitment; only the Pay-as-you-go tier is commitment-free, and it carries the least favorable per-unit rates."
+  ],
   "features": [
     "Bank connections across 12,000+ financial institutions in 20 countries",
     "Account and routing number verification (Auth product)",

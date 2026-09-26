@@ -6,6 +6,29 @@
   "website": "https://www.crazyegg.com/",
   "platforms": ["Web"],
   "best_for": "Teams of any skill level, including those with multiple websites or team members, seeking to understand visitor behavior without complex configuration, with unlimited seats and domains on its plans.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$29",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free forever, no credit card required. Unlimited websites and team members, web analytics, and basic heatmaps. Excludes session recordings, A/B testing, and error tracking entirely." },
+      { "name": "Starter", "amount": "29", "currency": "USD", "billing_period": "monthly", "notes": "Billed annually; no monthly-billing option exists for any paid plan. 5,000 pageviews/month, 5 heatmaps, 50 recordings/month." },
+      { "name": "Plus", "amount": "99", "currency": "USD", "billing_period": "monthly", "notes": "Billed annually. 150,000 pageviews/month, 75 heatmaps, 1,000 recordings/month. Adds A/B testing and error tracking." },
+      { "name": "Pro", "amount": "249", "currency": "USD", "billing_period": "monthly", "notes": "Billed annually. 500,000 pageviews/month, 100 heatmaps, 5,000 recordings/month. Adds advanced A/B test targeting." },
+      { "name": "Enterprise", "amount": "599", "currency": "USD", "billing_period": "monthly", "notes": "Billed annually. 1,000,000 pageviews/month, 200 heatmaps, 10,000 recordings/month. Adds SAML SSO." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.crazyegg.com/pricing/"
+  },
+  "cons": [
+    "All four paid plans are billed annually only — there is no month-to-month payment option, so buyers must commit to a full year upfront to get session recordings, A/B testing, or error tracking.",
+    "SAML single sign-on is restricted to the top Enterprise tier at $599/month — not available on Starter, Plus, or even the $249/month Pro plan.",
+    "The permanent Free plan excludes session recordings, A/B testing, and error tracking entirely — it is analytics and surveys only, so those core CRO tools require at least the $29/month Starter plan."
+  ],
   "features": [
     "Heatmaps, Scrollmaps, and Confetti Maps visualizing visitor interaction",
     "Session recordings to watch actual user behavior",

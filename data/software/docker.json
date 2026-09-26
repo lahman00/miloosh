@@ -6,6 +6,27 @@
   "website": "https://www.docker.com",
   "platforms": ["Web", "macOS", "Windows", "Linux"],
   "best_for": "Docker serves individual developers (free Personal tier) up through Pro, Team, and Business/enterprise tiers; the site states 91% of Fortune 100 companies run on Docker and 20M+ developers build on it daily.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Personal", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Free forever. 1 Docker Scout-enabled repo, 1 private Hub repo, 100 Hub image pulls per hour." },
+      { "name": "Pro", "amount": "11", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "$11/user/month billed monthly, or $9/user/month if billed annually. Unlimited Hub pull rate, 200 Build Cloud build minutes/month, 5-business-day support SLA." },
+      { "name": "Team", "amount": "16", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "$16/user/month monthly, $15/user/month if billed annually. Capped at up to 100 users. Adds RBAC and audit logs, 2-business-day support." },
+      { "name": "Business", "amount": "24", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Flat $24/user/month — no discount for annual billing, unlike Pro and Team. Unlimited users, SSO/SCIM, invoice billing, 1-business-day support." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.docker.com/pricing/"
+  },
+  "cons": [
+    "Business is the only tier with no annual-billing discount — it's a flat $24/user/month either way, while Pro and Team both drop when paid annually.",
+    "SSO and SCIM provisioning are gated behind the Business tier, and even RBAC and audit logs require Team ($16/mo) — small teams on Pro ($11/mo) get none of these controls.",
+    "Team is hard-capped at 100 users; scaling past that forces a jump to Business at $24/user/month, a 60% per-seat increase over Team's annual rate, just to remove the seat cap."
+  ],
   "features": [
     "Docker Desktop for local containerization",
     "Docker Hub for discovering/sharing container images",

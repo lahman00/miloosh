@@ -6,6 +6,29 @@
   "website": "https://usefathom.com/",
   "platforms": ["Web"],
   "best_for": "Developers and technical teams seeking straightforward analytics, privacy-conscious businesses and creators, and companies wanting faster site performance, including customers like IBM, GitHub, and Bootstrap.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Starter", "amount": "15", "currency": "USD", "billing_period": "monthly", "unit": "up to 100,000 pageviews/month", "notes": "Lowest paid tier. Annual billing gets two months free (about 17% off); monthly billing is also available, so annual is not required." },
+      { "name": "Tier 2", "amount": "25", "currency": "USD", "billing_period": "monthly", "unit": "up to 200,000 pageviews/month" },
+      { "name": "Tier 5", "amount": "100", "currency": "USD", "billing_period": "monthly", "unit": "up to 2,000,000 pageviews/month" },
+      { "name": "Tier 10", "amount": "470", "currency": "USD", "billing_period": "monthly", "unit": "up to 25,000,000 pageviews/month" },
+      { "name": "Custom", "billing_period": "monthly", "unit": "over 25,000,000 pageviews/month", "notes": "Contact sales for high-traffic sites." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://usefathom.com/pricing"
+  },
+  "cons": [
+    "No free plan at all — the pricing page states directly that subscription fees pay for running and improving Fathom, with no permanent free tier.",
+    "The 7-day free trial requires a credit card upfront and auto-bills when the trial ends, so it isn't a no-risk trial.",
+    "Pricing is a strict step-ladder by pageview cap rather than metered billing — going even one pageview over a tier's limit pushes the whole account to the next, more expensive tier, and above 25 million pageviews/month there's no published price at all."
+  ],
   "features": [
     "Event tracking for custom interactions like sign-ups, clicks, and ecommerce transactions",
     "Real-time dashboard powered by a lightweight, 2kB script",

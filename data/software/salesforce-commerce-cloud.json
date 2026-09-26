@@ -8,6 +8,24 @@
     "Web"
   ],
   "best_for": "Large enterprise and multi-brand retailers that need a unified platform spanning online storefronts, in-store point of sale, and cross-channel order management.",
+  "pricing": {
+    "model": "unknown",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Commerce Cloud B2C Premium", "currency": "USD", "billing_period": "unknown", "notes": "No public number in any currency shown on the official pricing page." },
+      { "name": "Commerce Cloud B2B Growth Edition", "currency": "USD", "billing_period": "unknown" },
+      { "name": "Retail Cloud Point-of-Sale", "currency": "USD", "billing_period": "unknown", "notes": "Positioned starting at 25 stores." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.salesforce.com/commerce/pricing/"
+  },
+  "cons": [
+    "Zero public self-serve pricing exists for any edition — B2C Premium, B2B Growth, Order Management, POS, and Payments all show Contact for Pricing with no numeric starting cost disclosed anywhere on the official site.",
+    "Paid support tiers stack on top of whatever license fee is negotiated: the Premier Success Plan costs 30% of net license fees, and the Signature tier is custom-quoted on top of that.",
+    "The official pricing page carries an explicit reliability disclaimer that its content is not warranted to be error-free and funnels every prospect to an account executive, leaving buyers with no independently verifiable starting price."
+  ],
   "features": [
     "AI-native search that interprets shopper intent",
     "Agentforce Merchant, Buyer, and Personal Shopper agents for merchandising and guided shopping",

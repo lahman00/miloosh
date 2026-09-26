@@ -9,6 +9,20 @@
     "Self-hosted"
   ],
   "best_for": "Higher education, government, healthcare, nonprofit, and enterprise organizations that need an open-source, highly customizable CMS with no vendor lock-in.",
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://new.drupal.org"
+  },
+  "cons": [
+    "Drupal itself sells nothing and supports nothing directly — all commercial support, hosting, and implementation must be sourced from third-party certified partners or hosting companies, so there is no single official price list to budget against.",
+    "Security-advisory coverage for contributed, non-core modules is opt-in and conditional: the security team only covers stable releases of contributed projects whose maintainers applied for and were granted coverage, not every module automatically.",
+    "Drupal 10 reaches official end-of-life on December 9, 2026, after which no further security releases are issued for it, so sites still on Drupal 10 must budget an upgrade to a newer major version imminently."
+  ],
   "features": [
     "Structured, component-based content modeling",
     "10,000+ community modules for extending functionality",

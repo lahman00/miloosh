@@ -9,6 +9,29 @@
     "Self-hosted"
   ],
   "best_for": "Developers who need a customizable, framework-agnostic headless CMS with full data ownership for websites, mobile apps, and e-commerce.",
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Community (self-hosted)", "amount": "0", "currency": "USD", "billing_period": "one_time", "unit": "self-hosted, unlimited", "notes": "MIT-licensed open source, permanently free. No Live Preview, Releases, Content History, or SSO." },
+      { "name": "Strapi Cloud Starter", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per project", "notes": "$35/mo if billed monthly; $29/mo effective rate requires annual billing. 100k API requests/month, 50GB storage, 1 environment, 7-day observability logs." },
+      { "name": "Strapi Cloud Pro", "amount": "75", "currency": "USD", "billing_period": "monthly", "unit": "per project", "notes": "$90/mo billed monthly, about $75/mo billed annually. 1M API requests/month, weekly backups. Extra environment costs +$60/mo." },
+      { "name": "Strapi Cloud Business", "amount": "375", "currency": "USD", "billing_period": "monthly", "unit": "per project", "notes": "$450/mo billed monthly, about $375/mo billed annually. 10M API requests/month, daily backups, 99.9% uptime SLA. Extra environment costs +$300/mo." },
+      { "name": "Self-hosted Growth", "amount": "45", "currency": "USD", "billing_period": "monthly", "unit": "includes 3 seats, +$15/seat", "notes": "Self-hosted paid license adding Live Preview, unlimited Releases, and 14-day Content History. SSO is a paid add-on here, at +$150/month plus $50/seat." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales. Adds unlimited review workflows, audit logs, and SSO included by default." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://strapi.io/pricing-cloud"
+  },
+  "cons": [
+    "Strapi Cloud's free hosting tier was discontinued as of July 1, 2026 — existing free-plan Cloud users had to upgrade to a paid plan or delete their projects; self-hosting the open-source Community edition remains free, but the free-to-deploy-on-Cloud on-ramp is gone.",
+    "SSO isn't included until deep into paid tiers — on the $45/month self-hosted Growth plan, SSO is a separate paid add-on costing an extra $150/month plus $50/seat, and is only bundled by default on the custom-quote Enterprise plan.",
+    "Additional environments beyond the one bundled cost significantly extra on Strapi Cloud: +$60/month per extra environment on Pro and +$300/month per extra environment on Business."
+  ],
   "features": [
     "Content-Type Builder for creating content models without code",
     "Automatic REST and GraphQL API generation from content models",

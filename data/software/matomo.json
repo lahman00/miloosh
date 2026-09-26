@@ -6,6 +6,28 @@
   "website": "https://matomo.org",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Positioned for organizations wanting privacy-compliant analytics without vendor lock-in — enterprises prioritizing data ownership, public sector bodies with regulatory requirements, and teams seeking a Google Analytics alternative.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "€29",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "29", "currency": "EUR", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "On-Premise Community", "amount": "0", "currency": "EUR", "billing_period": "one_time", "unit": "self-hosted", "notes": "Free forever, self-hosted, with unlimited users and hits; community forum support only." },
+      { "name": "Cloud Starter", "amount": "29", "currency": "EUR", "billing_period": "monthly", "unit": "per account", "notes": "€29/month excluding tax for 50,000 hits/month, up to 30 websites and 30 team members included; annual billing gives about 2 months free." },
+      { "name": "On-Premise Team bundle", "amount": "275", "currency": "EUR", "billing_period": "monthly", "unit": "up to 4 users", "notes": "Up to 5,000,000 hits/month; includes funnels, heatmaps, session recording, and form analytics." },
+      { "name": "On-Premise Business bundle", "amount": "1450", "currency": "EUR", "billing_period": "monthly", "unit": "up to 20 users", "notes": "Up to 30,000,000 hits/month; adds cohorts, multi-channel attribution, and white labeling." },
+      { "name": "On-Premise Enterprise bundle", "amount": "3400", "currency": "EUR", "billing_period": "monthly", "unit": "up to 50 users", "notes": "Up to 100,000,000 hits/month; adds A/B testing and SAML/LDAP authentication, unavailable on the lower on-premise bundles." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://matomo.org/pricing/"
+  },
+  "cons": [
+    "The cheapest published On-Premise paid bundle (Team, €275/month) still caps at only 4 users and 5,000,000 hits/month — mid-size teams needing more seats must jump straight to the €1,450/month Business bundle.",
+    "SAML/LDAP single sign-on and A/B testing are only unlocked on the top On-Premise Enterprise bundle at €3,400/month, not on the far cheaper Team or Business on-premise bundles.",
+    "Matomo has publicly raised its On-Premise bundle pricing to fund ongoing development and security updates, meaning existing subscribers can see their bundle price increase on renewal, not just new customers."
+  ],
   "features": [
     "Unsampled data with no sampling limitations",
     "Cookieless tracking and data anonymization options",

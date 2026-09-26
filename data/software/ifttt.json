@@ -10,6 +10,27 @@
     "Android"
   ],
   "best_for": "Individuals, small business owners, and smart-home users who want simple, no-code automations between everyday apps and connected devices.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$2.99",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "2.99", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per account", "notes": "Capped at 2 Applets. Polling-trigger Applets on Free check roughly once per hour. No webhooks, no multi-action Applets." },
+      { "name": "Pro", "amount": "2.99", "currency": "USD", "billing_period": "annual", "unit": "per account", "notes": "$2.99/mo requires annual billing ($35.88/yr); the page advertises a 40% saving versus monthly billing but does not display the flat monthly figure. 20 Applets, multi-action Applets, webhooks, about 5-minute polling speed." },
+      { "name": "Pro+", "amount": "8.99", "currency": "USD", "billing_period": "annual", "unit": "per account", "notes": "$8.99/mo requires annual billing ($107.88/yr), same 40%-savings annual structure. Unlimited Applets, AI services, filter code, and multiple accounts per service." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://ifttt.com/plans"
+  },
+  "cons": [
+    "The Free plan is capped at just 2 active Applets, and polling-based Applets on Free are checked only about once an hour versus roughly 5 minutes on paid plans — a functional throttle, not just a feature-count limit.",
+    "The advertised headline prices ($2.99/mo Pro, $8.99/mo Pro+) require annual billing; IFTTT does not display a flat month-to-month dollar figure anywhere on the pricing page, only the discounted annual-equivalent rate.",
+    "Webhooks and multi-action Applets are entirely unavailable on Free and only unlock at Pro; filter code and connecting multiple accounts per service are gated to the top Pro+ tier."
+  ],
   "features": [
     "Applets built from a trigger, action, and optional filter code",
     "100,000+ ready-made Applets plus custom Applet creation",

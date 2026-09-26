@@ -13,6 +13,26 @@
     "Web"
   ],
   "best_for": "Positioned as a collaboration platform for mission-critical work — defense, government, critical infrastructure, DevSecOps, and security-operations teams needing data sovereignty.",
+  "pricing": {
+    "model": "freemium",
+    "has_free_tier": true,
+    "status": "contact_sales",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 1 },
+    "tiers": [
+      { "name": "Free / self-hosted core", "amount": "0", "currency": "USD", "billing_period": "one_time", "unit": "self-hosted", "notes": "Free, community-supported edition. Mattermost also offers a limited-use edition of Enterprise Advanced free for technical evaluation, plus a 1-hour hosted trial environment." },
+      { "name": "Professional", "currency": "USD", "billing_period": "unknown", "unit": "per user", "notes": "The official pricing page shows only a Contact Sales button with no public number as of 2026-09-26." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "unit": "per user", "notes": "Get Pricing button links to Contact Sales; no public figure." },
+      { "name": "Enterprise Advanced", "currency": "USD", "billing_period": "unknown", "unit": "per user", "notes": "Request Quote button; no public figure. Positioned for multi-domain secure operations." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://mattermost.com/pricing/"
+  },
+  "cons": [
+    "The official pricing page publishes no dollar figures at all for Professional, Enterprise, or Enterprise Advanced — every tier requires contacting sales just to learn the price.",
+    "The only self-serve access to the top tier is a technical-evaluation-only limited-use edition of Enterprise Advanced and a 1-hour hosted trial environment — there is no permanent free hosted plan; a genuinely free deployment requires self-hosting the community edition.",
+    "Enterprise-grade compliance and security capabilities, positioned as Enterprise Advanced, are reserved for the highest, quote-only tier, so organizations with strict compliance needs cannot get pricing certainty without a custom sales quote."
+  ],
   "features": [
     "Channels for secure messaging and collaboration",
     "Playbooks for workflow automation",

@@ -6,6 +6,20 @@
   "website": "https://document360.com",
   "platforms": ["Web"],
   "best_for": "Serves multiple roles (support teams, technical writers, product managers, engineers) across industries such as SaaS, IT/consulting, financial services, healthcare, education, manufacturing, retail, and nonprofits, for both internal knowledge bases and external customer/API documentation.",
+  "pricing": {
+    "model": "unknown",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "last_verified": "2026-09-26",
+    "official_source": "https://document360.com/pricing/"
+  },
+  "cons": [
+    "No published self-serve pricing whatsoever — Document360 moved to fully custom, quote-based pricing with no public tiers or numbers anywhere on the site, so buyers cannot compare costs without booking a sales call.",
+    "AI features are gated as a separate paid add-on rather than bundled into a base plan, listed explicitly as optional on top of whatever base quote is negotiated.",
+    "Price is configured across several variables (seats, workspaces, languages, SSO needs, AI usage), meaning cost can scale unpredictably as a team grows, with no published rate card to budget against."
+  ],
   "features": [
     "AI-powered conversational search grounded in your articles, plus an AI chatbot",
     "AI writing agent that generates documentation from videos and files",

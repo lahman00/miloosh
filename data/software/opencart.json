@@ -8,6 +8,23 @@
     "Web"
   ],
   "best_for": "Small businesses, developers, and agencies who want a free, self-hosted, highly extensible storefront without recurring platform fees.",
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Core (self-hosted, open source)", "amount": "0", "currency": "USD", "billing_period": "one_time", "notes": "Free download and free updates with zero license fees; the full source is on GitHub. Hosting is provided and paid for separately by the store owner." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.opencart.com/"
+  },
+  "cons": [
+    "The official marketplace enforces a minimum extension price of $29.99 — nearly all functional add-ons such as payment gateways, SEO tools, and shipping modules carry real costs on top of the free platform.",
+    "OpenCart's own hosted OpenCart Cloud product does not publish clear pricing anywhere on its official pages, and third-party trackers report inconsistent figures for it, making cloud hosting costs unverifiable from opencart.com itself.",
+    "Support is not included with the free platform — Dedicated Support is a separate paid service with no public price listed anywhere on opencart.com, so total cost of ownership beyond the free core software is opaque."
+  ],
   "features": [
     "Fully mobile-friendly admin area with product, order, and customer management",
     "36 payment methods built in, with hundreds more available via the marketplace",

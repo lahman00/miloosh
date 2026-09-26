@@ -12,6 +12,28 @@
     "Android"
   ],
   "best_for": "Vendor copy targets general users organizing personal information, teams doing real-time collaborative work, students, and enterprise customers.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$8.25",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": { "amount": "8.25", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per individual", "notes": "Capped at 50 notes total, 1 notebook, 200MB of attachments, and sync limited to 1 device." },
+      { "name": "Starter", "amount": "8.25", "currency": "USD", "billing_period": "annual", "unit": "per individual, $99/year", "notes": "$99/year billed annually, or $14.99/month billed month-to-month. Up to 1,000 notes, 20 notebooks, 1,000 attachments, sync on 3 devices, 5GB storage. Replaced the older Personal plan in late 2025." },
+      { "name": "Advanced", "amount": "20.83", "currency": "USD", "billing_period": "annual", "unit": "per individual, $249.99/year", "notes": "$249.99/year billed annually, or about $24.99/month month-to-month. Unlimited notes, notebooks, and attachments, unlimited device sync, and AI search/edit features. Replaced the older Professional plan." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "unit": "per organization", "notes": "Contact sales; offers a separate 14-day free trial versus 7 days for Starter/Advanced." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://evernote.com/pricing"
+  },
+  "cons": [
+    "The Free plan is capped at just 50 notes total and syncs to only 1 device, so a free user cannot use Evernote across a phone and a laptop simultaneously.",
+    "Even the cheapest paid tier (Starter) is not unlimited — it still caps notes at 1,000, notebooks at 20, and device sync at 3 devices; only the top Advanced tier removes these caps.",
+    "In late 2025 Evernote discontinued its long-standing Personal and Professional plan names and pricing and replaced them with the pricier Starter and Advanced tiers, migrating existing users onto the new pricing."
+  ],
   "features": [
     "Ready-made note templates",
     "Notebooks and Spaces for organizing notes",

@@ -6,6 +6,28 @@
   "website": "https://miro.com",
   "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
   "best_for": "Positioned for product, design/UX, engineering, and product operations teams across industries who want to break down tool silos and align on shared direction.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$8",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "8", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per member", "notes": "Only 3 editable boards; older boards beyond that lock to view-only. 10 AI credits/month. No private boards, no visitor roles, no SSO." },
+      { "name": "Starter", "amount": "8", "currency": "USD", "billing_period": "annual", "unit": "per member/month, billed yearly", "notes": "$10/member/month if billed monthly instead. Unlimited private boards, 25 AI credits/member/month. Annual invoicing requires a 10-seat minimum." },
+      { "name": "Business", "amount": "20", "currency": "USD", "billing_period": "annual", "unit": "per member/month, billed yearly", "notes": "$25/member/month if billed monthly. Includes SAML SSO but not SCIM provisioning or audit logs. 50 AI credits/member/month. Annual invoicing requires a 5-seat minimum." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "unit": "per member, 30-member minimum", "notes": "Contact sales only. Adds SCIM provisioning, audit logs, domain control, and regional data residency." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://miro.com/pricing/"
+  },
+  "cons": [
+    "The Free plan hard-caps at 3 editable boards total — once a team hits that limit, no new board can be created until one is deleted or the team upgrades, and older boards beyond the 3 most recent become view-only.",
+    "AI features are metered by monthly credits at every tier including paid ones, with no rollover, so even paying customers can run out of AI usage before renewal.",
+    "SAML SSO is included on the Business plan, but SCIM auto-provisioning and audit logs are gated to Enterprise only, which itself requires a 30-member minimum and custom-quoted pricing."
+  ],
   "features": [
     "Intelligent Canvas infinite multiplayer workspace",
     "AI workflows integrated with tools like Claude and NotebookLM",

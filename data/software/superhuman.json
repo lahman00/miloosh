@@ -5,6 +5,26 @@
   "description": "Superhuman Mail is a productivity-focused email client for Gmail and Outlook that uses keyboard shortcuts, automatic triage, and AI features to help users process their inbox significantly faster.",
   "website": "https://superhuman.com/mail",
   "best_for": "Positioned as an AI-native email client for professionals who process high volumes of email and want to fly through their inbox faster with keyboard-driven workflows.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$25",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Starter", "amount": "25", "currency": "USD", "billing_period": "monthly", "unit": "per member, up to 25 seats", "notes": "Price shown is billed annually with a 17%-off annual banner; no separate pay-monthly figure is published on the official page." },
+      { "name": "Business", "amount": "33", "currency": "USD", "billing_period": "monthly", "unit": "per member, up to 25 seats", "notes": "Billed annually. Adds Auto Drafts, Ask AI, custom AI auto-labels, and CRM integrations." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales. Unlimited seats, adds SSO, advanced admin controls, and a dedicated customer success manager." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://superhuman.com/plans/mail"
+  },
+  "cons": [
+    "Getting started requires a mandatory onboarding call before the account is fully activated, not a self-serve instant signup like most SaaS tools.",
+    "There is no perpetual free plan, and the official pricing page shows only annually-billed rates with a 17% annual-discount banner; the true month-to-month price isn't published on the page itself.",
+    "SSO, advanced admin controls, and a dedicated customer success manager are reserved exclusively for the custom-quote Enterprise tier, not available even on the Business plan."
+  ],
   "features": [
     "Split Inbox that automatically triages email by sender type (team, VIPs, tools like Google Docs and Asana)",
     "AI drafting and sending of emails on the user's behalf",

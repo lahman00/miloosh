@@ -12,6 +12,24 @@
     "Android"
   ],
   "best_for": "Individuals, journalists, and privacy-conscious users who need fully encrypted communication with no advertising or data collection.",
+  "pricing": {
+    "model": "free",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Signal (core app)", "amount": "0", "currency": "USD", "billing_period": "one_time", "notes": "Fully free, open-source, donation-funded through the nonprofit Signal Foundation. No ads and no paid unlock for any messaging or calling feature." },
+      { "name": "Secure Backups media add-on (optional)", "amount": "1.99", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Not required to use Signal. The free backup tier covers all text plus the last 45 days of media; this optional add-on extends media backup coverage up to 100GB." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://signal.org/donate/"
+  },
+  "cons": [
+    "No official web client, by deliberate design decision rather than a roadmap gap — Signal has stated that browser-delivered code and weaker browser key storage create a worse trust model than an installed app, so multi-device desktop access requires linking Signal Desktop to a phone instead.",
+    "SMS/MMS support was fully removed from Signal's Android app, so it can no longer function as a unified default SMS-plus-encrypted-messaging app on Android; a separate SMS app is required alongside it.",
+    "Group voice and video calls are capped at 75 participants, a hard ceiling for larger community or organizational use cases."
+  ],
   "features": [
     "End-to-end encryption by default for every message and call, powered by the open-source Signal Protocol",
     "Voice and video calls with international support",

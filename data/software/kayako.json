@@ -6,6 +6,23 @@
   "website": "https://kayako.com",
   "platforms": ["Web"],
   "best_for": "SaaS, retail, financial services, and healthcare organizations with high ticket volumes looking to reduce support costs and speed up resolution.",
+  "pricing": {
+    "model": "unknown",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Kay AI Agent (usage component)", "amount": "1", "currency": "USD", "billing_period": "one_time", "unit": "per resolved ticket", "notes": "Only charged when Kay fully resolves a ticket without human involvement; escalations and partial resolutions are free. This is the only dollar figure Kayako publishes on its pricing page." },
+      { "name": "Kayako One (full platform)", "currency": "USD", "billing_period": "unknown", "unit": "per agent", "notes": "Base per-agent seat price is not disclosed on the official pricing page as of 2026-09-26 — every plan button reads Talk to a Pricing Expert or Request a Demo." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://kayako.com/pricing/"
+  },
+  "cons": [
+    "Base platform seat pricing for Kayako One is not disclosed anywhere on the official pricing page — the only public number is the $1-per-AI-resolution usage fee, and every visitor is pushed to book a sales call to learn the actual per-agent cost.",
+    "No free trial is mentioned on the pricing page, unlike most helpdesk competitors that advertise self-serve trials — evaluation requires a sales conversation.",
+    "The AI resolution fee is uncapped and volume-unbounded, with no published cap, tier, or volume discount, so cost scales linearly and unpredictably as support volume grows."
+  ],
   "features": [
     "Kay AI agent that classifies, prioritizes, and drafts replies to tickets",
     "Omnichannel inbox consolidating email, chat, social, and voice",

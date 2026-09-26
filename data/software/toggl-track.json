@@ -13,6 +13,28 @@
     "Browser extension"
   ],
   "best_for": "Positioned for teams of any size that need to track billable hours, project profitability, and productivity, with an open API and 100+ integrations including Jira, Salesforce, and Asana.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Free forever for up to 3 users. Manual and real-time timers, calendar integrations, and personal insights. No team reports, billable rates, or SSO." },
+      { "name": "Starter", "amount": "9", "currency": "USD", "billing_period": "annual", "unit": "per user", "notes": "$9/user/month billed annually, or $12/user/month billed monthly. Adds billable rates, team reports, and timeline views." },
+      { "name": "Premium", "amount": "16", "currency": "USD", "billing_period": "annual", "unit": "per user", "notes": "$16/user/month billed annually, or $24/user/month billed monthly. Adds profitability reports, labor costs, timesheet approvals, and SSO." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Contact sales. Adds a dedicated customer success manager and custom roles." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://toggl.com/track/pricing/"
+  },
+  "cons": [
+    "The advertised $9/user (Starter) and $16/user (Premium) rates require paying annually upfront; month-to-month billing costs 33% more at $12 and $24 per user/month respectively.",
+    "Team-level reports, billable rates, and capacity-planning features are entirely absent from the Free plan, even for small paid-client work.",
+    "SSO is gated to the Premium tier only, at $16-24 per user/month, and is unavailable on Free or Starter."
+  ],
   "features": [
     "One-click timer across web, desktop, mobile, and browser extension",
     "Background activity tracking that converts app and website usage into time entries",

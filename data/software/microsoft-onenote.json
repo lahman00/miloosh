@@ -13,6 +13,28 @@
     "Android"
   ],
   "best_for": "Positioned for individuals and teams already in the Microsoft ecosystem who want free-form, notebook-style note-taking with handwriting and voice capture across all their devices.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "9.99", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": false },
+    "tiers": [
+      { "name": "OneNote (free, no Microsoft 365 subscription)", "amount": "0", "currency": "USD", "billing_period": "one_time", "notes": "Full note-taking app free forever, backed by the free 5GB OneDrive tier. Individual notebook/section files are capped at 2GB regardless of overall OneDrive space." },
+      { "name": "Microsoft 365 Personal", "amount": "9.99", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "$99.99/year if billed annually. 1TB OneDrive storage, includes Copilot in Office apps including OneNote." },
+      { "name": "Microsoft 365 Family", "amount": "12.99", "currency": "USD", "billing_period": "monthly", "unit": "per household (1-6 people)", "notes": "$129.99/year if billed annually. Up to 6TB total (1TB per person)." },
+      { "name": "Microsoft 365 Premium", "amount": "19.99", "currency": "USD", "billing_period": "monthly", "unit": "per household (1-6 people)", "notes": "$199.99/year if billed annually. Adds expanded Copilot features that, per Microsoft's own compare page, are available only to the subscription owner and cannot be shared with other Family/Premium members." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products"
+  },
+  "cons": [
+    "Individual notebook and section files are hard-capped at 2GB each regardless of how much overall OneDrive storage the account has, per Microsoft's own support article on managing notebook storage.",
+    "The free tier (no Microsoft 365 subscription) is backed by only 5GB of OneDrive storage, versus 1TB or more on any paid plan, which is easy to exhaust once images, audio, or PDFs are attached to notes.",
+    "Enhanced Copilot AI features on the Family and Premium plans are restricted to the subscription owner only and cannot be shared with other members on the same household plan, per Microsoft's own Microsoft 365 comparison page."
+  ],
   "features": [
     "Notebook, section, and page hierarchy for organizing notes",
     "Handwriting and digital ink with stylus support for sketching and annotating",

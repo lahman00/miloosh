@@ -12,6 +12,25 @@
     "Android"
   ],
   "best_for": "Positioned for individuals who want a to-do list combined with calendar planning, habit tracking, and time-blocking in one free-to-start app.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$49.99",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "49.99", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "9 lists, 99 tasks per list, basic calendar view, core task features." },
+      { "name": "Premium", "amount": "49.99", "currency": "USD", "billing_period": "annual", "unit": "per year", "notes": "The only price shown on TickTick's official web pricing page is annual-only, US$49.99/year (about $4.17/month equivalent) — no monthly-billing option is listed on the website itself. Adds 299 lists/999 tasks per list, multiple calendar views, task duration, email reminders, and the Eisenhower Matrix. Mobile app-store subscriptions list separate monthly options around $2.99-3.99/month through Apple's own billing, not through ticktick.com." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://ticktick.com/about/upgrade"
+  },
+  "cons": [
+    "The official website pricing page shows only one price point, $49.99/year billed annually — there is no monthly subscription option published on ticktick.com itself; monthly billing exists only through mobile app-store in-app purchases at different figures.",
+    "Premium gates features many competing to-do apps offer for free, including multiple calendar views, task-duration display, and email reminders.",
+    "No team, business, or organization plan is published anywhere on the official site — TickTick's public pricing is consumer-only, with no disclosed multi-seat or admin-console pricing for teams."
+  ],
   "features": [
     "Multiple calendar views: yearly, monthly, weekly, daily, and agenda",
     "Kanban boards, timeline view, and Eisenhower Matrix for prioritization",

@@ -6,6 +6,30 @@
   "website": "https://auth0.com",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Serves developers building consumer apps, internal tools, and enterprise software, plus startups, enterprises needing SSO/SCIM/multi-tenancy, and B2B/B2C SaaS companies.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "35", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Free (B2C)", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "up to 25,000 MAU", "notes": "Includes 1 enterprise connection, SCIM (inbound), passkeys, unlimited social connections. Log retention is only 1 day; Management API is capped at 2 req/sec for free tenants." },
+      { "name": "Essentials (B2C)", "amount": "35", "currency": "USD", "billing_period": "monthly", "unit": "starts at 500 MAU, scales to $3,500/mo at 50,000 MAU", "notes": "Annual billing works out to 11x the monthly rate (one month free) but is not required. Log retention is 5 days." },
+      { "name": "Professional (B2C)", "amount": "240", "currency": "USD", "billing_period": "monthly", "unit": "starts at 500 MAU, up to $3,200/mo at 20,000 MAU", "notes": "Log retention is 10 days. Adds enhanced attack protection, custom database connections, and cross-app SSO." },
+      { "name": "Essentials (B2B)", "amount": "150", "currency": "USD", "billing_period": "monthly", "unit": "starts at 500 MAU, up to $3,800/mo at 20,000 MAU", "notes": "Includes 3 enterprise connections; additional connections are $100/mo each." },
+      { "name": "Professional (B2B)", "amount": "800", "currency": "USD", "billing_period": "monthly", "unit": "starts at 500 MAU, up to $2,400/mo at 10,000 MAU", "notes": "Includes 5 enterprise connections; additional connections are $100/mo each." },
+      { "name": "Enterprise (B2C & B2B)", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales. Only tier with a 99.99% SLA, private deployment, 30-day log retention, and HIPAA/BAA compliance." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://auth0.com/pricing"
+  },
+  "cons": [
+    "Log retention scales tightly with tier: 1 day on Free, 5 days on Essentials, 10 days on Professional, and 30 days only on the custom-quoted Enterprise plan — thin history for incident investigation without paying for Enterprise.",
+    "B2B pricing is dramatically higher than B2C at the same tier name and monthly-active-user count: Essentials is $35/mo (B2C) versus $150/mo (B2B), and Professional is $240/mo (B2C) versus $800/mo (B2B).",
+    "Additional enterprise SSO connections beyond a plan's included count cost $100/month each on B2B Essentials and Professional, and the free tier's Management API is capped at 2 requests/second, which can bottleneck automated provisioning during evaluation."
+  ],
   "features": [
     "Universal Login and passwordless authentication",
     "Multi-Factor Authentication and breached-password/bot detection",
