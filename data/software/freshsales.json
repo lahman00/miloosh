@@ -6,6 +6,28 @@
   "website": "https://www.freshworks.com/crm/sales/",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Sales teams at companies of varying sizes — Freshworks reports 74,000+ businesses use the platform — seeking AI-assisted lead management and a 360° customer view.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 21 },
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Capped at 3 users; contact/deal management, phone dialer, chat, basic workflow automation. Excludes Freddy AI scoring, custom modules, and the activity dashboard." },
+      { "name": "Growth", "amount": "9", "currency": "USD", "billing_period": "annual", "unit": "per user, billed annually", "notes": "A separate official Freshworks page states monthly billing starts at $15/user/month, though the exact monthly rate isn't shown on the main pricing page. Kanban view, lifecycle stages, custom fields." },
+      { "name": "Pro", "amount": "39", "currency": "USD", "billing_period": "annual", "unit": "per user, billed annually", "notes": "Adds contact scoring, deal insights, and sales sequences." },
+      { "name": "Enterprise", "amount": "59", "currency": "USD", "billing_period": "annual", "unit": "per user, billed annually", "notes": "Adds forecasting insights, field-level permissions, custom modules, and audit logs." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.freshworks.com/crm/pricing/"
+  },
+  "cons": [
+    "The Free plan is capped at exactly 3 users and excludes the activity dashboard and custom fields -- too thin for a sales team beyond a trio.",
+    "Headline per-seat prices ($9/$39/$59) require annual prepayment; Freshworks does not display monthly-billing rates on its own pricing page, and a separate official page states monthly billing starts at $15/user/month.",
+    "AI features (Freddy AI Agent) are metered add-ons on top of any paid plan, priced per 100 sessions after a one-time free allotment, and branded documents cost an extra $19/user/month -- core-seeming features are unbundled extras."
+  ],
   "features": [
     "AI-assisted lead capture, qualification, and routing",
     "Kanban-style deal tracking with drag-and-drop cards",

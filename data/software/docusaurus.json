@@ -8,6 +8,20 @@
     "Web"
   ],
   "best_for": "Open source projects and technical teams maintaining documentation across multiple product versions; used by projects like Redux, Supabase, and React Native.",
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://github.com/facebook/docusaurus/blob/main/LICENSE"
+  },
+  "cons": [
+    "There is no native search engine shipped out of the box -- the Algolia DocSearch integration requires applying to Algolia's free program and won't work reliably until Algolia's crawler indexes the site on its own schedule, and it doesn't work for sites that require authentication or aren't publicly reachable.",
+    "Build times and memory use can blow up at scale, especially with internationalization: official GitHub Discussions report out-of-memory errors on very large sites, and each additional language requires Docusaurus to generate a fully separate static site, compounding further with versioning.",
+    "There is no official paid support tier, SLA, or dedicated support line -- being MIT-licensed and free, all troubleshooting routes through community GitHub discussions and Discord with no guaranteed response time."
+  ],
   "features": [
     "MDX support for writing Markdown with embedded React components",
     "React-based theming and a pluggable architecture for customization",

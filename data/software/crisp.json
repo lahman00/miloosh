@@ -6,6 +6,29 @@
   "website": "https://crisp.chat",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Positioned for \"every company\" from startups to enterprises, aimed at customer support, sales, and marketing teams handling inquiries across multiple channels.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$45",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "45", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "2 seats, 100 customer profiles, website chat widget, shared inbox." },
+      { "name": "Mini", "amount": "45", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "4 seats included, hard cap -- extra seats not sold individually, must upgrade tier. About $5 of AI credit (roughly 90 automated conversations). 5,000 profile cap." },
+      { "name": "Essentials", "amount": "95", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "10 seats, hard cap. About $25 AI credit (roughly 450 conversations). Omnichannel (WhatsApp/Instagram/SMS), workflow automation, AI chatbot, knowledge base." },
+      { "name": "Plus", "amount": "295", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "20 seats included -- the only tier where extra seats can be bought individually, at $10/seat/month. About $75 AI credit (roughly 1,350 conversations)." },
+      { "name": "Enterprise", "billing_period": "monthly", "notes": "Contact sales; custom SLA and onboarding." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://crisp.chat/en/pricing/"
+  },
+  "cons": [
+    "Billing is per-workspace with hard seat caps on Free/Mini/Essentials (2/4/10 seats) -- exceeding the cap by even one agent forces an upgrade to the next full tier; only the top Plus plan lets you buy extra seats individually.",
+    "AI automation is metered via a separate bundled credit allowance ($5 on Mini up to $75 on Plus, roughly 90-1,350 conversations) -- heavier chatbot usage than the bundle requires additional spend beyond the base plan price.",
+    "The free plan is capped at just 2 seats and 100 customer profiles, and excludes the omnichannel inbox, workflow automation, AI chatbot, and knowledge base -- all gated behind the $95+/month tiers."
+  ],
   "features": [
     "AI Agent builder (no-code workflow creation)",
     "Live chat widget for websites and mobile apps, with Chat SDK for developers",

@@ -8,6 +8,27 @@
     "Web"
   ],
   "best_for": "Entrepreneurs and small business owners, from those just starting out to established businesses expanding online, who want a simple website and store builder backed by Square payments.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$13",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "13", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "500MB storage, no custom domain, Square-branded ads shown on the published site; can sell physical items." },
+      { "name": "Personal", "amount": "13", "currency": "USD", "billing_period": "monthly", "notes": "$13/mo billed annually, or $16/mo billed monthly. Adds a connected custom domain." },
+      { "name": "Professional", "amount": "15", "currency": "USD", "billing_period": "monthly", "notes": "$15/mo billed annually, or $20/mo billed monthly. Adds a free custom domain for a year and removes ads." },
+      { "name": "Performance", "amount": "32", "currency": "USD", "billing_period": "monthly", "notes": "$32/mo billed annually, or $36/mo billed monthly. Adds lower card-processing fees and a real-time shipping rate calculator." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.weebly.com/pricing"
+  },
+  "cons": [
+    "Square is winding down Weebly in 67 countries (not including the US, UK, Canada, or Australia): new-page publishing stopped June 29, 2026, sites unpublish September 27, 2026, and account/data access ends December 26, 2026 in those affected markets -- a real signal about the product's trajectory under Square even though it's a partial, region-specific wind-down.",
+    "The free plan has no custom-domain support and shows Square-branded ads on the published site, plus only 500MB storage -- a meaningfully more limited free tier than most competing builders.",
+    "Every paid tier's advertised price requires annual billing; paying month-to-month costs noticeably more ($16 vs $13 on Personal, $20 vs $15 on Professional, $36 vs $32 on Performance)."
+  ],
   "features": [
     "Customizable website and store templates with drag-and-drop editing",
     "All-in-one order management for online and pop-up-shop sales",

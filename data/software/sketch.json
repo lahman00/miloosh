@@ -8,6 +8,29 @@
     "macOS"
   ],
   "best_for": "Positioned for professional UI/UX designers, from independent freelancers to enterprise design teams.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$12",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "12", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Mac-only License (one-time)", "amount": "120", "currency": "USD", "billing_period": "one_time", "unit": "per seat, includes 1 year of updates", "notes": "Local Mac app only -- no cloud collaboration, no online sharing, no iOS preview, and excluded from the 30-day free trial." },
+      { "name": "Standard", "amount": "12", "currency": "USD", "billing_period": "monthly", "unit": "per editor", "notes": "Billed yearly ($144/editor/year). Real-time collaboration, unlimited documents, unlimited free viewers, 50GB storage per editor." },
+      { "name": "Professional", "amount": "24", "currency": "USD", "billing_period": "monthly", "unit": "per editor", "notes": "Billed yearly. Adds SSO, project archiving, and permissions groups." },
+      { "name": "Enterprise", "amount": "44", "currency": "USD", "billing_period": "monthly", "unit": "per editor", "notes": "Billed yearly. Adds SCIM provisioning, BYOK encryption, dedicated support, and unlimited storage." },
+      { "name": "Private Cloud", "billing_period": "unknown", "notes": "Contact for pricing. Isolated AWS-hosted environment with a choice of hosting location." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.sketch.com/pricing/"
+  },
+  "cons": [
+    "Editing and designing is Mac-only (current macOS required) -- no native Windows or Linux editor exists; other platforms can only view or comment through the web app.",
+    "Subscription seat pricing of $12-44 per editor per month is quoted billed yearly -- the advertised per-editor rate requires an annual commitment.",
+    "The classic one-time-purchase license ($120/seat) still exists but is crippled compared to the subscription: no cloud collaboration, no online sharing, no iOS preview, and it is excluded from the 30-day free trial."
+  ],
   "features": [
     "Nestable frames and flexible stack layouts for responsive design",
     "Vector editing tools",

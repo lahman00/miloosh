@@ -9,6 +9,23 @@
     "Self-hosted"
   ],
   "best_for": "Organizations that need multilingual websites, granular user permissions, and full design customization without licensing costs.",
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Joomla Core", "amount": "0", "currency": "USD", "billing_period": "one_time", "unit": "self-hosted", "notes": "GPL-licensed, free to download, install, and modify indefinitely; self-hosting costs (server, PHP/MySQL) are the buyer's own responsibility." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.joomla.org/about-joomla.html"
+  },
+  "cons": [
+    "Joomla core has no built-in e-commerce or advanced functionality -- sites depend on third-party extensions of uneven quality, and Joomla's own docs maintain a Vulnerable Extensions List with an explicit warning that it does not guarantee the quality or effectiveness of listed extensions' updates.",
+    "Joomla 6 requires PHP 8.3 or newer and MySQL 8.0.13+/MariaDB 10.4.0+, and Joomla 4 already reached end of life in October 2025 -- site owners must self-manage version upgrades and hosting-stack compatibility with no vendor support cushion.",
+    "Joomla's own community magazine has published self-critical coverage of the project's declining market share and internal governance conflicts; independent tracking puts Joomla around 1-2% of all websites versus WordPress's 60%+, meaning a much smaller extension and developer ecosystem."
+  ],
   "features": [
     "Built-in multi-language support for content and interface",
     "Multi-user permission levels and access control groups",

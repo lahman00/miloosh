@@ -10,6 +10,28 @@
     "Android"
   ],
   "best_for": "Organizations of any size, including government agencies, that need phishing-resistant multi-factor authentication and zero-trust access controls.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$3",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "3", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Duo Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Capped at 10 users max, forever. Basic MFA (push/SMS/hardware token) and self-service enrollment; no SSO." },
+      { "name": "Duo Essentials", "amount": "3", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Adds SSO, phishing-resistant MFA, and unlimited application integrations. Licenses are sold in increments of 10 seats (under 100 users) or 25 seats (over 100 users), not one seat at a time." },
+      { "name": "Duo Advantage", "amount": "6", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Marked most popular; adds Cisco Identity Intelligence and risk-based authentication." },
+      { "name": "Duo Premier", "amount": "9", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Adds a full Zero Trust access package and complete device trust with endpoint posture checks." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://duo.com/editions-and-pricing"
+  },
+  "cons": [
+    "Licenses must be purchased in fixed increments of 10 or 25 seats rather than per-actual-headcount, a pattern real customers have publicly called punitive for small businesses on Cisco's own community forum.",
+    "The permanent Free tier is hard-capped at 10 users with no SSO; any organization past 10 people must move to a paid tier immediately.",
+    "Risk-based authentication and Cisco Identity Intelligence are not included until the Advantage tier, and full device-trust Zero Trust access is Premier-only -- the advertised $3 entry price does not include the features most buyers actually want."
+  ],
   "features": [
     "Multi-factor authentication supporting over 1.3 billion monthly authentications",
     "Single sign-on across applications",

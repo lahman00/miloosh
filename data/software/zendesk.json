@@ -6,6 +6,28 @@
   "website": "https://www.zendesk.com",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Positioned for customer service teams, employee/IT/HR service departments, and contact centers spanning startups to large enterprises across industries like retail, financial services, healthcare, and government.",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$19",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Support Team", "amount": "19", "currency": "USD", "billing_period": "monthly", "unit": "per agent, billed annually", "notes": "Email and ticketing only, no messaging/Suite features: routing, analytics dashboards, canned responses." },
+      { "name": "Suite Team", "amount": "55", "currency": "USD", "billing_period": "monthly", "unit": "per agent, billed annually", "notes": "Adds AI Agents, knowledge base, omnichannel routing, and messaging/live chat." },
+      { "name": "Suite Professional", "amount": "115", "currency": "USD", "billing_period": "monthly", "unit": "per agent, billed annually", "notes": "Adds Admin Copilot, skills-based routing, up to 5 help centers, and a HIPAA option." },
+      { "name": "Suite Enterprise + Copilot", "billing_period": "monthly", "notes": "Contact sales; no public price. Adds Intelligent Triage, generative AI for voice, and custom roles." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.zendesk.com/pricing/"
+  },
+  "cons": [
+    "The advertised per-agent prices ($19/$55/$115) require annual billing; monthly billing costs roughly 20% more, so the headline prices are not what month-to-month customers actually pay.",
+    "The top tier, Suite Enterprise + Copilot, has no public price at all and requires a sales conversation.",
+    "Meaningful AI and workforce features are unbundled, separately-billed add-ons on top of the base per-agent price -- Copilot is about $50/agent/month, and AI Agents are billed per successful automated resolution, so the advertised base plan does not include full AI functionality."
+  ],
   "features": [
     "AI agents that autonomously resolve tickets end-to-end",
     "Unified omnichannel inbox (email, chat, phone, social, messaging)",

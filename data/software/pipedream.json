@@ -8,6 +8,28 @@
     "Web"
   ],
   "best_for": "Developers who want visual workflow building with the option to drop into custom code, for connecting APIs and building AI agents.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "100 credits/day (a daily cap, not a monthly pool), max 3 connected accounts, community support only. Pipedream Connect only usable in development mode." },
+      { "name": "Basic", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "Annual-billing rate; 2,000 credits/month included. The no-commitment monthly rate is higher." },
+      { "name": "Advanced", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "Annual-billing rate; 2,000 credits/month, unlimited workflows." },
+      { "name": "Connect", "amount": "99", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "Annual-billing rate; 10,000 credits/month, for teams embedding Pipedream Connect in their own product." },
+      { "name": "Business/Enterprise", "billing_period": "monthly", "notes": "Contact sales; HIPAA/SOC2/GDPR compliance, dedicated Success Engineer, 99.95% SLA." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://pipedream.com/pricing"
+  },
+  "cons": [
+    "Free tier credits are capped at 100/day rather than a monthly pool, with a hard limit of 3 connected accounts, and Pipedream Connect only works in development mode below paid tiers.",
+    "Billing is metered by compute, not by task -- one credit equals 30 seconds at 256MB RAM, so increasing a workflow's memory allocation increases credit burn proportionally rather than cost simply scaling with run volume.",
+    "Workday signed a definitive agreement to acquire Pipedream (announced November 2025); public self-serve pricing is unchanged today, but the platform's independent roadmap and pricing are now subject to a large enterprise acquirer's plans."
+  ],
   "features": [
     "Visual workflow builder with time- and event-based triggers",
     "3,000+ integrated apps with managed authentication",

@@ -9,6 +9,19 @@
     "Browser extension (Chrome, Edge, Opera)"
   ],
   "best_for": "Positioned for enterprise organizations — HR, Ops, Support, Sales, Engineering, L&D — across industries like tech, healthcare, finance, and manufacturing.",
+  "pricing": {
+    "model": "unknown",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.getguru.com/pricing"
+  },
+  "cons": [
+    "No public self-serve pricing exists at all -- every plan routes to \"Talk to sales,\" and the official pricing page states investment is tailored to organization scale rather than listing any tier or seat price.",
+    "This is a reversal from Guru's own prior marketing: the company once advertised a forever-free Starter plan for up to 10 users, but that plan no longer appears anywhere on the current pricing page or homepage.",
+    "Guru's own pricing copy frames cost around an organization's \"AI maturity\" as an explicit, unquantified pricing lever, meaning AI-related knowledge features are a real cost variable buyers cannot estimate without a sales engagement."
+  ],
   "features": [
     "Knowledge structuring and governance with continuous review",
     "Knowledge Agents that verify content and draft documentation",

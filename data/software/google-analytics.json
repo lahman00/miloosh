@@ -6,6 +6,24 @@
   "website": "https://marketingplatform.google.com/about/analytics/",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Positioned for businesses of every size, from small businesses wanting free/easy measurement to enterprises wanting analytics unified with Google's advertising platforms (Google Ads, Display & Video 360).",
+  "pricing": {
+    "model": "free",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Google Analytics (Standard)", "amount": "0", "currency": "USD", "billing_period": "unknown", "notes": "Free with unlimited use; no seat or usage-based pricing published." },
+      { "name": "Google Analytics 360 (Enterprise)", "billing_period": "unknown", "notes": "Custom, contact-sales pricing not publicly listed. Adds longer data-retention options (26/38/50 months vs. the standard tier's 2-14 months), a materially higher API sampling ceiling, SLAs, and BigQuery export improvements." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://support.google.com/analytics/answer/9309767"
+  },
+  "cons": [
+    "User-level and event-level data used by Explorations and funnel reports is retained for at most 2 or 14 months on a standard property (26-50 months only on paid 360), and demographic data always expires after 2 months regardless of setting.",
+    "Rows involving demographics, interest categories, or low-count search queries are silently withheld from reports to prevent identifying individual users, and these system-defined thresholds cannot be adjusted, viewed, or disabled by admins on any tier.",
+    "Once a query on the free tier exceeds Google's per-query event limit, results become statistically sampled rather than exact; Analytics 360 (paid) gets a much higher sampling ceiling and an unsampled option that free-tier users don't have."
+  ],
   "features": [
     "Cross-platform (web + app) customer journey measurement",
     "Machine-learning-based predictive insights",

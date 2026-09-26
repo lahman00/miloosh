@@ -8,6 +8,24 @@
     "Web"
   ],
   "best_for": "Enterprise B2B and B2C brands that need deep customization, multi-site/multi-region storefronts, and complex catalog or pricing rules beyond what off-the-shelf platforms offer.",
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      { "name": "Adobe Commerce as a Cloud Service (SaaS)", "billing_period": "unknown", "notes": "Multi-tenant cloud commerce engine; no public price, quote-based." },
+      { "name": "Adobe Commerce on Cloud (PaaS)", "billing_period": "unknown", "notes": "Single-tenant dedicated cloud infrastructure; no public price, quote-based." },
+      { "name": "Adobe Commerce Optimizer", "billing_period": "unknown", "notes": "Storefront and merchandising layer that can pair with any commerce engine. Modular pricing by component; no public rates." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://business.adobe.com/products/commerce/pricing.html"
+  },
+  "cons": [
+    "Zero public pricing anywhere -- every official Adobe Commerce page ends at a contact-sales call with no dollar figures; third-party pricing guides converge on GMV-tiered license fees roughly $22,000-190,000+/year, but that is estimation, not Adobe's own published number.",
+    "Adobe's official Software Lifecycle Policy gives each release only about 3 years of support and sets a hard upgrade-enforcement date per version, stating that if an environment stays non-compliant after traffic suspension, Adobe may terminate cloud services after which all data is permanently deleted and cannot be restored.",
+    "Extended security-patch support is only available to Adobe Commerce customers, not the open-source Magento code base, meaning self-hosted/open-source users lose security patches sooner than paying Adobe Commerce customers."
+  ],
   "features": [
     "Page Builder drag-and-drop content editor for building storefront pages without coding",
     "B2B functionality including company accounts, purchasing permissions, and purchase orders",

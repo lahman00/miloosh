@@ -6,6 +6,28 @@
   "website": "https://ghost.org",
   "platforms": ["Web"],
   "best_for": "Ghost positions itself for creators (YouTubers, bloggers, podcasters, musicians), publishers/journalists, businesses running content marketing, and developers.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$18",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "18", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Starter", "amount": "18", "currency": "USD", "billing_period": "monthly", "unit": "per site", "notes": "Billed yearly. 1 staff seat, capped at 1,000 members, only simple design settings (no custom themes)." },
+      { "name": "Publisher", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per site", "notes": "Billed yearly. 3 staff seats, same 1,000-member cap as Starter, adds custom themes and paid subscriptions." },
+      { "name": "Business", "amount": "199", "currency": "USD", "billing_period": "monthly", "unit": "per site", "notes": "Billed yearly. 15 staff seats, 10,000-member cap, priority support, and a 99.9% uptime SLA." },
+      { "name": "Custom", "billing_period": "unknown", "notes": "Contact Ghost directly for unlimited members/staff and advanced configuration." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://ghost.org/pricing/"
+  },
+  "cons": [
+    "No permanent free tier of the managed product -- Ghost(Pro) is trial-only for 14 days, then paywalled; the only forever-free option is fully self-hosting the open-source software yourself.",
+    "Starter and Publisher share the same 1,000-member ceiling despite the price gap, and hitting the member cap blocks new signups and publishing until you upgrade.",
+    "Bulk newsletter sending is not native to the platform -- it depends on a third-party Mailgun integration, and a newly registered Mailgun account is capped at 100 emails/hour, which self-hosters hit directly since Ghost(Pro) is the only tier where this is pre-configured."
+  ],
   "features": [
     "Custom site design/branding control",
     "Rich publishing editor (galleries, video, audio, embeds)",

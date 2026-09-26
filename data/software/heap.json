@@ -6,6 +6,25 @@
   "website": "https://www.heap.io",
   "platforms": ["Web"],
   "best_for": "Positioned for product teams (activation/conversion/retention), marketing teams (acquisition performance), and data teams (behavioral analysis without coding), with industry solutions for SaaS, retail/ecommerce, healthcare, and financial services.",
+  "pricing": {
+    "model": "freemium",
+    "has_free_tier": true,
+    "status": "contact_sales",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "up to 10,000 sessions/month", "notes": "6 months data history; core analytics, unlimited enrichment sources, SSO; no technical support." },
+      { "name": "Growth", "billing_period": "monthly", "notes": "Custom session-based pricing; the official page only offers to install the free snippet to get an estimate. 12 months data history; adds the Sense AI assistant, unlimited users/reports." },
+      { "name": "Pro", "billing_period": "monthly", "notes": "Custom session pricing, contact required. 1 year data history (extra years a paid add-on); adds account analytics, engagement matrix, 3 projects included; session replay is a separate add-on." },
+      { "name": "Premier", "billing_period": "monthly", "notes": "Custom session pricing, contact required. Adds data-warehouse integration, unlimited projects, a dedicated CSM, and includes session replay." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.heap.io/pricing"
+  },
+  "cons": [
+    "No public pricing exists above the free tier -- Growth, Pro, and Premier all require contacting sales or installing the tracking snippet to get a quote, with zero indication of price ranges on the official site.",
+    "The free tier has a hard ceiling of 10,000 sessions/month and only 6 months of data history, noticeably shorter than the 12 months on Growth or the 1+ years on Pro/Premier.",
+    "Even on paid plans, capability is siloed behind further add-ons on top of the base tier price -- session replay is an add-on on Pro (only bundled free on Premier), and extra data-history years and projects beyond the included count cost more."
+  ],
   "features": [
     "Automatic data capture via a single code snippet (no manual event tagging)",
     "Sense AI/Sense Chat for AI-powered analytics",

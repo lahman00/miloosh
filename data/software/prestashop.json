@@ -6,6 +6,27 @@
   "website": "https://www.prestashop.com",
   "platforms": ["Web"],
   "best_for": "Positioned for merchants at all stages, from entrepreneurs launching a first store to established retailers scaling to millions in revenue.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "€24",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "24", "currency": "EUR", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Classic (open source, self-hosted)", "amount": "0", "currency": "EUR", "billing_period": "one_time", "notes": "Free forever download of the PrestaShop core. Hosting, domain, and installation are not included and must be sourced separately." },
+      { "name": "Hosted (annual billing)", "amount": "24", "currency": "EUR", "billing_period": "monthly", "unit": "per store, billed €290/year", "notes": "Excluding VAT. About 17% cheaper than the monthly no-commitment rate. Includes 50GB hosting, managed install, and GDPR/VAT tooling." },
+      { "name": "Hosted (monthly, no commitment)", "amount": "29", "currency": "EUR", "billing_period": "monthly", "unit": "per store", "notes": "Excluding VAT. Cancel anytime, no annual lock-in. The 14-day free trial requires payment info at signup and auto-converts to paid unless cancelled first." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://prestashop.com/prestashop-offers/"
+  },
+  "cons": [
+    "The free open-source core explicitly excludes hosting and domain costs -- the vendor's own pricing page states these associated costs are not included, so the real cost of running a store is entirely separate from the free software.",
+    "The advertised low Hosted price (€24/month) requires annual billing; paying month-to-month with no commitment costs €29/month, about 21% more.",
+    "The Hosted plan's 14-day free trial requires payment details at signup and automatically converts to a paid subscription if not cancelled before the trial ends."
+  ],
   "features": [
     "Fully customizable, open-source storefront",
     "Thousands of modules/themes",

@@ -13,6 +13,28 @@
     "Android"
   ],
   "best_for": "IT teams managing remote workforces, DevOps engineers managing multi-cloud infrastructure, and developers wanting simplified, secure networking.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$8",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "8", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Personal (Free)", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per network", "notes": "Free forever, intended for non-commercial use; up to 6 users, unlimited devices, 50 tagged resources included ($1/month each beyond that)." },
+      { "name": "Standard", "amount": "8", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Unlimited users; adds SCIM provisioning, MDM config, and device posture checks. As of April 2026 Tailscale bills per assigned seat, not per monthly-active-user -- a seat is billed whether or not that user connects that month." },
+      { "name": "Premium", "amount": "18", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Adds just-in-time access, advanced SSH, network flow logs, and log streaming. No published annual-billing discount." },
+      { "name": "Enterprise", "billing_period": "annual", "notes": "Contact sales; custom device limits, dedicated support, and pay-by-invoice." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://tailscale.com/pricing"
+  },
+  "cons": [
+    "Since April 2026 Tailscale switched from monthly-active-user billing to assigned-seat billing -- a licensed seat is charged even in a month the user never connects.",
+    "Device-level admin controls most organizations actually need -- device posture checks, MDM configuration, network flow logs, and SCIM-based provisioning -- are locked behind the Standard tier and above; the free Personal plan has none of this.",
+    "The free Personal plan is explicitly restricted to non-commercial use and capped at 6 users, and tagged resources beyond the included 50 cost $1/month each -- businesses cannot legitimately stay on the free tier regardless of team size."
+  ],
   "features": [
     "Mesh overlay network connecting devices without centralized servers",
     "WireGuard-based encryption for modern cryptographic security",

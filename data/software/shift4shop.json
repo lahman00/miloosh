@@ -8,6 +8,27 @@
     "Web"
   ],
   "best_for": "Small to mid-sized businesses and enterprises looking to launch or migrate an online store on an all-in-one hosted platform.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "End-to-End Ecommerce (free)", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per store", "notes": "Free only for US merchants who route payments exclusively through Shift4 Payments; marketing materials cite a monthly processing minimum to keep the platform fee waived, and the standard 2.9% + $0.30 card rate still applies." },
+      { "name": "Basic Store", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "per store", "notes": "2 staff users, unlimited products, no extra transaction fee. A 10% discount applies for prepaying 12 months." },
+      { "name": "Plus Store", "amount": "79", "currency": "USD", "billing_period": "monthly", "unit": "per store", "notes": "5 staff users." },
+      { "name": "Pro Store", "amount": "229", "currency": "USD", "billing_period": "monthly", "unit": "per store", "notes": "15 staff users." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.shift4shop.com/plans.html"
+  },
+  "cons": [
+    "The free-forever plan is really a payments-processor lock-in gated to US merchants only -- it requires routing payments exclusively through Shift4 Payments, with a monthly processing minimum to keep the platform fee waived.",
+    "The legacy tiered plans ($29/$79/$229) remain the only route to a non-Shift4-Payments setup, meaning the pricing page effectively pushes a processor choice rather than a pure feature choice.",
+    "The annual prepay discount is comparatively thin at just 10% off for prepaying 12 months, versus the deeper discounts common among direct competitors."
+  ],
   "features": [
     "Drag-and-drop website builder with 100+ mobile-friendly templates",
     "Integrated credit card processing with PayPal support and Kount fraud protection",

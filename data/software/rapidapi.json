@@ -6,6 +6,20 @@
   "website": "https://rapidapi.com",
   "platforms": ["Web"],
   "best_for": "RapidAPI's documentation states it serves API consumers integrating existing APIs, API builders/providers wanting to distribute and monetize APIs, and teams/enterprises needing centralized management of internal API ecosystems.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "unknown",
+    "free_plan": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://docs.rapidapi.com/v1.0/docs/api-pricing"
+  },
+  "cons": [
+    "Pricing is not controlled by the platform at all -- it is set per API by thousands of independent third-party providers, so cost, reliability, and support vary wildly between listings even within the same marketplace.",
+    "A November 2025 fee change passes previously-absorbed processing costs onto marketplace transactions, on top of an existing flat marketplace fee on API Hub payments.",
+    "The company cut roughly half its staff in April 2023 and was acquired by Nokia in November 2024, being folded into Nokia's telecom API strategy -- a material shift in focus away from the general developer marketplace that buyers should weigh before building on it long-term."
+  ],
   "features": [
     "Unified API access via a single key/format across thousands of APIs",
     "Usage analytics dashboard (requests, latency, error rates)",

@@ -8,6 +8,28 @@
     "Web"
   ],
   "best_for": "Teams that want a headless CMS combining a developer-friendly, component-based architecture with a visual editor marketers can use directly.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$99",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 45 },
+    "entry_paid": { "amount": "99", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Starter (Free)", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per space", "notes": "1 user seat (max 2 with a paid add-on at $15/month each), 100GB traffic/month, 100,000 API requests/month." },
+      { "name": "Growth", "amount": "99", "currency": "USD", "billing_period": "monthly", "unit": "per space", "notes": "About $90.75/month if paid annually. 5 seats (up to 10 with add-ons), 400GB traffic, 1,000,000 API requests. Overages are sold metered: extra traffic and API requests cost more per block." },
+      { "name": "Growth Plus", "amount": "349", "currency": "USD", "billing_period": "monthly", "unit": "per space", "notes": "About $319.91/month if paid annually. 15 seats, a hard cap with no further seat purchases on this plan. Comes with a 45-day free trial." },
+      { "name": "Premium / Elite", "billing_period": "annual", "notes": "Contact sales; adds SSO, a formal uptime SLA, GraphQL API access, and A/B testing." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.storyblok.com/pricing"
+  },
+  "cons": [
+    "Pricing is per-space, not per-organization, and every dimension (seats, traffic, API calls, locales) has a hard ceiling with paid metered overages once exceeded.",
+    "Seat caps are hard-capped per plan regardless of willingness to pay more: Growth tops out at 10 seats total even with paid add-ons, and Growth Plus tops out at 15 seats with no way to purchase additional seats at all -- teams that outgrow this must move to custom Enterprise pricing.",
+    "SSO, a formal uptime SLA, GraphQL API access, and A/B testing are reserved for the custom-priced Premium/Elite tiers and are not available at any published self-serve price point."
+  ],
   "features": [
     "Visual, drag-and-drop editor with on-page collaboration",
     "Global, reusable components and flexible content structures",

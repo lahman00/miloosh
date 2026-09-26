@@ -8,6 +8,28 @@
     "Web"
   ],
   "best_for": "Security teams at enterprises running cloud-native and AI-heavy environments who need end-to-end visibility across code, cloud, and runtime.",
+  "pricing": {
+    "model": "paid",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "24000", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Wiz Essential", "amount": "24000", "currency": "USD", "billing_period": "annual", "unit": "per 100 workloads, 12-month contract", "notes": "Published on Wiz's AWS Marketplace listing, not on wiz.io itself; wiz.io's main pricing motion is contact-sales." },
+      { "name": "Wiz Advanced", "amount": "38000", "currency": "USD", "billing_period": "annual", "unit": "per 100 workloads, 12-month contract" },
+      { "name": "Wiz Sensor (add-on)", "amount": "28000", "currency": "USD", "billing_period": "annual", "unit": "per 100 sensors", "notes": "Extends Wiz Advanced." },
+      { "name": "Wiz Code (add-on)", "amount": "58500", "currency": "USD", "billing_period": "annual", "unit": "per 100 licenses" },
+      { "name": "Wiz Defend (add-on)", "amount": "18000", "currency": "USD", "billing_period": "annual", "unit": "per 300GB monthly log ingestion" }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://aws.amazon.com/marketplace/pp/prodview-ibgbkrqusncsm"
+  },
+  "cons": [
+    "No public pricing on Wiz's own site -- the only vendor-published numbers live on the AWS Marketplace listing ($24K/year Essential, $38K/year Advanced per 100 workloads), and even those are described as starting points, with custom pricing via private offer for real deployments.",
+    "Licensing is modular and multi-dimensional, priced across workloads, log-ingestion volume, and sensor count as separate add-on units billed separately, so total cost is not a single number and requires stacking several unit prices.",
+    "The self-serve free trial still requires submitting a work email, phone number, job title, and company name up front -- it is lead-gen gated, not a frictionless self-serve signup, and the core product has no permanent free tier."
+  ],
   "features": [
     "Security Graph connecting code, cloud, and runtime context",
     "Cloud security posture management (CSPM)",
