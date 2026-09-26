@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-09-26",
+  "scope": "comparison-kind pages only (1348 total)",
+  "methodologyCaveat": "The 'notIndexed' group (n=1017) is a REAL, live-GSC-confirmed sample built from the two not-indexed reason buckets captured this session (see fresh-gsc-snapshot.json) -- every URL in it is a genuine live confirmation. The 'rest' group (n=331) is NOT a clean 'confirmed indexed' set: it is simply every comparison page NOT captured in either not-indexed sample, and both bucket samples were partial (fresh-gsc-snapshot.json's toolLimitation note), so 'rest' is contaminated with an unknown number of additional not-indexed pages this session's sampling missed. Because of this contamination, the dimensions below should be read as INSUFFICIENT SAMPLE for a fully clean causal comparison, not as definitive proof of no effect -- but the contamination only works AGAINST finding a real difference (it dilutes 'rest' toward looking more like 'notIndexed'), so a genuinely large true effect would likely still show through partially. None of these numbers show that.",
+  "dimensions": [
+    {
+      "dimension": "relevantInboundLinks (rendered-HTML-derived, from authority-graph.json)",
+      "notIndexedMedian": 5,
+      "notIndexedMean": 6.76,
+      "restMedian": 4,
+      "restMean": 6.86,
+      "verdict": "NO_OBSERVED_DIFFERENCE",
+      "note": "Directly consistent with the master mission's own standing grounding rule ('never assume more internal links is the answer' -- the Pipedrive lesson). This is fresh, page-level evidence for comparisons specifically: internal link count does not separate indexed from not-indexed comparison pages. Do not launch a link-building campaign for comparison pages on this basis."
+    },
+    {
+      "dimension": "homeDepth (click depth from homepage, rendered-HTML-derived)",
+      "notIndexedMedian": 2,
+      "restMedian": 2,
+      "verdict": "NO_OBSERVED_DIFFERENCE",
+      "note": "Both groups sit at depth 2 (behind a category or software page) as their typical case; max depth sitewide for comparisons is 3, with 0 unreachable pages. Click depth is not a plausible bottleneck for comparison indexation given how shallow the whole site already is."
+    },
+    {
+      "dimension": "nearOrphan rate",
+      "notIndexedPct": 25.2,
+      "restPct": 22.7,
+      "verdict": "NO_OBSERVED_DIFFERENCE",
+      "note": "A ~2.5 point gap on a noisy, contaminated control group is not meaningful."
+    },
+    {
+      "dimension": "average constituent factual-depth score (mean of both products' software-page scores)",
+      "notIndexedMean": 73.5,
+      "restMean": 70.8,
+      "verdict": "NO_OBSERVED_DIFFERENCE (if anything, slightly the other direction)",
+      "note": "This is the most important result in this file. The not-indexed group's average constituent factual depth is NOT lower than the comparison group -- it is marginally higher. This measurement predates this session's own Wave-3-style comparison work (which targets specific low-depth products), so it is not evidence that such work is pointless, but it IS evidence that factual depth alone does not explain most of the sitewide comparison non-indexation problem. Per Part 5's own framing: 'If factual depth no longer separates the groups... that is important.' Recommendation: continue enriching specific low-depth products for their own sake (real product-page quality, compounding value for /software/ pages and alternative-guides) but do not expect that alone to be the dominant lever for comparison-page indexation at scale."
+    },
+    {
+      "dimension": "minimum constituent factual-depth score (the weaker of the two sides)",
+      "notIndexedMean": 63.6,
+      "restMean": 60.1,
+      "verdict": "NO_OBSERVED_DIFFERENCE",
+      "note": "Same direction as the average -- the weaker side of a not-indexed pair is not systematically weaker than the weaker side of the comparison group."
+    }
+  ],
+  "categoryLevelCaveat": "This null result is specific to the individual comparison-page level. The separate category-indexation-map.json DOES show categories with fewer avg inbound links tend to have a higher never-crawled-discovered rate -- but that is a category-level, not page-level, correlation, and is very plausibly confounded by category size/maturity rather than a direct per-page causal link. Do not use the category-level pattern to justify a per-page link-building intervention; the page-level comparator above argues directly against that.",
+  "overallConclusion": "Neither internal-link authority, click depth, nor factual depth cleanly separates indexed from not-indexed comparison pages at the individual-page level in this (partially contaminated) sample. This is a genuine, evidence-backed reason to be cautious about over-investing in any single mechanical lever for the comparison-page indexation problem at scale, and argues for the more surgical, evidence-selected approach this session actually took (enrich specific low-depth products with real demand behind them; do not attempt a blanket link or content campaign across all 1348 comparisons)."
+}

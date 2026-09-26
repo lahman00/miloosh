@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-09-26",
+  "quotaStatus": "EXHAUSTED for today (2026-09-26) -- confirmed earlier this session's own prior work (Wave 3's directus request, docs/growth/receipts/20260926-indexation-factory-wave2-20260926/indexing-request-queue.json) already hit the daily quota-exceeded dialog. Per the standing 'never spam/retry same-day' rule, no live request was attempted this session.",
+  "actionTaken": "Zero indexing requests submitted this session.",
+  "preservedQueues": "Wave 2's and Wave 3's ranked queues (docs/growth/receipts/20260926-indexation-factory-wave2/indexing-request-queue.json and docs/growth/receipts/20260926-master-integration/wave3-indexing-request-queue.json) are unmodified and still the next things to submit once quota is available.",
+  "newCandidatesFromThisSession": {
+    "note": "This session did not create any NEW standalone software pages needing their own indexing request (Group 1's 15 products already existed and were enriched in place, not newly published). The comparison pages they improve are not independently request-able in a way that differs from Wave 2/3's existing queues -- they should be considered together with those once quota reopens.",
+    "noNewUrlsToQueue": true
+  },
+  "controlsExcluded": "All frozen/control cohort slugs across all three software waves and the comparison-quality-cohort's 20-page CONTROL_COHORT remain explicitly excluded from any future request, consistent with every prior wave's discipline."
+}

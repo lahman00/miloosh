@@ -1,0 +1,411 @@
+{
+ "generatedAt": "2026-09-26",
+ "methodologyNote": "neverCrawledDiscoveredFloor is a REAL, complete count from the live GSC 'discovered - currently not indexed' bucket (136 software URLs total sitewide, exact list captured). It is a FLOOR on the real non-indexation problem per category -- it excludes the separate 'crawled but excluded' bucket (175 software URLs sitewide) whose per-category breakdown was not cleanly captured this session (see fresh-gsc-snapshot.json toolLimitation note), so true non-indexation rates per category are higher than shown here, not lower. Factual depth, GSC impressions and inbound links are complete/comprehensive (all 354 products).",
+ "categories": [
+  {
+   "category": "sales",
+   "totalProducts": 15,
+   "neverCrawledDiscoveredFloor": 15,
+   "neverCrawledDiscoveredFloorPct": 100,
+   "medianFactualDepthApprox": 86,
+   "gradeDistribution": {
+    "A": 14,
+    "B": 1,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 0,
+   "avgInboundLinks": 5.1
+  },
+  {
+   "category": "finance-and-erp",
+   "totalProducts": 17,
+   "neverCrawledDiscoveredFloor": 17,
+   "neverCrawledDiscoveredFloorPct": 100,
+   "medianFactualDepthApprox": 90,
+   "gradeDistribution": {
+    "A": 17,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 0,
+   "avgInboundLinks": 6.4
+  },
+  {
+   "category": "hr-and-payroll",
+   "totalProducts": 16,
+   "neverCrawledDiscoveredFloor": 16,
+   "neverCrawledDiscoveredFloorPct": 100,
+   "medianFactualDepthApprox": 91,
+   "gradeDistribution": {
+    "A": 16,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 0,
+   "avgInboundLinks": 6.3
+  },
+  {
+   "category": "it-operations",
+   "totalProducts": 9,
+   "neverCrawledDiscoveredFloor": 9,
+   "neverCrawledDiscoveredFloorPct": 100,
+   "medianFactualDepthApprox": 92,
+   "gradeDistribution": {
+    "A": 9,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 0,
+   "avgInboundLinks": 4.8
+  },
+  {
+   "category": "fleet-management",
+   "totalProducts": 5,
+   "neverCrawledDiscoveredFloor": 5,
+   "neverCrawledDiscoveredFloorPct": 100,
+   "medianFactualDepthApprox": 88,
+   "gradeDistribution": {
+    "A": 5,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 0,
+   "avgInboundLinks": 7.6
+  },
+  {
+   "category": "legal",
+   "totalProducts": 3,
+   "neverCrawledDiscoveredFloor": 3,
+   "neverCrawledDiscoveredFloorPct": 100,
+   "medianFactualDepthApprox": 87,
+   "gradeDistribution": {
+    "A": 3,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 0,
+   "avgInboundLinks": 3
+  },
+  {
+   "category": "field-service-management",
+   "totalProducts": 7,
+   "neverCrawledDiscoveredFloor": 5,
+   "neverCrawledDiscoveredFloorPct": 71.4,
+   "medianFactualDepthApprox": 85,
+   "gradeDistribution": {
+    "A": 7,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 2,
+   "avgInboundLinks": 7.1
+  },
+  {
+   "category": "analytics",
+   "totalProducts": 26,
+   "neverCrawledDiscoveredFloor": 12,
+   "neverCrawledDiscoveredFloorPct": 46.2,
+   "medianFactualDepthApprox": 82,
+   "gradeDistribution": {
+    "A": 23,
+    "B": 0,
+    "C": 3,
+    "D": 0
+   },
+   "totalGscImpressions": 1613,
+   "avgInboundLinks": 12.5
+  },
+  {
+   "category": "property-management",
+   "totalProducts": 7,
+   "neverCrawledDiscoveredFloor": 3,
+   "neverCrawledDiscoveredFloorPct": 42.9,
+   "medianFactualDepthApprox": 89,
+   "gradeDistribution": {
+    "A": 7,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 3,
+   "avgInboundLinks": 9.7
+  },
+  {
+   "category": "accounting",
+   "totalProducts": 5,
+   "neverCrawledDiscoveredFloor": 2,
+   "neverCrawledDiscoveredFloorPct": 40,
+   "medianFactualDepthApprox": 94,
+   "gradeDistribution": {
+    "A": 5,
+    "B": 0,
+    "C": 0,
+    "D": 0
+   },
+   "totalGscImpressions": 6,
+   "avgInboundLinks": 14.2
+  },
+  {
+   "category": "security",
+   "totalProducts": 23,
+   "neverCrawledDiscoveredFloor": 9,
+   "neverCrawledDiscoveredFloorPct": 39.1,
+   "medianFactualDepthApprox": 81,
+   "gradeDistribution": {
+    "A": 19,
+    "B": 0,
+    "C": 4,
+    "D": 0
+   },
+   "totalGscImpressions": 1144,
+   "avgInboundLinks": 13.7
+  },
+  {
+   "category": "developer-tools",
+   "totalProducts": 18,
+   "neverCrawledDiscoveredFloor": 7,
+   "neverCrawledDiscoveredFloorPct": 38.9,
+   "medianFactualDepthApprox": 69,
+   "gradeDistribution": {
+    "A": 10,
+    "B": 0,
+    "C": 5,
+    "D": 3
+   },
+   "totalGscImpressions": 1227,
+   "avgInboundLinks": 15
+  },
+  {
+   "category": "design",
+   "totalProducts": 11,
+   "neverCrawledDiscoveredFloor": 4,
+   "neverCrawledDiscoveredFloorPct": 36.4,
+   "medianFactualDepthApprox": 61,
+   "gradeDistribution": {
+    "A": 4,
+    "B": 0,
+    "C": 7,
+    "D": 0
+   },
+   "totalGscImpressions": 911,
+   "avgInboundLinks": 15.3
+  },
+  {
+   "category": "api",
+   "totalProducts": 13,
+   "neverCrawledDiscoveredFloor": 3,
+   "neverCrawledDiscoveredFloorPct": 23.1,
+   "medianFactualDepthApprox": 57,
+   "gradeDistribution": {
+    "A": 5,
+    "B": 0,
+    "C": 1,
+    "D": 7
+   },
+   "totalGscImpressions": 1145,
+   "avgInboundLinks": 12.8
+  },
+  {
+   "category": "marketing",
+   "totalProducts": 23,
+   "neverCrawledDiscoveredFloor": 5,
+   "neverCrawledDiscoveredFloorPct": 21.7,
+   "medianFactualDepthApprox": 78,
+   "gradeDistribution": {
+    "A": 17,
+    "B": 1,
+    "C": 3,
+    "D": 2
+   },
+   "totalGscImpressions": 3767,
+   "avgInboundLinks": 18.7
+  },
+  {
+   "category": "productivity",
+   "totalProducts": 19,
+   "neverCrawledDiscoveredFloor": 4,
+   "neverCrawledDiscoveredFloorPct": 21.1,
+   "medianFactualDepthApprox": 85,
+   "gradeDistribution": {
+    "A": 16,
+    "B": 0,
+    "C": 3,
+    "D": 0
+   },
+   "totalGscImpressions": 1436,
+   "avgInboundLinks": 24.4
+  },
+  {
+   "category": "knowledge-base",
+   "totalProducts": 10,
+   "neverCrawledDiscoveredFloor": 2,
+   "neverCrawledDiscoveredFloorPct": 20,
+   "medianFactualDepthApprox": 52,
+   "gradeDistribution": {
+    "A": 2,
+    "B": 0,
+    "C": 5,
+    "D": 3
+   },
+   "totalGscImpressions": 598,
+   "avgInboundLinks": 14.7
+  },
+  {
+   "category": "ai",
+   "totalProducts": 16,
+   "neverCrawledDiscoveredFloor": 3,
+   "neverCrawledDiscoveredFloorPct": 18.8,
+   "medianFactualDepthApprox": 68,
+   "gradeDistribution": {
+    "A": 8,
+    "B": 0,
+    "C": 8,
+    "D": 0
+   },
+   "totalGscImpressions": 905,
+   "avgInboundLinks": 20.3
+  },
+  {
+   "category": "customer-support",
+   "totalProducts": 16,
+   "neverCrawledDiscoveredFloor": 3,
+   "neverCrawledDiscoveredFloorPct": 18.8,
+   "medianFactualDepthApprox": 82,
+   "gradeDistribution": {
+    "A": 13,
+    "B": 0,
+    "C": 3,
+    "D": 0
+   },
+   "totalGscImpressions": 5328,
+   "avgInboundLinks": 23.3
+  },
+  {
+   "category": "project-management",
+   "totalProducts": 12,
+   "neverCrawledDiscoveredFloor": 2,
+   "neverCrawledDiscoveredFloorPct": 16.7,
+   "medianFactualDepthApprox": 78,
+   "gradeDistribution": {
+    "A": 9,
+    "B": 0,
+    "C": 3,
+    "D": 0
+   },
+   "totalGscImpressions": 1550,
+   "avgInboundLinks": 29.2
+  },
+  {
+   "category": "documentation",
+   "totalProducts": 12,
+   "neverCrawledDiscoveredFloor": 2,
+   "neverCrawledDiscoveredFloorPct": 16.7,
+   "medianFactualDepthApprox": 54,
+   "gradeDistribution": {
+    "A": 3,
+    "B": 0,
+    "C": 5,
+    "D": 4
+   },
+   "totalGscImpressions": 712,
+   "avgInboundLinks": 16.6
+  },
+  {
+   "category": "communication",
+   "totalProducts": 16,
+   "neverCrawledDiscoveredFloor": 2,
+   "neverCrawledDiscoveredFloorPct": 12.5,
+   "medianFactualDepthApprox": 70,
+   "gradeDistribution": {
+    "A": 8,
+    "B": 0,
+    "C": 8,
+    "D": 0
+   },
+   "totalGscImpressions": 913,
+   "avgInboundLinks": 19.4
+  },
+  {
+   "category": "scheduling",
+   "totalProducts": 10,
+   "neverCrawledDiscoveredFloor": 1,
+   "neverCrawledDiscoveredFloorPct": 10,
+   "medianFactualDepthApprox": 60,
+   "gradeDistribution": {
+    "A": 4,
+    "B": 0,
+    "C": 6,
+    "D": 0
+   },
+   "totalGscImpressions": 580,
+   "avgInboundLinks": 17.1
+  },
+  {
+   "category": "ecommerce",
+   "totalProducts": 11,
+   "neverCrawledDiscoveredFloor": 1,
+   "neverCrawledDiscoveredFloorPct": 9.1,
+   "medianFactualDepthApprox": 82,
+   "gradeDistribution": {
+    "A": 7,
+    "B": 3,
+    "C": 1,
+    "D": 0
+   },
+   "totalGscImpressions": 1124,
+   "avgInboundLinks": 34.5
+  },
+  {
+   "category": "cms",
+   "totalProducts": 14,
+   "neverCrawledDiscoveredFloor": 1,
+   "neverCrawledDiscoveredFloorPct": 7.1,
+   "medianFactualDepthApprox": 74,
+   "gradeDistribution": {
+    "A": 10,
+    "B": 0,
+    "C": 2,
+    "D": 2
+   },
+   "totalGscImpressions": 1302,
+   "avgInboundLinks": 22.1
+  },
+  {
+   "category": "crm",
+   "totalProducts": 10,
+   "neverCrawledDiscoveredFloor": 0,
+   "neverCrawledDiscoveredFloorPct": 0,
+   "medianFactualDepthApprox": 77,
+   "gradeDistribution": {
+    "A": 7,
+    "B": 0,
+    "C": 3,
+    "D": 0
+   },
+   "totalGscImpressions": 1372,
+   "avgInboundLinks": 26.8
+  },
+  {
+   "category": "automation",
+   "totalProducts": 10,
+   "neverCrawledDiscoveredFloor": 0,
+   "neverCrawledDiscoveredFloorPct": 0,
+   "medianFactualDepthApprox": 72,
+   "gradeDistribution": {
+    "A": 4,
+    "B": 3,
+    "C": 3,
+    "D": 0
+   },
+   "totalGscImpressions": 980,
+   "avgInboundLinks": 19.2
+  }
+ ]
+}

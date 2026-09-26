@@ -1,0 +1,56 @@
+{
+ "generatedAt": "2026-09-26",
+ "eligibilityCriteria": "Already indexed, meaningful GSC impressions, poor but measurable position, clear query intent -- per Part 14, CRAWLED_NOT_INDEXED pages are explicitly excluded from this lane.",
+ "eligiblePages": [
+  {
+   "slug": "freshdesk",
+   "impressions": 1685,
+   "position": 80.3,
+   "factualDepth": "A(94)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY",
+   "note": "INDEXED. This is a genuine ranking problem, not indexation -- position 80.3 with 1685 impressions and 0 recorded clicks is a real, large opportunity, but the page is frozen (legacy protection); this session made no snippet/content edit."
+  },
+  {
+   "slug": "buffer",
+   "impressions": 587,
+   "position": 83.6,
+   "factualDepth": "A(89)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY"
+  },
+  {
+   "slug": "ecwid",
+   "impressions": 408,
+   "position": 74.3,
+   "factualDepth": "A(96)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY"
+  },
+  {
+   "slug": "perplexity",
+   "impressions": 97,
+   "position": 74.9,
+   "factualDepth": "A(95)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY",
+   "note": "Wave 1 treatment cohort member -- NOW INDEXED. A real, observed transition; not claimed as proof Wave 1 caused it (no controlled timing data), but a genuinely positive data point worth tracking."
+  },
+  {
+   "slug": "synthesia",
+   "impressions": 170,
+   "position": 73.8,
+   "factualDepth": "A(85)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY",
+   "note": "Wave 1 treatment cohort member -- NOW INDEXED, same caveat as perplexity."
+  }
+ ],
+ "actionTakenThisSession": "OBSERVATION AND CLASSIFICATION ONLY. All 5 eligible pages (freshdesk, buffer, ecwid, perplexity, synthesia) are legacy-protected (frozen). No snippet, title, or content edits were made. See high-impression-pages.json for the full 15-product classification this was drawn from.",
+ "recommendationForNextWave": "The 5 RANKING_RECOVERY pages (freshdesk, buffer, ecwid, perplexity, synthesia) are genuine high-impression, low-position, already-indexed pages -- exactly Part 14's ranking-war eligibility criteria. They cannot be touched until their governing protection/reservation is explicitly reviewed and lifted by whoever owns that decision (this session did not locate the specific source file for their protection beyond the general readProtectedExperimentSlugs() mechanism reading docs/*experiment*.json -- worth a follow-up to identify exactly which experiment reserves them and whether it has concluded). Once cleared, a snippet/title pass (Part 19) on these 5 is the highest-confidence next ranking-war action given real, large impression counts and no indexation blocker."
+}

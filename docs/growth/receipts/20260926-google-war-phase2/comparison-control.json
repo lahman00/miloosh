@@ -1,0 +1,6 @@
+{
+  "generatedAt": "2026-09-26",
+  "note": "This session did not establish a NEW comparison control cohort, because it did not run a new comparison-level experiment -- the software-data enrichment executed (see comparison-treatment.json) is measured at the software-page level via the existing Wave 1/2/3 control cohorts (data/growth/frozen-cohorts.ts), which remain untouched. The only comparison-page-level experiment already in the codebase (data/experiments/comparison-quality-cohort.ts) has its own existing, untouched 20-page CONTROL_COHORT, which this session deliberately left frozen -- see indexation-deltas.json for its real delta check.",
+  "existingComparisonControlCohort": "data/experiments/comparison-quality-cohort.ts CONTROL_COHORT (20 pages, started 2026-08-22) -- not modified this session.",
+  "softwareLevelControls": "data/growth/frozen-cohorts.ts -- three wave control cohorts (10, 13, 10 slugs respectively) -- not modified this session."
+}

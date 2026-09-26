@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-09-26",
+  "source": "var/growth/google-war/authority-graph.json -- real rendered-HTML-derived crawl graph (Next.js build output), not static imports. The master mission's own grounding notes that static analysis previously produced false-orphan findings; this uses the same rendered-crawl method that corrected those findings.",
+  "byKind": {
+    "hub": { "total": 19, "depth1": 19, "depth2": 0, "depth3": 0, "depth4plus": 0, "unreachable": 0 },
+    "category": { "total": 27, "depth1": 27, "depth2": 0, "depth3": 0, "depth4plus": 0, "unreachable": 0 },
+    "guide": { "total": 34, "depth1": 5, "depth2": 29, "depth3": 0, "depth4plus": 0, "unreachable": 0 },
+    "software": { "total": 354, "depth1": 75, "depth2": 279, "depth3": 0, "depth4plus": 0, "unreachable": 0, "nearOrphan": 9 },
+    "comparison": { "total": 1348, "depth1": 6, "depth2": 993, "depth3": 349, "depth4plus": 0, "unreachable": 0, "nearOrphan": 331 }
+  },
+  "finding": "Click depth across the entire crawlable site tops out at depth 3 (349 comparison pages), with ZERO unreachable pages and ZERO true orphans (matching growth:google-war's own trueSoftwareOrphans=0 result). This is a genuinely shallow site architecture -- click depth is not a plausible explanation for the indexation gap at the sitewide level, and the indexed-vs-nonindexed comparator (indexed-vs-nonindexed-comparator.json) confirms depth does not separate indexed from not-indexed comparison pages specifically.",
+  "nearOrphanNote": "331 comparison pages (24.6% of all 1348) and 9 software pages are flagged 'nearOrphan' (few relevant inbound links, not zero). This is worth tracking but, per the comparator finding, near-orphan status does not correlate with non-indexation any more than the rest of the population -- so this alone should not be treated as the fix for those specific 331 pages without further evidence.",
+  "conclusionForPart8": "Do not prioritize a click-depth-reduction or internal-linking initiative based on this data. The site's architecture is already shallow; the bottleneck for indexation (where it exists) lies elsewhere per the comparator's own findings."
+}

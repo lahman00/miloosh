@@ -1,0 +1,25 @@
+{
+  "experiment": "data/experiments/comparison-quality-cohort.ts",
+  "hypothesis": "Comparison pages whose 'who should choose' text is genuinely pair-specific (generateWhoShouldChoosePairAware) may be more likely to be indexed than pages with boilerplate repeated text (generateWhoShouldChoose).",
+  "experimentStartedAt": "2026-08-22",
+  "checkedAt": "2026-09-26",
+  "elapsedDays": 35,
+  "method": "LIVE_GSC per-URL check: each of the 20 TREATMENT_COHORT and 20 CONTROL_COHORT comparison URLs individually filtered against the GSC Pages report's 'Indexed' bucket (218 total indexed pages sitewide) via the authenticated UI, one at a time with settling waits between filter changes to avoid a confirmed stale-render artifact in this GSC UI.",
+  "results": {
+    "treatment": {
+      "total": 20,
+      "nowIndexed": 0,
+      "stillNotIndexed": 20,
+      "indexedSlugs": []
+    },
+    "control": {
+      "total": 20,
+      "nowIndexed": 2,
+      "stillNotIndexed": 18,
+      "indexedSlugs": ["notion-vs-coda", "coda-vs-todoist"]
+    }
+  },
+  "finding": "After 35 days -- enough elapsed time for Google to have recrawled and reconsidered this content, per the experiment's own measurement plan -- the pair-aware-text treatment shows ZERO of 20 pages transitioning to indexed, while the untouched control shows 2 of 20. This is not a large enough sample to prove the mechanism is actively harmful, but it provides NO positive evidence for the hypothesis, and if anything points mildly the other way. Both control transitions involve 'coda' as one side, which may just as easily reflect something about the coda software page's own authority/freshness as anything about the comparison pages themselves -- not investigated further given the small N.",
+  "conclusion": "STOP extending this specific mechanism (generateWhoShouldChoosePairAware / TREATMENT_COHORT) to more comparison pages without new evidence. Per the master mission's own Part 5 instruction ('if a hypothesis is disproven, STOP optimizing that dimension -- that is a successful finding'), this session does not add new slugs to TREATMENT_COHORT. The 20v20 cohort is left completely untouched (still frozen, still a clean measurement baseline) for a possible later re-check with more elapsed time. This session's comparison-page work instead targets the underlying software-level factual-depth gap (Group 1 below), a mechanism with a stronger a priori evidence base from Waves 1-3, and treats internal-link authority (not prose rewriting) as the working hypothesis for already-data-rich comparison pages that remain unindexed.",
+  "recommendedFollowUp": "Re-check this same 20v20 split again in another 30-60 days. If treatment still shows zero net-positive delta over control at that point, recommend formally retiring generateWhoShouldChoosePairAware as a dead-end and reverting TREATMENT_COHORT's pages to the plain generateWhoShouldChoose (removing now-unnecessary code complexity) rather than leaving a permanently-inconclusive experiment live in the codebase."
+}

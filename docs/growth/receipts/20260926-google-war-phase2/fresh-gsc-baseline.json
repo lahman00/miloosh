@@ -1,0 +1,40 @@
+{
+  "capturedAt": "2026-09-26",
+  "source": "LIVE_GSC",
+  "method": "Authenticated GSC UI, Indexing > Pages report, drilled into each reason bucket, filtered by URL substring (/compare/, /software/, /best-)",
+  "gscLastProcessed": "2026-09-21",
+  "propertyTotals": {
+    "indexed": 218,
+    "notIndexed": 1705,
+    "total": 1923
+  },
+  "notIndexedReasons": {
+    "alternatePageWithCanonical": 58,
+    "pageRedirects": 2,
+    "bucketA_neverActuallyCrawled": {
+      "hebrewLabel": "נסרק אך לא נכלל באינדקס",
+      "docAnchor": "https://support.google.com/webmasters/answer/7440203#discovered__unclear_status",
+      "evidenceForLabel": "All sampled rows show last-crawled = 'לא זמין' (not available) -- Google has discovered these URLs but never actually crawled them. This is DISCOVERED_NOT_INDEXED, not CRAWLED_NOT_INDEXED, despite the Hebrew UI phrase containing the word for 'crawled'.",
+      "total": 820,
+      "byKind": {
+        "comparison": { "total": 651, "sampledUnique": 627, "samplingNote": "Sample truncated by tool output limits; not exhaustive but a large, real, live-sourced sample." },
+        "software": { "total": 136, "sampledUnique": 136, "samplingNote": "Complete -- exact count match." },
+        "guide": { "total": 14, "sampledUnique": 14, "samplingNote": "Complete -- exact count match." }
+      }
+    },
+    "bucketB_trulyCrawledNotIndexed": {
+      "hebrewLabel": "נסרק - לא נכלל באינדקס כרגע",
+      "docAnchor": "https://support.google.com/webmasters/answer/7440203#crawled",
+      "evidenceForLabel": "Sampled rows show real recent last-crawled dates (e.g. 2026-08-23 through 2026-08-25 in one filtered view, 2026-09-19 through 2026-09-20 in the unfiltered view) -- Google DID crawl these and chose not to index them. This is the true CRAWLED_NOT_INDEXED bucket, and the one Waves 1-3's content-depth treatment actually targets correctly.",
+      "activeFixValidation": "GSC shows 'אימות התיקון: התחיל 24.9.2026' (Fix validation: started 2026-09-24) on this exact reason bucket -- someone (unclear who, in this shared multi-agent environment) already clicked 'Validate Fix' 2 days before this snapshot. Recorded as an observed fact; not investigated further this session.",
+      "total": 825,
+      "byKind": {
+        "comparison": { "total": 601, "sampledUnique": 395, "samplingNote": "Sample truncated by tool output limits; not exhaustive." },
+        "software": { "total": 175, "sampledUnique": null, "samplingNote": "Count confirmed live; URL-level list not cleanly captured this session due to a read_page caching bug (accumulated stale content across filter changes). Not blocking -- Waves 1-3 already independently confirmed 62 software URLs individually via URL Inspection; this 175 figure is additional context, not a new candidate list Wave 4 must fully enumerate before acting." },
+        "guide": { "total": 15, "sampledUnique": 15, "samplingNote": "Complete -- exact count match." }
+      }
+    }
+  },
+  "criticalCorrection": "The prior missions' baseline framing ('1,645/1,923 crawled-not-indexed') collapsed two structurally different problems into one number. As of this snapshot: 820 URLs are DISCOVERED_NOT_INDEXED (Google knows about them but has never crawled them -- an internal-linking/crawl-budget/sitemap-priority problem) and 825 URLs are truly CRAWLED_NOT_INDEXED (Google crawled them and excluded them from the index -- a content-quality/duplication problem, which is what Waves 1-3's factual-depth treatment correctly targets). These need different interventions and should not be conflated going forward.",
+  "toolLimitation": "get_page_text and ref_id-scoped read_page calls returned stale cached DOM snapshots repeatedly during this session (a known issue with this GSC UI). Fresh full-page read_page calls (no ref_id) immediately after a filter change were reliable for smaller lists (<200 rows) but truncated for larger ones (600+ rows) due to output size limits. CSV/Sheets/Excel export triggers a real file download the browser tool cannot capture as a response body. All URL lists in this file are real, live-sourced, and unmodified -- no URL was fabricated -- but the comparison lists in both buckets are large-sample, not exhaustive enumerations."
+}

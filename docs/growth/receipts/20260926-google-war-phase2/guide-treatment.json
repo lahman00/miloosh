@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-09-26",
+  "status": "RESEARCH_ONLY -- no guide-page treatment executed this session.",
+  "realEvidenceGathered": {
+    "totalPublishedGuides": 34,
+    "discoveredNotIndexed": { "total": 14, "urls": "see var/growth/google-war-phase2/bucketA-discovered-guide-complete.json -- complete, exact list" },
+    "trulyCrawledNotIndexed": { "total": 15, "urls": "see var/growth/google-war-phase2/bucketB-crawled-guide-complete.json -- complete, exact list" },
+    "impliedIndexed": "34 - 14 - 15 = 5 guides not appearing in either not-indexed bucket (not individually confirmed indexed this session)."
+  },
+  "whyDeferred": "Guide pages (data/guides/*, app/[guide]/) use a different content architecture from software/comparison pages (hand-authored buyer-pain briefs, not auto-generated from structured product data), so treating them properly requires reading and evaluating each guide's existing prose quality individually rather than reusing this session's software-data-enrichment or category-buying-guide mechanisms. Given the session's scope was already large (fresh GSC snapshot, comparator, category map, click-depth map, 15-product enrichment, category hub feature, high-impression re-evaluation), guide-page treatment was not started this session. This is honest backlog, not a silent omission.",
+  "recommendedNextStep": "For the next wave: read the 15 truly-crawled-not-indexed guides (bucketB-crawled-guide-complete.json) directly, cross-reference each against its role-guide's real committed GSC demand in var/growth/google-war/latest.json (kind: 'guide' rows), and apply Part 12's intent-protection check (Part 13) before writing any new content, since guides are the most cannibalization-prone kind (software-alternatives vs comparison vs role/problem intent)."
+}

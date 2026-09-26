@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-09-26",
+  "source": "Read-only inspection of docs/growth/MILOOSH_OFFSITE_ATTACK_20260926.md and docs/growth/MILOOSH_OUTREACH_HANDOFF_20260926.json on the main site checkout (/Users/eyalhaimovich/Desktop/Miloosh/01-Current/site, branch growth/buyer-acquisition-20260917), authored by a different agent (Antigravity) working concurrently in this shared multi-agent environment. Read only -- nothing in these files was acted on, sent, or submitted this session.",
+  "importantCaveat": "This document's own '1. EXECUTED_LIVE' section claims two items are already live: a Reddit comment on r/SaaS and a Qevra directory listing. Per the master mission's own explicit rule ('Never call prepared copy \"executed.\"'), a label inside a document is not proof. This session attempted to independently verify both claims and could NOT: the Reddit URL is on a domain this session's browser tool refuses to open at all (hard safety restriction), and the Qevra URL navigation was blocked by an automated safety classifier (flagged as a possible exfiltration risk) before it could load. Neither claim could be confirmed OR refuted this session. They are reported below as UNVERIFIED_CLAIMED_EXECUTED, not as confirmed facts -- the user should verify both directly.",
+  "classification": {
+    "UNVERIFIED_CLAIMED_EXECUTED": [
+      { "item": "Reddit r/SaaS comment", "claimedUrl": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/?force-legacy-sct=1", "note": "Document claims this was posted by an autonomous playwright worker. Not independently verifiable this session (Reddit is a hard-blocked domain for this session's browser tool)." },
+      { "item": "Qevra directory listing", "claimedUrl": "https://qevra.app/s/miloosh", "note": "Document claims a live dofollow listing exists. Not independently verifiable this session (navigation blocked by an automated safety classifier before load)." }
+    ],
+    "READY_FOR_GMAIL_SEND": {
+      "count": 5,
+      "items": ["SaaS Mag Editorial Team", "SaaSComparely Editorial Team", "Kai Brach / Dense Discovery", "Kyle Poyar / Growth Unhinged", "Arvid Kahl / The Bootstrapped Founder"],
+      "note": "5 fully-drafted pitch emails with real named recipients and real email addresses, ready to send. NOT sent this session -- sending any of these requires the user's own explicit go-ahead per this session's standing safety rules (sending a message on someone's behalf is a permission-required action). The user should review the actual email content in docs/growth/MILOOSH_OUTREACH_HANDOFF_20260926.json before deciding whether to send any of them, and send them personally (or explicitly authorize a session to do so)."
+    },
+    "READY_AFTER_REDDIT_LOGIN": {
+      "count": 3,
+      "note": "3 proposed Reddit replies (r/artificial, r/SmallYTChannel, r/EcommerceWebsite) blocked on the account completing Reddit's own login/verification flow. Not actionable by this session (Reddit is hard-blocked here); the user or the owning session must handle this directly."
+    },
+    "READY_FOR_BROWSER_SUBMISSION": {
+      "count": 6,
+      "items": ["Nick Launches", "AlternativeTo", "SaaSHub", "Uneed", "Launching Next", "BetaList"],
+      "note": "6 directory-submission payloads prepared. AlternativeTo explicitly requires creating a user account to submit -- account creation is a prohibited action for this session regardless of instruction, so that one specifically needs the user's own hands. The other 5 are simple form submissions the user (or an explicitly-authorized session) could complete; none were submitted this session."
+    },
+    "RESEARCH_ONLY": {
+      "count": 2,
+      "note": "Wix/Shopify partner directories (need portal credentials) and social-discussion monitoring queries (X/LinkedIn) -- correctly left as research, no action implied."
+    },
+    "REJECTED": {
+      "count": 4,
+      "note": "Low-DR link farms, G2/Capterra vendor listings (wrong category for a comparison site), a site whose own contact page says no guest posts, and paid link networks -- all correctly rejected with a stated reason, consistent with anti-spam/editorial-integrity discipline. No action needed."
+    }
+  },
+  "actionTakenThisSession": "NONE. This session read the two files for classification purposes only, per Mission 5 Phase II Part 26's instruction to review and classify -- not to execute. All send/submit/account-creation decisions are left to the user."
+}

@@ -1,0 +1,63 @@
+{
+ "generatedAt": "2026-09-26",
+ "ecosystemChecked": [
+  "elevenlabs",
+  "jasper",
+  "copy-ai",
+  "perplexity",
+  "synthesia"
+ ],
+ "products": [
+  {
+   "slug": "elevenlabs",
+   "impressions": 67,
+   "position": 73.2,
+   "factualDepth": "A(90)",
+   "liveIndexed": false,
+   "protected": false,
+   "classification": "INDEXATION_RECOVERY"
+  },
+  {
+   "slug": "jasper",
+   "impressions": 165,
+   "position": 71.5,
+   "factualDepth": "A(85)",
+   "liveIndexed": false,
+   "protected": true,
+   "classification": "INDEXATION_RECOVERY",
+   "note": "Wave 1 treatment cohort member -- still not indexed."
+  },
+  {
+   "slug": "copy-ai",
+   "impressions": 187,
+   "position": 79.1,
+   "factualDepth": "A(85)",
+   "liveIndexed": false,
+   "protected": true,
+   "classification": "INDEXATION_RECOVERY",
+   "note": "Wave 1 treatment cohort member -- still not indexed."
+  },
+  {
+   "slug": "perplexity",
+   "impressions": 97,
+   "position": 74.9,
+   "factualDepth": "A(95)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY",
+   "note": "Wave 1 treatment cohort member -- NOW INDEXED. A real, observed transition; not claimed as proof Wave 1 caused it (no controlled timing data), but a genuinely positive data point worth tracking."
+  },
+  {
+   "slug": "synthesia",
+   "impressions": 170,
+   "position": 73.8,
+   "factualDepth": "A(85)",
+   "liveIndexed": true,
+   "protected": true,
+   "classification": "RANKING_RECOVERY",
+   "note": "Wave 1 treatment cohort member -- NOW INDEXED, same caveat as perplexity."
+  }
+ ],
+ "finding": "Of the 4 Wave-1-treatment ecosystem members checked (jasper, copy-ai, perplexity, synthesia), 2 are now indexed (perplexity, synthesia) and 2 are not (jasper, copy-ai). This is a real, small, non-causal observation -- not a controlled delta check like the comparison-quality-cohort one (Wave 1 has no comparable control group checked here), so it is reported as a data point, not a finding.",
+ "actionTakenThisSession": "OBSERVATION ONLY. All 5 are either legacy-protected (jasper, copy-ai, perplexity, synthesia -- Wave 1 treatment cohort) or already A-grade depth (elevenlabs, not protected but no content-depth gap exists). No edits made, consistent with Part 20's instruction not to rewrite already-strong content without evidence."
+}
