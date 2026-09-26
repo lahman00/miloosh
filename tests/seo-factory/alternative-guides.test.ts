@@ -76,7 +76,24 @@ describe("SEO execution cohort alternatives guides", () => {
     // to distinct real jobs (video/slide voiceover, transcript-based
     // editing, multilingual training video) and already have published
     // comparisons -- no new comparison page was created.
-    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "ecwid", "elevenlabs", "freshdesk", "front", "help-scout", "hubspot", "intercom", "lastpass", "mulesoft", "n8n", "pipedrive", "postmark", "ringcentral", "salesforce", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "tidio", "todoist", "woocommerce", "wrike", "zapier", "zoho-crm"]);
+    //
+    // MILOOSH INDEXATION RECOVERY ATTACK (2026-09-26) added 14: the 10
+    // real demand x factual-depth-deficiency candidates from
+    // scripts/growth/remediation-queue.ts (whimsical, scribe, fullstory,
+    // marketo-engage, lucidchart, firebase, vercel, netlify, contentful,
+    // hotjar -- each confirmed "Crawled - currently not indexed" via a
+    // live Google Search Console URL Inspection the same day, and each
+    // previously had ZERO pricing data recorded at all, a bigger gap than
+    // the also-real empty cons[] every one of them had) plus 4 more from
+    // the same live-verified crawled-not-indexed state (jasper, copy-ai,
+    // perplexity, synthesia -- an AI-tool cluster researched alongside
+    // ElevenLabs; only synthesia's real alternatives array actually
+    // includes elevenlabs, so the other three route to their own real,
+    // sourced alternatives instead of a forced elevenlabs mention). Every
+    // decision below uses each product's own real `alternatives` array
+    // and an already-published comparison; no new comparison page was
+    // created for any of the 14.
+    expect(Object.keys(ALTERNATIVE_GUIDES).sort()).toEqual(["activecampaign", "airtable", "buffer", "clickup", "confluence", "contentful", "copy-ai", "ecwid", "elevenlabs", "firebase", "freshdesk", "front", "fullstory", "help-scout", "hotjar", "hubspot", "intercom", "jasper", "lastpass", "lucidchart", "marketo-engage", "mulesoft", "n8n", "netlify", "perplexity", "pipedrive", "postmark", "ringcentral", "salesforce", "scribe", "semrush", "setmore", "smartsheet", "sprout-social", "squarespace", "synthesia", "tidio", "todoist", "vercel", "whimsical", "woocommerce", "wrike", "zapier", "zoho-crm"]);
     for (const [slug, guide] of Object.entries(ALTERNATIVE_GUIDES)) {
       expect(getSoftware(slug)).toBeDefined();
       expect(guide.decisions.length).toBeGreaterThanOrEqual(2); // real editorial minimum -- most real cohorts have 3, woocommerce honestly has 2

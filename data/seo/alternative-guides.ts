@@ -418,6 +418,218 @@ export const ALTERNATIVE_GUIDES: Record<string, AlternativeGuide> = {
     ],
     evidenceSources: ["https://elevenlabs.io"],
   },
+  whimsical: {
+    diagnosis: "The page lists three alternatives as if they were interchangeable diagramming tools, without explaining that they actually serve three different jobs: open-ended workshop whiteboarding, structured technical diagramming with data-linking, or bare-bones wireframe sketching.",
+    heading: "Choose an alternative by the kind of visual work you do",
+    introduction: "Whimsical combines flowcharts, mind maps and wireframes with AI generation in one lightweight tool. The useful alternatives question is which of those jobs actually needs a dedicated, deeper tool: open-ended team whiteboarding, technical diagrams tied to real data, or fast low-fidelity UI sketching.",
+    whySeekAlternative: [
+      "The work is open-ended workshop whiteboarding and brainstorming, not structured diagrams.",
+      "Diagrams need to link to live data in a spreadsheet or CSV, and reflect that data automatically.",
+      "The need is fast, low-fidelity UI sketching without visual polish, not a finished-looking diagram.",
+    ],
+    decisions: [
+      { heading: "Open-ended team whiteboarding", fit: "Miro is the relevant comparison for cross-functional teams running remote workshops on an infinite collaborative canvas.", alternativeSlug: "miro", comparisonSlug: "miro-vs-whimsical" },
+      { heading: "Data-linked technical diagrams", fit: "Lucidchart fits teams that need diagrams tied to a live Google Sheets/Excel/CSV data source, not just static shapes.", alternativeSlug: "lucidchart", comparisonSlug: "lucidchart-vs-whimsical" },
+      { heading: "Low-fidelity wireframe sketching", fit: "Balsamiq is the closer route when the goal is rapidly sketching and aligning on interface structure, deliberately before visual polish.", alternativeSlug: "balsamiq", comparisonSlug: "balsamiq-vs-whimsical" },
+    ],
+    evidenceSources: ["https://whimsical.com/pricing"],
+  },
+  scribe: {
+    diagnosis: "The page's two alternatives are both described loosely as \"documentation\" tools, without separating Scribe's own specialty -- automatically capturing a workflow as you perform it -- from a knowledge base you write and verify yourself.",
+    heading: "Choose an alternative by how the documentation gets created",
+    introduction: "Scribe's core value is automatic capture: it turns the act of doing a task into a step-by-step guide with no manual write-up. The useful alternatives question is whether the team actually needs that automatic capture, or a different kind of knowledge system entirely -- verified answers inside existing tools, or a searchable central hub.",
+    whySeekAlternative: [
+      "The need is verified, trusted answers surfaced inside tools the team already uses, not auto-captured screenshots.",
+      "The requirement is a searchable, centralized knowledge base rather than individual how-to guides.",
+      "Documentation is written and maintained by hand rather than captured automatically while working.",
+    ],
+    decisions: [
+      { heading: "Verified answers inside existing tools", fit: "Guru is the relevant comparison when the priority is knowledge that's verified and surfaced directly inside Slack and other tools the team already uses.", alternativeSlug: "guru", comparisonSlug: "guru-vs-scribe" },
+      { heading: "Centralized searchable knowledge base", fit: "Helpjuice fits support and operations teams that want one searchable hub for company documentation rather than a stream of individual guides.", alternativeSlug: "helpjuice", comparisonSlug: "helpjuice-vs-scribe" },
+    ],
+    evidenceSources: ["https://scribe.com/pricing"],
+  },
+  fullstory: {
+    diagnosis: "The page's two alternatives are both filed under \"behavioral analytics,\" which hides a real split between qualitative, session-replay-led tools with published self-serve pricing and FullStory's own quote-only, quantitative product-analytics positioning.",
+    heading: "Choose an alternative by pricing model and analysis style",
+    introduction: "FullStory pairs session replay with AI-surfaced behavioral insights, but every paid tier is quote-only. The useful alternatives question is whether a team wants a lighter, self-serve-priced tool for heatmaps and replay, or automatic event capture for quantitative product analytics without manual tagging.",
+    whySeekAlternative: [
+      "The team wants published, self-serve pricing instead of a quote for every paid tier.",
+      "The priority is automatic capture of every user interaction without manually defining events to track.",
+      "The budget doesn't support FullStory's enterprise-oriented Business/Advanced/Enterprise structure.",
+    ],
+    decisions: [
+      { heading: "Self-serve pricing with heatmaps and replay", fit: "Hotjar is the relevant comparison for teams that want published entry pricing (from $39/month) rather than a quote for every tier.", alternativeSlug: "hotjar", comparisonSlug: "fullstory-vs-hotjar" },
+      { heading: "Automatic event capture for product analytics", fit: "Heap fits product teams that want every interaction captured automatically for conversion and retention analysis, without manually tagging events.", alternativeSlug: "heap", comparisonSlug: "fullstory-vs-heap" },
+    ],
+    evidenceSources: ["https://www.fullstory.com/plans/"],
+  },
+  "marketo-engage": {
+    diagnosis: "The page's three alternatives span mid-market automation, B2C messaging, and an all-in-one CRM -- very different buyer profiles that a flat \"alternatives\" list doesn't separate from Marketo Engage's own enterprise B2B, buying-committee-focused positioning.",
+    heading: "Choose an alternative by company stage and buying model",
+    introduction: "Marketo Engage is built for enterprise B2B teams managing multi-decision-maker buying committees, with pricing available only through a sales conversation. The useful alternatives question is whether that scale and complexity is actually needed, or whether a simpler, self-serve, or channel-specific platform fits better.",
+    whySeekAlternative: [
+      "The company is mid-market and wants marketing automation without enterprise complexity or a mandatory sales conversation.",
+      "The audience is primarily consumer (B2C), needing cross-channel app/email/SMS orchestration rather than B2B account-based marketing.",
+      "The team wants marketing and CRM data unified in one connected system rather than a marketing-automation platform layered on a separate CRM.",
+    ],
+    decisions: [
+      { heading: "Mid-market automation without enterprise complexity", fit: "ActiveCampaign is the relevant comparison for businesses that want automation and AI agents handling email/SMS/CRM tasks without Marketo's enterprise buying process.", alternativeSlug: "activecampaign", comparisonSlug: "marketo-engage-vs-activecampaign" },
+      { heading: "B2C cross-channel messaging", fit: "Braze fits brands orchestrating personalized messaging across app, email and SMS, a consumer-engagement job Marketo isn't built around.", alternativeSlug: "braze", comparisonSlug: "marketo-engage-vs-braze" },
+      { heading: "Unified CRM and marketing", fit: "HubSpot is the closer route for growing companies that want marketing automation and CRM in one connected, self-serve system.", alternativeSlug: "hubspot", comparisonSlug: "hubspot-vs-marketo-engage" },
+    ],
+    evidenceSources: ["https://business.adobe.com/products/marketo.html"],
+  },
+  lucidchart: {
+    diagnosis: "The page's two alternatives are both framed as general visual tools, which hides that one is open-ended whiteboarding and the other is a UI design tool where diagramming is a secondary feature -- not two other ways to do Lucidchart's own job of structured, data-linked diagramming.",
+    heading: "Choose an alternative by what the diagram needs to do",
+    introduction: "Lucidchart's differentiator is structured diagramming linked to real data (Google Sheets, Excel, CSV) with enterprise integrations. The useful alternatives question is whether the team actually needs that data-linked structure, or a more open-ended canvas, or diagramming alongside real interface design work.",
+    whySeekAlternative: [
+      "The work is open-ended brainstorming and workshops rather than structured, data-linked diagrams.",
+      "Diagrams need to live alongside actual UI design and prototyping work, not stand alone.",
+      "The team is on Lucidchart's free plan and has outgrown its 3-document, 75-shape cap.",
+    ],
+    decisions: [
+      { heading: "Open-ended whiteboarding", fit: "Miro is the relevant comparison for teams wanting an infinite multiplayer canvas for research and planning, not just structured diagrams.", alternativeSlug: "miro", comparisonSlug: "miro-vs-lucidchart" },
+      { heading: "Diagramming alongside UI design", fit: "Figma fits teams that need diagramming to sit next to real interface design and prototyping work in one tool.", alternativeSlug: "figma", comparisonSlug: "figma-vs-lucidchart" },
+    ],
+    evidenceSources: ["https://lucid.co/pricing"],
+  },
+  firebase: {
+    diagnosis: "The page's two alternatives are presented as similar \"backend\" options, without separating Firebase's own managed, usage-billed NoSQL model from an open-source, self-hostable SQL alternative and a general-purpose cloud deployment platform.",
+    heading: "Choose an alternative by database model and billing predictability",
+    introduction: "Firebase pairs a managed NoSQL backend with usage-based Blaze-plan billing against Google Cloud infrastructure rates -- not a flat monthly fee. The useful alternatives question is whether the team wants a real SQL database with predictable self-hosting, or a general cloud platform for a fully custom backend.",
+    whySeekAlternative: [
+      "The team wants a real relational (Postgres) database with row-level security, not a NoSQL document store.",
+      "Predictable, flat infrastructure cost matters more than Firebase's usage-based Blaze billing.",
+      "The requirement is self-hostable, open-source infrastructure rather than a fully managed Google Cloud service.",
+    ],
+    decisions: [
+      { heading: "Self-hostable Postgres backend", fit: "Supabase is the relevant comparison for developers who want a real SQL database with row-level security and the option to self-host.", alternativeSlug: "supabase", comparisonSlug: "firebase-vs-supabase" },
+      { heading: "General-purpose managed cloud infrastructure", fit: "Render fits developers who want managed infrastructure (web services, workers, databases) for a custom backend rather than Firebase's specific product suite.", alternativeSlug: "render", comparisonSlug: "firebase-vs-render" },
+    ],
+    evidenceSources: ["https://firebase.google.com/pricing"],
+  },
+  vercel: {
+    diagnosis: "The page's two alternatives are treated as one generic \"deployment\" category, which misses that Vercel's own differentiation is agent-oriented tooling -- Sandbox execution for untrusted AI-generated code, an AI Gateway across many models -- a different axis entirely from a role-broad deploy competitor or a jump to raw containers.",
+    heading: "Weigh Vercel's AI-agent tooling against a broader team platform or full container control",
+    introduction: "Vercel markets Sandbox (secure execution for untrusted AI-generated code) and an AI Gateway on top of standard Git-connected deploys, priced with a $20 usage credit on Pro before metered billing kicks in. The real alternatives question is whether that agent-specific tooling is actually the deciding factor, or whether a platform built for a wider mix of roles, or full infrastructure control, fits better.",
+    whySeekAlternative: [
+      "The people deploying sites include marketers, designers and ops staff, not only developers running AI-agent workloads.",
+      "Vercel's usage-based Pro credit only covers $20; unpredictable overage billing is a real concern for the team's budget.",
+      "Packaging and running the app is meant to be handled directly, at the container-image level, not by a managed platform.",
+    ],
+    decisions: [
+      { heading: "A platform built for non-developer roles too", fit: "Netlify's own site names product engineers, AI developers, marketers, designers and ops personnel among its deploy paths -- a broader role mix than Vercel's own developer/agent framing.", alternativeSlug: "netlify", comparisonSlug: "netlify-vs-vercel" },
+      { heading: "Full control at the container level", fit: "Docker fits teams standardizing packaging and deployment through portable, OCI-compliant containers rather than committing to Vercel's own agent-oriented, opinionated build process.", alternativeSlug: "docker", comparisonSlug: "docker-vs-vercel" },
+    ],
+    evidenceSources: ["https://vercel.com/pricing"],
+  },
+  netlify: {
+    diagnosis: "The page's two alternatives are treated as one generic \"deployment\" category, which misses that Netlify's own differentiation is supporting a wider mix of roles -- marketers and designers alongside developers -- through several deploy paths, a different axis entirely from a specialized AI-agent platform or a jump to raw containers.",
+    heading: "Weigh Netlify's multi-role deploy paths against AI-agent-specific tooling or full container control",
+    introduction: "Netlify supports Git, CLI, drag-and-drop and AI Agent Runner deploys for a deliberately wide mix of roles, metering usage in credits across builds, compute, bandwidth and requests. A buyer comparing away from Netlify is usually reacting to one of two things instead: wanting agent-specific execution tooling rather than broad role coverage, or wanting to own the packaging and runtime directly.",
+    whySeekAlternative: [
+      "The team is developer-only and wants tooling built specifically around executing untrusted AI-agent code, not a broad role mix.",
+      "Predicting Netlify's monthly bill is hard when usage credits are metered across builds, compute, bandwidth and requests separately.",
+      "Ownership of the runtime itself matters -- building and shipping a portable image beats depending on a managed build pipeline.",
+    ],
+    decisions: [
+      { heading: "AI-agent-specific execution tooling", fit: "Vercel is the relevant comparison for teams that specifically want Sandbox execution for untrusted AI-generated code and an AI Gateway, a narrower developer/agent focus than Netlify's broader role mix.", alternativeSlug: "vercel", comparisonSlug: "netlify-vs-vercel" },
+      { heading: "Owning the container image directly", fit: "Docker suits teams that want infrastructure-level control over packaging and running the application in portable, OCI-compliant containers instead of Netlify's own credit-metered, opinionated deploy pipeline.", alternativeSlug: "docker", comparisonSlug: "docker-vs-netlify" },
+    ],
+    evidenceSources: ["https://www.netlify.com/pricing/"],
+  },
+  contentful: {
+    diagnosis: "The page's two alternatives are both filed under \"CMS,\" which hides a real split between a developer-first, API-only structured-content platform and a visual site builder with a CMS and hosting bundled in -- two different buying decisions from Contentful's own enterprise DXP positioning.",
+    heading: "Choose an alternative by how content and design are actually managed",
+    introduction: "Contentful centers on centralized, multi-channel content architecture for mid-market and enterprise teams, priced from a capped free tier straight to a $300/month Lite plan. The useful alternatives question is whether the team wants an even more developer-first structured-content tool, or a visual builder where a marketer can manage design and content together.",
+    whySeekAlternative: [
+      "The team wants schema-as-code and a query language (GROQ) rather than Contentful's own content-model UI.",
+      "Content and visual design need to be managed together by a marketer, not handed off between a designer and a content model.",
+      "Contentful's Free-plan API-call and bandwidth caps (with no overage) are already a constraint.",
+    ],
+    decisions: [
+      { heading: "Developer-first structured content", fit: "Sanity is the relevant comparison for development teams that want schema-as-code and an API-first content operating system.", alternativeSlug: "sanity", comparisonSlug: "contentful-vs-sanity" },
+      { heading: "Visual design with CMS and hosting bundled", fit: "Webflow fits marketers and designers who want visual site control paired with a built-in CMS and hosting, not a headless-only platform.", alternativeSlug: "webflow", comparisonSlug: "contentful-vs-webflow" },
+    ],
+    evidenceSources: ["https://www.contentful.com/pricing/"],
+  },
+  hotjar: {
+    diagnosis: "The page's two alternatives are both filed under \"analytics,\" which hides that Hotjar is now sold under Contentsquare's own unified pricing, versus an automatic-capture quantitative tool and a privacy-first, self-hostable option -- three different buying considerations.",
+    heading: "Choose an alternative by capture method and data ownership",
+    introduction: "Hotjar's heatmaps and session replay are now priced and sold as part of Contentsquare's broader Experience Analytics plans. The useful alternatives question is whether a team wants automatic quantitative event capture instead of qualitative replay, or full data ownership without a shared vendor platform.",
+    whySeekAlternative: [
+      "The priority is automatic capture of every user interaction as structured events, not heatmaps and replay video.",
+      "Data ownership and privacy compliance matter more than a hosted vendor platform, including the option to self-host.",
+      "The team wants to evaluate Hotjar specifically, separate from Contentsquare's broader unified pricing.",
+    ],
+    decisions: [
+      { heading: "Automatic event capture for product analytics", fit: "Heap is the relevant comparison for product teams that want every interaction captured automatically without manual event tagging.", alternativeSlug: "heap", comparisonSlug: "fullstory-vs-hotjar" },
+      { heading: "Privacy-first, self-hostable analytics", fit: "Matomo fits organizations that want full data ownership and cookieless tracking, with the option to self-host instead of using a shared vendor platform.", alternativeSlug: "matomo", comparisonSlug: "hotjar-vs-matomo" },
+    ],
+    evidenceSources: ["https://contentsquare.com/pricing/"],
+  },
+  jasper: {
+    diagnosis: "The page's two alternatives are both loosely called \"AI writing\" tools, which hides that Jasper's actual specialty is brand-governed content at scale -- Brand Voice, Style Guides and Visual Guidelines enforced across 100+ specialized agents -- a narrower, marketing-specific job than a cross-functional GTM copilot or a general assistant.",
+    heading: "Decide whether brand governance, GTM breadth, or general capability matters most",
+    introduction: "Jasper's core pitch is enforcing one consistent brand voice and visual style across dozens of specialized marketing agents, with API access held back for a custom-priced Business tier. Buyers usually leave this narrow brand-governance job for one of two reasons: the real need extends into sales and operations work Jasper doesn't cover, or a single flexible assistant covers everything without agent-specific guardrails.",
+    whySeekAlternative: [
+      "Sales prospecting and operations tasks need covering too, not just governed marketing content.",
+      "Brand-voice enforcement across dozens of agents is more governance than a smaller team actually needs.",
+      "Jasper's per-seat Pro pricing, with API access held back for custom-priced Business, doesn't fit the budget.",
+    ],
+    decisions: [
+      { heading: "Coverage across sales, marketing and ops", fit: "Copy.ai is the relevant comparison for teams that want AI agents spanning prospecting, marketing and operations under one data foundation, not marketing content alone.", alternativeSlug: "copy-ai", comparisonSlug: "copy-ai-vs-jasper" },
+      { heading: "One flexible assistant instead of an agent suite", fit: "ChatGPT suits teams that would rather prompt a single capable model directly than manage a suite of brand-governed marketing agents.", alternativeSlug: "chatgpt", comparisonSlug: "chatgpt-vs-jasper" },
+    ],
+    evidenceSources: ["https://www.jasper.ai/pricing"],
+  },
+  "copy-ai": {
+    diagnosis: "The page's two alternatives are both loosely called \"AI writing\" tools, which hides that Copy.ai's actual specialty is a shared data foundation (Tables, Infobase) wired into 2,000+ sales and ops integrations -- a cross-functional GTM job, not the brand-governed marketing-content focus of a specialist agent suite or the flexibility of a general assistant.",
+    heading: "Decide whether GTM breadth, brand governance, or general capability matters most",
+    introduction: "Copy.ai centers on Copy Agents and a unified Tables/Infobase data layer wired into CRM and sales tools like Salesforce, HubSpot and Gong, with pricing jumping from a 5-seat Chat tier straight to a 75-seat Growth tier. Buyers usually leave that GTM breadth for one of two reasons: the real need is deeper, brand-specific marketing-content governance, or a single flexible assistant without workflow-specific plumbing.",
+    whySeekAlternative: [
+      "The requirement is deep brand-voice and visual-guideline governance across marketing content specifically, not a GTM data layer.",
+      "There's no seat tier between Chat's 5 seats and Growth's 75, which doesn't fit a mid-size team.",
+      "A single flexible assistant, prompted directly, covers the need better than pre-built GTM workflow integrations.",
+    ],
+    decisions: [
+      { heading: "Brand-governed marketing content specifically", fit: "Jasper is the relevant comparison for teams that want 100+ specialized agents enforcing one consistent brand voice and visual style, not a general GTM data layer.", alternativeSlug: "jasper", comparisonSlug: "copy-ai-vs-jasper" },
+      { heading: "One flexible assistant instead of GTM plumbing", fit: "ChatGPT suits teams that would rather prompt a single capable model directly than adopt Copy.ai's Tables/Infobase workflow structure.", alternativeSlug: "chatgpt", comparisonSlug: "chatgpt-vs-copy-ai" },
+    ],
+    evidenceSources: ["https://www.copy.ai/prices"],
+  },
+  perplexity: {
+    diagnosis: "The page's two alternatives are both broad AI assistants, which hides that Perplexity itself is scoped narrowly to real-time, cited search answers -- for personal use only under its own terms -- rather than a general-purpose assistant that also writes documents or code.",
+    heading: "Choose an alternative by how broad a tool you actually need",
+    introduction: "Perplexity is built specifically for real-time, web-grounded, cited answers, with both paid tiers stated as for personal use only. The useful alternatives question is whether the real need is that narrow research job, or a broader assistant that also handles documents, coding and long-context analysis.",
+    whySeekAlternative: [
+      "The use case is business/commercial, and Perplexity's plans are explicitly stated as personal use only.",
+      "The need extends beyond cited search answers into document creation, coding or voice/vision tasks.",
+      "The work involves very large documents or contexts needing deep-research capability beyond cited web answers.",
+    ],
+    decisions: [
+      { heading: "Broad assistant beyond search", fit: "ChatGPT is the relevant comparison for users wanting one assistant across chat, research, documents and coding rather than a search-focused tool.", alternativeSlug: "chatgpt", comparisonSlug: "chatgpt-vs-perplexity" },
+      { heading: "Long-context research at scale", fit: "Gemini fits users needing deep research across very large documents or contexts, with Google Search integration built in.", alternativeSlug: "gemini", comparisonSlug: "gemini-vs-perplexity" },
+    ],
+    evidenceSources: ["https://www.perplexity.ai/pro"],
+  },
+  synthesia: {
+    diagnosis: "The page's two alternatives are both described loosely as \"AI video/audio,\" which hides that one is cinematic generative video (a different medium entirely) and the other is standalone voice generation with no avatar-video product at all -- neither directly replaces Synthesia's own avatar-presenter format.",
+    heading: "Choose an alternative by video format and what you actually need to produce",
+    introduction: "Synthesia's core format is an AI avatar presenting scripted content, sold on yearly-allotted, tightly-seat-capped credit tiers. The useful alternatives question is whether the job actually needs that presenter format, cinematic generative video instead, or just voice/audio without any avatar video at all.",
+    whySeekAlternative: [
+      "The output needed is cinematic, generative video rather than an avatar presenting scripted content.",
+      "The requirement is standalone voice generation or dubbing, with no avatar-video component at all.",
+      "Synthesia's yearly (not monthly) credit allotment and tight seat caps (1 editor plus a few guests) don't fit the team's usage pattern.",
+    ],
+    decisions: [
+      { heading: "Cinematic generative video", fit: "Runway is the relevant comparison for teams wanting generative, cinematic video and image content rather than an avatar-led presenter format.", alternativeSlug: "runway", comparisonSlug: "runway-vs-synthesia" },
+      { heading: "Standalone voice generation only", fit: "ElevenLabs fits teams that need voice generation, cloning or dubbing on its own, without a full avatar-video production suite.", alternativeSlug: "elevenlabs", comparisonSlug: "elevenlabs-vs-synthesia" },
+    ],
+    evidenceSources: ["https://www.synthesia.io/pricing"],
+  },
 };
 
 export function getAlternativeGuide(slug: string): AlternativeGuide | undefined {
