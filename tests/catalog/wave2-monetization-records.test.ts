@@ -28,6 +28,7 @@ vi.mock("@/components/TrackedVendorLink", () => ({
 const WAVE2 = [
   { slug: "pipedrive", affiliateUrl: "https://aff.trypipedrive.com/ajtcgyu06e7i" },
   { slug: "wrike", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij" },
+  { slug: "whatconverts", affiliateUrl: "https://partners.whatconverts.com/bmckzlf0vnl8" },
 ] as const;
 
 function load(slug: string): Software {
@@ -217,5 +218,61 @@ describe("Wrike decision FAQ", () => {
     expect(ranges?.answer).toContain("2–15 users");
     expect(ranges?.answer).toContain("5–200 users");
     expect(faq.find((item) => item.question.includes("capacity planning"))?.answer).toContain("Pinnacle");
+  });
+});
+
+describe("WhatConverts buyer-decision record", () => {
+  const whatconverts = () => load("whatconverts");
+
+  it("keeps the verified monthly, account-priced ladder with a trial and no free plan", () => {
+    const pricing = whatconverts().pricing!;
+    expect(pricing.freePlan).toBe(false);
+    expect(pricing.hasFreeTier).toBe(false);
+    expect(pricing.freeTrial).toEqual({ available: true, days: 14 });
+    expect(pricing.entryPaid).toEqual({ amount: "30", currency: "USD", billingPeriod: "monthly", perSeat: false });
+    expect(pricing.tiers?.map((tier) => [tier.name, tier.amount, tier.billingPeriod])).toEqual([
+      ["Call Tracking", "30", "monthly"], ["Plus", "60", "monthly"], ["Pro", "100", "monthly"], ["Elite", "160", "monthly"],
+    ]);
+    for (const tier of pricing.tiers!) expect(tier.notes).toMatch(/^Single account\./);
+    const html = renderPricing(whatconverts());
+    const text = html.replace(/<!-- -->/g, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    expect(text).toContain("USD 30 / monthly");
+    expect(html).not.toContain("/ seat");
+    expect(html).not.toContain("Annual billing required");
+  });
+
+  it("carries the single-account, agency, usage, channel-gate and trial caveats", () => {
+    const cons = (whatconverts().cons ?? []).join(" ");
+    expect(cons).toContain("single account");
+    expect(cons).toContain("Agency plan");
+    expect(cons).toContain("overage");
+    expect(cons).toContain("form, chat and transaction tracking start on Plus");
+    expect(cons).toContain("Elite");
+    expect(cons).toContain("14-day trial");
+    expect(whatconverts().bestFor).toContain("separate Agency plan");
+  });
+
+  it("marks plan-gated features instead of implying the entry plan includes them", () => {
+    const features = whatconverts().features;
+    for (const prefix of ["Form tracking", "Chat tracking", "E-commerce and transaction tracking"]) {
+      expect(features.find((feature) => feature.startsWith(prefix))).toContain("(Plus and above)");
+    }
+    expect(features.find((feature) => feature.startsWith("Multi-click"))).toContain("(Elite)");
+  });
+
+  it("states unknown overage rates as unknown rather than inventing them", () => {
+    const usage = whatconverts().faq?.find((item) => item.question.includes("usage charges"));
+    expect(usage?.answer).toContain("has not recorded the per-item rates");
+    expect(JSON.stringify(whatconverts())).not.toMatch(/\$\d+(?:\.\d+)?\s*(?:per|\/)\s*(?:minute|number|lead|submission)/i);
+  });
+
+  it("positions CallRail, Ruler Analytics and HubSpot only with facts their own records hold", () => {
+    const answer = whatconverts().faq![0]!.answer;
+    expect(answer).toContain("CallRail fits call-driven local businesses and PPC agencies");
+    expect(load("ruler-analytics").pricing?.freeTrial?.available).toBe(false);
+    expect(answer).toContain("no self-serve trial");
+    expect(answer).toContain("Stay with WhatConverts");
+    // No CallRail price is quoted here: the guides record a newer CallRail plan naming than callrail.json.
+    expect(answer).not.toMatch(/\$\d/);
   });
 });

@@ -4,7 +4,7 @@
   "category": "marketing",
   "description": "WhatConverts is a lead tracking and reporting platform that attributes calls, form submissions, chats, and e-commerce transactions back to the specific marketing campaign, keyword, or channel that generated them.",
   "website": "https://whatconverts.com",
-  "best_for": "Marketing agencies, PPC/SEO professionals, and business owners across industries like real estate, legal, healthcare, and home services who need to trace every call, form, and chat lead back to its exact marketing source.",
+  "best_for": "Businesses in lead-driven industries such as home services, legal, healthcare and real estate, and the marketers who serve them, that need every call, form and chat lead traced to its campaign, keyword or channel. The individual plans cover one account; agencies tracking several client accounts need the separate Agency plan.",
   "pricing": {
     "model": "paid",
     "starting_price": "$30/mo",
@@ -35,28 +35,55 @@
   ],
   "features": [
     "Call tracking with dynamic number insertion and automatic spam blocking",
-    "Form tracking for existing website forms",
-    "Chat tracking tied back to marketing campaigns",
-    "E-commerce and transaction tracking",
+    "Form tracking for existing website forms (Plus and above)",
+    "Chat tracking tied back to marketing campaigns (Plus and above)",
+    "E-commerce and transaction tracking (Plus and above)",
     "Lead search and filtering by name, number, or email",
     "AI-powered lead qualification",
     "Lead valuation for ROI comparison across channels",
     "CRM export and automated lead sync",
-    "Pre-built marketing reports plus a custom report builder",
+    "Pre-built marketing reports plus a custom report builder (report builder on Pro and above)",
     "AI-powered marketing intelligence insights",
     "Real-time reporting dashboards",
-    "Multi-click/multi-touch attribution across the customer journey",
+    "Multi-click/multi-touch attribution across the customer journey (Elite)",
     "White label reporting for agencies",
     "1000+ integrations, including Google Ads, Facebook Ads, and Pipedrive"
   ],
   "pros": [
     "Over 1000 integrations with ad platforms and CRMs",
     "AI-powered lead qualification to filter out junk leads",
-    "White label option built specifically for agencies"
+    "White label option built specifically for agencies",
+    "Separate Quote Value and Sales Value fields keep quoted pipeline apart from closed sales"
   ],
   "cons": [
     "Individual-business plans are limited to a single account — multiple accounts require an Agency plan starting at $500/mo",
-    "Usage credits are capped per plan tier, with per-item overage charges for extra tracked numbers, minutes, and form/chat submissions"
+    "Usage credits are capped per plan tier, with per-item overage charges for extra tracked numbers, minutes, and form/chat submissions",
+    "The US$30 Call Tracking entry plan tracks calls only; form, chat and transaction tracking start on Plus (US$60/month).",
+    "Multi-click attribution and customer-journey reporting are listed only on Elite (US$160/month), not on the entry plans.",
+    "No free plan: evaluation runs on a 14-day trial.",
+    "Revenue reporting is only as good as the lead outcomes someone records; quoted value is not a closed sale, and the software cannot supply missing sales feedback."
+  ],
+  "faq": [
+    {
+      "question": "What are the best WhatConverts alternatives?",
+      "answer": "Choose by the evidence you need. CallRail fits call-driven local businesses and PPC agencies that want conversation intelligence alongside call tracking. Ruler Analytics fits B2B teams with longer, multi-touch journeys that need marketing tied to closed CRM revenue; it is demo-led, with no self-serve trial. HubSpot fits teams that already run their CRM and marketing there, but confirm that the attribution report you need is included in your subscription. Stay with WhatConverts when the job is lead-level qualification with quote and sales values across calls, forms and chat."
+    },
+    {
+      "question": "Does WhatConverts have a free plan?",
+      "answer": "No. WhatConverts offers a 14-day free trial, not a permanent free plan. When Miloosh last checked its pricing (August 24, 2026), the entry Call Tracking plan was US$30 per month, including a US$30 usage credit, for a single account."
+    },
+    {
+      "question": "Which WhatConverts plan tracks forms and chat?",
+      "answer": "Plus. When Miloosh last checked (August 24, 2026), Plus was US$60 per month and added form, chat and transaction tracking to call tracking. Pro (US$100) adds call flows, the report builder, scheduled reports and HIPAA. Elite (US$160) adds customer journey, multi-click attribution and lead intelligence. Price the plan that covers every channel you must track, not the entry plan."
+    },
+    {
+      "question": "Can an agency track several clients on one WhatConverts plan?",
+      "answer": "No. The Call Tracking, Plus, Pro and Elite plans each cover a single account. Tracking several client accounts requires WhatConverts' separate Agency plan, which was listed from US$500 per month when Miloosh catalogued WhatConverts in August 2026. Confirm the current agency price, client-account permissions and usage terms with WhatConverts."
+    },
+    {
+      "question": "Are there usage charges beyond the monthly price?",
+      "answer": "Yes. Usage credits are capped per plan (the Call Tracking plan includes a US$30 credit). Extra tracked numbers, call minutes and form or chat submissions are charged per item. Miloosh has not recorded the per-item rates. Estimate your monthly numbers, minutes and submissions, and get the overage pricing from WhatConverts before you commit."
+    }
   ],
   "alternatives": [
     {
