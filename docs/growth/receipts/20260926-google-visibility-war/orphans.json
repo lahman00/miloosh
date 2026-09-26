@@ -1,0 +1,161 @@
+{
+  "method": "Crawlable emitted HTML anchors; all-source graph; relevance is structural overlap or explicitly reviewed decision paths, not Google authority. Depth includes crawlable navigation even when visually collapsed.",
+  "trueSoftwareOrphans": [],
+  "nearSoftwareOrphans": [
+    {
+      "url": "/software/birdeye",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/chili-piper",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/consensus",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/dbt-cloud",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/dropbox",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/floqast",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/hibob",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/knowbe4",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    },
+    {
+      "url": "/software/veeam-data-platform",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2
+    }
+  ],
+  "reconciledNine": [
+    {
+      "url": "/software/birdeye",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/chili-piper",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/consensus",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/dbt-cloud",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/dropbox",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/floqast",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/hibob",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/knowbe4",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    },
+    {
+      "url": "/software/veeam-data-platform",
+      "sources": 2,
+      "relevantSources": 1,
+      "guideSources": 0,
+      "homeDepth": 2,
+      "hubDepth": 2,
+      "verdict": "Not a true orphan; category/hub HTML was excluded by the old contextual-only report. HOLD: no invented feeder or unnecessary noindex."
+    }
+  ]
+}

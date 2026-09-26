@@ -1,0 +1,78 @@
+{
+  "scope": "Artifact audit only; a successful full build, tests and dependency audit are separate required gates.",
+  "buildId": "1OWeBrz-o40P5TJILrHZ4",
+  "sitemapUrls": 984,
+  "dynamicSitemapRoutesRequiringHttpQA": [
+    "/recommend"
+  ],
+  "publicHtmlPages": 1782,
+  "internalLinksChecked": 83456,
+  "representativeArtifacts": {
+    "/": {
+      "htmlBytes": 369044,
+      "inlineScriptBytes": 191864,
+      "scriptFiles": 10
+    },
+    "/guides": {
+      "htmlBytes": 76669,
+      "inlineScriptBytes": 46390,
+      "scriptFiles": 10
+    },
+    "/compare": {
+      "htmlBytes": 271752,
+      "inlineScriptBytes": 196667,
+      "scriptFiles": 10
+    },
+    "/software/airtable": {
+      "htmlBytes": 155658,
+      "inlineScriptBytes": 89897,
+      "scriptFiles": 11
+    },
+    "/best-no-code-database-for-operations": {
+      "htmlBytes": 179825,
+      "inlineScriptBytes": 105361,
+      "scriptFiles": 10
+    },
+    "/software/todoist": {
+      "htmlBytes": 162942,
+      "inlineScriptBytes": 92873,
+      "scriptFiles": 11
+    },
+    "/best-task-management-for-individuals": {
+      "htmlBytes": 133446,
+      "inlineScriptBytes": 76381,
+      "scriptFiles": 10
+    },
+    "/software/close": {
+      "htmlBytes": 141503,
+      "inlineScriptBytes": 83149,
+      "scriptFiles": 11
+    },
+    "/best-crm-for-startups": {
+      "htmlBytes": 128381,
+      "inlineScriptBytes": 73897,
+      "scriptFiles": 10
+    },
+    "/software/setmore": {
+      "htmlBytes": 150299,
+      "inlineScriptBytes": 87068,
+      "scriptFiles": 11
+    },
+    "/best-scheduling-software-for-small-business": {
+      "htmlBytes": 136382,
+      "inlineScriptBytes": 78787,
+      "scriptFiles": 10
+    },
+    "/software/elevenlabs": {
+      "htmlBytes": 152428,
+      "inlineScriptBytes": 88308,
+      "scriptFiles": 11
+    },
+    "/best-voice-ai-for-creators": {
+      "htmlBytes": 175988,
+      "inlineScriptBytes": 103124,
+      "scriptFiles": 10
+    }
+  },
+  "failures": []
+}

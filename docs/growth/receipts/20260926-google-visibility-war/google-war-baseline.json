@@ -1,0 +1,5591 @@
+{
+  "generatedAt": "2026-09-26T10:22:33.400Z",
+  "sourceSha": "af33baeef83f9909c24b6e610f4080a02850835b",
+  "buildId": "vpxze7EBLDtAwnPBqKY55",
+  "artifactHash": "4f07be2190c56915c5716b109a2a2b4609d21ca29a89de4e1feb71b15df394a6",
+  "coverage": {
+    "searchRows": 537,
+    "canonicalSearchRows": 491,
+    "inspectionObservations": 5,
+    "nodes": 1782,
+    "edges": 78244
+  },
+  "factualDepthDistribution": {
+    "total": 354,
+    "A": 202,
+    "B": 8,
+    "C": 113,
+    "D": 31
+  },
+  "top50": [
+    {
+      "url": "/software/semrush",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/semrush",
+        "clicks": 0,
+        "impressions": 1957,
+        "ctr": 0,
+        "position": 77.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:semrush",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "semrush",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "semrush",
+        "name": "Semrush",
+        "score": 80,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 0,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/semrush",
+        "kind": "software",
+        "totalInboundLinks": 27,
+        "inboundSourcePages": 16,
+        "relevantInboundLinks": 23,
+        "relevantSources": 13,
+        "contentSources": 16,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 10,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 5,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/semrush"
+        ],
+        "noindex": false,
+        "title": "Best Semrush Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Semrush alternatives and competitors for SEO, content, and marketing workflows using current vendor-sourced features, platforms, and pricing details.",
+        "h1": [
+          "Best Semrush alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/semrush",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/intercom",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/intercom",
+        "clicks": 1,
+        "impressions": 1757,
+        "ctr": 0.001,
+        "position": 86
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:intercom",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "intercom",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "intercom",
+        "name": "Intercom",
+        "score": 94,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/intercom",
+        "kind": "software",
+        "totalInboundLinks": 40,
+        "inboundSourcePages": 22,
+        "relevantInboundLinks": 37,
+        "relevantSources": 20,
+        "contentSources": 22,
+        "bySourceType": {
+          "software": 5,
+          "comparison": 12,
+          "guide": 2,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/intercom"
+        ],
+        "noindex": false,
+        "title": "Best Intercom Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Intercom alternatives and competitors for customer support and messaging workflows using current vendor-sourced features, platforms, pricing, and fit.",
+        "h1": [
+          "Best Intercom alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/intercom",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/freshdesk",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/freshdesk",
+        "clicks": 0,
+        "impressions": 1685,
+        "ctr": 0,
+        "position": 80.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:freshdesk",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "freshdesk",
+            "active": false,
+            "status": [
+              "PENDING_REVIEW"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "freshdesk",
+        "name": "Freshdesk",
+        "score": 94,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/freshdesk",
+        "kind": "software",
+        "totalInboundLinks": 45,
+        "inboundSourcePages": 26,
+        "relevantInboundLinks": 42,
+        "relevantSources": 24,
+        "contentSources": 26,
+        "bySourceType": {
+          "software": 8,
+          "comparison": 12,
+          "guide": 3,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/freshdesk"
+        ],
+        "noindex": false,
+        "title": "Best Freshdesk Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Freshdesk alternatives and competitors for customer support and help desk workflows using current vendor-sourced features, platforms, pricing, and fit.",
+        "h1": [
+          "Best Freshdesk alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/freshdesk",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/front",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/front",
+        "clicks": 0,
+        "impressions": 634,
+        "ctr": 0,
+        "position": 75.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:front",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "front",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "front",
+        "name": "Front",
+        "score": 98,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/front",
+        "kind": "software",
+        "totalInboundLinks": 36,
+        "inboundSourcePages": 20,
+        "relevantInboundLinks": 32,
+        "relevantSources": 17,
+        "contentSources": 20,
+        "bySourceType": {
+          "software": 4,
+          "comparison": 12,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/front"
+        ],
+        "noindex": false,
+        "title": "Best Front Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Front alternatives and competitors for shared inbox and customer operations workflows using current vendor-sourced features, platforms, pricing, and fit.",
+        "h1": [
+          "Best Front alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/front",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/buffer",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/buffer",
+        "clicks": 0,
+        "impressions": 587,
+        "ctr": 0,
+        "position": 83.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:buffer",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "buffer",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "buffer",
+        "name": "Buffer",
+        "score": 89,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/buffer",
+        "kind": "software",
+        "totalInboundLinks": 36,
+        "inboundSourcePages": 19,
+        "relevantInboundLinks": 33,
+        "relevantSources": 17,
+        "contentSources": 19,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 11,
+          "guide": 2,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/buffer"
+        ],
+        "noindex": false,
+        "title": "Best Buffer Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Buffer alternatives and competitors for social media publishing and management using current vendor-sourced features, platforms, pricing, and fit.",
+        "h1": [
+          "Best Buffer alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/buffer",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/mulesoft",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/mulesoft",
+        "clicks": 0,
+        "impressions": 511,
+        "ctr": 0,
+        "position": 77.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:mulesoft",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "mulesoft",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "mulesoft",
+        "name": "MuleSoft Anypoint Platform",
+        "score": 81,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/mulesoft",
+        "kind": "software",
+        "totalInboundLinks": 18,
+        "inboundSourcePages": 10,
+        "relevantInboundLinks": 15,
+        "relevantSources": 8,
+        "contentSources": 10,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 7,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/mulesoft"
+        ],
+        "noindex": false,
+        "title": "Best MuleSoft Anypoint Platform Alternatives | Miloosh",
+        "description": "2 MuleSoft Anypoint Platform alternatives compared: MuleSoft Anypoint Platform is Salesforce's unified iPaaS and full-lifecycle API management solution…",
+        "h1": [
+          "Best MuleSoft Anypoint Platform alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/help-scout",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/help-scout",
+        "clicks": 0,
+        "impressions": 498,
+        "ctr": 0,
+        "position": 73.4
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:help-scout",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "help-scout",
+            "active": false,
+            "status": [
+              "REJECTED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "help-scout",
+        "name": "Help Scout",
+        "score": 84,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/help-scout",
+        "kind": "software",
+        "totalInboundLinks": 47,
+        "inboundSourcePages": 27,
+        "relevantInboundLinks": 45,
+        "relevantSources": 25,
+        "contentSources": 27,
+        "bySourceType": {
+          "software": 9,
+          "comparison": 12,
+          "guide": 3,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/help-scout"
+        ],
+        "noindex": false,
+        "title": "Best Help Scout Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Help Scout alternatives and competitors for customer support workflows using current vendor-sourced features, platforms, pricing, and fit.",
+        "h1": [
+          "Best Help Scout alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/help-scout",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/clickup",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/clickup",
+        "clicks": 0,
+        "impressions": 468,
+        "ctr": 0,
+        "position": 84.9
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:clickup",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "clickup",
+            "active": false,
+            "status": [
+              "REJECTED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "clickup",
+        "name": "ClickUp",
+        "score": 97,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 4,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-20",
+        "accessedAt": "2026-08-20",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/clickup",
+        "kind": "software",
+        "totalInboundLinks": 1584,
+        "inboundSourcePages": 1557,
+        "relevantInboundLinks": 72,
+        "relevantSources": 48,
+        "contentSources": 1557,
+        "bySourceType": {
+          "software": 342,
+          "comparison": 1209,
+          "guide": 3,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/clickup"
+        ],
+        "noindex": false,
+        "title": "Best ClickUp Alternatives | Miloosh",
+        "description": "4 ClickUp alternatives compared: ClickUp is a project-management platform that combines tasks, documents, dashboards, goals, and automation.",
+        "h1": [
+          "Best ClickUp alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/salesforce",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/salesforce",
+        "clicks": 0,
+        "impressions": 466,
+        "ctr": 0,
+        "position": 75.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:salesforce",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "salesforce",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "salesforce",
+        "name": "Salesforce",
+        "score": 94,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-07-31",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/salesforce",
+        "kind": "software",
+        "totalInboundLinks": 27,
+        "inboundSourcePages": 15,
+        "relevantInboundLinks": 25,
+        "relevantSources": 13,
+        "contentSources": 15,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 8,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/salesforce"
+        ],
+        "noindex": false,
+        "title": "Best Salesforce Alternatives | Miloosh",
+        "description": "3 Salesforce alternatives compared: Salesforce is a cloud-based CRM platform that centralizes customer data across sales, service, marketing, and IT so…",
+        "h1": [
+          "Best Salesforce alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/ecwid",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/ecwid",
+        "clicks": 0,
+        "impressions": 408,
+        "ctr": 0,
+        "position": 74.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:ecwid",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "ecwid",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "ecwid",
+        "name": "Ecwid",
+        "score": 96,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-17",
+        "accessedAt": "2026-09-17",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/ecwid",
+        "kind": "software",
+        "totalInboundLinks": 55,
+        "inboundSourcePages": 45,
+        "relevantInboundLinks": 53,
+        "relevantSources": 43,
+        "contentSources": 45,
+        "bySourceType": {
+          "software": 10,
+          "comparison": 31,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 6,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/ecwid"
+        ],
+        "noindex": false,
+        "title": "Best Ecwid Alternatives | Miloosh",
+        "description": "3 Ecwid alternatives compared: Ecwid by Lightspeed is an ecommerce platform that lets merchants launch a standalone store or embed commerce into an…",
+        "h1": [
+          "Best Ecwid alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/ecwid",
+          "state": "ACTIVE_EXPERIMENT",
+          "until": "2026-10-10T17:49:39.127Z",
+          "source": "docs/work-revenue-experiment-receipt-2026-09-12.json",
+          "reason": "Still MEASURING; overdue checkpoint never silently unlocks editing"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/sprout-social",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/sprout-social",
+        "clicks": 0,
+        "impressions": 387,
+        "ctr": 0,
+        "position": 81
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:sprout-social",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "sprout-social",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "sprout-social",
+        "name": "Sprout Social",
+        "score": 79,
+        "bucket": "B",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/sprout-social",
+        "kind": "software",
+        "totalInboundLinks": 42,
+        "inboundSourcePages": 23,
+        "relevantInboundLinks": 40,
+        "relevantSources": 21,
+        "contentSources": 23,
+        "bySourceType": {
+          "software": 5,
+          "comparison": 13,
+          "guide": 2,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/sprout-social"
+        ],
+        "noindex": false,
+        "title": "Best Sprout Social Alternatives | Miloosh",
+        "description": "2 Sprout Social alternatives compared: A social intelligence platform that turns real-time social signals into direction for teams, enabling monitoring…",
+        "h1": [
+          "Best Sprout Social alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/confluence",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/confluence",
+        "clicks": 0,
+        "impressions": 371,
+        "ctr": 0,
+        "position": 67.7
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:confluence",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "confluence",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "confluence",
+        "name": "Confluence",
+        "score": 94,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-20",
+        "accessedAt": "2026-08-20",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/confluence",
+        "kind": "software",
+        "totalInboundLinks": 53,
+        "inboundSourcePages": 38,
+        "relevantInboundLinks": 37,
+        "relevantSources": 22,
+        "contentSources": 38,
+        "bySourceType": {
+          "software": 11,
+          "comparison": 23,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 6,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/confluence"
+        ],
+        "noindex": false,
+        "title": "Best Confluence Alternatives | Miloosh",
+        "description": "3 Confluence alternatives compared: Confluence is Atlassian's team workspace for documentation, meeting notes, and internal knowledge shared across an…",
+        "h1": [
+          "Best Confluence alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/pipedrive",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/pipedrive",
+        "clicks": 0,
+        "impressions": 351,
+        "ctr": 0,
+        "position": 78
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:pipedrive",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "pipedrive",
+            "active": true,
+            "status": [
+              "ACTIVE"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "pipedrive",
+        "name": "Pipedrive",
+        "score": 96,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 5,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-07-31",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/pipedrive",
+        "kind": "software",
+        "totalInboundLinks": 54,
+        "inboundSourcePages": 27,
+        "relevantInboundLinks": 52,
+        "relevantSources": 25,
+        "contentSources": 27,
+        "bySourceType": {
+          "software": 7,
+          "comparison": 12,
+          "guide": 5,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/pipedrive"
+        ],
+        "noindex": false,
+        "title": "Best Pipedrive Alternatives | Miloosh",
+        "description": "5 Pipedrive alternatives compared: Pipedrive is a sales-focused CRM built around a visual pipeline, letting sales teams track leads and deals as they move…",
+        "h1": [
+          "Best Pipedrive alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/pipedrive",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": "2026-09-26T00:00:00Z",
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/airtable",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/airtable",
+        "clicks": 1,
+        "impressions": 329,
+        "ctr": 0.003,
+        "position": 78.4
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "CRAWLED_NOT_INDEXED",
+        "observation": {
+          "url": "https://miloosh.com/software/airtable",
+          "checkedAt": "2026-09-25T12:19:56.247132+00:00",
+          "source": "Authenticated UI export: gsc-inspections.json",
+          "verdict": null,
+          "coverageState": "Crawled - currently not indexed",
+          "lastCrawlTime": null,
+          "googleCanonical": null,
+          "userCanonical": null,
+          "pageFetchState": null,
+          "robotsTxtState": null,
+          "indexingState": null
+        }
+      },
+      "intentOwner": "alternatives:airtable",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "airtable",
+            "active": true,
+            "status": [
+              "ACTIVE"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "airtable",
+        "name": "Airtable",
+        "score": 96,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-07-31",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/airtable",
+        "kind": "software",
+        "totalInboundLinks": 35,
+        "inboundSourcePages": 17,
+        "relevantInboundLinks": 29,
+        "relevantSources": 14,
+        "contentSources": 17,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 12,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 19,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/airtable"
+        ],
+        "noindex": false,
+        "title": "Airtable Alternatives & Pricing (2026): Notion, Coda, Monday | Miloosh",
+        "description": "Compare Airtable alternatives and competitors, including Notion, Coda and Monday, with current pricing, record limits, buyer fit and switching checks.",
+        "h1": [
+          "Best Airtable alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/airtable",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/n8n",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/n8n",
+        "clicks": 0,
+        "impressions": 296,
+        "ctr": 0,
+        "position": 85.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:n8n",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "n8n",
+            "active": false,
+            "status": [
+              "REJECTED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "n8n",
+        "name": "n8n",
+        "score": 84,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 4,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-07-31",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/n8n",
+        "kind": "software",
+        "totalInboundLinks": 29,
+        "inboundSourcePages": 17,
+        "relevantInboundLinks": 27,
+        "relevantSources": 15,
+        "contentSources": 17,
+        "bySourceType": {
+          "software": 4,
+          "comparison": 9,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/n8n"
+        ],
+        "noindex": false,
+        "title": "Best n8n Alternatives | Miloosh",
+        "description": "3 n8n alternatives compared: n8n is a workflow automation platform aimed at technical users, combining a visual drag-and-drop canvas with the option to…",
+        "h1": [
+          "Best n8n alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/basecamp",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/basecamp",
+        "clicks": 0,
+        "impressions": 293,
+        "ctr": 0,
+        "position": 85
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:basecamp",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "basecamp",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "basecamp",
+        "name": "Basecamp",
+        "score": 87,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 4,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/basecamp",
+        "kind": "software",
+        "totalInboundLinks": 14,
+        "inboundSourcePages": 14,
+        "relevantInboundLinks": 12,
+        "relevantSources": 12,
+        "contentSources": 14,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 10,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/basecamp"
+        ],
+        "noindex": false,
+        "title": "Best Basecamp Alternatives | Miloosh",
+        "description": "4 Basecamp alternatives compared: Basecamp is an all-in-one project management and team communication tool that combines to-do lists, message boards…",
+        "h1": [
+          "Best Basecamp alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/whimsical",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/whimsical",
+        "clicks": 0,
+        "impressions": 286,
+        "ctr": 0,
+        "position": 65.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:whimsical",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "whimsical",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "whimsical",
+        "name": "Whimsical",
+        "score": 90,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/whimsical",
+        "kind": "software",
+        "totalInboundLinks": 12,
+        "inboundSourcePages": 12,
+        "relevantInboundLinks": 10,
+        "relevantSources": 10,
+        "contentSources": 12,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 9,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 3,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/whimsical"
+        ],
+        "noindex": false,
+        "title": "Best Whimsical Alternatives | Miloosh",
+        "description": "3 Whimsical alternatives compared: Whimsical is a visual workspace for product builders that combines flowcharts, mind maps, wireframes, and an…",
+        "h1": [
+          "Best Whimsical alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/whimsical",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/tidio",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/tidio",
+        "clicks": 0,
+        "impressions": 282,
+        "ctr": 0,
+        "position": 86.5
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:tidio",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "tidio",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "tidio",
+        "name": "Tidio",
+        "score": 93,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 4,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/tidio",
+        "kind": "software",
+        "totalInboundLinks": 28,
+        "inboundSourcePages": 16,
+        "relevantInboundLinks": 26,
+        "relevantSources": 14,
+        "contentSources": 16,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 12,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 5,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/tidio"
+        ],
+        "noindex": false,
+        "title": "Best Tidio Alternatives | Miloosh",
+        "description": "4 Tidio alternatives compared: Tidio is a customer service platform combining live chat, a help desk, and the Lyro AI agent, which can independently…",
+        "h1": [
+          "Best Tidio alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/scribe",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/scribe",
+        "clicks": 0,
+        "impressions": 273,
+        "ctr": 0,
+        "position": 69.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:scribe",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "scribe",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "scribe",
+        "name": "Scribe",
+        "score": 89,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/scribe",
+        "kind": "software",
+        "totalInboundLinks": 13,
+        "inboundSourcePages": 13,
+        "relevantInboundLinks": 11,
+        "relevantSources": 11,
+        "contentSources": 13,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 10,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 3,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/scribe"
+        ],
+        "noindex": false,
+        "title": "Best Scribe Alternatives | Miloosh",
+        "description": "2 Scribe alternatives compared: Scribe automatically captures how work gets done and turns it into step-by-step documentation, providing \"workflow context…",
+        "h1": [
+          "Best Scribe alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/scribe",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/umbraco",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/umbraco",
+        "clicks": 0,
+        "impressions": 265,
+        "ctr": 0,
+        "position": 61.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:umbraco",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "umbraco",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "umbraco",
+        "name": "Umbraco",
+        "score": 82,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 4,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/umbraco",
+        "kind": "software",
+        "totalInboundLinks": 16,
+        "inboundSourcePages": 16,
+        "relevantInboundLinks": 14,
+        "relevantSources": 14,
+        "contentSources": 16,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 13,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 3,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/umbraco"
+        ],
+        "noindex": false,
+        "title": "Best Umbraco Alternatives | Miloosh",
+        "description": "3 Umbraco alternatives compared: Umbraco is an open-source, .NET-based content management system that lets developers and editors build and manage…",
+        "h1": [
+          "Best Umbraco alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/zoho-crm",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/zoho-crm",
+        "clicks": 0,
+        "impressions": 265,
+        "ctr": 0,
+        "position": 81
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:zoho-crm",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "zoho-crm",
+            "active": false,
+            "status": [
+              "PENDING_REVIEW"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "zoho-crm",
+        "name": "Zoho CRM",
+        "score": 84,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-28",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/zoho-crm",
+        "kind": "software",
+        "totalInboundLinks": 40,
+        "inboundSourcePages": 24,
+        "relevantInboundLinks": 38,
+        "relevantSources": 22,
+        "contentSources": 24,
+        "bySourceType": {
+          "software": 9,
+          "comparison": 9,
+          "guide": 3,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/zoho-crm"
+        ],
+        "noindex": false,
+        "title": "Best Zoho CRM Alternatives | Miloosh",
+        "description": "3 Zoho CRM alternatives compared: Zoho CRM is a cloud-based sales platform that uses the Zia AI assistant to manage leads, deals, and customer…",
+        "h1": [
+          "Best Zoho CRM alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/zoho-crm",
+          "state": "ACTIVE_EXPERIMENT",
+          "until": "2026-10-10T17:49:39.127Z",
+          "source": "docs/work-revenue-experiment-receipt-2026-09-12.json",
+          "reason": "Still MEASURING; overdue checkpoint never silently unlocks editing"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/zapier",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/zapier",
+        "clicks": 0,
+        "impressions": 261,
+        "ctr": 0,
+        "position": 85.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:zapier",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "zapier",
+            "active": false,
+            "status": [
+              "REJECTED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "zapier",
+        "name": "Zapier",
+        "score": 77,
+        "bucket": "B",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 12.5,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-07-31",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/zapier",
+        "kind": "software",
+        "totalInboundLinks": 34,
+        "inboundSourcePages": 22,
+        "relevantInboundLinks": 32,
+        "relevantSources": 20,
+        "contentSources": 22,
+        "bySourceType": {
+          "software": 9,
+          "comparison": 9,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/zapier"
+        ],
+        "noindex": false,
+        "title": "Best Zapier Alternatives | Miloosh",
+        "description": "3 Zapier alternatives compared: Zapier is a no-code automation platform that connects thousands of business apps, and increasingly AI models and agents…",
+        "h1": [
+          "Best Zapier alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/smartsheet",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/smartsheet",
+        "clicks": 0,
+        "impressions": 259,
+        "ctr": 0,
+        "position": 80.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:smartsheet",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "smartsheet",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "smartsheet",
+        "name": "Smartsheet",
+        "score": 87,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 4,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-23",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/smartsheet",
+        "kind": "software",
+        "totalInboundLinks": 36,
+        "inboundSourcePages": 19,
+        "relevantInboundLinks": 34,
+        "relevantSources": 17,
+        "contentSources": 19,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 14,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/smartsheet"
+        ],
+        "noindex": false,
+        "title": "Best Smartsheet Alternatives | Miloosh",
+        "description": "4 Smartsheet alternatives compared: Smartsheet is an intelligent work management platform that combines a spreadsheet-style grid interface with project…",
+        "h1": [
+          "Best Smartsheet alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/smartsheet",
+          "state": "ACTIVE_EXPERIMENT",
+          "until": "2026-10-10T17:49:39.127Z",
+          "source": "docs/work-revenue-experiment-receipt-2026-09-12.json",
+          "reason": "Still MEASURING; overdue checkpoint never silently unlocks editing"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/github",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/github",
+        "clicks": 0,
+        "impressions": 252,
+        "ctr": 0,
+        "position": 76.2
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:github",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "github",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "github",
+        "name": "GitHub",
+        "score": 87,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/github",
+        "kind": "software",
+        "totalInboundLinks": 20,
+        "inboundSourcePages": 20,
+        "relevantInboundLinks": 18,
+        "relevantSources": 18,
+        "contentSources": 20,
+        "bySourceType": {
+          "software": 5,
+          "comparison": 12,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/github"
+        ],
+        "noindex": false,
+        "title": "Best GitHub Alternatives | Miloosh",
+        "description": "2 GitHub alternatives compared: GitHub is a developer platform where developers, agents, and code come together, described on its own site as \"the world's…",
+        "h1": [
+          "Best GitHub alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/activecampaign",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/activecampaign",
+        "clicks": 0,
+        "impressions": 251,
+        "ctr": 0,
+        "position": 78.2
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:activecampaign",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "activecampaign",
+            "active": false,
+            "status": [
+              "PENDING_REVIEW"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "activecampaign",
+        "name": "ActiveCampaign",
+        "score": 83,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/activecampaign",
+        "kind": "software",
+        "totalInboundLinks": 37,
+        "inboundSourcePages": 23,
+        "relevantInboundLinks": 35,
+        "relevantSources": 21,
+        "contentSources": 23,
+        "bySourceType": {
+          "software": 6,
+          "comparison": 14,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 6,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/activecampaign"
+        ],
+        "noindex": false,
+        "title": "Best ActiveCampaign Alternatives | Miloosh",
+        "description": "2 ActiveCampaign alternatives compared: An \"autonomous marketing platform\" where AI agents handle email, SMS, WhatsApp, and more, backed by customer data…",
+        "h1": [
+          "Best ActiveCampaign alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/fullstory",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/fullstory",
+        "clicks": 0,
+        "impressions": 241,
+        "ctr": 0,
+        "position": 63.9
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:fullstory",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "fullstory",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "fullstory",
+        "name": "FullStory",
+        "score": 85,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/fullstory",
+        "kind": "software",
+        "totalInboundLinks": 15,
+        "inboundSourcePages": 15,
+        "relevantInboundLinks": 13,
+        "relevantSources": 13,
+        "contentSources": 15,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 11,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/fullstory"
+        ],
+        "noindex": false,
+        "title": "Best FullStory Alternatives | Miloosh",
+        "description": "2 FullStory alternatives compared: FullStory is an AI-powered behavioral analytics platform that captures real user interactions across web and mobile and…",
+        "h1": [
+          "Best FullStory alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/fullstory",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/marketo-engage",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/marketo-engage",
+        "clicks": 0,
+        "impressions": 239,
+        "ctr": 0,
+        "position": 67.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:marketo-engage",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "marketo-engage",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "marketo-engage",
+        "name": "Adobe Marketo Engage",
+        "score": 80,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 0,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/marketo-engage",
+        "kind": "software",
+        "totalInboundLinks": 18,
+        "inboundSourcePages": 18,
+        "relevantInboundLinks": 16,
+        "relevantSources": 16,
+        "contentSources": 18,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 14,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/marketo-engage"
+        ],
+        "noindex": false,
+        "title": "Best Adobe Marketo Engage Alternatives | Miloosh",
+        "description": "3 Adobe Marketo Engage alternatives compared: Adobe Marketo Engage is an enterprise marketing automation platform for B2B organizations, covering lead…",
+        "h1": [
+          "Best Adobe Marketo Engage alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/marketo-engage",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/wrike",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/wrike",
+        "clicks": 0,
+        "impressions": 238,
+        "ctr": 0,
+        "position": 88.4
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:wrike",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "wrike",
+            "active": true,
+            "status": [
+              "ACTIVE"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "wrike",
+        "name": "Wrike",
+        "score": 99,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 4,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-10",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/wrike",
+        "kind": "software",
+        "totalInboundLinks": 33,
+        "inboundSourcePages": 18,
+        "relevantInboundLinks": 31,
+        "relevantSources": 16,
+        "contentSources": 18,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 11,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 7,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/wrike"
+        ],
+        "noindex": false,
+        "title": "Best Wrike Alternatives | Miloosh",
+        "description": "4 Wrike alternatives compared: Wrike is an AI-powered work management platform that gives enterprises visibility into projects, resources, and workflows…",
+        "h1": [
+          "Best Wrike alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/wrike",
+          "state": "ACTIVE_EXPERIMENT",
+          "until": "2026-10-08T14:57:51.535Z",
+          "source": "docs/work-revenue-experiment-receipt-2026-09-10.json",
+          "reason": "Still MEASURING; overdue checkpoint never silently unlocks editing"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": "2026-09-26T00:00:00Z",
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/lucidchart",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/lucidchart",
+        "clicks": 0,
+        "impressions": 235,
+        "ctr": 0,
+        "position": 80.7
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:lucidchart",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "lucidchart",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "lucidchart",
+        "name": "Lucidchart",
+        "score": 85,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-07-31",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/lucidchart",
+        "kind": "software",
+        "totalInboundLinks": 15,
+        "inboundSourcePages": 15,
+        "relevantInboundLinks": 13,
+        "relevantSources": 13,
+        "contentSources": 15,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 9,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/lucidchart"
+        ],
+        "noindex": false,
+        "title": "Best Lucidchart Alternatives | Miloosh",
+        "description": "2 Lucidchart alternatives compared: Lucidchart is an intelligent diagramming platform for creating diagrams with AI, data, and automation to visualize and…",
+        "h1": [
+          "Best Lucidchart alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/lucidchart",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/ringcentral",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/ringcentral",
+        "clicks": 0,
+        "impressions": 234,
+        "ctr": 0,
+        "position": 68.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:ringcentral",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "ringcentral",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "ringcentral",
+        "name": "RingCentral",
+        "score": 82,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/ringcentral",
+        "kind": "software",
+        "totalInboundLinks": 53,
+        "inboundSourcePages": 31,
+        "relevantInboundLinks": 48,
+        "relevantSources": 26,
+        "contentSources": 31,
+        "bySourceType": {
+          "software": 8,
+          "comparison": 18,
+          "guide": 2,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 6,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/ringcentral"
+        ],
+        "noindex": false,
+        "title": "Best RingCentral Alternatives | Miloosh",
+        "description": "3 RingCentral alternatives compared: RingCentral is a cloud communications platform providing business phone, team messaging, video meetings, and…",
+        "h1": [
+          "Best RingCentral alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/ringcentral",
+          "state": "RESERVED",
+          "until": null,
+          "source": "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/firebase",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/firebase",
+        "clicks": 0,
+        "impressions": 224,
+        "ctr": 0,
+        "position": 71.5
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:firebase",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "firebase",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "firebase",
+        "name": "Firebase",
+        "score": 91,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/firebase",
+        "kind": "software",
+        "totalInboundLinks": 14,
+        "inboundSourcePages": 14,
+        "relevantInboundLinks": 12,
+        "relevantSources": 12,
+        "contentSources": 14,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 10,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/firebase"
+        ],
+        "noindex": false,
+        "title": "Best Firebase Alternatives | Miloosh",
+        "description": "2 Firebase alternatives compared: Firebase is Google's platform of services for building and running apps, covering the complete app development lifecycle…",
+        "h1": [
+          "Best Firebase alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/firebase",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/segment",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/segment",
+        "clicks": 0,
+        "impressions": 221,
+        "ctr": 0,
+        "position": 72
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:segment",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "segment",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "segment",
+        "name": "Segment",
+        "score": 92,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-20",
+        "accessedAt": "2026-08-20",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/segment",
+        "kind": "software",
+        "totalInboundLinks": 13,
+        "inboundSourcePages": 13,
+        "relevantInboundLinks": 11,
+        "relevantSources": 11,
+        "contentSources": 13,
+        "bySourceType": {
+          "software": 2,
+          "comparison": 8,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/segment"
+        ],
+        "noindex": false,
+        "title": "Best Segment Alternatives | Miloosh",
+        "description": "3 Segment alternatives compared: Segment is Twilio's customer data platform (CDP) that collects, cleans, and activates first-party customer data across a…",
+        "h1": [
+          "Best Segment alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/vercel",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/vercel",
+        "clicks": 1,
+        "impressions": 209,
+        "ctr": 0.005,
+        "position": 74.7
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:vercel",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "vercel",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "vercel",
+        "name": "Vercel",
+        "score": 89,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/vercel",
+        "kind": "software",
+        "totalInboundLinks": 18,
+        "inboundSourcePages": 18,
+        "relevantInboundLinks": 16,
+        "relevantSources": 16,
+        "contentSources": 18,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 12,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/vercel"
+        ],
+        "noindex": false,
+        "title": "Best Vercel Alternatives | Miloosh",
+        "description": "2 Vercel alternatives compared: Vercel describes itself as an \"agentic infrastructure\" cloud platform for deploying apps, AI agents, and autonomous…",
+        "h1": [
+          "Best Vercel alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/vercel",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/lastpass",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/lastpass",
+        "clicks": 0,
+        "impressions": 208,
+        "ctr": 0,
+        "position": 72.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:lastpass",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "lastpass",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "lastpass",
+        "name": "LastPass",
+        "score": 82,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-22",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/lastpass",
+        "kind": "software",
+        "totalInboundLinks": 25,
+        "inboundSourcePages": 14,
+        "relevantInboundLinks": 23,
+        "relevantSources": 12,
+        "contentSources": 14,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 11,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/lastpass"
+        ],
+        "noindex": false,
+        "title": "Best LastPass Alternatives | Miloosh",
+        "description": "3 LastPass alternatives compared: LastPass is a password manager and digital vault that stores and autofills login credentials, using zero-knowledge…",
+        "h1": [
+          "Best LastPass alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/calendly",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/calendly",
+        "clicks": 0,
+        "impressions": 204,
+        "ctr": 0,
+        "position": 82.1
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:calendly",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "calendly",
+            "active": false,
+            "status": [
+              "NO_REAL_PROGRAM_FOUND"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "calendly",
+        "name": "Calendly",
+        "score": 80,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 12.5,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-09",
+        "accessedAt": "2026-09-09",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/calendly",
+        "kind": "software",
+        "totalInboundLinks": 30,
+        "inboundSourcePages": 24,
+        "relevantInboundLinks": 27,
+        "relevantSources": 21,
+        "contentSources": 24,
+        "bySourceType": {
+          "software": 10,
+          "comparison": 9,
+          "guide": 2,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 6,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/calendly"
+        ],
+        "noindex": false,
+        "title": "Best Calendly Alternatives | Miloosh",
+        "description": "2 Calendly alternatives compared: Calendly is a scheduling tool that connects to a user's calendar and lets them share a booking link so others can pick…",
+        "h1": [
+          "Best Calendly alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/calendly",
+          "state": "ACTIVE_EXPERIMENT",
+          "until": "2026-10-10T17:49:39.127Z",
+          "source": "docs/work-revenue-experiment-receipt-2026-09-12.json",
+          "reason": "Still MEASURING; overdue checkpoint never silently unlocks editing"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/netlify",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/netlify",
+        "clicks": 0,
+        "impressions": 191,
+        "ctr": 0,
+        "position": 74.4
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:netlify",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "netlify",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "netlify",
+        "name": "Netlify",
+        "score": 89,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/netlify",
+        "kind": "software",
+        "totalInboundLinks": 17,
+        "inboundSourcePages": 17,
+        "relevantInboundLinks": 15,
+        "relevantSources": 15,
+        "contentSources": 17,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 11,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/netlify"
+        ],
+        "noindex": false,
+        "title": "Best Netlify Alternatives | Miloosh",
+        "description": "2 Netlify alternatives compared: Netlify is a unified platform to \"create with AI or code, deploy instantly on production infrastructure,\" supporting…",
+        "h1": [
+          "Best Netlify alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/netlify",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/compare/adobe-analytics-vs-segment",
+      "kind": "comparison",
+      "search": {
+        "url": "https://miloosh.com/compare/adobe-analytics-vs-segment",
+        "clicks": 0,
+        "impressions": 189,
+        "ctr": 0,
+        "position": 34.1
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "versus:adobe-analytics:segment",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "adobe-analytics",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          },
+          {
+            "slug": "segment",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": null,
+      "authority": {
+        "path": "/compare/adobe-analytics-vs-segment",
+        "kind": "comparison",
+        "totalInboundLinks": 4,
+        "inboundSourcePages": 4,
+        "relevantInboundLinks": 3,
+        "relevantSources": 3,
+        "contentSources": 4,
+        "bySourceType": {
+          "software": 2,
+          "comparison": 0,
+          "guide": 0,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 1,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/compare/adobe-analytics-vs-segment"
+        ],
+        "noindex": false,
+        "title": "Adobe Analytics vs Twilio Segment (2026) | Miloosh",
+        "description": "Adobe Analytics vs Twilio Segment: compare analytics and CDP workflows, platforms, pricing approach, and buyer fit using current vendor sources.",
+        "h1": [
+          "Adobe Analytics vs Twilio Segment"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/copy-ai",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/copy-ai",
+        "clicks": 0,
+        "impressions": 187,
+        "ctr": 0,
+        "position": 79.1
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:copy-ai",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "copy-ai",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "copy-ai",
+        "name": "Copy.ai",
+        "score": 85,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/copy-ai",
+        "kind": "software",
+        "totalInboundLinks": 15,
+        "inboundSourcePages": 15,
+        "relevantInboundLinks": 13,
+        "relevantSources": 13,
+        "contentSources": 15,
+        "bySourceType": {
+          "software": 2,
+          "comparison": 10,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/copy-ai"
+        ],
+        "noindex": false,
+        "title": "Best Copy.ai Alternatives | Miloosh",
+        "description": "2 Copy.ai alternatives compared: Copy.ai describes itself as \"The First AI-Native GTM Platform,\" a unified system meant to replace disconnected AI…",
+        "h1": [
+          "Best Copy.ai alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/copy-ai",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/hotjar",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/hotjar",
+        "clicks": 0,
+        "impressions": 184,
+        "ctr": 0,
+        "position": 84.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:hotjar",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "hotjar",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "hotjar",
+        "name": "Hotjar",
+        "score": 89,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/hotjar",
+        "kind": "software",
+        "totalInboundLinks": 17,
+        "inboundSourcePages": 17,
+        "relevantInboundLinks": 15,
+        "relevantSources": 15,
+        "contentSources": 17,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 11,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/hotjar"
+        ],
+        "noindex": false,
+        "title": "Best Hotjar Alternatives | Miloosh",
+        "description": "2 Hotjar alternatives compared: Hotjar (part of Contentsquare) is an experience-intelligence platform for understanding and improving user behavior on…",
+        "h1": [
+          "Best Hotjar alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/hotjar",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/contentful",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/contentful",
+        "clicks": 0,
+        "impressions": 182,
+        "ctr": 0,
+        "position": 74.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:contentful",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "contentful",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "contentful",
+        "name": "Contentful",
+        "score": 85,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/contentful",
+        "kind": "software",
+        "totalInboundLinks": 20,
+        "inboundSourcePages": 20,
+        "relevantInboundLinks": 18,
+        "relevantSources": 18,
+        "contentSources": 20,
+        "bySourceType": {
+          "software": 4,
+          "comparison": 13,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/contentful"
+        ],
+        "noindex": false,
+        "title": "Best Contentful Alternatives | Miloosh",
+        "description": "2 Contentful alternatives compared: Contentful describes itself as a Digital Experience Platform (DXP) using AI-driven analytics to help organizations…",
+        "h1": [
+          "Best Contentful alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/contentful",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/directus",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/directus",
+        "clicks": 0,
+        "impressions": 179,
+        "ctr": 0,
+        "position": 63.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:directus",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "directus",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "directus",
+        "name": "Directus",
+        "score": 42,
+        "bucket": "C",
+        "breakdown": {
+          "pricingPresent": 0,
+          "pricingSourced": 0,
+          "pricingFreshness": 0,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 4,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": null,
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/directus",
+        "kind": "software",
+        "totalInboundLinks": 14,
+        "inboundSourcePages": 14,
+        "relevantInboundLinks": 13,
+        "relevantSources": 13,
+        "contentSources": 14,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 11,
+          "guide": 0,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 3,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/directus"
+        ],
+        "noindex": false,
+        "title": "Best Directus Alternatives | Miloosh",
+        "description": "3 Directus alternatives compared: Directus is a self-hostable, open-source headless CMS and backend that connects to any SQL database and instantly…",
+        "h1": [
+          "Best Directus alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "CONTENT_DEPTH_GAP"
+      ],
+      "action": "Queue source-backed content review in Claude lane",
+      "reasons": [
+        "Demand plus local completeness heuristic C; not a vendor-fact verification",
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/toggl-track",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/toggl-track",
+        "clicks": 0,
+        "impressions": 177,
+        "ctr": 0,
+        "position": 73.9
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:toggl-track",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "toggl-track",
+            "active": false,
+            "status": [
+              "PENDING_REVIEW"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "toggl-track",
+        "name": "Toggl Track",
+        "score": 46,
+        "bucket": "C",
+        "breakdown": {
+          "pricingPresent": 0,
+          "pricingSourced": 0,
+          "pricingFreshness": 0,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": null,
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/toggl-track",
+        "kind": "software",
+        "totalInboundLinks": 24,
+        "inboundSourcePages": 20,
+        "relevantInboundLinks": 23,
+        "relevantSources": 19,
+        "contentSources": 20,
+        "bySourceType": {
+          "software": 4,
+          "comparison": 12,
+          "guide": 2,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 5,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/toggl-track"
+        ],
+        "noindex": false,
+        "title": "Best Toggl Track Alternatives | Miloosh",
+        "description": "3 Toggl Track alternatives compared: Toggl Track is a time tracking tool for individuals and teams that turns one-click timers and background activity…",
+        "h1": [
+          "Best Toggl Track alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "CONTENT_DEPTH_GAP"
+      ],
+      "action": "Queue source-backed content review in Claude lane",
+      "reasons": [
+        "Demand plus local completeness heuristic C; not a vendor-fact verification",
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/webex",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/webex",
+        "clicks": 0,
+        "impressions": 177,
+        "ctr": 0,
+        "position": 69.5
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:webex",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "webex",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "webex",
+        "name": "Webex",
+        "score": 88,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/webex",
+        "kind": "software",
+        "totalInboundLinks": 15,
+        "inboundSourcePages": 14,
+        "relevantInboundLinks": 13,
+        "relevantSources": 12,
+        "contentSources": 14,
+        "bySourceType": {
+          "software": 2,
+          "comparison": 9,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 5,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/webex"
+        ],
+        "noindex": false,
+        "title": "Best Webex Alternatives | Miloosh",
+        "description": "3 Webex alternatives compared: Cisco Webex is an AI-powered collaboration platform for video meetings, webinars, calling, and messaging, with an in-house…",
+        "h1": [
+          "Best Webex alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "HOLD"
+      ],
+      "action": "Collect missing evidence or wait for measurement",
+      "reasons": [
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/synthesia",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/synthesia",
+        "clicks": 0,
+        "impressions": 170,
+        "ctr": 0,
+        "position": 73.8
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:synthesia",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "synthesia",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "synthesia",
+        "name": "Synthesia",
+        "score": 85,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-26",
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/synthesia",
+        "kind": "software",
+        "totalInboundLinks": 23,
+        "inboundSourcePages": 19,
+        "relevantInboundLinks": 21,
+        "relevantSources": 17,
+        "contentSources": 19,
+        "bySourceType": {
+          "software": 4,
+          "comparison": 11,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 6,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/synthesia"
+        ],
+        "noindex": false,
+        "title": "Best Synthesia Alternatives | Miloosh",
+        "description": "2 Synthesia alternatives compared: Synthesia is an all-in-one AI video creation platform for businesses, letting users produce professional videos with AI…",
+        "h1": [
+          "Best Synthesia alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/synthesia",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/ifttt",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/ifttt",
+        "clicks": 0,
+        "impressions": 169,
+        "ctr": 0,
+        "position": 70.1
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:ifttt",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "ifttt",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "ifttt",
+        "name": "IFTTT",
+        "score": 45,
+        "bucket": "C",
+        "breakdown": {
+          "pricingPresent": 0,
+          "pricingSourced": 0,
+          "pricingFreshness": 0,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 6,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 4,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": null,
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/ifttt",
+        "kind": "software",
+        "totalInboundLinks": 11,
+        "inboundSourcePages": 11,
+        "relevantInboundLinks": 10,
+        "relevantSources": 10,
+        "contentSources": 11,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 9,
+          "guide": 0,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 2,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/ifttt"
+        ],
+        "noindex": false,
+        "title": "Best IFTTT Alternatives | Miloosh",
+        "description": "4 IFTTT alternatives compared: IFTTT is a no-code automation platform that connects apps, services, and smart devices through simple trigger-and-action…",
+        "h1": [
+          "Best IFTTT alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "CONTENT_DEPTH_GAP"
+      ],
+      "action": "Queue source-backed content review in Claude lane",
+      "reasons": [
+        "Demand plus local completeness heuristic C; not a vendor-fact verification",
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/opencart",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/opencart",
+        "clicks": 0,
+        "impressions": 169,
+        "ctr": 0,
+        "position": 73.3
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:opencart",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "opencart",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "opencart",
+        "name": "OpenCart",
+        "score": 44,
+        "bucket": "C",
+        "breakdown": {
+          "pricingPresent": 0,
+          "pricingSourced": 0,
+          "pricingFreshness": 0,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": null,
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/opencart",
+        "kind": "software",
+        "totalInboundLinks": 29,
+        "inboundSourcePages": 29,
+        "relevantInboundLinks": 28,
+        "relevantSources": 28,
+        "contentSources": 29,
+        "bySourceType": {
+          "software": 7,
+          "comparison": 20,
+          "guide": 0,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 3,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/opencart"
+        ],
+        "noindex": false,
+        "title": "Best OpenCart Alternatives | Miloosh",
+        "description": "3 OpenCart alternatives compared: OpenCart is a free, open-source PHP-based ecommerce platform for building and managing online stores, with no monthly…",
+        "h1": [
+          "Best OpenCart alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "CONTENT_DEPTH_GAP"
+      ],
+      "action": "Queue source-backed content review in Claude lane",
+      "reasons": [
+        "Demand plus local completeness heuristic C; not a vendor-fact verification",
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/plausible",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/plausible",
+        "clicks": 0,
+        "impressions": 167,
+        "ctr": 0,
+        "position": 71.6
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:plausible",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "plausible",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "plausible",
+        "name": "Plausible Analytics",
+        "score": 40,
+        "bucket": "C",
+        "breakdown": {
+          "pricingPresent": 0,
+          "pricingSourced": 0,
+          "pricingFreshness": 0,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": null,
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/plausible",
+        "kind": "software",
+        "totalInboundLinks": 13,
+        "inboundSourcePages": 13,
+        "relevantInboundLinks": 12,
+        "relevantSources": 12,
+        "contentSources": 13,
+        "bySourceType": {
+          "software": 1,
+          "comparison": 10,
+          "guide": 0,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 3,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/plausible"
+        ],
+        "noindex": false,
+        "title": "Best Plausible Analytics Alternatives | Miloosh",
+        "description": "3 Plausible Analytics alternatives compared: Plausible Analytics is a privacy-focused alternative to Google Analytics that provides website traffic…",
+        "h1": [
+          "Best Plausible Analytics alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "CONTENT_DEPTH_GAP"
+      ],
+      "action": "Queue source-backed content review in Claude lane",
+      "reasons": [
+        "Demand plus local completeness heuristic C; not a vendor-fact verification",
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/todoist",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/todoist",
+        "clicks": 0,
+        "impressions": 167,
+        "ctr": 0,
+        "position": 69.9
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "CRAWLED_NOT_INDEXED",
+        "observation": {
+          "url": "https://miloosh.com/software/todoist",
+          "checkedAt": "2026-09-25T12:20:01.014227+00:00",
+          "source": "Authenticated UI export: gsc-inspections.json",
+          "verdict": null,
+          "coverageState": "Crawled - currently not indexed",
+          "lastCrawlTime": null,
+          "googleCanonical": null,
+          "userCanonical": null,
+          "pageFetchState": null,
+          "robotsTxtState": null,
+          "indexingState": null
+        }
+      },
+      "intentOwner": "alternatives:todoist",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "todoist",
+            "active": true,
+            "status": [
+              "ACTIVE"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "todoist",
+        "name": "Todoist",
+        "score": 96,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 8,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 8,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 3,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-09-25",
+        "accessedAt": "2026-08-19",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/todoist",
+        "kind": "software",
+        "totalInboundLinks": 47,
+        "inboundSourcePages": 26,
+        "relevantInboundLinks": 42,
+        "relevantSources": 22,
+        "contentSources": 26,
+        "bySourceType": {
+          "software": 5,
+          "comparison": 17,
+          "guide": 1,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 5,
+        "anchorDiversity": 23,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/todoist"
+        ],
+        "noindex": false,
+        "title": "Todoist Alternatives & Pricing (2026): TickTick, Any.do, Things | Miloosh",
+        "description": "Compare the best Todoist alternatives, including TickTick, Any.do and Things, with Todoist pricing, free-plan limits, buyer fit and switching checks.",
+        "h1": [
+          "Best Todoist alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "INDEXATION_RECOVERY"
+      ],
+      "action": "Review crawl recency and differentiation; no repeated indexing requests",
+      "reasons": [
+        "Recorded crawl without index inclusion; this is NOT evidence of a technical failure"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/crazy-egg",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/crazy-egg",
+        "clicks": 0,
+        "impressions": 165,
+        "ctr": 0,
+        "position": 63.2
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:crazy-egg",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "crazy-egg",
+            "active": false,
+            "status": []
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "crazy-egg",
+        "name": "Crazy Egg",
+        "score": 39,
+        "bucket": "D",
+        "breakdown": {
+          "pricingPresent": 0,
+          "pricingSourced": 0,
+          "pricingFreshness": 0,
+          "freePlanTrialInfo": 0,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 0,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": null,
+        "accessedAt": "2026-08-04",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/crazy-egg",
+        "kind": "software",
+        "totalInboundLinks": 14,
+        "inboundSourcePages": 14,
+        "relevantInboundLinks": 13,
+        "relevantSources": 13,
+        "contentSources": 14,
+        "bySourceType": {
+          "software": 0,
+          "comparison": 12,
+          "guide": 0,
+          "category": 1,
+          "hub": 1
+        },
+        "sourceDiversity": 3,
+        "anchorDiversity": 2,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/crazy-egg"
+        ],
+        "noindex": false,
+        "title": "Best Crazy Egg Alternatives | Miloosh",
+        "description": "2 Crazy Egg alternatives compared: Crazy Egg is a website-optimization platform that shows how visitors actually use a site, combining heatmaps, session…",
+        "h1": [
+          "Best Crazy Egg alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "state": "SAFE_TO_EDIT",
+          "source": "Local receipt/config scope only; production-only experiment state not queried"
+        }
+      ],
+      "groups": [
+        "CONTENT_DEPTH_GAP"
+      ],
+      "action": "Queue source-backed content review in Claude lane",
+      "reasons": [
+        "Demand plus local completeness heuristic D; not a vendor-fact verification",
+        "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem"
+      ],
+      "indexingRequest": {
+        "status": "NOT_ELIGIBLE",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    },
+    {
+      "url": "/software/jasper",
+      "kind": "software",
+      "search": {
+        "url": "https://miloosh.com/software/jasper",
+        "clicks": 0,
+        "impressions": 165,
+        "ctr": 0,
+        "position": 71.5
+      },
+      "searchEvidence": {
+        "source": "Authenticated GSC UI page export; gsc-page-table.json; sha256:75da15f2971df431a2342f022badf81854edbaf1b87c9ce4ce7971e4fb5cea2a",
+        "capturedAt": "2026-09-25T12:27:07.746692+00:00",
+        "window": {
+          "start": "2026-08-07",
+          "end": "2026-09-23"
+        },
+        "status": "CACHED_AUTHENTICATED_PAGE_ROW"
+      },
+      "indexation": {
+        "state": "UNKNOWN",
+        "observation": null
+      },
+      "intentOwner": "alternatives:jasper",
+      "affiliate": {
+        "source": "canonical ACTIVE_PARTNERS + CURRENT_AFFILIATE_LEDGER, local source snapshot",
+        "relationships": [
+          {
+            "slug": "jasper",
+            "active": false,
+            "status": [
+              "OWNER_ACTION_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "factualDepth": {
+        "slug": "jasper",
+        "name": "Jasper",
+        "score": 85,
+        "bucket": "A",
+        "breakdown": {
+          "pricingPresent": 15,
+          "pricingSourced": 8,
+          "pricingFreshness": 5,
+          "freePlanTrialInfo": 8,
+          "featureDepth": 15,
+          "platformCoverage": 2,
+          "targetCustomer": 8,
+          "limitations": 10,
+          "sourceCount": 4,
+          "sourceDiversity": 2.5,
+          "alternativesListed": 2,
+          "comparisonCoverage": 5
+        },
+        "pricingLastVerified": "2026-08-25",
+        "accessedAt": "2026-08-01",
+        "evidence": "Local structured-field completeness HEURISTIC; does not verify factual truth, dates or Google quality"
+      },
+      "authority": {
+        "path": "/software/jasper",
+        "kind": "software",
+        "totalInboundLinks": 18,
+        "inboundSourcePages": 18,
+        "relevantInboundLinks": 16,
+        "relevantSources": 16,
+        "contentSources": 18,
+        "bySourceType": {
+          "software": 3,
+          "comparison": 12,
+          "guide": 0,
+          "category": 1,
+          "hub": 2
+        },
+        "sourceDiversity": 4,
+        "anchorDiversity": 4,
+        "homeDepth": 1,
+        "hubDepth": 1,
+        "orphan": false,
+        "nearOrphan": false,
+        "canonical": [
+          "https://miloosh.com/software/jasper"
+        ],
+        "noindex": false,
+        "title": "Best Jasper Alternatives | Miloosh",
+        "description": "2 Jasper alternatives compared: Jasper is an AI platform purpose-built for marketing teams that orchestrates specialized AI agents to execute end-to-end…",
+        "h1": [
+          "Best Jasper alternatives"
+        ],
+        "evidence": "Emitted HTML build vpxze7EBLDtAwnPBqKY55"
+      },
+      "protection": [
+        {
+          "page": "/software/jasper",
+          "state": "RESERVED",
+          "until": null,
+          "source": "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+          "reason": "Existing reservation; explicit review required to release"
+        }
+      ],
+      "groups": [
+        "EXPERIMENT_PROTECTED"
+      ],
+      "action": "Observe only; do not change content or links",
+      "reasons": [
+        "Active experiment, cooldown or concurrent treatment/control reservation"
+      ],
+      "indexingRequest": {
+        "status": "PROTECTED",
+        "lastRequestedAt": null,
+        "note": "Manual review only; no Google submission API is called. Local improvement is not a deployed improvement."
+      }
+    }
+  ],
+  "note": "Frozen pre-navigation build; scores measure structured-field completeness, not verified truth. Impressions are cached authenticated page rows, not present-day indexing evidence."
+}

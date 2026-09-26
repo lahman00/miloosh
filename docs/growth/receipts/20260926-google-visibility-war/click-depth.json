@@ -1,0 +1,108 @@
+{
+  "method": "Breadth-first shortest crawlable HTML path; noindex/nofollow/script/template anchors excluded. Does not claim visual salience or Google authority.",
+  "beforeBuild": "vpxze7EBLDtAwnPBqKY55",
+  "afterBuild": "1OWeBrz-o40P5TJILrHZ4",
+  "distribution": {
+    "1": 86,
+    "2": 1301,
+    "3": 349
+  },
+  "weakPartners": [
+    {
+      "url": "/software/volza",
+      "before": {
+        "sources": 3,
+        "relevantSources": 2,
+        "guideSources": 0,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "after": {
+        "sources": 3,
+        "relevantSources": 2,
+        "guideSources": 0,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "demand": "UNKNOWN: no exact canonical page row in the supplied export",
+      "action": "HOLD: no new relevant trade-intelligence feeder justified"
+    },
+    {
+      "url": "/software/jotform",
+      "before": {
+        "sources": 7,
+        "relevantSources": 3,
+        "guideSources": 0,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "after": {
+        "sources": 9,
+        "relevantSources": 5,
+        "guideSources": 2,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "demand": "UNKNOWN: no exact canonical page row in the supplied export",
+      "action": "Added relevant existing guide paths; no ranking/affiliate change"
+    },
+    {
+      "url": "/software/mailerlite",
+      "before": {
+        "sources": 9,
+        "relevantSources": 8,
+        "guideSources": 1,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "after": {
+        "sources": 10,
+        "relevantSources": 9,
+        "guideSources": 2,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "demand": "UNKNOWN: no exact canonical page row in the supplied export",
+      "action": "Added relevant existing guide paths; no ranking/affiliate change"
+    },
+    {
+      "url": "/software/omnisend",
+      "before": {
+        "sources": 9,
+        "relevantSources": 8,
+        "guideSources": 1,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "after": {
+        "sources": 10,
+        "relevantSources": 9,
+        "guideSources": 2,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "demand": "UNKNOWN: no exact canonical page row in the supplied export",
+      "action": "Added relevant existing guide paths; no ranking/affiliate change"
+    },
+    {
+      "url": "/software/surveymonkey",
+      "before": {
+        "sources": 8,
+        "relevantSources": 5,
+        "guideSources": 0,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "after": {
+        "sources": 9,
+        "relevantSources": 6,
+        "guideSources": 1,
+        "homeDepth": 2,
+        "hubDepth": 2
+      },
+      "demand": "UNKNOWN: no exact canonical page row in the supplied export",
+      "action": "Added relevant existing guide paths; no ranking/affiliate change"
+    }
+  ],
+  "note": "No shortest-depth reduction claimed: these targets were already two clicks away; gain is relevant source/guide diversity."
+}
