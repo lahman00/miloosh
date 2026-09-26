@@ -70,7 +70,7 @@ async function main() {
         if (route.endsWith("hubspot")) assert(result.commercial.filter((a: { slug: string }) => a.slug === "hubspot").every((a: { rel: string }) => !a.rel.includes("sponsored")));
         results.push({ route, width, ...result });
       }
-      console.log(`Two control rooms + research hub and 2 assets + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
+      console.log(`Two control rooms + ${RESEARCH_PATHS.length} research routes + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
     }
     await authorityBrowserProof(`http://127.0.0.1:${appPort}`, output);
     const jsonResponse = await fetch(`http://127.0.0.1:${appPort}/api/research/customer-support-pricing-2026`);

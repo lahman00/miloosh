@@ -313,6 +313,7 @@ export default function CrmPlanGatesPage() {
           <ul className="mt-3 space-y-2 text-sm">
             {[
               { href: "/category/crm", label: "All CRM software" },
+              { href: "/compare/pipedrive-vs-close", label: "Pipedrive vs Close: compare fit beyond plan gates" },
               { href: "/software/pipedrive", label: "Pipedrive pricing and review" },
               { href: "/software/hubspot", label: "HubSpot pricing and review" },
               { href: "/software/salesforce", label: "Salesforce pricing and review" },

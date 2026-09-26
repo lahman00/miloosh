@@ -60,4 +60,9 @@ describe("production read-only release contract", () => {
       expect(code).not.toContain("dateModified: generatedDate");
     }
   });
+  it("connects the new CRM research to an existing comparison without changing its ranking", () => {
+    const page = fs.readFileSync("app/research/crm-plan-gates-2026/page.tsx", "utf8");
+    expect(page).toContain('href: "/compare/pipedrive-vs-close"');
+    expect(page).toContain("This is not a ranking");
+  });
 });
