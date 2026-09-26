@@ -90,6 +90,28 @@
     "Advanced resource/capacity planning, budgeting and advanced reporting are listed on Pinnacle, a contact-sales plan; confirm which workload features a Team or Business quote actually includes.",
     "Seat reductions and downgrades generally take effect at renewal, so a mid-term switch can mean paying for Wrike and its replacement at the same time."
   ],
+  "faq": [
+    {
+      "question": "What are the best Wrike alternatives?",
+      "answer": "Pick the alternative by the operating model you want. Monday.com fits teams that want customizable visual boards, dashboards and workflow automation. Smartsheet fits PMOs that prefer spreadsheet-style planning with Gantt views and governed reporting. ClickUp fits teams that want tasks, documents and dashboards in one workspace. Zoho Projects fits teams already using Zoho apps. If Wrike's workflows already fit and cost is the problem, re-price the actual seats and license types before migrating."
+    },
+    {
+      "question": "Does Wrike have a free plan?",
+      "answer": "Yes. Wrike lists a free task-management plan and a 14-day free trial. When Miloosh last checked its pricing (September 10, 2026), paid plans started at Team for US$10 per user per month, billed annually. Confirm the free plan's current feature and access limits with Wrike. If you need a free alternative, Zoho Projects also lists a free plan."
+    },
+    {
+      "question": "What is the difference between Wrike Team and Business?",
+      "answer": "Team is US$10 per user per month, billed annually, and restricted to 2–15 users; it lists AI Essentials and Gantt charts. Business is US$25 per user per month, billed annually, for 5–200 users, and lists the AI Elite starter pack and workspace templates. Pinnacle and Apex are contact-sales plans. A team that grows past 15 users has to move to Business; it cannot just add seats to Team."
+    },
+    {
+      "question": "Which Wrike plan includes resource and capacity planning?",
+      "answer": "Wrike lists advanced resource and capacity planning, budgeting and advanced reporting on Pinnacle, a contact-sales plan for 5+ users. If workload planning is why you are choosing Wrike, get the Pinnacle quote, or confirm in writing which workload features a Team or Business quote includes."
+    },
+    {
+      "question": "Should I switch away from Wrike or stay?",
+      "answer": "Check the billable picture before comparing headline prices. Wrike sells seats in bundles, and external users count as paid full users. Seat reductions and downgrades generally take effect at renewal, so switching mid-term can mean paying for Wrike and its replacement at the same time. Note the renewal date. Rebuild one real workflow in the candidate tool and test an export before moving everything else."
+    }
+  ],
   "alternatives": [
     {
       "name": "Monday.com",

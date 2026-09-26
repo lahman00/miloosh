@@ -27,6 +27,7 @@ vi.mock("@/components/TrackedVendorLink", () => ({
  */
 const WAVE2 = [
   { slug: "pipedrive", affiliateUrl: "https://aff.trypipedrive.com/ajtcgyu06e7i" },
+  { slug: "wrike", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij" },
 ] as const;
 
 function load(slug: string): Software {
@@ -201,5 +202,20 @@ describe("Wrike buyer-decision record", () => {
     expect(html).toContain("/ monthly / seat");
     expect(html).toContain("Annual billing required at this price.");
     expect(html).not.toContain("/ annual");
+  });
+});
+
+describe("Wrike decision FAQ", () => {
+  it("answers the free-plan, Team/Business range and capacity-planning questions from the stored tiers", () => {
+    const faq = load("wrike").faq ?? [];
+    const free = faq.find((item) => item.question === "Does Wrike have a free plan?");
+    expect(free?.answer).toMatch(/^Yes\./);
+    expect(free?.answer).toContain("14-day free trial");
+    // Only name a free alternative whose own record verifies a free plan.
+    expect(load("zoho-projects").pricing?.freePlan).toBe(true);
+    const ranges = faq.find((item) => item.question.includes("Team and Business"));
+    expect(ranges?.answer).toContain("2–15 users");
+    expect(ranges?.answer).toContain("5–200 users");
+    expect(faq.find((item) => item.question.includes("capacity planning"))?.answer).toContain("Pinnacle");
   });
 });
