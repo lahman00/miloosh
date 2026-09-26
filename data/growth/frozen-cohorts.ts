@@ -9,6 +9,14 @@
  * is over — removal should only happen once that wave's own comparison
  * has actually been read and the freeze is deliberately lifted.
  *
+ * Master Google Domination reconciliation (2026-09-26): this is now the
+ * SINGLE canonical source for wave-based protection, consumed by both
+ * scripts/growth/indexation-readiness.ts (via isFrozenSlug) and
+ * lib/google-war/protection.ts's reservedProtection() (which used to hardcode
+ * its own separate, Wave-1-only CONCURRENT_TREATMENT/CONCURRENT_CONTROL
+ * copy of this same data, and had no knowledge of Wave 2 at all until this
+ * reconciliation). Add a wave here once and both systems see it.
+ *
  * Distinct from docs/work-revenue-experiment-receipt-*.json, which tracks
  * revenue-cohort buyer-checklist experiments with their own measurement
  * windows — a page can appear in both registries for unrelated reasons.

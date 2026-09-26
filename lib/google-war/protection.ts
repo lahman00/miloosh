@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { FROZEN_COHORTS } from "@/data/growth/frozen-cohorts";
 
 export type Protection = {
   page: string;
@@ -19,34 +20,19 @@ export const LEGACY_RESERVED = [
   "intercom",
   "front",
 ];
-export const CONCURRENT_TREATMENT = [
-  "whimsical",
-  "scribe",
-  "marketo-engage",
-  "lucidchart",
-  "firebase",
-  "vercel",
-  "netlify",
-  "hotjar",
-  "fullstory",
-  "contentful",
-  "perplexity",
-  "synthesia",
-  "jasper",
-  "copy-ai",
-];
-export const CONCURRENT_CONTROL = [
-  "adyen",
-  "braze",
-  "knowledgeowl",
-  "bloomfire",
-  "gitbook",
-  "workos",
-  "webflow",
-  "twilio",
-  "swaggerhub",
-  "sanity",
-];
+/**
+ * Master Google Domination reconciliation (2026-09-26) -- this used to be a
+ * hardcoded, Wave-1-only snapshot (14 treatment + 10 control), duplicating
+ * data/growth/frozen-cohorts.ts and missing Wave 2's own 30+12 cohort
+ * entirely (a real protection gap: google-war had no idea Wave 2's pages
+ * existed, let alone that they were frozen). Both constants now derive
+ * from the single canonical registry so a future wave only ever needs to
+ * add an entry there. Values are unchanged for Wave 1 -- this is a pure
+ * de-duplication, not a behavior change for the existing cohort.
+ */
+const WAVE1_COHORT = FROZEN_COHORTS.find((c) => c.wave === "indexation-recovery-20260926");
+export const CONCURRENT_TREATMENT = [...(WAVE1_COHORT?.treatment ?? [])];
+export const CONCURRENT_CONTROL = [...(WAVE1_COHORT?.control ?? [])];
 export type ExperimentInput = {
   page: string;
   decision: string;
@@ -83,19 +69,23 @@ export function experimentProtection(
   });
 }
 export function reservedProtection(): Protection[] {
-  return [
-    ...LEGACY_RESERVED,
-    ...CONCURRENT_TREATMENT,
-    ...CONCURRENT_CONTROL,
-  ].map((slug) => ({
+  const legacy = LEGACY_RESERVED.map((slug) => ({
     page: `/software/${slug}`,
-    state: "RESERVED",
+    state: "RESERVED" as const,
     until: null,
-    source: LEGACY_RESERVED.includes(slug)
-      ? "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment"
-      : "af33baeef83f9909c24b6e610f4080a02850835b: concurrent Claude treatment/control cohort",
+    source: "Legacy conservative protected cohort in gsc-opportunity-miner; not proof of an active experiment",
     reason: "Existing reservation; explicit review required to release",
   }));
+  const waves = FROZEN_COHORTS.flatMap((cohort) =>
+    [...cohort.treatment, ...cohort.control].map((slug) => ({
+      page: `/software/${slug}`,
+      state: "RESERVED" as const,
+      until: null,
+      source: `data/growth/frozen-cohorts.ts, wave "${cohort.wave}"`,
+      reason: cohort.reason,
+    })),
+  );
+  return [...legacy, ...waves];
 }
 export function loadProtection(
   root = process.cwd(),
