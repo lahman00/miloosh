@@ -1,6 +1,8 @@
 import type { IndexState } from "./evidence";
 export type Group =
+  | "CRAWL_RECOVERY"
   | "INDEXATION_RECOVERY"
+  | "RANKING_STRIKING_DISTANCE"
   | "RANKING_OPPORTUNITY"
   | "CTR_OPPORTUNITY"
   | "INTERNAL_AUTHORITY_GAP"
@@ -37,10 +39,33 @@ export function prioritize(s: Signals): {
   const groups: Group[] = [],
     reasons: string[] = [];
   const demand = s.impressions !== null && s.impressions > 0;
+  // Google War Phase III (2026-09-26) — Part 41: DISCOVERED_NOT_INDEXED
+  // (Google has not crawled the URL) and CRAWLED_NOT_INDEXED (Google crawled
+  // it and excluded it) are two structurally different problems with
+  // different root causes — a crawl-priority/discovery gap versus an
+  // index-selection/content-quality gap. They must never share one group.
+  if (s.index === "DISCOVERED_NOT_INDEXED") {
+    groups.push("CRAWL_RECOVERY");
+    reasons.push(
+      "Google has not recorded a crawl of this URL at all; this is a discovery/crawl-priority signal, not a content-quality signal",
+    );
+  }
   if (s.index === "CRAWLED_NOT_INDEXED") {
     groups.push("INDEXATION_RECOVERY");
     reasons.push(
       "Recorded crawl without index inclusion; this is NOT evidence of a technical failure",
+    );
+  }
+  if (
+    s.index === "INDEXED" &&
+    demand &&
+    s.position !== null &&
+    s.position >= 8 &&
+    s.position <= 30
+  ) {
+    groups.push("RANKING_STRIKING_DISTANCE");
+    reasons.push(
+      `Indexed, measured average position ${s.position} (8-30 striking distance); may produce traffic faster than indexation recovery`,
     );
   }
   if (
@@ -98,13 +123,17 @@ export function prioritize(s: Signals): {
   if (!groups.length) groups.push("HOLD");
   return {
     groups,
-    action: groups.includes("INTENT_FRAGMENTATION")
+    action: groups.includes("RANKING_STRIKING_DISTANCE")
+      ? "Inspect snippet and information gain; do not touch indexation architecture for this URL"
+      : groups.includes("INTENT_FRAGMENTATION")
       ? "Review structural intent conflict"
       : groups.includes("INTERNAL_AUTHORITY_GAP")
         ? "Review relevant existing HTML paths; no automatic links"
         : groups.includes("CONTENT_DEPTH_GAP")
           ? "Queue source-backed content review in Claude lane"
-          : groups.includes("INDEXATION_RECOVERY")
+          : groups.includes("CRAWL_RECOVERY")
+            ? "Investigate discovery/crawl-priority architecture (hub links, sitemap, category paths); do not manually request indexing for this URL"
+            : groups.includes("INDEXATION_RECOVERY")
             ? "Review crawl recency and differentiation; no repeated indexing requests"
             : groups.includes("RANKING_OPPORTUNITY")
               ? "Inspect query/page demand and existing decision support"

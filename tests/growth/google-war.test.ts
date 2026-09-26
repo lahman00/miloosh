@@ -502,3 +502,107 @@ describe("Experiment and request gates", () => {
       }).groups,
     ).toEqual(["EXPERIMENT_PROTECTED"]));
 });
+
+// Google War Phase III (2026-09-26) — Part 43: DISCOVERED_NOT_INDEXED and
+// CRAWLED_NOT_INDEXED are two structurally different Google problems (never
+// crawled vs. crawled and excluded) that earlier reporting conflated into
+// one "not indexed" number. These tests lock in the distinction at the
+// evidence-parsing layer and the prioritization-lane layer so the two can
+// never silently collapse back into one again.
+describe("crawl lane vs. index-selection lane are never the same thing", () => {
+  it("indexState() never returns the same value for a discovered-only vs. a crawled-and-excluded inspection", () => {
+    const discovered = indexState(
+      observation({ coverageState: "Discovered - currently not indexed" }),
+    );
+    const crawled = indexState(
+      observation({ coverageState: "Crawled - currently not indexed" }),
+    );
+    expect(discovered).toBe("DISCOVERED_NOT_INDEXED");
+    expect(crawled).toBe("CRAWLED_NOT_INDEXED");
+    expect(discovered).not.toBe(crawled);
+  });
+
+  it("CRAWLED_NOT_INDEXED is never treated as INDEXED", () => {
+    const state = indexState(
+      observation({ coverageState: "Crawled - currently not indexed" }),
+    );
+    expect(state).not.toBe("INDEXED");
+  });
+
+  it("a bare successful page fetch (HTTP 200-equivalent) without a PASS verdict is not INDEXED", () => {
+    const state = indexState(
+      observation({ pageFetchState: "SUCCESSFUL", verdict: null }),
+    );
+    expect(state).not.toBe("INDEXED");
+    expect(state).toBe("UNKNOWN");
+  });
+
+  it("prioritize() puts DISCOVERED_NOT_INDEXED and CRAWLED_NOT_INDEXED in distinct, non-overlapping lanes", () => {
+    const crawlLane = prioritize({
+      ...signals,
+      index: "DISCOVERED_NOT_INDEXED",
+    });
+    const indexSelectionLane = prioritize({
+      ...signals,
+      index: "CRAWLED_NOT_INDEXED",
+    });
+    expect(crawlLane.groups).toContain("CRAWL_RECOVERY");
+    expect(crawlLane.groups).not.toContain("INDEXATION_RECOVERY");
+    expect(indexSelectionLane.groups).toContain("INDEXATION_RECOVERY");
+    expect(indexSelectionLane.groups).not.toContain("CRAWL_RECOVERY");
+  });
+
+  it("striking-distance ranking (8-30) is distinguished from the general ranking-opportunity lane, and never applies to a non-indexed URL", () => {
+    const striking = prioritize({
+      ...signals,
+      index: "INDEXED",
+      impressions: 50,
+      position: 15,
+    });
+    expect(striking.groups).toContain("RANKING_STRIKING_DISTANCE");
+
+    const deep = prioritize({
+      ...signals,
+      index: "INDEXED",
+      impressions: 50,
+      position: 65,
+    });
+    expect(deep.groups).not.toContain("RANKING_STRIKING_DISTANCE");
+    expect(deep.groups).toContain("RANKING_OPPORTUNITY");
+
+    const notIndexed = prioritize({
+      ...signals,
+      index: "CRAWLED_NOT_INDEXED",
+      impressions: 50,
+      position: 15,
+    });
+    expect(notIndexed.groups).not.toContain("RANKING_STRIKING_DISTANCE");
+  });
+
+  it("sitemap membership alone is not evidence of a crawl (a static/repository fact, not a GSC observation)", () => {
+    // canonicalPath() and the sitemap membership check operate on wholly
+    // separate evidence: a URL can be a canonical, sitemap-listed path and
+    // still have index state UNKNOWN because no GSC observation exists for
+    // it at all. Being parseable as a canonical site path must never, by
+    // itself, produce anything other than UNKNOWN.
+    expect(canonicalPath("https://miloosh.com/software/example")).toBe(
+      "/software/example",
+    );
+    expect(indexState(null)).toBe("UNKNOWN");
+  });
+
+  it("impressions are never used as index-state evidence: a row with real impressions but no inspection is still UNKNOWN", () => {
+    expect(indexState(null)).toBe("UNKNOWN");
+    // prioritize() itself must still surface the UNKNOWN caveat even when
+    // demand is very high — high impressions must never be silently read as
+    // proof the page is indexed.
+    const highDemandUnknownState = prioritize({
+      ...signals,
+      index: "UNKNOWN",
+      impressions: 5000,
+    });
+    expect(highDemandUnknownState.reasons).toContain(
+      "Index state UNKNOWN: inspect URL before calling this a ranking or indexation problem",
+    );
+  });
+});

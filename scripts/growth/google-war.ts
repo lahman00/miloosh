@@ -353,6 +353,20 @@ function main() {
       verdict:
         "UNCONFIRMED: separate page/query reports cannot prove same-query cannibalization. Preserve head-to-head URLs; obtain query+page evidence before redirecting.",
     }));
+    // Google War Phase III (2026-09-26) — Part 42: the dashboard must show
+    // INDEXED / DISCOVERED_NOT_INDEXED / CRAWLED_NOT_INDEXED as separate
+    // headline numbers and must never collapse them back into one "not
+    // indexed" figure. These are two structurally different Google problems
+    // (crawl vs. index-selection) that earlier reporting conflated.
+    const indexationHeadline: Record<string, number> = {};
+    const routeTypeByState: Record<string, Record<string, number>> = {};
+    for (const r of rows) {
+      const state = r.indexation.state;
+      indexationHeadline[state] = (indexationHeadline[state] ?? 0) + 1;
+      routeTypeByState[r.kind] ??= {};
+      routeTypeByState[r.kind][state] =
+        (routeTypeByState[r.kind][state] ?? 0) + 1;
+    }
     const report = {
       generatedAt: now,
       sourceSha: execFileSync("git", ["rev-parse", "HEAD"], {
@@ -408,7 +422,12 @@ function main() {
         .map((r) => ({ url: r.url, ...r.indexingRequest })),
       recentlyImproved: improvements,
       requestHistory,
+      indexationHeadline,
+      routeTypeByState,
     };
+    const transitioned = report.indexationDeltas.filter(
+      (d) => d.transitions.length > 0,
+    );
     const groups = [
       "INDEXATION_RECOVERY",
       "RANKING_OPPORTUNITY",
@@ -419,8 +438,40 @@ function main() {
       "EXPERIMENT_PROTECTED",
       "HOLD",
     ] as const;
+    const stateOrder = [
+      "INDEXED",
+      "DISCOVERED_NOT_INDEXED",
+      "CRAWLED_NOT_INDEXED",
+      "NOT_INDEXED_OTHER",
+      "UNKNOWN",
+    ] as const;
+    const headlineSection =
+      `## Indexation state (never collapsed — see Part 42)\n\n` +
+      stateOrder
+        .map((s) => `- ${s}: ${indexationHeadline[s] ?? 0}`)
+        .join("\n") +
+      `\n\n### By route type\n\n` +
+      Object.entries(routeTypeByState)
+        .map(
+          ([kind, counts]) =>
+            `- ${kind}: ` +
+            stateOrder
+              .filter((s) => counts[s])
+              .map((s) => `${s}=${counts[s]}`)
+              .join(", "),
+        )
+        .join("\n") +
+      `\n\n### Transitions since previous capture\n\n${transitioned.length} URLs changed indexation state. ${transitioned.length > 0 ? "Observed between checks, not the exact transition time; no causation claim." : ""}\n` +
+      transitioned
+        .slice(0, 15)
+        .map(
+          (d) =>
+            `- ${d.url}: ` +
+            d.transitions.map((t) => `${t.from} -> ${t.to}`).join(", "),
+        )
+        .join("\n");
     const md =
-      `# Google visibility control report\n\nGenerated ${now}. Local artifact, not production indexation proof.\n\nSearch: ${snapshot.capturedAt}; ${snapshot.window.start}..${snapshot.window.end}. Missing is UNKNOWN.\n\n` +
+      `# Google visibility control report\n\nGenerated ${now}. Local artifact, not production indexation proof.\n\nSearch: ${snapshot.capturedAt}; ${snapshot.window.start}..${snapshot.window.end}. Missing is UNKNOWN.\n\n${headlineSection}\n\n` +
       groups
         .map(
           (group) =>
