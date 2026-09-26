@@ -57,6 +57,9 @@ export function TrackedVendorLink({ slug, href, ctaLocation, children, onClick, 
   return (
     <a
       {...props}
+      data-miloosh-link="editorial-vendor"
+      data-software-slug={slug}
+      data-cta-location={ctaLocation}
       href={href}
       onClick={(event) => {
         onClick?.(event);

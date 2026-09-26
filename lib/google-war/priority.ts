@@ -58,14 +58,14 @@ export function prioritize(s: Signals): {
   }
   if (
     s.index === "INDEXED" &&
-    demand &&
+    (s.impressions ?? 0) >= 100 &&
     s.position !== null &&
     s.position >= 8 &&
-    s.position <= 30
+    s.position <= 20
   ) {
     groups.push("RANKING_STRIKING_DISTANCE");
     reasons.push(
-      `Indexed, measured average position ${s.position} (8-30 striking distance); may produce traffic faster than indexation recovery`,
+      `Indexed, measured average position ${s.position} (8-20); at least 100 observed impressions (operator threshold, not predicted traffic)`,
     );
   }
   if (

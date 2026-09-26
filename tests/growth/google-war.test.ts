@@ -552,11 +552,11 @@ describe("crawl lane vs. index-selection lane are never the same thing", () => {
     expect(indexSelectionLane.groups).not.toContain("CRAWL_RECOVERY");
   });
 
-  it("striking-distance ranking (8-30) is distinguished from the general ranking-opportunity lane, and never applies to a non-indexed URL", () => {
+  it("striking-distance ranking (8-20, >=100 impressions) is distinguished from the general ranking-opportunity lane, and never applies to a non-indexed URL", () => {
     const striking = prioritize({
       ...signals,
       index: "INDEXED",
-      impressions: 50,
+      impressions: 100,
       position: 15,
     });
     expect(striking.groups).toContain("RANKING_STRIKING_DISTANCE");

@@ -145,6 +145,9 @@ export function TrackedCtaLink({ slug, ctaLocation, wixContext, onClick, onAuxCl
   return (
     <ButtonLink
       {...props}
+      data-miloosh-link="commercial"
+      data-software-slug={slug}
+      data-cta-location={ctaLocation}
       ref={linkRef}
       onClick={(event) => {
         onClick?.(event);

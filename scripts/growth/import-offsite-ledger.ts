@@ -1,0 +1,12 @@
+import fs from "node:fs";
+import path from "node:path";
+import { createHash } from "node:crypto";
+import { ingestOffsite, reconcileReportedOffsite } from "@/lib/google-war/offsite";
+const input = process.argv[2];
+if (!input) throw new Error("Usage: tsx scripts/growth/import-offsite-ledger.ts verified-live.json [output.json]");
+const output = process.argv[3] ?? "var/growth/google-command/offsite-ingestion.json";
+const raw = fs.readFileSync(input, "utf8");
+const rows = reconcileReportedOffsite(JSON.parse(raw), ingestOffsite(JSON.parse(fs.readFileSync("data/growth/google-war/offsite.json", "utf8"))));
+fs.mkdirSync(path.dirname(output), { recursive: true });
+fs.writeFileSync(output, JSON.stringify({ source: path.basename(input), sourceSha256: createHash("sha256").update(raw).digest("hex"), capturedAt: new Date().toISOString(), publicActions: 0, rows }, null, 2));
+console.log(JSON.stringify({ output, records: rows.length, conflictingClaims: rows.filter(r => r.conflict).length, publicActions: 0 }));

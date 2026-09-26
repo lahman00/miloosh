@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { FROZEN_COHORTS } from "@/data/growth/frozen-cohorts";
+import { cohortRegistry } from "./cohorts";
 
 export type Protection = {
   page: string;
@@ -85,7 +86,11 @@ export function reservedProtection(): Protection[] {
       reason: cohort.reason,
     })),
   );
-  return [...legacy, ...waves];
+  const additional = cohortRegistry().flatMap(c => [...c.treatment, ...c.control].map(page => ({
+    page, state: "RESERVED" as const, until: null, source: c.source,
+    reason: `${c.id}: ${c.intervention}; measurement-only reservation, not proof of deployment`,
+  })));
+  return [...legacy, ...waves, ...additional].filter((r, i, all) => all.findIndex(p => p.page === r.page && p.source === r.source) === i);
 }
 export function loadProtection(
   root = process.cwd(),
