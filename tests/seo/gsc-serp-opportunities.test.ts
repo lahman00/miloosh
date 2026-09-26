@@ -12,6 +12,10 @@ const readSoftware = (slug: string) =>
   JSON.parse(fs.readFileSync(path.join(process.cwd(), "data/software", `${slug}.json`), "utf8"));
 
 describe("GSC-backed SERP opportunity fixes", () => {
+  it.each(["joomla", "drupal"])("applies Umbraco copy to the actual canonical %s comparison key", product => {
+    expect(getComparisonSerpOverride(`${product}-vs-umbraco`)?.title).toMatch(/Umbraco vs (Joomla|Drupal)/);
+    expect(getComparisonSerpOverride(`umbraco-vs-${product}`)).toBeUndefined();
+  });
   it("targets Postmark alternatives without repeating the false EU-hosting claim", () => {
     const meta = getSoftwareSerpOverride("postmark");
     expect(meta?.title).toContain("Postmark Alternatives");

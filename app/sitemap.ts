@@ -114,6 +114,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // MILOOSH WAR MODE mission (2026-08-24) — the PR data asset. Weekly
     // since the underlying pricing dataset is re-verified continuously.
     { url: `${SITE_URL}/research/saas-pricing-pressure-index-2026`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/research`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/research/customer-support-pricing-2026`, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   return [...staticPages, ...categoryPages, ...roleGuidePages, ...softwarePages, ...comparisonPages, ...legalPages];

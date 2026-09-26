@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
-import { researchLinkEvent, validResearchEvent } from "@/lib/analytics/research";
+import { RESEARCH_PATHS, researchLinkEvent, validResearchEvent } from "@/lib/analytics/research";
 import { authorityReferrals } from "@/lib/authority/referrals";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
 const persist = vi.hoisted(() => vi.fn().mockResolvedValue(true));
@@ -22,6 +22,10 @@ const history = () => [
 const start = "2026-09-26T00:00:00Z", end = "2026-09-27T00:00:00Z";
 describe("research event contract and privacy", () => {
   beforeEach(() => persist.mockClear());
+  it.each(RESEARCH_PATHS)("accepts the integrated public research surface %s", path => {
+    expect(validResearchEvent({ path, type: "research_page_view" })).toBe(true);
+    expect(researchLinkEvent(path, "/software/intercom?qa=1")).toEqual({ path, type: "research_to_decision_click", targetPath: "/software/intercom" });
+  });
   it("distinguishes source/comparison/decision actions without transmitting queries", () => {
     expect(researchLinkEvent(research, "https://vendor.test/pricing?token=secret")).toEqual({ type: "research_source_click", path: research, sourceHost: "vendor.test" });
     expect(researchLinkEvent(research, "/software/pipedrive?email=x")).toEqual({ type: "research_to_decision_click", path: research, targetPath: "/software/pipedrive" });

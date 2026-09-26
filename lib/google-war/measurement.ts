@@ -30,7 +30,7 @@ export function rankingDelta(beforeInput: Period, afterInput: Period, deployedAt
     note: "Negative position delta is directional improvement; observational, not a causal estimate. No percentage from a zero baseline." };
 }
 export type MeasurementResult = ReturnType<typeof rankingDelta> | { status: "WAIT_RECRAWL" | "WAIT_MATCHING_DATA" | "WAIT_INTERVENTION_VERIFICATION" };
-export function cohortResult(treatment: MeasurementResult[], control: MeasurementResult[]) {
+export function cohortResult(treatment: MeasurementResult[], control: MeasurementResult[], controlProtocolDeviations: readonly { page: string; reason: string }[] = []) {
   const summarize = (rows: typeof treatment) => {
     const eligible = rows.filter(r => r.status === "COMPARABLE");
     return { assigned: rows.length, measured: eligible.length, missing: rows.length - eligible.length,
@@ -39,6 +39,9 @@ export function cohortResult(treatment: MeasurementResult[], control: Measuremen
       afterImpressions: eligible.length ? eligible.reduce((s, r) => s + r.after.impressions, 0) : null };
   };
   const t = summarize(treatment), c = summarize(control);
-  return { treatment: t, control: c, differenceInMeanChange: t.meanImpressionsDelta === null || c.meanImpressionsDelta === null ? null : t.meanImpressionsDelta - c.meanImpressionsDelta,
+  return { treatment: t, control: c,
+    measurementStatus: controlProtocolDeviations.length ? "CONTROL_PROTOCOL_REVIEW" : "DESCRIPTIVE_ONLY",
+    controlProtocolDeviations,
+    differenceInMeanChange: controlProtocolDeviations.length || t.meanImpressionsDelta === null || c.meanImpressionsDelta === null ? null : t.meanImpressionsDelta - c.meanImpressionsDelta,
     interpretation: "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim." };
 }

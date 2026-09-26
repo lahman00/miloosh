@@ -9,6 +9,7 @@ export const authorityObservationSchema = z.object({
   method: z.enum(["PUBLIC_BROWSER", "PUBLIC_HTTP", "PUBLIC_WEB_FETCH", "AUTHENTICATED_BROWSER", "REPORTED", "VENDOR_RESPONSE"]),
   exactTargetVerified: z.boolean(), linkPresent: z.boolean().nullable(),
   rel: z.enum(["DOFOLLOW", "NOFOLLOW", "MIXED", "UNKNOWN"]),
+  rejectionReason: z.literal("PAID_DOFOLLOW").optional(),
   evidence: z.string().min(1),
 }).superRefine((o, ctx) => {
   if (o.status === "VERIFIED_LIVE" && (!o.exactTargetVerified || !["PUBLIC_BROWSER", "PUBLIC_HTTP", "PUBLIC_WEB_FETCH"].includes(o.method)))
@@ -16,6 +17,7 @@ export const authorityObservationSchema = z.object({
   if (o.status === "REMOVED" && (!o.exactTargetVerified || !["PUBLIC_BROWSER", "PUBLIC_HTTP", "PUBLIC_WEB_FETCH"].includes(o.method)))
     ctx.addIssue({ code: "custom", message: "Removal requires exact public placement evidence" });
   if (o.rel !== "UNKNOWN" && o.linkPresent !== true) ctx.addIssue({ code: "custom", message: "Cannot classify rel without an observed link" });
+  if (o.rejectionReason && o.status !== "REJECTED") ctx.addIssue({ code: "custom", message: "A rejection reason requires REJECTED status" });
 });
 export const authorityEntrySchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/), source: z.string().min(1),
@@ -61,10 +63,12 @@ export function authorityState(entry: AuthorityEntry, now: string) {
   // A newer authenticated view conflicting with a cached/signed-out removal
   // cannot prove visibility for other people. Preserve conflict, don't invent either truth.
   const conflictingView = publicCheck && observations.some(o => Date.parse(o.at) >= Date.parse(publicCheck.at) && o.method === "AUTHENTICATED_BROWSER" && o.status === "UNVERIFIED" && o.exactTargetVerified && publicCheck.status === "REMOVED");
-  const status = conflictingView ? "UNVERIFIED" : publicCheck?.status ?? observations[0]?.status ?? "UNVERIFIED";
+  const latestRejected = observations[0]?.status === "REJECTED";
+  const status = latestRejected ? "REJECTED" : conflictingView ? "UNVERIFIED" : publicCheck?.status ?? observations[0]?.status ?? "UNVERIFIED";
   const lastVerified = publicCheck?.at ?? null;
   const stale = !lastVerified || Date.parse(now) - Date.parse(lastVerified) > 14 * 86400000;
-  return { ...entry, status, lastVerified, stale, conflict: Boolean(conflictingView),
+  const rejectionReason = status === "REJECTED" ? observations[0]?.rejectionReason ?? null : null;
+  return { ...entry, status, rejectionReason, disposition: rejectionReason ? `REJECTED_${rejectionReason}` : status, lastVerified, stale, conflict: Boolean(conflictingView),
     linkPresent: status === "VERIFIED_LIVE" ? publicCheck!.linkPresent : status === "REMOVED" ? false : null,
     rel: status === "VERIFIED_LIVE" ? publicCheck!.rel : "UNKNOWN",
     targetKind: entry.targetUrl === null ? "MENTION_ONLY" : canonicalPath(entry.targetUrl) === "/" ? "HOMEPAGE" : "DEEP_LINK",
@@ -99,6 +103,6 @@ export function deepLinkBaseline(entries: AuthorityEntry[], now: string) {
     deepLinkPlacements: links.filter(r => r.targetKind === "DEEP_LINK").length,
     supportedUrls: [...new Set(links.map(r => r.targetUrl!))].sort(),
     liveMentionsWithoutLinks: rows.filter(r => r.status === "VERIFIED_LIVE" && r.linkPresent === false).length,
-    unresolved: rows.filter(r => r.status === "UNVERIFIED" || r.stale).length,
+    unresolved: rows.filter(r => r.status !== "REJECTED" && (r.status === "UNVERIFIED" || r.stale)).length,
   };
 }

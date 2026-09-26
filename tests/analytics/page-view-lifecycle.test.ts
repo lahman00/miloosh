@@ -12,6 +12,7 @@ vi.mock("react", () => ({
 vi.mock("next/navigation", () => ({ usePathname: () => hooks.path }));
 vi.mock("@/lib/analytics/track", () => ({ trackEvent: hooks.track }));
 import { FirstPartyAnalytics } from "@/components/FirstPartyAnalytics";
+import { RESEARCH_PATHS } from "@/lib/analytics/research";
 
 function mount(path = hooks.path) {
   hooks.path = path; hooks.index = 0; hooks.effects = [];
@@ -38,8 +39,8 @@ beforeEach(() => {
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
 describe("page view effect lifecycle", () => {
-  it("research StrictMode replay keeps one ordinary and one research view", () => {
-    const cleanup = mount("/research/saas-pricing-pressure-index-2026"); cleanup();
+  it.each(RESEARCH_PATHS)("research StrictMode replay keeps one ordinary and one research view: %s", path => {
+    const cleanup = mount(path); cleanup();
     const finalCleanup = mount();
     expect(hooks.track.mock.calls.filter(([e]) => e.type === "page_view")).toHaveLength(1);
     expect(hooks.track.mock.calls.filter(([e]) => e.type === "research_page_view")).toHaveLength(1);

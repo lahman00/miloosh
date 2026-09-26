@@ -5,6 +5,7 @@ import { spawn, execFile } from "node:child_process";
 import { promisify } from "node:util";
 import assert from "node:assert/strict";
 import { authorityBrowserProof } from "./authority-browser-proof";
+import { RESEARCH_PATHS } from "@/lib/analytics/research";
 
 const output = "var/growth/google-command/browser";
 const session = `miloosh-control-${process.pid}`;
@@ -53,13 +54,14 @@ async function main() {
       const authority = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelector('h1')?.textContent})")).result;
       assert.equal(authority.overflow, false); assert.equal(authority.h1, "Authority impact control room");
       await browser("screenshot", path.resolve(output, `authority-${width}.png`));
-      const researchRoute = "/research/saas-pricing-pressure-index-2026";
+      for (const researchRoute of RESEARCH_PATHS) {
       await browser("open", `http://127.0.0.1:${appPort}${researchRoute}?qa=1&qaRun=authority-control-room`);
       await browser("snapshot", "-i", "-s", "main");
       const research = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,canonical:document.querySelector('link[rel=canonical]')?.href,h1:document.querySelector('h1')?.textContent})")).result;
       assert.equal(research.overflow, false); assert.equal(research.canonical, `https://miloosh.com${researchRoute}`); assert(research.h1);
-      await browser("screenshot", path.resolve(output, `research-${width}.png`));
+      await browser("screenshot", path.resolve(output, `${researchRoute.split('/').at(-1)}-${width}.png`));
       results.push({ route: researchRoute, width, ...research });
+      }
       for (const route of ["/software/jotform", "/software/hubspot", "/compare/pipedrive-vs-close"]) {
         await browser("open", `http://127.0.0.1:${appPort}${route}?qa=1&qaRun=command-center`);
         const result = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,canonical:document.querySelector('link[rel=canonical]')?.href,commercial:[...document.querySelectorAll('[data-miloosh-link=\"commercial\"]')].map(a=>({slug:a.dataset.softwareSlug,location:a.dataset.ctaLocation,href:a.href,rel:a.rel})),vendor:document.querySelectorAll('[data-miloosh-link=\"editorial-vendor\"]').length})")).result;
@@ -68,9 +70,18 @@ async function main() {
         if (route.endsWith("hubspot")) assert(result.commercial.filter((a: { slug: string }) => a.slug === "hubspot").every((a: { rel: string }) => !a.rel.includes("sponsored")));
         results.push({ route, width, ...result });
       }
-      console.log(`Two control rooms + research + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
+      console.log(`Two control rooms + research hub and 2 assets + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
     }
     await authorityBrowserProof(`http://127.0.0.1:${appPort}`, output);
+    const jsonResponse = await fetch(`http://127.0.0.1:${appPort}/api/research/customer-support-pricing-2026`);
+    const json = await jsonResponse.json();
+    const csvResponse = await fetch(`http://127.0.0.1:${appPort}/api/research/customer-support-pricing-2026/csv`);
+    const csv = await csvResponse.text();
+    assert.equal(jsonResponse.status, 200); assert.equal(csvResponse.status, 200);
+    assert.equal(json.sampleSize, 16); assert.equal(json.rows.length, 16);
+    assert.equal(csv.trim().split("\n").length, 17);
+    assert(csvResponse.headers.get("content-type")?.includes("text/csv"));
+    results.push({ route: "/api/research/customer-support-pricing-2026", status: 200, rows: json.rows.length, csvStatus: 200, csvLines: 17 });
     fs.writeFileSync(path.join(output, "latest.json"), JSON.stringify({ capturedAt: new Date().toISOString(), merchantNavigations: 0, analyticsWrites: 0, viewports: [1440, 390, 320], results }, null, 2));
   } finally { child.kill("SIGTERM"); await browser("close"); dashboard.closeAllConnections(); await new Promise<void>(resolve => dashboard.close(() => resolve())); }
 }

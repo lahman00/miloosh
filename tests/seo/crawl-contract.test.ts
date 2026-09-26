@@ -10,6 +10,7 @@ import { FIRST_REVENUE_CONTENT_UPDATED_AT } from "@/data/revenue/first-revenue-c
 import { PUBLISHED_COMPARISONS, getPublishedComparisonSlugs } from "@/data/comparisons";
 import { REMOVED_COMPARISON_REDIRECTS } from "@/data/redirects";
 import { LEGAL_PAGES } from "@/lib/legal";
+import { RESEARCH_PATHS } from "@/lib/analytics/research";
 
 describe("crawl inventory contract", () => {
   const entries = sitemap();
@@ -33,7 +34,7 @@ describe("crawl inventory contract", () => {
   it("submits only existing public pages, excluding retired and query-driven routes", () => {
     const known = new Set([
       "/", "/about", "/contact", "/guides", "/compare", "/recommend", "/newsletter",
-      "/tools/saas-cost-calculator", "/research/saas-pricing-pressure-index-2026",
+      "/tools/saas-cost-calculator", ...RESEARCH_PATHS,
       ...softwarePaths, ...comparisons.map((slug) => `/compare/${slug}`),
       ...guides.map((guide) => `/${guide.slug}`),
       ...getAllCategories().map((category) => `/category/${category.slug}`),

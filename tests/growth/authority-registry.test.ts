@@ -11,6 +11,21 @@ describe("canonical authority evidence", () => {
     expect(baseline.otherReportedLinks).toBe(7); expect(baseline.otherDomains).toBe(5);
     expect(baseline.targets).toHaveLength(1); expect(baseline.deepLinks).toBe(0);
   });
+  it("excludes the paid-dofollow rejection from earned authority", () => {
+    const rejected = entries.find(r => r.id === "saascomparely-rejected")!;
+    expect(authorityState(rejected, now)).toMatchObject({ status: "REJECTED", rejectionReason: "PAID_DOFOLLOW", disposition: "REJECTED_PAID_DOFOLLOW", linkPresent: null });
+    expect(deepLinkBaseline([rejected], now)).toMatchObject({ homepagePlacements: 0, deepLinkPlacements: 0, unresolved: 0 });
+    expect(legacyOffsiteView([rejected], now)[0].status).not.toBe("VERIFIED_LIVE");
+  });
+  it("a newer paid rejection supersedes an old public placement", () => {
+    const rejected = entries.find(r => r.id === "saascomparely-rejected")!;
+    const history = { ...e, observations: [...e.observations, ...rejected.observations] };
+    expect(authorityState(history, now).status).toBe("REJECTED");
+    expect(deepLinkBaseline([history], now).homepagePlacements).toBe(0);
+  });
+  it("cannot attach a paid rejection label to a live observation", () => {
+    expect(() => parseRegistry([{ ...e, observations: [{ ...e.observations[0], rejectionReason: "PAID_DOFOLLOW" }] }])).toThrow();
+  });
   it("keeps two real deep-link placements despite zero in GSC", () => {
     expect(deepLinkBaseline(entries, now)).toMatchObject({ homepagePlacements: 3, deepLinkPlacements: 2 });
   });

@@ -1,0 +1,13 @@
+[
+  {
+    "cohortId": "master-google-war-wave3-20260926",
+    "page": "/software/reamaze",
+    "arm": "control",
+    "status": "REVIEW_REQUIRED",
+    "sourceCommit": "4d34fd163ee3149e665ab0172f94b848ff6280bc",
+    "file": "data/software/reamaze.json",
+    "beforeGitBlob": "8012ba7f1a02dbc8366817408787eebf3294395b",
+    "afterGitBlob": "4509370b6911ae8bba9de0c3a7861e2d2dd27a8d",
+    "reason": "Claude's research commit added a verified pricing block after this page was assigned to the held-out control arm. Preserve canonical product facts and cohort membership; do not claim an unchanged control or calculate a treatment/control contrast until the experiment owner explicitly resolves the protocol deviation. No deployment or Google impact inferred."
+  }
+]

@@ -24,6 +24,7 @@ import rankingChanges from "@/docs/growth/receipts/20260926-ranking-war/changes.
 import type { FirstPartyEvent } from "@/lib/analytics/events";
 import { runAuthorityReport } from "./authority-report";
 import authoritySeed from "@/data/growth/authority/registry.json";
+import protocolDeviations from "@/data/growth/cohort-protocol-deviations.json";
 import { appendAuthority, parseRegistry, legacyOffsiteView } from "@/lib/authority/registry";
 
 const arg = (key: string, fallback: string) => process.argv.includes(key) ? process.argv[process.argv.indexOf(key) + 1] : fallback;
@@ -110,7 +111,7 @@ function main() {
       treatment: c.treatment.map(page => ({ page, recrawl: rows.find(r => r.url === page)?.recrawl ?? "UNKNOWN", result: deltas(page, days, true) })),
       control: c.control.map(page => ({ page, result: deltas(page, days) })),
       // Missing windows remain missing; no zero-imputation of an absent page.
-      results: cohortResult(c.treatment.map(page => deltas(page, days, true)), c.control.map(page => deltas(page, days))),
+      results: cohortResult(c.treatment.map(page => deltas(page, days, true)), c.control.map(page => deltas(page, days)), protocolDeviations.filter(d => d.cohortId === c.id && d.status === "REVIEW_REQUIRED")),
     })) }));
   const manifest = cohorts.flatMap(c => c.treatment.map(url => ({ url, commit: c.id === "ranking-intent-20260926" ? execFileSync("git", ["rev-parse", rankingChanges.commits[0]], { encoding: "utf8" }).trim() : execFileSync("git", ["log", "-1", "--format=%H", "--", c.source], { encoding: "utf8" }).trim() || null,
     commitMeaning: c.id === "ranking-intent-20260926" ? "Intervention commit from change receipt; not deployment proof" : "Commit recording source receipt/membership, not deployment proof", reason: c.intervention, experiment: c.id, primaryIntervention: c.intervention, recordedDate: c.recordedDate, deployedAt: deployed(url), verification: improvements.find(i => i.url === url)?.verification ?? null, localVerification: interventionVerification.find(v => v.canonical === url) ?? { status: "NO_EXACT_EXPECTATION_RECORDED" } })));
