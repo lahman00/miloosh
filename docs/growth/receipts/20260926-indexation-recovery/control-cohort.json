@@ -1,0 +1,9 @@
+{
+  "count": 10,
+  "purpose": "Deliberately untouched comparison baseline -- same 'crawled but not indexed' D/C factual-depth profile as the treatment cohort, no code or data change made to any of these 10 products. Re-checking their indexation status at a later date against the treatment cohort's is how any future session can tell whether the treatment cohort's real content improvements actually moved indexation, versus a sitewide trend that would have happened anyway.",
+  "selection": "Drawn from the same factual-depth-audit.ts bottom-20 D-tier list as several treatment candidates, chosen to span comparable categories (analytics/payments, knowledge-base, developer-tools/API, CMS) without overlapping the treatment cohort's own categories 1:1.",
+  "slugs": ["adyen", "braze", "knowledgeowl", "bloomfire", "gitbook", "workos", "webflow", "twilio", "swaggerhub", "sanity"],
+  "changesApplied": "none -- no file touched for any of these 10 products this session",
+  "knownConfound": "marketo-engage's new AlternativeDecisionGuide entry (a treatment-cohort change) legitimately lists Braze as one of Marketo Engage's own real, sourced alternatives, which gives braze one incidental new inbound link. This is disclosed rather than hidden or avoided -- omitting a genuine alternative from Marketo's guide just to keep Braze 'pure' as a control would have meant writing dishonest content. Braze's own page/data was not otherwise touched.",
+  "fullBaselineData": "see baseline.json's control array for exact impressions/position/depth/indexation-status per slug"
+}

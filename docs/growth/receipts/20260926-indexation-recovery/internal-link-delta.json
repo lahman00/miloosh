@@ -1,0 +1,22 @@
+{
+  "method": "scripts/growth/internal-link-graph-v2.ts, run before and after the 14 new AlternativeDecisionGuide entries were added.",
+  "before": {
+    "alternativeDecisionGuideEntries": 30,
+    "realExploreProductLinks": 88,
+    "realOpenComparisonLinks": 88,
+    "trueOrphans": 9
+  },
+  "after": {
+    "alternativeDecisionGuideEntries": 44,
+    "realExploreProductLinks": 118,
+    "realOpenComparisonLinks": 118,
+    "trueOrphans": 9
+  },
+  "delta": {
+    "guideEntries": "+14",
+    "realLinksAdded": 30,
+    "note": "30, not 28 (14 entries x 2 decisions), because several entries have 3 decisions (whimsical, marketo-engage). Every added link points at a real, already-published comparison -- none was invented."
+  },
+  "importantMechanicalNote": "An AlternativeDecisionGuide entry keyed to product X sends inbound links to the ALTERNATIVES X's guide names, not to X itself. None of the 14 treatment products' own inbound-link counts were the target of this work -- their own architecture problem was never weak linking (see gsc-opportunities.json / internal-link-graph.json from the prior 20260926-google-demand-capture receipt, which already established Pipedrive-style products are not linking-starved). The real beneficiaries of these 30 new links are the ALTERNATIVES named in each new guide: miro, lucidchart, balsamiq, guru, helpjuice, hotjar, heap, activecampaign, braze, hubspot, figma, supabase, render, netlify, docker, vercel, sanity, webflow, matomo, copy-ai, chatgpt, jasper, gemini, runway, elevenlabs -- a mix of already-strong and moderately-linked products, not the site's identified weakest 5 active partners (jotform, mailerlite, omnisend, surveymonkey, volza), none of which are a real alternative to any of these 14 treatment products.",
+  "trueOrphansUnchanged": "Still 9 -- none of the 14 new guide entries reference any of the 9 orphan products (birdeye, chili-piper, consensus, dbt-cloud, dropbox, floqast, hibob, knowbe4, veeam-data-platform), because none of them is a genuine real alternative to any of the 14 treatment products. Forcing one in would have violated the mission's own 'do not force irrelevant comparisons' instruction."
+}

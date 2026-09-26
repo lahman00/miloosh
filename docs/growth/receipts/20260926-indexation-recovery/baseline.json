@@ -1,0 +1,41 @@
+{
+  "capturedAt": "2026-09-26",
+  "sources": {
+    "impressionsClicksPosition": "data/seo/priority-snapshot.json (committed, real GSC capture generatedAt 2026-09-23T21:25:05Z, 537 page rows)",
+    "indexationStatus": "Live, authenticated Google Search Console URL Inspection, performed directly this session on 2026-09-26 for every row below -- never inferred from HTTP 200",
+    "factualDepth": "scripts/growth/factual-depth-audit.ts, run directly this session before any edit"
+  },
+  "protectedPagesExcludedFromSelection": [
+    "/software/wrike", "/software/klaviyo", "/software/smartsheet", "/software/ecwid",
+    "/software/zoho-crm", "/software/calendly", "/software/woocommerce", "/software/teamwork", "/software/doodle"
+  ],
+  "treatment": [
+    { "slug": "whimsical", "impressions": 286, "clicks": 0, "position": 65.6, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-09-01T03:29:40Z", "depthBefore": 44, "bucketBefore": "C" },
+    { "slug": "scribe", "impressions": 273, "clicks": 0, "position": 69.8, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T04:01:56Z", "depthBefore": 43, "bucketBefore": "C" },
+    { "slug": "fullstory", "impressions": 241, "clicks": 0, "position": 63.9, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T19:54:44Z", "depthBefore": 39, "bucketBefore": "D" },
+    { "slug": "marketo-engage", "impressions": 239, "clicks": 0, "position": 67.6, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-09T09:36:07Z", "depthBefore": 42, "bucketBefore": "C" },
+    { "slug": "lucidchart", "impressions": 235, "clicks": 0, "position": 80.7, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T05:48:13Z", "depthBefore": 39, "bucketBefore": "D" },
+    { "slug": "firebase", "impressions": 224, "clicks": 0, "position": 71.5, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-31T23:40:13Z", "depthBefore": 45, "bucketBefore": "C" },
+    { "slug": "vercel", "impressions": 209, "clicks": 0, "position": 74.7, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-07T18:20:16Z", "depthBefore": 43, "bucketBefore": "C" },
+    { "slug": "netlify", "impressions": 191, "clicks": 0, "position": 74.4, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T13:59:02Z", "depthBefore": 43, "bucketBefore": "C" },
+    { "slug": "contentful", "impressions": 182, "clicks": 0, "position": 74.8, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T05:42:47Z", "depthBefore": 39, "bucketBefore": "D" },
+    { "slug": "hotjar", "impressions": 184, "clicks": 0, "position": 84.6, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-31T23:44:38Z", "depthBefore": 43, "bucketBefore": "C" },
+    { "slug": "jasper", "impressions": 165, "clicks": 0, "position": 71.5, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-30T16:09:55Z", "depthBefore": 75, "bucketBefore": "B" },
+    { "slug": "copy-ai", "impressions": 187, "clicks": 0, "position": 79.1, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-09-02T09:59:45Z", "depthBefore": 75, "bucketBefore": "B" },
+    { "slug": "perplexity", "impressions": 97, "clicks": 0, "position": 74.9, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T17:53:59Z", "depthBefore": 49, "bucketBefore": "C" },
+    { "slug": "synthesia", "impressions": 170, "clicks": 0, "position": 73.8, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-30T13:56:22Z", "depthBefore": 39, "bucketBefore": "D" }
+  ],
+  "control": [
+    { "slug": "adyen", "impressions": 141, "clicks": 0, "position": 70.6, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T16:29:20Z", "depth": 37, "bucket": "D", "verifiedLive": true },
+    { "slug": "braze", "impressions": 132, "clicks": 0, "position": 73.5, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-11T12:41:01Z", "depth": 38, "bucket": "D", "verifiedLive": true, "note": "Also gains one incidental inbound link from marketo-engage's new guide (a real, honest alternative -- disclosed, not engineered around)." },
+    { "slug": "gitbook", "impressions": 116, "clicks": 0, "position": 71.4, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-31T19:29:22Z", "depth": 38, "bucket": "D", "verifiedLive": true },
+    { "slug": "twilio", "impressions": 49, "clicks": 0, "position": 82.4, "indexation": "CRAWLED_NOT_INDEXED", "lastCrawl": "2026-08-10T11:36:59Z", "depth": 39, "bucket": "D", "verifiedLive": true },
+    { "slug": "knowledgeowl", "impressions": null, "position": null, "indexation": "UNKNOWN", "depth": 38, "bucket": "D", "verifiedLive": false, "note": "Baseline recorded from priority-snapshot.json (no page-level row) and factual-depth-audit only; indexation status not individually verified live this round." },
+    { "slug": "bloomfire", "impressions": 32, "clicks": 0, "position": 55.1, "indexation": "UNKNOWN", "depth": 38, "bucket": "D", "verifiedLive": false },
+    { "slug": "workos", "impressions": null, "position": null, "indexation": "UNKNOWN", "depth": 39, "bucket": "D", "verifiedLive": false },
+    { "slug": "webflow", "impressions": null, "position": null, "indexation": "UNKNOWN", "depth": 39, "bucket": "D", "verifiedLive": false },
+    { "slug": "swaggerhub", "impressions": 8, "clicks": 0, "position": 54.8, "indexation": "UNKNOWN", "depth": 39, "bucket": "D", "verifiedLive": false },
+    { "slug": "sanity", "impressions": 57, "clicks": 0, "position": 67.1, "indexation": "UNKNOWN", "depth": 39, "bucket": "D", "verifiedLive": false }
+  ],
+  "controlNote": "4 of 10 controls (adyen, braze, gitbook, twilio) got a live GSC URL Inspection check this session, matching the treatment cohort's confirmed CRAWLED_NOT_INDEXED status. The other 6 have real baseline data (impressions/position from the committed snapshot, factual depth from the audit script) but were not individually live-inspected, to keep the session's live-check volume proportionate; their indexation status is honestly marked UNKNOWN rather than assumed."
+}

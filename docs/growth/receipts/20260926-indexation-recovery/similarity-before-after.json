@@ -1,0 +1,28 @@
+{
+  "method": "tests/seo-factory/alternative-guides.test.ts's existing 'does not clone five-word editorial phrases across products' test -- a 5-word shingle Jaccard-similarity check across every pair of AlternativeDecisionGuide entries (heading + introduction + whySeekAlternative + all decisions' heading/fit text), threshold < 0.08. This test already existed before this session; it was not written to validate this session's own work.",
+  "firstDraftFailures": [
+    {
+      "pair": "vercel vs netlify",
+      "similarityScore": 0.5206,
+      "cause": "Both guides were initially written as near-mirror-images of each other (same diagnosis structure, same whySeekAlternative bullets, same Docker-decision heading and near-identical fit text) -- exactly the 'same template + different product names' problem the mission's own Section 4 asks to watch for.",
+      "resolution": "Rewrote both with genuinely distinct framing: Vercel's guide leads with its AI-agent/Sandbox-execution differentiator, Netlify's leads with its multi-role deploy-path differentiator. Reworded the shared whySeekAlternative container-control bullet and the Docker-decision heading/fit text on both sides so the same real fact about Docker is stated in different words.",
+      "afterFirstRewrite": 0.0885,
+      "stillFailing": true
+    },
+    {
+      "pair": "jasper vs copy-ai",
+      "similarityScore": 0.1713,
+      "cause": "Same root cause as vercel/netlify -- both are marketing/GTM AI tools sharing the same two real alternatives (each other + chatgpt), initially written with an identical heading and a verbatim-reused 'general-purpose assistant' whySeekAlternative bullet and ChatGPT-decision fit text.",
+      "resolution": "Rewrote both with genuinely distinct framing: Jasper's guide leads with its brand-governance/Style-Guide differentiator across 100+ specialized agents, Copy.ai's leads with its cross-functional GTM data-layer (Tables/Infobase/2,000+ integrations) differentiator.",
+      "detectedOnSecondPass": true
+    }
+  ],
+  "finalResult": {
+    "allPairsBelowThreshold": true,
+    "vercelVsNetlify": 0.015,
+    "jasperVsCopyAi": 0.0686,
+    "fullTestSuiteStatus": "3/3 tests passing in tests/seo-factory/alternative-guides.test.ts, including the exact-cohort-list assertion (updated to include all 14 new slugs) and the per-entry structural checks (>=2 decisions, exactly 3 whySeekAlternative bullets, every alternativeSlug real and catalogued, every comparisonSlug actually published)"
+  },
+  "otherPairsChecked": "All other pairs among the 14 new entries, and all pairs against the pre-existing 30 entries, passed on the first attempt -- no other rewrite was needed.",
+  "lessonRecorded": "Products that are each other's closest real competitor (sharing the same top 2 real alternatives) are the highest-risk case for accidental templating in this exact content mechanism. The fix is giving each product's own real, distinguishing feature set (not just its name) the leading role in its own diagnosis/introduction, rather than writing one generic frame and swapping which product is 'the subject.'"
+}
