@@ -63,7 +63,9 @@ describe("authority measurement boundaries", () => {
     expect(indexingEligibility({ ...live, indexable: false })).toBe("TECHNICAL_BLOCK");
   });
   it("flags removals, noindex, broken targets and sufficiently large matched referral spikes", () => {
-    const a = authorityAlerts(parseRegistry(registry), "2026-09-26T23:00:00Z", new Set(["/"]), [{ url: "/research/test", noindex: true }], true, { previous: 12, current: 60, comparable: true });
+    // Historical capture contains the known audience conflict; later public
+    // rechecks can resolve it without invalidating this alert-rule fixture.
+    const a = authorityAlerts(parseRegistry(registry), "2026-09-26T21:59:00Z", new Set(["/"]), [{ url: "/research/test", noindex: true }], true, { previous: 12, current: 60, comparable: true });
     expect(a.map(r => r.code)).toEqual(expect.arrayContaining(["PLACEMENT_REMOVED", "VISIBILITY_CONFLICT", "RESEARCH_NOINDEX", "BROKEN_DEEP_LINK_TARGET", "REFERRAL_SPIKE", "BRANDED_QUERY_FIRST_OBSERVED"]));
     expect(authorityAlerts([], "2026-09-26T23:00:00Z", new Set(), [], false, { previous: 1, current: 4, comparable: true })).toEqual([]);
   });
