@@ -19,6 +19,24 @@
     "https://www.liveagent.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15/agent/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "tiers": [
+      { "name": "Small Business", "amount": "15", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$19/agent/month if billed monthly." },
+      { "name": "Medium Business", "amount": "29", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$35/agent/month if billed monthly." },
+      { "name": "Large Business", "amount": "49", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$59/agent/month if billed monthly." },
+      { "name": "Enterprise", "amount": "69", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$85/agent/month if billed monthly. Requires booking a demo call. No separately disclosed AI usage price; AI Answer Assistant is bundled." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.liveagent.com/pricing/"
+  },
   "alternatives": [
     {
       "name": "Zendesk",

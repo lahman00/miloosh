@@ -19,6 +19,23 @@
     "https://www.reamaze.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$29/team member/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Starter", "amount": "59", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "Flat rate, unlimited team members, capped at 500 responded conversations/month." },
+      { "name": "Basic", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "team member/month", "notes": "$26.10/team member/month if billed annually (10% discount)." },
+      { "name": "Pro", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "team member/month", "notes": "$44.10/team member/month if billed annually." },
+      { "name": "Plus", "amount": "69", "currency": "USD", "billing_period": "monthly", "unit": "team member/month", "notes": "$62.10/team member/month if billed annually. Includes AI Agent with a monthly included-resolution allowance; overage billed at $0.85 per additional resolution." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.reamaze.com/pricing"
+  },
   "alternatives": [
     {
       "name": "Gorgias",

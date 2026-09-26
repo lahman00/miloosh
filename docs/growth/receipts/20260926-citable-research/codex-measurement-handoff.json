@@ -1,0 +1,30 @@
+{
+  "handoffFor": "Codex (or whoever owns first-party analytics wiring)",
+  "preparedBy": "Claude (claude/miloosh-master-google-war-20260926)",
+  "preparedAt": "2026-09-26",
+  "instruction": "Use the EXISTING first-party analytics pipeline (lib/analytics/events.ts's FirstPartyEventType union and lib/analytics/cta-locations.ts's KNOWN_CTA_LOCATIONS set). No new analytics store, table, or tracker is needed or was created for this asset.",
+  "urlsToMeasure": [
+    { "url": "/research/customer-support-pricing-2026", "measure": "page_view (already fires automatically via the existing page-view pipeline; no code change needed)" },
+    { "url": "/research", "measure": "page_view (same; the new hub page uses the same layout/analytics wiring as every other route)" },
+    { "url": "/api/research/customer-support-pricing-2026", "measure": "Referral source and hit count on the JSON dataset download -- this is a plain GET route with no first-party event emitted today; if download-level tracking is wanted, treat it the same way outbound vendor-link clicks are tracked (see lib/revenue/click-tracker.ts's pattern), not as a new analytics system." },
+    { "url": "/api/research/customer-support-pricing-2026/csv", "measure": "Same as above for the CSV download." }
+  ],
+  "eventsToWireUp": [
+    {
+      "event": "internal_cta_click",
+      "existingType": "Already defined in lib/analytics/events.ts's FirstPartyEventType",
+      "location": "The 'Related reading' links block on the research page (7 links: category, 4 product pages, 2 comparisons)",
+      "action": "KNOWN_CTA_LOCATIONS in lib/analytics/cta-locations.ts is a finite, enumerated set -- add a new location string (e.g. \"research-related-reading\") to that set and wire the existing TrackedCtaLink component (referenced in app/api/outbound-click/route.ts's own comments) around those 7 links, the same way it's used elsewhere. Do not invent a parallel tracking mechanism."
+    },
+    {
+      "event": "newsletter_signup",
+      "existingType": "Already defined and already wired",
+      "location": "The research page reuses the existing NewsletterSignupForm component with source=\"customer-support-pricing-benchmark\" -- this already flows through the existing pipeline with no further action needed."
+    }
+  ],
+  "explicitlyOutOfScope": [
+    "No new database table, no new event type, no new external analytics vendor.",
+    "No merchant/affiliate click tracking changes -- the research page's own outbound links go to internal product/comparison pages only, not to any merchant.",
+    "This handoff does not request or authorize any change to CTA copy, revenue tracking, or affiliate disclosure logic -- only the addition of one new, narrowly-scoped CTA location string for the research page's internal links, if and when Codex decides to implement it."
+  ]
+}

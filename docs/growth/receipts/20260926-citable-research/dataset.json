@@ -1,0 +1,528 @@
+{
+  "generatedAt": "2026-09-26T20:34:55.756Z",
+  "sampleSize": 16,
+  "totalCatalogSize": 354,
+  "verifiedCount": 15,
+  "unknownSlugs": [
+    "happyfox"
+  ],
+  "verificationWindow": {
+    "earliest": "2026-08-22",
+    "latest": "2026-09-26"
+  },
+  "inclusionRule": "Every catalog product with category \"customer-support\" as of the compilation date -- not a hand-picked vendor list.",
+  "rows": [
+    {
+      "slug": "crisp",
+      "name": "Crisp",
+      "officialSource": "https://crisp.chat/en/pricing/",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "freemium",
+      "hasFreeTier": true,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": false,
+      "entryAmount": 45,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$45",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "AI credit allowance (~$5-$75 of usage depending on tier) is bundled into the flat workspace fee. Crisp's pricing page does not publish a per-unit overage rate for exceeding that allowance."
+      }
+    },
+    {
+      "slug": "five9",
+      "name": "Five9",
+      "officialSource": "https://www.five9.com/pricing",
+      "lastVerified": "2026-09-05",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": null,
+      "enterpriseContactSales": true,
+      "entryPerSeat": true,
+      "entryAmount": 119,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$119/seat/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "Pricing page notes \"usage-based pricing may apply\" on top of the per-seat bundle rate but does not publish a specific AI per-unit rate."
+      }
+    },
+    {
+      "slug": "freshdesk",
+      "name": "Freshdesk",
+      "officialSource": "https://www.freshworks.com/freshdesk/pricing/",
+      "lastVerified": "2026-08-23",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 19,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "annual",
+      "recordedStartingPrice": "$19/agent/month",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.49,
+        "unit": "per Freddy AI Agent session (billed in blocks of 100 sessions at $49/block, after the first 500 sessions/month included)",
+        "note": "\"First 500 sessions included. $49 per 100 sessions\" -- a session-block unit, not a per-resolution price."
+      }
+    },
+    {
+      "slug": "front",
+      "name": "Front",
+      "officialSource": "https://front.com/pricing",
+      "lastVerified": "2026-08-23",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": true,
+      "entryPerSeat": true,
+      "entryAmount": 25,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "annual",
+      "recordedStartingPrice": "$25/seat/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "No separate AI usage line item found on the public pricing page as of 2026-09-26; AI features, where present, are bundled into the seat tiers shown."
+      }
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "name": "Genesys Cloud CX",
+      "officialSource": "https://www.genesys.com/pricing",
+      "lastVerified": "2026-09-05",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": null,
+      "enterpriseContactSales": true,
+      "entryPerSeat": true,
+      "entryAmount": 75,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "annual",
+      "recordedStartingPrice": "$75/user/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "CX4 includes 30 AI Experience tokens per named agent, but the pricing page does not disclose a per-token or per-overage dollar rate."
+      }
+    },
+    {
+      "slug": "gorgias",
+      "name": "Gorgias",
+      "officialSource": "https://www.gorgias.com/pricing",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": false,
+      "entryAmount": 40,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$40",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.9,
+        "unit": "per AI Agent-resolved conversation beyond the plan's included allowance (rate varies $0.90-$1.00 by tier)",
+        "note": "Overage is \"$0.40/ticket beyond 50, plus $1.00 per additional AI-resolved conversation\" on Starter and \"$0.90 per AI resolution\" on Basic -- a flat-tier-plus-overage model, not pure per-seat."
+      }
+    },
+    {
+      "slug": "happyfox",
+      "name": "HappyFox",
+      "officialSource": null,
+      "lastVerified": null,
+      "status": "unknown",
+      "model": "unknown",
+      "hasFreeTier": null,
+      "hasFreeTrial": null,
+      "enterpriseContactSales": null,
+      "entryPerSeat": null,
+      "entryAmount": null,
+      "entryCurrency": null,
+      "entryBillingPeriod": null,
+      "recordedStartingPrice": null,
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "HappyFox publishes no dollar figures of any kind on its public pricing page as of 2026-09-26 (per-agent billing and a 20% annual discount are described in words only). Base seat price and any AI usage price are both UNKNOWN, not zero."
+      }
+    },
+    {
+      "slug": "help-scout",
+      "name": "Help Scout",
+      "officialSource": "https://www.helpscout.com/pricing/",
+      "lastVerified": "2026-08-22",
+      "status": "verified",
+      "model": "freemium",
+      "hasFreeTier": true,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 25,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$25/user/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "AI Inbox assistant is included starting on the Standard plan with no separately disclosed usage price."
+      }
+    },
+    {
+      "slug": "intercom",
+      "name": "Intercom",
+      "officialSource": "https://www.intercom.com/pricing",
+      "lastVerified": "2026-08-23",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 29,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$29/seat/month",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.99,
+        "unit": "per Fin AI outcome (a confirmed resolution or a completed workflow with human handoff)",
+        "note": "\"From $0.99 per Fin outcome\", billed separately from the per-seat plan price on every tier -- confirmed live on intercom.com/pricing, 2026-09-26."
+      }
+    },
+    {
+      "slug": "kayako",
+      "name": "Kayako",
+      "officialSource": "https://kayako.com/pricing/",
+      "lastVerified": "2026-09-26",
+      "status": "contact_sales",
+      "model": "unknown",
+      "hasFreeTier": false,
+      "hasFreeTrial": null,
+      "enterpriseContactSales": null,
+      "entryPerSeat": null,
+      "entryAmount": null,
+      "entryCurrency": null,
+      "entryBillingPeriod": null,
+      "recordedStartingPrice": null,
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 1,
+        "unit": "per ticket Kay AI Agent fully resolves without human involvement (escalations and partial resolutions are free)",
+        "note": "The AI usage rate is the ONLY dollar figure Kayako's pricing page discloses publicly; the base per-agent seat price is contact-sales-only. This is the inverse of Intercom's transparency pattern."
+      }
+    },
+    {
+      "slug": "liveagent",
+      "name": "LiveAgent",
+      "officialSource": "https://www.liveagent.com/pricing/",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": true,
+      "entryPerSeat": true,
+      "entryAmount": 15,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "annual",
+      "recordedStartingPrice": "$15/agent/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "AI Answer Assistant is described in marketing copy but the pricing page discloses no separate per-unit AI usage rate."
+      }
+    },
+    {
+      "slug": "reamaze",
+      "name": "Re:amaze",
+      "officialSource": "https://www.reamaze.com/pricing",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 29,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$29/team member/month",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.85,
+        "unit": "per additional AI Agent resolution beyond the plan's monthly included allowance",
+        "note": "\"AI agent features include included monthly resolutions with per-resolution overage fees of $0.85 per additional resolution\" -- confirmed live on reamaze.com/pricing, 2026-09-26. The size of the included monthly allowance itself is not disclosed on the pricing page, so a full crossing-point cannot be computed for Re:amaze the way it can for Intercom."
+      }
+    },
+    {
+      "slug": "talkdesk",
+      "name": "Talkdesk",
+      "officialSource": "https://www.talkdesk.com/pricing/",
+      "lastVerified": "2026-09-05",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": null,
+      "enterpriseContactSales": true,
+      "entryPerSeat": true,
+      "entryAmount": 85,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$85/user/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "Talkdesk Express includes \"$100 in free usage credit\" but no per-unit AI rate is published beyond that bundled allowance."
+      }
+    },
+    {
+      "slug": "tidio",
+      "name": "Tidio",
+      "officialSource": "https://www.tidio.com/pricing/",
+      "lastVerified": "2026-08-23",
+      "status": "verified",
+      "model": "freemium",
+      "hasFreeTier": true,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": true,
+      "entryPerSeat": null,
+      "entryAmount": 24.17,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$24.17/month",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "Lyro AI conversation counts are baked into named conversation-volume tiers rather than billed as a separate per-unit AI charge."
+      }
+    },
+    {
+      "slug": "zendesk",
+      "name": "Zendesk",
+      "officialSource": "https://www.zendesk.com/pricing/",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 19,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$19",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "AI Agents are bundled into Suite Team and above with no separately disclosed per-resolution or per-session price."
+      }
+    },
+    {
+      "slug": "zoho-desk",
+      "name": "Zoho Desk",
+      "officialSource": "https://www.zoho.com/desk/pricing.html",
+      "lastVerified": "2026-08-28",
+      "status": "verified",
+      "model": "freemium",
+      "hasFreeTier": true,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 7,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "annual",
+      "recordedStartingPrice": "$7",
+      "aiUsagePricing": {
+        "disclosed": false,
+        "unitPrice": null,
+        "unit": null,
+        "note": "Zia AI is bundled starting on the Professional plan with no separately disclosed usage price."
+      }
+    }
+  ],
+  "billingUnitStats": {
+    "perSeatOnly": 8,
+    "disclosedAiUsageUnit": 5,
+    "contactSalesForBaseSeat": 1,
+    "freeTierAvailable": 4,
+    "freeTrialAvailable": 11,
+    "entryPricePublic": 14,
+    "noPublicPricingAtAll": 1
+  },
+  "disclosedAiUsageRows": [
+    {
+      "slug": "freshdesk",
+      "name": "Freshdesk",
+      "officialSource": "https://www.freshworks.com/freshdesk/pricing/",
+      "lastVerified": "2026-08-23",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 19,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "annual",
+      "recordedStartingPrice": "$19/agent/month",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.49,
+        "unit": "per Freddy AI Agent session (billed in blocks of 100 sessions at $49/block, after the first 500 sessions/month included)",
+        "note": "\"First 500 sessions included. $49 per 100 sessions\" -- a session-block unit, not a per-resolution price."
+      }
+    },
+    {
+      "slug": "gorgias",
+      "name": "Gorgias",
+      "officialSource": "https://www.gorgias.com/pricing",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": false,
+      "entryAmount": 40,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$40",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.9,
+        "unit": "per AI Agent-resolved conversation beyond the plan's included allowance (rate varies $0.90-$1.00 by tier)",
+        "note": "Overage is \"$0.40/ticket beyond 50, plus $1.00 per additional AI-resolved conversation\" on Starter and \"$0.90 per AI resolution\" on Basic -- a flat-tier-plus-overage model, not pure per-seat."
+      }
+    },
+    {
+      "slug": "intercom",
+      "name": "Intercom",
+      "officialSource": "https://www.intercom.com/pricing",
+      "lastVerified": "2026-08-23",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 29,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$29/seat/month",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.99,
+        "unit": "per Fin AI outcome (a confirmed resolution or a completed workflow with human handoff)",
+        "note": "\"From $0.99 per Fin outcome\", billed separately from the per-seat plan price on every tier -- confirmed live on intercom.com/pricing, 2026-09-26."
+      }
+    },
+    {
+      "slug": "kayako",
+      "name": "Kayako",
+      "officialSource": "https://kayako.com/pricing/",
+      "lastVerified": "2026-09-26",
+      "status": "contact_sales",
+      "model": "unknown",
+      "hasFreeTier": false,
+      "hasFreeTrial": null,
+      "enterpriseContactSales": null,
+      "entryPerSeat": null,
+      "entryAmount": null,
+      "entryCurrency": null,
+      "entryBillingPeriod": null,
+      "recordedStartingPrice": null,
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 1,
+        "unit": "per ticket Kay AI Agent fully resolves without human involvement (escalations and partial resolutions are free)",
+        "note": "The AI usage rate is the ONLY dollar figure Kayako's pricing page discloses publicly; the base per-agent seat price is contact-sales-only. This is the inverse of Intercom's transparency pattern."
+      }
+    },
+    {
+      "slug": "reamaze",
+      "name": "Re:amaze",
+      "officialSource": "https://www.reamaze.com/pricing",
+      "lastVerified": "2026-09-26",
+      "status": "verified",
+      "model": "paid",
+      "hasFreeTier": false,
+      "hasFreeTrial": true,
+      "enterpriseContactSales": null,
+      "entryPerSeat": true,
+      "entryAmount": 29,
+      "entryCurrency": "USD",
+      "entryBillingPeriod": "monthly",
+      "recordedStartingPrice": "$29/team member/month",
+      "aiUsagePricing": {
+        "disclosed": true,
+        "unitPrice": 0.85,
+        "unit": "per additional AI Agent resolution beyond the plan's monthly included allowance",
+        "note": "\"AI agent features include included monthly resolutions with per-resolution overage fees of $0.85 per additional resolution\" -- confirmed live on reamaze.com/pricing, 2026-09-26. The size of the included monthly allowance itself is not disclosed on the pricing page, so a full crossing-point cannot be computed for Re:amaze the way it can for Intercom."
+      }
+    }
+  ],
+  "crossingScenario": {
+    "vendor": "Intercom",
+    "seatRate": 29,
+    "seats": 3,
+    "aiUnitPrice": 0.99,
+    "aiUnit": "per Fin AI outcome (a confirmed resolution or a completed workflow with human handoff)",
+    "rows": [
+      {
+        "resolutions": 0,
+        "seatCost": 87,
+        "aiCost": 0,
+        "total": 87
+      },
+      {
+        "resolutions": 100,
+        "seatCost": 87,
+        "aiCost": 99,
+        "total": 186
+      },
+      {
+        "resolutions": 300,
+        "seatCost": 87,
+        "aiCost": 297,
+        "total": 384
+      },
+      {
+        "resolutions": 500,
+        "seatCost": 87,
+        "aiCost": 495,
+        "total": 582
+      },
+      {
+        "resolutions": 1000,
+        "seatCost": 87,
+        "aiCost": 990,
+        "total": 1077
+      }
+    ]
+  }
+}

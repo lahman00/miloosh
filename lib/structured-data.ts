@@ -107,6 +107,38 @@ export function getComparisonJsonLd(softwareA: Software, softwareB: Software) {
   };
 }
 
+/**
+ * Citable Research Asset Factory (2026-09-26) — describes only what the
+ * research page actually publishes: a named dataset with a stated date
+ * and a real downloadable distribution. No aggregateRating, no review,
+ * no fabricated DOI/identifier.
+ */
+export function getDatasetJsonLd(input: {
+  name: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  distributionUrls: { contentUrl: string; encodingFormat: "application/json" | "text/csv" }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    datePublished: input.datePublished,
+    dateModified: input.dateModified ?? input.datePublished,
+    creator: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    distribution: input.distributionUrls.map((d) => ({
+      "@type": "DataDownload",
+      contentUrl: d.contentUrl,
+      encodingFormat: d.encodingFormat,
+    })),
+  };
+}
+
 export function getCategoryJsonLd(category: Category, software: Software[]) {
   return {
     "@context": "https://schema.org",

@@ -1,0 +1,34 @@
+{
+  "compiledAt": "2026-09-26",
+  "note": "Per-vendor audit trail: where each row's data came from and whether it was independently re-checked live this session, versus trusted from an already-verified catalog record.",
+  "vendors": [
+    { "slug": "crisp", "officialSource": "https://crisp.chat/en/pricing/", "catalogLastVerified": "2026-09-26", "reVerifiedLiveThisSession": false, "note": "Already verified today's date in the catalog from a prior session; not re-fetched." },
+    { "slug": "five9", "officialSource": "https://www.five9.com/pricing", "catalogLastVerified": "2026-09-05", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not central to the AI-billing headline finding, not re-fetched given session scope." },
+    { "slug": "freshdesk", "officialSource": "https://www.freshworks.com/freshdesk/pricing/", "catalogLastVerified": "2026-08-23", "reVerifiedLiveThisSession": true, "note": "Headline vendor; re-fetched live. All catalog figures ($19/$55/$89 annual, 500 sessions included, $49/100 sessions) confirmed to match the live page exactly." },
+    { "slug": "front", "officialSource": "https://front.com/pricing", "catalogLastVerified": "2026-08-23", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not re-fetched." },
+    { "slug": "genesys-cloud-cx", "officialSource": "https://www.genesys.com/pricing", "catalogLastVerified": "2026-09-05", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not re-fetched." },
+    { "slug": "gorgias", "officialSource": "https://www.gorgias.com/pricing", "catalogLastVerified": "2026-09-26", "reVerifiedLiveThisSession": false, "note": "Already verified today's date in the catalog from a prior session; not re-fetched." },
+    { "slug": "happyfox", "officialSource": null, "catalogLastVerified": null, "reVerifiedLiveThisSession": true, "note": "Fetched live (happyfox.com/pricing/) specifically to check whether the empty catalog record could be filled in. Confirmed no dollar figures are published anywhere on the page. Left UNKNOWN -- not filled in with an estimate." },
+    { "slug": "help-scout", "officialSource": "https://www.helpscout.com/pricing/", "catalogLastVerified": "2026-08-22", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not re-fetched." },
+    { "slug": "intercom", "officialSource": "https://www.intercom.com/pricing", "catalogLastVerified": "2026-08-23", "reVerifiedLiveThisSession": true, "note": "Headline vendor; re-fetched live. All catalog figures ($29/$85/$132 per seat, $0.99/Fin outcome, 1-seat minimum) confirmed to match the live page exactly." },
+    { "slug": "kayako", "officialSource": "https://kayako.com/pricing/", "catalogLastVerified": "2026-09-26", "reVerifiedLiveThisSession": false, "note": "Already verified today's date in the catalog from a prior session (unusual pure-AI-usage-price-only pattern); not re-fetched, but cross-checked for internal consistency against Re:amaze's newly-found comparable pattern." },
+    { "slug": "liveagent", "officialSource": "https://www.liveagent.com/pricing/", "catalogLastVerified": null, "reVerifiedLiveThisSession": true, "note": "Catalog record was empty (pricing: {}) before this session. Fetched live, verified, and written into data/software/liveagent.json for the first time this session." },
+    { "slug": "reamaze", "officialSource": null, "catalogLastVerified": null, "reVerifiedLiveThisSession": true, "note": "Catalog record was empty (pricing: {}) before this session. Fetched live (reamaze.com/pricing), verified, and written into data/software/reamaze.json for the first time this session -- including a genuine fourth example of a disclosed per-resolution AI overage price ($0.85)." },
+    { "slug": "talkdesk", "officialSource": "https://www.talkdesk.com/pricing/", "catalogLastVerified": "2026-09-05", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not re-fetched." },
+    { "slug": "tidio", "officialSource": "https://www.tidio.com/pricing/", "catalogLastVerified": "2026-08-23", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not re-fetched." },
+    { "slug": "zendesk", "officialSource": "https://www.zendesk.com/pricing/", "catalogLastVerified": "2026-09-26", "reVerifiedLiveThisSession": false, "note": "Already verified today's date in the catalog from a prior session; not re-fetched." },
+    { "slug": "zoho-desk", "officialSource": "https://www.zoho.com/desk/pricing.html", "catalogLastVerified": "2026-08-28", "reVerifiedLiveThisSession": false, "note": "Trusted from catalog; not re-fetched." }
+  ],
+  "draftArtifactAudited": {
+    "path": "docs/growth/receipts/20260926-authority-expansion-war/linkable-asset.md (separate, parallel worktree -- read-only)",
+    "claimedSampleSize": 15,
+    "actualDataTableSize": 3,
+    "verdict": "NOT used as a source of truth. Treated as a topic pointer only; every figure in the published page was independently re-derived from Miloosh's own catalog and, for the two headline vendors, freshly re-verified against the live vendor page.",
+    "figuresThatDidIndependentlyMatch": [
+      "Intercom Essential $29/seat/month",
+      "Intercom Fin AI $0.99/resolution",
+      "Freshdesk Growth $19/agent/month annual",
+      "Freshdesk Freddy AI: 500 sessions included, $49/100 sessions"
+    ]
+  }
+}

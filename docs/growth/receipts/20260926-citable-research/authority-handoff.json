@@ -1,0 +1,47 @@
+{
+  "handoffFor": "Antigravity",
+  "preparedBy": "Claude (claude/miloosh-master-google-war-20260926)",
+  "preparedAt": "2026-09-26",
+  "assetUrl": "https://miloosh.com/research/customer-support-pricing-2026",
+  "datasetDownloadUrls": {
+    "json": "https://miloosh.com/api/research/customer-support-pricing-2026",
+    "csv": "https://miloosh.com/api/research/customer-support-pricing-2026/csv"
+  },
+  "hubUrl": "https://miloosh.com/research",
+  "oneSentenceFinding": "Of 16 customer support platforms Miloosh tracks, only 5 publish a distinct, separately billed price for AI-handled conversations, and the five that do use four different billing units (per-outcome, per-resolution overage, per-session block, and one vendor -- Kayako -- that discloses only its AI price while keeping its base seat price contact-sales-only).",
+  "methodologySummary": "Sample is Miloosh's own full customer-support catalog (16 products), not a hand-picked vendor list. Every price field traces to the vendor's own pricing page, with a stated verification date per row (13 pre-existing catalog records plus 2 -- LiveAgent and Re:amaze -- newly researched and verified this session). AI-usage-pricing classification was individually hand-verified per vendor, not keyword-matched. One vendor (HappyFox) is honestly marked Unknown rather than estimated. Full methodology at the asset's own #methodology section.",
+  "verifiedStatistics": [
+    "5 of 16 vendors publish a distinct, separately billed AI-usage price (Freshdesk $0.49/session-block-unit, Gorgias $0.90-$1.00/resolution overage, Intercom $0.99/outcome, Kayako $1.00/resolved ticket, Re:amaze $0.85/resolution overage)",
+    "8 of 16 bundle any AI features into seat pricing with no separate usage charge disclosed",
+    "1 of 16 (HappyFox) discloses no pricing figures of any kind",
+    "Kayako is the only vendor of the 16 whose AI-usage price is public while its base seat price is not (contact-sales-only) -- the inverse of every other vendor's transparency pattern",
+    "For a hypothetical 3-seat Intercom team, the AI-usage line alone exceeds the full seat-plan cost at 88 resolutions/month ($87.00 / $0.99) -- an illustrative calculation on published list prices, not a customer invoice"
+  ],
+  "appropriateAudiences": [
+    "SaaS founders and operators evaluating a customer support platform switch",
+    "Finance/RevOps leaders modeling support-tool total cost of ownership",
+    "SaaS pricing researchers and analysts (e.g. the Kyle Poyar / OnlyCFO audience already identified in the parallel authority pipeline's linkable-deep-assets.md)",
+    "Customer support / CX operations communities evaluating AI-agent adoption"
+  ],
+  "journalistAngles": [
+    "Most customer-support vendors still hide how much their AI actually costs -- only 5 of 16 disclose a separate AI price at all",
+    "One vendor (Kayako) publishes its AI price but hides its seat price -- the opposite of the usual pricing-transparency pattern",
+    "AI billing units aren't standardized: a 'resolution,' an 'outcome,' and a 'session' each mean something different depending on the vendor"
+  ],
+  "newsletterAngles": [
+    "A one-glance table of which customer support tools charge for AI usage separately, and which bundle it",
+    "The one calculation that shows when Intercom's AI add-on gets more expensive than its own seat plan"
+  ],
+  "communityAngles": [
+    "Share the free downloadable dataset (JSON/CSV) directly in SaaS-pricing or customer-support-ops communities as a primary-sourced reference, not a promotional link",
+    "Invite corrections/updates via the site's existing corrections-policy contact channel if any vendor's pricing has changed since verification"
+  ],
+  "claimsThatMustNotBeMade": [
+    "Do NOT call this an 'index' -- it computes no composite score; the asset itself explains why 'benchmark' is the accurate term",
+    "Do NOT claim any vendor 'costs more' or 'costs less' than another in aggregate -- the five disclosed AI-usage vendors use four non-interchangeable billing units and are not directly comparable as a ranking",
+    "Do NOT present the Intercom crossing-point scenario ($87 base, 88-resolution crossing) as a typical, average, or predicted customer bill -- it is illustrative arithmetic on a hypothetical 3-seat team only",
+    "Do NOT state or imply HappyFox's pricing (it is genuinely unknown, not zero or free)",
+    "Do NOT claim Miloosh 'tested' any of these products, ran a 'real-world' evaluation, or has 'expert' hands-on experience with them -- this is a pricing-page verification exercise only",
+    "Do NOT use superlatives about Miloosh itself (no 'the most comprehensive,' 'leading,' '#1,' etc.) -- Miloosh is an independent software research resource, not a market leader claim"
+  ]
+}
