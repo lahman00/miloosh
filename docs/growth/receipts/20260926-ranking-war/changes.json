@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-09-26",
+  "commits": ["5514726"],
+  "changesExecuted": [
+    {
+      "url": "/compare/umbraco-vs-wordpress",
+      "primaryIntervention": "intent alignment (SERP title/description)",
+      "before": { "title": "Umbraco vs WordPress | Miloosh", "description": "generic auto-generated fallback" },
+      "after": { "title": "Umbraco vs WordPress (2026): .NET CMS vs PHP Publishing", "description": "Compare Umbraco's .NET-based CMS with WordPress's PHP publishing platform, including pricing, hosting model, and buyer fit using current vendor-sourced facts." },
+      "evidenceForChange": "116 real GSC impressions on the exact query 'umbraco vs wordpress' landing on /software/umbraco instead, per query-page-map.json",
+      "secondaryChanges": "none -- content, internal links, and schema were left untouched; the internal link from /software/umbraco already existed"
+    },
+    {
+      "url": "/compare/umbraco-vs-joomla",
+      "primaryIntervention": "intent alignment (SERP title/description)",
+      "after": { "title": "Umbraco vs Joomla (2026): .NET CMS vs Open-Source PHP CMS" },
+      "evidenceForChange": "10 real GSC impressions on 'umbraco vs joomla'",
+      "secondaryChanges": "none"
+    },
+    {
+      "url": "/compare/umbraco-vs-drupal",
+      "primaryIntervention": "intent alignment (SERP title/description)",
+      "after": { "title": "Umbraco vs Drupal (2026): .NET CMS vs API-First Drupal" },
+      "evidenceForChange": "5 real GSC impressions on 'migrate drupal vs umbraco'",
+      "secondaryChanges": "none"
+    }
+  ],
+  "changesConsideredAndRejected": [
+    {
+      "candidate": "/software/mulesoft",
+      "consideredChange": "Add WSO2 as a listed alternative / create /compare/mulesoft-vs-wso2",
+      "rejectedBecause": "WSO2 does not exist in Miloosh's catalog. Creating it would require new-product research (real pricing, real cons, avoiding fabrication) and a new comparison page -- this is 'mass URL generation,' explicitly prohibited by this mission's own instructions. Logged as backlog instead."
+    },
+    {
+      "candidate": "/software/mulesoft cons array (currently empty)",
+      "consideredChange": "Add 3 real cons from web research",
+      "rejectedBecause": "Available sourcing was aggregator/SEO-content-mill heavy (unmule.com, costbench.com, checkthat.ai, vendorbenchmark.com) rather than primary/official sources -- specific dollar figures found ($1,250/vCore, $69,420 median contract) could not be verified against an official MuleSoft/Salesforce source. Per this engagement's standing anti-fabrication discipline, no cons were added on this sourcing quality."
+    }
+  ],
+  "primaryVsSecondaryDiscipline": "Per Part 38's instruction to change one primary thing per URL: all three changes are pure SERP-metadata (title/description) edits. No page content, internal links, schema, or CTA were touched for any of the three comparison pages this session."
+}

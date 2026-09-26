@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-09-26",
+  "note": "Given this session executed exactly one real, narrowly-scoped intervention (3 SERP-metadata overrides on already-existing, already-published comparison pages, no content/link/schema change), a dedicated held-out control cohort was not constructed. The comparable, natural controls are: (a) /software/umbraco itself, which was NOT edited and will show whether its own 'umbraco vs wordpress' impression share shifts as the comparison page's snippet changes take effect; (b) the other 14 Tier-A pages researched this session (all left completely unedited, having been found already intent-aligned) -- these serve as a natural no-treatment baseline for the same time window.",
+  "naturalControlSet": [
+    "clickup", "salesforce", "sprout-social", "confluence", "n8n", "basecamp", "tidio", "zapier", "github", "activecampaign", "segment", "lastpass", "webex", "coda"
+  ],
+  "recommendationForNextWave": "If a future wave selects a real 15-25 URL treatment cohort (per Part 37), pair it with a genuine 10-15 URL held-out control cohort of comparable, similarly-researched, similarly-positioned pages that are deliberately left untouched -- following the exact discipline already established by the software-page waves (frozen-cohorts.ts) and the comparison-quality-cohort experiment."
+}

@@ -1,0 +1,1090 @@
+[
+ {
+  "url": "/software/pipedrive",
+  "kind": "software",
+  "impressions": 351,
+  "position": 78,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/airtable",
+  "kind": "software",
+  "impressions": 329,
+  "position": 78.4,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/whimsical",
+  "kind": "software",
+  "impressions": 286,
+  "position": 65.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/fullstory",
+  "kind": "software",
+  "impressions": 241,
+  "position": 63.9,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/wrike",
+  "kind": "software",
+  "impressions": 238,
+  "position": 88.4,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/firebase",
+  "kind": "software",
+  "impressions": 224,
+  "position": 71.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/vercel",
+  "kind": "software",
+  "impressions": 209,
+  "position": 74.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/netlify",
+  "kind": "software",
+  "impressions": 191,
+  "position": 74.4,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/copy-ai",
+  "kind": "software",
+  "impressions": 187,
+  "position": 79.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/hotjar",
+  "kind": "software",
+  "impressions": 184,
+  "position": 84.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/todoist",
+  "kind": "software",
+  "impressions": 167,
+  "position": 69.9,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/jasper",
+  "kind": "software",
+  "impressions": 165,
+  "position": 71.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/braze",
+  "kind": "software",
+  "impressions": 132,
+  "position": 73.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/compare/notion-vs-clickup",
+  "kind": "comparison",
+  "impressions": 100,
+  "position": 78.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/close",
+  "kind": "software",
+  "impressions": 93,
+  "position": 68.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/setmore",
+  "kind": "software",
+  "impressions": 80,
+  "position": 70,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/elevenlabs",
+  "kind": "software",
+  "impressions": 67,
+  "position": 73.2,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/sanity",
+  "kind": "software",
+  "impressions": 57,
+  "position": 67.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/compare/contentful-vs-sanity",
+  "kind": "comparison",
+  "impressions": 51,
+  "position": 73.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/twilio",
+  "kind": "software",
+  "impressions": 49,
+  "position": 82.4,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/software/bloomfire",
+  "kind": "software",
+  "impressions": 32,
+  "position": 55.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/compare/clickup-vs-teamwork",
+  "kind": "comparison",
+  "impressions": 25,
+  "position": 62.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/clickup-vs-asana",
+  "kind": "comparison",
+  "impressions": 24,
+  "position": 82.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/power-automate-vs-uipath",
+  "kind": "comparison",
+  "impressions": 24,
+  "position": 73.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/github-vs-render",
+  "kind": "comparison",
+  "impressions": 23,
+  "position": 10.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/jira-vs-teamwork",
+  "kind": "comparison",
+  "impressions": 17,
+  "position": 65.2,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/gitbook-vs-read-the-docs",
+  "kind": "comparison",
+  "impressions": 16,
+  "position": 62.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/microsoft-teams-vs-signal",
+  "kind": "comparison",
+  "impressions": 15,
+  "position": 11.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/sanity-vs-wordpress",
+  "kind": "comparison",
+  "impressions": 15,
+  "position": 60.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/freshdesk-vs-zendesk",
+  "kind": "comparison",
+  "impressions": 14,
+  "position": 74.9,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/canva-vs-lucidchart",
+  "kind": "comparison",
+  "impressions": 13,
+  "position": 10.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/mkdocs-vs-read-the-docs",
+  "kind": "comparison",
+  "impressions": 13,
+  "position": 29.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/apigee-vs-kong",
+  "kind": "comparison",
+  "impressions": 10,
+  "position": 70.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/n8n-vs-workato",
+  "kind": "comparison",
+  "impressions": 10,
+  "position": 68.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/ahrefs-vs-google-analytics",
+  "kind": "comparison",
+  "impressions": 9,
+  "position": 59.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/algolia-vs-elastic",
+  "kind": "comparison",
+  "impressions": 9,
+  "position": 77.1,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/calendly-vs-cal-com",
+  "kind": "comparison",
+  "impressions": 9,
+  "position": 62.2,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/contentful-vs-webflow",
+  "kind": "comparison",
+  "impressions": 8,
+  "position": 62.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/hubstaff-vs-clickup",
+  "kind": "comparison",
+  "impressions": 8,
+  "position": 72.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/posthog-vs-segment",
+  "kind": "comparison",
+  "impressions": 8,
+  "position": 63.9,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/trello-vs-linear",
+  "kind": "comparison",
+  "impressions": 8,
+  "position": 66.4,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/software/swaggerhub",
+  "kind": "software",
+  "impressions": 8,
+  "position": 54.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": true
+ },
+ {
+  "url": "/compare/doodle-vs-microsoft-bookings",
+  "kind": "comparison",
+  "impressions": 7,
+  "position": 40,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/jenkins-vs-sentry",
+  "kind": "comparison",
+  "impressions": 7,
+  "position": 14,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/microsoft-teams-vs-otter-ai",
+  "kind": "comparison",
+  "impressions": 7,
+  "position": 50.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/microsoft-teams-vs-ringcentral",
+  "kind": "comparison",
+  "impressions": 7,
+  "position": 54.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/slack-vs-ringcentral",
+  "kind": "comparison",
+  "impressions": 7,
+  "position": 57.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/smartsheet-vs-teamwork",
+  "kind": "comparison",
+  "impressions": 7,
+  "position": 63.6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/callrail-vs-hubspot",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 86.2,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/clickup-vs-shortcut",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 62,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/contentful-vs-wordpress",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 79.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/crowdstrike-vs-tailscale",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 7.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/google-meet-vs-signal",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 5.2,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/linear-vs-shortcut",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 55.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/netlify-vs-render",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 62.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/notion-vs-gitbook",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 66.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/todoist-vs-superhuman",
+  "kind": "comparison",
+  "impressions": 6,
+  "position": 5.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/circleci-vs-gitlab",
+  "kind": "comparison",
+  "impressions": 5,
+  "position": 71.4,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/doodle-vs-motion",
+  "kind": "comparison",
+  "impressions": 5,
+  "position": 39,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/freshdesk-vs-front",
+  "kind": "comparison",
+  "impressions": 5,
+  "position": 76.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/make-vs-power-automate",
+  "kind": "comparison",
+  "impressions": 5,
+  "position": 37,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/marketo-engage-vs-sprout-social",
+  "kind": "comparison",
+  "impressions": 5,
+  "position": 45,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/adobe-commerce-vs-shopware",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 30.8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/buffer-vs-mailchimp",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 54.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/discord-vs-mattermost",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 68.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/evernote-vs-airtable",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 58,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/mattermost-vs-rocket-chat",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 61.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/todoist-vs-motion",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 57.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/weebly-vs-woocommerce",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 85.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/zapier-vs-workato",
+  "kind": "comparison",
+  "impressions": 4,
+  "position": 83.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/adobe-analytics-vs-amplitude",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 62.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/ahrefs-vs-mailchimp",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 62,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/bitwarden-vs-duo-security",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 20.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/clickup-vs-monday",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 83,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/constant-contact-vs-mailchimp",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 75.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/constant-contact-vs-marketo-engage",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 83,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/jira-vs-linear",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 68.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/marketo-engage-vs-braze",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 53.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/mattermost-vs-google-meet",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 23.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/notion-vs-craft",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 61.7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/things-vs-craft",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 49,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/trello-vs-jira",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 72,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/whatconverts-vs-google-analytics",
+  "kind": "comparison",
+  "impressions": 3,
+  "position": 77.3,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/amplitude-vs-hotjar",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 67,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/asana-vs-toggl-track",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 78,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/braze-vs-mailchimp",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 76.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/chatgpt-vs-elevenlabs",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 54.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/coda-vs-superhuman",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 9,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/contentful-vs-craft-cms",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 39,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/crazy-egg-vs-posthog",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 43.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/crisp-vs-help-scout",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 63.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/front-vs-intercom",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 72,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/help-scout-vs-intercom",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 84.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/hubstaff-vs-asana",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 67.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/linear-vs-wrike",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 92,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/mattermost-vs-telegram",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 58.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/nordpass-vs-okta",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/notion-vs-clockify",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 34.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/power-automate-vs-workato",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 45,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/todoist-vs-craft",
+  "kind": "comparison",
+  "impressions": 2,
+  "position": 10.5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/best-email-marketing-for-ecommerce",
+  "kind": "guide",
+  "impressions": 1,
+  "position": 53,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/adobe-analytics-vs-heap",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 59,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/adobe-analytics-vs-matomo",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 59,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/airtable-vs-ticktick",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 52,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/appfolio-vs-doorloop",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 37,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/bigcommerce-vs-weebly",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 19,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/bitbucket-vs-vercel",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 11,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/braze-vs-buffer",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 11,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/cal-com-vs-reclaim-ai",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 62,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/cloudflare-vs-duo-security",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 11,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/crazy-egg-vs-fathom-analytics",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 10,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/crisp-vs-freshdesk",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 55,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/front-vs-zoho-desk",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 76,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/fullstory-vs-segment",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/getresponse-vs-mailchimp",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/github-copilot-vs-perplexity",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 11,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/google-chat-vs-ringcentral",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 78,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/hotjar-vs-mixpanel",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 72,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/ifttt-vs-power-automate",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 73,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/jira-vs-smartsheet",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 67,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/linear-vs-smartsheet",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 66,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/lucidchart-vs-balsamiq",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/marketo-engage-vs-buffer",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 8,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/marketo-engage-vs-klaviyo",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 10,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/pipedream-vs-power-automate",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/pipedream-vs-tray-ai",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 7,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/postmark-vs-twilio",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 5,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/reamaze-vs-zoho-desk",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 80,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/rocket-chat-vs-signal",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 9,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/sanity-vs-squarespace",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 6,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/slack-vs-microsoft-teams",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 83,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/teamwork-vs-zoho-projects",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 60,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/ticktick-vs-clockify",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 66,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/ticktick-vs-craft",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 2,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/todoist-vs-reclaim-ai",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 53,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ },
+ {
+  "url": "/compare/trello-vs-smartsheet",
+  "kind": "comparison",
+  "impressions": 1,
+  "position": 51,
+  "indexationState": "CRAWLED_NOT_INDEXED",
+  "protected": false
+ }
+]

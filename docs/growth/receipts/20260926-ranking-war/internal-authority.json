@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-09-26",
+  "part24_25_findings": {
+    "umbracoInternalLinkAudit": "Confirmed live (browser-rendered check of http://localhost:3000/software/umbraco): the software page already renders a 'HEAD-TO-HEAD / Umbraco comparisons' section listing all 13 published Umbraco comparisons as real links, including 'Umbraco vs WordPress'. No internal-linking change was made or needed -- the link already exists and is contextually appropriate (a reader comparing Umbraco alternatives genuinely benefits from a direct comparison link).",
+    "umbracoVsWordpressInboundLinks": "4 relevant inbound links per the committed authority graph -- on the low side, consistent with this page currently absorbing 0 of its own real search demand. Not touched this session (no link-count-only edit was made, consistent with Part 24's 'do NOT add links just because the count is low' instruction -- the existing link from the software page is the contextually correct one; adding more would not be evidence-backed)."
+  },
+  "generalNote": "No sitewide internal-linking changes were made this session. Given the researched pattern (13 of 15 Tier-A pages already correctly intent-aligned), internal authority does not appear to be the binding constraint for most of this cohort -- see route-type-and-inventory.json (Phase III) and indexed-vs-nonindexed.json for the broader finding that link count does not cleanly separate ranking/indexation outcomes at the individual-page level."
+}

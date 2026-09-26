@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-09-26",
+  "treatmentCohort": [
+    {
+      "url": "/compare/umbraco-vs-wordpress",
+      "dayZero": {
+        "ownImpressions": 0,
+        "ownClicks": 0,
+        "ownPosition": null,
+        "indexationState": "CRAWLED_NOT_INDEXED",
+        "relevantInboundLinks": 4,
+        "titleBefore": "Umbraco vs WordPress | Miloosh",
+        "realDemandServedByWrongPage": "116 impressions on 'umbraco vs wordpress' landing on /software/umbraco instead"
+      }
+    },
+    {
+      "url": "/compare/umbraco-vs-joomla",
+      "dayZero": { "note": "Not present as its own row in the committed google-war dataset at capture time; real demand evidence (10 impressions on 'umbraco vs joomla') comes from the live GSC query pull, not the committed snapshot." }
+    },
+    {
+      "url": "/compare/umbraco-vs-drupal",
+      "dayZero": { "note": "Same as umbraco-vs-joomla; real demand evidence (5 impressions on 'migrate drupal vs umbraco') from the live GSC query pull." }
+    }
+  ],
+  "honestExpectation": "A title/description change alone does not change indexation state -- umbraco-vs-wordpress remains CRAWLED_NOT_INDEXED (an INDEX_SELECTION problem, Lane B) as of this baseline, and this change cannot be expected to move it to INDEXED. What this change CAN plausibly affect: (1) if/when the page is indexed, its snippet immediately reflects real buyer intent instead of a generic fallback; (2) it strengthens the page's own on-page relevance signal for the 'umbraco vs wordpress' query, which may influence which of the two competing Miloosh URLs (the software page or the comparison page) Google chooses to surface for that query in the future. Both effects are hypotheses, not guaranteed outcomes -- recorded honestly per this mission's own measurement discipline."
+}
