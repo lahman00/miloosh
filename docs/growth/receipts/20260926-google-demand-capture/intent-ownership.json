@@ -1,0 +1,42 @@
+{
+  "method": "Cross-referenced data/seo/serp-overrides.ts's SOFTWARE_OVERRIDES (12 keys) against every product that already has a data/seo/alternative-guides.ts ALTERNATIVE_GUIDES entry (i.e. already has real, GSC-backed alternatives content), using the same real GSC page-level export as gsc-opportunities.json.",
+  "hasGuideButNoSerpOverride": {
+    "note": "These products already got the content fix (a decision guide) but the title/description Google shows in results still comes from the generic lib/generators.ts default, not tuned to the real measured 'X alternatives' query language.",
+    "products": [
+      { "slug": "mulesoft", "impressions": 511 },
+      { "slug": "salesforce", "impressions": 466 },
+      { "slug": "clickup", "impressions": 468 },
+      { "slug": "sprout-social", "impressions": 387 },
+      { "slug": "confluence", "impressions": 371 },
+      { "slug": "n8n", "impressions": 296 },
+      { "slug": "tidio", "impressions": 282 },
+      { "slug": "zapier", "impressions": 261 },
+      { "slug": "ringcentral", "impressions": 234, "note": "confirmed directly: tests/seo/gsc-serp-opportunities.test.ts already asserts getSoftwareSerpOverride('ringcentral') is undefined" },
+      { "slug": "activecampaign", "impressions": 251 },
+      { "slug": "lastpass", "impressions": 208 },
+      { "slug": "squarespace", "impressions": 27 },
+      { "slug": "hubspot", "impressions": 12 }
+    ]
+  },
+  "hasNeitherGuideNorOverride": {
+    "products": [
+      { "slug": "crowdstrike", "impressions": 160, "note": "Unaddressed by either mechanism. Not included in gsc-opportunities.json's Tier A because the security category currently has zero active affiliate partners to route a decision to." }
+    ]
+  },
+  "duplicateIntentAnalysis": {
+    "method": "For each product family, compare its own /software/{slug} page's measured impressions against the combined impressions of its /compare/{slug}-vs-X pages, to see how concentrated real demand is on the intended 'owner' page.",
+    "families": [
+      { "product": "notion", "ownPageImpressions": 3, "comparePagesCombined": 207, "topComparePages": ["notion-vs-clickup (100, pos 78.8)", "notion-vs-coda (79, pos 68.0)"], "concentrationOnOwnPage": "1.4%", "verdict": "FRAGMENTATION_RISK (real, evidenced). Notion is the #1 most internally-linked product site-wide yet has zero ALTERNATIVE_GUIDES entry of its own." },
+      { "product": "trello", "ownPageImpressions": 0, "comparePagesCombined": 37, "topComparePages": ["clickup-vs-trello (20)"], "concentrationOnOwnPage": "0%", "verdict": "Same fragmentation pattern as notion, at ~6x smaller volume." },
+      { "product": "confluence", "ownPageImpressions": 371, "comparePagesCombined": 53, "concentrationOnOwnPage": "87%", "verdict": "NOT fragmented -- a SERP-override candidate, not a duplicate-intent problem." },
+      { "product": "airtable", "ownPageImpressions": 329, "comparePagesCombined": 5, "concentrationOnOwnPage": "98%", "verdict": "NOT fragmented." },
+      { "product": "smartsheet", "ownPageImpressions": 259, "comparePagesCombined": 36, "concentrationOnOwnPage": "88%", "verdict": "NOT fragmented, and protected by an active experiment anyway -- do not touch." }
+    ],
+    "keyTakeaway": "Having many comparison pages does not automatically cause cannibalization -- confluence/airtable/smartsheet all show 87-98% concentration on the intended page despite 3-7 comparison pages each. Notion and Trello are the two real, evidenced exceptions where demand is genuinely fragmented away from the product's own page."
+  },
+  "wrongIntentOwnerRouting": {
+    "checked": "app/compare/[comparison]/page.tsx's 'Related comparisons' logic (getComparisonsInvolving on both sides, deduped) -- always links to real, specific, already-published comparisons, never a generic hub in place of a more specific existing comparison.",
+    "positiveExample": "data/seo/serp-overrides.ts's SOFTWARE_SEARCH_INTENT_NOTES.freshdesk correctly disambiguates Freshdesk from Freshservice and links to /software/freshservice, confirmed by tests/seo/gsc-serp-opportunities.test.ts.",
+    "verdict": "UNKNOWN / not identified -- no genuine 'wrong owner' routing case was found in the files read for this pass. Reported honestly rather than manufacturing one to fill the section."
+  }
+}

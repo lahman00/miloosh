@@ -1,0 +1,77 @@
+{
+  "method": "Computed directly via npx tsx importing getAllSoftware(), PUBLISHED_COMPARISONS, and ALTERNATIVE_GUIDES (data/software, data/comparisons.ts, data/seo/alternative-guides.ts) -- not regex-parsed. Sources counted: alt_in (times a slug appears in another product's alternatives[] array), cmp_in (times a slug appears in a PUBLISHED_COMPARISONS pair), guide_in (times a slug appears as a decision.alternativeSlug inside ALTERNATIVE_GUIDES). Confirmed components/Navbar.tsx and components/Footer.tsx add zero per-product links, so these counts are directly comparable to scripts/growth/internal-link-graph-v2.ts's own model.",
+  "baseline": {
+    "totalProducts": 354,
+    "alternativeDecisionGuideEntries": 30,
+    "realExploreProductLinksFromGuides": 88,
+    "realOpenComparisonLinksFromGuides": 88,
+    "categoryPagesWithRecommendCta": "26 / 27",
+    "comparisonPagesWithRecommendCta": "1348 / 1348",
+    "trueOrphans": 9,
+    "top10MostLinkedCombined": [
+      { "slug": "notion", "total": 33 },
+      { "slug": "clickup", "total": 31 },
+      { "slug": "hubspot", "total": 29 },
+      { "slug": "asana", "total": 27 },
+      { "slug": "ringcentral", "total": 26 },
+      { "slug": "microsoft-teams", "total": 24 },
+      { "slug": "zoho-desk", "total": 24 },
+      { "slug": "confluence", "total": 23 },
+      { "slug": "help-scout", "total": 23 },
+      { "slug": "zendesk", "total": 23 }
+    ]
+  },
+  "pipedriveWrikeRank": {
+    "note": "Full detail in pipedrive-wrike-link-audit.json in this same directory.",
+    "pipedrive": { "total": 27, "rankSiteWide": "6/354", "rankInCategory": "2/10 (crm)" },
+    "wrike": { "total": 15, "rankSiteWide": "93/354", "rankInCategory": "8/12 (project-management)" }
+  },
+  "trueOrphans": [
+    { "slug": "birdeye", "name": "Birdeye", "category": "marketing", "activePartner": false },
+    { "slug": "chili-piper", "name": "Chili Piper", "category": "sales", "activePartner": false },
+    { "slug": "consensus", "name": "Consensus", "category": "sales", "activePartner": false },
+    { "slug": "dbt-cloud", "name": "dbt Cloud", "category": "analytics", "activePartner": false },
+    { "slug": "dropbox", "name": "Dropbox", "category": "productivity", "activePartner": false },
+    { "slug": "floqast", "name": "FloQast", "category": "finance-and-erp", "activePartner": false },
+    { "slug": "hibob", "name": "HiBob", "category": "hr-and-payroll", "activePartner": false },
+    { "slug": "knowbe4", "name": "KnowBe4", "category": "security", "activePartner": false },
+    { "slug": "veeam-data-platform", "name": "Veeam Data Platform", "category": "it-operations", "activePartner": false }
+  ],
+  "orphanNote": "None of the 9 orphans are active affiliate partners, so this is not a monetization mismatch -- just genuinely under-connected catalog entries, most likely recent additions not yet woven into any other product's alternatives array or a comparison pair.",
+  "weaklyLinkedActivePartners": {
+    "distributionNote": "N=354, min=0, Q1(25th percentile)=6, median=11, max=33 (notion). All 22 active partners are catalogued.",
+    "bottomQuartile": [
+      { "slug": "volza", "altIn": 0, "cmpIn": 1, "guideIn": 0, "total": 1, "category": "analytics" },
+      { "slug": "jotform", "altIn": 4, "cmpIn": 1, "guideIn": 0, "total": 5, "category": "productivity" },
+      { "slug": "mailerlite", "altIn": 1, "cmpIn": 4, "guideIn": 0, "total": 5, "category": "marketing" },
+      { "slug": "omnisend", "altIn": 1, "cmpIn": 4, "guideIn": 0, "total": 5, "category": "marketing" },
+      { "slug": "surveymonkey", "altIn": 3, "cmpIn": 3, "guideIn": 0, "total": 6, "category": "analytics" }
+    ],
+    "finding": "5 of 22 active affiliate partners sit at or below the bottom quartile of internal-link strength, and none of the five has an ALTERNATIVE_GUIDES entry -- meaning none benefits from the highest-value link mechanism on the site (the 88 real 'Explore {product}' links). This is a genuine, evidenced mismatch between architecture and commercial priority, ahead of already-well-linked partners like todoist (22) or monday (22).",
+    "mechanicalCorrectionVerifiedThisSession": "An ALTERNATIVE_GUIDES entry keyed to product X sends inbound links to the ALTERNATIVES X's guide names, not to X itself. Fixing Volza's own weak count requires some OTHER product's guide to name Volza as a decision option, not a new 'volza:' guide entry. Volza's only existing comparison (volza-vs-google-analytics) is also a weak categorical fit (global trade-intelligence software vs. general web analytics) -- forcing a guide entry around it would be a low-quality fix, not a real one. The other four (Jotform, MailerLite, Omnisend, SurveyMonkey) sit in more natural, competitive SaaS categories (forms, email marketing, surveys) with better-fitting existing comparisons (e.g. surveymonkey-vs-jotform) and are the more promising next targets -- but the correct fix in each case is identifying which OTHER product's guide should route to them, not writing a guide for themselves. Not executed this session to avoid a mechanically confused or rushed low-quality change; queued as a well-scoped Tier A item in remaining-opportunities.md."
+  },
+  "activePartnerRanking": [
+    { "slug": "volza", "total": 1 },
+    { "slug": "jotform", "total": 5 },
+    { "slug": "mailerlite", "total": 5 },
+    { "slug": "omnisend", "total": 5 },
+    { "slug": "surveymonkey", "total": 6 },
+    { "slug": "whatconverts", "total": 8 },
+    { "slug": "krispcall", "total": 10 },
+    { "slug": "freshbooks", "total": 11 },
+    { "slug": "close", "total": 12 },
+    { "slug": "hubstaff", "total": 12 },
+    { "slug": "setmore", "total": 12 },
+    { "slug": "moosend", "total": 13 },
+    { "slug": "airtable", "total": 14 },
+    { "slug": "wrike", "total": 14, "note": "excluded from this session's changes (protected experiment)" },
+    { "slug": "constant-contact", "total": 16 },
+    { "slug": "wix", "total": 16 },
+    { "slug": "getresponse", "total": 18 },
+    { "slug": "elevenlabs", "total": 18 },
+    { "slug": "shopify", "total": 18 },
+    { "slug": "monday", "total": 22 },
+    { "slug": "pipedrive", "total": 27, "note": "excluded from this session's changes list (its own tier-a-actions.md covers it) -- already strong, not a weak-link case" },
+    { "slug": "todoist", "total": 22 }
+  ]
+}

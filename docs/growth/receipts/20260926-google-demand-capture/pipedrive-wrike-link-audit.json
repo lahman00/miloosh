@@ -1,0 +1,190 @@
+[
+  {
+    "slug": "pipedrive",
+    "viaAlternatives": [
+      {
+        "from": "hubspot",
+        "anchor": "Pipedrive"
+      },
+      {
+        "from": "salesforce",
+        "anchor": "Pipedrive"
+      },
+      {
+        "from": "gohighlevel",
+        "anchor": "Pipedrive"
+      },
+      {
+        "from": "close",
+        "anchor": "Pipedrive"
+      },
+      {
+        "from": "copper",
+        "anchor": "Pipedrive"
+      },
+      {
+        "from": "nutshell",
+        "anchor": "Pipedrive"
+      },
+      {
+        "from": "zoho-crm",
+        "anchor": "Pipedrive"
+      }
+    ],
+    "viaComparisons": [
+      {
+        "pair": "hubspot-vs-pipedrive",
+        "other": "hubspot"
+      },
+      {
+        "pair": "salesforce-vs-pipedrive",
+        "other": "salesforce"
+      },
+      {
+        "pair": "pipedrive-vs-close",
+        "other": "close"
+      },
+      {
+        "pair": "pipedrive-vs-copper",
+        "other": "copper"
+      },
+      {
+        "pair": "pipedrive-vs-nutshell",
+        "other": "nutshell"
+      },
+      {
+        "pair": "pipedrive-vs-zoho-crm",
+        "other": "zoho-crm"
+      },
+      {
+        "pair": "pipedrive-vs-freshsales",
+        "other": "freshsales"
+      },
+      {
+        "pair": "pipedrive-vs-keap",
+        "other": "keap"
+      },
+      {
+        "pair": "gohighlevel-vs-pipedrive",
+        "other": "gohighlevel"
+      },
+      {
+        "pair": "monday-vs-pipedrive",
+        "other": "monday"
+      },
+      {
+        "pair": "airtable-vs-pipedrive",
+        "other": "airtable"
+      },
+      {
+        "pair": "pipedrive-vs-whatconverts",
+        "other": "whatconverts"
+      }
+    ],
+    "viaGuides": [
+      {
+        "guideSlug": "salesforce",
+        "decision": {
+          "heading": "Simpler visual sales pipeline",
+          "fit": "Pipedrive is the relevant comparison for teams that want a focused, visual deal pipeline without Salesforce's platform-wide configuration surface.",
+          "alternativeSlug": "pipedrive",
+          "comparisonSlug": "salesforce-vs-pipedrive"
+        }
+      },
+      {
+        "guideSlug": "zoho-crm",
+        "decision": {
+          "heading": "Focused visual sales pipeline",
+          "fit": "Pipedrive is the closer comparison when the primary need is a visual, activity-led sales pipeline with a more focused operating model.",
+          "alternativeSlug": "pipedrive",
+          "comparisonSlug": "pipedrive-vs-zoho-crm"
+        }
+      },
+      {
+        "guideSlug": "hubspot",
+        "decision": {
+          "heading": "A simpler, sales-focused pipeline",
+          "fit": "Pipedrive is the relevant path when the team is sales-only and wants a simpler pipeline view without marketing and service tools bundled in.",
+          "alternativeSlug": "pipedrive",
+          "comparisonSlug": "hubspot-vs-pipedrive"
+        }
+      }
+    ],
+    "isOwnAlternativeGuideSubject": true,
+    "isFirstRevenueCohort": false,
+    "totalInbound": 22
+  },
+  {
+    "slug": "wrike",
+    "viaAlternatives": [
+      {
+        "from": "smartsheet",
+        "anchor": "Wrike"
+      },
+      {
+        "from": "zoho-projects",
+        "anchor": "Wrike"
+      }
+    ],
+    "viaComparisons": [
+      {
+        "pair": "clickup-vs-wrike",
+        "other": "clickup"
+      },
+      {
+        "pair": "monday-vs-wrike",
+        "other": "monday"
+      },
+      {
+        "pair": "smartsheet-vs-wrike",
+        "other": "smartsheet"
+      },
+      {
+        "pair": "wrike-vs-zoho-projects",
+        "other": "zoho-projects"
+      },
+      {
+        "pair": "trello-vs-wrike",
+        "other": "trello"
+      },
+      {
+        "pair": "asana-vs-wrike",
+        "other": "asana"
+      },
+      {
+        "pair": "jira-vs-wrike",
+        "other": "jira"
+      },
+      {
+        "pair": "linear-vs-wrike",
+        "other": "linear"
+      },
+      {
+        "pair": "basecamp-vs-wrike",
+        "other": "basecamp"
+      },
+      {
+        "pair": "shortcut-vs-wrike",
+        "other": "shortcut"
+      },
+      {
+        "pair": "teamwork-vs-wrike",
+        "other": "teamwork"
+      }
+    ],
+    "viaGuides": [
+      {
+        "guideSlug": "smartsheet",
+        "decision": {
+          "heading": "Enterprise work management",
+          "fit": "Wrike is the closer comparison for organizations evaluating enterprise project visibility, resource management, and cross-functional work operations.",
+          "alternativeSlug": "wrike",
+          "comparisonSlug": "smartsheet-vs-wrike"
+        }
+      }
+    ],
+    "isOwnAlternativeGuideSubject": true,
+    "isFirstRevenueCohort": false,
+    "totalInbound": 14
+  }
+]

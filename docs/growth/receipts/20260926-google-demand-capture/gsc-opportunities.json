@@ -1,0 +1,57 @@
+{
+  "capturedAt": "2026-09-25T12:25:41.287420+00:00",
+  "source": "Live authenticated Google Search Console, property-wide export, saved to a private Mac receipt outside this repo (~/MilooshReceipts/20260925-first-revenue-integrity/gsc-page-table.json and gsc-query-table.json). 537 page rows, 1000 query rows. Property-wide query data is NOT page-attributed; any query-to-page mapping below is INFERRED, not MEASURED, unless stated otherwise.",
+  "protectedPages": {
+    "note": "Pages under an active 'decision: MEASURING' experiment receipt as of 2026-09-26. None of the opportunities below land on these exact pages.",
+    "pages": [
+      "/software/wrike",
+      "/software/klaviyo",
+      "/software/smartsheet",
+      "/software/ecwid",
+      "/software/zoho-crm",
+      "/software/calendly",
+      "/software/woocommerce",
+      "/software/teamwork",
+      "/software/doodle"
+    ]
+  },
+  "tierA_executeNow": [
+    { "page": "/software/webex", "impressions": 177, "clicks": 0, "position": 69.5, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "krispcall-vs-webex", "activePartner": "krispcall", "action": "Add an AlternativeDecisionGuide entry on webex's own page routing a decision to KrispCall via the already-published comparison." },
+    { "page": "/software/google-meet", "impressions": 90, "clicks": 0, "position": 73.9, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "krispcall-vs-google-meet", "activePartner": "krispcall", "action": "Same mechanism as webex." },
+    { "page": "/software/weebly", "impressions": 76, "clicks": 0, "position": 71.6, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "shopify-vs-weebly", "activePartner": "shopify", "action": "Add guide entry: managed/hosted-platform decision -> Shopify." },
+    { "page": "/software/contentful", "impressions": 182, "clicks": 0, "position": 74.8, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "contentful-vs-wix", "activePartner": "wix", "action": "Add guide entry for Wix's headless/CMS funnel." },
+    { "page": "/software/ghost", "impressions": 70, "clicks": 0, "position": 73.5, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "ghost-vs-wix", "activePartner": "wix", "action": "Same mechanism." },
+    { "page": "/software/adobe-commerce", "impressions": 72, "clicks": 0, "position": 81.3, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "adobe-commerce-vs-shopify", "activePartner": "shopify", "action": "Add guide entry." },
+    { "page": "/software/evernote", "impressions": 159, "clicks": 0, "position": 79.3, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "todoist-vs-evernote, evernote-vs-airtable", "activePartner": "todoist, airtable", "action": "Add two guide decisions: task-app vs database." },
+    { "page": "/software/coda", "impressions": 129, "clicks": 0, "position": 64.4, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "coda-vs-todoist, coda-vs-airtable", "activePartner": "todoist, airtable", "action": "Add two guide decisions." },
+    { "page": "/software/jasper", "impressions": 165, "clicks": 0, "position": 71.5, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "elevenlabs-vs-jasper", "activePartner": "elevenlabs", "action": "Add guide entry. Cite the comparison, not jasper's own alternatives array (which is copy-ai/chatgpt only) -- ElevenLabs isn't jasper's own listed alternative, it comes from the comparison graph." },
+    { "page": "/software/copy-ai", "impressions": 187, "clicks": 0, "position": 79.1, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "copy-ai-vs-elevenlabs", "activePartner": "elevenlabs", "action": "Add guide entry." },
+    { "page": "/software/perplexity", "impressions": 97, "clicks": 0, "position": 74.9, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "elevenlabs-vs-perplexity", "activePartner": "elevenlabs", "action": "Add guide entry." },
+    { "page": "/software/synthesia", "impressions": 170, "clicks": 0, "position": 73.8, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "elevenlabs-vs-synthesia", "activePartner": "elevenlabs", "action": "Add guide entry." },
+    { "page": "/software/basecamp", "impressions": 293, "clicks": 0, "position": 85.0, "type": "HIGH_IMPRESSION_ZERO_CLICK", "existingComparison": "monday-vs-basecamp", "activePartner": "monday", "action": "Add guide entry. Basecamp's own alternatives array is asana/teamwork(protected)/trello/zoho-projects -- none active -- so Monday must be cited from the comparison graph, not invented into basecamp.json." },
+    { "note": "IMPORTANT MECHANICAL CORRECTION verified directly this session: an ALTERNATIVE_GUIDES entry keyed to product X adds inbound links to the alternatives X's guide recommends, not to X itself. Every row above therefore benefits the ACTIVE PARTNER named in 'activePartner', which is exactly the intended commercial effect -- but do not expect these fixes to raise webex/coda/jasper/etc.'s own inbound-link count." }
+  ],
+  "tierB_investigate": [
+    { "item": "/software/freshservice", "evidence": "685 combined impressions across 12 real query variants (mostly French: 'alternative a freshservice' etc.), but the page itself has 0 measured page-level impressions in the page-level export.", "type": "ANOMALY", "note": "Freshservice is catalogued and not an active partner. A Freshdesk->Freshservice disambiguation note already exists (data/seo/serp-overrides.ts SOFTWARE_SEARCH_INTENT_NOTES.freshdesk, tested in tests/seo/gsc-serp-opportunities.test.ts). INFERRED: demand may still be bleeding to /software/freshdesk (583 impressions of its own). Needs a diagnosis pass, not a quick content fix." },
+    { "item": "guru vs document360", "impressions": 16, "position": 80.6, "type": "UNPUBLISHED_COMPARISON", "note": "Both catalogued, adjacent categories (knowledge-base/docs), neither an active partner, pair confirmed absent from PUBLISHED_COMPARISONS. Content-authority play only; verify real feature overlap before publishing." },
+    { "item": "bloomfire vs document360", "impressions": 11, "position": 73.7, "type": "UNPUBLISHED_COMPARISON", "note": "Same category adjacency, same caveat." },
+    { "item": "airtable vs trello", "impressions": 13, "type": "UNPUBLISHED_COMPARISON", "note": "Airtable IS an active partner, but airtable.json and trello.json do not list each other as alternatives -- the site's own mutual-alternative evidence gate isn't currently met. Do a real feature-overlap check before publishing rather than skipping the gate because one side is monetizable." },
+    { "item": "/compare/elastic-vs-supabase", "impressions": 6, "position": 8.3, "type": "STRIKING_DISTANCE", "note": "Nearest-to-page-1 comparison page in the whole export with no existing SERP override. Highest-value quick win in this group." },
+    { "item": "/compare/1password-vs-duo-security", "impressions": 8, "position": 22.9, "type": "STRIKING_DISTANCE" },
+    { "item": "/compare/bitwarden-vs-duo-security", "impressions": 3, "position": 20.3, "type": "STRIKING_DISTANCE" },
+    { "item": "/compare/render-vs-sentry", "impressions": 5, "position": 21.2, "type": "STRIKING_DISTANCE" },
+    { "item": "/compare/mkdocs-vs-read-the-docs", "impressions": 13, "position": 29.7, "type": "STRIKING_DISTANCE", "note": "Highest impressions among the un-overridden striking-distance group." },
+    { "item": "/software/zeroheight", "impressions": 33, "position": 29.1, "type": "STRIKING_DISTANCE", "note": "Rare case of a software page (not a compare page) in striking distance; no guide, not an active partner." },
+    { "item": "/software/notion cannibalization", "type": "FRAGMENTATION_RISK", "evidence": "notion's own page: 3 impressions. Its 8 /compare/notion-vs-X pages: 207 combined impressions (notion-vs-clickup 100 @ pos 78.8, notion-vs-coda 79 @ pos 68.0). Notion is the #1 most internally-linked product site-wide (33 inbound edges) yet has no AlternativeDecisionGuide entry of its own.", "note": "INFERRED, not a measured page+query pairing -- GSC's page and query reports don't cross. Worth investigating whether adding a guide entry consolidates ranking signal onto the intended page." }
+  ],
+  "tierC_hold": [
+    { "item": "/software/trello cannibalization", "evidence": "trello's own page: 0 measured impressions (absent from the export). Its 6 compare pages: 37 combined (clickup-vs-trello 20 leading).", "note": "Same fragmentation pattern as notion, 6x smaller volume -- real but lower priority right now." },
+    { "item": "/compare/klaviyo-vs-sprout-social", "impressions": 4, "position": 26.3, "note": "Touches klaviyo, whose own page is under an active MEASURING experiment. Any klaviyo-adjacent move should wait for its checkpoint." },
+    { "item": "pipedrive vs trello / trello vs pipedrive", "impressions": 25, "note": "Out of scope: Pipedrive is explicitly excluded from this mining pass (handled separately in tier-a-actions.md). Flagged for completeness only." },
+    { "item": "freshdesk vs hubspot", "impressions": 9, "position": 80.0, "note": "Cross-category (helpdesk vs CRM/marketing suite), no mutual-alternative evidence, weak fit, low volume." },
+    { "item": "zapier vs mulesoft", "impressions": 4, "position": 86.0, "note": "Cross-category (automation vs iPaaS), mulesoft's real alternatives are kong/apigee only. Weak fit, tiny volume." },
+    { "item": "several sub-10-impression striking-distance compare pages", "examples": ["mattermost-vs-google-meet (3)", "canva-vs-sketch (3)", "ticktick-vs-microsoft-onenote (9)", "notion-vs-ticktick (7)", "contentful-vs-craft-cms (3)"], "note": "Technically striking-distance (position 23-29) but too little absolute volume to prioritize ahead of the Tier B striking-distance group." },
+    { "item": "already-actioned high-impression pages", "examples": ["semrush (1957 imp, pos 77.3)", "intercom (1757, pos 86.0)", "freshdesk (1685, pos 80.3)", "front (634, pos 75.8)", "buffer (587, pos 83.6)", "help-scout (498, pos 73.4)"], "note": "Already have both an ALTERNATIVE_GUIDES entry and a SERP override. Remaining gap is ranking position, which is a backlink/domain-authority problem, not a content-mismatch problem -- no further quick content win available." },
+    { "item": "/software/signal", "impressions": 113, "clicks": 0, "position": 129.5, "note": "Deep position, no plausible affiliate program for an encrypted-messaging app. Textbook hold." }
+  ]
+}
