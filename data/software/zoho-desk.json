@@ -4,8 +4,12 @@
   "category": "customer-support",
   "description": "Zoho Desk is an AI-powered customer service platform that unifies support conversations across channels into one inbox, with a Zia AI assistant that handles routine tickets autonomously.",
   "website": "https://www.zoho.com/desk/",
-  "platforms": ["Web", "iOS", "Android"],
-  "best_for": "Customer-first businesses of all sizes — Zoho reports 125,000+ organizations globally — wanting unified multichannel ticketing with AI automation.",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Customer-first businesses of all sizes \u2014 Zoho reports 125,000+ organizations globally \u2014 wanting unified multichannel ticketing with AI automation.",
   "features": [
     "Unified inbox consolidating support conversations across channels",
     "24/7 branded self-service help center with knowledge base and community",
@@ -72,7 +76,7 @@
         "notes": "Adds live chat, guided conversations, skill-based assignment, and sandbox ($50/user/mo billed monthly)."
       }
     ],
-    "last_verified": "2026-08-28",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.zoho.com/desk/pricing.html"
   },
   "sources": [
@@ -86,21 +90,33 @@
       "slug": "zendesk",
       "description": "A customer service platform with ticketing, live chat, and AI-powered automation.",
       "best_for": "Support teams of all sizes needing an established, feature-rich helpdesk.",
-      "strengths": ["Mature ticketing system", "AI automation", "Large app marketplace"]
+      "strengths": [
+        "Mature ticketing system",
+        "AI automation",
+        "Large app marketplace"
+      ]
     },
     {
       "name": "Freshdesk",
       "slug": "freshdesk",
       "description": "A cloud-based help desk with ticketing, automation, and omnichannel support.",
       "best_for": "Support teams wanting an affordable, easy-to-deploy helpdesk.",
-      "strengths": ["Omnichannel ticketing", "Automation", "Affordable tiers"]
+      "strengths": [
+        "Omnichannel ticketing",
+        "Automation",
+        "Affordable tiers"
+      ]
     },
     {
       "name": "Help Scout",
       "slug": "help-scout",
       "description": "A shared inbox and help desk platform built for personalized, human-feeling support.",
       "best_for": "Small to mid-sized support teams wanting simple, email-centric ticketing.",
-      "strengths": ["Shared inbox", "Simplicity", "Beacon in-app help widget"]
+      "strengths": [
+        "Shared inbox",
+        "Simplicity",
+        "Beacon in-app help widget"
+      ]
     }
   ]
 }

@@ -168,6 +168,18 @@ export default function PricingPressureIndexPage() {
                 5/10/25/50 licensed-seat figures are arithmetic scenarios using explicit USD monthly per-seat records only. Annual records are excluded because the legacy data mixes annual invoice amounts and monthly equivalents. No foreign-exchange conversion is applied. We do not verify that every starting plan permits every modeled seat count. These are not quotes, invoices, actual customer spending or a representative market sample.
               </dd>
             </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Site-wide standards</dt>
+              <dd className="mt-1 text-zinc-400">
+                This page follows the same rules as every other page on Miloosh: see the{" "}
+                <Link href="/sources-policy" className="text-zinc-300 underline underline-offset-4 hover:text-white">Sources Policy</Link>{" "}
+                for how facts are sourced and dated, the{" "}
+                <Link href="/editorial-policy" className="text-zinc-300 underline underline-offset-4 hover:text-white">Editorial Policy</Link>{" "}
+                for how commercial relationships are kept separate from what gets published, and the{" "}
+                <Link href="/corrections-policy" className="text-zinc-300 underline underline-offset-4 hover:text-white">Corrections Policy</Link>{" "}
+                to report an error in this dataset.
+              </dd>
+            </div>
           </dl>
           <p className="mt-6 text-xs text-zinc-500">
             Want to check a specific stack instead of the whole dataset?{" "}

@@ -4,7 +4,9 @@ import { ingestOffsite } from "@/lib/google-war/offsite";
 import seed from "@/data/growth/authority/registry.json";
 import baseline from "@/data/growth/authority/gsc-links-baseline.json";
 
-const now = "2026-09-26T23:00:00Z", entries = parseRegistry(seed), e = entries[0];
+const now = "2026-09-26T23:00:00Z", entries = parseRegistry(seed);
+// Temporal rule fixtures use the original capture, not a growing live history.
+const e = { ...entries[0], observations: [entries[0].observations[0]] };
 describe("canonical authority evidence", () => {
   it("validates captured exact baselines, not the approximate narrative", () => {
     expect(baseline.domains.reduce((sum, d) => sum + d.linkingPages, 0)).toBe(100);
@@ -54,7 +56,7 @@ describe("canonical authority evidence", () => {
     expect(authorityChanges([e], "2026-09-26T19:50:00Z", [row], now).removed).toEqual([e.id]);
   });
   it("preserves audience conflict instead of blindly accepting the updated report", () => {
-    expect(authorityState(entries.find(r => r.id === "reddit-crm-calls")!, now)).toMatchObject({ status: "UNVERIFIED", conflict: true, targetKind: "MENTION_ONLY" });
+    expect(authorityState(entries.find(r => r.id === "reddit-crm-calls")!, "2026-09-26T21:59:00Z")).toMatchObject({ status: "UNVERIFIED", conflict: true, targetKind: "MENTION_ONLY" });
     expect(authorityState(entries.find(r => r.id === "reddit-crm-budget")!, now).status).toBe("REMOVED");
   });
   it("requires re-verification after freshness expires", () => expect(deepLinkBaseline(entries, "2026-11-01T00:00:00Z").deepLinkPlacements).toBe(0));
@@ -65,7 +67,7 @@ describe("canonical authority evidence", () => {
   });
   it("allows genuinely newer public recovery evidence", () => {
     const old = entries.find(r => r.id === "reddit-crm-calls")!;
-    const recovered = { ...old, observations: [...old.observations, { ...e.observations[0], at: "2026-09-26T22:00:00Z", linkPresent: false, rel: "UNKNOWN" as const }] };
+    const recovered = { ...old, observations: [...old.observations, { ...e.observations[0], at: "2026-09-26T22:50:00Z", linkPresent: false, rel: "UNKNOWN" as const }] };
     expect(authorityState(recovered, now)).toMatchObject({ status: "VERIFIED_LIVE", conflict: false, linkPresent: false });
   });
 });

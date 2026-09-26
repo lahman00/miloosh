@@ -23,11 +23,18 @@ export const metadata: Metadata = {
  */
 const RESEARCH_ASSETS = [
   {
+    href: "/research/crm-plan-gates-2026",
+    title: "CRM Plan-Gate Dataset 2026",
+    summary:
+      "Which plan tier actually unlocks email sync, workflow automation, and sales sequences across 7 CRM vendors -- a buyer-decision dataset, not a best-CRM ranking.",
+    verified: "2026-09-27",
+  },
+  {
     href: "/research/customer-support-pricing-2026",
     title: "Customer Support Pricing Benchmark 2026",
     summary:
       "Which of 16 customer support platforms bill AI-handled conversations separately from seats, verified against each vendor's own pricing page.",
-    verified: "2026-09-26",
+    verified: "2026-09-27",
   },
   {
     href: "/research/saas-pricing-pressure-index-2026",

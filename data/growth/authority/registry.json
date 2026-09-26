@@ -16,6 +16,15 @@
         "linkPresent": true,
         "rel": "DOFOLLOW",
         "evidence": "HTTP 200; exact homepage anchor Visit site, no rel attribute. Existing placement, not newly earned today; no ranking-value inference."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "DOFOLLOW",
+        "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
       }
     ]
   },
@@ -36,6 +45,15 @@
         "linkPresent": true,
         "rel": "MIXED",
         "evidence": "HTTP 200; homepage anchors observed both without nofollow and with nofollow. Existing placement; normalized bare apex to homepage."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "MIXED",
+        "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
       }
     ]
   },
@@ -56,6 +74,15 @@
         "linkPresent": true,
         "rel": "NOFOLLOW",
         "evidence": "HTTP 200; three homepage anchors have nofollow, two also ugc. Existing placement, not newly earned today."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "NOFOLLOW",
+        "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
       }
     ]
   },
@@ -76,6 +103,15 @@
         "linkPresent": true,
         "rel": "NOFOLLOW",
         "evidence": "HTTP 200; Blog anchor points exactly to the pricing-pressure research page, rel=nofollow. Newly documented, not evidence of a new placement date."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "NOFOLLOW",
+        "evidence": "Independent production-release recheck: HTTP 200 and exact target anchor in public HTML. Existing placement, not newly earned; no ranking-value inference."
       }
     ]
   },
@@ -143,6 +179,15 @@
         "linkPresent": false,
         "rel": "UNKNOWN",
         "evidence": "2026-09-27 integration reconciliation: owner/Antigravity live-community-evidence.json reports exact comment live, no link. Independent signed-out permalink re-fetch still shows Comment removed by moderator; cache freshness is unknown. No new public-visible text proof supplied. Preserve prior audience/removal evidence; do not count as verified authority."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
       }
     ]
   },
@@ -181,6 +226,15 @@
         "linkPresent": false,
         "rel": "UNKNOWN",
         "evidence": "2026-09-27 integration reconciliation: owner/Antigravity live-community-evidence.json reports exact comment live, no link. Independent signed-out permalink re-fetch still shows Comment removed by moderator; cache freshness is unknown. No new public-visible text proof supplied. Preserve prior audience/removal evidence; do not count as verified authority."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
       }
     ]
   },
@@ -210,6 +264,15 @@
         "linkPresent": false,
         "rel": "UNKNOWN",
         "evidence": "Independent signed-out exact pc5germ permalink fetch exposes Comment removed by moderator. No removal cause inferred; preserves historical invalid target."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
       }
     ]
   },
@@ -299,6 +362,35 @@
         "rel": "UNKNOWN",
         "rejectionReason": "PAID_DOFOLLOW",
         "evidence": "Owner's 2026-09-27 master-release instruction: reject the paid guest post + dofollow backlink offer. REJECTED_PAID_DOFOLLOW; not earned authority. No placement claimed, no purchase or outreach performed."
+      }
+    ]
+  },
+  {
+    "id": "reddit-smallbusiness-pc8wg5e",
+    "source": "Reddit smallbusiness bespoke-equipment CRM",
+    "type": "COMMUNITY",
+    "targetUrl": null,
+    "externalUrl": "https://www.reddit.com/r/smallbusiness/comments/1jnzj8m/comment/pc8wg5e/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-26T22:21:34.611Z",
+        "status": "UNVERIFIED",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Owner and parallel overnight authority ledger report a published zero-link Miloosh comment. That claim alone does not independently establish public visibility."
+      },
+      {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink renders Comment removed by moderator and does not expose Academic_Annual_8088 text. Public fetch/cache evidence conflicts with source-reported live status; no write or cause inferred."
       }
     ]
   }

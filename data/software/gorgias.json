@@ -4,30 +4,71 @@
   "category": "customer-support",
   "description": "Gorgias is a conversational AI platform built for ecommerce businesses, combining a helpdesk and AI agent to handle customer conversations across channels while aiming to drive revenue.",
   "website": "https://www.gorgias.com",
-  "platforms": ["Web", "iOS", "Android"],
-  "best_for": "Positioned specifically for ecommerce brands and Shopify merchants — the site states Gorgias \"powers customer conversations for 40% of Shopify brands,\" spanning clothing, beauty, subscriptions, health & wellness, and food & beverage.",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Positioned specifically for ecommerce brands and Shopify merchants \u2014 the site states Gorgias \"powers customer conversations for 40% of Shopify brands,\" spanning clothing, beauty, subscriptions, health & wellness, and food & beverage.",
   "pricing": {
     "model": "paid",
     "starting_price": "$40",
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true },
-    "entry_paid": { "amount": "40", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": false },
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "40",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
     "tiers": [
-      { "name": "Starter", "amount": "40", "currency": "USD", "billing_period": "monthly", "notes": "Monthly billing only, no annual discount offered. 50 tickets/month, only 3 user seats, 30 automated AI Agent interactions included. Overage is $0.40/ticket beyond 50, plus $1.00 per additional AI-resolved conversation." },
-      { "name": "Basic", "amount": "90", "currency": "USD", "billing_period": "monthly", "notes": "$77/mo if billed annually. 300 tickets/month, 500 user seats, 30 automated interactions included. Overage $0.40/ticket, $0.90 per AI resolution." },
-      { "name": "Pro", "amount": "550", "currency": "USD", "billing_period": "monthly", "notes": "$471/mo if billed annually. 2,000 tickets/month, 190 automated interactions included. Adds Magento integration and revenue attribution analytics." },
-      { "name": "Advanced", "amount": "1430", "currency": "USD", "billing_period": "monthly", "notes": "$1,227/mo if billed annually. 5,000 tickets/month, 530 automated interactions included." },
-      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Contact sales, for 5,000+ conversations/month. Only tier with SSO, audit logs, and a doubled API rate limit." }
+      {
+        "name": "Starter",
+        "amount": "40",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Monthly billing only, no annual discount offered. 50 tickets/month, only 3 user seats, 30 automated AI Agent interactions included. Overage is $0.40/ticket beyond 50, plus $1.00 per additional AI-resolved conversation."
+      },
+      {
+        "name": "Basic",
+        "amount": "90",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$77/mo if billed annually. 300 tickets/month, 500 user seats, 30 automated interactions included. Overage $0.40/ticket, $0.90 per AI resolution."
+      },
+      {
+        "name": "Pro",
+        "amount": "550",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$471/mo if billed annually. 2,000 tickets/month, 190 automated interactions included. Adds Magento integration and revenue attribution analytics."
+      },
+      {
+        "name": "Advanced",
+        "amount": "1430",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$1,227/mo if billed annually. 5,000 tickets/month, 530 automated interactions included."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Contact sales, for 5,000+ conversations/month. Only tier with SSO, audit logs, and a doubled API rate limit."
+      }
     ],
-    "last_verified": "2026-09-26",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.gorgias.com/pricing"
   },
   "cons": [
     "SSO and audit logs are gated entirely behind the custom-quote Enterprise plan, not available on Starter, Basic, Pro, or even the $1,227-1,430/month Advanced tier.",
     "Every plan including Advanced is capped at just 2 API requests/second; only the custom Enterprise plan doubles this to 4 requests/second.",
-    "Costs are usage-based on top of the flat base fee: the AI Agent is billed per resolved conversation ($1.00-0.90 per resolution) in addition to the Helpdesk fee, and exceeding the monthly ticket allowance costs $0.36-0.40 per ticket — the advertised headline price is a floor, not a cap."
+    "Costs are usage-based on top of the flat base fee: the AI Agent is billed per resolved conversation ($1.00-0.90 per resolution) in addition to the Helpdesk fee, and exceeding the monthly ticket allowance costs $0.36-0.40 per ticket \u2014 the advertised headline price is a floor, not a cap."
   ],
   "features": [
     "AI support agent resolving inquiries instantly (site claims 60%)",
@@ -37,7 +78,10 @@
     "In-conversation actions (cancel order, apply discount, upsell)",
     "300+ integrations (Recharge, Klaviyo, Yotpo, Loop Returns)"
   ],
-  "sources": ["https://www.gorgias.com", "https://docs.gorgias.com/faq/mobile-app-fact-sheet"],
+  "sources": [
+    "https://www.gorgias.com",
+    "https://docs.gorgias.com/faq/mobile-app-fact-sheet"
+  ],
   "accessed_at": "2026-08-01",
   "alternatives": [
     {
@@ -45,14 +89,22 @@
       "slug": "freshdesk",
       "description": "An AI-powered, easy-to-set-up customer service solution serving 74,000+ companies across industries.",
       "best_for": "General mid-market/enterprise support teams wanting quick setup and AI ticket resolution.",
-      "strengths": ["AI Copilot", "Omnichannel messaging", "Broad business-app integrations"]
+      "strengths": [
+        "AI Copilot",
+        "Omnichannel messaging",
+        "Broad business-app integrations"
+      ]
     },
     {
       "name": "Crisp",
       "slug": "crisp",
       "description": "An all-in-one support platform with AI agents, live chat, and a shared inbox for companies of any size.",
       "best_for": "Startups and small-to-mid businesses wanting a lightweight chat-first tool.",
-      "strengths": ["AI agent builder", "Multi-channel live chat", "Built-in CRM"]
+      "strengths": [
+        "AI agent builder",
+        "Multi-channel live chat",
+        "Built-in CRM"
+      ]
     },
     {
       "name": "Zoho Desk",

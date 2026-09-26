@@ -19,6 +19,26 @@
     "https://www.happyfox.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$24/agent/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "24", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Help Desk", "amount": "24", "currency": "USD", "billing_period": "monthly", "unit": "agent/month", "notes": "Core ticketing product; entry price. Annual billing saves 20%." },
+      { "name": "Service Desk", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "agent/month", "notes": "IT/internal service desk product; incident and asset tracking." },
+      { "name": "Contact Center Suite", "amount": "99", "currency": "USD", "billing_period": "monthly", "unit": "agent/month", "notes": "Complete CCaaS bundle, one price. All AI products included with no additional per-seat AI fees." },
+      { "name": "HappyFox AI", "amount": "14", "currency": "USD", "billing_period": "monthly", "unit": "agent/month", "notes": "Flat per-seat AI add-on (not usage-metered)." },
+      { "name": "Assist AI", "amount": "1", "currency": "USD", "billing_period": "monthly", "unit": "user/month", "notes": "Flat per-seat AI add-on (not usage-metered)." },
+      { "name": "Chatbot (usage-based AI)", "amount": "0.33", "currency": "USD", "billing_period": "one_time", "unit": "per resolution", "notes": "Separately metered AI product, billed per resolution rather than per seat." },
+      { "name": "Autopilot (usage-based AI)", "amount": "0.02", "currency": "USD", "billing_period": "one_time", "unit": "per successful action", "notes": "\"Pay as low as 2 cents per successful action\" -- a second, separately metered usage-based AI product." }
+    ],
+    "last_verified": "2026-09-27",
+    "official_source": "https://www.happyfox.com/pricing/"
+  },
   "alternatives": [
     {
       "name": "Zendesk",

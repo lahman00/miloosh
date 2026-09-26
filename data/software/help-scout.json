@@ -4,7 +4,11 @@
   "category": "customer-support",
   "description": "Help Scout is a customer service platform that centralizes email and other communication channels into a shared inbox, with AI-assisted drafting and a chatbot, to help teams deliver personalized support.",
   "website": "https://www.helpscout.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for teams of any size (12,000+ companies) across SaaS, ecommerce, education, healthcare, financial services, insurance, manufacturing, and professional services.",
   "features": [
     "Unified shared inbox aggregating email, social, Shopify, and other channels",
@@ -14,7 +18,10 @@
     "Workflow automation and saved reply templates",
     "Proactive in-app messaging, surveys, and NPS collection"
   ],
-  "sources": ["https://www.helpscout.com", "https://www.helpscout.com/mobile/"],
+  "sources": [
+    "https://www.helpscout.com",
+    "https://www.helpscout.com/mobile/"
+  ],
   "accessed_at": "2026-08-01",
   "pricing": {
     "model": "freemium",
@@ -22,15 +29,47 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true, "days": 15 },
-    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 15
+    },
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Up to 5 users. Limited to 1 Inbox and 1 Docs site." },
-      { "name": "Standard", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month (16% cheaper if billed annually). Multiple inboxes, live chat and SMS, multiple knowledge bases, AI Inbox assistant." },
-      { "name": "Plus", "amount": "45", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month (16% cheaper if billed annually). Advanced workflows, secure customer portal, Salesforce/Jira/HubSpot integrations." },
-      { "name": "Pro", "amount": "75", "currency": "USD", "billing_period": "monthly", "notes": "Per user/month, requires a sales demo. Unlimited workflows/SLA policies, SSO/SAML, HIPAA compliance." }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 5 users. Limited to 1 Inbox and 1 Docs site."
+      },
+      {
+        "name": "Standard",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month (16% cheaper if billed annually). Multiple inboxes, live chat and SMS, multiple knowledge bases, AI Inbox assistant."
+      },
+      {
+        "name": "Plus",
+        "amount": "45",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month (16% cheaper if billed annually). Advanced workflows, secure customer portal, Salesforce/Jira/HubSpot integrations."
+      },
+      {
+        "name": "Pro",
+        "amount": "75",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Per user/month, requires a sales demo. Unlimited workflows/SLA policies, SSO/SAML, HIPAA compliance."
+      }
     ],
-    "last_verified": "2026-08-22",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.helpscout.com/pricing/"
   },
   "alternatives": [
@@ -39,14 +78,22 @@
       "slug": "front",
       "description": "An AI customer operations platform unifying shared inboxes, ticketing, and live chat for complex cross-team workflows.",
       "best_for": "Operations, support, sales, and account-management teams needing cross-team coordination.",
-      "strengths": ["Autopilot/Copilot AI automation", "160+ integrations", "Shared inbox collaboration"]
+      "strengths": [
+        "Autopilot/Copilot AI automation",
+        "160+ integrations",
+        "Shared inbox collaboration"
+      ]
     },
     {
       "name": "Crisp",
       "slug": "crisp",
       "description": "An all-in-one support platform combining AI agents, live chat, and a shared inbox for companies of any size.",
       "best_for": "Startups to enterprises wanting a lightweight, chat-first support and marketing tool.",
-      "strengths": ["AI agent builder", "Live chat widget with mobile SDKs", "Built-in CRM and knowledge base"]
+      "strengths": [
+        "AI agent builder",
+        "Live chat widget with mobile SDKs",
+        "Built-in CRM and knowledge base"
+      ]
     },
     {
       "name": "Zoho Desk",

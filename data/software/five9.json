@@ -4,7 +4,9 @@
   "category": "customer-support",
   "description": "Five9 is a cloud contact-center-as-a-service (CCaaS) platform for inbound, outbound, and blended customer engagement across voice and digital channels, built around its Genius AI suite of AI Agents, Agent Assist, and GenAI Studio.",
   "website": "https://www.five9.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Contact centers wanting published bundle pricing plus a dedicated Genius AI product line (AI Agents, Agent Assist, AI Summaries) for automating routine customer interactions.",
   "features": [
     "Omnichannel engagement across voice, email, chat, social, and SMS/video",
@@ -28,14 +30,36 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "entry_paid": { "amount": "119", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "entry_paid": {
+      "amount": "119",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Digital Bundle", "amount": "119", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Digital channels only (chat, email, SMS/MMS, social messaging). Priced per concurrent user; minimum 50 seats; usage-based pricing may apply." },
-      { "name": "Core Bundle", "amount": "159", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "All channels including voice, with essential AI features included. Minimum 50 seats; usage-based pricing may apply." },
-      { "name": "Plus / Pro / Enterprise Bundles", "notes": "Contact sales for flexible, custom pricing." }
+      {
+        "name": "Digital Bundle",
+        "amount": "119",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "Digital channels only (chat, email, SMS/MMS, social messaging). Priced per concurrent user; minimum 50 seats; usage-based pricing may apply."
+      },
+      {
+        "name": "Core Bundle",
+        "amount": "159",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "All channels including voice, with essential AI features included. Minimum 50 seats; usage-based pricing may apply."
+      },
+      {
+        "name": "Plus / Pro / Enterprise Bundles",
+        "notes": "Contact sales for flexible, custom pricing."
+      }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-09-05",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.five9.com/pricing"
   },
   "alternatives": [
@@ -44,21 +68,33 @@
       "slug": "genesys-cloud-cx",
       "description": "An enterprise contact-center-as-a-service (CCaaS) platform unifying contact center, digital channels, workforce engagement, and AI orchestration across voice and digital customer interactions.",
       "best_for": "Large enterprises wanting a single platform for contact center, digital channels, and workforce management, with published per-user pricing across four tiers.",
-      "strengths": ["Four published pricing tiers from $75-$240/user/month", "AI Experience tokens bundled per tier for orchestrated AI agents", "Broad enterprise integration ecosystem (Salesforce, ServiceNow, AppFoundry)"]
+      "strengths": [
+        "Four published pricing tiers from $75-$240/user/month",
+        "AI Experience tokens bundled per tier for orchestrated AI agents",
+        "Broad enterprise integration ecosystem (Salesforce, ServiceNow, AppFoundry)"
+      ]
     },
     {
       "name": "Talkdesk",
       "slug": "talkdesk",
       "description": "A cloud contact center platform combining traditional contact-center software with autonomous, orchestrated AI agents for specific customer-experience tasks.",
       "best_for": "Contact centers wanting published per-agent pricing tiers plus a no-contract small-business plan alongside Five9.",
-      "strengths": ["Published per-user pricing from $85-$225/month across four tiers", "Talkdesk Express: 25 licenses plus $100 credit with no contract, for businesses under 50 employees", "Autonomous multi-agent AI orchestration for specific CX tasks"]
+      "strengths": [
+        "Published per-user pricing from $85-$225/month across four tiers",
+        "Talkdesk Express: 25 licenses plus $100 credit with no contract, for businesses under 50 employees",
+        "Autonomous multi-agent AI orchestration for specific CX tasks"
+      ]
     },
     {
       "name": "RingCentral",
       "slug": "ringcentral",
       "description": "A cloud communications platform (RingEX) that also offers RingCX, an omnichannel AI-powered contact center, alongside its core phone, video, and messaging suite.",
       "best_for": "Businesses wanting contact-center capability bundled inside a broader unified-communications platform rather than a dedicated, standalone CCaaS product.",
-      "strengths": ["RingCX omnichannel contact center with AI-powered quality management", "Published per-user pricing from $20-$35/month for the core UC suite", "500+ third-party app integrations"]
+      "strengths": [
+        "RingCX omnichannel contact center with AI-powered quality management",
+        "Published per-user pricing from $20-$35/month for the core UC suite",
+        "500+ third-party app integrations"
+      ]
     }
   ],
   "faq": [
@@ -67,7 +103,12 @@
       "answer": "Yes. Five9's published Digital and Core bundle prices apply per concurrent user with a minimum of 50 seats; usage-based pricing may also apply on top of the per-seat rate."
     }
   ],
-  "tags": ["Contact Center", "CCaaS", "Customer Support", "Conversational AI"],
+  "tags": [
+    "Contact Center",
+    "CCaaS",
+    "Customer Support",
+    "Conversational AI"
+  ],
   "links": {
     "pricing": "https://www.five9.com/pricing"
   },

@@ -31,6 +31,10 @@ function fmt(v: number | null | undefined, digits = 2) {
   return `$${v.toFixed(digits)}`;
 }
 
+/** The date this dataset's vendor rows were most recently re-verified -- distinct from
+ *  `generatedAt`, which is a build-time compilation timestamp, not a source verification. */
+const VERIFIED_DATE = "2026-09-27";
+
 export default function CustomerSupportPricingBenchmarkPage() {
   const b = buildSupportPricingBenchmark();
   const generatedDate = new Date(b.generatedAt).toISOString().slice(0, 10);
@@ -39,7 +43,7 @@ export default function CustomerSupportPricingBenchmarkPage() {
     description: DESCRIPTION,
     url: PAGE_URL,
     datePublished: "2026-09-26",
-    dateModified: generatedDate,
+    dateModified: VERIFIED_DATE,
     distributionUrls: [
       { contentUrl: `${SITE_URL}/api/research/customer-support-pricing-2026`, encodingFormat: "application/json" },
       { contentUrl: `${SITE_URL}/api/research/customer-support-pricing-2026/csv`, encodingFormat: "text/csv" },
@@ -75,8 +79,17 @@ export default function CustomerSupportPricingBenchmarkPage() {
         <Card className="mt-10 max-w-3xl border-white/15 bg-white/[0.03]">
           <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Citation</p>
           <p className="mt-2 text-sm text-zinc-400">
-            Miloosh Research. &ldquo;{TITLE}.&rdquo; Verified {generatedDate}. {PAGE_URL}. Methodology: {PAGE_URL}#methodology.
+            Miloosh Research. &ldquo;{TITLE}.&rdquo; Verified {VERIFIED_DATE}. {PAGE_URL}. Methodology: {PAGE_URL}#methodology.
             Dataset licensed CC BY 4.0 -- reuse with attribution.
+          </p>
+        </Card>
+
+        {/* Revision transparency -- this dataset was corrected once already */}
+        <Card className="mt-4 max-w-3xl border-white/10 bg-white/[0.02]">
+          <p className="text-xs text-zinc-500">
+            <strong className="text-zinc-400">Revised 2026-09-27:</strong> a full re-verification against every vendor&apos;s live pricing page found that the original AI-usage-pricing count (5 of 16) had missed real, publicly disclosed AI charges at 4 vendors -- corrected to 9 of 16 below. This was a gap in the original research, not a set of overnight vendor price changes. See{" "}
+            <Link href="/api/research/customer-support-pricing-2026" className="underline underline-offset-4 hover:text-white">the dataset</Link>{" "}
+            for the current figures.
           </p>
         </Card>
 
@@ -91,8 +104,8 @@ export default function CustomerSupportPricingBenchmarkPage() {
             <p className="mt-1 text-xs text-zinc-500">Bundle any AI features into seat tiers with no separate usage price disclosed</p>
           </Card>
           <Card>
-            <p className="text-2xl font-semibold text-white">{b.unknownSlugs.length} of {b.sampleSize}</p>
-            <p className="mt-1 text-xs text-zinc-500">Publish no dollar figures of any kind ({b.unknownSlugs.join(", ") || "none"})</p>
+            <p className="text-2xl font-semibold text-white">{b.billingUnitStats.contactSalesForBaseSeat} of {b.sampleSize}</p>
+            <p className="mt-1 text-xs text-zinc-500">Have no public base seat price at all -- the price itself requires a sales conversation</p>
           </Card>
         </div>
 
@@ -115,7 +128,7 @@ export default function CustomerSupportPricingBenchmarkPage() {
         <div className="mt-14">
           <h2 className="text-lg font-semibold text-white">Vendors that bill AI usage separately</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            Every row was independently re-checked against the vendor&apos;s own pricing page on 2026-09-26. Units differ (per-resolution, per-session-block) and are not directly interchangeable -- see each note before comparing across rows.
+            Every row was independently re-checked against the vendor&apos;s own pricing page on 2026-09-27. Units differ (per-resolution, per-session-block, per-conversation, per-action) and are not directly interchangeable -- see each note before comparing across rows.
           </p>
           <div className="mt-4 overflow-x-auto rounded-xl border border-white/10">
             <table className="w-full text-left text-sm">
@@ -236,13 +249,15 @@ export default function CustomerSupportPricingBenchmarkPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Verification</dt>
               <dd className="mt-1 text-zinc-400">
-                {`Each row's price fields are checked individually against that vendor's own pricing page (never a third-party aggregator, when an official source exists). AI-usage-pricing classification (whether a distinct, separately billed AI unit is publicly disclosed) was hand-verified per vendor on 2026-09-26, not inferred from keyword matching. Verification dates across the sample range from ${b.verificationWindow.earliest ?? "an unrecorded date"} to ${b.verificationWindow.latest ?? "an unrecorded date"}; this page was compiled on ${generatedDate}.`}
+                {`Each row's price fields are checked individually against that vendor's own pricing page (never a third-party aggregator, when an official source exists). AI-usage-pricing classification (whether a distinct, separately billed AI unit is publicly disclosed) was hand-verified per vendor, not inferred from keyword matching. All ${b.sampleSize} rows were most recently re-verified on ${b.verificationWindow.latest ?? "an unrecorded date"}; this page was compiled on ${generatedDate}.`}
               </dd>
             </div>
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Missing data</dt>
               <dd className="mt-1 text-zinc-400">
-                {`${b.unknownSlugs.length} of ${b.sampleSize} products (${b.unknownSlugs.join(", ") || "none"}) publish no pricing figures at all as of the verification date. These rows are marked Unknown throughout -- never filled in with an estimate, and never counted as evidence that the product lacks a feature or is more or less expensive.`}
+                {b.unknownSlugs.length > 0
+                  ? `${b.unknownSlugs.length} of ${b.sampleSize} products (${b.unknownSlugs.join(", ")}) publish no pricing figures at all as of the verification date. These rows are marked Unknown throughout -- never filled in with an estimate, and never counted as evidence that the product lacks a feature or is more or less expensive.`
+                  : `All ${b.sampleSize} products in this sample now have at least some publicly verified pricing information. That was not true at first publication: HappyFox's pricing page could not be reached during the original research and was marked entirely Unknown until the 2026-09-27 re-verification found it fully priced. One product (Kayako) still has no public base seat price -- see the table above.`}
               </dd>
             </div>
             <div>
@@ -254,7 +269,19 @@ export default function CustomerSupportPricingBenchmarkPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Limitations</dt>
               <dd className="mt-1 text-zinc-400">
-                Scenario calculations exclude annual-contract discounts, enterprise negotiated pricing, taxes, and non-USD currency conversion. Billable-unit definitions (a Fin &ldquo;outcome,&rdquo; a Freddy &ldquo;session,&rdquo; a Kayako &ldquo;resolved ticket,&rdquo; a Re:amaze &ldquo;resolution&rdquo;) are set by each vendor and are not directly interchangeable. This benchmark does not measure deflection rate, answer quality, or actual customer spend -- only published list prices and billing structures.
+                Scenario calculations exclude annual-contract discounts, enterprise negotiated pricing, taxes, and non-USD currency conversion. Billable-unit definitions (an Intercom &ldquo;outcome,&rdquo; a Freshdesk &ldquo;session,&rdquo; a Help Scout or Re:amaze &ldquo;resolution,&rdquo; a Front &ldquo;conversation,&rdquo; a HappyFox &ldquo;action&rdquo;) are each set by that vendor and are not directly interchangeable across rows. This benchmark does not measure deflection rate, answer quality, or actual customer spend -- only published list prices and billing structures.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Site-wide standards</dt>
+              <dd className="mt-1 text-zinc-400">
+                This page follows the same rules as every other page on Miloosh: see the{" "}
+                <Link href="/sources-policy" className="text-zinc-300 underline underline-offset-4 hover:text-white">Sources Policy</Link>{" "}
+                for how facts are sourced and dated, the{" "}
+                <Link href="/editorial-policy" className="text-zinc-300 underline underline-offset-4 hover:text-white">Editorial Policy</Link>{" "}
+                for how commercial relationships are kept separate from what gets published, and the{" "}
+                <Link href="/corrections-policy" className="text-zinc-300 underline underline-offset-4 hover:text-white">Corrections Policy</Link>{" "}
+                to report an error in this dataset.
               </dd>
             </div>
           </dl>
@@ -264,11 +291,51 @@ export default function CustomerSupportPricingBenchmarkPage() {
         <Card className="mt-8 max-w-3xl">
           <h2 className="text-sm font-semibold text-white">What this means for a buyer</h2>
           <ul className="mt-3 space-y-2 text-sm text-zinc-400">
-            <li>Ask every vendor with a disclosed AI-usage price what counts as a billable unit -- a Fin &ldquo;outcome&rdquo; and a Freddy &ldquo;session&rdquo; are defined differently, and neither is quality-adjusted.</li>
+            <li>Ask every vendor with a disclosed AI-usage price what counts as a billable unit -- an Intercom &ldquo;outcome&rdquo; and a Freshdesk &ldquo;session&rdquo; are defined differently, and neither is quality-adjusted.</li>
             <li>A vendor that publishes only its AI-usage rate and not its base seat price (Kayako) still requires a sales conversation before any total cost is knowable -- the published number alone understates the bill.</li>
-            <li>Flat-workspace and conversation-volume-tiered pricing (Crisp, Tidio) cap headline exposure but shift the real decision to whether the included allowance actually covers the required volume.</li>
+            <li>A vendor can also disclose the opposite way: Zendesk names a separate AI-usage billing unit (&ldquo;Automated Resolutions&rdquo;) without publishing its dollar rate -- ask for the actual number before assuming the base seat price is the whole bill.</li>
+            <li>A &ldquo;starting at&rdquo; AI-usage rate (Front&apos;s Autopilot, at $0.05/conversation) is not a guaranteed flat rate the way Intercom&apos;s or Kayako&apos;s stated rate is -- confirm whether it can increase before modeling a total cost from it.</li>
+            <li>Flat-workspace and conversation-volume-tiered pricing (Crisp, Tidio&apos;s base plans) cap headline exposure but shift the real decision to whether the included allowance actually covers the required volume.</li>
             <li>For a team expecting meaningful AI-resolution volume, model the AI-usage line item separately from the seat line item before comparing vendors -- collapsing them into one &ldquo;starting price&rdquo; figure hides exactly the divergence this benchmark measures.</li>
           </ul>
+        </Card>
+
+        {/* Information-gain: general buying literacy, not vendor-specific claims */}
+        <Card className="mt-8 max-w-3xl">
+          <h2 className="text-sm font-semibold text-white">How to compare unlike billing units</h2>
+          <div className="mt-3 space-y-4 text-sm text-zinc-400">
+            <p>
+              A per-seat price and a per-resolution price answer different questions, so putting
+              them side by side as if they were the same kind of number is the most common
+              mistake in this comparison. A seat price scales with headcount; a usage price scales
+              with volume. The only fair comparison is a modeled <em>total</em> at your own
+              expected seat count and usage volume -- not the two headline numbers on their own.
+            </p>
+            <p>
+              <strong className="text-zinc-300">Why per-outcome and per-seat prices aren&apos;t
+              directly comparable:</strong> a vendor charging $0.99 per AI outcome is not
+              &ldquo;more expensive&rdquo; than one charging $29 per seat -- those numbers measure
+              different things. A team with low ticket volume and several agents may pay far more
+              under a per-seat model; a team with few agents but high automated-resolution volume
+              may pay far more under a per-outcome model. Neither structure is inherently cheaper.
+            </p>
+            <div>
+              <p className="text-zinc-300">Questions worth asking before switching support platforms:</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                <li>What exactly counts as one billable unit (an &ldquo;outcome,&rdquo; a
+                  &ldquo;session,&rdquo; a &ldquo;resolution&rdquo;) -- and does it fire even when
+                  the customer wasn&apos;t actually helped?</li>
+                <li>Is there a minimum seat count, a minimum contract term, or a required annual
+                  commitment to get the advertised price?</li>
+                <li>If usage spikes in a single month, is the overage rate published, or does it
+                  require contacting sales after the fact?</li>
+                <li>Does the plan&apos;s AI allowance reset monthly, and what happens to unused
+                  allowance -- is it lost, or does it roll over?</li>
+                <li>Is the base seat price itself public, or does getting a real number require a
+                  sales conversation (as with Kayako in this dataset)?</li>
+              </ul>
+            </div>
+          </div>
         </Card>
 
         {/* Related reading -- links back into product/comparison pages */}

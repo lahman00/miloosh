@@ -4,7 +4,9 @@
   "category": "customer-support",
   "description": "Kayako is an AI help desk platform whose Kay AI agent classifies, prioritizes, routes, and drafts replies to support tickets, either as a standalone helpdesk or layered on top of existing systems.",
   "website": "https://kayako.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "SaaS, retail, financial services, and healthcare organizations with high ticket volumes looking to reduce support costs and speed up resolution.",
   "pricing": {
     "model": "unknown",
@@ -12,15 +14,28 @@
     "status": "contact_sales",
     "free_plan": false,
     "tiers": [
-      { "name": "Kay AI Agent (usage component)", "amount": "1", "currency": "USD", "billing_period": "one_time", "unit": "per resolved ticket", "notes": "Only charged when Kay fully resolves a ticket without human involvement; escalations and partial resolutions are free. This is the only dollar figure Kayako publishes on its pricing page." },
-      { "name": "Kayako One (full platform)", "currency": "USD", "billing_period": "unknown", "unit": "per agent", "notes": "Base per-agent seat price is not disclosed on the official pricing page as of 2026-09-26 — every plan button reads Talk to a Pricing Expert or Request a Demo." }
+      {
+        "name": "Kay AI Agent (usage component)",
+        "amount": "1",
+        "currency": "USD",
+        "billing_period": "one_time",
+        "unit": "per resolved ticket",
+        "notes": "Only charged when Kay fully resolves a ticket without human involvement; escalations and partial resolutions are free. This is the only dollar figure Kayako publishes on its pricing page."
+      },
+      {
+        "name": "Kayako One (full platform)",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "per agent",
+        "notes": "Base per-agent seat price is not disclosed on the official pricing page as of 2026-09-26 \u2014 every plan button reads Talk to a Pricing Expert or Request a Demo."
+      }
     ],
-    "last_verified": "2026-09-26",
+    "last_verified": "2026-09-27",
     "official_source": "https://kayako.com/pricing/"
   },
   "cons": [
-    "Base platform seat pricing for Kayako One is not disclosed anywhere on the official pricing page — the only public number is the $1-per-AI-resolution usage fee, and every visitor is pushed to book a sales call to learn the actual per-agent cost.",
-    "No free trial is mentioned on the pricing page, unlike most helpdesk competitors that advertise self-serve trials — evaluation requires a sales conversation.",
+    "Base platform seat pricing for Kayako One is not disclosed anywhere on the official pricing page \u2014 the only public number is the $1-per-AI-resolution usage fee, and every visitor is pushed to book a sales call to learn the actual per-agent cost.",
+    "No free trial is mentioned on the pricing page, unlike most helpdesk competitors that advertise self-serve trials \u2014 evaluation requires a sales conversation.",
     "The AI resolution fee is uncapped and volume-unbounded, with no published cap, tier, or volume discount, so cost scales linearly and unpredictably as support volume grows."
   ],
   "features": [
@@ -42,21 +57,33 @@
       "slug": "zendesk",
       "description": "A customer service platform with ticketing, live chat, and AI-powered automation.",
       "best_for": "Support teams of all sizes needing an established, feature-rich helpdesk.",
-      "strengths": ["Mature ticketing system", "AI automation", "Large app marketplace"]
+      "strengths": [
+        "Mature ticketing system",
+        "AI automation",
+        "Large app marketplace"
+      ]
     },
     {
       "name": "Freshdesk",
       "slug": "freshdesk",
       "description": "A cloud-based help desk with ticketing, automation, and omnichannel support.",
       "best_for": "Support teams wanting an affordable, easy-to-deploy helpdesk.",
-      "strengths": ["Omnichannel ticketing", "Automation", "Affordable tiers"]
+      "strengths": [
+        "Omnichannel ticketing",
+        "Automation",
+        "Affordable tiers"
+      ]
     },
     {
       "name": "Help Scout",
       "slug": "help-scout",
       "description": "A shared inbox and help desk platform built for personalized, human-feeling support.",
       "best_for": "Small to mid-sized support teams wanting simple, email-centric ticketing.",
-      "strengths": ["Shared inbox", "Simplicity", "Beacon in-app help widget"]
+      "strengths": [
+        "Shared inbox",
+        "Simplicity",
+        "Beacon in-app help widget"
+      ]
     },
     {
       "name": "Zoho Desk",

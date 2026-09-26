@@ -1,6 +1,11 @@
 import { getAllSoftware } from "@/data/software";
 import type { Software } from "@/data/software/types";
 import { AI_USAGE_PRICING_BY_SLUG, type AiUsagePricing } from "./data";
+import researchPricingSnapshots from "./research-pricing-snapshots.json";
+
+// Exact pricing records from Claude's 981a491 research handoff. Keep frozen
+// control product pages unchanged while retaining the newly verified research.
+const researchPricing = researchPricingSnapshots as Record<string, Software["pricing"]>;
 
 /**
  * "2026 Customer Support Pricing Benchmark" -- built to replace an
@@ -67,7 +72,8 @@ export interface SupportPricingBenchmark {
 const CATEGORY = "customer-support";
 
 export function buildSupportPricingBenchmark(all: readonly Software[] = getAllSoftware()): SupportPricingBenchmark {
-  const catalogSample = all.filter((s) => s.category === CATEGORY);
+  const catalogSample = all.filter((s) => s.category === CATEGORY).map(s =>
+    researchPricing[s.slug] ? { ...s, pricing: researchPricing[s.slug] } : s);
   const rows: SupportPricingRow[] = catalogSample.map((s) => {
     const ai = AI_USAGE_PRICING_BY_SLUG[s.slug] ?? { disclosed: false, unitPrice: null, unit: null, note: "Not individually classified in this benchmark." };
     const amount = s.pricing?.entryPaid?.amount;

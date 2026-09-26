@@ -12,7 +12,7 @@ import { SITE_URL } from "@/lib/site";
 describe("integrated research release", () => {
   it("discovers exactly the real research hub and assets in the sitemap", async () => {
     const urls = (await sitemap()).map(r => r.url);
-    expect(RESEARCH_PATHS).toHaveLength(3);
+    expect(RESEARCH_PATHS).toHaveLength(4);
     for (const path of RESEARCH_PATHS) {
       expect(urls.filter(u => u === `${SITE_URL}${path}`)).toHaveLength(1);
       expect(fs.existsSync(`app${path}/page.tsx`)).toBe(true);

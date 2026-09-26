@@ -1,0 +1,112 @@
+{
+  "reamaze": {
+    "model": "paid",
+    "startingPrice": "$29/team member/month",
+    "hasFreeTier": false,
+    "status": "verified",
+    "freePlan": false,
+    "freeTrial": {
+      "available": true,
+      "days": 14
+    },
+    "entryPaid": {
+      "amount": "29",
+      "currency": "USD",
+      "billingPeriod": "monthly",
+      "perSeat": true
+    },
+    "tiers": [
+      {
+        "name": "Starter",
+        "amount": "59",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "unit": "per workspace",
+        "notes": "Flat rate, unlimited team members, capped at 500 responded conversations/month."
+      },
+      {
+        "name": "Basic",
+        "amount": "29",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "unit": "team member/month",
+        "notes": "$26.10/team member/month if billed annually (10% discount)."
+      },
+      {
+        "name": "Pro",
+        "amount": "49",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "unit": "team member/month",
+        "notes": "$44.10/team member/month if billed annually."
+      },
+      {
+        "name": "Plus",
+        "amount": "69",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "unit": "team member/month",
+        "notes": "$62.10/team member/month if billed annually. Includes AI Agent with a monthly included-resolution allowance; overage billed at $0.85 per additional resolution."
+      }
+    ],
+    "lastVerified": "2026-09-27",
+    "officialSource": "https://www.reamaze.com/pricing"
+  },
+  "tidio": {
+    "model": "freemium",
+    "startingPrice": "$24.17/month",
+    "hasFreeTier": true,
+    "status": "verified",
+    "freePlan": true,
+    "freeTrial": {
+      "available": true,
+      "days": 7
+    },
+    "entryPaid": {
+      "amount": "24.17",
+      "currency": "USD",
+      "billingPeriod": "monthly",
+      "perSeat": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "notes": "50 billable conversations/month, 50 one-time Lyro AI conversations, 100 Flows visitors/month."
+      },
+      {
+        "name": "Starter",
+        "amount": "24.17",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "notes": "100 billable conversations/month, 50 Lyro AI conversations/month."
+      },
+      {
+        "name": "Growth",
+        "amount": "49.17",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "notes": "Starting price, scales with usage. 250+ billable conversations/month, 50+ Lyro AI conversations/month. Marked \"Popular\"."
+      },
+      {
+        "name": "Plus",
+        "amount": "300",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "notes": "Starting price + monthly usage charges on top. Custom conversation limits, dedicated success manager, requires contacting sales for exact pricing."
+      },
+      {
+        "name": "Lyro AI Agent",
+        "amount": "32.50",
+        "currency": "USD",
+        "billingPeriod": "monthly",
+        "notes": "Sold as a separate add-on from the base conversation plans above. Starting price for 50 Lyro AI conversations/month -- a bundle rate, not a per-conversation charge. The separate Premium plan additionally lists \"pay-per-resolution billing\" as a feature with no published per-resolution rate."
+      }
+    ],
+    "enterpriseContactSales": true,
+    "lastVerified": "2026-09-27",
+    "officialSource": "https://www.tidio.com/pricing/"
+  }
+}
