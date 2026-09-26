@@ -85,12 +85,22 @@ try {
       const placements = [
         ['div.fixed.inset-x-0.bottom-0 a[rel~=sponsored]', 'money-page-sticky-cta'],
         ['#buying-decision a[rel~=sponsored]', 'money-page-decision-card'],
+        ['main section.mt-14 a.mt-6[rel~=sponsored]', 'software-page-cta'],
+        ['[data-buyer-qa-pricing] a[rel~=sponsored]', 'pricing-section-cta'],
         ...(slug === "todoist" ? [
           ['a[aria-label="Todoist Pricing"]', 'vendor-link-pricing'],
           ['a[aria-label="Todoist Free trial"]', 'vendor-link-free-trial'],
         ] : []),
       ];
+      // Mark only the existing Pricing card in the QA DOM; no production
+      // attributes or CTA handlers are replaced to make these tests pass.
+      evaluate(`(() => {
+        const heading = [...document.querySelectorAll('h2')].find(h => h.textContent === 'Pricing');
+        if (!heading) throw new Error('Missing pricing section');
+        heading.parentElement.parentElement.setAttribute('data-buyer-qa-pricing', '');
+      })()`);
       for (const [selector, location] of placements) {
+        assert.equal(evaluate(`document.querySelectorAll(${JSON.stringify(selector)}).length`), 1, `${slug}/${location}: ambiguous placement`);
         evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'center',behavior:'instant'})`);
         browser("snapshot", "-i");
         browser("click", selector);
@@ -125,7 +135,35 @@ try {
       console.log(`${slug}/${width}: native clicks, identity, QA marker, layout PASS`);
     }
   }
-  writeFileSync(path.join(output, "browser-qa.json"), JSON.stringify({ capturedAt: new Date().toISOString(), origin: origin.origin, rows }, null, 2));
+  // Exercise the built application's engagement observer, not an imported
+  // test implementation. This simulates the browser visibility API explicitly;
+  // it is not evidence of a human reading or a real background-tab transition.
+  browser("open", `${origin.origin}/software/airtable?qa=1&qaRun=foreground-probe`);
+  browser("wait", "--fn", "Object.keys(document.querySelector('#buying-decision a[rel~=sponsored]')).some(k=>k.startsWith('__reactProps'))");
+  evaluate(`(() => {
+    window.__foregroundQa = [];
+    window.__qaVisibility = 'hidden';
+    Object.defineProperty(document, 'visibilityState', { configurable:true, get:()=>window.__qaVisibility });
+    document.dispatchEvent(new Event('visibilitychange'));
+    navigator.sendBeacon = (url, body) => {
+      if (body instanceof Blob) void body.text().then(text=>window.__foregroundQa.push(JSON.parse(text)));
+      return true;
+    };
+  })()`);
+  browser("wait", "11000");
+  const hiddenEngagement = evaluate("window.__foregroundQa.filter(e=>e.type==='engaged_view').length");
+  assert.equal(hiddenEngagement, 0, "Hidden time must not fabricate engagement");
+  evaluate("window.__qaVisibility='visible'; document.dispatchEvent(new Event('visibilitychange'))");
+  browser("wait", "--fn", "window.__foregroundQa.some(e=>e.type==='engaged_view')");
+  const foregroundEvents = evaluate("window.__foregroundQa.filter(e=>e.type==='engaged_view')");
+  assert.equal(foregroundEvents.length, 1);
+  assert(foregroundEvents[0].durationSeconds >= 10 && foregroundEvents[0].durationSeconds < 15);
+  assert.equal(foregroundEvents[0].path, "/software/airtable");
+  assert.equal(foregroundEvents[0].isTest, true);
+  assert.deepEqual(browser("errors").errors, []);
+  const engagementProbe = { mode: "simulated visibility API on local production build", hiddenWaitMs: 11000, hiddenEngagement, foregroundEvents, analyticsWrites: 0 };
+  console.log("foreground engagement: hidden=0, foreground=1, capture-only PASS");
+  writeFileSync(path.join(output, "browser-qa.json"), JSON.stringify({ capturedAt: new Date().toISOString(), origin: origin.origin, rows, engagementProbe }, null, 2));
 } catch (error) {
   writeFileSync(path.join(output, "browser-failure.json"), JSON.stringify({ message: error.message, events: evaluate("window.__buyerQa"), clicks: evaluate("window.__buyerNativeClicks") }, null, 2));
   throw error;
