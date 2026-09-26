@@ -37,7 +37,7 @@ Visibility is not proof of attention or humanity. Historical engagement records 
 | Browser | Expanded `scripts/growth/first-revenue-browser-qa.mjs`: **15/15 page × viewport cases**, widths 1440/390/320, **66 trusted native activations**, 0 browser errors, 0 overflow. Run twice with expanded CTA coverage; final run adds the foreground probe. |
 | Browser metric probe | Built client with explicitly **simulated visibility API**: 11 seconds hidden → 0 engaged events; resumed foreground → 1 event, `durationSeconds: 10`, `isTest: true`. This is not a real-user attention test. |
 | Comparison gate | `npm run growth:one-sided-audit`: all **165** one-sided pairs pass; **16** dual-active pairs enumerated separately. |
-| Affiliate audit | 22 active partners, 99 existing findings: 84 stale research, 10 active records absent from this isolated runtime pipeline, 5 overdue follow-ups. This is **not** a clean vendor-freshness audit or a production pipeline read. |
+| Affiliate audit | 22 active partners, 99 existing findings: 84 stale research, 1 catalog/research gap, 9 orphaned research records, 5 overdue follow-ups. The isolated runtime pipeline contains zero entries; this is **not** a clean vendor-freshness audit or a production pipeline read. |
 | Diff | `git diff --check`: passed. |
 
 Browser coverage now includes each cohort product's existing `software-page-cta`, `pricing-section-cta`, decision card and sticky CTA, plus Todoist's two existing affiliate vendor-link placements. Each activation emits exactly one CTA click and one handoff request with matching event/visitor/session IDs and acquisition context. Outbound navigation is cancelled only after React's handler; event endpoints are intercepted, not persisted. The pricing selector is marked only in the QA DOM, not in public markup.
@@ -50,4 +50,4 @@ Private evidence: `/Users/eyalhaimovich/MilooshReceipts/20260926-funnel-final-ve
 
 No push, merge into another branch, deploy, indexing request, social post, email, merchant visit, credential change or production analytics/Blob write occurred. Public production behavior is unchanged. The running local QA server/browser sessions are stopped after verification.
 
-Next authorized integration action: carry these two isolated commits into the supervising release candidate, preserving the existing four-agent reconciliation. Production promotion remains outside this sprint's authorization. A recorded handoff still does not establish a merchant visit, conversion, commission or payout.
+Next authorized integration action: carry this isolated commit delta into the supervising release candidate, preserving the existing four-agent reconciliation. Production promotion remains outside this sprint's authorization. A recorded handoff still does not establish a merchant visit, conversion, commission or payout.
