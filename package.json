@@ -20,6 +20,7 @@
     "growth:cta-coverage": "tsx scripts/growth/verified-active-cta-coverage.ts",
     "growth:one-sided-audit": "tsx scripts/growth/one-sided-comparison-audit.ts",
     "growth:social-attribution": "tsx scripts/growth/social-attribution-report.ts",
+    "growth:indexation-readiness": "tsx scripts/growth/indexation-readiness.ts",
     "report:pricing": "tsx scripts/report-pricing-freshness.ts",
     "report:links": "tsx scripts/report-internal-links.ts",
     "maintenance": "tsx scripts/maintenance/run-all.ts",
