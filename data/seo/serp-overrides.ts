@@ -199,6 +199,31 @@ const COMPARISON_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
     description:
       "Compare Close vs Nutshell CRM pricing, automation depth, and buyer fit using current vendor-sourced facts.",
   },
+  // Ranking War Phase IV (2026-09-26) — real GSC query evidence for
+  // /software/umbraco shows its single largest query ("umbraco vs
+  // wordpress", 116 impressions) is a head-to-head comparison intent that
+  // this already-published comparison page should own, but the page
+  // currently gets 0 recorded impressions of its own while the generic
+  // software page absorbs all of them. The internal link already exists
+  // (software page -> comparison page via getComparisonsInvolving); the
+  // real, specific angle these overrides add is Umbraco's actual
+  // distinguishing fact (a .NET-based CMS, unlike these PHP-based
+  // alternatives), not a generic "vs" template.
+  "umbraco-vs-wordpress": {
+    title: "Umbraco vs WordPress (2026): .NET CMS vs PHP Publishing",
+    description:
+      "Compare Umbraco's .NET-based CMS with WordPress's PHP publishing platform, including pricing, hosting model, and buyer fit using current vendor-sourced facts.",
+  },
+  "umbraco-vs-joomla": {
+    title: "Umbraco vs Joomla (2026): .NET CMS vs Open-Source PHP CMS",
+    description:
+      "Compare Umbraco's .NET-based CMS with Joomla's free, open-source PHP CMS, including pricing, hosting, and buyer fit using current vendor-sourced facts.",
+  },
+  "umbraco-vs-drupal": {
+    title: "Umbraco vs Drupal (2026): .NET CMS vs API-First Drupal",
+    description:
+      "Compare Umbraco's .NET-based CMS with Drupal's API-first, open-source platform, including pricing, structure, and buyer fit using current vendor-sourced facts.",
+  },
 };
 
 export function getSoftwareSerpOverride(slug: string): SerpMetadataOverride | undefined {
