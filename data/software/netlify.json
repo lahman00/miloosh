@@ -6,6 +6,32 @@
   "website": "https://www.netlify.com",
   "platforms": ["Web"],
   "best_for": "Positioned for diverse teams — product engineers, AI developers, marketers, designers, and ops personnel — building AI-powered apps, marketing sites, e-commerce storefronts, fullstack apps, and internal tools.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": false
+    },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "300 usage credits per month; new projects are public once deployed." },
+      { "name": "Personal", "amount": "9", "currency": "USD", "billing_period": "monthly", "notes": "1,000 credits/month. Adds smart secret detection and 1-day observability." },
+      { "name": "Pro", "amount": "20", "currency": "USD", "billing_period": "monthly", "notes": "Unlimited team members; starts at 3,000 credits/month, scaling up to 20,000 credits/month at a higher price. Adds private org repos, shared env vars and 30-day analytics." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.netlify.com/pricing/"
+  },
+  "cons": [
+    "Usage is metered in credits (production deploys, compute, bandwidth and web requests each consume credits differently), so cost is usage-dependent rather than a single flat number even on paid tiers.",
+    "New projects are public by default as soon as they're deployed on the Free plan.",
+    "SSO/SCIM and a 99.99% SLA require custom-priced Enterprise, not the Pro plan."
+  ],
   "features": [
     "Multiple deploy paths: Git, CLI, drag-and-drop, AI Agent Runners",
     "Serverless functions (edge, background, scheduled)",

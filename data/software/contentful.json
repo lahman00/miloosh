@@ -6,6 +6,32 @@
   "website": "https://www.contentful.com",
   "platforms": ["Web"],
   "best_for": "Contentful positions itself for growth marketing teams, product and developer teams, content teams, and mid-market/enterprise organizations needing centralized, multi-channel content management.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "300",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": false
+    },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Starter space only, 2 roles (Admin/Editor), 2 locales, 100K API calls/month and 50GB CDN bandwidth/month with no overages -- usage above the limit is blocked, not billed extra." },
+      { "name": "Lite", "amount": "300", "currency": "USD", "billing_period": "monthly", "notes": "Adds paid features on top of Free; exact role/locale/API limits require checking the live plan comparison table." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Custom pricing. Required for SSO, SCIM provisioning, custom roles/permissions, dedicated infrastructure and support SLAs." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.contentful.com/pricing/"
+  },
+  "cons": [
+    "The Free plan's API calls (100K/month) and CDN bandwidth (50GB/month) have no overage option -- exceeding them means upgrading, not paying more on the same plan.",
+    "Single sign-on, SCIM provisioning and custom roles/permissions are Enterprise-only, custom-priced features, not available on Lite.",
+    "The Free plan is limited to 2 roles and 2 locales, restrictive for a multi-market or multi-team content operation."
+  ],
   "features": [
     "Centralized, modular content architecture",
     "AI-powered personalization and content generation",

@@ -6,6 +6,32 @@
   "website": "https://www.perplexity.ai/",
   "platforms": ["Web", "iOS", "Android"],
   "best_for": "Perplexity positions itself for people who want real-time, cited answers to questions rather than a list of links — i.e., research/search replacement, with Pro tiers for deeper \"Pro Search,\" file uploads, and Spaces (saved research collections).",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "17",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Base search and limited Computer/agent credits." },
+      { "name": "Pro", "amount": "17", "currency": "USD", "billing_period": "monthly", "notes": "Per month billed annually. Deep research, access to top AI models, 4,000 bonus Computer credits." },
+      { "name": "Max", "amount": "167", "currency": "USD", "billing_period": "monthly", "notes": "Per month billed annually. 10,000 monthly Computer credits, frontier AI models, highest usage limits." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.perplexity.ai/pro"
+  },
+  "cons": [
+    "Both paid plans are explicitly stated as for personal use only, subject to Perplexity's own policies -- a business/commercial-use buyer should verify current terms before purchasing on a personal card.",
+    "Max costs nearly 10x Pro ($167 vs $17/month) for higher usage limits and frontier models, a steep jump with no mid-tier option.",
+    "\"Computer\" (Perplexity's agentic task feature) usage is credit-metered on every tier, including Pro, so heavy use can exhaust the included allowance before the billing period ends."
+  ],
   "features": [
     "Real-time web-grounded search answers",
     "Inline citations on every answer",

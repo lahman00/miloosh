@@ -5,6 +5,18 @@
   "description": "Adobe Marketo Engage is an enterprise marketing automation platform for B2B organizations, covering lead management, account-based marketing, email marketing, and cross-channel campaign orchestration with real-time behavioral data.",
   "website": "https://business.adobe.com/products/marketo/adobe-marketo.html",
   "best_for": "Positioned for enterprise B2B marketing and sales teams that need to manage complex, multi-decision-maker buying committees across the full lead and account lifecycle.",
+  "pricing": {
+    "model": "unknown",
+    "status": "contact_sales",
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://business.adobe.com/products/marketo.html"
+  },
+  "cons": [
+    "No public pricing of any kind is published; every plan requires a sales conversation before a buyer sees a number.",
+    "Positioned and priced for enterprise B2B marketing teams, with the buying-committee/ABM feature set to match -- a mismatch for a small team's simpler campaign needs.",
+    "As an Adobe Experience Cloud product, deep evaluation typically means engaging Adobe's own sales process rather than a self-serve trial."
+  ],
   "features": [
     "Lead management with drill-down into lead, contact, account, and opportunity details",
     "Account-based marketing (ABM) with Target Account Management for predictive, AI-powered ideal customer profile scoring",

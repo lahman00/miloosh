@@ -11,6 +11,24 @@
     "macOS"
   ],
   "best_for": "Development teams building Apple, Android, Web, Flutter, Unity, or C++ apps who want a managed backend without running their own servers; used by teams at NPR, Duolingo, and Venmo.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Spark", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "No-cost plan with generous fixed usage quotas across most products; no payment method required." },
+      { "name": "Blaze", "currency": "USD", "billing_period": "unknown", "notes": "Pay-as-you-go: no-cost Spark quotas still apply daily, then billing follows the underlying Google Cloud infrastructure's own usage-based rates -- not a flat monthly fee, so total cost depends on real usage and needs Google's own pricing calculator to estimate." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://firebase.google.com/pricing"
+  },
+  "cons": [
+    "Beyond the free Spark plan, cost is usage-based against Google Cloud infrastructure rates, not a flat per-seat or per-project fee -- predicting a monthly bill requires Google's own pricing calculator rather than a plan comparison table.",
+    "No-cost usage quotas apply at the project level, not per app, so multiple apps in one project share the same free allowance.",
+    "Deep platform lock-in to Google's own infrastructure and tooling, unlike a self-hostable alternative such as Supabase."
+  ],
   "features": [
     "Firestore NoSQL database for storing and syncing application data",
     "Authentication with secure user login and identity management",

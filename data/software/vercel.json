@@ -6,6 +6,32 @@
   "website": "https://vercel.com",
   "platforms": ["Web"],
   "best_for": "Targets developers building AI applications and autonomous agents, teams deploying web apps and marketing sites, platform builders serving multiple customers, and enterprises needing secure, scalable infrastructure.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "20",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": false
+    },
+    "tiers": [
+      { "name": "Hobby", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Starting place for a personal project; includes the CDN, firewall and Fluid compute." },
+      { "name": "Pro", "amount": "20", "currency": "USD", "billing_period": "monthly", "notes": "Includes $20 of usage credit, then usage-based billing beyond that for compute/bandwidth -- not a flat all-inclusive fee." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Custom pricing. Adds SCIM/Directory Sync, managed WAF rulesets, multi-region failover and a 99.99% SLA." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://vercel.com/pricing"
+  },
+  "cons": [
+    "Pro's $20/month only includes a $20 usage credit; compute, bandwidth and other usage beyond that bills separately, so the real monthly cost is usage-dependent, not flat.",
+    "SCIM/Directory Sync and a 99.99% uptime SLA require custom-priced Enterprise, not the Pro plan.",
+    "Advanced firewall controls (custom rules beyond a small included limit, managed OWASP ruleset) are gated above the entry tiers."
+  ],
   "features": [
     "Git-connected deploys with automatic preview environments",
     "AI Gateway (access to hundreds of AI models via one endpoint)",

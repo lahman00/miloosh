@@ -6,6 +6,32 @@
   "website": "https://www.hotjar.com",
   "platforms": ["Web"],
   "best_for": "Positioned for product, design, and marketing teams who want to \"deliver experiences that convert\" by understanding user journeys and reducing drop-offs.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "39",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Up to 200k monthly sessions, 1 month of analytics data access, 1 project." },
+      { "name": "Growth", "amount": "39", "currency": "USD", "billing_period": "monthly", "notes": "From $39/month billed annually ($49/month billed monthly), starting at 7k monthly sessions. 13 months of data access, 3 projects." },
+      { "name": "Pro", "currency": "USD", "billing_period": "unknown", "notes": "Custom quote, 1m-unlimited monthly sessions." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://contentsquare.com/pricing/"
+  },
+  "cons": [
+    "Hotjar is now sold under Contentsquare's unified \"Experience Analytics\" pricing and plan tiers (Free/Growth/Pro/Enterprise), not a separately branded standalone price list -- a buyer evaluating \"Hotjar\" today is really pricing Contentsquare's platform.",
+    "The Growth plan's session allowance starts at 7k monthly sessions and scales the price up from there, so actual cost depends on real traffic volume, not a single flat number.",
+    "Pro and Enterprise both require a sales conversation (\"Let's talk\") with no published price."
+  ],
   "features": [
     "Heatmaps (clicks, movement, scroll behavior)",
     "Session recordings/replay",

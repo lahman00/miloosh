@@ -6,6 +6,32 @@
   "website": "https://whimsical.com",
   "platforms": ["Web", "macOS", "Windows"],
   "best_for": "Product builders, designers, and teams documenting processes and product ideas who want lightweight diagramming alongside wireframing in one tool.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "10",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Capped at 50 board objects and 50 doc blocks per month, a watermark on exports, and 7-day version history." },
+      { "name": "Pro", "amount": "10", "currency": "USD", "billing_period": "monthly", "unit": "editor", "notes": "Per editor/month, billed annually ($12/editor/month billed monthly). Unlimited board objects and doc blocks, no watermark, 90-day version history." },
+      { "name": "Business", "amount": "20", "currency": "USD", "billing_period": "monthly", "unit": "editor", "notes": "Per editor/month, billed annually ($24/editor/month billed monthly). Adds SAML SSO, SCIM and unlimited version history." }
+    ],
+    "last_verified": "2026-09-26",
+    "official_source": "https://whimsical.com/pricing"
+  },
+  "cons": [
+    "The free plan caps out at 50 board objects and 50 doc blocks per month, a real ceiling for any ongoing project rather than a one-off diagram.",
+    "SAML single sign-on and SCIM provisioning require the top Business tier, not the entry Pro plan.",
+    "AI generation runs on a monthly credit allowance (10 per member on the free plan); extra usage is a separate purchase even on paid plans."
+  ],
   "features": [
     "Flowcharts and diagrams for mapping processes and shared understanding",
     "Mind maps for organizing ideas",

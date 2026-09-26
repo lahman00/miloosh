@@ -6,6 +6,11 @@
   "website": "https://www.jasper.ai/",
   "platforms": ["Web"],
   "best_for": "Jasper positions itself for marketing teams and roles — product, content, performance, brand, PR/communications, and field/events marketers — across industries like financial services, healthcare, tech, retail, and media.",
+  "cons": [
+    "The $59/month/seat Pro rate requires annual billing; paying month to month costs $69/seat instead.",
+    "API access, custom AI agents and enterprise governance are Business-tier features with no published price -- they require a sales conversation.",
+    "The Pro plan includes one seat by default, so a team needs to add seats individually rather than getting a team-wide flat rate."
+  ],
   "features": [
     "100+ specialized marketing AI agents (SEO, campaigns, email, social, translation)",
     "Brand Voice / Style Guides / Visual Guidelines governance",

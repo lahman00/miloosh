@@ -6,6 +6,27 @@
   "website": "https://www.fullstory.com/",
   "platforms": ["Web"],
   "best_for": "Product management, data analytics, customer support, and marketing teams in retail/ecommerce, food and beverage, travel, financial services, gaming, and SaaS who want to remove conversion friction and personalize digital experiences.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "contact_sales",
+    "free_plan": true,
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "30,000 monthly sessions and 12 months of analytics retention." },
+      { "name": "Business", "currency": "USD", "billing_period": "unknown", "notes": "No published price; \"Request pricing & demo.\"" },
+      { "name": "Advanced", "currency": "USD", "billing_period": "unknown", "notes": "No published price; \"Request pricing & demo.\"" },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "No published price; \"Request pricing & demo.\"" }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.fullstory.com/plans/"
+  },
+  "cons": [
+    "None of the three paid tiers (Business, Advanced, Enterprise) publish a price -- every paid plan requires requesting a demo and quote.",
+    "Mobile session capture, multi-org management, and the StoryAI agent layer are sold as separate add-ons on top of a base plan, not included by default.",
+    "Only the free tier's limits (30,000 sessions, 12-month retention) are actually published; paid-tier session/retention limits are not disclosed without a sales conversation."
+  ],
   "features": [
     "Session replay to record and play back real user sessions",
     "Product analytics for behavior patterns and engagement metrics",

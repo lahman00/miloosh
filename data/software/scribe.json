@@ -10,6 +10,33 @@
     "Windows"
   ],
   "best_for": "Teams that need process documentation, SOPs, and training guides created automatically, including enterprises implementing AI agents that need context on how work actually happens.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      { "name": "Basic", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Browser-only capture; no desktop app capture, no custom branding, 1-week version history." },
+      { "name": "Pro Personal", "amount": "25", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Per seat/month, billed annually ($35/seat/month billed monthly). Starts at 1 seat. Adds desktop-app capture, custom branding, screenshot redaction and PDF/HTML/Markdown export." },
+      { "name": "Pro Team", "amount": "13", "currency": "USD", "billing_period": "monthly", "unit": "seat", "notes": "Per seat/month, billed annually ($17/seat/month billed monthly). Requires a 5-seat minimum, so a team under 5 seats pays the higher Pro Personal rate instead." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://scribe.com/pricing"
+  },
+  "cons": [
+    "The free Basic plan cannot capture desktop-app workflows, only browser-based ones, and keeps only 1 week of version history.",
+    "Pro Team's lower per-seat rate requires a 5-seat minimum; smaller teams are priced on the higher Pro Personal tier.",
+    "Automatic PII/PHI redaction, SSO and role-based access control are Enterprise-only, custom-priced features, not available on either Pro tier."
+  ],
   "features": [
     "Automatic capture of workflows as step-by-step guides while you work",
     "Desktop apps for Windows and Mac plus Chrome and Edge browser extensions",

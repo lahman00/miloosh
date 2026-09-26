@@ -6,6 +6,33 @@
   "website": "https://www.synthesia.io/",
   "platforms": ["Web"],
   "best_for": "Learning and development departments, sales-enablement teams, HR training programs, marketing departments, and compliance/technical training across manufacturing, tech, healthcare, and financial services.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "18",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      { "name": "Basic", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "1,200 credits/month, usable for up to 10 minutes of video or AI dubbing." },
+      { "name": "Starter", "amount": "18", "currency": "USD", "billing_period": "monthly", "notes": "Per month billed yearly ($29/month billed monthly). 14,500 credits per YEAR (not per month) -- about 120 minutes of video. 1 editor plus 3 guests only." },
+      { "name": "Creator", "amount": "64", "currency": "USD", "billing_period": "monthly", "notes": "Per month billed yearly ($89/month billed monthly). 44,000 credits/year, 1 editor plus 5 guests, adds API access and 5 personal avatars." },
+      { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "notes": "Custom pricing and custom credits. Required for SAML/SSO, unlimited video minutes and unlimited personal avatars." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://www.synthesia.io/pricing"
+  },
+  "cons": [
+    "Starter and Creator credits are allotted per YEAR, not per month, so a burst of video production early in the year can leave a team short for the rest of it.",
+    "Both paid tiers cap seats tightly (1 editor + 3 guests on Starter, 1 editor + 5 guests on Creator) -- a genuinely multi-editor team needs Enterprise.",
+    "Unlimited video minutes, SAML/SSO and unlimited personal avatars are Enterprise-only, custom-priced features."
+  ],
   "features": [
     "240+ AI avatars and 1,000+ AI voices across 160+ languages",
     "Text-to-video generator and script-to-video maker",

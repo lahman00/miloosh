@@ -6,6 +6,11 @@
   "website": "https://www.copy.ai/",
   "platforms": ["Web"],
   "best_for": "Copy.ai positions itself for go-to-market teams — sales (prospecting, lead processing, deal management), marketing (content, ABM, localization), and operations (lead intelligence, CRM enrichment) — as a replacement for fragmented point-solution copilots.",
+  "cons": [
+    "There's a large jump between the entry Chat tier (5 seats, $24/month/seat billed annually) and Growth ($1,000/month for 75 seats) -- no mid-size-team tier in between.",
+    "Workflow credits are capped per tier (20K/month on Growth, up to 75K on Scale); usage beyond the cap isn't included in the base price.",
+    "Enterprise pricing and commercial terms require a sales demo, not a published rate."
+  ],
   "features": [
     "Copy Agents for automated guardrailed workflows",
     "Tables (unified data foundation across sources)",

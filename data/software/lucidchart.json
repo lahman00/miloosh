@@ -6,6 +6,34 @@
   "website": "https://lucid.co/lucidchart",
   "platforms": ["Web"],
   "best_for": "Positioned for enterprise teams across IT, engineering, product, project management, and operations who need to document and optimize processes, infrastructure, and technical systems.",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$0",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 7 },
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Capped at 3 editable documents and 75 shapes per document -- a real ceiling for ongoing use, not just a trial." },
+      { "name": "Individual", "amount": "9", "currency": "USD", "billing_period": "monthly", "notes": "Per month when billed annually. Unlimited documents/objects, 1GB storage, Visio import/export." },
+      { "name": "Team", "amount": "10", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "Per user/month when billed annually. Adds revision history with versioning and Microsoft 365/Confluence/Jira integrations." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-26",
+    "official_source": "https://lucid.co/pricing"
+  },
+  "cons": [
+    "The free plan is capped at 3 editable documents and 75 shapes per document, too small for any ongoing diagramming work.",
+    "A 7-day free trial requires payment information up front and bills automatically once it ends unless cancelled.",
+    "SAML authentication and Salesforce integration are Enterprise-only, custom-priced features, not on the Team plan."
+  ],
   "features": [
     "Lucid AI generates diagrams from text prompts",
     "Data linking to Google Sheets, Excel, or CSV files",
