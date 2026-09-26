@@ -1,0 +1,722 @@
+{
+  "generatedAt": "2026-09-26T21:35:29.614Z",
+  "sourceSha": "2c179759ec37728661f271be70f713fc44147b29",
+  "buildId": "WPOOUATi6uiUzB6g-vY6b",
+  "artifactHash": "427f6ef845f3b8b2ca2f18092887174f1d3c7dceead327c2a9086ac6fdcb0390",
+  "coverage": {
+    "searchRows": 537,
+    "canonicalSearchRows": 491,
+    "inspectionObservations": 1240,
+    "nodes": 1784,
+    "edges": 81351
+  },
+  "headlines": {
+    "UNKNOWN": 527,
+    "INDEXED": 22,
+    "CRAWLED_NOT_INDEXED": 410,
+    "DISCOVERED_NOT_INDEXED": 777
+  },
+  "routeTypeByState": {
+    "software": {
+      "UNKNOWN": 193,
+      "INDEXED": 20,
+      "CRAWLED_NOT_INDEXED": 5,
+      "DISCOVERED_NOT_INDEXED": 136
+    },
+    "comparison": {
+      "UNKNOWN": 329,
+      "CRAWLED_NOT_INDEXED": 390,
+      "INDEXED": 2,
+      "DISCOVERED_NOT_INDEXED": 627
+    },
+    "guide": {
+      "CRAWLED_NOT_INDEXED": 15,
+      "DISCOVERED_NOT_INDEXED": 14,
+      "UNKNOWN": 5
+    }
+  },
+  "policy": {
+    "autonomy": "READ_ONLY_RECOMMENDATIONS",
+    "massPublishing": false,
+    "ranking": "Observed page impressions descending; nullable evidence; groups/reasons explain intervention, no composite SEO score",
+    "protectionCoverage": "Local committed receipts, local runtime experiments and explicit concurrent reservations; no production Blob read",
+    "queryPageAttribution": "UNAVAILABLE; property-wide query data is not joined to page aggregates",
+    "buildProvenance": "sourceSha is repository HEAD at analysis time, not a deployment SHA; artifactHash identifies the inspected build, including uncommitted source changes"
+  },
+  "commandCounts": {
+    "routes": 1784,
+    "queryObservations": 85,
+    "measuredQueryPages": 17,
+    "lostIndexation": 136,
+    "lostWithAuthenticatedEvidence": 121,
+    "lostReportedOnly": 15,
+    "strikingDistance": 0,
+    "ctr": 0,
+    "cohorts": 6,
+    "activePartners": 22,
+    "commercialLinksChecked": 4137
+  },
+  "rankings": [
+    {
+      "id": "indexation-recovery-20260926",
+      "treatment": 14,
+      "control": 10,
+      "checkpoints": [
+        {
+          "days": 7,
+          "result": {
+            "treatment": {
+              "assigned": 14,
+              "measured": 0,
+              "missing": 14,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 10,
+              "measured": 0,
+              "missing": 10,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 14,
+          "result": {
+            "treatment": {
+              "assigned": 14,
+              "measured": 0,
+              "missing": 14,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 10,
+              "measured": 0,
+              "missing": 10,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 28,
+          "result": {
+            "treatment": {
+              "assigned": 14,
+              "measured": 0,
+              "missing": 14,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 10,
+              "measured": 0,
+              "missing": 10,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "indexation-factory-wave2-20260926",
+      "treatment": 30,
+      "control": 13,
+      "checkpoints": [
+        {
+          "days": 7,
+          "result": {
+            "treatment": {
+              "assigned": 30,
+              "measured": 0,
+              "missing": 30,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 13,
+              "measured": 0,
+              "missing": 13,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 14,
+          "result": {
+            "treatment": {
+              "assigned": 30,
+              "measured": 0,
+              "missing": 30,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 13,
+              "measured": 0,
+              "missing": 13,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 28,
+          "result": {
+            "treatment": {
+              "assigned": 30,
+              "measured": 0,
+              "missing": 30,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 13,
+              "measured": 0,
+              "missing": 13,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-google-war-wave3-20260926",
+      "treatment": 20,
+      "control": 10,
+      "checkpoints": [
+        {
+          "days": 7,
+          "result": {
+            "treatment": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 10,
+              "measured": 0,
+              "missing": 10,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "CONTROL_PROTOCOL_REVIEW",
+            "controlProtocolDeviations": [
+              {
+                "cohortId": "master-google-war-wave3-20260926",
+                "page": "/software/reamaze",
+                "arm": "control",
+                "status": "REVIEW_REQUIRED",
+                "sourceCommit": "4d34fd163ee3149e665ab0172f94b848ff6280bc",
+                "file": "data/software/reamaze.json",
+                "beforeGitBlob": "8012ba7f1a02dbc8366817408787eebf3294395b",
+                "afterGitBlob": "4509370b6911ae8bba9de0c3a7861e2d2dd27a8d",
+                "reason": "Claude's research commit added a verified pricing block after this page was assigned to the held-out control arm. Preserve canonical product facts and cohort membership; do not claim an unchanged control or calculate a treatment/control contrast until the experiment owner explicitly resolves the protocol deviation. No deployment or Google impact inferred."
+              }
+            ],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 14,
+          "result": {
+            "treatment": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 10,
+              "measured": 0,
+              "missing": 10,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "CONTROL_PROTOCOL_REVIEW",
+            "controlProtocolDeviations": [
+              {
+                "cohortId": "master-google-war-wave3-20260926",
+                "page": "/software/reamaze",
+                "arm": "control",
+                "status": "REVIEW_REQUIRED",
+                "sourceCommit": "4d34fd163ee3149e665ab0172f94b848ff6280bc",
+                "file": "data/software/reamaze.json",
+                "beforeGitBlob": "8012ba7f1a02dbc8366817408787eebf3294395b",
+                "afterGitBlob": "4509370b6911ae8bba9de0c3a7861e2d2dd27a8d",
+                "reason": "Claude's research commit added a verified pricing block after this page was assigned to the held-out control arm. Preserve canonical product facts and cohort membership; do not claim an unchanged control or calculate a treatment/control contrast until the experiment owner explicitly resolves the protocol deviation. No deployment or Google impact inferred."
+              }
+            ],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 28,
+          "result": {
+            "treatment": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 10,
+              "measured": 0,
+              "missing": 10,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "CONTROL_PROTOCOL_REVIEW",
+            "controlProtocolDeviations": [
+              {
+                "cohortId": "master-google-war-wave3-20260926",
+                "page": "/software/reamaze",
+                "arm": "control",
+                "status": "REVIEW_REQUIRED",
+                "sourceCommit": "4d34fd163ee3149e665ab0172f94b848ff6280bc",
+                "file": "data/software/reamaze.json",
+                "beforeGitBlob": "8012ba7f1a02dbc8366817408787eebf3294395b",
+                "afterGitBlob": "4509370b6911ae8bba9de0c3a7861e2d2dd27a8d",
+                "reason": "Claude's research commit added a verified pricing block after this page was assigned to the held-out control arm. Preserve canonical product facts and cohort membership; do not claim an unchanged control or calculate a treatment/control contrast until the experiment owner explicitly resolves the protocol deviation. No deployment or Google impact inferred."
+              }
+            ],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comparison-quality-20260822",
+      "treatment": 20,
+      "control": 20,
+      "checkpoints": [
+        {
+          "days": 7,
+          "result": {
+            "treatment": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 14,
+          "result": {
+            "treatment": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 28,
+          "result": {
+            "treatment": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 20,
+              "measured": 0,
+              "missing": 20,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ranking-intent-20260926",
+      "treatment": 3,
+      "control": 15,
+      "checkpoints": [
+        {
+          "days": 7,
+          "result": {
+            "treatment": {
+              "assigned": 3,
+              "measured": 0,
+              "missing": 3,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 15,
+              "measured": 0,
+              "missing": 15,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 14,
+          "result": {
+            "treatment": {
+              "assigned": 3,
+              "measured": 0,
+              "missing": 3,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 15,
+              "measured": 0,
+              "missing": 15,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 28,
+          "result": {
+            "treatment": {
+              "assigned": 3,
+              "measured": 0,
+              "missing": 3,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 15,
+              "measured": 0,
+              "missing": 15,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comparison-factual-depth-20260926",
+      "treatment": 23,
+      "control": 0,
+      "checkpoints": [
+        {
+          "days": 7,
+          "result": {
+            "treatment": {
+              "assigned": 23,
+              "measured": 0,
+              "missing": 23,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 0,
+              "measured": 0,
+              "missing": 0,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 14,
+          "result": {
+            "treatment": {
+              "assigned": 23,
+              "measured": 0,
+              "missing": 23,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 0,
+              "measured": 0,
+              "missing": 0,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        },
+        {
+          "days": 28,
+          "result": {
+            "treatment": {
+              "assigned": 23,
+              "measured": 0,
+              "missing": 23,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "control": {
+              "assigned": 0,
+              "measured": 0,
+              "missing": 0,
+              "meanImpressionsDelta": null,
+              "beforeImpressions": null,
+              "afterImpressions": null
+            },
+            "measurementStatus": "DESCRIPTIVE_ONLY",
+            "controlProtocolDeviations": [],
+            "differenceInMeanChange": null,
+            "interpretation": "Descriptive treatment/control change only. Nonrandom selection, missing data, recrawl timing and overlapping interventions prevent a causal claim."
+          },
+          "states": [
+            "WAIT_DEPLOYMENT"
+          ]
+        }
+      ]
+    }
+  ],
+  "indexingQueue": [
+    {
+      "url": "https://miloosh.com/research",
+      "state": "WAIT_DEPLOYMENT_VERIFICATION",
+      "requestsMade": 0
+    },
+    {
+      "url": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "state": "WAIT_REQUEST_HISTORY",
+      "requestsMade": 0
+    },
+    {
+      "url": "https://miloosh.com/research/customer-support-pricing-2026",
+      "state": "WAIT_DEPLOYMENT_VERIFICATION",
+      "requestsMade": 0
+    }
+  ],
+  "interventionVerification": [
+    {
+      "reportedUrl": "/compare/umbraco-vs-wordpress",
+      "canonical": "/compare/umbraco-vs-wordpress",
+      "reportedRouteEmitted": true,
+      "actualTitle": "Umbraco vs WordPress (2026): .NET CMS vs PHP Publishing | Miloosh",
+      "expectedTitle": "Umbraco vs WordPress (2026): .NET CMS vs PHP Publishing",
+      "status": "EXPECTED_TITLE_RENDERED",
+      "note": "Local build verification only; a receipt/commit is not proof that the intended title renders or was deployed"
+    },
+    {
+      "reportedUrl": "/compare/umbraco-vs-joomla",
+      "canonical": "/compare/joomla-vs-umbraco",
+      "reportedRouteEmitted": false,
+      "actualTitle": "Umbraco vs Joomla (2026): .NET CMS vs Open-Source PHP CMS | Miloosh",
+      "expectedTitle": "Umbraco vs Joomla (2026): .NET CMS vs Open-Source PHP CMS",
+      "status": "EXPECTED_TITLE_RENDERED",
+      "note": "Local build verification only; a receipt/commit is not proof that the intended title renders or was deployed"
+    },
+    {
+      "reportedUrl": "/compare/umbraco-vs-drupal",
+      "canonical": "/compare/drupal-vs-umbraco",
+      "reportedRouteEmitted": false,
+      "actualTitle": "Umbraco vs Drupal (2026): .NET CMS vs API-First Drupal | Miloosh",
+      "expectedTitle": "Umbraco vs Drupal (2026): .NET CMS vs API-First Drupal",
+      "status": "EXPECTED_TITLE_RENDERED",
+      "note": "Local build verification only; a receipt/commit is not proof that the intended title renders or was deployed"
+    }
+  ],
+  "funnel": {
+    "status": "UNAVAILABLE",
+    "reason": "No complete first-party event export supplied; not zero visits/handoffs",
+    "affiliateConversions": null
+  },
+  "commands": {
+    "googleWar": "PASS",
+    "indexationReadiness": {
+      "exitCode": 0,
+      "scope": "354 software records; readiness is not a Google indexing prediction",
+      "PASS": 164,
+      "WARN": 55,
+      "FAIL": 5,
+      "PROTECTED": 130,
+      "existingFails": [
+        "apigee",
+        "datadog",
+        "read-the-docs",
+        "stripe",
+        "supabase"
+      ]
+    },
+    "rankingDelta": {
+      "commandAvailable": false,
+      "equivalent": "Existing google-command-center 7/14/28-day checkpoint output; WAIT_DEPLOYMENT, no synthetic post period"
+    },
+    "authorityReport": "PASS",
+    "morningGoogle": "PASS"
+  },
+  "indexingRequestsMade": 0,
+  "autonomyLevel": 0,
+  "massPublishing": false,
+  "brandCausalityClaim": false
+}

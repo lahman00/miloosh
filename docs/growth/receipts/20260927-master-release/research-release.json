@@ -1,0 +1,687 @@
+{
+  "capturedAt": "2026-09-26T21:40:40.509Z",
+  "url": "/research/customer-support-pricing-2026",
+  "json": {
+    "status": 200,
+    "contentType": "application/json",
+    "rows": 16,
+    "sampleSize": 16
+  },
+  "csv": {
+    "status": 200,
+    "contentType": "text/csv; charset=utf-8",
+    "disposition": "attachment; filename=\"customer-support-pricing-benchmark-2026.csv\"",
+    "lineCount": 17
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Customer Support Pricing Benchmark 2026",
+    "description": "How 16 customer support platforms bill for AI-handled conversations, verified against each vendor's own pricing page: who publishes a per-resolution AI rate, who bundles it, and where the underlying seat price is undisclosed.",
+    "url": "https://miloosh.com/research/customer-support-pricing-2026",
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26",
+    "creator": {
+      "@type": "Organization",
+      "name": "Miloosh",
+      "url": "https://miloosh.com"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "contentUrl": "https://miloosh.com/api/research/customer-support-pricing-2026",
+        "encodingFormat": "application/json"
+      },
+      {
+        "@type": "DataDownload",
+        "contentUrl": "https://miloosh.com/api/research/customer-support-pricing-2026/csv",
+        "encodingFormat": "text/csv"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "slug": "crisp",
+      "officialSource": "https://crisp.chat/en/pricing/",
+      "lastVerified": "2026-09-26"
+    },
+    {
+      "slug": "five9",
+      "officialSource": "https://www.five9.com/pricing",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "slug": "freshdesk",
+      "officialSource": "https://www.freshworks.com/freshdesk/pricing/",
+      "lastVerified": "2026-08-23"
+    },
+    {
+      "slug": "front",
+      "officialSource": "https://front.com/pricing",
+      "lastVerified": "2026-08-23"
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "officialSource": "https://www.genesys.com/pricing",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "slug": "gorgias",
+      "officialSource": "https://www.gorgias.com/pricing",
+      "lastVerified": "2026-09-26"
+    },
+    {
+      "slug": "happyfox",
+      "officialSource": null,
+      "lastVerified": null
+    },
+    {
+      "slug": "help-scout",
+      "officialSource": "https://www.helpscout.com/pricing/",
+      "lastVerified": "2026-08-22"
+    },
+    {
+      "slug": "intercom",
+      "officialSource": "https://www.intercom.com/pricing",
+      "lastVerified": "2026-08-23"
+    },
+    {
+      "slug": "kayako",
+      "officialSource": "https://kayako.com/pricing/",
+      "lastVerified": "2026-09-26"
+    },
+    {
+      "slug": "liveagent",
+      "officialSource": "https://www.liveagent.com/pricing/",
+      "lastVerified": "2026-09-26"
+    },
+    {
+      "slug": "reamaze",
+      "officialSource": "https://www.reamaze.com/pricing",
+      "lastVerified": "2026-09-26"
+    },
+    {
+      "slug": "talkdesk",
+      "officialSource": "https://www.talkdesk.com/pricing/",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "slug": "tidio",
+      "officialSource": "https://www.tidio.com/pricing/",
+      "lastVerified": "2026-08-23"
+    },
+    {
+      "slug": "zendesk",
+      "officialSource": "https://www.zendesk.com/pricing/",
+      "lastVerified": "2026-09-26"
+    },
+    {
+      "slug": "zoho-desk",
+      "officialSource": "https://www.zoho.com/desk/pricing.html",
+      "lastVerified": "2026-08-28"
+    }
+  ],
+  "sourceAnchors": 15,
+  "privateFieldsPresent": false,
+  "apiWrites": 0,
+  "codeCommit": "2c179759ec37728661f271be70f713fc44147b29",
+  "researchCommit": "4d34fd163ee3149e665ab0172f94b848ff6280bc",
+  "buildId": "WPOOUATi6uiUzB6g-vY6b",
+  "artifactHash": "427f6ef845f3b8b2ca2f18092887174f1d3c7dceead327c2a9086ac6fdcb0390",
+  "renderedQa": [
+    {
+      "url": "/research",
+      "status": "PASS",
+      "canonical": [
+        "https://miloosh.com/research"
+      ],
+      "title": "Research | Miloosh",
+      "description": "Miloosh's original, source-verified research: datasets built from our own software catalog and each vendor's own pricing page, published with methodology and a downloadable dataset.",
+      "noindex": false,
+      "schemaTypes": [
+        "Organization"
+      ],
+      "inboundPages": 1783,
+      "failures": [],
+      "scope": "Local artifact, not production or Google inclusion"
+    },
+    {
+      "url": "/research/saas-pricing-pressure-index-2026",
+      "status": "PASS",
+      "canonical": [
+        "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+      ],
+      "title": "Miloosh SaaS Pricing Pressure Index 2026 | Miloosh",
+      "description": "Published SaaS starting prices and documented plan availability, with dated vendor sources, explicit sample sizes, currencies, and modeled-cost limitations.",
+      "noindex": false,
+      "schemaTypes": [
+        "Organization"
+      ],
+      "inboundPages": 1783,
+      "failures": [],
+      "scope": "Local artifact, not production or Google inclusion"
+    },
+    {
+      "url": "/research/customer-support-pricing-2026",
+      "status": "PASS",
+      "canonical": [
+        "https://miloosh.com/research/customer-support-pricing-2026"
+      ],
+      "title": "Customer Support Pricing Benchmark 2026 | Miloosh",
+      "description": "How 16 customer support platforms bill for AI-handled conversations, verified against each vendor's own pricing page: who publishes a per-resolution AI rate, who bundles it, and where the underlying seat price is undisclosed.",
+      "noindex": false,
+      "schemaTypes": [
+        "Organization",
+        "Dataset"
+      ],
+      "inboundPages": 1,
+      "failures": [],
+      "scope": "Local artifact, not production or Google inclusion"
+    }
+  ],
+  "browser": {
+    "capturedAt": "2026-09-26T21:36:34.735Z",
+    "merchantNavigations": 0,
+    "analyticsWrites": 0,
+    "viewports": [
+      1440,
+      390,
+      320
+    ],
+    "results": [
+      {
+        "route": "/research",
+        "width": 1440,
+        "canonical": "https://miloosh.com/research",
+        "h1": "Research",
+        "overflow": false
+      },
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "width": 1440,
+        "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+        "h1": "SaaS Pricing Pressure Index 2026",
+        "overflow": false
+      },
+      {
+        "route": "/research/customer-support-pricing-2026",
+        "width": 1440,
+        "canonical": "https://miloosh.com/research/customer-support-pricing-2026",
+        "h1": "Customer Support Pricing Benchmark 2026",
+        "overflow": false
+      },
+      {
+        "route": "/software/jotform",
+        "width": 1440,
+        "canonical": "https://miloosh.com/software/jotform",
+        "commercial": [
+          {
+            "href": "https://www.jotform.com/?partner=miloosh",
+            "location": "software-page-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          },
+          {
+            "href": "https://www.jotform.com/pricing/?partner=miloosh",
+            "location": "pricing-section-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          }
+        ],
+        "overflow": false,
+        "vendor": 3
+      },
+      {
+        "route": "/software/hubspot",
+        "width": 1440,
+        "canonical": "https://miloosh.com/software/hubspot",
+        "commercial": [
+          {
+            "href": "https://www.hubspot.com/products/crm",
+            "location": "software-page-cta",
+            "rel": "noopener noreferrer",
+            "slug": "hubspot"
+          },
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "alternative-decision-guide",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://www.salesforce.com/crm/",
+            "location": "alternative-decision-guide",
+            "rel": "noopener noreferrer",
+            "slug": "salesforce"
+          }
+        ],
+        "overflow": false,
+        "vendor": 1
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "width": 1440,
+        "canonical": "https://miloosh.com/compare/pipedrive-vs-close",
+        "commercial": [
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://refer.close.com/0alqdg4so8rm",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "close"
+          }
+        ],
+        "overflow": false,
+        "vendor": 0
+      },
+      {
+        "route": "/research",
+        "width": 390,
+        "canonical": "https://miloosh.com/research",
+        "h1": "Research",
+        "overflow": false
+      },
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "width": 390,
+        "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+        "h1": "SaaS Pricing Pressure Index 2026",
+        "overflow": false
+      },
+      {
+        "route": "/research/customer-support-pricing-2026",
+        "width": 390,
+        "canonical": "https://miloosh.com/research/customer-support-pricing-2026",
+        "h1": "Customer Support Pricing Benchmark 2026",
+        "overflow": false
+      },
+      {
+        "route": "/software/jotform",
+        "width": 390,
+        "canonical": "https://miloosh.com/software/jotform",
+        "commercial": [
+          {
+            "href": "https://www.jotform.com/?partner=miloosh",
+            "location": "software-page-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          },
+          {
+            "href": "https://www.jotform.com/pricing/?partner=miloosh",
+            "location": "pricing-section-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          }
+        ],
+        "overflow": false,
+        "vendor": 3
+      },
+      {
+        "route": "/software/hubspot",
+        "width": 390,
+        "canonical": "https://miloosh.com/software/hubspot",
+        "commercial": [
+          {
+            "href": "https://www.hubspot.com/products/crm",
+            "location": "software-page-cta",
+            "rel": "noopener noreferrer",
+            "slug": "hubspot"
+          },
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "alternative-decision-guide",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://www.salesforce.com/crm/",
+            "location": "alternative-decision-guide",
+            "rel": "noopener noreferrer",
+            "slug": "salesforce"
+          }
+        ],
+        "overflow": false,
+        "vendor": 1
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "width": 390,
+        "canonical": "https://miloosh.com/compare/pipedrive-vs-close",
+        "commercial": [
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://refer.close.com/0alqdg4so8rm",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "close"
+          }
+        ],
+        "overflow": false,
+        "vendor": 0
+      },
+      {
+        "route": "/research",
+        "width": 320,
+        "canonical": "https://miloosh.com/research",
+        "h1": "Research",
+        "overflow": false
+      },
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "width": 320,
+        "canonical": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+        "h1": "SaaS Pricing Pressure Index 2026",
+        "overflow": false
+      },
+      {
+        "route": "/research/customer-support-pricing-2026",
+        "width": 320,
+        "canonical": "https://miloosh.com/research/customer-support-pricing-2026",
+        "h1": "Customer Support Pricing Benchmark 2026",
+        "overflow": false
+      },
+      {
+        "route": "/software/jotform",
+        "width": 320,
+        "canonical": "https://miloosh.com/software/jotform",
+        "commercial": [
+          {
+            "href": "https://www.jotform.com/?partner=miloosh",
+            "location": "software-page-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          },
+          {
+            "href": "https://www.jotform.com/pricing/?partner=miloosh",
+            "location": "pricing-section-cta",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "jotform"
+          }
+        ],
+        "overflow": false,
+        "vendor": 3
+      },
+      {
+        "route": "/software/hubspot",
+        "width": 320,
+        "canonical": "https://miloosh.com/software/hubspot",
+        "commercial": [
+          {
+            "href": "https://www.hubspot.com/products/crm",
+            "location": "software-page-cta",
+            "rel": "noopener noreferrer",
+            "slug": "hubspot"
+          },
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "alternative-decision-guide",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://www.salesforce.com/crm/",
+            "location": "alternative-decision-guide",
+            "rel": "noopener noreferrer",
+            "slug": "salesforce"
+          }
+        ],
+        "overflow": false,
+        "vendor": 1
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "width": 320,
+        "canonical": "https://miloosh.com/compare/pipedrive-vs-close",
+        "commercial": [
+          {
+            "href": "https://aff.trypipedrive.com/ajtcgyu06e7i",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "pipedrive"
+          },
+          {
+            "href": "https://refer.close.com/0alqdg4so8rm",
+            "location": "compare-page-choose-card",
+            "rel": "sponsored noopener noreferrer",
+            "slug": "close"
+          }
+        ],
+        "overflow": false,
+        "vendor": 0
+      },
+      {
+        "route": "/api/research/customer-support-pricing-2026",
+        "status": 200,
+        "rows": 16,
+        "csvStatus": 200,
+        "csvLines": 17
+      }
+    ]
+  },
+  "analytics": {
+    "capturedAt": "2026-09-26T21:36:34.107Z",
+    "evidence": [
+      {
+        "width": 1440,
+        "research": "/research/saas-pricing-pressure-index-2026",
+        "researchViews": 1,
+        "sourceHost": "www.algolia.com",
+        "decisionPath": "/software/algolia",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "algolia",
+        "ctaLocation": "software-page-cta",
+        "ctaExposureObserved": true,
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      },
+      {
+        "width": 1440,
+        "research": "/research/customer-support-pricing-2026",
+        "researchViews": 1,
+        "sourceHost": "crisp.chat",
+        "decisionPath": "/software/freshdesk",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "freshdesk",
+        "ctaLocation": "software-page-cta",
+        "ctaExposureObserved": true,
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 2,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      },
+      {
+        "width": 390,
+        "research": "/research/saas-pricing-pressure-index-2026",
+        "researchViews": 1,
+        "sourceHost": "www.algolia.com",
+        "decisionPath": "/software/algolia",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "algolia",
+        "ctaLocation": "software-page-cta",
+        "ctaExposureObserved": true,
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      },
+      {
+        "width": 390,
+        "research": "/research/customer-support-pricing-2026",
+        "researchViews": 1,
+        "sourceHost": "crisp.chat",
+        "decisionPath": "/software/freshdesk",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "freshdesk",
+        "ctaLocation": "software-page-cta",
+        "ctaExposureObserved": true,
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      },
+      {
+        "width": 320,
+        "research": "/research/saas-pricing-pressure-index-2026",
+        "researchViews": 1,
+        "sourceHost": "www.algolia.com",
+        "decisionPath": "/software/algolia",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "algolia",
+        "ctaLocation": "software-page-cta",
+        "ctaExposureObserved": true,
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      },
+      {
+        "width": 320,
+        "research": "/research/customer-support-pricing-2026",
+        "researchViews": 1,
+        "sourceHost": "crisp.chat",
+        "decisionPath": "/software/freshdesk",
+        "researchDecisionClicks": 1,
+        "softwareSlug": "freshdesk",
+        "ctaLocation": "software-page-cta",
+        "ctaExposureObserved": true,
+        "interceptedHandoffRequests": 1,
+        "externalBlocked": 3,
+        "eventTypes": [
+          "page_view",
+          "research_page_view",
+          "research_source_click",
+          "research_to_decision_click",
+          "page_view",
+          "software_view",
+          "cta_impression",
+          "cta_click"
+        ],
+        "productionWrites": 0,
+        "merchantRequestsSent": 0,
+        "note": "Synthetic local browser proof; handoff endpoint is mocked, not a production handoff or merchant arrival"
+      }
+    ]
+  },
+  "manualTableInspection": {
+    "viewports": [
+      1440,
+      390,
+      320
+    ],
+    "pageOverflow": false,
+    "desktop": {
+      "containerWidth": 1086,
+      "tableWidths": [
+        1086,
+        1086,
+        1086
+      ]
+    },
+    "mobile390": {
+      "containerWidth": 356,
+      "tableWidths": [
+        490.6875,
+        473.375,
+        745.4375
+      ],
+      "containerOverflowX": "auto"
+    },
+    "mobile320": {
+      "containerWidth": 286,
+      "tableWidths": [
+        490.6875,
+        473.375,
+        745.4375
+      ],
+      "containerOverflowX": "auto"
+    },
+    "screenshots": [
+      "var/growth/google-command/browser/support-table-1440.png",
+      "var/growth/google-command/browser/support-table-390.png",
+      "var/growth/google-command/browser/support-table-320.png"
+    ],
+    "visuallyInspected": true
+  },
+  "sourceScope": "15 rendered editorial Source anchors plus 1 explicitly unknown record. Existing dated vendor evidence preserved; this integration did not re-audit product claims or assert every source was freshly checked today.",
+  "production": {
+    "changed": false,
+    "checkedAt": "2026-09-26T21:33:57.425Z",
+    "newHubAndAssetAndApis": 404,
+    "existingPricingIndex": 200
+  },
+  "indexing": {
+    "candidate": "https://miloosh.com/research/customer-support-pricing-2026",
+    "state": "WAIT_DEPLOYMENT_VERIFICATION",
+    "quota": "UNKNOWN",
+    "requestHistory": "UNKNOWN",
+    "requestsMade": 0
+  }
+}
