@@ -9,7 +9,7 @@ const start = process.argv[4],
   end = process.argv[5];
 if (!file || !start || !end)
   throw new Error(
-    "Usage: import-google-war-evidence.ts PAGE_JSON INSPECTION_JSON START_DATE END_DATE. Dates must match the authenticated export.",
+    "Usage: import-google-war-evidence.ts PAGE_JSON INSPECTION_JSON START_DATE END_DATE [OUTPUT_DIRECTORY]. Dates must match the authenticated export.",
   );
 const raw = fs.readFileSync(file, "utf8");
 const source = `Authenticated GSC UI page export; ${path.basename(file)}; sha256:${createHash("sha256").update(raw).digest("hex")}`;
@@ -24,14 +24,18 @@ const inspections = inspectionFile
         ),
     )
   : [];
-fs.mkdirSync("data/growth/google-war", { recursive: true });
+const output = path.resolve(
+  process.argv[6] ??
+    `var/growth/google-war/imports/${snapshot.capturedAt.replace(/[^0-9TZ]/g, "-")}`,
+);
+fs.mkdirSync(output, { recursive: true });
 fs.writeFileSync(
-  "data/growth/google-war/search-snapshot.json",
+  path.join(output, "search-snapshot.json"),
   JSON.stringify(snapshot, null, 2) + "\n",
   { flag: "wx" },
 );
 fs.writeFileSync(
-  "data/growth/google-war/inspections.json",
+  path.join(output, "inspections.json"),
   JSON.stringify(inspections, null, 2) + "\n",
   { flag: "wx" },
 );
@@ -40,5 +44,6 @@ console.log(
     rows: snapshot.rows.length,
     capturedAt: snapshot.capturedAt,
     inspections: inspections.length,
+    output,
   }),
 );
