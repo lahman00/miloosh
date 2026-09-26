@@ -1,0 +1,60 @@
+{
+  "handoffFor": "Antigravity",
+  "preparedBy": "Claude (claude/miloosh-master-google-war-20260926)",
+  "preparedAt": "2026-09-27",
+  "assets": [
+    {
+      "assetUrl": "https://miloosh.com/research/crm-plan-gates-2026",
+      "datasetDownloadUrls": {
+        "json": "https://miloosh.com/api/research/crm-plan-gates-2026",
+        "csv": "https://miloosh.com/api/research/crm-plan-gates-2026/csv"
+      },
+      "sourceDate": "2026-09-27",
+      "verifiedFindings": [
+        "Only 1 of 7 CRM vendors (Zoho CRM) includes sales sequences/cadences on its entry paid plan; the other 6 (Pipedrive, Close, HubSpot, Freshsales, Salesforce, monday CRM) require at least one upgrade beyond the cheapest paid tier",
+        "5 of 7 include two-way email sync on their entry (or free) plan; Pipedrive and monday CRM require an upgrade first",
+        "monday CRM is the only vendor of the 7 with a confirmed minimum seat count to purchase (3 seats)",
+        "Annual billing is required to get the advertised entry price at 3 of 7 vendors (Close, HubSpot, Freshsales)",
+        "3 of 7 (Pipedrive, Close, monday CRM) disclose no cap on the number of pipelines"
+      ],
+      "audience": ["Sales leaders and RevOps evaluating a CRM switch", "SaaS buying-guide writers and analysts", "Small-team founders pricing out their first real CRM"],
+      "pitchAngle": "A CRM's advertised price doesn't say which plan you actually need -- this dataset checks the actual feature-gate position (not price) across 7 major CRMs, and it deliberately isn't a ranking.",
+      "deepLinkTarget": "https://miloosh.com/research/crm-plan-gates-2026 (link the specific finding, e.g. the sequences-gate row, not the homepage)",
+      "claimsThatMustNotBeMade": [
+        "Do NOT present this as a CRM ranking or a 'best CRM' recommendation -- it explicitly is not one, and the page itself states this; a pitch implying otherwise misrepresents the asset",
+        "Do NOT claim any of the 7 vendors is 'better' or 'worse' based on gate position -- a gated feature is a packaging fact, not a quality judgment",
+        "Do NOT state unknown fields as confirmed (e.g. Salesforce's pipeline cap, Freshsales' plain-SKU contact limits are explicitly unconfirmed -- say so if referenced)",
+        "Do NOT call this an 'index' -- it computes no composite score"
+      ]
+    },
+    {
+      "assetUrl": "https://miloosh.com/research/customer-support-pricing-2026",
+      "datasetDownloadUrls": {
+        "json": "https://miloosh.com/api/research/customer-support-pricing-2026",
+        "csv": "https://miloosh.com/api/research/customer-support-pricing-2026/csv"
+      },
+      "sourceDate": "2026-09-27",
+      "note": "REVISED since the prior handoff (docs/growth/receipts/20260926-citable-research/authority-handoff.json) -- the headline stat changed from 5 of 16 to 9 of 16 after a full re-verification found real AI-usage pricing at 4 additional vendors that the original research missed. Any pitch or draft using the old 5-of-16 figure must be updated before use.",
+      "verifiedFindings": [
+        "9 of 16 customer support platforms now confirmed to publish a distinct, separately billed AI-usage price (was incorrectly reported as 5 of 16 before this session's re-verification)",
+        "Kayako is the only vendor whose AI-usage price is public while its base seat price is not (contact-sales only) -- the inverse of the usual transparency pattern",
+        "Zendesk names a separate AI-usage billing unit ('Automated Resolutions') without publishing its dollar rate -- a third, distinct disclosure pattern",
+        "HappyFox, previously entirely unpriced in this research (page unreachable during original research), is now confirmed to have two separately metered AI products (Chatbot $0.33/resolution, Autopilot as low as $0.02/action)",
+        "Only Intercom's disclosed AI rate can be turned into a full monthly-cost formula from public information alone -- the other 8 disclosed rates each have a missing input (an undisclosed allowance, an undisclosed seat price, or a variable/tier-dependent rate)"
+      ],
+      "audience": ["SaaS founders and operators evaluating a support-platform switch", "Finance/RevOps modeling support-tool TCO", "SaaS pricing researchers (the audience already engaged via the existing SaaS Mag article)"],
+      "pitchAngle": "Most customer-support vendors still don't price their AI separately from seats -- and the ones that do use four different, non-interchangeable billing units.",
+      "deepLinkTarget": "https://miloosh.com/research/customer-support-pricing-2026 (the AI-usage-pricing table or the Intercom crossing scenario)",
+      "claimsThatMustNotBeMade": [
+        "Do NOT use the old '5 of 16' figure -- it is now '9 of 16' as of 2026-09-27",
+        "Do NOT present the Intercom crossing-point scenario as a typical, average, or predicted customer bill -- it is illustrative arithmetic for a hypothetical 3-seat team",
+        "Do NOT claim Miloosh 'tested' any of these products -- this is a pricing-page verification exercise",
+        "Do NOT use superlatives about Miloosh itself"
+      ]
+    }
+  ],
+  "communityAngles": [
+    "Share both datasets' CSV/JSON downloads directly in SaaS-pricing, RevOps, or customer-support-ops communities as a primary-sourced reference",
+    "Invite corrections via the site's existing corrections-policy contact channel if a vendor's plan structure has changed since verification"
+  ]
+}

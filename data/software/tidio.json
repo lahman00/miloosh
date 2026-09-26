@@ -4,7 +4,13 @@
   "category": "customer-support",
   "description": "Tidio is a customer service platform combining live chat, a help desk, and the Lyro AI agent, which can independently handle a large share of repetitive support conversations.",
   "website": "https://www.tidio.com",
-  "platforms": ["Web", "iOS", "Android", "Windows", "macOS"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android",
+    "Windows",
+    "macOS"
+  ],
   "best_for": "Around 300,000 businesses wanting AI-assisted customer service without replacing their human support team, particularly ecommerce sites on Shopify and WordPress.",
   "features": [
     "Lyro AI agent for automated conversation handling",
@@ -24,16 +30,55 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true, "days": 7 },
-    "entry_paid": { "amount": "24.17", "currency": "USD", "billing_period": "monthly" },
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "24.17",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false
+    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "50 billable conversations/month, 50 one-time Lyro AI conversations, 100 Flows visitors/month." },
-      { "name": "Starter", "amount": "24.17", "currency": "USD", "billing_period": "monthly", "notes": "100 billable conversations/month, 50 Lyro AI conversations/month." },
-      { "name": "Growth", "amount": "49.17", "currency": "USD", "billing_period": "monthly", "notes": "Starting price, scales with usage. 250+ billable conversations/month, 50+ Lyro AI conversations/month. Marked \"Popular\"." },
-      { "name": "Plus", "amount": "300", "currency": "USD", "billing_period": "monthly", "notes": "Starting price + monthly usage charges on top. Custom conversation limits, dedicated success manager, requires contacting sales for exact pricing." }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "50 billable conversations/month, 50 one-time Lyro AI conversations, 100 Flows visitors/month."
+      },
+      {
+        "name": "Starter",
+        "amount": "24.17",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "100 billable conversations/month, 50 Lyro AI conversations/month."
+      },
+      {
+        "name": "Growth",
+        "amount": "49.17",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price, scales with usage. 250+ billable conversations/month, 50+ Lyro AI conversations/month. Marked \"Popular\"."
+      },
+      {
+        "name": "Plus",
+        "amount": "300",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price + monthly usage charges on top. Custom conversation limits, dedicated success manager, requires contacting sales for exact pricing."
+      },
+      {
+        "name": "Lyro AI Agent",
+        "amount": "32.50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Sold as a separate add-on from the base conversation plans above. Starting price for 50 Lyro AI conversations/month -- a bundle rate, not a per-conversation charge. The separate Premium plan additionally lists \"pay-per-resolution billing\" as a feature with no published per-resolution rate."
+      }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-23",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.tidio.com/pricing/"
   },
   "cons": [
@@ -46,21 +91,33 @@
       "slug": "intercom",
       "description": "A customer messaging platform combining live chat, help desk, and AI-powered support agents.",
       "best_for": "SaaS companies wanting conversational, in-app customer engagement.",
-      "strengths": ["AI chatbot (Fin)", "In-app messaging", "Product tours"]
+      "strengths": [
+        "AI chatbot (Fin)",
+        "In-app messaging",
+        "Product tours"
+      ]
     },
     {
       "name": "Crisp",
       "slug": "crisp",
       "description": "An all-in-one support platform combining live chat, AI agents, and a shared inbox.",
       "best_for": "Startups to enterprises wanting a lightweight, chat-first support tool.",
-      "strengths": ["AI agent builder", "Live chat widget", "Built-in CRM"]
+      "strengths": [
+        "AI agent builder",
+        "Live chat widget",
+        "Built-in CRM"
+      ]
     },
     {
       "name": "LiveAgent",
       "slug": "liveagent",
       "description": "An all-in-one help desk merging email, chat, phone, and social into one dashboard.",
       "best_for": "Businesses handling multiple channels wanting fast live chat.",
-      "strengths": ["Built-in call center", "Multichannel ticketing", "AI chatbot"]
+      "strengths": [
+        "Built-in call center",
+        "Multichannel ticketing",
+        "AI chatbot"
+      ]
     },
     {
       "name": "Zoho Desk",

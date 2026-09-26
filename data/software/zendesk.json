@@ -4,7 +4,11 @@
   "category": "customer-support",
   "description": "Zendesk is an AI-first customer service platform combining self-learning AI agents with unified ticketing and omnichannel workflow tools, serving both customer service and internal employee service use cases.",
   "website": "https://www.zendesk.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for customer service teams, employee/IT/HR service departments, and contact centers spanning startups to large enterprises across industries like retail, financial services, healthcare, and government.",
   "pricing": {
     "model": "paid",
@@ -12,15 +16,49 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "19",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
     "tiers": [
-      { "name": "Support Team", "amount": "19", "currency": "USD", "billing_period": "monthly", "unit": "per agent, billed annually", "notes": "Email and ticketing only, no messaging/Suite features: routing, analytics dashboards, canned responses." },
-      { "name": "Suite Team", "amount": "55", "currency": "USD", "billing_period": "monthly", "unit": "per agent, billed annually", "notes": "Adds AI Agents, knowledge base, omnichannel routing, and messaging/live chat." },
-      { "name": "Suite Professional", "amount": "115", "currency": "USD", "billing_period": "monthly", "unit": "per agent, billed annually", "notes": "Adds Admin Copilot, skills-based routing, up to 5 help centers, and a HIPAA option." },
-      { "name": "Suite Enterprise + Copilot", "billing_period": "monthly", "notes": "Contact sales; no public price. Adds Intelligent Triage, generative AI for voice, and custom roles." }
+      {
+        "name": "Support Team",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per agent, billed annually",
+        "notes": "Email and ticketing only, no messaging/Suite features: routing, analytics dashboards, canned responses."
+      },
+      {
+        "name": "Suite Team",
+        "amount": "55",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per agent, billed annually",
+        "notes": "Adds AI Agents, knowledge base, omnichannel routing, and messaging/live chat."
+      },
+      {
+        "name": "Suite Professional",
+        "amount": "115",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per agent, billed annually",
+        "notes": "Adds Admin Copilot, skills-based routing, up to 5 help centers, and a HIPAA option."
+      },
+      {
+        "name": "Suite Enterprise + Copilot",
+        "billing_period": "monthly",
+        "notes": "Contact sales; no public price. Adds Intelligent Triage, generative AI for voice, and custom roles."
+      }
     ],
-    "last_verified": "2026-09-26",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.zendesk.com/pricing/"
   },
   "cons": [
@@ -36,7 +74,10 @@
     "AI-driven quality assurance and analytics dashboards",
     "Workforce/contact-center management (forecasting, scheduling)"
   ],
-  "sources": ["https://www.zendesk.com", "https://support.zendesk.com/hc/en-us/articles/4408846407066-About-the-Zendesk-Support-mobile-app"],
+  "sources": [
+    "https://www.zendesk.com",
+    "https://support.zendesk.com/hc/en-us/articles/4408846407066-About-the-Zendesk-Support-mobile-app"
+  ],
   "accessed_at": "2026-08-01",
   "alternatives": [
     {
@@ -44,14 +85,22 @@
       "slug": "intercom",
       "description": "A customer service platform pairing a full helpdesk with Fin, a natively integrated AI agent.",
       "best_for": "Businesses wanting AI-agent-led resolution alongside human conversations.",
-      "strengths": ["Fin AI Agent", "Omnichannel inbox", "350+ integrations"]
+      "strengths": [
+        "Fin AI Agent",
+        "Omnichannel inbox",
+        "350+ integrations"
+      ]
     },
     {
       "name": "Freshdesk",
       "slug": "freshdesk",
       "description": "An AI-powered customer service solution designed to be easy to set up and boost agent productivity.",
       "best_for": "Mid-market to enterprise support teams wanting quick setup and AI ticket resolution.",
-      "strengths": ["AI Copilot for agents", "Omnichannel messaging", "Unified workspace"]
+      "strengths": [
+        "AI Copilot for agents",
+        "Omnichannel messaging",
+        "Unified workspace"
+      ]
     },
     {
       "name": "Zoho Desk",

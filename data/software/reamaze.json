@@ -4,7 +4,11 @@
   "category": "customer-support",
   "description": "Re:amaze is a unified customer service platform for ecommerce and online businesses, combining a shared inbox, live chat, chatbots, and an AI agent trained on the business's own content.",
   "website": "https://www.reamaze.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Ecommerce and online businesses on Shopify, BigCommerce, and WordPress wanting agent productivity tools alongside AI-assisted support.",
   "features": [
     "Shared inbox unifying email, live chat, social, SMS, VoIP, and video calls",
@@ -25,15 +29,51 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "29", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "29",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Starter", "amount": "59", "currency": "USD", "billing_period": "monthly", "unit": "per workspace", "notes": "Flat rate, unlimited team members, capped at 500 responded conversations/month." },
-      { "name": "Basic", "amount": "29", "currency": "USD", "billing_period": "monthly", "unit": "team member/month", "notes": "$26.10/team member/month if billed annually (10% discount)." },
-      { "name": "Pro", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "team member/month", "notes": "$44.10/team member/month if billed annually." },
-      { "name": "Plus", "amount": "69", "currency": "USD", "billing_period": "monthly", "unit": "team member/month", "notes": "$62.10/team member/month if billed annually. Includes AI Agent with a monthly included-resolution allowance; overage billed at $0.85 per additional resolution." }
+      {
+        "name": "Starter",
+        "amount": "59",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per workspace",
+        "notes": "Flat rate, unlimited team members, capped at 500 responded conversations/month."
+      },
+      {
+        "name": "Basic",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "team member/month",
+        "notes": "$26.10/team member/month if billed annually (10% discount)."
+      },
+      {
+        "name": "Pro",
+        "amount": "49",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "team member/month",
+        "notes": "$44.10/team member/month if billed annually."
+      },
+      {
+        "name": "Plus",
+        "amount": "69",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "team member/month",
+        "notes": "$62.10/team member/month if billed annually. Includes AI Agent with a monthly included-resolution allowance; overage billed at $0.85 per additional resolution."
+      }
     ],
-    "last_verified": "2026-09-26",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.reamaze.com/pricing"
   },
   "alternatives": [
@@ -42,21 +82,33 @@
       "slug": "gorgias",
       "description": "An ecommerce-focused help desk that connects directly to Shopify and other store platforms.",
       "best_for": "Ecommerce brands wanting support tied to order and customer data.",
-      "strengths": ["Ecommerce integrations", "Macros and automation", "Revenue tracking"]
+      "strengths": [
+        "Ecommerce integrations",
+        "Macros and automation",
+        "Revenue tracking"
+      ]
     },
     {
       "name": "Front",
       "slug": "front",
       "description": "An AI customer operations platform unifying shared inboxes, ticketing, and live chat.",
       "best_for": "Operations, support, and sales teams needing cross-team inbox collaboration.",
-      "strengths": ["Shared inbox collaboration", "Automation", "Cross-team workflows"]
+      "strengths": [
+        "Shared inbox collaboration",
+        "Automation",
+        "Cross-team workflows"
+      ]
     },
     {
       "name": "Tidio",
       "slug": "tidio",
       "description": "A live chat and help desk platform powered by the Lyro AI agent.",
       "best_for": "Ecommerce businesses wanting AI-assisted chat without replacing human agents.",
-      "strengths": ["Lyro AI agent", "Live chat", "Shopify/WordPress integrations"]
+      "strengths": [
+        "Lyro AI agent",
+        "Live chat",
+        "Shopify/WordPress integrations"
+      ]
     },
     {
       "name": "Zoho Desk",

@@ -1,0 +1,79 @@
+{
+  "auditedAt": "2026-09-27",
+  "asset": "Customer Support Pricing Benchmark 2026",
+  "method": "All 16 vendor pricing pages were independently re-fetched live and compared field-by-field against the previously committed dataset (2026-09-26 version). This ran as a 16-agent parallel workflow, one agent per vendor, each given the vendor's URL and the previously recorded fields, and asked to report matches vs. discrepancies with quoted evidence.",
+  "summary": {
+    "vendorsChecked": 16,
+    "vendorsWithNoChange": 10,
+    "vendorsWithRealChange": 6,
+    "headlineStatBefore": "5 of 16 vendors disclose a separate AI-usage price",
+    "headlineStatAfter": "9 of 16 vendors disclose a separate AI-usage price",
+    "rootCause": "Incomplete original research, not vendor price changes overnight. 4 of the 6 changed rows (Front, HappyFox, Help Scout, Tidio) had real, already-public AI-usage pricing that the original per-vendor research pass simply did not find or report. 1 row (Gorgias) had a range that widened once a previously-unchecked tier was confirmed. 1 row (Zendesk) revealed a new nuance (a named billing mechanism disclosed without its dollar rate) that doesn't change the boolean but changes what is known."
+  },
+  "vendorsWithNoChange": ["crisp", "five9", "freshdesk", "genesys-cloud-cx", "intercom", "kayako", "liveagent", "reamaze", "talkdesk", "zoho-desk"],
+  "changes": [
+    {
+      "slug": "front",
+      "field": "aiUsagePricing.disclosed",
+      "before": { "disclosed": false, "unitPrice": null },
+      "after": { "disclosed": true, "unitPrice": 0.05, "unit": "per conversation (Autopilot AI agent add-on, a \"starting at\" rate)" },
+      "evidence": "\"Autopilot -- Run complex customer work with our omnichannel AI agent -- Starting at $0.05 /conversation\" (front.com/pricing, checked live 2026-09-27)",
+      "reason": "Missed in original research; the page already disclosed this at the time of original research or shortly before."
+    },
+    {
+      "slug": "gorgias",
+      "field": "aiUsagePricing.unit (range)",
+      "before": { "range": "$0.90-$1.00 by tier" },
+      "after": { "range": "$0.85-$1.00 by tier (Starter $1.00, Basic/Pro $0.90, Advanced $0.85)" },
+      "evidence": "Gorgias's plan comparison table, tier-by-tier automated-interaction rate (gorgias.com/pricing, checked live 2026-09-27)",
+      "reason": "The Advanced tier's rate was not confirmed in the original pass; the floor of the disclosed range moved down once it was."
+    },
+    {
+      "slug": "happyfox",
+      "field": "entire pricing record",
+      "before": { "status": "unknown", "everyFieldNull": true },
+      "after": { "status": "verified", "startingPrice": "$24/agent/month", "aiUsagePricing": { "disclosed": true, "products": ["Chatbot $0.33/resolution", "Autopilot as low as $0.02/action"] } },
+      "evidence": "happyfox.com/pricing/, checked live 2026-09-27: \"Help Desk Starting at $24/agent/mo\", \"Chatbot $0.33 per resolution\", \"Autopilot Pay as low as 2c per successful action\"",
+      "reason": "The original research (2026-09-26) could not reach or parse HappyFox's pricing page and marked the entire record UNKNOWN. Re-checked live and found fully priced, including two separately metered AI products."
+    },
+    {
+      "slug": "help-scout",
+      "field": "aiUsagePricing.disclosed",
+      "before": { "disclosed": false, "unitPrice": null },
+      "after": { "disclosed": true, "unitPrice": 0.75, "unit": "per resolution (AI Answers add-on)" },
+      "evidence": "\"AI Answers Add-on $0.75/resolution\" (helpscout.com/pricing/, checked live 2026-09-27)",
+      "reason": "Missed in original research."
+    },
+    {
+      "slug": "tidio",
+      "field": "aiUsagePricing.disclosed, entryPerSeat",
+      "before": { "disclosed": false, "unitPrice": null, "entryPerSeat": null },
+      "after": { "disclosed": true, "unitPrice": 32.5, "unit": "for the Lyro AI Agent, a separate product (starting price for 50 conversations/month, a bundle rate not a marginal per-conversation price)", "entryPerSeat": false },
+      "evidence": "\"Lyro AI Agent -- Starts at $32.50/mo. From 50 Lyro AI conversations\" (tidio.com/pricing/, checked live 2026-09-27); billing is by conversation volume, not seats",
+      "reason": "Missed in original research; per-seat status was also newly clarified from unknown to false."
+    },
+    {
+      "slug": "zendesk",
+      "field": "aiUsagePricing.note (boolean unchanged)",
+      "before": { "note": "AI Agents are bundled into Suite Team and above with no separately disclosed per-resolution or per-session price." },
+      "after": { "note": "Zendesk now explicitly names and defines a separate AI-usage billing unit (\"Automated Resolutions\") without publishing its dollar rate -- a materially different finding from 'no separate billing concept at all', even though disclosed stays false since no price is public." },
+      "evidence": "\"Automated Resolutions: ... the unit of measurement used for calculating and billing your account for AI agent usage\" (zendesk.com/pricing/, checked live 2026-09-27)",
+      "reason": "New nuance found; does not change the boolean but materially improves the accuracy of the note."
+    }
+  ],
+  "catalogFilesUpdated": [
+    "data/software/happyfox.json (new pricing block, was empty)",
+    "data/software/tidio.json (per_seat corrected to false, new Lyro AI tier added, last_verified bumped)",
+    "data/software/{crisp,five9,freshdesk,front,genesys-cloud-cx,gorgias,help-scout,intercom,kayako,liveagent,reamaze,talkdesk,zendesk,zoho-desk}.json (last_verified bumped to 2026-09-27; no other field changes since these matched)"
+  ],
+  "finalStats": {
+    "sampleSize": 16,
+    "disclosedAiUsageUnit": 9,
+    "perSeatOnly": 6,
+    "contactSalesForBaseSeat": 1,
+    "freeTierAvailable": 4,
+    "freeTrialAvailable": 12,
+    "entryPricePublic": 15,
+    "noPublicPricingAtAll": 0
+  }
+}

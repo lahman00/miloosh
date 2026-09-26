@@ -4,7 +4,11 @@
   "category": "customer-support",
   "description": "LiveAgent is an all-in-one customer service platform that merges email, live chat, phone, and social messaging into a single ticketing dashboard with a built-in call center.",
   "website": "https://www.liveagent.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Businesses of various sizes handling multiple communication channels who want fast live chat and first-contact resolution in one dashboard.",
   "features": [
     "Multichannel ticketing that unifies email, chat, phone, and social messages",
@@ -25,16 +29,52 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "15",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Small Business", "amount": "15", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$19/agent/month if billed monthly." },
-      { "name": "Medium Business", "amount": "29", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$35/agent/month if billed monthly." },
-      { "name": "Large Business", "amount": "49", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$59/agent/month if billed monthly." },
-      { "name": "Enterprise", "amount": "69", "currency": "USD", "billing_period": "annual", "unit": "agent/month", "notes": "$85/agent/month if billed monthly. Requires booking a demo call. No separately disclosed AI usage price; AI Answer Assistant is bundled." }
+      {
+        "name": "Small Business",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "agent/month",
+        "notes": "$19/agent/month if billed monthly."
+      },
+      {
+        "name": "Medium Business",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "agent/month",
+        "notes": "$35/agent/month if billed monthly."
+      },
+      {
+        "name": "Large Business",
+        "amount": "49",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "agent/month",
+        "notes": "$59/agent/month if billed monthly."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "69",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "agent/month",
+        "notes": "$85/agent/month if billed monthly. Requires booking a demo call. No separately disclosed AI usage price; AI Answer Assistant is bundled."
+      }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-09-26",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.liveagent.com/pricing/"
   },
   "alternatives": [
@@ -43,21 +83,33 @@
       "slug": "zendesk",
       "description": "A customer service platform with ticketing, live chat, and AI-powered automation.",
       "best_for": "Support teams of all sizes needing an established, feature-rich helpdesk.",
-      "strengths": ["Mature ticketing system", "AI automation", "Large app marketplace"]
+      "strengths": [
+        "Mature ticketing system",
+        "AI automation",
+        "Large app marketplace"
+      ]
     },
     {
       "name": "Freshdesk",
       "slug": "freshdesk",
       "description": "A cloud-based help desk with ticketing, automation, and omnichannel support.",
       "best_for": "Support teams wanting an affordable, easy-to-deploy helpdesk.",
-      "strengths": ["Omnichannel ticketing", "Automation", "Affordable tiers"]
+      "strengths": [
+        "Omnichannel ticketing",
+        "Automation",
+        "Affordable tiers"
+      ]
     },
     {
       "name": "Help Scout",
       "slug": "help-scout",
       "description": "A shared inbox and help desk platform built for personalized, human-feeling support.",
       "best_for": "Small to mid-sized support teams wanting simple, email-centric ticketing.",
-      "strengths": ["Shared inbox", "Simplicity", "Beacon in-app help widget"]
+      "strengths": [
+        "Shared inbox",
+        "Simplicity",
+        "Beacon in-app help widget"
+      ]
     },
     {
       "name": "Zoho Desk",

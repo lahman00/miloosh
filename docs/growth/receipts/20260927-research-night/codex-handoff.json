@@ -1,0 +1,22 @@
+{
+  "handoffFor": "Codex (or whoever owns first-party analytics wiring)",
+  "preparedBy": "Claude (claude/miloosh-master-google-war-20260926)",
+  "preparedAt": "2026-09-27",
+  "instruction": "Use the EXISTING first-party analytics pipeline (lib/analytics/events.ts's FirstPartyEventType union, lib/analytics/cta-locations.ts's KNOWN_CTA_LOCATIONS set, and lib/revenue/click-tracker.ts's existing outbound/vendor-click tracking). No new analytics store, table, or tracker is requested or needed.",
+  "realPathTopology": "The research pages themselves carry NO direct merchant/affiliate links. The path to revenue is always two hops: research page -> internal software or comparison page -> that page's existing vendor CTA -> merchant handoff. Do not build or request a shortcut that skips the software/comparison page's own CTA and disclosure logic; that would separate affiliate exposure from its existing disclosure UI, which lib/affiliate.ts and shouldShowAffiliateDisclosure() specifically guard against.",
+  "urlsAndEventsToMeasure": [
+    { "url": "/research/customer-support-pricing-2026", "event": "page_view", "status": "Already fires automatically -- no code change needed." },
+    { "url": "/research", "event": "page_view", "status": "Already fires automatically -- no code change needed." },
+    { "url": "/research/crm-plan-gates-2026", "event": "page_view", "status": "Conditional -- only exists if the second asset is built this session; see second-asset-decision.md." },
+    { "url": "any /research/* page", "measure": "referrer / acquisition source on the page_view event", "status": "Already captured by the existing AcquisitionContext plumbing used on every page_view -- no separate tracking needed." },
+    { "concept": "research -> software", "event": "internal_cta_click", "status": "Requires wiring. The research page's 'Related reading' links to /software/[slug] pages currently use plain <Link>, not the existing TrackedCtaLink component. Add a new KNOWN_CTA_LOCATIONS entry (e.g. \"research-related-reading\") and wrap those links with the existing TrackedCtaLink component, the same pattern used elsewhere -- do not invent a new click-tracking mechanism." },
+    { "concept": "research -> comparison", "event": "internal_cta_click", "status": "Same as above -- the two /compare/[comparison] links on the research page need the same TrackedCtaLink wiring under the same new location string." },
+    { "concept": "research -> CTA (vendor)", "event": "outbound_click / cta_click", "status": "Not a direct link on the research page today (see realPathTopology). If Codex wants to measure the FULL funnel from research page through to a vendor click, the existing outbound_click event already carries a previousPath/acquisition chain -- filter reports by previousPath starting with /research/ rather than adding new instrumentation to the software page's already-tracked CTAs." },
+    { "concept": "merchant handoff", "event": "outbound_click (existing)", "status": "Already tracked by app/api/outbound-click/route.ts and lib/revenue/click-tracker.ts wherever a vendor CTA on a software/comparison page fires -- no new code needed. Attribution back to the research page relies on previousPath/acquisition, per the row above." }
+  ],
+  "explicitlyOutOfScope": [
+    "No new database table, event type, or external analytics vendor.",
+    "No change to CTA copy, revenue-tracking logic, or affiliate-disclosure logic.",
+    "No direct vendor/affiliate link added to any /research page -- the existing two-hop path (research -> software/comparison -> vendor) is intentional and should stay intentional; a shortcut would bypass the disclosure UI that only the software/comparison page templates render."
+  ]
+}

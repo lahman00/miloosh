@@ -4,7 +4,11 @@
   "category": "customer-support",
   "description": "Freshdesk (by Freshworks) is an AI-powered customer service solution designed to be easy to set up and boost agent productivity while delivering seamless customer experiences.",
   "website": "https://www.freshworks.com/freshdesk/",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for organizations from mid-market to enterprise, trusted by 74,000+ companies including Forbes, Bridgestone, and PepsiCo.",
   "features": [
     "AI agents that resolve customer intent and take action",
@@ -14,7 +18,10 @@
     "Omnichannel connections (WhatsApp, Messenger, Instagram, Line)",
     "Integrations with Slack, Teams, Shopify, Salesforce, Jira, HubSpot"
   ],
-  "sources": ["https://www.freshworks.com/freshdesk/", "https://www.freshworks.com/freshdesk/mobile/"],
+  "sources": [
+    "https://www.freshworks.com/freshdesk/",
+    "https://www.freshworks.com/freshdesk/mobile/"
+  ],
   "accessed_at": "2026-08-01",
   "pricing": {
     "model": "paid",
@@ -22,14 +29,40 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "19",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Growth", "amount": "19", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox." },
-      { "name": "Pro", "amount": "55", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk." },
-      { "name": "Enterprise", "amount": "89", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually. All AI and helpdesk features." }
+      {
+        "name": "Growth",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox."
+      },
+      {
+        "name": "Pro",
+        "amount": "55",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "89",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per agent/month, billed annually. All AI and helpdesk features."
+      }
     ],
-    "last_verified": "2026-08-23",
+    "last_verified": "2026-09-27",
     "official_source": "https://www.freshworks.com/freshdesk/pricing/"
   },
   "cons": [
@@ -42,14 +75,22 @@
       "slug": "zendesk",
       "description": "An AI-first service platform unifying ticketing, omnichannel messaging, and self-learning AI agents.",
       "best_for": "Larger organizations needing contact-center and workforce-management capability alongside AI ticketing.",
-      "strengths": ["Broad omnichannel routing", "Workforce management", "Employee service tools"]
+      "strengths": [
+        "Broad omnichannel routing",
+        "Workforce management",
+        "Employee service tools"
+      ]
     },
     {
       "name": "Gorgias",
       "slug": "gorgias",
       "description": "A conversational AI helpdesk built specifically for ecommerce brands, especially Shopify merchants.",
       "best_for": "Ecommerce/DTC brands wanting support tightly integrated with order and revenue data.",
-      "strengths": ["Native Shopify integration", "AI shopping assistant", "In-conversation order actions"]
+      "strengths": [
+        "Native Shopify integration",
+        "AI shopping assistant",
+        "In-conversation order actions"
+      ]
     },
     {
       "name": "Zoho Desk",
