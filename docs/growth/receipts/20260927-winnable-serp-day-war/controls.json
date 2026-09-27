@@ -1,0 +1,12 @@
+{
+  "compiledAt": "2026-09-27",
+  "note": "This session did not run a new controlled experiment -- the two real content treatments (Help Scout, WordPress pricing) were single, isolated, primary-sourced data-completeness fixes, not part of a formal treatment/control cohort with a measurement window. The real controls relevant tonight are the PRE-EXISTING frozen-cohort controls this session discovered and correctly avoided touching.",
+  "preExistingControlsRespected": [
+    { "page": "/software/adyen", "wave": "indexation-recovery-20260926", "role": "control", "status": "Untouched tonight, as required." },
+    { "page": "/software/webflow", "wave": "indexation-recovery-20260926", "role": "control", "status": "Untouched tonight -- notably, this is also the page whose pricing data is missing from the catalog; that gap was deliberately NOT fixed in data/software/webflow.json for exactly this reason. The equivalent fact was instead cited only in the new, separate /research/cms-buying-decision-2026 asset." }
+  ],
+  "comparablePagesForFutureBeforeAfterMeasurement": {
+    "helpScoutTreatment": "No formal control was designated for the Help Scout AI-pricing addition -- it is a single-fact data-completeness fix, not a content-strategy experiment, so a treatment/control design was not applicable the way it is for the frozen-cohort waves.",
+    "wordpressTreatment": "Same -- a data-completeness fix applied sitewide (every WordPress comparison page), not a single-page experiment with a natural control."
+  }
+}

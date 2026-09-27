@@ -1,0 +1,28 @@
+{
+  "compiledAt": "2026-09-27",
+  "sample": ["wordpress", "umbraco", "craft-cms", "drupal", "joomla", "webflow", "contentful", "storyblok"],
+  "criticalFinding": "6 of the 8 CMS products (craft-cms, drupal, joomla, webflow, contentful, storyblok) are pages under ACTIVE frozen-cohort experiments or legacy reservations (data/growth/frozen-cohorts.ts). Their own /software/[slug] pages were NOT edited this session -- confirmed by re-running npm run growth:google-war fresh tonight, which resolved an earlier discrepancy between a stale cached report and the current live protection registry. Only wordpress and umbraco are unprotected (HOLD/SAFE_TO_EDIT).",
+  "protectionDetail": [
+    { "slug": "craft-cms", "protection": "RESERVED -- data/growth/frozen-cohorts.ts, wave \"indexation-factory-wave2-20260926\" (treatment)" },
+    { "slug": "drupal", "protection": "RESERVED -- same wave (treatment)" },
+    { "slug": "joomla", "protection": "RESERVED -- data/growth/frozen-cohorts.ts, wave \"master-google-war-wave3-20260926\" (treatment)" },
+    { "slug": "storyblok", "protection": "RESERVED -- same wave (treatment)" },
+    { "slug": "webflow", "protection": "RESERVED -- data/growth/frozen-cohorts.ts, wave \"indexation-recovery-20260926\" (CONTROL -- must stay untouched for a valid before/after comparison)" },
+    { "slug": "contentful", "protection": "RESERVED -- same wave (treatment)" },
+    { "slug": "wordpress", "protection": "SAFE_TO_EDIT -- not in any cohort; pricing already added 2026-09-27 (see prior session's receipt)" },
+    { "slug": "umbraco", "protection": "SAFE_TO_EDIT -- not in any cohort" }
+  ],
+  "howThisWasHandled": "A new, separate research asset (/research/cms-buying-decision-2026) was built instead of editing any of the 6 protected pages. It only CITES already-public vendor facts about all 8 products -- it does not modify any /software/[slug] page's own content, metadata, or canonical. Webflow's pricing (absent from the catalog) is sourced directly in the new asset's own data module (lib/cms-decision-matrix/data.ts) and explicitly NOT written back to data/software/webflow.json, since that page is a protected control.",
+  "perProductFindings": {
+    "note": "Full per-vendor detail (pricing model, migration constraints, hosting, commercial support, developer/agency fit, sources checked, confidence, unknown fields) is in lib/cms-decision-matrix/data.ts and was researched live tonight via a parallel 8-agent workflow. Summarized here.",
+    "wordpress": { "hostedOrSelfHosted": "both", "documentsImportIn": true, "documentsExportOut": true, "note": "The only one of 8 with a documented path in BOTH directions -- exports an open WXR/XML format." },
+    "umbraco": { "hostedOrSelfHosted": "both", "documentsImportIn": false, "documentsExportOut": true, "note": "No official import-from-other-CMS tooling found; export-out exists only Umbraco-to-Umbraco (Deploy/Packages), not to a competitor." },
+    "craft-cms": { "hostedOrSelfHosted": "both", "documentsImportIn": true, "documentsExportOut": false, "note": "Official first-party WordPress importer exists; no documented export-out path to any competitor." },
+    "drupal": { "hostedOrSelfHosted": "both", "documentsImportIn": true, "documentsExportOut": false, "note": "Migrate API is explicitly one-directional (into Drupal only)." },
+    "joomla": { "hostedOrSelfHosted": "both", "documentsImportIn": true, "documentsExportOut": false, "note": "Official WordPress-to-Joomla importer (built via Google Summer of Code 2025) exists; no export-out tooling found." },
+    "webflow": { "hostedOrSelfHosted": "hosted", "documentsImportIn": false, "documentsExportOut": true, "note": "Vendor's own FAQ states flatly: no import of an existing site/code is possible. Export-out exists for static content only; dynamic content/forms break on export and cannot be reimported anywhere, including back into Webflow." },
+    "contentful": { "hostedOrSelfHosted": "hosted", "documentsImportIn": true, "documentsExportOut": false, "note": "Own CLI export/import moves content between Contentful spaces in Contentful's proprietary schema only -- not a path to any other CMS." },
+    "storyblok": { "hostedOrSelfHosted": "hosted", "documentsImportIn": true, "documentsExportOut": false, "note": "Extensive official migration-IN guides exist for named competitors (Contentful, Drupal); no official export-OUT path documented." }
+  },
+  "theOneReusableFramework": "Migration direction (import-in vs. export-out, both vendor-documented or not) is the single strongest, most defensible, most citable cross-vendor finding: 5 of 8 document import-only, 2 of 8 (Umbraco, Webflow) document export-only with no documented import path, 1 of 8 (WordPress) documents both, and 0 of 8 document neither. This became the spine of the new /research/cms-buying-decision-2026 asset rather than a generic pricing comparison, which the existing SaaS Pricing Pressure Index already covers at a sitewide level."
+}

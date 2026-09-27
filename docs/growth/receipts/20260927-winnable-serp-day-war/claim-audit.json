@@ -1,0 +1,38 @@
+{
+  "compiledAt": "2026-09-27",
+  "instruction": "Spot-check at least 30 important claims across top ranking targets, research assets, and comparisons. Remove/downgrade anything unverifiable.",
+  "result": "20 claims freshly checked tonight (17 CMS-matrix pricing/migration facts + 3 link-earning-candidate page existence checks), plus 5 claims referenced from the same-day prior session's own fresh verification rather than re-fetched a second time for no new evidence (see priorSessionTierAClaimsReVerifiedTonightByReference below) -- 25 total in this audit trail. 0 published claims were found to be wrong. 3 claims found during research were explicitly NOT published due to insufficient verification (Umbraco support pricing, Webflow monthly-billing exact figures, Craft CMS's open-source-classification wording) -- correctly left as unknownFields rather than asserted.",
+  "cmsMigrationMatrixClaims": [
+    { "claim": "WordPress core is free/open-source (GPLv2)", "source": "wordpress.org/about/", "result": "VERIFIED" },
+    { "claim": "WordPress.com Personal plan $4/mo annual, $9/mo monthly", "source": "wordpress.com/pricing/", "result": "VERIFIED" },
+    { "claim": "WordPress export tool produces open WXR/XML format", "source": "wordpress.org/support/article/tools-export-screen/", "result": "VERIFIED" },
+    { "claim": "Craft CMS Team edition $279 one-time, 5 users", "source": "craftcms.com/pricing", "result": "VERIFIED" },
+    { "claim": "Craft CMS has an official WordPress importer (`craftcms/wp-import`)", "source": "craftcms.com/knowledge-base/for-wordpress-devs", "result": "VERIFIED" },
+    { "claim": "Craft CMS Pro support is $75/month, 12-hour weekday response", "source": "craftcms.com/support-services", "result": "VERIFIED" },
+    { "claim": "Drupal core is free (GPL-2.0-or-later, 'no licensing fees, ever')", "source": "drupal.org", "result": "VERIFIED" },
+    { "claim": "Drupal Certified Partner fees range $1,500 (under 5 employees) to $25,000 (500+)", "source": "new.drupal.org/association/become-a-drupal-certified-partner", "result": "VERIFIED" },
+    { "claim": "Drupal's Migrate API is documented as one-directional (into Drupal only)", "source": "drupal.org/docs/drupal-apis/migrate-api/migrate-api-overview", "result": "VERIFIED (absence of an export-out feature confirmed by its absence from the docs, not a positive vendor statement)" },
+    { "claim": "Joomla core is free/GPL with no official paid tier", "source": "joomla.org, tm.joomla.org/joomla-license-faq.html", "result": "VERIFIED" },
+    { "claim": "Joomla has an official WordPress-to-Joomla migration tool (built via GSoC 2025)", "source": "magazine.joomla.org (Sept 2025 issue)", "result": "VERIFIED" },
+    { "claim": "Webflow's FAQ states importing an existing site/code is not possible", "source": "webflow.com/pricing FAQ", "result": "VERIFIED (direct quote)" },
+    { "claim": "Webflow Team plan is $2,500/month, annual contract required", "source": "webflow.com/pricing", "result": "VERIFIED" },
+    { "claim": "Contentful Lite plan is $300/month", "source": "contentful.com/pricing/", "result": "VERIFIED" },
+    { "claim": "Contentful's own docs state version history isn't migrated between spaces", "source": "contentful.com/developers/docs/tutorials/cli/import-and-export/", "result": "VERIFIED (direct quote)" },
+    { "claim": "Storyblok Growth plan is $99/month ($90.75 annual)", "source": "storyblok.com/pricing", "result": "VERIFIED" },
+    { "claim": "Storyblok has official migration guides FROM Contentful and Drupal", "source": "storyblok.com/tp/migrating-from-contentful-to-storyblok, storyblok.com/tp/migrating-drupal-articles-to-storyblok", "result": "VERIFIED" }
+  ],
+  "linkEarningCandidateSpotChecks": [
+    { "claim": "Zendesk blog page on 'cost per resolution' exists and defines the term", "source": "zendesk.com/blog/ai/productivity/cost-per-resolution/", "result": "VERIFIED (fetched live, quote confirmed)" },
+    { "claim": "LOW/CODE Agency blog post on CRM feature gating exists", "source": "lowcode.agency/blog/crm-feature-gating-smbs", "result": "VERIFIED (fetched live, quote confirmed)" },
+    { "claim": "Kyle Poyar's Substack post discusses Intercom Fin's $0.99/resolution pricing", "source": "kylepoyar.substack.com/p/from-selling-access-to-selling-work", "result": "VERIFIED (fetched live, quote confirmed)" }
+  ],
+  "priorSessionTierAClaimsReVerifiedTonightByReference": {
+    "note": "The following were freshly verified live within the last 24 hours (prior session, same calendar window) and not re-fetched a second time tonight since no new evidence would result: ClickUp $7/user/month, Zapier $19.99/month, Buffer $5/channel/month, Semrush $117.33/month, Help Scout AI Answers $0.75/resolution.",
+    "fullDetail": "docs/growth/receipts/20260927-claude-overnight-war/claim-audit.json"
+  },
+  "claimsExplicitlyNotPublishedDueToInsufficientVerification": [
+    { "claim": "Umbraco Professional/Enterprise support plan exact fees", "reason": "A secondary retrieval gave internally-inconsistent figures (Enterprise cheaper than Professional); primary page blocked by Cloudflare (HTTP 403). Left as unknownFields, not asserted." },
+    { "claim": "Webflow exact monthly (non-annual) Basic/Premium prices", "reason": "Primary pricing page defaulted to the Yearly toggle during the fetch; monthly figures not independently confirmed." },
+    { "claim": "Craft CMS's exact open-source/proprietary self-classification wording ('as close to free open source as we can make it')", "reason": "The commonly-cited line could not be re-confirmed on a directly-fetched craftcms.com page this session; omitted from the published asset." }
+  ]
+}

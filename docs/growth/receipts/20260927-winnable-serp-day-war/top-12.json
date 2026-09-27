@@ -1,0 +1,150 @@
+{
+  "compiledAt": "2026-09-27",
+  "note": "Refreshed from last night's top-10. Every target's experiment-protection status was re-verified tonight against a freshly-regenerated growth:google-war report (not the stale cached one) -- several targets that looked actionable last night are confirmed protected tonight and are marked MONITOR_ONLY rather than ACTIONABLE. This is the single most important update this session made to the prior target list.",
+  "targets": [
+    {
+      "rank": 1,
+      "query": "helpscout alternative",
+      "position": 71.5,
+      "impressions": 103,
+      "serpCompetitors": ["Kayako", "HelpSpace", "HappyFox", "BlueTweak", "FreeScout", "Macha AI"],
+      "whyWinnable": "Zero mega-brand/Reddit/Capterra presence -- pure small-vendor competition.",
+      "currentMiloshWeakness": "Fixed last night: page didn't cite Help Scout's own verified AI Answers add-on price ($0.75/resolution).",
+      "primaryIntervention": "ACTIONABLE (not protected) -- already executed last night.",
+      "thingsNotToChange": "The existing alternative picks and decision-guide structure.",
+      "status": "TREATED (prior session)"
+    },
+    {
+      "rank": 2,
+      "query": "craft cms wordpress",
+      "position": 63.9,
+      "impressions": 51,
+      "serpCompetitors": ["craftcms.com's own vs-WordPress page", "small agency blogs"],
+      "whyWinnable": "Specialist-CMS pattern, matches the validated Umbraco precedent.",
+      "currentMiloshWeakness": "Fixed last night: WordPress's own pricing was entirely undocumented.",
+      "primaryIntervention": "ACTIONABLE (the comparison page itself is not protected, even though craft-cms's own /software page is) -- already executed last night.",
+      "thingsNotToChange": "The feature-comparison table structure.",
+      "status": "TREATED (prior session)"
+    },
+    {
+      "rank": 3,
+      "query": "alternative à freshservice (9 variants)",
+      "position": "60.5-87.6",
+      "impressions": 594,
+      "serpCompetitors": ["Kayako", "tryrisotto.com", "HaloITSM", "Macha AI", "SysAid", "Jitbit", "Fixique"],
+      "whyWinnable": "Pure small-vendor ITSM competition, largest single family checked.",
+      "currentMiloshWeakness": "Freshservice's own page is DISCOVERED_NOT_INDEXED -- a crawl-priority problem, not a content problem (content already scores 90/100). See freshservice-anomaly.md.",
+      "primaryIntervention": "MONITOR_ONLY tonight -- root cause requires internal-link/crawl-architecture work, not a content edit; a mitigation (search-intent note on Freshdesk) already shipped and needs weeks, not days, to show effect.",
+      "thingsNotToChange": "Freshdesk's existing search-intent note; Freshservice's own content.",
+      "status": "DIAGNOSED, not yet remediated further"
+    },
+    {
+      "rank": 4,
+      "query": "adyen alternatives",
+      "position": 66.5,
+      "impressions": 70,
+      "serpCompetitors": ["Paddle", "Wise", "monei", "noda.live", "Open Banking Tracker", "2 Reddit threads"],
+      "whyWinnable": "Small-mid fintech vendor competition, no mega-brand/Capterra.",
+      "currentMiloshWeakness": "Not assessed -- see protection note.",
+      "primaryIntervention": "MONITOR_ONLY -- /software/adyen is a CONTROL page in an active frozen-cohort wave (indexation-recovery-20260926). Touching it would contaminate that experiment's before/after comparison. DO NOT EDIT.",
+      "thingsNotToChange": "Everything -- this page must remain completely untouched as a baseline.",
+      "status": "PROTECTED -- confirmed tonight, corrects last night's uncertainty"
+    },
+    {
+      "rank": 5,
+      "query": "cisco webex meetings alternatives",
+      "position": 69.1,
+      "impressions": 70,
+      "serpCompetitors": ["Lark", "Zoho", "kimisuite", "ro.am", "Univid", "Dialpad", "1 Gartner slot"],
+      "whyWinnable": "Almost entirely small-mid video-conferencing vendor content.",
+      "currentMiloshWeakness": "Not assessed in depth this session -- a real content audit is the next step, not completed given the time budget.",
+      "primaryIntervention": "ACTIONABLE (SAFE_TO_EDIT, confirmed tonight) but not yet audited for a specific weakness.",
+      "thingsNotToChange": "No changes made.",
+      "status": "SAFE, awaiting content audit"
+    },
+    {
+      "rank": 6,
+      "query": "ecwid alternatives",
+      "position": 69.4,
+      "impressions": 73,
+      "serpCompetitors": ["Zoho Commerce", "Ecommerce CEO", "Elementor", "Payhip", "storebox.ai", "Your Next Store", "EcommerceGold"],
+      "whyWinnable": "No mega-brand organic presence.",
+      "currentMiloshWeakness": "Not assessed -- see protection note.",
+      "primaryIntervention": "MONITOR_ONLY -- confirmed tonight to be under a REAL, currently-MEASURING active revenue experiment (docs/work-revenue-experiment-receipt-2026-09-12.json, until 2026-10-10). This is a genuine active experiment, not a legacy reservation. DO NOT EDIT under any circumstance.",
+      "thingsNotToChange": "Everything, until at least 2026-10-10.",
+      "status": "PROTECTED (active experiment) -- the most important protection correction this session made"
+    },
+    {
+      "rank": 7,
+      "query": "umbraco vs wordpress",
+      "position": 65.1,
+      "impressions": 116,
+      "serpCompetitors": ["Small CMS-agency content (Phase IV finding)"],
+      "whyWinnable": "Already-validated specialist-CMS precedent.",
+      "currentMiloshWeakness": "A real ownership anomaly (profile page outranks the dedicated comparison page) with an already-shipped, 1-day-old fix. See umbraco-anomaly.md.",
+      "primaryIntervention": "MONITOR_ONLY -- re-check in 3-4 weeks; do not re-edit titles again.",
+      "thingsNotToChange": "The Phase IV title/description override; the existing internal link from the profile page.",
+      "status": "DIAGNOSED, mitigation already in flight"
+    },
+    {
+      "rank": 8,
+      "query": "drupal alternatives",
+      "position": 71.7,
+      "impressions": 48,
+      "serpCompetitors": ["2 Reddit threads", "Storyblok", "Capterra", "Flow Samurai", "butterfly.com.au", "Strapi", "LinkedIn"],
+      "whyWinnable": "Moderate -- Reddit/Capterra present but not overwhelming.",
+      "currentMiloshWeakness": "Not assessed -- see protection note.",
+      "primaryIntervention": "MONITOR_ONLY -- /software/drupal is a TREATMENT page in an active frozen-cohort wave (indexation-factory-wave2-20260926). Already received a treatment; re-touching it now would contaminate that wave's own before/after measurement. DO NOT EDIT.",
+      "thingsNotToChange": "Everything -- this page's current treated state must hold until the wave's measurement window closes.",
+      "status": "PROTECTED -- confirmed tonight"
+    },
+    {
+      "rank": 9,
+      "query": "confluence alternatives",
+      "position": 71.6,
+      "impressions": 105,
+      "serpCompetitors": ["2 Reddit threads", "Slite", "Teamwork.com", "Atlassian itself", "Capterra", "Monday.com"],
+      "whyWinnable": "Real demand but genuinely harder -- Atlassian (a real mega-brand) competes directly, plus Capterra and Reddit.",
+      "currentMiloshWeakness": "Not assessed in depth this session.",
+      "primaryIntervention": "ACTIONABLE (SAFE_TO_EDIT, confirmed tonight) but a longer-horizon target given the tougher SERP; not yet audited.",
+      "thingsNotToChange": "No changes made.",
+      "status": "SAFE, lower near-term priority than targets 1-7"
+    },
+    {
+      "rank": 10,
+      "query": "ringcentral alternatives",
+      "position": 68.1,
+      "impressions": 99,
+      "serpCompetitors": ["Dialpad", "3 Reddit threads", "GetVoIP", "Gartner", "Nextiva"],
+      "whyWinnable": "Real demand, but Reddit-heavy (3 slots) plus Gartner -- the toughest of the checked SERPs.",
+      "currentMiloshWeakness": "Not assessed -- see protection note.",
+      "primaryIntervention": "MONITOR_ONLY -- confirmed tonight as a legacy conservative reservation (\"not proof of an active experiment... explicit review required to release\"). Not a currently-measuring experiment like Ecwid, but flagged for explicit owner review before any edit, per its own stated release condition.",
+      "thingsNotToChange": "No changes made pending that review.",
+      "status": "RESERVED (legacy, reviewable) -- distinct from a true active experiment"
+    },
+    {
+      "rank": 11,
+      "query": "front / frontapp alternative cluster",
+      "position": "68-81",
+      "impressions": 563,
+      "serpCompetitors": ["Not live-checked tonight -- pattern-inferred as MIXED"],
+      "whyWinnable": "Front is a smaller/more specialist brand than the mega-brand cluster; large combined impression volume (563) makes it worth a live check in a future session.",
+      "currentMiloshWeakness": "Unknown -- no live SERP check completed tonight given time budget.",
+      "primaryIntervention": "MONITOR_ONLY -- confirmed tonight as a legacy conservative reservation. Needs a live SERP check before any prioritization decision, on top of the reservation review.",
+      "thingsNotToChange": "No changes made.",
+      "status": "NOT YET LIVE-CHECKED -- flagged for next session"
+    },
+    {
+      "rank": 12,
+      "query": "sprout social / social sprout alternatives",
+      "position": "81-85",
+      "impressions": 172,
+      "serpCompetitors": ["Not live-checked tonight -- pattern-inferred as MIXED"],
+      "whyWinnable": "Unclear without a live check; included for completeness given real impression volume (172).",
+      "currentMiloshWeakness": "Unknown.",
+      "primaryIntervention": "Protection status not checked tonight -- needs both a protection-registry check and a live SERP check before any action.",
+      "thingsNotToChange": "No changes made.",
+      "status": "NOT YET ASSESSED -- flagged for next session"
+    }
+  ]
+}

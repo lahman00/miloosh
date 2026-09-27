@@ -1,0 +1,63 @@
+{
+  "handoffFor": "Antigravity",
+  "preparedBy": "Claude (claude/miloosh-master-google-war-20260926)",
+  "preparedAt": "2026-09-27",
+  "instruction": "This is a HANDOFF, not outreach execution. All 20 candidates below were found via live web search tonight and spot-checked (3 of 20, one per angle-type) to confirm they are real, currently-published pages -- not invented URLs.",
+
+  "linkEarningCandidates": {
+    "forCustomerSupportPricingBenchmark": [
+      { "publisher": "Kyle Poyar's Growth Unhinged", "articleUrl": "https://kylepoyar.substack.com/p/from-selling-access-to-selling-work", "whyRelevant": "Names Intercom Fin's $0.99/resolution model as the template for outcome-based AI pricing.", "exactFinding": "Reports Intercom Fin's $0.99/resolution rate and argues outcome-based pricing captures 20-30% of delivered value vs 10-15% for subscription SaaS.", "idealDeepLink": "Cite alongside the benchmark's own Intercom row as independent corroboration." },
+      { "publisher": "Kyle Poyar's Growth Unhinged", "articleUrl": "https://www.growthunhinged.com/p/the-state-of-b2b-monetization-in-2026", "whyRelevant": "Survey data showing the seat+AI-usage hybrid trend is industry-wide, not CS-specific.", "exactFinding": "37% of ~230 surveyed B2B companies now use hybrid seat+consumption pricing; 29% sell AI credits today.", "idealDeepLink": "Use to frame the benchmark's 9-of-16 finding as part of a broader trend." },
+      { "publisher": "SaaStr (Jason Lemkin)", "articleUrl": "https://www.saastr.com/hubspot-switching-ai-pricing-from-per-use-to-per-resolution-but-does-it-really-matter/", "whyRelevant": "Already lines up HubSpot, Intercom, Zendesk, Salesforce on per-resolution rates -- a near-miniature version of the benchmark.", "exactFinding": "HubSpot Breeze moved from $1.00 to $0.50/resolved conversation (April 2026); Intercom Fin $0.99/resolution at 66-67% average resolution rate.", "idealDeepLink": "Natural cross-reference for the benchmark's own methodology section." },
+      { "publisher": "OnlyCFO", "articleUrl": "https://www.onlycfo.io/p/arr-guide-for-ai", "whyRelevant": "Finance-side rationale for reporting seat revenue separately from usage revenue.", "exactFinding": "Argues ARR should separate usage-based from fixed seat-based revenue given differing predictability.", "idealDeepLink": "Supports the benchmark's own seat-vs-usage separation methodology." },
+      { "publisher": "Paddle (company blog)", "articleUrl": "https://www.paddle.com/blog/saas-pricing-models-strategies-fltr", "whyRelevant": "Billing-infrastructure vendor's explanation of why AI compute costs push hybrid pricing.", "exactFinding": "AI's per-inference costs are pushing vendors toward hybrid subscription+usage models.", "idealDeepLink": "Framing citation for why AI-usage pricing is emerging as a category." },
+      { "publisher": "Zendesk Blog", "articleUrl": "https://www.zendesk.com/blog/ai/productivity/cost-per-resolution/", "whyRelevant": "Defines Cost Per Resolution as the standard unit-economics metric for AI support spend.", "exactFinding": "Defines CPR as spend-per-fully-resolved-issue, the same normalization the benchmark uses.", "idealDeepLink": "Cite in the benchmark's methodology section on why per-resolution is the comparison unit." },
+      { "publisher": "Intercom Blog", "articleUrl": "https://www.intercom.com/blog/building-outcome-based-pricing-for-fin-for-sales/", "whyRelevant": "First-party explanation of Intercom's own outcome-based pricing philosophy.", "exactFinding": "Describes extending the $0.99/resolution model from support to sales.", "idealDeepLink": "Primary-source corroboration for the benchmark's Intercom row." },
+      { "publisher": "Gorgias Blog", "articleUrl": "https://www.gorgias.com/blog/ai-agent-pricing", "whyRelevant": "Gorgias's own explainer of its metered AI Agent add-on pricing.", "exactFinding": "~$1.00/resolved interaction monthly (~$0.90 annual), overage ~$1.50 each, double-meters against the base ticket allowance.", "idealDeepLink": "Corroborates and adds nuance to the benchmark's Gorgias row." },
+      { "publisher": "Drag Blog (dragapp.com)", "articleUrl": "https://www.dragapp.com/blog/state-of-ai-support-pricing/", "whyRelevant": "A competing market-wide AI-support pricing benchmark -- closest existing analog to Miloosh's own asset.", "exactFinding": "Catalogs 4 coexisting pricing models and benchmarks named vendors' per-resolution rates.", "idealDeepLink": "Candidate for a comparison callout or corroborating citation in the benchmark's own text." },
+      { "publisher": "ICMI", "articleUrl": "https://www.icmi.com/resources/2026/how-to-take-a-strategic-approach-to-agentic-ai-for-cx-part-two", "whyRelevant": "CX-leadership publication writing for the same buyer persona the benchmark targets.", "exactFinding": "Practical framework for CX leaders piloting agentic AI.", "idealDeepLink": "Candidate for a 'how to use this benchmark' framing section." },
+      { "publisher": "Drag (DragApp)", "articleUrl": "https://www.dragapp.com/blog/best-help-desk-software", "whyRelevant": "Real product company blog making unsourced total-cost claims Miloosh's benchmark could substantiate.", "exactFinding": "Calculates a 10-agent Freshdesk team's real cost at ~$627/mo once AI add-ons are included.", "idealDeepLink": "Candidate to cite Miloosh's benchmark as the sourced backing." },
+      { "publisher": "HelpSpot", "articleUrl": "https://www.helpspot.com/best-help-desk-software", "whyRelevant": "Established vendor comparison guide across 11 platforms.", "exactFinding": "Flat $29/agent pricing claim contrasted against Zendesk's $115/agent.", "idealDeepLink": "Candidate citation target." },
+      { "publisher": "InvGate", "articleUrl": "https://blog.invgate.com/help-desk-software", "whyRelevant": "Established ITSM company blog with a dated 10-vendor pricing comparison.", "exactFinding": "Zoho Desk Express at $7/agent as cheapest; Salesforce Service Cloud up to $350/user/month.", "idealDeepLink": "Candidate citation target." }
+    ],
+    "forCrmPlanGateDataset": [
+      { "publisher": "LOW/CODE Agency", "articleUrl": "https://www.lowcode.agency/blog/crm-feature-gating-smbs", "whyRelevant": "A dedicated CRM feature-gating piece with unsourced tier claims -- exact topic match.", "exactFinding": "Names HubSpot's Starter automation gate and Salesforce's Enterprise forecasting gate with no cited source.", "idealDeepLink": "Strongest single candidate to pitch a citation to Miloosh's dataset as the sourced backing." },
+      { "publisher": "Capterra", "articleUrl": "https://www.capterra.com/resources/customer-relationship-management-software-pricing-models/", "whyRelevant": "Canonical CRM-shopping resource; breaks tiers into entry/mid/high with feature gates.", "exactFinding": "Entry tiers ($34.77/user avg) exclude email automation; mid-tier ($64.58/user avg) adds it.", "idealDeepLink": "Candidate citation in its tier-comparison section." },
+      { "publisher": "Salesflare", "articleUrl": "https://blog.salesflare.com/compare-salesforce-zoho-hubspot-pipedrive", "whyRelevant": "Sales-ops comparison built around exactly Miloosh's question (which tier unlocks sync/sequences).", "exactFinding": "States Pipedrive Growth is where full sync/automation/sequences unlock.", "idealDeepLink": "Candidate for per-vendor pricing subsection citation." },
+      { "publisher": "Revalign", "articleUrl": "https://www.revalign.io/best/best-revops-tools-for-startups", "whyRelevant": "Reviews 7 CRM/sales platforms with pricing + automation features side by side.", "exactFinding": "Lists per-vendor entry pricing and calls out Freshsales/Close automation features.", "idealDeepLink": "Candidate citation in its numbered tool sections." },
+      { "publisher": "Nutshell", "articleUrl": "https://www.nutshell.com/blog/best-crm-for-switching-from-spreadsheets", "whyRelevant": "CRM-switcher-focused content naming HubSpot's free-tier limitations.", "exactFinding": "States follow-up visibility is 'available at paid tiers' on HubSpot.", "idealDeepLink": "Candidate citation in its comparison table." },
+      { "publisher": "Vedain", "articleUrl": "https://vedain.com/blog/crm-software-pricing-costs-plans-and-hidden-fees-2026", "whyRelevant": "Vendor content-marketing piece on CRM hidden fees and tier gating.", "exactFinding": "Claims automation limits are deliberately set low on starter tiers.", "idealDeepLink": "Candidate citation target." }
+    ],
+    "note": "20 candidates total requested; 18 returned strong matches across the two assets. 2 of the 4 'general roundup' angle candidates (Drag, HelpSpot, InvGate) doubled as customer-support-benchmark matches and are listed once above under that asset rather than duplicated."
+  },
+
+  "cmsBuyingDecisionMatrixLinkableFindings": {
+    "url": "https://miloosh.com/research/cms-buying-decision-2026",
+    "strongDefensibleFindings": [
+      "Only 1 of 8 major CMS platforms (WordPress) documents a vendor-supported path both INTO and OUT of the platform -- every other platform documents one direction but not the other",
+      "Webflow's own pricing-page FAQ states flatly that importing an existing site or codebase is not possible -- the most explicit no-import statement found across all 8 platforms",
+      "5 of 8 platforms (Craft CMS, Drupal, Joomla, Contentful, Storyblok) actively court migration FROM a named competitor while documenting no path back out to any platform"
+    ],
+    "limitations": [
+      "'Documented' is not the same as 'complete' -- several import tools are limited to specific source platforms (e.g. WordPress-only importers)",
+      "Several vendor pages (notably Umbraco) blocked automated research access; those findings rely on secondary documentation subdomains and carry lower confidence",
+      "This is a dated snapshot (2026-09-27) of documentation, not of actual migration difficulty in practice"
+    ],
+    "audienceAngles": [
+      "Web agencies and freelance developers evaluating a CMS for a client -- the migration-direction framing is a real risk-disclosure question they should be asking vendors",
+      "Enterprise buyers doing CMS RFPs -- the hosting/commercial-support comparison is directly usable in a vendor-evaluation scorecard",
+      "CMS vendors themselves -- several may want to correct the record if they do have an undocumented export path"
+    ],
+    "claimsThatMustNotBeMade": [
+      "Do NOT present this as a ranking of which CMS is 'best' -- it computes no score",
+      "Do NOT claim any platform has zero way to migrate data out under any circumstances -- only that no OFFICIAL, vendor-documented path was found; third-party/custom tooling may exist",
+      "Do NOT state Umbraco's exact support pricing as confirmed -- it is explicitly flagged as unverified due to blocked automated access"
+    ]
+  },
+
+  "pitchPackForCmsAsset": {
+    "webDevelopersAgencies": "Lead with the migration-lock-in framing -- a real risk-disclosure angle agencies should raise with clients before recommending a CMS.",
+    "enterpriseBuyers": "Lead with the hosting-model and commercial-support comparison as an RFP input.",
+    "cmsVendorsThemselves": "Lead with an invitation to correct the record via the Corrections Policy if a documented export path exists that this research missed."
+  }
+}

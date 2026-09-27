@@ -1,0 +1,17 @@
+{
+  "compiledAt": "2026-09-27",
+  "perTargetInventory": [
+    { "page": "/software/help-scout", "uniqueContribution": "Verified AI Answers add-on pricing ($0.75/resolution) sourced from Miloosh's own Customer Support Pricing Benchmark -- most competing listicles on this SERP do not carry this level of billing-unit precision.", "status": "PRESENT (added prior session)" },
+    { "page": "/compare/craft-cms-vs-wordpress", "uniqueContribution": "Complete, sourced WordPress pricing (previously missing entirely) alongside Craft CMS's own tiers -- a real side-by-side a reader could not previously get from this page.", "status": "PRESENT (added prior session)" },
+    { "page": "/research/cms-buying-decision-2026", "uniqueContribution": "The migration-direction asymmetry finding (import documented vs. export documented, per vendor) -- a genuinely original cross-vendor synthesis not published anywhere else found during tonight's link-earning research.", "status": "PRESENT (new tonight)" },
+    { "page": "/software/freshservice", "uniqueContribution": "Already strong (factual-depth score 90/100) -- pricing, features, and limitations are well-sourced. The gap is not information gain, it is discovery.", "status": "ALREADY STRONG -- marked, not treated" },
+    { "page": "/software/adyen", "uniqueContribution": "Not assessed -- page is a protected control; assessing without acting would risk drawing conclusions about a page whose treatment status must stay fixed for measurement validity.", "status": "NOT ASSESSED (protected)" },
+    { "page": "/software/ecwid", "uniqueContribution": "Not assessed -- active experiment.", "status": "NOT ASSESSED (protected)" },
+    { "page": "/software/drupal", "uniqueContribution": "Not assessed -- already treated, protected.", "status": "NOT ASSESSED (protected)" },
+    { "page": "/software/ringcentral", "uniqueContribution": "Not assessed -- reserved pending owner review.", "status": "NOT ASSESSED (reserved)" },
+    { "page": "/software/umbraco / /compare/umbraco-vs-wordpress", "uniqueContribution": "Already has the real distinguishing fact (.NET vs PHP-based CMS) from Phase IV; no further gap identified.", "status": "ALREADY HAS ONE -- no gap marked" },
+    { "page": "/software/webex, /software/confluence", "uniqueContribution": "Not assessed in the time available.", "status": "NOT YET ASSESSED (flagged for next session)" }
+  ],
+  "examplesOfWhatCountsAsUniqueContribution": ["plan gates (used in the CRM Plan-Gate Dataset)", "migration checklist / lock-in direction (used in the new CMS matrix)", "unit economics / seat math (used in the Customer Support benchmark's crossing scenario)", "usage cost (used in both the CS benchmark and CMS matrix's commercial-support notes)"],
+  "markedAsNoUniqueContributionFound": []
+}

@@ -1,0 +1,40 @@
+{
+  "compiledAt": "2026-09-27",
+  "honestSummary": "Of the 12 candidate targets, discovering that 5 are under real experiment protection (2 active, 3 legacy/reserved) was itself this session's main output for this section. Only 2 pages received an actual content treatment, both in the PRIOR session (not tonight) -- listed here for completeness since they are the only fully-executed treatments in this target set. Tonight's own new work is a wholly new research asset, which is a distinct URL, not a treatment of an existing ranking page.",
+  "treatments": [
+    {
+      "page": "/software/help-scout",
+      "primaryIntervention": "INFORMATION_GAIN",
+      "detail": "Added a real, verified pricing tier (AI Answers add-on, $0.75/resolution) that was previously verified elsewhere but missing from this page.",
+      "executedIn": "Prior session (20260927-research-night / 20260927-claude-overnight-war)",
+      "protectionCaveat": "This page is RESERVED under the legacy conservative cohort (\"not proof of an active experiment... explicit review required to release\"). The edit made was a pure data-completeness addition (a real, sourced fact), not a rewrite of existing treatment content -- flagged transparently here for explicit review rather than presented as risk-free."
+    },
+    {
+      "page": "/compare/craft-cms-vs-wordpress (via data/software/wordpress.json)",
+      "primaryIntervention": "INFORMATION_GAIN",
+      "detail": "Added WordPress's previously-undocumented pricing (free/open-source core + 6 WordPress.com hosted tiers), fixing a gap visible on this and every other WordPress comparison page.",
+      "executedIn": "Prior session",
+      "protectionCaveat": "WordPress itself is not in any cohort; the comparison page is not protected. Safe as executed."
+    },
+    {
+      "page": "/research/cms-buying-decision-2026 (new)",
+      "primaryIntervention": "INFORMATION_GAIN (new asset, not a treatment of an existing page)",
+      "detail": "Built tonight as a citable, standalone research asset covering migration lock-in, hosting model, and commercial support across 8 CMS products -- deliberately does not modify any of the 6 protected CMS products' own pages.",
+      "executedIn": "Tonight",
+      "protectionCaveat": "N/A -- new page, no protection conflict possible."
+    }
+  ],
+  "candidatesEvaluatedButNotTreated": [
+    { "page": "/software/adyen", "reason": "CONTROL page in an active frozen-cohort wave -- must not be touched." },
+    { "page": "/software/ecwid", "reason": "ACTIVE_EXPERIMENT until 2026-10-10 -- must not be touched." },
+    { "page": "/software/drupal", "reason": "TREATMENT page in an active frozen-cohort wave -- already treated once, re-touching would contaminate measurement." },
+    { "page": "/software/ringcentral", "reason": "Legacy reservation -- flagged for explicit owner review, not touched pending that review." },
+    { "page": "/software/freshservice", "reason": "Root cause is crawl-priority (DISCOVERED_NOT_INDEXED), not content -- a content edit would not address the actual problem. See freshservice-anomaly.md." },
+    { "page": "/software/umbraco / /compare/umbraco-vs-wordpress", "reason": "A title/metadata fix already shipped 1 day ago; re-editing now would not give it time to work and violates the mission's own \"do not repeatedly rewrite titles\" instruction." },
+    { "page": "/software/webex", "reason": "Safe to edit, but no specific content weakness was identified in the time available -- editing without an identified weakness would be change for its own sake." },
+    { "page": "/software/confluence", "reason": "Safe to edit, but a harder, longer-horizon target given real mega-brand (Atlassian) competition; not prioritized for tonight's remaining time." }
+  ],
+  "declaredInterventionTypesUsedTonight": ["INFORMATION_GAIN"],
+  "interventionTypesNotUsedTonight": ["OWNERSHIP", "FRESHNESS", "FORMAT", "INTERNAL_AUTHORITY", "DECISION_UX"],
+  "whyNoLargerTreatmentCohort": "The mission's own instruction is to make every change defensible, not to force a count. Given 5 of the top 12 candidates turned out to be genuinely protected (2 actively measuring), and 2 more have already-shipped, too-recent-to-re-judge fixes, forcing additional edits onto the remaining safe-but-unaudited pages (Webex, Confluence) without an identified specific weakness would be exactly the kind of unforced, non-defensible change this mission explicitly warns against."
+}

@@ -23,6 +23,13 @@ export const metadata: Metadata = {
  */
 const RESEARCH_ASSETS = [
   {
+    href: "/research/cms-buying-decision-2026",
+    title: "CMS Buying Decision Matrix 2026",
+    summary:
+      "Migration lock-in, hosting model, and commercial support across 8 CMS platforms -- every vendor documents importing content in, almost none document exporting it back out.",
+    verified: "2026-09-27",
+  },
+  {
     href: "/research/crm-plan-gates-2026",
     title: "CRM Plan-Gate Dataset 2026",
     summary:
