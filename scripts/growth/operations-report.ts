@@ -95,7 +95,7 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
   const result = { generatedAt: now, productionDeploymentReference: currentDeployment, productionHealth: health,
     cmsIndexing: cmsIndexing ?? { status: "NOT_REQUESTED" },
     crawl: crawl && priorCrawl ? { capturedAt: crawl.capturedAt, complete: crawl.complete, failures: crawl.failures, delta: crawlDelta(priorCrawl.rows, crawl.rows) } : { status: "UNKNOWN" },
-    google: { brand: authority.brandHistory.at(-1), brandMovement: authority.brandedSearchMovement, ranking: movement, topWinnable: top },
+    google: { brand: authority.brandHistory.at(-1), brandMovement: authority.brandedSearchMovement, aiVisibility: authority.aiVisibility, ranking: movement, topWinnable: top },
     queryPageMap: ownership, wrongOwner: ownership.filter(q => q.classification === "LIKELY_WRONG_OWNER"),
     authority: { baseline: authority.deepLinkBaseline, changes: authority.changes, registry: authority.registry, timeline: authority.observatory },
     research, researchInspections: inspections, indexation,
@@ -122,6 +122,7 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
     "# Miloosh Google operations", "Generated " + now + ". Evidence timestamps remain separate; no causal claims.",
     "## Google", "Query×page observations: " + ownership.length + "; likely wrong-owner observations: " + result.wrongOwner.length + ". Ranking requires matching final windows.",
     "Brand: " + JSON.stringify(result.google.brand) + ". Post-release search outcome is not yet measured.",
+    "Cloro AI/search visibility: brand providers=" + (result.google.aiVisibility.summary.brandRecognizedProviders.join(",") || "none") + "; generic visible cases=" + (result.google.aiVisibility.summary.genericVisibleCases.join(",") || "none") + "; mode=" + result.google.aiVisibility.mode + ".",
     "## Research", ...research.map(r => r.url + ": " + r.state + " / " + r.coverageState + "; last crawl " + (r.lastCrawl ?? "UNKNOWN")),
     "## Authority", JSON.stringify(authority.deepLinkBaseline), "Newly verified links are not necessarily newly earned: " + JSON.stringify(authority.changes),
     "## Outreach", ...result.outreach.contacts.map(c => c.organization + ": " + c.disposition + "; replies " + c.replyIds.length),
@@ -134,7 +135,7 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
   fs.writeFileSync(path.join(out, "morning.md"), summary);
   const table = (headers: string[], rows: unknown[][]) => '<div class="scroll"><table><thead><tr>' + headers.map(h => "<th>" + escape(h) + "</th>").join("") + "</tr></thead><tbody>" + rows.map(row => "<tr>" + row.map(v => "<td>" + escape(v ?? "UNKNOWN") + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
   const sections = [
-    ["Google", table(["Query", "Monitoring target", "Priority", "Evidence", "Protected"], top.map(t => [t.query, t.page, t.rank, t.observations.length ? `${t.observations.length} captured exact-query row(s); see dates in JSON` : t.attribution, t.protected])) + "<p>Targets without captured query rows remain reported/unconfirmed, not measured demand. Tables scroll horizontally on narrow screens.</p><p>" + escape("Brand window: " + result.google.brand?.window.start + "–" + result.google.brand?.window.end + "; no post-release movement proven.") + "</p>"],
+    ["Google", table(["Query", "Monitoring target", "Priority", "Evidence", "Protected"], top.map(t => [t.query, t.page, t.rank, t.observations.length ? `${t.observations.length} captured exact-query row(s); see dates in JSON` : t.attribution, t.protected])) + "<p>Targets without captured query rows remain reported/unconfirmed, not measured demand. Tables scroll horizontally on narrow screens.</p><p>" + escape("Brand window: " + result.google.brand?.window.start + "–" + result.google.brand?.window.end + "; no post-release movement proven.") + "</p><p>" + escape("Cloro baseline: brand providers=" + (result.google.aiVisibility.summary.brandRecognizedProviders.join(",") || "none") + "; generic visible cases=" + (result.google.aiVisibility.summary.genericVisibleCases.join(",") || "none") + "; " + result.google.aiVisibility.mode + ".") + "</p>"],
     ["Authority", table(["Source", "Target", "State"], authority.registry.map(a => [a.source, a.targetUrl, a.status]))],
     ["Research", table(["URL", "Google", "Last crawl (displayed)", "Checked"], research.map(r => [r.url, r.state + ": " + r.coverageState, r.lastCrawl, r.checkedAt]))],
     ["Outreach", table(["Organization", "Send state", "Observed replies"], result.outreach.contacts.map(c => [c.organization, c.disposition, c.replyIds.length]))],

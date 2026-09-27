@@ -1,0 +1,505 @@
+{
+  "generatedAt": "2026-09-27T17:47:55.199785Z",
+  "mode": "BASELINE_SEED",
+  "country": "US",
+  "providers": [
+    "chatgpt",
+    "perplexity",
+    "google"
+  ],
+  "estimatedCredits": 54,
+  "chargedCredits": 54,
+  "remainingCreditsEstimate": 446,
+  "observations": [
+    {
+      "caseId": "brand",
+      "kind": "brand",
+      "provider": "chatgpt",
+      "query": "What is Miloosh (miloosh.com), and what does it publish about software buying and pricing?",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:43:39.809690Z",
+      "statusCode": 200,
+      "creditsCharged": 7,
+      "requestId": null,
+      "milooshMentioned": true,
+      "milooshCited": true,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Miloosh — Software research you can verify.",
+          "url": "https://miloosh.com/?utm_source=chatgpt.com"
+        }
+      ]
+    },
+    {
+      "caseId": "brand",
+      "kind": "brand",
+      "provider": "perplexity",
+      "query": "What is Miloosh (miloosh.com), and what does it publish about software buying and pricing?",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:44:17.393192Z",
+      "statusCode": 200,
+      "creditsCharged": 6,
+      "requestId": null,
+      "milooshMentioned": true,
+      "milooshCited": true,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Miloosh — Software research you can verify.",
+          "url": "https://miloosh.com/"
+        },
+        {
+          "position": 2,
+          "title": "Milo Subscriptions – Subscriptions for WooCommerce and ...",
+          "url": "https://wordpress.org/plugins/milosubscriptions/"
+        },
+        {
+          "position": 3,
+          "title": "Go Live in Weeks: How Milo is Reinventing Billing and Revenue ...",
+          "url": "https://www.zuora.com/resource/go-live-in-weeks-milo-billing-revenue-transformation/"
+        },
+        {
+          "position": 4,
+          "title": "Milosh : Meaning and Origin of First Name - Ancestry.com",
+          "url": "https://www.ancestry.com/first-name-meaning/milosh"
+        },
+        {
+          "position": 5,
+          "title": "Choosing Software with Confidence with Miloosh - LinkedIn",
+          "url": "https://www.linkedin.com/posts/miloosh_miloosh-software-research-you-can-verify-activity-7494013017022480384-yZdb"
+        },
+        {
+          "position": 6,
+          "title": "Custom Software Development - Milo Logic",
+          "url": "https://www.milologic.com/services/custom-software-development"
+        },
+        {
+          "position": 7,
+          "title": "Is Mailrush. | MailRush - AppSumo",
+          "url": "https://appsumo.com/products/mailrush/questions/is-mailrushio-still-operational-or-hav-433157/"
+        },
+        {
+          "position": 8,
+          "title": "MILO - Pricing, Features, and Details in 2026 - SoftwareSuggest",
+          "url": "https://www.softwaresuggest.com/milo"
+        },
+        {
+          "position": 9,
+          "title": "A system of action - Milo",
+          "url": "https://www.milo-os.com/about/"
+        },
+        {
+          "position": 10,
+          "title": "Miloosh: Independent software research with source-linked…",
+          "url": "https://roasty.tech/s/miloosh"
+        }
+      ]
+    },
+    {
+      "caseId": "brand",
+      "kind": "brand",
+      "provider": "google",
+      "query": "miloosh software research",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:44:22.528814Z",
+      "statusCode": 200,
+      "creditsCharged": 5,
+      "requestId": null,
+      "milooshMentioned": true,
+      "milooshCited": true,
+      "milooshOrganicPosition": 7,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Choosing Software with Confidence with Miloosh",
+          "url": "https://www.linkedin.com/posts/miloosh_miloosh-software-research-you-can-verify-activity-7494013017022480384-yZdb"
+        },
+        {
+          "position": 2,
+          "title": "Milos Gligoric | Texas ECE - Electrical & Computer ...",
+          "url": "https://ece.utexas.edu/people/faculty/milos-gligoric"
+        },
+        {
+          "position": 3,
+          "title": "Milos Prvulovic - Research Community",
+          "url": "https://people.research.gatech.edu/milos-prvulovic"
+        },
+        {
+          "position": 4,
+          "title": "Correcting and updating software research information",
+          "url": "https://www.linkedin.com/posts/miloosh_if-we-get-a-fact-wrong-we-fix-it-and-we-activity-7503135237271355393-3lgr"
+        },
+        {
+          "position": 5,
+          "title": "Miloosh",
+          "url": "https://www.facebook.com/p/Miloosh-61593126312869/"
+        },
+        {
+          "position": 6,
+          "title": "Milos MILIC | University of Belgrade",
+          "url": "https://www.researchgate.net/profile/Milos-Milic-4"
+        },
+        {
+          "position": 7,
+          "title": "Miloosh — Software research you can verify.",
+          "url": "https://miloosh.com/"
+        },
+        {
+          "position": 8,
+          "title": "Milos Hauskrecht | School of Computing and Information",
+          "url": "https://www.sci.pitt.edu/people/milos-hauskrecht"
+        },
+        {
+          "position": 9,
+          "title": "Milos Z. - Software Engineer",
+          "url": "https://www.upwork.com/freelancers/~01f739dbaedd2e7b40"
+        },
+        {
+          "position": 10,
+          "title": "Milos Gligoric",
+          "url": "https://scholar.google.com/citations?user=MeZLMbkAAAAJ&hl=en"
+        }
+      ]
+    },
+    {
+      "caseId": "support",
+      "kind": "generic",
+      "provider": "chatgpt",
+      "query": "What are good customer support software options for a small SaaS team that wants predictable pricing and needs to compare seat-based pricing with AI usage fees?",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:44:43.674507Z",
+      "statusCode": 200,
+      "creditsCharged": 7,
+      "requestId": null,
+      "milooshMentioned": false,
+      "milooshCited": false,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Best Customer Support Software in 2026: 8 Tools Compared | Dupple",
+          "url": "https://dupple.com/learn/best-customer-support-software?utm_source=chatgpt.com"
+        },
+        {
+          "position": 2,
+          "title": "Intercom vs Help Scout: Full Comparison (2026)",
+          "url": "https://www.intercom.com/learning-center/intercom-vs-help-scout?utm_source=chatgpt.com"
+        }
+      ]
+    },
+    {
+      "caseId": "support",
+      "kind": "generic",
+      "provider": "perplexity",
+      "query": "What are good customer support software options for a small SaaS team that wants predictable pricing and needs to compare seat-based pricing with AI usage fees?",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:46:04.474212Z",
+      "statusCode": 200,
+      "creditsCharged": 6,
+      "requestId": null,
+      "milooshMentioned": false,
+      "milooshCited": false,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "15 Best Customer Support Software for B2B in 2026 (Compared)",
+          "url": "https://www.plain.com/blog/customer-support-software"
+        },
+        {
+          "position": 2,
+          "title": "Best Helpdesk Sofware for SaaS (Guide + Top 2026 Platforms)",
+          "url": "https://www.intercom.com/learning-center/saas-helpdesk-software"
+        },
+        {
+          "position": 3,
+          "title": "Customer Support Software Pricing 2026: Costs & AI Fees ...",
+          "url": "https://inquirly.ai/blog/fundamentals-architecture/customer-support-software-pricing/"
+        },
+        {
+          "position": 4,
+          "title": "12 Best SaaS Customer Support Software for B2B Teams ...",
+          "url": "https://www.enjo.ai/post/best-saas-customer-support-software"
+        },
+        {
+          "position": 5,
+          "title": "15 Best Customer Service Software Platforms in 2026 - Gladly AI",
+          "url": "https://www.gladly.ai/blog/best-customer-service-software/"
+        },
+        {
+          "position": 6,
+          "title": "7 AI Customer Support Software Tools With Transparent ...",
+          "url": "https://wonderchat.io/blog/ai-customer-support-pricing"
+        },
+        {
+          "position": 7,
+          "title": "4. Help Scout",
+          "url": "https://saascompared.io/blog/best-customer-support-software/"
+        },
+        {
+          "position": 8,
+          "title": "11 Customer Service Software Examples for 2026 - Featurebase",
+          "url": "https://www.featurebase.app/blog/customer-service-software-examples"
+        },
+        {
+          "position": 9,
+          "title": "11 Best Customer Support Software Tools in 2026 - Inquirly",
+          "url": "https://inquirly.ai/blog/fundamentals-architecture/best-customer-support-software/"
+        },
+        {
+          "position": 10,
+          "title": "Frequently Asked Questions",
+          "url": "https://www.useinvent.com/blog/top-5-best-customer-support-chat-software-in-2025"
+        }
+      ]
+    },
+    {
+      "caseId": "support",
+      "kind": "generic",
+      "provider": "google",
+      "query": "customer support software predictable pricing AI usage seat pricing",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:46:09.502557Z",
+      "statusCode": 200,
+      "creditsCharged": 5,
+      "requestId": null,
+      "milooshMentioned": false,
+      "milooshCited": false,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Customer Support Software Pricing 2026: Costs & AI Fees ...",
+          "url": "https://inquirly.ai/blog/fundamentals-architecture/customer-support-software-pricing/"
+        },
+        {
+          "position": 2,
+          "title": "7 AI Customer Support Software Tools With Transparent ...",
+          "url": "https://wonderchat.io/blog/ai-customer-support-pricing"
+        },
+        {
+          "position": 3,
+          "title": "Per-Seat Software Pricing Isn't Dead, but New Models Are ...",
+          "url": "https://www.bain.com/insights/per-seat-software-pricing-isnt-dead-but-new-models-are-gaining-steam/"
+        },
+        {
+          "position": 4,
+          "title": "AI Customer Service Pricing Models Compared (2026) - Fin AI",
+          "url": "https://fin.ai/learn/ai-customer-service-pricing-models"
+        },
+        {
+          "position": 5,
+          "title": "7 AI Pricing Models: What Works, What Breaks | Lago - Getlago",
+          "url": "https://getlago.com/blog/ai-pricing-models"
+        },
+        {
+          "position": 6,
+          "title": "7 Ways AI Reduces Customer Support Costs",
+          "url": "https://cosupport.ai/articles/7-ways-ai-reduces-customer-support-costs"
+        },
+        {
+          "position": 7,
+          "title": "Best Customer Service AI Platforms: Setup, Use Cases, Pricing",
+          "url": "https://getzowie.com/blog/customer-service-ai-platforms-setup-use-cases-pricing"
+        },
+        {
+          "position": 8,
+          "title": "Your Pricing Model Might Be Killing Your SaaS",
+          "url": "https://www.youtube.com/watch?v=tTEUxRAEpgY"
+        },
+        {
+          "position": 9,
+          "title": "Pricing Strategy as a System for Long-Term Advantage",
+          "url": "https://helloadvisr.com/blog/the-ultimate-guide-to-pricing-your-ai-products-strategies-for-growth-part-1/"
+        },
+        {
+          "position": 10,
+          "title": "Customer Service AI in 2026: Options and Real Costs",
+          "url": "https://www.getmacha.com/blog/customer-service-ai"
+        }
+      ]
+    },
+    {
+      "caseId": "crm",
+      "kind": "generic",
+      "provider": "chatgpt",
+      "query": "What CRM should a small sales team consider if email sync and sales sequences are important, and which plans actually include those features?",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:46:58.309782Z",
+      "statusCode": 200,
+      "creditsCharged": 7,
+      "requestId": null,
+      "milooshMentioned": false,
+      "milooshCited": false,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Sales Software Pricing | HubSpot",
+          "url": "https://www.hubspot.com/pricing/sales?tab=tab-billing&utm_source=chatgpt.com"
+        },
+        {
+          "position": 2,
+          "title": "CRM Pricing Plans | Affordable CRM Software Costs | Pipedrive",
+          "url": "https://www.pipedrive.com/en/pricing/professional-crm?utm_source=chatgpt.com"
+        },
+        {
+          "position": 3,
+          "title": "Salesforce - CRM App for HubSpot | HubSpot",
+          "url": "https://ecosystem.hubspot.com/marketplace/listing/salesforce?utm_source=chatgpt.com"
+        },
+        {
+          "position": 4,
+          "title": "CRM for Sales Teams of 5-25: HubSpot vs Pipedrive vs Close | Sasanova",
+          "url": "https://www.sasanova.com/guides/best-crm-sales-teams?utm_source=chatgpt.com"
+        },
+        {
+          "position": 5,
+          "title": "Salesforce vs HubSpot vs Zoho vs Pipedrive vs Salesflare [2026]",
+          "url": "https://blog.salesflare.com/compare-salesforce-zoho-hubspot-pipedrive?utm_source=chatgpt.com"
+        }
+      ]
+    },
+    {
+      "caseId": "crm",
+      "kind": "generic",
+      "provider": "perplexity",
+      "query": "What CRM should a small sales team consider if email sync and sales sequences are important, and which plans actually include those features?",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:47:51.624330Z",
+      "statusCode": 200,
+      "creditsCharged": 6,
+      "requestId": null,
+      "milooshMentioned": false,
+      "milooshCited": false,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Best CRM with Email Marketing for Small Business: 2026 Guide",
+          "url": "https://www.nimble.com/blog/best-crm-with-email-marketing-small-business/"
+        },
+        {
+          "position": 2,
+          "title": "5 Best CRM with Sequences and Email Campaigns in 2026",
+          "url": "https://www.folk.app/articles/crm-with-sequences-and-email-campaigns"
+        },
+        {
+          "position": 3,
+          "title": "Best small business CRM of 2026",
+          "url": "https://www.techradar.com/best/best-crm-for-small-business"
+        },
+        {
+          "position": 4,
+          "title": "The 11 Best CRMs for Small Business in 2026 - Zapier",
+          "url": "https://zapier.com/blog/best-crms-for-small-business/"
+        },
+        {
+          "position": 5,
+          "title": "Best CRM for Small Business: 2026 Guide - Faye Digital",
+          "url": "https://fayedigital.com/blog/best-crm-for-small-business/"
+        },
+        {
+          "position": 6,
+          "title": "12 Best Small Business CRM Tools",
+          "url": "https://fitsmallbusiness.com/best-crm-for-small-business/"
+        },
+        {
+          "position": 7,
+          "title": "14 Best CRM Software for Small Business (2026)",
+          "url": "https://ventureharbour.com/crm-software-small-business/"
+        },
+        {
+          "position": 8,
+          "title": "🥇 8 Best CRM Software for Small Businesses in 2026",
+          "url": "https://blog.salesflare.com/best-small-business-crm"
+        },
+        {
+          "position": 9,
+          "title": "Zoho CRM: Best Value and...",
+          "url": "https://routine-automation.com/blog/best-crm-for-small-business/"
+        },
+        {
+          "position": 10,
+          "title": "7 Best CRM Software for Small Sales Teams in 2026",
+          "url": "https://reviews.vc/listicle/best-crm-software-for-small-sales-teams-in-2026/"
+        }
+      ]
+    },
+    {
+      "caseId": "crm",
+      "kind": "generic",
+      "provider": "google",
+      "query": "CRM email sync sales sequences pricing small sales team",
+      "country": "US",
+      "capturedAt": "2026-09-27T17:47:55.199785Z",
+      "statusCode": 200,
+      "creditsCharged": 5,
+      "requestId": null,
+      "milooshMentioned": false,
+      "milooshCited": false,
+      "milooshOrganicPosition": null,
+      "sources": [
+        {
+          "position": 1,
+          "title": "Best Email Sequence Software for Sales Teams in 2026",
+          "url": "https://pearllemonleads.com/best-email-sequence-software-for-sales-teams/"
+        },
+        {
+          "position": 2,
+          "title": "10 Best Sales Sequence Tools for B2B Teams (2026)",
+          "url": "https://www.11x.ai/guides/sales-sequence-tools-b2b-sales-teams"
+        },
+        {
+          "position": 3,
+          "title": "12 Best Sales Email Automation Tools in 2026",
+          "url": "https://www.sybill.ai/blogs/best-sales-email-automation-tools"
+        },
+        {
+          "position": 4,
+          "title": "Best Automated Email Sequence Tool for Sales Teams 2026",
+          "url": "https://blog.coffee.ai/best-automated-email-sequence-tool"
+        },
+        {
+          "position": 5,
+          "title": "Affordable email sequence tools for small business?",
+          "url": "https://www.reddit.com/r/smallbusiness/comments/1kvhybm/affordable_email_sequence_tools_for_small_business/"
+        },
+        {
+          "position": 6,
+          "title": "2 Best Sales Engagement Platforms in 2026 (Top Tools ...",
+          "url": "https://www.cirrusinsight.com/blog/sales-engagement-platforms"
+        },
+        {
+          "position": 7,
+          "title": "Automate Drip Emails in Your CRM",
+          "url": "https://www.youtube.com/watch?v=FXedJAh-tz0"
+        },
+        {
+          "position": 8,
+          "title": "5 Best CRM with Sequences and Email Campaigns in 2026",
+          "url": "https://www.folk.app/articles/crm-with-sequences-and-email-campaigns"
+        },
+        {
+          "position": 9,
+          "title": "Best All-in-One Sales Tools for Small Teams (2026)",
+          "url": "https://www.unifygtm.com/explore/best-all-in-one-sales-tools-small-teams"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "brandRecognizedProviders": [
+      "chatgpt",
+      "perplexity",
+      "google"
+    ],
+    "genericVisibleProviders": [],
+    "genericVisibleCases": [],
+    "brandOnly": true,
+    "noGenericVisibility": true
+  }
+}

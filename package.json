@@ -19,6 +19,7 @@
     "growth:gsc-factual": "tsx scripts/growth/gsc-factual-report.ts",
     "growth:google-war": "tsx scripts/growth/google-war.ts",
     "growth:google-command": "tsx scripts/growth/google-command-center.ts",
+    "growth:cloro-visibility": "tsx scripts/growth/cloro-visibility.ts",
     "growth:query-page": "tsx scripts/growth/import-query-page.ts",
     "growth:release-google": "tsx scripts/growth/release-google.ts",
     "growth:full-rendered-crawl": "tsx scripts/growth/full-rendered-crawl.ts",

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "brand",
+    "kind": "brand",
+    "prompt": "What is Miloosh (miloosh.com), and what does it publish about software buying and pricing?",
+    "googleQuery": "miloosh software research"
+  },
+  {
+    "id": "support",
+    "kind": "generic",
+    "prompt": "What are good customer support software options for a small SaaS team that wants predictable pricing and needs to compare seat-based pricing with AI usage fees?",
+    "googleQuery": "customer support software predictable pricing AI usage seat pricing"
+  },
+  {
+    "id": "crm",
+    "kind": "generic",
+    "prompt": "What CRM should a small sales team consider if email sync and sales sequences are important, and which plans actually include those features?",
+    "googleQuery": "CRM email sync sales sequences pricing small sales team"
+  }
+]
