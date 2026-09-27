@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-09-27T17:21:00Z",
+  "checkedAtPrecision": "minute; source checks performed approximately 17:19–17:21Z",
+  "status": "SOURCE_VERIFICATION_COMPLETE_LOCAL_RELEASE_GATES_PENDING",
+  "sampleSize": 8,
+  "documentedInputAndOutput": 7,
+  "unverifiedOutput": [
+    "joomla"
+  ],
+  "noCrossVendorMigrationRanking": true,
+  "corrections": [
+    "Webflow CMS CSV import exists; arbitrary code import is a different operation",
+    "Craft element export exists",
+    "Contentful CLI export exists",
+    "Storyblok stories pull exists",
+    "Umbraco Deploy supports both directions within Umbraco",
+    "Drupal JSON:API extraction exists",
+    "No unverified current price or SLA republished",
+    "ownPageEditable removed; not a public fact"
+  ],
+  "primarySources": [
+    {
+      "slug": "wordpress",
+      "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+      "httpStatus": 200,
+      "verifiedVia": "PUBLIC_HTTP_200",
+      "valid": true
+    },
+    {
+      "slug": "umbraco",
+      "url": "https://docs.umbraco.com/umbraco-deploy/deployment-workflow/import-export",
+      "httpStatus": 200,
+      "verifiedVia": "PUBLIC_HTTP_200",
+      "valid": true
+    },
+    {
+      "slug": "craft-cms",
+      "url": "https://craftcms.com/docs/5.x/system/elements",
+      "httpStatus": 200,
+      "verifiedVia": "PUBLIC_HTTP_200",
+      "valid": true
+    },
+    {
+      "slug": "drupal",
+      "url": "https://www.drupal.org/docs/drupal-apis/migrate-api",
+      "httpStatus": 200,
+      "verifiedVia": "PUBLIC_HTTP_200",
+      "valid": true
+    },
+    {
+      "slug": "joomla",
+      "url": "https://magazine.joomla.org/issues/2025/september-2025/migrating-content-from-wordpress-to-joomla-with-the-migration-tool",
+      "httpStatus": 200,
+      "verifiedVia": "PUBLIC_HTTP_200",
+      "valid": true
+    },
+    {
+      "slug": "webflow",
+      "url": "https://help.webflow.com/hc/en-us/articles/33961290794771-How-do-I-import-content-into-the-Webflow-CMS",
+      "httpStatus": 403,
+      "verifiedVia": "LIVE_CHROME_RENDERED_DOCUMENT",
+      "valid": true
+    },
+    {
+      "slug": "contentful",
+      "url": "https://www.contentful.com/developers/docs/tutorials/cli/import-and-export/",
+      "httpStatus": 429,
+      "verifiedVia": "LIVE_CHROME_RENDERED_DOCUMENT",
+      "valid": true
+    },
+    {
+      "slug": "storyblok",
+      "url": "https://www.storyblok.com/docs/libraries/storyblok-cli",
+      "httpStatus": 200,
+      "verifiedVia": "PUBLIC_HTTP_200",
+      "valid": true
+    }
+  ],
+  "limits": [
+    "Documentation review, not hands-on migration testing",
+    "Format transfer is not complete-site migration",
+    "Support/pricing unmeasured except Craft support availability",
+    "Third-party bot/rate protection differs from broken source URL"
+  ],
+  "productionVerified": false
+}

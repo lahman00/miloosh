@@ -4,10 +4,8 @@ import { CMS_MIGRATION_PROFILES, type CmsMigrationProfile } from "./data";
 
 /**
  * CMS Buying Decision Matrix 2026 -- built around the single strongest
- * cross-vendor finding from tonight's research: every CMS checked
- * documents a path to import content IN, but almost none document a path
- * to export content OUT to a competitor. This is a structural,
- * category-wide pattern, not a criticism of any one vendor.
+ * content-transfer review. A format/API is not a turnkey competing-CMS
+ * migration. Missing evidence is never evidence of no capability.
  */
 export interface CmsRow {
   slug: string;
@@ -19,12 +17,12 @@ export interface CmsRow {
   importNote: string;
   documentsExportOutOfProduct: boolean;
   exportNote: string;
-  commercialSupportAvailable: boolean;
+  commercialSupportAvailable: boolean | null;
   commercialSupportNote: string;
   developerAgencyFitNote: string;
   primarySourceUrl: string;
   officialSource: string;
-  ownPageEditable: boolean;
+  sourceUrls: string[];
 }
 
 export interface CmsDecisionMatrix {
@@ -44,9 +42,6 @@ export interface CmsDecisionMatrix {
 
 const SLUGS = ["wordpress", "umbraco", "craft-cms", "drupal", "joomla", "webflow", "contentful", "storyblok"];
 
-// Webflow's pricing is not in the catalog (see data.ts); use the vendor-verified figure directly here only.
-const WEBFLOW_FALLBACK_PRICE = "Free Starter plan exists; cheapest paid Site plan (Basic) is $15/mo billed yearly";
-
 export function buildCmsDecisionMatrix(all: readonly Software[] = getAllSoftware()): CmsDecisionMatrix {
   const bySlug = new Map(all.map((s) => [s.slug, s]));
 
@@ -56,8 +51,9 @@ export function buildCmsDecisionMatrix(all: readonly Software[] = getAllSoftware
     return {
       slug,
       name: software?.name ?? slug,
-      recordedStartingPrice: software?.pricing?.startingPrice ?? (slug === "webflow" ? WEBFLOW_FALLBACK_PRICE : null),
-      hasFreeTier: software?.pricing?.hasFreeTier ?? software?.pricing?.freePlan ?? (slug === "webflow" ? true : null),
+      // Pricing is outside this review, not refreshed by copying older catalog data.
+      recordedStartingPrice: null,
+      hasFreeTier: null,
       hostedOrSelfHosted: profile.hostedOrSelfHosted,
       documentsImportIntoProduct: profile.documentsImportIntoProduct,
       importNote: profile.importNote,
@@ -68,14 +64,14 @@ export function buildCmsDecisionMatrix(all: readonly Software[] = getAllSoftware
       developerAgencyFitNote: profile.developerAgencyFitNote,
       primarySourceUrl: profile.primarySourceUrl,
       officialSource: profile.officialSource,
-      ownPageEditable: profile.ownPageEditable,
+      sourceUrls: profile.sourceUrls,
     };
   });
 
   return {
     generatedAt: new Date().toISOString(),
     sampleSize: rows.length,
-    inclusionRule: "The 8 CMS products named in the mission brief (WordPress, Umbraco, Craft CMS, Drupal, Joomla, Webflow, Contentful, Storyblok) -- not exhaustive of the CMS category.",
+    inclusionRule: "An editorial sample of 8 CMS products (WordPress, Umbraco, Craft CMS, Drupal, Joomla, Webflow, Contentful, Storyblok), not an exhaustive or market-share-weighted sample.",
     rows,
     importOnlyCount: rows.filter((r) => r.documentsImportIntoProduct && !r.documentsExportOutOfProduct).length,
     importAndExportCount: rows.filter((r) => r.documentsImportIntoProduct && r.documentsExportOutOfProduct).length,
@@ -84,6 +80,6 @@ export function buildCmsDecisionMatrix(all: readonly Software[] = getAllSoftware
     bothHostedAndSelfHostedCount: rows.filter((r) => r.hostedOrSelfHosted === "both").length,
     hostedOnlyCount: rows.filter((r) => r.hostedOrSelfHosted === "hosted").length,
     freeTierCount: rows.filter((r) => r.hasFreeTier === true).length,
-    noOfficialVendorSupportCount: rows.filter((r) => !r.commercialSupportAvailable).length,
+    noOfficialVendorSupportCount: rows.filter((r) => r.commercialSupportAvailable === false).length,
   };
 }

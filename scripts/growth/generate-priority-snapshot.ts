@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
+import { currentProtectionSnapshot, assertCurrentMutation } from "@/lib/google-war/current-protection";
 
 /**
  * MILOOSH CLAUDE OVERNIGHT WAR MISSION (2026-08-22/23), P0 — production
@@ -59,6 +60,7 @@ export interface PrioritySnapshot {
 export const PRIORITY_SNAPSHOT_PATH = path.join(process.cwd(), "data", "seo", "priority-snapshot.json");
 
 async function main() {
+  const protection = currentProtectionSnapshot();
   const run = await readLatestSeoFactoryRun();
   if (!run) {
     console.error("No SEO Factory run available (Blob store empty/unreachable and no local fallback present). Nothing to generate -- leaving any existing committed snapshot untouched.");
@@ -96,6 +98,9 @@ async function main() {
     rows,
   };
 
+  // Public ranking edits can change discovery for every affected product.
+  const prior: PrioritySnapshotRow[] = fs.existsSync(PRIORITY_SNAPSHOT_PATH) ? JSON.parse(fs.readFileSync(PRIORITY_SNAPSHOT_PATH, "utf8")).rows : [];
+  assertCurrentMutation(protection.fingerprint, [...rows, ...prior].map(r => new URL(r.url, "https://miloosh.com").pathname));
   fs.writeFileSync(PRIORITY_SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2) + "\n");
   console.log(`Wrote ${rows.length} rows to ${PRIORITY_SNAPSHOT_PATH}`);
   console.log(`Source run: ${run.id} (generated ${run.generatedAt}, window ${run.window.startDate}..${run.window.endDate})`);

@@ -1,149 +1,150 @@
-/**
- * CMS Buying Decision Matrix 2026 -- hand-verified migration, hosting, and
- * commercial-support data for 8 CMS products, researched live against
- * primary sources on 2026-09-27 (see docs/growth/receipts/
- * 20260927-winnable-serp-day-war/cms-cluster.json for the raw findings).
- *
- * IMPORTANT: craft-cms, drupal, joomla, webflow, contentful, and storyblok
- * are all pages under active frozen-cohort experiments
- * (data/growth/frozen-cohorts.ts) or legacy reservations. This module and
- * the page that renders it do NOT modify those products' own
- * data/software/*.json records or /software/[slug] pages -- this is a
- * separate, new research asset that only cites already-public vendor
- * facts. Base pricing fields below are read from the existing catalog
- * where available; Webflow's pricing (which the catalog has never
- * recorded) is sourced here directly from webflow.com/pricing and is
- * NOT written back into data/software/webflow.json, since that page is a
- * protected experiment control.
- */
+/** First-party documentation review, 2026-09-27. Content transfer is not a
+ * turnkey migration. No edit permissions or catalog prices are public facts here. */
 export interface CmsMigrationProfile {
   slug: string;
-  /** Whether Miloosh's own software page can be safely linked to right now (false = active experiment/reservation; still fine to cite public facts about the vendor, just don't imply this page was edited). */
-  ownPageEditable: boolean;
   hostedOrSelfHosted: "hosted" | "self-hosted" | "both";
   documentsImportIntoProduct: boolean;
   importNote: string;
   documentsExportOutOfProduct: boolean;
   exportNote: string;
-  commercialSupportAvailable: boolean;
+  commercialSupportAvailable: boolean | null;
   commercialSupportNote: string;
   developerAgencyFitNote: string;
-  /** A single clean URL safe to use directly in an href -- never parsed out of officialSource by string-splitting. */
   primarySourceUrl: string;
+  sourceUrls: string[];
   officialSource: string;
 }
-
 export const CMS_MIGRATION_PROFILES: Record<string, CmsMigrationProfile> = {
-  wordpress: {
-    slug: "wordpress",
-    ownPageEditable: true,
-    hostedOrSelfHosted: "both",
-    documentsImportIntoProduct: true,
-    importNote: "Core ships native importers for only Blogger, LiveJournal, Movable Type/TypePad, RSS, Tumblr, WordPress-to-WordPress, and WooCommerce CSV -- 25+ other systems need third-party plugins. The hosted WordPress.com product supports a broader one-click import list (Medium, Substack, Squarespace, Wix, Weebly, and more).",
-    documentsExportOutOfProduct: true,
-    exportNote: "The built-in Export tool produces an open WXR (WordPress eXtended RSS/XML) file with no stated restriction on content types or volume -- the most portable export format found across all 8 products checked.",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "Tiered: WordPress.com Business plan includes 24/7 priority support; WordPress VIP (enterprise) is custom-quoted with no published price on any primary source.",
-    developerAgencyFitNote: "Explicitly positioned across the full spectrum: non-technical users, developers/agencies (via the Automattic for Agencies partner program), and enterprises (via WordPress VIP).",
-    primarySourceUrl: "https://wordpress.org",
-    officialSource: "https://wordpress.org, https://wordpress.com/pricing/, https://wpvip.com",
+  "wordpress": {
+    "slug": "wordpress",
+    "hostedOrSelfHosted": "both",
+    "documentsImportIntoProduct": true,
+    "importNote": "Tools → Import supports WXR import. Other source systems require their own importer and field mapping.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "Tools → Export downloads WXR/XML containing selected content. This is not a working theme/plugin stack or proof of compatibility with another CMS.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Check whether theme/plugin behavior must be rebuilt separately from WXR content, and name the party maintaining hosting and updates.",
+    "primarySourceUrl": "https://wordpress.org/documentation/article/tools-export-screen/",
+    "sourceUrls": [
+      "https://wordpress.org/documentation/article/tools-export-screen/",
+      "https://learn.wordpress.org/lesson/tools-export-and-import/"
+    ],
+    "officialSource": "https://wordpress.org/documentation/article/tools-export-screen/, https://learn.wordpress.org/lesson/tools-export-and-import/"
   },
-  umbraco: {
-    slug: "umbraco",
-    ownPageEditable: true,
-    hostedOrSelfHosted: "both",
-    documentsImportIntoProduct: false,
-    importNote: "No official Umbraco documentation was found describing how to import content from a non-Umbraco CMS (WordPress, Sitecore, Drupal, etc.) -- that direction of migration is left to third-party agencies/tools.",
-    documentsExportOutOfProduct: true,
-    exportNote: "Umbraco Deploy (bundled with Cloud plans) and the free core's built-in Packages feature both support exporting content/schema to a .zip/XML for import into another Umbraco instance -- but only Umbraco-to-Umbraco, not to a competing CMS.",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "Official paid Support plans (Professional/Enterprise tiers) exist with SLA-backed response times; exact current fees could not be independently verified from a primary source tonight (umbraco.com blocked automated fetches) and are left unconfirmed rather than guessed.",
-    developerAgencyFitNote: "Explicitly positions itself for developers (open-source .NET core), agencies/enterprises (Cloud plans with custom SLAs), and non-technical editors (\"the friendly CMS\") simultaneously.",
-    primarySourceUrl: "https://umbraco.com",
-    officialSource: "https://umbraco.com, https://docs.umbraco.com",
+  "umbraco": {
+    "slug": "umbraco",
+    "hostedOrSelfHosted": "both",
+    "documentsImportIntoProduct": true,
+    "importNote": "Deploy imports its ZIP content/schema archives into another Umbraco environment. This verifies an Umbraco-to-Umbraco path, not an importer for competing CMSs.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "Deploy exports selected content, schema and optionally media to ZIP. Version upgrades may require migrators; another CMS needs conversion of the Umbraco representation.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Test the exact source/destination versions and property editors. Deploy archives are useful for Umbraco transfers, not evidence of automatic conversion to another CMS.",
+    "primarySourceUrl": "https://docs.umbraco.com/umbraco-deploy/deployment-workflow/import-export",
+    "sourceUrls": [
+      "https://docs.umbraco.com/umbraco-deploy/deployment-workflow/import-export"
+    ],
+    "officialSource": "https://docs.umbraco.com/umbraco-deploy/deployment-workflow/import-export"
   },
   "craft-cms": {
-    slug: "craft-cms",
-    ownPageEditable: false,
-    hostedOrSelfHosted: "both",
-    documentsImportIntoProduct: true,
-    importNote: "Ships an official first-party `craftcms/wp-import` CLI tool (Craft 5.5+) that imports WordPress posts, pages, media, users, comments, and custom fields directly. No comparable first-party importer was found for other CMSs.",
-    documentsExportOutOfProduct: false,
-    exportNote: "No official documentation describes exporting Craft content to another CMS. A generic developer-facing \"Element Exporter\" API exists for dumping entry data, but it is not a documented path to any specific competing platform.",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "Free \"Basic\" email support included with a Pro license; paid \"Pro\" support is $75/month (12-hour weekday response); \"Enterprise\" support is custom-priced.",
-    developerAgencyFitNote: "Explicitly tiered by buyer in the vendor's own words: Solo (\"for you or a friend\"), Team (\"a small team\"), Pro (\"professionally for a business\"), Enterprise (\"specific licensing requirements\").",
-    primarySourceUrl: "https://craftcms.com/pricing",
-    officialSource: "https://craftcms.com/pricing, https://craftcms.com/knowledge-base/for-wordpress-devs",
+    "slug": "craft-cms",
+    "hostedOrSelfHosted": "both",
+    "documentsImportIntoProduct": true,
+    "importNote": "Craft documents a WordPress import tool. Verify custom-field and plugin compatibility separately.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "Element indexes offer CSV, JSON and XML export. These formats still need mapping to the receiving CMS; they are not a complete application migration.",
+    "commercialSupportAvailable": true,
+    "commercialSupportNote": "Craft offers developer support and premium support options. Edition and response commitments should be checked separately from the CMS license.",
+    "developerAgencyFitNote": "Have the developer test WordPress imports and exported element fields against the destination model; evaluate Craft Cloud separately from a self-hosted license.",
+    "primarySourceUrl": "https://craftcms.com/docs/5.x/system/elements",
+    "sourceUrls": [
+      "https://craftcms.com/docs/5.x/system/elements",
+      "https://craftcms.com/knowledge-base/for-wordpress-devs",
+      "https://craftcms.com/pricing"
+    ],
+    "officialSource": "https://craftcms.com/docs/5.x/system/elements, https://craftcms.com/knowledge-base/for-wordpress-devs, https://craftcms.com/pricing"
   },
-  drupal: {
-    slug: "drupal",
-    ownPageEditable: false,
-    hostedOrSelfHosted: "both",
-    documentsImportIntoProduct: true,
-    importNote: "The core Migrate API officially documents importing data into Drupal from CSV/JSON/XML/database/REST/RSS sources via contributed modules.",
-    documentsExportOutOfProduct: false,
-    exportNote: "No destination/output plugins or guidance for pushing Drupal content out to another CMS were found in the Migrate API docs or the Drupal 7 End-of-Life Migration Resource Center (which only covers migrating to newer Drupal or to Backdrop CMS).",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "No vendor sells support directly. The Drupal Association's Certified Partner program is a directory of independently priced agencies; the Association's own certification fees ($1,500-$25,000/year, scaled by agency size) are what agencies pay to be listed, not what end customers pay for support.",
-    developerAgencyFitNote: "Positioned first for developers and its large certified-partner agency ecosystem, with the newer \"Drupal CMS\" distribution aimed at non-technical marketers/content teams on the same core.",
-    primarySourceUrl: "https://www.drupal.org",
-    officialSource: "https://www.drupal.org",
+  "drupal": {
+    "slug": "drupal",
+    "hostedOrSelfHosted": "self-hosted",
+    "documentsImportIntoProduct": true,
+    "importNote": "The Migrate API documents source plugins and transformations for bringing external data into Drupal. Formats may require contributed modules.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "Core JSON:API documentation shows GET requests for entities and collections. This is developer-oriented extraction, not a one-click whole-site export; handle permissions, pagination and related files.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Assign ownership for entity mapping, API permissions, pagination and media retrieval. A working API response is only one part of a migration.",
+    "primarySourceUrl": "https://www.drupal.org/docs/drupal-apis/migrate-api",
+    "sourceUrls": [
+      "https://www.drupal.org/docs/drupal-apis/migrate-api",
+      "https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/fetching-resources-get"
+    ],
+    "officialSource": "https://www.drupal.org/docs/drupal-apis/migrate-api, https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/fetching-resources-get"
   },
-  joomla: {
-    slug: "joomla",
-    ownPageEditable: false,
-    hostedOrSelfHosted: "both",
-    documentsImportIntoProduct: true,
-    importNote: "An official first-party \"CMS Migration\" extension (built during Google Summer of Code 2025) imports WordPress categories, articles, media, and menus into Joomla via web-service APIs -- explicitly one-directional.",
-    documentsExportOutOfProduct: false,
-    exportNote: "No official tool or documentation for exporting Joomla content to another CMS's native format was found. The vendor's own guidance for moving a Joomla site describes raw MySQL database export/import, which preserves Joomla's own schema rather than a portable interchange format.",
-    commercialSupportAvailable: false,
-    commercialSupportNote: "No official paid support contract is sold by the Joomla project itself -- its own Community Magazine states plainly \"there is no 'official' commercial vendor.\" A directory of independent third-party service providers exists, each setting its own undisclosed pricing.",
-    developerAgencyFitNote: "Explicitly segments its own pitch by audience in the same page: non-technical users/small businesses, web agencies, developers, and enterprise use cases.",
-    primarySourceUrl: "https://www.joomla.org",
-    officialSource: "https://www.joomla.org",
+  "joomla": {
+    "slug": "joomla",
+    "hostedOrSelfHosted": "self-hosted",
+    "documentsImportIntoProduct": true,
+    "importNote": "Joomla Community Magazine documents a GSoC 2025 CMS Migration extension for WordPress-to-Joomla content transfer over web-service APIs. Verify current maintenance and version compatibility.",
+    "documentsExportOutOfProduct": false,
+    "exportNote": "A general outbound content-transfer workflow was not verified in the sources reviewed for this row. This is an evidence gap, not a claim that Joomla cannot export data or that no extension exists.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Confirm that the extension supports the needed versions and content types. Ask the implementer to demonstrate the outbound path that this review could not verify.",
+    "primarySourceUrl": "https://magazine.joomla.org/issues/2025/september-2025/migrating-content-from-wordpress-to-joomla-with-the-migration-tool",
+    "sourceUrls": [
+      "https://magazine.joomla.org/issues/2025/september-2025/migrating-content-from-wordpress-to-joomla-with-the-migration-tool"
+    ],
+    "officialSource": "https://magazine.joomla.org/issues/2025/september-2025/migrating-content-from-wordpress-to-joomla-with-the-migration-tool"
   },
-  webflow: {
-    slug: "webflow",
-    ownPageEditable: false,
-    hostedOrSelfHosted: "hosted",
-    documentsImportIntoProduct: false,
-    importNote: "Webflow's own pricing-page FAQ states flatly: \"Can I import my website or my code? No, you can only develop websites in Webflow.\" This is the most explicit no-import statement found across all 8 products.",
-    documentsExportOutOfProduct: true,
-    exportNote: "Static HTML/CSS/JS/assets can be exported and rehosted elsewhere on paid Workspace plans, but the same FAQ warns dynamic content \"must be exported on a collection-by-collection basis and forms will stop working\" -- and once exported, code \"can't be reimported.\"",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "Baseline: email support, 48-hour target response. The Team plan ($2,500/month, annual contract) adds priority support; Enterprise (custom quote) adds 24/7 support and a dedicated customer success manager.",
-    developerAgencyFitNote: "Homepage and Enterprise page both lead with marketing-team framing (\"build without filing a ticket,\" \"publish content without a developer\"); a newer research-preview product (\"Source by Webflow\") is explicitly pitching toward developers/agencies but is not the core product.",
-    primarySourceUrl: "https://webflow.com/pricing",
-    officialSource: "https://webflow.com/pricing (base pricing not present in Miloosh's catalog as of 2026-09-27; cited here directly from the vendor, not written back to data/software/webflow.json since that page is a protected experiment control)",
+  "webflow": {
+    "slug": "webflow",
+    "hostedOrSelfHosted": "hosted",
+    "documentsImportIntoProduct": true,
+    "importNote": "Webflow CMS imports Collection items from CSV with field mapping. A restriction on importing arbitrary website code is not a restriction on importing CMS content.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "Collections export as CSV. Image/file URLs can point at the original site: preserve or migrate assets before deleting it. CSV does not recreate the site's design or application behavior.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Validate reference fields, locales and file URLs in exported CSV. Plan design/application rebuilding separately from Collection content transfer.",
+    "primarySourceUrl": "https://help.webflow.com/hc/en-us/articles/33961290794771-How-do-I-import-content-into-the-Webflow-CMS",
+    "sourceUrls": [
+      "https://help.webflow.com/hc/en-us/articles/33961290794771-How-do-I-import-content-into-the-Webflow-CMS"
+    ],
+    "officialSource": "https://help.webflow.com/hc/en-us/articles/33961290794771-How-do-I-import-content-into-the-Webflow-CMS"
   },
-  contentful: {
-    slug: "contentful",
-    ownPageEditable: false,
-    hostedOrSelfHosted: "hosted",
-    documentsImportIntoProduct: true,
-    importNote: "A first-party CLI (`contentful space export`/`space import`) exists, but it moves content between Contentful spaces in Contentful's own JSON schema -- not a universal CMS interchange format. No vendor-provided one-click importer from other CMSs exists; only blog-level guidance for custom scripts.",
-    documentsExportOutOfProduct: false,
-    exportNote: "The same export CLI outputs Contentful's proprietary schema, and Contentful's own docs explicitly flag \"the version history isn't migrated -- will start fresh in the new space\" even for space-to-space moves. No path to a non-Contentful destination format is documented.",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "Four premium tiers (Silver/Gold/Platinum/Titanium), differentiated by SLA response time from 8-24 business hours down to \"as fast as 1 hour\" -- none publicly priced.",
-    developerAgencyFitNote: "Explicitly segments its homepage by role: Growth Marketing, Product, and Developers each get distinct framing; agencies are addressed through a formal Solution Partner program as implementers, not a separate self-serve buyer segment.",
-    primarySourceUrl: "https://www.contentful.com/pricing/",
-    officialSource: "https://www.contentful.com/pricing/",
+  "contentful": {
+    "slug": "contentful",
+    "hostedOrSelfHosted": "hosted",
+    "documentsImportIntoProduct": true,
+    "importNote": "The CLI imports content and content models using Contentful's JSON schema. Another CMS's export needs mapping to that schema.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "The CLI exports entries, assets, content types and other space data as JSON. Version history and some workflow/application configuration do not migrate. This is not turnkey compatibility with competing CMSs.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Include the CLI's omissions in the migration plan: version history, workflows and apps do not all travel with entries and assets.",
+    "primarySourceUrl": "https://www.contentful.com/developers/docs/tutorials/cli/import-and-export/",
+    "sourceUrls": [
+      "https://www.contentful.com/developers/docs/tutorials/cli/import-and-export/"
+    ],
+    "officialSource": "https://www.contentful.com/developers/docs/tutorials/cli/import-and-export/"
   },
-  storyblok: {
-    slug: "storyblok",
-    ownPageEditable: false,
-    hostedOrSelfHosted: "hosted",
-    documentsImportIntoProduct: true,
-    importNote: "Extensive official migration guides exist for moving content INTO Storyblok from specific competitors, including \"Migrating a blog site from Contentful to Storyblok\" and \"Migrating Drupal articles to Storyblok.\"",
-    documentsExportOutOfProduct: false,
-    exportNote: "No official page describes exporting content out of Storyblok to another CMS. The only concrete export mechanism found is a per-story XML/JSON API endpoint -- bulk whole-space export would require scripting repeated calls to it; no one-click full-space export exists.",
-    commercialSupportAvailable: true,
-    commercialSupportNote: "Enterprise-tier \"Premium\" (99.9% uptime SLA) and \"Elite\" (99.99% uptime SLA) plans are custom-priced and bundle a dedicated Customer Success Manager; exact fees require a sales conversation.",
-    developerAgencyFitNote: "Positions itself jointly to developers, marketers, and enterprises (\"the only content platform where developers, marketers, and AI agents all get exactly what they need\"); agencies are a partner/reseller channel, not a distinct pricing tier.",
-    primarySourceUrl: "https://www.storyblok.com",
-    officialSource: "https://www.storyblok.com",
-  },
+  "storyblok": {
+    "slug": "storyblok",
+    "hostedOrSelfHosted": "hosted",
+    "documentsImportIntoProduct": true,
+    "importNote": "The CLI pushes previously pulled stories into a space; keep component schemas in sync. Content from a different CMS needs transformation.",
+    "documentsExportOutOfProduct": true,
+    "exportNote": "The stories pull command retrieves stories into local files, alongside separate component-schema commands. Export is not limited to a per-story API, but these files are not a ready-to-run site on another CMS.",
+    "commercialSupportAvailable": null,
+    "commercialSupportNote": "Support fees and SLAs were not measured in this content-transfer review. Confirm responsibility with the project, hosting provider or agency before contracting.",
+    "developerAgencyFitNote": "Review stories and component schemas together. Validate references after push/pull rather than treating downloaded stories as a standalone website.",
+    "primarySourceUrl": "https://www.storyblok.com/docs/libraries/storyblok-cli",
+    "sourceUrls": [
+      "https://www.storyblok.com/docs/libraries/storyblok-cli"
+    ],
+    "officialSource": "https://www.storyblok.com/docs/libraries/storyblok-cli"
+  }
 };

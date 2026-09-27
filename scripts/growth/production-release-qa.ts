@@ -6,6 +6,7 @@ import { renderedHtml, attributes } from "@/lib/seo/rendered-html";
 import { RESEARCH_PATHS } from "@/lib/analytics/research";
 import { buildSupportPricingBenchmark } from "@/lib/support-pricing-benchmark/build";
 import { buildCrmPlanGateDataset } from "@/lib/crm-plan-gates/build";
+import { buildCmsDecisionMatrix } from "@/lib/cms-decision-matrix/build";
 import { authorityBrowserProof } from "./authority-browser-proof";
 
 async function main() {
@@ -28,10 +29,15 @@ async function main() {
     assert(schemas.includes("Organization"), route);
     assert(og.some(a => a.property === "og:title" && a.content), route);
     assert(og.some(a => a.property === "og:description" && a.content), route);
-    if (["/research/customer-support-pricing-2026", "/research/crm-plan-gates-2026"].includes(route)) {
+    if (["/research/customer-support-pricing-2026", "/research/crm-plan-gates-2026", "/research/cms-buying-decision-2026"].includes(route)) {
       const dataset = actual.schemas.find(s => s["@type"] === "Dataset");
       assert(dataset, route); assert.equal(dataset.dateModified, "2026-09-27");
       assert.equal(dataset.distribution.length, 2);
+      if (route.endsWith("cms-buying-decision-2026")) {
+        assert(body.includes('id="methodology"'));
+        assert(!JSON.stringify(actual.schemas).match(/AggregateRating|Review|Offer/));
+        assert(!body.includes("ownPageEditable"));
+      }
     }
     rows.push({ route, status: response.status, title: actual.title, description: actual.description, canonical: actual.canonicals, robots: actual.robots, schemas, openGraph: og, expectedMatches: true });
   }
@@ -39,16 +45,16 @@ async function main() {
   // This project uses /#categories and /category/[slug], not /categories.
   rows.push({ route: "/categories", status: categories.status, expectedMatches: categories.status === 404, note: "Pre-existing unsupported route; navbar uses /#categories; /category/crm verified above. No invented new route." });
   assert.equal(categories.status, 404, "Reconcile unexpected categories routing change");
-  for (const slug of ["customer-support-pricing-2026", "crm-plan-gates-2026"]) {
+  for (const slug of ["customer-support-pricing-2026", "crm-plan-gates-2026", "cms-buying-decision-2026"]) {
     const jsonResponse = await request("/api/research/" + slug), csvResponse = await request("/api/research/" + slug + "/csv");
     const json = await jsonResponse.json(), csv = await csvResponse.text();
-    const expected = slug.startsWith("customer") ? buildSupportPricingBenchmark().rows : buildCrmPlanGateDataset().rows;
+    const expected = slug.startsWith("customer") ? buildSupportPricingBenchmark().rows : slug.startsWith("cms") ? buildCmsDecisionMatrix().rows : buildCrmPlanGateDataset().rows;
     assert.equal(jsonResponse.status, 200); assert.equal(csvResponse.status, 200);
     assert(jsonResponse.headers.get("content-type")?.includes("application/json"));
     assert(csvResponse.headers.get("content-type")?.includes("text/csv"));
     assert.equal(json.sampleSize, expected.length); assert.deepEqual(json.rows, expected);
     assert.equal(csv.trim().split("\n").length, expected.length + 1);
-    assert(!/affiliateUrl|CRON_SECRET|authorization/.test(JSON.stringify(json)));
+    assert(!/affiliateUrl|CRON_SECRET|authorization|ownPageEditable/.test(JSON.stringify(json)));
     downloads.push({ slug, jsonStatus: 200, csvStatus: 200, rows: expected.length, jsonType: jsonResponse.headers.get("content-type"), csvType: csvResponse.headers.get("content-type"), csvBytes: Buffer.byteLength(csv), disposition: csvResponse.headers.get("content-disposition"), exactLocalRows: true });
   }
   const sitemapResponse = await request("/sitemap.xml"), sitemap = await sitemapResponse.text();

@@ -18,6 +18,7 @@ export interface RankedOpportunity {
   affiliateNetwork: string | null;
   rationale: string;
   actionableStep: string;
+  isProtected: boolean;
 }
 
 export function rankCommercialOpportunities(): {
@@ -90,6 +91,8 @@ export function rankCommercialOpportunities(): {
       actionableStep = `Maintain basic factual freshness.`;
     }
 
+    // Discovery scores are not editing permission. The graph loads CURRENT protection.
+    if (node.isProtectedCohort) actionableStep = "HOLD — current protection forbids mutation; observe only until explicitly released.";
     opportunities.push({
       rank: 0,
       slug: node.slug,
@@ -104,7 +107,8 @@ export function rankCommercialOpportunities(): {
       affiliateStatus: node.affiliateStatus,
       affiliateNetwork: node.affiliateNetwork,
       rationale,
-      actionableStep
+      actionableStep,
+      isProtected: node.isProtectedCohort,
     });
   }
 

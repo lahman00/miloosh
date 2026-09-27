@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { execFileSync } from "node:child_process";
-import { loadProtection } from "@/lib/google-war/protection";
+import { loadCurrentProtection as loadProtection } from "@/lib/google-war/current-protection";
 import { protectedChangeFindings } from "@/lib/authority/operations";
 import deployment from "@/docs/growth/receipts/20260927-production-release/deployment.json";
 

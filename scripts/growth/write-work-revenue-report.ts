@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { loadCurrentProtection } from "@/lib/google-war/current-protection";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { getAllSoftware } from "@/data/software";
 import { getComparisonsInvolving } from "@/data/comparisons";
@@ -15,7 +16,7 @@ const ids=new Set(sessions.filter(s=>["CONFIRMED_CLEAN","STRONG_HUMAN_EVIDENCE"]
 const clean=events.filter(e=>ids.has(e.sessionId));
 const outbound=clean.filter(e=>e.type==="outbound_click" && e.destination==="affiliate");
 const cta=computeCtaExposure(clean), products=getAllSoftware(), factory=audit.latestFactory as SeoFactoryRun;
-const protectedPages=new Set<string>(audit.experiments.filter((e:{decision:string})=>e.decision==="MEASURING").map((e:{page:string})=>e.page));
+const protectedPages=new Set(loadCurrentProtection().map(p=>p.page));
 const selected=new Map<string,typeof factory.opportunities[number] & { targetUrl: string }>();
 for(const opportunity of factory.opportunities){if(!opportunity.targetUrl) continue;const prior=selected.get(opportunity.targetUrl);if(!prior||opportunity.opportunityScore>prior.opportunityScore)selected.set(opportunity.targetUrl,{...opportunity,targetUrl:opportunity.targetUrl});}
 const activeSlugs=new Set<string>(ACTIVE_PARTNERS.map(p=>p.slug));

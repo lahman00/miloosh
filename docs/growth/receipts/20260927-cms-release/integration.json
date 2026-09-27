@@ -1,0 +1,27 @@
+{
+  "mission": "CMS release 2026-09-27",
+  "base": "b49213e70dbe175595c6369f590315a75654ed36",
+  "sourceCommit": "61eee274c25749645d262c44cc785f2fefe8c431",
+  "integratedCommit": "528d5fe6cfc2ebbfd0bcffba618b0fd94b857aa0",
+  "method": "Cherry-picked exact commit only",
+  "excludedParent": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86",
+  "excludedReason": "Unrelated product edits including protected products",
+  "concurrentClaudeCommitObserved": "2ca40202b781ff750c1745631161ec95067fd244",
+  "concurrentClaudeCommitIntegrated": false,
+  "concurrentNote": "Newly observed during release QA. Webex, Confluence and Basecamp are RESERVED in the release branch's current ranking-intent registry. Do not integrate that commit without explicit protection reconciliation; neither its product edits nor its superseded CMS-only-WordPress wording are included.",
+  "githubPush": false,
+  "publicChanges": [
+    "/research/cms-buying-decision-2026",
+    "/research",
+    "CMS JSON/CSV exports",
+    "one new sitemap URL",
+    "bounded research event path"
+  ],
+  "unchanged": [
+    "software product data",
+    "affiliate relationships",
+    "social publishing",
+    "frozen cohort membership",
+    "wrong-owner mitigations"
+  ]
+}

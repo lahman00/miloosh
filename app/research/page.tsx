@@ -26,7 +26,7 @@ const RESEARCH_ASSETS = [
     href: "/research/cms-buying-decision-2026",
     title: "CMS Buying Decision Matrix 2026",
     summary:
-      "Migration lock-in, hosting model, and commercial support across 8 CMS platforms -- every vendor documents importing content in, almost none document exporting it back out.",
+      "Documented content import/export across 8 CMS platforms, with format limitations and practical migration questions. No composite ranking or assumed lock-in score.",
     verified: "2026-09-27",
   },
   {

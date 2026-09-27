@@ -31,10 +31,21 @@ describe("buildCmsDecisionMatrix", () => {
     expect(neither).toBe(m.neitherDocumentedCount);
   });
 
-  it("Webflow's pricing is sourced directly in this module, not from data/software/webflow.json, and is not asserted as written back to the catalog", () => {
+  it("does not relabel historical catalog prices as freshly verified, or expose edit permissions", () => {
     const webflow = m.rows.find((r) => r.slug === "webflow")!;
-    expect(webflow.recordedStartingPrice).toContain("Basic");
-    expect(webflow.ownPageEditable).toBe(false);
+    expect(webflow.recordedStartingPrice).toBeNull();
+    expect(JSON.stringify(m)).not.toContain("ownPageEditable");
+    expect(m.rows.every(r => r.recordedStartingPrice === null && r.hasFreeTier === null)).toBe(true);
+    expect(m.noOfficialVendorSupportCount).toBe(0);
+  });
+
+  it("does not confuse CSV import with website-code import, or data export with turnkey migration", () => {
+    expect(m.importAndExportCount).toBe(7);
+    for (const slug of ["webflow", "craft-cms", "contentful", "storyblok", "umbraco", "drupal"]) {
+      expect(m.rows.find(r => r.slug === slug)).toMatchObject({ documentsImportIntoProduct: true, documentsExportOutOfProduct: true });
+    }
+    expect(m.rows.find(r => r.slug === "joomla")?.exportNote).toContain("evidence gap");
+    expect(m.rows.every(r => r.sourceUrls.includes(r.primarySourceUrl))).toBe(true);
   });
 
   it("every profile in the overlay has a non-empty officialSource", () => {

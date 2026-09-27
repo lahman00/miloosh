@@ -1,7 +1,8 @@
 import { getSoftware } from "@/data/software";
 import { buildIndexationPriorityList } from "@/scripts/growth/indexation-priority";
 import { scoreFactualDepth, type FactualDepthRow } from "@/scripts/growth/factual-depth-audit";
-import { loadProtection, protectionFor } from "@/lib/google-war/protection";
+import { protectionFor } from "@/lib/google-war/protection";
+import { loadCurrentProtection as loadProtection } from "@/lib/google-war/current-protection";
 
 /**
  * GOOGLE INDEXATION QUALITY WAR mission (2026-08-22), Phase 4 — crosses

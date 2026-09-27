@@ -117,6 +117,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/research`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/research/customer-support-pricing-2026`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/research/crm-plan-gates-2026`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/research/cms-buying-decision-2026`, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   return [...staticPages, ...categoryPages, ...roleGuidePages, ...softwarePages, ...comparisonPages, ...legalPages];

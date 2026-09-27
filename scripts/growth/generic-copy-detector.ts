@@ -2,10 +2,7 @@ import { getAllSoftware } from "@/data/software";
 import fs from "node:fs";
 import path from "node:path";
 
-const PROTECTED_COHORT = new Set([
-  "pipedrive", "airtable", "semrush", "freshdesk", "buffer",
-  "ringcentral", "help-scout", "intercom", "front"
-]);
+import { readProtectedExperimentSlugs } from "./gsc-opportunity-miner";
 
 export interface CopyQualityScore {
   slug: string;
@@ -28,6 +25,7 @@ export function detectGenericCopy(): {
   flaggedPages: CopyQualityScore[];
 } {
   const software = getAllSoftware();
+  const PROTECTED_COHORT = readProtectedExperimentSlugs();
   const scored: CopyQualityScore[] = [];
 
   const genericOpeners = [

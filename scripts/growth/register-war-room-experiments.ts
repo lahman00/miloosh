@@ -2,6 +2,7 @@ import "../social/_load-env";
 import { recordSeoExperimentBatch } from "@/lib/seo-factory/store";
 import type { SeoExperiment } from "@/lib/seo-factory/types";
 import { GROWTH_WAR_ROOM_BASELINE } from "@/data/growth/growth-war-room-2026-08-21-baseline";
+import { currentProtectionSnapshot, assertCurrentMutation } from "@/lib/google-war/current-protection";
 
 /**
  * Growth War Room mission (2026-08-21) — registers the second batch of
@@ -49,6 +50,9 @@ const experiments: SeoExperiment[] = GROWTH_WAR_ROOM_BASELINE.rows.map((row) => 
 }));
 
 async function main() {
+  const protection = currentProtectionSnapshot();
+  if (!process.argv.includes("--execute")) throw new Error("Explicit --execute required for experiment registration");
+  assertCurrentMutation(protection.fingerprint, experiments.map(e => e.page));
   const result = await recordSeoExperimentBatch(experiments);
   console.log(`Registered: ${result.recorded}. Total experiments now: ${result.experiments.length}`);
 }

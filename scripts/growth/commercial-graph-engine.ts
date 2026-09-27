@@ -64,10 +64,7 @@ export interface CommercialGraphSummary {
   nodes: CommercialNode[];
 }
 
-const PROTECTED_COHORT = new Set([
-  "pipedrive", "airtable", "semrush", "freshdesk", "buffer",
-  "ringcentral", "help-scout", "intercom", "front"
-]);
+import { readProtectedExperimentSlugs } from "./gsc-opportunity-miner";
 
 const SUPERLATIVE_PATTERNS = [
   /\b(best-in-class|industry-leading|gold standard|exceptional|unmatched|revolutionary|game-changer|unrivaled)\b/i,
@@ -123,6 +120,7 @@ function currentCommercialAffiliateStatus(slug: string): CommercialNode["affilia
 
 export function buildCommercialGraph(): CommercialGraphSummary {
   const software = getAllSoftware();
+  const PROTECTED_COHORT = readProtectedExperimentSlugs();
   const categories = getAllCategories();
   const roleGuides = getAllRoleGuides();
 

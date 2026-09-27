@@ -1,6 +1,6 @@
 import { rankCommercialOpportunities } from "./money-leaks-analyzer";
 import { auditCategoryIntelligence } from "./category-intelligence";
-import { mineGscOpportunities } from "./gsc-opportunity-miner";
+import { mineGscOpportunities, readProtectedExperimentSlugs } from "./gsc-opportunity-miner";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -103,6 +103,10 @@ export function runCommercialPriorityEngine(): {
     });
   }
 
+  const protectedSlugs = readProtectedExperimentSlugs();
+  for (let i = items.length - 1; i >= 0; i--) {
+    if (protectedSlugs.has(items[i].target.split("/").at(-1)!)) items.splice(i, 1);
+  }
   items.sort((a, b) => b.priorityScore - a.priorityScore);
   items.forEach((item, idx) => {
     item.rank = idx + 1;

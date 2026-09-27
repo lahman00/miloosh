@@ -2,10 +2,7 @@ import { getAllSoftware } from "@/data/software";
 import fs from "node:fs";
 import path from "node:path";
 
-const PROTECTED_COHORT = new Set([
-  "pipedrive", "airtable", "semrush", "freshdesk", "buffer",
-  "ringcentral", "help-scout", "intercom", "front"
-]);
+import { readProtectedExperimentSlugs } from "./gsc-opportunity-miner";
 
 const SUPERLATIVE_PATTERNS = [
   /\b(best-in-class|industry-leading|gold standard|exceptional|unmatched|revolutionary|game-changer|unrivaled)\b/gi,
@@ -31,6 +28,7 @@ export function auditProductTruth(): {
   nonProtectedSuperlativeCount: number;
 } {
   const software = getAllSoftware();
+  const PROTECTED_COHORT = readProtectedExperimentSlugs();
   const findings: SuperlativeFinding[] = [];
   let pricingVerified = 0;
   let pricingMissing = 0;

@@ -2,6 +2,7 @@ import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { runFullAffiliateSweep, type AffiliateClassification } from "./full-affiliate-sweep";
 import fs from "node:fs";
 import path from "node:path";
+import { readProtectedExperimentSlugs } from "./gsc-opportunity-miner";
 
 export interface TopMoneyOpportunity {
   rank: number;
@@ -22,6 +23,7 @@ export interface TopMoneyOpportunity {
   publishedComparisons: number;
   moneyScore: number;
   strategicAction: string;
+  isProtected: boolean;
 }
 
 const EXCLUDED_CLASSIFICATIONS = new Set<AffiliateClassification>([
@@ -98,6 +100,7 @@ function strategicAction(
  * The live revenue ranking remains lib/growth/money-priority-engine.ts.
  */
 export function rankTopMoneyOpportunities(): TopMoneyOpportunity[] {
+  const protectedSlugs = readProtectedExperimentSlugs();
   const sweep = runFullAffiliateSweep();
 
   const compCounts = new Map<string, number>();
@@ -129,7 +132,10 @@ export function rankTopMoneyOpportunities(): TopMoneyOpportunity[] {
       commission,
       publishedComparisons: comparisons,
       moneyScore: Number(score.toFixed(1)),
-      strategicAction: strategicAction(status, product.name, network, comparisons, product.heuristicSignal),
+      isProtected: protectedSlugs.has(product.slug),
+      strategicAction: protectedSlugs.has(product.slug)
+        ? "HOLD — current protection forbids public content/CTA mutation; observe only until explicitly released."
+        : strategicAction(status, product.name, network, comparisons, product.heuristicSignal),
     });
   }
 

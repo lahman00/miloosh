@@ -27,6 +27,7 @@ import { runOperationsReport } from "./operations-report";
 import authoritySeed from "@/data/growth/authority/registry.json";
 import protocolDeviations from "@/data/growth/cohort-protocol-deviations.json";
 import { appendAuthority, parseRegistry, legacyOffsiteView } from "@/lib/authority/registry";
+import { currentProtectionSnapshot, staleProtectionAlert } from "@/lib/google-war/current-protection";
 
 const arg = (key: string, fallback: string) => process.argv.includes(key) ? process.argv[process.argv.indexOf(key) + 1] : fallback;
 const read = (file: string) => JSON.parse(fs.readFileSync(file, "utf8"));
@@ -35,6 +36,8 @@ const write = (file: string, data: unknown) => fs.writeFileSync(file, typeof dat
 function main() {
   const out = arg("--output", "var/growth/google-command"), now = new Date().toISOString();
   const google = read(arg("--google-report", "var/growth/google-war/latest.json"));
+  const protection = currentProtectionSnapshot();
+  const protectionAlert = staleProtectionAlert(google.protectionFingerprint, protection.fingerprint);
   const graph = read(arg("--graph", "var/growth/google-war/authority-graph.json"));
   const build = readBuild(arg("--dist", ".next-miloosh-qa"));
   if (build.artifactHash !== google.artifactHash || graph.artifactHash !== build.artifactHash) throw new Error("Mixed build artifacts");
@@ -55,7 +58,7 @@ function main() {
   const ownership = queries.map(r => ({ ...r, ...queryOwnership(r, pages, software) }));
   const cohorts = cohortRegistry();
   const interventionVerification = rankingChanges.changesExecuted.map(c => verifyRecordedTitle(c, build.html));
-  const registered = new Set(cohorts.flatMap(c => [...c.treatment, ...c.control]));
+  const registered = new Set(protection.entries.map(p => p.page));
   const deployed = (page: string) => verifiedExperimentClock(improvements.find(i => i.url === page), now);
   const deltas = (page: string, days: 7 | 14 | 28, requireRecrawl = false) => {
     if (interventionVerification.some(v => v.canonical === page && v.status === "EXPECTED_TITLE_NOT_RENDERED")) return { status: "WAIT_INTERVENTION_VERIFICATION" as const };
@@ -78,7 +81,7 @@ function main() {
     const url = new URL(p.page).pathname, source = google.rows.find((r: { url: string }) => r.url === url);
     const resolved = resolveEvidence(p.page, inspections, snapshot, now);
     const relatedProtected = p.products.some(slug => registered.has(`/software/${slug}`) || google.rows.find((r: { url: string }) => r.url === `/software/${slug}`)?.protection.some((r: { state: string }) => r.state !== "SAFE_TO_EDIT"));
-    const safe = Boolean(source?.technical.localArtifactPass) && !registered.has(url) && !relatedProtected && !source?.protection.some((r: { state: string }) => r.state !== "SAFE_TO_EDIT");
+    const safe = !protectionAlert && Boolean(source?.technical.localArtifactPass) && !registered.has(url) && !relatedProtected && !source?.protection.some((r: { state: string }) => r.state !== "SAFE_TO_EDIT");
     const monetizable = p.products.filter(s => active.has(s));
     return { url, kind: p.kind, ...resolved, safe, activeProducts: monetizable, commerciallyRelevant: p.products.length > 0,
       intentEvidence: ownership.filter(q => q.page === p.page).map(q => ({ query: q.query, impressions: q.impressions, classification: q.classification })),
@@ -113,6 +116,8 @@ function main() {
   const authority = runAuthorityReport();
   const operations = runOperationsReport(authority);
   const report = {
+    protectionFingerprint: protection.fingerprint,
+    protectionAlerts: protectionAlert ? [protectionAlert] : [],
     operationsControlRoom: { report: "../operations/latest.json", dashboard: "../operations/index.html", alerts: operations.alerts.length },
     authorityControlRoom: { report: "../authority/latest.json", dashboard: "../authority/index.html", gscLinks: authority.authorityBaseline.totalExternalLinks, observedDeepLinkPairs: authority.deepLinkBaseline.deepLinkPlacements, referralData: authority.referralTraffic.status, alerts: authority.alerts.length },
     generatedAt: now, sourceSha: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(), buildId: build.buildId, artifactHash: build.artifactHash,
@@ -133,6 +138,6 @@ function main() {
   const sections = Object.entries(report.queues).map(([title, items]) => `<section><h2>${escape(title)} (${items.length})</h2><div class="scroll"><table><thead><tr><th>Page</th><th>Index state</th><th>Impressions</th><th>Position</th><th>Safe to act</th><th>Handoffs</th></tr></thead><tbody>${items.slice(0, 30).map(r => `<tr><td>${escape(r.url)}</td><td>${escape(r.state)}</td><td>${r.search?.impressions ?? "UNKNOWN"}</td><td>${r.search?.position ?? "UNKNOWN"}</td><td>${r.safe ? "Review allowed" : "Observe only"}</td><td>${r.handoffs ?? "UNKNOWN"}</td></tr>`).join("")}</tbody></table></div></section>`).join("");
   write(path.join(out, "index.html"), `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Miloosh · Google intelligence</title><style>body{font:16px/1.5 system-ui;background:#091727;color:#e8f0f7;margin:0;padding:clamp(16px,4vw,48px)}main{max-width:1300px;margin:auto}h1{font-size:clamp(28px,4vw,48px)}section{background:#12283d;padding:20px;border-radius:12px;margin:22px 0}h2{overflow-wrap:anywhere;font-size:20px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse}td,th{padding:12px;text-align:left;border-bottom:1px solid #35516a;white-space:nowrap}.notice{color:#f1cf7b}a{color:#a4d6ff}</style><main><p>PRIVATE LOCAL REPORT · LEVEL 0 · NO PUBLISHING</p><h1>Google intelligence & revenue</h1><p><a href="../operations/index.html">Day operations: Google, research, outreach and alerts</a> · <a href="../authority/index.html">Authority control room: links, research journeys and Google observations</a></p><p>Build ${escape(build.buildId)} · Evidence captured ${escape(snapshot.capturedAt)}<br>GSC window ${escape(snapshot.window.start)}–${escape(snapshot.window.end)}</p><p class="notice">${lost.length} historical ranking URLs require index selection. Missing data stays UNKNOWN. No revenue forecast or causal claim.</p><section><h2>Evidence coverage</h2><p>${queries.length} query×page observations · ${cohorts.length} cohorts · ${ACTIVE_PARTNERS.length} active partners</p><p>Organic funnel: ${funnel ? `${funnel.eligibleOrganicSessions} classified sessions (estimates)` : "UNAVAILABLE — no complete event export supplied"}. Merchant arrival and conversion: UNKNOWN.</p><p>Experiments await verified deployment and matching finalized windows. Off-site: ${offsite.filter(r => r.status === "VERIFIED_LIVE").length} previously verified placements; sending an email is not a placement.</p></section>${sections}<section><h2>Audit / exports</h2><p>${report.ctaAudit.checked} tracked links inspected; ${report.ctaAudit.findings.filter(f => f.severity === "BLOCK").length} blocking findings, ${report.ctaAudit.findings.filter(f => f.severity === "REVIEW").length} review findings.</p><p><a href="latest.json">Full evidence, ownership, cohorts, graph and attribution JSON</a> · <a href="site-change-manifest.json">Change manifest</a></p></section></main></html>`);
   console.log(JSON.stringify({ output: out, ...report.counts, blockingCtaFindings: report.ctaAudit.findings.filter(f => f.severity === "BLOCK").length, analytics: funnel ? "COMPLETE_EXPORT" : "UNAVAILABLE" }));
-  if (process.argv.includes("--strict") && report.ctaAudit.findings.some(f => f.severity === "BLOCK")) process.exitCode = 1;
+  if (process.argv.includes("--strict") && (protectionAlert || report.ctaAudit.findings.some(f => f.severity === "BLOCK"))) process.exitCode = 1;
 }
 try { main(); } catch (error) { console.error(error instanceof Error ? error.message : "Command-center failed"); process.exitCode = 1; }

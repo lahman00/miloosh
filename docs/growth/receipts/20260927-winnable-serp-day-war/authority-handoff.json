@@ -33,31 +33,32 @@
 
   "cmsBuyingDecisionMatrixLinkableFindings": {
     "url": "https://miloosh.com/research/cms-buying-decision-2026",
+    "releaseCorrection": "Codex first-party recheck 2026-09-27 supersedes the original lock-in claims. Deployment verification is recorded in ../20260927-cms-release/deployment.json; do not pitch until that receipt confirms live.",
     "strongDefensibleFindings": [
-      "Only 1 of 8 major CMS platforms (WordPress) documents a vendor-supported path both INTO and OUT of the platform -- every other platform documents one direction but not the other",
-      "Webflow's own pricing-page FAQ states flatly that importing an existing site or codebase is not possible -- the most explicit no-import statement found across all 8 platforms",
-      "5 of 8 platforms (Craft CMS, Drupal, Joomla, Contentful, Storyblok) actively court migration FROM a named competitor while documenting no path back out to any platform"
+      "Seven of eight sampled platforms have documented content-input and content-output mechanisms under the explicitly broad file/API/same-platform transfer definition",
+      "Webflow CMS supports CSV import and export; arbitrary website-code import is a different question",
+      "Export files, API extraction and complete-site migration are not interchangeable; schemas, media and application behavior need validation"
     ],
     "limitations": [
       "'Documented' is not the same as 'complete' -- several import tools are limited to specific source platforms (e.g. WordPress-only importers)",
-      "Several vendor pages (notably Umbraco) blocked automated research access; those findings rely on secondary documentation subdomains and carry lower confidence",
+      "Official documentation subdomains are first-party sources. Webflow and Contentful bot/rate responses were resolved by read-only live browser verification; no bypass used",
       "This is a dated snapshot (2026-09-27) of documentation, not of actual migration difficulty in practice"
     ],
     "audienceAngles": [
       "Web agencies and freelance developers evaluating a CMS for a client -- the migration-direction framing is a real risk-disclosure question they should be asking vendors",
-      "Enterprise buyers doing CMS RFPs -- the hosting/commercial-support comparison is directly usable in a vendor-evaluation scorecard",
-      "CMS vendors themselves -- several may want to correct the record if they do have an undocumented export path"
+      "Enterprise buyers doing CMS RFPs -- hosting and documented transfer boundaries are due-diligence inputs; most commercial-support terms remain unassessed",
+      "CMS implementers -- validate the documented formats against a real destination content model"
     ],
     "claimsThatMustNotBeMade": [
       "Do NOT present this as a ranking of which CMS is 'best' -- it computes no score",
-      "Do NOT claim any platform has zero way to migrate data out under any circumstances -- only that no OFFICIAL, vendor-documented path was found; third-party/custom tooling may exist",
-      "Do NOT state Umbraco's exact support pricing as confirmed -- it is explicitly flagged as unverified due to blocked automated access"
+      "Do NOT repeat the superseded WordPress-only, Webflow-no-import, or no-export claims for Craft, Drupal, Contentful or Storyblok",
+      "Do NOT quote support prices or SLAs from this research; they are deliberately not measured"
     ]
   },
 
   "pitchPackForCmsAsset": {
     "webDevelopersAgencies": "Lead with the migration-lock-in framing -- a real risk-disclosure angle agencies should raise with clients before recommending a CMS.",
-    "enterpriseBuyers": "Lead with the hosting-model and commercial-support comparison as an RFP input.",
+    "enterpriseBuyers": "Lead with hosting choices, documented transfer scope and unanswered support questions as RFP inputs, not a verified support-price comparison.",
     "cmsVendorsThemselves": "Lead with an invitation to correct the record via the Corrections Policy if a documented export path exists that this research missed."
   }
 }

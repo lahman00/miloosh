@@ -4,6 +4,7 @@ export const RESEARCH_PATHS = [
   "/research/saas-pricing-pressure-index-2026",
   "/research/customer-support-pricing-2026",
   "/research/crm-plan-gates-2026",
+  "/research/cms-buying-decision-2026",
 ] as const;
 export const RESEARCH_EVENTS = ["research_page_view", "research_source_click", "research_to_decision_click", "research_to_comparison_click"] as const;
 export type ResearchEventType = typeof RESEARCH_EVENTS[number];

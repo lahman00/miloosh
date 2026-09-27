@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { renderedHtml } from "@/lib/seo/rendered-html";
 import { buildSupportPricingBenchmark } from "@/lib/support-pricing-benchmark/build";
 import { buildCrmPlanGateDataset } from "@/lib/crm-plan-gates/build";
+import { buildCmsDecisionMatrix } from "@/lib/cms-decision-matrix/build";
 import { parseRegistry, appendAuthority, type AuthorityEntry } from "@/lib/authority/registry";
 import seed from "@/data/growth/authority/registry.json";
 import { updateLocalStore } from "@/lib/authority/store";
@@ -38,12 +39,13 @@ async function main() {
   for (const [slug, expected] of [
     ["customer-support-pricing-2026", buildSupportPricingBenchmark().rows],
     ["crm-plan-gates-2026", buildCrmPlanGateDataset().rows],
+    ["cms-buying-decision-2026", buildCmsDecisionMatrix().rows],
   ] as const) {
     const json = await readOnlyGet("https://miloosh.com/api/research/" + slug), data = JSON.parse(json.body);
     assert.equal(json.status, 200);
     assert.deepEqual(Object.keys(data).sort(), ["dataset", "publisher", "generatedAt", "sampleSize", "inclusionRule", "rows"].sort());
     assert.deepEqual(data.rows, expected);
-    assert(!/CRON_SECRET|BLOB_READ_WRITE_TOKEN|affiliateUrl|captured_at|gscImpressions|outreach|receipt/i.test(json.body));
+    assert(!/CRON_SECRET|BLOB_READ_WRITE_TOKEN|affiliateUrl|captured_at|gscImpressions|outreach|receipt|ownPageEditable/i.test(json.body));
     exports.push({ slug, status: 200, topLevelKeys: Object.keys(data), exactPublicRows: true, bytes: Buffer.byteLength(json.body) });
     const html = await readOnlyGet("https://miloosh.com/research/" + slug);
     const parsed = renderedHtml(html.body);
@@ -76,7 +78,7 @@ async function main() {
   }
   const store = "var/growth/authority/registry.json";
   updateLocalStore(store, previous => appendAuthority(appendAuthority(registry, parseRegistry(previous)), incoming));
-  const result = { checkedAt: timestamp, sourceScope: "External editorial links rendered on the two newly released research assets; not all 354 product sources.", publicExports: exports, sizes, placements,
+  const result = { checkedAt: timestamp, sourceScope: "External editorial links rendered on support, CRM and CMS research assets; not all 354 product sources.", publicExports: exports, sizes, placements,
     sourceLinks: sourceRows.sort((a, b) => a.url.localeCompare(b.url)), brokenSources: sourceRows.filter(r => ["BROKEN", "REDIRECT_LOOP", "REDIRECT_LIMIT"].includes(r.classification)),
     inconclusiveSources: sourceRows.filter(r => ["NETWORK_OR_ACCESS_UNAVAILABLE", "INACCESSIBLE_NOT_PROVEN_DEAD"].includes(r.classification)), merchantNavigations: 0, externalWrites: 0 };
   fs.writeFileSync(out + "/live-checks.json", JSON.stringify(result, null, 2));

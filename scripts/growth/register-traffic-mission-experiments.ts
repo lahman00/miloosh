@@ -2,6 +2,7 @@ import "../social/_load-env";
 import { recordSeoExperimentBatch } from "@/lib/seo-factory/store";
 import type { SeoExperiment } from "@/lib/seo-factory/types";
 import { TRAFFIC_MISSION_BASELINE } from "@/data/growth/traffic-mission-2026-08-21-baseline";
+import { currentProtectionSnapshot, assertCurrentMutation } from "@/lib/google-war/current-protection";
 
 /**
  * Growth War Room mission (2026-08-21) — Phase 0 finding: the 5 pages
@@ -68,6 +69,9 @@ const experiments: SeoExperiment[] = Object.entries(PRIMARY_QUERY_BY_SLUG).map((
 }));
 
 async function main() {
+  const protection = currentProtectionSnapshot();
+  if (!process.argv.includes("--execute")) throw new Error("Explicit --execute required for experiment registration");
+  assertCurrentMutation(protection.fingerprint, experiments.map(e => e.page));
   const result = await recordSeoExperimentBatch(experiments);
   console.log(`Registered: ${result.recorded}. Total experiments now: ${result.experiments.length}`);
   if (!result.recorded) {

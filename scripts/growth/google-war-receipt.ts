@@ -3,9 +3,9 @@ import path from "node:path";
 import assert from "node:assert/strict";
 import { DECISION_PATHS } from "@/data/seo/decision-paths";
 import {
-  loadProtection,
   assertSafeLinkChange,
 } from "@/lib/google-war/protection";
+import { assertCurrentMutation } from "@/lib/google-war/current-protection";
 
 // Reproducible local receipt from two already-built artifacts. Never publishes.
 const directory =
@@ -39,7 +39,7 @@ const removed: Edge[] = before.edges.filter(
 );
 assert.equal(removed.length, 0, "Unexpected removed crawlable anchors");
 assert.equal(added.length, 8, "Expected exactly eight new crawlable anchors");
-const protections = loadProtection();
+const protections = assertCurrentMutation(report.protectionFingerprint, []).entries;
 for (const e of added) assertSafeLinkChange(e.from, e.to, protections);
 for (const [source, items] of Object.entries(DECISION_PATHS))
   for (const item of items) {

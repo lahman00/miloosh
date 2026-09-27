@@ -29,7 +29,9 @@ import {
   hasProductionProof,
   improvementSchema,
 } from "@/lib/google-war/deployment-proof";
-import { loadProtection, protectionFor } from "@/lib/google-war/protection";
+import { protectionFor } from "@/lib/google-war/protection";
+import { loadCurrentProtection as loadProtection } from "@/lib/google-war/current-protection";
+import { protectionFingerprint } from "@/lib/google-war/current-protection";
 import {
   commercialQualityRegressions,
   intentConflicts,
@@ -126,6 +128,7 @@ function main() {
     });
     const graph = buildAuthorityGraph(nodes);
     const nodeMap = new Map(nodes.map((n) => [n.path, n]));
+    const protectionAtStart = protectionFingerprint();
     const protections = loadProtection(process.cwd(), now);
     const conflicts = intentConflicts(
       nodes.filter((n) =>
@@ -368,7 +371,9 @@ function main() {
       routeTypeByState[r.kind][state] =
         (routeTypeByState[r.kind][state] ?? 0) + 1;
     }
+    if (protectionAtStart !== protectionFingerprint()) throw new Error("Protection changed during report; regenerate");
     const report = {
+      protectionFingerprint: protectionAtStart,
       generatedAt: now,
       sourceSha: execFileSync("git", ["rev-parse", "HEAD"], {
         encoding: "utf8",

@@ -7,7 +7,9 @@ import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-tru
 import { queryObservationSchema, latestQueries, queryOwnership, type IntentPage } from "@/lib/google-war/query-store";
 import { inspectionSchema } from "@/lib/google-war/evidence";
 import { cohortRegistry } from "@/lib/google-war/cohorts";
-import { loadProtection } from "@/lib/google-war/protection";
+import { loadCurrentProtection as loadProtection } from "@/lib/google-war/current-protection";
+import { protectionFingerprint, staleProtectionAlert } from "@/lib/google-war/current-protection";
+import { RESEARCH_PATHS } from "@/lib/analytics/research";
 import { researchWatch, outreachSchema, outreachCaptureSchema, outreachDisposition, crawlDelta, movementAlerts, cohortWatch, replyWatch, placementCheckAlerts } from "@/lib/authority/operations";
 import { periodSchema, checkpointWindows } from "@/lib/google-war/measurement";
 import { organicMoneyFunnel } from "@/lib/google-war/money-funnel";
@@ -31,6 +33,9 @@ const escape = (s: unknown) => String(s).replaceAll("&", "&amp;").replaceAll("<"
 export function runOperationsReport(authority: ReturnType<typeof runAuthorityReport>) {
   const out = "var/growth/operations", now = new Date().toISOString();
   const previous = optional(path.join(out, "latest.json"));
+  const cmsRelease = optional("docs/growth/receipts/20260927-cms-release/deployment.json");
+  const currentDeployment = cmsRelease?.status === "READY_VERIFIED_PRODUCTION" ? cmsRelease : deployment;
+  const cmsIndexing = optional("docs/growth/receipts/20260927-cms-release/indexing-request.json");
   const inspections = inspectionSchema.array().parse(optional(option("--research-inspections", "var/growth/operations/research-inspections.json")) ?? researchSeed);
   const queries = latestQueries(queryObservationSchema.array().parse(optional("var/growth/google-command/query-page.json") ?? []));
   const software = getAllSoftware();
@@ -45,7 +50,12 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
     observations: ownership.filter(q => q.page === t.page && q.query === t.query),
   }));
   const requests = new Map(indexingRequests.requests.map(r => [r.url, r.observedAt]));
-  const research = inspections.map(i => researchWatch(previous?.researchInspections?.find((p: { url: string }) => p.url === i.url) ?? null, i, requests.get(i.url) ?? null));
+  if (cmsIndexing?.status === "ACCEPTED" && cmsIndexing.requestedAt) requests.set(cmsIndexing.url, cmsIndexing.requestedAt);
+  const research = RESEARCH_PATHS.map(route => {
+    const url = "https://miloosh.com" + route, i = inspections.filter(i => i.url === url).sort((a,b) => b.checkedAt.localeCompare(a.checkedAt))[0];
+    return i ? researchWatch(previous?.researchInspections?.find((p: { url: string }) => p.url === i.url) ?? null, i, requests.get(i.url) ?? null) :
+      { url, checkedAt: null, requestedAt: requests.get(url) ?? null, state: "UNKNOWN", coverageState: "NO_CAPTURED_INSPECTION", lastCrawl: null, alert: null };
+  });
   const outreach = outreachCaptureSchema.parse(optional(option("--outreach", "var/growth/operations/outreach.json")) ?? outreachSeed);
   const contacts = outreach.contacts;
   const crawl = optional("var/growth/google-command/production-crawl/latest.json");
@@ -75,13 +85,15 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
   const events = optional(option("--events", "var/growth/operations/events.json"));
   const bundle = events ? eventExportSchema.parse(events) : null;
   const organic = bundle ? organicMoneyFunnel(bundle.events as FirstPartyEvent[], bundle.start, bundle.end) : { status: "UNKNOWN", reason: "No complete readable first-party production export. Vercel Web Analytics returned not_found; not zero." };
-  const alerts = [...authority.alerts.map(a => ({ code: a.code, target: a.target, reason: a.reason })),
+  const protectionAlert = staleProtectionAlert(optional("var/growth/google-war/latest.json")?.protectionFingerprint, protectionFingerprint());
+  const alerts = [...(protectionAlert ? [protectionAlert] : []), ...authority.alerts.map(a => ({ code: a.code, target: a.target, reason: a.reason })),
     ...placementCheckAlerts(sourceChecks?.placements ?? []),
     ...(releaseCheck?.results ?? []).filter((g: { exitCode: number | null; error: string | null }) => g.exitCode !== 0 || g.error).map((g: { name: string; end: string }) => ({ code: "RELEASE_GATE_FAILED", target: g.name, reason: "Recorded local release gate failed at " + g.end + "; production health does not override this hold." })),
     ...research.filter(r => r.alert).map(r => ({ code: r.alert!, target: r.url, reason: "New crawl text observed; exclusion is not indexation success. No resubmission." })),
     ...movement.flatMap(m => m.alerts.map(code => ({ code, target: m.page, reason: "Matched final windows only; directional, not causal or statistically significant." }))),
   ];
-  const result = { generatedAt: now, productionDeploymentReference: deployment, productionHealth: health,
+  const result = { generatedAt: now, productionDeploymentReference: currentDeployment, productionHealth: health,
+    cmsIndexing: cmsIndexing ?? { status: "NOT_REQUESTED" },
     crawl: crawl && priorCrawl ? { capturedAt: crawl.capturedAt, complete: crawl.complete, failures: crawl.failures, delta: crawlDelta(priorCrawl.rows, crawl.rows) } : { status: "UNKNOWN" },
     google: { brand: authority.brandHistory.at(-1), brandMovement: authority.brandedSearchMovement, ranking: movement, topWinnable: top },
     queryPageMap: ownership, wrongOwner: ownership.filter(q => q.classification === "LIKELY_WRONG_OWNER"),

@@ -42,7 +42,8 @@ export async function authorityBrowserProof(origin: string, output: string, prod
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       const decision = page.locator(`main a[href^="/${targetKind}/"]`).first();
       if (await decision.count() === 0) {
-        assert.equal(research, "/research/saas-pricing-pressure-index-2026", "Both new assets require comparison discovery");
+        assert(["/research/saas-pricing-pressure-index-2026", "/research/cms-buying-decision-2026"].includes(research), "Unexpected missing decision path");
+        // CMS deliberately avoids new links into protected CMS comparisons.
         await context.close(); continue;
       }
       if (targetKind === "software") {

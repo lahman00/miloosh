@@ -15,8 +15,11 @@ const COLUMNS: Array<{ key: keyof CmsRow; label: string }> = [
   { key: "hasFreeTier", label: "has_free_tier" },
   { key: "hostedOrSelfHosted", label: "hosted_or_self_hosted" },
   { key: "documentsImportIntoProduct", label: "documents_import_in" },
+  { key: "importNote", label: "import_scope_and_limits" },
   { key: "documentsExportOutOfProduct", label: "documents_export_out" },
+  { key: "exportNote", label: "export_scope_and_limits" },
   { key: "commercialSupportAvailable", label: "official_commercial_support" },
+  { key: "commercialSupportNote", label: "support_evidence_limits" },
   { key: "officialSource", label: "official_source" },
 ];
 

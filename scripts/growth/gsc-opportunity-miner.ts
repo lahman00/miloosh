@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { loadProtection } from "@/lib/google-war/protection";
+import { loadCurrentProtection as loadProtection } from "@/lib/google-war/current-protection";
 import { inspectionSchema, searchSnapshotSchema } from "@/lib/google-war/evidence";
 import { classifyInspectionEvidence, resolveEvidence } from "@/lib/google-war/resolver";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";

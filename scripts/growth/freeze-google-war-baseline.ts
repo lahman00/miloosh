@@ -5,16 +5,20 @@ import {
   CONCURRENT_TREATMENT,
 } from "@/lib/google-war/protection";
 import { inspectionSchema } from "@/lib/google-war/evidence";
+import { assertCurrentMutation } from "@/lib/google-war/current-protection";
 
 // Explicit one-time freeze; defaults never run from the daily report. No overwrite.
 const reportFile = process.argv[2];
 if (!reportFile)
   throw new Error("Pass the pre-change Google War latest.json artifact");
 const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));
+assertCurrentMutation(report.protectionFingerprint, []);
 const data = "data/growth/google-war";
 const receipt = "docs/growth/receipts/20260926-google-visibility-war";
-const write = (file: string, value: unknown) =>
+const write = (file: string, value: unknown) => {
+  assertCurrentMutation(report.protectionFingerprint, []);
   fs.writeFileSync(file, JSON.stringify(value, null, 2) + "\n", { flag: "wx" });
+};
 fs.mkdirSync(receipt, { recursive: true });
 write(
   path.join(data, "quality-baseline.json"),

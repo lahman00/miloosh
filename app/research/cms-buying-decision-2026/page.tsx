@@ -15,7 +15,7 @@ const PAGE_PATH = "/research/cms-buying-decision-2026";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 const TITLE = "CMS Buying Decision Matrix 2026";
 const DESCRIPTION =
-  "Migration lock-in, hosting model, and commercial support across 8 CMS platforms, verified against each vendor's own documentation. Every vendor makes it easy to bring content in -- almost none document a path to take it back out.";
+  "Compare documented content import and export across 8 CMS platforms. See format, API and migration limitations before choosing a platform.";
 const VERIFIED_DATE = "2026-09-27";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 function yn(v: boolean | null): string {
-  return v === null ? "Unknown" : v ? "Yes" : "No";
+  return v === null ? "Not assessed" : v ? "Documented" : "Not verified";
 }
 
 export default function CmsBuyingDecisionPage() {
@@ -82,15 +82,15 @@ export default function CmsBuyingDecisionPage() {
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           <Card>
             <p className="text-2xl font-semibold text-white">{m.importAndExportCount} of {m.sampleSize}</p>
-            <p className="mt-1 text-xs text-zinc-500">Document a real path both INTO and OUT of the platform (WordPress only)</p>
+            <p className="mt-1 text-xs text-zinc-500">Have documented content input and output mechanisms; not necessarily cross-CMS migration</p>
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{m.importOnlyCount} of {m.sampleSize}</p>
-            <p className="mt-1 text-xs text-zinc-500">Document import-in tooling but no documented export-out path to a competitor</p>
+            <p className="mt-1 text-xs text-zinc-500">Have an import finding but no verified outbound workflow in this review</p>
           </Card>
           <Card>
-            <p className="text-2xl font-semibold text-white">{m.exportOnlyCount} of {m.sampleSize}</p>
-            <p className="mt-1 text-xs text-zinc-500">Document export-out but no documented path to import an existing site in (Umbraco, Webflow)</p>
+            <p className="text-2xl font-semibold text-white">No migration score</p>
+            <p className="mt-1 text-xs text-zinc-500">File export, API extraction and complete-site portability are different claims</p>
           </Card>
         </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
@@ -100,11 +100,11 @@ export default function CmsBuyingDecisionPage() {
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{m.hostedOnlyCount} of {m.sampleSize}</p>
-            <p className="mt-1 text-xs text-zinc-500">Hosted-only, with no self-hosted option (Webflow, Contentful, Storyblok)</p>
+            <p className="mt-1 text-xs text-zinc-500">Vendor-hosted CMS service (Webflow, Contentful, Storyblok); exported content is not the hosted application</p>
           </Card>
           <Card>
-            <p className="text-2xl font-semibold text-white">{m.noOfficialVendorSupportCount} of {m.sampleSize}</p>
-            <p className="mt-1 text-xs text-zinc-500">Sell no official commercial support at all -- only an independent third-party ecosystem (Joomla)</p>
+            <p className="text-2xl font-semibold text-white">Check the contract</p>
+            <p className="mt-1 text-xs text-zinc-500">Support fees, response-time commitments and pricing are not measured by this review</p>
           </Card>
         </div>
 
@@ -112,7 +112,7 @@ export default function CmsBuyingDecisionPage() {
         <div className="mt-14">
           <h2 className="text-lg font-semibold text-white">Migration direction, by vendor</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            &ldquo;In&rdquo; and &ldquo;Out&rdquo; both mean a real, vendor-documented tool or process -- not just technical possibility. A missing export path is not necessarily a flaw in that vendor&apos;s product; it is a real cost to weigh if you might ever need to leave.
+            &ldquo;In&rdquo; and &ldquo;Out&rdquo; include documented same-platform transfers, file formats and API extraction. They do not promise a working site on a competing CMS. &ldquo;Not verified&rdquo; means an evidence gap, not a missing capability.
           </p>
           <div className="mt-4 overflow-x-auto rounded-xl border border-white/10">
             <table className="w-full text-left text-sm">
@@ -129,11 +129,7 @@ export default function CmsBuyingDecisionPage() {
                 {m.rows.map((r) => (
                   <tr key={r.slug} className="border-b border-white/5 align-top">
                     <td className="px-4 py-3 text-zinc-300">
-                      {r.ownPageEditable ? (
-                        <Link href={`/software/${r.slug}`} className="underline underline-offset-4 hover:text-white">{r.name}</Link>
-                      ) : (
-                        <a href={r.primarySourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">{r.name}</a>
-                      )}
+                      <a href={r.primarySourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">{r.name}</a>
                     </td>
                     <td className="px-4 py-3 text-zinc-400">{r.hostedOrSelfHosted}</td>
                     <td className="px-4 py-3 text-zinc-500">{yn(r.documentsImportIntoProduct)}</td>
@@ -154,7 +150,7 @@ export default function CmsBuyingDecisionPage() {
               <Card key={r.slug}>
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="text-base font-semibold text-white">{r.name}</h3>
-                  <span className="text-xs text-zinc-500">{r.recordedStartingPrice ?? "Unknown"}</span>
+                  <span className="text-xs text-zinc-500">Documentation reviewed {VERIFIED_DATE}</span>
                 </div>
                 <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
                   <div>
@@ -174,9 +170,11 @@ export default function CmsBuyingDecisionPage() {
                     <dd className="mt-1 text-zinc-400">{r.developerAgencyFitNote}</dd>
                   </div>
                 </dl>
-                <a href={r.primarySourceUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1 text-xs text-zinc-500 underline underline-offset-4 hover:text-white">
-                  Official source <ExternalLink className="h-3 w-3" />
-                </a>
+                <div className="mt-4 flex flex-wrap gap-4">
+                  {r.sourceUrls.map((url, i) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-zinc-500 underline underline-offset-4 hover:text-white">
+                    Official source {i + 1} <ExternalLink className="h-3 w-3" />
+                  </a>)}
+                </div>
               </Card>
             ))}
           </div>
@@ -202,7 +200,7 @@ export default function CmsBuyingDecisionPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Missing data</dt>
               <dd className="mt-1 text-zinc-400">
-                Several vendors&apos; official pages blocked automated access during this research (notably Umbraco, which returned HTTP 403 to most direct page fetches); those rows rely on the vendor&apos;s documentation subdomain where it was reachable, and any figure that could not be independently confirmed is called out in that vendor&apos;s own notes rather than asserted.
+                Unknown support terms remain unassessed. Pricing is deliberately excluded: copying an older catalog price under today&apos;s review date would not verify it. Third-party hosting is not classified as a project-owned hosted CMS.
               </dd>
             </div>
             <div>
@@ -237,9 +235,9 @@ export default function CmsBuyingDecisionPage() {
           <h2 className="text-sm font-semibold text-white">What to test before you commit to a CMS</h2>
           <ul className="mt-3 space-y-2 text-sm text-zinc-400">
             <li>Before signing a contract or building real content, try the platform&apos;s own documented export path yourself -- with a throwaway test site -- rather than trusting that one exists because the vendor is popular.</li>
-            <li>If a platform only documents import (not export), treat any real migration off it later as a custom engineering project, not a supported vendor workflow -- budget for that risk up front, not after you&apos;ve committed years of content.</li>
+            <li>If an outbound workflow is not verified here, ask for a documented process and test it; do not infer that the vendor has no export capability.</li>
             <li>&ldquo;Hosted-only&rdquo; platforms (Webflow, Contentful, Storyblok) mean your content lives on the vendor&apos;s infrastructure by design -- that is a legitimate tradeoff for speed and reliability, but it is a different risk profile than a self-hostable option, and worth naming explicitly in a buying decision.</li>
-            <li>A platform with no official vendor support (Joomla) is not automatically riskier -- but it does mean your support relationship is with an independent agency you choose and vet yourself, not with the software vendor.</li>
+            <li>Identify who is responsible for migration and ongoing support: the CMS project, a hosting provider and an implementation agency can be different organizations.</li>
           </ul>
         </Card>
 
@@ -250,8 +248,6 @@ export default function CmsBuyingDecisionPage() {
             {[
               { href: "/category/cms", label: "All CMS software" },
               { href: "/software/wordpress", label: "WordPress pricing and review" },
-              { href: "/software/umbraco", label: "Umbraco pricing and review" },
-              { href: "/compare/craft-cms-vs-wordpress", label: "Craft CMS vs WordPress" },
               { href: "/research", label: "All Miloosh research" },
             ].map((link) => (
               <li key={link.href}>
@@ -267,7 +263,7 @@ export default function CmsBuyingDecisionPage() {
             <h2 className="text-sm font-semibold text-white">Get notified when this matrix updates</h2>
           </div>
           <p className="mt-1 text-xs text-zinc-500">
-            Occasional emails when the dataset materially changes. Compilation does not mean every vendor was rechecked today.
+            Register interest in research updates. Signup does not promise a publication schedule.
           </p>
           <div className="mt-4">
             <NewsletterSignupForm source="cms-buying-decision-matrix" />
