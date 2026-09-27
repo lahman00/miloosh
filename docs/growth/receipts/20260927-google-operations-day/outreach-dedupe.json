@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-09-27T04:40:18.808Z",
+  "mailbox": "lahman00@gmail.com",
+  "coverage": "Known five recipients only; in:anywhere includes trash. Reply IDs, not private bodies.",
+  "contacts": [
+    {
+      "organization": "Dense Discovery",
+      "email": "new@densediscovery.com",
+      "status": "SENT",
+      "sentAt": "2026-09-26T15:06:14Z",
+      "messageId": "1a0de40a7d5fd7d7",
+      "replyIds": [],
+      "evidence": "Authenticated Gmail in:anywhere exact recipient; message is SENT and TRASH. Trash does not permit resending.",
+      "disposition": "ALREADY_CONTACTED_DO_NOT_RESEND"
+    },
+    {
+      "organization": "MicroConf",
+      "email": "support@microconf.com",
+      "status": "SENT",
+      "sentAt": "2026-09-26T20:42:25Z",
+      "messageId": "1a0df7470508369c",
+      "replyIds": [],
+      "evidence": "Authenticated Gmail SENT metadata",
+      "disposition": "ALREADY_CONTACTED_DO_NOT_RESEND"
+    },
+    {
+      "organization": "Arvid Kahl / The Bootstrapped Founder",
+      "email": "arvid@thebootstrappedfounder.com",
+      "status": "SENT",
+      "sentAt": "2026-09-26T18:14:29Z",
+      "messageId": "1a0deecff738da68",
+      "replyIds": [],
+      "evidence": "Authenticated Gmail SENT metadata",
+      "disposition": "ALREADY_CONTACTED_DO_NOT_RESEND"
+    },
+    {
+      "organization": "Kyle Poyar / Growth Unhinged",
+      "email": "kyle@growthunhinged.com",
+      "status": "SENT",
+      "sentAt": "2026-09-13T17:42:37Z",
+      "messageId": "1a09bdd275de90ba",
+      "replyIds": [],
+      "evidence": "Authenticated Gmail SENT metadata; actual historical send September 13, not September 26",
+      "disposition": "ALREADY_CONTACTED_DO_NOT_RESEND"
+    },
+    {
+      "organization": "SaaSComparely",
+      "email": "info@saascomparely.org",
+      "status": "REJECTED_PAID_DOFOLLOW",
+      "sentAt": "2026-09-26T15:05:03Z",
+      "messageId": "1a0de3f95056f4cf",
+      "replyIds": [
+        "1a0df5a9a45bf12a"
+      ],
+      "evidence": "Authenticated reply dated 2026-09-26T20:14:05Z offered $10 guest post with paid dofollow. Rejected by owner policy; not affiliate or earned authority. Other-agent $150-$300 claim contradicted by exact email.",
+      "disposition": "DO_NOT_CONTACT"
+    }
+  ],
+  "status": "COMPARED_CAPTURED_IDS",
+  "observedReplies": [
+    {
+      "organization": "SaaSComparely",
+      "id": "1a0df5a9a45bf12a"
+    }
+  ],
+  "newReplies": [],
+  "note": "Known recipients only; CheckedAt is mailbox evidence time, not report refresh. Compare captured IDs, never infer a live inbox check from running this offline report. No messages sent.",
+  "canonicalFile": "data/growth/authority/outreach.json",
+  "gmailWriteActions": 0,
+  "messagesSent": 0,
+  "replySearch": "in:anywhere -in:sent, exact five known sender addresses",
+  "importantCorrections": [
+    "Dense Discovery sent message is in Trash: still sent, do not resend.",
+    "Kyle Poyar send was 2026-09-13, not September 26.",
+    "Actual SaaSComparely email offered $10 paid-dofollow guest post; rejected. Not $150–$300, not an affiliate, not earned authority."
+  ],
+  "limitation": "Known five recipients only; not a whole-mailbox outreach audit. New IDs are compared with prior captured IDs, not report generation time."
+}

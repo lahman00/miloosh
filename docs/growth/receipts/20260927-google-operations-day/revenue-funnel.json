@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "readEvidence": {
+    "coverage": "COMPLETE",
+    "records": 2562,
+    "firstRecord": "2026-08-21T10:03:36.219Z",
+    "lastRecord": "2026-09-27T04:58:53.058Z",
+    "start": "2026-09-26T22:50:25.901Z",
+    "endExclusive": "2026-09-27T05:19:12.989Z",
+    "rawEventsInWindow": 2,
+    "rawTypes": {
+      "page_view": 1,
+      "comparison_view": 1
+    },
+    "windowSessionBuckets": {
+      "UNRESOLVED": 1
+    },
+    "path": "/compare/chatgpt-vs-copy-ai",
+    "trafficSource": "direct",
+    "humanConfirmed": false,
+    "localRawData": "Ignored var/growth/operations/events.json; 0600. Raw visitor/session IDs not committed or printed.",
+    "credentialSource": "Existing canonical-project local configuration; project ID matches flowtemplate. No env pull or modification."
+  },
+  "referrals": {
+    "status": "AVAILABLE",
+    "window": {
+      "start": "2026-09-26T22:50:25.901Z",
+      "endExclusive": "2026-09-27T05:19:12.989Z"
+    },
+    "rows": [],
+    "exclusions": 516,
+    "note": "Classified session estimates, not proven humans; raw handoffs separate from complete observed sequence. No referrer permalink inference, conversions or Google causal attribution.",
+    "conversions": null
+  },
+  "research": {
+    "status": "AVAILABLE",
+    "window": {
+      "start": "2026-09-26T22:50:25.901Z",
+      "endExclusive": "2026-09-27T05:19:12.989Z"
+    },
+    "rows": [],
+    "exclusions": 516,
+    "note": "Classified session estimates, not proven humans; raw handoffs separate from complete observed sequence. No referrer permalink inference, conversions or Google causal attribution.",
+    "conversions": null
+  },
+  "organic": {
+    "window": {
+      "start": "2026-09-26T22:50:25.901Z",
+      "endExclusive": "2026-09-27T05:19:12.989Z"
+    },
+    "eligibleOrganicSessions": 0,
+    "rows": [],
+    "referralCampaigns": [],
+    "identity": "Session estimates from existing classifier, not proven people. GSC aggregates stay separate. No causal attribution to rankings.",
+    "merchantArrivals": null,
+    "affiliateConversions": null
+  },
+  "researchDownloads": "UNKNOWN: no dedicated CSV download event in current deployed vocabulary; HTTP QA is not consumption.",
+  "jsonUsage": "UNKNOWN: no dedicated measured API-consumption event; HTTP QA is not usage.",
+  "conversions": null,
+  "merchantArrival": "UNOBSERVABLE: handoff is not arrival/conversion",
+  "vercelWebAnalytics": {
+    "status": 404,
+    "error": "not_found",
+    "interpretation": "Separate from readable first-party Blob storage. Not zero visits."
+  },
+  "trackingQa": {
+    "capturedAt": "2026-09-27T04:36:20.428Z",
+    "journeys": 15,
+    "viewports": [
+      1440,
+      390,
+      320
+    ],
+    "productionWrites": 0,
+    "merchantRequestsSent": 0,
+    "allCtaExposure": true,
+    "allSingleHandoff": true
+  },
+  "commission": null,
+  "limitation": "Zero classified eligible sessions in this short post-deploy window is not zero people. QA handoffs were mocked, not live merchant arrivals. Exclusion count 516 is full-history classifier scope, not a window denominator.",
+  "eventCoverage": {
+    "status": "COMPLETE",
+    "fullHistoryRecords": 2562,
+    "start": "2026-09-26T22:50:25.901Z",
+    "endExclusive": "2026-09-27T05:19:12.989Z",
+    "rawEventsInWindow": 2,
+    "exclusionCountScope": "Referral classifier exclusions describe full history, not window visitors. Empty eligible rows are not proof of zero humans."
+  }
+}

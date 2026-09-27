@@ -1,0 +1,464 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "observations": [
+    {
+      "url": "https://miloosh.com/research/customer-support-pricing-2026",
+      "checkedAt": "2026-09-27T04:40:18.808Z",
+      "requestedAt": "2026-09-26T22:52:22Z",
+      "lastCrawl": null,
+      "lastCrawlTimezone": "UNKNOWN",
+      "state": "UNKNOWN",
+      "coverageState": "URL is unknown to Google",
+      "source": "Authenticated GSC URL Inspection UI, independently observed 2026-09-27; no indexing request sent",
+      "crawlAfterRequest": null,
+      "newCrawlObserved": false,
+      "requestsAllowed": false,
+      "alert": null
+    },
+    {
+      "url": "https://miloosh.com/research/crm-plan-gates-2026",
+      "checkedAt": "2026-09-27T04:40:18.808Z",
+      "requestedAt": "2026-09-26T22:53:52Z",
+      "lastCrawl": "27 בספט׳ 2026, 1:57:49",
+      "lastCrawlTimezone": "UNKNOWN",
+      "state": "CRAWLED",
+      "coverageState": "Crawled - currently not indexed",
+      "source": "Authenticated GSC URL Inspection UI, independently observed 2026-09-27; displayed crawl timezone UNKNOWN; sitemap temporary processing error; no indexing request sent",
+      "crawlAfterRequest": null,
+      "newCrawlObserved": false,
+      "requestsAllowed": false,
+      "alert": null
+    }
+  ],
+  "rawInspections": [
+    {
+      "url": "https://miloosh.com/research/customer-support-pricing-2026",
+      "checkedAt": "2026-09-27T04:40:18.808Z",
+      "source": "Authenticated GSC URL Inspection UI, independently observed 2026-09-27; no indexing request sent",
+      "verdict": null,
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "userCanonical": null,
+      "pageFetchState": null,
+      "robotsTxtState": null,
+      "indexingState": null
+    },
+    {
+      "url": "https://miloosh.com/research/crm-plan-gates-2026",
+      "checkedAt": "2026-09-27T04:40:18.808Z",
+      "source": "Authenticated GSC URL Inspection UI, independently observed 2026-09-27; displayed crawl timezone UNKNOWN; sitemap temporary processing error; no indexing request sent",
+      "verdict": null,
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawlTime": "27 בספט׳ 2026, 1:57:49",
+      "googleCanonical": "https://miloosh.com/research/crm-plan-gates-2026",
+      "userCanonical": "https://miloosh.com/research/crm-plan-gates-2026",
+      "pageFetchState": "SUCCESSFUL",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED"
+    }
+  ],
+  "firstObservedCrawlAlert": {
+    "code": "NEW_CRAWL_OBSERVED",
+    "url": "https://miloosh.com/research/crm-plan-gates-2026",
+    "observedAt": "2026-09-27T04:40:18.808Z",
+    "crawlText": "27 בספט׳ 2026, 1:57:49",
+    "crawlTimezone": "UNKNOWN",
+    "indexed": false,
+    "crawlAfterRequest": null
+  },
+  "requestReceipt": "../20260927-production-release/indexing-requests.json",
+  "repeatRequests": 0,
+  "quotaProbes": 0,
+  "sourceChecks": {
+    "checkedAt": "2026-09-27T04:51:13.793Z",
+    "sourceScope": "External editorial links rendered on the two newly released research assets; not all 354 product sources.",
+    "publicExports": [
+      {
+        "slug": "customer-support-pricing-2026",
+        "status": 200,
+        "topLevelKeys": [
+          "dataset",
+          "publisher",
+          "generatedAt",
+          "sampleSize",
+          "inclusionRule",
+          "rows"
+        ],
+        "exactPublicRows": true,
+        "bytes": 12862
+      },
+      {
+        "slug": "crm-plan-gates-2026",
+        "status": 200,
+        "topLevelKeys": [
+          "dataset",
+          "publisher",
+          "generatedAt",
+          "sampleSize",
+          "inclusionRule",
+          "rows"
+        ],
+        "exactPublicRows": true,
+        "bytes": 15090
+      }
+    ],
+    "sizes": [
+      {
+        "route": "/research/customer-support-pricing-2026",
+        "htmlBytes": 135133,
+        "status": 200
+      },
+      {
+        "route": "/research/crm-plan-gates-2026",
+        "htmlBytes": 131434,
+        "status": 200
+      }
+    ],
+    "placements": [
+      {
+        "id": "qevra-home",
+        "status": 200,
+        "exactLinks": [
+          {
+            "href": "https://miloosh.com/"
+          }
+        ]
+      },
+      {
+        "id": "saashub-home",
+        "status": 200,
+        "exactLinks": [
+          {
+            "href": "https://miloosh.com",
+            "rel": ""
+          },
+          {
+            "href": "https://miloosh.com",
+            "rel": "nofollow"
+          }
+        ]
+      },
+      {
+        "id": "saashub-research",
+        "status": 200,
+        "exactLinks": [
+          {
+            "href": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+            "rel": "nofollow"
+          }
+        ]
+      },
+      {
+        "id": "hypestar-home",
+        "status": 200,
+        "exactLinks": [
+          {
+            "href": "https://miloosh.com/",
+            "rel": "noopener ugc nofollow"
+          },
+          {
+            "href": "https://miloosh.com/",
+            "rel": "noopener ugc nofollow"
+          },
+          {
+            "href": "https://miloosh.com/",
+            "rel": "noopener nofollow"
+          }
+        ]
+      },
+      {
+        "id": "smartsme-research",
+        "status": 200,
+        "exactLinks": [
+          {
+            "href": "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+          },
+          {
+            "href": "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+          }
+        ]
+      }
+    ],
+    "sourceLinks": [
+      {
+        "url": "https://close.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://close.com/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://crisp.chat/en/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://crisp.chat/en/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://front.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://front.com/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://kayako.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://kayako.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://monday.com/crm/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://monday.com/crm/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.five9.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.five9.com/pricing",
+            "status": 301
+          },
+          {
+            "url": "https://www.five9.com/products/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.freshworks.com/crm/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.freshworks.com/crm/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.freshworks.com/freshdesk/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.freshworks.com/freshdesk/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.genesys.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.genesys.com/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.gorgias.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.gorgias.com/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.happyfox.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.happyfox.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.helpscout.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.helpscout.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.hubspot.com/pricing/sales",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.hubspot.com/pricing/sales",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.intercom.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.intercom.com/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.liveagent.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.liveagent.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.pipedrive.com/en/pricing",
+        "status": 403,
+        "classification": "INACCESSIBLE_NOT_PROVEN_DEAD",
+        "chain": [
+          {
+            "url": "https://www.pipedrive.com/en/pricing",
+            "status": 403
+          }
+        ]
+      },
+      {
+        "url": "https://www.reamaze.com/pricing",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.reamaze.com/pricing",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.salesforce.com/sales/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.salesforce.com/sales/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.talkdesk.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.talkdesk.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.tidio.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.tidio.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.zendesk.com/pricing/",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.zendesk.com/pricing/",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.zoho.com/crm/pricing.html",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.zoho.com/crm/pricing.html",
+            "status": 301
+          },
+          {
+            "url": "https://www.zoho.com/crm/zohocrm-pricing.html",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "url": "https://www.zoho.com/desk/pricing.html",
+        "status": 200,
+        "classification": "HTTP_200",
+        "chain": [
+          {
+            "url": "https://www.zoho.com/desk/pricing.html",
+            "status": 200
+          }
+        ]
+      }
+    ],
+    "brokenSources": [],
+    "inconclusiveSources": [
+      {
+        "url": "https://www.pipedrive.com/en/pricing",
+        "status": 403,
+        "classification": "INACCESSIBLE_NOT_PROVEN_DEAD",
+        "chain": [
+          {
+            "url": "https://www.pipedrive.com/en/pricing",
+            "status": 403
+          }
+        ]
+      }
+    ],
+    "merchantNavigations": 0,
+    "externalWrites": 0
+  },
+  "interpretation": "Fresh crawl observation is not indexation or proof that our request caused the crawl. Daily repeat of the same observation must not trigger a new-crawl alert."
+}

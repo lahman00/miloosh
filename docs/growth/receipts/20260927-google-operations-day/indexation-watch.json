@@ -1,0 +1,1547 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "source": "Existing authenticated/committed inspection tiers via canonical resolver; REPORTED observations cannot become measured Google states.",
+  "cohorts": [
+    {
+      "id": "indexation-recovery-20260926",
+      "monitorOnly": true,
+      "rows": [
+        {
+          "page": "/software/whimsical",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/scribe",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/fullstory",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/marketo-engage",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/lucidchart",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/firebase",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/vercel",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/netlify",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/contentful",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/hotjar",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/jasper",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/copy-ai",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/perplexity",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/synthesia",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/adyen",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/braze",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/gitbook",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/twilio",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/knowledgeowl",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/bloomfire",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/workos",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/webflow",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/swaggerhub",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/sanity",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        }
+      ]
+    },
+    {
+      "id": "indexation-factory-wave2-20260926",
+      "monitorOnly": true,
+      "rows": [
+        {
+          "page": "/software/directus",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/toggl-track",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/opencart",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/plausible",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/crazy-egg",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/drupal",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/matomo",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/miro",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/evernote",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/mattermost",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/power-automate",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/deepl",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/okta",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/jenkins",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/gorgias",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/docker",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/algolia",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/ticktick",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/kayako",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/fathom-analytics",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/craft-cms",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/microsoft-onenote",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/plaid",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/auth0",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/signal",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/document360",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/superhuman",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/salesforce-commerce-cloud",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/strapi",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/ifttt",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/reclaim-ai",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/zeplin",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/amplitude",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/google-chat",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/keap",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/elastic",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/google-meet",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/snyk",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/mixpanel",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/slite",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/bitbucket",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/linear",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/clockify",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        }
+      ]
+    },
+    {
+      "id": "master-google-war-wave3-20260926",
+      "monitorOnly": true,
+      "rows": [
+        {
+          "page": "/software/sketch",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/google-analytics",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/wiz",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/weebly",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/heap",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/adobe-commerce",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/ghost",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/shift4shop",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/docusaurus",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/rapidapi",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/crisp",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/pipedream",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/prestashop",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/guru",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/zendesk",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/freshsales",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/joomla",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/storyblok",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/tailscale",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/duo-security",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/keeper-security",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/figma",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/mkdocs",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/reamaze",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/archbee",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/kong",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/shopware",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/craft",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/runway",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/zeroheight",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        }
+      ]
+    },
+    {
+      "id": "comparison-quality-20260822",
+      "monitorOnly": true,
+      "rows": [
+        {
+          "page": "/compare/adobe-analytics-vs-segment",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-clickup",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-todoist",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-gitbook",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-todoist",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-clockify",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-asana",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-slite",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-smartsheet",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-confluence",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-trello",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/airtable-vs-notion",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/todoist-vs-asana",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-evernote",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-toggl-track",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-smartsheet",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-monday",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-trello",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-guru",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-confluence",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-ticktick",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/todoist-vs-clockify",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/linear-vs-notion",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-coda",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/asana-vs-monday",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-airtable",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-microsoft-onenote",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-craft",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/notion-vs-things",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/confluence-vs-gitbook",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-jira",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-linear",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/trello-vs-todoist",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-wrike",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-shortcut",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-zoho-projects",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/clickup-vs-coda",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/coda-vs-todoist",
+          "state": "UNKNOWN",
+          "googleState": "INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/todoist-vs-evernote",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/todoist-vs-airtable",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        }
+      ]
+    },
+    {
+      "id": "ranking-intent-20260926",
+      "monitorOnly": true,
+      "rows": [
+        {
+          "page": "/compare/umbraco-vs-wordpress",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/joomla-vs-umbraco",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/drupal-vs-umbraco",
+          "state": "UNKNOWN",
+          "googleState": "DISCOVERED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/umbraco",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/clickup",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/salesforce",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/sprout-social",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/confluence",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/n8n",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/basecamp",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/tidio",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/zapier",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/github",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/activecampaign",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/segment",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/lastpass",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/webex",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        },
+        {
+          "page": "/software/coda",
+          "state": "UNKNOWN",
+          "googleState": "UNKNOWN",
+          "checkedAt": null,
+          "evidenceTier": "NONE",
+          "deployedAt": null
+        }
+      ]
+    },
+    {
+      "id": "comparison-factual-depth-20260926",
+      "monitorOnly": true,
+      "rows": [
+        {
+          "page": "/compare/clickup-vs-teamwork",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/github-vs-render",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/jira-vs-teamwork",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/n8n-vs-workato",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/posthog-vs-segment",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/doodle-vs-microsoft-bookings",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/microsoft-teams-vs-otter-ai",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/microsoft-teams-vs-ringcentral",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/slack-vs-ringcentral",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/smartsheet-vs-teamwork",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/circleci-vs-gitlab",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/doodle-vs-motion",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/buffer-vs-mailchimp",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/todoist-vs-motion",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/zapier-vs-workato",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/ahrefs-vs-mailchimp",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/constant-contact-vs-mailchimp",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/trello-vs-jira",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/chatgpt-vs-elevenlabs",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/jira-vs-smartsheet",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/slack-vs-microsoft-teams",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/teamwork-vs-zoho-projects",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        },
+        {
+          "page": "/compare/getresponse-vs-mailchimp",
+          "state": "UNKNOWN",
+          "googleState": "CRAWLED_NOT_INDEXED",
+          "checkedAt": "2026-09-26T18:00:00Z",
+          "evidenceTier": "GSC_PAGE_REPORT",
+          "deployedAt": null
+        }
+      ]
+    }
+  ],
+  "protectedPages": 196,
+  "recrawlJudgment": "UNKNOWN when deployment/crawl timezone proof is absent, not fabricated NOT_RECRAWLED. Cached Google state remains separate from post-intervention recrawl.",
+  "integrationPreview": {
+    "checkedAt": "2026-09-27T05:39:33.340Z",
+    "base": "a925c0e7e129c09c2ca38f5e352d8edbc4afb9ab",
+    "comparisonBase": "981a491381da45bd61df0ddbe2e80e6c2135f76b",
+    "candidate": "61eee274c25749645d262c44cc785f2fefe8c431",
+    "files": [
+      "app/api/research/cms-buying-decision-2026/csv/route.ts",
+      "app/api/research/cms-buying-decision-2026/route.ts",
+      "app/research/cms-buying-decision-2026/page.tsx",
+      "app/research/page.tsx",
+      "data/software/buffer.json",
+      "data/software/clickup.json",
+      "data/software/help-scout.json",
+      "data/software/semrush.json",
+      "data/software/wordpress.json",
+      "data/software/zapier.json",
+      "docs/growth/receipts/20260927-claude-overnight-war/authority-handoff.json",
+      "docs/growth/receipts/20260927-claude-overnight-war/claim-audit.json",
+      "docs/growth/receipts/20260927-claude-overnight-war/executive-summary.md",
+      "docs/growth/receipts/20260927-claude-overnight-war/information-gain.json",
+      "docs/growth/receipts/20260927-claude-overnight-war/next-actions.md",
+      "docs/growth/receipts/20260927-claude-overnight-war/qa.md",
+      "docs/growth/receipts/20260927-claude-overnight-war/research-opportunity.md",
+      "docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "docs/growth/receipts/20260927-claude-overnight-war/winnable-serps.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/authority-handoff.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/claim-audit.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/cms-cluster.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/controls.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/executive-summary.md",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/freshservice-anomaly.md",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/information-gain.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/next-actions.md",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/qa.md",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/research-opportunity.md",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/serp-map.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/top-12.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/treatments.json",
+      "docs/growth/receipts/20260927-winnable-serp-day-war/umbraco-anomaly.md",
+      "lib/cms-decision-matrix/build.ts",
+      "lib/cms-decision-matrix/data.ts",
+      "tests/lib/cms-decision-matrix.test.ts"
+    ],
+    "findings": [
+      {
+        "file": "data/software/buffer.json",
+        "reason": "PROTECTED_PRODUCT"
+      },
+      {
+        "file": "data/software/clickup.json",
+        "reason": "PROTECTED_PRODUCT"
+      },
+      {
+        "file": "data/software/help-scout.json",
+        "reason": "PROTECTED_PRODUCT"
+      },
+      {
+        "file": "data/software/semrush.json",
+        "reason": "PROTECTED_PRODUCT"
+      },
+      {
+        "file": "data/software/zapier.json",
+        "reason": "PROTECTED_PRODUCT"
+      }
+    ],
+    "status": "BLOCKED_PROTECTED_REVIEW",
+    "note": "Known protected/direct and shared paths only; not an OS lock. Full rendered artifact comparison remains required. No approval bypass.",
+    "productionChanged": false
+  },
+  "claudeWorktree": "/private/tmp/miloosh-claude-master-google-war-20260926",
+  "claudeStillWorking": null,
+  "autoDeploy": false,
+  "latestCandidateNote": "Claude checkout clean at 61eee274c25749645d262c44cc785f2fefe8c431, inspected 2026-09-27T05:39:33.340Z. Its 21-file research-only commit changes no protected product file; cumulative branch intake still includes five protected product edits from 0a1e3e9. No merge/cherry-pick/deploy performed. Neither a content claim audit nor candidate runtime QA is implied.",
+  "claudeWorktreeState": {
+    "head": "61eee274c25749645d262c44cc785f2fefe8c431",
+    "status": "CLEAN",
+    "checkedAt": "2026-09-27T05:39:33.340Z",
+    "agentActivity": "UNKNOWN; a clean worktree does not prove another agent has stopped"
+  }
+}

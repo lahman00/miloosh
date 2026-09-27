@@ -1,0 +1,386 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "totalObservations": 188,
+  "previousObservations": 85,
+  "newAuthenticatedRows": 103,
+  "newRowsByPage": [
+    {
+      "page": "https://miloosh.com/software/freshdesk",
+      "capturedAt": "2026-09-27T04:41:55.535Z",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "rows": 66,
+      "source": "Authenticated GSC Performance UI, Web / all countries / all devices; 66 of 66 displayed rows. Data finality not asserted. No indexing operation."
+    },
+    {
+      "page": "https://miloosh.com/software/umbraco",
+      "capturedAt": "2026-09-27T04:52:57.046Z",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "rows": 17,
+      "source": "Authenticated GSC Performance UI, exact page, Web / all countries / all devices; 17 of 17 displayed rows. Finality unconfirmed."
+    },
+    {
+      "page": "https://miloosh.com/software/help-scout",
+      "capturedAt": "2026-09-27T05:01:20.840Z",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "rows": 13,
+      "source": "Authenticated GSC Performance UI, exact page, Web / all countries / all devices; 13 of 13 displayed rows. Data finality not asserted. No indexing operation."
+    },
+    {
+      "page": "https://miloosh.com/software/adyen",
+      "capturedAt": "2026-09-27T05:11:20.416Z",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      },
+      "rows": 7,
+      "source": "Authenticated GSC Performance UI, exact page, Web / all countries / all devices; 7 of 7 displayed rows. Window Aug7–Sep24; data finality not asserted."
+    }
+  ],
+  "canonicalRawCapture": "data/growth/authority/query-ui-20260927.json",
+  "canonicalMergedStore": "var/growth/google-command/query-page.json",
+  "replay": {
+    "before": 188,
+    "after": 188,
+    "added": 0
+  },
+  "coverage": "Visible query rows only, not property/page totals. Suppressed queries can make row sums lower than page totals. Four pages freshly inspected; remaining priorities retain historical/unknown evidence.",
+  "dataState": "unknown for new UI observations; no finality invented",
+  "topWinnable": [
+    {
+      "rank": 1,
+      "queryFamily": "Help Scout alternative(s)/competitor(s)",
+      "query": "helpscout alternative",
+      "page": "https://miloosh.com/software/help-scout",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": [
+        {
+          "query": "helpscout alternative",
+          "page": "https://miloosh.com/software/help-scout",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-24"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "unknown"
+          },
+          "impressions": 103,
+          "clicks": 0,
+          "ctr": 0,
+          "position": 71.5,
+          "source": "data/growth/authority/query-ui-20260927.json; Authenticated GSC Performance UI, exact page, Web / all countries / all devices; 13 of 13 displayed rows. Data finality not asserted. No indexing operation.",
+          "captured_at": "2026-09-27T05:01:20.840Z",
+          "capturePrecision": "instant",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "CORRECT_OWNER",
+          "expected": [
+            "https://miloosh.com/software/help-scout"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "queryFamily": "Craft CMS vs WordPress / Craft CMS websites",
+      "query": "craft cms wordpress",
+      "page": "https://miloosh.com/compare/craft-cms-vs-wordpress",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": false,
+      "observations": []
+    },
+    {
+      "rank": 3,
+      "queryFamily": "Freshservice alternatives (French + English variants)",
+      "query": "alternative à freshservice",
+      "page": "https://miloosh.com/software/freshdesk",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": [
+        {
+          "query": "alternative à freshservice",
+          "page": "https://miloosh.com/software/freshdesk",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-24"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "unknown"
+          },
+          "impressions": 80,
+          "clicks": 0,
+          "ctr": 0,
+          "position": 68.2,
+          "source": "data/growth/authority/query-ui-20260927.json; Authenticated GSC Performance UI, Web / all countries / all devices; 66 of 66 displayed rows. Data finality not asserted. No indexing operation.",
+          "captured_at": "2026-09-27T04:41:55.535Z",
+          "capturePrecision": "instant",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "LIKELY_WRONG_OWNER",
+          "expected": [
+            "https://miloosh.com/software/freshservice"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "queryFamily": "Adyen alternatives",
+      "query": "adyen alternatives",
+      "page": "https://miloosh.com/software/adyen",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": [
+        {
+          "query": "adyen alternatives",
+          "page": "https://miloosh.com/software/adyen",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-24"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "unknown"
+          },
+          "impressions": 70,
+          "clicks": 0,
+          "ctr": 0,
+          "position": 66.5,
+          "source": "data/growth/authority/query-ui-20260927.json; Authenticated GSC Performance UI, exact page, Web / all countries / all devices; 7 of 7 displayed rows. Window Aug7–Sep24; data finality not asserted.",
+          "captured_at": "2026-09-27T05:11:20.416Z",
+          "capturePrecision": "instant",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "CORRECT_OWNER",
+          "expected": [
+            "https://miloosh.com/software/adyen"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "queryFamily": "Cisco Webex Meetings alternatives",
+      "query": "cisco webex meetings alternatives",
+      "page": "https://miloosh.com/software/webex",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": [
+        {
+          "query": "cisco webex meetings alternatives",
+          "page": "https://miloosh.com/software/webex",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-23"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "final"
+          },
+          "impressions": 70,
+          "clicks": null,
+          "ctr": null,
+          "position": null,
+          "source": "docs/growth/receipts/20260926-ranking-war/query-page-map.json; sha256:ab9adb781b4ca110b808466dd33dcd39ae2716bda0e4e91aac013b6e669c9857; committed record of page-filtered live UI observation, raw capture not attached",
+          "captured_at": "2026-09-26",
+          "capturePrecision": "day",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "CORRECT_OWNER",
+          "expected": [
+            "https://miloosh.com/software/webex"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "queryFamily": "Ecwid alternatives",
+      "query": "ecwid alternatives",
+      "page": "https://miloosh.com/software/ecwid",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": []
+    },
+    {
+      "rank": 7,
+      "queryFamily": "Umbraco vs WordPress",
+      "query": "umbraco vs wordpress",
+      "page": "https://miloosh.com/software/umbraco",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": [
+        {
+          "query": "umbraco vs wordpress",
+          "page": "https://miloosh.com/software/umbraco",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-23"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "final"
+          },
+          "impressions": 116,
+          "clicks": null,
+          "ctr": null,
+          "position": null,
+          "source": "docs/growth/receipts/20260926-ranking-war/query-page-map.json; sha256:ab9adb781b4ca110b808466dd33dcd39ae2716bda0e4e91aac013b6e669c9857; committed record of page-filtered live UI observation, raw capture not attached",
+          "captured_at": "2026-09-26",
+          "capturePrecision": "day",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "LIKELY_WRONG_OWNER",
+          "expected": [
+            "https://miloosh.com/compare/umbraco-vs-wordpress"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        },
+        {
+          "query": "umbraco vs wordpress",
+          "page": "https://miloosh.com/software/umbraco",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-24"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "unknown"
+          },
+          "impressions": 116,
+          "clicks": 0,
+          "ctr": 0,
+          "position": 65.1,
+          "source": "data/growth/authority/query-ui-20260927.json; Authenticated GSC Performance UI, exact page, Web / all countries / all devices; 17 of 17 displayed rows. Finality unconfirmed.",
+          "captured_at": "2026-09-27T04:52:57.046Z",
+          "capturePrecision": "instant",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "LIKELY_WRONG_OWNER",
+          "expected": [
+            "https://miloosh.com/compare/umbraco-vs-wordpress"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "queryFamily": "Drupal alternatives",
+      "query": "drupal alternatives",
+      "page": "https://miloosh.com/software/drupal",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": []
+    },
+    {
+      "rank": 9,
+      "queryFamily": "Confluence alternatives",
+      "query": "confluence alternatives",
+      "page": "https://miloosh.com/software/confluence",
+      "attribution": "REPORTED_BY_CLAUDE",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": [
+        {
+          "query": "confluence alternatives",
+          "page": "https://miloosh.com/software/confluence",
+          "window": {
+            "start": "2026-08-07",
+            "end": "2026-09-23"
+          },
+          "scope": {
+            "property": "sc-domain:miloosh.com",
+            "searchType": "web",
+            "country": null,
+            "device": null,
+            "timezone": "America/Los_Angeles",
+            "dataState": "final"
+          },
+          "impressions": 105,
+          "clicks": null,
+          "ctr": null,
+          "position": null,
+          "source": "docs/growth/receipts/20260926-ranking-war/query-page-map.json; sha256:ab9adb781b4ca110b808466dd33dcd39ae2716bda0e4e91aac013b6e669c9857; committed record of page-filtered live UI observation, raw capture not attached",
+          "captured_at": "2026-09-26",
+          "capturePrecision": "day",
+          "evidence": "COMMITTED_PAGE_FILTERED_UI",
+          "coverage": "TOP_ROWS_ONLY",
+          "classification": "CORRECT_OWNER",
+          "expected": [
+            "https://miloosh.com/software/confluence"
+          ],
+          "reason": "Measured landing compared with an existing exact product-intent owner; editorial review required"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "queryFamily": "RingCentral alternatives",
+      "query": "ringcentral alternatives",
+      "page": "https://miloosh.com/software/ringcentral",
+      "attribution": "UNCONFIRMED",
+      "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+      "editAllowed": false,
+      "protected": true,
+      "observations": []
+    }
+  ],
+  "rankingComparison": "Different Aug7–Sep23 and Aug7–Sep24 windows are not a matching-window comparison. No lift claimed."
+}

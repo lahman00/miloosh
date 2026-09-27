@@ -1,0 +1,386 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "count": 27,
+  "classification": "LIKELY_WRONG_OWNER",
+  "meaning": "27 observations, not 27 unique queries/pages. Existing exact intent owners are review suggestions; no automatic canonical/ranking/content changes. Harm/cannibalization is unproven.",
+  "rows": [
+    {
+      "query": "coda vs airtable",
+      "page": "https://miloosh.com/software/coda",
+      "expected": [
+        "https://miloosh.com/compare/coda-vs-airtable"
+      ],
+      "impressions": 4,
+      "clicks": null,
+      "position": null,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      }
+    },
+    {
+      "query": "coda vs confluence",
+      "page": "https://miloosh.com/software/coda",
+      "expected": [
+        "https://miloosh.com/compare/coda-vs-confluence"
+      ],
+      "impressions": 3,
+      "clicks": null,
+      "position": null,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      }
+    },
+    {
+      "query": "confluence vs coda",
+      "page": "https://miloosh.com/software/coda",
+      "expected": [
+        "https://miloosh.com/compare/coda-vs-confluence"
+      ],
+      "impressions": 4,
+      "clicks": null,
+      "position": null,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      }
+    },
+    {
+      "query": "migrate drupal vs umbraco",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/drupal-vs-umbraco"
+      ],
+      "impressions": 5,
+      "clicks": null,
+      "position": null,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      }
+    },
+    {
+      "query": "umbraco vs joomla",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/joomla-vs-umbraco"
+      ],
+      "impressions": 10,
+      "clicks": null,
+      "position": null,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      }
+    },
+    {
+      "query": "umbraco vs wordpress",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/umbraco-vs-wordpress"
+      ],
+      "impressions": 116,
+      "clicks": null,
+      "position": null,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      }
+    },
+    {
+      "query": "alternative à freshservice belgique",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 82,
+      "clicks": 0,
+      "position": 60.5,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative à freshservice",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 80,
+      "clicks": 0,
+      "position": 68.2,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice automatisation",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 69,
+      "clicks": 0,
+      "position": 81.3,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice chatbot",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 75,
+      "clicks": 0,
+      "position": 85.9,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice esm",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 48,
+      "clicks": 0,
+      "position": 85.8,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice helpdesk",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 52,
+      "clicks": 0,
+      "position": 73.2,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice ia",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 49,
+      "clicks": 0,
+      "position": 77.3,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice portail self‑service",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 28,
+      "clicks": 0,
+      "position": 82.8,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice service desk",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 72,
+      "clicks": 0,
+      "position": 87.6,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice sla",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 1,
+      "clicks": 0,
+      "position": 99,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice workflow",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 20,
+      "clicks": 0,
+      "position": 87.3,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "alternative freshservice",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 43,
+      "clicks": 0,
+      "position": 79.3,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "freshdesk vs kayako",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/compare/freshdesk-vs-kayako"
+      ],
+      "impressions": 1,
+      "clicks": 0,
+      "position": 77,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "freshservice alternative",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 67,
+      "clicks": 0,
+      "position": 72.4,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "freshservice alternatives",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/software/freshservice"
+      ],
+      "impressions": 2,
+      "clicks": 0,
+      "position": 88.5,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "happyfox vs freshdesk",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/compare/freshdesk-vs-happyfox"
+      ],
+      "impressions": 1,
+      "clicks": 0,
+      "position": 65,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "zoho desk vs freshdesk",
+      "page": "https://miloosh.com/software/freshdesk",
+      "expected": [
+        "https://miloosh.com/compare/freshdesk-vs-zoho-desk"
+      ],
+      "impressions": 1,
+      "clicks": 0,
+      "position": 87,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "migrate drupal vs umbraco",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/drupal-vs-umbraco"
+      ],
+      "impressions": 5,
+      "clicks": 0,
+      "position": 55.4,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "umbraco vs joomla",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/joomla-vs-umbraco"
+      ],
+      "impressions": 10,
+      "clicks": 0,
+      "position": 86.3,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "umbraco vs wordpress",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/umbraco-vs-wordpress"
+      ],
+      "impressions": 116,
+      "clicks": 0,
+      "position": 65.1,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    },
+    {
+      "query": "wordpress vs umbraco",
+      "page": "https://miloosh.com/software/umbraco",
+      "expected": [
+        "https://miloosh.com/compare/umbraco-vs-wordpress"
+      ],
+      "impressions": 1,
+      "clicks": 0,
+      "position": 53,
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-09-24"
+      }
+    }
+  ]
+}

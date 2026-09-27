@@ -1,0 +1,156 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "current": [
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/CRMSoftware/comments/1wqtnwo/comment/pc7sr55/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    },
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/CRMSoftware/comments/1uyrghz/comment/pc81v6w/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    },
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    },
+    {
+      "code": "BROKEN_DEEP_LINK_TARGET",
+      "target": "https://miloosh.com/compare/intercom-alternatives",
+      "reason": "Target absent from emitted route set; historical record retained"
+    },
+    {
+      "code": "PLACEMENT_REMOVED",
+      "target": "https://www.reddit.com/r/smallbusiness/comments/1jnzj8m/comment/pc8wg5e/",
+      "reason": "Exact public removal observed; no moderation-cause inference"
+    }
+  ],
+  "newObservationThisTask": {
+    "code": "NEW_CRAWL_OBSERVED",
+    "target": "https://miloosh.com/research/crm-plan-gates-2026",
+    "checkedAt": "2026-09-27T04:40:18.808Z",
+    "indexed": false
+  },
+  "releaseHold": {
+    "status": "LOCAL_OPERATIONS_GATES_PASS_CLAUDE_INTEGRATION_HELD",
+    "localReleaseCheck": {
+      "productionChanged": false,
+      "results": [
+        {
+          "name": "protected-intake",
+          "start": "2026-09-27T05:39:22.179Z",
+          "end": "2026-09-27T05:39:22.679Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "typecheck",
+          "start": "2026-09-27T05:39:22.679Z",
+          "end": "2026-09-27T05:39:24.871Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "lint",
+          "start": "2026-09-27T05:39:24.871Z",
+          "end": "2026-09-27T05:39:34.208Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "tests",
+          "start": "2026-09-27T05:39:34.208Z",
+          "end": "2026-09-27T05:40:26.160Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "static-gate-tests",
+          "start": "2026-09-27T05:40:26.160Z",
+          "end": "2026-09-27T05:40:26.384Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "data",
+          "start": "2026-09-27T05:40:26.384Z",
+          "end": "2026-09-27T05:40:26.779Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "affiliate",
+          "start": "2026-09-27T05:40:26.779Z",
+          "end": "2026-09-27T05:40:27.082Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "build",
+          "start": "2026-09-27T05:40:27.082Z",
+          "end": "2026-09-27T05:40:51.173Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "static",
+          "start": "2026-09-27T05:40:51.173Z",
+          "end": "2026-09-27T05:41:01.225Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "query-store",
+          "start": "2026-09-27T05:41:01.225Z",
+          "end": "2026-09-27T05:41:01.610Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "google-war",
+          "start": "2026-09-27T05:41:01.610Z",
+          "end": "2026-09-27T05:41:16.063Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "command-center",
+          "start": "2026-09-27T05:41:16.063Z",
+          "end": "2026-09-27T05:41:25.167Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "browser-smoke",
+          "start": "2026-09-27T05:41:25.167Z",
+          "end": "2026-09-27T05:42:11.603Z",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "name": "diff-check",
+          "start": "2026-09-27T05:42:11.604Z",
+          "end": "2026-09-27T05:42:11.624Z",
+          "exitCode": 0,
+          "error": null
+        }
+      ]
+    },
+    "reasons": [
+      "Latest cumulative Claude candidate 61eee274c25749645d262c44cc785f2fefe8c431 includes five protected product edits from 0a1e3e9; explicit reconciliation and independent candidate QA required. No automatic deployment."
+    ],
+    "earlierFailures": "Initial run had 15 timing failures, focused rerun 10; retained logs. Final unchanged-default full suite passed 2347/2347, and all 14 gates passed. No timeout or test relaxation."
+  },
+  "automation": {
+    "id": "miloosh-google-operations-watch",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "schedule": "Daily 10:00 in app local timezone (Asia/Jerusalem)",
+    "quietUnlessActionable": true
+  },
+  "requestsSent": 0,
+  "messagesSent": 0,
+  "publicWrites": 0
+}

@@ -1,0 +1,1013 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "startingLocalHead": "787d2a950e10fbe2d3bb0eb376202fdd3c546141",
+  "production": {
+    "status": "READY_AND_PROMOTED",
+    "project": "flowtemplate",
+    "projectId": "prj_qMLMDaP1jSepfNMw9cs7WhZk6KIf",
+    "scope": "lahman001",
+    "framework": "Next.js 16.3.5",
+    "branch": "codex/miloosh-master-release-20260927",
+    "sourceSha": "a925c0e7e129c09c2ca38f5e352d8edbc4afb9ab",
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "deploymentUrl": "https://flowtemplate-f56v5bbjb-lahman001.vercel.app",
+    "createdAt": "2026-09-26T22:45:31.681Z",
+    "readyAt": "2026-09-26T22:47:57.671Z",
+    "promotedAt": "2026-09-26T22:50:25.901Z",
+    "productionUrl": "https://miloosh.com",
+    "method": "Existing Vercel CLI authentication; explicit project; production --skip-domain; authenticated staged GET checks; explicit promote; independent source/alias/HTTP guard",
+    "integratedResearchCommit": "981a491381da45bd61df0ddbe2e80e6c2135f76b",
+    "localBuildId": "z3Lmr1xOSasx6EYov7lyK",
+    "localArtifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+    "rollback": {
+      "deploymentId": "dpl_3F95X1y4KARafdQ88oewqf8kYo23",
+      "url": "https://flowtemplate-mwkxkm1a0-lahman001.vercel.app",
+      "sourceSha": "f5ed1b23035cbda81c222fb8b8bd24d3962a7b71"
+    },
+    "uploadPrivacy": {
+      "reportedFileCount": 1461,
+      "privateRegularFiles": 0,
+      "excluded": [
+        "var/",
+        ".agents/",
+        ".env*",
+        ".next-miloosh-qa/",
+        "tools/"
+      ]
+    },
+    "githubPush": false,
+    "environmentChanges": false,
+    "credentialsExposed": false,
+    "socialSourceChangedFromPriorProduction": false,
+    "note": "CLI-uploaded clean source snapshot. Source SHA metadata and canonical alias independently verified. Later receipt/evidence-only commit is not a second application deployment."
+  },
+  "crawl": {
+    "capturedAt": "2026-09-27T05:04:10.739Z",
+    "inspected": 1785,
+    "expected": 1785,
+    "failures": [],
+    "ctaCount": 4138,
+    "artifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+    "delta": {
+      "before": 1785,
+      "after": 1785,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "merchantNavigations": 0,
+    "writes": 0
+  },
+  "health": {
+    "capturedAt": "2026-09-27T04:35:08.356Z",
+    "origin": "https://miloosh.com",
+    "artifactHash": "719905e7380eff64e129c8f887f57a51396047d8c588c05323c6195819eaf3f4",
+    "rows": [
+      {
+        "route": "/",
+        "status": 200,
+        "title": "Miloosh — Software research you can verify.",
+        "description": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence.",
+        "canonical": [
+          "https://miloosh.com"
+        ],
+        "schemas": [
+          "Organization"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Miloosh — Software research you can verify."
+          },
+          {
+            "property": "og:description",
+            "content": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence."
+          },
+          {
+            "property": "og:site_name",
+            "content": "Miloosh"
+          },
+          {
+            "property": "og:locale",
+            "content": "en_US"
+          },
+          {
+            "property": "og:image",
+            "content": "https://miloosh.com/opengraph-image?0ef0595a414c51bf"
+          },
+          {
+            "property": "og:image:type",
+            "content": "image/png"
+          },
+          {
+            "property": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "property": "og:image:height",
+            "content": "630"
+          },
+          {
+            "property": "og:image:alt",
+            "content": "Miloosh — Software research you can verify."
+          },
+          {
+            "property": "og:type",
+            "content": "website"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/software/pipedrive",
+        "status": 200,
+        "title": "Best Pipedrive Alternatives | Miloosh",
+        "description": "5 Pipedrive alternatives compared: Pipedrive is a sales-focused CRM built around a visual pipeline, letting sales teams track leads and deals as they move…",
+        "canonical": [
+          "https://miloosh.com/software/pipedrive"
+        ],
+        "schemas": [
+          "Organization",
+          "BreadcrumbList",
+          "ItemList",
+          "FAQPage"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Best Pipedrive Alternatives"
+          },
+          {
+            "property": "og:description",
+            "content": "5 Pipedrive alternatives compared: Pipedrive is a sales-focused CRM built around a visual pipeline, letting sales teams track leads and deals as they move…"
+          },
+          {
+            "property": "og:site_name",
+            "content": "Miloosh"
+          },
+          {
+            "property": "og:locale",
+            "content": "en_US"
+          },
+          {
+            "property": "og:image",
+            "content": "https://miloosh.com/software/pipedrive/opengraph-image?edf3164e43a82cdf"
+          },
+          {
+            "property": "og:image:type",
+            "content": "image/png"
+          },
+          {
+            "property": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "property": "og:image:height",
+            "content": "630"
+          },
+          {
+            "property": "og:image:alt",
+            "content": "Software profile"
+          },
+          {
+            "property": "og:type",
+            "content": "website"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/software/freshdesk",
+        "status": 200,
+        "title": "Best Freshdesk Alternatives & Competitors (2026) | Miloosh",
+        "description": "Compare Freshdesk alternatives and competitors for customer support and help desk workflows using current vendor-sourced features, platforms, pricing, and fit.",
+        "canonical": [
+          "https://miloosh.com/software/freshdesk"
+        ],
+        "schemas": [
+          "Organization",
+          "BreadcrumbList",
+          "ItemList",
+          "FAQPage"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Best Freshdesk Alternatives & Competitors (2026)"
+          },
+          {
+            "property": "og:description",
+            "content": "Compare Freshdesk alternatives and competitors for customer support and help desk workflows using current vendor-sourced features, platforms, pricing, and fit."
+          },
+          {
+            "property": "og:site_name",
+            "content": "Miloosh"
+          },
+          {
+            "property": "og:locale",
+            "content": "en_US"
+          },
+          {
+            "property": "og:image",
+            "content": "https://miloosh.com/software/freshdesk/opengraph-image?edf3164e43a82cdf"
+          },
+          {
+            "property": "og:image:type",
+            "content": "image/png"
+          },
+          {
+            "property": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "property": "og:image:height",
+            "content": "630"
+          },
+          {
+            "property": "og:image:alt",
+            "content": "Software profile"
+          },
+          {
+            "property": "og:type",
+            "content": "website"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/compare/pipedrive-vs-close",
+        "status": 200,
+        "title": "Pipedrive vs Close | Miloosh",
+        "description": "Pipedrive and Close, compared: real CRM features and platforms from each vendor's own site.",
+        "canonical": [
+          "https://miloosh.com/compare/pipedrive-vs-close"
+        ],
+        "schemas": [
+          "Organization",
+          "BreadcrumbList",
+          "ItemList"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Pipedrive vs Close"
+          },
+          {
+            "property": "og:description",
+            "content": "Pipedrive and Close, compared: real CRM features and platforms from each vendor's own site."
+          },
+          {
+            "property": "og:image",
+            "content": "https://miloosh.com/compare/pipedrive-vs-close/opengraph-image?f160f0d88679d036"
+          },
+          {
+            "property": "og:image:type",
+            "content": "image/png"
+          },
+          {
+            "property": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "property": "og:image:height",
+            "content": "630"
+          },
+          {
+            "property": "og:image:alt",
+            "content": "Software comparison"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/guides",
+        "status": 200,
+        "title": "Software Decision Guides | Miloosh",
+        "description": "Browse Miloosh decision guides for common software buying, switching, and replacement decisions, with sourced product research and dated pricing notes.",
+        "canonical": [
+          "https://miloosh.com/guides"
+        ],
+        "schemas": [
+          "Organization"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Miloosh — Software research you can verify."
+          },
+          {
+            "property": "og:description",
+            "content": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence."
+          },
+          {
+            "property": "og:site_name",
+            "content": "Miloosh"
+          },
+          {
+            "property": "og:locale",
+            "content": "en_US"
+          },
+          {
+            "property": "og:image",
+            "content": "https://miloosh.com/opengraph-image?0ef0595a414c51bf"
+          },
+          {
+            "property": "og:image:type",
+            "content": "image/png"
+          },
+          {
+            "property": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "property": "og:image:height",
+            "content": "630"
+          },
+          {
+            "property": "og:image:alt",
+            "content": "Miloosh — Software research you can verify."
+          },
+          {
+            "property": "og:type",
+            "content": "website"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/category/crm",
+        "status": 200,
+        "title": "CRM | Miloosh",
+        "description": "Track leads, deals, and customer relationships. Compare 10 crm tools.",
+        "canonical": [
+          "https://miloosh.com/category/crm"
+        ],
+        "schemas": [
+          "Organization",
+          "BreadcrumbList",
+          "CollectionPage"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Miloosh — Software research you can verify."
+          },
+          {
+            "property": "og:description",
+            "content": "Compare software alternatives, pricing, features, and migration options — every claim sourced and dated, so you can switch with confidence."
+          },
+          {
+            "property": "og:site_name",
+            "content": "Miloosh"
+          },
+          {
+            "property": "og:locale",
+            "content": "en_US"
+          },
+          {
+            "property": "og:image",
+            "content": "https://miloosh.com/category/crm/opengraph-image?fcdf3691e3f81cef"
+          },
+          {
+            "property": "og:image:type",
+            "content": "image/png"
+          },
+          {
+            "property": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "property": "og:image:height",
+            "content": "630"
+          },
+          {
+            "property": "og:image:alt",
+            "content": "Software category"
+          },
+          {
+            "property": "og:type",
+            "content": "website"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/research",
+        "status": 200,
+        "title": "Research | Miloosh",
+        "description": "Miloosh's original, source-verified research: datasets built from our own software catalog and each vendor's own pricing page, published with methodology and a downloadable dataset.",
+        "canonical": [
+          "https://miloosh.com/research"
+        ],
+        "schemas": [
+          "Organization"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Research"
+          },
+          {
+            "property": "og:description",
+            "content": "Miloosh's original, source-verified research: datasets built from our own software catalog and each vendor's own pricing page, published with methodology and a downloadable dataset."
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/research/saas-pricing-pressure-index-2026",
+        "status": 200,
+        "title": "Miloosh SaaS Pricing Pressure Index 2026 | Miloosh",
+        "description": "Published SaaS starting prices and documented plan availability, with dated vendor sources, explicit sample sizes, currencies, and modeled-cost limitations.",
+        "canonical": [
+          "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+        ],
+        "schemas": [
+          "Organization"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Miloosh SaaS Pricing Pressure Index 2026"
+          },
+          {
+            "property": "og:description",
+            "content": "Published SaaS list prices, not customer invoices. Dated sources, sample sizes, and modeled-cost limitations included."
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/research/customer-support-pricing-2026",
+        "status": 200,
+        "title": "Customer Support Pricing Benchmark 2026 | Miloosh",
+        "description": "How 16 customer support platforms bill for AI-handled conversations, verified against each vendor's own pricing page: who publishes a per-resolution AI rate, who bundles it, and where the underlying seat price is undisclosed.",
+        "canonical": [
+          "https://miloosh.com/research/customer-support-pricing-2026"
+        ],
+        "schemas": [
+          "Organization",
+          "Dataset"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "Customer Support Pricing Benchmark 2026"
+          },
+          {
+            "property": "og:description",
+            "content": "How 16 customer support platforms bill for AI-handled conversations, verified against each vendor's own pricing page: who publishes a per-resolution AI rate, who bundles it, and where the underlying seat price is undisclosed."
+          },
+          {
+            "property": "og:url",
+            "content": "https://miloosh.com/research/customer-support-pricing-2026"
+          },
+          {
+            "property": "og:type",
+            "content": "article"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/research/crm-plan-gates-2026",
+        "status": 200,
+        "title": "CRM Plan-Gate Dataset 2026 | Miloosh",
+        "description": "Which CRM plan you actually need for two-way email sync, workflow automation, and sales sequences, across 7 vendors -- verified against each vendor's own pricing page and help documentation. Not a best-CRM ranking.",
+        "canonical": [
+          "https://miloosh.com/research/crm-plan-gates-2026"
+        ],
+        "schemas": [
+          "Organization",
+          "Dataset"
+        ],
+        "openGraph": [
+          {
+            "property": "og:title",
+            "content": "CRM Plan-Gate Dataset 2026"
+          },
+          {
+            "property": "og:description",
+            "content": "Which CRM plan you actually need for two-way email sync, workflow automation, and sales sequences, across 7 vendors -- verified against each vendor's own pricing page and help documentation. Not a best-CRM ranking."
+          },
+          {
+            "property": "og:url",
+            "content": "https://miloosh.com/research/crm-plan-gates-2026"
+          },
+          {
+            "property": "og:type",
+            "content": "article"
+          }
+        ],
+        "expectedMatches": true
+      },
+      {
+        "route": "/categories",
+        "status": 404,
+        "expectedMatches": true,
+        "note": "Pre-existing unsupported route; navbar uses /#categories; /category/crm verified above. No invented new route."
+      }
+    ],
+    "downloads": [
+      {
+        "slug": "customer-support-pricing-2026",
+        "jsonStatus": 200,
+        "csvStatus": 200,
+        "rows": 16,
+        "jsonType": "application/json",
+        "csvType": "text/csv; charset=utf-8",
+        "csvBytes": 3540,
+        "disposition": "attachment; filename=\"customer-support-pricing-benchmark-2026.csv\"",
+        "exactLocalRows": true
+      },
+      {
+        "slug": "crm-plan-gates-2026",
+        "jsonStatus": 200,
+        "csvStatus": 200,
+        "rows": 7,
+        "jsonType": "application/json",
+        "csvType": "text/csv; charset=utf-8",
+        "csvBytes": 8565,
+        "disposition": "attachment; filename=\"crm-plan-gates-dataset-2026.csv\"",
+        "exactLocalRows": true
+      }
+    ],
+    "sitemap": {
+      "status": 200,
+      "researchPaths": [
+        "/research",
+        "/research/saas-pricing-pressure-index-2026",
+        "/research/customer-support-pricing-2026",
+        "/research/crm-plan-gates-2026"
+      ]
+    },
+    "writes": 0
+  },
+  "brand": {
+    "capturedAt": "2026-09-27T04:40:18.808Z",
+    "source": "Authenticated GSC Performance UI exact query contains miloosh; last updated 5 hours; visible chart Aug7–Sep24. No post-release period present.",
+    "window": {
+      "start": "2026-08-07",
+      "end": "2026-09-24"
+    },
+    "scope": {
+      "property": "sc-domain:miloosh.com",
+      "searchType": "web",
+      "country": null,
+      "device": null,
+      "timezone": "America/Los_Angeles",
+      "dataState": "unknown"
+    },
+    "filter": {
+      "dimension": "query",
+      "operator": "contains",
+      "expression": "miloosh"
+    },
+    "impressions": 0,
+    "clicks": 0
+  },
+  "propertyUi": {
+    "captureDate": "2026-09-27",
+    "window": {
+      "start": "2026-08-07",
+      "end": "2026-09-24"
+    },
+    "clicks": 10,
+    "impressionsDisplay": "28.5K",
+    "exactImpressions": null,
+    "averagePositionDisplay": 74.2,
+    "indexedDisplay": 218,
+    "notIndexedDisplay": 1705,
+    "source": "Authenticated GSC UI. Rounded display is not an exact count; reports have processing lag."
+  },
+  "authorityBaseline": {
+    "scope": "Independently verified placement-target pairs, not GSC link totals; no exhaustive-web claim",
+    "capturedAt": "2026-09-27T05:22:00.347Z",
+    "homepagePlacements": 3,
+    "deepLinkPlacements": 2,
+    "supportedUrls": [
+      "https://miloosh.com/",
+      "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+    ],
+    "liveMentionsWithoutLinks": 0,
+    "unresolved": 3
+  },
+  "rankingMovement": "WAIT_MATCHING_FINAL_WINDOWS",
+  "performance": {
+    "localArtifactBefore": {
+      "capturedAt": "2026-09-27T05:22:59.427Z",
+      "buildId": "z3Lmr1xOSasx6EYov7lyK",
+      "html": [
+        {
+          "path": ".next-miloosh-qa/server/app/research/customer-support-pricing-2026.html",
+          "bytes": 134130
+        },
+        {
+          "path": ".next-miloosh-qa/server/app/research/crm-plan-gates-2026.html",
+          "bytes": 130431
+        }
+      ]
+    },
+    "publicHtml": [
+      {
+        "route": "/research/customer-support-pricing-2026",
+        "htmlBytes": 135133,
+        "status": 200
+      },
+      {
+        "route": "/research/crm-plan-gates-2026",
+        "htmlBytes": 131434,
+        "status": 200
+      }
+    ],
+    "publicJson": [
+      {
+        "slug": "customer-support-pricing-2026",
+        "bytes": 12862
+      },
+      {
+        "slug": "crm-plan-gates-2026",
+        "bytes": 15090
+      }
+    ],
+    "vercelBuildingToReadySeconds": {
+      "prior": 94.217,
+      "current": 144.888
+    },
+    "interpretation": "Two different deployments, not a controlled benchmark. Current includes research and other changes. Cannot attribute +50.671s to research alone. No speculative optimization.",
+    "localArtifactAfter": {
+      "buildId": "l_wgh02yhJimCGbqxOFWZ",
+      "verifiedAfterBuildAt": "2026-09-27T05:41:01.225Z",
+      "researchHtmlBytes": [
+        134130,
+        130431
+      ]
+    },
+    "localResearchHtmlByteDelta": [
+      0,
+      0
+    ],
+    "buildResult": "Final normal release runner build PASS (24.091 seconds wall clock); 3539 generated entries. HTML byte delta remains zero. Earlier loaded-host build also passed. These are not controlled benchmarks against cloud build times."
+  },
+  "affiliates": {
+    "active": [
+      "freshbooks",
+      "constant-contact",
+      "todoist",
+      "moosend",
+      "volza",
+      "pipedrive",
+      "getresponse",
+      "airtable",
+      "monday",
+      "whatconverts",
+      "elevenlabs",
+      "krispcall",
+      "setmore",
+      "hubstaff",
+      "close",
+      "shopify",
+      "wix",
+      "mailerlite",
+      "omnisend",
+      "wrike",
+      "jotform",
+      "surveymonkey"
+    ],
+    "ledger": [
+      {
+        "program": "wrike",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "constant-contact",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "todoist",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "moosend",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "volza",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "pipedrive",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "getresponse",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "airtable",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "monday",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "whatconverts",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "elevenlabs",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "krispcall",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "setmore",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "hubstaff",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "shopify",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "wix",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "mailerlite",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "omnisend",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "surveymonkey",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "jotform",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "pdware",
+        "status": "APPROVED_NEEDS_EDITORIAL_CONTENT"
+      },
+      {
+        "program": "notify-me",
+        "status": "APPROVED_NEEDS_EDITORIAL_CONTENT"
+      },
+      {
+        "program": "flippa",
+        "status": "APPROVED_NEEDS_EDITORIAL_CONTENT"
+      },
+      {
+        "program": "freshworks",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "automattic",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "freshbooks",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "close",
+        "status": "ACTIVE"
+      },
+      {
+        "program": "clickup",
+        "status": "REJECTED"
+      },
+      {
+        "program": "help-scout",
+        "status": "REJECTED"
+      },
+      {
+        "program": "amplitude",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "toggl-track",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "callrail",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "xero",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "trainual",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "tidio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "synthesia",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "webflow",
+        "status": "REJECTED"
+      },
+      {
+        "program": "activecampaign",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "superhuman",
+        "status": "REJECTED"
+      },
+      {
+        "program": "kit",
+        "status": "REJECTED"
+      },
+      {
+        "program": "brevo",
+        "status": "REJECTED"
+      },
+      {
+        "program": "hubspot",
+        "status": "REJECTED"
+      },
+      {
+        "program": "n8n",
+        "status": "REJECTED"
+      },
+      {
+        "program": "loom",
+        "status": "REJECTED"
+      },
+      {
+        "program": "zapier",
+        "status": "REJECTED"
+      },
+      {
+        "program": "canva",
+        "status": "REJECTED"
+      },
+      {
+        "program": "impact-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "cj-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "ringcentral",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "zoho-ecosystem",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "program": "adobe-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "microsoft-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "salesforce-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "cisco-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "twilio-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "rewardful-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "firstpromoter-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "notion",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "asana",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "fathom-analytics",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "framer",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "semrush",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "hootsuite",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "buffer",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "partnerstack-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "liveagent",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "gohighlevel",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "partnerstack-referral",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "make",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "property-and-field-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "developer-and-enterprise-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "collaboration-and-design-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "support-and-crm-portfolio",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "shift4shop",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "later",
+        "status": "OWNER_ACTION_REQUIRED"
+      },
+      {
+        "program": "weebly",
+        "status": "PROGRAM_NOT_VERIFIED"
+      },
+      {
+        "program": "calendly-affiliate",
+        "status": "NO_REAL_PROGRAM_FOUND"
+      },
+      {
+        "program": "coda-affiliate",
+        "status": "PROGRAM_ENDED"
+      },
+      {
+        "program": "bigcommerce-affiliate",
+        "status": "PROGRAM_ENDED"
+      }
+    ],
+    "hubspot": "DECLINED_LOW_REACH",
+    "saascomparely": "NOT_AFFILIATE_NOT_EARNED_AUTHORITY",
+    "auditFindings": {
+      "staleResearch": 84,
+      "catalogResearchGap": 1,
+      "orphanedResearch": 9,
+      "overdueFollowup": 5
+    },
+    "newApprovalClaims": 0
+  },
+  "productionChanged": false,
+  "productionVerification": {
+    "startedAt": "2026-09-27T05:30:58.839Z",
+    "confirmedAt": "2026-09-27T05:33:19.210Z",
+    "status": "PASS",
+    "canonicalHttpStatus": 200,
+    "identityUnchanged": true
+  }
+}

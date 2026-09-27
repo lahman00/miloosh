@@ -1,0 +1,515 @@
+{
+  "capturedAt": "2026-09-27T05:30:47.124Z",
+  "baseline": {
+    "scope": "Independently verified placement-target pairs, not GSC link totals; no exhaustive-web claim",
+    "capturedAt": "2026-09-27T05:22:00.347Z",
+    "homepagePlacements": 3,
+    "deepLinkPlacements": 2,
+    "supportedUrls": [
+      "https://miloosh.com/",
+      "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+    ],
+    "liveMentionsWithoutLinks": 0,
+    "unresolved": 3
+  },
+  "changes": {
+    "since": "2026-09-27T04:51:20.207Z",
+    "until": "2026-09-27T05:22:00.347Z",
+    "newlyVerified": [],
+    "newlyVerifiedDeepLinks": [],
+    "removed": [],
+    "note": "Changes in verification between captures; not proof links were newly earned or exactly when removed"
+  },
+  "registry": [
+    {
+      "id": "qevra-home",
+      "source": "Qevra",
+      "target": "https://miloosh.com/",
+      "external": "https://qevra.app/s/miloosh",
+      "status": "VERIFIED_LIVE",
+      "linkPresent": true,
+      "rel": "DOFOLLOW",
+      "lastVerified": "2026-09-27T04:51:13.793Z",
+      "method": "PUBLIC_HTTP",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T04:51:13.793Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "DOFOLLOW",
+        "evidence": "Read-only public GET, exact target anchor observed. No target navigation; absent rel does not guarantee search-engine credit."
+      }
+    },
+    {
+      "id": "saashub-home",
+      "source": "SaaSHub",
+      "target": "https://miloosh.com/",
+      "external": "https://www.saashub.com/miloosh",
+      "status": "VERIFIED_LIVE",
+      "linkPresent": true,
+      "rel": "MIXED",
+      "lastVerified": "2026-09-27T04:51:13.793Z",
+      "method": "PUBLIC_HTTP",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T04:51:13.793Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "MIXED",
+        "evidence": "Read-only public GET, exact target anchor observed. No target navigation; absent rel does not guarantee search-engine credit."
+      }
+    },
+    {
+      "id": "hypestar-home",
+      "source": "HypeStar",
+      "target": "https://miloosh.com/",
+      "external": "https://hypestar.org/project/miloosh",
+      "status": "VERIFIED_LIVE",
+      "linkPresent": true,
+      "rel": "NOFOLLOW",
+      "lastVerified": "2026-09-27T04:51:13.793Z",
+      "method": "PUBLIC_HTTP",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T04:51:13.793Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "NOFOLLOW",
+        "evidence": "Read-only public GET, exact target anchor observed. No target navigation; absent rel does not guarantee search-engine credit."
+      }
+    },
+    {
+      "id": "saashub-research",
+      "source": "SaaSHub",
+      "target": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "external": "https://www.saashub.com/miloosh",
+      "status": "VERIFIED_LIVE",
+      "linkPresent": true,
+      "rel": "NOFOLLOW",
+      "lastVerified": "2026-09-27T04:51:13.793Z",
+      "method": "PUBLIC_HTTP",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T04:51:13.793Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "NOFOLLOW",
+        "evidence": "Read-only public GET, exact target anchor observed. No target navigation; absent rel does not guarantee search-engine credit."
+      }
+    },
+    {
+      "id": "smartsme-research",
+      "source": "Smart SME",
+      "target": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "external": "https://smartsme.co.uk/what-business-software-really-costs-in-2026-188-vendor-price-lists-checked/",
+      "status": "VERIFIED_LIVE",
+      "linkPresent": true,
+      "rel": "DOFOLLOW",
+      "lastVerified": "2026-09-27T04:51:13.793Z",
+      "method": "PUBLIC_HTTP",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T04:51:13.793Z",
+        "status": "VERIFIED_LIVE",
+        "method": "PUBLIC_HTTP",
+        "exactTargetVerified": true,
+        "linkPresent": true,
+        "rel": "DOFOLLOW",
+        "evidence": "Read-only public GET, exact target anchor observed. No target navigation; absent rel does not guarantee search-engine credit."
+      }
+    },
+    {
+      "id": "reddit-crm-calls",
+      "source": "Reddit r/CRMSoftware",
+      "target": null,
+      "external": "https://www.reddit.com/r/CRMSoftware/comments/1wqtnwo/comment/pc7sr55/",
+      "status": "REMOVED",
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "lastVerified": "2026-09-27T05:03:04.478Z",
+      "method": "PUBLIC_WEB_FETCH",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T05:03:04.478Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink fetched September 27 via web browsing: Comment removed by moderator. Fetch may be cached; no inferred reason and no authenticated action."
+      }
+    },
+    {
+      "id": "reddit-crm-budget",
+      "source": "Reddit r/CRMSoftware",
+      "target": null,
+      "external": "https://www.reddit.com/r/CRMSoftware/comments/1uyrghz/comment/pc81v6w/",
+      "status": "REMOVED",
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "lastVerified": "2026-09-27T05:03:04.484Z",
+      "method": "PUBLIC_WEB_FETCH",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T05:03:04.484Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink fetched September 27 via web browsing: Comment removed by moderator. Fetch may be cached; no inferred reason and no authenticated action."
+      }
+    },
+    {
+      "id": "reddit-saas-direct",
+      "source": "Reddit r/SaaS",
+      "target": "https://miloosh.com/compare/intercom-alternatives",
+      "external": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/",
+      "status": "REMOVED",
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "lastVerified": "2026-09-26T22:21:35.611Z",
+      "method": "PUBLIC_WEB_FETCH",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-26T22:21:35.611Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Release recheck of this exact public comment permalink shows Comment removed by moderator. Public fetch/cache visibility is not proof of visibility to every authenticated audience. Owner/parallel live reports remain preserved; no restoration or removal cause inferred."
+      }
+    },
+    {
+      "id": "saasmag-pending",
+      "source": "SaaS Mag",
+      "target": "https://miloosh.com/best-help-desk-for-small-business",
+      "external": "https://www.saasmag.com/contributions/",
+      "status": "PENDING",
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "lastVerified": null,
+      "method": "REPORTED",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "PENDING",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Prior submission receipt exists; no acceptance or public article. No outreach in this task."
+      }
+    },
+    {
+      "id": "bootstrapped-founder-pending",
+      "source": "The Bootstrapped Founder",
+      "target": "https://miloosh.com/best-ecommerce-platform-for-small-business",
+      "external": "https://thebootstrappedfounder.com/contact/",
+      "status": "PENDING",
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "lastVerified": null,
+      "method": "REPORTED",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "PENDING",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Preserved prior SENT receipt from committed offsite ledger; no reply, permission, placement or current live link inferred. No outreach in this task."
+      }
+    },
+    {
+      "id": "supportdriven-pending",
+      "source": "Support Driven",
+      "target": "https://miloosh.com/best-help-desk-for-small-business",
+      "external": "https://www.supportdriven.com/",
+      "status": "PENDING",
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "lastVerified": null,
+      "method": "REPORTED",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-26T19:46:20Z",
+        "status": "PENDING",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "evidence": "Preserved prior SENT receipt from committed offsite ledger; no reply, permission, placement or current live link inferred. No outreach in this task."
+      }
+    },
+    {
+      "id": "saascomparely-rejected",
+      "source": "SaaSComparely",
+      "target": null,
+      "external": "https://www.saascomparely.org/write-for-us",
+      "status": "REJECTED",
+      "linkPresent": null,
+      "rel": "UNKNOWN",
+      "lastVerified": null,
+      "method": "REPORTED",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-26T21:24:09Z",
+        "status": "REJECTED",
+        "method": "REPORTED",
+        "exactTargetVerified": false,
+        "linkPresent": null,
+        "rel": "UNKNOWN",
+        "rejectionReason": "PAID_DOFOLLOW",
+        "evidence": "Owner's 2026-09-27 master-release instruction: reject the paid guest post + dofollow backlink offer. REJECTED_PAID_DOFOLLOW; not earned authority. No placement claimed, no purchase or outreach performed."
+      }
+    },
+    {
+      "id": "reddit-smallbusiness-pc8wg5e",
+      "source": "Reddit smallbusiness bespoke-equipment CRM",
+      "target": null,
+      "external": "https://www.reddit.com/r/smallbusiness/comments/1jnzj8m/comment/pc8wg5e/",
+      "status": "REMOVED",
+      "linkPresent": false,
+      "rel": "UNKNOWN",
+      "lastVerified": "2026-09-27T05:03:04.484Z",
+      "method": "PUBLIC_WEB_FETCH",
+      "conflict": false,
+      "evidence": {
+        "at": "2026-09-27T05:03:04.484Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink fetched September 27 via web browsing: Comment removed by moderator. Fetch may be cached; no inferred reason and no authenticated action."
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "id": "qevra-home",
+      "targetUrl": "https://miloosh.com/",
+      "externalUrl": "https://qevra.app/s/miloosh",
+      "externalState": "VERIFIED_LIVE",
+      "firstVerifiedMentionAt": "2026-09-26T19:49:24.207Z",
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "UNKNOWN",
+      "rankingEligible": false,
+      "lane": "REVIEW",
+      "performance": {
+        "url": "https://miloosh.com/",
+        "clicks": 2,
+        "impressions": 107,
+        "ctr": 0.019,
+        "position": 14.4
+      },
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "BEFORE_OR_OVERLAPPING_OBSERVATION",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "saashub-home",
+      "targetUrl": "https://miloosh.com/",
+      "externalUrl": "https://www.saashub.com/miloosh",
+      "externalState": "VERIFIED_LIVE",
+      "firstVerifiedMentionAt": "2026-09-26T19:49:24.378Z",
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "UNKNOWN",
+      "rankingEligible": false,
+      "lane": "REVIEW",
+      "performance": {
+        "url": "https://miloosh.com/",
+        "clicks": 2,
+        "impressions": 107,
+        "ctr": 0.019,
+        "position": 14.4
+      },
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "BEFORE_OR_OVERLAPPING_OBSERVATION",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "hypestar-home",
+      "targetUrl": "https://miloosh.com/",
+      "externalUrl": "https://hypestar.org/project/miloosh",
+      "externalState": "VERIFIED_LIVE",
+      "firstVerifiedMentionAt": "2026-09-26T19:49:24.377Z",
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "UNKNOWN",
+      "rankingEligible": false,
+      "lane": "REVIEW",
+      "performance": {
+        "url": "https://miloosh.com/",
+        "clicks": 2,
+        "impressions": 107,
+        "ctr": 0.019,
+        "position": 14.4
+      },
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "BEFORE_OR_OVERLAPPING_OBSERVATION",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "saashub-research",
+      "targetUrl": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "externalUrl": "https://www.saashub.com/miloosh",
+      "externalState": "VERIFIED_LIVE",
+      "firstVerifiedMentionAt": "2026-09-26T19:49:24.378Z",
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "UNKNOWN",
+      "rankingEligible": false,
+      "lane": "REVIEW",
+      "performance": null,
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "BEFORE_OR_OVERLAPPING_OBSERVATION",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "smartsme-research",
+      "targetUrl": "https://miloosh.com/research/saas-pricing-pressure-index-2026",
+      "externalUrl": "https://smartsme.co.uk/what-business-software-really-costs-in-2026-188-vendor-price-lists-checked/",
+      "externalState": "VERIFIED_LIVE",
+      "firstVerifiedMentionAt": "2026-09-26T19:49:24.278Z",
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "UNKNOWN",
+      "rankingEligible": false,
+      "lane": "REVIEW",
+      "performance": null,
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "BEFORE_OR_OVERLAPPING_OBSERVATION",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "reddit-saas-direct",
+      "targetUrl": "https://miloosh.com/compare/intercom-alternatives",
+      "externalUrl": "https://www.reddit.com/r/SaaS/comments/1g8lvlr/comment/pc5germ/",
+      "externalState": "REMOVED",
+      "firstVerifiedMentionAt": null,
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "UNKNOWN",
+      "rankingEligible": false,
+      "lane": "REVIEW",
+      "performance": null,
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "UNKNOWN",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "saasmag-pending",
+      "targetUrl": "https://miloosh.com/best-help-desk-for-small-business",
+      "externalUrl": "https://www.saasmag.com/contributions/",
+      "externalState": "PENDING",
+      "firstVerifiedMentionAt": null,
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "CRAWLED_NOT_INDEXED",
+      "rankingEligible": false,
+      "lane": "INDEX_SELECTION",
+      "performance": null,
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "UNKNOWN",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "bootstrapped-founder-pending",
+      "targetUrl": "https://miloosh.com/best-ecommerce-platform-for-small-business",
+      "externalUrl": "https://thebootstrappedfounder.com/contact/",
+      "externalState": "PENDING",
+      "firstVerifiedMentionAt": null,
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "DISCOVERED_NOT_INDEXED",
+      "rankingEligible": false,
+      "lane": "CRAWL_RECOVERY",
+      "performance": null,
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "UNKNOWN",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    },
+    {
+      "id": "supportdriven-pending",
+      "targetUrl": "https://miloosh.com/best-help-desk-for-small-business",
+      "externalUrl": "https://www.supportdriven.com/",
+      "externalState": "PENDING",
+      "firstVerifiedMentionAt": null,
+      "mentionDateMeaning": "First observed verification, not publication time",
+      "crawlAfterMention": "UNKNOWN",
+      "googleState": "CRAWLED_NOT_INDEXED",
+      "rankingEligible": false,
+      "lane": "INDEX_SELECTION",
+      "performance": null,
+      "performanceWindow": {
+        "start": "2026-08-07",
+        "end": "2026-09-23"
+      },
+      "performanceRelation": "UNKNOWN",
+      "lastCrawlTime": null,
+      "note": "Temporal sequence only; external placement does not prove causation"
+    }
+  ],
+  "scope": "Fresh exact-anchor HTTP checks for Qevra, SaaSHub homepage/research, HypeStar and SmartSME research. Three requested Reddit exact permalinks checked via public web fetch; cache freshness is limited. No publishing/outreach.",
+  "homepageVsDeep": {
+    "scope": "Independently verified placement-target pairs, not GSC link totals; no exhaustive-web claim",
+    "capturedAt": "2026-09-27T05:22:00.347Z",
+    "homepagePlacements": 3,
+    "deepLinkPlacements": 2,
+    "supportedUrls": [
+      "https://miloosh.com/",
+      "https://miloosh.com/research/saas-pricing-pressure-index-2026"
+    ],
+    "liveMentionsWithoutLinks": 0,
+    "unresolved": 3
+  },
+  "temporalOnly": true,
+  "causalityProven": false,
+  "newlyEarnedLinksProven": 0
+}
