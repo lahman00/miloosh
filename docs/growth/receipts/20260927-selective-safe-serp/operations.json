@@ -1,0 +1,71 @@
+{
+  "scope": "Post-deployment selective Nutshell release checks; not a causal ranking or revenue claim",
+  "sourceSha": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+  "deploymentId": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY",
+  "cloro": {
+    "mode": "LIVE",
+    "generatedAt": "2026-09-27T19:12:50.302Z",
+    "country": "US",
+    "requests": 9,
+    "http200": 9,
+    "chargedCredits": 54,
+    "brandRecognizedProviders": ["chatgpt", "perplexity", "google"],
+    "brandCitedProviders": ["chatgpt", "perplexity", "google"],
+    "citationSemantics": "ChatGPT/Perplexity source citations; Google organic result link, not an AI-answer citation.",
+    "googleBrandOrganicPosition": 6,
+    "genericCases": ["support", "crm"],
+    "genericVisibleCases": [],
+    "evidence": "var/growth/cloro/latest.json",
+    "rawEvidenceDirectory": "var/growth/cloro/raw/2026-09-27T19-06-07.261Z/",
+    "limitations": [
+      "Single US sample per provider/case; not an authenticated Search Console measurement or causal release result.",
+      "The script's remainingCreditsEstimate subtracts this run from a nominal allocation, not all historical/concurrent usage. Actual account balance is UNKNOWN; no balance/quota probe was performed."
+    ]
+  },
+  "googleCommandCenter": {
+    "command": "npx tsx scripts/growth/google-command-center.ts --strict",
+    "result": "PASS",
+    "generatedAt": "2026-09-27T19:13:41.582Z",
+    "sourceSha": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+    "artifactHash": "39055765ba3625f94d5271c9e0a52db43d0c372a51bcfd63f517c39745a02fbe",
+    "routes": 1786,
+    "queryObservations": 188,
+    "measuredQueryPages": 20,
+    "cohorts": 6,
+    "activePartners": 22,
+    "commercialLinksChecked": 4139,
+    "blockingCtaFindings": 0,
+    "evidence": "var/growth/google-command/latest.json"
+  },
+  "morningOperations": {
+    "command": "npm run growth:morning-google",
+    "result": "PASS",
+    "authorityGeneratedAt": "2026-09-27T19:13:53.360Z",
+    "operationsGeneratedAt": "2026-09-27T19:13:58.402Z",
+    "placements": 13,
+    "verifiedPlacements": 5,
+    "deepLinkPairs": 2,
+    "existingAlerts": { "PLACEMENT_REMOVED": 4, "BROKEN_DEEP_LINK_TARGET": 1 },
+    "limitations": [
+      "Operations JSON still embeds the historical CMS deployment reference dpl_8gThKtBuXU6GTrraq1YRVb15LCJT. It is not the current alias identity; use this release's deployment.json for the independently verified live deployment. The historical CMS receipt was not rewritten.",
+      "First-party analytics snapshot ends at 2026-09-27T07:06:13.014Z and predates release. No new capture or conversion claim was made.",
+      "Cached authenticated GSC evidence and original observation/request timestamps were preserved. Regenerating reports does not refresh the underlying Google measurements.",
+      "The complete 1786-route rendered crawl was LOCAL. Production coverage was the bounded 15-route desktop/mobile check, not a full live-site crawl.",
+      "Existing placement-loss and broken-target alerts are historical, not newly verified link losses during this release."
+    ],
+    "evidence": ["var/growth/authority/latest.json", "var/growth/operations/latest.json"]
+  },
+  "safety": {
+    "wholeCommitMerged": false,
+    "cmsRegressed": false,
+    "protectedProductsChanged": false,
+    "protectedCohortsChanged": false,
+    "secretsExposed": false,
+    "indexingRequests": 0,
+    "merchantNavigations": 0,
+    "outreachMessages": 0,
+    "socialActions": 0,
+    "blobWrites": 0,
+    "githubPush": false
+  }
+}

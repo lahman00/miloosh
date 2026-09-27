@@ -1,0 +1,33 @@
+{
+  "status": "READY_VERIFIED_PRODUCTION",
+  "scope": "Nutshell-only selective product release; three requested products remain held",
+  "project": "flowtemplate",
+  "projectId": "prj_qMLMDaP1jSepfNMw9cs7WhZk6KIf",
+  "team": "lahman001",
+  "sourceSha": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+  "deploymentId": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY",
+  "deploymentUrl": "https://flowtemplate-qrtrjmf42-lahman001.vercel.app",
+  "productionUrl": "https://miloosh.com",
+  "createdAt": "2026-09-27T19:02:33.667Z",
+  "readyAt": "2026-09-27T19:04:22.024Z",
+  "aliasAssignedAt": "2026-09-27T19:05:42.199Z",
+  "verifiedAt": "2026-09-27T19:06:34.204Z",
+  "method": "Explicit existing project/scope; --prod --skip-domain; authenticated staged GETs; old canonical alias/source guard; fresh protection precheck; promote; independent deployment and alias APIs plus exact SHA/HTTP guard; focused production browser QA",
+  "sourceAndCanonicalAliasVerified": true,
+  "publicApplicationFilesChangedSincePriorProduction": ["data/software/nutshell.json"],
+  "preservedPreexistingCommits": ["d93879d", "1052cab"],
+  "preservedCommitsNote": "Existing private Cloro report tooling and CMS correction documentation were preserved. They are not additional public editorial changes extracted from 2ca4020.",
+  "rollback": {
+    "deploymentId": "dpl_8gThKtBuXU6GTrraq1YRVb15LCJT",
+    "deploymentUrl": "https://flowtemplate-1hij9zla8-lahman001.vercel.app",
+    "sourceSha": "bc5560b3eb1634afb4081fbd9ef4deb2d064eabf",
+    "instruction": "Verify current alias before rollback; never overwrite a newer operator release. vercel rollback https://flowtemplate-1hij9zla8-lahman001.vercel.app --scope lahman001"
+  },
+  "secretsExposed": false,
+  "environmentChanges": false,
+  "blobWrites": 0,
+  "socialChanges": false,
+  "githubPush": false,
+  "protectionOverride": false,
+  "wholeCommitMerged": false
+}

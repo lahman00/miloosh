@@ -30,8 +30,12 @@ The authoritative production CMS page, hub, builder, evidence data, JSON and CSV
 - 196 protected URLs; zero changed incoming/outgoing graph edges versus the pre-CMS baseline (CMS release had already preserved these edges).
 - Upload manifest: 1,538 entries at pre-receipt check, zero private regular files. Three empty excluded directory entries are not private-file uploads.
 
-The existing Vercel staged-deployment/promotion workflow is used only after gates pass, with independent canonical-alias and exact-source verification. See `deployment.json` and `production-qa.json` when available; these predeploy checks alone are not evidence of promotion.
+## Production and post-release operations
+
+Nutshell-only public change deployed from `e23a126b9b4169226bd1c84ffdb94b48daf44f05` as `dpl_3puWCBTyyznpgBzkNmqdg9npdKKY`. The existing staged-deployment/promotion workflow passed five authenticated read-only staged checks before promotion. The canonical alias and exact source were independently verified; production desktop/mobile QA passed all 45 checks. See `deployment.json` and `production-qa.json`. Subsequent receipt-only commits do not represent another application deployment.
+
+Cloro was rerun LIVE after deployment: nine successful requests, 54 charged credits. All three providers recognized the brand; neither sampled generic category case showed Miloosh. This is a bounded observation, not evidence of release impact or conversion. Strict Google Command Center and the morning operations reports were regenerated; no new authenticated GSC or first-party analytics capture was taken. See `operations.json` for timestamps, measurement limits and the old CMS deployment reference still embedded in the operations report.
 
 ## Remaining gate
 
-Webex, Confluence and Basecamp require explicit reservation reconciliation before integration. A green Nutshell release does not mean all four requested corrections shipped. Production CMS remains authoritative. No GitHub push, indexing request, social action, secret/environment change or Blob write is authorized by this selective release.
+Webex, Confluence and Basecamp require explicit reservation reconciliation before integration. A green Nutshell release does not mean all four requested corrections shipped. Production CMS remains authoritative. No GitHub push, indexing request, social action, secret/environment change or Blob write was performed during this selective release.
