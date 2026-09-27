@@ -24,7 +24,7 @@ export function authorityReferrals(history: FirstPartyEvent[], start: string, en
     if (!landingEvent || landingEvent.type !== "page_view") continue;
     const acq = landingEvent.acquisition?.sessionId === landingEvent.sessionId ? landingEvent.acquisition : undefined;
     const traffic = acq?.trafficSource ?? landingEvent.trafficSource;
-    if (mode === "referral" && !["referral", "social"].includes(traffic ?? "")) continue;
+    if (mode === "referral" && !["referral", "social", "email"].includes(traffic ?? "")) continue;
     if (mode === "research" && !events.some(e => e.type === "page_view" && isResearchPath(e.path))) continue;
     const source = acq?.utmSource ?? landingEvent.utmSource ?? acq?.referrerHost ?? landingEvent.referrerHost ?? traffic ?? "UNKNOWN";
     const landing = acq?.landingPath ?? landingEvent.path, campaign = acq?.utmCampaign ?? landingEvent.utmCampaign ?? null;

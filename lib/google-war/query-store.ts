@@ -9,7 +9,7 @@ export const scopeSchema = z.object({
 });
 export const queryObservationSchema = z.object({
   query: z.string().min(1), page: z.string().refine(u => canonicalPath(u) !== null, "Exact canonical Miloosh URL required"),
-  window: windowSchema, scope: scopeSchema,
+  window: windowSchema, scope: scopeSchema.extend({ dataState: z.enum(["final", "unknown"]) }),
   impressions: z.number().int().nonnegative(), clicks: z.number().int().nonnegative().nullable(),
   ctr: z.number().min(0).max(1).nullable(), position: z.number().nonnegative().nullable(),
   source: z.string().min(1), captured_at: z.union([z.iso.datetime({ offset: true }), z.iso.date()]),
@@ -46,7 +46,9 @@ export type IntentPage = { page: string; kind: "software" | "comparison" | "othe
 export function queryOwnership(row: QueryObservation | null, pages: IntentPage[], products: Array<{ slug: string; name: string }>) {
   if (!row) return { classification: "NO_DATA", expected: [] as string[], reason: "No measured query×page observation" };
   const q = ` ${row.query.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim()} `;
-  const mentioned = products.filter(p => [p.name, p.slug.replaceAll("-", " ")].some(n => q.includes(` ${n.toLowerCase()} `))).map(p => p.slug);
+  // Literal, bounded aliases only; never infer semantic demand from a page total.
+  const aliases: Record<string, string[]> = { "help-scout": ["helpscout"], "craft-cms": ["craft cms"], "webex": ["cisco webex meetings"] };
+  const mentioned = products.filter(p => [p.name, p.slug.replaceAll("-", " "), ...(aliases[p.slug] ?? [])].some(n => q.includes(` ${n.toLowerCase()} `))).map(p => p.slug);
   const comparison = /\b(vs|versus)\b/.test(q);
   const alternatives = /\b(alternatives?|competitors?)\b/.test(q);
   const owners = comparison && mentioned.length === 2

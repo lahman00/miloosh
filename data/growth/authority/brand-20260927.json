@@ -1,0 +1,25 @@
+[
+{
+  "capturedAt": "2026-09-27T04:40:18.808Z",
+  "source": "Authenticated GSC Performance UI exact query contains miloosh; last updated 5 hours; visible chart Aug7–Sep24. No post-release period present.",
+  "window": {
+    "start": "2026-08-07",
+    "end": "2026-09-24"
+  },
+  "scope": {
+    "property": "sc-domain:miloosh.com",
+    "searchType": "web",
+    "country": null,
+    "device": null,
+    "timezone": "America/Los_Angeles",
+    "dataState": "unknown"
+  },
+  "filter": {
+    "dimension": "query",
+    "operator": "contains",
+    "expression": "miloosh"
+  },
+  "impressions": 0,
+  "clicks": 0
+}
+]

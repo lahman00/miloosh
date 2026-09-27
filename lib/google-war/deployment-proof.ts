@@ -17,6 +17,13 @@ export const improvementSchema = z.object({
     .nullable()
     .default(null),
 });
+/** Historical experiment clock, without the separate current-release TTL. */
+export function verifiedExperimentClock(change: z.infer<typeof improvementSchema> | undefined, now: string): string | null {
+  const v = change?.verification;
+  return change?.deployedAt && v && v.httpStatus === 200 && v.finalUrl === `https://miloosh.com${change.url}` &&
+    v.canonical === v.finalUrl && v.indexable && v.sitemapIncluded && Date.parse(v.checkedAt) >= Date.parse(change.deployedAt) &&
+    Date.parse(v.checkedAt) <= Date.parse(now) ? change.deployedAt : null;
+}
 export function hasProductionProof(
   change: z.infer<typeof improvementSchema> | undefined,
   now: string,

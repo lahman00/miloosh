@@ -51,6 +51,10 @@ describe("research event contract and privacy", () => {
   });
 });
 describe("read-only authority/research funnel", () => {
+  it("includes email/newsletter traffic without relabeling it organic or referral", () => {
+    const h = history(); h[0] = { ...h[0], trafficSource: "email", utmSource: "dense-discovery", utmMedium: "email" } as FirstPartyEvent;
+    expect(authorityReferrals(h, start, end).rows[0]).toMatchObject({ source: "dense-discovery", sessions: 1, completeResearchHandoffs: 1 });
+  });
   it("joins only observed research → decision → matching CTA → handoff", () => {
     const r = authorityReferrals(history(), start, end);
     expect(r.rows[0]).toMatchObject({ source: "smartsme.co.uk", sessions: 1, researchVisits: 1, researchToDecision: 1, completeResearchHandoffs: 1, handoff: 1 });

@@ -5,6 +5,7 @@ import { spawnSync } from "node:child_process";
 /** Local, fail-closed release check. Does not push, deploy, index or access a
  * merchant. A PASS verifies the candidate artifact, NOT production promotion. */
 const steps = [
+  ["protected-intake", "npx", ["tsx", "scripts/growth/protected-precheck.ts"]],
   ["typecheck", "npx", ["tsc", "--noEmit"]],
   ["lint", "npm", ["run", "lint"]],
   ["tests", "npm", ["test"]],

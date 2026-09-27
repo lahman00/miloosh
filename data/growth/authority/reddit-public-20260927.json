@@ -1,0 +1,62 @@
+[
+  {
+    "id": "reddit-crm-calls",
+    "source": "Reddit r/CRMSoftware",
+    "type": "COMMUNITY",
+    "targetUrl": null,
+    "externalUrl": "https://www.reddit.com/r/CRMSoftware/comments/1wqtnwo/comment/pc7sr55/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-27T05:03:04.478Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink fetched September 27 via web browsing: Comment removed by moderator. Fetch may be cached; no inferred reason and no authenticated action."
+      }
+    ]
+  },
+  {
+    "id": "reddit-crm-budget",
+    "source": "Reddit r/CRMSoftware",
+    "type": "COMMUNITY",
+    "targetUrl": null,
+    "externalUrl": "https://www.reddit.com/r/CRMSoftware/comments/1uyrghz/comment/pc81v6w/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-27T05:03:04.484Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink fetched September 27 via web browsing: Comment removed by moderator. Fetch may be cached; no inferred reason and no authenticated action."
+      }
+    ]
+  },
+  {
+    "id": "reddit-smallbusiness-pc8wg5e",
+    "source": "Reddit smallbusiness bespoke-equipment CRM",
+    "type": "COMMUNITY",
+    "targetUrl": null,
+    "externalUrl": "https://www.reddit.com/r/smallbusiness/comments/1jnzj8m/comment/pc8wg5e/",
+    "firstObserved": "2026-09-26",
+    "utm": null,
+    "observations": [
+      {
+        "at": "2026-09-27T05:03:04.484Z",
+        "status": "REMOVED",
+        "method": "PUBLIC_WEB_FETCH",
+        "exactTargetVerified": true,
+        "linkPresent": false,
+        "rel": "UNKNOWN",
+        "evidence": "Exact public permalink fetched September 27 via web browsing: Comment removed by moderator. Fetch may be cached; no inferred reason and no authenticated action."
+      }
+    ]
+  }
+]

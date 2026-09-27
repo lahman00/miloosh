@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { z } from "zod";
 import { getAllSoftware } from "@/data/software";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
@@ -15,7 +14,8 @@ import { resolveEvidence, recrawlState, classifyInspectionEvidence } from "@/lib
 import { queryObservationSchema, queryOwnership, cannibalization, type IntentPage } from "@/lib/google-war/query-store";
 import { cohortRegistry, cohortOverlaps } from "@/lib/google-war/cohorts";
 import { rankingDelta, checkpointWindows, cohortResult, periodSchema } from "@/lib/google-war/measurement";
-import { improvementSchema } from "@/lib/google-war/deployment-proof";
+import { improvementSchema, verifiedExperimentClock } from "@/lib/google-war/deployment-proof";
+import { eventExportSchema } from "@/lib/authority/inputs";
 import { organicMoneyFunnel } from "@/lib/google-war/money-funnel";
 import { ingestOffsite, outreachUrl } from "@/lib/google-war/offsite";
 import { auditRenderedCtas } from "@/lib/google-war/cta-audit";
@@ -23,6 +23,7 @@ import { verifyRecordedTitle } from "@/lib/google-war/change-manifest";
 import rankingChanges from "@/docs/growth/receipts/20260926-ranking-war/changes.json";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
 import { runAuthorityReport } from "./authority-report";
+import { runOperationsReport } from "./operations-report";
 import authoritySeed from "@/data/growth/authority/registry.json";
 import protocolDeviations from "@/data/growth/cohort-protocol-deviations.json";
 import { appendAuthority, parseRegistry, legacyOffsiteView } from "@/lib/authority/registry";
@@ -55,14 +56,7 @@ function main() {
   const cohorts = cohortRegistry();
   const interventionVerification = rankingChanges.changesExecuted.map(c => verifyRecordedTitle(c, build.html));
   const registered = new Set(cohorts.flatMap(c => [...c.treatment, ...c.control]));
-  const deployed = (page: string) => {
-    const item = improvements.find(i => i.url === page);
-    const v = item?.verification;
-    // A historical deployment receipt is sufficient for the experiment clock;
-    // it need not meet the separate seven-day current release verification TTL.
-    return item?.deployedAt && v && v.httpStatus === 200 && v.finalUrl === `https://miloosh.com${page}` &&
-      v.canonical === v.finalUrl && v.indexable && Date.parse(v.checkedAt) >= Date.parse(item.deployedAt) && Date.parse(v.checkedAt) <= Date.parse(now) ? item.deployedAt : null;
-  };
+  const deployed = (page: string) => verifiedExperimentClock(improvements.find(i => i.url === page), now);
   const deltas = (page: string, days: 7 | 14 | 28, requireRecrawl = false) => {
     if (interventionVerification.some(v => v.canonical === page && v.status === "EXPECTED_TITLE_NOT_RENDERED")) return { status: "WAIT_INTERVENTION_VERIFICATION" as const };
     const at = deployed(page);
@@ -75,8 +69,9 @@ function main() {
     return before && after ? rankingDelta(before, after, at, days) : { status: "WAIT_MATCHING_DATA" as const, windows };
   };
   let funnel: ReturnType<typeof organicMoneyFunnel> | null = null;
-  if (process.argv.includes("--events")) {
-    const bundle = z.object({ coverage: z.literal("COMPLETE"), fullHistory: z.literal(true), start: z.iso.datetime({ offset: true }), end: z.iso.datetime({ offset: true }), events: z.array(z.object({ type: z.string(), visitorId: z.string(), sessionId: z.string(), path: z.string(), timestamp: z.iso.datetime({ offset: true }) }).passthrough()) }).parse(read(arg("--events", "")));
+  const eventsFile = arg("--events", "var/growth/operations/events.json");
+  if (fs.existsSync(eventsFile)) {
+    const bundle = eventExportSchema.parse(read(eventsFile));
     funnel = organicMoneyFunnel(bundle.events as FirstPartyEvent[], bundle.start, bundle.end);
   }
   const rows = pages.map(p => {
@@ -116,7 +111,9 @@ function main() {
   const manifest = cohorts.flatMap(c => c.treatment.map(url => ({ url, commit: c.id === "ranking-intent-20260926" ? execFileSync("git", ["rev-parse", rankingChanges.commits[0]], { encoding: "utf8" }).trim() : execFileSync("git", ["log", "-1", "--format=%H", "--", c.source], { encoding: "utf8" }).trim() || null,
     commitMeaning: c.id === "ranking-intent-20260926" ? "Intervention commit from change receipt; not deployment proof" : "Commit recording source receipt/membership, not deployment proof", reason: c.intervention, experiment: c.id, primaryIntervention: c.intervention, recordedDate: c.recordedDate, deployedAt: deployed(url), verification: improvements.find(i => i.url === url)?.verification ?? null, localVerification: interventionVerification.find(v => v.canonical === url) ?? { status: "NO_EXACT_EXPECTATION_RECORDED" } })));
   const authority = runAuthorityReport();
+  const operations = runOperationsReport(authority);
   const report = {
+    operationsControlRoom: { report: "../operations/latest.json", dashboard: "../operations/index.html", alerts: operations.alerts.length },
     authorityControlRoom: { report: "../authority/latest.json", dashboard: "../authority/index.html", gscLinks: authority.authorityBaseline.totalExternalLinks, observedDeepLinkPairs: authority.deepLinkBaseline.deepLinkPlacements, referralData: authority.referralTraffic.status, alerts: authority.alerts.length },
     generatedAt: now, sourceSha: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(), buildId: build.buildId, artifactHash: build.artifactHash,
     policy: { mode: "READ_ONLY_CONTROL_ROOM", massPublishing: false, rankingPolicy: "Measured impressions, position, verified partner readiness and observed handoffs; no predicted revenue", gscWindow: snapshot.window, gscCapturedAt: snapshot.capturedAt, attribution: "GSC aggregates cannot be joined to individual visitors; referral activity is not a Google ranking cause", apiRequests: 0, merchantRequests: 0, blobWrites: 0 },
@@ -134,7 +131,7 @@ function main() {
   write(path.join(out, "latest.json"), report);
   write(path.join(out, "site-change-manifest.json"), manifest);
   const sections = Object.entries(report.queues).map(([title, items]) => `<section><h2>${escape(title)} (${items.length})</h2><div class="scroll"><table><thead><tr><th>Page</th><th>Index state</th><th>Impressions</th><th>Position</th><th>Safe to act</th><th>Handoffs</th></tr></thead><tbody>${items.slice(0, 30).map(r => `<tr><td>${escape(r.url)}</td><td>${escape(r.state)}</td><td>${r.search?.impressions ?? "UNKNOWN"}</td><td>${r.search?.position ?? "UNKNOWN"}</td><td>${r.safe ? "Review allowed" : "Observe only"}</td><td>${r.handoffs ?? "UNKNOWN"}</td></tr>`).join("")}</tbody></table></div></section>`).join("");
-  write(path.join(out, "index.html"), `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Miloosh · Google intelligence</title><style>body{font:16px/1.5 system-ui;background:#091727;color:#e8f0f7;margin:0;padding:clamp(16px,4vw,48px)}main{max-width:1300px;margin:auto}h1{font-size:clamp(28px,4vw,48px)}section{background:#12283d;padding:20px;border-radius:12px;margin:22px 0}h2{overflow-wrap:anywhere;font-size:20px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse}td,th{padding:12px;text-align:left;border-bottom:1px solid #35516a;white-space:nowrap}.notice{color:#f1cf7b}a{color:#a4d6ff}</style><main><p>PRIVATE LOCAL REPORT · LEVEL 0 · NO PUBLISHING</p><h1>Google intelligence & revenue</h1><p><a href="../authority/index.html">Authority control room: links, research journeys and Google observations</a></p><p>Build ${escape(build.buildId)} · Evidence captured ${escape(snapshot.capturedAt)}<br>GSC window ${escape(snapshot.window.start)}–${escape(snapshot.window.end)}</p><p class="notice">${lost.length} historical ranking URLs require index selection. Missing data stays UNKNOWN. No revenue forecast or causal claim.</p><section><h2>Evidence coverage</h2><p>${queries.length} query×page observations · ${cohorts.length} cohorts · ${ACTIVE_PARTNERS.length} active partners</p><p>Organic funnel: ${funnel ? `${funnel.eligibleOrganicSessions} classified sessions (estimates)` : "UNAVAILABLE — no complete event export supplied"}. Merchant arrival and conversion: UNKNOWN.</p><p>Experiments await verified deployment and matching finalized windows. Off-site: ${offsite.filter(r => r.status === "VERIFIED_LIVE").length} previously verified placements; sending an email is not a placement.</p></section>${sections}<section><h2>Audit / exports</h2><p>${report.ctaAudit.checked} tracked links inspected; ${report.ctaAudit.findings.filter(f => f.severity === "BLOCK").length} blocking findings, ${report.ctaAudit.findings.filter(f => f.severity === "REVIEW").length} review findings.</p><p><a href="latest.json">Full evidence, ownership, cohorts, graph and attribution JSON</a> · <a href="site-change-manifest.json">Change manifest</a></p></section></main></html>`);
+  write(path.join(out, "index.html"), `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Miloosh · Google intelligence</title><style>body{font:16px/1.5 system-ui;background:#091727;color:#e8f0f7;margin:0;padding:clamp(16px,4vw,48px)}main{max-width:1300px;margin:auto}h1{font-size:clamp(28px,4vw,48px)}section{background:#12283d;padding:20px;border-radius:12px;margin:22px 0}h2{overflow-wrap:anywhere;font-size:20px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse}td,th{padding:12px;text-align:left;border-bottom:1px solid #35516a;white-space:nowrap}.notice{color:#f1cf7b}a{color:#a4d6ff}</style><main><p>PRIVATE LOCAL REPORT · LEVEL 0 · NO PUBLISHING</p><h1>Google intelligence & revenue</h1><p><a href="../operations/index.html">Day operations: Google, research, outreach and alerts</a> · <a href="../authority/index.html">Authority control room: links, research journeys and Google observations</a></p><p>Build ${escape(build.buildId)} · Evidence captured ${escape(snapshot.capturedAt)}<br>GSC window ${escape(snapshot.window.start)}–${escape(snapshot.window.end)}</p><p class="notice">${lost.length} historical ranking URLs require index selection. Missing data stays UNKNOWN. No revenue forecast or causal claim.</p><section><h2>Evidence coverage</h2><p>${queries.length} query×page observations · ${cohorts.length} cohorts · ${ACTIVE_PARTNERS.length} active partners</p><p>Organic funnel: ${funnel ? `${funnel.eligibleOrganicSessions} classified sessions (estimates)` : "UNAVAILABLE — no complete event export supplied"}. Merchant arrival and conversion: UNKNOWN.</p><p>Experiments await verified deployment and matching finalized windows. Off-site: ${offsite.filter(r => r.status === "VERIFIED_LIVE").length} previously verified placements; sending an email is not a placement.</p></section>${sections}<section><h2>Audit / exports</h2><p>${report.ctaAudit.checked} tracked links inspected; ${report.ctaAudit.findings.filter(f => f.severity === "BLOCK").length} blocking findings, ${report.ctaAudit.findings.filter(f => f.severity === "REVIEW").length} review findings.</p><p><a href="latest.json">Full evidence, ownership, cohorts, graph and attribution JSON</a> · <a href="site-change-manifest.json">Change manifest</a></p></section></main></html>`);
   console.log(JSON.stringify({ output: out, ...report.counts, blockingCtaFindings: report.ctaAudit.findings.filter(f => f.severity === "BLOCK").length, analytics: funnel ? "COMPLETE_EXPORT" : "UNAVAILABLE" }));
   if (process.argv.includes("--strict") && report.ctaAudit.findings.some(f => f.severity === "BLOCK")) process.exitCode = 1;
 }

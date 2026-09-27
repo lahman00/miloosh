@@ -1,0 +1,76 @@
+{
+  "source": "0a1e3e976e6fde7d2b6e8d7be128ffad49511b86:docs/growth/receipts/20260927-claude-overnight-war/top-10-targets.json",
+  "note": "Prioritization only. Family metrics deliberately not copied into query×page observations. Not permission to edit.",
+  "targets": [
+    {
+      "rank": 1,
+      "queryFamily": "Help Scout alternative(s)/competitor(s)",
+      "query": "helpscout alternative",
+      "page": "https://miloosh.com/software/help-scout",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 2,
+      "queryFamily": "Craft CMS vs WordPress / Craft CMS websites",
+      "query": "craft cms wordpress",
+      "page": "https://miloosh.com/compare/craft-cms-vs-wordpress",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 3,
+      "queryFamily": "Freshservice alternatives (French + English variants)",
+      "query": "alternative à freshservice",
+      "page": "https://miloosh.com/software/freshdesk",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 4,
+      "queryFamily": "Adyen alternatives",
+      "query": "adyen alternatives",
+      "page": "https://miloosh.com/software/adyen",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 5,
+      "queryFamily": "Cisco Webex Meetings alternatives",
+      "query": "cisco webex meetings alternatives",
+      "page": "https://miloosh.com/software/webex",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 6,
+      "queryFamily": "Ecwid alternatives",
+      "query": "ecwid alternatives",
+      "page": "https://miloosh.com/software/ecwid",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 7,
+      "queryFamily": "Umbraco vs WordPress",
+      "query": "umbraco vs wordpress",
+      "page": "https://miloosh.com/software/umbraco",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 8,
+      "queryFamily": "Drupal alternatives",
+      "query": "drupal alternatives",
+      "page": "https://miloosh.com/software/drupal",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 9,
+      "queryFamily": "Confluence alternatives",
+      "query": "confluence alternatives",
+      "page": "https://miloosh.com/software/confluence",
+      "attribution": "REPORTED_BY_CLAUDE"
+    },
+    {
+      "rank": 10,
+      "queryFamily": "RingCentral alternatives",
+      "query": "ringcentral alternatives",
+      "page": "https://miloosh.com/software/ringcentral",
+      "attribution": "UNCONFIRMED"
+    }
+  ]
+}

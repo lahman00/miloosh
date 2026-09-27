@@ -1,0 +1,28 @@
+[
+  {
+    "url": "https://miloosh.com/research/customer-support-pricing-2026",
+    "checkedAt": "2026-09-27T04:40:18.808Z",
+    "source": "Authenticated GSC URL Inspection UI, independently observed 2026-09-27; no indexing request sent",
+    "verdict": null,
+    "coverageState": "URL is unknown to Google",
+    "lastCrawlTime": null,
+    "googleCanonical": null,
+    "userCanonical": null,
+    "pageFetchState": null,
+    "robotsTxtState": null,
+    "indexingState": null
+  },
+  {
+    "url": "https://miloosh.com/research/crm-plan-gates-2026",
+    "checkedAt": "2026-09-27T04:40:18.808Z",
+    "source": "Authenticated GSC URL Inspection UI, independently observed 2026-09-27; displayed crawl timezone UNKNOWN; sitemap temporary processing error; no indexing request sent",
+    "verdict": null,
+    "coverageState": "Crawled - currently not indexed",
+    "lastCrawlTime": "27 בספט׳ 2026, 1:57:49",
+    "googleCanonical": "https://miloosh.com/research/crm-plan-gates-2026",
+    "userCanonical": "https://miloosh.com/research/crm-plan-gates-2026",
+    "pageFetchState": "SUCCESSFUL",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED"
+  }
+]

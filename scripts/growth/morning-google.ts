@@ -1,3 +1,4 @@
 import { runAuthorityReport } from "./authority-report";
-try { runAuthorityReport(); console.log("Morning Google + authority report: var/growth/authority/morning.md. No external writes or scheduled wakeups."); }
+import { runOperationsReport } from "./operations-report";
+try { runOperationsReport(runAuthorityReport()); console.log("Morning Google + operations report: var/growth/operations/index.html. No external writes; scheduled wakeups are managed separately."); }
 catch { console.error("Morning report unavailable; no fabricated metrics"); process.exitCode = 1; }

@@ -21,8 +21,9 @@ async function listen(server: http.Server) {
 async function main() {
   fs.mkdirSync(output, { recursive: true });
   const dashboard = http.createServer((req, res) => {
-    if (req.method !== "GET" || !["/", "/authority/"].includes(req.url ?? "")) { res.writeHead(404).end(); return; }
-    res.setHeader("Content-Type", "text/html; charset=utf-8"); res.end(fs.readFileSync(req.url === "/authority/" ? "var/growth/authority/index.html" : "var/growth/google-command/index.html"));
+    const reports: Record<string, string> = { "/": "var/growth/google-command/index.html", "/authority/": "var/growth/authority/index.html", "/operations/": "var/growth/operations/index.html" };
+    if (req.method !== "GET" || !reports[req.url ?? ""]) { res.writeHead(404).end(); return; }
+    res.setHeader("Content-Type", "text/html; charset=utf-8"); res.end(fs.readFileSync(reports[req.url!]));
   });
   const reportPort = await listen(dashboard);
   const portProbe = http.createServer(), appPort = await listen(portProbe);
@@ -54,6 +55,14 @@ async function main() {
       const authority = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelector('h1')?.textContent})")).result;
       assert.equal(authority.overflow, false); assert.equal(authority.h1, "Authority impact control room");
       await browser("screenshot", path.resolve(output, `authority-${width}.png`));
+      await browser("open", `http://127.0.0.1:${reportPort}/operations/`);
+      await browser("snapshot", "-i", "-s", "main");
+      const operations = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelector('h1')?.textContent,sections:[...document.querySelectorAll('h2')].map(h=>h.textContent),robots:document.querySelector('meta[name=robots]')?.content})")).result;
+      assert.equal(operations.overflow, false); assert.equal(operations.h1, "Google operations command center");
+      assert.deepEqual(operations.sections, ["Google", "Authority", "Research", "Outreach", "Revenue", "Experiments", "Alerts"]);
+      assert.equal(operations.robots, "noindex,nofollow");
+      await browser("screenshot", path.resolve(output, `operations-${width}.png`));
+      results.push({ route: "LOCAL_OPERATIONS_DASHBOARD", width, ...operations });
       for (const researchRoute of RESEARCH_PATHS) {
       await browser("open", `http://127.0.0.1:${appPort}${researchRoute}?qa=1&qaRun=authority-control-room`);
       await browser("snapshot", "-i", "-s", "main");
@@ -70,7 +79,7 @@ async function main() {
         if (route.endsWith("hubspot")) assert(result.commercial.filter((a: { slug: string }) => a.slug === "hubspot").every((a: { rel: string }) => !a.rel.includes("sponsored")));
         results.push({ route, width, ...result });
       }
-      console.log(`Two control rooms + ${RESEARCH_PATHS.length} research routes + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
+      console.log(`Three control rooms + ${RESEARCH_PATHS.length} research routes + 3 merchant surfaces at ${width}px: PASS (no merchant clicks)`);
     }
     await authorityBrowserProof(`http://127.0.0.1:${appPort}`, output);
     const jsonResponse = await fetch(`http://127.0.0.1:${appPort}/api/research/customer-support-pricing-2026`);

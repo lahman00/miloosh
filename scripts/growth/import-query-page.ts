@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { z } from "zod";
 import { appendQueries, queryObservationSchema } from "@/lib/google-war/query-store";
 import { GoogleSearchConsoleClient } from "@/scripts/agents/seo/lib/google-search-console-client";
 
@@ -22,6 +23,21 @@ async function main() {
         impressions: r.impressions, clicks: r.clicks, ctr: r.ctr, position: r.position,
         captured_at, capturePrecision: "instant", source: "Authenticated Search Analytics API dimensions=[query,page]; at most 25000 available rows, not all property demand",
         evidence: "API_QUERY_PAGE", coverage: "TOP_ROWS_ONLY", scope: { property: process.env.GOOGLE_SEARCH_CONSOLE_PROPERTY, searchType: "web", country: null, device: null, timezone: "America/Los_Angeles", dataState: "final" } }));
+    } else if (process.argv.includes("--input-ui")) {
+      const file = option("--input-ui", "");
+      const captures = z.array(z.object({
+        page: z.string().url(), capturedAt: z.iso.datetime({ offset: true }),
+        window: z.object({ start: z.iso.date(), end: z.iso.date() }),
+        filter: z.literal("exact page"), source: z.string(),
+        columns: z.tuple([z.literal("query"), z.literal("clicks"), z.literal("impressions"), z.literal("position")]),
+        rows: z.array(z.tuple([z.string(), z.number(), z.number(), z.number()])),
+      })).parse(JSON.parse(fs.readFileSync(file, "utf8")));
+      incoming = captures.flatMap(c => c.rows.map(([query, clicks, impressions, position]) => ({
+        query, clicks, impressions, position, ctr: impressions ? clicks / impressions : null,
+        page: c.page, window: c.window, captured_at: c.capturedAt, capturePrecision: "instant",
+        evidence: "COMMITTED_PAGE_FILTERED_UI", coverage: "TOP_ROWS_ONLY", source: file + "; " + c.source,
+        scope: { property: "sc-domain:miloosh.com", searchType: "web", country: null, device: null, timezone: "America/Los_Angeles", dataState: "unknown" },
+      })));
     } else if (process.argv.includes("--input")) {
       incoming = JSON.parse(fs.readFileSync(option("--input", ""), "utf8"));
     } else {

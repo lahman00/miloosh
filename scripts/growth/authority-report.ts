@@ -6,6 +6,7 @@ import seed from "@/data/growth/authority/registry.json";
 import links from "@/data/growth/authority/gsc-links-baseline.json";
 import brand from "@/data/growth/authority/brand-baseline.json";
 import indexingSeed from "@/data/growth/authority/indexing-proofs.json";
+import researchInspections from "@/data/growth/authority/research-inspections-20260927.json";
 import reportedCategoryBaseline from "@/docs/growth/receipts/20260926-why-we-dont-rank/domain-pattern.json";
 import { parseRegistry, appendAuthority, authorityState, deepLinkBaseline, authorityChanges } from "@/lib/authority/registry";
 import { appendBrand, brandSchema, brandMovement, categoryPositions, compareCategoryPositions, authorityObservatory, deepLinkPriority } from "@/lib/authority/measurement";
@@ -40,7 +41,8 @@ export function runAuthorityReport() {
   const previousReport = previousReportFile ? z.object({ generatedAt: z.iso.datetime({ offset: true }), registry: z.array(z.unknown()) }).passthrough().parse(read(previousReportFile)) : null;
   const changes = previousReport ? authorityChanges(parseRegistry(previousReport.registry), previousReport.generatedAt, registry, now) : { status: "UNKNOWN", reason: "No earlier report supplied via --previous-report; current/first-observed is not newly earned" };
   const snapshot = searchSnapshotSchema.parse(read("data/growth/google-war/search-snapshot.json"));
-  const inspections = [...inspectionSchema.array().parse(read("data/growth/google-war/inspections.json")), ...inspectionSchema.array().parse(read("data/growth/google-war/reported-inspections.json"))].map(classifyInspectionEvidence);
+  const researchInspectionFile = option("--research-inspections") ?? "var/growth/operations/research-inspections.json";
+  const inspections = [...inspectionSchema.array().parse(read("data/growth/google-war/inspections.json")), ...inspectionSchema.array().parse(read("data/growth/google-war/reported-inspections.json")), ...inspectionSchema.array().parse(fs.existsSync(researchInspectionFile) ? read(researchInspectionFile) : researchInspections)].map(classifyInspectionEvidence);
   const active = new Set<string>(ACTIVE_PARTNERS.map(p => p.slug));
   const pages = getAllSoftware().map(p => ({ url: `https://miloosh.com/software/${p.slug}`, category: p.category, commercial: true, activePartner: active.has(p.slug) }));
   const supportPages = [...pages,
@@ -53,7 +55,7 @@ export function runAuthorityReport() {
   const categoryMovement = previousPeriodFile ? compareCategoryPositions(categoryPositions(searchSnapshotSchema.parse(read(previousPeriodFile)), pages, previousScopeFile ? scopeSchema.parse(read(previousScopeFile)) : null), category) : { status: "UNKNOWN", reason: "No matching previous snapshot; reported Claude medians lack reproducible membership/window and are not a comparison baseline" };
   const sitemap = fs.readFileSync(path.join(dist, "server/app/sitemap.xml.body"), "utf8");
   const research = RESEARCH_PATHS.map(route => researchTechnicalQa(route, build.html.get(route), sitemap, build.html));
-  const eventsFile = option("--events");
+  const eventsFile = option("--events") ?? (fs.existsSync("var/growth/operations/events.json") ? "var/growth/operations/events.json" : undefined);
   let referral: ReturnType<typeof authorityReferrals> | null = null, researchFunnel: ReturnType<typeof authorityReferrals> | null = null;
   if (eventsFile) {
     const bundle = eventExportSchema.parse(read(eventsFile));
