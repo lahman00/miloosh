@@ -1,0 +1,45 @@
+{
+  "sourceCommit": "2ca40202b781ff750c1745631161ec95067fd244",
+  "sourceBranch": "claude/miloosh-master-google-war-20260926",
+  "releaseBase": "1052cabdcd9b5f6c0eba626b9fa21b6ea33f27eb",
+  "productionBase": "bc5560b3eb1634afb4081fbd9ef4deb2d064eabf",
+  "wholeCommitMerged": false,
+  "sourceTestsChanged": 0,
+  "method": "File-by-file inspection; exact Nutshell patch only. No cherry-pick or whole-commit merge. Existing Cloro/correction commits preserved.",
+  "protection": {
+    "checkedAt": "2026-09-27T18:50:44.598Z",
+    "fingerprint": "506fbd4a6d555add1a02711b9ef30584afbebad889f790418fba62c551bd4dd1",
+    "distinctProtectedUrls": 196,
+    "allowedProduct": "/software/nutshell",
+    "blockedProducts": ["/software/webex", "/software/confluence", "/software/basecamp"],
+    "reason": "Current release registry reserves these three as natural measurement controls in ranking-intent-20260926. Claude's source report omitted that reservation. Natural/not-held-out does not override the current RESERVED decision. No protection membership, clocks or rules changed.",
+    "dependentNutshellComparisons": 8,
+    "protectedDependentComparisons": 0
+  },
+  "cmsInvariant": "Unchanged authoritative production CMS source: 7/8 documented input/output mechanisms; Joomla sole general outbound evidence gap; mechanisms are not turnkey cross-CMS migration.",
+  "files": [
+    { "file": "app/research/cms-buying-decision-2026/page.tsx", "decision": "REJECTED", "reason": "Obsolete WordPress-only description and stat-card claim; keep production wording." },
+    { "file": "app/research/page.tsx", "decision": "REJECTED", "reason": "Obsolete WordPress-only hub summary; keep production wording." },
+    { "file": "data/software/basecamp.json", "decision": "HELD_PROTECTED", "reason": "Current RESERVED, not verified SAFE_TO_EDIT. Source price correction retained in source branch only." },
+    { "file": "data/software/confluence.json", "decision": "HELD_PROTECTED", "reason": "Current RESERVED, not verified SAFE_TO_EDIT. Source pricing/features not imported." },
+    { "file": "data/software/nutshell.json", "decision": "ACCEPTED", "reason": "No current protection; five-tier pricing, both billing bases, trial and plan notes independently verified on official live page. Exact source patch." },
+    { "file": "data/software/webex.json", "decision": "HELD_PROTECTED", "reason": "Current RESERVED, not verified SAFE_TO_EDIT. Source cons and tier notes not imported." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/changes.md", "decision": "REJECTED", "reason": "Mixed invalid CMS claims and incorrect all-safe permission assertion. New selective receipt replaces it, without claiming all four were shipped." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/claim-audit.json", "decision": "REJECTED", "reason": "Full file mixes unrelated/held/CMS evidence; original status totals disagree with actual claim rows. Nutshell claim IDs 20-25 independently corroborated and recorded in vendor-evidence.json, not imported as universal release evidence." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/cms-authority-handoff.json", "decision": "REJECTED", "reason": "Superseded WordPress-only and asymmetric-export outreach claims." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/executive-summary.md", "decision": "REJECTED", "reason": "Source-branch-only release/permission and obsolete CMS claims." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/fresh-protection-state.json", "decision": "REJECTED", "reason": "Source branch lacks current reservation coverage; cannot authorize target-branch mutations." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/holds.json", "decision": "REJECTED", "reason": "Existing holds retained canonically; this copy includes incorrect SAFE_TO_EDIT classifications and CMS-derived recommendations." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/next-actions.md", "decision": "REJECTED", "reason": "Obsolete CMS asymmetry recommendation and source-branch safe-state assumptions; unrelated billing audit not authorized in this bounded integration." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/qa.md", "decision": "REJECTED", "reason": "Historical source-only QA includes assertions of the now-invalid CMS text; rerun target release gates instead." },
+    { "file": "docs/growth/receipts/20260927-claude-safe-serp-war/safe-targets.json", "decision": "REJECTED", "reason": "Misclassifies three current protected products. Reported GSC samples are not independently refreshed or promoted to current measurements here." },
+    { "file": "docs/growth/receipts/20260927-cms-authority-handoff.json", "decision": "REJECTED", "reason": "Duplicate obsolete CMS handoff; current production-correction handoff remains authoritative." },
+    { "file": "lib/cms-decision-matrix/build.ts", "decision": "REJECTED", "reason": "Obsolete five-import-only/two-export-only/WordPress-only comment. Keep current source and output byte-equivalent except generated timestamps." }
+  ],
+  "followUp": "Explicitly reconcile the three RESERVED measurement controls before any future import. Successful tests or this source commit's SAFE_TO_EDIT label do not release them.",
+  "publicSideEffectsToVerify": [
+    "Nutshell product, eight comparisons, related listings/recommendation display consume the same catalog pricing; no ranking code or affiliate state change.",
+    "Existing computed pricing index adds Nutshell to verified and monthly-USD samples; methodology unchanged, sample counts recomputed, not a new research claim.",
+    "CMS page/hub/build/data/JSON/CSV and protected product records remain unchanged."
+  ]
+}

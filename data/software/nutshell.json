@@ -20,6 +20,25 @@
     "https://www.nutshell.com"
   ],
   "accessed_at": "2026-08-04",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$19/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": false },
+    "tiers": [
+      { "name": "Foundation", "amount": "19", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "$19/user/mo billed monthly or $13/user/mo billed annually. Includes 10 AI outcomes, unlimited contacts and storage, email and calendar sync, AI chatbot, form builder and landing pages, and the AI Agent Marketplace. No seat minimums or maximums; free live support on every plan." },
+      { "name": "Growth", "amount": "32", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "$32/user/mo billed monthly or $25/user/mo billed annually. Adds 20 AI outcomes, activity reports, sales quotas, lead assignment rules, custom stage goals, and hot leads." },
+      { "name": "Pro", "amount": "49", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "$49/user/mo billed monthly or $42/user/mo billed annually. Adds 40 AI outcomes, 5 custom pipelines, advanced reporting, sales automation, AI lead recaps and next steps, and a meeting scheduler." },
+      { "name": "Business", "amount": "67", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "$67/user/mo billed monthly or $59/user/mo billed annually. Adds 100 AI outcomes, 10 custom pipelines, advanced meeting scheduler, audit log and changelog, email templates from Gmail and Outlook, and additional teams and territories." },
+      { "name": "Enterprise", "amount": "89", "currency": "USD", "billing_period": "monthly", "unit": "user", "notes": "$89/user/mo billed monthly or $79/user/mo billed annually. Adds 150 AI outcomes, unlimited pipelines, unlimited custom fields, enterprise SSO, SQL data access, and phone support." }
+    ],
+    "enterprise_contact_sales": false,
+    "last_verified": "2026-09-27",
+    "official_source": "https://www.nutshell.com/pricing"
+  },
   "alternatives": [
     {
       "name": "Pipedrive",

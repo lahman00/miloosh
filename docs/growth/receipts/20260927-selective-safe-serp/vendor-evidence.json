@@ -1,0 +1,21 @@
+{
+  "product": "nutshell",
+  "url": "https://www.nutshell.com/pricing",
+  "verifiedAt": "2026-09-27T18:50:43.948Z",
+  "method": "Direct official pricing page in dedicated agent-browser session. Read annual state, dismiss consent with Decline All, click Monthly, verify data-active changes from annually to monthly and read visible plan cards. No trial/signup/merchant CTA clicked.",
+  "annualObservedAt": "2026-09-27T18:50:30.325Z",
+  "currency": "USD",
+  "unit": "user/month",
+  "plans": [
+    { "name": "Foundation", "monthlyBilling": 19, "annualBillingMonthlyEquivalent": 13 },
+    { "name": "Growth", "monthlyBilling": 32, "annualBillingMonthlyEquivalent": 25 },
+    { "name": "Pro", "monthlyBilling": 49, "annualBillingMonthlyEquivalent": 42 },
+    { "name": "Business", "monthlyBilling": 67, "annualBillingMonthlyEquivalent": 59 },
+    { "name": "Enterprise", "monthlyBilling": 89, "annualBillingMonthlyEquivalent": 79 }
+  ],
+  "trialDays": 14,
+  "seatMinimumOrMaximum": "Vendor says none",
+  "featuresVerified": "Visible plan-card feature lists match imported tier notes; no vendor performance/time-saved claim imported.",
+  "sourceClaimAuditIdsCorroborated": [20, 21, 22, 23, 24, 25],
+  "limitation": "Documentation-based price/plan verification, not hands-on CRM testing, a quote, affiliation approval or conversion evidence. Other held products not reverified for publication."
+}
