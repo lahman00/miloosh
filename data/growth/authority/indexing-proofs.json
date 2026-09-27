@@ -62,5 +62,22 @@
     "previousRequests": [
       "https://miloosh.com/research/crm-plan-gates-2026"
     ]
+  },
+  {
+    "url": "https://miloosh.com/research/cms-buying-decision-2026",
+    "source": "Exact promoted CMS release, canonical, robots, sitemap, exports and 1786-route production crawl verified. One authenticated GSC UI request initiated at 2026-09-27T18:13:30Z; acceptance observed at 18:15:00Z. Known accepted request blocks resubmission. History completeness is scoped to this authorized submission, not a platform-wide account export; no indexation or numeric quota claim.",
+    "deploymentId": "dpl_8gThKtBuXU6GTrraq1YRVb15LCJT",
+    "deployedAt": "2026-09-27T17:53:37.468Z",
+    "verifiedAt": "2026-09-27T18:13:00.078Z",
+    "httpStatus": 200,
+    "canonical": "https://miloosh.com/research/cms-buying-decision-2026",
+    "indexable": true,
+    "inSitemap": true,
+    "quotaRemaining": null,
+    "quotaCheckedAt": null,
+    "requestHistoryComplete": true,
+    "previousRequests": [
+      "https://miloosh.com/research/cms-buying-decision-2026"
+    ]
   }
 ]

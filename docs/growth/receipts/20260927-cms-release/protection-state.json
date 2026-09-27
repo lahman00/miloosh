@@ -1,5 +1,7 @@
 {
   "checkedAt": "2026-09-27T17:26:17.777Z",
+  "predeployRecheckedAt": "2026-09-27T17:46:25.892Z",
+  "predeployStatus": "PASS_NO_PROTECTED_FILE_FINDINGS",
   "fingerprint": "506fbd4a6d555add1a02711b9ef30584afbebad889f790418fba62c551bd4dd1",
   "protectedPages": [
     "/compare/adobe-analytics-vs-segment",
@@ -233,6 +235,7 @@
   ],
   "claudeComparison": {
     "severity": "HIGH",
+    "parallelReportEvidence": "Claude 2ca4020 fresh-protection-state.json candidates.webex/confluence/basecamp each classify SAFE_TO_EDIT with groups [HOLD], while this branch's current registry reserves all three. Observed after that commit was created at 2026-09-27T17:42:38Z; not part of the earlier 17:26 capture.",
     "resolution": "Public permission field removed and protected inbound links omitted; direct in/out edge diff for all 196 protected URLs is empty",
     "agrees": [
       "ecwid protected",

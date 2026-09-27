@@ -1,7 +1,7 @@
 {
   "checkedAt": "2026-09-27T17:21:00Z",
   "checkedAtPrecision": "minute; source checks performed approximately 17:19–17:21Z",
-  "status": "SOURCE_VERIFICATION_COMPLETE_LOCAL_RELEASE_GATES_PENDING",
+  "status": "LIVE_CMS_ROUTE_AND_EXPORTS_VERIFIED",
   "sampleSize": 8,
   "documentedInputAndOutput": 7,
   "unverifiedOutput": [
@@ -82,5 +82,17 @@
     "Support/pricing unmeasured except Craft support availability",
     "Third-party bot/rate protection differs from broken source URL"
   ],
-  "productionVerified": false
+  "productionVerified": true,
+  "productionCheckedAt": "2026-09-27T17:54:19.171Z",
+  "productionUrl": "https://miloosh.com/research/cms-buying-decision-2026",
+  "httpStatus": 200,
+  "title": "CMS Buying Decision Matrix 2026 | Miloosh",
+  "canonical": "https://miloosh.com/research/cms-buying-decision-2026",
+  "methodologyPresent": true,
+  "schemas": ["Organization", "Dataset"],
+  "inventedRatingsOrOffers": false,
+  "hubAssets": 4,
+  "sitemapIncluded": true,
+  "exports": { "jsonStatus": 200, "jsonType": "application/json", "rows": 8, "csvStatus": 200, "csvType": "text/csv; charset=utf-8", "csvRows": 8, "csvBytes": 5269, "exactLocalRowParity": true, "privateFields": 0 },
+  "broaderSourceCheck": { "checkedAt": "2026-09-27T17:54:12.600Z", "editorialLinksAcrossThreeResearchAssets": 35, "broken": 0, "automatedAccessInconclusive": ["Webflow 403", "Contentful 429", "Pipedrive 403 (existing CRM source)"], "note": "The two CMS access-limited sources were independently rendered and read in Chrome earlier this session; HTTP access limits are not represented as 200 or as a broken link." }
 }

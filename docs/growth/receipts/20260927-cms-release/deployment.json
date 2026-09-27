@@ -1,0 +1,32 @@
+{
+  "status": "READY_VERIFIED_PRODUCTION",
+  "project": "flowtemplate",
+  "projectId": "prj_qMLMDaP1jSepfNMw9cs7WhZk6KIf",
+  "scope": "lahman001",
+  "branch": "codex/miloosh-master-release-20260927",
+  "sourceSha": "bc5560b3eb1634afb4081fbd9ef4deb2d064eabf",
+  "deploymentId": "dpl_8gThKtBuXU6GTrraq1YRVb15LCJT",
+  "deploymentUrl": "https://flowtemplate-1hij9zla8-lahman001.vercel.app",
+  "productionUrl": "https://miloosh.com",
+  "createdAt": "2026-09-27T17:49:39.195Z",
+  "readyAt": "2026-09-27T17:51:35.084Z",
+  "promotedAt": "2026-09-27T17:53:37.468Z",
+  "verifiedAt": "2026-09-27T17:54:19.171Z",
+  "method": "Existing CLI auth; explicit project/scope; production --skip-domain; staged read-only HTML/JSON/CSV verification; old-alias guard; promote; independent exact SHA/project/alias/HTTP verification",
+  "canonicalHttpStatus": 200,
+  "sourceAndAliasVerifiedIndependently": true,
+  "localBuildId": "ON_WXhyG89fEQPxyvFZnS",
+  "localArtifactHash": "cc90c1d01b1ac43b657ca60921f6812a249606d893185131429bc596b8e98b59",
+  "rollback": {
+    "deploymentId": "dpl_93Q6K6A2bH4dvMWRDSq1v7xi3Fqu",
+    "url": "https://flowtemplate-f56v5bbjb-lahman001.vercel.app",
+    "sourceSha": "a925c0e7e129c09c2ca38f5e352d8edbc4afb9ab"
+  },
+  "uploadPrivacy": { "sourceManifestFiles": 1522, "privateRegularFiles": 0, "excluded": ["var/", ".env*", ".vercel/", ".next-miloosh-qa/", ".agents/"] },
+  "githubPush": false,
+  "environmentChanges": false,
+  "secretsExposed": false,
+  "blobWrites": 0,
+  "socialCodeChanged": false,
+  "note": "Only committed source uploaded. Subsequent receipt/evidence-only commits do not represent another application deployment. Detailed full-site crawl results live in production-qa.json."
+}

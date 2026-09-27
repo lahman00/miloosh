@@ -33,6 +33,9 @@
 
   "cmsBuyingDecisionMatrixLinkableFindings": {
     "url": "https://miloosh.com/research/cms-buying-decision-2026",
+    "liveStatus": "VERIFIED_LIVE_HTTP_200",
+    "liveVerifiedAt": "2026-09-27T17:54:19.171Z",
+    "deploymentId": "dpl_8gThKtBuXU6GTrraq1YRVb15LCJT",
     "releaseCorrection": "Codex first-party recheck 2026-09-27 supersedes the original lock-in claims. Deployment verification is recorded in ../20260927-cms-release/deployment.json; do not pitch until that receipt confirms live.",
     "strongDefensibleFindings": [
       "Seven of eight sampled platforms have documented content-input and content-output mechanisms under the explicitly broad file/API/same-platform transfer definition",

@@ -24,5 +24,18 @@
     "pageFetchState": "SUCCESSFUL",
     "robotsTxtState": "ALLOWED",
     "indexingState": "INDEXING_ALLOWED"
+  },
+  {
+    "url": "https://miloosh.com/research/cms-buying-decision-2026",
+    "checkedAt": "2026-09-27T17:58:24Z",
+    "source": "Authenticated GSC URL Inspection UI after verified production release; stored index result, not a live test. URL unknown, no referring sitemap or crawl reported. No indexing request made at this observation.",
+    "verdict": null,
+    "coverageState": "URL is unknown to Google",
+    "lastCrawlTime": null,
+    "googleCanonical": null,
+    "userCanonical": null,
+    "pageFetchState": null,
+    "robotsTxtState": null,
+    "indexingState": null
   }
 ]

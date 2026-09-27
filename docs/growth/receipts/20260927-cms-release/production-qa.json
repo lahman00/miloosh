@@ -1,0 +1,91 @@
+{
+  "verdict": "PASS",
+  "sourceSha": "bc5560b3eb1634afb4081fbd9ef4deb2d064eabf",
+  "deploymentId": "dpl_8gThKtBuXU6GTrraq1YRVb15LCJT",
+  "artifactHash": "cc90c1d01b1ac43b657ca60921f6812a249606d893185131429bc596b8e98b59",
+  "gates": {
+    "releaseGoogle": "14/14 PASS",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": { "files": 263, "passed": 2366, "failed": 0 },
+    "python": { "passed": 11, "failed": 0 },
+    "build": "PASS",
+    "validateData": "PASS",
+    "affiliateAudit": "PASS; 22 active partners, 99 existing evidence/freshness advisories, no affiliate changes",
+    "maintenanceSeo": "PASS; 0 issues, 988 sitemap entries",
+    "googleWar": "PASS; 86675 internal links checked, no artifact failures",
+    "authorityReport": "PASS; five research paths, including hub, four assets",
+    "indexationReadiness": { "command": "PASS", "products": 354, "ready": 165, "warn": 54, "legacyContentFail": 5, "protectedSoftware": 130, "note": "Pre-existing editorial readiness advisories, not Google indexation verdicts or newly introduced release failures" },
+    "dependencyAudit": { "high": 0, "critical": 0, "total": 0 },
+    "diffCheck": "PASS",
+    "postReleaseEvidenceValidation": {
+      "typecheck": "PASS",
+      "focusedTestFiles": 8,
+      "focusedTestsPassed": 68,
+      "focusedTestsFailed": 0,
+      "receiptJsonParsing": "PASS",
+      "priorIndexingProofsPreserved": 4,
+      "priorResearchInspectionsPreserved": 2,
+      "cmsAuthorityQueueState": "ALREADY_REQUESTED",
+      "operationsDeploymentMatchesLiveSource": true
+    }
+  },
+  "localFullCrawl": {
+    "inspected": 1786,
+    "initialNavigationTimeouts": ["/compare/ecwid-vs-woocommerce"],
+    "explicitSameArtifactRecheck": { "inspected": 1, "failures": 0 },
+    "unresolvedFailures": 0,
+    "note": "Initial evidence retained, not zero-imputed. An earlier artifact had two navigation timeouts, both explicitly resolved. Resource-contended test attempts were not counted as passes; the complete final suite passed serially."
+  },
+  "productionFullCrawl": {
+    "capturedAt": "2026-09-27T18:13:00.078Z",
+    "scope": "All emitted public HTML routes, one bounded browser worker, read-only GETs; APIs/internal routes/external destinations and writes blocked",
+    "baseline": 1785,
+    "expected": 1786,
+    "inspected": 1786,
+    "complete": true,
+    "added": ["/research/cms-buying-decision-2026"],
+    "removed": [],
+    "failures": 0,
+    "redirectChanges": 0,
+    "metadataCanonicalMismatches": 0,
+    "mobileOverflow": 0,
+    "browserRuntimeErrors": 0,
+    "commercialCtasChecked": 4138,
+    "ctaBlocks": 0,
+    "merchantNavigations": 0,
+    "writes": 0
+  },
+  "additionalLiveChecks": {
+    "dynamicRecommend": { "status": 200, "canonical": "https://miloosh.com/recommend" },
+    "focusedRoutes": "11 expected HTTP 200 routes plus pre-existing unsupported /categories HTTP 404",
+    "researchExports": "Six HTTP 200 JSON/CSV endpoints; exact local rows, public-only fields, correct content types",
+    "robots": "HTTP 200; Allow /, Disallow /internal/; CMS permitted",
+    "cmsXRobotsTag": null,
+    "researchSitemap": "All five research paths included",
+    "editorialSources": { "checked": 35, "provenBroken": 0, "automatedInconclusive": 3, "cmsBrowserResolutions": 2 }
+  },
+  "visualAndTrackingQa": {
+    "viewports": [1440, 390, 320],
+    "localScreenshotsReviewed": true,
+    "productionJourneys": 18,
+    "cmsJourneys": 3,
+    "cmsPath": "CMS research → /software/wordpress → software-page-cta → intercepted handoff",
+    "events": ["research_page_view", "research_source_click", "research_to_decision_click", "cta_impression", "cta_click"],
+    "productionWrites": 0,
+    "merchantRequests": 0,
+    "browserRuntimeErrors": 0,
+    "limitation": "Synthetic client-event proof only; all API requests mocked. Not proof of production persistence, merchant arrival or conversion."
+  },
+  "protectedGraph": { "urls": 196, "changedIncomingOrOutgoingEdges": 0 },
+  "evidence": [
+    "var/growth/google-command/release/gates.json",
+    "var/growth/google-command/crawl/latest.json",
+    "var/growth/google-command/crawl/recheck.json",
+    "var/growth/google-command/production-crawl/latest.json",
+    "var/growth/google-command/production/health.json",
+    "var/growth/google-command/production/browser/authority-events.json",
+    "var/growth/operations/live-checks.json",
+    "var/growth/cms-release/dependency-audit.json"
+  ]
+}
