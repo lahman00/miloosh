@@ -36,7 +36,7 @@
     "entry_paid": {
       "amount": "12.50",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true
     },
     "tiers": [
@@ -51,28 +51,32 @@
         "name": "Standard",
         "amount": "12.50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "3 users, up to 5,000 invoices, automated workflows, and recurring expenses (billed annually at $150/yr)."
       },
       {
         "name": "Professional",
         "amount": "30.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "5 users, sales orders, purchase orders, multi-currency support, and project billing (billed annually at $360/yr)."
       },
       {
         "name": "Premium",
         "amount": "50.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "10 users, vendor portal, budgeting, custom domain, and validation rules (billed annually at $600/yr)."
       },
       {
         "name": "Elite",
         "amount": "100.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "15 users, advanced inventory management, and custom reports (billed annually at $1,200/yr)."
       }
     ],

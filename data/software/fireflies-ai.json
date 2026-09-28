@@ -27,9 +27,9 @@
     "entry_paid": {
       "amount": "10",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
-      "annual_billing_required": false
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -44,7 +44,8 @@
         "name": "Pro",
         "amount": "10",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "$18/seat/month if billed monthly. Unlimited transcription and AI summaries, 8,000 minutes of storage/seat, 20 AI credits. Adds video recording, downloadable transcripts/recordings, Personal/Email Assistants, AI Skills, Voice Agents, and unlimited integrations."
       },
@@ -52,7 +53,8 @@
         "name": "Business",
         "amount": "19",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "$29/seat/month if billed monthly. Marked \"Most Popular.\" Unlimited storage, 30 AI credits. Adds multi-language mode, conversation intelligence, team analytics for admins, public meeting access, and user groups. Volume discounts available for more than 50 seats."
       },
@@ -60,7 +62,8 @@
         "name": "Enterprise",
         "amount": "39",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "Marked \"ANNUAL ONLY\" on the pricing page (no separate monthly rate). Unlimited storage, 50 AI credits. Adds a rules engine, SSO + SCIM, API audit logs, HIPAA compliance, private storage, custom data retention, transcript-and-summary-only mode, a super admin role, and a dedicated account manager. The page's call-to-action for this tier is still \"Contact Us\" rather than self-serve signup."
       }

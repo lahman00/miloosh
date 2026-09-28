@@ -7,16 +7,11 @@ import { getCategoryName } from "@/data/categories";
 import { getSoftware, type Software } from "@/data/software";
 import type { AlternativeGuide } from "@/data/seo/alternative-guides";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { formatVerifiedStartingPrice } from "@/lib/pricing-display";
 
-/**
- * Only surface a price in a decision card when the pricing record itself is
- * verified and already carries the vendor-sourced starting-price string.
- * Never derive a price from a tier, guess a billing period, or turn
- * contact-sales/unavailable pricing into a pseudo-number.
- */
+/** Verified source-backed price plus any required billing condition. */
 export function getVerifiedStartingPrice(software: Software): string | null {
-  if (software.pricing?.status !== "verified") return null;
-  return software.pricing.startingPrice ?? null;
+  return formatVerifiedStartingPrice(software);
 }
 
 export function AlternativeDecisionGuide({ guide, category }: { guide: AlternativeGuide; category: string }) {

@@ -26,9 +26,9 @@
     "entry_paid": {
       "amount": "19",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
-      "annual_billing_required": false
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -42,7 +42,8 @@
         "name": "Starter",
         "amount": "19",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "Billed annually (\"Save up to 46%\" vs. monthly billing, exact monthly rate not published on the pricing page). Unlimited document uploads and eSignatures. 14-day free trial, no credit card required."
       },
@@ -50,7 +51,8 @@
         "name": "Business",
         "amount": "49",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "Marked \"Most Popular.\" Billed annually. Adds custom quotes/sales agreements, CRM integrations, custom branding and content library, deal rooms, approval workflows, web forms, and bulk send."
       },

@@ -57,7 +57,7 @@
     "entry_paid": {
       "amount": "29",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true
     },
     "tiers": [
@@ -65,28 +65,32 @@
         "name": "Core",
         "amount": "29",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "$29/month billed annually ($39 monthly); up to $30K trailing-12-month GMV, then auto-upgrades to Growth. Open Payment Provider fee can apply."
       },
       {
         "name": "Growth",
         "amount": "79",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "$79/month billed annually ($105 monthly); up to $100K TTM GMV."
       },
       {
         "name": "Scale",
         "amount": "299",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "$299/month billed annually ($399 monthly); $33,333/month GMV base threshold with 0.9% overage above the cap."
       },
       {
         "name": "Performance",
         "amount": "1499",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Custom pricing starting at $1,499/month billed annually."
       }
     ],

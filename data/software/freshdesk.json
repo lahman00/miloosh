@@ -36,7 +36,8 @@
     "entry_paid": {
       "amount": "19",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
+      "annual_billing_required": true,
       "per_seat": true
     },
     "tiers": [
@@ -44,21 +45,24 @@
         "name": "Growth",
         "amount": "19",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox."
       },
       {
         "name": "Pro",
         "amount": "55",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk."
       },
       {
         "name": "Enterprise",
         "amount": "89",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Per agent/month, billed annually. All AI and helpdesk features."
       }
     ],

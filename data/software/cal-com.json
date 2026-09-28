@@ -61,7 +61,7 @@
     "entry_paid": {
       "amount": "12",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true,
       "unit": "user"
     },
@@ -77,7 +77,8 @@
         "name": "Teams",
         "amount": "12",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$12/user/month billed yearly; adds shared availability, round-robin scheduling, managed event types, routing forms, analytics, and custom APIs."
       },
@@ -85,7 +86,8 @@
         "name": "Organizations",
         "amount": "28",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$28/user/month billed yearly; adds unlimited sub-teams, company subdomain, SAML SSO/SCIM, RBAC, and additional APIs."
       },

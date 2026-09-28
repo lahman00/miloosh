@@ -32,10 +32,10 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "entry_paid": { "amount": "179.99", "currency": "USD", "billing_period": "annual", "per_seat": false },
+    "entry_paid": { "amount": "179.99", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "per_seat": false },
     "tiers": [
-      { "name": "Singularity Complete", "amount": "179.99", "currency": "USD", "billing_period": "annual", "unit": "endpoint", "notes": "For 5-100 workstations. Includes AI-driven protection, real-time threat detection, 14-day data retention, and the AI Security Assistant. Final pricing is agreed through an authorized SentinelOne partner and may differ from this list price." },
-      { "name": "Singularity Commercial", "amount": "229.99", "currency": "USD", "billing_period": "annual", "unit": "endpoint", "notes": "For 5-100 workstations. Adds Identity Detection & Response, 90-day data retention, and Managed Threat Hunting. Final pricing is agreed through an authorized SentinelOne partner." },
+      { "name": "Singularity Complete", "amount": "179.99", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "endpoint", "notes": "For 5-100 workstations. Includes AI-driven protection, real-time threat detection, 14-day data retention, and the AI Security Assistant. Final pricing is agreed through an authorized SentinelOne partner and may differ from this list price." },
+      { "name": "Singularity Commercial", "amount": "229.99", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "endpoint", "notes": "For 5-100 workstations. Adds Identity Detection & Response, 90-day data retention, and Managed Threat Hunting. Final pricing is agreed through an authorized SentinelOne partner." },
       { "name": "Singularity Enterprise", "notes": "Contact sales for pricing. Adds an Agentic AI SOC Analyst, full visibility and forensics, and expert-led onboarding." }
     ],
     "enterprise_contact_sales": true,

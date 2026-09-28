@@ -31,7 +31,7 @@
     "entry_paid": {
       "amount": "7.00",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -47,7 +47,8 @@
         "name": "Express",
         "amount": "7.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Email, social media, web forms, AI agents, and workflows ($9/user/mo billed monthly)."
       },
@@ -55,7 +56,8 @@
         "name": "Standard",
         "amount": "14.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds business messaging, answer bot, community forum, and knowledge base ($20/user/mo billed monthly)."
       },
@@ -63,7 +65,8 @@
         "name": "Professional",
         "amount": "23.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds telephony, Zia AI, blueprints, multi-department, and round-robin assignment ($35/user/mo billed monthly)."
       },
@@ -71,7 +74,8 @@
         "name": "Enterprise",
         "amount": "40.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds live chat, guided conversations, skill-based assignment, and sandbox ($50/user/mo billed monthly)."
       }

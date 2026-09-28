@@ -35,8 +35,8 @@
     "tiers": [
       { "name": "Submit", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free workspace for an individual employee tracking their own expenses, with limited features." },
       { "name": "Collect", "amount": "5", "currency": "USD", "billing_period": "monthly", "unit": "per active member", "notes": "Flat rate with no annual commitment, including for customers not using the Expensify Card. In effect for signups after April 1, 2025." },
-      { "name": "Control (annual, with Expensify Card)", "amount": "9", "currency": "USD", "billing_period": "annual", "unit": "per member", "notes": "\"As low as\" price; the discount (up to 50%) scales with the share of approved USD expenses charged to the Expensify Card that billing month." },
-      { "name": "Control (annual, no card)", "amount": "18", "currency": "USD", "billing_period": "annual", "unit": "per member", "notes": "Annual subscription without Expensify Card usage." },
+      { "name": "Control (annual, with Expensify Card)", "amount": "9", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per member", "notes": "\"As low as\" price; the discount (up to 50%) scales with the share of approved USD expenses charged to the Expensify Card that billing month." },
+      { "name": "Control (annual, no card)", "amount": "18", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per member", "notes": "Annual subscription without Expensify Card usage." },
       { "name": "Control (pay-per-use)", "amount": "36", "currency": "USD", "billing_period": "monthly", "unit": "per active member", "notes": "No annual commitment; drops to \"as low as\" $18/member/month with heavy Expensify Card usage." }
     ],
     "last_verified": "2026-09-05",

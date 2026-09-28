@@ -13,12 +13,12 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 21 },
-    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Capped at 3 users; contact/deal management, phone dialer, chat, basic workflow automation. Excludes Freddy AI scoring, custom modules, and the activity dashboard." },
-      { "name": "Growth", "amount": "9", "currency": "USD", "billing_period": "annual", "unit": "per user, billed annually", "notes": "A separate official Freshworks page states monthly billing starts at $15/user/month, though the exact monthly rate isn't shown on the main pricing page. Kanban view, lifecycle stages, custom fields." },
-      { "name": "Pro", "amount": "39", "currency": "USD", "billing_period": "annual", "unit": "per user, billed annually", "notes": "Adds contact scoring, deal insights, and sales sequences." },
-      { "name": "Enterprise", "amount": "59", "currency": "USD", "billing_period": "annual", "unit": "per user, billed annually", "notes": "Adds forecasting insights, field-level permissions, custom modules, and audit logs." }
+      { "name": "Growth", "amount": "9", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user, billed annually", "notes": "A separate official Freshworks page states monthly billing starts at $15/user/month, though the exact monthly rate isn't shown on the main pricing page. Kanban view, lifecycle stages, custom fields." },
+      { "name": "Pro", "amount": "39", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user, billed annually", "notes": "Adds contact scoring, deal insights, and sales sequences." },
+      { "name": "Enterprise", "amount": "59", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user, billed annually", "notes": "Adds forecasting insights, field-level permissions, custom modules, and audit logs." }
     ],
     "last_verified": "2026-09-26",
     "official_source": "https://www.freshworks.com/crm/pricing/"

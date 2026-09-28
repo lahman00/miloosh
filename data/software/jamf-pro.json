@@ -32,8 +32,8 @@
     "free_plan": false,
     "free_trial": { "available": true },
     "tiers": [
-      { "name": "Jamf for Mac", "amount": "12.50", "currency": "USD", "billing_period": "annual", "unit": "per macOS device/month", "notes": "Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Every plan requires contacting sales to purchase -- there is no self-serve checkout." },
-      { "name": "Jamf for Mobile", "amount": "5.75", "currency": "USD", "billing_period": "annual", "unit": "per mobile device/month", "notes": "Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Jamf markets this bundle as covering iOS, iPadOS, visionOS, watchOS, tvOS, and Android -- that cross-platform mobile coverage is attributed to the bundle, not confirmed as a capability of Jamf Pro on its own." }
+      { "name": "Jamf for Mac", "amount": "12.50", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per macOS device/month", "notes": "Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Every plan requires contacting sales to purchase -- there is no self-serve checkout." },
+      { "name": "Jamf for Mobile", "amount": "5.75", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per mobile device/month", "notes": "Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Jamf markets this bundle as covering iOS, iPadOS, visionOS, watchOS, tvOS, and Android -- that cross-platform mobile coverage is attributed to the bundle, not confirmed as a capability of Jamf Pro on its own." }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",

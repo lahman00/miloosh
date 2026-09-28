@@ -31,7 +31,7 @@
     "entry_paid": {
       "amount": "50",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -40,7 +40,8 @@
         "name": "Basic",
         "amount": "50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "$60/user/month on month-to-month billing."
       },
@@ -48,7 +49,8 @@
         "name": "Pro",
         "amount": "100",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "$120/user/month monthly. Adds workflows, intake/CRM, unlimited eSignature/document generation, richer communications, premium billing/reporting, 8am IQ writing/document tools, and 70+ integrations."
       },
@@ -56,7 +58,8 @@
         "name": "Advanced",
         "amount": "130",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "$150/user/month monthly. Adds 8am IQ Case and Discovery assistants, advanced document automation, desktop drive, conflict tracking, split billing, and Open API."
       }

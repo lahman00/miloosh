@@ -16,8 +16,8 @@
       { "name": "Sandbox", "amount": "0", "currency": "USD", "billing_period": "unknown", "notes": "Free test-data environment with no live bank data; unlimited use for building and testing integrations." },
       { "name": "Trial", "amount": "0", "currency": "USD", "billing_period": "unknown", "unit": "per connected account", "notes": "New US/Canada teams get free production access to real bank data, capped at 10 connected accounts total; removing an account does not free up the cap." },
       { "name": "Pay-as-you-go", "currency": "USD", "billing_period": "monthly", "unit": "per API call or per connected account", "notes": "No minimum commitment; exact per-call/per-account rates are not published and only appear after applying for production access." },
-      { "name": "Growth", "currency": "USD", "billing_period": "annual", "notes": "Requires a 12-month commitment and a minimum spend not publicly disclosed; adds discounted rates and dashboard SSO." },
-      { "name": "Custom/Enterprise", "currency": "USD", "billing_period": "annual", "notes": "Sales-negotiated; adds beta product access, volume discounts, and dedicated account management." }
+      { "name": "Growth", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "notes": "Requires a 12-month commitment and a minimum spend not publicly disclosed; adds discounted rates and dashboard SSO." },
+      { "name": "Custom/Enterprise", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "notes": "Sales-negotiated; adds beta product access, volume discounts, and dedicated account management." }
     ],
     "last_verified": "2026-09-26",
     "official_source": "https://plaid.com/pricing/"

@@ -43,6 +43,7 @@ export function mapSoftware(raw: SoftwareRaw): Software {
             amount: t.amount,
             currency: t.currency,
             billingPeriod: t.billing_period,
+            annualBillingRequired: t.annual_billing_required,
             unit: t.unit,
             notes: t.notes,
           })),

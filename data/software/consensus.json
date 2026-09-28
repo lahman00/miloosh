@@ -26,7 +26,7 @@
     "entry_paid": {
       "amount": "600",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": false,
       "annual_billing_required": true
     },
@@ -35,7 +35,8 @@
         "name": "Starter",
         "amount": "600",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per month, billed annually",
         "notes": "For up to 5 users. Includes Video Demos and Product Tours, AI Content Studio - Lite (AI scripting, voiceover, and translations for dynamic tours), embeddable links, unlimited demos, and marketing analytics/integrations (HubSpot, Eloqua, Pardot, Marketo)."
       },
@@ -43,7 +44,8 @@
         "name": "Pro",
         "amount": "1250",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per month, billed annually",
         "notes": "For up to 10 users. Adds AI Content Studio - Pro (100 AI video minutes/month, 65+ languages, AI avatars), sales analytics (heatmaps, stakeholder discovery, sales leaderboard), personalized sales links, and sales-tool integrations including Highspot, Seismic, Gong, Salesforce, Salesloft, Outreach, plus API access."
       },

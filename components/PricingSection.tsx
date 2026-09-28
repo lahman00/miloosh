@@ -11,6 +11,7 @@ import {
   shouldShowAffiliateDisclosure,
 } from "@/lib/affiliate";
 import type { Software } from "@/data/software";
+import { formatTierPrice } from "@/lib/pricing-display";
 
 /**
  * 2026-08-17 growth sprint, Phase 3 — the first public renderer for the
@@ -78,12 +79,8 @@ export function PricingSection({ software }: { software: Software }) {
           {pricing.tiers.map((tier) => (
             <li key={tier.name} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
               <p className="font-semibold text-white">{tier.name}</p>
-              {tier.amount ? (
-                <p className="mt-1 text-sm text-zinc-400">
-                  {tier.currency} {tier.amount}
-                  {tier.billingPeriod && tier.billingPeriod !== "unknown" ? ` / ${tier.billingPeriod}` : ""}
-                  {tier.unit ? ` / ${tier.unit}` : ""}
-                </p>
+              {formatTierPrice(tier) ? (
+                <p className="mt-1 text-sm text-zinc-400">{formatTierPrice(tier)}</p>
               ) : null}
               {tier.notes ? <p className="mt-1 text-xs text-zinc-500">{tier.notes}</p> : null}
             </li>

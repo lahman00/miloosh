@@ -193,7 +193,7 @@ describe("Data/BI + Field-Service + AI-Dev-Tools catalog batch (Databricks, Five
     for (const slug of ["microsoft-power-bi", "tableau"]) {
       const raw = loadRaw(slug);
       expect(raw.pricing?.entry_paid?.annual_billing_required).toBe(true);
-      expect(raw.pricing?.entry_paid?.billing_period).toBe("annual");
+      expect(raw.pricing?.entry_paid?.billing_period).toBe("monthly");
     }
   });
 

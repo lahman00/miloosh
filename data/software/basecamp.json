@@ -40,7 +40,7 @@
       { "name": "Freelancer", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Up to 3 active projects, 5 GB storage, and up to 20 users; 30-day free trial." },
       { "name": "Studio", "amount": "59", "currency": "USD", "billing_period": "monthly", "notes": "Up to 10 active projects, 25 GB storage, and unlimited users; 30-day free trial." },
       { "name": "Pro", "amount": "100", "currency": "USD", "billing_period": "monthly", "notes": "Up to 25 active projects, 100 GB storage, and unlimited users; 30-day free trial." },
-      { "name": "Unlimited", "amount": "300", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually; unlimited projects and users, 1 TB storage, and a 45-day free trial." }
+      { "name": "Unlimited", "amount": "300", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per month, billed annually; unlimited projects and users, 1 TB storage, and a 45-day free trial." }
     ],
     "last_verified": "2026-08-25",
     "official_source": "https://basecamp.com/pricing"

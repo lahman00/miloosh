@@ -25,9 +25,9 @@
     "entry_paid": {
       "amount": "16",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
-      "annual_billing_required": false
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -42,7 +42,8 @@
         "name": "Premium",
         "amount": "16",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "$20/user/month if billed monthly. No seat minimum. Adds advanced call summaries, AI-generated action items, a conversational meeting assistant, and a custom meeting bot."
       },
@@ -50,7 +51,8 @@
         "name": "Team",
         "amount": "15",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "$19/user/month if billed monthly. Minimum 2 users. Adds global search across calls, meeting-highlight playlists, and team collaboration via comments, folders, and keyword alerts."
       },
@@ -58,7 +60,8 @@
         "name": "Business",
         "amount": "25",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "$34/user/month if billed monthly. Minimum 2 users. Adds CRM field sync, Deal View, coaching metrics/AI scorecards, and custom call summaries."
       },

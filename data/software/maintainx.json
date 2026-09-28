@@ -32,11 +32,11 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "20", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
       { "name": "Basic", "amount": "0", "currency": "USD", "notes": "Free forever. Limited to 2 work orders with procedures, 2 active repeating work orders, and 1 month of analytics history." },
-      { "name": "Essential", "amount": "20", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "$25/user/month if billed monthly. Unlimited work orders with images, 3 repeating work orders, and 3 months of analytics history." },
-      { "name": "Premium", "amount": "65", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "$75/user/month if billed monthly. Unlimited work orders with procedures and analytics, parts inventory, purchase orders, and API access. MaintainX's most popular plan." },
+      { "name": "Essential", "amount": "20", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "$25/user/month if billed monthly. Unlimited work orders with images, 3 repeating work orders, and 3 months of analytics history." },
+      { "name": "Premium", "amount": "65", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "$75/user/month if billed monthly. Unlimited work orders with procedures and analytics, parts inventory, purchase orders, and API access. MaintainX's most popular plan." },
       { "name": "Enterprise", "notes": "Custom pricing. Adds asset health insights, resource planning, IoT integrations, multi-site tools, and SSO." }
     ],
     "enterprise_contact_sales": true,

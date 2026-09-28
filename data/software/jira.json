@@ -102,6 +102,7 @@
         "name": "Enterprise",
         "currency": "USD",
         "billing_period": "annual",
+        "annual_billing_required": true,
         "unit": "custom / contact sales",
         "notes": "No public price. Billed annually only (not offered on monthly billing), and the pricing calculator only reveals an Enterprise line once you enter 801+ users; below that it just says to contact sales. 99.95% uptime SLA, 24/7 support for all issues."
       }

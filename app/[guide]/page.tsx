@@ -18,6 +18,7 @@ import { getFirstRevenueSupportForGuide } from "@/data/guides/first-revenue";
 import { getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { formatStartingPrice } from "@/lib/pricing-display";
 import { getWixAffiliateUrl } from "@/lib/wix-funnels";
 import { SITE_URL } from "@/lib/site";
 import { getBreadcrumbJsonLd, getFaqJsonLd } from "@/lib/structured-data";
@@ -241,7 +242,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                         {p.summaryBestFor ?? p.software.bestFor}
                       </td>
                       <td className="py-4 px-4 font-semibold text-white">
-                        {p.summaryPrice ?? p.software.pricing?.startingPrice ?? "Contact sales"}
+                        {p.summaryPrice ?? formatStartingPrice(p.software) ?? "Contact sales"}
                       </td>
                       <td className="py-4 px-4 text-xs text-zinc-400">
                         {p.summaryAvailability ? (

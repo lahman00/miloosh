@@ -13,6 +13,7 @@ export type CalculatorProduct = {
   amount: number;
   billingPeriod: "monthly" | "annual" | "one_time" | "unknown";
   perSeat: boolean;
+  annualBillingRequired: boolean;
   officialSource?: string;
 };
 
@@ -21,11 +22,10 @@ export type CalculatorProduct = {
  * tool. Every number here comes from data/software/*.json's real,
  * first-party-sourced `pricing.entry_paid` field (see
  * app/tools/saas-cost-calculator/page.tsx for how the product list is
- * built) — nothing is estimated or invented. `amount` is always the
- * real monthly-equivalent rate regardless of billing_period label (the
- * codebase's own pricing schema convention: "annual" describes the
- * BILLING CADENCE the rate requires, not that the number itself is a
- * yearly lump sum) — safe to sum directly into a real monthly total.
+ * built) — nothing is estimated or invented. This component receives only
+ * explicit USD monthly-unit rates. A monthly unit may still require annual
+ * billing; that contract condition is carried separately and shown to buyers.
+ * True yearly lump sums and non-USD prices are not mixed into the total.
  */
 export function SaasCostCalculator({ products }: { products: CalculatorProduct[] }) {
   const searchParams = useSearchParams();
@@ -114,6 +114,7 @@ export function SaasCostCalculator({ products }: { products: CalculatorProduct[]
                 <span className="text-sm text-zinc-200">{p.name}</span>
                 <span className="ml-2 text-xs text-zinc-500">
                   ${p.amount}/mo{p.perSeat ? "/seat" : ""}
+                  {p.annualBillingRequired ? " · annual billing" : ""}
                 </span>
               </div>
               <button
@@ -154,7 +155,10 @@ export function SaasCostCalculator({ products }: { products: CalculatorProduct[]
                       </button>
                     </div>
                   ) : null}
-                  <span className="text-zinc-400">${(product.amount * (product.perSeat ? seats : 1)).toFixed(2)}/mo</span>
+                  <span className="text-zinc-400">
+                    ${(product.amount * (product.perSeat ? seats : 1)).toFixed(2)}/mo
+                    {product.annualBillingRequired ? <span className="block text-[10px] text-amber-300/80">annual billing required</span> : null}
+                  </span>
                   <button type="button" onClick={() => removeProduct(product.slug)} className="text-zinc-500 hover:text-red-400" aria-label={`Remove ${product.name}`}>
                     <X className="h-3.5 w-3.5" />
                   </button>
@@ -181,7 +185,7 @@ export function SaasCostCalculator({ products }: { products: CalculatorProduct[]
         </button>
 
         <p className="mt-4 text-xs text-zinc-600">
-          Prices are per-seat/per-month starting rates from each vendor&apos;s own pricing page, verified on the date shown on each software page. Actual cost depends on your plan, seats, and billing cycle — verify current pricing before purchasing.
+          Only explicit USD monthly-unit starting rates are totaled. Some displayed monthly rates require annual billing, which is labeled above. True yearly lump sums and non-USD prices are excluded rather than converted. Actual cost depends on plan, seats, usage and billing terms — verify current pricing before purchasing.
         </p>
       </Card>
     </div>

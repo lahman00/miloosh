@@ -37,7 +37,7 @@
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Corporate card with unlimited physical/virtual cards at no extra cost, expense management with SMS/Slack submission, invoice capture with OCR, basic accounting rules, QuickBooks Online and Xero integrations, and FDIC-insured treasury accounts with free wires." },
       { "name": "Plus", "amount": "15", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Plus a platform fee based on team size. Save 20% with annual billing. Adds AI-driven automation (expense reviews, approval recommendations, auto-coding), NetSuite and Sage Intacct integrations, a procurement add-on, multi-entity support, and custom user roles." },
-      { "name": "Enterprise", "currency": "USD", "billing_period": "annual", "notes": "Custom pricing via sales, billed annually. Adds Workday and Oracle integrations, white-glove support, implementation services, custom development, and locally funded global reimbursements." }
+      { "name": "Enterprise", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "notes": "Custom pricing via sales, billed annually. Adds Workday and Oracle integrations, white-glove support, implementation services, custom development, and locally funded global reimbursements." }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",

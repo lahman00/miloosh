@@ -25,7 +25,7 @@
     "entry_paid": {
       "amount": "1250",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": false,
       "annual_billing_required": true
     },
@@ -34,7 +34,8 @@
         "name": "Routing & Scheduling",
         "amount": "1250",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per month, billed annually",
         "notes": "Totals $15,000/year. Up to 15 seats included, then $45/seat/month. Includes 45,000 credits per year. Its plan family is billed annually only; monthly billing is not available."
       },
@@ -42,7 +43,8 @@
         "name": "Experiences",
         "amount": "3500",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per month, billed annually",
         "notes": "Totals $42,000/year. Up to 30 seats included, then $50/seat/month. Includes 150,000 credits per year. Billed annually only; monthly billing is not available."
       },

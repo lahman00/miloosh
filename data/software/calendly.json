@@ -56,7 +56,7 @@
     "entry_paid": {
       "amount": "10",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true,
       "unit": "seat"
     },
@@ -72,7 +72,8 @@
         "name": "Standard",
         "amount": "10",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat",
         "notes": "$10/seat/month billed yearly; unlimited event types, multiple calendars, automations/reminders, Stripe/PayPal, HubSpot and Mailchimp connections."
       },
@@ -80,7 +81,8 @@
         "name": "Teams",
         "amount": "16",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat",
         "notes": "$16/seat/month billed yearly; adds round-robin and team scheduling, routing, centrally managed event types, and Salesforce handoff."
       },
@@ -89,6 +91,7 @@
         "amount": "15000",
         "currency": "USD",
         "billing_period": "annual",
+        "annual_billing_required": true,
         "notes": "Starts at $15,000/year and 50 seats; contact sales."
       }
     ],

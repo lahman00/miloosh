@@ -31,10 +31,10 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "149", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "149", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Professional", "amount": "149", "currency": "USD", "billing_period": "annual", "unit": "per technician/month", "notes": "Billed annually; $169/technician/month if billed monthly. Unlimited endpoints. For teams managing corporate devices and networks." },
-      { "name": "Master", "amount": "219", "currency": "USD", "billing_period": "annual", "unit": "per technician/month", "notes": "Billed annually; $269/technician/month if billed monthly. For established teams needing greater compliance and more insights." },
+      { "name": "Professional", "amount": "149", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per technician/month", "notes": "Billed annually; $169/technician/month if billed monthly. Unlimited endpoints. For teams managing corporate devices and networks." },
+      { "name": "Master", "amount": "219", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per technician/month", "notes": "Billed annually; $269/technician/month if billed monthly. For established teams needing greater compliance and more insights." },
       { "name": "Enterprise", "billing_period": "unknown", "notes": "Custom quote for high-touch, enterprise-level service and integrations. Contact sales." }
     ],
     "enterprise_contact_sales": true,

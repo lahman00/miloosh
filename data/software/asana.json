@@ -83,7 +83,7 @@
     "entry_paid": {
       "amount": "10.99",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true,
       "unit": "user"
     },
@@ -99,7 +99,8 @@
         "name": "Starter",
         "amount": "10.99",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$10.99/user/month billed annually ($13.49 monthly); adds unlimited seats, Timeline/Gantt, reporting dashboards, automations, forms, and custom fields."
       },
@@ -107,7 +108,8 @@
         "name": "Advanced",
         "amount": "24.99",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$24.99/user/month billed annually ($30.49 monthly); adds portfolios, goals, workload, approvals, time tracking, and advanced integrations."
       },

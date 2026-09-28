@@ -30,11 +30,11 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "69", "currency": "ILS", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "69", "currency": "ILS", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Remote Access", "amount": "69.00", "currency": "ILS", "billing_period": "annual", "unit": "per month, billed yearly", "notes": "Figure shown on TeamViewer's Israel/MEA storefront -- teamviewer.com auto-detects visitor region and currency, so a US visitor may see a different, USD-denominated price on the same official pricing page. Access up to 3 unattended devices, 1 licensed user." },
-      { "name": "Business", "amount": "149.00", "currency": "ILS", "billing_period": "annual", "unit": "per month, billed yearly", "notes": "Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 119.20/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 200 unattended devices, 1 licensed user, 14-day free trial available." },
-      { "name": "Premium", "amount": "330.90", "currency": "ILS", "billing_period": "annual", "unit": "per month, billed yearly", "notes": "Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 264.72/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 300 unattended devices, 15 licensed users." },
+      { "name": "Remote Access", "amount": "69.00", "currency": "ILS", "billing_period": "monthly", "annual_billing_required": true, "unit": "per month, billed yearly", "notes": "Figure shown on TeamViewer's Israel/MEA storefront -- teamviewer.com auto-detects visitor region and currency, so a US visitor may see a different, USD-denominated price on the same official pricing page. Access up to 3 unattended devices, 1 licensed user." },
+      { "name": "Business", "amount": "149.00", "currency": "ILS", "billing_period": "monthly", "annual_billing_required": true, "unit": "per month, billed yearly", "notes": "Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 119.20/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 200 unattended devices, 1 licensed user, 14-day free trial available." },
+      { "name": "Premium", "amount": "330.90", "currency": "ILS", "billing_period": "monthly", "annual_billing_required": true, "unit": "per month, billed yearly", "notes": "Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 264.72/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 300 unattended devices, 15 licensed users." },
       { "name": "Tensor (Enterprise)", "billing_period": "unknown", "notes": "Fully custom-quoted enterprise license. Adds single sign-on, audit log/API, enhanced mass deployment, and a larger AI credit allowance. Contact sales." }
     ],
     "enterprise_contact_sales": true,

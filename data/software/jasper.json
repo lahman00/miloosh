@@ -28,9 +28,9 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 7 },
-    "entry_paid": { "amount": "59", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "59", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Pro", "amount": "59", "currency": "USD", "billing_period": "annual", "unit": "seat", "notes": "Per month per seat, billed annually; $69/month/seat with monthly billing. Includes one seat and a 7-day free trial." },
+      { "name": "Pro", "amount": "59", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "seat", "notes": "Per month per seat, billed annually; $69/month/seat with monthly billing. Includes one seat and a 7-day free trial." },
       { "name": "Business", "notes": "Custom pricing; adds advanced agents, custom AI agents, Jasper Grid, API access, enterprise governance, dedicated account management, and priority support." }
     ],
     "enterprise_contact_sales": true,

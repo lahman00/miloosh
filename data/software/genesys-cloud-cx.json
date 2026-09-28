@@ -33,7 +33,7 @@
     "entry_paid": {
       "amount": "75",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -42,7 +42,8 @@
         "name": "Genesys Cloud CX 1",
         "amount": "75",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "Named-license pricing for voice-only contact centers."
       },
@@ -50,7 +51,8 @@
         "name": "Genesys Cloud CX 2",
         "amount": "115",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "Adds omnichannel support with quality assurance (QA)."
       },
@@ -58,7 +60,8 @@
         "name": "Genesys Cloud CX 3",
         "amount": "155",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "Adds workforce engagement management (WEM)."
       },
@@ -66,7 +69,8 @@
         "name": "Genesys Cloud CX 4",
         "amount": "240",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "Adds advanced AI and journey management, plus 30 AI Experience tokens per named agent. Concurrent and Hourly Interacting licensing are also available as alternatives to named licensing."
       }

@@ -17,7 +17,11 @@ export const pricingTierRawSchema = z.object({
   name: z.string().min(1),
   amount: z.string().min(1).optional(),
   currency: z.string().min(1).optional(),
+  // Unit semantics: this describes the numeric amount above. A "$10/month,
+  // billed annually" price is monthly here; the contract cadence belongs in
+  // annual_billing_required. Use "annual" only when amount itself is yearly.
   billing_period: z.enum(["monthly", "annual", "one_time", "unknown"]).optional(),
+  annual_billing_required: z.boolean().optional(),
   unit: z.string().min(1).optional(),
   notes: z.string().min(1).optional(),
 });

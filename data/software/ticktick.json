@@ -21,7 +21,7 @@
     "entry_paid": { "amount": "49.99", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "9 lists, 99 tasks per list, basic calendar view, core task features." },
-      { "name": "Premium", "amount": "49.99", "currency": "USD", "billing_period": "annual", "unit": "per year", "notes": "The only price shown on TickTick's official web pricing page is annual-only, US$49.99/year (about $4.17/month equivalent) — no monthly-billing option is listed on the website itself. Adds 299 lists/999 tasks per list, multiple calendar views, task duration, email reminders, and the Eisenhower Matrix. Mobile app-store subscriptions list separate monthly options around $2.99-3.99/month through Apple's own billing, not through ticktick.com." }
+      { "name": "Premium", "amount": "49.99", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per year", "notes": "The only price shown on TickTick's official web pricing page is annual-only, US$49.99/year (about $4.17/month equivalent) — no monthly-billing option is listed on the website itself. Adds 299 lists/999 tasks per list, multiple calendar views, task duration, email reminders, and the Eisenhower Matrix. Mobile app-store subscriptions list separate monthly options around $2.99-3.99/month through Apple's own billing, not through ticktick.com." }
     ],
     "last_verified": "2026-09-26",
     "official_source": "https://ticktick.com/about/upgrade"

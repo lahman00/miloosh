@@ -32,7 +32,7 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true },
-    "entry_paid": { "amount": "13.50", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": false },
+    "entry_paid": { "amount": "13.50", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
       {
         "name": "One App Free",
@@ -46,7 +46,8 @@
         "name": "Standard",
         "amount": "13.50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "All apps on Odoo Online. $13.50/user/month billed yearly vs. $16.90/user/month billed monthly. Per Odoo's pricing page: \"The discount is valid for 12 months, for initial users ordered.\""
       },
@@ -54,7 +55,8 @@
         "name": "Custom",
         "amount": "20.40",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "All apps plus Odoo Studio, multi-company support, and external API access; choice of Odoo Online, Odoo.sh, or on-premise hosting. $20.40/user/month billed yearly vs. $25.50/user/month billed monthly."
       }

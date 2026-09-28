@@ -16,9 +16,9 @@
     "entry_paid": { "amount": "7.49", "currency": "EUR", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "EUR", "billing_period": "monthly", "unit": "per user", "notes": "50,000 characters/month, 1 file translation/month (max 5MB), 1 glossary." },
-      { "name": "Individual", "amount": "7.49", "currency": "EUR", "billing_period": "annual", "unit": "per user, billed annually (16% cheaper than monthly)", "notes": "300,000 characters/month, 3 file translations/month (max 30MB), 30 minutes of DeepL Voice/month included." },
-      { "name": "Team", "amount": "24.99", "currency": "EUR", "billing_period": "annual", "unit": "per user, billed annually", "notes": "1,000,000 characters/user/month, 5 glossaries, team admin/analytics. SSO is only available for organizations with 50+ users." },
-      { "name": "Business", "amount": "49.99", "currency": "EUR", "billing_period": "annual", "unit": "per user, billed annually", "notes": "Unlimited characters under fair use, translation memory, and a 99.0% availability SLA." },
+      { "name": "Individual", "amount": "7.49", "currency": "EUR", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user, billed annually (16% cheaper than monthly)", "notes": "300,000 characters/month, 3 file translations/month (max 30MB), 30 minutes of DeepL Voice/month included." },
+      { "name": "Team", "amount": "24.99", "currency": "EUR", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user, billed annually", "notes": "1,000,000 characters/user/month, 5 glossaries, team admin/analytics. SSO is only available for organizations with 50+ users." },
+      { "name": "Business", "amount": "49.99", "currency": "EUR", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user, billed annually", "notes": "Unlimited characters under fair use, translation memory, and a 99.0% availability SLA." },
       { "name": "Enterprise", "currency": "EUR", "billing_period": "unknown", "notes": "Contact sales. Custom limits, 99.9% availability SLA, and bring-your-own-key." }
     ],
     "last_verified": "2026-09-26",

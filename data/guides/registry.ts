@@ -759,7 +759,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best property management software for landlords and managers: AppFolio, Buildium, DoorLoop, and TenantCloud evaluated on rent collection, tenant screening, and accounting.",
     categorySlug: "property-management",
     roleName: "Landlords & Property Managers",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Managing rental properties requires automated rent collection, streamlined tenant screening, fast maintenance coordination, and complete double-entry real estate accounting.",
     targetAudience: [
@@ -795,11 +795,11 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Large Residential & Commercial Portfolios",
         ranking: 1,
         fitReason:
-          "AppFolio is the premier enterprise property management platform for established operators (50+ units). It features AI-powered leasing assistants, smart maintenance automation, robust double-entry accounting, and complete mixed-portfolio support.",
+          "AppFolio targets professional property managers and larger portfolios. Its current catalog record documents Core, Plus, and Max as sales-quoted plans with minimum-spend and unit-minimum requirements rather than a public fixed price.",
         limitations:
-          "Strict minimum monthly fee ($280/mo) makes it cost-prohibitive for smaller landlords under 50 units.",
+          "No public fixed pricing is recorded; AppFolio requires a sales quote and states that minimum-spend and unit-minimum requirements apply.",
         pricingNote:
-          "Core plan starts at $1.40/unit/mo (min $280/mo); Plus is $3.00/unit/mo; Max is $5.00/unit/mo.",
+          "Core, Plus, and Max are quote-based in the current verified record; no fixed public plan amount is published.",
       },
       {
         slug: "buildium",
@@ -810,7 +810,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Payment processing and electronic lease fees apply on lower tiers; interface feels more traditional than DoorLoop.",
         pricingNote:
-          "Essential plan starts at $55/mo; Growth is $174/mo; Premium is $375/mo with performance analytics.",
+          "Essential starts at $62/mo; Growth is $192/mo; Premium is $400/mo in the current catalog record.",
       },
       {
         slug: "doorloop",
@@ -849,9 +849,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
           "TenantCloud and DoorLoop are the best options for smaller landlords. TenantCloud provides an affordable $17/mo entry plan, while DoorLoop offers a modern all-in-one system with built-in accounting for up to 20 units at $49/mo.",
       },
       {
-        question: "Why does AppFolio enforce a minimum monthly fee?",
+        question: "Does AppFolio publish fixed plan pricing?",
         answer:
-          "AppFolio is designed specifically for professional management companies and larger property portfolios (50+ units), requiring a $280/mo minimum fee to cover its comprehensive AI tools, dedicated onboarding, and enterprise infrastructure.",
+          "Not in the current verified record. AppFolio requires a sales quote and states that minimum-spend and unit-minimum requirements apply; Miloosh does not publish an older fixed minimum as current pricing.",
       },
     ],
   },
@@ -970,7 +970,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best CRM software for early-stage startups: Pipedrive, HubSpot, Close, and Freshsales evaluated on pipeline agility, automation, and affordability.",
     categorySlug: "crm",
     roleName: "Early-Stage & High-Growth Startups",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Early-stage startups need a CRM that reps actually enjoy updating: visual deal pipelines, fast email sync, minimal administrative overhead, and flexible APIs that grow alongside customer acquisition.",
     targetAudience: [
@@ -1019,9 +1019,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "HubSpot provides a generous free CRM tier supporting unlimited users and up to 1 million contacts, making it an attractive launchpad for startups prioritizing inbound content leads and marketing integration.",
         limitations:
-          "Professional and Enterprise tiers escalate rapidly in cost ($500-$1,200+/mo) as team features are unlocked.",
+          "Paid HubSpot products vary by hub, edition, seats, and usage; the current Miloosh CRM record does not normalize them into one unsupported paid starting price.",
         pricingNote:
-          "Free core CRM; Starter Platform starts at $15/seat/mo; Professional Sales Hub is $90/seat/mo.",
+          "The current catalog records HubSpot CRM as free with no expiration; verify paid HubSpot hub/edition pricing separately for the capabilities you need.",
       },
       {
         slug: "close",
@@ -1030,9 +1030,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Close is purpose-built for high-velocity outbound teams, combining a visual CRM with integrated Power Dialers, automated SMS sequences, and multi-channel email campaigns in one unified inbox.",
         limitations:
-          "Higher entry price point ($49/user/mo) and less suitable for complex multi-product enterprise sales.",
+          "Solo is a one-user plan capped at 10,000 leads; automated Workflows are not included in Solo or Essentials and require Growth or Scale.",
         pricingNote:
-          "Startup plan is $49/user/mo (includes 1 user, 1 pipeline); Professional is $99/user/mo; Enterprise is $139/user/mo.",
+          "Solo is $9/user/mo with annual billing ($19 monthly), Essentials $35 ($49 monthly), Growth $99 ($109 monthly), and Scale $139 ($149 monthly).",
       },
       {
         slug: "freshsales",
@@ -1074,7 +1074,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Discover the best CRM software for real estate agents and brokerages: Pipedrive, HubSpot, Zoho CRM, and Freshsales compared on lead capture, pipeline stages, and mobile app quality.",
     categorySlug: "crm",
     roleName: "Real Estate Agents & Brokerages",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Real estate professionals manage fast-moving property inquiries, open house leads, buyer showings, and escrow closing timelines. A real estate CRM keeps buyer and seller relationships organized across mobile devices in the field.",
     targetAudience: [
@@ -1125,7 +1125,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Dedicated real estate field customization can require extensive initial setup on the free/starter tiers.",
         pricingNote:
-          "Free core CRM; Starter Platform starts at $15/seat/mo; Professional Sales Hub is $90/seat/mo.",
+          "The current catalog records HubSpot CRM as free with no expiration; verify paid HubSpot hub/edition pricing separately for the capabilities you need.",
       },
       {
         slug: "zoho-crm",
@@ -1180,7 +1180,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best help desk software for Shopify and ecommerce brands: Gorgias, Zendesk, Freshdesk, and Help Scout evaluated on order management, live chat, and AI automation.",
     categorySlug: "customer-support",
     roleName: "Ecommerce & DTC Support Teams",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Ecommerce support teams handle order tracking inquiries, return requests, size exchanges, and pre-purchase product questions. Dedicated ecommerce help desks pull real-time order data directly into support tickets to resolve issues in seconds.",
     targetAudience: [
@@ -1220,7 +1220,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Pricing is ticket-volume based rather than per-seat, meaning high holiday ticket volume can increase monthly invoices.",
         pricingNote:
-          "Starter plan is $10/mo (50 tickets); Basic is $50/mo (300 tickets); Pro is $300/mo (2,000 tickets) billed annually.",
+          "Starter is $40/mo for 50 tickets; Basic is $90/mo ($77 with annual billing) for 300 tickets; Pro is $550/mo ($471 with annual billing) for 2,000 tickets.",
       },
       {
         slug: "zendesk",
@@ -1231,18 +1231,18 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Shopify integration requires configuration and lacks some native one-click refund actions found in Gorgias.",
         pricingNote:
-          "Support Team is $19/agent/mo; Suite Team is $55/agent/mo; Suite Growth is $89/agent/mo (billed annually).",
+          "Support Team is $19/agent/mo, Suite Team $55/agent/mo, and Suite Professional $115/agent/mo; these recorded rates require annual billing.",
       },
       {
         slug: "freshdesk",
-        badge: "Best Value with Multichannel Support & Free Tier",
+        badge: "Best Value for Ticket-Led Support",
         ranking: 3,
         fitReason:
-          "Freshdesk offers a free plan for up to 10 agents, integrated email and social ticketing, and affordable paid tiers with automated Freddy AI routing.",
+          "Freshdesk is a paid, per-agent help desk with a 14-day trial in the current record. Growth includes ticketing and shared inbox features, while Freddy AI usage and higher-tier capabilities require separate plan and usage checks.",
         limitations:
           "Ecommerce integrations are less native than Gorgias, requiring plugin setup for store order lookups.",
         pricingNote:
-          "Free tier up to 10 agents; Growth is $15/agent/mo; Pro is $49/agent/mo (billed annually).",
+          "No perpetual free plan is recorded. Growth is $19/agent/mo, Pro $55/agent/mo, and Enterprise $89/agent/mo with annual billing; the current record lists a 14-day trial.",
       },
       {
         slug: "help-scout",
@@ -1253,7 +1253,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Advanced social media DM management and phone integrations are less deeply built than Gorgias or Zendesk.",
         pricingNote:
-          "Standard is $20/user/mo; Plus is $40/user/mo; Pro is $65/user/mo (billed annually).",
+          "Free supports up to 5 users; Standard is $25/user/mo, Plus $45/user/mo, and Pro $75/user/mo in the current record.",
       },
     ],
     comparisons: [
@@ -1272,7 +1272,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         question:
           "How does ticket-based pricing work for ecommerce help desks?",
         answer:
-          "Gorgias prices based on monthly ticket volume with unlimited user seats, while Zendesk and Freshdesk price per agent seat. Ticket-based pricing allows entire seasonal teams to log in during peak holidays without buying extra seats.",
+          "Gorgias prices around ticket volume and plan-specific seat allowances, while Zendesk and Freshdesk use per-agent pricing. Compare both expected ticket volume and the number of people who need access before choosing a model.",
       },
     ],
   },
@@ -1285,7 +1285,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best customer service software for startups: Intercom, Freshdesk, Help Scout, and Front evaluated on in-app chat, shared inboxes, and onboarding tours.",
     categorySlug: "customer-support",
     roleName: "Tech Startups & SaaS Companies",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Tech startups need customer support software that combines reactive problem-solving with proactive product adoption: in-app chat widgets, shared team inboxes, AI self-service bots, and user onboarding tours.",
     targetAudience: [
@@ -1321,22 +1321,22 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for In-App Messenger & Fin AI Bot",
         ranking: 1,
         fitReason:
-          "Intercom provides a dedicated customer messaging platform for SaaS and tech startups. It combines an in-app messenger with Fin AI Copilot, proactive user onboarding tours, product tours, and complete customer engagement workflows.",
+          "Intercom combines an in-app messenger with Fin AI, proactive messaging, and customer-support workflows. Its AI resolution charge is separate from the paid seat price, so seat and automation usage need separate budgets.",
         limitations:
-          "Standard pricing scales significantly with contact volume; Fin AI usage is billed per resolution ($0.99/resolution).",
+          "There is no free plan in the current record; Fin AI is billed separately at $0.99 per resolution on top of the paid seat price.",
         pricingNote:
-          "Early Stage startup program available ($65/mo for eligible startups); Essential plan is $39/seat/mo; Advanced is $85/seat/mo.",
+          "Essential is $29/seat/mo, Advanced $85/seat/mo, and Expert $132/seat/mo; Fin AI resolutions are billed separately at $0.99 each.",
       },
       {
         slug: "freshdesk",
-        badge: "Best Free & Low-Cost Traditional Help Desk",
+        badge: "Best for Traditional Ticket-Led Support",
         ranking: 2,
         fitReason:
-          "Freshdesk delivers a full-featured ticketing system with a perpetual free plan for up to 10 agents, knowledge base hosting, and omnichannel support across email and chat.",
+          "Freshdesk provides ticket-led support with paid per-agent tiers and a 14-day trial in the current record; do not budget around the retired ten-agent free-plan claim.",
         limitations:
           "In-app product messaging and proactive onboarding tours are less interactive than Intercom.",
         pricingNote:
-          "Free plan up to 10 agents; Growth is $15/agent/mo; Pro is $49/agent/mo (billed annually).",
+          "No perpetual free plan is recorded. Growth is $19/agent/mo, Pro $55/agent/mo, and Enterprise $89/agent/mo with annual billing; the current record lists a 14-day trial.",
       },
       {
         slug: "help-scout",
@@ -1347,7 +1347,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "AI resolution bot capabilities are simpler than Intercom Fin AI.",
         pricingNote:
-          "Standard is $20/user/mo; Plus is $40/user/mo; Pro is $65/user/mo (billed annually).",
+          "Free supports up to 5 users; Standard is $25/user/mo, Plus $45/user/mo, and Pro $75/user/mo in the current record.",
       },
       {
         slug: "front",
@@ -1356,9 +1356,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Front unifies team email inboxes (support@, sales@), live chat, SMS, and WhatsApp with internal comments and collision detection, making it ideal for high-touch B2B SaaS accounts.",
         limitations:
-          "2-seat minimum on Starter plan ($19/seat/mo); lacks in-app product walkthrough builders.",
+          "Starter is capped at 10 seats and uses annual billing in the current record; confirm channel and onboarding requirements before treating the entry tier as a complete support stack.",
         pricingNote:
-          "Starter is $19/seat/mo; Growth is $59/seat/mo; Scale is $99/seat/mo (billed annually).",
+          "Starter is $25/seat/mo, Professional $65/seat/mo, and Enterprise $105/seat/mo, with annual billing in the current record.",
       },
     ],
     comparisons: [
@@ -1389,7 +1389,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best social media management software for agencies: Sprout Social, Buffer, Hootsuite, and Later evaluated on client approvals, white-label reporting, and social listening.",
     categorySlug: "marketing",
     roleName: "Social Media & Digital Agencies",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Social media agencies manage dozens of client brands simultaneously: scheduling multi-channel posts, securing client approvals before publishing, monitoring brand sentiment, and delivering branded performance reports.",
     targetAudience: [
@@ -1427,9 +1427,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Sprout Social provides comprehensive social media management for agencies. Its Smart Inbox unifies client conversations, its team approval workflows prevent publishing errors, and its enterprise social listening delivers deep brand sentiment intelligence.",
         limitations:
-          "High per-seat pricing ($199-$399/seat/mo) makes it an investment best suited for established agencies with premium retainer clients.",
+          "Sprout Social is priced per seat; the current record starts Essentials at $79/seat/mo with annual billing and lists higher Standard, Professional, and Advanced tiers.",
         pricingNote:
-          "Standard $199/seat/mo; Professional $299/seat/mo; Advanced $399/seat/mo; Enterprise custom.",
+          "Essentials is $79/seat/mo, Standard $199, Professional $299, and Advanced $399 with annual billing; monthly pricing is explicitly recorded only for Essentials ($99).",
       },
       {
         slug: "buffer",
@@ -1440,7 +1440,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Social listening and deep CRM integrations are less extensive than Sprout Social.",
         pricingNote:
-          "Free plan up to 3 channels; Essentials $5/channel/mo; Team $10/channel/mo with unlimited users; Agency $100/mo (10 channels).",
+          "Free supports up to 3 channels; Essentials is $5/channel/mo and Team $10/channel/mo. Team records unlimited team members; pricing scales with connected channels.",
       },
       {
         slug: "hootsuite",
@@ -1451,7 +1451,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "User interface can feel cluttered compared to modern minimal tools like Buffer or Later.",
         pricingNote:
-          "Professional $99/mo (1 user, 10 profiles); Team $249/mo (3 users, 20 profiles); Enterprise custom.",
+          "The current Miloosh catalog does not carry a verified fixed Hootsuite price, so check the vendor before budgeting rather than relying on an older plan figure.",
       },
       {
         slug: "later",
@@ -1482,7 +1482,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         question:
           "Why is Buffer preferred by boutique agencies over Sprout Social?",
         answer:
-          "Buffer charges per social channel rather than per user seat on its Agency and Team tiers, allowing small agencies to invite all team members and clients to collaborate without incurring $200-$300/month per-user charges.",
+          "Buffer Team is priced per connected channel and records unlimited team members. Compare your channel count with the seat count required by per-seat alternatives rather than assuming one pricing model is always cheaper.",
       },
     ],
   },
@@ -1495,7 +1495,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Find the best social media schedulers for small businesses: Buffer, Later, Sprout Social, and Hootsuite evaluated on ease of use, pricing, visual planning, and auto-publishing.",
     categorySlug: "marketing",
     roleName: "Small Businesses & Content Creators",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Small business owners and creators need social media scheduling software that saves time: scheduling weekly content in one sitting, previewing visual layouts, auto-publishing across multiple channels, and fitting a modest monthly budget.",
     targetAudience: [
@@ -1555,9 +1555,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Hootsuite provides comprehensive social monitoring streams and bulk scheduling for small businesses managing active customer conversations across several social networks.",
         limitations:
-          "Higher entry price point ($99/mo) compared to Buffer and Later.",
+          "The current Miloosh catalog does not carry a verified fixed Hootsuite entry price; verify the live vendor plan before comparing it with Buffer or Later.",
         pricingNote:
-          "Professional starts at $99/mo (10 profiles, unlimited posts); Team is $249/mo.",
+          "Current fixed Hootsuite pricing is not recorded in Miloosh; verify the vendor plan and included profile/user limits before budgeting.",
       },
       {
         slug: "sprout-social",
@@ -1566,9 +1566,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Sprout Social combines multi-channel scheduling with powerful customer care workflows and presentation-ready analytics dashboards.",
         limitations:
-          "Enterprise-oriented pricing ($199/seat/mo) is typically beyond the budget of small local businesses.",
+          "Sprout Social is per-seat and the current record starts Essentials at $79/seat/mo with annual billing, so even the entry tier should be modeled at the real number of users.",
         pricingNote:
-          "Standard is $199/seat/mo; Professional is $299/seat/mo (billed annually).",
+          "Essentials is $79/seat/mo; Standard $199 and Professional $299, with annual billing in the current record.",
       },
     ],
     comparisons: [
@@ -1599,7 +1599,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best task management and to-do list apps for individuals: Todoist, TickTick, Things, and Any.do evaluated on natural language input, widgets, and daily planning.",
     categorySlug: "productivity",
     roleName: "Busy Professionals & Solo Creators",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-09-28",
     intro:
       "Individuals need task management apps that capture thoughts effortlessly: lightning-fast natural language parsing, daily morning planning routines, cross-device widget sync, and zero friction in daily execution.",
     targetAudience: [
@@ -1637,9 +1637,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Todoist is a popular personal task manager with fast natural language date parsing, customizable filters for GTD workflows, and Karma gamification to encourage consistent task completion.",
         limitations:
-          "Task reminders, custom filters, and calendar sync require upgrading to the Pro plan ($4/mo).",
+          "Calendar layout and custom task reminders require Pro in the current record; the recorded Pro rate is $5/month with annual billing or $7 month to month.",
         pricingNote:
-          "Free plan (up to 5 personal projects); Pro is $4/mo ($48/yr); Business is $6/user/mo (billed annually).",
+          "Free supports up to 5 active personal projects; Pro is $5/mo with annual billing ($60/year) or $7 monthly, while Business is $8/user/mo annually or $10 monthly.",
       },
       {
         slug: "ticktick",
@@ -1650,7 +1650,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Natural language date parsing is slightly less forgiving than Todoist.",
         pricingNote:
-          "Free core tier; Premium is $2.99/mo (or $35.99/yr billed annually).",
+          "Free core tier; the current web record lists Premium at $49.99/year. Miloosh does not treat app-store monthly pricing as the website billing option.",
       },
       {
         slug: "things",
@@ -1661,7 +1661,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Exclusively available on Apple platforms (macOS, iOS, iPadOS, watchOS); no Windows or Android support.",
         pricingNote:
-          "One-time purchase: Mac ($49.99), iPad ($19.99), iPhone ($9.99). No monthly subscription.",
+          "The current Miloosh catalog does not carry verified Things pricing; verify the platform-specific purchase price in the vendor store before budgeting.",
       },
       {
         slug: "anydo",

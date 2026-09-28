@@ -23,12 +23,12 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "79", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "entry_paid": { "amount": "79", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "per_seat": true },
     "tiers": [
-      { "name": "Essentials", "amount": "79", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually ($99/seat/month billed monthly). 5 social profiles." },
-      { "name": "Standard", "amount": "199", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). 5 social profiles, consolidated inbox, Trellis AI agent." },
-      { "name": "Professional", "amount": "299", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Unlimited social profiles, message tagging, competitor insights." },
-      { "name": "Advanced", "amount": "399", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Sentiment analysis, Sprout API, helpdesk integrations." }
+      { "name": "Essentials", "amount": "79", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per seat/month, billed annually ($99/seat/month billed monthly). 5 social profiles." },
+      { "name": "Standard", "amount": "199", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). 5 social profiles, consolidated inbox, Trellis AI agent." },
+      { "name": "Professional", "amount": "299", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Unlimited social profiles, message tagging, competitor insights." },
+      { "name": "Advanced", "amount": "399", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Sentiment analysis, Sprout API, helpdesk integrations." }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-22",

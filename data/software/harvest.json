@@ -19,7 +19,7 @@
     "entry_paid": {
       "amount": "10.80",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -36,7 +36,8 @@
         "name": "Pro",
         "amount": "10.80",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat/mo",
         "notes": "Includes unlimited users, unlimited active projects, automated reminders, and integrations (billed annually at $10.80/mo or monthly at $12/mo)."
       }

@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { getAllSoftware } from "@/data/software";
+import { formatStartingPrice } from "@/lib/pricing-display";
 import { getAllCategories } from "@/data/categories";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldShowAffiliateDisclosure } from "@/lib/affiliate";
@@ -69,8 +70,9 @@ function ideasFromPricing(): RawIdea[] {
   return getAllSoftware()
     .filter((s) => s.pricing?.startingPrice || s.pricing?.model)
     .map((s) => {
-      const priceFact = s.pricing?.startingPrice
-        ? `starts at ${s.pricing.startingPrice}${s.pricing.hasFreeTier ? ", with a free tier available" : ""}`
+      const displayPrice = formatStartingPrice(s);
+      const priceFact = displayPrice
+        ? `starts at ${displayPrice}${s.pricing?.hasFreeTier ? ", with a free tier available" : ""}`
         : s.pricing?.model === "free"
           ? "is completely free"
           : s.pricing?.model === "open_source"

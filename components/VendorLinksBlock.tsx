@@ -15,7 +15,6 @@ import type { LucideProps } from "lucide-react";
 import type { Software } from "@/data/software";
 import { TrackedVendorLink } from "@/components/TrackedVendorLink";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
-import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 
 type VendorLinkDef = {
@@ -38,9 +37,10 @@ type VendorLinkDef = {
  * synthetic QA on a vendor source from being misreported as real traffic.
  */
 export function VendorLinksBlock({ software }: { software: Software }) {
-  // Narrow buyer-sprint scope. Editorial/source links and all other products
-  // keep their existing direct behavior; no guessed deep links are introduced.
-  const commercialAffiliate = Boolean(getFirstRevenuePage(software.slug)) && shouldShowAffiliateDisclosure(software);
+  // Any verified active partner may use its issued affiliate asset on
+  // commercial-intent Pricing/Free-trial buttons. Editorial/source links stay
+  // direct so evidence navigation is never rewritten as a commercial click.
+  const commercialAffiliate = shouldShowAffiliateDisclosure(software);
   const candidates: Array<{ label: string; url?: string; icon: ComponentType<LucideProps> }> = [
     { label: "Pricing", url: software.links?.pricing, icon: DollarSign },
     { label: "Free trial", url: software.links?.trial, icon: Rocket },

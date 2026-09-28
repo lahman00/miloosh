@@ -33,10 +33,10 @@
     "free_trial": { "available": true, "days": 30 },
     "entry_paid": { "amount": "475", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
     "tiers": [
-      { "name": "Essentials", "amount": "475", "currency": "USD", "billing_period": "annual", "unit": "per pack (5 instances)/year", "notes": "Veeam's own comparison describes Essentials as offering the same features as Advanced, for up to 50 workloads -- positioned for small business." },
-      { "name": "Foundation", "amount": "1550", "currency": "USD", "billing_period": "annual", "unit": "per pack (10 instances)/year", "notes": "Marketed as Veeam's \"Most Popular\" edition on its product page. Backup and recovery for every workload." },
-      { "name": "Advanced", "amount": "1890", "currency": "USD", "billing_period": "annual", "unit": "per pack (10 instances)/year", "notes": "Adds proactive monitoring, analytics, and threat insights over Foundation." },
-      { "name": "Premium", "amount": "2275", "currency": "USD", "billing_period": "annual", "unit": "per pack (10 instances)/year", "notes": "Adds orchestrated recovery and full cyber-resilience and compliance orchestration over Advanced." }
+      { "name": "Essentials", "amount": "475", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per pack (5 instances)/year", "notes": "Veeam's own comparison describes Essentials as offering the same features as Advanced, for up to 50 workloads -- positioned for small business." },
+      { "name": "Foundation", "amount": "1550", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per pack (10 instances)/year", "notes": "Marketed as Veeam's \"Most Popular\" edition on its product page. Backup and recovery for every workload." },
+      { "name": "Advanced", "amount": "1890", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per pack (10 instances)/year", "notes": "Adds proactive monitoring, analytics, and threat insights over Foundation." },
+      { "name": "Premium", "amount": "2275", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per pack (10 instances)/year", "notes": "Adds orchestrated recovery and full cyber-resilience and compliance orchestration over Advanced." }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",

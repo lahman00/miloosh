@@ -19,11 +19,11 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 7 },
-    "entry_paid": { "amount": "8.25", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "entry_paid": { "amount": "8.25", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per individual", "notes": "Capped at 50 notes total, 1 notebook, 200MB of attachments, and sync limited to 1 device." },
-      { "name": "Starter", "amount": "8.25", "currency": "USD", "billing_period": "annual", "unit": "per individual, $99/year", "notes": "$99/year billed annually, or $14.99/month billed month-to-month. Up to 1,000 notes, 20 notebooks, 1,000 attachments, sync on 3 devices, 5GB storage. Replaced the older Personal plan in late 2025." },
-      { "name": "Advanced", "amount": "20.83", "currency": "USD", "billing_period": "annual", "unit": "per individual, $249.99/year", "notes": "$249.99/year billed annually, or about $24.99/month month-to-month. Unlimited notes, notebooks, and attachments, unlimited device sync, and AI search/edit features. Replaced the older Professional plan." },
+      { "name": "Starter", "amount": "8.25", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per individual, $99/year", "notes": "$99/year billed annually, or $14.99/month billed month-to-month. Up to 1,000 notes, 20 notebooks, 1,000 attachments, sync on 3 devices, 5GB storage. Replaced the older Personal plan in late 2025." },
+      { "name": "Advanced", "amount": "20.83", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per individual, $249.99/year", "notes": "$249.99/year billed annually, or about $24.99/month month-to-month. Unlimited notes, notebooks, and attachments, unlimited device sync, and AI search/edit features. Replaced the older Professional plan." },
       { "name": "Enterprise", "currency": "USD", "billing_period": "unknown", "unit": "per organization", "notes": "Contact sales; offers a separate 14-day free trial versus 7 days for Starter/Advanced." }
     ],
     "last_verified": "2026-09-26",

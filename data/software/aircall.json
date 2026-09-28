@@ -31,7 +31,7 @@
     "entry_paid": {
       "amount": "30",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -40,7 +40,8 @@
         "name": "Essentials",
         "amount": "30",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per license/month",
         "notes": "3-license minimum; $90/month for 3 licenses, billed annually."
       },
@@ -48,7 +49,8 @@
         "name": "Professional",
         "amount": "50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per license/month",
         "notes": "3-license minimum; adds advanced analytics, monitoring, smart routing and sales productivity features."
       },

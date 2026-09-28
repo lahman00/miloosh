@@ -33,7 +33,7 @@
     "entry_paid": {
       "amount": "3.00",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": false,
       "annual_billing_required": true
     },
@@ -49,14 +49,16 @@
         "name": "Standard",
         "amount": "3.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Starts at 500 contacts, billed annually ($4/month billed monthly). Unlimited emails, 10 users, 120+ templates, A/B testing, and basic automation workflows. Price rises with contact-list size, up to 100,000 contacts."
       },
       {
         "name": "Professional",
         "amount": "4.50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Starts at 500 contacts, billed annually ($6/month billed monthly). Adds advanced segmentation, dynamic content, send-time optimization, abandoned-cart workflows, and webhooks. Price rises with contact-list size."
       }
     ],

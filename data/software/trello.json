@@ -83,7 +83,7 @@
     "entry_paid": {
       "amount": "5",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true,
       "unit": "user"
     },
@@ -99,7 +99,8 @@
         "name": "Standard",
         "amount": "5",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$5/user/month billed annually ($6 billed monthly); adds unlimited boards, custom fields, advanced checklists, Planner, and more automation."
       },
@@ -107,7 +108,8 @@
         "name": "Premium",
         "amount": "10",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$10/user/month billed annually ($12.50 billed monthly); adds Calendar, Timeline, Table, Dashboard, and Map views plus admin/security features."
       },
@@ -115,7 +117,8 @@
         "name": "Enterprise",
         "amount": "17.50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$17.50/user/month billed annually; adds organization-wide controls and Atlassian Guard Standard."
       }

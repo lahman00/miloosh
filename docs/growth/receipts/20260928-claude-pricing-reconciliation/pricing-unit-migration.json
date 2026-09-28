@@ -1,0 +1,3240 @@
+{
+  "generatedAt": "2026-09-28",
+  "base": "d38cecb",
+  "rule": "billing_period describes the numeric price unit; annual_billing_required describes contract cadence. Explicit yearly lump sums stay annual.",
+  "changedRecordCount": 246,
+  "changedFileCount": 76,
+  "changes": [
+    {
+      "slug": "1password",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$24.95/month for up to 10 users"
+    },
+    {
+      "slug": "1password",
+      "path": "pricing.tiers[0]/Teams Starter Pack",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $24.95/month paid annually; includes 10 members. Additional seats up to 20 total are $4.99/member/month on annual billing."
+    },
+    {
+      "slug": "1password",
+      "path": "pricing.tiers[1]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $8.99/user/month paid annually; adds broader administration, identity-provider integrations, reporting, and role-based permissions."
+    },
+    {
+      "slug": "acuity-scheduling",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$16/month"
+    },
+    {
+      "slug": "acuity-scheduling",
+      "path": "pricing.tiers[0]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $16/month billed annually ($20 monthly); 1 calendar."
+    },
+    {
+      "slug": "acuity-scheduling",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $27/month billed annually ($34 monthly); up to 6 calendars, payments, reminders, intake forms, waitlist, memberships and packages."
+    },
+    {
+      "slug": "acuity-scheduling",
+      "path": "pricing.tiers[2]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $49/month billed annually ($61 monthly); up to 36 calendars."
+    },
+    {
+      "slug": "aircall",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$30/license/month billed annually (Essentials; 3-license minimum)"
+    },
+    {
+      "slug": "aircall",
+      "path": "pricing.tiers[0]/Essentials",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per license/month | 3-license minimum; $90/month for 3 licenses, billed annually."
+    },
+    {
+      "slug": "aircall",
+      "path": "pricing.tiers[1]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per license/month | 3-license minimum; adds advanced analytics, monitoring, smart routing and sales productivity features."
+    },
+    {
+      "slug": "algolia",
+      "path": "pricing.tiers[3]/Elevate",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Contact-sales only, requires an annual contract. Volume-based discounted custom pricing; adds real-time personalization and a 99.99% availability SLA."
+    },
+    {
+      "slug": "apollo-io",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": false
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$49/seat/month (billed annually)"
+    },
+    {
+      "slug": "apollo-io",
+      "path": "pricing.tiers[1]/Basic",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | $65/seat/month if billed monthly. 30,000 credits per seat per year, granted upfront. Adds unlimited sequences, advanced filters, waterfall enrichment, and a 14-day free trial."
+    },
+    {
+      "slug": "apollo-io",
+      "path": "pricing.tiers[2]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | Marked \"Most Popular\" on the pricing page. $99/seat/month if billed monthly. 48,000 credits per seat per year. Adds unlimited meeting events, agentic loops, call recording/AI insights (4,000 minutes), and analytics."
+    },
+    {
+      "slug": "apollo-io",
+      "path": "pricing.tiers[3]/Organization",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | Minimum 3 seats, billed annually. 72,000 credits per seat per year. Adds SSO, advanced security configurations, and a \"Talk to Sales\" primary call-to-action despite the published price."
+    },
+    {
+      "slug": "asana",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$10.99/user/month"
+    },
+    {
+      "slug": "asana",
+      "path": "pricing.tiers[1]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $10.99/user/month billed annually ($13.49 monthly); adds unlimited seats, Timeline/Gantt, reporting dashboards, automations, forms, and custom fields."
+    },
+    {
+      "slug": "asana",
+      "path": "pricing.tiers[2]/Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $24.99/user/month billed annually ($30.49 monthly); adds portfolios, goals, workload, approvals, time tracking, and advanced integrations."
+    },
+    {
+      "slug": "atera",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$149/technician/month"
+    },
+    {
+      "slug": "atera",
+      "path": "pricing.tiers[0]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per technician/month | Billed annually; $169/technician/month if billed monthly. Unlimited endpoints. For teams managing corporate devices and networks."
+    },
+    {
+      "slug": "atera",
+      "path": "pricing.tiers[1]/Master",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per technician/month | Billed annually; $269/technician/month if billed monthly. For established teams needing greater compliance and more insights."
+    },
+    {
+      "slug": "basecamp",
+      "path": "pricing.tiers[4]/Unlimited",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually; unlimited projects and users, 1 TB storage, and a 45-day free trial."
+    },
+    {
+      "slug": "bigcommerce",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$29/month"
+    },
+    {
+      "slug": "bigcommerce",
+      "path": "pricing.tiers[0]/Core",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $29/month billed annually ($39 monthly); up to $30K trailing-12-month GMV, then auto-upgrades to Growth. Open Payment Provider fee can apply."
+    },
+    {
+      "slug": "bigcommerce",
+      "path": "pricing.tiers[1]/Growth",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $79/month billed annually ($105 monthly); up to $100K TTM GMV."
+    },
+    {
+      "slug": "bigcommerce",
+      "path": "pricing.tiers[2]/Scale",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | $299/month billed annually ($399 monthly); $33,333/month GMV base threshold with 0.9% overage above the cap."
+    },
+    {
+      "slug": "bigcommerce",
+      "path": "pricing.tiers[3]/Performance",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Custom pricing starting at $1,499/month billed annually."
+    },
+    {
+      "slug": "bitwarden",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$4/user/month"
+    },
+    {
+      "slug": "bitwarden",
+      "path": "pricing.tiers[1]/Teams",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $4/user/month billed annually; centralized sharing, event logs, directory sync, and SCIM."
+    },
+    {
+      "slug": "bitwarden",
+      "path": "pricing.tiers[2]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $6/user/month billed annually; adds granular controls, passwordless SSO integration, account recovery, self-hosting, and a free Families plan for users."
+    },
+    {
+      "slug": "cal-com",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$12/user/month"
+    },
+    {
+      "slug": "cal-com",
+      "path": "pricing.tiers[1]/Teams",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $12/user/month billed yearly; adds shared availability, round-robin scheduling, managed event types, routing forms, analytics, and custom APIs."
+    },
+    {
+      "slug": "cal-com",
+      "path": "pricing.tiers[2]/Organizations",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $28/user/month billed yearly; adds unlimited sub-teams, company subdomain, SAML SSO/SCIM, RBAC, and additional APIs."
+    },
+    {
+      "slug": "calendly",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$10/seat/month"
+    },
+    {
+      "slug": "calendly",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat | $10/seat/month billed yearly; unlimited event types, multiple calendars, automations/reminders, Stripe/PayPal, HubSpot and Mailchimp connections."
+    },
+    {
+      "slug": "calendly",
+      "path": "pricing.tiers[2]/Teams",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat | $16/seat/month billed yearly; adds round-robin and team scheduling, routing, centrally managed event types, and Salesforce handoff."
+    },
+    {
+      "slug": "calendly",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Starts at $15,000/year and 50 seats; contact sales."
+    },
+    {
+      "slug": "chatgpt",
+      "path": "pricing.tiers[6]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=custom / contact sales | No public per-seat price. Sold only via annual contract through OpenAI sales; invoicing available as a payment option. Billing basis: annual (contract)."
+    },
+    {
+      "slug": "chili-piper",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$1,250/month, billed annually at $15,000/year (Routing & Scheduling plan)"
+    },
+    {
+      "slug": "chili-piper",
+      "path": "pricing.tiers[0]/Routing & Scheduling",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed annually | Totals $15,000/year. Up to 15 seats included, then $45/seat/month. Includes 45,000 credits per year. Its plan family is billed annually only; monthly billing is not available."
+    },
+    {
+      "slug": "chili-piper",
+      "path": "pricing.tiers[1]/Experiences",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed annually | Totals $42,000/year. Up to 30 seats included, then $50/seat/month. Includes 150,000 credits per year. Billed annually only; monthly billing is not available."
+    },
+    {
+      "slug": "circleci",
+      "path": "pricing.tiers[2]/Scale",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=custom quote | Unlimited concurrency, custom credit/user allotments, 50GB network + 200GB storage included, GPU/largest resource classes, enterprise controls, optional 24/7 support add-on. Requires contacting sales. Billing basis: annual (billed annually)."
+    },
+    {
+      "slug": "consensus",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$600/month, billed annually (Starter plan, up to 5 users)"
+    },
+    {
+      "slug": "consensus",
+      "path": "pricing.tiers[0]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed annually | For up to 5 users. Includes Video Demos and Product Tours, AI Content Studio - Lite (AI scripting, voiceover, and translations for dynamic tours), embeddable links, unlimited demos, and marketing analytics/integrations (HubSpot, Eloqua, Pardot, Marketo)."
+    },
+    {
+      "slug": "consensus",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed annually | For up to 10 users. Adds AI Content Studio - Pro (100 AI video minutes/month, 65+ languages, AI avatars), sales analytics (heatmaps, stakeholder discovery, sales leaderboard), personalized sales links, and sales-tool integrations including Highspot, Seismic, Gong, Salesforce, Salesloft, Outreach, plus API access."
+    },
+    {
+      "slug": "copy-ai",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$24/month"
+    },
+    {
+      "slug": "copy-ai",
+      "path": "pricing.tiers[0]/Chat",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month when billed $288/year; 5 seats. Monthly billing is $29/month."
+    },
+    {
+      "slug": "copy-ai",
+      "path": "pricing.tiers[1]/Growth",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed $12,000/year; 75 seats and 20K workflow credits per month."
+    },
+    {
+      "slug": "copy-ai",
+      "path": "pricing.tiers[2]/Expansion",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed $24,000/year; 150 seats and 45K workflow credits per month."
+    },
+    {
+      "slug": "copy-ai",
+      "path": "pricing.tiers[3]/Scale",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed $36,000/year; 200 seats and 75K workflow credits per month."
+    },
+    {
+      "slug": "dashlane",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$8/user/month"
+    },
+    {
+      "slug": "dashlane",
+      "path": "pricing.tiers[0]/Omnix Password Management",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $8/user/month; password and passkey management, secure sharing, password policies, and SSO/SCIM integrations."
+    },
+    {
+      "slug": "dashlane",
+      "path": "pricing.tiers[1]/Omnix Credential Protection",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $4/user/month; credential risk detection and response rather than a full password-management replacement."
+    },
+    {
+      "slug": "deepl",
+      "path": "pricing.tiers[1]/Individual",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user, billed annually (16% cheaper than monthly) | 300,000 characters/month, 3 file translations/month (max 30MB), 30 minutes of DeepL Voice/month included."
+    },
+    {
+      "slug": "deepl",
+      "path": "pricing.tiers[2]/Team",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user, billed annually | 1,000,000 characters/user/month, 5 glossaries, team admin/analytics. SSO is only available for organizations with 50+ users."
+    },
+    {
+      "slug": "deepl",
+      "path": "pricing.tiers[3]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user, billed annually | Unlimited characters under fair use, translation memory, and a 99.0% availability SLA."
+    },
+    {
+      "slug": "docusign",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$11/month (Personal; annual commitment billed monthly)"
+    },
+    {
+      "slug": "docusign",
+      "path": "pricing.tiers[0]/Personal",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month | Annual commitment billed monthly ($132 annual commitment). Includes 5 envelopes per month, agreement storage, AI-assisted summary, reusable templates, and 1,000+ integrations."
+    },
+    {
+      "slug": "docusign",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Annual commitment billed monthly ($360 per user annually). Includes up to 100 envelopes per user per year plus shared templates, real-time commenting, branding, delegated signing, and team controls."
+    },
+    {
+      "slug": "docusign",
+      "path": "pricing.tiers[2]/Business Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Annual commitment billed monthly ($540 per user annually). Adds web forms, payment collection, advanced fields, data verification, bulk send, and other advanced agreement features."
+    },
+    {
+      "slug": "evernote",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$8.25"
+    },
+    {
+      "slug": "evernote",
+      "path": "pricing.tiers[1]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per individual, $99/year | $99/year billed annually, or $14.99/month billed month-to-month. Up to 1,000 notes, 20 notebooks, 1,000 attachments, sync on 3 devices, 5GB storage. Replaced the older Personal plan in late 2025."
+    },
+    {
+      "slug": "evernote",
+      "path": "pricing.tiers[2]/Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per individual, $249.99/year | $249.99/year billed annually, or about $24.99/month month-to-month. Unlimited notes, notebooks, and attachments, unlimited device sync, and AI search/edit features. Replaced the older Professional plan."
+    },
+    {
+      "slug": "expensify",
+      "path": "pricing.tiers[2]/Control (annual, with Expensify Card)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per member | \"As low as\" price; the discount (up to 50%) scales with the share of approved USD expenses charged to the Expensify Card that billing month."
+    },
+    {
+      "slug": "expensify",
+      "path": "pricing.tiers[3]/Control (annual, no card)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per member | Annual subscription without Expensify Card usage."
+    },
+    {
+      "slug": "fathom",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": false
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$16/user/month, billed annually (Premium plan) — Free plan also available"
+    },
+    {
+      "slug": "fathom",
+      "path": "pricing.tiers[1]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $20/user/month if billed monthly. No seat minimum. Adds advanced call summaries, AI-generated action items, a conversational meeting assistant, and a custom meeting bot."
+    },
+    {
+      "slug": "fathom",
+      "path": "pricing.tiers[2]/Team",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $19/user/month if billed monthly. Minimum 2 users. Adds global search across calls, meeting-highlight playlists, and team collaboration via comments, folders, and keyword alerts."
+    },
+    {
+      "slug": "fathom",
+      "path": "pricing.tiers[3]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $34/user/month if billed monthly. Minimum 2 users. Adds CRM field sync, Deal View, coaching metrics/AI scorecards, and custom call summaries."
+    },
+    {
+      "slug": "fireflies-ai",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": false
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$10/seat/month, billed annually (Pro plan; $18/month billed monthly) — Free plan also available"
+    },
+    {
+      "slug": "fireflies-ai",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | $18/seat/month if billed monthly. Unlimited transcription and AI summaries, 8,000 minutes of storage/seat, 20 AI credits. Adds video recording, downloadable transcripts/recordings, Personal/Email Assistants, AI Skills, Voice Agents, and unlimited integrations."
+    },
+    {
+      "slug": "fireflies-ai",
+      "path": "pricing.tiers[2]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | $29/seat/month if billed monthly. Marked \"Most Popular.\" Unlimited storage, 30 AI credits. Adds multi-language mode, conversation intelligence, team analytics for admins, public meeting access, and user groups. Volume discounts available for more than 50 seats."
+    },
+    {
+      "slug": "fireflies-ai",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | Marked \"ANNUAL ONLY\" on the pricing page (no separate monthly rate). Unlimited storage, 50 AI credits. Adds a rules engine, SSO + SCIM, API audit logs, HIPAA compliance, private storage, custom data retention, transcript-and-summary-only mode, a super admin role, and a dedicated account manager. The page's call-to-action for this tier is still \"Contact Us\" rather than self-serve signup."
+    },
+    {
+      "slug": "freshdesk",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$19/agent/month"
+    },
+    {
+      "slug": "freshdesk",
+      "path": "pricing.tiers[0]/Growth",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox."
+    },
+    {
+      "slug": "freshdesk",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk."
+    },
+    {
+      "slug": "freshdesk",
+      "path": "pricing.tiers[2]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per agent/month, billed annually. All AI and helpdesk features."
+    },
+    {
+      "slug": "freshsales",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$9"
+    },
+    {
+      "slug": "freshsales",
+      "path": "pricing.tiers[1]/Growth",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user, billed annually | A separate official Freshworks page states monthly billing starts at $15/user/month, though the exact monthly rate isn't shown on the main pricing page. Kanban view, lifecycle stages, custom fields."
+    },
+    {
+      "slug": "freshsales",
+      "path": "pricing.tiers[2]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user, billed annually | Adds contact scoring, deal insights, and sales sequences."
+    },
+    {
+      "slug": "freshsales",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user, billed annually | Adds forecasting insights, field-level permissions, custom modules, and audit logs."
+    },
+    {
+      "slug": "freshservice",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$19/agent/month, billed annually"
+    },
+    {
+      "slug": "freshservice",
+      "path": "pricing.tiers[0]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent | Per agent/month, billed annually. Includes incident management, knowledge management, task management, and the support portal. Monthly billing is also available at a higher rate (the pricing page states annual billing saves 20%)."
+    },
+    {
+      "slug": "freshservice",
+      "path": "pricing.tiers[1]/Growth",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent | Per agent/month, billed annually. Adds service catalog, SLA management, on-call management, and cloud management."
+    },
+    {
+      "slug": "freshservice",
+      "path": "pricing.tiers[2]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent | Per agent/month, billed annually. Adds problem management, change management, major incident management, workload management, release management, and employee journeys. Freddy AI Copilot is available as an add-on at $29/agent/month."
+    },
+    {
+      "slug": "front",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$25/seat/month"
+    },
+    {
+      "slug": "front",
+      "path": "pricing.tiers[0]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually (saves 24% vs monthly). Capped at 10 seats. Single-channel support, basic analytics."
+    },
+    {
+      "slug": "front",
+      "path": "pricing.tiers[1]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually. Capped at 50 seats. Omnichannel, SSO/SCIM, advanced analytics."
+    },
+    {
+      "slug": "front",
+      "path": "pricing.tiers[2]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually. Unlimited seats, most popular tier. Requires a sales demo; onboarding packages mandatory for contracts over $25k."
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$75/user/month"
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "path": "pricing.tiers[0]/Genesys Cloud CX 1",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | Named-license pricing for voice-only contact centers."
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "path": "pricing.tiers[1]/Genesys Cloud CX 2",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | Adds omnichannel support with quality assurance (QA)."
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "path": "pricing.tiers[2]/Genesys Cloud CX 3",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | Adds workforce engagement management (WEM)."
+    },
+    {
+      "slug": "genesys-cloud-cx",
+      "path": "pricing.tiers[3]/Genesys Cloud CX 4",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | Adds advanced AI and journey management, plus 30 AI Experience tokens per named agent. Concurrent and Hourly Interacting licensing are also available as alternatives to named licensing."
+    },
+    {
+      "slug": "gitlab",
+      "path": "pricing.tiers[1]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Available for both GitLab.com (Cloud) and Self-Managed. Includes $12 of 'GitLab Credits' per user/month bundled in. Marked 'Most popular' on the official pricing page. Billing basis: annually (quoted as monthly rate, billed yearly)."
+    },
+    {
+      "slug": "harvest",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$10.80"
+    },
+    {
+      "slug": "harvest",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat/mo | Includes unlimited users, unlimited active projects, automated reminders, and integrations (billed annually at $10.80/mo or monthly at $12/mo)."
+    },
+    {
+      "slug": "hubstaff",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$4.99"
+    },
+    {
+      "slug": "hubstaff",
+      "path": "pricing.tiers[0]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat/mo | Includes time tracking, timesheets, and basic activity tracking (2-seat minimum)."
+    },
+    {
+      "slug": "hubstaff",
+      "path": "pricing.tiers[1]/Grow",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat/mo | Adds advanced reporting, URL & app tracking, and 1,500 screenshots/seat/mo (2-seat minimum)."
+    },
+    {
+      "slug": "hubstaff",
+      "path": "pricing.tiers[2]/Team",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat/mo | Adds unlimited screenshots, shift scheduling, payroll integrations, and client invoicing (2-seat minimum)."
+    },
+    {
+      "slug": "hubstaff",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat/mo | Adds VIP support, SOC 2 compliance, and custom account provisioning."
+    },
+    {
+      "slug": "ifttt",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$2.99"
+    },
+    {
+      "slug": "ifttt",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per account | $2.99/mo requires annual billing ($35.88/yr); the page advertises a 40% saving versus monthly billing but does not display the flat monthly figure. 20 Applets, multi-action Applets, webhooks, about 5-minute polling speed."
+    },
+    {
+      "slug": "ifttt",
+      "path": "pricing.tiers[2]/Pro+",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per account | $8.99/mo requires annual billing ($107.88/yr), same 40%-savings annual structure. Unlimited Applets, AI services, filter code, and multiple accounts per service."
+    },
+    {
+      "slug": "jamf-pro",
+      "path": "pricing.tiers[0]/Jamf for Mac",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per macOS device/month | Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Every plan requires contacting sales to purchase -- there is no self-serve checkout."
+    },
+    {
+      "slug": "jamf-pro",
+      "path": "pricing.tiers[1]/Jamf for Mobile",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per mobile device/month | Bundle price for Jamf Pro, Jamf Connect, and Jamf Protect together (not Jamf Pro alone), billed annually with a 25-device minimum. Jamf markets this bundle as covering iOS, iPadOS, visionOS, watchOS, tvOS, and Android -- that cross-platform mobile coverage is attributed to the bundle, not confirmed as a capability of Jamf Pro on its own."
+    },
+    {
+      "slug": "jasper",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$59/month/seat"
+    },
+    {
+      "slug": "jasper",
+      "path": "pricing.tiers[0]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=seat | Per month per seat, billed annually; $69/month/seat with monthly billing. Includes one seat and a 7-day free trial."
+    },
+    {
+      "slug": "jira",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=custom / contact sales | No public price. Billed annually only (not offered on monthly billing), and the pricing calculator only reveals an Enterprise line once you enter 801+ users; below that it just says to contact sales. 99.95% uptime SLA, 24/7 support for all issues."
+    },
+    {
+      "slug": "lastpass",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$3/month"
+    },
+    {
+      "slug": "lastpass",
+      "path": "pricing.tiers[1]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually; regular list price (a time-limited 30% promotional discount was active as of 2026-08-22). Access on all devices."
+    },
+    {
+      "slug": "lastpass",
+      "path": "pricing.tiers[2]/Families",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually; regular list price. 6 Premium accounts included."
+    },
+    {
+      "slug": "lastpass",
+      "path": "pricing.tiers[3]/Teams",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed annually. Admin console, shared folders."
+    },
+    {
+      "slug": "lastpass",
+      "path": "pricing.tiers[4]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed annually. 100+ advanced security policies."
+    },
+    {
+      "slug": "lastpass",
+      "path": "pricing.tiers[5]/Business Max",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed annually. SaaS Monitoring, unlimited SSO apps."
+    },
+    {
+      "slug": "lattice",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$4/seat/month"
+    },
+    {
+      "slug": "lattice",
+      "path": "pricing.tiers[0]/Engagement",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month, billed annually | Base module. Includes Habits (1:1s, weekly updates, feedback, Q&A boards) at no extra cost."
+    },
+    {
+      "slug": "lattice",
+      "path": "pricing.tiers[1]/Goals & OKRs",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month, billed annually | Base module, can be bought standalone or combined with others."
+    },
+    {
+      "slug": "lattice",
+      "path": "pricing.tiers[2]/Performance",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month, billed annually | Base module for performance reviews and identifying high performers."
+    },
+    {
+      "slug": "lattice",
+      "path": "pricing.tiers[3]/Grow add-on",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=additional per seat/month, billed annually | Add-on on top of a base module; career progression and development tools."
+    },
+    {
+      "slug": "lattice",
+      "path": "pricing.tiers[4]/Compensation add-on",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=additional per seat/month, billed annually | Add-on on top of a base module; compensation planning and review cycles."
+    },
+    {
+      "slug": "liveagent",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$15/agent/month"
+    },
+    {
+      "slug": "liveagent",
+      "path": "pricing.tiers[0]/Small Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent/month | $19/agent/month if billed monthly."
+    },
+    {
+      "slug": "liveagent",
+      "path": "pricing.tiers[1]/Medium Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent/month | $35/agent/month if billed monthly."
+    },
+    {
+      "slug": "liveagent",
+      "path": "pricing.tiers[2]/Large Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent/month | $59/agent/month if billed monthly."
+    },
+    {
+      "slug": "liveagent",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=agent/month | $85/agent/month if billed monthly. Requires booking a demo call. No separately disclosed AI usage price; AI Answer Assistant is bundled."
+    },
+    {
+      "slug": "maintainx",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "Free (Basic); paid plans from $20/user/month billed annually (Essential)"
+    },
+    {
+      "slug": "maintainx",
+      "path": "pricing.tiers[1]/Essential",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $25/user/month if billed monthly. Unlimited work orders with images, 3 repeating work orders, and 3 months of analytics history."
+    },
+    {
+      "slug": "maintainx",
+      "path": "pricing.tiers[2]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $75/user/month if billed monthly. Unlimited work orders with procedures and analytics, parts inventory, purchase orders, and API access. MaintainX's most popular plan."
+    },
+    {
+      "slug": "microsoft-dynamics-365-business-central",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$80/user/month (Essentials, billed annually)"
+    },
+    {
+      "slug": "microsoft-dynamics-365-business-central",
+      "path": "pricing.tiers[0]/Essentials",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Paid annually; effective November 2025 (up from $70/user/month). Includes financial, sales, and operations management plus Copilot; unlimited users, customization, and multiple environments/companies per Microsoft's published plan comparison."
+    },
+    {
+      "slug": "microsoft-dynamics-365-business-central",
+      "path": "pricing.tiers[1]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Paid annually; effective November 2025 (up from $100/user/month). Adds service management and manufacturing capabilities on top of Essentials."
+    },
+    {
+      "slug": "microsoft-dynamics-365-business-central",
+      "path": "pricing.tiers[2]/Team Members",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Limited, read/approval-focused access tier for users who only need to view or update select information rather than full functionality."
+    },
+    {
+      "slug": "microsoft-power-bi",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$14/user/month, paid yearly (Power BI Pro)"
+    },
+    {
+      "slug": "microsoft-power-bi",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Paid yearly. Included in Microsoft 365 E5 and Office 365 E5 subscriptions."
+    },
+    {
+      "slug": "microsoft-power-bi",
+      "path": "pricing.tiers[2]/Premium Per User",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Paid yearly. Adds larger semantic model sizes, up to 48 refreshes/day (vs. 8/day on Pro), and a 100 GB model memory limit. Available as a $14/user/month add-on for existing Pro licensees."
+    },
+    {
+      "slug": "miro",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$8"
+    },
+    {
+      "slug": "miro",
+      "path": "pricing.tiers[1]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per member/month, billed yearly | $10/member/month if billed monthly instead. Unlimited private boards, 25 AI credits/member/month. Annual invoicing requires a 10-seat minimum."
+    },
+    {
+      "slug": "miro",
+      "path": "pricing.tiers[2]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per member/month, billed yearly | $25/member/month if billed monthly. Includes SAML SSO but not SCIM provisioning or audit logs. 50 AI credits/member/month. Annual invoicing requires a 5-seat minimum."
+    },
+    {
+      "slug": "mycase",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$50/user/month billed annually (Basic) or $60/user/month billed monthly"
+    },
+    {
+      "slug": "mycase",
+      "path": "pricing.tiers[0]/Basic",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $60/user/month on month-to-month billing."
+    },
+    {
+      "slug": "mycase",
+      "path": "pricing.tiers[1]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $120/user/month monthly. Adds workflows, intake/CRM, unlimited eSignature/document generation, richer communications, premium billing/reporting, 8am IQ writing/document tools, and 70+ integrations."
+    },
+    {
+      "slug": "mycase",
+      "path": "pricing.tiers[2]/Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | $150/user/month monthly. Adds 8am IQ Case and Discovery assistants, advanced document automation, desktop drive, conflict tracking, split billing, and Open API."
+    },
+    {
+      "slug": "n8n",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "€20/month"
+    },
+    {
+      "slug": "n8n",
+      "path": "pricing.tiers[1]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually; 2,500 workflow executions; hosted by n8n."
+    },
+    {
+      "slug": "n8n",
+      "path": "pricing.tiers[2]/Pro",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually; 10,000 workflow executions; hosted by n8n."
+    },
+    {
+      "slug": "n8n",
+      "path": "pricing.tiers[3]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually; 40,000 workflow executions; self-hosted."
+    },
+    {
+      "slug": "odoo",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": false
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$0 (One App Free, unlimited users); paid plans from $13.50/user/month billed yearly"
+    },
+    {
+      "slug": "odoo",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | All apps on Odoo Online. $13.50/user/month billed yearly vs. $16.90/user/month billed monthly. Per Odoo's pricing page: \"The discount is valid for 12 months, for initial users ordered.\""
+    },
+    {
+      "slug": "odoo",
+      "path": "pricing.tiers[2]/Custom",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | All apps plus Odoo Studio, multi-company support, and external API access; choice of Odoo Online, Odoo.sh, or on-premise hosting. $20.40/user/month billed yearly vs. $25.50/user/month billed monthly."
+    },
+    {
+      "slug": "pandadoc",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": false
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$19/seat/month (billed annually)"
+    },
+    {
+      "slug": "pandadoc",
+      "path": "pricing.tiers[1]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | Billed annually (\"Save up to 46%\" vs. monthly billing, exact monthly rate not published on the pricing page). Unlimited document uploads and eSignatures. 14-day free trial, no credit card required."
+    },
+    {
+      "slug": "pandadoc",
+      "path": "pricing.tiers[2]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per seat/month | Marked \"Most Popular.\" Billed annually. Adds custom quotes/sales agreements, CRM integrations, custom branding and content library, deal rooms, approval workflows, web forms, and bulk send."
+    },
+    {
+      "slug": "plaid",
+      "path": "pricing.tiers[3]/Growth",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Requires a 12-month commitment and a minimum spend not publicly disclosed; adds discounted rates and dashboard SSO."
+    },
+    {
+      "slug": "plaid",
+      "path": "pricing.tiers[4]/Custom/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Sales-negotiated; adds beta product access, volume discounts, and dedicated account management."
+    },
+    {
+      "slug": "ramp",
+      "path": "pricing.tiers[2]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Custom pricing via sales, billed annually. Adds Workday and Oracle integrations, white-glove support, implementation services, custom development, and locally funded global reimbursements."
+    },
+    {
+      "slug": "ringcentral",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$20/user/month"
+    },
+    {
+      "slug": "ringcentral",
+      "path": "pricing.tiers[0]/Core",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed annually ($30/user/month billed monthly). Unlimited domestic calling, HD meetings for 300 participants."
+    },
+    {
+      "slug": "ringcentral",
+      "path": "pricing.tiers[1]/Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed annually ($35/user/month billed monthly). CRM integrations, multi-site support."
+    },
+    {
+      "slug": "ringcentral",
+      "path": "pricing.tiers[2]/Ultra",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed annually ($45/user/month billed monthly). RingCentral Webinar, unlimited storage."
+    },
+    {
+      "slug": "salesforce",
+      "path": "pricing.tiers[2]/Pro Suite",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Starting price per user/month, billed annually -- a signed contract is required for this tier. Transaction fees apply. Advanced automation, sales quoting/forecasting."
+    },
+    {
+      "slug": "secureframe",
+      "path": "pricing.tiers[0]/Fundamentals",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | \"Starting at $7,000/year\" per Secureframe's pricing page; a full quote is still required. Includes 1 compliance framework, infrastructure monitoring, evidence collection, personnel/risk/policy management, and Trust Center."
+    },
+    {
+      "slug": "semrush",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$117.33/month"
+    },
+    {
+      "slug": "semrush",
+      "path": "pricing.tiers[0]/SEO",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually ($139/mo billed monthly). 5 websites, 500 tracked keywords, Site Audit, basic AI-search visibility tracking."
+    },
+    {
+      "slug": "semrush",
+      "path": "pricing.tiers[1]/Starter (SEO + AI Search)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually ($199/mo billed monthly). 5 websites, 500 keywords, keyword research/optimization, 50 AI prompts tracked daily."
+    },
+    {
+      "slug": "semrush",
+      "path": "pricing.tiers[2]/Pro+ (SEO + AI Search)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually ($299/mo billed monthly). 15 websites, 1,500 keywords, historical SEO data, multi-location tracking."
+    },
+    {
+      "slug": "semrush",
+      "path": "pricing.tiers[3]/Advanced (SEO + AI Search)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per month, billed annually ($549/mo billed monthly). 40 websites, 5,000 keywords, SEO share of voice, API data integration."
+    },
+    {
+      "slug": "sentinelone",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "$179.99/endpoint/year"
+    },
+    {
+      "slug": "sentinelone",
+      "path": "pricing.tiers[0]/Singularity Complete",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=endpoint | For 5-100 workstations. Includes AI-driven protection, real-time threat detection, 14-day data retention, and the AI Security Assistant. Final pricing is agreed through an authorized SentinelOne partner and may differ from this list price."
+    },
+    {
+      "slug": "sentinelone",
+      "path": "pricing.tiers[1]/Singularity Commercial",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=endpoint | For 5-100 workstations. Adds Identity Detection & Response, 90-day data retention, and Managed Threat Hunting. Final pricing is agreed through an authorized SentinelOne partner."
+    },
+    {
+      "slug": "shortcut",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$8.50/user/month"
+    },
+    {
+      "slug": "shortcut",
+      "path": "pricing.tiers[1]/Team",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed yearly (save up to 25% vs. monthly). Best for small teams."
+    },
+    {
+      "slug": "shortcut",
+      "path": "pricing.tiers[2]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per user/month, billed yearly (save up to 25% vs. monthly). Best for fast-growing teams."
+    },
+    {
+      "slug": "sprout-social",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$79/seat/month"
+    },
+    {
+      "slug": "sprout-social",
+      "path": "pricing.tiers[0]/Essentials",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually ($99/seat/month billed monthly). 5 social profiles."
+    },
+    {
+      "slug": "sprout-social",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). 5 social profiles, consolidated inbox, Trellis AI agent."
+    },
+    {
+      "slug": "sprout-social",
+      "path": "pricing.tiers[2]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Unlimited social profiles, message tagging, competitor insights."
+    },
+    {
+      "slug": "sprout-social",
+      "path": "pricing.tiers[3]/Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Sentiment analysis, Sprout API, helpdesk integrations."
+    },
+    {
+      "slug": "storyblok",
+      "path": "pricing.tiers[3]/Premium / Elite",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Contact sales; adds SSO, a formal uptime SLA, GraphQL API access, and A/B testing."
+    },
+    {
+      "slug": "tableau",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$15/user/month, billed annually (Viewer, Standard edition)"
+    },
+    {
+      "slug": "tableau",
+      "path": "pricing.tiers[0]/Viewer",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Standard edition, billed annually. Includes Tableau Mobile access, commenting, exporting, subscriptions, and data-driven alerts."
+    },
+    {
+      "slug": "tableau",
+      "path": "pricing.tiers[1]/Explorer",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Standard edition, billed annually. Adds web-based workbook authoring/editing and Tableau Agent in web authoring."
+    },
+    {
+      "slug": "tableau",
+      "path": "pricing.tiers[2]/Creator",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user/month | Standard edition, billed annually. Full authoring plus Tableau Desktop and Tableau Prep. Enterprise edition Creator is $115/user/month, billed annually."
+    },
+    {
+      "slug": "tailscale",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Contact sales; custom device limits, dedicated support, and pay-by-invoice."
+    },
+    {
+      "slug": "teamviewer",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "structured entry price"
+    },
+    {
+      "slug": "teamviewer",
+      "path": "pricing.tiers[0]/Remote Access",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed yearly | Figure shown on TeamViewer's Israel/MEA storefront -- teamviewer.com auto-detects visitor region and currency, so a US visitor may see a different, USD-denominated price on the same official pricing page. Access up to 3 unattended devices, 1 licensed user."
+    },
+    {
+      "slug": "teamviewer",
+      "path": "pricing.tiers[1]/Business",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed yearly | Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 119.20/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 200 unattended devices, 1 licensed user, 14-day free trial available."
+    },
+    {
+      "slug": "teamviewer",
+      "path": "pricing.tiers[2]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per month, billed yearly | Regional (Israel/MEA) list price; TeamViewer showed a promotional price of ILS 264.72/month with coupon code CMP-BPC20-2026 at time of access -- promotional and time-limited. Access up to 300 unattended devices, 15 licensed users."
+    },
+    {
+      "slug": "ticktick",
+      "path": "pricing.tiers[1]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per year | The only price shown on TickTick's official web pricing page is annual-only, US$49.99/year (about $4.17/month equivalent) — no monthly-billing option is listed on the website itself. Adds 299 lists/999 tasks per list, multiple calendar views, task duration, email reminders, and the Eisenhower Matrix. Mobile app-store subscriptions list separate monthly options around $2.99-3.99/month through Apple's own billing, not through ticktick.com."
+    },
+    {
+      "slug": "time-doctor",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$5.90"
+    },
+    {
+      "slug": "time-doctor",
+      "path": "pricing.tiers[0]/Basic",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Includes time tracking, task tracking, activity monitoring, and 1 screenshot per 30 minutes (billed annually at $5.90/mo or monthly at $7/mo)."
+    },
+    {
+      "slug": "time-doctor",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds app & URL tracking, automated payroll integrations, 60+ integrations, and up to 3 screenshots per 9 minutes (billed annually at $8.40/mo or monthly at $10/mo)."
+    },
+    {
+      "slug": "time-doctor",
+      "path": "pricing.tiers[2]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds client login access, VIP support, video screen recording, and internet connectivity reporting (billed annually at $16.70/mo or monthly at $20/mo)."
+    },
+    {
+      "slug": "toggl-track",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$9"
+    },
+    {
+      "slug": "toggl-track",
+      "path": "pricing.tiers[1]/Starter",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user | $9/user/month billed annually, or $12/user/month billed monthly. Adds billable rates, team reports, and timeline views."
+    },
+    {
+      "slug": "toggl-track",
+      "path": "pricing.tiers[2]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per user | $16/user/month billed annually, or $24/user/month billed monthly. Adds profitability reports, labor costs, timesheet approvals, and SSO."
+    },
+    {
+      "slug": "trello",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$5/user/month"
+    },
+    {
+      "slug": "trello",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $5/user/month billed annually ($6 billed monthly); adds unlimited boards, custom fields, advanced checklists, Planner, and more automation."
+    },
+    {
+      "slug": "trello",
+      "path": "pricing.tiers[2]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $10/user/month billed annually ($12.50 billed monthly); adds Calendar, Timeline, Table, Dashboard, and Map views plus admin/security features."
+    },
+    {
+      "slug": "trello",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user | $17.50/user/month billed annually; adds organization-wide controls and Atlassian Guard Standard."
+    },
+    {
+      "slug": "veeam-data-platform",
+      "path": "pricing.tiers[0]/Essentials",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per pack (5 instances)/year | Veeam's own comparison describes Essentials as offering the same features as Advanced, for up to 50 workloads -- positioned for small business."
+    },
+    {
+      "slug": "veeam-data-platform",
+      "path": "pricing.tiers[1]/Foundation",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per pack (10 instances)/year | Marketed as Veeam's \"Most Popular\" edition on its product page. Backup and recovery for every workload."
+    },
+    {
+      "slug": "veeam-data-platform",
+      "path": "pricing.tiers[2]/Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per pack (10 instances)/year | Adds proactive monitoring, analytics, and threat insights over Foundation."
+    },
+    {
+      "slug": "veeam-data-platform",
+      "path": "pricing.tiers[3]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per pack (10 instances)/year | Adds orchestrated recovery and full cyber-resilience and compliance orchestration over Advanced."
+    },
+    {
+      "slug": "volza",
+      "path": "pricing.tiers[0]/Startup",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Covers 108 countries (excluding 25 premium countries). Includes 4,800 searches/year, 75 workspaces, 1,000 profile downloads, and 150 contact credits."
+    },
+    {
+      "slug": "volza",
+      "path": "pricing.tiers[1]/SME",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Covers all 203 countries including premium nations. Includes unlimited searches, 300 workspaces, 10,000 profile downloads, and 450 contact credits."
+    },
+    {
+      "slug": "volza",
+      "path": "pricing.tiers[2]/Corporate",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Enterprise tier covering all 203 countries with unlimited searches, 600 workspaces, 22,000 profile downloads, and 1,000 contact credits."
+    },
+    {
+      "slug": "wiz",
+      "path": "pricing.tiers[0]/Wiz Essential",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per 100 workloads, 12-month contract | Published on Wiz's AWS Marketplace listing, not on wiz.io itself; wiz.io's main pricing motion is contact-sales."
+    },
+    {
+      "slug": "wiz",
+      "path": "pricing.tiers[1]/Wiz Advanced",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per 100 workloads, 12-month contract | "
+    },
+    {
+      "slug": "wiz",
+      "path": "pricing.tiers[2]/Wiz Sensor (add-on)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per 100 sensors | Extends Wiz Advanced."
+    },
+    {
+      "slug": "wiz",
+      "path": "pricing.tiers[3]/Wiz Code (add-on)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per 100 licenses | "
+    },
+    {
+      "slug": "wiz",
+      "path": "pricing.tiers[4]/Wiz Defend (add-on)",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per 300GB monthly log ingestion | "
+    },
+    {
+      "slug": "woocommerce",
+      "path": "pricing.tiers[2]/Extensions",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Optional extensions commonly cost $29-$299/year each."
+    },
+    {
+      "slug": "yardi-breeze",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$1/unit/month for residential Breeze; $100/month minimum; annual agreement"
+    },
+    {
+      "slug": "yardi-breeze",
+      "path": "pricing.tiers[0]/Residential Breeze",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per unit/month | $100 monthly minimum, based on annual agreement."
+    },
+    {
+      "slug": "yardi-breeze",
+      "path": "pricing.tiers[1]/Residential Breeze Premier",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per unit/month | Terms and minimums apply; published residential minimum is $400/month."
+    },
+    {
+      "slug": "yardi-breeze",
+      "path": "pricing.tiers[2]/Commercial Breeze",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=per unit/month | $200 monthly minimum, based on annual agreement."
+    },
+    {
+      "slug": "zapier",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$19.99/month"
+    },
+    {
+      "slug": "zapier",
+      "path": "pricing.tiers[1]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Starting price per month when billed annually; multi-step workflows, premium apps, webhooks, email and live-chat support."
+    },
+    {
+      "slug": "zapier",
+      "path": "pricing.tiers[2]/Team",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Starting price per month when billed annually; includes 25 users, shared workflows/folders/connections, SAML SSO, and priority support."
+    },
+    {
+      "slug": "zoho-books",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$12.50"
+    },
+    {
+      "slug": "zoho-books",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | 3 users, up to 5,000 invoices, automated workflows, and recurring expenses (billed annually at $150/yr)."
+    },
+    {
+      "slug": "zoho-books",
+      "path": "pricing.tiers[2]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | 5 users, sales orders, purchase orders, multi-currency support, and project billing (billed annually at $360/yr)."
+    },
+    {
+      "slug": "zoho-books",
+      "path": "pricing.tiers[3]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | 10 users, vendor portal, budgeting, custom domain, and validation rules (billed annually at $600/yr)."
+    },
+    {
+      "slug": "zoho-books",
+      "path": "pricing.tiers[4]/Elite",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | 15 users, advanced inventory management, and custom reports (billed annually at $1,200/yr)."
+    },
+    {
+      "slug": "zoho-campaigns",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$3"
+    },
+    {
+      "slug": "zoho-campaigns",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Starts at 500 contacts, billed annually ($4/month billed monthly). Unlimited emails, 10 users, 120+ templates, A/B testing, and basic automation workflows. Price rises with contact-list size, up to 100,000 contacts."
+    },
+    {
+      "slug": "zoho-campaigns",
+      "path": "pricing.tiers[2]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Starts at 500 contacts, billed annually ($6/month billed monthly). Adds advanced segmentation, dynamic content, send-time optimization, abandoned-cart workflows, and webhooks. Price rises with contact-list size."
+    },
+    {
+      "slug": "zoho-crm",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$14"
+    },
+    {
+      "slug": "zoho-crm",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Workflows, AI agents, cadences, reports, and sales forecasting ($20/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-crm",
+      "path": "pricing.tiers[2]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds CPQ, email intelligence, process automation, and inventory management ($35/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-crm",
+      "path": "pricing.tiers[3]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds an AI sales assistant, journey orchestration, territory management, and custom functions ($50/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-crm",
+      "path": "pricing.tiers[4]/Ultimate",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds enhanced feature limits, consulting, migration assistance, and custom AI/ML ($65/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-desk",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$7"
+    },
+    {
+      "slug": "zoho-desk",
+      "path": "pricing.tiers[1]/Express",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Email, social media, web forms, AI agents, and workflows ($9/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-desk",
+      "path": "pricing.tiers[2]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds business messaging, answer bot, community forum, and knowledge base ($20/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-desk",
+      "path": "pricing.tiers[3]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds telephony, Zia AI, blueprints, multi-department, and round-robin assignment ($35/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-desk",
+      "path": "pricing.tiers[4]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds live chat, guided conversations, skill-based assignment, and sandbox ($50/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-flow",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$25"
+    },
+    {
+      "slug": "zoho-flow",
+      "path": "pricing.tiers[1]/Standard",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Flat org price, not per-seat. 5,000 tasks/month, unlimited flows, custom functions ($29/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-flow",
+      "path": "pricing.tiers[2]/Professional",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit= | Flat org price, not per-seat. 10,000 tasks/month, premium apps, on-prem integration ($49/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-projects",
+      "path": "pricing.entry_paid",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": true
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "$4"
+    },
+    {
+      "slug": "zoho-projects",
+      "path": "pricing.tiers[1]/Premium",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Unlimited projects, task blueprints, project budgeting, and timesheets ($5/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-projects",
+      "path": "pricing.tiers[2]/Enterprise",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds custom profiles/roles, SSO, 2FA, portfolio dashboard, and critical path/baseline ($10/user/mo billed monthly)."
+    },
+    {
+      "slug": "zoho-projects",
+      "path": "pricing.tiers[3]/Ultimate",
+      "before": {
+        "billing_period": "annual",
+        "annual_billing_required": null
+      },
+      "after": {
+        "billing_period": "monthly",
+        "annual_billing_required": true
+      },
+      "evidence": "unit=user/mo | Adds unlimited custom dashboards, multi-user timesheets, and 100 resources ($15/user/mo billed monthly)."
+    }
+  ],
+  "claudeReportedBaseHead": "92d084b",
+  "claudeReportedAnnualEntryFileCount": 54,
+  "reportedBaseFilesChangedHere": 53,
+  "reportedBaseAlreadyCorrectAtD38": [
+    "pipedrive"
+  ],
+  "postBaseDriftFilesChanged": [
+    "algolia",
+    "basecamp",
+    "chatgpt",
+    "circleci",
+    "deepl",
+    "evernote",
+    "expensify",
+    "freshsales",
+    "gitlab",
+    "ifttt",
+    "jamf-pro",
+    "jira",
+    "liveagent",
+    "miro",
+    "plaid",
+    "ramp",
+    "salesforce",
+    "storyblok",
+    "tailscale",
+    "ticktick",
+    "toggl-track",
+    "wiz",
+    "woocommerce"
+  ],
+  "reportedBaseRecordChanges": 199,
+  "postBaseRecordChanges": 47
+}

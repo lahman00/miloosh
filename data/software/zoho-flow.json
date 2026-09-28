@@ -31,7 +31,7 @@
     "entry_paid": {
       "amount": "25.00",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true
     },
     "tiers": [
@@ -46,14 +46,16 @@
         "name": "Standard",
         "amount": "25.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Flat org price, not per-seat. 5,000 tasks/month, unlimited flows, custom functions ($29/mo billed monthly)."
       },
       {
         "name": "Professional",
         "amount": "41.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "notes": "Flat org price, not per-seat. 10,000 tasks/month, premium apps, on-prem integration ($49/mo billed monthly)."
       }
     ],

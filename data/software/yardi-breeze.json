@@ -22,7 +22,7 @@
     "entry_paid": {
       "amount": "1",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": false,
       "annual_billing_required": true
     },
@@ -31,7 +31,8 @@
         "name": "Residential Breeze",
         "amount": "1",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per unit/month",
         "notes": "$100 monthly minimum, based on annual agreement."
       },
@@ -39,7 +40,8 @@
         "name": "Residential Breeze Premier",
         "amount": "1",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per unit/month",
         "notes": "Terms and minimums apply; published residential minimum is $400/month."
       },
@@ -47,7 +49,8 @@
         "name": "Commercial Breeze",
         "amount": "2",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per unit/month",
         "notes": "$200 monthly minimum, based on annual agreement."
       }

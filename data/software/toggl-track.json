@@ -20,11 +20,11 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "9", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Free forever for up to 3 users. Manual and real-time timers, calendar integrations, and personal insights. No team reports, billable rates, or SSO." },
-      { "name": "Starter", "amount": "9", "currency": "USD", "billing_period": "annual", "unit": "per user", "notes": "$9/user/month billed annually, or $12/user/month billed monthly. Adds billable rates, team reports, and timeline views." },
-      { "name": "Premium", "amount": "16", "currency": "USD", "billing_period": "annual", "unit": "per user", "notes": "$16/user/month billed annually, or $24/user/month billed monthly. Adds profitability reports, labor costs, timesheet approvals, and SSO." },
+      { "name": "Starter", "amount": "9", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user", "notes": "$9/user/month billed annually, or $12/user/month billed monthly. Adds billable rates, team reports, and timeline views." },
+      { "name": "Premium", "amount": "16", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user", "notes": "$16/user/month billed annually, or $24/user/month billed monthly. Adds profitability reports, labor costs, timesheet approvals, and SSO." },
       { "name": "Enterprise", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Contact sales. Adds a dedicated customer success manager and custom roles." }
     ],
     "last_verified": "2026-09-26",

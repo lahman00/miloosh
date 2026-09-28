@@ -26,9 +26,9 @@
     "entry_paid": {
       "amount": "49",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
-      "annual_billing_required": false
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -43,7 +43,8 @@
         "name": "Basic",
         "amount": "49",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "$65/seat/month if billed monthly. 30,000 credits per seat per year, granted upfront. Adds unlimited sequences, advanced filters, waterfall enrichment, and a 14-day free trial."
       },
@@ -51,7 +52,8 @@
         "name": "Professional",
         "amount": "79",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "Marked \"Most Popular\" on the pricing page. $99/seat/month if billed monthly. 48,000 credits per seat per year. Adds unlimited meeting events, agentic loops, call recording/AI insights (4,000 minutes), and analytics."
       },
@@ -59,7 +61,8 @@
         "name": "Organization",
         "amount": "119",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per seat/month",
         "notes": "Minimum 3 seats, billed annually. 72,000 credits per seat per year. Adds SSO, advanced security configurations, and a \"Talk to Sales\" primary call-to-action despite the published price."
       }

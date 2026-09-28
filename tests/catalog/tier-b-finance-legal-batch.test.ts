@@ -54,7 +54,7 @@ describe("Tier B Finance/Legal recovery batch", () => {
     const d = load("docusign");
     expect(d.pricing?.status).toBe("verified");
     expect(d.pricing?.entry_paid?.amount).toBe("11");
-    expect(d.pricing?.entry_paid?.billing_period).toBe("annual");
+    expect(d.pricing?.entry_paid?.billing_period).toBe("monthly");
     expect(d.pricing?.entry_paid?.annual_billing_required).toBe(true);
     expect(d.pricing?.has_free_tier).toBe(false);
   });

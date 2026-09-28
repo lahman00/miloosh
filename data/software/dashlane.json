@@ -75,7 +75,7 @@
     "entry_paid": {
       "amount": "8",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true,
       "unit": "user"
     },
@@ -84,7 +84,8 @@
         "name": "Omnix Password Management",
         "amount": "8",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$8/user/month; password and passkey management, secure sharing, password policies, and SSO/SCIM integrations."
       },
@@ -92,7 +93,8 @@
         "name": "Omnix Credential Protection",
         "amount": "4",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$4/user/month; credential risk detection and response rather than a full password-management replacement."
       },

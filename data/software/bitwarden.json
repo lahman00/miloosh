@@ -74,7 +74,7 @@
     "entry_paid": {
       "amount": "4",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "annual_billing_required": true,
       "unit": "user"
     },
@@ -90,7 +90,8 @@
         "name": "Teams",
         "amount": "4",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$4/user/month billed annually; centralized sharing, event logs, directory sync, and SCIM."
       },
@@ -98,7 +99,8 @@
         "name": "Enterprise",
         "amount": "6",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user",
         "notes": "$6/user/month billed annually; adds granular controls, passwordless SSO integration, account recovery, self-hosting, and a free Families plan for users."
       }

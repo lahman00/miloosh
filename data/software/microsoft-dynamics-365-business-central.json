@@ -32,11 +32,11 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "80", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "80", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Essentials", "amount": "80", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid annually; effective November 2025 (up from $70/user/month). Includes financial, sales, and operations management plus Copilot; unlimited users, customization, and multiple environments/companies per Microsoft's published plan comparison." },
-      { "name": "Premium", "amount": "110", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid annually; effective November 2025 (up from $100/user/month). Adds service management and manufacturing capabilities on top of Essentials." },
-      { "name": "Team Members", "amount": "8", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Limited, read/approval-focused access tier for users who only need to view or update select information rather than full functionality." }
+      { "name": "Essentials", "amount": "80", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Paid annually; effective November 2025 (up from $70/user/month). Includes financial, sales, and operations management plus Copilot; unlimited users, customization, and multiple environments/companies per Microsoft's published plan comparison." },
+      { "name": "Premium", "amount": "110", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Paid annually; effective November 2025 (up from $100/user/month). Adds service management and manufacturing capabilities on top of Essentials." },
+      { "name": "Team Members", "amount": "8", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Limited, read/approval-focused access tier for users who only need to view or update select information rather than full functionality." }
     ],
     "last_verified": "2026-09-05",
     "official_source": "https://www.microsoft.com/en-us/dynamics-365/products/business-central/pricing"

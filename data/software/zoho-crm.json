@@ -27,7 +27,7 @@
     "entry_paid": {
       "amount": "14.00",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -43,7 +43,8 @@
         "name": "Standard",
         "amount": "14.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Workflows, AI agents, cadences, reports, and sales forecasting ($20/user/mo billed monthly)."
       },
@@ -51,7 +52,8 @@
         "name": "Professional",
         "amount": "23.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds CPQ, email intelligence, process automation, and inventory management ($35/user/mo billed monthly)."
       },
@@ -59,7 +61,8 @@
         "name": "Enterprise",
         "amount": "40.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds an AI sales assistant, journey orchestration, territory management, and custom functions ($50/user/mo billed monthly)."
       },
@@ -67,7 +70,8 @@
         "name": "Ultimate",
         "amount": "52.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds enhanced feature limits, consulting, migration assistance, and custom AI/ML ($65/user/mo billed monthly)."
       }

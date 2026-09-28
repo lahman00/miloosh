@@ -6,19 +6,51 @@ import { formatIndexMoney } from "@/lib/pricing-index/format";
 import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
 import { getPayoutRailForPartner } from "@/data/affiliate/payout-rails";
 
-function fixture(slug: string, amount: string, currency = "USD", billingPeriod = "monthly"): Software {
+function fixture(
+  slug: string,
+  amount: string,
+  currency = "USD",
+  billingPeriod = "monthly",
+  annualBillingRequired = false,
+): Software {
   const base = getSoftware("pipedrive")!;
-  return { ...base, slug, pricing: { ...base.pricing!, status: "verified", hasFreeTier: undefined, freePlan: undefined, freeTrial: undefined, enterpriseContactSales: undefined, entryPaid: { ...base.pricing!.entryPaid!, amount, currency, billingPeriod, perSeat: true } } } as Software;
+  return {
+    ...base,
+    slug,
+    pricing: {
+      ...base.pricing!,
+      status: "verified",
+      hasFreeTier: undefined,
+      freePlan: undefined,
+      freeTrial: undefined,
+      enterpriseContactSales: undefined,
+      entryPaid: {
+        ...base.pricing!.entryPaid!,
+        amount,
+        currency,
+        billingPeriod,
+        annualBillingRequired,
+        perSeat: true,
+      },
+    },
+  } as Software;
 }
 
 describe("revenue trust and source-basis regression locks", () => {
-  it("excludes foreign currencies, annual billing and malformed amounts from USD monthly aggregates", () => {
-    const index = buildPricingIndex([fixture("usd", "20"), fixture("eur", "1000", "EUR"), fixture("annual", "1200", "USD", "annual"), fixture("bad", "99oops")]);
-    expect(index.sampleSize).toBe(4);
-    expect(index.monthlyUsdSampleSize).toBe(1);
-    expect(index.medianStartingPrice).toBe(20);
-    expect(index.modeledTeamCosts.map((p) => p.slug)).toEqual(["usd"]);
-    expect(index.modeledTeamCosts[0].cost10).toBe(200);
+  it("includes annual-commitment monthly units but excludes true annual lump sums, FX and malformed amounts", () => {
+    const index = buildPricingIndex([
+      fixture("usd", "20"),
+      fixture("annual-commitment", "30", "USD", "monthly", true),
+      fixture("eur", "1000", "EUR"),
+      fixture("annual-lump", "1200", "USD", "annual", true),
+      fixture("bad", "99oops"),
+    ]);
+    expect(index.sampleSize).toBe(5);
+    expect(index.monthlyUsdSampleSize).toBe(2);
+    expect(index.medianStartingPrice).toBe(25);
+    expect(index.modeledTeamCosts.map((p) => p.slug).sort()).toEqual(["usd", "annual-commitment"].sort());
+    expect(index.modeledTeamCosts.find((p) => p.slug === "annual-commitment")?.annualBillingRequired).toBe(true);
+    expect(index.modeledTeamCosts.find((p) => p.slug === "annual-commitment")?.cost10).toBe(300);
   });
   it("does not turn missing free-plan or enterprise flags into negative observations", () => {
     const index = buildPricingIndex([fixture("unknown", "10")]);

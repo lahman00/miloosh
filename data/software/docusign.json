@@ -24,7 +24,7 @@
     "entry_paid": {
       "amount": "11",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": false,
       "annual_billing_required": true
     },
@@ -33,7 +33,8 @@
         "name": "Personal",
         "amount": "11",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per month",
         "notes": "Annual commitment billed monthly ($132 annual commitment). Includes 5 envelopes per month, agreement storage, AI-assisted summary, reusable templates, and 1,000+ integrations."
       },
@@ -41,7 +42,8 @@
         "name": "Standard",
         "amount": "30",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "Annual commitment billed monthly ($360 per user annually). Includes up to 100 envelopes per user per year plus shared templates, real-time commenting, branding, delegated signing, and team controls."
       },
@@ -49,7 +51,8 @@
         "name": "Business Pro",
         "amount": "45",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "per user/month",
         "notes": "Annual commitment billed monthly ($540 per user annually). Adds web forms, payment collection, advanced fields, data verification, bulk send, and other advanced agreement features."
       },

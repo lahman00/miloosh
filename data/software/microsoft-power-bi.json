@@ -31,11 +31,11 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "entry_paid": { "amount": "14", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "14", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "notes": "Create interactive reports for personal use, included with a free Microsoft Fabric account; sharing reports with others requires Pro or Premium." },
-      { "name": "Pro", "amount": "14", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid yearly. Included in Microsoft 365 E5 and Office 365 E5 subscriptions." },
-      { "name": "Premium Per User", "amount": "24", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Paid yearly. Adds larger semantic model sizes, up to 48 refreshes/day (vs. 8/day on Pro), and a 100 GB model memory limit. Available as a $14/user/month add-on for existing Pro licensees." },
+      { "name": "Pro", "amount": "14", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Paid yearly. Included in Microsoft 365 E5 and Office 365 E5 subscriptions." },
+      { "name": "Premium Per User", "amount": "24", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Paid yearly. Adds larger semantic model sizes, up to 48 refreshes/day (vs. 8/day on Pro), and a 100 GB model memory limit. Available as a $14/user/month add-on for existing Pro licensees." },
       { "name": "Fabric Capacity", "notes": "Capacity-based licensing (Reservation or Pay-As-You-Go) for organization-wide distribution; publishing content still requires per-author Pro licenses. Reserved annual capacity can save roughly 40.5% versus pay-as-you-go rates." }
     ],
     "enterprise_contact_sales": true,

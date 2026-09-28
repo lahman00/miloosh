@@ -71,6 +71,7 @@
         "amount": "29-299",
         "currency": "USD",
         "billing_period": "annual",
+        "annual_billing_required": true,
         "notes": "Optional extensions commonly cost $29-$299/year each."
       }
     ],

@@ -25,7 +25,7 @@
       { "name": "Personal (Free)", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per network", "notes": "Free forever, intended for non-commercial use; up to 6 users, unlimited devices, 50 tagged resources included ($1/month each beyond that)." },
       { "name": "Standard", "amount": "8", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Unlimited users; adds SCIM provisioning, MDM config, and device posture checks. As of April 2026 Tailscale bills per assigned seat, not per monthly-active-user -- a seat is billed whether or not that user connects that month." },
       { "name": "Premium", "amount": "18", "currency": "USD", "billing_period": "monthly", "unit": "per user", "notes": "Adds just-in-time access, advanced SSH, network flow logs, and log streaming. No published annual-billing discount." },
-      { "name": "Enterprise", "billing_period": "annual", "notes": "Contact sales; custom device limits, dedicated support, and pay-by-invoice." }
+      { "name": "Enterprise", "billing_period": "annual", "annual_billing_required": true, "notes": "Contact sales; custom device limits, dedicated support, and pay-by-invoice." }
     ],
     "last_verified": "2026-09-26",
     "official_source": "https://tailscale.com/pricing"

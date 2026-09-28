@@ -32,11 +32,11 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Starter", "amount": "19", "currency": "USD", "billing_period": "annual", "unit": "agent", "notes": "Per agent/month, billed annually. Includes incident management, knowledge management, task management, and the support portal. Monthly billing is also available at a higher rate (the pricing page states annual billing saves 20%)." },
-      { "name": "Growth", "amount": "49", "currency": "USD", "billing_period": "annual", "unit": "agent", "notes": "Per agent/month, billed annually. Adds service catalog, SLA management, on-call management, and cloud management." },
-      { "name": "Pro", "amount": "99", "currency": "USD", "billing_period": "annual", "unit": "agent", "notes": "Per agent/month, billed annually. Adds problem management, change management, major incident management, workload management, release management, and employee journeys. Freddy AI Copilot is available as an add-on at $29/agent/month." },
+      { "name": "Starter", "amount": "19", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "agent", "notes": "Per agent/month, billed annually. Includes incident management, knowledge management, task management, and the support portal. Monthly billing is also available at a higher rate (the pricing page states annual billing saves 20%)." },
+      { "name": "Growth", "amount": "49", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "agent", "notes": "Per agent/month, billed annually. Adds service catalog, SLA management, on-call management, and cloud management." },
+      { "name": "Pro", "amount": "99", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "agent", "notes": "Per agent/month, billed annually. Adds problem management, change management, major incident management, workload management, release management, and employee journeys. Freddy AI Copilot is available as an add-on at $29/agent/month." },
       { "name": "Enterprise", "notes": "Custom pricing; contact sales. Adds sandbox and audit logs, with Freddy AI Agent and Freddy AI Insights included in the plan." }
     ],
     "enterprise_contact_sales": true,

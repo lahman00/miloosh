@@ -113,6 +113,7 @@
         "name": "Enterprise",
         "currency": "USD",
         "billing_period": "annual",
+        "annual_billing_required": true,
         "unit": "custom / contact sales",
         "notes": "No public per-seat price. Sold only via annual contract through OpenAI sales; invoicing available as a payment option. Billing basis: annual (contract)."
       }

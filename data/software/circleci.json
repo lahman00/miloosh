@@ -88,6 +88,7 @@
         "amount": "Custom",
         "currency": "USD",
         "billing_period": "annual",
+        "annual_billing_required": true,
         "unit": "custom quote",
         "notes": "Unlimited concurrency, custom credit/user allotments, 50GB network + 200GB storage included, GPU/largest resource classes, enterprise controls, optional 24/7 support add-on. Requires contacting sales. Billing basis: annual (billed annually)."
       },

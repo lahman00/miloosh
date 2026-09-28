@@ -19,7 +19,7 @@
     "entry_paid": {
       "amount": "5.90",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -28,7 +28,8 @@
         "name": "Basic",
         "amount": "5.90",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Includes time tracking, task tracking, activity monitoring, and 1 screenshot per 30 minutes (billed annually at $5.90/mo or monthly at $7/mo)."
       },
@@ -36,7 +37,8 @@
         "name": "Standard",
         "amount": "8.40",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds app & URL tracking, automated payroll integrations, 60+ integrations, and up to 3 screenshots per 9 minutes (billed annually at $8.40/mo or monthly at $10/mo)."
       },
@@ -44,7 +46,8 @@
         "name": "Premium",
         "amount": "16.70",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "user/mo",
         "notes": "Adds client login access, VIP support, video screen recording, and internet connectivity reporting (billed annually at $16.70/mo or monthly at $20/mo)."
       }

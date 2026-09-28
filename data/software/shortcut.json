@@ -30,11 +30,11 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "8.50", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "entry_paid": { "amount": "8.50", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "per_seat": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Best for teams getting started." },
-      { "name": "Team", "amount": "8.50", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for small teams." },
-      { "name": "Business", "amount": "12", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for fast-growing teams." },
+      { "name": "Team", "amount": "8.50", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for small teams." },
+      { "name": "Business", "amount": "12", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for fast-growing teams." },
       { "name": "Enterprise", "notes": "Custom pricing. For mature software companies. Contact sales." }
     ],
     "enterprise_contact_sales": true,

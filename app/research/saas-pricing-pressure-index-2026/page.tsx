@@ -72,7 +72,7 @@ export default function PricingPressureIndexPage() {
               {`50 licensed seats × the recorded ${index.highestModeledCost50Seats.name} starting rate = ${formatIndexMoney(index.highestModeledCost50Seats.cost50)}/month`}
             </p>
             <p className="mt-2 text-sm text-zinc-500">
-              {`Illustrative arithmetic, not a quote: 50 × ${formatIndexMoney(index.highestModeledCost50Seats.perSeatMonthlyRate)}. Limited to ${index.modeledTeamCosts.length} records explicitly marked USD, monthly and per-seat. Licensed users or agents are not necessarily all employees. Plan caps, seat bundles, minimums, discounts, taxes, usage charges and feature upgrades can change the payable total.`}
+              {`Illustrative arithmetic, not a quote: 50 × ${formatIndexMoney(index.highestModeledCost50Seats.perSeatMonthlyRate)}. Limited to ${index.modeledTeamCosts.length} records explicitly marked USD, monthly-unit and per-seat. ${index.highestModeledCost50Seats.annualBillingRequired ? "The displayed starting rate requires annual billing. " : ""}Licensed users or agents are not necessarily all employees. Plan caps, seat bundles, minimums, discounts, taxes, usage charges and feature upgrades can change the payable total.`}
             </p>
           </Card>
         ) : null}
@@ -165,7 +165,7 @@ export default function PricingPressureIndexPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Modeled team costs</dt>
               <dd className="mt-1 text-zinc-400">
-                5/10/25/50 licensed-seat figures are arithmetic scenarios using explicit USD monthly per-seat records only. Annual records are excluded because the legacy data mixes annual invoice amounts and monthly equivalents. No foreign-exchange conversion is applied. We do not verify that every starting plan permits every modeled seat count. These are not quotes, invoices, actual customer spending or a representative market sample.
+                5/10/25/50 licensed-seat figures are arithmetic scenarios using explicit USD monthly-unit per-seat records only. A monthly-unit rate can still require annual billing, and that condition is kept separately rather than changing the price unit. True annual lump sums, one-time prices, unknown billing bases and non-USD records are excluded; no foreign-exchange or annual normalization is applied. We do not verify that every starting plan permits every modeled seat count. These are not quotes, invoices, actual customer spending or a representative market sample.
               </dd>
             </div>
             <div>

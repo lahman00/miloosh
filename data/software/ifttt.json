@@ -17,11 +17,11 @@
     "status": "verified",
     "free_plan": true,
     "free_trial": { "available": true, "days": 7 },
-    "entry_paid": { "amount": "2.99", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
+    "entry_paid": { "amount": "2.99", "currency": "USD", "billing_period": "monthly", "per_seat": false, "annual_billing_required": true },
     "tiers": [
       { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "unit": "per account", "notes": "Capped at 2 Applets. Polling-trigger Applets on Free check roughly once per hour. No webhooks, no multi-action Applets." },
-      { "name": "Pro", "amount": "2.99", "currency": "USD", "billing_period": "annual", "unit": "per account", "notes": "$2.99/mo requires annual billing ($35.88/yr); the page advertises a 40% saving versus monthly billing but does not display the flat monthly figure. 20 Applets, multi-action Applets, webhooks, about 5-minute polling speed." },
-      { "name": "Pro+", "amount": "8.99", "currency": "USD", "billing_period": "annual", "unit": "per account", "notes": "$8.99/mo requires annual billing ($107.88/yr), same 40%-savings annual structure. Unlimited Applets, AI services, filter code, and multiple accounts per service." }
+      { "name": "Pro", "amount": "2.99", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per account", "notes": "$2.99/mo requires annual billing ($35.88/yr); the page advertises a 40% saving versus monthly billing but does not display the flat monthly figure. 20 Applets, multi-action Applets, webhooks, about 5-minute polling speed." },
+      { "name": "Pro+", "amount": "8.99", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per account", "notes": "$8.99/mo requires annual billing ($107.88/yr), same 40%-savings annual structure. Unlimited Applets, AI services, filter code, and multiple accounts per service." }
     ],
     "last_verified": "2026-09-26",
     "official_source": "https://ifttt.com/plans"

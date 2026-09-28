@@ -33,13 +33,13 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": false },
-    "entry_paid": { "amount": "4", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "4", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Engagement", "amount": "4", "currency": "USD", "billing_period": "annual", "unit": "per seat/month, billed annually", "notes": "Base module. Includes Habits (1:1s, weekly updates, feedback, Q&A boards) at no extra cost." },
-      { "name": "Goals & OKRs", "amount": "8", "currency": "USD", "billing_period": "annual", "unit": "per seat/month, billed annually", "notes": "Base module, can be bought standalone or combined with others." },
-      { "name": "Performance", "amount": "10", "currency": "USD", "billing_period": "annual", "unit": "per seat/month, billed annually", "notes": "Base module for performance reviews and identifying high performers." },
-      { "name": "Grow add-on", "amount": "4", "currency": "USD", "billing_period": "annual", "unit": "additional per seat/month, billed annually", "notes": "Add-on on top of a base module; career progression and development tools." },
-      { "name": "Compensation add-on", "amount": "6", "currency": "USD", "billing_period": "annual", "unit": "additional per seat/month, billed annually", "notes": "Add-on on top of a base module; compensation planning and review cycles." }
+      { "name": "Engagement", "amount": "4", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per seat/month, billed annually", "notes": "Base module. Includes Habits (1:1s, weekly updates, feedback, Q&A boards) at no extra cost." },
+      { "name": "Goals & OKRs", "amount": "8", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per seat/month, billed annually", "notes": "Base module, can be bought standalone or combined with others." },
+      { "name": "Performance", "amount": "10", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per seat/month, billed annually", "notes": "Base module for performance reviews and identifying high performers." },
+      { "name": "Grow add-on", "amount": "4", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "additional per seat/month, billed annually", "notes": "Add-on on top of a base module; career progression and development tools." },
+      { "name": "Compensation add-on", "amount": "6", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "additional per seat/month, billed annually", "notes": "Add-on on top of a base module; compensation planning and review cycles." }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",

@@ -19,7 +19,7 @@
     "entry_paid": {
       "amount": "4.99",
       "currency": "USD",
-      "billing_period": "annual",
+      "billing_period": "monthly",
       "per_seat": true,
       "annual_billing_required": true
     },
@@ -28,7 +28,8 @@
         "name": "Starter",
         "amount": "4.99",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat/mo",
         "notes": "Includes time tracking, timesheets, and basic activity tracking (2-seat minimum)."
       },
@@ -36,7 +37,8 @@
         "name": "Grow",
         "amount": "7.50",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat/mo",
         "notes": "Adds advanced reporting, URL & app tracking, and 1,500 screenshots/seat/mo (2-seat minimum)."
       },
@@ -44,7 +46,8 @@
         "name": "Team",
         "amount": "10.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat/mo",
         "notes": "Adds unlimited screenshots, shift scheduling, payroll integrations, and client invoicing (2-seat minimum)."
       },
@@ -52,7 +55,8 @@
         "name": "Enterprise",
         "amount": "25.00",
         "currency": "USD",
-        "billing_period": "annual",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
         "unit": "seat/mo",
         "notes": "Adds VIP support, SOC 2 compliance, and custom account provisioning."
       }

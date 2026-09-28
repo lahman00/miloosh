@@ -31,11 +31,11 @@
     "status": "verified",
     "free_plan": false,
     "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly", "per_seat": true, "annual_billing_required": true },
     "tiers": [
-      { "name": "Viewer", "amount": "15", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Standard edition, billed annually. Includes Tableau Mobile access, commenting, exporting, subscriptions, and data-driven alerts." },
-      { "name": "Explorer", "amount": "42", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Standard edition, billed annually. Adds web-based workbook authoring/editing and Tableau Agent in web authoring." },
-      { "name": "Creator", "amount": "75", "currency": "USD", "billing_period": "annual", "unit": "per user/month", "notes": "Standard edition, billed annually. Full authoring plus Tableau Desktop and Tableau Prep. Enterprise edition Creator is $115/user/month, billed annually." }
+      { "name": "Viewer", "amount": "15", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Standard edition, billed annually. Includes Tableau Mobile access, commenting, exporting, subscriptions, and data-driven alerts." },
+      { "name": "Explorer", "amount": "42", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Standard edition, billed annually. Adds web-based workbook authoring/editing and Tableau Agent in web authoring." },
+      { "name": "Creator", "amount": "75", "currency": "USD", "billing_period": "monthly", "annual_billing_required": true, "unit": "per user/month", "notes": "Standard edition, billed annually. Full authoring plus Tableau Desktop and Tableau Prep. Enterprise edition Creator is $115/user/month, billed annually." }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-05",

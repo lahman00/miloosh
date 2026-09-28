@@ -49,6 +49,7 @@ export interface ModeledTeamCost {
   slug: string;
   name: string;
   perSeatMonthlyRate: number;
+  annualBillingRequired: boolean;
   cost5: number;
   cost10: number;
   cost25: number;
@@ -108,8 +109,9 @@ export function buildPricingIndex(all: readonly Software[] = getAllSoftware()): 
     model: s.pricing?.model ?? "unknown",
     perSeat: s.pricing?.entryPaid?.perSeat ?? null,
     enterpriseContactSales: s.pricing?.enterpriseContactSales ?? null,
-    // Annual records mix invoice totals and monthly equivalents in the legacy schema.
-    // Do not guess a conversion or exchange rate: aggregate only explicit USD monthly records.
+    // The numeric unit is explicit in billingPeriod. Monthly-unit prices may
+    // still require an annual contract, carried separately below. True annual
+    // lump sums and foreign currencies are not normalized or converted.
     startingMonthlyEquivalent: s.pricing?.entryPaid?.currency === "USD" && s.pricing.entryPaid.billingPeriod === "monthly" && /^\d+(?:\.\d+)?$/.test(s.pricing.entryPaid.amount)
       ? Number(s.pricing.entryPaid.amount) : null,
     currency: s.pricing?.entryPaid?.currency ?? null,
@@ -141,6 +143,7 @@ export function buildPricingIndex(all: readonly Software[] = getAllSoftware()): 
         slug: s.slug,
         name: s.name,
         perSeatMonthlyRate: rate,
+        annualBillingRequired: s.pricing!.entryPaid!.annualBillingRequired === true,
         cost5: Math.round(rate * 5 * 100) / 100,
         cost10: Math.round(rate * 10 * 100) / 100,
         cost25: Math.round(rate * 25 * 100) / 100,
@@ -167,7 +170,7 @@ export function buildPricingIndex(all: readonly Software[] = getAllSoftware()): 
     sampleSize: sample.length,
     totalCatalogSize: all.length,
     inclusionRule: "Every catalog entry with pricing.status of \"verified\" or \"contact_sales\" -- i.e. checked against a vendor pricing source on the row-specific verification date, not necessarily the compilation date.",
-    exclusionRule: "Catalog entries outside the stated pricing-status sample are excluded. Missing availability flags are unknown, not false; each percentage uses only records with that flag documented. USD monthly aggregates exclude annual, one-time, unknown-basis and non-USD records; no exchange rate or annual normalization is inferred.",
+    exclusionRule: "Catalog entries outside the stated pricing-status sample are excluded. Missing availability flags are unknown, not false; each percentage uses only records with that flag documented. USD monthly-unit aggregates exclude true annual lump sums, one-time, unknown-basis and non-USD records; a monthly-unit rate that requires annual billing remains comparable and carries that condition separately. No exchange rate or annual normalization is inferred.",
     products,
     stats,
     medianStartingPrice: median(withFiniteStartingPrice.map((p) => p.startingMonthlyEquivalent!)),

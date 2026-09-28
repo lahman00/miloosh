@@ -29,7 +29,11 @@ export const metadata: Metadata = {
  */
 export default function SaasCostCalculatorPage() {
   const products: CalculatorProduct[] = getAllSoftware()
-    .filter((s) => s.pricing?.entryPaid)
+    .filter(
+      (s) =>
+        s.pricing?.entryPaid?.currency === "USD" &&
+        s.pricing.entryPaid.billingPeriod === "monthly",
+    )
     .map((s) => ({
       slug: s.slug,
       name: s.name,
@@ -37,6 +41,7 @@ export default function SaasCostCalculatorPage() {
       amount: Number.parseFloat(s.pricing!.entryPaid!.amount),
       billingPeriod: s.pricing!.entryPaid!.billingPeriod,
       perSeat: Boolean(s.pricing!.entryPaid!.perSeat),
+      annualBillingRequired: s.pricing!.entryPaid!.annualBillingRequired === true,
       officialSource: s.pricing?.officialSource,
     }))
     .filter((p) => Number.isFinite(p.amount))

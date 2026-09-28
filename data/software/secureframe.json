@@ -32,7 +32,7 @@
     "free_plan": false,
     "entry_paid": { "amount": "7000", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
     "tiers": [
-      { "name": "Fundamentals", "amount": "7000", "currency": "USD", "billing_period": "annual", "notes": "\"Starting at $7,000/year\" per Secureframe's pricing page; a full quote is still required. Includes 1 compliance framework, infrastructure monitoring, evidence collection, personnel/risk/policy management, and Trust Center." },
+      { "name": "Fundamentals", "amount": "7000", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "notes": "\"Starting at $7,000/year\" per Secureframe's pricing page; a full quote is still required. Includes 1 compliance framework, infrastructure monitoring, evidence collection, personnel/risk/policy management, and Trust Center." },
       { "name": "Complete", "notes": "Contact sales; no published starting price. Everything in Fundamentals plus advanced third-party risk management, advanced user access reviews, advanced Trust Center, advanced questionnaire automation, and SSO/SCIM." },
       { "name": "Defense", "notes": "Contact sales; no published starting price. Everything in Complete plus CMMC-specific tooling: SPRS Score Tracker, SSP, POA&M, and managed CUI enclave/virtual desktops." }
     ],

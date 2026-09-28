@@ -16,11 +16,11 @@
     "free_trial": { "available": true, "days": 14 },
     "entry_paid": { "amount": "24000", "currency": "USD", "billing_period": "annual", "per_seat": false, "annual_billing_required": true },
     "tiers": [
-      { "name": "Wiz Essential", "amount": "24000", "currency": "USD", "billing_period": "annual", "unit": "per 100 workloads, 12-month contract", "notes": "Published on Wiz's AWS Marketplace listing, not on wiz.io itself; wiz.io's main pricing motion is contact-sales." },
-      { "name": "Wiz Advanced", "amount": "38000", "currency": "USD", "billing_period": "annual", "unit": "per 100 workloads, 12-month contract" },
-      { "name": "Wiz Sensor (add-on)", "amount": "28000", "currency": "USD", "billing_period": "annual", "unit": "per 100 sensors", "notes": "Extends Wiz Advanced." },
-      { "name": "Wiz Code (add-on)", "amount": "58500", "currency": "USD", "billing_period": "annual", "unit": "per 100 licenses" },
-      { "name": "Wiz Defend (add-on)", "amount": "18000", "currency": "USD", "billing_period": "annual", "unit": "per 300GB monthly log ingestion" }
+      { "name": "Wiz Essential", "amount": "24000", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per 100 workloads, 12-month contract", "notes": "Published on Wiz's AWS Marketplace listing, not on wiz.io itself; wiz.io's main pricing motion is contact-sales." },
+      { "name": "Wiz Advanced", "amount": "38000", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per 100 workloads, 12-month contract" },
+      { "name": "Wiz Sensor (add-on)", "amount": "28000", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per 100 sensors", "notes": "Extends Wiz Advanced." },
+      { "name": "Wiz Code (add-on)", "amount": "58500", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per 100 licenses" },
+      { "name": "Wiz Defend (add-on)", "amount": "18000", "currency": "USD", "billing_period": "annual", "annual_billing_required": true, "unit": "per 300GB monthly log ingestion" }
     ],
     "last_verified": "2026-09-26",
     "official_source": "https://aws.amazon.com/marketplace/pp/prodview-ibgbkrqusncsm"

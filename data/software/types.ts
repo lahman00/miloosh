@@ -11,6 +11,7 @@ export type PricingTier = {
   amount?: string;
   currency?: string;
   billingPeriod?: "monthly" | "annual" | "one_time" | "unknown";
+  annualBillingRequired?: boolean;
   unit?: string;
   notes?: string;
 };

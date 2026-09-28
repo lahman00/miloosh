@@ -59,8 +59,25 @@ describe("five money-page decision panels", () => {
     expect(html).toContain('href="https://todoist.com/help" rel="noopener noreferrer"');
     expect(html).toContain("affiliate referral link");
   });
-  it("leaves non-cohort vendor resource links direct", () => {
-    const html = renderToStaticMarkup(React.createElement(VendorLinksBlock, { software: getSoftware("pipedrive")! }));
+  it.each(["constant-contact", "krispcall", "mailerlite", "omnisend", "jotform", "surveymonkey"])(
+    "routes %s pricing intent through the verified active affiliate asset",
+    (slug) => {
+      const software = getSoftware(slug)!;
+      const html = renderToStaticMarkup(React.createElement(VendorLinksBlock, { software }));
+      const expected = getSoftwareCtaUrl(software, "pricing").replaceAll("&", "&amp;");
+      expect(html).toContain(`href="${expected}"`);
+      expect(html).toContain("sponsored noopener noreferrer");
+      expect(html).not.toContain(`href="${software.links?.pricing}"`);
+    },
+  );
+  it("keeps non-commercial vendor documentation direct even for an active partner", () => {
+    const software = getSoftware("mailerlite")!;
+    const html = renderToStaticMarkup(React.createElement(VendorLinksBlock, { software }));
+    expect(html).toContain('href="https://www.mailerlite.com/help" rel="noopener noreferrer"');
+  });
+  it("keeps inactive products' pricing links direct", () => {
+    const software = getSoftware("notion")!;
+    const html = renderToStaticMarkup(React.createElement(VendorLinksBlock, { software }));
     expect(html).not.toContain("sponsored");
   });
 });
