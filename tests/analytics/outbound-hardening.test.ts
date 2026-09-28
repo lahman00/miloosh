@@ -3,7 +3,8 @@ import { NextRequest } from "next/server";
 const sinks = vi.hoisted(() => ({ first: vi.fn(), cta: vi.fn(), vendor: vi.fn() }));
 vi.mock("@/lib/analytics/events", () => ({ recordFirstPartyEvent: sinks.first }));
 vi.mock("@/lib/revenue/click-tracker", () => ({ trackSoftwareCtaClick: sinks.cta, trackVendorLinkClick: sinks.vendor }));
-import { POST, __test__ } from "@/app/api/outbound-click/route";
+import { POST } from "@/app/api/outbound-click/route";
+import { outboundDestinationTestHelpers as __test__ } from "@/lib/revenue/outbound-destination";
 import { POST as analyticsPost } from "@/app/api/analytics/event/route";
 const human = "Mozilla/5.0 Chrome/128.0.0.0 Safari/537.36";
 function req(body: unknown, headers: Record<string, string> = {}) {

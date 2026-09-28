@@ -3,7 +3,7 @@ import { getSoftware } from "@/data/software";
 import { getActivePartner } from "@/data/affiliate/active-partners";
 import { getSoftwareCtaUrl, getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { resolveComparisonCtaUrl } from "@/lib/wix-funnels";
-import { __test__ } from "@/app/api/outbound-click/route";
+import { outboundDestinationTestHelpers as __test__ } from "@/lib/revenue/outbound-destination";
 const { resolveVendorLinkUrl } = __test__;
 
 /**
