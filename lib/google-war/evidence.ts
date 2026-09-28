@@ -60,7 +60,11 @@ export function importInspectionUi(
     checkedAt: row.capturedAt,
     source,
     verdict: null,
-    coverageState: /נסרק.*לא נכלל באינדקס/.test(panel)
+    // The Hebrew UI also labels Discovered with "נסרק אך לא נכלל באינדקס"
+    // (confirmed against the English UI, 2026-09-28). A broad "נסרק.*" match
+    // invents a crawl. Only the unambiguous sampled Crawled label qualifies;
+    // ambiguous translated text stays unknown pending authoritative detail.
+    coverageState: /נסרק\s*[-–]\s*לא נכלל באינדקס/.test(panel)
       ? "Crawled - currently not indexed"
       : null,
     // Preserve the displayed value. The capture does not establish a timezone.
@@ -96,7 +100,7 @@ export function indexState(inspection: Inspection | null): IndexState {
   const coverage = inspection.coverageState?.toLowerCase() ?? "";
   if (
     /crawled.*(?:not indexed|not currently indexed)/.test(coverage) ||
-    /נסרק.*לא נכלל באינדקס/.test(coverage)
+    /נסרק\s*[-–]\s*לא נכלל באינדקס/.test(coverage)
   )
     return "CRAWLED_NOT_INDEXED";
   if (/discovered.*not indexed/.test(coverage)) return "DISCOVERED_NOT_INDEXED";

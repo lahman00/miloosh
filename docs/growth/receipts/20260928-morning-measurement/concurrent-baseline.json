@@ -1,0 +1,85 @@
+{
+  "capturedAt": "2026-09-28T04:44:21.930Z",
+  "head": "b1d45ebbfe378400cb93c6dddc424c90dbf1d932",
+  "files": [
+    {
+      "file": "app/research/customer-support-pricing-2026/page.tsx",
+      "sha256": "286cb185613e8ddd928523418190a0d94bcaa204a700c080b9627efef0a3e699"
+    },
+    {
+      "file": "lib/authority/alerts.ts",
+      "sha256": "c35eb9c820ba11953e1890fa2a1f863e32295d609ba0adff121c13e0ee8210f2"
+    },
+    {
+      "file": "lib/social/linkedin-readiness.ts",
+      "sha256": "5cab361ba136c6cd6744831d81cd2d68c370fb8de56ce66a9006ecab4898414d"
+    },
+    {
+      "file": "lib/social/publish.ts",
+      "sha256": "4a6ffc9fd1d56fdf3e65f64e23bd063ecfb631158ac4e83fe587701051ffe6f6"
+    },
+    {
+      "file": "lib/social/qa-gates.ts",
+      "sha256": "8b793d3d0cbba44188a823ca7cc95f00dd2184b6189ac84056714726f0999d53"
+    },
+    {
+      "file": "lib/support-pricing-benchmark/build.ts",
+      "sha256": "5844e5cc92627d8351e3089a2131860527556a57ba673e5cd9c3a6e9f2c74770"
+    },
+    {
+      "file": "lib/support-pricing-benchmark/data.ts",
+      "sha256": "724cd9e679b5ff5050b73bb5c07835ba813d18851255be2e65fb8f9ef32a3ba0"
+    },
+    {
+      "file": "scripts/growth/factual-depth-audit.ts",
+      "sha256": "264863fc5e7e66273b473ece08c3c2cc22f615d000e94c17990102cd44a63fc8"
+    },
+    {
+      "file": "scripts/growth/gsc-opportunity-miner.ts",
+      "sha256": "1c5e4f5405bb7a8bd2da436be3f4ba3fe0ccd77857d5d1d2d4181d29b05c028e"
+    },
+    {
+      "file": "scripts/social/quality-audit.ts",
+      "sha256": "19f960190dfbf5de3367f0a25cdd5cdc410b3141bdcf21f2ed21641c0bef048e"
+    },
+    {
+      "file": "tests/growth/authority-measurement.test.ts",
+      "sha256": "a26ff9f4036592bc507d1dce94abbaa8e6fd4af614f6151f1c6e121a1d6488c5"
+    },
+    {
+      "file": "tests/growth/gsc-opportunity-protection.test.ts",
+      "sha256": "23e4349259d2e204ac58cb672b87818d2f63850dac23c65b525ad5d5819a314d"
+    },
+    {
+      "file": "tests/lib/factual-depth-audit.test.ts",
+      "sha256": "1db0a5adfb47f5ce857ec03a6589892c490ddf51a3451f05c7ece34c12e880f3"
+    },
+    {
+      "file": "tests/social/linkedin-readiness.test.ts",
+      "sha256": "3dbe5a4f9473d2a183d45c925d11ee49d99e1382ae0fa5d3abcfc3eeb0873454"
+    },
+    {
+      "file": "tests/social/publish.test.ts",
+      "sha256": "0dc0dbb050dfd72d2642b9e24fb45693d5cf3b9f4c903646f9f635f5b853437a"
+    },
+    {
+      "file": "tests/social/qa-gates.test.ts",
+      "sha256": "f219c9f981e72c9594d2c07bcaf4b240721816792c455fa2bb8a1a0120d93760"
+    },
+    {
+      "file": "docs/growth/receipts/20260928-overnight-sprint/run-04.md",
+      "sha256": "b919957bea34096797858f12edd325faab32b1b245237a722e26cd71d5a42bc0"
+    },
+    {
+      "file": "docs/growth/receipts/20260928-overnight-sprint/run-05.md",
+      "sha256": "4fb2eb073078d978106b9679efc66ebab55efff2a2d5d49f1891b016e5b12502"
+    },
+    {
+      "file": "lib/social/editorial-policy.ts",
+      "sha256": "dbd305ca45c36b01625a845b512286b2a984da6f91d90787265ffd32efef8113"
+    }
+  ],
+  "policy": "All pre-existing changes belong to concurrent work. This task does not edit, stage or deploy them; hashes support final preservation checks.",
+  "productionSource": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+  "productionDeployment": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY"
+}

@@ -59,7 +59,7 @@ async function main() {
       await browser("snapshot", "-i", "-s", "main");
       const operations = (await browser("eval", "({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelector('h1')?.textContent,sections:[...document.querySelectorAll('h2')].map(h=>h.textContent),robots:document.querySelector('meta[name=robots]')?.content})")).result;
       assert.equal(operations.overflow, false); assert.equal(operations.h1, "Google operations command center");
-      assert.deepEqual(operations.sections, ["Google", "Authority", "Research", "Outreach", "Revenue", "Experiments", "Alerts"]);
+      assert.deepEqual(operations.sections, ["Production identity", "Google", "Authority", "Research", "Outreach", "Revenue", "Experiments", "Alerts"]);
       assert.equal(operations.robots, "noindex,nofollow");
       await browser("screenshot", path.resolve(output, `operations-${width}.png`));
       results.push({ route: "LOCAL_OPERATIONS_DASHBOARD", width, ...operations });

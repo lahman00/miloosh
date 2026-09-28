@@ -1,0 +1,161 @@
+{
+  "recordedAt": "2026-09-28T05:13:19.368Z",
+  "releaseGates": {
+    "productionChanged": false,
+    "results": [
+      {
+        "name": "protected-intake",
+        "start": "2026-09-28T05:07:33.195Z",
+        "end": "2026-09-28T05:07:34.463Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "typecheck",
+        "start": "2026-09-28T05:07:34.465Z",
+        "end": "2026-09-28T05:07:37.782Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "lint",
+        "start": "2026-09-28T05:07:37.782Z",
+        "end": "2026-09-28T05:07:51.576Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "tests",
+        "start": "2026-09-28T05:07:51.576Z",
+        "end": "2026-09-28T05:09:12.707Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "static-gate-tests",
+        "start": "2026-09-28T05:09:12.707Z",
+        "end": "2026-09-28T05:09:13.246Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "data",
+        "start": "2026-09-28T05:09:13.246Z",
+        "end": "2026-09-28T05:09:14.087Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "affiliate",
+        "start": "2026-09-28T05:09:14.087Z",
+        "end": "2026-09-28T05:09:14.863Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "build",
+        "start": "2026-09-28T05:09:14.863Z",
+        "end": "2026-09-28T05:10:20.472Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "static",
+        "start": "2026-09-28T05:10:20.474Z",
+        "end": "2026-09-28T05:10:35.184Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "query-store",
+        "start": "2026-09-28T05:10:35.184Z",
+        "end": "2026-09-28T05:10:35.732Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "google-war",
+        "start": "2026-09-28T05:10:35.732Z",
+        "end": "2026-09-28T05:10:56.276Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "command-center",
+        "start": "2026-09-28T05:10:56.276Z",
+        "end": "2026-09-28T05:11:12.061Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "browser-smoke",
+        "start": "2026-09-28T05:11:12.062Z",
+        "end": "2026-09-28T05:12:16.951Z",
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "name": "diff-check",
+        "start": "2026-09-28T05:12:16.958Z",
+        "end": "2026-09-28T05:12:17.045Z",
+        "exitCode": 0,
+        "error": null
+      }
+    ]
+  },
+  "fullTests": {
+    "files": 269,
+    "passed": 2422
+  },
+  "localBrowser": {
+    "capturedAt": "2026-09-28T05:04:53.597Z",
+    "pageViewportCases": 15,
+    "nativeClicks": 66,
+    "engagementProbe": "simulated visibility API on local production build",
+    "analyticsWrites": 0,
+    "merchantNavigations": 0
+  },
+  "productionBrowser": {
+    "checkedAt": "2026-09-28T05:09:20.894Z",
+    "pageViewportCases": 27,
+    "exportChecks": 6,
+    "exports": [
+      {
+        "name": "customer-support-pricing-2026",
+        "jsonStatus": 200,
+        "rows": 16,
+        "csvStatus": 200,
+        "csvBytes": 3540
+      },
+      {
+        "name": "crm-plan-gates-2026",
+        "jsonStatus": 200,
+        "rows": 7,
+        "csvStatus": 200,
+        "csvBytes": 8565
+      },
+      {
+        "name": "cms-buying-decision-2026",
+        "jsonStatus": 200,
+        "rows": 8,
+        "csvStatus": 200,
+        "csvBytes": 5269
+      }
+    ],
+    "errors": [],
+    "analyticsWrites": 0,
+    "merchantNavigations": 0
+  },
+  "productionIdentity": {
+    "observedAt": "2026-09-28T05:10:15.235Z",
+    "source": "VERCEL_DEPLOYMENT_AND_CANONICAL_ALIAS_READ",
+    "canonicalUrl": "https://miloosh.com",
+    "canonicalHttpStatus": 200,
+    "deploymentId": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY",
+    "sourceSha": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+    "readyState": "READY",
+    "target": "production",
+    "aliasDeploymentId": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY"
+  },
+  "scope": "Working-tree gates include concurrent work; not a deployment candidate. Only owned private tooling/evidence/tests committed. Production unchanged."
+}

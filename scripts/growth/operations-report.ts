@@ -14,6 +14,7 @@ import { researchWatch, outreachSchema, outreachCaptureSchema, outreachDispositi
 import { periodSchema, checkpointWindows } from "@/lib/google-war/measurement";
 import { organicMoneyFunnel } from "@/lib/google-war/money-funnel";
 import { eventExportSchema } from "@/lib/authority/inputs";
+import { resolveDeploymentObservation } from "@/lib/authority/deployment-observation";
 import { improvementSchema, verifiedExperimentClock } from "@/lib/google-war/deployment-proof";
 import type { FirstPartyEvent } from "@/lib/analytics/events";
 import type { runAuthorityReport } from "./authority-report";
@@ -34,9 +35,13 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
   const out = "var/growth/operations", now = new Date().toISOString();
   const previous = optional(path.join(out, "latest.json"));
   const cmsRelease = optional("docs/growth/receipts/20260927-cms-release/deployment.json");
-  const currentDeployment = cmsRelease?.status === "READY_VERIFIED_PRODUCTION" ? cmsRelease : deployment;
+  const deploymentEvidence = resolveDeploymentObservation(optional("var/growth/operations/deployment-observation.json"), now);
+  const currentDeployment = deploymentEvidence.status === "VERIFIED_AT_OBSERVATION" ? deploymentEvidence.observation : null;
   const cmsIndexing = optional("docs/growth/receipts/20260927-cms-release/indexing-request.json");
-  const inspections = inspectionSchema.array().parse(optional(option("--research-inspections", "var/growth/operations/research-inspections.json")) ?? researchSeed);
+  const inspections = inspectionSchema.array().parse([
+    ...read("data/growth/google-war/inspections.json"),
+    ...(optional(option("--research-inspections", "var/growth/operations/research-inspections.json")) ?? researchSeed),
+  ]);
   const queries = latestQueries(queryObservationSchema.array().parse(optional("var/growth/google-command/query-page.json") ?? []));
   const software = getAllSoftware();
   const pages: IntentPage[] = [
@@ -92,7 +97,8 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
     ...research.filter(r => r.alert).map(r => ({ code: r.alert!, target: r.url, reason: "New crawl text observed; exclusion is not indexation success. No resubmission." })),
     ...movement.flatMap(m => m.alerts.map(code => ({ code, target: m.page, reason: "Matched final windows only; directional, not causal or statistically significant." }))),
   ];
-  const result = { generatedAt: now, productionDeploymentReference: currentDeployment, productionHealth: health,
+  const result = { generatedAt: now, productionDeploymentReference: currentDeployment, productionDeploymentEvidence: deploymentEvidence,
+    historicalReleaseReferences: [deployment, ...(cmsRelease ? [cmsRelease] : [])], productionHealth: health,
     cmsIndexing: cmsIndexing ?? { status: "NOT_REQUESTED" },
     crawl: crawl && priorCrawl ? { capturedAt: crawl.capturedAt, complete: crawl.complete, failures: crawl.failures, delta: crawlDelta(priorCrawl.rows, crawl.rows) } : { status: "UNKNOWN" },
     google: { brand: authority.brandHistory.at(-1), brandMovement: authority.brandedSearchMovement, aiVisibility: authority.aiVisibility, ranking: movement, topWinnable: top },
@@ -120,6 +126,7 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
   fs.writeFileSync(path.join(out, "history", now.replaceAll(":", "-") + ".json"), JSON.stringify(result, null, 2) + "\n");
   const summary = [
     "# Miloosh Google operations", "Generated " + now + ". Evidence timestamps remain separate; no causal claims.",
+    "## Production identity", JSON.stringify(deploymentEvidence),
     "## Google", "Query×page observations: " + ownership.length + "; likely wrong-owner observations: " + result.wrongOwner.length + ". Ranking requires matching final windows.",
     "Brand: " + JSON.stringify(result.google.brand) + ". Post-release search outcome is not yet measured.",
     "Cloro AI/search visibility: brand providers=" + (result.google.aiVisibility.summary.brandRecognizedProviders.join(",") || "none") + "; generic visible cases=" + (result.google.aiVisibility.summary.genericVisibleCases.join(",") || "none") + "; mode=" + result.google.aiVisibility.mode + ".",
@@ -135,6 +142,7 @@ export function runOperationsReport(authority: ReturnType<typeof runAuthorityRep
   fs.writeFileSync(path.join(out, "morning.md"), summary);
   const table = (headers: string[], rows: unknown[][]) => '<div class="scroll"><table><thead><tr>' + headers.map(h => "<th>" + escape(h) + "</th>").join("") + "</tr></thead><tbody>" + rows.map(row => "<tr>" + row.map(v => "<td>" + escape(v ?? "UNKNOWN") + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
   const sections = [
+    ["Production identity", "<p>" + escape(deploymentEvidence.status + ": " + (currentDeployment?.deploymentId ?? "UNKNOWN") + "; observed " + (deploymentEvidence.observation?.observedAt ?? "UNKNOWN")) + "</p><p>" + escape(deploymentEvidence.reason) + "</p>"],
     ["Google", table(["Query", "Monitoring target", "Priority", "Evidence", "Protected"], top.map(t => [t.query, t.page, t.rank, t.observations.length ? `${t.observations.length} captured exact-query row(s); see dates in JSON` : t.attribution, t.protected])) + "<p>Targets without captured query rows remain reported/unconfirmed, not measured demand. Tables scroll horizontally on narrow screens.</p><p>" + escape("Brand window: " + result.google.brand?.window.start + "–" + result.google.brand?.window.end + "; no post-release movement proven.") + "</p><p>" + escape("Cloro baseline: brand providers=" + (result.google.aiVisibility.summary.brandRecognizedProviders.join(",") || "none") + "; generic visible cases=" + (result.google.aiVisibility.summary.genericVisibleCases.join(",") || "none") + "; " + result.google.aiVisibility.mode + ".") + "</p>"],
     ["Authority", table(["Source", "Target", "State"], authority.registry.map(a => [a.source, a.targetUrl, a.status]))],
     ["Research", table(["URL", "Google", "Last crawl (displayed)", "Checked"], research.map(r => [r.url, r.state + ": " + r.coverageState, r.lastCrawl, r.checkedAt]))],
