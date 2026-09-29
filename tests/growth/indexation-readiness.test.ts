@@ -31,6 +31,15 @@ describe("growth:indexation-readiness", () => {
     expect(result.verdict).toBe("FAIL");
   });
 
+  it("keeps strong but previously undiscoverable products out of NO_INTERNAL_DISCOVERY once a relevant buyer path points to them", () => {
+    for (const slug of ["chili-piper", "hibob"]) {
+      const result = assessIndexationReadiness(slug);
+      expect(result.inboundLinks, slug).toBeGreaterThan(0);
+      expect(result.reasons.some((r) => r.code === "NO_INTERNAL_DISCOVERY"), slug).toBe(false);
+      expect(result.verdict, slug).not.toBe("FAIL");
+    }
+  });
+
   it("reports a real, non-trivial distribution across all 354 pages", () => {
     const report = buildIndexationReadinessReport();
     expect(report.length).toBeGreaterThan(300);

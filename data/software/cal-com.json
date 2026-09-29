@@ -45,6 +45,17 @@
         "Sign-up sheets",
         "Simple setup"
       ]
+    },
+    {
+      "name": "Chili Piper",
+      "slug": "chili-piper",
+      "description": "A meeting-scheduling and lead-routing platform that qualifies and routes inbound or outbound handoffs to the right rep before booking.",
+      "best_for": "B2B revenue teams that need lead qualification and routing logic around the scheduling step, not only a booking link.",
+      "strengths": [
+        "Inbound lead qualification and routing",
+        "SDR-to-AE handoff scheduling",
+        "Connected routing and booking workflows"
+      ]
     }
   ],
   "order": 23,

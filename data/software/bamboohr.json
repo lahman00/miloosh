@@ -63,6 +63,13 @@
       "description": "A dedicated applicant tracking and hiring platform focused on structured, data-driven recruiting.",
       "best_for": "Companies whose primary need is a best-in-class ATS rather than an all-in-one HRIS with hiring bundled in.",
       "strengths": ["Structured interview kits", "Hiring analytics", "Deep ATS integrations"]
+    },
+    {
+      "name": "HiBob",
+      "slug": "hibob",
+      "description": "An all-in-one HR platform for mid-market and enterprise organizations, covering core HR, talent, compensation, workforce planning, and native US/UK payroll.",
+      "best_for": "Multi-country mid-market and enterprise teams that want broader workforce planning and compensation tooling around the HR system of record.",
+      "strengths": ["Core HR and talent workflows", "Compensation and workforce planning", "US and UK payroll"]
     }
   ],
   "sources": [
