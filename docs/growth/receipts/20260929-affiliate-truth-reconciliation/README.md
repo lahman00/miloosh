@@ -22,6 +22,8 @@ Each asks only for current status / required information / exact issued tracking
 
 The Zoho welcome email says unique product referral links are available after portal login (Referral Code / Create a Link). It also requests completing Payment Method under Commissions and billing address under Settings. Until at least one account-specific link is captured and verified, Miloosh must not treat Zoho as an active monetized CTA.
 
+A separate first-party "Confirm your Zoho account" email was found and its confirmation link was opened in Safari. It leads to a page requiring the owner to set and confirm a new Zoho password and accept the Terms of Service / Privacy Policy. The agent stopped there: no password was created and no terms were accepted. This is the next real owner checkpoint before the affiliate portal can be inspected.
+
 ## CallRail owner checkpoint
 
 Submit the exact Affiliate Partnership application provided by CallRail:

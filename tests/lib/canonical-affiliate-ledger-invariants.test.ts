@@ -64,6 +64,7 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(zoho?.status).toBe("APPROVED_NEEDS_LINK");
     expect(zoho?.decisionAt).toBe("2026-09-29");
     expect(zoho?.affiliateUrl).toBeNull();
+    expect(zoho?.ownerBlocker ?? "").toMatch(/password/i);
     expect(zoho?.ownerBlocker ?? "").toMatch(/referral url/i);
     expect(zoho?.productSlugs).toContain("zoho-campaigns");
 
