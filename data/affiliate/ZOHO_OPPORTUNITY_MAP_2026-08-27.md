@@ -8,7 +8,7 @@ counts, active-partner list) or from a live-verified Zoho source (dated
 
 ## Phase 1-2: current state and terms (see canonical-ledger.ts for the full record)
 
-**State: PENDING_REVIEW** (application submitted 2026-08-27). Update: the
+**State: APPROVED_NEEDS_LINK** (application submitted 2026-08-27; approved by first-party Zoho welcome email 2026-09-29). The approval email says unique product referral URLs are available inside the affiliate portal; no account-specific referral URL has been captured into Miloosh yet, so this is not ACTIVE. Owner action: log in, capture a real referral URL (Zoho CRM first), and verify Payment Method + billing address. Historical update: the
 owner completed the phone/SMS verification and CAPTCHA steps this agent
 could not perform, re-entered the drafted fields, and submitted the real
 form -- confirmed directly by the owner ("נרשמתי"). Not yet independently

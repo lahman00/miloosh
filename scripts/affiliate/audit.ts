@@ -133,13 +133,15 @@ async function main() {
   // 6. Current pending relationships overdue for follow-up. Current ledger is
   // stronger than the mutable pipeline for deciding WHAT is genuinely pending.
   for (const relationship of CURRENT_AFFILIATE_LEDGER.filter((entry) => entry.status === "PENDING_REVIEW")) {
-    const since = relationship.applicationSubmittedAt ?? relationship.statusUpdatedAt;
+    const since = relationship.lastFollowupAt ?? relationship.applicationSubmittedAt ?? relationship.statusUpdatedAt;
     const age = daysSince(`${since}T00:00:00.000Z`);
     if (age > FOLLOWUP_DAYS) {
       problems.push({
         category: "overdue-followup",
         slug: relationship.productSlugs.join(", ") || relationship.programId,
-        message: `${relationship.programName} has remained PENDING_REVIEW for ${age} days since ${since}; a single professional follow-up is justified.`,
+        message: relationship.lastFollowupAt
+          ? `${relationship.programName} has had no evidenced update for ${age} days since the last owner follow-up on ${since}; one further professional follow-up is justified.`
+          : `${relationship.programName} has remained PENDING_REVIEW for ${age} days since ${since}; a single professional follow-up is justified.`,
       });
     }
   }

@@ -29,6 +29,8 @@ export interface AffiliateProgramRelationship {
   status: CanonicalLedgerStatus;
   statusUpdatedAt: string;
   applicationSubmittedAt: string | null;
+  /** Most recent evidenced owner follow-up while a relationship remains pending. */
+  lastFollowupAt?: string | null;
   decisionAt: string | null;
   affiliateUrl: string | null;
   commissionModel: string;
@@ -445,12 +447,19 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     affiliateUrl: null,
     commissionModel: "20% default recurring year 1; Power 25%; Champion custom (PartnerStack in-app offer)",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md", "PartnerStack Application tab: 'Your application was received'", "Gmail confirmation"],
+    evidence: [
+      "docs/affiliate-applications.md",
+      "PartnerStack Application tab: 'Your application was received'",
+      "Gmail confirmation",
+      "Connected Gmail, 2026-09-12: Miloosh sent a follow-up to affiliates@freshworks.com on ticket #20888816; Freshworks returned support ticket #20971190. No approval/rejection followed in the evidence reviewed on 2026-09-29.",
+      "Connected Gmail send receipt 1a0eebe5dd6fe3f9, 2026-09-29: a concise status follow-up was sent in the existing Freshworks thread; no duplicate follow-up is due immediately."
+    ],
+    lastFollowupAt: "2026-09-29",
     ownerBlocker: null,
     formBlocker: null,
     eligibility: "Publisher application submitted",
     applicationUrl: "https://www.freshworks.com/company/affiliate-partner/affiliate-signup/",
-    notes: "Covers both Freshdesk and Freshsales. Awaiting vendor decision."
+    notes: "Covers both Freshdesk and Freshsales. Awaiting vendor decision. Follow-ups sent 2026-09-12 and 2026-09-29; await a vendor decision before contacting again."
   },
   {
     programId: "automattic",
@@ -564,12 +573,18 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     affiliateUrl: null,
     commissionModel: "Offer structure undisclosed on live card",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md", "PartnerStack program page 'Your application was received'"],
+    evidence: [
+      "docs/affiliate-applications.md",
+      "PartnerStack program page 'Your application was received'",
+      "Connected Gmail, 2026-09-12: Miloosh followed up with Amplitude Support on request #408133 asking that the pending PartnerStack application be routed to the responsible partner/affiliate team. No vendor decision was found in the evidence reviewed on 2026-09-29.",
+      "Connected Gmail send receipt 1a0eebe651724c95, 2026-09-29: Miloosh followed up in the existing Amplitude support thread asking for partner-team routing/current application status."
+    ],
+    lastFollowupAt: "2026-09-29",
     ownerBlocker: null,
     formBlocker: null,
     eligibility: "Publisher application submitted",
     applicationUrl: "https://amplitude.com/affiliates",
-    notes: "Submitted Aug 20, 2026."
+    notes: "Submitted Aug 20, 2026; follow-ups sent 2026-09-12 and 2026-09-29. Await a vendor decision rather than duplicating outreach."
   },
   {
     programId: "toggl-track",
@@ -583,31 +598,41 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     affiliateUrl: null,
     commissionModel: "30% commission on first payment per new customer",
     cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md", "PartnerStack program page 'Your application was received'"],
+    evidence: [
+      "docs/affiliate-applications.md",
+      "PartnerStack program page 'Your application was received'",
+      "Connected Gmail, 2026-09-12: Miloosh followed up with affiliates@toggl.com about the Aug 20 PartnerStack application. No approval or decline was found in the evidence reviewed on 2026-09-29.",
+      "Connected Gmail send receipt 1a0eebe6d0d04101, 2026-09-29: Miloosh followed up in the existing Toggl affiliate thread requesting current review status or an issued account-specific tracking asset if approved."
+    ],
+    lastFollowupAt: "2026-09-29",
     ownerBlocker: null,
     formBlocker: null,
     eligibility: "Publisher application submitted",
     applicationUrl: "https://toggl.com/affiliates",
-    notes: "Submitted Aug 20, 2026."
+    notes: "Submitted Aug 20, 2026; follow-ups sent 2026-09-12 and 2026-09-29. Await a vendor decision rather than duplicating outreach."
   },
   {
     programId: "callrail",
     programName: "CallRail Partner Program",
     network: "PartnerStack",
     productSlugs: ["callrail"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-08-20",
-    applicationSubmittedAt: "2026-08-20",
+    status: "OWNER_ACTION_REQUIRED",
+    statusUpdatedAt: "2026-09-01",
+    applicationSubmittedAt: null,
     decisionAt: null,
     affiliateUrl: null,
-    commissionModel: "Revenue share on new tracked accounts",
-    cookieWindow: "90 days",
-    evidence: ["PartnerStack in-app review", "docs/affiliate-applications.md"],
-    ownerBlocker: null,
+    commissionModel: "Prior research recorded a publisher reward model; exact current account terms must be verified after the correct application is submitted.",
+    cookieWindow: null,
+    evidence: [
+      "Historical PartnerStack / application notes in docs/affiliate-applications.md",
+      "First-party CallRail email from Marilyn Holmes, 2026-09-01: after Miloosh clarified that it is an independent editorial software-comparison publisher, CallRail explicitly directed Miloosh to fill out the Affiliate Partnership Program application at dash.partnerstack.com/application?company=callrail&group=affiliatepartners. The email says a Partnerships Team member will reach out after submission.",
+      "The same 2026-09-01 thread states CallRail's systems did not show an active account for the Miloosh email addresses checked. No later application-confirmation email was found in Gmail on 2026-09-29."
+    ],
+    ownerBlocker: "Submit the first-party CallRail Affiliate Partnership Program application at the vendor-provided PartnerStack route, then wait for the Partnerships Team. No evidence shows that this correct-route application has been submitted yet.",
     formBlocker: null,
-    eligibility: "Publisher application submitted",
-    applicationUrl: "https://www.callrail.com/partner-program",
-    notes: "Application in review."
+    eligibility: "CallRail explicitly routed Miloosh to its Affiliate Partnership Program after the publisher model was clarified; acceptance still requires application/review.",
+    applicationUrl: "https://dash.partnerstack.com/application?company=callrail&group=affiliatepartners",
+    notes: "The older PENDING_REVIEW record is superseded by the 2026-09-01 first-party CallRail thread. Do not report a pending application until the correct vendor-provided affiliate application is actually submitted and evidenced."
   },
 
   // ==========================================
@@ -999,10 +1024,10 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Zoho Affiliate Program",
     network: "Direct (Zoho)",
     productSlugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk", "zoho-flow", "zoho-campaigns"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-08-27",
+    status: "APPROVED_NEEDS_LINK",
+    statusUpdatedAt: "2026-09-29",
     applicationSubmittedAt: "2026-08-27",
-    decisionAt: null,
+    decisionAt: "2026-09-29",
     affiliateUrl: null,
     commissionModel: "15% (Standard tier) of the revenue Zoho receives from a qualified sale for the first 12 months, PROVIDED the referral stays a Zoho customer for at least 60 days (the 'stickiness period') before commission accrues. No commission on the same customer's subsequent/cross-sell purchases. Highest commission per single deal is capped at $25,000. Qualified sale requires: customer not an existing paid Zoho customer; signup within 90 days of first affiliate-link click; purchase within 90 days of signup; customer signs up in the SAME Zoho data center the affiliate is registered in. Tiers above Standard (Super 18%, Elite 20%) require $5,001+ revenue or 21+ new customers.",
     cookieWindow: "90 days",
@@ -1012,13 +1037,14 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
       "zoho.com/affiliate/faq.html (live page, verified 2026-08-27): full Referrals & Commission / Links & Promotions / Payments / Program Restrictions / Getting Started FAQ content, extracted via DOM inspection since answers are accordion-collapsed",
       "zoho.com/affiliate/signup.html (live form, verified 2026-08-27): real field-by-field form structure",
       "Owner-reported direct confirmation, 2026-08-27: owner completed the phone/SMS verification and CAPTCHA steps this agent could not perform, and submitted the form ('נרשמתי' -- 'I registered/applied'). Not yet independently verified against a Zoho confirmation email or the affiliate dashboard -- Gmail access was unavailable in this session when this was recorded. Treated as authoritative because it is the owner's own first-hand report of an action only the owner could take, consistent with this ledger's evidence discipline elsewhere.",
-      "Owner-reported correspondence, 2026-08-28: after submission, Zoho sent a human qualification questionnaire (not an automated decision); the owner replied directly with Miloosh business/audience/content details. Program remains PENDING_REVIEW -- a qualification questionnaire is a review step, not an approval signal, and is not treated as one here. Owner also reconfirmed: PayPal/wire payout, $100 threshold, 90-day first-click attribution, no-existing-paid-customer requirement, purchase due within 90 days of signup, deep links generated via Zoho's own URL Builder tool, and a 55+ product Zoho portfolio (i.e. more than the 6 products Miloosh currently covers) is technically eligible once approved -- consistent with, not contradicting, the terms already on file above."
+      "Owner-reported correspondence, 2026-08-28: after submission, Zoho sent a human qualification questionnaire (not an automated decision); the owner replied directly with Miloosh business/audience/content details.",
+      "First-party Gmail approval, 2026-09-29, subject \"Welcome to Zoho Affiliate Program!\": Zoho explicitly welcomed Miloosh to the affiliate program and stated that unique referral URLs for each Zoho product are available after logging into the affiliate portal. The same email instructs the affiliate to complete Payment Method under Commissions and billing address under Settings. No account-specific referral URL was contained in the email itself, so the relationship is APPROVED_NEEDS_LINK rather than ACTIVE."
     ],
-    ownerBlocker: null,
+    ownerBlocker: "Log in to the approved Zoho affiliate portal, capture at least one real account-specific referral URL (preferably the Zoho CRM route first), and complete/verify Payment Method plus billing address before activation.",
     formBlocker: null,
-    eligibility: "Confirmed eligible: Miloosh is not an existing Zoho reseller/consulting/platform partner (the one stated disqualifying condition). Israel is a fully selectable country and phone country code on the live signup form -- no geographic exclusion found for Israel in the FAQ or signup form.",
+    eligibility: "Approved by Zoho on 2026-09-29. First-party welcome email confirms Miloosh may promote Zoho with unique referral links and earn commissions on qualifying sales.",
     applicationUrl: "https://www.zoho.com/affiliate/signup.html",
-    notes: "Application submitted 2026-08-27 (owner-confirmed); still PENDING_REVIEW as of 2026-08-28 -- Zoho followed up with a human qualification questionnaire (answered by the owner) rather than a decision. No tracking asset exists; do not mark approved/active until a real, usable affiliate link is issued. The prepared confirmation reply to Hari in the existing thread (see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md) has not been sent yet -- Gmail was not accessible in this session; send it (or ask the agent to, once Gmail is reachable) so Hari knows to expect the review. Covers Zoho CRM, Books, Projects, Desk, Flow, and Campaigns (6 products) today; deep links for any of these would use Zoho's own URL Builder once approved -- see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md for the full current-portfolio evaluation. Payout: PayPal or wire transfer preferred; $100 (or INR 4,000) minimum unpaid-commission threshold; ~15 days from payout request to bank reflection; payout currency follows the REFERRED CUSTOMER's payment currency, not the affiliate's home currency (except INR) -- a real operational nuance for an Israel-based affiliate, not a blocker. Do not reproduce Zoho's own marketing/promotional materials, case studies, or testimonials as Miloosh's own (explicit FAQ term) -- consistent with Miloosh's existing sourced-content policy."
+    notes: "Application submitted 2026-08-27 and approved 2026-09-29. Approval is first-party and explicit, but no usable account-specific referral URL has been captured into Miloosh yet; keep APPROVED_NEEDS_LINK until a real link is retrieved from Zoho's portal and verified. The welcome email says referral URLs can be obtained under Referral Code or generated with Create a Link, and asks the affiliate to fill Payment Method under Commissions plus billing address under Settings. Covers Zoho CRM, Books, Projects, Desk, Flow, and Campaigns (6 products) today. Existing program terms on file remain separate from the approval evidence; do not infer that an account-specific commission or payout is ready until the portal state is verified."
   },
   {
     programId: "adobe-portfolio",

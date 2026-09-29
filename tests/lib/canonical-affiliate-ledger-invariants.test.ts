@@ -49,15 +49,22 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("help-scout")?.status).toBe("REJECTED");
     expect(byProgramId.get("clickup")?.status).toBe("REJECTED");
     expect(byProgramId.get("close")?.status).toBe("ACTIVE");
+    expect(byProgramId.get("callrail")?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(byProgramId.get("callrail")?.applicationSubmittedAt).toBeNull();
+    expect(byProgramId.get("freshworks")?.lastFollowupAt).toBe("2026-09-29");
+    expect(byProgramId.get("amplitude")?.lastFollowupAt).toBe("2026-09-29");
+    expect(byProgramId.get("toggl-track")?.lastFollowupAt).toBe("2026-09-29");
   });
 
   it("locks the 2026-08-28 suspension-period reconciliation (Zoho qualification stage, Sprout Social/RingCentral/Framer routes) against silent regression", () => {
-    // Zoho: a human qualification questionnaire is a review step, not a
-    // decision -- must stay pending, not drift to ACTIVE/APPROVED without a
-    // real tracking asset.
+    // Zoho: first-party Gmail evidence on 2026-09-29 records a real approval,
+    // but no account-specific referral URL has been captured yet. Approval
+    // therefore advances to APPROVED_NEEDS_LINK, not ACTIVE.
     const zoho = byProgramId.get("zoho-ecosystem");
-    expect(zoho?.status).toBe("PENDING_REVIEW");
+    expect(zoho?.status).toBe("APPROVED_NEEDS_LINK");
+    expect(zoho?.decisionAt).toBe("2026-09-29");
     expect(zoho?.affiliateUrl).toBeNull();
+    expect(zoho?.ownerBlocker ?? "").toMatch(/referral url/i);
     expect(zoho?.productSlugs).toContain("zoho-campaigns");
 
     // Sprout Social: re-modeled onto the CJ account, not the generic Impact
