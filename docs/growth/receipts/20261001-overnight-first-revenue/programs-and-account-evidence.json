@@ -26,7 +26,9 @@
       "gmailId": "1a0f2f24d5877b22",
       "suppliedWooAsset": "https://automattic.pxf.io/c/7846380/1946431/22744",
       "reasonWithheld": "Marketplace destination is not a safe universal WooCommerce platform CTA",
-      "payoutVerified": false
+      "payoutVerified": false,
+      "writtenDeepLinkRequestSentId": "1a0f47fc7354834b",
+      "writtenRequestPurpose": "Main WooCommerce platform tracking link plus written confirmation of independent source-linked comparison/pricing content."
     },
     "mrpeasy": {
       "state": "HOLD",

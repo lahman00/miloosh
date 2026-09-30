@@ -87,7 +87,7 @@ Owner-only gates: use the existing Miloosh Impact account, inspect the assigned 
 
 - Apollo.io, Aircall, and Softr are pending vendor review. Do not submit duplicates.
 - Trainual is active on the exact vendor-issued URL.
-- Automattic is approved, but the supplied WooCommerce Marketplace link is not used as a general platform CTA. Generate an intent-aligned Impact deep link first.
+- Automattic is approved, but the supplied WooCommerce Marketplace link is not used as a general platform CTA. A written request for an intent-aligned main-platform link and editorial confirmation was sent to Nick Rasmussen (`1a0f47fc7354834b`); await the reply.
 - MRPeasy is accepted with an issued URL but remains on HOLD. Its current first-party terms raise unresolved sole-proprietor eligibility, payout identity, independent-content permission, seven-day placement, assigned-commission, and stated USD 5,000 breach-fine questions. A written clarification request was sent; do not publish meanwhile.
 - Zoho is approved but still needs exact per-product assets. A written-only onboarding request was sent in the existing thread.
 

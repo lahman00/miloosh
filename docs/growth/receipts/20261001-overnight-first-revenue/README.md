@@ -7,7 +7,7 @@ Status: **verified local release candidate; not pushed and not deployed**.
 - Activated Trainual on the exact vendor-issued URL `https://start.trainual.com/0j9to92n49iy`. The URL is preserved byte-for-byte, commercial links use `rel=sponsored`, and the account remains payout-unverified.
 - Reviewed Trainual's current first-party affiliate restrictions and sent a written request for the assigned commission rate, duration and payout details (Gmail sent message `1a0f46dbaa14e2df`).
 - Preserved MRPeasy's issued URL `https://try.mrpeasy.com/rlmf8edfjcie`, but placed the relationship on canonical `HOLD`. No public CTA was created. Written clarification was sent about sole-proprietor eligibility, payout identity, independent editorial use, the seven-day placement requirement and assigned economics (Gmail sent message `1a0f46ca9713bbb4`).
-- Kept Automattic/WooCommerce at `APPROVED_NEEDS_LINK`: the issued Marketplace asset is not treated as a universal WooCommerce platform destination.
+- Kept Automattic/WooCommerce at `APPROVED_NEEDS_LINK`: the issued Marketplace asset is not treated as a universal WooCommerce platform destination. A written request for a main-platform link and editorial confirmation was sent (`1a0f47fc7354834b`).
 - Kept Zoho at `APPROVED_NEEDS_LINK` and Softr/Apollo/Aircall in pending state. No duplicate application was submitted.
 - Added current first-party research for 15 program records. Eleven are viable research-only publisher candidates, one is already pending (Softr), one is confirmed closed (Ahrefs), one is customer-only (KnowledgeOwl), and one is held for conflicting reward language (YouCanBookMe).
 

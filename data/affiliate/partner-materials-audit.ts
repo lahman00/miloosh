@@ -103,7 +103,7 @@ export const PARTNER_MATERIAL_AUDIT: readonly PartnerMaterialAudit[] = [
     restrictions: "No trademark bidding, no direct traffic from paid sources including Google ads, and no browser extensions; zero-strike policy in welcome email.",
     ppcTrademarkRestrictions: "Trademark bidding prohibited; direct paid-source traffic prohibited.",
     readiness: "APPROVED BUT NEEDS LINK", lastVerifiedDate: "2026-09-30",
-    evidence: ["First-party Automattic Impact welcome Gmail 1a0f2f24d5877b22", "Issued WooCommerce Marketplace asset https://automattic.pxf.io/c/7846380/1946431/22744", "Canonical ledger intentionally requires an Impact link-builder asset to the intended WooCommerce platform destination before public activation."],
+    evidence: ["First-party Automattic Impact welcome Gmail 1a0f2f24d5877b22", "Issued WooCommerce Marketplace asset https://automattic.pxf.io/c/7846380/1946431/22744", "Canonical ledger intentionally requires an Impact link-builder asset to the intended WooCommerce platform destination before public activation.", "Written deep-link and editorial-permission request sent to Nick Rasmussen on 2026-10-01; Gmail 1a0f47fc7354834b."],
   }),
   record({
     company: "Zoho", slug: "zoho-crm", programNetwork: "Direct (Zoho)",

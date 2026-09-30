@@ -592,13 +592,14 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     evidence: [
       "Official WooCommerce affiliate page routes to the Automattic Impact program and targets publishers, bloggers, educators, influencers and developers.",
       "First-party Impact welcome email to lahman00@gmail.com, Gmail 1a0f2f24d5877b22 dated 2026-09-30: confirms approval for Automattic, Inc. (WordPress.com, Pressable, WooCommerce, Jetpack) and supplies brand tracking assets.",
-      "The supplied WooCommerce asset is specifically the WooCommerce Marketplace URL https://automattic.pxf.io/c/7846380/1946431/22744; the email also states an authenticated Impact link builder can create links to brand pages."
+      "The supplied WooCommerce asset is specifically the WooCommerce Marketplace URL https://automattic.pxf.io/c/7846380/1946431/22744; the email also states an authenticated Impact link builder can create links to brand pages.",
+      "Written request for an account-specific main WooCommerce platform link and confirmation of independent editorial use sent to Automattic Head of Partnership Marketing on 2026-10-01; Gmail sent message 1a0f47fc7354834b."
     ],
     ownerBlocker: "Generate and verify an account-specific Impact deep link to the intended WooCommerce platform destination before choosing a canonical general-product CTA. Do not substitute the Marketplace asset for a platform/pricing CTA.",
     formBlocker: null,
     eligibility: "Approved Automattic affiliate; intent-aligned WooCommerce platform asset still required for Miloosh's existing general software page.",
     applicationUrl: "https://woocommerce.com/affiliates",
-    notes: "Approval is real, but approval alone does not make the supplied Marketplace destination appropriate for all WooCommerce buyer intent. No ACTIVE_PARTNERS entry or sponsored general CTA until an exact, intent-matched link is captured. Trademark bidding, paid-source direct traffic and browser extensions are prohibited by the welcome email."
+    notes: "Approval is real, but approval alone does not make the supplied Marketplace destination appropriate for all WooCommerce buyer intent. A written deep-link/editorial-permission request is pending. No ACTIVE_PARTNERS entry or sponsored general CTA until an exact, intent-matched link is captured. Trademark bidding, paid-source direct traffic and browser extensions are prohibited by the welcome email."
   },
   {
     programId: "mrpeasy",
