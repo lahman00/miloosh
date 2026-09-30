@@ -19,9 +19,11 @@
     "Cloud security monitoring unified with observability data"
   ],
   "sources": [
-    "https://www.datadoghq.com"
+    "https://www.datadoghq.com/",
+    "https://www.datadoghq.com/pricing/list/",
+    "https://docs.datadoghq.com/account_management/billing/pricing/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Sentry",
@@ -45,5 +47,81 @@
         "CI/CD integrations"
       ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15 per infrastructure host/month when billed annually (Infrastructure Pro)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "15",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Infrastructure Pro",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
+        "unit": "per infrastructure host/month",
+        "notes": "The same public price list shows $18 month-to-month or on-demand. This is one Datadog product, not an all-platform bundle."
+      },
+      {
+        "name": "Infrastructure Enterprise",
+        "amount": "23",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
+        "unit": "per infrastructure host/month",
+        "notes": "The public price list shows $27 month-to-month or on-demand."
+      },
+      {
+        "name": "APM",
+        "amount": "31",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "annual_billing_required": true,
+        "unit": "per APM host/month",
+        "notes": "APM is separately metered; ingested and indexed spans can add separate usage charges."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-30",
+    "official_source": "https://www.datadoghq.com/pricing/list/"
+  },
+  "pros": [
+    "Publishes a detailed list of billing units and annual, month-to-month, and on-demand prices for many products",
+    "Offers both a high-watermark host plan and a hybrid monthly/hourly plan for different infrastructure patterns",
+    "Combines infrastructure, application, logs, security, digital-experience, and software-delivery monitoring in one product family"
+  ],
+  "cons": [
+    "There is no single platform price: infrastructure hosts, APM hosts, logs, spans, custom metrics, containers, and other products use separate billing units",
+    "On the high-watermark plan, host charges use the maximum of the lower 99% of hourly readings rather than a simple monthly average",
+    "Usage above a hybrid-plan commitment and separately metered ingestion or indexing can increase the bill beyond the headline host price"
+  ],
+  "faq": [
+    {
+      "question": "How much does Datadog Infrastructure Monitoring cost?",
+      "answer": "Datadog’s public list prices Infrastructure Pro at $15 per infrastructure host/month when billed annually and $18 month-to-month or on-demand. Infrastructure Enterprise is listed at $23 annually or $27 month-to-month/on-demand."
+    },
+    {
+      "question": "Does the Datadog host price include APM and logs?",
+      "answer": "No. Datadog lists APM, log ingestion/indexing, custom metrics, containers, and many other capabilities as separate billing units. A buyer should model the products and retained data the deployment will actually use."
+    },
+    {
+      "question": "How does Datadog count hosts?",
+      "answer": "Its billing documentation describes a high-watermark plan based on the maximum of the lower 99% of hourly host readings, and a hybrid plan that combines a monthly commitment with hourly overage charges."
+    }
+  ],
+  "links": {
+    "pricing": "https://www.datadoghq.com/pricing/list/"
+  }
 }

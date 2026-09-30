@@ -19,9 +19,11 @@
     "Integrated documentation search"
   ],
   "sources": [
-    "https://about.readthedocs.com"
+    "https://about.readthedocs.com/",
+    "https://about.readthedocs.com/pricing/",
+    "https://docs.readthedocs.com/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Docusaurus",
@@ -45,5 +47,95 @@
         "Publishing controls"
       ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free for eligible open-source projects; Business plans start at $50/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "50",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Community",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free for open-source projects using public repositories and public, ad-supported documentation hosting."
+      },
+      {
+        "name": "Basic",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per month",
+        "notes": "Two concurrent builds, a shared domain, GitHub/GitLab SSO, 50 redirects, and three-business-day support."
+      },
+      {
+        "name": "Advanced",
+        "amount": "150",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per month",
+        "notes": "Four concurrent builds, five custom domains, 250 redirects, and two-business-day support."
+      },
+      {
+        "name": "Pro",
+        "amount": "250",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per month",
+        "notes": "Six concurrent builds, 15 custom domains, Google SSO, 500 redirects, and one-business-day support."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "10000",
+        "currency": "USD",
+        "billing_period": "annual",
+        "annual_billing_required": true,
+        "unit": "starting annual price",
+        "notes": "Starts at $10,000/year and adds SAML SSO, dedicated builders, advanced audit tracking, and a support SLA."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-30",
+    "official_source": "https://about.readthedocs.com/pricing/"
+  },
+  "pros": [
+    "Community hosting remains free for eligible open-source documentation projects",
+    "Paid plans include a 30-day trial and publish numeric monthly prices rather than requiring a sales call at entry tiers",
+    "Every paid plan includes automatic builds, versioning, search, pull-request previews, and CDN hosting"
+  ],
+  "cons": [
+    "The free Community option is for public open-source projects and uses ad-supported hosting; commercial or private documentation requires Business plans",
+    "Custom domains are not included on the $50 Basic plan and start on Advanced",
+    "Enterprise starts at $10,000 per year, creating a large step above the $250/month Pro plan"
+  ],
+  "faq": [
+    {
+      "question": "Is Read the Docs free?",
+      "answer": "Read the Docs Community is free for open-source projects with public repositories and public documentation. Commercial and private documentation use the paid Business product."
+    },
+    {
+      "question": "How much does Read the Docs Business cost?",
+      "answer": "The published monthly prices are $50 for Basic, $150 for Advanced, and $250 for Pro. Enterprise starts at $10,000 per year."
+    },
+    {
+      "question": "Does Read the Docs offer a free trial?",
+      "answer": "Yes. The Business pricing page offers a 30-day trial and says the account is not charged automatically when the trial ends."
+    }
+  ],
+  "links": {
+    "pricing": "https://about.readthedocs.com/pricing/"
+  }
 }

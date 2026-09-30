@@ -48,6 +48,17 @@
       "description": "An enterprise IT service management suite built on the ServiceNow AI Platform, unifying incident, change, and problem management with autonomous AI agents.",
       "best_for": "Large enterprises wanting ITSM unified with broader enterprise workflows rather than MSP-focused RMM.",
       "strengths": ["Enterprise-grade shared CMDB", "Cross-department workflow platform", "Autonomous AI agents for routine requests"]
+    },
+    {
+      "name": "Veeam Data Platform",
+      "slug": "veeam-data-platform",
+      "description": "A dedicated backup, recovery, and cyber-resilience platform for virtual, physical, cloud, and SaaS workloads.",
+      "best_for": "IT teams that need enterprise data protection, portable recovery, and disaster-recovery controls beyond the backup bundled into an RMM platform.",
+      "strengths": [
+        "Multi-workload backup",
+        "Orchestrated recovery",
+        "Cyber-resilience and compliance"
+      ]
     }
   ],
   "faq": [
@@ -65,5 +76,5 @@
     "https://www.ninjaone.com/pricing/",
     "https://trustpage.ninjaone.com/"
   ],
-  "accessed_at": "2026-09-05"
+  "accessed_at": "2026-09-30"
 }

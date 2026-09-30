@@ -4,7 +4,9 @@
   "category": "api",
   "description": "Stripe describes itself as \"financial infrastructure to grow your revenue,\" letting businesses accept payments, offer financial services, and implement custom revenue models — from your first transaction to your billionth.",
   "website": "https://stripe.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Stripe states it serves enterprises (including half of Fortune 100 companies), startups, SaaS platforms, marketplaces, ecommerce businesses, and AI companies building payment or billing flows.",
   "features": [
     "Global payment processing (135+ currencies/payment methods)",
@@ -14,22 +16,90 @@
     "Crypto and stablecoin money movement",
     "Agentic Commerce Protocol for AI-driven purchases"
   ],
-  "sources": ["https://stripe.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://stripe.com/",
+    "https://stripe.com/pricing",
+    "https://stripe.com/pricing/local-payment-methods",
+    "https://stripe.com/billing"
+  ],
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Plaid",
       "slug": "plaid",
       "description": "Connects applications to bank accounts and financial data, often used alongside payment processors to verify accounts or pull transaction data.",
       "best_for": "Companies building fintech products that need to verify bank accounts or access financial data.",
-      "strengths": ["12,000+ bank connections", "Account/identity verification", "ACH/RTP/FedNow payment rails"]
+      "strengths": [
+        "12,000+ bank connections",
+        "Account/identity verification",
+        "ACH/RTP/FedNow payment rails"
+      ]
     },
     {
       "name": "Twilio",
       "slug": "twilio",
       "description": "A broader developer API platform for communications (SMS, voice, email) rather than payments.",
       "best_for": "Companies needing customer communications (e.g., payment confirmations, fraud alerts) alongside a payments stack.",
-      "strengths": ["Multi-channel messaging", "Identity/verification APIs", "Large developer ecosystem"]
+      "strengths": [
+        "Multi-channel messaging",
+        "Identity/verification APIs",
+        "Large developer ecosystem"
+      ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "2.9% + $0.30 per successful domestic-card transaction on Stripe’s US standard pricing page",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Standard online card payments",
+        "notes": "The US pricing page lists 2.9% + $0.30 per successful domestic-card transaction, with no setup or monthly fee. Country-specific rates can differ."
+      },
+      {
+        "name": "International card surcharge",
+        "notes": "The same US page lists an additional 1.5% for international cards and an additional 1% when currency conversion is required."
+      },
+      {
+        "name": "ACH Direct Debit",
+        "notes": "The US local-methods page lists 0.8% per transaction for standard settlement, capped at $5, with separate failed-payment, dispute, and optional validation fees."
+      },
+      {
+        "name": "Custom",
+        "notes": "Custom pricing is available for high payment volume or unusual business models, including interchange-plus, volume, and multi-product options."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-30",
+    "official_source": "https://stripe.com/pricing"
+  },
+  "pros": [
+    "Standard pricing has no setup fee or monthly platform fee for basic payments on the published US page",
+    "The pricing page itemizes domestic cards, international-card and currency-conversion surcharges, local payment methods, and custom-pricing options",
+    "Payment Links provides a no-code route while APIs support custom payment and billing flows"
+  ],
+  "cons": [
+    "The 2.9% + $0.30 headline is the US domestic-card rate, not a universal global price",
+    "International cards, currency conversion, manually entered cards, disputes, failed payments, and optional products can add separate charges",
+    "Billing, fraud tools, tax, identity, issuing, and other Stripe products have their own pricing rather than being included automatically in the base card rate"
+  ],
+  "faq": [
+    {
+      "question": "How much does Stripe charge for online card payments?",
+      "answer": "On Stripe’s US standard pricing page, domestic online card payments are listed at 2.9% + $0.30 per successful transaction. Country-specific pricing can differ."
+    },
+    {
+      "question": "Does Stripe charge a monthly fee for standard payments?",
+      "answer": "The US standard page says there are no setup fees or monthly fees for the standard payments package. Optional products and usage still have their own charges."
+    },
+    {
+      "question": "What can add to the Stripe card rate?",
+      "answer": "The US page lists additional charges for manually entered cards, international cards, and currency conversion; disputes, failed payments, alternative methods, and other Stripe products can also have separate fees."
+    }
+  ],
+  "links": {
+    "pricing": "https://stripe.com/pricing"
+  }
 }

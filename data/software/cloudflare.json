@@ -15,7 +15,7 @@
     "AI security for applications"
   ],
   "sources": ["https://www.cloudflare.com", "https://www.cloudflare.com/application-security/"],
-  "accessed_at": "2026-08-01",
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Okta",
@@ -30,6 +30,17 @@
       "description": "An AI-native application security platform that scans code, dependencies, containers, and infrastructure-as-code for vulnerabilities.",
       "best_for": "Development and security teams securing the software supply chain and AI-generated code.",
       "strengths": ["SDLC-wide scanning", "IDE/CI integration", "AI code governance"]
+    },
+    {
+      "name": "KnowBe4",
+      "slug": "knowbe4",
+      "description": "A security-awareness and human-risk platform combining personalized training, phishing simulations, behavior coaching, and email-security add-ons.",
+      "best_for": "Security teams whose primary gap is employee behavior and phishing resilience rather than edge, application, or network protection.",
+      "strengths": [
+        "Security awareness training",
+        "Phishing simulations",
+        "Human-risk coaching"
+      ]
     }
   ]
 }

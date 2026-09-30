@@ -67,11 +67,22 @@
       "description": "Small-business accounting software for invoicing, expense tracking, and basic financial reporting.",
       "best_for": "Small businesses and freelancers with simpler accounting needs than a full ERP.",
       "strengths": ["Low cost", "Easy setup", "Large accountant/bookkeeper ecosystem"]
+    },
+    {
+      "name": "FloQast",
+      "slug": "floqast",
+      "description": "A financial-close and accounting-operations platform layered on top of an existing ERP, with reconciliation, close checklists, compliance, and reporting workflows.",
+      "best_for": "Accounting teams that want to improve close and reconciliation work without replacing the core ERP.",
+      "strengths": [
+        "Close management",
+        "Reconciliation automation",
+        "Audit and compliance workflows"
+      ]
     }
   ],
   "sources": [
     "https://www.netsuite.com/portal/products/erp.shtml",
     "https://www.netsuite.com/portal/products/professional-services-automation/expense-management.shtml"
   ],
-  "accessed_at": "2026-09-05"
+  "accessed_at": "2026-09-30"
 }

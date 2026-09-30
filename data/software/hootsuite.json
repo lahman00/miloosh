@@ -15,7 +15,7 @@
     "AI-assisted post drafting grounded in social data"
   ],
   "sources": ["https://www.hootsuite.com", "https://www.hootsuite.com/hootsuite-mobile-app"],
-  "accessed_at": "2026-08-01",
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Buffer",
@@ -30,6 +30,17 @@
       "description": "A social intelligence platform turning real-time social signals into direction for teams.",
       "best_for": "Teams and agencies needing social listening and analytics at scale.",
       "strengths": ["AI-powered inbox (Trellis)", "Social listening", "Influencer marketing tools"]
+    },
+    {
+      "name": "Birdeye",
+      "slug": "birdeye",
+      "description": "A multi-location customer-experience and reputation platform that combines reviews, listings, messaging, surveys, social publishing, and local visibility.",
+      "best_for": "Multi-location businesses whose primary need is reviews, listings, and local reputation rather than a social-publishing-first platform.",
+      "strengths": [
+        "Review and listing management",
+        "Multi-location reputation workflows",
+        "Messaging and local visibility"
+      ]
     }
   ]
 }

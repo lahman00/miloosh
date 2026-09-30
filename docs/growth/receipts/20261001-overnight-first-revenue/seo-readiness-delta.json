@@ -1,0 +1,42 @@
+{
+  "before": {
+    "pass": 149,
+    "warn": 63,
+    "fail": 12,
+    "protected": 130,
+    "source": "local indexation-readiness gate before this overnight repair"
+  },
+  "after": {
+    "pass": 154,
+    "warn": 70,
+    "fail": 0,
+    "protected": 130,
+    "source": "local indexation-readiness gate after bounded repair"
+  },
+  "factualDepthRepairs": [
+    "apigee",
+    "datadog",
+    "read-the-docs",
+    "stripe",
+    "supabase"
+  ],
+  "discoveryEdges": {
+    "hootsuite": "birdeye",
+    "gong": "consensus",
+    "notion": "dropbox",
+    "netsuite": "floqast",
+    "cloudflare": "knowbe4",
+    "ninjaone": "veeam-data-platform",
+    "airbyte": "dbt-cloud"
+  },
+  "interpretation": "This is Miloosh local readiness, not evidence that Google indexed or ranked any page.",
+  "gscBaseline": {
+    "dataLastObservedUpdate": "2026-09-21",
+    "indexed": 218,
+    "notIndexed": 1705,
+    "discoveredNotIndexed": 820,
+    "crawledNotIndexed": 825,
+    "alternateCanonical": 58,
+    "redirects": 2
+  }
+}

@@ -4,7 +4,9 @@
   "category": "api",
   "description": "Apigee is Google Cloud's API management platform that helps organizations design, secure, publish, and analyze APIs at scale.",
   "website": "https://cloud.google.com/apigee",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Per the page, Apigee is for enterprise organizations managing multiple APIs, API developers, API teams needing governance/security, and businesses exposing services securely to partners and customers.",
   "features": [
     "Visual API design and development/prototyping tools",
@@ -14,22 +16,91 @@
     "Developer Portal for publishing docs and onboarding",
     "Policy enforcement: rate limiting, quota management, governance"
   ],
-  "sources": ["https://cloud.google.com/apigee"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://cloud.google.com/apigee",
+    "https://docs.cloud.google.com/apigee/docs/api-platform/reference/pay-as-you-go-updated-overview",
+    "https://docs.cloud.google.com/apigee/docs/api-platform/reference/pay-as-you-go-updated-faq",
+    "https://docs.cloud.google.com/apigee/docs/api-platform/reference/pay-as-you-go-updated-billing"
+  ],
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Kong",
       "slug": "kong",
       "description": "Offers API gateway and management products directly comparable to Apigee's design/security/governance capabilities, positioned around AI connectivity and multi-cloud deployment.",
       "best_for": "Teams wanting a cloud-agnostic API gateway with AI-agent-specific tooling.",
-      "strengths": ["AI Gateway/token governance", "Multi-cloud flexibility", "Developer Portal"]
+      "strengths": [
+        "AI Gateway/token governance",
+        "Multi-cloud flexibility",
+        "Developer Portal"
+      ]
     },
     {
       "name": "RapidAPI",
       "slug": "rapidapi",
       "description": "A public API marketplace/hub for discovering and consuming APIs.",
       "best_for": "Developers wanting quick discovery/testing of external APIs rather than full enterprise governance tooling.",
-      "strengths": ["Large API catalog", "Unified access key", "Built-in monetization for providers"]
+      "strengths": [
+        "Large API catalog",
+        "Unified access key",
+        "Built-in monetization for providers"
+      ]
     }
-  ]
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Pay as you go; cost depends on active environments per region, API calls, proxy deployment units, and network usage",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "tiers": [
+      {
+        "name": "Pay as you go",
+        "notes": "Metered across active environment type and region, API calls to deployed proxies, proxy deployment units per hour and region, and applicable network charges."
+      },
+      {
+        "name": "Subscription",
+        "notes": "Contract pricing is available through Google Cloud sales; published pay-as-you-go documentation does not provide one universal subscription price."
+      },
+      {
+        "name": "Evaluation organization",
+        "amount": "0",
+        "currency": "USD",
+        "notes": "Time-limited evaluation for new Apigee customers. It does not support production workloads and is not covered by Google support terms."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-09-30",
+    "official_source": "https://docs.cloud.google.com/apigee/docs/api-platform/reference/pay-as-you-go-updated-overview"
+  },
+  "pros": [
+    "Pay-as-you-go lets a new customer provision a paid organization without a fixed subscription commitment",
+    "Three environment types let teams size API runtime capability to the deployment rather than use one environment class for every workload",
+    "Google Cloud billing and Metrics Explorer expose the resources that drive environment, API-call, and deployment-unit charges"
+  ],
+  "cons": [
+    "There is no single published total price because environments, API calls, proxy deployment units, regions, and network transfer can all affect cost",
+    "Unsuccessful API calls are still processed and included in the billable API-call count",
+    "The free evaluation is time-limited, does not support production workloads, and is not covered by Google support terms"
+  ],
+  "faq": [
+    {
+      "question": "How is Apigee pay-as-you-go priced?",
+      "answer": "Google Cloud documents three core meters: active environments per region, API calls to deployed proxies, and proxy deployment units used per hour and region. Network charges can also apply."
+    },
+    {
+      "question": "Are failed API calls billable in Apigee?",
+      "answer": "Yes. Apigee’s pay-as-you-go FAQ states that successful and unsuccessful requests are processed by the runtime and included in the API-call count."
+    },
+    {
+      "question": "Can Apigee be evaluated for free?",
+      "answer": "A time-limited evaluation organization is available for new customers, but Google says it is not for production workloads and is not covered by Google support terms."
+    }
+  ],
+  "links": {
+    "pricing": "https://docs.cloud.google.com/apigee/docs/api-platform/reference/pay-as-you-go-updated-overview"
+  }
 }

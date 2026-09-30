@@ -50,8 +50,11 @@ describe("growth:indexation-readiness", () => {
     // broke, not that the catalog is perfect.
     expect(counts.PASS).toBeGreaterThan(0);
     expect(counts.WARN).toBeGreaterThan(0);
-    expect(counts.FAIL).toBeGreaterThan(0);
+    // Release-quality catalog data must not leave a locally measurable FAIL page.
+    // This is Miloosh readiness, not a promise that Google will index every page.
+    expect(counts.FAIL).toBe(0);
     expect(counts.PROTECTED).toBeGreaterThan(0);
+    expect(counts.PASS + counts.WARN + counts.FAIL + counts.PROTECTED).toBe(354);
   });
 
   it("gives every FAIL verdict at least one concrete, actionable reason code", () => {

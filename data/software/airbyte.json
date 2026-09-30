@@ -49,6 +49,17 @@
       "description": "A fully managed ELT platform with a large pre-built connector catalog and automated schema drift handling, priced on monthly active rows rather than open-source self-hosting.",
       "best_for": "Teams that want a fully managed, low-maintenance ELT service and are comfortable with usage-based (MAR) pricing rather than an open-source, self-hostable option.",
       "strengths": ["Large pre-built connector catalog (700+ on Standard)", "Automated schema drift handling", "Free plan up to 500K monthly active rows"]
+    },
+    {
+      "name": "dbt Cloud",
+      "slug": "dbt-cloud",
+      "description": "A managed analytics-engineering platform for building, testing, documenting, and orchestrating SQL transformations after data reaches the warehouse.",
+      "best_for": "Teams whose main requirement is governed transformation development and orchestration rather than managed source-to-warehouse data movement.",
+      "strengths": [
+        "Browser-based SQL development",
+        "Transformation testing and orchestration",
+        "Semantic layer and lineage"
+      ]
     }
   ],
   "faq": [
@@ -63,5 +74,5 @@
     "https://airbyte.com/pricing",
     "https://airbyte.com/product/airbyte-cloud"
   ],
-  "accessed_at": "2026-09-05"
+  "accessed_at": "2026-09-30"
 }

@@ -58,7 +58,7 @@
     "https://www.gong.io/",
     "https://www.gong.io/platform/trust/"
   ],
-  "accessed_at": "2026-09-05",
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "Clari",
@@ -73,6 +73,17 @@
       "description": "A B2B sales intelligence product whose Chorus module provides conversation intelligence alongside contact data and buyer intent.",
       "best_for": "Teams that want conversation intelligence bundled with a large contact database rather than as a standalone product.",
       "strengths": ["Conversation intelligence (Chorus)", "Bundled contact/company data", "Buyer intent signals"]
+    },
+    {
+      "name": "Consensus",
+      "slug": "consensus",
+      "description": "An interactive product-demo platform for creating on-demand video demos and product tours, then tracking buyer and stakeholder engagement.",
+      "best_for": "Presales and sales teams that need buyers to self-serve product demonstrations rather than primarily analyze live sales conversations.",
+      "strengths": [
+        "On-demand product demos",
+        "Interactive product tours",
+        "Stakeholder engagement analytics"
+      ]
     }
   ]
 }

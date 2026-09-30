@@ -78,7 +78,7 @@
     "https://www.notion.com/pricing",
     "https://www.notion.com"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-09-30",
   "alternatives": [
     {
       "name": "ClickUp",
@@ -111,6 +111,17 @@
         "Knowledge base",
         "Permissions",
         "Atlassian integration"
+      ]
+    },
+    {
+      "name": "Dropbox",
+      "slug": "dropbox",
+      "description": "A cloud file-sync and content platform for shared folders, links, version recovery, large-file transfer, and team administration.",
+      "best_for": "Teams that mainly need dependable file sync, sharing, recovery, and storage instead of a document-and-database workspace.",
+      "strengths": [
+        "Cross-device file sync",
+        "Shared files and folders",
+        "File recovery and transfer"
       ]
     }
   ],
