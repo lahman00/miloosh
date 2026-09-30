@@ -178,6 +178,316 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     "confidence": "high"
   },
 
+  // 2026-10-01 overnight publisher-program expansion; research only unless current account state is explicitly stated.
+  {
+    "slug": "clockify",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "FirstPromoter (CAKE.com direct program)",
+    "countryRestrictions": null,
+    "commissionModel": "30% recurring for up to 12 months on qualified new paid subscriptions under the published CAKE.com affiliate terms.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. CAKE.com covers Clockify, Pumble and Plaky under one company program; do not count the three products as independent programs. Published payout is bank transfer only with a USD 100 minimum, and owner tax/invoice details plus agreement acceptance are required.",
+    "sourceUrls": [
+      "https://cake.com/affiliate",
+      "https://cake.com/affiliate-agreement"
+    ],
+    "applicationUrl": "https://affiliate.cake.com/",
+    "cookieDuration": "60 days",
+    "payoutMethod": "Bank transfer only",
+    "payoutThreshold": "USD 100",
+    "eligibility": "Publisher fit appears possible; exact country/account approval remains unverified.",
+    "confidence": "high"
+  },
+  {
+    "slug": "lovable",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "Impact.com",
+    "countryRestrictions": null,
+    "commissionModel": "Public offer: up to USD 100 per first-time subscriber; the assigned private Impact offer, qualifying subscription definition, and payment rules remain unverified.",
+    "recurrence": "one_time",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Use the existing Miloosh Impact account, inspect the private campaign contract, and keep shared Impact payout review separate from advertiser approval.",
+    "sourceUrls": [
+      "https://lovable.dev/partners/affiliates"
+    ],
+    "applicationUrl": "https://app.impact.com/campaign-campaign-info-v2/Lovable-Labs.brand",
+    "cookieDuration": null,
+    "payoutMethod": "Impact.com; owner-specific method and minimum unverified",
+    "payoutThreshold": null,
+    "eligibility": "Official affiliate program exists; publisher-country acceptance is not guaranteed.",
+    "confidence": "high"
+  },
+  {
+    "slug": "lemlist",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "PartnerStack",
+    "countryRestrictions": null,
+    "commissionModel": "25% for 12 months per qualified lemlist license under the public publisher program.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Select the publisher affiliate route, not the services/implementation route. Refunds and downgrades may reduce or claw back commissions.",
+    "sourceUrls": [
+      "https://www.lemlist.com/affiliate-program"
+    ],
+    "applicationUrl": "https://dash.partnerstack.com/application?company=lemlist&r=0",
+    "cookieDuration": "30 days",
+    "payoutMethod": "PartnerStack; public page lists PayPal, Stripe or direct deposit where supported",
+    "payoutThreshold": null,
+    "eligibility": "Official page explicitly welcomes technology reviewers and software-content publishers.",
+    "confidence": "high"
+  },
+  {
+    "slug": "softr",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "PartnerStack",
+    "countryRestrictions": null,
+    "commissionModel": "Public program: 25% for 12 months; Enterprise referrals use a separate sliding-scale treatment.",
+    "recurrence": "recurring",
+    "notes": "CURRENT ACCOUNT STATE: application submitted 2026-09-30 and pending vendor review; receipt Gmail 1a0f24a6227cf4bb. No approval or issued asset. Public page welcomes bloggers and writers; do not submit again.",
+    "sourceUrls": [
+      "https://www.softr.io/affiliate"
+    ],
+    "applicationUrl": "https://dash.partnerstack.com/application?company=softrplatformsgmbh&group=marketplacenewaffiliates",
+    "cookieDuration": "90 days; a later qualified click resets the window per public FAQ",
+    "payoutMethod": "PartnerStack",
+    "payoutThreshold": null,
+    "eligibility": "Bloggers/writers and software publishers are publicly listed; Miloosh acceptance pending.",
+    "confidence": "high"
+  },
+  {
+    "slug": "snov-io",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "FirstPromoter",
+    "countryRestrictions": null,
+    "commissionModel": "Published terms state 40% on plan purchases across the subscription duration and 20% on LinkedIn Automation slots, excluding taxes; a landing-page reference to one year creates an unresolved duration conflict.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Obtain written clarification on subscription-duration versus one-year wording before public commission claims. The official terms permit website, email, social, online and offline advertising, but prohibit spam, require strict trademark/PPC controls, and prohibit self, family and same-company referrals.",
+    "sourceUrls": [
+      "https://snov.io/affiliate-program",
+      "https://snov.io/affiliate-terms",
+      "https://snov.io/knowledgebase/how-snov-io-affiliate-program-works/"
+    ],
+    "applicationUrl": "https://snov.firstpromoter.com/",
+    "cookieDuration": "Registration-based attribution described; numeric day window not confirmed",
+    "payoutMethod": "PayPal monthly per public knowledge base",
+    "payoutThreshold": "Public knowledge base says no minimum",
+    "eligibility": "Public program exists; acceptance and country eligibility remain unverified.",
+    "confidence": "high"
+  },
+  {
+    "slug": "se-ranking",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "SE Ranking direct",
+    "countryRestrictions": null,
+    "commissionModel": "30% on qualified subscription orders under the current official terms; renewal duration was not stated clearly enough to classify as recurring.",
+    "recurrence": "unknown",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Required tax paperwork can block or forfeit payment. Review the binding terms before application and do not assume indefinite renewal commission.",
+    "sourceUrls": [
+      "https://seranking.com/affiliate.html",
+      "https://seranking.com/legal/affiliate.html"
+    ],
+    "applicationUrl": "https://seranking.com/affiliate.html",
+    "cookieDuration": "120 days, last click",
+    "payoutMethod": "PayPal",
+    "payoutThreshold": "USD 50",
+    "eligibility": "Public FAQ says no paid subscription is required to apply.",
+    "confidence": "high"
+  },
+  {
+    "slug": "pabbly",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "Pabbly direct",
+    "countryRestrictions": "PayPal payout described for affiliates outside India; exact Israel acceptance unverified.",
+    "commissionModel": "30% on recurring plans; 20% on one-time or lifetime purchases.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Do not apply the recurring-plan 30% rate to lifetime deals. Paid brand bidding, deceptive claims and self-referrals are prohibited.",
+    "sourceUrls": [
+      "https://www.pabbly.com/affiliates/",
+      "https://www.pabbly.com/terms-conditions/affiliate-program-terms-conditions/"
+    ],
+    "applicationUrl": "https://payments.pabbly.com/affiliate/signup/affiliateportal",
+    "cookieDuration": "365 days, last click",
+    "payoutMethod": "PayPal outside India",
+    "payoutThreshold": "USD 50; 60-day qualification before payout report",
+    "eligibility": "Official public program; account/country approval remains unverified.",
+    "confidence": "high"
+  },
+  {
+    "slug": "systeme-io",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "systeme.io direct",
+    "countryRestrictions": null,
+    "commissionModel": "Public offer: 60% recurring while the referred customer remains subscribed.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. The public payout table is explicitly marked April 2026; re-check the live dashboard schedule before activation. No-application marketing language does not prove payout readiness.",
+    "sourceUrls": [
+      "https://systeme.io/affiliate-program"
+    ],
+    "applicationUrl": "https://systeme.io/affiliate-program",
+    "cookieDuration": "Persistent tagged referral after signup is described; no numeric day window confirmed",
+    "payoutMethod": "PayPal or wire",
+    "payoutThreshold": "USD 30 on the April 2026 public table",
+    "eligibility": "Public program exists; owner-specific verification remains required.",
+    "confidence": "high"
+  },
+  {
+    "slug": "beehiiv",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "Dub",
+    "countryRestrictions": "Owner-specific Israel payout eligibility was not verified.",
+    "commissionModel": "Public tier schedule: 50% to 60% for one year; everyone starts at the Launch tier and no higher Miloosh tier is assigned.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Do not claim the 60% top tier. Confirm payout-country eligibility and acceptable Stripe Express or stablecoin route before applying; no foreign entity or wallet workaround.",
+    "sourceUrls": [
+      "https://www.beehiiv.com/partners",
+      "https://dub.co/help/article/receiving-payouts"
+    ],
+    "applicationUrl": "https://app.beehiiv.com/partner_program",
+    "cookieDuration": null,
+    "payoutMethod": "Dub; Stripe Express bank payout or stablecoin per public Dub documentation",
+    "payoutThreshold": null,
+    "eligibility": "Publisher program exists; search ads and self-referrals prohibited.",
+    "confidence": "high"
+  },
+  {
+    "slug": "surfer",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "PartnerStack",
+    "countryRestrictions": null,
+    "commissionModel": "Starter tier: 75% of the first monthly payment or 15% of the first annual payment; higher tiers advertise up to 125%/25%. First-payment only, not recurring.",
+    "recurrence": "one_time",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Public page invites reviews and comparisons but excludes coupon/incentive sites and thin or off-topic content. Do not describe the 125% headline as recurring income.",
+    "sourceUrls": [
+      "https://surferseo.com/affiliate-program/"
+    ],
+    "applicationUrl": "https://surferseo.partnerstack.com/?group=tier1starter",
+    "cookieDuration": "90 days, last click",
+    "payoutMethod": "PartnerStack; monthly after a published 45-day approval period",
+    "payoutThreshold": null,
+    "eligibility": "Official program explicitly welcomes relevant review/comparison publishers.",
+    "confidence": "high"
+  },
+  {
+    "slug": "runway",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "Runway affiliate dashboard / Stripe payouts",
+    "countryRestrictions": "Application asks where the applicant's bank account is held so Runway can confirm payout availability; Israel eligibility not yet confirmed.",
+    "commissionModel": "USD 15 for each new subscriber who purchases a paid plan with the accepted partner's code; the audience receives 25% off any Runway plan.",
+    "recurrence": "one_time",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Every relationship begins with a three-month pilot. Application requires a free Runway account, working channel URLs, follower-count selection and an explicit acknowledgement that this is affiliate marketing rather than paid sponsorship. Owner/account consent is required before submission.",
+    "sourceUrls": [
+      "https://runway.com/affiliate-program"
+    ],
+    "applicationUrl": "https://runway.com/affiliate-program",
+    "cookieDuration": null,
+    "payoutMethod": "Stripe on the first of each month after acceptance",
+    "payoutThreshold": null,
+    "eligibility": "Active creators on social or similar channels; all audience sizes are invited to apply.",
+    "confidence": "high"
+  },
+  {
+    "slug": "crazy-egg",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "PromoteKit",
+    "countryRestrictions": null,
+    "commissionModel": "Official PromoteKit signup page states 15% on referred payments; duration and qualification details are not exposed before account access.",
+    "recurrence": "unknown",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED. Crazy Egg's official site footer links to its PromoteKit signup page. Email-code account creation and the private terms remain owner/account actions; do not infer lifetime recurrence or payout readiness.",
+    "sourceUrls": [
+      "https://www.crazyegg.com/",
+      "https://crazyegg.promotekit.com/"
+    ],
+    "applicationUrl": "https://crazyegg.promotekit.com/",
+    "cookieDuration": null,
+    "payoutMethod": null,
+    "payoutThreshold": null,
+    "eligibility": "Official signup exists; publisher and country acceptance require the private flow.",
+    "confidence": "high"
+  },
+  {
+    "slug": "ahrefs",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "no",
+    "type": "unknown",
+    "networkName": null,
+    "countryRestrictions": null,
+    "commissionModel": null,
+    "recurrence": "unknown",
+    "notes": "Ahrefs' current official page says its former affiliate program was discontinued, old links no longer work, and it had no plan to relaunch. Treat any third-party 'Ahrefs affiliate' offer as unsupported unless Ahrefs publishes a new first-party program.",
+    "sourceUrls": [
+      "https://ahrefs.com/blog/ahrefs-affiliate-program/"
+    ],
+    "applicationUrl": null,
+    "cookieDuration": null,
+    "payoutMethod": null,
+    "payoutThreshold": null,
+    "eligibility": "No current public affiliate program.",
+    "confidence": "high"
+  },
+  {
+    "slug": "knowledgeowl",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "KnowledgeOwl customer referral program",
+    "countryRestrictions": null,
+    "commissionModel": "USD 500 after a referred trial converts to paid and remains paid for at least three consecutive months.",
+    "recurrence": "one_time",
+    "notes": "CUSTOMER REFERRAL, NOT OPEN PUBLISHER AFFILIATE. Eligibility is limited to current or former KnowledgeOwl customers; former customers complete a questionnaire. Do not apply or promote unless owner eligibility and actual product experience are confirmed.",
+    "sourceUrls": [
+      "https://support.knowledgeowl.com/help/customer-referral-program",
+      "https://www.knowledgeowl.com/blog/posts/referral-tips"
+    ],
+    "applicationUrl": null,
+    "cookieDuration": null,
+    "payoutMethod": "Quarterly electronic bank transfer",
+    "payoutThreshold": null,
+    "eligibility": "Current or former KnowledgeOwl customers only.",
+    "confidence": "high"
+  },
+  {
+    "slug": "youcanbookme",
+    "lastVerifiedAt": "2026-10-01",
+    "programExists": "yes",
+    "type": "direct",
+    "networkName": "YouCanBookMe direct",
+    "countryRestrictions": null,
+    "commissionModel": "Official page is internally inconsistent: it advertises competitive recurring commissions but its detailed reward section specifies USD 25 or USD 4 subscription credits, depending on the referred plan.",
+    "recurrence": "unknown",
+    "notes": "HOLD FOR WRITTEN CLARIFICATION. The current official page targets creators, newsletters, communities and SaaS partners, but does not reconcile cash commission language with account-credit rewards. Do not promise cash or recurring economics until the accepted terms state the payable model.",
+    "sourceUrls": [
+      "https://youcanbook.me/affiliate"
+    ],
+    "applicationUrl": "https://youcanbook.me/affiliate",
+    "cookieDuration": null,
+    "payoutMethod": null,
+    "payoutThreshold": null,
+    "eligibility": "Audience-led publishers are explicitly invited; exact reward and application terms remain unresolved.",
+    "confidence": "high"
+  },
+
   {
     slug: "1password",
     lastVerifiedAt: "2026-08-16",
@@ -1776,7 +2086,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     countryRestrictions: null,
     commissionModel: "Official WooCommerce page: up to 30% commission on a user's first paid purchase and 10% for returning customers. Exact brand-specific terms are available for review only after signup.",
     recurrence: "unknown",
-    notes: "Direct first-party verification 2026-09-18: woocommerce.com/affiliates is the Automattic Affiliate Program entry point and its signup links route to Impact. The page explicitly targets bloggers/educators, influencers, developers and people with an established audience; Automattic verifies the account after signup. Public page states a 30-day conversion period and that payments are managed from the affiliate dashboard after payment information is configured, but it does not expose a payout threshold or the complete brand-specific terms before signup. Updated 2026-09-26: the Automattic application is IN REVIEW (see data/affiliate/canonical-ledger.ts programId automattic); the earlier 'no application was submitted' state is superseded. WooCommerce remains a non-sponsored editorial option until verified approval and an approved Miloosh tracking asset exist.",
+    notes: "Direct first-party verification 2026-09-18: woocommerce.com/affiliates is the Automattic Affiliate Program entry point and routes to Impact. Superseding first-party Impact welcome Gmail 1a0f2f24d5877b22 dated 2026-09-30 confirms approval and provides a WooCommerce Marketplace asset. That asset is intentionally not used as the general WooCommerce platform CTA; an authenticated, account-specific deep link to the intended platform destination is still required. Approval is not payout verification.",
     sourceUrls: ["https://woocommerce.com/affiliates"],
     applicationUrl: "https://woocommerce.com/affiliates",
     cookieDuration: "30-day conversion period",
