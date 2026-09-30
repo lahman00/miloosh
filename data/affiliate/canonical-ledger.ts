@@ -582,24 +582,46 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Automattic Affiliate Program (WooCommerce)",
     network: "Impact.com",
     productSlugs: ["woocommerce"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-09-26",
-    // Exact submission date is not recorded in the repo.
+    status: "APPROVED_NEEDS_LINK",
+    statusUpdatedAt: "2026-09-30",
     applicationSubmittedAt: null,
-    decisionAt: null,
+    decisionAt: "2026-09-30",
     affiliateUrl: null,
-    commissionModel: "Official WooCommerce page: up to 30% on a user's first paid purchase, 10% for returning customers; brand-specific terms visible only after signup",
+    commissionModel: "Official public page: up to 30% on a user's first paid purchase and 10% for returning customers; the assigned private Impact contract was not independently read in this pass.",
     cookieWindow: "30-day conversion period",
     evidence: [
-      "data/revenue/affiliate-programs.ts woocommerce entry: woocommerce.com/affiliates verified 2026-09-18 as the Automattic Affiliate Program entry point, routing to Impact",
-      "docs/growth/receipts/20260925-first-revenue/buyer-funnel-delta.md: 'Automattic remains IN REVIEW; no Automattic/WordPress/WooCommerce affiliate activation was added'",
-      "Owner-verified fact restated 2026-09-26: Automattic application is in review",
+      "Official WooCommerce affiliate page routes to the Automattic Impact program and targets publishers, bloggers, educators, influencers and developers.",
+      "First-party Impact welcome email to lahman00@gmail.com, Gmail 1a0f2f24d5877b22 dated 2026-09-30: confirms approval for Automattic, Inc. (WordPress.com, Pressable, WooCommerce, Jetpack) and supplies brand tracking assets.",
+      "The supplied WooCommerce asset is specifically the WooCommerce Marketplace URL https://automattic.pxf.io/c/7846380/1946431/22744; the email also states an authenticated Impact link builder can create links to brand pages."
     ],
-    ownerBlocker: null,
+    ownerBlocker: "Generate and verify an account-specific Impact deep link to the intended WooCommerce platform destination before choosing a canonical general-product CTA. Do not substitute the Marketplace asset for a platform/pricing CTA.",
     formBlocker: null,
-    eligibility: "Application submitted; Automattic account verification in review",
+    eligibility: "Approved Automattic affiliate; intent-aligned WooCommerce platform asset still required for Miloosh's existing general software page.",
     applicationUrl: "https://woocommerce.com/affiliates",
-    notes: "Carved out of impact-portfolio on 2026-09-26 because the application is now in review rather than awaiting owner action. WordPress is deliberately not mapped here: no repo evidence confirms which WordPress product the Automattic program would cover for Miloosh. No affiliate URL, active-partner entry or sponsored CTA until verified approval and an exact issued tracking asset."
+    notes: "Approval is real, but approval alone does not make the supplied Marketplace destination appropriate for all WooCommerce buyer intent. No ACTIVE_PARTNERS entry or sponsored general CTA until an exact, intent-matched link is captured. Trademark bidding, paid-source direct traffic and browser extensions are prohibited by the welcome email."
+  },
+  {
+    programId: "mrpeasy",
+    programName: "MRPeasy Referral Partner Program",
+    network: "PartnerStack / direct MRPeasy terms",
+    productSlugs: [],
+    status: "HOLD",
+    statusUpdatedAt: "2026-10-01",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-09-30",
+    affiliateUrl: "https://try.mrpeasy.com/rlmf8edfjcie",
+    commissionModel: "Invitation headline stated 20% recurring for up to three years; the assigned private offer has not been independently re-read or confirmed in writing.",
+    cookieWindow: "90 days",
+    evidence: [
+      "First-party PartnerStack welcome Gmail 1a0f2363ffd9d6fb dated 2026-09-30 confirms acceptance and issues https://try.mrpeasy.com/rlmf8edfjcie.",
+      "Owner-supplied current first-party MRPeasy Terms of Referral Partner Program reviewed 2026-10-01: registered-company eligibility, seven-day link-placement requirement, restricted marketing-material use, email/payment identity rules, 90-day cookie, PayPal or bank transfer, no self-referrals, and a stated USD 5,000 contractual fine for breach.",
+      "Written clarification sent in the welcome thread 2026-10-01, Gmail sent message 1a0f46ca9713bbb4."
+    ],
+    ownerBlocker: "Await written confirmation that an Israeli registered sole proprietor qualifies, that bank-transfer payout can use the registered owner/business beneficiary despite the hello@miloosh.com account email, that independent source-linked comparison content is permitted, that the seven-day placement deadline is paused during clarification, and what exact commission terms are assigned.",
+    formBlocker: null,
+    eligibility: "Accepted account with exact issued asset, but public activation is held for legal/identity clarification and an independently justified editorial surface.",
+    applicationUrl: "https://www.mrpeasy.com/terms-of-referral-partner-program",
+    notes: "Do not add MRPeasy to ACTIVE_PARTNERS or publish the link while the written clarifications remain open. Miloosh has no MRPeasy catalog page, and the relationship alone is not a reason to manufacture one. The program terms also require only MRPeasy-provided marketing information/materials unless written consent is given and state that cold email is prohibited."
   },
   {
     programId: "freshbooks",
@@ -779,23 +801,22 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Trainual Affiliate Program",
     network: "PartnerStack",
     productSlugs: ["trainual"],
-    status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-31",
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-09-30",
     applicationSubmittedAt: null,
-    decisionAt: null,
-    affiliateUrl: null,
-    commissionModel: "10% recurring commission on referred accounts for as long as the customer remains a paying Trainual user (Affiliates tier; a separate 20% Partners tier also exists but Miloosh has not been offered it). Directly re-confirmed 2026-08-31 on trainual.com/affiliate: commissions continue for the customer's lifetime unless the affiliate goes 12 consecutive months without a new referral, at which point legacy commissions stop.",
+    decisionAt: "2026-09-30",
+    affiliateUrl: "https://start.trainual.com/0j9to92n49iy",
+    commissionModel: "Public affiliate baseline: 10% recurring commission while the referred account remains paying, subject to the affiliate referring at least one new customer every 12 months; the exact private account offer was not independently re-read in the portal.",
     cookieWindow: "90 days",
     evidence: [
-      "docs/affiliate-applications.md PartnerStack form submit failure diagnosis",
-      "Re-checked 2026-08-23: trainual.com/affiliate's own page has no application form (only a search widget); the real path is a PartnerStack handshake link (dash.partnerstack.com/handshake?source=trainual&join=trainual&gref=page) which requires PartnerStack login",
-      "Independently re-verified 2026-08-31 by directly fetching trainual.com/affiliate: page still has no on-page application form -- both the 'Join now!' and 'Become a partner' CTAs still route to the same PartnerStack handshake URL above, confirming this is an existing invitation/handshake link to accept, not a submittable form. No account-specific tracking URL is present on that page or anywhere else in this repository for Trainual."
+      "Official Trainual affiliate page and terms re-verified 2026-08-31: publisher eligibility, 10% public baseline, 90-day cookie, monthly PartnerStack payouts and activity requirement.",
+      "First-party vendor welcome email to hello@miloosh.com, Gmail 1a0f2363e2a1521e dated 2026-09-30: confirms Miloosh joined the Trainual Affiliate Program and issues exact personal referral URL https://start.trainual.com/0j9to92n49iy."
     ],
-    ownerBlocker: "This is an existing PartnerStack invitation/handshake link, not a form this agent can submit: the owner must log into (or create) the PartnerStack account, open the handshake link, accept the Trainual invitation there, and then supply the resulting account-specific tracking URL so it can be recorded here. No one may accept the invitation on the owner's behalf.",
+    ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Form truthfully filled out: website=miloosh.com, Blogger, Trainual customer=No (from the prior in-session attempt).",
+    eligibility: "Approved affiliate with an exact account-specific referral URL; existing source-backed Trainual catalog and comparisons predate activation.",
     applicationUrl: "https://trainual.com/affiliate",
-    notes: "Corrected diagnosis 2026-08-23: not a UI bug -- the earlier attempt worked from within an authenticated PartnerStack session that has since expired. Re-confirmed 2026-08-31: still no real tracking URL exists anywhere in this repo for Trainual, so status stays OWNER_ACTION_REQUIRED, not ACTIVE. The invitation was not accepted by this agent."
+    notes: "Activated only after the first-party welcome and exact issued asset. No conversion, approved commission, payout readiness or private commission tier is inferred. Current Trainual site terms section 7 prohibit paid advertising, coupon/discount sites, self-referrals, promotion through Trainual-owned or sponsored content, and placement outside websites/platforms Miloosh owns or controls. Trainual may terminate for 12 months without a new referred customer and states unpaid commissions are forfeited on termination; additional affiliate terms may override the general site terms. Written confirmation of the assigned private rate and payout details was requested 2026-10-01."
   },
   {
     programId: "tidio",

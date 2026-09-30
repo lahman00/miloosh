@@ -22,12 +22,14 @@ describe("affiliate approval gating (pending is never approval)", () => {
     expect(activecampaign?.evidence.join(" ")).toMatch(/2026-08-20.*declined/);
   });
 
-  it("records Automattic as in review for WooCommerce only, outside the generic Impact bucket", () => {
+  it("records approved Automattic as link-gated for WooCommerce only, outside the generic Impact bucket", () => {
     const automattic = byId("automattic");
-    expect(automattic?.status).toBe("PENDING_REVIEW");
-    expect(automattic?.decisionAt).toBeNull();
+    expect(automattic?.status).toBe("APPROVED_NEEDS_LINK");
+    expect(automattic?.decisionAt).toBe("2026-09-30");
     expect(automattic?.affiliateUrl).toBeNull();
     expect(automattic?.productSlugs).toEqual(["woocommerce"]);
+    expect(automattic?.ownerBlocker).toMatch(/deep link|link builder/i);
+    expect(automattic?.notes).toContain("Marketplace");
     expect(byId("impact-portfolio")?.productSlugs).not.toContain("woocommerce");
   });
 

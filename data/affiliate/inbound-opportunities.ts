@@ -76,20 +76,22 @@ export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportuni
     "vendorName": "MRPeasy",
     "catalogSlug": null,
     "network": "PartnerStack",
-    "status": "TERMS_REVIEW",
+    "status": "ACCEPTED_NOT_ACTIVATED",
     "receivedAt": "2026-09-17",
     "sourceEvidence": [
-      "Gmail 1a0aff2a7020da1e: invitation from Marko Karner via PartnerStack"
+      "Gmail 1a0aff2a7020da1e: invitation from Marko Karner via PartnerStack",
+      "First-party PartnerStack welcome Gmail 1a0f2363ffd9d6fb dated 2026-09-30: confirms Miloosh joined and supplies exact referral URL https://try.mrpeasy.com/rlmf8edfjcie.",
+      "Current first-party MRPeasy program terms reviewed 2026-10-01 expose eligibility, payout-identity, seven-day placement, content-permission and USD 5,000 breach-fine questions; written clarification sent as Gmail 1a0f46ca9713bbb4."
     ],
     "inviteUrl": null,
-    "headlineOffer": "Invitation headline only: 20% recurring for up to three years",
+    "headlineOffer": "Invitation headline: 20% recurring for up to three years; assigned private offer not independently re-read after acceptance",
     "verifiedPublicEconomics": null,
-    "publicTermsUrl": null,
-    "affiliateUrl": null,
-    "acceptedAt": null,
-    "ownerAcceptanceRequired": true,
-    "nextAction": "Review the exact program/account terms and editorial fit; retrieve an issued asset only after authorized acceptance. Do not auto-apply or promote.",
-    "notes": "The message addresses implementation and referral partners; qualify the editorial publisher route without offering implementation or calls. No new product or application created during audit."
+    "publicTermsUrl": "https://www.mrpeasy.com/terms-of-referral-partner-program",
+    "affiliateUrl": "https://try.mrpeasy.com/rlmf8edfjcie",
+    "acceptedAt": "2026-09-30",
+    "ownerAcceptanceRequired": false,
+    "nextAction": "Keep public activation off while awaiting the written eligibility, payout-identity, independent-content, seven-day deadline and assigned-commission clarification sent 2026-10-01. Do not create a catalog page solely because the referral relationship exists.",
+    "notes": "Approved relationship and exact link are evidenced, but the current terms create material unresolved obligations. Miloosh has no MRPeasy catalog page or comparison route, so the link is not added to ACTIVE_PARTNERS and no ranking, traffic, conversion, commission or payout is claimed. Canonical relationship state is HOLD."
   },
 
   {
@@ -120,23 +122,21 @@ export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportuni
     vendorName: "Trainual",
     catalogSlug: "trainual",
     network: "PartnerStack",
-    status: "TERMS_REVIEW",
+    status: "CLOSED",
     receivedAt: "2026-08-24",
     sourceEvidence: [
-      "Direct PartnerStack invitation email to hello@miloosh.com from Tom Healy at Trainual describing tiered commissions and inviting Miloosh to join",
-      "Miloosh replied in-thread on 2026-08-25 requesting current content/comparison-publisher eligibility, commission tiers, attribution, payout, restrictions, and geography details before activation",
-      "Current official Trainual affiliate page states a public baseline of 10% recurring commission, lifetime while the referred account remains active, subject to the affiliate remaining active each year",
-      "Current official Trainual affiliate page states a 90-day cookie and monthly rewards paid the following month through PartnerStack, with PayPal or Stripe and alternatives for non-PayPal regions",
-      "Current Trainual Terms prohibit affiliate use of spam and coupon or discounting websites",
+      "Direct PartnerStack invitation email to hello@miloosh.com from Tom Healy at Trainual.",
+      "Official Trainual affiliate page and terms: public 10% recurring baseline, 90-day cookie, activity requirement and PartnerStack payout path.",
+      "First-party Trainual welcome Gmail 1a0f2363e2a1521e dated 2026-09-30 issuing https://start.trainual.com/0j9to92n49iy."
     ],
     inviteUrl: "https://dash.partnerstack.com/invite/0a4fcf940e5b4a6a9278f868544f1d7b",
-    headlineOffer: "Tiered commissions (direct invitation wording; exact tiers not stated in the email)",
-    verifiedPublicEconomics: "Trainual's current public affiliate page states 10% recurring commission for the lifetime of the referred account, provided the affiliate remains active by referring someone new at least once every 12 months; 90-day cookie",
+    headlineOffer: "Tiered commissions were described in the invitation; private assigned tier remains unverified",
+    verifiedPublicEconomics: "Trainual's public page states a 10% recurring baseline, 90-day cookie and annual referral-activity requirement",
     publicTermsUrl: "https://trainual.com/affiliate",
-    affiliateUrl: null,
-    acceptedAt: null,
-    ownerAcceptanceRequired: true,
-    nextAction: "Wait for Tom Healy to reconcile the invitation's tiered-commission wording with the public 10% recurring baseline and confirm current publisher eligibility and promotional restrictions. Do not accept the invitation until those terms are reviewed.",
-    notes: "data/software/trainual.json already exists as a real, published Miloosh catalog entry (knowledge-base category) -- this was a stale note from before that page existed, not a current blocker. The official public page explicitly welcomes tech bloggers and other audience publishers, but the direct invitation may contain newer or partner-specific tier economics, so the emailed confirmation remains the controlling unresolved item before activation.",
+    affiliateUrl: "https://start.trainual.com/0j9to92n49iy",
+    acceptedAt: "2026-09-30",
+    ownerAcceptanceRequired: false,
+    nextAction: "Resolved into the canonical ACTIVE relationship and exact-link registry. Maintain truthful disclosure and verify payout readiness separately.",
+    notes: "Existing Trainual editorial coverage predated affiliate activation. No private tier, conversion, commission or payout is inferred from the welcome email."
   },
 ] as const;

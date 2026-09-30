@@ -1,5 +1,5 @@
 export const ACTIVE_PARTNER_SLUGS = [
-  "fireflies-ai", "constant-contact", "todoist", "moosend", "volza", "pipedrive",
+  "fireflies-ai", "trainual", "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
   "mailerlite", "omnisend", "wrike", "jotform", "surveymonkey", "freshbooks",
@@ -107,6 +107,8 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   // Vendor welcome Gmail 1a0f3e41e847eb0c + authenticated FirstPromoter read, 2026-09-30.
   // Payout remains incomplete; keep the issued URL byte-for-byte, without invented deep links.
   { slug: "fireflies-ai", status: "active", affiliateUrl: "https://fireflies.ai/?fpr=eyal-haimovich-d08faa", allowAdditionalTrackingParams: false, blocker: null },
+  // First-party Trainual welcome email 1a0f2363e2a1521e, 2026-09-30.
+  { slug: "trainual", status: "active", affiliateUrl: "https://start.trainual.com/0j9to92n49iy", allowAdditionalTrackingParams: false, blocker: null },
   { slug: "freshbooks", status: "active", affiliateUrl: "https://partner.freshbooks.com/gg7ovvifr1bd", blocker: null },
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
   { slug: "todoist", status: "active", affiliateUrl: "https://get.todoist.io/dobo71f2y038", blocker: null },

@@ -16,7 +16,7 @@ describe("canonical affiliate reconciliation current truth", () => {
     // same day (back to 20) on the owner's direct first-hand account of the
     // Jotform correspondence -- see canonical-ledger.ts's jotform entry.
     // FreshBooks added 2026-09-17 from direct first-party approval and issued URL.
-    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(23);
+    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(24);
     for (const slug of ACTIVE_PARTNER_SLUGS) {
       const record = bySlug.get(slug);
       expect(record, `missing reconciliation record for ${slug}`).toBeDefined();
@@ -38,7 +38,8 @@ describe("canonical affiliate reconciliation current truth", () => {
   it("does not resurrect the obsolete PartnerStack form-defect state", () => {
     expect(state.statusCounts.BLOCKED_FORM_DEFECT).toBe(0);
     expect(bySlug.get("xero")?.status).toBe("OWNER_ACTION_REQUIRED");
-    expect(bySlug.get("trainual")?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(bySlug.get("trainual")?.status).toBe("ACTIVE");
+    expect(bySlug.get("trainual")?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
     expect(bySlug.get("tidio")?.status).toBe("OWNER_ACTION_REQUIRED");
   });
 

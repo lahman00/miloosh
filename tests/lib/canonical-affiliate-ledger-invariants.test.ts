@@ -106,18 +106,14 @@ describe("canonical affiliate ledger state invariants", () => {
   });
 
   it("locks the 2026-08-31 six-item reconciliation pass (Trainual/Framer re-verified, Semrush/Hootsuite added, Monday/PartnerStack narrative untouched)", () => {
-    // Trainual: a real PartnerStack invitation/handshake link, re-verified
-    // directly against trainual.com/affiliate -- still no submittable form
-    // and still no account-specific tracking URL anywhere in this repo, so
-    // it must stay non-ACTIVE with a clear "accept the invitation and
-    // generate your own link" owner action, not silently drift to ACTIVE
-    // just because the commission terms are well documented.
+    // Trainual's 2026-08-31 owner-action state is deliberately superseded
+    // only by the vendor's 2026-09-30 welcome email and exact issued asset.
     const trainual = byProgramId.get("trainual");
-    expect(trainual?.status).toBe("OWNER_ACTION_REQUIRED");
-    expect(trainual?.affiliateUrl).toBeNull();
-    expect(trainual?.ownerBlocker ?? "").toMatch(/invitation/i);
-    expect(trainual?.ownerBlocker ?? "").toMatch(/tracking url/i);
-    expect(trainual?.evidence.some((e) => e.includes("2026-08-31"))).toBe(true);
+    expect(trainual?.status).toBe("ACTIVE");
+    expect(trainual?.decisionAt).toBe("2026-09-30");
+    expect(trainual?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
+    expect(trainual?.ownerBlocker).toBeNull();
+    expect(trainual?.evidence.some((e) => e.includes("1a0f2363e2a1521e"))).toBe(true);
 
     // Framer: re-verified 2026-08-31 against framer.com/partners and
     // framer.com/legal/affiliates/1.0 -- terms unchanged (90-day cookie,
@@ -169,10 +165,9 @@ describe("canonical affiliate ledger state invariants", () => {
       "https://try.monday.com/1p2fpizulcj7"
     );
 
-    // None of Trainual/Framer/Semrush/Hootsuite may be ACTIVE without a
-    // verified tracking asset -- this reconciliation pass found none for
-    // any of them, so none should claim one.
-    for (const id of ["trainual", "framer", "semrush", "hootsuite"]) {
+    // Framer/Semrush/Hootsuite still lack a verified tracking asset.
+    // Trainual is excluded because its later first-party welcome supplied one.
+    for (const id of ["framer", "semrush", "hootsuite"]) {
       const program = byProgramId.get(id);
       expect(program?.status, `${id} marked ACTIVE without this test being updated to expect it`).not.toBe("ACTIVE");
       expect(program?.affiliateUrl, `${id} has a tracking URL but isn't ACTIVE`).toBeNull();

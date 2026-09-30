@@ -31,6 +31,6 @@ describe("new publisher program research is not affiliate activation", () => {
     expect(AFFILIATE_PROGRAMS.find(row => row.slug === "gusto")?.recurrence).toBe("one_time");
   });
   it("keeps all existing active links intact", () => {
-    expect(ACTIVE_PARTNERS).toHaveLength(23);
+    expect(ACTIVE_PARTNERS).toHaveLength(24);
   });
 });
