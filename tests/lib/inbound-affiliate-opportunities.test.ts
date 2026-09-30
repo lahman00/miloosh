@@ -11,13 +11,13 @@ describe("inbound affiliate opportunities", () => {
     expect(opportunity?.affiliateUrl).toBeNull();
     expect(opportunity?.sourceEvidence.some(source => source.includes("Gmail"))).toBe(true);
   });
-  it("records Buddy Punch as terms review, not an accepted or active relationship", () => {
+  it("records accepted Buddy Punch without manufacturing a catalog page or public activation", () => {
     const buddyPunch = INBOUND_AFFILIATE_OPPORTUNITIES.find((entry) => entry.vendorName === "Buddy Punch");
     expect(buddyPunch).toBeDefined();
-    expect(buddyPunch?.status).toBe("TERMS_REVIEW");
-    expect(buddyPunch?.acceptedAt).toBeNull();
-    expect(buddyPunch?.affiliateUrl).toBeNull();
-    expect(buddyPunch?.ownerAcceptanceRequired).toBe(true);
+    expect(buddyPunch?.status).toBe("ACCEPTED_NOT_ACTIVATED");
+    expect(buddyPunch?.acceptedAt).toBe("2026-09-30");
+    expect(buddyPunch?.affiliateUrl).toBe("https://try.buddypunch.com/8nzdz9riy7v0");
+    expect(buddyPunch?.ownerAcceptanceRequired).toBe(false);
     expect(buddyPunch?.catalogSlug).toBeNull();
     expect(ACTIVE_PARTNERS.some((partner) => String(partner.slug) === "buddy-punch")).toBe(false);
   });

@@ -6,7 +6,8 @@ export type PayoutRailId =
   | "impact"
   | "tapfiliate-setmore"
   | "mailerlite-tipalti"
-  | "jotform-tremendous";
+  | "jotform-tremendous"
+  | "firstpromoter-fireflies";
 
 export type PayoutRail = {
   id: PayoutRailId;
@@ -14,6 +15,9 @@ export type PayoutRail = {
   accountIdentity: string;
   partnerSlugs: readonly ActivePartnerSlug[];
   readiness: "UNVERIFIED" | "OWNER_ACTION_REQUIRED" | "VERIFIED";
+  /** Setup observation is independent of verified withdrawal readiness. */
+  setupEvidence?: "OWNER_REPORTED_COMPLETE" | "PROVIDER_REVIEW_PENDING" | "PAYPAL_VALIDATION_FAILED" | "METHOD_NOT_SELECTED";
+  setupObservedAt?: string;
   ownerActionPackId: string;
   methodGuidance: string;
   notes: string;
@@ -28,6 +32,20 @@ export type PayoutRail = {
  * password, 2FA, or payout-provider secret here.
  */
 export const PAYOUT_RAILS: readonly PayoutRail[] = [
+  {
+    "id": "firstpromoter-fireflies",
+    "label": "Fireflies / FirstPromoter",
+    "accountIdentity": "hello@miloosh.com",
+    "partnerSlugs": [
+      "fireflies-ai"
+    ],
+    "readiness": "OWNER_ACTION_REQUIRED",
+    "setupEvidence": "METHOD_NOT_SELECTED",
+    "setupObservedAt": "2026-09-30",
+    "ownerActionPackId": "fireflies-payout-method",
+    "methodGuidance": "Use the existing approved FirstPromoter account. Owner has paused payout configuration until PayPal account clarification; do not connect GefGef or create another account.",
+    "notes": "Authenticated Fireflies portal read on 2026-09-30 and owner screenshot: no payout method selected. Affiliate account offer is 10% recurring; this separate payout gate remains incomplete regardless of issued referral URL."
+  },
   {
     id: "partnerstack-hello",
     label: "PartnerStack — Miloosh business account",
@@ -66,20 +84,24 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     label: "Impact.com",
     accountIdentity: "Miloosh Impact publisher account",
     partnerSlugs: ["shopify", "wix", "omnisend"],
-    readiness: "OWNER_ACTION_REQUIRED",
+    readiness: "UNVERIFIED",
     ownerActionPackId: "impact-payout-rail",
-    methodGuidance: "Prefer bank/EFT when the live account supports the desired currency and fees are acceptable. PayPal is a valid fallback but Impact currently documents a 2% processing fee, capped at the currency-equivalent of USD $20. Do not change working bank details casually because Impact places a security hold after updates.",
-    notes: "Shopify, Wix, and Omnisend are active on the same Impact publisher rail; 2026-09-09 Impact notification (Gmail 1a0861d8fa8c9c28) explicitly reports that the billing address is missing the city, preventing payment. Correct the city only from owner-verified billing details; no financial-profile changes were made by this reconciliation. A 2026-09-29 reply to ticket 880838 was rejected by Impact because the ticket is closed and cannot be reopened (Gmail 1a0eee4d9baa4920). A resolved/closed ticket is not proof of repaired billing. The authorized business account must use a new authenticated support request referencing 880838; do not keep emailing the closed no-reply thread.",
+    methodGuidance: "Owner screenshot shows banking review will occur when the active balance is due for payment. Preserve submitted banking details. Do not reopen old address tickets or change banking data without a current explicit request from Impact.",
+    notes: "Superseding owner screenshot 2026-09-30 20.25.04 and subsequent owner statement: Impact is okay; banking details under review when balance is due for payment. Historical city-missing email and closed ticket 880838 are not current proof a field is still missing. Bank approval, autopay configuration and received payment have not been independently verified.",
+    setupEvidence: "PROVIDER_REVIEW_PENDING",
+    setupObservedAt: "2026-09-30",
   },
   {
     id: "tapfiliate-setmore",
     label: "Setmore / Tapfiliate",
     accountIdentity: "Setmore affiliate account",
     partnerSlugs: ["setmore"],
-    readiness: "OWNER_ACTION_REQUIRED",
+    readiness: "UNVERIFIED",
     ownerActionPackId: "setmore-payout-method",
-    methodGuidance: "Verify or update PayPal. Setmore's first-party welcome email explicitly tells the Miloosh affiliate to keep PayPal details updated in order to cash in. Do not substitute Payoneer merely because Tapfiliate supports it generically unless Setmore itself changes the payout instructions.",
-    notes: "Prior verified Setmore onboarding state was Step 4, payout method; first-party Setmore email identifies PayPal as the payout detail that should be kept updated.",
+    methodGuidance: "Owner reports completing the PayPal step and onboarding. Verify saved payout status read-only; do not restart onboarding, re-request the address, or replace the saved method.",
+    notes: "Owner explicitly stated on 2026-09-30 that payout details were already filled. This supersedes the earlier incomplete Step 4 observation, but is not independent vendor confirmation of valid PayPal account ownership or successful withdrawal.",
+    setupEvidence: "OWNER_REPORTED_COMPLETE",
+    setupObservedAt: "2026-09-30",
   },
   {
     id: "mailerlite-tipalti",
@@ -88,8 +110,10 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     partnerSlugs: ["mailerlite"],
     readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "mailerlite-tipalti-payout",
-    methodGuidance: "Prefer PayPal when operationally acceptable: MailerLite's current affiliate page says it covers PayPal transaction fees, while Direct Deposit and Wire Transfer fees are borne by the affiliate. Use another method only if the live Tipalti flow or owner preference makes it preferable.",
-    notes: "MailerLite Affiliate Operations confirmed on 2026-09-14 that billing details are already added in Trackdesk but no payment method has been selected; embedded Tipalti setup is therefore a confirmed owner action.",
+    methodGuidance: "Owner has paused this rail pending PayPal account clarification. Resume the existing Tipalti flow only after that checkpoint; do not use the GefGef PayPal account or create a duplicate Tipalti profile.",
+    notes: "Owner screenshot 2026-09-30 21.02.17: PayPal could not validate account information. Cause remains UNKNOWN; the error does not prove that a Business account is invalid or that downgrade will fix it. Contact fields were filled, but payout verification did not complete. This is an owner-requested pause, not verified withdrawal readiness.",
+    setupEvidence: "PAYPAL_VALIDATION_FAILED",
+    setupObservedAt: "2026-09-30",
   },
   {
     id: "jotform-tremendous",

@@ -45,6 +45,99 @@ export interface AffiliateProgramRelationship {
 
 export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
   {
+    "programId": "apollo-io",
+    "programName": "Apollo.io Affiliate Program",
+    "network": "PartnerStack",
+    "productSlugs": [
+      "apollo-io"
+    ],
+    "status": "PENDING_REVIEW",
+    "statusUpdatedAt": "2026-09-30",
+    "applicationSubmittedAt": "2026-09-30",
+    "decisionAt": null,
+    "affiliateUrl": null,
+    "commissionModel": "Account-specific payable offer not verified; public research is not assigned commission",
+    "cookieWindow": null,
+    "evidence": [
+      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f23df662a2deb read in this sprint."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Publisher application submitted; awaiting program review",
+    "applicationUrl": "https://dash.partnerstack.com/application?company=apollo&gref=page&group=referrers",
+    "notes": "Do not apply again. No issued referral link or earned commission evidenced."
+  },
+  {
+    "programId": "aircall",
+    "programName": "Aircall Affiliate Program",
+    "network": "PartnerStack",
+    "productSlugs": [
+      "aircall"
+    ],
+    "status": "PENDING_REVIEW",
+    "statusUpdatedAt": "2026-09-30",
+    "applicationSubmittedAt": "2026-09-30",
+    "decisionAt": null,
+    "affiliateUrl": null,
+    "commissionModel": "Account-specific payable offer not verified; public research is not assigned commission",
+    "cookieWindow": null,
+    "evidence": [
+      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f245207674373 read in this sprint."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Publisher application submitted; awaiting program review",
+    "applicationUrl": "https://aircall.partnerstack.com/?group=affiliatemarketingprogram",
+    "notes": "Do not apply again. No issued referral link or earned commission evidenced. Application requests clarification for independent editorial reviews and comparisons; an application acceptance alone would NOT waive the written-consent requirement."
+  },
+  {
+    "programId": "softr",
+    "programName": "Softr Affiliate Program",
+    "network": "PartnerStack",
+    "productSlugs": [],
+    "status": "PENDING_REVIEW",
+    "statusUpdatedAt": "2026-09-30",
+    "applicationSubmittedAt": "2026-09-30",
+    "decisionAt": null,
+    "affiliateUrl": null,
+    "commissionModel": "Account-specific payable offer not verified; public research is not assigned commission",
+    "cookieWindow": null,
+    "evidence": [
+      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f24a6227cf4bb read in this sprint."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Publisher application submitted; awaiting program review",
+    "applicationUrl": "https://www.softr.io/affiliate",
+    "notes": "No Softr catalog record exists; this is a program-level pending receipt only. Do not create a page for the application. Do not apply again. No issued referral link or earned commission evidenced."
+  },
+  {
+    "programId": "fireflies-ai",
+    "programName": "Fireflies.ai Affiliate Program",
+    "network": "FirstPromoter",
+    "productSlugs": [
+      "fireflies-ai"
+    ],
+    "status": "ACTIVE",
+    "statusUpdatedAt": "2026-09-30",
+    "applicationSubmittedAt": null,
+    "decisionAt": "2026-09-30",
+    "affiliateUrl": "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+    "commissionModel": "10% recurring commission displayed in this account; recurring duration and full qualifying rules remain unverified. Do not substitute the public up-to-30% headline.",
+    "cookieWindow": null,
+    "evidence": [
+      "First-party welcome Gmail 1a0f3e41e847eb0c, 2026-09-30, to hello@miloosh.com issues this exact asset.",
+      "Authenticated FirstPromoter Home read, 2026-09-30 20:34 UTC: same issued asset, 10% recurring commission, no payout method selected.",
+      "User screenshot 2026-09-30 23.13.21 confirms account offer and missing payout."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Approved publisher with account-specific issued referral URL",
+    "applicationUrl": "https://fireflies.firstpromoter.com/",
+    "notes": "ACTIVE describes a configured affiliate path on an existing editorial page, not production release or withdrawal readiness. Dedicated payout rail remains OWNER_ACTION_REQUIRED. First-revenue cohort is unchanged; no new paid promotion, deep link or rankings."
+  },
+
+  {
     "programId": "zendesk",
     "programName": "Zendesk PartnerStack application (legacy account)",
     "network": "PartnerStack — legacy/personal account",
@@ -372,7 +465,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     affiliateUrl: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb",
     commissionModel: "Per Impact.com contract; exact current rate not recorded in durable evidence",
     cookieWindow: null,
-    evidence: ["Gmail first-party Impact welcome email dated 2026-08-16", "Direct email from Wix Partnerships Manager Romy Ninary", "data/software/wix.json", "data/affiliate/active-partners.ts"],
+    evidence: ["Gmail 1a0f23bd5b019acd and 1a0f1f057e88bf2e, 2026-09-30: Romy confirms Website Builder/eCommerce/Headless routing according to buyer intent; Headless is backend-only. This is not Impact payout approval.", "Gmail first-party Impact welcome email dated 2026-08-16", "Direct email from Wix Partnerships Manager Romy Ninary", "data/software/wix.json", "data/affiliate/active-partners.ts"],
     ownerBlocker: null,
     formBlocker: null,
     eligibility: "Approved publisher",

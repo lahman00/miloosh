@@ -59,7 +59,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     "countryRestrictions": "Official program FAQ welcomes partners worldwide; actual account acceptance and payout checks still required.",
     "commissionModel": "Published offer: 15% on monthly-plan paid referrals or 20% on annual-plan paid referrals, for the first 12 months. No account-specific approval or earned commission exists in this discovery.",
     "recurrence": "recurring",
-    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Live application shown for the existing hello@miloosh.com account. Required company, country, LinkedIn, intended channels, product familiarity and three confirmations; optional audience-size question. All confirmation boxes observed unchecked. Review and accept binding affiliate terms and promotion restrictions before submitting. Applying itself signifies agreement. Leave actual audience size and any unsupported hands-on claims unfilled.",
+    "notes": "CURRENT ACCOUNT STATE 2026-09-30: application submitted, receipt Gmail 1a0f23df662a2deb; pending review, no new application needed. Historical pre-submission research follows: RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Live application shown for the existing hello@miloosh.com account. Required company, country, LinkedIn, intended channels, product familiarity and three confirmations; optional audience-size question. All confirmation boxes observed unchecked. Review and accept binding affiliate terms and promotion restrictions before submitting. Applying itself signifies agreement. Leave actual audience size and any unsupported hands-on claims unfilled.",
     "sourceUrls": [
       "https://www.apollo.io/partners/affiliates",
       "https://dash.partnerstack.com/application?company=apollo&gref=page&group=referrers",
@@ -81,7 +81,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     "countryRestrictions": null,
     "commissionModel": "Published offer: up to 30% recurring per qualifying sale for 12 months. The actual accepted tier is unknown.",
     "recurrence": "recurring",
-    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Live signup asks first/last name, email, password, country, website and company. Email-notification consent and affiliate-contract boxes observed unchecked. No account created. Choose credentials only in the vendor form; review the in-form affiliate terms and complete the eventual payout profile. Do not treat the public maximum rate as our assigned tier.",
+    "notes": "CURRENT ACCOUNT STATE 2026-09-30: welcome Gmail 1a0f3e41e847eb0c and authenticated portal confirm issued link and 10% recurring account offer. Payout not selected. Public maximum is NOT assigned account terms. Historical pre-submission research follows: RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Live signup asks first/last name, email, password, country, website and company. Email-notification consent and affiliate-contract boxes observed unchecked. No account created. Choose credentials only in the vendor form; review the in-form affiliate terms and complete the eventual payout profile. Do not treat the public maximum rate as our assigned tier.",
     "sourceUrls": [
       "https://fireflies.ai/affiliate",
       "https://fireflies.firstpromoter.com/"
@@ -102,7 +102,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     "countryRestrictions": null,
     "commissionModel": "Vendor-branded PartnerStack page rendered in Safari on 2026-09-30 explicitly offers USD 75 per qualified lead. This is not USD 75 per click or guaranteed payment for any submitted contact.",
     "recurrence": "unknown",
-    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Branded program landing page and its USD75 offer verified in Safari; Join now not clicked. Generic unrendered PartnerStack templates were not used as vendor-specific evidence. Written clarification required before acceptance/promotion: agreement effective August 8, 2025 requires prior consent for other materials referencing the vendor, supplied/approved marketing assets, and no publication of service benchmark results without written consent. Confirm independent editorial comparison coverage is permitted and the exact qualified-lead definition.",
+    "notes": "CURRENT ACCOUNT STATE 2026-09-30: application submitted, receipt Gmail 1a0f245207674373; pending review and explicit editorial permission still unresolved. Historical pre-submission research follows: RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Branded program landing page and its USD75 offer verified in Safari; Join now not clicked. Generic unrendered PartnerStack templates were not used as vendor-specific evidence. Written clarification required before acceptance/promotion: agreement effective August 8, 2025 requires prior consent for other materials referencing the vendor, supplied/approved marketing assets, and no publication of service benchmark results without written consent. Confirm independent editorial comparison coverage is permitted and the exact qualified-lead definition.",
     "sourceUrls": [
       "https://aircall.io/partners/affiliate-partners/",
       "https://aircall.partnerstack.com/?group=affiliatemarketingprogram",

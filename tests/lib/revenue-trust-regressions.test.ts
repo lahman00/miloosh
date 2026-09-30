@@ -86,7 +86,8 @@ describe("revenue trust and source-basis regression locks", () => {
   it("keeps affiliate-link confirmation separate from payout readiness", () => {
     expect(getPayoutRailForPartner("surveymonkey").id).toBe("partnerstack-hello");
     expect(getPayoutRailForPartner("surveymonkey").readiness).toBe("UNVERIFIED");
-    expect(getPayoutRailForPartner("shopify").readiness).toBe("OWNER_ACTION_REQUIRED");
-    expect(getPayoutRailForPartner("shopify").notes).toContain("missing the city");
+    expect(getPayoutRailForPartner("shopify").readiness).toBe("UNVERIFIED");
+    expect(getPayoutRailForPartner("shopify").setupEvidence).toBe("PROVIDER_REVIEW_PENDING");
+    expect(getPayoutRailForPartner("shopify").notes).toContain("not current proof a field is still missing");
   });
 });

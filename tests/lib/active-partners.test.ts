@@ -105,7 +105,7 @@ describe("canonical active affiliate partner registry", () => {
     });
     expect(matrix.find(({ slug }) => slug === "setmore")).toMatchObject({
       technicalPathReady: true,
-      payoutReadiness: "OWNER_ACTION_REQUIRED",
+      payoutReadiness: "UNVERIFIED",
       revenueReady: false,
     });
   });

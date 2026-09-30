@@ -54,54 +54,53 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
   },
   {
     id: "impact-payout-rail",
-    title: "3. Impact.com finance profile verification",
+    title: "3. Impact bank review (preserve submitted details)",
     priority: 3,
     loginOrSignupUrl: "https://app.impact.com/",
     productsCovered: ["shopify", "wix", "omnisend"],
     comparisonsAffected: 0,
-    commissionEvidence: "Shopify, Wix, and Omnisend are verified active Miloosh Impact relationships and should share one Impact finance profile.",
+    commissionEvidence: "Three active programs share the Impact rail. Owner screenshot 2026-09-30 supersedes the prior missing-city checkpoint with pending provider bank review; this is not confirmed payout approval.",
     preFilledFields: { "Business / Property": "Miloosh", Website: "https://miloosh.com", "Business Email": "hello@miloosh.com" },
     ownerRequiredFields: [
-      "Sign in to the existing Impact publisher account; do not re-apply to Shopify, Wix, or Omnisend",
-      "Check for an existing new open request first. Ticket 880838 is closed and cannot be reopened (Impact email 2026-09-29); use one new authenticated support request referencing 880838 if no replacement is open. Request Billing Address and Corporate Address corrections with owner-verified details",
-      "Provide supporting proof only inside that authorized open Impact request if requested; do not email the closed no-reply thread or create parallel duplicate requests",
-      "After the address correction is accepted, confirm the payment-blocker banner is gone and payout/autopay status is ready",
+      "Use the existing Impact publisher account; no new application for Shopify, Wix or Omnisend.",
+      "Current screenshot shows banking review pending when a payable balance is due. Check current autopay/status read-only; do not change submitted bank details.",
+      "Historical ticket 880838 is closed; do not email the closed no-reply thread. Do not open a new authenticated support request solely from that historical ticket while the provider review is pending.",
+      "Escalate once only if the current portal specifically requests corrections or a due payout is blocked."
     ],
     securityAndComplianceNotes: "Do not share Impact password, tax forms, bank data, PayPal credentials, 2FA codes, or identity documents. Avoid changing valid banking details unnecessarily because Impact places a security hold after changes.",
     postCompletionAutomation: "Mark the Impact payout rail verified for all three active programs only after the finance dashboard confirms readiness.",
   },
   {
     id: "setmore-payout-method",
-    title: "4. Setmore / Tapfiliate PayPal verification",
+    title: "4. Setmore saved payout verification (owner reports complete)",
     priority: 4,
     loginOrSignupUrl: "https://setmore.tapfiliate.com/",
     productsCovered: ["setmore"],
     comparisonsAffected: 0,
-    commissionEvidence: "Setmore's first-party welcome email explicitly instructs the affiliate to keep PayPal details updated to cash in; prior verification showed onboarding at Step 4, payout method.",
+    commissionEvidence: "Setmore remains an approved affiliate; owner reports payout setup completed 2026-09-30. This is not an independent successful-payment verification.",
     preFilledFields: { Affiliate: "Miloosh", Website: "https://miloosh.com", "Payout method expected": "PayPal" },
     ownerRequiredFields: [
-      "Sign in to the existing Setmore Tapfiliate account",
-      "Check whether Step 4 / payout method is still incomplete",
-      "Verify or update the PayPal payout details requested by Setmore locally",
-      "Make PayPal primary if required",
+      "Owner reported completing onboarding and PayPal on 2026-09-30.",
+      "Check the existing saved payout-method status read-only; do not re-request already completed details or restart onboarding.",
+      "Only resolve a new explicit validation error if the portal shows one."
     ],
     securityAndComplianceNotes: "Do not store PayPal credentials in chat or the repo. Do not substitute Payoneer merely because Tapfiliate supports it generically unless Setmore itself changes its instructions.",
     postCompletionAutomation: "Record Setmore payout readiness only after the portal shows PayPal payout setup completed.",
   },
   {
     id: "mailerlite-tipalti-payout",
-    title: "5. MailerLite / Tipalti payout verification",
+    title: "5. MailerLite PayPal validation (owner pause)",
     priority: 5,
     loginOrSignupUrl: "https://www.mailerlite.com/affiliate",
     productsCovered: ["mailerlite"],
     comparisonsAffected: 0,
-    commissionEvidence: "MailerLite Affiliate Operations confirmed on 2026-09-14 that billing details are already present in Trackdesk but no payment method has been selected; the embedded Tipalti setup therefore remains incomplete.",
+    commissionEvidence: "Owner screenshot 2026-09-30 shows PayPal validation failed in Tipalti after contact entry. Await owner-requested PayPal clarification, not new affiliate approval.",
     preFilledFields: { "Affiliate / Property": "Miloosh", Website: "https://miloosh.com", "Business Email": "hello@miloosh.com" },
     ownerRequiredFields: [
-      "Sign in to the existing MailerLite affiliate dashboard; do not create another account",
-      "Open the existing Trackdesk payout settings and launch the embedded Tipalti setup",
-      "Select an offered payment method and enter required tax/payment details locally",
-      "Complete the flow until all three Tipalti setup checks are shown as complete",
+      "Pause per owner until PayPal account clarification; no repeated verification attempts.",
+      "Then reopen the existing MailerLite Trackdesk/Tipalti profile and verify owner-confirmed account information.",
+      "Do not substitute the GefGef PayPal account. The earlier validation error does not establish its root cause.",
+      "Finish only when the existing portal validates the intended method and shows completion; a downgrade alone is not proof."
     ],
     securityAndComplianceNotes: "Do not create a duplicate Tipalti account. Never send tax IDs, bank details, passwords, identity documents, or verification codes through chat.",
     postCompletionAutomation: "Record MailerLite payout readiness only when the dashboard confirms the payout profile is complete.",
@@ -146,5 +145,27 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     ],
     securityAndComplianceNotes: "Do not share Jotform or Tremendous passwords, tax IDs, bank details, or verification codes through chat.",
     postCompletionAutomation: "Record Jotform payout readiness only once the dashboard confirms the payout profile is complete.",
+  },
+  {
+    "id": "fireflies-payout-method",
+    "title": "8. Fireflies / FirstPromoter payout setup (owner pause)",
+    "priority": 8,
+    "loginOrSignupUrl": "https://fireflies.firstpromoter.com/login",
+    "productsCovered": [
+      "fireflies-ai"
+    ],
+    "comparisonsAffected": 0,
+    "commissionEvidence": "Exact account offer read September 30: 10% recurring commission. Duration unverified; no payout method selected.",
+    "preFilledFields": {
+      "Account email": "hello@miloosh.com",
+      "Website": "https://miloosh.com"
+    },
+    "ownerRequiredFields": [
+      "Wait for owner-requested PayPal clarification; no duplicate FirstPromoter account.",
+      "Then select a supported payout method for the intended owner account, not GefGef.",
+      "Verify saved method and any required approval without claiming a paid payout."
+    ],
+    "securityAndComplianceNotes": "Never store bank, PayPal credentials, tax IDs, identity documents or one-time codes in source control.",
+    "postCompletionAutomation": "Mark verified only after the existing vendor portal explicitly confirms the payout configuration; earned and paid commissions remain separate facts."
   },
 ];

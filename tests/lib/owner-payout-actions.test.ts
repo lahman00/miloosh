@@ -9,6 +9,7 @@ const EXPECTED_PAYOUT_PACKS = [
   "mailerlite-tipalti-payout",
   "cj-dual-account-reconciliation",
   "jotform-tremendous-payout",
+  "fireflies-payout-method",
 ] as const;
 
 describe("owner payout action queue", () => {
@@ -16,7 +17,8 @@ describe("owner payout action queue", () => {
     const pack = OWNER_ACTION_PACKS.find(entry => entry.id === "impact-payout-rail");
     const instructions = JSON.stringify(pack);
     expect(instructions).toContain("880838 is closed");
-    expect(instructions).toContain("new authenticated support request");
+    expect(instructions).toContain("Do not open a new authenticated support request");
+    expect(instructions).toContain("pending");
     expect(instructions).toContain("do not email the closed no-reply thread");
   });
   it("contains only the current payout/account checkpoints", () => {

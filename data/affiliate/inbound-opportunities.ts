@@ -1,4 +1,5 @@
 export type InboundAffiliateOpportunityStatus =
+  | "ACCEPTED_NOT_ACTIVATED"
   | "TERMS_REVIEW"
   | "READY_FOR_OWNER_ACCEPTANCE"
   | "DECLINED"
@@ -96,9 +97,10 @@ export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportuni
     vendorName: "Buddy Punch",
     catalogSlug: null,
     network: "PartnerStack",
-    status: "TERMS_REVIEW",
+    status: "ACCEPTED_NOT_ACTIVATED",
     receivedAt: "2026-08-25",
     sourceEvidence: [
+      "Vendor welcome Gmail 1a0f2363f6cc8396, 2026-09-30, plus owner confirmation of accepted terms and PartnerStack Links screenshot 2026-09-30 15.18.35 showing the exact default asset.",
       "Direct email to hello@miloosh.com from James Powell, Partnership Manager at Buddy Punch, offering 20% recurring commission and a PartnerStack invitation",
       "Miloosh replied in-thread on 2026-08-25 requesting current publisher eligibility, attribution, recurring-duration, restrictions, payout, and geography details before activation",
       "Current official Buddy Punch partners page independently confirms 20% of every sale for the first 12 months",
@@ -107,11 +109,11 @@ export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportuni
     headlineOffer: "20% recurring commission (direct invitation wording)",
     verifiedPublicEconomics: "Buddy Punch's current public partners page states 20% of every sale for the first 12 months",
     publicTermsUrl: "https://buddypunch.com/partners/",
-    affiliateUrl: null,
-    acceptedAt: null,
-    ownerAcceptanceRequired: true,
-    nextAction: "Wait for James Powell to confirm current content/comparison-publisher eligibility and current PartnerStack attribution, restriction, payout, and geography terms. Do not accept the invitation until those terms are reviewed.",
-    notes: "No Buddy Punch software record currently exists in Miloosh. Do not create a catalog product solely to activate an affiliate invitation. A legacy official Affiliate Guidelines PDF is publicly accessible but is too old to treat as current policy without vendor confirmation.",
+    affiliateUrl: "https://try.buddypunch.com/8nzdz9riy7v0",
+    acceptedAt: "2026-09-30",
+    ownerAcceptanceRequired: false,
+    nextAction: "Already accepted by the owner. Preserve issued asset; do not resubmit or regenerate. Keep commercial activation off until a distinct, evidence-led catalog decision and any required payout verification.",
+    notes: "No Buddy Punch software record currently exists in Miloosh. Do not create a catalog product solely to activate an affiliate invitation. Owner supplied and accepted the actual portal terms on 2026-09-30. Historical marketing research is not the assigned private commission contract.",
   },
   {
     id: "trainual-2026-08-24",
