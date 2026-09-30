@@ -1,0 +1,52 @@
+{
+  "observedAt": "2026-09-30T22:43:48.998264+00:00",
+  "branch": "overnight/first-revenue-20261001",
+  "baseSha": "30f10ef",
+  "tests": {
+    "files": 276,
+    "passed": 2538,
+    "failed": 0
+  },
+  "staticUnitTests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "dataValidation": {
+    "software": 354,
+    "categories": 27,
+    "comparisons": 1348,
+    "problems": 0
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "npmAudit": {
+    "vulnerabilities": 0
+  },
+  "build": "PASS",
+  "staticRelease": {
+    "buildId": "4Nh-iZ0qxIkyvS2KbndWg",
+    "sitemapUrls": 988,
+    "publicHtmlPages": 1786,
+    "internalLinksChecked": 86706,
+    "failures": []
+  },
+  "indexationReadiness": {
+    "PASS": 154,
+    "WARN": 70,
+    "FAIL": 0,
+    "PROTECTED": 130,
+    "interpretation": "local Miloosh readiness only; not Google indexation evidence"
+  },
+  "browserQA": {
+    "cases": 29,
+    "passed": 29,
+    "failed": 0,
+    "productionWrites": 0,
+    "affiliateNetworkTraversals": 0
+  },
+  "releaseState": {
+    "push": false,
+    "deploy": false,
+    "productionChanged": false
+  }
+}

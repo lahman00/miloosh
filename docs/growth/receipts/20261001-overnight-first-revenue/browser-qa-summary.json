@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-09-30T22:42:20.745Z",
+  "mode": "LOCAL_QA_ONLY; API WRITES INTERCEPTED; EXTERNAL REQUESTS BLOCKED",
+  "cases": 29,
+  "passed": 29,
+  "failed": 0,
+  "localApiRequestsIntercepted": 115,
+  "affiliateNetworkTraversals": 0,
+  "productionWrites": 0,
+  "trainualRoutesChecked": [
+    "/compare/bloomfire-vs-trainual",
+    "/compare/confluence-vs-trainual",
+    "/compare/gitbook-vs-trainual",
+    "/compare/guru-vs-trainual",
+    "/compare/helpjuice-vs-trainual",
+    "/compare/knowledgeowl-vs-trainual",
+    "/compare/stack-overflow-for-teams-vs-trainual",
+    "/compare/tettra-vs-trainual",
+    "/software/trainual"
+  ],
+  "trainualNativeActivations": 10,
+  "woocommerceMarketplaceAssetExposed": false,
+  "seoDepthPagesChecked": [
+    "/software/apigee",
+    "/software/datadog",
+    "/software/read-the-docs",
+    "/software/stripe",
+    "/software/supabase"
+  ],
+  "discoveryEdgesChecked": [
+    {
+      "source": "/software/airbyte",
+      "target": "/software/dbt-cloud"
+    },
+    {
+      "source": "/software/cloudflare",
+      "target": "/software/knowbe4"
+    },
+    {
+      "source": "/software/gong",
+      "target": "/software/consensus"
+    },
+    {
+      "source": "/software/hootsuite",
+      "target": "/software/birdeye"
+    },
+    {
+      "source": "/software/netsuite",
+      "target": "/software/floqast"
+    },
+    {
+      "source": "/software/ninjaone",
+      "target": "/software/veeam-data-platform"
+    },
+    {
+      "source": "/software/notion",
+      "target": "/software/dropbox"
+    }
+  ]
+}

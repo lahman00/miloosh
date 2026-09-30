@@ -1,0 +1,29 @@
+{
+  "observedAt": "2026-09-30T22:43:48.997964+00:00",
+  "artifact": ".next-miloosh-qa/server/app/**/*.html",
+  "trainual": {
+    "url": "https://start.trainual.com/0j9to92n49iy",
+    "publicHtmlPageCount": 9,
+    "expectedRoutes": [
+      "/software/trainual",
+      "/compare/bloomfire-vs-trainual",
+      "/compare/confluence-vs-trainual",
+      "/compare/gitbook-vs-trainual",
+      "/compare/guru-vs-trainual",
+      "/compare/helpjuice-vs-trainual",
+      "/compare/knowledgeowl-vs-trainual",
+      "/compare/stack-overflow-for-teams-vs-trainual",
+      "/compare/tettra-vs-trainual"
+    ]
+  },
+  "mrpeasy": {
+    "url": "https://try.mrpeasy.com/rlmf8edfjcie",
+    "publicHtmlPageCount": 0,
+    "expected": "held; no public editorial surface"
+  },
+  "automatticWooMarketplace": {
+    "url": "https://automattic.pxf.io/c/7846380/1946431/22744",
+    "publicHtmlPageCount": 0,
+    "expected": "withheld from generic WooCommerce CTA until intent-aligned deep link is captured"
+  }
+}
