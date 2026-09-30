@@ -49,6 +49,135 @@ export type AffiliateProgramInfo = {
 };
 
 export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
+  // 2026-09-30: verified publisher-program research only; applications remain unsubmitted.
+  {
+    "slug": "apollo-io",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "PartnerStack",
+    "countryRestrictions": "Official program FAQ welcomes partners worldwide; actual account acceptance and payout checks still required.",
+    "commissionModel": "Published offer: 15% on monthly-plan paid referrals or 20% on annual-plan paid referrals, for the first 12 months. No account-specific approval or earned commission exists in this discovery.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Live application shown for the existing hello@miloosh.com account. Required company, country, LinkedIn, intended channels, product familiarity and three confirmations; optional audience-size question. All confirmation boxes observed unchecked. Review and accept binding affiliate terms and promotion restrictions before submitting. Applying itself signifies agreement. Leave actual audience size and any unsupported hands-on claims unfilled.",
+    "sourceUrls": [
+      "https://www.apollo.io/partners/affiliates",
+      "https://dash.partnerstack.com/application?company=apollo&gref=page&group=referrers",
+      "https://www.apollo.io/terms/affiliate-partner-program"
+    ],
+    "applicationUrl": "https://dash.partnerstack.com/application?company=apollo&gref=page&group=referrers",
+    "cookieDuration": "90 days, last eligible affiliate click",
+    "payoutMethod": "PartnerStack; published 30-day hold after payment",
+    "payoutThreshold": null,
+    "eligibility": "Online publishers and content creators explicitly listed.",
+    "confidence": "high"
+  },
+  {
+    "slug": "fireflies-ai",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "FirstPromoter",
+    "countryRestrictions": null,
+    "commissionModel": "Published offer: up to 30% recurring per qualifying sale for 12 months. The actual accepted tier is unknown.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Live signup asks first/last name, email, password, country, website and company. Email-notification consent and affiliate-contract boxes observed unchecked. No account created. Choose credentials only in the vendor form; review the in-form affiliate terms and complete the eventual payout profile. Do not treat the public maximum rate as our assigned tier.",
+    "sourceUrls": [
+      "https://fireflies.ai/affiliate",
+      "https://fireflies.firstpromoter.com/"
+    ],
+    "applicationUrl": "https://fireflies.firstpromoter.com/",
+    "cookieDuration": "Public page says customers can purchase within 90 days of the referral link",
+    "payoutMethod": "PayPal per official program page; threshold and completed payout profile not verified",
+    "payoutThreshold": null,
+    "eligibility": "Affiliate marketers promoting through written content are explicitly listed.",
+    "confidence": "high"
+  },
+  {
+    "slug": "aircall",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "PartnerStack",
+    "countryRestrictions": null,
+    "commissionModel": "Vendor-branded PartnerStack page rendered in Safari on 2026-09-30 explicitly offers USD 75 per qualified lead. This is not USD 75 per click or guaranteed payment for any submitted contact.",
+    "recurrence": "unknown",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Branded program landing page and its USD75 offer verified in Safari; Join now not clicked. Generic unrendered PartnerStack templates were not used as vendor-specific evidence. Written clarification required before acceptance/promotion: agreement effective August 8, 2025 requires prior consent for other materials referencing the vendor, supplied/approved marketing assets, and no publication of service benchmark results without written consent. Confirm independent editorial comparison coverage is permitted and the exact qualified-lead definition.",
+    "sourceUrls": [
+      "https://aircall.io/partners/affiliate-partners/",
+      "https://aircall.partnerstack.com/?group=affiliatemarketingprogram",
+      "https://legal.aircall.io/#affiliate-partner-program"
+    ],
+    "applicationUrl": "https://aircall.partnerstack.com/?group=affiliatemarketingprogram",
+    "cookieDuration": "90 days per the rendered vendor-branded PartnerStack FAQ",
+    "payoutMethod": "PartnerStack; portal describes monthly settlement and PayPal, Stripe or direct deposit options",
+    "payoutThreshold": null,
+    "eligibility": "Official page explicitly welcomes SaaS review sites, comparison directories and SEO buyer guides.",
+    "confidence": "high"
+  },
+  {
+    "slug": "pandadoc",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "Euler partner portal (linked by vendor)",
+    "countryRestrictions": null,
+    "commissionModel": null,
+    "recurrence": "unknown",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Official affiliate entry points to Euler; current JS form details not fully readable. Do not assume an older PartnerStack route or rate. Select Affiliate Partners only; obtain exact commission, duration, attribution and payout terms. Check the business-email requirement in the current form. The rid in the official application URL is not an issued Miloosh referral asset.",
+    "sourceUrls": [
+      "https://www.pandadoc.com/partners/",
+      "https://eulerapp.com/preferral?rid=1779122896143x952229171985907700"
+    ],
+    "applicationUrl": "https://eulerapp.com/preferral?rid=1779122896143x952229171985907700",
+    "cookieDuration": null,
+    "payoutMethod": null,
+    "payoutThreshold": null,
+    "eligibility": "Vendor separates Affiliate Partners for creators, publishers and communities from Solutions and Technology Partners.",
+    "confidence": "high"
+  },
+  {
+    "slug": "remote",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "Impact",
+    "countryRestrictions": null,
+    "commissionModel": "Published tiered 10%-15% of Remote management fees, net of discounts/taxes/VAT, for up to 12 months on qualified new customers. Not a share of employees' gross payroll.",
+    "recurrence": "recurring",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Official application points to Impact. Private campaign form/accepted contract not inspected through an authenticated account. Use the existing Miloosh Impact account rather than creating another. Review campaign contract, fill owner details and resolve the shared finance-profile verification before calling this payout-ready.",
+    "sourceUrls": [
+      "https://remote.com/partners/affiliates",
+      "https://app.impact.com/campaign-campaign-info-v2/Remote.brand"
+    ],
+    "applicationUrl": "https://app.impact.com/campaign-campaign-info-v2/Remote.brand",
+    "cookieDuration": "90-day click-to-signup; paid activation and retention qualification rules also apply",
+    "payoutMethod": "Impact, monthly per public page; existing shared Impact finance verification remains a separate blocker",
+    "payoutThreshold": null,
+    "eligibility": "Official affiliate program includes publishers and creators; exact account/country approval remains unverified.",
+    "confidence": "high"
+  },
+  {
+    "slug": "gusto",
+    "lastVerifiedAt": "2026-09-30",
+    "programExists": "yes",
+    "type": "network",
+    "networkName": "Impact",
+    "countryRestrictions": "Target audience is US-based businesses; publisher-country eligibility is not confirmed by that audience statement.",
+    "commissionModel": "Official Gusto affiliate page publishes USD 200+ per sale for a valid business customer. Actual contract amount and qualification rules must be verified; not a bounty for a mere free signup.",
+    "recurrence": "one_time",
+    "notes": "RESEARCH ONLY; NOT SUBMITTED; NO APPROVAL OR ISSUED ASSET. Official page and Sign up with Impact link verified. Direct link fetch failed; retain the official landing page as the safe application entry point rather than guessing a campaign ID. A separate PartnerStack listing is not merged into this offer. Use Sign up with Impact from the official page and the existing Miloosh Impact account. Confirm non-US publisher eligibility, exact payable action and contract before submission; finance verification remains separate.",
+    "sourceUrls": [
+      "https://gusto.com/affiliates"
+    ],
+    "applicationUrl": "https://gusto.com/affiliates",
+    "cookieDuration": "120 days per official Gusto affiliate page",
+    "payoutMethod": "Impact route linked by Gusto; private payout terms not retrieved",
+    "payoutThreshold": null,
+    "eligibility": "Publishers with an audience of US business owners, CEOs or HR buyers fit the public audience description.",
+    "confidence": "high"
+  },
+
   {
     slug: "1password",
     lastVerifiedAt: "2026-08-16",
