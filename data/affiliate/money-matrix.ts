@@ -11,11 +11,15 @@ export type PartnerMoneyMatrixRow = {
   url: string | null;
   coverage: { softwareRoute: string; comparisonRoutes: number };
   cta: string;
+  /** Compatibility flag: instrumentation is configured in code, not live/network verification. */
   tracking: boolean;
+  evidenceScope: "CODE_CONFIGURATION_ONLY";
+  merchantAttribution: "UNKNOWN";
+  executedAgreement: "NOT_VERIFIED";
   disclosure: boolean;
   technicalPathReady: boolean;
   payoutReadiness: "UNVERIFIED" | "OWNER_ACTION_REQUIRED" | "VERIFIED";
-  /** End-to-end readiness: technical affiliate path AND payout profile verified. */
+  /** Configuration readiness only; does NOT prove merchant attribution, a sale, or payment. */
   revenueReady: boolean;
   blocker: string | null;
   nextAction: string;
@@ -29,7 +33,7 @@ export function getPartnerMoneyMatrix(): PartnerMoneyMatrixRow[] {
     const url = partner.affiliateUrl;
     const disclosure = shouldShowAffiliateDisclosure(software);
     const sponsored = getSoftwareCtaRel(software) === "sponsored noopener noreferrer";
-    const tracking = true; // Both software and comparison CTAs use TrackedCtaLink.
+    const tracking = true; // Configured component wiring only. Live audit and merchant evidence are separate.
     const technicalPathReady = Boolean(url && disclosure && sponsored && tracking && getSoftwareCtaUrl(software) === url);
     const payoutRail = getPayoutRailForPartner(partner.slug);
     const payoutReadiness = payoutRail.readiness;
@@ -48,7 +52,7 @@ export function getPartnerMoneyMatrix(): PartnerMoneyMatrixRow[] {
       blocker = blocker ?? `Payout profile ${payoutRail.label} is ${payoutReadiness}; end-to-end revenue readiness is not proven.`;
       nextAction = `Verify the account-level payout profile in ${payoutRail.label}; do not treat a working CTA as payout-ready.`;
     } else {
-      nextAction = "Technical path and payout profile are verified; monitor qualified outbound clicks, network conversions, commissions, and received payouts.";
+      nextAction = "Configuration gates pass; independently verify live events, executed program terms, merchant attribution, commissions, and received payouts.";
     }
 
     return {
@@ -62,6 +66,9 @@ export function getPartnerMoneyMatrix(): PartnerMoneyMatrixRow[] {
       },
       cta: url ? `Visit ${software.name}` : "Visit official site",
       tracking,
+      evidenceScope: "CODE_CONFIGURATION_ONLY",
+      merchantAttribution: "UNKNOWN",
+      executedAgreement: "NOT_VERIFIED",
       disclosure,
       technicalPathReady,
       payoutReadiness,

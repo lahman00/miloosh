@@ -6,6 +6,7 @@ import { NextRequest } from "next/server";
 import { POST } from "@/app/api/outbound-click/route";
 import { outboundDestinationTestHelpers as __test__ } from "@/lib/revenue/outbound-destination";
 import { getSoftware } from "@/data/software";
+import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { getWixAffiliateUrl } from "@/lib/wix-funnels";
 import { getOutboundEvents } from "@/lib/revenue/events";
@@ -61,6 +62,28 @@ function post(body: unknown): Promise<Response> {
 }
 
 describe("POST /api/outbound-click — preserves explicit and unknown isTest states", () => {
+  it.each(ACTIVE_PARTNERS.flatMap(partner => [
+    { slug: partner.slug, location: "software-page-cta", intent: undefined },
+    { slug: partner.slug, location: "pricing-section-cta", intent: "pricing" as const },
+  ]))("$slug $location records the exact issued destination in both sinks", async ({slug, location, intent}) => {
+    const source = `/software/${slug}`;
+    const eventId = `audit-${slug}-${location}-20260930`;
+    const response = await POST(new NextRequest("https://miloosh.com/api/outbound-click", {
+      method: "POST",
+      headers: {"content-type":"application/json", "user-agent":"Mozilla/5.0 Chrome/128.0.0.0 Safari/537.36", referer:`https://miloosh.com${source}`},
+      body: JSON.stringify({slug, kind:"cta", sourcePage:source, ctaLocation:location, eventId, visitorId:"v_local_audit", sessionId:"s_local_audit", isTest:true}),
+    }));
+    expect(response.status).toBe(202);
+    const expected = getSoftwareCtaUrl(getSoftware(slug)!, intent);
+    const legacy = await getOutboundEvents();
+    const firstParty = await getAllFirstPartyEvents();
+    expect(legacy).toHaveLength(1);
+    expect(firstParty).toHaveLength(1);
+    expect(legacy[0]).toMatchObject({softwareSlug:slug, url:expected, eventId, sourcePage:source, isTest:true, destination:"affiliate"});
+    expect(firstParty[0]).toMatchObject({softwareSlug:slug, url:expected, eventId, path:source, isTest:true, destination:"affiliate"});
+    // No merchant is visited: this exercises the real local request handler and isolated stores only.
+  });
+
   it("exact concurrent replay writes once in each sink; a separate activation writes again", async () => {
     const body = { slug: "todoist", kind: "cta", visitorId: "v_replay", sessionId: "s_replay", isTest: true, eventId: "click-activation-12345", ctaLocation: "money-page-decision-card" };
     await Promise.all([post(body), post(body), post(body)]);

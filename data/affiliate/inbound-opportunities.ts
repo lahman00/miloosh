@@ -31,6 +31,67 @@ export type InboundAffiliateOpportunity = {
  */
 export const INBOUND_AFFILIATE_OPPORTUNITIES: readonly InboundAffiliateOpportunity[] = [
   {
+    "id": "cloro-migration-2026-09-27",
+    "vendorName": "Cloro",
+    "catalogSlug": null,
+    "network": "FirstPromoter (replacement; PartnerStack route retired)",
+    "status": "TERMS_REVIEW",
+    "receivedAt": "2026-09-27",
+    "sourceEvidence": [
+      "Gmail 1a0e245d336e8be1: vendor migration notice from Ric, read 2026-09-30"
+    ],
+    "inviteUrl": null,
+    "headlineOffer": "Vendor email: 40% of payments for 12 months, not yet accepted account terms",
+    "verifiedPublicEconomics": null,
+    "publicTermsUrl": null,
+    "affiliateUrl": null,
+    "acceptedAt": null,
+    "ownerAcceptanceRequired": true,
+    "nextAction": "Review the exact program/account terms and editorial fit; retrieve an issued asset only after authorized acceptance. Do not auto-apply or promote.",
+    "notes": "The vendor explicitly says affiliate.cloro.dev links no longer track. No such link was found in the inspected live affiliate surfaces. Obtain a real replacement asset and account terms before reactivating; preserve the historical signup as a signup, not revenue."
+  },
+  {
+    "id": "catalister-2026-09-29",
+    "vendorName": "Catalister",
+    "catalogSlug": null,
+    "network": "PartnerStack",
+    "status": "TERMS_REVIEW",
+    "receivedAt": "2026-09-29",
+    "sourceEvidence": [
+      "Gmail 1a0ed2f2f0d26823: direct invitation addressed to hello@miloosh.com"
+    ],
+    "inviteUrl": null,
+    "headlineOffer": "Invitation headline only: up to USD 17 recurring per membership and up to USD 131 per credit purchase",
+    "verifiedPublicEconomics": null,
+    "publicTermsUrl": null,
+    "affiliateUrl": null,
+    "acceptedAt": null,
+    "ownerAcceptanceRequired": true,
+    "nextAction": "Review the exact program/account terms and editorial fit; retrieve an issued asset only after authorized acceptance. Do not auto-apply or promote.",
+    "notes": "Invitation is not acceptance, a verified payable offer, or a reason to add a new catalog product. No invitation accepted during audit."
+  },
+  {
+    "id": "mrpeasy-2026-09-17",
+    "vendorName": "MRPeasy",
+    "catalogSlug": null,
+    "network": "PartnerStack",
+    "status": "TERMS_REVIEW",
+    "receivedAt": "2026-09-17",
+    "sourceEvidence": [
+      "Gmail 1a0aff2a7020da1e: invitation from Marko Karner via PartnerStack"
+    ],
+    "inviteUrl": null,
+    "headlineOffer": "Invitation headline only: 20% recurring for up to three years",
+    "verifiedPublicEconomics": null,
+    "publicTermsUrl": null,
+    "affiliateUrl": null,
+    "acceptedAt": null,
+    "ownerAcceptanceRequired": true,
+    "nextAction": "Review the exact program/account terms and editorial fit; retrieve an issued asset only after authorized acceptance. Do not auto-apply or promote.",
+    "notes": "The message addresses implementation and referral partners; qualify the editorial publisher route without offering implementation or calls. No new product or application created during audit."
+  },
+
+  {
     id: "buddy-punch-2026-08-25",
     vendorName: "Buddy Punch",
     catalogSlug: null,

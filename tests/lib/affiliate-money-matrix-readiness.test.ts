@@ -8,6 +8,13 @@ import { getSoftwareCtaUrl, getSoftwareCtaRel, shouldShowAffiliateDisclosure } f
 const matrix = getPartnerMoneyMatrix();
 
 describe("affiliate money matrix readiness semantics", () => {
+  it("never promotes configured instrumentation to merchant or executed-contract proof", () => {
+    for (const row of matrix) {
+      expect(row.evidenceScope).toBe("CODE_CONFIGURATION_ONLY");
+      expect(row.merchantAttribution).toBe("UNKNOWN");
+      expect(row.executedAgreement).toBe("NOT_VERIFIED");
+    }
+  });
   it("covers every active partner exactly once", () => {
     // Historical note; superseded for SurveyMonkey on 2026-09-10 (verified replacement asset).
     // 2026-08-29: SurveyMonkey removed from ACTIVE_PARTNERS (was 20) --

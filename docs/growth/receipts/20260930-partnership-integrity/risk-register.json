@@ -1,0 +1,107 @@
+[
+  {
+    "priority": "P1",
+    "issue": "Production release lag",
+    "status": "OPEN_RELEASE_REVIEW",
+    "finding": "Production e23a126 does not contain latest reconciliation. Six supplementary Pricing links go direct instead of through an issued asset. Existing 7ae5946 fix not redeployed by audit.",
+    "source": "live-link-audit.json; Vercel dpl_3puWCBTyyznpgBzkNmqdg9npdKKY"
+  },
+  {
+    "priority": "P1",
+    "issue": "Payout readiness",
+    "status": "OPEN_OWNER_OR_VENDOR",
+    "finding": "Six shared rails cover all22 active vendors; none has complete current withdrawal proof. Preserve connected accounts and existing valid links.",
+    "source": "data/affiliate/payout-rails.ts; Gmail support evidence"
+  },
+  {
+    "priority": "P1",
+    "issue": "ElevenLabs contract fit",
+    "status": "WRITTEN_CLARIFICATION_REQUIRED",
+    "finding": "SEO metadata and duplicate referral-account restrictions potentially conflict with planned operation. Do not expand promotion or duplicate the account until clarified.",
+    "source": "https://elevenlabs.io/affiliates-terms"
+  },
+  {
+    "priority": "P1",
+    "issue": "MailerLite content approval",
+    "status": "WRITTEN_CLARIFICATION_REQUIRED",
+    "finding": "Check scope of pre-publication approval for comparisons and future content; existing article feedback is not blanket future approval.",
+    "source": "https://www.mailerlite.com/legal/affiliate-program-terms"
+  },
+  {
+    "priority": "P1",
+    "issue": "Impact closed support ticket",
+    "status": "FIXED_LOCAL_QUEUE; OWNER_ACTION_PENDING",
+    "finding": "Ticket880838 cannot be reopened. Instructions now point to one authenticated new request referencing the old ticket, after checking no replacement is already open.",
+    "source": "Gmail 1a0eee4d9baa4920"
+  },
+  {
+    "priority": "P1",
+    "issue": "Merchant attribution / earned revenue",
+    "status": "UNKNOWN",
+    "finding": "Live browser events and valid hrefs do not prove merchant arrival, cookie acceptance, conversion or a payable commission. No real-buyer conversion fabricated.",
+    "source": "native-final-summary.json; telemetry-summary-redacted.json"
+  },
+  {
+    "priority": "P2",
+    "issue": "CallRail stale application status",
+    "status": "FIXED_LOCAL",
+    "finding": "Sep30 receipt confirms correct-route application for review. Pending, not approved; do not resubmit.",
+    "source": "Gmail 1a0f0f5f65cffa67"
+  },
+  {
+    "priority": "P2",
+    "issue": "Zendesk rejection not explicitly recorded",
+    "status": "FIXED_LOCAL",
+    "finding": "Sep28 personal-account rejection recorded with no affiliate asset. Independent editorial coverage unchanged.",
+    "source": "Gmail 1a0e5ba2e7bc79c7"
+  },
+  {
+    "priority": "P2",
+    "issue": "Cloro migration",
+    "status": "QUEUED_NOT_ACTIVATED",
+    "finding": "Old PartnerStack links retired; no retired asset found among inspected live links. Replacement FirstPromoter asset/acceptance not captured.",
+    "source": "Gmail 1a0e245d336e8be1"
+  },
+  {
+    "priority": "P2",
+    "issue": "Zoho account activation",
+    "status": "OWNER_ACTION_PENDING",
+    "finding": "Approval exists but account confirmation/password and issued referral asset/payout setup remain incomplete. No new password or terms accepted.",
+    "source": "Gmail 1a0ec95f0abb0bb1;1a0ec95f19991465"
+  },
+  {
+    "priority": "P2",
+    "issue": "Contract provenance",
+    "status": "OPEN_EVIDENCE_GAPS",
+    "finding": "Six full public terms reviewed; public documents are not all22 account-specific executed contracts. Airtable source redirects; exact commercial offers remain separately unverified.",
+    "source": "contract inventory"
+  },
+  {
+    "priority": "P2",
+    "issue": "Readiness report overclaim",
+    "status": "FIXED_LOCAL",
+    "finding": "Matrix now labels code configuration separately from merchant attribution and executed-contract evidence. No working URL is labelled proof of payment.",
+    "source": "data/affiliate/money-matrix.ts"
+  },
+  {
+    "priority": "P2",
+    "issue": "Historical attribution coverage",
+    "status": "OPEN_RECONCILIATION",
+    "finding": "Historical outbound records lack join event IDs. Do not add stores together or infer a complete conversion funnel. Current click-ID wiring passes isolated tests.",
+    "source": "telemetry-summary-redacted.json"
+  },
+  {
+    "priority": "P3",
+    "issue": "Jotform and Wix documentation drift",
+    "status": "FIXED_LOCAL",
+    "finding": "Jotform qualification delay removed from cookie field and pricing-asset note corrected; Wix material reference aligned with its exact existing URL.",
+    "source": "data/affiliate/canonical-ledger.ts;partner-materials-audit.ts"
+  },
+  {
+    "priority": "P3",
+    "issue": "Unrecorded invitations",
+    "status": "FIXED_LOCAL_QUEUE",
+    "finding": "Cloro migration, Catalister and MRPeasy recorded as terms review only. No acceptance, catalog expansion or new campaign.",
+    "source": "inbound-opportunities.ts; Gmail invitations"
+  }
+]

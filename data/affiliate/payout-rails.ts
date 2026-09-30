@@ -49,7 +49,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
     methodGuidance: "PartnerStack Support confirmed a PayPal account is already connected to hello@miloosh.com. Do not replace a working payout provider merely to optimize rails. Verify the account's tax/receipt profile and withdrawal readiness before marking this rail VERIFIED.",
-    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed, so this rail remains UNVERIFIED rather than being promoted to VERIFIED. First-party partner mail corroborates the relationships assigned here.",
+    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed, so this rail remains UNVERIFIED rather than being promoted to VERIFIED. First-party partner mail corroborates the relationships assigned here. A read-only confirmation request was sent 2026-09-29; acknowledgment ticket 124689 is not payout verification. Do not duplicate the pending request.",
   },
   {
     id: "partnerstack-personal",
@@ -69,7 +69,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     readiness: "OWNER_ACTION_REQUIRED",
     ownerActionPackId: "impact-payout-rail",
     methodGuidance: "Prefer bank/EFT when the live account supports the desired currency and fees are acceptable. PayPal is a valid fallback but Impact currently documents a 2% processing fee, capped at the currency-equivalent of USD $20. Do not change working bank details casually because Impact places a security hold after updates.",
-    notes: "Shopify, Wix, and Omnisend are active on the same Impact publisher rail; 2026-09-09 Impact notification (Gmail 1a0861d8fa8c9c28) explicitly reports that the billing address is missing the city, preventing payment. Correct the city only from owner-verified billing details; no financial-profile changes were made by this reconciliation.",
+    notes: "Shopify, Wix, and Omnisend are active on the same Impact publisher rail; 2026-09-09 Impact notification (Gmail 1a0861d8fa8c9c28) explicitly reports that the billing address is missing the city, preventing payment. Correct the city only from owner-verified billing details; no financial-profile changes were made by this reconciliation. A 2026-09-29 reply to ticket 880838 was rejected by Impact because the ticket is closed and cannot be reopened (Gmail 1a0eee4d9baa4920). A resolved/closed ticket is not proof of repaired billing. The authorized business account must use a new authenticated support request referencing 880838; do not keep emailing the closed no-reply thread.",
   },
   {
     id: "tapfiliate-setmore",

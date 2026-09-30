@@ -12,6 +12,13 @@ const EXPECTED_PAYOUT_PACKS = [
 ] as const;
 
 describe("owner payout action queue", () => {
+  it("does not route Impact follow-ups into a permanently closed ticket", () => {
+    const pack = OWNER_ACTION_PACKS.find(entry => entry.id === "impact-payout-rail");
+    const instructions = JSON.stringify(pack);
+    expect(instructions).toContain("880838 is closed");
+    expect(instructions).toContain("new authenticated support request");
+    expect(instructions).toContain("do not email the closed no-reply thread");
+  });
   it("contains only the current payout/account checkpoints", () => {
     expect(OWNER_ACTION_PACKS.map((pack) => pack.id)).toEqual(EXPECTED_PAYOUT_PACKS);
   });

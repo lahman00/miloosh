@@ -4,6 +4,13 @@ import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { getSoftware } from "@/data/software";
 
 describe("inbound affiliate opportunities", () => {
+  it.each(["Cloro", "Catalister", "MRPeasy"])("records %s without manufacturing acceptance or a referral URL", name => {
+    const opportunity = INBOUND_AFFILIATE_OPPORTUNITIES.find(item => item.vendorName === name);
+    expect(opportunity?.status).toBe("TERMS_REVIEW");
+    expect(opportunity?.acceptedAt).toBeNull();
+    expect(opportunity?.affiliateUrl).toBeNull();
+    expect(opportunity?.sourceEvidence.some(source => source.includes("Gmail"))).toBe(true);
+  });
   it("records Buddy Punch as terms review, not an accepted or active relationship", () => {
     const buddyPunch = INBOUND_AFFILIATE_OPPORTUNITIES.find((entry) => entry.vendorName === "Buddy Punch");
     expect(buddyPunch).toBeDefined();

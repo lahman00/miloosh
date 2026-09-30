@@ -5,6 +5,12 @@ import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 const byProgramId = new Map(CANONICAL_AFFILIATE_LEDGER.map((program) => [program.programId, program]));
 
 describe("canonical affiliate ledger state invariants", () => {
+  it("does not conflate Jotform qualification delay with an attribution-cookie window", () => {
+    const jotform = byProgramId.get("jotform");
+    expect(jotform?.cookieWindow).toBeNull();
+    expect(jotform?.commissionModel).toContain("60-day qualification");
+    expect(jotform?.notes).toContain("homepage and pricing assets are both configured");
+  });
   it("keeps pending relationships undecided and without affiliate URLs", () => {
     for (const program of CANONICAL_AFFILIATE_LEDGER.filter((p) => p.status === "PENDING_REVIEW")) {
       expect(program.decisionAt, `${program.programId} pending but has decisionAt`).toBeNull();
@@ -49,8 +55,11 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("help-scout")?.status).toBe("REJECTED");
     expect(byProgramId.get("clickup")?.status).toBe("REJECTED");
     expect(byProgramId.get("close")?.status).toBe("ACTIVE");
-    expect(byProgramId.get("callrail")?.status).toBe("OWNER_ACTION_REQUIRED");
-    expect(byProgramId.get("callrail")?.applicationSubmittedAt).toBeNull();
+    expect(byProgramId.get("callrail")?.status).toBe("PENDING_REVIEW");
+    expect(byProgramId.get("callrail")?.applicationSubmittedAt).toBe("2026-09-30");
+    expect(byProgramId.get("callrail")?.affiliateUrl).toBeNull();
+    expect(byProgramId.get("zendesk")?.status).toBe("REJECTED");
+    expect(byProgramId.get("zendesk")?.decisionAt).toBe("2026-09-28");
     expect(byProgramId.get("freshworks")?.lastFollowupAt).toBe("2026-09-29");
     expect(byProgramId.get("amplitude")?.lastFollowupAt).toBe("2026-09-29");
     expect(byProgramId.get("toggl-track")?.lastFollowupAt).toBe("2026-09-29");

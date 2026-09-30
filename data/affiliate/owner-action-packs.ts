@@ -63,8 +63,8 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     preFilledFields: { "Business / Property": "Miloosh", Website: "https://miloosh.com", "Business Email": "hello@miloosh.com" },
     ownerRequiredFields: [
       "Sign in to the existing Impact publisher account; do not re-apply to Shopify, Wix, or Omnisend",
-      "Use the existing support flow to request Billing Address and Corporate Address corrections with the owner-verified full address",
-      "Provide supporting proof only inside the same authorized Impact ticket if requested; do not create duplicate tickets",
+      "Check for an existing new open request first. Ticket 880838 is closed and cannot be reopened (Impact email 2026-09-29); use one new authenticated support request referencing 880838 if no replacement is open. Request Billing Address and Corporate Address corrections with owner-verified details",
+      "Provide supporting proof only inside that authorized open Impact request if requested; do not email the closed no-reply thread or create parallel duplicate requests",
       "After the address correction is accepted, confirm the payment-blocker banner is gone and payout/autopay status is ready",
     ],
     securityAndComplianceNotes: "Do not share Impact password, tax forms, bank data, PayPal credentials, 2FA codes, or identity documents. Avoid changing valid banking details unnecessarily because Impact places a security hold after changes.",
