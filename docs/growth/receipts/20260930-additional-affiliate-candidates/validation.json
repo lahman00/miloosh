@@ -1,0 +1,10 @@
+{
+  "candidates": 10,
+  "existingCatalog": 2,
+  "outsideCatalog": 8,
+  "duplicatesWithPrevious6": 0,
+  "publicOrRegistryChanges": false,
+  "applicationsSubmitted": 0,
+  "validation": "JSON parsed, unique IDs, source URLs, catalog existence and protected git paths checked",
+  "fullTests": "NOT RERUN: documentation-only; no code or data registry changes"
+}
