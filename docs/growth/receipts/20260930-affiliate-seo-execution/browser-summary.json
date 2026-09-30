@@ -1,0 +1,133 @@
+{
+  "scope": "LOCAL_PRODUCTION_STYLE_BUILD; ALL API REQUESTS INTERCEPTED; MERCHANT NAVIGATION CANCELLED",
+  "productionWrites": 0,
+  "merchantRequestsAllowed": 0,
+  "cases": [
+    {
+      "route": "/software/todoist",
+      "width": 390,
+      "pass": true,
+      "checks": 6,
+      "errors": []
+    },
+    {
+      "route": "/software/todoist",
+      "width": 768,
+      "pass": true,
+      "checks": 6,
+      "errors": []
+    },
+    {
+      "route": "/software/todoist",
+      "width": 1440,
+      "pass": true,
+      "checks": 6,
+      "errors": []
+    },
+    {
+      "route": "/software/close",
+      "width": 390,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/close",
+      "width": 768,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/close",
+      "width": 1440,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/setmore",
+      "width": 390,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/setmore",
+      "width": 768,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/setmore",
+      "width": 1440,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/fireflies-ai",
+      "width": 390,
+      "pass": true,
+      "checks": 3,
+      "errors": []
+    },
+    {
+      "route": "/software/fireflies-ai",
+      "width": 768,
+      "pass": true,
+      "checks": 3,
+      "errors": []
+    },
+    {
+      "route": "/software/fireflies-ai",
+      "width": 1440,
+      "pass": true,
+      "checks": 3,
+      "errors": []
+    },
+    {
+      "route": "/compare/fathom-vs-fireflies-ai",
+      "width": 390,
+      "pass": true,
+      "checks": 1,
+      "errors": []
+    },
+    {
+      "route": "/compare/fathom-vs-fireflies-ai",
+      "width": 1440,
+      "pass": true,
+      "checks": 1,
+      "errors": []
+    },
+    {
+      "route": "/compare/fireflies-ai-vs-gong",
+      "width": 390,
+      "pass": true,
+      "checks": 1,
+      "errors": []
+    },
+    {
+      "route": "/compare/fireflies-ai-vs-gong",
+      "width": 1440,
+      "pass": true,
+      "checks": 1,
+      "errors": []
+    },
+    {
+      "route": "/software/airtable",
+      "width": 390,
+      "pass": true,
+      "checks": 4,
+      "errors": []
+    },
+    {
+      "route": "/software/jotform",
+      "width": 1440,
+      "pass": true,
+      "checks": 3,
+      "errors": []
+    }
+  ]
+}

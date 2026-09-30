@@ -1,0 +1,95 @@
+{
+  "observedAt": "2026-09-30T20:59:10.289259+00:00",
+  "firefliesPlacements": 5,
+  "firefliesRoutes": 3,
+  "allFirefliesExact": true,
+  "allFirefliesSponsored": true,
+  "allFirefliesDisclosure": true,
+  "protectedArtifactParity": [
+    {
+      "slug": "airtable",
+      "visibleTextEqual": true,
+      "canonicalEqual": true,
+      "metadataEqual": true,
+      "hrefSequenceEqual": true
+    },
+    {
+      "slug": "pipedrive",
+      "visibleTextEqual": true,
+      "canonicalEqual": true,
+      "metadataEqual": true,
+      "hrefSequenceEqual": true
+    },
+    {
+      "slug": "wrike",
+      "visibleTextEqual": true,
+      "canonicalEqual": true,
+      "metadataEqual": true,
+      "hrefSequenceEqual": true
+    },
+    {
+      "slug": "ecwid",
+      "visibleTextEqual": true,
+      "canonicalEqual": true,
+      "metadataEqual": true,
+      "hrefSequenceEqual": true
+    }
+  ],
+  "localOnlyHttpProbes": [
+    {
+      "route": "/recommend",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 53232
+    },
+    {
+      "route": "/api/social/card?headline=Miloosh%20QA&kind=pricing",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 44223,
+      "pngDimensions": [
+        1080,
+        1080
+      ]
+    }
+  ],
+  "affiliateTraversals": 0,
+  "productionWrites": 0,
+  "fireflies": [
+    {
+      "route": "/software/fireflies-ai",
+      "location": "software-page-cta",
+      "href": "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+      "rel": "sponsored noopener noreferrer",
+      "disclosurePresent": true
+    },
+    {
+      "route": "/software/fireflies-ai",
+      "location": "vendor-link-pricing",
+      "href": "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+      "rel": "sponsored noopener noreferrer",
+      "disclosurePresent": true
+    },
+    {
+      "route": "/software/fireflies-ai",
+      "location": "pricing-section-cta",
+      "href": "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+      "rel": "sponsored noopener noreferrer",
+      "disclosurePresent": true
+    },
+    {
+      "route": "/compare/fireflies-ai-vs-gong",
+      "location": "compare-page-choose-card",
+      "href": "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+      "rel": "sponsored noopener noreferrer",
+      "disclosurePresent": true
+    },
+    {
+      "route": "/compare/fathom-vs-fireflies-ai",
+      "location": "compare-page-choose-card",
+      "href": "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+      "rel": "sponsored noopener noreferrer",
+      "disclosurePresent": true
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "observedAt": "2026-09-30T21:01:34.119648+00:00",
+  "branch": "execution/affiliate-seo-20260930",
+  "baseSha": "ad895c5",
+  "implementationHead": "2d7d03698e555753cf4f8e915f7d457cbb7de1cc",
+  "commits": {
+    "security": "6fedf9f",
+    "affiliate": "46a3b65",
+    "seo": "2d7d036"
+  },
+  "productionObserved": {
+    "sha": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+    "deploymentId": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY",
+    "changedByThisTask": false
+  },
+  "gates": {
+    "tests": 0,
+    "typecheck": 0,
+    "lint": 0,
+    "data": 0,
+    "dependencyAudit": 0,
+    "build": 0,
+    "staticGate": 0
+  },
+  "testFiles": 274,
+  "testsPassed": 2515,
+  "browserCases": 18,
+  "browserPasses": 18,
+  "nativeActivations": 62,
+  "static": {
+    "sitemapUrls": 988,
+    "publicHtmlPages": 1786,
+    "internalLinksChecked": 86685,
+    "failures": []
+  },
+  "activeConfiguredPartners": 23,
+  "payoutRails": 7,
+  "firefliesPlacements": 5,
+  "firefliesRoutes": 3,
+  "gsc": {
+    "dataLastUpdated": "2026-09-21",
+    "indexed": 218,
+    "notIndexed": 1705,
+    "discoveredNotIndexed": 820,
+    "crawledNotIndexed": 825,
+    "alternateCanonical": 58,
+    "redirects": 2
+  },
+  "productionWrites": 0,
+  "merchantTraversals": 0,
+  "newApplications": 0,
+  "emailsSent": 0,
+  "paymentProfilesChanged": 0,
+  "socialActions": 0,
+  "push": false,
+  "deploy": false,
+  "unverified": [
+    "Merchant-side click attribution, sales, approved commissions and paid withdrawals",
+    "Full saved/validated Setmore payout status beyond owner completion report",
+    "Cause of Tipalti PayPal validation failure; downgrade is not proved to be required or sufficient",
+    "New Google indexing/traffic effect after the content changes"
+  ]
+}
