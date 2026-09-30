@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { Card } from "@/components/Card";
+import { BuyerMigrationChecklist } from "@/components/BuyerMigrationChecklist";
+import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checklists";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { getSoftware, type Software } from "@/data/software";
 import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
@@ -41,6 +43,7 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
       <nav aria-label={`${software.name} buying decision`} className="mt-4 flex flex-wrap gap-3 text-sm">
         <a href="#buyer-price-check" className="rounded-lg border border-white/15 px-3 py-3 text-zinc-200 underline underline-offset-4">Price and billing</a>
         <a href="#buyer-alternatives" className="rounded-lg border border-white/15 px-3 py-3 text-zinc-200 underline underline-offset-4">Compare alternatives</a>
+        {BUYER_MIGRATION_CHECKLISTS[software.slug] ? <a href="#migration-checks" className="rounded-lg border border-white/15 px-3 py-3 text-zinc-200 underline underline-offset-4">Before switching</a> : null}
       </nav>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
@@ -93,6 +96,7 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
       <div className="mt-4 rounded-xl border border-white/10 p-4">
         <p className="text-sm font-semibold text-white">Switching check</p>
         <p className="mt-2 text-sm leading-6 text-zinc-300">{target.switchingCheck}</p>
+        <BuyerMigrationChecklist slug={software.slug} />
       </div>
 
       {alternatives.length > 0 ? (

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checklists";
 import { SITE_URL } from "@/lib/site";
 import { LEGAL_PAGES } from "@/lib/legal";
 import { getAllSoftware } from "@/data/software";
@@ -35,9 +36,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const softwarePages: MetadataRoute.Sitemap = allSoftware.map((software) => ({
     url: `${SITE_URL}/software/${software.slug}`,
-    lastModified: getFirstRevenuePage(software.slug)
-      ? latestOf([toDate(software.accessedAt), toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)])
-      : toDate(software.accessedAt),
+    // Actual page-content dates only: do not refresh the entire catalog at build time.
+    lastModified: latestOf([
+      toDate(software.accessedAt),
+      ...(getFirstRevenuePage(software.slug) ? [toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)] : []),
+      ...(BUYER_MIGRATION_CHECKLISTS[software.slug]
+        ? [toDate(BUYER_MIGRATION_CHECKLISTS[software.slug]!.contentUpdatedAt)] : []),
+    ]),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
