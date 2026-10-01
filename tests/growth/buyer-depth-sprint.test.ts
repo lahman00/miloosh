@@ -12,8 +12,8 @@ import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { loadCurrentProtection } from "@/lib/google-war/current-protection";
 import { renderedHtml } from "@/lib/seo/rendered-html";
 
-const slugs = ["trainual", "zoho-flow", "zoho-desk", "close", "zoho-projects", "elevenlabs"] as const;
-const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com", "elevenlabs.io"]);
+const slugs = ["trainual", "zoho-flow", "zoho-desk", "close", "zoho-projects", "elevenlabs", "todoist", "setmore"] as const;
+const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com", "elevenlabs.io", "www.todoist.com", "www.setmore.com", "support.setmore.com"]);
 describe("Buyer-depth sprint: factual and commercial boundaries", () => {
   it("is bounded to six existing unprotected products, not a new catalog or experiment", () => {
     expect(Object.keys(BUYER_DEPTH_CHECKLISTS).sort()).toEqual([...slugs].sort());
@@ -66,6 +66,16 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
     expect(getSoftware("close")!.cons!.join(" ")).toContain("one user");
     expect(getSoftware("trainual")!.cons!.join(" ")).toContain("minimum payable");
   });
+  it("keeps Todoist and Setmore plan gates explicit", () => {
+    const todoist = BUYER_DEPTH_CHECKLISTS.todoist.checks.map(c => c.answer).join(" ");
+    expect(todoist).toContain("five active personal projects");
+    expect(todoist).toContain("$480 per year");
+    expect(todoist).toContain("seven-day Pro trial");
+    const setmore = BUYER_DEPTH_CHECKLISTS.setmore.checks.map(c => c.answer).join(" ");
+    expect(setmore).toContain("up to four users");
+    expect(setmore).toContain("$360 per year");
+    expect(setmore).toContain("two-way calendar sync");
+  });
   it("keeps Zoho Projects role gates and ElevenLabs usage rights explicit", () => {
     const projects = BUYER_DEPTH_CHECKLISTS["zoho-projects"].checks.map(c => c.answer).join(" ");
     expect(projects).toContain("five users");
@@ -88,7 +98,7 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
   });
   it("adds exactly six deep links to actual rendered checklist anchors", () => {
     const links = Object.values(DECISION_PATHS).flat().filter(p => p.href.endsWith("#buyer-checklist"));
-    expect(links).toHaveLength(6);
+    expect(links).toHaveLength(8);
     for (const link of links) {
       const slug = link.href.split("#")[0].split("/").pop()!;
       expect(BUYER_DEPTH_CHECKLISTS[slug]).toBeDefined();

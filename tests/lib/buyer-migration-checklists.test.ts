@@ -16,10 +16,11 @@ const render = (slug: string) => renderToStaticMarkup(React.createElement(FirstR
 describe("source-linked buyer checks on existing money pages", () => {
   it("updates lastmod only for genuinely changed money pages", () => {
     const dates = new Map(sitemap().map(row => [new URL(row.url).pathname, new Date(row.lastModified ?? 0).toISOString().slice(0, 10)]));
-    for (const slug of ["todoist", "setmore"]) expect(dates.get(`/software/${slug}`)).toBe("2026-09-30");
-    // Close gained additional source-linked cost checks on October 1;
-    // the other two migration pages were not changed by that release.
-    expect(dates.get("/software/close")).toBe("2026-10-01");
+    // Todoist and Setmore gained source-linked plan-fit buyer checks on October 1,
+    // while Close gained additional source-linked cost checks in the prior wave.
+    for (const slug of ["todoist", "setmore", "close"]) {
+      expect(dates.get(`/software/${slug}`)).toBe("2026-10-01");
+    }
     const airtableDate = [getSoftware("airtable")!.accessedAt, FIRST_REVENUE_CONTENT_UPDATED_AT].sort().at(-1);
     expect(dates.get("/software/airtable")).toBe(airtableDate);
     expect(dates.get("/software/pipedrive")).toBe(getSoftware("pipedrive")!.accessedAt);

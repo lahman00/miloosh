@@ -2,6 +2,68 @@ import type { BuyerChecklist } from "@/data/seo/buyer-checklists";
 
 /** Documentation-based decisions, not observed customer outcomes or new rankings. */
 export const BUYER_DEPTH_CHECKLISTS: Record<string, BuyerChecklist> = {
+  "todoist": {
+    "title": "Before choosing Todoist, separate personal capacity from team governance",
+    "introduction": "Documentation-based buyer checks, not a hands-on productivity trial. Keep Beginner when the personal workflow fits; pay for Pro or Business only when the missing capacity, planning view or team control is concrete.",
+    "verifiedAt": "2026-10-01",
+    "checks": [
+      {
+        "question": "Does Beginner already cover the personal workflow?",
+        "answer": "Todoist currently lists Beginner with five active personal projects, three filter views, reminders, list and board layouts, and one week of activity history. Pro expands personal capacity to 300 projects and adds calendar layout, task duration, custom reminders, 150 filter views and full reporting history. Write down the exact missing feature before paying for Pro rather than treating every active Todoist user as a paid-plan user.",
+        "source": "https://www.todoist.com/pricing",
+        "sourceLabel": "Todoist current plan comparison"
+      },
+      {
+        "question": "Is this an individual upgrade or a team subscription?",
+        "answer": "Todoist Business is priced per user and adds a shared team workspace, up to 500 team projects, granular team activity logs, roles and permissions, shared templates, folders and centralized billing. Worked example, not a vendor quote: five Business members at the published annual-billing rate of $8 per user/month equal 5 × $8 × 12 = $480 per year before applicable tax. Do not compare that team total with a single-user Pro subscription.",
+        "source": "https://www.todoist.com/help/account-and-billing/plans/todoist-business-plan-pricing-update-dF5in65YM",
+        "sourceLabel": "Todoist Business pricing and renewal terms"
+      },
+      {
+        "question": "Can you prove the paid feature is worth keeping before renewal?",
+        "answer": "Todoist documents a seven-day Pro trial and a 14-day Business trial. Use the relevant trial to test the exact paid feature—such as calendar planning, team permissions or shared team administration—then record whether it changed the workflow. Keep the existing CSV portability checklist separate: a useful trial does not prove that completed history, recurring dates or every field will migrate cleanly later.",
+        "source": "https://www.todoist.com/help/account-and-billing/plans/start-a-todoist-pro-trial-LAVIT1Xm3",
+        "sourceLabel": "Todoist Pro trial guidance"
+      }
+    ],
+    "options": [
+      {
+        "slug": "todoist",
+        "fit": "Keep Todoist when the required personal or team controls fit the selected plan. Upgrade only for a verified capacity, planning or governance requirement; the existing migration checklist covers portability separately."
+      }
+    ]
+  },
+  "setmore": {
+    "title": "Before choosing Setmore, count staff calendars and paid-only booking controls",
+    "introduction": "Documentation-based buyer checks, not a live booking-system migration. Start with the number of staff calendars and the booking features customers actually need; Free can be sufficient for a small team.",
+    "verifiedAt": "2026-10-01",
+    "checks": [
+      {
+        "question": "Does the Free plan already cover the team?",
+        "answer": "Setmore currently lists Free for up to four users with unlimited appointments, a branded Booking Page, email reminders, payments and team collaboration tools. Do not upgrade only because customers need online booking or payments. First count the staff calendars and identify the paid-only control that is actually missing.",
+        "source": "https://www.setmore.com/pro",
+        "sourceLabel": "Setmore Free and Pro plan comparison"
+      },
+      {
+        "question": "Which requirement actually forces Pro?",
+        "answer": "Setmore Pro currently adds SMS reminders, two-way calendar sync, recurring appointments, branding removal and other advanced controls. Its web support article lists $12 per user on monthly billing or $5 per user/month with annual billing. If email reminders and one-way booking are enough, Free may remain the better fit; if two-way sync or recurring sessions are required, price Pro for the real staff count.",
+        "source": "https://support.setmore.com/en/articles/4475815-setmore-pro-web-desktop",
+        "sourceLabel": "Setmore Pro web and desktop features and billing"
+      },
+      {
+        "question": "What does the same staff count cost under each billing cycle?",
+        "answer": "Worked example, not a vendor quote: six paid users at the published annual-billing rate cost 6 × $5 × 12 = $360 per year before taxes; the same six users at $12 monthly billing cost $72 per month. Confirm the checkout channel and current quote before paying, because Setmore also documents separate mobile subscription structures. Keep the existing migration checklist for contacts, calendars and appointment continuity.",
+        "source": "https://www.setmore.com/faqs",
+        "sourceLabel": "Setmore pricing FAQ"
+      }
+    ],
+    "options": [
+      {
+        "slug": "setmore",
+        "fit": "Keep Setmore Free when four or fewer users and the included booking controls are sufficient. Compare Pro only when SMS, two-way sync, recurring appointments or another paid-only feature solves a real requirement."
+      }
+    ]
+  },
   "zoho-projects": {
     "title": "Before choosing Zoho Projects, map users, clients and governance to the edition",
     "introduction": "Documentation-based buyer checks, not a completed project migration. Start with the people who must work in the portal and the controls they need; a low seat price is not useful if the required user type or project control sits in another edition.",
@@ -193,6 +255,8 @@ export const BUYER_DEPTH_CHECKLISTS: Record<string, BuyerChecklist> = {
 /** Actual October 1 editorial release date; never advanced at build time. */
 export const BUYER_DEPTH_CONTENT_UPDATED_AT = "2026-10-01";
 export const BUYER_DEPTH_GUIDE_PATHS = [
+  "/best-task-management-for-individuals",
+  "/best-scheduling-software-for-small-business",
   "/best-knowledge-base-software-for-teams",
   "/best-automation-software-for-small-business",
   "/best-help-desk-for-small-business",

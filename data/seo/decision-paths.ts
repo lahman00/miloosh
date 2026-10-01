@@ -3,6 +3,20 @@ export type DecisionPath = { href: string; label: string; question: string };
 /** Editorial adjacency, not affiliate ranking. Existing pages only; reviewed 2026-09-26. */
 export const DECISION_PATHS: Readonly<Record<string, readonly DecisionPath[]>> =
   {
+    "/best-task-management-for-individuals": [
+      {
+        href: "/software/todoist#buyer-checklist",
+        label: "Check Todoist plan capacity and team-cost boundaries",
+        question: "Considering Todoist? Separate personal Pro features from Business team governance before paying for seats.",
+      },
+    ],
+    "/best-scheduling-software-for-small-business": [
+      {
+        href: "/software/setmore#buyer-checklist",
+        label: "Check Setmore staff count and paid-only booking controls",
+        question: "Considering Setmore? Count staff calendars and identify whether SMS, two-way sync or recurring appointments actually require Pro.",
+      },
+    ],
     "/best-knowledge-base-software-for-teams": [
       {
         "href": "/software/trainual#buyer-checklist",
