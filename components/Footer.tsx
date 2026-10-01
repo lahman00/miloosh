@@ -24,6 +24,7 @@ const companyLinks = [
   { name: "Newsletter", href: "/newsletter" },
 ];
 
+// Legal and secondary navigation should load on navigation, not passive footer exposure.
 function FooterColumn({
   title,
   links,
@@ -39,6 +40,7 @@ function FooterColumn({
           <li key={link.name}>
             <Link
               href={link.href}
+              prefetch={false}
               className="text-sm text-zinc-400 transition hover:text-accent-hover"
             >
               {link.name}
@@ -58,7 +60,7 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <Link href="/" className="flex items-center gap-2 text-base font-bold tracking-tight text-white">
+            <Link href="/" prefetch={false} className="flex items-center gap-2 text-base font-bold tracking-tight text-white">
               <Image src="/logo-icon.png" alt="" width={22} height={20} />
               {SITE_NAME}
             </Link>
@@ -74,7 +76,7 @@ export function Footer() {
           <p className="text-sm text-zinc-400">
             © {new Date().getFullYear()} {SITE_NAME} — independent comparisons. Some outbound
             links are disclosed affiliate links; see our{" "}
-            <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-white">
+            <Link href="/affiliate-disclosure" prefetch={false} className="underline underline-offset-4 hover:text-white">
               Affiliate Disclosure
             </Link>
             .

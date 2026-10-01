@@ -70,6 +70,7 @@ export function CompareGrid({ items }: { items: CompareGridItem[] }) {
           <Link
             key={getComparisonSlug(item.slugA, item.slugB)}
             href={`/compare/${getComparisonSlug(item.slugA, item.slugB)}`}
+            prefetch={false}
             className="group block h-full"
           >
             <Card className="flex h-full flex-col group-hover:border-white/25 group-hover:bg-white/[0.05]">

@@ -4,9 +4,10 @@ import { Card } from "@/components/Card";
 import type { Software } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 
+// Large editorial grids keep crawlable anchors without fetching every card on scroll.
 export function SoftwareCard({ software }: { software: Software }) {
   return (
-    <Link href={`/software/${software.slug}`} className="group block h-full">
+    <Link href={`/software/${software.slug}`} prefetch={false} className="group block h-full">
       <Card className="flex h-full flex-col group-hover:border-white/25 group-hover:bg-white/[0.05]">
         <div className="flex items-start justify-between gap-4">
           <div>

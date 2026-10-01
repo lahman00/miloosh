@@ -5,7 +5,7 @@ import type { Category } from "@/data/categories";
 
 export function CategoryCard({ category, count }: { category: Category; count: number }) {
   return (
-    <Link href={`/category/${category.slug}`} className="group block h-full">
+    <Link href={`/category/${category.slug}`} prefetch={false} className="group block h-full">
       <Card className="flex h-full flex-col group-hover:border-white/25 group-hover:bg-white/[0.05]">
         <div className="flex items-start justify-between gap-4">
           <h3 className="text-lg font-semibold text-white">{category.name}</h3>
