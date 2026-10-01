@@ -1,0 +1,129 @@
+{
+  "recordedAt": "2026-10-01T10:48:40.384811+00:00",
+  "releaseStatus": "LIVE_VERIFIED",
+  "domain": "https://miloosh.com",
+  "sourceSha": "f747fbb3584d87480138c1606a00718d6b28c3e5",
+  "deploymentId": "dpl_5NJhJHdday7NLkXVEfCJgvpF6Tv2",
+  "deploymentUrl": "https://flowtemplate-5xh28t8lj-lahman001.vercel.app",
+  "productionResolutionEvidence": "Vercel get_deployment(miloosh.com) resolved to the same READY production deployment and source SHA after successful authenticated CLI promotion.",
+  "rollbackDeploymentId": "dpl_3puWCBTyyznpgBzkNmqdg9npdKKY",
+  "rollbackSourceSha": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+  "http": {
+    "checkedAt": "2026-10-01T10:40:08.793791+00:00",
+    "domain": "miloosh.com",
+    "deployment": "dpl_5NJhJHdday7NLkXVEfCJgvpF6Tv2",
+    "commit": "f747fbb3584d87480138c1606a00718d6b28c3e5",
+    "checks": 95,
+    "passed": 95,
+    "verifiedCommercialPlacements": 102,
+    "affiliateNetworkTraversals": 0,
+    "clientApiWrites": 0,
+    "scope": "GET-only public production HTML: exact registered assets, sponsored rel, disclosure, canonical, H1, and indexability parity with tested build. Not merchant attribution or received income."
+  },
+  "browser": {
+    "observedAt": "2026-10-01T10:39:57.992Z",
+    "mode": "LIVE_DEPLOYED_BROWSER_QA; ALL API WRITES INTERCEPTED; ALL EXTERNAL REQUESTS BLOCKED",
+    "cases": 53,
+    "passed": 53,
+    "failed": [],
+    "localApiRequestsIntercepted": 219,
+    "externalRequestsBlocked": 0,
+    "affiliateNetworkTraversals": 0,
+    "productionWrites": 0
+  },
+  "runtimeErrorCheck": {
+    "source": "Connected Vercel get_runtime_errors",
+    "window": "30 minutes ending at the check after promotion",
+    "result": "No runtime errors found",
+    "qualification": "A bounded observation, not a guarantee about later traffic."
+  },
+  "hostChecks": {
+    "checkedAt": "2026-10-01T10:46:23.607796+00:00",
+    "rows": [
+      {
+        "url": "https://www.miloosh.com/software/zoho-crm",
+        "status": 301,
+        "location": "https://miloosh.com/software/zoho-crm"
+      },
+      {
+        "url": "http://miloosh.com/software/zoho-crm",
+        "status": 308,
+        "location": "https://miloosh.com/software/zoho-crm"
+      },
+      {
+        "url": "https://miloosh.com/robots.txt",
+        "status": 200,
+        "location": null,
+        "robotsText": "User-Agent: *\nAllow: /\nDisallow: /internal/\n\nSitemap: https://miloosh.com/sitemap.xml\n"
+      }
+    ]
+  },
+  "measurement": {
+    "searchConsole": {
+      "observedAt": "2026-10-01T10:19:35.478603+00:00",
+      "source": "Authenticated Search Console visible Pages table, all three UI pages captured; native screenshot corroborates chart totals",
+      "property": "sc-domain:miloosh.com",
+      "searchType": "Web (text)",
+      "window": {
+        "start": "2026-09-01",
+        "end": "2026-09-28"
+      },
+      "chart": {
+        "clicks": 1,
+        "impressions": 120,
+        "displayedCtrPercent": 0.8,
+        "averagePosition": 33
+      },
+      "pageTableScope": "ALL_24_VISIBLE_ROWS_NOT_API_EXPORT",
+      "pageRowSums": {
+        "clicks": 1,
+        "impressions": 124
+      },
+      "caveat": "Property chart totals and page-table aggregation are distinct; do not invent query-to-page attribution or growth against different windows/search types. Hidden stale DOM rows excluded."
+    },
+    "outbound": {
+      "checkedAt": "2026-10-01T10:47:14.052Z",
+      "window": {
+        "since": "2026-09-24T21:25:05.877225Z",
+        "until": "2026-10-01T10:47:14.052Z"
+      },
+      "status": "COMPLETE",
+      "backend": "blob",
+      "recordsListed": 21,
+      "listingComplete": true,
+      "failedReads": 0,
+      "allStoredCounts": {
+        "stored": 21,
+        "test": 10,
+        "explicitNonTest": 10,
+        "unclassified": 1,
+        "affiliateNonTest": 8,
+        "officialNonTest": 2,
+        "vendorNonTest": 0
+      },
+      "sprintWindowCounts": {
+        "stored": 1,
+        "test": 1,
+        "explicitNonTest": 0,
+        "unclassified": 0,
+        "affiliateNonTest": 0,
+        "officialNonTest": 0,
+        "vendorNonTest": 0
+      },
+      "qualification": "Server-recorded outbound ledger only. Do not add to first-party analytics or equate isTest=false with human traffic. Neither merchant conversions nor commission are established."
+    },
+    "firstPartyAnalytics": "Full 2720-object content read exceeded 120 seconds; not represented as complete. Metadata listing succeeded. No human-session or conversion-rate estimate is published.",
+    "businessResult": "No genuine merchant-attributed conversion, approved commission or received payout verified in this closeout."
+  },
+  "payoutReadOnlyObservations": {
+    "partnerstackBusiness": "Existing PayPal method visible; required-looking receipt fields populated; no Fill out tax info to withdraw warning. Provider eligibility and withdrawal not independently confirmed; no financial fields changed.",
+    "fireflies": "Previously verified no payout method. Existing owner-requested pause retained; no GefGef payment account used.",
+    "zoho": "Product links and Multi DC success verified; no positive payout-completion state established. An empty add form is not treated as proof that the entire account is incomplete."
+  },
+  "remainingPartnerDependencies": {
+    "softr": "Existing account terms accepted and issued asset captured. Multiple offer schedules await the one written clarification already sent. No new public page solely for approval.",
+    "buddyPunch": "Asset captured; editorial clarification pending, no distinct public intent established; no activation or duplicate outreach.",
+    "mrpeasy": "Hold retained pending eligibility, content, placement and payout-identity clarification; no new placement or duplicate follow-up.",
+    "woocommerce": "October 1 vendor email confirms use of the authenticated Impact link builder for WooCommerce.com pages. Current Safari Impact tab is logged out; no account-specific general-platform URL was generated or guessed. Existing Marketplace asset not used on generic platform CTAs."
+  }
+}

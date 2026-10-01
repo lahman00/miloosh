@@ -3,7 +3,7 @@
   "productionBase": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
   "candidateBase": "5f253ad482abf0f4238587a6ec303ba10bbe6c86",
   "unsafeCandidateNotPromoted": "930d711ec742f97946530ea2e1e83ff9bbbdcab3",
-  "releaseStatus": "LOCAL_VERIFIED_NOT_YET_PROMOTED",
+  "releaseStatus": "LIVE_VERIFIED",
   "tests": {
     "files": 278,
     "passed": 2565,
@@ -82,5 +82,15 @@
   "softr": "TERMS_ACCEPTED_ASSET_CAPTURED; editorial surface and assigned offer remain unresolved",
   "softrClarificationSentMessage": "1a0f6ebd4b000599",
   "payout": "NOT_VERIFIED; prior owner pause preserved; no bank or tax data submitted",
-  "measurement": "No earned revenue, genuine buyer conversion, approved commission or payout inferred from QA."
+  "measurement": "No earned revenue, genuine buyer conversion, approved commission or payout inferred from QA.",
+  "productionSourceSha": "f747fbb3584d87480138c1606a00718d6b28c3e5",
+  "productionDeploymentId": "dpl_5NJhJHdday7NLkXVEfCJgvpF6Tv2",
+  "liveHttpChecks": {
+    "passed": 95,
+    "total": 95
+  },
+  "liveBrowserChecks": {
+    "passed": 53,
+    "total": 53
+  }
 }
