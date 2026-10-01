@@ -43,8 +43,31 @@ export interface AffiliateProgramRelationship {
 
 export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
   // ==========================================
-  // 1. ACTIVE MONITORED PARTNERS (20 programs)
+  // 1. ACTIVE MONITORED PARTNERS
   // ==========================================
+  {
+    programId: "fireflies-ai",
+    programName: "Fireflies Affiliate Program",
+    network: "FirstPromoter",
+    productSlugs: ["fireflies-ai"],
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-01",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-09-30",
+    affiliateUrl: "https://fireflies.ai/?fpr=eyal-haimovich-d08faa",
+    commissionModel: "Up to 30% recurring commission per successful sale for 12 months; the exact Miloosh tier is not asserted until confirmed in the live affiliate dashboard.",
+    cookieWindow: "90 days",
+    evidence: [
+      "Connected Gmail 1a0f3e41e847eb0c, received 2026-09-30: Fireflies Partnerships welcome email issued the exact unique referral URL https://fireflies.ai/?fpr=eyal-haimovich-d08faa to hello@miloosh.com.",
+      "Official Fireflies affiliate page verified 2026-10-01: https://fireflies.ai/affiliate — up to 30% recurring commissions for 12 months, 90-day purchase window, PayPal payouts.",
+      "data/affiliate/active-partners.ts",
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved Fireflies affiliate; account-specific referral URL issued to Miloosh.",
+    applicationUrl: "https://fireflies.firstpromoter.com/",
+    notes: "The affiliate relationship and tracking asset are verified and may be used on independently written Miloosh editorial surfaces. Payout-profile readiness is intentionally tracked separately and remains unverified until the FirstPromoter account confirms its PayPal/payout setup."
+  },
   {
     programId: "wrike",
     programName: "Wrike Referral Program",
@@ -431,7 +454,34 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
   },
 
   // ==========================================
-  // 3. PENDING REVIEW PROGRAMS (8 programs, 9 products)
+  // 2B. APPROVED — TRACKING ASSET / DESTINATION STILL NEEDED
+  // ==========================================
+  {
+    programId: "woocommerce-automattic",
+    programName: "Automattic Affiliate Program — WooCommerce",
+    network: "Impact.com",
+    productSlugs: ["woocommerce"],
+    status: "APPROVED_NEEDS_LINK",
+    statusUpdatedAt: "2026-10-01",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-09-30",
+    affiliateUrl: null,
+    commissionModel: "Per the live Automattic / Impact contract; no commission rate is asserted here because the approval email did not state one.",
+    cookieWindow: null,
+    evidence: [
+      "Connected Gmail 1a0f2f24d5877b22, received 2026-09-30: Automattic Affiliate Program welcome/approval for publisher account 7846380 and issued WooCommerce Marketplace tracking asset https://automattic.pxf.io/c/7846380/1946431/22744.",
+      "Connected Gmail thread 1a0f2fe96c7ac527: Miloosh asked Automattic Head of Partnership Marketing for an account-specific destination suitable for the main WooCommerce platform/product page rather than the Marketplace.",
+      "Automattic approval email explicitly prohibits trademark bidding, direct traffic from paid sources, and browser extensions."
+    ],
+    ownerBlocker: "Await Automattic confirmation or issue of a WooCommerce platform/product destination that matches Miloosh's broad WooCommerce buyer page. The valid Marketplace asset must not be substituted for a platform-evaluation CTA merely to activate monetization.",
+    formBlocker: null,
+    eligibility: "Approved Automattic affiliate; WooCommerce Marketplace tracking asset issued. Platform-page destination still unresolved.",
+    applicationUrl: "https://automattic.com/affiliates/",
+    notes: "Fail closed on destination intent: approval is real, but Miloosh's existing WooCommerce page evaluates the ecommerce platform itself. Keep the public CTA on the ordinary WooCommerce destination until Automattic supplies or confirms an account-specific platform destination. The Marketplace asset may be used later only on a genuinely Marketplace/extension-intent surface."
+  },
+
+  // ==========================================
+  // 3. PENDING REVIEW PROGRAMS
   // ==========================================
   {
     programId: "freshworks",
@@ -613,23 +663,24 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Trainual Affiliate Program",
     network: "PartnerStack",
     productSlugs: ["trainual"],
-    status: "OWNER_ACTION_REQUIRED",
-    statusUpdatedAt: "2026-08-31",
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-01",
     applicationSubmittedAt: null,
-    decisionAt: null,
-    affiliateUrl: null,
-    commissionModel: "10% recurring commission on referred accounts for as long as the customer remains a paying Trainual user (Affiliates tier; a separate 20% Partners tier also exists but Miloosh has not been offered it). Directly re-confirmed 2026-08-31 on trainual.com/affiliate: commissions continue for the customer's lifetime unless the affiliate goes 12 consecutive months without a new referral, at which point legacy commissions stop.",
+    decisionAt: "2026-09-30",
+    affiliateUrl: "https://start.trainual.com/0j9to92n49iy",
+    commissionModel: "10% recurring commission on referred paid accounts for the lifetime of the referred account, provided the affiliate remains active by making at least one new referral within each 12-month period.",
     cookieWindow: "90 days",
     evidence: [
-      "docs/affiliate-applications.md PartnerStack form submit failure diagnosis",
-      "Re-checked 2026-08-23: trainual.com/affiliate's own page has no application form (only a search widget); the real path is a PartnerStack handshake link (dash.partnerstack.com/handshake?source=trainual&join=trainual&gref=page) which requires PartnerStack login",
-      "Independently re-verified 2026-08-31 by directly fetching trainual.com/affiliate: page still has no on-page application form -- both the 'Join now!' and 'Become a partner' CTAs still route to the same PartnerStack handshake URL above, confirming this is an existing invitation/handshake link to accept, not a submittable form. No account-specific tracking URL is present on that page or anywhere else in this repository for Trainual."
+      "Connected Gmail 1a0f2363e2a1521e, received 2026-09-30: Tom Healy / Trainual welcomed Miloosh to the affiliate program and issued the exact personal referral URL https://start.trainual.com/0j9to92n49iy to hello@miloosh.com.",
+      "Official Trainual affiliate page re-verified 2026-10-01: https://trainual.com/affiliate — 10% recurring commission, lifetime while the affiliate remains active, 90-day cookie, monthly PartnerStack rewards with PayPal or Stripe cash-out.",
+      "Trainual Terms of Service, Affiliate Terms section, effective 2026-03-15: no unauthorized claims, spam/coupon tactics, self-referrals, paid advertising to the affiliate link, or publishing the affiliate link on properties the affiliate does not own/control.",
+      "data/affiliate/active-partners.ts"
     ],
-    ownerBlocker: "This is an existing PartnerStack invitation/handshake link, not a form this agent can submit: the owner must log into (or create) the PartnerStack account, open the handshake link, accept the Trainual invitation there, and then supply the resulting account-specific tracking URL so it can be recorded here. No one may accept the invitation on the owner's behalf.",
+    ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Form truthfully filled out: website=miloosh.com, Blogger, Trainual customer=No (from the prior in-session attempt).",
+    eligibility: "Approved Trainual affiliate; public program explicitly includes tech bloggers and the account-specific referral link was issued to Miloosh.",
     applicationUrl: "https://trainual.com/affiliate",
-    notes: "Corrected diagnosis 2026-08-23: not a UI bug -- the earlier attempt worked from within an authenticated PartnerStack session that has since expired. Re-confirmed 2026-08-31: still no real tracking URL exists anywhere in this repo for Trainual, so status stays OWNER_ACTION_REQUIRED, not ACTIVE. The invitation was not accepted by this agent."
+    notes: "Active relationship and tracking asset are verified. Keep Trainual promotion on Miloosh-owned editorial surfaces, source factual claims independently, disclose the affiliate relationship, and do not drive paid-ad traffic directly to the affiliate link. Payout-profile readiness remains tracked separately at the PartnerStack account level."
   },
   {
     programId: "tidio",
@@ -875,7 +926,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Impact.com Multi-Program Publisher Account",
     network: "Impact.com",
     productSlugs: [
-      "lastpass", "woocommerce",
+      "lastpass",
       "smartsheet", "mailchimp", "bigcommerce", "squarespace",
       "grammarly", "bitwarden", "nextiva", "craft", "keeper",
       "keeper-security", "ecwid", "moz"
@@ -968,10 +1019,10 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Zoho Affiliate Program",
     network: "Direct (Zoho)",
     productSlugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk", "zoho-flow", "zoho-campaigns"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-08-27",
+    status: "APPROVED_NEEDS_LINK",
+    statusUpdatedAt: "2026-10-01",
     applicationSubmittedAt: "2026-08-27",
-    decisionAt: null,
+    decisionAt: "2026-09-30",
     affiliateUrl: null,
     commissionModel: "15% (Standard tier) of the revenue Zoho receives from a qualified sale for the first 12 months, PROVIDED the referral stays a Zoho customer for at least 60 days (the 'stickiness period') before commission accrues. No commission on the same customer's subsequent/cross-sell purchases. Highest commission per single deal is capped at $25,000. Qualified sale requires: customer not an existing paid Zoho customer; signup within 90 days of first affiliate-link click; purchase within 90 days of signup; customer signs up in the SAME Zoho data center the affiliate is registered in. Tiers above Standard (Super 18%, Elite 20%) require $5,001+ revenue or 21+ new customers.",
     cookieWindow: "90 days",
@@ -981,13 +1032,15 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
       "zoho.com/affiliate/faq.html (live page, verified 2026-08-27): full Referrals & Commission / Links & Promotions / Payments / Program Restrictions / Getting Started FAQ content, extracted via DOM inspection since answers are accordion-collapsed",
       "zoho.com/affiliate/signup.html (live form, verified 2026-08-27): real field-by-field form structure",
       "Owner-reported direct confirmation, 2026-08-27: owner completed the phone/SMS verification and CAPTCHA steps this agent could not perform, and submitted the form ('נרשמתי' -- 'I registered/applied'). Not yet independently verified against a Zoho confirmation email or the affiliate dashboard -- Gmail access was unavailable in this session when this was recorded. Treated as authoritative because it is the owner's own first-hand report of an action only the owner could take, consistent with this ledger's evidence discipline elsewhere.",
-      "Owner-reported correspondence, 2026-08-28: after submission, Zoho sent a human qualification questionnaire (not an automated decision); the owner replied directly with Miloosh business/audience/content details. Program remains PENDING_REVIEW -- a qualification questionnaire is a review step, not an approval signal, and is not treated as one here. Owner also reconfirmed: PayPal/wire payout, $100 threshold, 90-day first-click attribution, no-existing-paid-customer requirement, purchase due within 90 days of signup, deep links generated via Zoho's own URL Builder tool, and a 55+ product Zoho portfolio (i.e. more than the 6 products Miloosh currently covers) is technically eligible once approved -- consistent with, not contradicting, the terms already on file above."
+      "Owner-reported correspondence, 2026-08-28: after submission, Zoho sent a human qualification questionnaire; the owner replied directly with Miloosh business/audience/content details.",
+      "Connected Gmail thread 1a0f1bc8f642692e: on 2026-09-30 Zoho Affiliate Operations welcomed Miloosh as a valued affiliate and invited dashboard onboarding; on 2026-10-01 message 1a0f6516008af701 supplied concrete approved-account instructions for hello@miloosh.com.",
+      "Zoho Affiliate message 1a0f6516008af701: login at store.zoho.com with hello@miloosh.com; Affiliate URL tab generates product-specific links; 90-day cookie; Standard commission 15% of actual payment received by Zoho for the first 12 months on qualified new-business referrals; payout through wire transfer; Multi DC Account T&C must be accepted to map referrals across Zoho data centers."
     ],
-    ownerBlocker: null,
+    ownerBlocker: "Generate and capture the account-specific Affiliate URL for each Miloosh-covered Zoho product (CRM, Books, Projects, Desk, Flow, Campaigns) from the approved hello@miloosh.com dashboard, and accept the Multi DC Account T&C. Do not invent or construct deep links outside Zoho's URL generator.",
     formBlocker: null,
     eligibility: "Confirmed eligible: Miloosh is not an existing Zoho reseller/consulting/platform partner (the one stated disqualifying condition). Israel is a fully selectable country and phone country code on the live signup form -- no geographic exclusion found for Israel in the FAQ or signup form.",
     applicationUrl: "https://www.zoho.com/affiliate/signup.html",
-    notes: "Application submitted 2026-08-27 (owner-confirmed); still PENDING_REVIEW as of 2026-08-28 -- Zoho followed up with a human qualification questionnaire (answered by the owner) rather than a decision. No tracking asset exists; do not mark approved/active until a real, usable affiliate link is issued. The prepared confirmation reply to Hari in the existing thread (see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md) has not been sent yet -- Gmail was not accessible in this session; send it (or ask the agent to, once Gmail is reachable) so Hari knows to expect the review. Covers Zoho CRM, Books, Projects, Desk, Flow, and Campaigns (6 products) today; deep links for any of these would use Zoho's own URL Builder once approved -- see data/affiliate/ZOHO_OPPORTUNITY_MAP_2026-08-27.md for the full current-portfolio evaluation. Payout: PayPal or wire transfer preferred; $100 (or INR 4,000) minimum unpaid-commission threshold; ~15 days from payout request to bank reflection; payout currency follows the REFERRED CUSTOMER's payment currency, not the affiliate's home currency (except INR) -- a real operational nuance for an Israel-based affiliate, not a blocker. Do not reproduce Zoho's own marketing/promotional materials, case studies, or testimonials as Miloosh's own (explicit FAQ term) -- consistent with Miloosh's existing sourced-content policy."
+    notes: "Approved relationship confirmed by first-party Zoho correspondence. The remaining activation gap is not approval: it is capturing the six account-specific product tracking URLs from Zoho's Affiliate URL tab and completing Multi DC acceptance. Until those exact assets are on file, all six public Miloosh Zoho CTAs must remain ordinary vendor links. Current first-party onboarding says payout is by wire transfer. Do not reproduce Zoho marketing/promotional materials, case studies, or testimonials as Miloosh's own; keep Miloosh editorial content independently sourced."
   },
   {
     programId: "adobe-portfolio",

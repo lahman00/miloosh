@@ -6,7 +6,8 @@ export type PayoutRailId =
   | "impact"
   | "tapfiliate-setmore"
   | "mailerlite-tipalti"
-  | "jotform-tremendous";
+  | "jotform-tremendous"
+  | "firstpromoter-fireflies";
 
 export type PayoutRail = {
   id: PayoutRailId;
@@ -29,6 +30,16 @@ export type PayoutRail = {
  */
 export const PAYOUT_RAILS: readonly PayoutRail[] = [
   {
+    id: "firstpromoter-fireflies",
+    label: "Fireflies / FirstPromoter",
+    accountIdentity: "hello@miloosh.com",
+    partnerSlugs: ["fireflies-ai"],
+    readiness: "UNVERIFIED",
+    ownerActionPackId: "fireflies-firstpromoter-payout",
+    methodGuidance: "Fireflies' official affiliate page states payouts are credited via PayPal. Verify the live FirstPromoter payout profile and any required payment details before marking this rail VERIFIED.",
+    notes: "Fireflies issued Miloosh an account-specific referral URL in connected Gmail on 2026-09-30. This proves the affiliate relationship and tracking asset, not payout-profile completion.",
+  },
+  {
     id: "partnerstack-hello",
     label: "PartnerStack — Miloosh business account",
     accountIdentity: "hello@miloosh.com",
@@ -45,6 +56,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "close",
       "surveymonkey",
       "freshbooks", // First-party welcome to hello@miloosh.com; payout readiness remains UNVERIFIED.
+      "trainual", // First-party PartnerStack welcome + exact referral URL issued to hello@miloosh.com on 2026-09-30.
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",

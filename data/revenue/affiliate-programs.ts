@@ -50,6 +50,25 @@ export type AffiliateProgramInfo = {
 
 export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
   {
+    slug: "fireflies-ai",
+    lastVerifiedAt: "2026-10-01",
+    programExists: "yes",
+    type: "network",
+    networkName: "FirstPromoter",
+    countryRestrictions: null,
+    commissionModel: "Up to 30% recurring commission per successful sale for 12 months; exact Miloosh tier depends on the affiliate account tier and is not inferred here.",
+    recurrence: "recurring",
+    notes:
+      "Miloosh approval is first-party verified: connected Gmail message 1a0f3e41e847eb0c (received 2026-09-30) issued the account-specific referral URL https://fireflies.ai/?fpr=eyal-haimovich-d08faa to hello@miloosh.com. Official Fireflies affiliate terms were re-verified 2026-10-01.",
+    sourceUrls: ["https://fireflies.ai/affiliate"],
+    applicationUrl: "https://fireflies.firstpromoter.com/",
+    cookieDuration: "90 days",
+    payoutMethod: "PayPal",
+    payoutThreshold: "$50 (official Fireflies affiliate explainer; verify live dashboard if the program changes)",
+    eligibility: "Official page explicitly includes professional affiliate marketers promoting products through written content.",
+    confidence: "high",
+  },
+  {
     slug: "1password",
     lastVerifiedAt: "2026-08-16",
     programExists: "yes",
@@ -1333,17 +1352,20 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
   // low-confidence noise.
   {
     slug: "trainual",
-    lastVerifiedAt: "2026-08-20",
+    lastVerifiedAt: "2026-10-01",
     programExists: "yes",
     type: "network",
     networkName: "PartnerStack",
     countryRestrictions: null,
-    commissionModel: "Affiliates: 10% commission. Partners: 20% commission (verified live on the PartnerStack marketplace listing, 2026-08-20).",
-    recurrence: "unknown",
+    commissionModel: "10% recurring commission for the lifetime of the referred paid account, provided the affiliate remains active by referring at least one new customer in each 12-month period.",
+    recurrence: "recurring",
     notes:
-      "Application form fully and truthfully filled 2026-08-20 (website=https://miloosh.com, identify-as=Blogger, Trainual customer=No; audience-size left blank, no verified figure) but could not be submitted -- see the affiliate pipeline (slug: trainual) for the diagnosed systemic PartnerStack marketplace-details form-submit blocker (same defect as slug: xero). Real program, real form, genuinely ready to go -- blocked on tooling, not on eligibility.",
-    sourceUrls: ["https://trainual.com/affiliate", "https://dash.partnerstack.com"],
+      "Miloosh approval is first-party verified. Connected Gmail 1a0f2363e2a1521e (received 2026-09-30) welcomed Miloosh to the Trainual Affiliate Program and issued https://start.trainual.com/0j9to92n49iy to hello@miloosh.com. Trainual's current terms prohibit unauthorized claims, spam/coupon promotion, self-referrals, paid advertising to the affiliate link, and publishing the affiliate link on properties the affiliate does not own/control.",
+    sourceUrls: ["https://trainual.com/affiliate", "https://trainual.com/terms"],
     applicationUrl: "https://trainual.com/affiliate",
+    cookieDuration: "90 days",
+    payoutMethod: "PartnerStack rewards; monthly cash-out via PayPal or Stripe, with alternatives in non-PayPal regions",
+    eligibility: "Official program explicitly welcomes tech bloggers and other audience publishers; Miloosh has been approved and issued an account-specific referral URL.",
     confidence: "high",
   },
   {

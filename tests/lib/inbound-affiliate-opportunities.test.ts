@@ -15,23 +15,19 @@ describe("inbound affiliate opportunities", () => {
     expect(ACTIVE_PARTNERS.some((partner) => String(partner.slug) === "buddy-punch")).toBe(false);
   });
 
-  it("records Trainual as terms review and preserves the invite-versus-public-economics discrepancy", () => {
+  it("closes the Trainual inbound opportunity once the first-party approval and exact asset are canonical", () => {
     const trainual = INBOUND_AFFILIATE_OPPORTUNITIES.find((entry) => entry.vendorName === "Trainual");
     expect(trainual).toBeDefined();
-    expect(trainual?.status).toBe("TERMS_REVIEW");
-    expect(trainual?.acceptedAt).toBeNull();
-    expect(trainual?.affiliateUrl).toBeNull();
-    expect(trainual?.ownerAcceptanceRequired).toBe(true);
-    // catalogSlug was stale-null: data/software/trainual.json is a real,
-    // published catalog entry (added by the Launch expansion sprint,
-    // predating this inbound-opportunity record). Terms review status is
-    // about the affiliate relationship, not catalog presence -- both can
-    // be true independently.
+    expect(trainual?.status).toBe("CLOSED");
+    expect(trainual?.acceptedAt).toBe("2026-09-30");
+    expect(trainual?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
+    expect(trainual?.ownerAcceptanceRequired).toBe(false);
     expect(trainual?.catalogSlug).toBe("trainual");
     expect(getSoftware("trainual")).toBeDefined();
-    expect(trainual?.headlineOffer).toContain("Tiered commissions");
     expect(trainual?.verifiedPublicEconomics).toContain("10% recurring commission");
     expect(trainual?.verifiedPublicEconomics).toContain("90-day cookie");
-    expect(ACTIVE_PARTNERS.some((partner) => String(partner.slug) === "trainual")).toBe(false);
+    expect(ACTIVE_PARTNERS.find((partner) => String(partner.slug) === "trainual")?.affiliateUrl).toBe(
+      "https://start.trainual.com/0j9to92n49iy"
+    );
   });
 });

@@ -203,6 +203,21 @@ describe("affiliate pipeline state transitions", () => {
     expect(updated.ownerActionRequired).toBeNull(); // cleared — nothing left for the owner to do on this program specifically
   });
 
+  it("clears a resolved owner-action reason when the program moves forward to approval", async () => {
+    await setPipelineStatus("trainual", "program_found");
+    await setPipelineStatus("trainual", "verified");
+    await setPipelineStatus("trainual", "needs_owner_action", {
+      ownerActionRequired: "Owner must accept the network invitation.",
+    });
+    const approved = await setPipelineStatus("trainual", "approved", {
+      affiliateUrl: "https://example.com/ref/trainual",
+      note: "First-party approval and tracking asset received.",
+    });
+    expect(approved.status).toBe("approved");
+    expect(approved.ownerActionRequired).toBeNull();
+    expect(approved.affiliateUrl).toBe("https://example.com/ref/trainual");
+  });
+
   it("waiting_on_network resolves forward once the network responds", async () => {
     await setPipelineStatus("airtable", "program_found");
     await setPipelineStatus("airtable", "verified");

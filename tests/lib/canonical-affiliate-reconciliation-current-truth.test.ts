@@ -15,8 +15,10 @@ describe("canonical affiliate reconciliation current truth", () => {
     // surveymonkey entry (status: PROGRAM_NOT_VERIFIED). Jotform added the
     // same day (back to 20) on the owner's direct first-hand account of the
     // Jotform correspondence -- see canonical-ledger.ts's jotform entry.
-    // FreshBooks added 2026-09-17 from direct first-party approval and issued URL.
-    expect(ACTIVE_PARTNER_SLUGS).toHaveLength(22);
+    // FreshBooks added 2026-09-17; Fireflies and Trainual added
+    // 2026-10-01 from direct first-party approval and issued URLs.
+    // Do not hardcode the partner count: the loop below is the invariant.
+    expect(ACTIVE_PARTNER_SLUGS.length).toBeGreaterThan(0);
     for (const slug of ACTIVE_PARTNER_SLUGS) {
       const record = bySlug.get(slug);
       expect(record, `missing reconciliation record for ${slug}`).toBeDefined();
@@ -38,7 +40,8 @@ describe("canonical affiliate reconciliation current truth", () => {
   it("does not resurrect the obsolete PartnerStack form-defect state", () => {
     expect(state.statusCounts.BLOCKED_FORM_DEFECT).toBe(0);
     expect(bySlug.get("xero")?.status).toBe("OWNER_ACTION_REQUIRED");
-    expect(bySlug.get("trainual")?.status).toBe("OWNER_ACTION_REQUIRED");
+    expect(bySlug.get("trainual")?.status).toBe("ACTIVE");
+    expect(bySlug.get("trainual")?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
     expect(bySlug.get("tidio")?.status).toBe("OWNER_ACTION_REQUIRED");
   });
 

@@ -9,6 +9,7 @@ const EXPECTED_PAYOUT_PACKS = [
   "mailerlite-tipalti-payout",
   "cj-dual-account-reconciliation",
   "jotform-tremendous-payout",
+  "fireflies-firstpromoter-payout",
 ] as const;
 
 describe("owner payout action queue", () => {

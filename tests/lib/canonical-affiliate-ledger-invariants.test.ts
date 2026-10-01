@@ -49,15 +49,27 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("help-scout")?.status).toBe("REJECTED");
     expect(byProgramId.get("clickup")?.status).toBe("REJECTED");
     expect(byProgramId.get("close")?.status).toBe("ACTIVE");
+
+    // Automattic approved Miloosh, but the issued WooCommerce asset lands on
+    // Marketplace. The broad WooCommerce product page must stay unmonetized
+    // until an intent-matched platform destination is confirmed.
+    const woo = byProgramId.get("woocommerce-automattic");
+    expect(woo?.status).toBe("APPROVED_NEEDS_LINK");
+    expect(woo?.affiliateUrl).toBeNull();
+    expect(woo?.evidence.join(" ")).toContain("1946431");
+    expect(byProgramId.get("impact-portfolio")?.productSlugs).not.toContain("woocommerce");
+    expect(ACTIVE_PARTNERS.map((p): string => p.slug)).not.toContain("woocommerce");
   });
 
-  it("locks the 2026-08-28 suspension-period reconciliation (Zoho qualification stage, Sprout Social/RingCentral/Framer routes) against silent regression", () => {
-    // Zoho: a human qualification questionnaire is a review step, not a
-    // decision -- must stay pending, not drift to ACTIVE/APPROVED without a
-    // real tracking asset.
+  it("locks the current Zoho approval-without-links state and the Sprout Social/RingCentral/Framer routes against silent regression", () => {
+    // Zoho is now first-party approved, but approval alone must never switch
+    // its six product CTAs to affiliate mode. Each account-specific product
+    // URL still has to be captured from Zoho's approved dashboard.
     const zoho = byProgramId.get("zoho-ecosystem");
-    expect(zoho?.status).toBe("PENDING_REVIEW");
+    expect(zoho?.status).toBe("APPROVED_NEEDS_LINK");
+    expect(zoho?.decisionAt).toBe("2026-09-30");
     expect(zoho?.affiliateUrl).toBeNull();
+    expect(zoho?.ownerBlocker ?? "").toMatch(/product-specific|affiliate url/i);
     expect(zoho?.productSlugs).toContain("zoho-campaigns");
 
     // Sprout Social: re-modeled onto the CJ account, not the generic Impact
@@ -89,18 +101,18 @@ describe("canonical affiliate ledger state invariants", () => {
   });
 
   it("locks the 2026-08-31 six-item reconciliation pass (Trainual/Framer re-verified, Semrush/Hootsuite added, Monday/PartnerStack narrative untouched)", () => {
-    // Trainual: a real PartnerStack invitation/handshake link, re-verified
-    // directly against trainual.com/affiliate -- still no submittable form
-    // and still no account-specific tracking URL anywhere in this repo, so
-    // it must stay non-ACTIVE with a clear "accept the invitation and
-    // generate your own link" owner action, not silently drift to ACTIVE
-    // just because the commission terms are well documented.
+    // Trainual moved beyond the August invitation state: the 2026-09-30
+    // first-party welcome issued an account-specific Miloosh URL. Lock the
+    // exact asset so an old "owner action" snapshot cannot silently disable
+    // monetization again.
     const trainual = byProgramId.get("trainual");
-    expect(trainual?.status).toBe("OWNER_ACTION_REQUIRED");
-    expect(trainual?.affiliateUrl).toBeNull();
-    expect(trainual?.ownerBlocker ?? "").toMatch(/invitation/i);
-    expect(trainual?.ownerBlocker ?? "").toMatch(/tracking url/i);
-    expect(trainual?.evidence.some((e) => e.includes("2026-08-31"))).toBe(true);
+    expect(trainual?.status).toBe("ACTIVE");
+    expect(trainual?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
+    expect(trainual?.ownerBlocker).toBeNull();
+    expect(trainual?.evidence.some((e) => e.includes("1a0f2363e2a1521e"))).toBe(true);
+    expect(ACTIVE_PARTNERS.find((p) => p.slug === "trainual")?.affiliateUrl).toBe(
+      "https://start.trainual.com/0j9to92n49iy"
+    );
 
     // Framer: re-verified 2026-08-31 against framer.com/partners and
     // framer.com/legal/affiliates/1.0 -- terms unchanged (90-day cookie,
@@ -152,10 +164,10 @@ describe("canonical affiliate ledger state invariants", () => {
       "https://try.monday.com/1p2fpizulcj7"
     );
 
-    // None of Trainual/Framer/Semrush/Hootsuite may be ACTIVE without a
-    // verified tracking asset -- this reconciliation pass found none for
-    // any of them, so none should claim one.
-    for (const id of ["trainual", "framer", "semrush", "hootsuite"]) {
+    // Framer/Semrush/Hootsuite still have no verified tracking asset.
+    // Trainual is intentionally excluded because a first-party asset was
+    // issued on 2026-09-30 and is locked above.
+    for (const id of ["framer", "semrush", "hootsuite"]) {
       const program = byProgramId.get(id);
       expect(program?.status, `${id} marked ACTIVE without this test being updated to expect it`).not.toBe("ACTIVE");
       expect(program?.affiliateUrl, `${id} has a tracking URL but isn't ACTIVE`).toBeNull();

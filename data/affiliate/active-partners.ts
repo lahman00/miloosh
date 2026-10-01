@@ -1,4 +1,5 @@
 export const ACTIVE_PARTNER_SLUGS = [
+  "fireflies-ai", "trainual",
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
@@ -104,6 +105,8 @@ export type ActivePartner = {
 // FreshBooks: approval and exact asset in Gmail 1a0a27bf25150cef (2026-09-15),
 // read directly 2026-09-17. Link activation is not payout or revenue verification.
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
+  { slug: "fireflies-ai", status: "active", affiliateUrl: "https://fireflies.ai/?fpr=eyal-haimovich-d08faa", blocker: null },
+  { slug: "trainual", status: "active", affiliateUrl: "https://start.trainual.com/0j9to92n49iy", blocker: null },
   { slug: "freshbooks", status: "active", affiliateUrl: "https://partner.freshbooks.com/gg7ovvifr1bd", blocker: null },
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
   { slug: "todoist", status: "active", affiliateUrl: "https://get.todoist.io/dobo71f2y038", blocker: null },
