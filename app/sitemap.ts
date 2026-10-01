@@ -1,4 +1,4 @@
-import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
+import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_COMPARISON_CONTENT_SLUGS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
 import type { MetadataRoute } from "next";
 import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checklists";
 import { SITE_URL } from "@/lib/site";
@@ -85,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         .filter((s): s is NonNullable<typeof s> => Boolean(s))
         .map((s) => toDate(s.accessedAt));
       if (moneyPage) dates.push(toDate(moneyPage.updatedAt));
-      if (BUYER_DEPTH_CHECKLISTS[slugA] || BUYER_DEPTH_CHECKLISTS[slugB]) dates.push(toDate(BUYER_DEPTH_CONTENT_UPDATED_AT));
+      if (BUYER_DEPTH_COMPARISON_CONTENT_SLUGS.some(slug => slug === slugA || slug === slugB)) dates.push(toDate(BUYER_DEPTH_CONTENT_UPDATED_AT));
       return {
         url: `${SITE_URL}/compare/${comparisonSlug}`,
         ...(dates.length > 0 ? { lastModified: latestOf(dates) } : {}),

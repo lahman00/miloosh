@@ -1,0 +1,109 @@
+{
+  "observedAt": "2026-10-01T17:32:37.467333+00:00",
+  "status": "LOCAL_VERIFIED_NOT_DEPLOYED",
+  "productionBase": "f1b95cd7ac39feaa4aa5e37d2aa75145991d6b08",
+  "branch": "recovery/buyer-depth-wave2-20261001",
+  "scope": {
+    "softwarePages": [
+      "zoho-projects",
+      "elevenlabs"
+    ],
+    "sourceGuides": [
+      "/best-project-management-software-for-small-teams",
+      "/best-voice-ai-for-creators"
+    ],
+    "sourceLinkedBuyerChecks": 6,
+    "newPublicUrls": 0
+  },
+  "tests": {
+    "passed": 2593,
+    "testFiles": 280
+  },
+  "staticAuditUnitTests": 11,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "dataValidation": "PASS",
+  "build": "PASS",
+  "dependencyVulnerabilities": 0,
+  "static": {
+    "sitemapUrls": 988,
+    "publicHtmlPages": 1786,
+    "internalLinksChecked": 86801,
+    "failures": []
+  },
+  "renderReview": {
+    "changes": [
+      {
+        "route": "/best-voice-ai-for-creators",
+        "fields": [
+          "text",
+          "hrefs"
+        ]
+      },
+      {
+        "route": "/best-project-management-software-for-small-teams",
+        "fields": [
+          "text",
+          "hrefs"
+        ]
+      },
+      {
+        "route": "/software/elevenlabs",
+        "fields": [
+          "text",
+          "hrefs"
+        ]
+      },
+      {
+        "route": "/software/zoho-projects",
+        "fields": [
+          "text",
+          "hrefs"
+        ]
+      }
+    ],
+    "protectedConflicts": [],
+    "canonicalOrH1": []
+  },
+  "browser": {
+    "wave2": {
+      "passed": 8,
+      "total": 8
+    },
+    "wave1Regression": {
+      "passed": 24,
+      "total": 24
+    },
+    "generalRegression": {
+      "passed": 53,
+      "total": 53
+    },
+    "totalPassed": 85,
+    "total": 85,
+    "affiliateNetworkTraversals": 0,
+    "productionWrites": 0
+  },
+  "protectedPrecheck": {
+    "checkedAt": "2026-10-01T17:30:37.494Z",
+    "base": "f1b95cd7ac39feaa4aa5e37d2aa75145991d6b08",
+    "comparisonBase": "f1b95cd7ac39feaa4aa5e37d2aa75145991d6b08",
+    "candidate": "bd5395ae107eef777d08b9d0ca3eb806a768bbe1",
+    "files": [
+      "docs/growth/receipts/20261001-buyer-depth/README.md",
+      "docs/growth/receipts/20261001-buyer-depth/production.json",
+      "docs/growth/receipts/20261001-buyer-depth/verification.json",
+      "app/sitemap.ts",
+      "components/RelatedDecisionPaths.tsx",
+      "data/seo/buyer-depth-checklists.ts",
+      "data/seo/decision-paths.ts",
+      "tests/growth/buyer-depth-sprint.test.ts",
+      "tests/growth/decision-paths.test.ts",
+      "tests/lib/sitemap.test.ts"
+    ],
+    "findings": [],
+    "status": "PASS",
+    "note": "Known protected/direct and shared paths only; not an OS lock. Full rendered artifact comparison remains required. No approval bypass.",
+    "productionChanged": false
+  },
+  "claimBoundary": "Publication and QA do not establish indexing recovery, Google impressions, human visits, conversions, commission or payout."
+}

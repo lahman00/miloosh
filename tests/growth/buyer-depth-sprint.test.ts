@@ -12,10 +12,10 @@ import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { loadCurrentProtection } from "@/lib/google-war/current-protection";
 import { renderedHtml } from "@/lib/seo/rendered-html";
 
-const slugs = ["trainual", "zoho-flow", "zoho-desk", "close"] as const;
-const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com"]);
+const slugs = ["trainual", "zoho-flow", "zoho-desk", "close", "zoho-projects", "elevenlabs"] as const;
+const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com", "elevenlabs.io"]);
 describe("Buyer-depth sprint: factual and commercial boundaries", () => {
-  it("is bounded to four existing unprotected products, not a new catalog or experiment", () => {
+  it("is bounded to six existing unprotected products, not a new catalog or experiment", () => {
     expect(Object.keys(BUYER_DEPTH_CHECKLISTS).sort()).toEqual([...slugs].sort());
     for (const slug of slugs) {
       expect(getSoftware(slug)).toBeDefined();
@@ -66,6 +66,16 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
     expect(getSoftware("close")!.cons!.join(" ")).toContain("one user");
     expect(getSoftware("trainual")!.cons!.join(" ")).toContain("minimum payable");
   });
+  it("keeps Zoho Projects role gates and ElevenLabs usage rights explicit", () => {
+    const projects = BUYER_DEPTH_CHECKLISTS["zoho-projects"].checks.map(c => c.answer).join(" ");
+    expect(projects).toContain("five users");
+    expect(projects).toContain("Read-Only");
+    expect(projects).toContain("Lite Users");
+    const eleven = BUYER_DEPTH_CHECKLISTS.elevenlabs.checks.map(c => c.answer).join(" ");
+    expect(eleven).toContain("commercial rights");
+    expect(eleven).toContain("one monthly credit pool");
+    expect(eleven).toContain("Pay As You Go");
+  });
   it.each(slugs)("%s renders the real issued CTA, sponsored disclosure and a usable anchor", slug => {
     const html = renderToStaticMarkup(createElement(DecisionBuyerChecklist, { checklist: BUYER_DEPTH_CHECKLISTS[slug] }));
     const affiliate = getActivePartner(slug)!.affiliateUrl!;
@@ -76,9 +86,9 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
     expect(html).toContain('id="buyer-checklist"');
     expect((html.match(/<h3/g) ?? []).length).toBe(4);
   });
-  it("adds exactly four deep links to actual rendered checklist anchors", () => {
+  it("adds exactly six deep links to actual rendered checklist anchors", () => {
     const links = Object.values(DECISION_PATHS).flat().filter(p => p.href.endsWith("#buyer-checklist"));
-    expect(links).toHaveLength(4);
+    expect(links).toHaveLength(6);
     for (const link of links) {
       const slug = link.href.split("#")[0].split("/").pop()!;
       expect(BUYER_DEPTH_CHECKLISTS[slug]).toBeDefined();

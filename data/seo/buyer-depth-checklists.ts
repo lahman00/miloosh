@@ -2,6 +2,68 @@ import type { BuyerChecklist } from "@/data/seo/buyer-checklists";
 
 /** Documentation-based decisions, not observed customer outcomes or new rankings. */
 export const BUYER_DEPTH_CHECKLISTS: Record<string, BuyerChecklist> = {
+  "zoho-projects": {
+    "title": "Before choosing Zoho Projects, map users, clients and governance to the edition",
+    "introduction": "Documentation-based buyer checks, not a completed project migration. Start with the people who must work in the portal and the controls they need; a low seat price is not useful if the required user type or project control sits in another edition.",
+    "verifiedAt": "2026-10-01",
+    "checks": [
+      {
+        "question": "Does the Free edition fit the actual team and project count?",
+        "answer": "Zoho currently lists Free for up to five users and three projects. Premium removes the project cap and adds budgeting, time logs/timesheets and larger workflow allowances. Count the internal editors and active projects first; do not compare a five-user free test with a larger production team as though they were equivalent.",
+        "source": "https://www.zoho.com/projects/zohoprojects-pricing.html",
+        "sourceLabel": "Zoho Projects plan limits and included workflow features"
+      },
+      {
+        "question": "Which external and internal-review roles change the edition?",
+        "answer": "Zoho’s billing help lists Client users on Premium and above, Read-Only users and Resources beginning at Enterprise, and Lite Users only on Ultimate. Separate internal editors, external clients, read-only reviewers and resource tracking before choosing a plan. A reviewer who only needs visibility should not automatically be budgeted as a full editor.",
+        "source": "https://help.zoho.com/portal/en/kb/projects/billing-and-upgrade/articles/upgrade-or-downgrade",
+        "sourceLabel": "Zoho Projects user and add-on availability by plan"
+      },
+      {
+        "question": "What must survive a downgrade or later switch?",
+        "answer": "Zoho says a downgrade removes access to features exclusive to the higher plan while retaining the underlying data for later re-upgrade. Before committing, build one representative project with roles, dependencies, timesheets and reports, then verify the exports and reports you would need if the plan is reduced or the tool is replaced.",
+        "source": "https://www.zoho.com/projects/zohoprojects-pricing.html",
+        "sourceLabel": "Zoho Projects downgrade and trial guidance"
+      }
+    ],
+    "options": [
+      {
+        "slug": "zoho-projects",
+        "fit": "Keep Zoho Projects on the shortlist when its edition matches the real mix of editors, clients, reviewers and project controls. Compare the alternatives if those role boundaries force a larger plan than the workflow needs."
+      }
+    ]
+  },
+  "elevenlabs": {
+    "title": "Before choosing ElevenLabs, price the actual output and commercial rights",
+    "introduction": "Documentation-based buyer checks, not a hands-on audio benchmark. Start with the product you will generate, the model or quality you need, and whether the output is commercial; the monthly credit headline alone does not answer those questions.",
+    "verifiedAt": "2026-10-01",
+    "checks": [
+      {
+        "question": "Does the plan permit the way you will publish the output?",
+        "answer": "ElevenLabs documents paid-plan commercial rights, while Free output is for non-commercial use with attribution. Starter currently adds a commercial license. If the audio, music, video or agent will support a business or paid project, verify the license before treating Free as the production plan.",
+        "source": "https://elevenlabs.io/docs/overview/administration/billing",
+        "sourceLabel": "ElevenLabs billing and commercial-rights guidance"
+      },
+      {
+        "question": "How fast will the shared credit pool be consumed?",
+        "answer": "ElevenLabs says its creative products draw from one monthly credit pool and that credit cost varies by product and model. Price the exact workload—such as text-to-speech characters, transcription minutes, music or dubbing—using the current pricing table. Do not convert a plan's credit total into a universal number of minutes.",
+        "source": "https://elevenlabs.io/pricing",
+        "sourceLabel": "ElevenLabs plan credits and product-specific usage"
+      },
+      {
+        "question": "What happens when usage exceeds or outlives the subscription quota?",
+        "answer": "Paid-plan credits can roll over for up to two months while the qualifying subscription remains active; downgrade or cancellation changes what happens to unused quota. ElevenLabs also offers Pay As You Go top-ups, but plan-level feature limits still come from the subscription tier. Budget the normal month, peak month and required feature tier separately.",
+        "source": "https://elevenlabs.io/docs/overview/administration/pay-as-you-go",
+        "sourceLabel": "ElevenLabs Pay As You Go and plan-limit boundaries"
+      }
+    ],
+    "options": [
+      {
+        "slug": "elevenlabs",
+        "fit": "Evaluate ElevenLabs when its commercial rights, model quality and product-specific usage fit the workload. Keep competing voice tools in the shortlist until the same script and output requirement are priced consistently."
+      }
+    ]
+  },
   "trainual": {
     "title": "Before choosing Trainual, validate the annual commitment and training proof",
     "introduction": "Documentation-based buyer checks, not a hands-on evaluation. Keep a simpler wiki if searchable instructions are sufficient; pay for training controls only when you need evidence of completion.",
@@ -135,4 +197,15 @@ export const BUYER_DEPTH_GUIDE_PATHS = [
   "/best-automation-software-for-small-business",
   "/best-help-desk-for-small-business",
   "/best-crm-for-sales-teams",
+  "/best-project-management-software-for-small-teams",
+  "/best-voice-ai-for-creators",
+] as const;
+
+/** Only Wave-1 product-record edits changed reusable comparison text. Wave-2
+ * checklists are software-page-only and must not refresh unrelated comparisons. */
+export const BUYER_DEPTH_COMPARISON_CONTENT_SLUGS = [
+  "trainual",
+  "zoho-flow",
+  "zoho-desk",
+  "close",
 ] as const;

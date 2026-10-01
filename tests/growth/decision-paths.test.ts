@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createElement } from "react";
@@ -20,10 +21,10 @@ describe("Bounded decision-navigation improvements", () => {
       ([a, b]) => `/compare/${getComparisonSlug(a, b)}`,
     ),
   ]);
-  it("has twelve unique paths on eight existing pages; all endpoints exist and are unprotected", () => {
+  it("has fourteen unique paths on ten existing pages; all endpoints exist and are unprotected", () => {
     const protections = loadProtection();
-    expect(Object.keys(DECISION_PATHS)).toHaveLength(8);
-    expect(Object.values(DECISION_PATHS).flat()).toHaveLength(12);
+    expect(Object.keys(DECISION_PATHS)).toHaveLength(10);
+    expect(Object.values(DECISION_PATHS).flat()).toHaveLength(14);
     for (const [source, items] of Object.entries(DECISION_PATHS)) {
       expect(inventory.has(source)).toBe(true);
       expect(new Set(items.map((i) => i.href)).size).toBe(items.length);
@@ -48,6 +49,12 @@ describe("Bounded decision-navigation improvements", () => {
       expect(html).toContain('aria-label="Related product decisions"');
       expect(html).not.toMatch(/sponsored|onclick|partner=|affiliate/);
     }
+  });
+  it("uses native anchors so deep-link hash navigation is not intercepted by the app router", () => {
+    const source = readFileSync("components/RelatedDecisionPaths.tsx", "utf8");
+    expect(source).not.toContain('from "next/link"');
+    expect(source).toContain("<a");
+    expect(source).toContain("href={item.href}");
   });
   it("has no effect on unrelated pages", () =>
     expect(

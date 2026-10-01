@@ -31,6 +31,20 @@ export const DECISION_PATHS: Readonly<Record<string, readonly DecisionPath[]>> =
         "question": "Considering Close for the team? Confirm whether automated follow-ups and communication usage change the budget."
       }
     ],
+    "/best-project-management-software-for-small-teams": [
+      {
+        href: "/software/zoho-projects#buyer-checklist",
+        label: "Check Zoho Projects user types and edition gates",
+        question: "Need clients, read-only reviewers or resource controls? Price those roles before comparing Zoho Projects with a general project tool.",
+      },
+    ],
+    "/best-voice-ai-for-creators": [
+      {
+        href: "/software/elevenlabs#buyer-checklist",
+        label: "Check ElevenLabs credits and commercial-use boundaries",
+        question: "Considering ElevenLabs for published work? Match commercial rights and shared-credit usage to the exact output first.",
+      },
+    ],
     "/best-email-marketing-for-small-business": [
       {
         href: "/software/mailerlite",

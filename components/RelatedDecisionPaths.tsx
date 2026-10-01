@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { DECISION_PATHS } from "@/data/seo/decision-paths";
 
 /** Server-rendered editorial navigation; does not alter the guide's ranked shortlist. */
@@ -21,12 +20,12 @@ export function RelatedDecisionPaths({ page }: { page: string }) {
         {paths.map((item) => (
           <li key={item.href} className="min-w-0">
             <p className="text-sm leading-6 text-zinc-400">{item.question}</p>
-            <Link
+            <a
               href={item.href}
               className="mt-2 inline-flex min-h-11 items-center rounded-md py-2 text-sm font-semibold text-blue-400 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300"
             >
               {item.label}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

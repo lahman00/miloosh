@@ -1,4 +1,4 @@
-import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_CONTENT_UPDATED_AT } from "@/data/seo/buyer-depth-checklists";
+import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_COMPARISON_CONTENT_SLUGS, BUYER_DEPTH_CONTENT_UPDATED_AT } from "@/data/seo/buyer-depth-checklists";
 import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
@@ -54,7 +54,7 @@ describe("sitemap lastModified coverage", () => {
       const b = softwareBySlug.get(slugB)!;
       const moneyPage = getDecisionMoneyPage(slug);
       const expected = [a.accessedAt, b.accessedAt, moneyPage?.updatedAt,
-        ...(BUYER_DEPTH_CHECKLISTS[slugA] || BUYER_DEPTH_CHECKLISTS[slugB] ? [BUYER_DEPTH_CONTENT_UPDATED_AT] : []),
+        ...(BUYER_DEPTH_COMPARISON_CONTENT_SLUGS.some(slug => slug === slugA || slug === slugB) ? [BUYER_DEPTH_CONTENT_UPDATED_AT] : []),
       ]
         .filter((date): date is string => Boolean(date))
         .sort()
