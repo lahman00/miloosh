@@ -1,0 +1,92 @@
+{
+  "observedAt": "2026-10-01T13:09:30.222612+00:00",
+  "status": "LIVE_VERIFIED",
+  "productionDomain": "https://miloosh.com",
+  "sourceSha": "41d60bbb21df77e6de167d641be518dd4f1d393a",
+  "deploymentId": "dpl_H4UuwepqVighBPbgy2qv9oLk9eLM",
+  "deploymentUrl": "https://flowtemplate-80elh1qxc-lahman001.vercel.app",
+  "priorProductionSha": "f747fbb3584d87480138c1606a00718d6b28c3e5",
+  "rollbackDeploymentId": "dpl_5NJhJHdday7NLkXVEfCJgvpF6Tv2",
+  "promotionProof": "Authenticated Vercel CLI successful promotion; Vercel domain resolution returned the same READY deployment and SHA.",
+  "scope": "Four passive-link components only; public contents, URLs, href/rel/CTA identities, SEO fields and affiliate destinations preserved.",
+  "localBrowserComparison": {
+    "method": "Same production-mode local build configuration, fresh browser contexts, 1440px viewport and identical scrolling. Not Google crawl/ranking measurements.",
+    "rows": [
+      {
+        "path": "/",
+        "before": 169,
+        "after": 38,
+        "reduction": 131,
+        "reductionPercent": 77.51479289940828
+      },
+      {
+        "path": "/compare",
+        "before": 119,
+        "after": 9,
+        "reduction": 110,
+        "reductionPercent": 92.43697478991596
+      },
+      {
+        "path": "/software/close",
+        "before": 71,
+        "after": 37,
+        "reduction": 34,
+        "reductionPercent": 47.88732394366197
+      }
+    ],
+    "beforeTotal": 359,
+    "afterTotal": 84
+  },
+  "codeTests": {
+    "passed": 2573,
+    "testFiles": 279
+  },
+  "staticAuditUnitTests": 11,
+  "publicHtmlParity": {
+    "checked": 1786,
+    "unchanged": 1786
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "dataValidation": "PASS",
+  "build": "PASS",
+  "dependencyAuditVulnerabilities": 0,
+  "stagedHttpChecks": {
+    "passed": 16,
+    "total": 16
+  },
+  "liveGeneralBrowser": {
+    "passed": 53,
+    "total": 53,
+    "apiRequestsIntercepted": 215,
+    "affiliateNetworkTraversals": 0,
+    "productionWrites": 0
+  },
+  "liveNavigation": {
+    "passed": 12,
+    "total": 12
+  },
+  "liveTransportObservations": [
+    {
+      "path": "/",
+      "rscRequests": 38,
+      "pageErrors": []
+    },
+    {
+      "path": "/compare",
+      "rscRequests": 11,
+      "pageErrors": []
+    },
+    {
+      "path": "/software/close",
+      "rscRequests": 41,
+      "pageErrors": []
+    }
+  ],
+  "liveTransportBoundary": "Live and local payload timing/height differ. Use the local matched before/after for the percentage; do not present live requests as a matched Google-crawl comparison.",
+  "runtimeLogCheck": {
+    "deploymentScopedErrorsAndFatals": "No matching logs returned for 2026-10-01T12:53:15.630Z to 2026-10-01T13:08:15.630Z",
+    "aggregateErrorQuery": "Timed out; not represented as a clean result"
+  },
+  "businessOutcome": "No claim of recovered Google impressions, indexed pages, human traffic, merchant conversion, commission or payout."
+}

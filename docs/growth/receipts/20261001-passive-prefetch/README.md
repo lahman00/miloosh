@@ -1,6 +1,6 @@
 # Passive-link prefetch reduction — 1 October 2026
 
-Status at commit: local release candidate, not yet promoted. This record covers application transport behavior, not Google indexing or revenue.
+Status: **LIVE VERIFIED**. Production source `41d60bbb21df77e6de167d641be518dd4f1d393a`, deployment `dpl_H4UuwepqVighBPbgy2qv9oLk9eLM`. This record covers application transport behavior, not Google indexing or revenue.
 
 ## Small change
 
@@ -33,3 +33,9 @@ The measured reduction is `(359 - 84) / 359 * 100 = 76.6017%` across the three l
 The shared-surface guard flagged SoftwareCard for review. Review was completed with whole-site rendered equality; the guard and cohort registries were not disabled or edited. This is a resource-efficiency intervention, not a declaration of root cause for search performance.
 
 Private analytics exports and account screenshots remain outside this public repository. Production promotion and post-release proof must be recorded separately; a local test receipt is not proof that the change is live.
+
+## Production verification
+
+Authenticated promotion and domain resolution confirmed the new source. All 16 staged HTTP checks, 53 live browser regression cases and 12 live internal-navigation cases passed. A live read observed 38 / 11 / 41 RSC requests on homepage / comparison index / Close; different network timing makes those observations distinct from the matched local before/after. No affiliate-network traversal or analytics write was used to manufacture evidence.
+
+The aggregate runtime-error query timed out. A subsequent query scoped to this deployment returned no error/fatal logs in the stated 15-minute window; that bounded result is not a guarantee of future behavior.
