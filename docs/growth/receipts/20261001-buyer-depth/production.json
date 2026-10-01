@@ -1,0 +1,77 @@
+{
+  "observedAt": "2026-10-01T14:18:45.335451+00:00",
+  "status": "LIVE_VERIFIED",
+  "productionDomain": "https://miloosh.com",
+  "sourceSha": "f1b95cd7ac39feaa4aa5e37d2aa75145991d6b08",
+  "deploymentId": "dpl_4uJsLwFAFMdVraYttKZRMHgcEAt5",
+  "deploymentUrl": "https://flowtemplate-91ecimevv-lahman001.vercel.app",
+  "priorProductionSha": "41d60bbb21df77e6de167d641be518dd4f1d393a",
+  "rollbackDeploymentId": "dpl_H4UuwepqVighBPbgy2qv9oLk9eLM",
+  "promotionProof": "Successful authenticated Vercel CLI promotion; get_deployment(miloosh.com) independently returned the same READY deployment and source SHA.",
+  "content": {
+    "existingProductPages": 4,
+    "products": [
+      "trainual",
+      "zoho-flow",
+      "zoho-desk",
+      "close"
+    ],
+    "sourceLinkedBuyerChecks": 12,
+    "contextualLinksFromExistingGuides": 4,
+    "newPublicUrls": 0
+  },
+  "pricingCorrections": {
+    "trainual": "Minimum quote unresolved; no numeric entry price or tier amount/offer emitted. Published unit figures, annual minimum footnote and separate implementation charge are distinguished.",
+    "zohoFlow": "Action count, task tiers and overage are separated. Worked example is explicit, not observed usage.",
+    "zohoDesk": "Full agents, light agents and department limits are separated; conflicting vendor eligibility information is surfaced.",
+    "close": "Team subscription examples distinguish required workflow tier from seat headline and variable communication/AI usage."
+  },
+  "codeTests": {
+    "passed": 2587,
+    "testFiles": 280
+  },
+  "staticAuditUnitTests": 11,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "dataValidation": "PASS",
+  "build": "PASS",
+  "dependencyAuditVulnerabilities": 0,
+  "stagedHttp": {
+    "passed": 20,
+    "total": 20
+  },
+  "liveBuyerBrowser": {
+    "passed": 24,
+    "total": 24,
+    "apiRequestsIntercepted": 106,
+    "affiliateNetworkTraversals": 0,
+    "productionWrites": 0
+  },
+  "liveGeneralBrowser": {
+    "passed": 53,
+    "total": 53,
+    "affiliateNetworkTraversals": 0,
+    "productionWrites": 0
+  },
+  "liveBrowserTotal": 77,
+  "renderReview": {
+    "checkedAt": "2026-10-01T14:09:55.663Z",
+    "comparedHtmlRoutes": 1786,
+    "changedHtmlRoutes": 53,
+    "protectedRenderedConflicts": [],
+    "canonicalOrH1Changes": []
+  },
+  "sitemap": {
+    "urls": 988,
+    "urlSetUnchanged": true,
+    "changesOnlyLastmod": true,
+    "changedContentDates": 21
+  },
+  "runtimeChecks": {
+    "deploymentLogs15m": "Timed out; not represented as an empty or error-free result.",
+    "fourEditedRoutes5m": "Aggregated Vercel runtime-error report returned no errors in the selected five-minute range.",
+    "scope": "Bounded observations only; no guarantee about future traffic."
+  },
+  "noAccountActions": "No new partner application, payment change, outreach or Search Console submission in this sprint.",
+  "businessOutcome": "No recovered impressions, human visitor, network conversion, approved commission or payout is established by code publication and QA."
+}

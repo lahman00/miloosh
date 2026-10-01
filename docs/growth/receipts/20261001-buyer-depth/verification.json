@@ -1,6 +1,6 @@
 {
   "checkedAt": "2026-10-01T14:11:27.463666+00:00",
-  "status": "LOCAL_VERIFIED_NOT_YET_PUBLISHED",
+  "status": "LIVE_VERIFIED",
   "productionBaseSha": "41d60bbb21df77e6de167d641be518dd4f1d393a",
   "baseDocsSha": "ff7f47ca0cbaafe85971967478487aeb052afd81",
   "scope": {
@@ -52,5 +52,11 @@
     "trainual": "Per-user figures are not treated as a complete minimum subscription. The live pricing page footnote and $1,000 implementation fee require a full quote. No numeric entryPaid or tier amount is emitted.",
     "zohoDesk": "Help-center statement on light-agent availability conflicts with the edition matrix for Express; the discrepancy is stated, not silently resolved."
   },
-  "claims": "Documentation-based buyer checks and worked examples, not hands-on product testing, observed customer savings, recovered search visibility or paid commissions."
+  "claims": "Documentation-based buyer checks and worked examples, not hands-on product testing, observed customer savings, recovered search visibility or paid commissions.",
+  "productionSourceSha": "f1b95cd7ac39feaa4aa5e37d2aa75145991d6b08",
+  "productionDeploymentId": "dpl_4uJsLwFAFMdVraYttKZRMHgcEAt5",
+  "liveBrowserCases": {
+    "passed": 77,
+    "total": 77
+  }
 }

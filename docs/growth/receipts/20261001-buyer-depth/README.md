@@ -1,6 +1,6 @@
 # Buyer-depth release — October 1, 2026
 
-Status: LOCAL VERIFIED; see production.json only after independently verified promotion.
+Status: **LIVE VERIFIED** on miloosh.com. Production source `f1b95cd7ac39feaa4aa5e37d2aa75145991d6b08`; deployment `dpl_4uJsLwFAFMdVraYttKZRMHgcEAt5`. See production.json for independent domain resolution and live QA.
 
 ## Four existing decision pages
 
@@ -38,3 +38,9 @@ USD prices were checked using the live vendor billing toggles; region-dependent 
 ## Outcome boundary
 
 Published content is not search traffic. No recovery of Google impressions, buyer visit, network conversion, approved commission or payout is established by this release. Review subsequent comparable search/visitor evidence before choosing the next content batch; do not immediately expand the catalog.
+
+## Production closeout
+
+One content release was promoted after all code/build and staged HTTP gates passed. The live site passed 24 focused buyer-content, hash-navigation and mocked-CTA checks plus the 53-case existing revenue regression suite (77 total), at mobile and desktop widths. All browser API writes were intercepted and external requests blocked. The longer deployment log query timed out; only the bounded five-minute, four-route aggregate error check returned no errors.
+
+No manual task or payment action is required from the owner for this release. The pages are live; search exposure and merchant outcomes must be evaluated separately on subsequent real data, not inferred from these test passes.
