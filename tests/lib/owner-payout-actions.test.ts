@@ -10,6 +10,7 @@ const EXPECTED_PAYOUT_PACKS = [
   "cj-dual-account-reconciliation",
   "jotform-tremendous-payout",
   "fireflies-payout-method",
+  "zoho-direct-payout",
 ] as const;
 
 describe("owner payout action queue", () => {

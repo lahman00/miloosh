@@ -114,11 +114,12 @@ describe("Wave 2 buyer-decision release", () => {
       expect(getSoftwareCtaRel(product)).toContain("noopener");
       expect(getSoftwareCtaRel(product)).toContain("noreferrer");
     }
-    expect(affiliateProfiles).toBe(7);
+    expect(affiliateProfiles).toBe(8); // Zoho Flow was issued and activated on 2026-10-01.
     expect(JSON.stringify([guides, briefs])).not.toMatch(/affiliateUrl|partnerstack|partnerlinks|pxf\.io/);
-    // Two evidence-led winners have no affiliate relationship in this release.
-    for (const slug of ["best-help-desk-for-small-business", "best-automation-software-for-small-business"])
-      expect(guides[slug].products.some(p => shouldShowAffiliateDisclosure(getSoftware(p.slug)!))).toBe(false);
+    // Editorial choices remain independent of commission availability.
+    expect(guides["best-help-desk-for-small-business"].products.some(p => shouldShowAffiliateDisclosure(getSoftware(p.slug)!))).toBe(false);
+    expect(guides["best-automation-software-for-small-business"].products
+      .filter(p => shouldShowAffiliateDisclosure(getSoftware(p.slug)!)).map(p => p.slug)).toEqual(["zoho-flow"]);
   });
 
   it("locks the corrected decision boundaries and explicitly modeled arithmetic", () => {

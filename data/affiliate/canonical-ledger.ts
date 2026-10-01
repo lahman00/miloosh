@@ -1,3 +1,5 @@
+import { ZOHO_ISSUED_ASSETS } from "@/data/affiliate/zoho-issued-assets";
+
 /**
  * CANONICAL AFFILIATE LEDGER (2026-08-21)
  *
@@ -33,6 +35,8 @@ export interface AffiliateProgramRelationship {
   lastFollowupAt?: string | null;
   decisionAt: string | null;
   affiliateUrl: string | null;
+  /** Exact issued destinations for a portfolio; a missing mapped product fails closed. */
+  productAffiliateUrls?: Readonly<Record<string, string>>;
   commissionModel: string;
   cookieWindow: string | null;
   evidence: string[];
@@ -41,6 +45,12 @@ export interface AffiliateProgramRelationship {
   eligibility: string | null;
   applicationUrl: string | null;
   notes: string;
+}
+
+export function getRelationshipAffiliateUrl(relationship: AffiliateProgramRelationship, slug: string): string | null {
+  if (!relationship.productSlugs.includes(slug)) return null;
+  if (relationship.productAffiliateUrls) return relationship.productAffiliateUrls[slug] ?? null;
+  return relationship.affiliateUrl;
 }
 
 export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[] = [
@@ -95,21 +105,24 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "programName": "Softr Affiliate Program",
     "network": "PartnerStack",
     "productSlugs": [],
-    "status": "PENDING_REVIEW",
-    "statusUpdatedAt": "2026-09-30",
+    "status": "APPROVED_NEEDS_EDITORIAL_CONTENT",
+    "statusUpdatedAt": "2026-10-01",
     "applicationSubmittedAt": "2026-09-30",
-    "decisionAt": null,
-    "affiliateUrl": null,
-    "commissionModel": "Account-specific payable offer not verified; public research is not assigned commission",
+    "decisionAt": "2026-10-01",
+    "affiliateUrl": "https://get.softr.io/tbypfx55kgqo",
+    "commissionModel": "Assigned schedule remains unverified: the authenticated dashboard displays 50% first month plus 25% for 11 months, 20% for 12 months, and 25% for 12 months. Do not select one without programme confirmation.",
     "cookieWindow": null,
     "evidence": [
-      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f24a6227cf4bb read in this sprint."
+      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f24a6227cf4bb read in this sprint.",
+      "Superseding first-party Softr welcome Gmail 1a0f63e54ff1ce56, received 2026-10-01 06:53:58 UTC, addressed to hello@miloosh.com. Confirms program enrollment and instructs use of PartnerStack Links; no account-specific referral URL appears in the email.",
+      "Authenticated PartnerStack Softr Summary read 2026-10-01: agreement prompt removed and https://get.softr.io/tbypfx55kgqo issued for destination https://www.softr.io/.",
+      "September 2025 terms at https://www.softr.io/affiliate-program-terms reviewed 2026-10-01: disclosure required; paid campaigns need prior written consent; no trademark bidding, spam, self-referrals or unauthorized coupons."
     ],
     "ownerBlocker": null,
     "formBlocker": null,
-    "eligibility": "Publisher application submitted; awaiting program review",
+    "eligibility": "Affiliate enrollment and programme-terms acceptance verified in the existing Miloosh PartnerStack account.",
     "applicationUrl": "https://www.softr.io/affiliate",
-    "notes": "No Softr catalog record exists; this is a program-level pending receipt only. Do not create a page for the application. Do not apply again. No issued referral link or earned commission evidenced."
+    "notes": "October 1: reviewed linked September 2025 terms, accepted them in the existing portal and verified full access. Exact referral URL and destination https://www.softr.io/ are captured. No Softr catalog page exists; do not create one solely to monetize approval. Written schedule clarification sent in the existing welcome thread as Gmail 1a0f6ebd4b000599. No paid advertising, coupons or self-referrals. Payment readiness remains separate."
   },
   {
     "programId": "fireflies-ai",
@@ -1162,29 +1175,26 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programId: "zoho-ecosystem",
     programName: "Zoho Affiliate Program",
     network: "Direct (Zoho)",
-    productSlugs: ["zoho-crm", "zoho-books", "zoho-projects", "zoho-desk", "zoho-flow", "zoho-campaigns"],
-    status: "APPROVED_NEEDS_LINK",
-    statusUpdatedAt: "2026-09-29",
+    productSlugs: ZOHO_ISSUED_ASSETS.map(asset => asset.slug),
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-01",
     applicationSubmittedAt: "2026-08-27",
     decisionAt: "2026-09-29",
-    affiliateUrl: null,
-    commissionModel: "15% (Standard tier) of the revenue Zoho receives from a qualified sale for the first 12 months, PROVIDED the referral stays a Zoho customer for at least 60 days (the 'stickiness period') before commission accrues. No commission on the same customer's subsequent/cross-sell purchases. Highest commission per single deal is capped at $25,000. Qualified sale requires: customer not an existing paid Zoho customer; signup within 90 days of first affiliate-link click; purchase within 90 days of signup; customer signs up in the SAME Zoho data center the affiliate is registered in. Tiers above Standard (Super 18%, Elite 20%) require $5,001+ revenue or 21+ new customers.",
+    affiliateUrl: "https://go.zoho.com/RqIa",
+    productAffiliateUrls: Object.fromEntries(ZOHO_ISSUED_ASSETS.map(asset => [asset.slug, asset.affiliateUrl])),
+    commissionModel: "First-party October 1 onboarding: Standard commission is 15% of actual payment received by Zoho for the first 12 months on qualified new-business referrals. Qualification requirements remain subject to the program agreement; no earned commission is asserted.",
     cookieWindow: "90 days",
     evidence: [
-      "First-party email thread: Hari Kittu (Zoho Affiliate Team) invited Miloosh to apply and offered to arrange a meeting for evaluation/onboarding once applied; Miloosh replied intending to proceed; Hari replied 'We will look forward to hearing from you'",
-      "zoho.com/affiliate/ (live page, verified 2026-08-27): program overview, tier table, FAQ",
-      "zoho.com/affiliate/faq.html (live page, verified 2026-08-27): full Referrals & Commission / Links & Promotions / Payments / Program Restrictions / Getting Started FAQ content, extracted via DOM inspection since answers are accordion-collapsed",
-      "zoho.com/affiliate/signup.html (live form, verified 2026-08-27): real field-by-field form structure",
-      "Owner-reported direct confirmation, 2026-08-27: owner completed the phone/SMS verification and CAPTCHA steps this agent could not perform, and submitted the form ('נרשמתי' -- 'I registered/applied'). Not yet independently verified against a Zoho confirmation email or the affiliate dashboard -- Gmail access was unavailable in this session when this was recorded. Treated as authoritative because it is the owner's own first-hand report of an action only the owner could take, consistent with this ledger's evidence discipline elsewhere.",
-      "Owner-reported correspondence, 2026-08-28: after submission, Zoho sent a human qualification questionnaire (not an automated decision); the owner replied directly with Miloosh business/audience/content details.",
-      "First-party Gmail approval, 2026-09-29, subject \"Welcome to Zoho Affiliate Program!\": Zoho explicitly welcomed Miloosh to the affiliate program and stated that unique referral URLs for each Zoho product are available after logging into the affiliate portal. The same email instructs the affiliate to complete Payment Method under Commissions and billing address under Settings. No account-specific referral URL was contained in the email itself, so the relationship is APPROVED_NEEDS_LINK rather than ACTIVE.",
-      "Connected Safari verification, 2026-09-29: the separate Zoho Accounts confirmation link for hello@miloosh.com opens a \"Set password for your account\" page and requires the owner to choose/confirm a new password and accept Zoho Terms of Service/Privacy Policy. No password was created and no terms were accepted by the agent."
+      "First-party Zoho welcome Gmail 1a0ec95f0abb0bb1, received 2026-09-29, addressed to hello@miloosh.com.",
+      "First-party onboarding Gmail 1a0f6516008af701, received 2026-10-01: product URL generator, 90-day cookie, Standard 15% / 12 months, wire payout and Multi DC instructions.",
+      "Authenticated Zoho Affiliate URL portal capture 2026-10-01: six exact product-specific URLs and vendor landing URLs saved in data/affiliate/zoho-issued-assets.ts. General portfolio homepage asset is not a substitute for a missing product mapping.",
+      "Authenticated Multi DC page confirmed Multi DC approval is successful on 2026-10-01 after the requested regional referral setup.",
     ],
-    ownerBlocker: "Owner must first confirm hello@miloosh.com by choosing a Zoho password and accepting the account terms. After that, log in to the approved affiliate portal, capture at least one real account-specific referral URL (preferably Zoho CRM first), and complete/verify Payment Method plus billing address before activation.",
+    ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Approved by Zoho on 2026-09-29. First-party welcome email confirms Miloosh may promote Zoho with unique referral links and earn commissions on qualifying sales.",
+    eligibility: "Approved Zoho affiliate with six issued product destinations and successful Multi DC approval.",
     applicationUrl: "https://www.zoho.com/affiliate/signup.html",
-    notes: "Application submitted 2026-08-27 and approved 2026-09-29. Approval is first-party and explicit, but no usable account-specific referral URL has been captured into Miloosh yet; keep APPROVED_NEEDS_LINK until a real link is retrieved from Zoho's portal and verified. The welcome email says referral URLs can be obtained under Referral Code or generated with Create a Link, and asks the affiliate to fill Payment Method under Commissions plus billing address under Settings. The Zoho account confirmation email was also verified: account confirmation currently requires the owner to set a password and accept account terms; the agent stopped before that credential/terms step. Covers Zoho CRM, Books, Projects, Desk, Flow, and Campaigns (6 products) today. Existing program terms on file remain separate from the approval evidence; do not infer that an account-specific commission or payout is ready until the portal state is verified."
+    notes: "One program relationship covers six products; do not count these as six independent partner contracts. The public CTA resolver uses the exact product map, never the generic homepage asset as a fallback. Existing catalog pages only; no new URLs, no invented deep links and no affiliate visits in QA. Payout configuration remains a separate UNVERIFIED Zoho rail. Future support must originate from hello@miloosh.com and include the affiliate ID; do not send another support email from the personal address."
   },
   {
     programId: "adobe-portfolio",

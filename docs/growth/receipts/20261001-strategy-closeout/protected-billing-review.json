@@ -1,0 +1,943 @@
+{
+  "observedAt": "2026-10-01T10:16:21.848894+00:00",
+  "base": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+  "scope": "Manual release review of inherited pricing-unit migration 7ae5946; no freeze registry or mutation guard changed",
+  "status": "REVIEWED",
+  "protectedProductFiles": 27,
+  "unchangedFields": "Every field outside billing_period and annual_billing_required, including all amounts, plan names, editorial copy, sources and dates, is byte-equivalent after JSON parsing.",
+  "experimentInterpretation": "These are display-semantics corrections, not SEO treatment evidence. Existing cohort membership remains unchanged. Do not claim unchanged rendered controls or attribute before/after performance across this release without a new comparable baseline.",
+  "guardResultRetained": "Raw protected precheck still reports review-required paths; this document records the completed field-level review, not an override or disabled guard.",
+  "files": [
+    {
+      "file": "data/software/algolia.json",
+      "changes": [
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "e8be93c3084271e3569ea410b84ce017956be6d2",
+      "afterSha256": "b9f851d3164efbba8dd5eb9cecdfc189c9b480ab4d926a5414d3f783b42350b3",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/basecamp.json",
+      "changes": [
+        [
+          "/pricing/tiers/4/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/4/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "9afd33918782c599e94afc5f7d7a290832d7686b",
+      "afterSha256": "70ebfb0e88135590c70936b2b06412b9fe76bc584873f406e21511adb652a432",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/calendly.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "4347aa288abae2c639defe44bcaeeaa5302f53d9",
+      "afterSha256": "17511b1dfe886bbe862e22d56f0391e83224d683d5d680dd1a3cc9b8699d1a52",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/copy-ai.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "ebd1b4a6b04e00a4d2415699b83d737d0913ad4e",
+      "afterSha256": "e945a6bf44ca3dde3be18ee9ea5a4b9fa48efb9749fe73291c67521e25606c88",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/deepl.json",
+      "changes": [
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "c7962d938d4acae8d14c0d7232696ccec773b996",
+      "afterSha256": "6f96b1776245d3394573232eaf620615908324c6631f9b300115ed0775f16c40",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/evernote.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "969c9a293e5ce9cc3944b9f3043efff993b116f2",
+      "afterSha256": "b172cf914125854c203adcde09bc82a0fd6e7ce4e49d44616d5f22a18135f288",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/freshdesk.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "50b691e26544a48ddcee21def2dabdd37061e09e",
+      "afterSha256": "feacf4741440c18efc004a85a5a61310cd8a1bd80f5cfbe09ddac41830978c26",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/freshsales.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "a351e24f6d133a95ab282127057daadb79e50094",
+      "afterSha256": "a65426a9c958f7ef27422e13acf241e8d742e525958fb8a3c3238aa02031615a",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/front.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "81a17090c71154ec22f62746fe1e7348b4d9fdac",
+      "afterSha256": "f50f79a89c41b263e7a45ea3a292a7cf342ca36b3d79e7b1eba5486ea73c1dce",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/ifttt.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "3a2df5c36fa48678e596b2b58969911598548ef9",
+      "afterSha256": "faacaf4973b18218ff117ba358807655ec5b594964a6de8d82426353809e379f",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/jasper.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "349a05cd203a974e12379b69a85a5b530085a1d5",
+      "afterSha256": "157e2c5a815f3e24aca38bcf4dbf1ba247b3397033d2d1f5c3f04b51e6aef9ab",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/lastpass.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/4/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/4/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/5/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/5/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "b2e1874775b9b334801314acd47c812f8412ce7c",
+      "afterSha256": "db2722204b34bcf7e1e2309925cf45272e4a14ad66b6008d84ce47fddf3b219d",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/miro.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "e64168d821296f74cc907960d9ce8007e78102f9",
+      "afterSha256": "07a3aafff6ff03a23f25fb5496204a7aac55c128c01579843d2fe89c0243c003",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/n8n.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "a3d9fa95b34369f356a0fb30d74f016442c38e00",
+      "afterSha256": "ebb16cf1de041788733977fe607f7cd6f0c6e647549d562881b0f537022f6c0b",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/plaid.json",
+      "changes": [
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/4/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "c398add306012e4f9d7d3d9dd9611f1ce23e2f65",
+      "afterSha256": "2f922e3f866fd726d49486910a0a19755baaf96f7a6bf0fcb8bcc09963371092",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/ringcentral.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "4298217eacb378684e5bfb050caff94f208b05ff",
+      "afterSha256": "a4b2999f892ee72848220b00c2cacddeb48abc37a928fd93a950aad7f81c88cb",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/salesforce.json",
+      "changes": [
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "2678af8fa3785f22bc1af799eae64448358400ae",
+      "afterSha256": "f90ead06a059138c47629feaa7c2efa1f9b2fc0fd8d3d7babe955ad9d9485c86",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/semrush.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "d17b206b8dad98c757ce05798d47fb6d17243204",
+      "afterSha256": "708b65d1fb2ea3056042c7a288dc7c257414566943f3825d6c2da3223889209f",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/sprout-social.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/0/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "8e2c07c832360b41385df7eaeacf00859c7fcccf",
+      "afterSha256": "5a9edd9016122acfd10579a40c0827f4b38f0ee7b95179b598588541900a6308",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/storyblok.json",
+      "changes": [
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "09cd893ebf15eec186a9a0e73c053f95a5038c61",
+      "afterSha256": "5f1c53a9a0588fb876341028d03e607692495a1a4906756248bfa210ab2fa91f",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/tailscale.json",
+      "changes": [
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "3c5408552cec73eab282801313400410f00dd6a5",
+      "afterSha256": "5c25921fb12b7a46ff8186695a0a61e36ef40ab9af897e6fcc80714b53b30985",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/ticktick.json",
+      "changes": [
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "243c996266eeaa821c87d8718c666fa76fd234aa",
+      "afterSha256": "5307fadca07c5a58fd2bf788a448ba8889ecfb9772dd17c0d7a2c2228b16ee1c",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/toggl-track.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "ff234b3d518d8941fb4e51142b721ec1116b2e85",
+      "afterSha256": "596ae794ae8a30822779859f2544fbe771c13e3ecad4145a2b0adec2d45aeb75",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/wiz.json",
+      "changes": [
+        [
+          "/pricing/tiers/0/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/4/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "d39bfdabf7dc31473d857a5ecdf7126ec701d633",
+      "afterSha256": "2dae4db171a24f49b78d9ac90b092c181f0806df4ec53f381c229c773efe749b",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/woocommerce.json",
+      "changes": [
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ]
+      ],
+      "beforeBlob": "eeeb680c7f5e1e7ab462c3c924c6f58e8009b97e",
+      "afterSha256": "56c734b1da47e4e5295a93f72dd72ae38c839736aad4de591a311e063cc92b14",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/zapier.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "a9db197fba8dba747a4e738d71ab6cfc3bce1256",
+      "afterSha256": "7371c3ea370a36b42994157164adb053fc9085f43dba43f029454caae8ce5fe7",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    },
+    {
+      "file": "data/software/zoho-crm.json",
+      "changes": [
+        [
+          "/pricing/entry_paid/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/1/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/1/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/2/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/2/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/3/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/3/billing_period",
+          "annual",
+          "monthly"
+        ],
+        [
+          "/pricing/tiers/4/annual_billing_required",
+          null,
+          true
+        ],
+        [
+          "/pricing/tiers/4/billing_period",
+          "annual",
+          "monthly"
+        ]
+      ],
+      "beforeBlob": "b3e9ab8eb6d21925414d6f69c5b038a612babba4",
+      "afterSha256": "1b45f5983f46ed3ae3cf88cc06ed8d10dc249960b155c933eda030674f5650e3",
+      "reviewDecision": "REVIEWED_BILLING_UNIT_CORRECTION_ONLY"
+    }
+  ]
+}

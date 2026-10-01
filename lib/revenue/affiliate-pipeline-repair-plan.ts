@@ -1,4 +1,4 @@
-import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
+import { CANONICAL_AFFILIATE_LEDGER, getRelationshipAffiliateUrl } from "@/data/affiliate/canonical-ledger";
 import { getActivePartner } from "@/data/affiliate/active-partners";
 import { isValidTransition, type AffiliatePipelineEntry, type AffiliatePipelineStatus } from "@/lib/revenue/affiliate-pipeline";
 
@@ -147,7 +147,7 @@ function planActivated(slug: string, ctx: SourceContext, now: string): Remediati
     };
   }
   const ledgerEntry = CANONICAL_AFFILIATE_LEDGER.find((p) => p.programId === slug);
-  if (!ledgerEntry || ledgerEntry.status !== "ACTIVE" || ledgerEntry.affiliateUrl !== partner.affiliateUrl) {
+  if (!ledgerEntry || ledgerEntry.status !== "ACTIVE" || getRelationshipAffiliateUrl(ledgerEntry, slug) !== partner.affiliateUrl) {
     return {
       kind: "unresolved",
       slug,

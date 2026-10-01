@@ -242,14 +242,14 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
   },
   {
     "slug": "softr",
-    "lastVerifiedAt": "2026-09-30",
+    "lastVerifiedAt": "2026-10-01",
     "programExists": "yes",
     "type": "network",
     "networkName": "PartnerStack",
     "countryRestrictions": null,
     "commissionModel": "Public program: 25% for 12 months; Enterprise referrals use a separate sliding-scale treatment.",
     "recurrence": "recurring",
-    "notes": "CURRENT ACCOUNT STATE: application submitted 2026-09-30 and pending vendor review; receipt Gmail 1a0f24a6227cf4bb. No approval or issued asset. Public page welcomes bloggers and writers; do not submit again.",
+    "notes": "CURRENT ACCOUNT STATE: approved and exact referral asset captured 2026-10-01. Programme terms accepted and portal access verified; issued URL https://get.softr.io/tbypfx55kgqo lands on the vendor homepage per the Links display. Multiple commission schedules appear in the account; written clarification requested via Gmail 1a0f6ebd4b000599. Public economics are not proof of the assigned schedule. No Softr editorial page is created solely for approval.",
     "sourceUrls": [
       "https://www.softr.io/affiliate"
     ],
@@ -257,7 +257,7 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
     "cookieDuration": "90 days; a later qualified click resets the window per public FAQ",
     "payoutMethod": "PartnerStack",
     "payoutThreshold": null,
-    "eligibility": "Bloggers/writers and software publishers are publicly listed; Miloosh acceptance pending.",
+    "eligibility": "Enrollment, programme acceptance and issued asset verified; public editorial activation awaits a distinct buyer-use case. Payout readiness remains unverified.",
     "confidence": "high"
   },
   {

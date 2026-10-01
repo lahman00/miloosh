@@ -199,7 +199,12 @@ export async function setPipelineStatus(
   const updated: AffiliatePipelineEntry = {
     ...entry,
     status,
-    ownerActionRequired: status === "needs_owner_action" ? (options.ownerActionRequired ?? entry.ownerActionRequired ?? "See notes.") : status === "verified" || status === "ready_to_apply" || status === "waiting_on_network" ? null : entry.ownerActionRequired,
+    ownerActionRequired:
+      status === "needs_owner_action"
+        ? (options.ownerActionRequired ?? entry.ownerActionRequired ?? "See notes.")
+        : status === "rejected"
+          ? entry.ownerActionRequired
+          : null,
     submittedAt: status === "submitted" ? now : entry.submittedAt,
     approvedAt: status === "approved" ? now : entry.approvedAt,
     rejectedAt: status === "rejected" ? now : entry.rejectedAt,

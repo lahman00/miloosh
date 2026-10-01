@@ -1,3 +1,4 @@
+import { getRelationshipAffiliateUrl } from "@/data/affiliate/canonical-ledger";
 import { getAllSoftware } from "@/data/software";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
@@ -142,7 +143,7 @@ export function runFullAffiliateSweep(): {
     const commissionStructure = relationship?.commissionModel ?? publicProgram?.commissionModel ?? null;
     const programUrl = publicProgram?.sourceUrls?.[0] ?? relationship?.applicationUrl ?? null;
     const applicationUrl = relationship?.applicationUrl ?? publicProgram?.applicationUrl ?? null;
-    const affiliateUrl = active?.affiliateUrl ?? relationship?.affiliateUrl ?? null;
+    const affiliateUrl = active?.affiliateUrl ?? (relationship ? getRelationshipAffiliateUrl(relationship, softwareEntry.slug) : null);
     const portfolioGroup = relationship && relationship.productSlugs.length > 1 ? relationship.programName : null;
 
     results.push({

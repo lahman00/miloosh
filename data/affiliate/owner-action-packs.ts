@@ -168,4 +168,31 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     "securityAndComplianceNotes": "Never store bank, PayPal credentials, tax IDs, identity documents or one-time codes in source control.",
     "postCompletionAutomation": "Mark verified only after the existing vendor portal explicitly confirms the payout configuration; earned and paid commissions remain separate facts."
   },
+  {
+    "id": "zoho-direct-payout",
+    "title": "9. Zoho direct payout verification",
+    "priority": 9,
+    "loginOrSignupUrl": "https://store.zoho.com/zstore#commissions/updatebankdetails",
+    "productsCovered": [
+      "zoho-crm",
+      "zoho-books",
+      "zoho-projects",
+      "zoho-desk",
+      "zoho-flow",
+      "zoho-campaigns"
+    ],
+    "comparisonsAffected": 0,
+    "commissionEvidence": "Zoho October 1 onboarding confirms Standard 15% of actual payment for the first 12 months; qualified referrals only.",
+    "preFilledFields": {
+      "Account email": "hello@miloosh.com",
+      "Website": "https://miloosh.com"
+    },
+    "ownerRequiredFields": [
+      "Inspect existing Payment Method and Billing Details without changing saved values.",
+      "Complete any vendor-required bank/tax details locally using verified owner information; no details through chat.",
+      "Record payout-profile approval separately from issued links, Multi DC approval and received payments."
+    ],
+    "securityAndComplianceNotes": "No account merging, no replacement payment method, and no bank, tax, password or verification-code information in source control.",
+    "postCompletionAutomation": "Mark VERIFIED only when current first-party evidence confirms all withdrawal setup requirements are complete."
+  },
 ];

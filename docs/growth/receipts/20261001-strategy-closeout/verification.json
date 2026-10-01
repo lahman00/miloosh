@@ -1,0 +1,86 @@
+{
+  "observedAt": "2026-10-01T10:17:34.054973+00:00",
+  "productionBase": "e23a126b9b4169226bd1c84ffdb94b48daf44f05",
+  "candidateBase": "5f253ad482abf0f4238587a6ec303ba10bbe6c86",
+  "unsafeCandidateNotPromoted": "930d711ec742f97946530ea2e1e83ff9bbbdcab3",
+  "releaseStatus": "LOCAL_VERIFIED_NOT_YET_PROMOTED",
+  "tests": {
+    "files": 278,
+    "passed": 2565,
+    "failed": 0
+  },
+  "staticUnitTests": 11,
+  "catalog": {
+    "software": 354,
+    "categories": 27,
+    "comparisons": 1348,
+    "problems": 0
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "dependencyVulnerabilities": 0,
+  "build": "PASS",
+  "static": {
+    "publicHtmlPages": 1786,
+    "internalLinksChecked": 86781,
+    "sitemapUrls": 988,
+    "failures": []
+  },
+  "browser": {
+    "cases": 43,
+    "passed": 43,
+    "failed": 0,
+    "localApiRequestsIntercepted": 188,
+    "affiliateNetworkTraversals": 0,
+    "productionWrites": 0
+  },
+  "assetCoverage": {
+    "scope": "Built public HTML only; no network traversals",
+    "commercialPlacements": 102,
+    "distinctPublicRoutes": 81,
+    "byProduct": {
+      "zoho-crm": {
+        "placements": 21,
+        "routes": 14
+      },
+      "zoho-books": {
+        "placements": 12,
+        "routes": 7
+      },
+      "zoho-projects": {
+        "placements": 13,
+        "routes": 12
+      },
+      "zoho-desk": {
+        "placements": 17,
+        "routes": 16
+      },
+      "zoho-flow": {
+        "placements": 17,
+        "routes": 14
+      },
+      "zoho-campaigns": {
+        "placements": 8,
+        "routes": 6
+      },
+      "fireflies-ai": {
+        "placements": 5,
+        "routes": 3
+      },
+      "trainual": {
+        "placements": 9,
+        "routes": 9
+      }
+    },
+    "forbiddenUnreleasedAssetsFound": 0,
+    "allExact": true,
+    "allSponsored": true
+  },
+  "activeProductRecords": 30,
+  "activeProgramRelationships": 25,
+  "zohoMultiDC": "APPROVAL_SUCCESSFUL",
+  "softr": "TERMS_ACCEPTED_ASSET_CAPTURED; editorial surface and assigned offer remain unresolved",
+  "softrClarificationSentMessage": "1a0f6ebd4b000599",
+  "payout": "NOT_VERIFIED; prior owner pause preserved; no bank or tax data submitted",
+  "measurement": "No earned revenue, genuine buyer conversion, approved commission or payout inferred from QA."
+}

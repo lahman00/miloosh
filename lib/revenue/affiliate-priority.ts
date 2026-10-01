@@ -1,3 +1,4 @@
+import { getRelationshipAffiliateUrl } from "@/data/affiliate/canonical-ledger";
 import type { Software } from "@/data/software";
 import { getAllSoftware } from "@/data/software";
 import { AFFILIATE_PROGRAMS, type AffiliateProgramInfo } from "@/data/revenue/affiliate-programs";
@@ -214,7 +215,7 @@ function computeAffiliatePriority(software: Software, pipelineEntry: AffiliatePi
     totalScore: Math.round((raw / MAX_RAW) * 100),
     readyToApply: gate.ready,
     blockReason: gate.reason,
-    affiliateUrl: ACTIVE_PARTNERS.find((partner) => partner.slug === software.slug)?.affiliateUrl ?? pipelineEntry?.affiliateUrl ?? relationship?.affiliateUrl ?? null,
+    affiliateUrl: ACTIVE_PARTNERS.find((partner) => partner.slug === software.slug)?.affiliateUrl ?? pipelineEntry?.affiliateUrl ?? (relationship ? getRelationshipAffiliateUrl(relationship, software.slug) : null),
     approvedAt: pipelineEntry?.approvedAt ?? null,
     submittedAt: pipelineEntry?.submittedAt ?? relationship?.applicationSubmittedAt ?? null,
     rejectedAt: pipelineEntry?.rejectedAt ?? (relationship?.status === "REJECTED" ? relationship.decisionAt : null),

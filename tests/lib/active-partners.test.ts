@@ -1,3 +1,4 @@
+import { getRelationshipAffiliateUrl } from "@/data/affiliate/canonical-ledger";
 import { describe, expect, it } from "vitest";
 import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partners";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
@@ -18,7 +19,7 @@ describe("canonical active affiliate partner registry", () => {
         (row) =>
           row.status === "ACTIVE" &&
           row.productSlugs.includes(partner.slug) &&
-          row.affiliateUrl === partner.affiliateUrl,
+          getRelationshipAffiliateUrl(row, partner.slug) === partner.affiliateUrl,
       );
 
       expect(

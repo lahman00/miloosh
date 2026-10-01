@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
+import { CANONICAL_AFFILIATE_LEDGER, getRelationshipAffiliateUrl } from "@/data/affiliate/canonical-ledger";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partners";
 import { computeLedgerSummary, ALL_CANONICAL_STATUSES } from "@/scripts/affiliate/ledger";
@@ -37,11 +37,17 @@ describe("Generic Affiliate Ledger Invariants & Source-of-Truth Integrity", () =
 
   it("Invariant 3: ACTIVE programs strictly require a non-empty, valid affiliateUrl matching canonical active-partners", () => {
     const activeProgs = CANONICAL_AFFILIATE_LEDGER.filter(p => p.status === "ACTIVE");
-    expect(activeProgs.length).toBe(ACTIVE_PARTNERS.length);
+    // A portfolio is one program with several products, not several contracts.
+    const covered = activeProgs.flatMap(program => program.productSlugs);
+    expect(new Set(covered).size).toBe(covered.length);
+    expect(covered.sort()).toEqual(ACTIVE_PARTNERS.map(partner => partner.slug).sort());
 
     for (const prog of activeProgs) {
       expect(prog.affiliateUrl).toBeTruthy();
       expect(prog.affiliateUrl).toMatch(/^https?:\/\//);
+      for (const slug of prog.productSlugs) {
+        expect(getRelationshipAffiliateUrl(prog, slug)).toBe(getActivePartner(slug)?.affiliateUrl);
+      }
     }
   });
 

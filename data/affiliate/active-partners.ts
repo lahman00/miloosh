@@ -1,4 +1,7 @@
+import { ZOHO_ISSUED_ASSETS } from "@/data/affiliate/zoho-issued-assets";
+
 export const ACTIVE_PARTNER_SLUGS = [
+  ...ZOHO_ISSUED_ASSETS.map(asset => asset.slug),
   "fireflies-ai", "trainual", "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
@@ -104,6 +107,7 @@ export type ActivePartner = {
 // FreshBooks: approval and exact asset in Gmail 1a0a27bf25150cef (2026-09-15),
 // read directly 2026-09-17. Link activation is not payout or revenue verification.
 export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
+  ...ZOHO_ISSUED_ASSETS.map(asset => ({ slug: asset.slug, status: "active" as const, affiliateUrl: asset.affiliateUrl, allowAdditionalTrackingParams: false, blocker: null })),
   // Vendor welcome Gmail 1a0f3e41e847eb0c + authenticated FirstPromoter read, 2026-09-30.
   // Payout remains incomplete; keep the issued URL byte-for-byte, without invented deep links.
   { slug: "fireflies-ai", status: "active", affiliateUrl: "https://fireflies.ai/?fpr=eyal-haimovich-d08faa", allowAdditionalTrackingParams: false, blocker: null },

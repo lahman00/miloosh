@@ -1,3 +1,4 @@
+import { ZOHO_ISSUED_ASSETS } from "@/data/affiliate/zoho-issued-assets";
 import type { ActivePartnerSlug } from "@/data/affiliate/active-partners";
 
 export type PayoutRailId =
@@ -7,7 +8,8 @@ export type PayoutRailId =
   | "tapfiliate-setmore"
   | "mailerlite-tipalti"
   | "jotform-tremendous"
-  | "firstpromoter-fireflies";
+  | "firstpromoter-fireflies"
+  | "zoho-direct";
 
 export type PayoutRail = {
   id: PayoutRailId;
@@ -32,6 +34,13 @@ export type PayoutRail = {
  * password, 2FA, or payout-provider secret here.
  */
 export const PAYOUT_RAILS: readonly PayoutRail[] = [
+  {
+    id: "zoho-direct", label: "Zoho direct affiliate payout", accountIdentity: "hello@miloosh.com",
+    partnerSlugs: ZOHO_ISSUED_ASSETS.map(asset => asset.slug), readiness: "UNVERIFIED",
+    ownerActionPackId: "zoho-direct-payout",
+    methodGuidance: "October 1 Zoho onboarding specifies wire transfer. Inspect existing Payment Method and Billing Details locally; do not overwrite or submit bank or tax information without an explicit owner instruction.",
+    notes: "Authenticated portal and Multi DC setup verified 2026-10-01. The six product assets share one Zoho relationship. No bank/tax-profile approval, earned commission or successful withdrawal has been verified.",
+  },
   {
     "id": "firstpromoter-fireflies",
     "label": "Fireflies / FirstPromoter",

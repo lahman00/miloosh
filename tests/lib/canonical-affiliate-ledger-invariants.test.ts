@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CANONICAL_AFFILIATE_LEDGER } from "@/data/affiliate/canonical-ledger";
+import { CANONICAL_AFFILIATE_LEDGER, getRelationshipAffiliateUrl } from "@/data/affiliate/canonical-ledger";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 
 const byProgramId = new Map(CANONICAL_AFFILIATE_LEDGER.map((program) => [program.programId, program]));
@@ -45,7 +45,7 @@ describe("canonical affiliate ledger state invariants", () => {
         (program) => program.status === "ACTIVE" && program.productSlugs.includes(active.slug)
       );
       expect(matches, `${active.slug} has no unique ACTIVE canonical relationship`).toHaveLength(1);
-      expect(matches[0]?.affiliateUrl, `${active.slug} canonical URL differs from active registry`).toBe(active.affiliateUrl);
+      expect(getRelationshipAffiliateUrl(matches[0], active.slug), `${active.slug} canonical URL differs from active registry`).toBe(active.affiliateUrl);
     }
   });
 
@@ -65,17 +65,16 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("toggl-track")?.lastFollowupAt).toBe("2026-09-29");
   });
 
-  it("locks the 2026-08-28 suspension-period reconciliation (Zoho qualification stage, Sprout Social/RingCentral/Framer routes) against silent regression", () => {
-    // Zoho: first-party Gmail evidence on 2026-09-29 records a real approval,
-    // but no account-specific referral URL has been captured yet. Approval
-    // therefore advances to APPROVED_NEEDS_LINK, not ACTIVE.
+  it("locks the 2026-08-28 suspension-period reconciliation (Zoho issued product assets, Sprout Social/RingCentral/Framer routes) against silent regression", () => {
+    // The six portal-issued destinations and successful Multi DC approval
+    // supersede the earlier password / missing-link checkpoint.
     const zoho = byProgramId.get("zoho-ecosystem");
-    expect(zoho?.status).toBe("APPROVED_NEEDS_LINK");
+    expect(zoho?.status).toBe("ACTIVE");
     expect(zoho?.decisionAt).toBe("2026-09-29");
-    expect(zoho?.affiliateUrl).toBeNull();
-    expect(zoho?.ownerBlocker ?? "").toMatch(/password/i);
-    expect(zoho?.ownerBlocker ?? "").toMatch(/referral url/i);
+    expect(zoho?.affiliateUrl).toBe("https://go.zoho.com/RqIa");
+    expect(zoho?.ownerBlocker).toBeNull();
     expect(zoho?.productSlugs).toContain("zoho-campaigns");
+    expect(Object.keys(zoho?.productAffiliateUrls ?? {})).toHaveLength(6);
 
     // Sprout Social: re-modeled onto the CJ account, not the generic Impact
     // bucket -- both directions must hold, or the two ledgers disagree on
@@ -95,10 +94,10 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("framer")?.affiliateUrl).toBeNull();
     expect(byProgramId.get("collaboration-and-design-portfolio")?.productSlugs).not.toContain("framer");
 
-    // None of these five newly-touched relationships may be ACTIVE without
+    // None of these remaining relationships may be ACTIVE without
     // a verified tracking asset -- this session found none, so none should
     // claim one.
-    for (const id of ["zoho-ecosystem", "cj-portfolio", "ringcentral", "framer", "buffer"]) {
+    for (const id of ["cj-portfolio", "ringcentral", "framer", "buffer"]) {
       const program = byProgramId.get(id);
       expect(program?.status, `${id} marked ACTIVE without this test being updated to expect it`).not.toBe("ACTIVE");
       expect(program?.affiliateUrl, `${id} has a tracking URL but isn't ACTIVE`).toBeNull();

@@ -94,10 +94,11 @@ describe("2026-10-01 affiliate evidence reconciliation", () => {
     expect(ycbm?.commissionModel).toMatch(/internally inconsistent|USD 25|USD 4/);
   });
 
-  it("keeps Softr pending from its first-party submission receipt", () => {
+  it("supersedes Softr pending state with a verified asset, not a fabricated public page", () => {
     const softr = bySlug.get("softr");
-    expect(softr?.notes).toContain("pending vendor review");
-    expect(relationshipById.get("softr")?.status).toBe("PENDING_REVIEW");
+    expect(softr?.notes).toContain("get.softr.io/tbypfx55kgqo");
+    expect(relationshipById.get("softr")?.status).toBe("APPROVED_NEEDS_EDITORIAL_CONTENT");
+    expect(relationshipById.get("softr")?.affiliateUrl).toBe("https://get.softr.io/tbypfx55kgqo");
     expect(ACTIVE_PARTNERS.some(partner => String(partner.slug) === "softr")).toBe(false);
   });
 

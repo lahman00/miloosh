@@ -1,3 +1,5 @@
+import { ZOHO_ISSUED_ASSETS } from "@/data/affiliate/zoho-issued-assets";
+
 export type MonetizationReadiness = "READY NOW" | "APPROVED BUT NEEDS LINK" | "PENDING APPROVAL" | "NEEDS APPLICATION" | "REJECTED" | "NOT ELIGIBLE" | "HOLD / UNCLEAR";
 export type NormalizedCommissionType = "recurring_percentage" | "one_time_percentage" | "fixed_cpa" | "qualified_lead" | "revenue_share" | "hybrid" | "unknown";
 
@@ -105,16 +107,16 @@ export const PARTNER_MATERIAL_AUDIT: readonly PartnerMaterialAudit[] = [
     readiness: "APPROVED BUT NEEDS LINK", lastVerifiedDate: "2026-09-30",
     evidence: ["First-party Automattic Impact welcome Gmail 1a0f2f24d5877b22", "Issued WooCommerce Marketplace asset https://automattic.pxf.io/c/7846380/1946431/22744", "Canonical ledger intentionally requires an Impact link-builder asset to the intended WooCommerce platform destination before public activation.", "Written deep-link and editorial-permission request sent to Nick Rasmussen on 2026-10-01; Gmail 1a0f47fc7354834b."],
   }),
-  record({
-    company: "Zoho", slug: "zoho-crm", programNetwork: "Direct (Zoho)",
-    currentStatus: "APPROVED_NEEDS_LINK", applicationStatus: "Approved", approvalStatus: "Welcome and dashboard-training invitation verified",
-    affiliateUrl: "Unique per-product links available in the approved portal; exact Miloosh product URL not yet captured",
-    commission: { type: "recurring_percentage", value: "15% Standard for first 12 months; higher documented tiers require performance thresholds", originalWording: "Current official Zoho program terms retained in canonical ledger." },
-    recurrence: "First 12 months subject to qualification and 60-day stickiness rules", cookieWindow: "90 days",
-    payoutMethod: "Portal requires payment method under Commissions; current completion not verified",
-    readiness: "APPROVED BUT NEEDS LINK", lastVerifiedDate: "2026-09-30",
-    evidence: ["Zoho welcome Gmail 1a0ec95f0abb0bb1 to hello@miloosh.com", "Zoho training invitation Gmail 1a0f1bc8f642692e", "Written-only onboarding request sent 2026-10-01 in the training thread; exact per-product assets still awaited."],
-  }),
+  ...ZOHO_ISSUED_ASSETS.map(asset => record({
+    company: asset.name, slug: asset.slug, programNetwork: "Direct (Zoho)",
+    currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Welcome, issued product URL and Multi DC approval verified",
+    affiliateUrl: asset.affiliateUrl,
+    commission: { type: "recurring_percentage", value: "15% Standard / first 12 months", originalWording: "October 1 first-party Zoho onboarding: 15% of actual payment received by Zoho for the first 12 months on qualified new-business referrals." },
+    recurrence: "First 12 months; qualified referrals only", cookieWindow: "90 days", payoutMethod: "Wire transfer per first-party onboarding; payout readiness UNVERIFIED",
+    readiness: "READY NOW", lastVerifiedDate: "2026-10-01",
+    evidence: ["Zoho welcome Gmail 1a0ec95f0abb0bb1", "October 1 onboarding Gmail 1a0f6516008af701", "data/affiliate/zoho-issued-assets.ts", "Authenticated Multi DC page: approval successful. READY NOW describes technical activation, not received money."],
+  })),
+
   record({
     company: "MRPeasy", slug: "mrpeasy", programNetwork: "PartnerStack",
     currentStatus: "ACCEPTED_NOT_ACTIVATED", applicationStatus: "Accepted", approvalStatus: "Welcome and exact asset verified 2026-09-30",
