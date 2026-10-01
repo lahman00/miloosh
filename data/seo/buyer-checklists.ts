@@ -1,3 +1,5 @@
+import { BUYER_DEPTH_CHECKLISTS } from "@/data/seo/buyer-depth-checklists";
+
 export type BuyerChecklist = {
   title: string;
   introduction: string;
@@ -6,6 +8,7 @@ export type BuyerChecklist = {
   verifiedAt: string;
 };
 export const BUYER_CHECKLISTS: Record<string, BuyerChecklist> = {
+  ...BUYER_DEPTH_CHECKLISTS,
   wrike: {
     title: "Before replacing Wrike, check the billable work",
     introduction: "A lower headline price does not settle the switching decision. Take the same people, permissions, and renewal date into each vendor quote.",

@@ -2,28 +2,29 @@
   "name": "Trainual",
   "slug": "trainual",
   "category": "knowledge-base",
-  "description": "Trainual is a training and operations platform that combines standard operating procedures, role-based onboarding, and an AI-powered knowledge search so teams can document processes once and deliver consistent training at scale.",
+  "description": "Trainual combines process documentation, assigned employee training, knowledge search, and completion reporting. Compare its training controls with a simpler team wiki before choosing a plan.",
   "website": "https://trainual.com",
   "platforms": [
     "Web",
     "iOS",
     "Android"
   ],
-  "best_for": "Positioned for business owners, operations leaders, and team managers in field-based, remote, and multi-location organizations, including healthcare, construction, home services, agencies, law firms, and real estate.",
+  "best_for": "Teams that need repeatable employee onboarding and evidence of training completion, rather than only a searchable place to store documents.",
   "features": [
-    "Documentation and standard operating procedures (SOPs)",
-    "Role-based training paths and onboarding programs",
-    "AI-powered knowledge search and Q&A assistant",
-    "Testing, tracking, and compliance reporting with e-signatures",
-    "Pre-built courses on essential business topics",
-    "Roles and responsibilities mapping across an org chart",
-    "Meeting management with agendas and action tracking",
-    "Scorecards and KPI monitoring"
+    "Process documentation and role-based assignments",
+    "Knowledge search and reusable training templates",
+    "Tests, due dates, and completion reporting",
+    "Individual training paths on Pro and above",
+    "E-signatures on Pro and above",
+    "SSO and custom domain on Premium and Enterprise",
+    "API and custom integration support on Enterprise"
   ],
   "sources": [
-    "https://trainual.com"
+    "https://trainual.com/pricing-2",
+    "https://trainual.com/faqs",
+    "https://trainual.com/training-suite"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-01",
   "alternatives": [
     {
       "name": "Guru",
@@ -59,5 +60,43 @@
       ]
     }
   ],
-  "order": 40
+  "order": 40,
+  "pricing": {
+    "model": "paid",
+    "status": "contact_sales",
+    "starting_price": "Confirm the full annual quote, minimum commitment, and implementation fee",
+    "has_free_tier": false,
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Core",
+        "notes": "Documentation, knowledge search, group assignments, and testing. The page displays a $3/user/month annual-billing rate alongside a 10-seat / $3,000 annual minimum footnote. The relationship between these figures is unclear; do not treat the per-user figure as an all-in entry price."
+      },
+      {
+        "name": "Pro",
+        "notes": "Adds individual training paths, hosted-video controls and e-signatures. A $4/user/month annual-billing figure is displayed; confirm the base subscription, included seats and minimum commitment in the quote."
+      },
+      {
+        "name": "Premium",
+        "notes": "Adds SSO, custom domain and higher training limits. A $5/user/month annual-billing figure is displayed; confirm the total subscription rather than multiplying this figure by headcount."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "API and custom integration support; request an itemized quote."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-01",
+    "official_source": "https://trainual.com/pricing-2"
+  },
+  "pros": [
+    "Combines documentation with assigned learning and completion reporting.",
+    "The edition matrix distinguishes training controls from basic document storage.",
+    "Training reports can be exported for review, rather than relying only on verbal confirmation."
+  ],
+  "cons": [
+    "Published per-user figures do not by themselves establish the minimum payable subscription.",
+    "The vendor FAQ lists a separate one-time $1,000 implementation fee; confirm its treatment in the final quote.",
+    "Individual training paths, SSO and API access have different edition requirements; they are not all entry-plan features."
+  ]
 }

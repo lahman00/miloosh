@@ -3,6 +3,34 @@ export type DecisionPath = { href: string; label: string; question: string };
 /** Editorial adjacency, not affiliate ranking. Existing pages only; reviewed 2026-09-26. */
 export const DECISION_PATHS: Readonly<Record<string, readonly DecisionPath[]>> =
   {
+    "/best-knowledge-base-software-for-teams": [
+      {
+        "href": "/software/trainual#buyer-checklist",
+        "label": "Check Trainual’s training controls and full quote",
+        "question": "Do you need assigned employee training and completion evidence, rather than only a wiki?"
+      }
+    ],
+    "/best-automation-software-for-small-business": [
+      {
+        "href": "/software/zoho-flow#buyer-checklist",
+        "label": "Work through Zoho Flow task and overage checks",
+        "question": "Is Zoho Flow on your shortlist? Convert workflow runs into billable actions before choosing capacity."
+      }
+    ],
+    "/best-help-desk-for-small-business": [
+      {
+        "href": "/software/zoho-desk#buyer-checklist",
+        "label": "Check Zoho Desk agents, departments and annual cost",
+        "question": "Considering Zoho Desk? Separate customer-facing seats from internal reviewers and match the required edition."
+      }
+    ],
+    "/best-crm-for-sales-teams": [
+      {
+        "href": "/software/close#buyer-checklist",
+        "label": "Check Close team cost, usage and export boundaries",
+        "question": "Considering Close for the team? Confirm whether automated follow-ups and communication usage change the budget."
+      }
+    ],
     "/best-email-marketing-for-small-business": [
       {
         href: "/software/mailerlite",

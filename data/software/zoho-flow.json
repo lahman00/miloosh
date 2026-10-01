@@ -2,21 +2,19 @@
   "name": "Zoho Flow",
   "slug": "zoho-flow",
   "category": "automation",
-  "description": "Zoho Flow is an AI-powered integration platform that connects cloud and on-premises apps and automates workflows across departments.",
+  "description": "Zoho Flow connects applications through trigger-and-action workflows, with a visual builder, conditional logic, and paid-plan custom functions. Capacity depends on executed tasks, not just the number of workflows.",
   "website": "https://www.zoho.com/flow",
   "platforms": [
     "Web"
   ],
-  "best_for": "Businesses already using Zoho's app ecosystem who want no-code workflow automation connecting 1,000+ cloud and on-premises apps.",
+  "best_for": "Operations teams that need application-to-application automation and can validate connector coverage, task volume, polling delay, and failure handling before switching.",
   "features": [
-    "Drag-and-drop visual workflow builder",
-    "Natural-language flow generation that builds workflows from plain-English descriptions",
-    "1,000+ supported cloud and on-premises app integrations",
-    "Custom functions using the Deluge scripting language",
-    "Multiple trigger sources including polling APIs, webhooks, templated emails, and RSS feeds",
-    "Agentic AI actions that choose a course of action based on real-time context",
-    "Conditional logic and branching workflows",
-    "Workflow monitoring with the ability to restart or rerun specific parts of a flow"
+    "Visual trigger-and-action workflow builder",
+    "Conditional logic and data mapping",
+    "Webhook and polling triggers, depending on the connector",
+    "Custom functions on paid plans",
+    "Execution history and troubleshooting",
+    "Premium connectors, on-premises integration and automatic reruns on Professional"
   ],
   "pricing": {
     "model": "freemium",
@@ -32,7 +30,8 @@
       "amount": "25.00",
       "currency": "USD",
       "billing_period": "monthly",
-      "annual_billing_required": true
+      "annual_billing_required": true,
+      "per_seat": false
     },
     "tiers": [
       {
@@ -40,7 +39,7 @@
         "amount": "0",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "100 tasks/month, 5 flows, 30-day flow history, and base app connectors."
+        "notes": "100 tasks/month and up to 5 flows; 30-day history and 15-minute polling. A task is a successful action execution, not a complete workflow run."
       },
       {
         "name": "Standard",
@@ -48,7 +47,7 @@
         "currency": "USD",
         "billing_period": "monthly",
         "annual_billing_required": true,
-        "notes": "Flat org price, not per-seat. 5,000 tasks/month, unlimited flows, custom functions ($29/mo billed monthly)."
+        "notes": "For 5,000 tasks/month: $25/month on annual billing ($300/year), or $29/month billed monthly. Unlimited flows, 60-day history, 15-minute polling and custom functions. Larger task tiers cost more; local taxes are extra."
       },
       {
         "name": "Professional",
@@ -56,16 +55,18 @@
         "currency": "USD",
         "billing_period": "monthly",
         "annual_billing_required": true,
-        "notes": "Flat org price, not per-seat. 10,000 tasks/month, premium apps, on-prem integration ($49/mo billed monthly)."
+        "notes": "For 10,000 tasks/month: $41/month on annual billing ($492/year), or $49/month billed monthly. Adds premium apps, on-premises integration, automatic reruns, 5-minute polling and 90-day history. Larger task tiers cost more; local taxes are extra."
       }
     ],
-    "last_verified": "2026-08-28",
+    "last_verified": "2026-10-01",
     "official_source": "https://www.zoho.com/flow/pricing.html"
   },
   "sources": [
-    "https://www.zoho.com/flow"
+    "https://www.zoho.com/flow/",
+    "https://www.zoho.com/flow/pricing.html",
+    "https://help.zoho.com/portal/en/kb/flow/user-guide/settings/general/articles/billing-usage"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-01",
   "alternatives": [
     {
       "name": "Zapier",
@@ -100,5 +101,15 @@
         "AI agent builder"
       ]
     }
+  ],
+  "pros": [
+    "A free edition can evaluate a small workflow without a paid subscription.",
+    "Paid plans allow unlimited flows within the selected task allowance.",
+    "Usage and overage controls make the task budget inspectable inside the account."
+  ],
+  "cons": [
+    "A multi-action workflow consumes multiple tasks; workflow-run counts alone understate usage.",
+    "Premium connectors and automatic reruns require Professional; buying extra Standard tasks does not add those features.",
+    "Flows can stop at the task limit when overage is disabled; enabled overage adds charges and needs a daily limit."
   ]
 }

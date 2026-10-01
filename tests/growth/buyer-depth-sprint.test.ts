@@ -1,0 +1,99 @@
+import sitemap from "@/app/sitemap";
+import { describe, expect, it } from "vitest";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
+import { BUYER_CHECKLISTS } from "@/data/seo/buyer-checklists";
+import { DECISION_PATHS } from "@/data/seo/decision-paths";
+import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
+import { getSoftware } from "@/data/software";
+import { getActivePartner } from "@/data/affiliate/active-partners";
+import { getSoftwareCtaUrl } from "@/lib/affiliate";
+import { loadCurrentProtection } from "@/lib/google-war/current-protection";
+import { renderedHtml } from "@/lib/seo/rendered-html";
+
+const slugs = ["trainual", "zoho-flow", "zoho-desk", "close"] as const;
+const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com"]);
+describe("Buyer-depth sprint: factual and commercial boundaries", () => {
+  it("is bounded to four existing unprotected products, not a new catalog or experiment", () => {
+    expect(Object.keys(BUYER_DEPTH_CHECKLISTS).sort()).toEqual([...slugs].sort());
+    for (const slug of slugs) {
+      expect(getSoftware(slug)).toBeDefined();
+      expect(loadCurrentProtection().filter(p => p.page === `/software/${slug}`)).toEqual([]);
+    }
+  });
+  it.each(slugs)("%s has three dated source-based decisions without claimed hands-on testing", slug => {
+    const c = BUYER_DEPTH_CHECKLISTS[slug];
+    expect(BUYER_CHECKLISTS[slug]).toEqual(c);
+    expect(c.verifiedAt).toBe("2026-10-01");
+    expect(c.introduction).toMatch(/Documentation-based/);
+    expect(c.introduction).toMatch(/not a/);
+    expect(c.checks).toHaveLength(3);
+    expect(new Set(c.checks.map(x => x.question)).size).toBe(3);
+    for (const check of c.checks) {
+      const url = new URL(check.source);
+      expect(url.protocol).toBe("https:");
+      expect(hosts.has(url.hostname)).toBe(true);
+      expect(check.answer.length).toBeGreaterThan(100);
+      expect(check.sourceLabel).toBeTruthy();
+      expect(check.answer).not.toMatch(/guaranteed (savings|rankings)|we tested|our hands-on/i);
+    }
+  });
+  it("does not publish Trainual marginal-looking rates as a numeric starting subscription", () => {
+    const p = getSoftware("trainual")!.pricing!;
+    expect(p.status).toBe("contact_sales");
+    expect(p.entryPaid).toBeUndefined();
+    expect(p.tiers!.every(t => t.amount === undefined)).toBe(true);
+    expect(p.tiers![0].notes).toContain("$3,000");
+    expect(p.tiers![0].notes).toContain("10-seat");
+    expect(BUYER_DEPTH_CHECKLISTS.trainual.checks[1].answer).toContain("$1,000");
+  });
+  it("makes the worked examples reproducible from the published plan rates", () => {
+    const close = getSoftware("close")!.pricing!.tiers!;
+    const growth = Number(close.find(t => t.name === "Growth")!.amount);
+    const essentials = Number(close.find(t => t.name === "Essentials")!.amount);
+    expect(4 * growth * 12).toBe(4752);
+    expect(4 * essentials * 12).toBe(1680);
+    const desk = Number(getSoftware("zoho-desk")!.pricing!.tiers!.find(t => t.name === "Professional")!.amount);
+    expect(6 * desk * 12).toBe(1656);
+    expect(2000 * 3).toBe(6000);
+    for (const slug of ["close", "zoho-desk", "zoho-flow"])
+      expect(BUYER_DEPTH_CHECKLISTS[slug].checks.map(c => c.answer).join(" ")).toMatch(/Worked example/);
+  });
+  it("preserves meaningful constraints instead of recommending the cheapest plan", () => {
+    expect(getSoftware("zoho-flow")!.cons!.join(" ")).toContain("overage");
+    expect(getSoftware("zoho-desk")!.cons!.join(" ")).toContain("cannot reply");
+    expect(getSoftware("close")!.cons!.join(" ")).toContain("one user");
+    expect(getSoftware("trainual")!.cons!.join(" ")).toContain("minimum payable");
+  });
+  it.each(slugs)("%s renders the real issued CTA, sponsored disclosure and a usable anchor", slug => {
+    const html = renderToStaticMarkup(createElement(DecisionBuyerChecklist, { checklist: BUYER_DEPTH_CHECKLISTS[slug] }));
+    const affiliate = getActivePartner(slug)!.affiliateUrl!;
+    expect(getSoftwareCtaUrl(getSoftware(slug)!)).toBe(affiliate);
+    expect(renderedHtml(html).links.some(a => a.href === affiliate)).toBe(true);
+    expect(html).toContain('rel="sponsored noopener noreferrer"');
+    expect(html).toContain("This is an affiliate link");
+    expect(html).toContain('id="buyer-checklist"');
+    expect((html.match(/<h3/g) ?? []).length).toBe(4);
+  });
+  it("adds exactly four deep links to actual rendered checklist anchors", () => {
+    const links = Object.values(DECISION_PATHS).flat().filter(p => p.href.endsWith("#buyer-checklist"));
+    expect(links).toHaveLength(4);
+    for (const link of links) {
+      const slug = link.href.split("#")[0].split("/").pop()!;
+      expect(BUYER_DEPTH_CHECKLISTS[slug]).toBeDefined();
+      const html = renderToStaticMarkup(createElement(DecisionBuyerChecklist, { checklist: BUYER_DEPTH_CHECKLISTS[slug] }));
+      expect(html).toContain('id="buyer-checklist"');
+    }
+  });
+});
+
+it("updates only recorded content dates without expanding the sitemap inventory", () => {
+  const rows = sitemap();
+  expect(rows).toHaveLength(988);
+  const dates = new Map(rows.map(r => [new URL(r.url).pathname, new Date(r.lastModified ?? 0).toISOString().slice(0,10)]));
+  for (const slug of slugs) expect(dates.get(`/software/${slug}`)).toBe(BUYER_DEPTH_CONTENT_UPDATED_AT);
+  for (const path of BUYER_DEPTH_GUIDE_PATHS) expect(dates.get(path)).toBe(BUYER_DEPTH_CONTENT_UPDATED_AT);
+  expect(dates.get("/compare/wix-vs-shopify")).toBe("2026-09-25");
+  expect(BUYER_DEPTH_CHECKLISTS["airtable"]).toBeUndefined();
+});

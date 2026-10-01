@@ -23,7 +23,10 @@
     "https://www.close.com",
     "https://close.com/chloe",
     "https://close.com/blog/introducing-chloe",
-    "https://www.close.com/pricing"
+    "https://www.close.com/pricing",
+    "https://close.com/pricing",
+    "https://help.close.com/account-management/variable-usage-costs-calling-sms-phone-numbers-ai-tools",
+    "https://help.close.com/account-management/exporting-data"
   ],
   "accessed_at": "2026-08-21",
   "pricing": {
@@ -78,8 +81,8 @@
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-22",
-    "official_source": "https://www.close.com/pricing"
+    "last_verified": "2026-10-01",
+    "official_source": "https://close.com/pricing"
   },
   "alternatives": [
     {
@@ -129,6 +132,12 @@
   ],
   "cons": [
     "Solo is limited to one user and 10,000 leads; its entry price is not a team-plan quote.",
-    "Automated workflows are not included in Solo or Essentials and require Growth or Scale."
+    "Automated workflows require Growth or Scale, not Solo or Essentials.",
+    "Phone numbers, calling, SMS and additional AI consumption can add to the seat subscription."
+  ],
+  "pros": [
+    "Keeps calling, email and SMS activity alongside sales records.",
+    "Published monthly and annual seat prices allow a like-for-like subscription comparison.",
+    "JSON exports provide an exit path for activity data, subject to what the destination can import."
   ]
 }

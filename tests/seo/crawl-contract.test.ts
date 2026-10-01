@@ -1,3 +1,4 @@
+import { BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
@@ -71,7 +72,11 @@ describe("crawl inventory contract", () => {
       entry.lastModified ? new Date(entry.lastModified).toISOString().slice(0, 10) : null]));
     for (const guide of guides) {
       const isSupport = FIRST_REVENUE_SUPPORTING_GUIDES.some((support) => support.guideSlug === guide.slug);
-      const expected = isSupport ? [guide.updatedAt, FIRST_REVENUE_CONTENT_UPDATED_AT].sort().at(-1) : guide.updatedAt;
+      const expected = [
+        guide.updatedAt,
+        ...(isSupport ? [FIRST_REVENUE_CONTENT_UPDATED_AT] : []),
+        ...(BUYER_DEPTH_GUIDE_PATHS.some(path => path === `/${guide.slug}`) ? [BUYER_DEPTH_CONTENT_UPDATED_AT] : []),
+      ].sort().at(-1);
       expect(dates.get(`/${guide.slug}`)).toBe(expected);
     }
     for (const category of getAllCategories()) {

@@ -8,7 +8,7 @@ import { getSoftwareCtaRel, getSoftwareCtaUrl, shouldShowAffiliateDisclosure } f
 
 export function DecisionBuyerChecklist({ checklist }: { checklist: BuyerChecklist }) {
   return (
-    <section className="mt-14" aria-labelledby="buyer-checklist-heading">
+    <section id="buyer-checklist" className="mt-14 scroll-mt-24" aria-labelledby="buyer-checklist-heading">
       <SectionHeading eyebrow="Before you switch" title={<span id="buyer-checklist-heading">{checklist.title}</span>} description={checklist.introduction} />
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {checklist.checks.map((check) => <Card key={check.question}>

@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-01T14:11:27.463666+00:00",
+  "status": "LOCAL_VERIFIED_NOT_YET_PUBLISHED",
+  "productionBaseSha": "41d60bbb21df77e6de167d641be518dd4f1d393a",
+  "baseDocsSha": "ff7f47ca0cbaafe85971967478487aeb052afd81",
+  "scope": {
+    "curatedProductPages": [
+      "trainual",
+      "zoho-flow",
+      "zoho-desk",
+      "close"
+    ],
+    "sourcedBuyerChecks": 12,
+    "newContextualDeepLinks": 4,
+    "newPublicUrls": 0,
+    "newAffiliatePrograms": 0
+  },
+  "gates": {
+    "tests": 2587,
+    "testFiles": 280,
+    "staticAuditUnitTests": 11,
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "dataValidation": "PASS",
+    "build": "PASS",
+    "dependencyVulnerabilities": 0,
+    "focusedBrowser": {
+      "passed": 24,
+      "total": 24
+    },
+    "generalBrowser": {
+      "passed": 53,
+      "total": 53
+    }
+  },
+  "renderReview": {
+    "checkedAt": "2026-10-01T14:09:55.663Z",
+    "comparedHtmlRoutes": 1786,
+    "changedHtmlRoutes": 53,
+    "protectedRenderedConflicts": [],
+    "canonicalOrH1Changes": []
+  },
+  "sitemap": {
+    "urls": 988,
+    "identicalInventory": true,
+    "changedDates": 21,
+    "changesLimitedToLastmod": true
+  },
+  "protectionNotes": "Six indirectly reused short quote labels were restored before final build to avoid changing reserved buyer-guide surfaces. The protection registry is unchanged. IDs were added to existing checklist sections without altering their previous text, URLs or CTA identity. Site-wide freshness text is computed from genuine source-check dates, not a new ranking experiment.",
+  "qaBoundary": "All browser API writes were intercepted and all external traffic blocked; no affiliate visits or synthetic conversions in production.",
+  "pricingAmbiguities": {
+    "trainual": "Per-user figures are not treated as a complete minimum subscription. The live pricing page footnote and $1,000 implementation fee require a full quote. No numeric entryPaid or tier amount is emitted.",
+    "zohoDesk": "Help-center statement on light-agent availability conflicts with the edition matrix for Express; the discrepancy is stated, not silently resolved."
+  },
+  "claims": "Documentation-based buyer checks and worked examples, not hands-on product testing, observed customer savings, recovered search visibility or paid commissions."
+}

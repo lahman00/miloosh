@@ -1,3 +1,4 @@
+import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
 import type { MetadataRoute } from "next";
 import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checklists";
 import { SITE_URL } from "@/lib/site";
@@ -39,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Actual page-content dates only: do not refresh the entire catalog at build time.
     lastModified: latestOf([
       toDate(software.accessedAt),
+      ...(BUYER_DEPTH_CHECKLISTS[software.slug] ? [toDate(BUYER_DEPTH_CONTENT_UPDATED_AT)] : []),
       ...(getFirstRevenuePage(software.slug) ? [toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)] : []),
       ...(BUYER_MIGRATION_CHECKLISTS[software.slug]
         ? [toDate(BUYER_MIGRATION_CHECKLISTS[software.slug]!.contentUpdatedAt)] : []),
@@ -61,9 +63,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}/${guide.slug}`,
     // These five guides gained the visible primary-page handoff panel on
     // this recorded content date. Do not refresh unrelated guides at build time.
-    lastModified: getFirstRevenueSupportForGuide(guide.slug)
-      ? latestOf([toDate(guide.updatedAt), toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)])
-      : toDate(guide.updatedAt),
+    lastModified: latestOf([
+      toDate(guide.updatedAt),
+      ...(getFirstRevenueSupportForGuide(guide.slug) ? [toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)] : []),
+      ...(BUYER_DEPTH_GUIDE_PATHS.some(path => path === `/${guide.slug}`) ? [toDate(BUYER_DEPTH_CONTENT_UPDATED_AT)] : []),
+    ]),
     changeFrequency: "monthly",
     priority: 0.85,
   }));
@@ -81,6 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         .filter((s): s is NonNullable<typeof s> => Boolean(s))
         .map((s) => toDate(s.accessedAt));
       if (moneyPage) dates.push(toDate(moneyPage.updatedAt));
+      if (BUYER_DEPTH_CHECKLISTS[slugA] || BUYER_DEPTH_CHECKLISTS[slugB]) dates.push(toDate(BUYER_DEPTH_CONTENT_UPDATED_AT));
       return {
         url: `${SITE_URL}/compare/${comparisonSlug}`,
         ...(dates.length > 0 ? { lastModified: latestOf(dates) } : {}),

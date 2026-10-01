@@ -28,7 +28,13 @@ describe("five canonical buyer pages: pricing and offer integrity", () => {
     for(const p of FIRST_REVENUE_PAGES){expect(getActivePartner(p.slug)?.status).toBe("active");expect(getActivePartner(p.slug)?.affiliateUrl).toBeTruthy();expect(getSoftware(p.slug)?.pricing?.officialSource).toBeTruthy();}
   });
   it("states per-seat pricing and the free plan for Setmore",()=>expect(firstRevenuePriceLine(getSoftware("setmore")!)).toContain("Free plan available. Paid-plan snapshot: USD 5/month per seat."));
-  it("gives Close specific limitations instead of hiding an empty cons array",()=>expect(getSoftware("close")!.cons).toHaveLength(2));
+  it("discloses Close's seat, workflow and separate usage limitations", () => {
+    const cons = getSoftware("close")!.cons!;
+    expect(cons).toHaveLength(3);
+    expect(cons.some(item => item.includes("one user") && item.includes("10,000 leads"))).toBe(true);
+    expect(cons.some(item => item.includes("Growth or Scale"))).toBe(true);
+    expect(cons.some(item => item.includes("Phone numbers") && item.includes("AI consumption"))).toBe(true);
+  });
   it("discloses Close's trial-only offer instead of implying a permanent free plan",()=>{
     const pricing = getSoftware("close")!.pricing!;
     expect(pricing.freePlan).toBeFalsy();
