@@ -43,8 +43,6 @@ export default function PricingPressureIndexPage() {
   const enterpriseContact = statByLabel("Enterprise tier requires contacting sales");
   const perSeat = statByLabel("Explicitly per-seat pricing");
 
-  const generatedDate = new Date(index.generatedAt).toISOString().slice(0, 10);
-
   return (
     <main className="flex-1 py-16 sm:py-20">
       <Container>
@@ -58,7 +56,7 @@ export default function PricingPressureIndexPage() {
             SaaS Pricing Pressure Index 2026
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
-            {`Published SaaS list prices and plan availability from ${index.sampleSize} catalog products. Sources were checked between ${index.verificationWindow.earliest ?? 'an unrecorded date'} and ${index.verificationWindow.latest ?? 'an unrecorded date'}; this view was compiled on ${generatedDate}. These are not customer invoices or evidence of actual spending.`}
+            {`Published SaaS list prices and plan availability from ${index.sampleSize} catalog products. Sources were checked between ${index.verificationWindow.earliest ?? 'an unrecorded date'} and ${index.verificationWindow.latest ?? 'an unrecorded date'}. These are not customer invoices or evidence of actual spending.`}
           </p>
           <div className="mt-6 flex items-center gap-3">
             <ShareButton title="Miloosh SaaS Pricing Pressure Index 2026" url={PAGE_URL} />
@@ -155,7 +153,7 @@ export default function PricingPressureIndexPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Sample</dt>
               <dd className="mt-1 text-zinc-400">
-                {`${index.sampleSize} of ${index.totalCatalogSize} catalog products (as of ${generatedDate}).`} {index.inclusionRule}
+                {`${index.sampleSize} of ${index.totalCatalogSize} catalog products.`} {index.inclusionRule}
               </dd>
             </div>
             <div>

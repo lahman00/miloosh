@@ -37,7 +37,6 @@ const VERIFIED_DATE = "2026-09-27";
 
 export default function CustomerSupportPricingBenchmarkPage() {
   const b = buildSupportPricingBenchmark();
-  const generatedDate = new Date(b.generatedAt).toISOString().slice(0, 10);
   const datasetJsonLd = getDatasetJsonLd({
     name: TITLE,
     description: DESCRIPTION,
@@ -249,7 +248,7 @@ export default function CustomerSupportPricingBenchmarkPage() {
             <div>
               <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Verification</dt>
               <dd className="mt-1 text-zinc-400">
-                {`Each row's price fields are checked individually against that vendor's own pricing page (never a third-party aggregator, when an official source exists). AI-usage-pricing classification (whether a distinct, separately billed AI unit is publicly disclosed) was hand-verified per vendor, not inferred from keyword matching. All ${b.sampleSize} rows were most recently re-verified on ${b.verificationWindow.latest ?? "an unrecorded date"}; this page was compiled on ${generatedDate}.`}
+                {`Each row's price fields are checked individually against that vendor's own pricing page (never a third-party aggregator, when an official source exists). AI-usage-pricing classification (whether a distinct, separately billed AI unit is publicly disclosed) was hand-verified per vendor, not inferred from keyword matching. All ${b.sampleSize} rows were most recently re-verified on ${b.verificationWindow.latest ?? "an unrecorded date"}.`}
               </dd>
             </div>
             <div>
