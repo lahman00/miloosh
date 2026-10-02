@@ -796,24 +796,26 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "CallRail Partner Program",
     network: "PartnerStack",
     productSlugs: ["callrail"],
-    status: "APPROVED_NEEDS_LINK",
+    status: "OWNER_ACTION_REQUIRED",
     statusUpdatedAt: "2026-10-02",
     applicationSubmittedAt: "2026-09-30",
     decisionAt: "2026-10-02",
-    affiliateUrl: null,
-    commissionModel: "Commission amount is defined in the live Partner Portal; do not infer a rate from historical research.",
+    affiliateUrl: "https://partners.callrail.com/p28z0h9qkxk2",
+    commissionModel: "$50 for each referred customer upon their first CallRail invoice, per the account-specific welcome email",
     cookieWindow: null,
     evidence: [
       "Historical PartnerStack / application notes in docs/affiliate-applications.md",
-      "First-party CallRail email from Marilyn Holmes, 2026-09-01: after Miloosh clarified that it is an independent editorial software-comparison publisher, CallRail explicitly directed Miloosh to fill out the Affiliate Partnership Program application at dash.partnerstack.com/application?company=callrail&group=affiliatepartners. The email says a Partnerships Team member will reach out after submission.",
-      "The same 2026-09-01 thread states CallRail's systems did not show an active account for the Miloosh email addresses checked. No later application-confirmation email was found in Gmail on 2026-09-29.",
-      "Superseding first-party evidence: Gmail 1a0f0f5f65cffa67, Your Application to join CallRail, 2026-09-30 06:16:50 UTC, confirms that the application was submitted for CallRail review; addressed to hello@miloosh.com."
+      "First-party CallRail email from Marilyn Holmes, 2026-09-01: after Miloosh clarified that it is an independent editorial software-comparison publisher, CallRail explicitly directed Miloosh to fill out the Affiliate Partnership Program application at dash.partnerstack.com/application?company=callrail&group=affiliatepartners.",
+      "Superseding first-party evidence: Gmail 1a0f0f5f65cffa67, Your Application to join CallRail, 2026-09-30, confirms submission under hello@miloosh.com.",
+      "Authenticated PartnerStack observed 2026-10-02: CallRail status Active but program access gated by 'Please review the program's Terms of Service'.",
+      "First-party welcome email from Becky Rappaport, 2026-10-02, Gmail 1a0fd06463121be6: issued https://partners.callrail.com/p28z0h9qkxk2 and states $50 for every referral upon the customer's first CallRail invoice.",
+      "Owner-supplied CallRail Affiliate Program terms reviewed 2026-10-02: accepted portal terms and W-8BEN are required before payment for a non-U.S. affiliate."
     ],
-    ownerBlocker: "Authenticated PartnerStack shows the relationship Active but requires review/acceptance of current CallRail Terms of Service. Current CallRail terms also require a completed W-8BEN for a non-U.S. affiliate before payment; owner action is required for both contractual acceptance and tax submission.",
+    ownerBlocker: "Accept the current CallRail Terms of Service in PartnerStack and complete/send the required W-8BEN. Do not publish or treat payout as ready until both are complete.",
     formBlocker: null,
-    eligibility: "Active PartnerStack relationship; access/payment completion remains blocked by current terms review and W-8BEN requirement.",
+    eligibility: "Approved relationship with account-specific referral link issued; commercial activation/payment remains owner-blocked by ToS acceptance and W-8BEN.",
     applicationUrl: "https://dash.partnerstack.com/application?company=callrail&group=affiliatepartners",
-    notes: "Authenticated PartnerStack observed 2026-10-02: CallRail status Active with 'Please review the program's Terms of Service', 0 clicks and 0 signups. Owner-supplied CallRail affiliate terms require accepted portal terms and W-8BEN for non-U.S. affiliates before payment. No personalized referral asset, earned commission or payout has been verified; do not accept terms or submit tax forms without owner participation."
+    notes: "Do not place CallRail in ACTIVE_PARTNERS yet. The exact referral asset and $50 first-invoice commission are now verified, but PartnerStack access remains gated on terms acceptance and the current agreement requires W-8BEN before payment. No earned commission or payout is evidenced."
   },
 
   // ==========================================
