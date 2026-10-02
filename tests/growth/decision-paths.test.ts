@@ -21,10 +21,10 @@ describe("Bounded decision-navigation improvements", () => {
       ([a, b]) => `/compare/${getComparisonSlug(a, b)}`,
     ),
   ]);
-  it("has fourteen unique paths on ten existing pages; all endpoints exist and are unprotected", () => {
+  it("has eighteen decision paths on twelve existing pages; all endpoints exist and are unprotected", () => {
     const protections = loadProtection();
     expect(Object.keys(DECISION_PATHS)).toHaveLength(12);
-    expect(Object.values(DECISION_PATHS).flat()).toHaveLength(16);
+    expect(Object.values(DECISION_PATHS).flat()).toHaveLength(18);
     for (const [source, items] of Object.entries(DECISION_PATHS)) {
       expect(inventory.has(source)).toBe(true);
       expect(new Set(items.map((i) => i.href)).size).toBe(items.length);

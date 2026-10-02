@@ -2,6 +2,68 @@ import type { BuyerChecklist } from "@/data/seo/buyer-checklists";
 
 /** Documentation-based decisions, not observed customer outcomes or new rankings. */
 export const BUYER_DEPTH_CHECKLISTS: Record<string, BuyerChecklist> = {
+  "shopify": {
+    "title": "Before choosing Shopify, price staff access and payment economics",
+    "introduction": "Documentation-based buyer checks, not a hands-on store migration. Start with the people who need admin access and the payment provider you will actually use; a lower subscription price can be offset by workflow or transaction requirements.",
+    "verifiedAt": "2026-10-02",
+    "checks": [
+      {
+        "question": "Does Basic cover the people who need to operate the store?",
+        "answer": "Shopify currently lists Basic at $29/month when billed yearly ($39 monthly), but Basic does not include additional staff accounts. Grow lists up to five staff accounts and Advanced up to 15. Separate outside collaborators from employees who need staff access before choosing a plan; do not upgrade for team access until you know who actually needs an account.",
+        "source": "https://www.shopify.com/pricing",
+        "sourceLabel": "Shopify current plan pricing and staff-account limits"
+      },
+      {
+        "question": "Will the payment setup add a plan-dependent transaction fee?",
+        "answer": "Shopify lists third-party transaction fees of 2% on Basic, 1% on Grow and 0.6% on Advanced when a third-party payment provider is used. Those fees are separate from the payment provider's own processing charges. Model the provider you will actually use and the expected sales volume; do not compare plan subscriptions while ignoring transaction economics.",
+        "source": "https://help.shopify.com/en/manual/your-account/manage-billing/billing-charges/types-of-charges/third-party-charges/third-party-transaction-fees",
+        "sourceLabel": "Shopify third-party transaction-fee rules"
+      },
+      {
+        "question": "Which operational requirement actually justifies Advanced?",
+        "answer": "Advanced currently adds 15 staff accounts, live third-party carrier-calculated shipping rates, more competitive transaction rates and additional international-commerce controls. Treat those as decision gates, not prestige features. If the store does not need the staff count, carrier-rate workflow or market-level customization, test whether Grow or Basic satisfies the real operating model first.",
+        "source": "https://help.shopify.com/en/manual/intro-to-shopify/pricing-plans/plans-features/shopify-advanced-plan",
+        "sourceLabel": "Shopify Advanced feature boundaries"
+      }
+    ],
+    "options": [
+      {
+        "slug": "shopify",
+        "fit": "Keep Shopify on the shortlist when the required staff access, payment economics and store operations fit the selected plan. Compare alternatives using the same payment provider, team size and shipping requirements."
+      }
+    ]
+  },
+  "wix": {
+    "title": "Before choosing Wix, separate website needs from payment and collaborator requirements",
+    "introduction": "Documentation-based buyer checks, not a completed website migration. Start with whether the site needs online payments and how many people must collaborate; Wix plan prices vary by location, so feature fit should come before copying a headline price.",
+    "verifiedAt": "2026-10-02",
+    "checks": [
+      {
+        "question": "Does the site need to accept online payments?",
+        "answer": "Wix positions Light for a basic online presence, while Core and higher plans support payments and ecommerce. If the site only needs a custom domain and a professional presence, do not buy an ecommerce tier solely because it is newer or more expensive. If customers must pay online, Core is the first standard Wix site plan in the current plan family that includes payment acceptance.",
+        "source": "https://support.wix.com/en/article/choosing-a-premium-plan",
+        "sourceLabel": "Wix current plan-purpose and payment boundaries"
+      },
+      {
+        "question": "How many collaborators need access to the site?",
+        "answer": "Wix currently lists Core with five site collaborators, Business with ten and Business Elite with 100. Count the people who actually need dashboard access before selecting a tier. A content editor, ecommerce operator and developer may all need collaboration access, but that does not automatically mean the largest plan is required.",
+        "source": "https://www.wix.com/ecommerce/online-store",
+        "sourceLabel": "Wix ecommerce plan collaborator limits"
+      },
+      {
+        "question": "Are you comparing a regional quote or a universal price?",
+        "answer": "Wix states that prices and currency vary by location and that displayed yearly-plan pricing is paid in full for the selected term. Record the actual quote shown for the business location, then compare the included ecommerce and collaboration features. Do not publish or budget a single Wix price as though it applies globally.",
+        "source": "https://www.wix.com/plans",
+        "sourceLabel": "Wix regional pricing and annual-term disclosure"
+      }
+    ],
+    "options": [
+      {
+        "slug": "wix",
+        "fit": "Keep Wix on the shortlist when the required payment capability, collaborator count and regional quote fit the project. A non-commerce site can stay on a simpler plan; a store should compare equivalent ecommerce requirements."
+      }
+    ]
+  },
   "todoist": {
     "title": "Before choosing Todoist, separate personal capacity from team governance",
     "introduction": "Documentation-based buyer checks, not a hands-on productivity trial. Keep Beginner when the personal workflow fits; pay for Pro or Business only when the missing capacity, planning view or team control is concrete.",
@@ -252,18 +314,23 @@ export const BUYER_DEPTH_CHECKLISTS: Record<string, BuyerChecklist> = {
   }
 };
 
-/** Actual October 1 editorial release date; never advanced at build time. */
+/** Actual October 1 comparison-content release date for the Wave-1 slugs below. */
 export const BUYER_DEPTH_CONTENT_UPDATED_AT = "2026-10-01";
-export const BUYER_DEPTH_GUIDE_PATHS = [
-  "/best-task-management-for-individuals",
-  "/best-scheduling-software-for-small-business",
-  "/best-knowledge-base-software-for-teams",
-  "/best-automation-software-for-small-business",
-  "/best-help-desk-for-small-business",
-  "/best-crm-for-sales-teams",
-  "/best-project-management-software-for-small-teams",
-  "/best-voice-ai-for-creators",
-] as const;
+
+/** Real per-guide buyer-depth edit dates. Never refresh old guides at build time. */
+export const BUYER_DEPTH_GUIDE_UPDATED_AT: Readonly<Record<string, string>> = {
+  "/best-task-management-for-individuals": "2026-10-01",
+  "/best-scheduling-software-for-small-business": "2026-10-01",
+  "/best-knowledge-base-software-for-teams": "2026-10-01",
+  "/best-automation-software-for-small-business": "2026-10-01",
+  "/best-help-desk-for-small-business": "2026-10-01",
+  "/best-crm-for-sales-teams": "2026-10-01",
+  "/best-project-management-software-for-small-teams": "2026-10-01",
+  "/best-voice-ai-for-creators": "2026-10-01",
+  "/best-ecommerce-platform-for-small-business": "2026-10-02",
+};
+
+export const BUYER_DEPTH_GUIDE_PATHS = Object.keys(BUYER_DEPTH_GUIDE_UPDATED_AT);
 
 /** Only Wave-1 product-record edits changed reusable comparison text. Wave-2
  * checklists are software-page-only and must not refresh unrelated comparisons. */

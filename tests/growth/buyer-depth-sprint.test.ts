@@ -2,7 +2,7 @@ import sitemap from "@/app/sitemap";
 import { describe, expect, it } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
+import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_GUIDE_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
 import { BUYER_CHECKLISTS } from "@/data/seo/buyer-checklists";
 import { DECISION_PATHS } from "@/data/seo/decision-paths";
 import { DecisionBuyerChecklist } from "@/components/DecisionBuyerChecklist";
@@ -12,10 +12,10 @@ import { getSoftwareCtaUrl } from "@/lib/affiliate";
 import { loadCurrentProtection } from "@/lib/google-war/current-protection";
 import { renderedHtml } from "@/lib/seo/rendered-html";
 
-const slugs = ["trainual", "zoho-flow", "zoho-desk", "close", "zoho-projects", "elevenlabs", "todoist", "setmore"] as const;
-const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com", "elevenlabs.io", "www.todoist.com", "www.setmore.com", "support.setmore.com"]);
+const slugs = ["trainual", "zoho-flow", "zoho-desk", "close", "zoho-projects", "elevenlabs", "todoist", "setmore", "shopify", "wix"] as const;
+const hosts = new Set(["trainual.com", "www.zoho.com", "help.zoho.com", "close.com", "help.close.com", "elevenlabs.io", "www.todoist.com", "www.setmore.com", "support.setmore.com", "www.shopify.com", "help.shopify.com", "support.wix.com", "www.wix.com"]);
 describe("Buyer-depth sprint: factual and commercial boundaries", () => {
-  it("is bounded to six existing unprotected products, not a new catalog or experiment", () => {
+  it("is bounded to ten existing unprotected products, not a new catalog or experiment", () => {
     expect(Object.keys(BUYER_DEPTH_CHECKLISTS).sort()).toEqual([...slugs].sort());
     for (const slug of slugs) {
       expect(getSoftware(slug)).toBeDefined();
@@ -25,7 +25,7 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
   it.each(slugs)("%s has three dated source-based decisions without claimed hands-on testing", slug => {
     const c = BUYER_DEPTH_CHECKLISTS[slug];
     expect(BUYER_CHECKLISTS[slug]).toEqual(c);
-    expect(c.verifiedAt).toBe("2026-10-01");
+    expect(c.verifiedAt).toBe(slug === "shopify" || slug === "wix" ? "2026-10-02" : "2026-10-01");
     expect(c.introduction).toMatch(/Documentation-based/);
     expect(c.introduction).toMatch(/not a/);
     expect(c.checks).toHaveLength(3);
@@ -86,6 +86,16 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
     expect(eleven).toContain("one monthly credit pool");
     expect(eleven).toContain("Pay As You Go");
   });
+  it("keeps Shopify and Wix plan gates explicit without inventing a universal Wix price", () => {
+    const shopify = BUYER_DEPTH_CHECKLISTS.shopify.checks.map(c => c.answer).join(" ");
+    expect(shopify).toContain("five staff accounts");
+    expect(shopify).toContain("2% on Basic");
+    expect(shopify).toContain("15 staff accounts");
+    const wix = BUYER_DEPTH_CHECKLISTS.wix.checks.map(c => c.answer).join(" ");
+    expect(wix).toContain("Core");
+    expect(wix).toContain("five site collaborators");
+    expect(wix).toContain("prices and currency vary by location");
+  });
   it.each(slugs)("%s renders the real issued CTA, sponsored disclosure and a usable anchor", slug => {
     const html = renderToStaticMarkup(createElement(DecisionBuyerChecklist, { checklist: BUYER_DEPTH_CHECKLISTS[slug] }));
     const affiliate = getActivePartner(slug)!.affiliateUrl!;
@@ -96,9 +106,9 @@ describe("Buyer-depth sprint: factual and commercial boundaries", () => {
     expect(html).toContain('id="buyer-checklist"');
     expect((html.match(/<h3/g) ?? []).length).toBe(4);
   });
-  it("adds exactly six deep links to actual rendered checklist anchors", () => {
+  it("adds exactly ten deep links to actual rendered checklist anchors", () => {
     const links = Object.values(DECISION_PATHS).flat().filter(p => p.href.endsWith("#buyer-checklist"));
-    expect(links).toHaveLength(8);
+    expect(links).toHaveLength(10);
     for (const link of links) {
       const slug = link.href.split("#")[0].split("/").pop()!;
       expect(BUYER_DEPTH_CHECKLISTS[slug]).toBeDefined();
@@ -112,8 +122,8 @@ it("updates only recorded content dates without expanding the sitemap inventory"
   const rows = sitemap();
   expect(rows).toHaveLength(988);
   const dates = new Map(rows.map(r => [new URL(r.url).pathname, new Date(r.lastModified ?? 0).toISOString().slice(0,10)]));
-  for (const slug of slugs) expect(dates.get(`/software/${slug}`)).toBe(BUYER_DEPTH_CONTENT_UPDATED_AT);
-  for (const path of BUYER_DEPTH_GUIDE_PATHS) expect(dates.get(path)).toBe(BUYER_DEPTH_CONTENT_UPDATED_AT);
+  for (const slug of slugs) expect(dates.get(`/software/${slug}`)).toBe(BUYER_DEPTH_CHECKLISTS[slug].verifiedAt);
+  for (const path of BUYER_DEPTH_GUIDE_PATHS) expect(dates.get(path)).toBe(BUYER_DEPTH_GUIDE_UPDATED_AT[path]);
   expect(dates.get("/compare/wix-vs-shopify")).toBe("2026-09-25");
   expect(BUYER_DEPTH_CHECKLISTS["airtable"]).toBeUndefined();
 });

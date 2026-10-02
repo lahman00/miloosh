@@ -1,4 +1,4 @@
-import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_COMPARISON_CONTENT_SLUGS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_PATHS } from "@/data/seo/buyer-depth-checklists";
+import { BUYER_DEPTH_CHECKLISTS, BUYER_DEPTH_COMPARISON_CONTENT_SLUGS, BUYER_DEPTH_CONTENT_UPDATED_AT, BUYER_DEPTH_GUIDE_UPDATED_AT } from "@/data/seo/buyer-depth-checklists";
 import type { MetadataRoute } from "next";
 import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checklists";
 import { SITE_URL } from "@/lib/site";
@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Actual page-content dates only: do not refresh the entire catalog at build time.
     lastModified: latestOf([
       toDate(software.accessedAt),
-      ...(BUYER_DEPTH_CHECKLISTS[software.slug] ? [toDate(BUYER_DEPTH_CONTENT_UPDATED_AT)] : []),
+      ...(BUYER_DEPTH_CHECKLISTS[software.slug] ? [toDate(BUYER_DEPTH_CHECKLISTS[software.slug].verifiedAt)] : []),
       ...(getFirstRevenuePage(software.slug) ? [toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)] : []),
       ...(BUYER_MIGRATION_CHECKLISTS[software.slug]
         ? [toDate(BUYER_MIGRATION_CHECKLISTS[software.slug]!.contentUpdatedAt)] : []),
@@ -66,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: latestOf([
       toDate(guide.updatedAt),
       ...(getFirstRevenueSupportForGuide(guide.slug) ? [toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)] : []),
-      ...(BUYER_DEPTH_GUIDE_PATHS.some(path => path === `/${guide.slug}`) ? [toDate(BUYER_DEPTH_CONTENT_UPDATED_AT)] : []),
+      ...(BUYER_DEPTH_GUIDE_UPDATED_AT[`/${guide.slug}`] ? [toDate(BUYER_DEPTH_GUIDE_UPDATED_AT[`/${guide.slug}`])] : []),
     ]),
     changeFrequency: "monthly",
     priority: 0.85,

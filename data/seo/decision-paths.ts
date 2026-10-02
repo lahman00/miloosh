@@ -75,6 +75,18 @@ export const DECISION_PATHS: Readonly<Record<string, readonly DecisionPath[]>> =
     ],
     "/best-ecommerce-platform-for-small-business": [
       {
+        href: "/software/shopify#buyer-checklist",
+        label: "Check Shopify staff access and payment economics",
+        question:
+          "Considering Shopify? Price the staff accounts and payment-provider setup before choosing a plan.",
+      },
+      {
+        href: "/software/wix#buyer-checklist",
+        label: "Check Wix payments and collaborator limits",
+        question:
+          "Considering Wix? Separate a basic website from a payment-enabled store and count collaborators before upgrading.",
+      },
+      {
         href: "/compare/omnisend-vs-klaviyo",
         label: "Compare Omnisend vs Klaviyo",
         question:

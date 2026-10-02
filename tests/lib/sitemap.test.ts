@@ -33,7 +33,7 @@ describe("sitemap lastModified coverage", () => {
       expect(entry?.lastModified, `${s.slug} missing from sitemap`).toBeTruthy();
       const expected = [
         s.accessedAt,
-        ...(BUYER_DEPTH_CHECKLISTS[s.slug] ? [BUYER_DEPTH_CONTENT_UPDATED_AT] : []),
+        ...(BUYER_DEPTH_CHECKLISTS[s.slug] ? [BUYER_DEPTH_CHECKLISTS[s.slug].verifiedAt] : []),
         ...(getFirstRevenuePage(s.slug) ? [FIRST_REVENUE_CONTENT_UPDATED_AT] : []),
         ...(BUYER_MIGRATION_CHECKLISTS[s.slug] ? [BUYER_MIGRATION_CHECKLISTS[s.slug]!.contentUpdatedAt] : []),
       ].sort().at(-1);
