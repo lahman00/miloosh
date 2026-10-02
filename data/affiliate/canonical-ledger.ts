@@ -772,7 +772,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "CallRail Partner Program",
     network: "PartnerStack",
     productSlugs: ["callrail"],
-    status: "ACTIVE",
+    status: "APPROVED_NEEDS_LINK",
     statusUpdatedAt: "2026-10-02",
     applicationSubmittedAt: "2026-09-30",
     decisionAt: "2026-10-02",

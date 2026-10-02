@@ -55,7 +55,7 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("help-scout")?.status).toBe("REJECTED");
     expect(byProgramId.get("clickup")?.status).toBe("REJECTED");
     expect(byProgramId.get("close")?.status).toBe("ACTIVE");
-    expect(byProgramId.get("callrail")?.status).toBe("PENDING_REVIEW");
+    expect(byProgramId.get("callrail")?.status).toBe("APPROVED_NEEDS_LINK");
     expect(byProgramId.get("callrail")?.applicationSubmittedAt).toBe("2026-09-30");
     expect(byProgramId.get("callrail")?.affiliateUrl).toBeNull();
     expect(byProgramId.get("zendesk")?.status).toBe("REJECTED");
