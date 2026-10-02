@@ -74,11 +74,12 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "freshbooks",
       "trainual", // First-party welcome to hello@miloosh.com; payout readiness remains UNVERIFIED.
       "apollo-io", // Active in the same authenticated PartnerStack account; account-level PayPal destination already exists.
+      "toggl-track", // Authenticated 2026-10-02 as approved in the same MILOOSH PartnerStack account.
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
     methodGuidance: "PartnerStack Support confirmed a PayPal account is already connected to hello@miloosh.com. Do not replace a working payout provider merely to optimize rails. Verify the account's tax/receipt profile and withdrawal readiness before marking this rail VERIFIED.",
-    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed, so this rail remains UNVERIFIED rather than being promoted to VERIFIED. First-party partner mail corroborates the relationships assigned here. A read-only confirmation request was sent 2026-09-29; acknowledgment ticket 124689 is not payout verification. Do not duplicate the pending request.",
+    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Authenticated MILOOSH commissions/withdrawals screen on 2026-10-02 additionally displayed 'Withdraw funds to: lahman00@gmail.com', confirming the shared account-level PayPal destination currently visible to the business PartnerStack account. Full tax/receipt-profile completeness and a successful withdrawal are still unverified, so this rail remains UNVERIFIED. Do not create program-specific payout methods for programs on this rail.",
   },
   {
     id: "partnerstack-personal",

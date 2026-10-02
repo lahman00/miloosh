@@ -21,9 +21,9 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     title: "1. PartnerStack payout verification — hello@miloosh.com",
     priority: 1,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
-    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual", "apollo-io"],
+    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual", "apollo-io", "toggl-track"],
     comparisonsAffected: 0,
-    commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the business account for the assigned relationships and, on 2026-09-14, confirmed a PayPal account is connected. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed.",
+    commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the business account for the assigned relationships and, on 2026-09-14, confirmed a PayPal account is connected. Authenticated MILOOSH withdrawals screen on 2026-10-02 displayed the account-level destination lahman00@gmail.com. Successful withdrawal and full tax/receipt readiness remain unverified.",
     preFilledFields: { "Account email": "hello@miloosh.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },
     ownerRequiredFields: [
       "Sign in with the existing email-and-password PartnerStack account; PartnerStack Support explicitly warned not to use Google sign-in for this account",

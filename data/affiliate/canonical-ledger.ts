@@ -78,7 +78,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "formBlocker": null,
     "eligibility": "Active PartnerStack affiliate relationship; self-referral, spam, link manipulation and direct PPC restrictions apply",
     "applicationUrl": "https://dash.partnerstack.com/application?company=apollo&gref=page&group=referrers",
-    "notes": "Active relationship verified 2026-10-02. Existing PartnerStack payout rail shows PayPal withdrawal to lahman00@gmail.com; do not create an Apollo-specific payout account unless the live program explicitly requires one. No conversion or earned commission is evidenced."
+    "notes": "Active relationship verified 2026-10-02. Existing PartnerStack payout rail shows PayPal withdrawal to lahman00@gmail.com; do not create an Apollo-specific payout account unless the live program explicitly requires one. Authenticated PartnerStack later showed 2 link clicks and 1 customer but $0 revenue / $0 commission; the visible customer-created activity is tied to Miloosh's own hello@miloosh.com identity, so treat it as internal/self activity, not an external conversion or revenue signal."
   },
   {
     "programId": "aircall",
@@ -127,6 +127,30 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "eligibility": "Affiliate enrollment and programme-terms acceptance verified in the existing Miloosh PartnerStack account.",
     "applicationUrl": "https://www.softr.io/affiliate",
     "notes": "October 1: reviewed linked September 2025 terms, accepted them in the existing portal and verified full access. Exact referral URL and destination https://www.softr.io/ are captured. No Softr catalog page exists; do not create one solely to monetize approval. Written schedule clarification sent in the existing welcome thread as Gmail 1a0f6ebd4b000599. No paid advertising, coupons or self-referrals. Payment readiness remains separate."
+  },
+  {
+    "programId": "cloro",
+    "programName": "cloro Affiliate Program",
+    "network": "PartnerStack",
+    "productSlugs": [],
+    "status": "APPROVED_NEEDS_EDITORIAL_CONTENT",
+    "statusUpdatedAt": "2026-10-02",
+    "applicationSubmittedAt": null,
+    "decisionAt": "2026-10-02",
+    "affiliateUrl": "https://affiliate.cloro.dev/jg7ddymvspdm",
+    "commissionModel": "Account-specific commission schedule not exposed in the authenticated partnership response; do not invent a rate.",
+    "cookieWindow": null,
+    "evidence": [
+      "Authenticated PartnerStack partnership read 2026-10-02: cloro approved=true with accepted agreement and exact default referral asset https://affiliate.cloro.dev/jg7ddymvspdm, destination https://cloro.dev.",
+      "Authenticated PartnerStack stats 2026-10-02: 1 link click, 1 customer, $0 revenue, $0 commission.",
+      "Authenticated PartnerStack Home activity identifies the sole customer-created event as Eyal Haimovich / lahman00@gmail.com on 2026-09-04; this is Miloosh owner/internal activity, not an external referral conversion.",
+      "Public first-party cloro site checked 2026-10-02: cloro is a data API for Google Search and AI-answer surfaces; no existing Miloosh catalog page was found."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Approved PartnerStack relationship with account-specific referral link issued",
+    "applicationUrl": null,
+    "notes": "No cloro catalog page exists in Miloosh. Do not create one solely to monetize the relationship. The single PartnerStack customer event is internal/self activity with zero revenue and must never be counted as Miloosh's first conversion."
   },
   {
     "programId": "proton",
