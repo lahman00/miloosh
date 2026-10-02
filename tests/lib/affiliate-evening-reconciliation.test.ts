@@ -60,7 +60,7 @@ describe("2026-09-30 first-party partner reconciliation", () => {
   });
   it("does not change the first-revenue cohort or activate Buddy Punch without content", () => {
     expect(FIRST_REVENUE_PAGES.map(row => row.slug)).toEqual(["airtable", "todoist", "close", "setmore", "elevenlabs"]);
-    expect(ACTIVE_PARTNERS).toHaveLength(31);
+    expect(ACTIVE_PARTNERS).toHaveLength(32);
     expect(getActivePartner("buddy-punch")).toBeUndefined();
     expect(getActivePartner("trainual")?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
   });

@@ -114,7 +114,7 @@ describe("Wave 2 buyer-decision release", () => {
       expect(getSoftwareCtaRel(product)).toContain("noopener");
       expect(getSoftwareCtaRel(product)).toContain("noreferrer");
     }
-    expect(affiliateProfiles).toBe(8); // Zoho Flow was issued and activated on 2026-10-01.
+    expect(affiliateProfiles).toBe(9); // Zoho Flow plus Toggl Track are now issued active assets; editorial membership is unchanged.
     expect(JSON.stringify([guides, briefs])).not.toMatch(/affiliateUrl|partnerstack|partnerlinks|pxf\.io/);
     // Editorial choices remain independent of commission availability.
     expect(guides["best-help-desk-for-small-business"].products.some(p => shouldShowAffiliateDisclosure(getSoftware(p.slug)!))).toBe(false);

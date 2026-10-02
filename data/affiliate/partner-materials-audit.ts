@@ -163,6 +163,22 @@ export const PARTNER_MATERIAL_AUDIT: readonly PartnerMaterialAudit[] = [
     ["Constant Contact", "constant-contact", "https://join.constantcontact.com/ezj6pum5ei2l"], ["Moosend", "moosend", "https://trymoo.moosend.com/4jis9o5bx8wx"], ["Airtable", "airtable", "https://airtable.partnerlinks.io/b0dz88v48tek"], ["monday.com", "monday", "https://try.monday.com/1p2fpizulcj7"], ["WhatConverts", "whatconverts", "https://partners.whatconverts.com/bmckzlf0vnl8"], ["ElevenLabs", "elevenlabs", "https://try.elevenlabs.io/gkp73pehjgtl"], ["KrispCall", "krispcall", "https://try.krispcall.com/aikpbrrrl8k9"],
   ].map(([company, slug, affiliateUrl]) => record({ company: company!, slug: slug!, programNetwork: "PartnerStack", currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Approved", affiliateUrl: affiliateUrl!, readiness: "READY NOW", evidence: [HANDOFF, "data/affiliate/active-partners.ts"], lastVerifiedDate: "2026-08-19" })),
   record({
+    company: "Toggl Track", slug: "toggl-track", programNetwork: "PartnerStack",
+    currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Authenticated PartnerStack approval verified 2026-10-02",
+    affiliateUrl: "https://get.toggl.com/vhyyqojod9xs",
+    commission: { type: "one_time_percentage", value: "30%", originalWording: "30% commission on first payment per new customer" },
+    recurrence: "One commission on the referred customer's first payment",
+    cookieWindow: "90 days",
+    payoutMethod: "Shared MILOOSH PartnerStack rail; authenticated withdrawals screen shows PayPal destination configured, successful withdrawal not yet verified",
+    qualificationRules: "Exact qualifying-customer rules remain subject to current Toggl PartnerStack terms; do not infer beyond the issued Content Partner relationship.",
+    readiness: "READY NOW", lastVerifiedDate: "2026-10-02",
+    evidence: [
+      "Authenticated PartnerStack 2026-10-02: Toggl approved=true, application_status=approved, group Content Partners, agreement accepted.",
+      "Authenticated PartnerStack 2026-10-02: issued default asset https://get.toggl.com/vhyyqojod9xs named 'Toggl Track Sales Page'.",
+      "data/affiliate/active-partners.ts and canonical-ledger.ts."
+    ],
+  }),
+  record({
     company: "FreshBooks", slug: "freshbooks", programNetwork: "PartnerStack",
     currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Approved 2026-09-15",
     affiliateUrl: "https://partner.freshbooks.com/gg7ovvifr1bd",
