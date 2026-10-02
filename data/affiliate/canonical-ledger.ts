@@ -61,21 +61,24 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "productSlugs": [
       "apollo-io"
     ],
-    "status": "PENDING_REVIEW",
-    "statusUpdatedAt": "2026-09-30",
+    "status": "ACTIVE",
+    "statusUpdatedAt": "2026-10-02",
     "applicationSubmittedAt": "2026-09-30",
-    "decisionAt": null,
-    "affiliateUrl": null,
-    "commissionModel": "Account-specific payable offer not verified; public research is not assigned commission",
-    "cookieWindow": null,
+    "decisionAt": "2026-10-02",
+    "affiliateUrl": "https://get.apollo.io/3k3emp09ar05",
+    "commissionModel": "15% of revenue received on monthly plans and 20% on annual plans for the first year, subject to current Apollo affiliate terms",
+    "cookieWindow": "90 days",
     "evidence": [
-      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f23df662a2deb read in this sprint."
+      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f23df662a2deb read in this sprint.",
+      "Authenticated PartnerStack dashboard observed 2026-10-02: Apollo.io status Active, 0 clicks, 0 signups, $0 revenue.",
+      "Owner-supplied exact referral URL https://get.apollo.io/3k3emp09ar05; read-only redirect check resolved to Apollo signup with PartnerStack tracking parameters.",
+      "Owner-supplied Apollo Affiliate Referral Partner Program terms, last updated 2025-10-13, reviewed 2026-10-02."
     ],
     "ownerBlocker": null,
     "formBlocker": null,
-    "eligibility": "Publisher application submitted; awaiting program review",
+    "eligibility": "Active PartnerStack affiliate relationship; self-referral, spam, link manipulation and direct PPC restrictions apply",
     "applicationUrl": "https://dash.partnerstack.com/application?company=apollo&gref=page&group=referrers",
-    "notes": "Do not apply again. No issued referral link or earned commission evidenced."
+    "notes": "Active relationship verified 2026-10-02. Existing PartnerStack payout rail shows PayPal withdrawal to lahman00@gmail.com; do not create an Apollo-specific payout account unless the live program explicitly requires one. No conversion or earned commission is evidenced."
   },
   {
     "programId": "aircall",
@@ -84,21 +87,22 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "productSlugs": [
       "aircall"
     ],
-    "status": "PENDING_REVIEW",
-    "statusUpdatedAt": "2026-09-30",
+    "status": "REJECTED",
+    "statusUpdatedAt": "2026-10-02",
     "applicationSubmittedAt": "2026-09-30",
-    "decisionAt": null,
+    "decisionAt": "2026-10-02",
     "affiliateUrl": null,
-    "commissionModel": "Account-specific payable offer not verified; public research is not assigned commission",
+    "commissionModel": "N/A — application declined",
     "cookieWindow": null,
     "evidence": [
-      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f245207674373 read in this sprint."
+      "First-party PartnerStack submission receipt, 2026-09-30, to hello@miloosh.com; Gmail 1a0f245207674373 read in this sprint.",
+      "Owner-supplied Aircall/PartnerStack decision message, 2026-10-02: 'After careful consideration, Aircall has declined your application to join their program.'"
     ],
     "ownerBlocker": null,
     "formBlocker": null,
-    "eligibility": "Publisher application submitted; awaiting program review",
+    "eligibility": "Application declined",
     "applicationUrl": "https://aircall.partnerstack.com/?group=affiliatemarketingprogram",
-    "notes": "Do not apply again. No issued referral link or earned commission evidenced. Application requests clarification for independent editorial reviews and comparisons; an application acceptance alone would NOT waive the written-consent requirement."
+    "notes": "Do not re-apply or build affiliate-specific Aircall work without new first-party evidence that Aircall invites a new application. No rejection reason was provided; do not speculate."
   },
   {
     "programId": "softr",
@@ -768,12 +772,12 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "CallRail Partner Program",
     network: "PartnerStack",
     productSlugs: ["callrail"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-09-30",
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-02",
     applicationSubmittedAt: "2026-09-30",
-    decisionAt: null,
+    decisionAt: "2026-10-02",
     affiliateUrl: null,
-    commissionModel: "Prior research recorded a publisher reward model; exact current account terms must be verified after the correct application is submitted.",
+    commissionModel: "Commission amount is defined in the live Partner Portal; do not infer a rate from historical research.",
     cookieWindow: null,
     evidence: [
       "Historical PartnerStack / application notes in docs/affiliate-applications.md",
@@ -781,11 +785,11 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
       "The same 2026-09-01 thread states CallRail's systems did not show an active account for the Miloosh email addresses checked. No later application-confirmation email was found in Gmail on 2026-09-29.",
       "Superseding first-party evidence: Gmail 1a0f0f5f65cffa67, Your Application to join CallRail, 2026-09-30 06:16:50 UTC, confirms that the application was submitted for CallRail review; addressed to hello@miloosh.com."
     ],
-    ownerBlocker: null,
+    ownerBlocker: "Authenticated PartnerStack shows the relationship Active but requires review/acceptance of current CallRail Terms of Service. Current CallRail terms also require a completed W-8BEN for a non-U.S. affiliate before payment; owner action is required for both contractual acceptance and tax submission.",
     formBlocker: null,
-    eligibility: "Correct publisher application submitted under hello@miloosh.com; PartnerStack receipt dated 2026-09-30 confirms review, not approval.",
+    eligibility: "Active PartnerStack relationship; access/payment completion remains blocked by current terms review and W-8BEN requirement.",
     applicationUrl: "https://dash.partnerstack.com/application?company=callrail&group=affiliatepartners",
-    notes: "Correct-route application receipt independently read in Gmail on 2026-09-30 (message 1a0f0f5f65cffa67, received 06:16:50 UTC). The receipt confirms submission for CallRail review under hello@miloosh.com. Do not submit again. No approval, personalized referral asset, earned commission, or payout is evidenced."
+    notes: "Authenticated PartnerStack observed 2026-10-02: CallRail status Active with 'Please review the program's Terms of Service', 0 clicks and 0 signups. Owner-supplied CallRail affiliate terms require accepted portal terms and W-8BEN for non-U.S. affiliates before payment. No personalized referral asset, earned commission or payout has been verified; do not accept terms or submit tax forms without owner participation."
   },
 
   // ==========================================
