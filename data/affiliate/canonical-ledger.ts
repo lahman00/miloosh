@@ -129,6 +129,30 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "notes": "October 1: reviewed linked September 2025 terms, accepted them in the existing portal and verified full access. Exact referral URL and destination https://www.softr.io/ are captured. No Softr catalog page exists; do not create one solely to monetize approval. Written schedule clarification sent in the existing welcome thread as Gmail 1a0f6ebd4b000599. No paid advertising, coupons or self-referrals. Payment readiness remains separate."
   },
   {
+    "programId": "proton",
+    "programName": "Proton Affiliate Program",
+    "network": "PartnerStack",
+    "productSlugs": [],
+    "status": "APPROVED_NEEDS_EDITORIAL_CONTENT",
+    "statusUpdatedAt": "2026-10-02",
+    "applicationSubmittedAt": null,
+    "decisionAt": "2026-10-02",
+    "affiliateUrl": "https://now.getproton.me/0b5jdcpsbi0f",
+    "commissionModel": "25% revenue share for the first year of the customer, per the authenticated PartnerStack offer",
+    "cookieWindow": null,
+    "evidence": [
+      "Authenticated PartnerStack partnership read 2026-10-02: Proton approved=true with accepted agreement and group '25% Rev Share'.",
+      "Authenticated PartnerStack offer read 2026-10-02: 'Earn 25% for the first year of the customer!'.",
+      "Authenticated PartnerStack default link read 2026-10-02: https://now.getproton.me/0b5jdcpsbi0f for 'Proton Workspace for Business'.",
+      "First-party Proton onboarding emails received 2026-10-02 to hello@miloosh.com, including PartnerStack portal guidance and Proton VPN for Business product material."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Approved PartnerStack affiliate relationship with account-specific referral asset issued",
+    "applicationUrl": null,
+    "notes": "No Proton catalog page exists in Miloosh as of 2026-10-02. Keep the relationship documented but do not create a page solely because an affiliate asset exists. Live PartnerStack stats show 0 clicks, 0 customers and $0 revenue."
+  },
+  {
     "programId": "modge",
     "programName": "Modge Affiliate Program",
     "network": "PartnerStack",
@@ -771,25 +795,27 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "Toggl Track Partner Program",
     network: "PartnerStack",
     productSlugs: ["toggl-track"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-08-20",
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-02",
     applicationSubmittedAt: "2026-08-20",
-    decisionAt: null,
-    affiliateUrl: null,
+    decisionAt: "2026-10-02",
+    affiliateUrl: "https://get.toggl.com/vhyyqojod9xs",
     commissionModel: "30% commission on first payment per new customer",
     cookieWindow: "90 days",
     evidence: [
       "docs/affiliate-applications.md",
       "PartnerStack program page 'Your application was received'",
-      "Connected Gmail, 2026-09-12: Miloosh followed up with affiliates@toggl.com about the Aug 20 PartnerStack application. No approval or decline was found in the evidence reviewed on 2026-09-29.",
-      "Connected Gmail send receipt 1a0eebe6d0d04101, 2026-09-29: Miloosh followed up in the existing Toggl affiliate thread requesting current review status or an issued account-specific tracking asset if approved."
+      "Connected Gmail, 2026-09-12: Miloosh followed up with affiliates@toggl.com about the Aug 20 PartnerStack application.",
+      "Connected Gmail send receipt 1a0eebe6d0d04101, 2026-09-29: Miloosh followed up requesting current review status or an issued account-specific tracking asset.",
+      "Authenticated PartnerStack partnership read 2026-10-02: Toggl approved=true, application_status=approved, agreement accepted, group='Content Partners', one recorded link click, zero customers and zero revenue.",
+      "Authenticated PartnerStack Toggl partnership read 2026-10-02: default issued asset https://get.toggl.com/vhyyqojod9xs, destination http://www.toggl.com/, link name 'Toggl Track Sales Page'."
     ],
     lastFollowupAt: "2026-09-29",
     ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Publisher application submitted",
+    eligibility: "Approved PartnerStack content partner with account-specific referral link issued",
     applicationUrl: "https://toggl.com/affiliates",
-    notes: "Submitted Aug 20, 2026; follow-ups sent 2026-09-12 and 2026-09-29. Await a vendor decision rather than duplicating outreach."
+    notes: "Activated in Miloosh on 2026-10-02 after authenticated PartnerStack verification. The existing Toggl Track catalog page can now use the exact issued referral asset. Do not invent alternate deep links."
   },
   {
     programId: "callrail",
