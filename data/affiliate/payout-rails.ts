@@ -48,12 +48,12 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     "partnerSlugs": [
       "fireflies-ai"
     ],
-    "readiness": "OWNER_ACTION_REQUIRED",
-    "setupEvidence": "METHOD_NOT_SELECTED",
-    "setupObservedAt": "2026-09-30",
+    "readiness": "UNVERIFIED",
+    "setupEvidence": "OWNER_REPORTED_COMPLETE",
+    "setupObservedAt": "2026-10-02",
     "ownerActionPackId": "fireflies-payout-method",
-    "methodGuidance": "Use the existing approved FirstPromoter account. Owner has paused payout configuration until PayPal account clarification; do not connect GefGef or create another account.",
-    "notes": "Authenticated Fireflies portal read on 2026-09-30 and owner screenshot: no payout method selected. Affiliate account offer is 10% recurring; this separate payout gate remains incomplete regardless of issued referral URL."
+    "methodGuidance": "PayPal was selected in the existing approved FirstPromoter account on 2026-10-02 using the verified owner PayPal email. Do not replace it or create another account unless the portal reports a new validation problem.",
+    "notes": "Authenticated Fireflies portal plus owner screenshot on 2026-10-02 show PayPal Selected. This proves payout-method configuration, not a successful withdrawal or earned commission; withdrawal readiness therefore remains UNVERIFIED."
   },
   {
     id: "partnerstack-hello",
@@ -73,6 +73,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "surveymonkey",
       "freshbooks",
       "trainual", // First-party welcome to hello@miloosh.com; payout readiness remains UNVERIFIED.
+      "apollo-io", // Active in the same authenticated PartnerStack account; account-level PayPal destination already exists.
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
@@ -118,12 +119,12 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     label: "MailerLite / Tipalti",
     accountIdentity: "MailerLite affiliate account",
     partnerSlugs: ["mailerlite"],
-    readiness: "OWNER_ACTION_REQUIRED",
+    readiness: "UNVERIFIED",
     ownerActionPackId: "mailerlite-tipalti-payout",
-    methodGuidance: "Owner has paused this rail pending PayPal account clarification. Resume the existing Tipalti flow only after that checkpoint; do not use the GefGef PayPal account or create a duplicate Tipalti profile.",
-    notes: "Owner screenshot 2026-09-30 21.02.17: PayPal could not validate account information. Cause remains UNKNOWN; the error does not prove that a Business account is invalid or that downgrade will fix it. Contact fields were filled, but payout verification did not complete. This is an owner-requested pause, not verified withdrawal readiness.",
-    setupEvidence: "PAYPAL_VALIDATION_FAILED",
-    setupObservedAt: "2026-09-30",
+    methodGuidance: "The existing Tipalti profile now has contact information and a payment method selected; Trackdesk saved PayPal/Wire/ACH (powered by Tipalti) as Default. Preserve the profile and wait for provider approval rather than creating another payout method.",
+    notes: "Authenticated Trackdesk/Tipalti flow on 2026-10-02 shows Contact information added and Payment method selected, while Account approved remains pending. The earlier PayPal validation failure is superseded; no successful withdrawal or provider approval is claimed.",
+    setupEvidence: "PROVIDER_REVIEW_PENDING",
+    setupObservedAt: "2026-10-02",
   },
   {
     id: "jotform-tremendous",

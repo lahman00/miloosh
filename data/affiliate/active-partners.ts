@@ -2,7 +2,7 @@ import { ZOHO_ISSUED_ASSETS } from "@/data/affiliate/zoho-issued-assets";
 
 export const ACTIVE_PARTNER_SLUGS = [
   ...ZOHO_ISSUED_ASSETS.map(asset => asset.slug),
-  "fireflies-ai", "trainual", "constant-contact", "todoist", "moosend", "volza", "pipedrive",
+  "fireflies-ai", "trainual", "apollo-io", "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
   "setmore", "hubstaff", "close", "shopify", "wix",
   "mailerlite", "omnisend", "wrike", "jotform", "surveymonkey", "freshbooks",
@@ -113,6 +113,8 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "fireflies-ai", status: "active", affiliateUrl: "https://fireflies.ai/?fpr=eyal-haimovich-d08faa", allowAdditionalTrackingParams: false, blocker: null },
   // First-party Trainual welcome email 1a0f2363e2a1521e, 2026-09-30.
   { slug: "trainual", status: "active", affiliateUrl: "https://start.trainual.com/0j9to92n49iy", allowAdditionalTrackingParams: false, blocker: null },
+  // Authenticated PartnerStack 2026-10-02 + owner-supplied exact issued URL. Apollo terms prohibit affiliate-link manipulation.
+  { slug: "apollo-io", status: "active", affiliateUrl: "https://get.apollo.io/3k3emp09ar05", allowAdditionalTrackingParams: false, blocker: null },
   { slug: "freshbooks", status: "active", affiliateUrl: "https://partner.freshbooks.com/gg7ovvifr1bd", blocker: null },
   { slug: "constant-contact", status: "active", affiliateUrl: "https://join.constantcontact.com/ezj6pum5ei2l", blocker: null },
   { slug: "todoist", status: "active", affiliateUrl: "https://get.todoist.io/dobo71f2y038", blocker: null },

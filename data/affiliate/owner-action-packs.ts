@@ -21,7 +21,7 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     title: "1. PartnerStack payout verification — hello@miloosh.com",
     priority: 1,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
-    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual"],
+    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual", "apollo-io"],
     comparisonsAffected: 0,
     commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the business account for the assigned relationships and, on 2026-09-14, confirmed a PayPal account is connected. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed.",
     preFilledFields: { "Account email": "hello@miloosh.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },
@@ -89,21 +89,20 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
   },
   {
     id: "mailerlite-tipalti-payout",
-    title: "5. MailerLite PayPal validation (owner pause)",
+    title: "5. MailerLite / Tipalti provider approval pending",
     priority: 5,
     loginOrSignupUrl: "https://www.mailerlite.com/affiliate",
     productsCovered: ["mailerlite"],
     comparisonsAffected: 0,
-    commissionEvidence: "Owner screenshot 2026-09-30 shows PayPal validation failed in Tipalti after contact entry. Await owner-requested PayPal clarification, not new affiliate approval.",
+    commissionEvidence: "Authenticated Trackdesk/Tipalti on 2026-10-02 shows contact information added and payment method selected; Trackdesk saved the Tipalti rail as Default. Provider account approval remains pending.",
     preFilledFields: { "Affiliate / Property": "Miloosh", Website: "https://miloosh.com", "Business Email": "hello@miloosh.com" },
     ownerRequiredFields: [
-      "Pause per owner until PayPal account clarification; no repeated verification attempts.",
-      "Then reopen the existing MailerLite Trackdesk/Tipalti profile and verify owner-confirmed account information.",
-      "Do not substitute the GefGef PayPal account. The earlier validation error does not establish its root cause.",
-      "Finish only when the existing portal validates the intended method and shows completion; a downgrade alone is not proof."
+      "No owner action while Tipalti Account approved remains pending.",
+      "Check the existing profile read-only when reviewing payout readiness; do not create a duplicate Tipalti profile or replace the saved payment method.",
+      "Act only if Tipalti or MailerLite presents a new explicit correction request."
     ],
     securityAndComplianceNotes: "Do not create a duplicate Tipalti account. Never send tax IDs, bank details, passwords, identity documents, or verification codes through chat.",
-    postCompletionAutomation: "Record MailerLite payout readiness only when the dashboard confirms the payout profile is complete.",
+    postCompletionAutomation: "Record MailerLite payout readiness only when the dashboard confirms provider approval and payout readiness.",
   },
   {
     id: "cj-dual-account-reconciliation",
@@ -139,31 +138,32 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     commissionEvidence: "Jotform Affiliate Marketing confirmed on 2026-09-14 that Miloosh's payout setup has not been completed. The existing partner account and account-specific tracking links remain active.",
     preFilledFields: { "Account": "Eyal_hello", "Business Email": "hello@miloosh.com", Website: "https://miloosh.com" },
     ownerRequiredFields: [
-      "Sign in to the existing Jotform partner dashboard; do not re-apply",
-      "Open Payment History in the existing Jotform Partnerships dashboard",
-      "Click Set Payout Email and complete the payout setup offered by Jotform/Tremendous locally",
+      "Complete the existing Jotform KYC form; do not re-apply for the affiliate program.",
+      "Provide the government-issued ID number and front/reverse ID images directly in Jotform's KYC form; these owner-only identity materials must not be stored in chat or source control.",
+      "Continue the already-prepared Standard Payout (PayPal only) flow only after KYC can be completed; current intended PayPal email is the owner-verified account used during setup.",
+      "Upload the PayPal account-details screenshot requested by Jotform and review all declarations before final KYC submission."
     ],
     securityAndComplianceNotes: "Do not share Jotform or Tremendous passwords, tax IDs, bank details, or verification codes through chat.",
     postCompletionAutomation: "Record Jotform payout readiness only once the dashboard confirms the payout profile is complete.",
   },
   {
     "id": "fireflies-payout-method",
-    "title": "8. Fireflies / FirstPromoter payout setup (owner pause)",
+    "title": "8. Fireflies / FirstPromoter payout verification",
     "priority": 8,
     "loginOrSignupUrl": "https://fireflies.firstpromoter.com/login",
     "productsCovered": [
       "fireflies-ai"
     ],
     "comparisonsAffected": 0,
-    "commissionEvidence": "Exact account offer read September 30: 10% recurring commission. Duration unverified; no payout method selected.",
+    "commissionEvidence": "Exact account offer: 10% recurring commission. Authenticated FirstPromoter plus owner screenshot on 2026-10-02 confirm PayPal Selected; successful withdrawal remains unverified.",
     "preFilledFields": {
       "Account email": "hello@miloosh.com",
       "Website": "https://miloosh.com"
     },
     "ownerRequiredFields": [
-      "Wait for owner-requested PayPal clarification; no duplicate FirstPromoter account.",
-      "Then select a supported payout method for the intended owner account, not GefGef.",
-      "Verify saved method and any required approval without claiming a paid payout."
+      "No new payout-method selection is required while the existing PayPal method remains Selected.",
+      "Check the saved method read-only if a payout becomes due; do not replace it unless FirstPromoter presents a new explicit validation problem.",
+      "Treat earned commission and successful withdrawal as separate facts."
     ],
     "securityAndComplianceNotes": "Never store bank, PayPal credentials, tax IDs, identity documents or one-time codes in source control.",
     "postCompletionAutomation": "Mark verified only after the existing vendor portal explicitly confirms the payout configuration; earned and paid commissions remain separate facts."

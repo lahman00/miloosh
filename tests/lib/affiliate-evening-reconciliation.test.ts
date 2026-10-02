@@ -23,13 +23,21 @@ describe("2026-09-30 first-party partner reconciliation", () => {
     expect(getSoftwareCtaUrl(software, "pricing")).toBe(url);
     expect(shouldShowAffiliateDisclosure(software)).toBe(true);
     expect(byId.get(software.slug)?.commissionModel).toMatch(/^10% recurring/);
-    expect(getPayoutRailForPartner("fireflies-ai").readiness).toBe("OWNER_ACTION_REQUIRED");
+    expect(getPayoutRailForPartner("fireflies-ai").readiness).toBe("UNVERIFIED");
   });
-  it.each(["apollo-io", "aircall"])("%s is submitted, not approved or activated", slug => {
-    expect(byId.get(slug)?.status).toBe("PENDING_REVIEW");
-    expect(byId.get(slug)?.applicationSubmittedAt).toBe("2026-09-30");
-    expect(byId.get(slug)?.affiliateUrl).toBeNull();
-    expect(getActivePartner(slug)).toBeUndefined();
+  it("records the October 2 Apollo approval without losing the September 30 submission history", () => {
+    expect(byId.get("apollo-io")?.status).toBe("ACTIVE");
+    expect(byId.get("apollo-io")?.applicationSubmittedAt).toBe("2026-09-30");
+    expect(byId.get("apollo-io")?.decisionAt).toBe("2026-10-02");
+    expect(byId.get("apollo-io")?.affiliateUrl).toBe("https://get.apollo.io/3k3emp09ar05");
+    expect(getActivePartner("apollo-io")?.affiliateUrl).toBe("https://get.apollo.io/3k3emp09ar05");
+  });
+  it("records the October 2 Aircall decline without inventing a reason or referral asset", () => {
+    expect(byId.get("aircall")?.status).toBe("REJECTED");
+    expect(byId.get("aircall")?.applicationSubmittedAt).toBe("2026-09-30");
+    expect(byId.get("aircall")?.decisionAt).toBe("2026-10-02");
+    expect(byId.get("aircall")?.affiliateUrl).toBeNull();
+    expect(getActivePartner("aircall")).toBeUndefined();
   });
   it("does not manufacture a Softr catalog entry solely because affiliate approval arrived", () => {
     expect(byId.get("softr")?.productSlugs).toEqual([]);
@@ -43,8 +51,8 @@ describe("2026-09-30 first-party partner reconciliation", () => {
   it("keeps provider review and failed PayPal validation separate", () => {
     expect(PAYOUT_RAILS.find(rail => rail.id === "impact")?.setupEvidence).toBe("PROVIDER_REVIEW_PENDING");
     const mailerlite = getPayoutRailForPartner("mailerlite");
-    expect(mailerlite.setupEvidence).toBe("PAYPAL_VALIDATION_FAILED");
-    expect(mailerlite.notes).toContain("Cause remains UNKNOWN");
+    expect(mailerlite.setupEvidence).toBe("PROVIDER_REVIEW_PENDING");
+    expect(mailerlite.notes).toContain("Account approved remains pending");
   });
   it("has synchronized Fireflies and Zendesk material status", () => {
     expect(PARTNER_MATERIAL_AUDIT.find(row => row.slug === "fireflies-ai")?.commission.value).toBe("10%");
@@ -52,7 +60,7 @@ describe("2026-09-30 first-party partner reconciliation", () => {
   });
   it("does not change the first-revenue cohort or activate Buddy Punch without content", () => {
     expect(FIRST_REVENUE_PAGES.map(row => row.slug)).toEqual(["airtable", "todoist", "close", "setmore", "elevenlabs"]);
-    expect(ACTIVE_PARTNERS).toHaveLength(30);
+    expect(ACTIVE_PARTNERS).toHaveLength(31);
     expect(getActivePartner("buddy-punch")).toBeUndefined();
     expect(getActivePartner("trainual")?.affiliateUrl).toBe("https://start.trainual.com/0j9to92n49iy");
   });

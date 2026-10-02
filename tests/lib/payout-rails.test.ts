@@ -57,8 +57,10 @@ describe("payout rail integrity", () => {
     }
   });
 
-  it("keeps vendor-confirmed incomplete MailerLite and Jotform payout rails as owner action required", () => {
-    expect(PAYOUT_RAILS.find((rail) => rail.id === "mailerlite-tipalti")?.readiness).toBe("OWNER_ACTION_REQUIRED");
+  it("distinguishes provider-pending MailerLite from owner-blocked Jotform KYC", () => {
+    const mailerlite = PAYOUT_RAILS.find((rail) => rail.id === "mailerlite-tipalti");
+    expect(mailerlite?.readiness).toBe("UNVERIFIED");
+    expect(mailerlite?.setupEvidence).toBe("PROVIDER_REVIEW_PENDING");
     expect(PAYOUT_RAILS.find((rail) => rail.id === "jotform-tremendous")?.readiness).toBe("OWNER_ACTION_REQUIRED");
   });
 

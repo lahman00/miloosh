@@ -22,7 +22,7 @@ describe("affiliate money matrix readiness semantics", () => {
     // (back to 20) on the owner's direct first-hand account of the Jotform
     // correspondence. See data/affiliate/active-partners.ts.
     // FreshBooks added 2026-09-17 from direct first-party approval and issued URL.
-    expect(matrix).toHaveLength(30);
+    expect(matrix).toHaveLength(31);
     expect(new Set(matrix.map((row) => row.slug)).size).toBe(matrix.length);
   });
 
