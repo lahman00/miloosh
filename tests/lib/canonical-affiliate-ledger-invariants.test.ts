@@ -39,6 +39,16 @@ describe("canonical affiliate ledger state invariants", () => {
     }
   });
 
+  it("locks the accepted Modge relationship without inventing a catalog page or cookie window", () => {
+    const modge = byProgramId.get("modge");
+    expect(modge?.status).toBe("APPROVED_NEEDS_EDITORIAL_CONTENT");
+    expect(modge?.affiliateUrl).toBe("https://get.modge.com/gj4cfq6d6vmo");
+    expect(modge?.commissionModel).toContain("30% revenue share");
+    expect(modge?.cookieWindow).toBeNull();
+    expect(modge?.productSlugs).toEqual([]);
+    expect(modge?.notes).toContain("No Modge catalog page exists");
+  });
+
   it("keeps active-partners registry exactly backed by an ACTIVE canonical relationship", () => {
     for (const active of ACTIVE_PARTNERS) {
       const matches = CANONICAL_AFFILIATE_LEDGER.filter(

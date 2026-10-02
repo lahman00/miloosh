@@ -129,6 +129,30 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     "notes": "October 1: reviewed linked September 2025 terms, accepted them in the existing portal and verified full access. Exact referral URL and destination https://www.softr.io/ are captured. No Softr catalog page exists; do not create one solely to monetize approval. Written schedule clarification sent in the existing welcome thread as Gmail 1a0f6ebd4b000599. No paid advertising, coupons or self-referrals. Payment readiness remains separate."
   },
   {
+    "programId": "modge",
+    "programName": "Modge Affiliate Program",
+    "network": "PartnerStack",
+    "productSlugs": [],
+    "status": "APPROVED_NEEDS_EDITORIAL_CONTENT",
+    "statusUpdatedAt": "2026-10-02",
+    "applicationSubmittedAt": null,
+    "decisionAt": "2026-10-02",
+    "affiliateUrl": "https://get.modge.com/gj4cfq6d6vmo",
+    "commissionModel": "30% revenue share on qualifying new annual plans",
+    "cookieWindow": null,
+    "evidence": [
+      "Direct Modge/PartnerStack invitation email from Jake Greenstein, 2026-10-02, Gmail 1a0fca20a53b8891, advertising a 30% revenue-share partnership.",
+      "Authenticated PartnerStack Modge partnership read 2026-10-02: partnership approved; marketplace offer is exactly '30% rev share of new annual plans'; issued default link https://get.modge.com/gj4cfq6d6vmo redirects to https://modge.com.",
+      "Authenticated PartnerStack Modge program page after acceptance, 2026-10-02: Terms of Service confirmed; Offers section displays '30% of new annual plans'.",
+      "Owner-supplied Modge Affiliate Program Agreement reviewed 2026-10-02: disclosure, no self-referral, no cookie stuffing/fake redirects, payment-method and tax-document requirements, and commission details controlled by the Affiliate Tool."
+    ],
+    "ownerBlocker": null,
+    "formBlocker": null,
+    "eligibility": "Approved PartnerStack affiliate relationship with terms accepted and account-specific referral link issued",
+    "applicationUrl": "https://modge.com/affiliates",
+    "notes": "Accepted 2026-10-02 after verifying the live PartnerStack offer. Shared MILOOSH PartnerStack payout rail is configured to PayPal lahman00@gmail.com. PartnerStack does not expose a cookie duration on the accepted offer screen; public Modge materials conflict between 60 and 120 days, so cookieWindow remains null until Modge clarifies. No Modge catalog page exists in Miloosh; do not create one solely to monetize approval."
+  },
+  {
     "programId": "fireflies-ai",
     "programName": "Fireflies.ai Affiliate Program",
     "network": "FirstPromoter",
