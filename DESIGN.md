@@ -219,8 +219,8 @@ The compatibility layer on the site body remaps legacy white/zinc utility roles 
 
 ## Typography
 
-**Display Font:** Manrope, with sans-serif fallback.  
-**Body Font:** Manrope, with sans-serif fallback.  
+**Display Font:** Manrope, with sans-serif fallback.
+**Body Font:** Manrope, with sans-serif fallback.
 The variable font is loaded through Next's font pipeline; no separate mono face is installed for the public redesign.
 
 The hierarchy uses moderate display weights, compact tracking and balanced headings. There is no single mathematical scale: catalogue prose, editorial lists and large persuasion headings have distinct roles. Final refinement rules later in the stylesheet take precedence over earlier size declarations.
