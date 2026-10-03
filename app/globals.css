@@ -116,8 +116,8 @@ h1,h2,h3 { text-wrap:balance; }
 .shortlist-tabs button { padding:10px 12px; min-height:44px; font-size:11px; font-weight:600; color:#42573f; border-radius:6px; white-space:nowrap; transition:background var(--duration-ui),color var(--duration-ui); }
 .shortlist-tabs button:hover { background:rgba(255,255,255,.45); }
 .shortlist-tabs button[aria-pressed=true] { background:var(--ink); color:var(--surface); }
-.shortlist-sheet { position:relative; margin-top:20px; background:var(--surface); box-shadow:var(--shadow-raised); border-radius:12px; padding:24px; z-index:1; animation:shortlist-arrive 650ms var(--ease-out) both; }
-@keyframes shortlist-arrive { from { transform:translateY(12px) rotate(1deg); } to { transform:translateY(0) rotate(0); } }
+.shortlist-sheet { position:relative; margin-top:20px; background:var(--surface); box-shadow:var(--shadow-raised); border-radius:12px; padding:24px; z-index:1; }
+
 .sheet-heading { display:flex; align-items:baseline; justify-content:space-between; gap:8px; padding-bottom:16px; }
 .sheet-heading h2 { font-size:16px; font-weight:650; letter-spacing:-.035em; }
 .sheet-heading>span { color:var(--muted); font-size:10px; }
@@ -423,4 +423,41 @@ h1,h2,h3 { text-wrap:balance; }
   .directory-grid>a { font-size:13px; }
   .directory-grid>a small { font-size:11px; }
   .affiliate-note { font-size:11px; }
+}
+
+/* One moving discovery desk; text and controls outside the panes remain still. */
+.shortlist-stage { --window-play-state:paused; padding-block:20px 24px; }
+.shortlist-stage[data-motion-running="true"] { --window-play-state:running; }
+.motion-toggle { display:grid; place-items:center; width:44px; height:44px; border:1px solid rgba(23,59,44,.2); border-radius:50%; flex-shrink:0; transition:background var(--duration-ui); }
+.motion-toggle:hover { background:rgba(255,255,255,.5); }
+.shortlist-tabs { margin-top:12px; }
+.shortlist-window-scene { position:relative; margin-top:20px; padding-bottom:116px; animation:window-desk-enter 640ms var(--ease-out) both; }
+.shortlist-window-scene .shortlist-sheet { margin-top:0; padding:20px; }
+.shortlist-window-scene .shortlist-row { padding-block:14px; }
+.motion-main { animation:shortlist-window-drift 8s ease-in-out infinite; animation-play-state:var(--window-play-state); }
+.shortlist-alternatives { position:absolute; right:-8px; bottom:8px; width:min(292px,92%); background:var(--surface); border-radius:12px; padding:16px; box-shadow:0 12px 28px rgba(23,59,44,.14); z-index:2; }
+.motion-alternatives { animation:alternatives-window-drift 8s ease-in-out -4s infinite; animation-play-state:var(--window-play-state); }
+.alternatives-window-title { display:flex; align-items:center; gap:8px; font-size:11px; font-weight:600; color:var(--muted); }
+.alternatives-window-content { display:flex; align-items:center; gap:12px; margin-top:12px; }
+.alternatives-window-content .software-monogram { width:34px; height:34px; border-radius:8px; }
+.alternatives-window-content strong { font-size:13px; font-weight:650; }
+.alternatives-window-content small { display:block; font-size:11px; color:var(--muted); margin-top:3px; }
+.alternatives-window-content>svg { margin-left:auto; flex-shrink:0; }
+.shortlist-alternatives:hover strong { text-decoration:underline; }
+.shortlist-stage .stage-note { margin-top:16px; }
+.shortlist-stage:has(a:focus-visible) { --window-play-state:paused; }
+@media(hover:hover) { .shortlist-stage:hover { --window-play-state:paused; } }
+@keyframes window-desk-enter { from { transform:translateY(10px); opacity:.8; } to { transform:translateY(0); opacity:1; } }
+@keyframes shortlist-window-drift { 0%,100% { transform:translateY(0) rotate(-.3deg); } 50% { transform:translateY(-8px) rotate(.3deg); } }
+@keyframes alternatives-window-drift { 0%,100% { transform:translate(0,0) rotate(.7deg); } 50% { transform:translate(6px,-12px) rotate(-.6deg); } }
+@media(max-width:699px) {
+  .shortlist-stage { padding-block:16px 20px; }
+  .shortlist-window-scene { padding-bottom:116px; }
+  .shortlist-alternatives { right:0; width:94%; }
+  @keyframes shortlist-window-drift { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+  @keyframes alternatives-window-drift { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+}
+@media(prefers-reduced-motion:reduce) {
+  .shortlist-window-scene,.motion-window { animation:none !important; transform:none !important; }
+  .motion-toggle { display:none; }
 }

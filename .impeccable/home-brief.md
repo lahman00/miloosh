@@ -15,3 +15,7 @@ FIRST VIEWPORT: 80px navigation; 76px two-line headline and 56px search; an inte
 FORM: User-pinned Ramp direction (approved through structured choice, no random seed). Code-led execution against the measured live reference, not stored as a standing workflow preference. Signature interaction: switch a real shortlist by use case with a 180ms active state and one subtle 650ms entrance.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## Motion refinement (user request, 2026-10-04)
+
+Focal moment: a software shortlist and its linked alternatives window move as one layered discovery desk, adapting Ramp's looping product-window video to live site content. No automatic category switching. Continuity: user-selected needs update real software and alternative counts in both panes. Feedback: controls and text remain still; motion pauses while pointing at the scene, using its links with a keyboard, manually paused, outside the viewport or in a hidden tab. Budget: two CSS transform animations, 8 seconds, offsets no larger than12px and rotation below1 degree; one640ms entrance. No new library, video, canvas or continuous JavaScript loop. Reduced-motion preference renders the same complete composition without drift.
