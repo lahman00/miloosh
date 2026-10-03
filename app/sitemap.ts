@@ -10,6 +10,7 @@ import { getFirstRevenueSupportForGuide } from "@/data/guides/first-revenue";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
+import { getPairDecisionBrief } from "@/data/seo/pair-decision-briefs";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 
 /**
@@ -85,6 +86,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         .filter((s): s is NonNullable<typeof s> => Boolean(s))
         .map((s) => toDate(s.accessedAt));
       if (moneyPage) dates.push(toDate(moneyPage.updatedAt));
+      // A pair decision brief changes this page's visible content on the date its sources were re-read.
+      const pairBrief = getPairDecisionBrief(comparisonSlug);
+      if (pairBrief) dates.push(toDate(pairBrief.updatedAt));
       if (BUYER_DEPTH_COMPARISON_CONTENT_SLUGS.some(slug => slug === slugA || slug === slugB)) dates.push(toDate(BUYER_DEPTH_CONTENT_UPDATED_AT));
       return {
         url: `${SITE_URL}/compare/${comparisonSlug}`,

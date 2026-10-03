@@ -38,6 +38,8 @@ import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabel
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
+import { getPairDecisionBrief } from "@/data/seo/pair-decision-briefs";
+import { PairDecisionBrief } from "@/components/PairDecisionBrief";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -136,15 +138,16 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
   }
 
   const serpOverride = getComparisonSerpOverride(comparison);
+  // A pair decision brief states its own title and description when it has them.
+  const brief = getPairDecisionBrief(comparison);
+  const title = brief?.metadata?.title ?? serpOverride?.title ?? data.title;
+  const description = brief?.metadata?.description ?? serpOverride?.description ?? data.metaDescription;
 
   return {
-    title: serpOverride?.title ?? data.title,
-    description: serpOverride?.description ?? data.metaDescription,
+    title,
+    description,
     alternates: { canonical: `/compare/${comparison}` },
-    openGraph: {
-      title: serpOverride?.title ?? data.title,
-      description: serpOverride?.description ?? data.metaDescription,
-    },
+    openGraph: { title, description },
   };
 }
 
@@ -157,6 +160,8 @@ export default async function ComparePage({ params }: ComparePageProps) {
   }
 
   const { softwareA, softwareB } = data;
+  // Source-backed decision content for this pair, when one exists (data/seo/pair-decision-briefs.ts).
+  const brief = getPairDecisionBrief(comparison);
   const searchIntentNote = getComparisonSearchIntentNote(comparison);
   // A reader deciding between the pair lands on the product's buyer decision
   // (price, fit, switching check, alternatives), not the generic page top.
@@ -204,8 +209,10 @@ export default async function ComparePage({ params }: ComparePageProps) {
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
             {data.title}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">{data.intro}</p>
-          {searchIntentNote ? (
+          {brief ? null : (
+            <p className="mt-6 text-lg leading-8 text-zinc-400">{data.intro}</p>
+          )}
+          {!brief && searchIntentNote ? (
             <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-zinc-400">
               {searchIntentNote}
             </p>
@@ -215,129 +222,151 @@ export default async function ComparePage({ params }: ComparePageProps) {
           </div>
         </header>
 
-        <section className="mt-14">
-          <SectionHeading title="Side-by-side summary" />
-          <div className="mt-8">
-            <ComparisonTable data={data} />
-          </div>
-        </section>
+        {brief ? (
+          <>
+            <PairDecisionBrief brief={brief} />
+            <section id="vendor-choice" className="mt-14 scroll-mt-24">
+              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Official sites</h2>
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                {[softwareA, softwareB].map((software) => (
+                  <Card key={software.slug}>
+                    <h3 className="text-lg font-semibold text-white">{software.name}</h3>
+                    <ComparisonChoiceCta
+                      software={software}
+                      otherSlug={software.slug === softwareA.slug ? softwareB.slug : softwareA.slug}
+                    />
+                  </Card>
+                ))}
+              </div>
+            </section>
+          </>
+        ) : (
+          <>
+            <section className="mt-14">
+              <SectionHeading title="Side-by-side summary" />
+              <div className="mt-8">
+                <ComparisonTable data={data} />
+              </div>
+            </section>
 
-        <WixShopifyBuyerChecks comparison={comparison} />
-        <ShopifyWooMigrationRecords comparison={comparison} />
-        <EcwidWooStructureChoice comparison={comparison} />
+            <WixShopifyBuyerChecks comparison={comparison} />
+            <ShopifyWooMigrationRecords comparison={comparison} />
+            <EcwidWooStructureChoice comparison={comparison} />
 
 
-        <section className="mt-14 grid gap-6 sm:grid-cols-2">
-          <Card>
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-zinc-950">
-                <Users className="h-5 w-5" strokeWidth={2.25} />
-              </span>
-              <h2 className="text-lg font-semibold text-white">Best for {softwareA.name}</h2>
-            </div>
-            <p className="mt-4 leading-7 text-zinc-400">{softwareA.bestFor}</p>
-          </Card>
-          <Card>
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-zinc-950">
-                <Users className="h-5 w-5" strokeWidth={2.25} />
-              </span>
-              <h2 className="text-lg font-semibold text-white">Best for {softwareB.name}</h2>
-            </div>
-            <p className="mt-4 leading-7 text-zinc-400">{softwareB.bestFor}</p>
-          </Card>
-        </section>
+            <section className="mt-14 grid gap-6 sm:grid-cols-2">
+              <Card>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-zinc-950">
+                    <Users className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h2 className="text-lg font-semibold text-white">Best for {softwareA.name}</h2>
+                </div>
+                <p className="mt-4 leading-7 text-zinc-400">{softwareA.bestFor}</p>
+              </Card>
+              <Card>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-zinc-950">
+                    <Users className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h2 className="text-lg font-semibold text-white">Best for {softwareB.name}</h2>
+                </div>
+                <p className="mt-4 leading-7 text-zinc-400">{softwareB.bestFor}</p>
+              </Card>
+            </section>
 
-        <section className="mt-14">
-          <SectionHeading
-            title="Feature comparison"
-            description="Every feature listed here comes directly from each vendor's own official site."
-          />
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {[softwareA, softwareB].map((software) => (
-              <Card key={software.slug}>
-                <h3 className="text-lg font-semibold text-white">{software.name}</h3>
-                <ul className="mt-4 space-y-2">
-                  {software.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-zinc-300">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
-                      {feature}
+            <section className="mt-14">
+              <SectionHeading
+                title="Feature comparison"
+                description="Every feature listed here comes directly from each vendor's own official site."
+              />
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                {[softwareA, softwareB].map((software) => (
+                  <Card key={software.slug}>
+                    <h3 className="text-lg font-semibold text-white">{software.name}</h3>
+                    <ul className="mt-4 space-y-2">
+                      {software.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2 text-sm text-zinc-300">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-14">
+              <SectionHeading title="Pros and cons" />
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                {[softwareA, softwareB].map((software) => (
+                  <Card key={software.slug}>
+                    <h3 className="text-lg font-semibold text-white">{software.name}</h3>
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-300">
+                      <ThumbsUp className="h-4 w-4 text-zinc-500" />
+                      Pros
+                    </div>
+                    <ul className="mt-2 space-y-2">
+                      {generateProsList(software).map((pro) => (
+                        <li key={pro} className="flex items-start gap-2 text-sm text-zinc-400">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+                          {pro}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-300">
+                      <Ban className="h-4 w-4 text-zinc-500" />
+                      Cons
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
+                  </Card>
+                ))}
+              </div>
+            </section>
+
+            <Card className="mt-14">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-zinc-950">
+                  <Scale className="h-5 w-5" strokeWidth={2.25} />
+                </span>
+                <h2 className="text-2xl font-semibold text-white">Key differences</h2>
+              </div>
+              {isStoreComparison ? (
+                <p className="mt-4 leading-7 text-zinc-400">
+                  The feature summaries above use each vendor&apos;s own terminology; unmatched wording is not proof that the other platform lacks a capability. For a store-platform decision, verify the requirements that matter to your workflow in the cited vendor sources instead of treating wording differences as a capability matrix.
+                </p>
+              ) : data.keyDifferences.length > 0 ? (
+                <ul className="mt-4 space-y-3">
+                  {data.keyDifferences.map((difference) => (
+                    <li key={difference} className="flex items-start gap-2 text-zinc-400">
+                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
+                      <span className="leading-7">{difference}</span>
                     </li>
                   ))}
                 </ul>
+              ) : (
+                <p className="mt-4 leading-7 text-zinc-400">
+                  {softwareA.name} and {softwareB.name} list similar stated features and platforms —
+                  the difference likely comes down to workflow fit rather than raw capability.
+                </p>
+              )}
+            </Card>
+
+            <section id="vendor-choice" className="mt-14 grid scroll-mt-24 gap-6 sm:grid-cols-2">
+              <Card>
+                <h2 className="text-lg font-semibold text-white">Choose {softwareA.name} if…</h2>
+                <p className="mt-4 leading-7 text-zinc-400">{data.whoShouldChooseA}</p>
+                <ComparisonChoiceCta software={softwareA} otherSlug={softwareB.slug} />
               </Card>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-14">
-          <SectionHeading title="Pros and cons" />
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {[softwareA, softwareB].map((software) => (
-              <Card key={software.slug}>
-                <h3 className="text-lg font-semibold text-white">{software.name}</h3>
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-300">
-                  <ThumbsUp className="h-4 w-4 text-zinc-500" />
-                  Pros
-                </div>
-                <ul className="mt-2 space-y-2">
-                  {generateProsList(software).map((pro) => (
-                    <li key={pro} className="flex items-start gap-2 text-sm text-zinc-400">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-300">
-                  <Ban className="h-4 w-4 text-zinc-500" />
-                  Cons
-                </div>
-                <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
+              <Card>
+                <h2 className="text-lg font-semibold text-white">Choose {softwareB.name} if…</h2>
+                <p className="mt-4 leading-7 text-zinc-400">{data.whoShouldChooseB}</p>
+                <ComparisonChoiceCta software={softwareB} otherSlug={softwareA.slug} />
               </Card>
-            ))}
-          </div>
-        </section>
-
-        <Card className="mt-14">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-zinc-950">
-              <Scale className="h-5 w-5" strokeWidth={2.25} />
-            </span>
-            <h2 className="text-2xl font-semibold text-white">Key differences</h2>
-          </div>
-          {isStoreComparison ? (
-            <p className="mt-4 leading-7 text-zinc-400">
-              The feature summaries above use each vendor&apos;s own terminology; unmatched wording is not proof that the other platform lacks a capability. For a store-platform decision, verify the requirements that matter to your workflow in the cited vendor sources instead of treating wording differences as a capability matrix.
-            </p>
-          ) : data.keyDifferences.length > 0 ? (
-            <ul className="mt-4 space-y-3">
-              {data.keyDifferences.map((difference) => (
-                <li key={difference} className="flex items-start gap-2 text-zinc-400">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
-                  <span className="leading-7">{difference}</span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-4 leading-7 text-zinc-400">
-              {softwareA.name} and {softwareB.name} list similar stated features and platforms —
-              the difference likely comes down to workflow fit rather than raw capability.
-            </p>
-          )}
-        </Card>
-
-        <section id="vendor-choice" className="mt-14 grid scroll-mt-24 gap-6 sm:grid-cols-2">
-          <Card>
-            <h2 className="text-lg font-semibold text-white">Choose {softwareA.name} if…</h2>
-            <p className="mt-4 leading-7 text-zinc-400">{data.whoShouldChooseA}</p>
-            <ComparisonChoiceCta software={softwareA} otherSlug={softwareB.slug} />
-          </Card>
-          <Card>
-            <h2 className="text-lg font-semibold text-white">Choose {softwareB.name} if…</h2>
-            <p className="mt-4 leading-7 text-zinc-400">{data.whoShouldChooseB}</p>
-            <ComparisonChoiceCta software={softwareB} otherSlug={softwareA.slug} />
-          </Card>
-        </section>
+            </section>
+          </>
+        )}
 
         {decisionPages.length + guidedAlternatives.length > 0 ? (
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-400">
@@ -357,21 +386,37 @@ export default async function ComparePage({ params }: ComparePageProps) {
           </div>
         ) : null}
 
-        <Card className="mt-14 border-amber-500/20 bg-amber-500/[0.03]">
-          <p className="text-sm leading-7 text-zinc-400">
-            Facts on this page are sourced from each vendor&apos;s official site (linked below),
-            not from ratings or reviews. Products change — verify anything that matters to your
-            decision directly on the vendor&apos;s own site before switching. See our{" "}
-            <Link href="/disclaimer" className="text-white underline underline-offset-4">
-              Disclaimer
-            </Link>{" "}
-            and{" "}
-            <Link href="/sources-policy" className="text-white underline underline-offset-4">
-              Sources Policy
-            </Link>
-            .
-          </p>
-        </Card>
+        {brief ? (
+          <Card className="mt-14 border-amber-500/20 bg-amber-500/[0.03]">
+            <p className="text-sm leading-7 text-zinc-400">
+              {brief.disclaimerLead} See our{" "}
+              <Link href="/disclaimer" className="text-white underline underline-offset-4">
+                Disclaimer
+              </Link>{" "}
+              and{" "}
+              <Link href="/sources-policy" className="text-white underline underline-offset-4">
+                Sources Policy
+              </Link>
+              .
+            </p>
+          </Card>
+        ) : (
+          <Card className="mt-14 border-amber-500/20 bg-amber-500/[0.03]">
+            <p className="text-sm leading-7 text-zinc-400">
+              Facts on this page are sourced from each vendor&apos;s official site (linked below),
+              not from ratings or reviews. Products change — verify anything that matters to your
+              decision directly on the vendor&apos;s own site before switching. See our{" "}
+              <Link href="/disclaimer" className="text-white underline underline-offset-4">
+                Disclaimer
+              </Link>{" "}
+              and{" "}
+              <Link href="/sources-policy" className="text-white underline underline-offset-4">
+                Sources Policy
+              </Link>
+              .
+            </p>
+          </Card>
+        )}
 
         <section className="mt-14 grid gap-6 sm:grid-cols-2">
           {[softwareA, softwareB].map((software) => (
@@ -379,9 +424,11 @@ export default async function ComparePage({ params }: ComparePageProps) {
               <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
                 {software.name} sources
               </h3>
-              <p className="mt-1 text-xs text-zinc-400">
-                Last verified {formatIsoDate(software.accessedAt)}
-              </p>
+              {brief ? null : (
+                <p className="mt-1 text-xs text-zinc-400">
+                  Last verified {formatIsoDate(software.accessedAt)}
+                </p>
+              )}
               <ul className="mt-3 space-y-2">
                 {software.sources.map((source) => (
                   <li key={source}>
