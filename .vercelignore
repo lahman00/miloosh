@@ -5,3 +5,8 @@
 /.agents/
 /.env*
 /.next-miloosh-qa/
+
+# Design working documents are local implementation context.
+/.impeccable/
+/PRODUCT.md
+/DESIGN.md

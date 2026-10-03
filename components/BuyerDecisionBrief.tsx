@@ -7,8 +7,8 @@ export function BuyerDecisionBrief({ slug }: { slug: string }) {
   if (!brief) return null;
   return (
     <section id="buyer-decision-worksheet" aria-labelledby="buyer-decision-title" className="my-12 scroll-mt-24 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8">
-      <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Decision worksheet · sources checked {brief.updatedAt}</p>
-      <h2 id="buyer-decision-title" className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">{brief.heading}</h2>
+      <h2 id="buyer-decision-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{brief.heading}</h2>
+      <p className="mt-3 text-xs text-zinc-400">Decision worksheet · sources checked {brief.updatedAt}</p>
       <p className="mt-4 max-w-4xl text-base leading-7 text-zinc-300">{brief.introduction}</p>
       <div className="mt-8 space-y-8">
         {brief.sections.map((section) => (

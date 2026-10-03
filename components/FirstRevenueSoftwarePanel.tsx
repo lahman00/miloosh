@@ -38,32 +38,31 @@ export function FirstRevenueSoftwarePanel({ software }: { software: Software }) 
   return (
     <section id="buying-decision" className="scroll-mt-24">
     <Card className="mt-8 border-emerald-400/20 bg-emerald-400/[0.04]">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">Buyer decision</p>
-      <h2 className="mt-2 text-2xl font-semibold text-white">Should you choose {software.name}?</h2>
+      <h2 className="text-2xl font-semibold text-white">Should you choose {software.name}?</h2>
       <nav aria-label={`${software.name} buying decision`} className="mt-4 flex flex-wrap gap-3 text-sm">
         <a href="#buyer-price-check" className="rounded-lg border border-white/15 px-3 py-3 text-zinc-200 underline underline-offset-4">Price and billing</a>
         <a href="#buyer-alternatives" className="rounded-lg border border-white/15 px-3 py-3 text-zinc-200 underline underline-offset-4">Compare alternatives</a>
         {BUYER_MIGRATION_CHECKLISTS[software.slug] ? <a href="#migration-checks" className="rounded-lg border border-white/15 px-3 py-3 text-zinc-200 underline underline-offset-4">Before switching</a> : null}
       </nav>
 
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-white/10 bg-black/10 p-4">
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="border-t border-white/10 pt-5">
           <p className="text-sm font-semibold text-white">Best fit</p>
           <p className="mt-2 text-sm leading-6 text-zinc-300">{software.bestFor}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-black/10 p-4">
+        <div className="border-t border-white/10 pt-5">
           <p className="text-sm font-semibold text-white">Not the best fit</p>
           <p className="mt-2 text-sm leading-6 text-zinc-300">{target.notFor}</p>
         </div>
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 p-4">
+      <div className="mt-6 border-t border-white/10 pt-5">
         <p className="text-sm font-semibold text-white">Before you commit</p>
         <p className="mt-2 text-sm leading-6 text-zinc-300">{target.buyingCheck}</p>
       </div>
 
       {price ? (
-        <div id="buyer-price-check" className="mt-4 scroll-mt-24 rounded-xl border border-white/10 bg-black/10 p-4">
+        <div id="buyer-price-check" className="mt-6 scroll-mt-24 border-t border-white/10 pt-5">
           <p className="text-sm font-semibold text-white">Price check</p>
           <p className="mt-2 text-sm leading-6 text-zinc-300">{price}</p>
           {entryTier?.notes ? (

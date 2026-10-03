@@ -140,15 +140,15 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: software.name }]} />
 
         <header className="mt-6 max-w-3xl">
-          <Link href={`/category/${software.category}`}>
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            {generateH1(software)}
+          </h1>
+
+          <Link className="mt-4 inline-block" href={`/category/${software.category}`}>
             <Badge className="transition hover:border-white/25 hover:text-white">
               {getCategoryName(software.category)}
             </Badge>
           </Link>
-
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            {generateH1(software)}
-          </h1>
 
           <p className="mt-6 text-lg leading-8 text-zinc-400">{generateIntro(software)}</p>
 
@@ -225,7 +225,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           <Card className="flex flex-col">
             {software.platforms?.length ? (
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                <h3 className="text-sm font-semibold text-zinc-500">
                   Platforms
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">

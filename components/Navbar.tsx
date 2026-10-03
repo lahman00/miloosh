@@ -1,42 +1,39 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/components/Container";
-import { SITE_NAME } from "@/lib/site";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { label: "Browse software", href: "/#browse" },
+  { label: "Compare", href: "/compare" },
+  { label: "Guides", href: "/guides" },
+  { label: "Our approach", href: "/editorial-policy" },
+];
 
 export function Navbar() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950">
-      <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 text-lg font-bold tracking-tight text-white">
-          <Image src="/logo-icon.png" alt="" width={28} height={25} priority />
-          {SITE_NAME}
+    <header className="site-header" onKeyDown={(e) => { if (e.key === "Escape") { setOpen(false); document.getElementById("navigation-toggle")?.focus(); } }}>
+      <div className="design-container nav-inner">
+        <Link href="/" className="brand" aria-label="Miloosh home" onClick={() => setOpen(false)}>
+          <Image src="/logo-icon.png" alt="" width={32} height={29} priority className="brand-mark" />
+          <span>miloosh<span className="brand-period">.</span></span>
         </Link>
-
-        <nav className="hidden items-center gap-8 text-sm font-medium text-zinc-400 sm:flex">
-          <Link href="/#how-it-works" className="transition hover:text-accent-hover">
-            How it works
-          </Link>
-          <Link href="/#categories" className="transition hover:text-accent-hover">
-            Categories
-          </Link>
-          <Link href="/#browse" className="transition hover:text-accent-hover">
-            Browse
-          </Link>
-          <Link href="/compare" className="transition hover:text-accent-hover">
-            Compare
-          </Link>
-          <Link href="/guides" className="transition hover:text-accent-hover">
-            Guides
-          </Link>
+        <nav aria-label="Main navigation" className="desktop-nav">
+          {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}
         </nav>
-
-        <Link
-          href="/recommend"
-          className="inline-flex min-h-9 items-center rounded-lg border border-white/15 bg-white/5 px-4 text-sm font-semibold text-white transition hover:bg-white/10"
-        >
-          Find my software
-        </Link>
-      </Container>
+        <div className="nav-actions">
+          <Link href="/recommend" className="design-button nav-cta" onClick={() => setOpen(false)}>Find software <ArrowUpRight size={16} /></Link>
+          <button id="navigation-toggle" type="button" className="menu-toggle" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
+        </div>
+      </div>
+      <nav id="mobile-navigation" aria-label="Mobile navigation" className="mobile-nav" hidden={!open}>
+        {links.map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}<ArrowUpRight size={18} /></Link>)}
+      </nav>
     </header>
   );
 }

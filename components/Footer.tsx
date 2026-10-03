@@ -34,7 +34,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">{title}</h3>
+      <h3 className="text-xs font-semibold text-zinc-400">{title}</h3>
       <ul className="mt-4 space-y-2.5">
         {links.map((link) => (
           <li key={link.name}>
@@ -56,12 +56,12 @@ export function Footer() {
   const freshness = getDataFreshness();
 
   return (
-    <footer className="border-t border-white/10">
+    <footer className="site-footer border-t border-white/10">
       <Container className="py-14">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
             <Link href="/" prefetch={false} className="flex items-center gap-2 text-base font-bold tracking-tight text-white">
-              <Image src="/logo-icon.png" alt="" width={22} height={20} />
+              <Image src="/logo-icon.png" alt="" width={22} height={20} className="brand-mark" />
               {SITE_NAME}
             </Link>
             <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-400">{SITE_TAGLINE}</p>
@@ -80,6 +80,7 @@ export function Footer() {
               Affiliate Disclosure
             </Link>
             .
+
           </p>
           <p className="text-xs text-zinc-400">
             v{SITE_VERSION} · {freshness.softwareCount} tools across {freshness.categoryCount}{" "}

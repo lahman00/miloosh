@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-03T21:42:39.448368+00:00",
+  "title": "Design System: Miloosh",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Warm Canvas",
+        "tonalRamp": [
+          "oklch(15.00% 0.00667 115.70)",
+          "oklch(26.43% 0.00667 115.70)",
+          "oklch(37.86% 0.00667 115.70)",
+          "oklch(49.29% 0.00667 115.70)",
+          "oklch(60.71% 0.00667 115.70)",
+          "oklch(72.14% 0.00667 115.70)",
+          "oklch(83.57% 0.00667 115.70)",
+          "oklch(95.00% 0.00667 115.70)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "White Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ]
+      },
+      "surface-soft": {
+        "role": "neutral",
+        "displayName": "Soft Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.01362 120.28)",
+          "oklch(26.43% 0.01362 120.28)",
+          "oklch(37.86% 0.01362 120.28)",
+          "oklch(49.29% 0.01362 120.28)",
+          "oklch(60.71% 0.01362 120.28)",
+          "oklch(72.14% 0.01362 120.28)",
+          "oklch(83.57% 0.01362 120.28)",
+          "oklch(95.00% 0.01362 120.28)"
+        ]
+      },
+      "stage": {
+        "role": "neutral",
+        "displayName": "Sage Desk",
+        "tonalRamp": [
+          "oklch(15.00% 0.02834 126.83)",
+          "oklch(26.43% 0.02834 126.83)",
+          "oklch(37.86% 0.02834 126.83)",
+          "oklch(49.29% 0.02834 126.83)",
+          "oklch(60.71% 0.02834 126.83)",
+          "oklch(72.14% 0.02834 126.83)",
+          "oklch(83.57% 0.02834 126.83)",
+          "oklch(95.00% 0.02834 126.83)"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Forest Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.04997 163.84)",
+          "oklch(26.43% 0.04997 163.84)",
+          "oklch(37.86% 0.04997 163.84)",
+          "oklch(49.29% 0.04997 163.84)",
+          "oklch(60.71% 0.04997 163.84)",
+          "oklch(72.14% 0.04997 163.84)",
+          "oklch(83.57% 0.04997 163.84)",
+          "oklch(95.00% 0.04997 163.84)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Research Gray",
+        "tonalRamp": [
+          "oklch(15.00% 0.02229 157.29)",
+          "oklch(26.43% 0.02229 157.29)",
+          "oklch(37.86% 0.02229 157.29)",
+          "oklch(49.29% 0.02229 157.29)",
+          "oklch(60.71% 0.02229 157.29)",
+          "oklch(72.14% 0.02229 157.29)",
+          "oklch(83.57% 0.02229 157.29)",
+          "oklch(95.00% 0.02229 157.29)"
+        ]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "Subtle Metadata",
+        "tonalRamp": [
+          "oklch(15.00% 0.02387 151.82)",
+          "oklch(26.43% 0.02387 151.82)",
+          "oklch(37.86% 0.02387 151.82)",
+          "oklch(49.29% 0.02387 151.82)",
+          "oklch(60.71% 0.02387 151.82)",
+          "oklch(72.14% 0.02387 151.82)",
+          "oklch(83.57% 0.02387 151.82)",
+          "oklch(95.00% 0.02387 151.82)"
+        ]
+      },
+      "citrine": {
+        "role": "primary",
+        "displayName": "Citrine",
+        "tonalRamp": [
+          "oklch(15.00% 0.16234 114.43)",
+          "oklch(26.43% 0.16234 114.43)",
+          "oklch(37.86% 0.16234 114.43)",
+          "oklch(49.29% 0.16234 114.43)",
+          "oklch(60.71% 0.16234 114.43)",
+          "oklch(72.14% 0.16234 114.43)",
+          "oklch(83.57% 0.16234 114.43)",
+          "oklch(95.00% 0.16234 114.43)"
+        ]
+      },
+      "citrine-hover": {
+        "role": "primary",
+        "displayName": "Citrine Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.17182 115.83)",
+          "oklch(26.43% 0.17182 115.83)",
+          "oklch(37.86% 0.17182 115.83)",
+          "oklch(49.29% 0.17182 115.83)",
+          "oklch(60.71% 0.17182 115.83)",
+          "oklch(72.14% 0.17182 115.83)",
+          "oklch(83.57% 0.17182 115.83)",
+          "oklch(95.00% 0.17182 115.83)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Quiet Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.01782 131.89)",
+          "oklch(26.43% 0.01782 131.89)",
+          "oklch(37.86% 0.01782 131.89)",
+          "oklch(49.29% 0.01782 131.89)",
+          "oklch(60.71% 0.01782 131.89)",
+          "oklch(72.14% 0.01782 131.89)",
+          "oklch(83.57% 0.01782 131.89)",
+          "oklch(95.00% 0.01782 131.89)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Deep Leaf",
+        "tonalRamp": [
+          "oklch(15.00% 0.06580 160.53)",
+          "oklch(26.43% 0.06580 160.53)",
+          "oklch(37.86% 0.06580 160.53)",
+          "oklch(49.29% 0.06580 160.53)",
+          "oklch(60.71% 0.06580 160.53)",
+          "oklch(72.14% 0.06580 160.53)",
+          "oklch(83.57% 0.06580 160.53)",
+          "oklch(95.00% 0.06580 160.53)"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Deep Leaf Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.07173 159.32)",
+          "oklch(26.43% 0.07173 159.32)",
+          "oklch(37.86% 0.07173 159.32)",
+          "oklch(49.29% 0.07173 159.32)",
+          "oklch(60.71% 0.07173 159.32)",
+          "oklch(72.14% 0.07173 159.32)",
+          "oklch(83.57% 0.07173 159.32)",
+          "oklch(95.00% 0.07173 159.32)"
+        ]
+      },
+      "button-hover": {
+        "role": "primary",
+        "displayName": "Forest Action Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.06202 160.09)",
+          "oklch(26.43% 0.06202 160.09)",
+          "oklch(37.86% 0.06202 160.09)",
+          "oklch(49.29% 0.06202 160.09)",
+          "oklch(60.71% 0.06202 160.09)",
+          "oklch(72.14% 0.06202 160.09)",
+          "oklch(83.57% 0.06202 160.09)",
+          "oklch(95.00% 0.06202 160.09)"
+        ]
+      },
+      "card-hover": {
+        "role": "neutral",
+        "displayName": "Card Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.01486 119.10)",
+          "oklch(26.43% 0.01486 119.10)",
+          "oklch(37.86% 0.01486 119.10)",
+          "oklch(49.29% 0.01486 119.10)",
+          "oklch(60.71% 0.01486 119.10)",
+          "oklch(72.14% 0.01486 119.10)",
+          "oklch(83.57% 0.01486 119.10)",
+          "oklch(95.00% 0.01486 119.10)"
+        ]
+      },
+      "card-hover-line": {
+        "role": "neutral",
+        "displayName": "Card Hover Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.03615 134.57)",
+          "oklch(26.43% 0.03615 134.57)",
+          "oklch(37.86% 0.03615 134.57)",
+          "oklch(49.29% 0.03615 134.57)",
+          "oklch(60.71% 0.03615 134.57)",
+          "oklch(72.14% 0.03615 134.57)",
+          "oklch(83.57% 0.03615 134.57)",
+          "oklch(95.00% 0.03615 134.57)"
+        ]
+      },
+      "footer": {
+        "role": "neutral",
+        "displayName": "Footer Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.01209 116.81)",
+          "oklch(26.43% 0.01209 116.81)",
+          "oklch(37.86% 0.01209 116.81)",
+          "oklch(49.29% 0.01209 116.81)",
+          "oklch(60.71% 0.01209 116.81)",
+          "oklch(72.14% 0.01209 116.81)",
+          "oklch(83.57% 0.01209 116.81)",
+          "oklch(95.00% 0.01209 116.81)"
+        ]
+      },
+      "artwork-dark": {
+        "role": "neutral",
+        "displayName": "Inverse Artwork",
+        "tonalRamp": [
+          "oklch(15.00% 0.00439 285.82)",
+          "oklch(26.43% 0.00439 285.82)",
+          "oklch(37.86% 0.00439 285.82)",
+          "oklch(49.29% 0.00439 285.82)",
+          "oklch(60.71% 0.00439 285.82)",
+          "oklch(72.14% 0.00439 285.82)",
+          "oklch(83.57% 0.00439 285.82)",
+          "oklch(95.00% 0.00439 285.82)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Wide homepage hero; responsive overrides are documented in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Homepage section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Product card names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Catalogue descriptions."
+      },
+      "intro": {
+        "displayName": "Intro",
+        "purpose": "Hero supporting copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Category and supporting metadata."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Standard redesigned filled actions."
+      },
+      "navigation": {
+        "displayName": "Navigation",
+        "purpose": "Desktop main-navigation links."
+      }
+    },
+    "shadows": [
+      {
+        "name": "raised-paper",
+        "value": "0 20px 60px rgba(23,59,44,.12)",
+        "purpose": "Shortlist sheets and search suggestions."
+      },
+      {
+        "name": "guide-paper",
+        "value": "0 14px 40px rgba(60,79,39,.14)",
+        "purpose": "Illustrative paper in the featured guide artwork."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-ui",
+        "value": "180ms",
+        "purpose": "UI color, background and border state changes."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.22,1,.36,1)",
+        "purpose": "The shortlist paper arrival."
+      },
+      {
+        "name": "shortlist-arrival",
+        "value": "650ms",
+        "purpose": "One entrance from translateY(12px) rotate(1deg) to level; no opacity hiding."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation:none !important; transition:none !important",
+        "purpose": "Applied globally under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "699px"
+      },
+      {
+        "name": "tablet-min",
+        "value": "700px"
+      },
+      {
+        "name": "tablet-max",
+        "value": "959px"
+      },
+      {
+        "name": "compact-desktop-max",
+        "value": "1199px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      },
+      {
+        "name": "legacy-sm",
+        "value": "640px"
+      },
+      {
+        "name": "legacy-lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Forest action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Standard filled action with the homepage control geometry.",
+      "html": "<a class=\"ds-action\" href=\"/recommend\">Find software <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-action{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:56px;padding:16px 24px;border:0;border-radius:var(--radius-control,8px);font-size:14px;font-weight:650;line-height:1.2;text-decoration:none;transition:background var(--duration-ui,180ms),box-shadow var(--duration-ui,180ms);cursor:pointer;background:var(--ink,#173b2c);color:var(--surface,#fff)}.ds-action:hover{background:#28543e}.ds-action:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px;}@media(prefers-reduced-motion:reduce){.ds-action,.ds-action *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Citrine action",
+      "kind": "button",
+      "refersTo": "button-citrine",
+      "description": "High contrast action in the inverse closing section.",
+      "html": "<a class=\"ds-citrine\" href=\"/recommend\">Find my software <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-citrine{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:56px;padding:16px 24px;border:0;border-radius:var(--radius-control,8px);font-size:14px;font-weight:650;line-height:1.2;text-decoration:none;transition:background var(--duration-ui,180ms),box-shadow var(--duration-ui,180ms);cursor:pointer;background:var(--citrine,#e4f267);color:var(--ink,#173b2c)}.ds-citrine:hover{background:var(--citrine-hover,#d5e750)}.ds-citrine:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px;}@media(prefers-reduced-motion:reduce){.ds-citrine,.ds-citrine *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Inherited button variant maintained by the light utility bridge.",
+      "html": "<button class=\"ds-secondary\">Compare alternatives</button>",
+      "css": ".ds-secondary{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:color .15s,background .15s,border-color .15s,transform .15s;border:1px solid color-mix(in oklab,var(--ink,#173b2c) 15%,transparent);background:color-mix(in oklab,var(--ink,#173b2c) 5%,transparent);color:var(--ink,#173b2c)}.ds-secondary:hover{background:color-mix(in oklab,var(--ink,#173b2c) 10%,transparent);border-color:color-mix(in oklab,var(--ink,#173b2c) 25%,transparent)}.ds-secondary:focus-visible{outline:none;box-shadow:0 0 0 2px var(--canvas,#f8f9f4),0 0 0 4px var(--color-accent,#24543d)}.ds-secondary:active{transform:scale(.98)}.ds-secondary:disabled{opacity:.5;pointer-events:none}@media(prefers-reduced-motion:reduce){.ds-secondary,.ds-secondary *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Ghost button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Quiet inherited action for secondary choices.",
+      "html": "<button class=\"ds-ghost\">Browse software</button>",
+      "css": ".ds-ghost{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:color .15s,background .15s,border-color .15s,transform .15s;border:0;background:transparent;color:var(--muted,#56645b)}.ds-ghost:hover{background:color-mix(in oklab,var(--ink,#173b2c) 5%,transparent);color:var(--ink,#173b2c)}.ds-ghost:focus-visible{outline:none;box-shadow:0 0 0 2px var(--canvas,#f8f9f4),0 0 0 4px var(--color-accent,#24543d)}.ds-ghost:active{transform:scale(.98)}.ds-ghost:disabled{opacity:.5;pointer-events:none}@media(prefers-reduced-motion:reduce){.ds-ghost,.ds-ghost *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Discovery search",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Search shell; live results and keyboard behavior remain in the React component.",
+      "html": "<form class=\"ds-search\" role=\"search\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input type=\"search\" aria-label=\"Search software\" placeholder=\"Search software\u2026\"/><button type=\"button\">Find software <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button></form>",
+      "css": ".ds-search{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;min-height:64px;padding:5px 5px 5px 16px;display:flex;align-items:center;gap:12px;background:var(--surface,#fff);color:var(--muted,#56645b);border:1px solid #bbc8b8;border-radius:10px}.ds-search:focus-within{border-color:var(--ink,#173b2c);outline:1px solid var(--ink,#173b2c)}.ds-search input{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;flex:1;min-width:0;width:100%;height:52px;border:0;outline:0;background:transparent;font-size:14px;color:var(--ink,#173b2c)}.ds-search input::placeholder{color:var(--muted,#56645b)}.ds-search button{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:flex;align-items:center;gap:10px;min-height:52px;padding:12px 17px;border:0;border-radius:7px;background:var(--ink,#173b2c);color:var(--surface,#fff);font-size:13px;font-weight:650;cursor:pointer;transition:background var(--duration-ui,180ms)}.ds-search button:hover{background:#28543e}.ds-search button:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px;}@media(max-width:699px){.ds-search input{font-size:16px}}@media(prefers-reduced-motion:reduce){.ds-search,.ds-search *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Main navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Desktop link treatment; original logo and mobile controller remain in Navbar.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"/#browse\">Browse software</a><a href=\"/compare\">Compare</a><a href=\"/guides\">Guides</a><a href=\"/editorial-policy\">Our approach</a></nav>",
+      "css": ".ds-nav{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:flex;align-items:center;flex-wrap:wrap;gap:32px;min-height:80px;background:var(--canvas,#f8f9f4);border-bottom:1px solid var(--line,#d7ded2);font-size:14px;font-weight:600}.ds-nav a{display:flex;align-items:center;min-height:44px;color:var(--muted,#56645b);text-decoration:none;text-underline-offset:4px;transition:color var(--duration-ui,180ms)}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--ink,#173b2c);text-decoration:underline}.ds-nav a:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px;}@media(prefers-reduced-motion:reduce){.ds-nav,.ds-nav *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Category badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Inherited metadata pill, shown after the product heading.",
+      "html": "<span class=\"ds-badge\">Productivity</span>",
+      "css": ".ds-badge{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:inline-flex;align-items:center;gap:6px;border:1px solid color-mix(in oklab,var(--ink,#173b2c) 10%,transparent);border-radius:calc(infinity * 1px);background:color-mix(in oklab,var(--ink,#173b2c) 5%,transparent);padding:6px 14px;font-size:12px;font-weight:500;color:var(--color-zinc-300,#45574a)}"
+    },
+    {
+      "name": "Catalogue card",
+      "kind": "card",
+      "refersTo": "catalogue-card",
+      "description": "Flat linked product card with metadata below the name.",
+      "html": "<a class=\"ds-card\" href=\"/software/airtable\"><div class=\"ds-card-top\"><span class=\"ds-logo\" aria-hidden=\"true\"><svg width=\"25\" height=\"25\" aria-hidden=\"true\" fill=\"#18BFFF\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><title>Airtable</title><path d=\"M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z\"/></svg></span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></div><h3>Airtable</h3><p class=\"ds-category\">Productivity</p><p class=\"ds-description\">Explore product information, pricing and alternatives.</p></a>",
+      "css": ".ds-card{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;display:flex;flex-direction:column;border:1px solid var(--line,#d7ded2);border-radius:16px;background:var(--surface,#fff);color:var(--ink,#173b2c);padding:28px;text-decoration:none;transition:background var(--duration-ui,180ms),border-color var(--duration-ui,180ms)}.ds-card:hover{background:#f2f5ea;border-color:#aab9a2}.ds-card:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px;}.ds-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.ds-logo{display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:#edf0d8;color:#667224;font-size:23px;font-weight:750}.ds-card h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-.03em}.ds-category{display:block;margin:6px 0 0;font-size:12px;color:var(--muted,#56645b)}.ds-description{margin:16px 0 0;color:var(--muted,#56645b);font-size:14px;line-height:1.75}@media(max-width:699px){.ds-card{padding:24px}}@media(prefers-reduced-motion:reduce){.ds-card,.ds-card *,.ds-card-top,.ds-card-top *,.ds-category,.ds-category *,.ds-description,.ds-description *,.ds-logo,.ds-logo *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Shortlist desk",
+      "kind": "custom",
+      "refersTo": "shortlist-stage",
+      "description": "Signature sage field with pressed-state controls and raised paper.",
+      "html": "<section class=\"ds-stage\"><div class=\"ds-tabs\" aria-label=\"Explore software by need\"><button aria-pressed=\"true\" type=\"button\">Organize work</button><button aria-pressed=\"false\" type=\"button\">Create content</button></div><div class=\"ds-sheet\"><h2>Your next shortlist</h2><a href=\"/software/airtable\"><strong>Airtable</strong><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a><a href=\"/software/notion\"><strong>Notion</strong><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a></div></section>",
+      "css": ".ds-stage{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;background:var(--stage,#dfe8d4);color:var(--ink,#173b2c);padding:32px;border-radius:24px}.ds-tabs{display:flex;gap:4px}.ds-tabs button{font-family:var(--font-manrope, Manrope, sans-serif);letter-spacing:-.01em;padding:10px 12px;min-height:44px;border:0;border-radius:6px;background:transparent;color:#42573f;font-size:12px;font-weight:600;cursor:pointer;transition:background var(--duration-ui,180ms),color var(--duration-ui,180ms)}.ds-tabs button:hover{background:rgba(255,255,255,.45)}.ds-tabs button[aria-pressed=true]{background:var(--ink,#173b2c);color:var(--surface,#fff)}.ds-tabs button:focus-visible,.ds-sheet a:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px;}.ds-sheet{margin-top:20px;background:var(--surface,#fff);box-shadow:var(--shadow-raised,0 20px 60px rgba(23,59,44,.12));border-radius:12px;padding:24px}.ds-sheet h2{margin:0;padding-bottom:16px;font-size:16px;font-weight:650;letter-spacing:-.035em}.ds-sheet a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;border-top:1px solid #e9ece4;font-size:15px;color:var(--ink,#173b2c);text-decoration:none}.ds-sheet a:hover strong{text-decoration:underline}@media(max-width:699px){.ds-stage{padding:20px;border-radius:16px}.ds-sheet{padding:20px}.ds-tabs button{font-size:11px;padding-inline:7px}}@media(prefers-reduced-motion:reduce){.ds-sheet,.ds-sheet *,.ds-stage,.ds-stage *,.ds-tabs,.ds-tabs *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Buyer picks and matcher strip",
+      "kind": "custom",
+      "refersTo": "featured-software",
+      "description": "Final homepage composition: one featured software panel, four ruled entries and a full-width matcher strip; all sample facts are extracted from the current catalogue.",
+      "html": "<div class=\"ds-buyer-editorial\"><a class=\"ds-featured-software\" href=\"/software/airtable\"><div class=\"ds-featured-software-top\"><span class=\"ds-software-monogram ds-tone-0\" aria-hidden=\"true\"><svg width=\"25\" height=\"25\" aria-hidden=\"true\" fill=\"#18BFFF\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><title>Airtable</title><path d=\"M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z\"/></svg></span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></div><h3>Airtable</h3><span class=\"ds-product-category\">Productivity</span><p>Turn spreadsheets into workflows your whole team can use.</p><span class=\"ds-featured-software-action\">Explore Airtable<span>3 alternatives</span></span></a><div class=\"ds-buyer-tool-list\"><a class=\"ds-buyer-tool-row\" href=\"/software/todoist\"><span class=\"ds-software-monogram ds-tone-1\" aria-hidden=\"true\"><svg width=\"25\" height=\"25\" aria-hidden=\"true\" fill=\"#E44332\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><title>Todoist</title><path d=\"M21 0H3C1.35 0 0 1.35 0 3v3.858s3.854 2.24 4.098 2.38c.31.18.694.177 1.004 0 .26-.147 8.02-4.608 8.136-4.675.279-.161.58-.107.748-.01.164.097.606.348.84.48.232.134.221.502.013.622l-9.712 5.59c-.346.2-.69.204-1.048.002C3.478 10.907.998 9.463 0 8.882v2.02l4.098 2.38c.31.18.694.177 1.004 0 .26-.147 8.02-4.609 8.136-4.676.279-.16.58-.106.748-.008.164.096.606.347.84.48.232.133.221.5.013.62-.208.121-9.288 5.346-9.712 5.59-.346.2-.69.205-1.048.002C3.478 14.951.998 13.506 0 12.926v2.02l4.098 2.38c.31.18.694.177 1.004 0 .26-.147 8.02-4.609 8.136-4.676.279-.16.58-.106.748-.009.164.097.606.348.84.48.232.133.221.502.013.622l-9.712 5.59c-.346.199-.69.204-1.048.001C3.478 18.994.998 17.55 0 16.97V21c0 1.65 1.35 3 3 3h18c1.65 0 3-1.35 3-3V3c0-1.65-1.35-3-3-3z\"/></svg></span><div class=\"ds-buyer-tool-copy\"><h3>Todoist</h3><p>Bring tasks, plans, and everyday work into focus.</p><span class=\"ds-buyer-tool-meta\">Productivity<span>3 alternatives</span></span></div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a><a class=\"ds-buyer-tool-row\" href=\"/software/close\"><span class=\"ds-software-monogram ds-tone-2\" aria-hidden=\"true\">C</span><div class=\"ds-buyer-tool-copy\"><h3>Close</h3><p>Keep calling, email, and your sales pipeline together.</p><span class=\"ds-buyer-tool-meta\">CRM<span>4 alternatives</span></span></div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a><a class=\"ds-buyer-tool-row\" href=\"/software/setmore\"><span class=\"ds-software-monogram ds-tone-3\" aria-hidden=\"true\">S</span><div class=\"ds-buyer-tool-copy\"><h3>Setmore</h3><p>Give clients a simpler way to book time with you.</p><span class=\"ds-buyer-tool-meta\">Scheduling<span>3 alternatives</span></span></div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a><a class=\"ds-buyer-tool-row\" href=\"/software/elevenlabs\"><span class=\"ds-software-monogram ds-tone-4\" aria-hidden=\"true\"><svg width=\"25\" height=\"25\" aria-hidden=\"true\" fill=\"#000000\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><title>ElevenLabs</title><path d=\"M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z\"/></svg></span><div class=\"ds-buyer-tool-copy\"><h3>ElevenLabs</h3><p>Explore lifelike AI voices and audio creation.</p><span class=\"ds-buyer-tool-meta\">AI<span>3 alternatives</span></span></div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a></div></div><div class=\"ds-matcher-strip\"><div><h3>Your needs. Your shortlist.</h3><p>A few questions about your team and budget. Recommendations with a reason.</p></div><div class=\"ds-matcher-strip-action\"><a href=\"/recommend\" class=\"ds-design-button\">Find my software <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a><small>Free. No account needed.</small></div></div>",
+      "css": ".ds-buyer-editorial { display:grid; grid-template-columns:5fr 7fr; gap:32px; }\n.ds-featured-software { display:flex; flex-direction:column; padding:32px; background:var(--stage); border-radius:16px; transition:background var(--duration-ui); }\n.ds-featured-software:hover { background:#d4e0c6; }\n.ds-featured-software-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; }\n.ds-featured-software .ds-software-monogram { width:48px; height:48px; }\n.ds-featured-software h3 { font-size:38px; line-height:1.15; letter-spacing:-.03em; font-weight:600; }\n.ds-featured-software>p { margin-top:24px; font-size:25px; line-height:1.35; letter-spacing:-.02em; max-width:25ch; }\n.ds-featured-software-action { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:48px; margin-top:auto; font-size:13px; font-weight:650; }\n.ds-featured-software-action>span { font-size:12px; font-weight:400; color:var(--muted); }\n.ds-buyer-tool-list { display:grid; grid-template-rows:repeat(4,1fr); }\n.ds-buyer-tool-row { display:grid; grid-template-columns:44px minmax(0,1fr) 20px; gap:20px; align-items:center; min-height:108px; padding-block:20px; border-top:1px solid var(--line); transition:background var(--duration-ui); }\n.ds-buyer-tool-row:last-child { border-bottom:1px solid var(--line); }\n.ds-buyer-tool-row:hover { background:var(--surface-soft); }\n.ds-buyer-tool-row h3 { font-size:21px; font-weight:600; line-height:1.25; letter-spacing:-.025em; }\n.ds-buyer-tool-copy>p { font-size:14px; line-height:1.5; color:var(--muted); margin-top:6px; max-width:48ch; }\n.ds-buyer-tool-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 16px; margin-top:8px; color:var(--muted); font-size:12px; }\n.ds-matcher-strip { display:flex; justify-content:space-between; align-items:center; gap:32px; margin-top:24px; background:var(--citrine); border-radius:16px; padding:28px; }\n.ds-matcher-strip h3 { font-size:29px; line-height:1.2; font-weight:550; letter-spacing:-.035em; }\n.ds-matcher-strip p { font-size:14px; line-height:1.6; max-width:64ch; margin-top:8px; }\n.ds-matcher-strip-action { display:flex; flex-direction:column; align-items:center; gap:12px; flex-shrink:0; }\n.ds-matcher-strip .ds-design-button { min-height:48px; font-size:13px; }\n.ds-matcher-strip small { font-size:12px; }\n@media(max-width:959px) { .ds-buyer-editorial { grid-template-columns:1fr; } .ds-featured-software>p { max-width:36ch; } }\n@media(max-width:699px) {\n  .ds-featured-software { padding:24px; }\n  .ds-featured-software h3 { font-size:32px; }\n  .ds-featured-software>p { font-size:22px; }\n  .ds-buyer-tool-row { grid-template-columns:38px minmax(0,1fr) 18px; gap:12px; padding-block:24px; }\n  .ds-buyer-tool-row h3 { font-size:21px; }\n  .ds-buyer-tool-copy>p { font-size:14px; }\n  .ds-buyer-tool-meta { font-size:11px; }\n  .ds-matcher-strip { flex-direction:column; align-items:stretch; padding:24px; gap:24px; }\n  .ds-matcher-strip h3 { font-size:29px; max-width:14ch; }\n  .ds-matcher-strip-action,.ds-matcher-strip .ds-design-button { width:100%; }\n}\n\n.ds-software-monogram { width:44px; height:44px; flex-shrink:0; display:grid; place-items:center; font-size:23px; font-weight:750; line-height:1; border-radius:11px; background:#e7eddf; color:#345239; }\n.ds-tone-0 { background:#edf0d8; color:#667224; }\n.ds-tone-1 { background:#fae4db; color:#aa4931; }\n.ds-tone-2 { background:#e3eaf1; color:#365d7a; }\n.ds-tone-3 { background:#e8e3f1; color:#665080; }\n.ds-tone-4 { background:#e7e9df; color:#334238; }\n.ds-product-category { display:block; font-size:12px; color:var(--muted); margin-top:6px; }\n.ds-design-button { display:inline-flex; align-items:center; justify-content:center; gap:20px; min-height:56px; padding:16px 24px; border-radius:var(--radius-control); background:var(--ink); color:var(--surface); font-size:14px; font-weight:650; line-height:1.2; transition:background var(--duration-ui),box-shadow var(--duration-ui); }\n.ds-design-button:hover { background:#28543e; }\n.ds-buyer-editorial,.ds-matcher-strip{font-family:var(--font-manrope,Manrope,sans-serif);letter-spacing:-.01em;color:var(--ink,#173b2c)}.ds-buyer-editorial a{color:inherit;text-decoration:none}.ds-buyer-editorial h3,.ds-matcher-strip h3{margin:0}.ds-matcher-strip a{text-decoration:none}.ds-buyer-editorial a:focus-visible,.ds-matcher-strip a:focus-visible{outline:2px solid var(--ink,#173b2c);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-buyer-editorial *,.ds-matcher-strip *{transition:none!important;animation:none!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Thoughtful Shortlist",
+    "overview": "Miloosh uses a warm, light canvas, forest ink, citrine emphasis and a sage comparison desk. Large Manrope headings establish confidence; restrained rules and source-linked content make the research feel approachable and inspectable. The existing Miloosh name and M mark remain the identity anchors.\n\nThe system is code-led. Software logos, an interactive shortlist and a constructed paper illustration provide the visual material; no generated raster is part of this redesign. The light UI and the inverse dark social artwork are distinct surfaces with separate color constants.\n\nThis is a scan of the implemented source, including its final refinement overrides. Visual verification is limited to sampled homepage desktop/mobile views and the Airtable software page; it is not a whole-site visual audit. No separate quality-bar card was supplied. The measured Ramp reference in the approved design spec bounds the comparison, and its measurements are observations rather than Miloosh tokens. The final independent review reported ship at 9.0/10 for the buyer-composition refinement and previously scored fixes; that verdict does not certify every generated route. The detailed verdict remains owned by the review artifact.",
+    "keyCharacteristics": [
+      "Warm canvas with forest text and restrained citrine emphasis.",
+      "Large, balanced headings; product metadata follows its heading.",
+      "Flat editorial lists and cards; elevation reserved for paper-like layers and suggestions.",
+      "Real product routes, source dates and explicit affiliate disclosure.",
+      "Responsive controls, visible focus and reduced-motion support."
+    ],
+    "rules": [
+      {
+        "name": "The Two Canvases Rule",
+        "body": "Use the warm canvas for the website and browser chrome. Keep inverse social and icon artwork on its dedicated dark constant; do not apply the body compatibility bridge to generated artwork.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heading First Rule",
+        "body": "Begin the redesigned hierarchy with the meaningful heading; place category or source metadata after it. Existing eyebrow support is inherited drift, not the pattern for new surfaces.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper Depth Rule",
+        "body": "Keep editorial cards and ruled lists flat. Reserve the raised shadow for the shortlist sheet and search suggestions; the guide paper has its own illustrative shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the Miloosh name, existing M mark and supplied vendor identities.",
+      "Do use semantic canvas, ink, surface and citrine tokens for new UI; resolve legacy classes through the body-scoped bridge only when maintaining incumbent components.",
+      "Do put real product titles first and category/source metadata below them.",
+      "Do keep existing canonical URLs, sourced product facts, pricing conditions, disclosure text and affiliate/tracking semantics intact when changing presentation.",
+      "Do preserve keyboard search, visible focus, mobile navigation, native disclosures and reduced-motion behavior.",
+      "Do evaluate future route changes at their actual desktop and mobile widths; the sampled verification here does not certify other pages."
+    ],
+    "donts": [
+      "Don't turn dark social artwork colors into page background tokens.",
+      "Don't invent ratings, customer claims, firsthand testing, popularity, conversion gains or vendor facts.",
+      "Don't add eyebrow headings or promote inherited uppercase eyebrow styles into new page patterns.",
+      "Don't turn editorial rows or every card into elevated panels; use the documented paper depth roles.",
+      "Don't use the measured reference sheet to overwrite a shipped token without checking the final source cascade.",
+      "Don't replace tracked affiliate links with untracked visual replicas or remove their source and disclosure context."
+    ]
+  }
+}

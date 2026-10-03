@@ -5,8 +5,7 @@ export function WixShopifyBuyerChecks({ comparison }: { comparison: string }) {
   if (comparison !== "wix-vs-shopify") return null;
   return (
     <section id="small-store-buyer-checks" aria-labelledby="small-store-buyer-title" className="mt-10 scroll-mt-24 rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.03] p-5 sm:p-7">
-      <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300">For a small store</p>
-      <h2 id="small-store-buyer-title" className="mt-3 text-2xl font-bold text-white">Choose for the work you need to run, not the longest feature list</h2>
+      <h2 id="small-store-buyer-title" className="text-2xl font-bold text-white">Choose for the work you need to run, not the longest feature list</h2>
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <div>
           <h3 className="font-semibold text-white">Start with Wix when the website leads</h3>
