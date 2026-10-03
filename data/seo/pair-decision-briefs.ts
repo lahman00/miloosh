@@ -1,5 +1,5 @@
 /**
- * Pair decision briefs - 2026-10-04.
+ * Pair decision briefs.
  *
  * A brief replaces the generated comparison body (intro, side-by-side table,
  * Best for, Feature comparison, Pros and cons, Key differences, Choose-if
@@ -72,7 +72,8 @@ export type PairDecisionBrief = {
   sources: BriefSource[];
 };
 
-const CHECKED = "2026-10-04";
+// UTC calendar date of the read (the sitemap and every other date on the site are UTC midnight).
+const CHECKED = "2026-10-03";
 
 const MKDOCS_VS_READ_THE_DOCS: PairDecisionBrief = {
   slug: "mkdocs-vs-read-the-docs",
@@ -318,7 +319,7 @@ const MKDOCS_VS_READ_THE_DOCS: PairDecisionBrief = {
       kind: "table",
       heading: "MkDocs project status, dated",
       intro: {
-        text: "Checked 2026-10-04 against PyPI and the project's repository. These are dates, not a verdict: neither MkDocs's home page nor its README carries a notice about the 1.x line's maintenance status or an end-of-life date.",
+        text: "Checked 2026-10-03 against PyPI and the project's repository. These are dates, not a verdict: neither MkDocs's home page nor its README carries a notice about the 1.x line's maintenance status or an end-of-life date.",
         cite: ["mkdocs-pypi", "mkdocs-repo", "mkdocs-home"],
       },
       columns: ["Item", "Date", "What the record shows"],
@@ -549,7 +550,7 @@ const MKDOCS_VS_READ_THE_DOCS: PairDecisionBrief = {
   ],
   sourcesHeading: "Sources and re-check dates",
   sourcesIntro: {
-    text: "Every source below was read on 2026-10-04. Re-check the Material dates after 2026-11-05, the MkDocs 2.0 pre-release status, and Read the Docs' prices before relying on them.",
+    text: "Every source below was read on 2026-10-03. Re-check the Material dates after 2026-11-05, the MkDocs 2.0 pre-release status, and Read the Docs' prices before relying on them.",
   },
   sources: [
     { id: "mkdocs-home", label: "MkDocs: home page", url: "https://www.mkdocs.org/", checkedOn: CHECKED },

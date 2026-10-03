@@ -5,6 +5,7 @@ import { getAllSoftware } from "@/data/software";
 import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checklists";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
+import { getPairDecisionBrief } from "@/data/seo/pair-decision-briefs";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import {
   GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
@@ -53,7 +54,7 @@ describe("sitemap lastModified coverage", () => {
       const a = softwareBySlug.get(slugA)!;
       const b = softwareBySlug.get(slugB)!;
       const moneyPage = getDecisionMoneyPage(slug);
-      const expected = [a.accessedAt, b.accessedAt, moneyPage?.updatedAt,
+      const expected = [a.accessedAt, b.accessedAt, moneyPage?.updatedAt, getPairDecisionBrief(slug)?.updatedAt,
         ...(BUYER_DEPTH_COMPARISON_CONTENT_SLUGS.some(slug => slug === slugA || slug === slugB) ? [BUYER_DEPTH_CONTENT_UPDATED_AT] : []),
       ]
         .filter((date): date is string => Boolean(date))
