@@ -134,12 +134,24 @@ components:
     backgroundColor: "{colors.stage}"
     textColor: "{colors.ink}"
     rounded: "{rounded.stage}"
-    padding: "32px"
+    padding: "20px 32px 24px"
   shortlist-sheet:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
     rounded: "{rounded.sheet}"
-    padding: "24px"
+    padding: "20px"
+  shortlist-companion:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sheet}"
+    padding: "16px"
+    width: "min(292px,92%)"
+  motion-toggle:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "50%"
+    width: "44px"
+    height: "44px"
   buyer-panel:
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
@@ -169,7 +181,7 @@ Miloosh uses a warm, light canvas, forest ink, citrine emphasis and a sage compa
 
 The system is code-led. Software logos, an interactive shortlist and a constructed paper illustration provide the visual material; no generated raster is part of this redesign. The light UI and the inverse dark social artwork are distinct surfaces with separate color constants.
 
-This is a scan of the implemented source, including its final refinement overrides. Visual verification is limited to sampled homepage desktop/mobile views and the Airtable software page; it is not a whole-site visual audit. No separate quality-bar card was supplied. The measured Ramp reference in the approved design spec bounds the comparison, and its measurements are observations rather than Miloosh tokens. The final independent review reported ship at 9.0/10 for the buyer-composition refinement and previously scored fixes; that verdict does not certify every generated route. The detailed verdict remains owned by the review artifact.
+This is a scan of the implemented source, including its final refinement overrides. Visual verification is limited to sampled homepage desktop/mobile views and the Airtable software page; it is not a whole-site visual audit. No separate quality-bar card was supplied. The measured Ramp reference in the approved design spec bounds the comparison, and its measurements are observations rather than Miloosh tokens. The prior independent review reported ship at 9.0/10 for the buyer-composition refinement and previously scored fixes; that verdict does not certify every generated route or the subsequent motion and logo refinement. The fresh independent motion/logo review reported 9.0/10 for the visual and code delta, with documentation freshness as its sole remaining blocker; this source-derived update resolves that documentation gap without extending the visual review scope. The detailed verdict remains owned by the review artifact.
 
 **Key Characteristics:**
 
@@ -238,22 +250,27 @@ Inherited content pages and the footer use the existing Container component: 115
 
 ## Elevation & Depth
 
-The overall system is flat. tonal fields and fine rules establish sections; catalogue hover changes fill and border rather than position. The raised shadow is reserved for floating search results and the paper-like shortlist. The guide illustration uses an intentionally rotated paper layer with its own soft shadow. The hero's matching-color horizontal box shadow extends the citrine text highlight; it is a highlight construction, not a hard offset elevation convention.
+The overall system is flat. Tonal fields and fine rules establish sections; catalogue hover changes fill and border rather than position. The raised shadow is reserved for floating search results and the paper-like shortlist. The guide illustration uses an intentionally rotated paper layer with its own soft shadow. The hero's matching-color horizontal box shadow extends the citrine text highlight; it is a highlight construction, not a hard offset elevation convention.
 
 ### Shadow Vocabulary
 
 - **Raised paper:** `0 20px 60px rgba(23,59,44,.12)` for shortlist sheets and search suggestions.
+- **Alternatives companion:** `0 12px 28px rgba(23,59,44,.14)` for the small linked alternatives window.
 - **Illustrated guide paper:** `0 14px 40px rgba(60,79,39,.14)` inside the guide artwork only.
 
-UI color and border transitions run for 180ms. The shortlist's single 650ms arrival uses `cubic-bezier(.22,1,.36,1)`, translating from 12px below and rotating from 1 degree to level. It does not animate opacity or hide content. Reduced-motion disables animations and transitions globally.
+UI color and border transitions run for 180ms. The discovery desk contains two CSS transform loops, each running for 8 seconds with `ease-in-out`; the alternatives window starts at a −4-second phase offset. On desktop the main sheet moves vertically by 8px and rotates between −0.3 and 0.3 degrees. The companion moves 6px horizontally and 12px vertically, rotating between 0.7 and −0.6 degrees. Below 700px the loops use only vertical travel: 4px for the main sheet and 6px for the companion, with no rotation.
 
-**The Paper Depth Rule.** Keep editorial cards and ruled lists flat. Reserve the raised shadow for the shortlist sheet and search suggestions; the guide paper has its own illustrative shadow.
+The enclosing scene has one 640ms entrance with `cubic-bezier(.22,1,.36,1)`, from `translateY(10px)` and opacity 0.8 to level and full opacity. Content is never fully transparent. This scene/window motion replaces the earlier 650ms sheet animation, which has been removed from the stylesheet. Controls and text outside the panes remain still; categories never advance automatically. There is no video, canvas, animation library or continuous JavaScript loop.
+
+Loop motion begins only when the production component reports motion allowed, an intersecting stage and no manual pause. The intersection observer is configured with threshold 0.15 and uses its reported `isIntersecting` state. A hidden document or reduced-motion preference disables the running state. Hover pauses the stage on hover-capable devices; keyboard focus on any stage link pauses both windows. The circular control toggles Pause/Resume and exposes its paused state with `aria-pressed`. These guards control the loops; the brief entrance is separately removed under reduced motion. Reduced-motion also disables transitions, resets scene/window transforms and hides the unnecessary motion toggle, leaving the complete composition readable.
+
+**The Paper Depth Rule.** Keep editorial cards and ruled lists flat. Reserve the raised shadow for the shortlist sheet and search suggestions; the alternatives companion uses its shallower window shadow, and the guide paper has its own illustrative shadow.
 
 ## Shapes
 
 Controls are gently squared; cards are softer; the desktop stage has the broadest corners. Use the frontmatter's control, card and stage roles. The stage reduces to the card radius on mobile. The search shell and shortlist sheet use their own search and sheet radii. Compact shortlist tabs use the tab radius; inherited metadata badges retain a full pill.
 
-A one-pixel border or rule is the standard structural edge. The software logo well is 44px square with an 11px radius, reducing to 38px with a 9px radius on mobile. Supplied SVG product marks appear inside it; the component uses the product's initial where no supplied mark exists. These initials are identity fallbacks, not a general icon system. Functional icons use SVG.
+A one-pixel border or rule is the standard structural edge. The software logo well is 44px square with an 11px radius, reducing to 38px with a 9px radius on mobile. Supplied SVG or PNG product marks appear inside it at 25px; the component uses the product's initial only for an unmapped slug. The alternatives companion uses a 34px logo well with an 8px radius. These initials are identity fallbacks, not a general icon system. Functional icons use SVG.
 
 ## Components
 
@@ -285,7 +302,13 @@ The sticky, warm header has a fine bottom rule, original M mark, wordmark, muted
 
 ### Shortlist desk
 
-The sage enclosure contains use-case toggles and one white sheet with three real software options. Toggle controls have at least 44px height, forest selected fill and white text. The sheet announces updated content politely and keeps its real product and category links. The stage's orbit is a decorative CSS rule; it is not a generated image. Its denser label sizes are local to this component.
+The sage enclosure contains use-case toggles, a main white sheet with three real software options, and a smaller linked alternatives window for the selected group’s first product. Changing use case updates the real product, fit text, category destination and alternative count; it does not reset selection on a timer. The main sheet announces content politely. Both panes preserve native product links, while the main sheet also links to the category.
+
+The scene reserves 116px below the main sheet for its companion. The companion has a 12px radius, 16px padding and a width of `min(292px,92%)`, positioned 8px above the scene’s lower edge and 8px beyond the right edge (`bottom:8px; right:-8px`). On mobile it aligns to the right edge and uses 94% width. The main sheet now has 20px padding, no top margin inside the scene and 14px row padding. The stage has 20px/24px top/bottom padding, reducing to 16px/20px on mobile; its horizontal padding follows the existing responsive stage rules. Toggle controls have at least 44px height, forest selected fill and white text. Their top margin is now 12px; stage notes follow after 16px.
+
+The motion toggle is a 44px circular outlined button with Pause/Resume SVG icons and an accessible label. Its hover fill is translucent white. Preserve the production state and pause safeguards described in Elevation & Depth. The stage’s orbit is a decorative CSS rule; it is not a generated image. Its denser label sizes are local to this component. The sidecar shows a paused HTML/CSS snapshot with the companion and Resume control; its static preview does not replace React’s event handling, preference subscription or visibility observer.
+
+Across the opening use-case groups and featured buyer section, ten unique software identities now have mapped marks: Airtable, Todoist, Notion, ElevenLabs, HubSpot, Close, Setmore, Pipedrive, Synthesia and Jasper. The first five SVGs come from Simple Icons. Five newly sourced official assets complete the set: Setmore SVG plus Close, Pipedrive, Synthesia and Jasper PNGs, each linked from its vendor’s official homepage. These are identification assets, not generated raster art or endorsement claims. `public/brands/SOURCES.md` records exact source URLs and the 2026-10-04 retrieval date. Unknown catalogue slugs retain the letter fallback; this refinement does not claim logo coverage for the entire catalogue.
 
 ### Buyer picks and matcher strip
 
@@ -319,4 +342,4 @@ Retain the existing `/software/[slug]`, `/category/[slug]`, comparison and guide
 
 Inherited drift not canonized or repaired: the shared SectionHeading still permits uppercase eyebrows and some unsampled route usages remain. Those styles are excluded from the token roles above; this documentation does not expand the completed visual review or modify source to resolve them.
 
-Source basis: `app/globals.css` including final overrides; `app/layout.tsx`; homepage, navigation, footer, search, shortlist, directory and software-card components; `lib/button-styles.ts`; shared Card/Badge/Container; sampled software and buyer-panel source; tracked CTA/vendor wrappers; and `lib/site.ts` / manifest / social-image consumers. The frontmatter is normative; generated sidecar ramps are preview aids, not additional production colors.
+Source basis: `app/globals.css` including final overrides; `app/layout.tsx`; homepage, navigation, footer, search, shortlist, directory and software-card components; `lib/button-styles.ts`; shared Card/Badge/Container; sampled software and buyer-panel source; tracked CTA/vendor wrappers; and `lib/site.ts` / manifest / social-image consumers. The bounded motion/logo refresh additionally checks `ShortlistDemo`, `SoftwareMark`, the final stylesheet cascade, `.impeccable/home-brief.md` and `public/brands/SOURCES.md`. The frontmatter is normative; generated sidecar ramps are preview aids, not additional production colors.
