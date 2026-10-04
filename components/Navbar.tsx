@@ -27,7 +27,7 @@ export function Navbar() {
           {links.map((link) => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}
         </nav>
         <div className="nav-actions">
-          <Link href="/recommend" className="design-button nav-cta" onClick={() => setOpen(false)}>Find software <ArrowUpRight size={16} /></Link>
+          <Link href={pathname === "/" ? "/#my-shortlist" : "/recommend"} className="design-button nav-cta" onClick={() => setOpen(false)}>{pathname === "/" ? "My shortlist" : "Find software"} <ArrowUpRight size={16} /></Link>
           <button id="navigation-toggle" type="button" className="menu-toggle" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
         </div>
       </div>

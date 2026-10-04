@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, CircleCheck, BookOpen, GitCompare, Layers, ShieldCheck, SlidersHorizontal } from "lucide-react";
 import { SoftwareMark } from "@/components/SoftwareMark";
-import { DiscoverySearch } from "@/components/DiscoverySearch";
-import { ShortlistDemo, type ShortlistGroup } from "@/components/ShortlistDemo";
+import { BuyerDesk } from "@/components/BuyerDesk";
+import { getBuyerDeskComparisons, getBuyerDeskProducts } from "@/lib/buyer-desk-catalog";
 import { SoftwareDirectory } from "@/components/SoftwareDirectory";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getAllCategories, getCategoryName } from "@/data/categories";
@@ -110,12 +110,6 @@ export default function Home() {
     setmore: "Give clients a simpler way to book time with you.",
     elevenlabs: "Explore lifelike AI voices and audio creation.",
   };
-  const groupDefinitions = [
-    { label: "Organize work", category: "productivity", tools: [["airtable", "Flexible databases & workflows"], ["todoist", "Tasks & daily planning"], ["notion", "Notes, docs & team knowledge"]] },
-    { label: "Grow sales", category: "crm", tools: [["close", "Calling, email & sales CRM"], ["pipedrive", "Visual sales pipelines"], ["hubspot", "Connected customer tools"]] },
-    { label: "Create content", category: "ai", tools: [["elevenlabs", "AI voices & audio"], ["synthesia", "AI video creation"], ["jasper", "Content for marketing teams"]] },
-  ];
-  const groups: ShortlistGroup[] = groupDefinitions.map(group => ({...group, tools: group.tools.flatMap(([slug,fit]) => { const tool = getSoftware(slug); return tool ? [{slug,name:tool.name,fit,alternatives:tool.alternatives.length}] : []; })}));
   const catalogue = allSoftware.map(tool => ({name:tool.name, slug:tool.slug, category:getCategoryName(tool.category)}));
   const categoryOrder = ["productivity","ai","crm","marketing","project-management","automation"];
   const leadCategories = categoryOrder.flatMap(slug => allCategories.filter(category => category.slug === slug));
@@ -123,21 +117,13 @@ export default function Home() {
 
   return (
     <main className="home-design">
-      <section className="hero-section" id="search">
-        <div className="design-container hero-grid">
-          <div className="hero-copy">
-            <h1>Good software.<br />A <span>better fit.</span></h1>
-            <p className="hero-description">Find the tools that work for you. Explore the options, understand the tradeoffs, and choose with confidence.</p>
-            <DiscoverySearch items={catalogue} />
-            <div className="hero-explore"><span>Start with</span>{popularSoftware.slice(0,4).map(tool => <Link href={`/software/${tool.slug}`} key={tool.slug}>{tool.name}</Link>)}</div>
-            <p className="hero-assurance"><ShieldCheck size={17} strokeWidth={1.7} /> Independent research. Sources you can check.</p>
-          </div>
-          <ShortlistDemo groups={groups} />
-        </div>
+      <BuyerDesk products={getBuyerDeskProducts()} catalogue={catalogue} comparisons={getBuyerDeskComparisons()} />
+      <section aria-label="Explore more of Miloosh">
         <div className="design-container evidence-strip">
           <p>Clarity for your next software decision.</p>
           <span><strong>{allSoftware.length}</strong> tools to explore</span><span><strong>{categoryCount}</strong> categories</span><span><Check size={16} /> Free to use. No signup.</span>
         </div>
+        <div className="design-container hero-explore"><span>More research</span>{popularSoftware.slice(0,4).map(tool => <Link href={`/software/${tool.slug}`} key={tool.slug}>{tool.name}</Link>)}{["notion", "hubspot", "synthesia", "jasper"].map(slug => <Link href={`/software/${slug}`} key={slug}>{getSoftware(slug)?.name}</Link>)}</div>
       </section>
 
       <section className="design-section" id="buyer-picks">
