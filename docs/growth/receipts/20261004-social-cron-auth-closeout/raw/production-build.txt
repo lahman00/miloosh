@@ -1,0 +1,130 @@
+
+> miloosh@0.12.0 build
+> next build
+
+▲ Next.js 16.3.8 (Turbopack)
+✓ Running next.config.ts took 1718ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1208ms
+  Running TypeScript ...
+  Finished TypeScript in 2.1s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/3542) ...
+  Generating static pages using 7 workers (885/3542)
+  Generating static pages using 7 workers (1770/3542)
+  Generating static pages using 7 workers (2656/3542)
+✓ Generating static pages using 7 workers (3542/3542) in 18.1s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├   /[guide]
+│ ├ ● /best-time-tracking-for-agencies
+│ ├ ● /best-time-tracking-for-freelancers
+│ ├ ● /best-accounting-software-for-freelancers
+│ └ ● [+31 more paths]
+├ ○ /about
+├ ○ /accessibility
+├ ○ /affiliate-disclosure
+├ ○ /ai-usage
+├ ƒ /api/analytics/event
+├ ƒ /api/cron/seo-factory
+├ ƒ /api/cron/social-publish
+├ ƒ /api/cron/social-schedule
+├ ƒ /api/growth/gsc-query
+├ ƒ /api/internal/money-map
+├ ƒ /api/newsletter/subscribe
+├ ƒ /api/outbound-click
+├ ƒ /api/recommendation-click
+├ ƒ /api/research/cms-buying-decision-2026
+├ ƒ /api/research/cms-buying-decision-2026/csv
+├ ƒ /api/research/crm-plan-gates-2026
+├ ƒ /api/research/crm-plan-gates-2026/csv
+├ ƒ /api/research/customer-support-pricing-2026
+├ ƒ /api/research/customer-support-pricing-2026/csv
+├ ƒ /api/social/buffer/verify
+├ ƒ /api/social/card
+├ ƒ /api/social/landing
+├ ƒ /api/social/linkedin-banner
+├ ƒ /api/social/make/linkedin-result
+├ ƒ /api/social/publish-entry
+├ ○ /apple-icon
+├   /category/[slug]
+│ ├ ● /category/project-management
+│ ├ ● /category/communication
+│ ├ ● /category/crm
+│ └ ● [+24 more paths]
+├   /category/[slug]/opengraph-image
+│ ├ ● /category/project-management/opengraph-image
+│ ├ ● /category/communication/opengraph-image
+│ ├ ● /category/crm/opengraph-image
+│ └ ● [+24 more paths]
+├ ○ /compare
+├   /compare/[comparison]
+│ ├ ● /compare/notion-vs-clickup
+│ ├ ● /compare/notion-vs-coda
+│ ├ ● /compare/notion-vs-confluence
+│ └ ● [+1345 more paths]
+├   /compare/[comparison]/opengraph-image
+│ ├ ● /compare/notion-vs-clickup/opengraph-image
+│ ├ ● /compare/notion-vs-coda/opengraph-image
+│ ├ ● /compare/notion-vs-confluence/opengraph-image
+│ └ ● [+1345 more paths]
+├ ○ /contact
+├ ○ /cookies
+├ ○ /corrections-policy
+├ ○ /disclaimer
+├ ○ /editorial-policy
+├ ○ /feed.xml
+├ ○ /guides
+├ ○ /icon
+├ ƒ /internal/affiliate-pipeline
+├ ƒ /internal/first-revenue
+├ ƒ /internal/growth
+├ ƒ /internal/maintenance
+├ ƒ /internal/money-map
+├ ƒ /internal/outbound-clicks
+├ ƒ /internal/partner-performance
+├ ƒ /internal/payouts
+├ ƒ /internal/recommendations
+├ ○ /internal/revenue
+├ ƒ /internal/seo-factory
+├ ƒ /internal/social
+├ ○ /manifest.webmanifest
+├ ○ /newsletter
+├ ƒ /newsletter/unsubscribe
+├ ○ /opengraph-image
+├ ○ /privacy
+├ ƒ /recommend
+├ ƒ /recommend/results
+├ ○ /research
+├ ○ /research/cms-buying-decision-2026
+├ ○ /research/crm-plan-gates-2026
+├ ○ /research/customer-support-pricing-2026
+├ ○ /research/saas-pricing-pressure-index-2026
+├ ○ /robots.txt
+├ ○ /sitemap.xml
+├   /software/[slug]
+│ ├ ● /software/notion
+│ ├ ● /software/slack
+│ ├ ● /software/clickup
+│ └ ● [+351 more paths]
+├   /software/[slug]/opengraph-image
+│ ├ ● /software/notion/opengraph-image
+│ ├ ● /software/slack/opengraph-image
+│ ├ ● /software/clickup/opengraph-image
+│ └ ● [+351 more paths]
+├ ○ /sources-policy
+├ ○ /terms
+├ ○ /tools/saas-cost-calculator
+├ ○ /trademark-notice
+└ ○ /twitter-image
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand

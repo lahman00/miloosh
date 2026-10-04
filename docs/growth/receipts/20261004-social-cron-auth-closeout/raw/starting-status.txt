@@ -1,0 +1,2 @@
+?? docs/growth/receipts/20261004-social-cron-auth-closeout/
+?? tests/social/cron-auth-boundary.test.ts

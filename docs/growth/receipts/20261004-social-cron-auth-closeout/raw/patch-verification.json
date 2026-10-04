@@ -1,0 +1,15 @@
+{
+  "base": "8c476c16e40fe8be1c97567a8e855d5fd829b17b",
+  "sourceCommit": "f466b978b1f3ecaf4e891a999712e599f2878134",
+  "files": [
+    "app/api/cron/social-publish/route.ts",
+    "app/api/cron/social-schedule/route.ts",
+    "tests/social/cron-auth-boundary.test.ts",
+    "tests/social/cron-buffer-verification.test.ts",
+    "tests/social/cron-schedule-auth.test.ts"
+  ],
+  "applyCheckExitCode": 0,
+  "applyExitCode": 0,
+  "allFilesByteIdentical": true,
+  "patchSha256": "6c2103591a917e679c0e76c98db31dd931bec9fcd81c9b98f4a843f380b19198"
+}

@@ -1,0 +1,236 @@
+{
+  "observedAt": "2026-10-04T08:05:05.456440+00:00",
+  "scope": "built local server, no production credentials",
+  "requests": 18,
+  "passed": 18,
+  "socialQueueHashBefore": "ABSENT",
+  "socialQueueHashAfter": "ABSENT",
+  "queueUnchanged": true,
+  "rows": [
+    {
+      "route": "/api/cron/social-publish",
+      "case": "no-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "wrong-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "dry-run-no-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "live-flag-no-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "fake-cron-headers",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "query-token-rejected",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "head-no-auth",
+      "method": "HEAD",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "unsupported-post",
+      "method": "POST",
+      "status": 405,
+      "cacheControl": "",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "topLevelKeys": [],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-publish",
+      "case": "authorized-dry-run",
+      "method": "GET",
+      "status": 200,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "authenticated",
+        "dryRun",
+        "entriesAttempted",
+        "facebookContinuity",
+        "inPublishWindow",
+        "paused",
+        "ranAt",
+        "results",
+        "staleHandling"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "no-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "wrong-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "dry-run-no-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "live-flag-no-auth",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "fake-cron-headers",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "query-token-rejected",
+      "method": "GET",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "head-no-auth",
+      "method": "HEAD",
+      "status": 401,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "unsupported-post",
+      "method": "POST",
+      "status": 405,
+      "cacheControl": "",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "topLevelKeys": [],
+      "passed": true
+    },
+    {
+      "route": "/api/cron/social-schedule",
+      "case": "authorized-dry-run",
+      "method": "GET",
+      "status": 200,
+      "cacheControl": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "topLevelKeys": [
+        "approvedCount",
+        "authenticated",
+        "dryRun",
+        "minCadence",
+        "perDay",
+        "ranAt",
+        "reason",
+        "remainingApprovedCount",
+        "scheduledCount",
+        "scheduledEntryIds"
+      ],
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+[
+  {
+    "gate": "npm-ci",
+    "command": [
+      "npm",
+      "ci"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T07:59:19.971400+00:00",
+    "endedAt": "2026-10-04T07:59:28.821445+00:00"
+  },
+  {
+    "gate": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T07:59:28.822180+00:00",
+    "endedAt": "2026-10-04T07:59:28.846257+00:00"
+  },
+  {
+    "gate": "unit-tests",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T07:59:28.846625+00:00",
+    "endedAt": "2026-10-04T08:00:29.438723+00:00"
+  },
+  {
+    "gate": "static-gate",
+    "command": [
+      "npm",
+      "run",
+      "test:static-gate"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:00:29.439355+00:00",
+    "endedAt": "2026-10-04T08:00:29.691244+00:00"
+  },
+  {
+    "gate": "validate-data",
+    "command": [
+      "npm",
+      "run",
+      "validate:data"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:00:29.691725+00:00",
+    "endedAt": "2026-10-04T08:00:30.469229+00:00"
+  },
+  {
+    "gate": "lint",
+    "command": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:00:30.469706+00:00",
+    "endedAt": "2026-10-04T08:00:39.590784+00:00"
+  },
+  {
+    "gate": "typecheck",
+    "command": [
+      "./node_modules/.bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:00:39.591558+00:00",
+    "endedAt": "2026-10-04T08:00:41.870036+00:00"
+  },
+  {
+    "gate": "audit-high",
+    "command": [
+      "npm",
+      "audit",
+      "--audit-level=high"
+    ],
+    "exitCode": 1,
+    "startedAt": "2026-10-04T08:00:41.870494+00:00",
+    "endedAt": "2026-10-04T08:00:42.736883+00:00"
+  },
+  {
+    "gate": "audit-json",
+    "command": [
+      "npm",
+      "audit",
+      "--json"
+    ],
+    "exitCode": 1,
+    "startedAt": "2026-10-04T08:00:42.737371+00:00",
+    "endedAt": "2026-10-04T08:00:43.415427+00:00"
+  },
+  {
+    "gate": "braces-current",
+    "command": [
+      "npm",
+      "view",
+      "braces",
+      "dist-tags",
+      "--json"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:00:43.416363+00:00",
+    "endedAt": "2026-10-04T08:00:43.663533+00:00"
+  },
+  {
+    "gate": "production-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:00:43.664032+00:00",
+    "endedAt": "2026-10-04T08:01:12.758966+00:00"
+  },
+  {
+    "gate": "verify-static",
+    "command": [
+      "npm",
+      "run",
+      "verify:static"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-10-04T08:01:12.760125+00:00",
+    "endedAt": "2026-10-04T08:01:23.773662+00:00"
+  }
+]

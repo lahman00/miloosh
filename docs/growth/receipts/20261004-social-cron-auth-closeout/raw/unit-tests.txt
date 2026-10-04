@@ -1,0 +1,350 @@
+
+> miloosh@0.12.0 test
+> vitest run
+
+
+ RUN  v4.1.11 /Users/eyalhaimovich/Desktop/Miloosh/01-Current/qa-premium-20261004
+
+ ✓ tests/analytics/first-party-analytics.test.ts (41 tests) 40ms
+ ✓ tests/social/publish.test.ts (42 tests) 36ms
+ ✓ tests/lib/recommend-scenarios.test.ts (89 tests) 110ms
+ ✓ tests/growth/google-war.test.ts (35 tests) 22ms
+ ✓ tests/category/featured-comparisons.test.ts (14 tests) 105ms
+ ✓ tests/analytics/outbound-click-route.test.ts (82 tests) 118ms
+ ✓ tests/lib/affiliate-pipeline-repair-plan.test.ts (21 tests) 7ms
+ ✓ tests/agents/google-search-console.test.ts (23 tests) 4049ms
+     ✓ retries a real 429 (quota exceeded) response with backoff and succeeds if a later attempt is accepted  1004ms
+     ✓ gives up after repeated 429s rather than retrying forever  3006ms
+ ✓ tests/catalog/wave2-monetization-records.test.ts (31 tests) 65ms
+ ✓ tests/facebook/worker.test.ts (24 tests) 11ms
+ ✓ tests/lib/affiliate-integrity.test.ts (16 tests) 14ms
+ ✓ tests/social/content-engine.test.ts (26 tests) 91ms
+ ✓ tests/catalog/tier-b-sales-batch.test.ts (18 tests) 54ms
+ ✓ tests/catalog/tier-b-security-cx-batch.test.ts (19 tests) 53ms
+ ✓ tests/lib/affiliate-pipeline.test.ts (21 tests) 16ms
+ ✓ tests/catalog/data-bi-field-ai-batch.test.ts (17 tests) 52ms
+ ✓ tests/lib/recommend-eligibility.test.ts (21 tests) 52ms
+ ✓ tests/catalog/tier-b-data-bi-batch.test.ts (18 tests) 48ms
+ ✓ tests/growth/google-command-evidence.test.ts (46 tests) 21ms
+ ✓ tests/catalog/sales-gtm-batch.test.ts (17 tests) 52ms
+ ✓ tests/lib/canonical-affiliate-ledger-invariants.test.ts (9 tests) 7ms
+ ✓ tests/social/channels-linkedin.test.ts (13 tests) 16ms
+ ✓ tests/growth/money-priority-engine.test.ts (17 tests) 71ms
+ ✓ tests/lib/newsletter-storage-integrity.test.ts (22 tests) 31ms
+stderr | tests/analytics/analytics-event-route.test.ts > POST /api/analytics/event — end-to-end route behavior > rejects a bot user-agent as BOT, and never stores the event
+[analytics] BOT: user-agent matched a known bot pattern: "Googlebot/2.1"
+
+stderr | tests/analytics/analytics-event-route.test.ts > POST /api/analytics/event — end-to-end route behavior > rejects Vercel cron traffic as INTERNAL_INFRA, and never stores the event
+[analytics] INTERNAL_INFRA: x-vercel-cron header present
+
+stderr | tests/analytics/analytics-event-route.test.ts > POST /api/analytics/event — end-to-end route behavior > rejects an engaged_view claiming an implausibly fast duration — 2026-08-22 forensics finding (tab-duplication theory: sessionStorage/session ID is copied on tab duplication, the in-memory dwell timer is not, so an already-progressed timer in the original tab can fire shortly after a fresh page_view from the duplicate)
+[analytics] REJECTED_VALIDATION: invalid engagement duration or below dwell floor
+
+stderr | tests/analytics/analytics-event-route.test.ts > POST /api/analytics/event — end-to-end route behavior > rejects an engaged_view with a missing or non-numeric durationSeconds rather than trusting it silently
+[analytics] REJECTED_VALIDATION: invalid engagement duration or below dwell floor
+
+ ✓ tests/analytics/analytics-event-route.test.ts (19 tests) 75ms
+ ✓ tests/lib/indexation-priority.test.ts (15 tests) 456ms
+ ✓ tests/catalog/tier-b-itops-batch.test.ts (16 tests) 69ms
+ ✓ tests/lib/human-classification.test.ts (13 tests) 12ms
+ ✓ tests/seo-factory/alternative-guides.test.ts (3 tests) 599ms
+     ✓ does not clone five-word editorial phrases across products  546ms
+ ✓ tests/lib/analytics-client-primitives.test.ts (20 tests) 15ms
+ ✓ tests/catalog/it-ops-security-batch.test.ts (13 tests) 49ms
+stderr | tests/lib/click-tracker.test.ts > trackSoftwareCtaClick — Wix funnel dimensions > a persistence failure returns false without throwing into navigation
+[outbound] local write failed
+
+ ✓ tests/lib/click-tracker.test.ts (14 tests) 52ms
+ ✓ tests/growth/operations.test.ts (12 tests) 22ms
+ ✓ tests/agents/orchestrator.test.ts (12 tests) 65ms
+ ✓ tests/guides/buyer-pain-wave2.test.ts (12 tests) 56ms
+ ✓ tests/analytics/first-revenue-funnel.test.ts (14 tests) 5ms
+ ✓ tests/social/channels-facebook.test.ts (14 tests) 5ms
+ ✓ tests/growth/ingest-first-pain-signal.test.ts (11 tests) 9ms
+ ✓ tests/analytics/outbound-ledger-read.test.ts (18 tests) 24ms
+ ✓ tests/lib/first-revenue-decision-completeness.test.ts (26 tests) 236ms
+ ✓ tests/growth/buyer-depth-sprint.test.ts (29 tests) 167ms
+ ✓ tests/social/cron-auth-boundary.test.ts (34 tests) 36ms
+ ✓ tests/social/qa-gates.test.ts (18 tests) 46ms
+ ✓ tests/analytics/research-authority.test.ts (31 tests) 24ms
+ ✓ tests/growth/google-command-revenue.test.ts (24 tests) 21ms
+ ✓ tests/growth/authority-measurement.test.ts (19 tests) 18ms
+ ✓ tests/lib/money-map.test.ts (14 tests) 165ms
+ ✓ tests/analytics/browser-acquisition.test.ts (17 tests) 12ms
+ ✓ tests/catalog/tier-b-hr-batch.test.ts (14 tests) 16ms
+ ✓ tests/catalog/erp-payments-batch.test.ts (9 tests) 60ms
+ ✓ tests/guides/store-plan-fit.test.ts (13 tests) 35ms
+ ✓ tests/seo-factory/scoring-policy.test.ts (11 tests) 11ms
+ ✓ tests/growth/pain-clustering.test.ts (10 tests) 5ms
+ ✓ tests/catalog/finance-spend-batch.test.ts (9 tests) 58ms
+ ✓ tests/lib/sitemap.test.ts (6 tests) 110ms
+ ✓ tests/lib/generators.test.ts (9 tests) 73ms
+ ✓ tests/lib/recommend-ecommerce-wizard.test.ts (6 tests) 24ms
+ ✓ tests/catalog/hr-payroll-batch.test.ts (12 tests) 24ms
+ ✓ tests/lib/post-acquisition-report.test.ts (5 tests) 15ms
+ ✓ tests/reddit/worker.test.ts (12 tests) 6ms
+ ✓ tests/social/schedule.test.ts (6 tests) 23ms
+ ✓ tests/agents/search-console-agents.test.ts (17 tests) 4ms
+ ✓ tests/lib/overnight-affiliate-expansion-20261001.test.ts (12 tests) 43ms
+ ✓ tests/lib/affiliate-wix.test.ts (15 tests) 42ms
+ ✓ tests/social/attribution.test.ts (8 tests) 7ms
+ ✓ tests/reddit/quality-gate.test.ts (10 tests) 5ms
+ ✓ tests/growth/pain-candidate-store.test.ts (14 tests) 8ms
+ ✓ tests/guides/buyer-pain-guides.test.ts (11 tests) 48ms
+ ✓ tests/growth/current-protection.test.ts (6 tests) 1061ms
+ ✓ tests/lib/comparison-quality-experiment.test.ts (9 tests) 48ms
+ ✓ tests/middleware.test.ts (16 tests) 9ms
+ ✓ tests/growth/authority-registry.test.ts (18 tests) 17ms
+ ✓ tests/lib/active-partners.test.ts (41 tests) 58ms
+ ✓ tests/lib/recommend-ecommerce-situation.test.ts (80 tests) 110ms
+ ✓ tests/facebook/gmail-transport.test.ts (12 tests) 6ms
+ ✓ tests/social/queue.test.ts (11 tests) 10ms
+ ✓ tests/lib/first-revenue-panel.test.ts (16 tests) 69ms
+ ✓ tests/growth/social-attribution-report.test.ts (5 tests) 6ms
+ ✓ tests/lib/store-related.test.ts (11 tests) 51ms
+ ✓ tests/lib/affiliate-priority.test.ts (9 tests) 239ms
+ ✓ tests/reddit/gmail-transport.test.ts (11 tests) 6ms
+ ✓ tests/guides/store-decision-conversion-path.test.ts (6 tests) 9ms
+ ✓ tests/analytics/first-revenue-journey.test.ts (20 tests) 92ms
+ ✓ tests/analytics/technical-hardening.test.ts (11 tests) 19ms
+ ✓ tests/seo-factory/store.test.ts (4 tests) 5ms
+ ✓ tests/analytics/page-view-lifecycle.test.ts (9 tests) 6ms
+ ✓ tests/lib/affiliate-activation.test.ts (7 tests) 42ms
+ ✓ tests/lib/comparison-affiliate-neutrality.test.ts (3 tests) 46ms
+ ✓ tests/agents/experiment-tracker.test.ts (9 tests) 7ms
+ ✓ tests/lib/newsletter-leads.test.ts (8 tests) 9ms
+ ✓ tests/social/queue-read-integrity.test.ts (15 tests) 18ms
+ ✓ tests/growth/gsc-query-route.test.ts (11 tests) 7ms
+ ✓ tests/growth/reddit-opportunity.test.ts (11 tests) 3ms
+ ✓ tests/growth/remedy-selector.test.ts (11 tests) 3ms
+ ✓ tests/agents/registry.test.ts (12 tests) 6ms
+ ✓ tests/seo/crawl-contract.test.ts (5 tests) 40ms
+ ✓ tests/lib/affiliate-money-matrix-readiness.test.ts (7 tests) 6ms
+ ✓ tests/lib/affiliate-approval-gating.test.ts (7 tests) 50ms
+ ✓ tests/lib/affiliate-evening-reconciliation.test.ts (9 tests) 57ms
+ ✓ tests/analytics/event-persistence.test.ts (5 tests) 23ms
+ ✓ tests/growth/community-traffic-manifest.test.ts (5 tests) 52ms
+ ✓ tests/agents/canonical-and-crawl-recency.test.ts (10 tests) 5ms
+ ✓ tests/growth/production-release.test.ts (7 tests) 53ms
+ ✓ tests/agents/indexnow.test.ts (9 tests) 6ms
+ ✓ tests/lib/revenue-trust-regressions.test.ts (6 tests) 56ms
+ ✓ tests/growth/master-research-integration.test.ts (5 tests) 64ms
+ ✓ tests/lib/jotform-pricing-deeplink.test.ts (9 tests) 4ms
+ ✓ tests/growth/selective-safe-serp.test.ts (5 tests) 131ms
+ ✓ tests/lib/first-revenue-pricing.test.ts (12 tests) 43ms
+ ✓ tests/lib/buyer-migration-checklists.test.ts (10 tests) 144ms
+ ✓ tests/lib/partner-materials-audit.test.ts (6 tests) 4ms
+ ✓ tests/lib/recommend-affiliate-neutrality.test.ts (10 tests) 64ms
+ ✓ tests/social/media-backfill.test.ts (7 tests) 11ms
+ ✓ tests/social/linkedin-reconciliation.test.ts (4 tests) 9ms
+ ✓ tests/lib/editorial-independence.test.ts (3 tests) 42ms
+ ✓ tests/analytics/ingest-boundary.test.ts (18 tests) 56ms
+ ✓ tests/agents/indexed-vs-nonindexed-comparator.test.ts (7 tests) 3ms
+ ✓ tests/guides/shopify-woocommerce-migration-records.test.ts (6 tests) 10ms
+ ✓ tests/agents/url-inspection-cache.test.ts (8 tests) 4ms
+ ✓ tests/catalog/tier-c-expansion-batch.test.ts (8 tests) 20ms
+ ✓ tests/analytics/outbound-client-activation.test.ts (14 tests) 9ms
+ ✓ tests/growth/pain-forecast-backtest.test.ts (6 tests) 3ms
+ ✓ tests/agents/priority-candidate-selector.test.ts (7 tests) 4ms
+ ✓ tests/lib/payout-rails.test.ts (8 tests) 5ms
+ ✓ tests/guides/role-guides.test.ts (6 tests) 54ms
+ ✓ tests/lib/money-priority-engine.test.ts (4 tests) 47ms
+ ✓ tests/lib/support-pricing-benchmark.test.ts (11 tests) 4ms
+ ✓ tests/guides/wix-shopify-buyer-checks.test.ts (6 tests) 10ms
+ ✓ tests/lib/mailerlite-regression-protection.test.ts (5 tests) 3ms
+ ✓ tests/analytics/outbound-hardening.test.ts (13 tests) 54ms
+ ✓ tests/lib/comparison.test.ts (6 tests) 42ms
+ ✓ tests/lib/cms-decision-matrix.test.ts (8 tests) 4ms
+ ✓ tests/growth/deployment-capture.test.ts (7 tests) 19ms
+ ✓ tests/social/channels-types.test.ts (12 tests) 3ms
+ ✓ tests/seo/gsc-serp-opportunities.test.ts (8 tests) 4ms
+ ✓ tests/catalog/catalog-expansion-comparisons.test.ts (7 tests) 73ms
+ ✓ tests/analytics/complete-event-reader.test.ts (6 tests) 23ms
+ ✓ tests/lib/growth-audit.test.ts (5 tests) 72ms
+ ✓ tests/lib/crm-plan-gates.test.ts (10 tests) 4ms
+ ✓ tests/lib/project-guard.test.ts (8 tests) 129ms
+ ✓ tests/lib/social-schedule-health.test.ts (3 tests) 6ms
+ ✓ tests/reddit/worker-lifecycle.test.ts (8 tests) 2706ms
+     ✓ --help returns without consuming stdin or taking a lock  357ms
+     ✓ -h returns without consuming stdin or taking a lock  323ms
+     ✓ rejects unsupported arguments "reddit_status" before taking a lock  326ms
+     ✓ rejects unsupported arguments "--task" before taking a lock  322ms
+     ✓ rejects unsupported arguments "--task" before taking a lock  323ms
+     ✓ a busy contender does not delete another live invocation's lock  328ms
+     ✓ does not seize or remove a lock with an unverified owner  323ms
+     ✓ releases only its own lock after invalid task data  404ms
+ ✓ tests/growth/indexation-readiness.test.ts (6 tests) 777ms
+ ✓ tests/analytics/first-handoff-forensics.test.ts (5 tests) 59ms
+ ✓ tests/analytics/engaged-view.test.ts (9 tests) 6ms
+ ✓ tests/qa/premium-release-accessibility.test.ts (5 tests) 5ms
+ ✓ tests/social/social-landing-route.test.ts (3 tests) 8ms
+ ✓ tests/lib/revenue-events-summary.test.ts (7 tests) 4ms
+ ✓ tests/lib/comparison-cta-parity.test.ts (2 tests) 52ms
+ ✓ tests/growth/google-command-manifest.test.ts (14 tests) 114ms
+ ✓ tests/lib/pricing-index.test.ts (9 tests) 7ms
+ ✓ tests/lib/affiliate-network-status.test.ts (5 tests) 6ms
+ ✓ tests/catalog/tier-b-finance-legal-batch.test.ts (7 tests) 14ms
+ ✓ tests/agents/scoring.test.ts (8 tests) 50ms
+ ✓ tests/lib/affiliate-dormant-activation.test.ts (19 tests) 51ms
+ ✓ tests/lib/factual-depth-audit.test.ts (7 tests) 76ms
+ ✓ tests/seo/structured-data.test.ts (8 tests) 91ms
+ ✓ tests/lib/inbound-affiliate-opportunities.test.ts (5 tests) 41ms
+ ✓ tests/growth/pain-forecast.test.ts (5 tests) 11ms
+ ✓ tests/analytics/recommend-session-attribution.test.ts (4 tests) 12ms
+ ✓ tests/lib/owner-payout-actions.test.ts (6 tests) 3ms
+ ✓ tests/growth/pain-radar.test.ts (6 tests) 3ms
+stderr | tests/analytics/ecommerce-situation.test.ts > ecommerce situation first-party boundary > preserves bot/infra gates: {"user-agent":"Googlebot/2.1"}
+[analytics] BOT: user-agent matched a known bot pattern: "Googlebot/2.1"
+
+stderr | tests/analytics/ecommerce-situation.test.ts > ecommerce situation first-party boundary > preserves bot/infra gates: {"x-vercel-cron":"1"}
+[analytics] INTERNAL_INFRA: x-vercel-cron header present
+
+ ✓ tests/analytics/ecommerce-situation.test.ts (15 tests) 17ms
+ ✓ tests/growth/decision-paths.test.ts (4 tests) 18ms
+ ✓ tests/lib/overnight-indexation-recovery-20261001.test.ts (8 tests) 135ms
+ ✓ tests/lib/flippa-firewall.test.ts (6 tests) 43ms
+ ✓ tests/lib/application-pack.test.ts (7 tests) 53ms
+ ✓ tests/lib/newsletter-confirmation-integrity.test.ts (6 tests) 9ms
+ ✓ tests/growth/operations-capture.test.ts (3 tests) 6ms
+ ✓ tests/social/linkedin-readiness.test.ts (3 tests) 4ms
+ ✓ tests/social/buffer-verify-route.test.ts (3 tests) 11ms
+ ✓ tests/lib/site-url-production.test.ts (12 tests) 42ms
+ ✓ tests/lib/canonical-affiliate-reconciliation-current-truth.test.ts (5 tests) 4ms
+ ✓ tests/social/retry.test.ts (5 tests) 3ms
+ ✓ tests/lib/cloro-visibility.test.ts (4 tests) 6ms
+ ✓ tests/analytics/cta-exposure.test.ts (4 tests) 4ms
+ ✓ tests/agents/dedupe.test.ts (5 tests) 3ms
+ ✓ tests/analytics/outbound-write-failure.test.ts (4 tests) 103ms
+ ✓ tests/lib/freshbooks-affiliate-activation.test.ts (3 tests) 43ms
+ ✓ tests/guides/guide-pricing-integrity.test.ts (5 tests) 3ms
+ ✓ tests/lib/http.test.ts (5 tests) 14ms
+ ✓ tests/guides/woocommerce-repair-check.test.ts (4 tests) 9ms
+ ✓ tests/analytics/partner-report-unavailable.test.ts (5 tests) 56ms
+ ✓ tests/lib/social-channel-health.test.ts (3 tests) 8ms
+ ✓ tests/lib/pricing-freshness.test.ts (9 tests) 5ms
+ ✓ tests/analytics/role-guide-tracker.test.ts (5 tests) 6ms
+ ✓ tests/lib/newsletter-unsubscribe-view.test.ts (5 tests) 10ms
+ ✓ tests/lib/wrike-affiliate-activation.test.ts (4 tests) 3ms
+ ✓ tests/growth/passive-link-prefetch.test.ts (8 tests) 17ms
+stdout | tests/social/cron-buffer-verification.test.ts > social cron Buffer verification-only gate > returns read-only metadata without entering the publish cycle
+Buffer production verification {
+  authenticated: true,
+  mode: 'buffer-verification',
+  transport: 'buffer',
+  bufferAuthenticated: true,
+  target: 'company_page',
+  channel: {
+    id: 'channel-1',
+    name: 'Miloosh',
+    displayName: 'Miloosh',
+    descriptor: 'LinkedIn Page',
+    service: 'linkedin',
+    type: 'page',
+    isDisconnected: false,
+    isLocked: false
+  }
+}
+
+ ✓ tests/social/cron-buffer-verification.test.ts (2 tests) 19ms
+ ✓ tests/lib/new-affiliate-research-preparation.test.ts (8 tests) 45ms
+ ✓ tests/agents/search-console-signals.test.ts (5 tests) 3ms
+ ✓ tests/lib/research-registry-current-truth.test.ts (4 tests) 4ms
+ ✓ tests/social/timezone.test.ts (5 tests) 16ms
+ ✓ tests/analytics/local-store-integrity.test.ts (4 tests) 6ms
+ ✓ tests/lib/zoho-product-activation.test.ts (8 tests) 42ms
+ ✓ tests/growth/money-leaks-protection.test.ts (2 tests) 10ms
+ ✓ tests/growth/prepositioning.test.ts (5 tests) 2ms
+ ✓ tests/analytics/recommend-step-telemetry.test.ts (6 tests) 13ms
+ ✓ tests/guides/worksheet-direct-access.test.ts (2 tests) 8ms
+ ✓ tests/growth/authority-inputs.test.ts (3 tests) 5ms
+ ✓ tests/lib/recommend-ecommerce-guidance.test.ts (5 tests) 8ms
+ ✓ tests/software-page-cons.test.ts (3 tests) 41ms
+ ✓ tests/guides/user-first-decision-kit.test.ts (3 tests) 8ms
+ ✓ tests/seo-factory/intent.test.ts (15 tests) 4ms
+ ✓ tests/lib/category.test.ts (3 tests) 2ms
+ ✓ tests/lib/link-checker-affiliate-coverage.test.ts (2 tests) 44ms
+ ✓ tests/lib/affiliate-tracking-params.test.ts (4 tests) 3ms
+ ✓ tests/social/utm.test.ts (5 tests) 3ms
+ ✓ tests/lib/affiliate-elevenlabs.test.ts (4 tests) 41ms
+ ✓ tests/analytics/legacy-report-unavailable.test.ts (5 tests) 680ms
+ ✓ tests/lib/current-affiliate-truth.test.ts (5 tests) 3ms
+ ✓ tests/agents/gsc-snapshot.test.ts (3 tests) 2ms
+ ✓ tests/growth/deployment-observation.test.ts (12 tests) 6ms
+ ✓ tests/growth/quality-floor.test.ts (1 test) 182ms
+ ✓ tests/lib/pricing-display.test.ts (4 tests) 46ms
+ ✓ tests/growth/cohort-protocol-deviations.test.ts (2 tests) 23ms
+ ✓ tests/growth/google-war-import.test.ts (1 test) 347ms
+   ✓ imports a dated evidence directory without replacing the seed or previous imports  346ms
+ ✓ tests/guides/ecwid-pricing-integrity.test.ts (3 tests) 3ms
+ ✓ tests/lib/canonical-affiliate-reconciliation.test.ts (5 tests) 3ms
+ ✓ tests/lib/cta-copy-experiment.test.ts (5 tests) 3ms
+ ✓ tests/lib/full-affiliate-sweep.test.ts (6 tests) 3ms
+ ✓ tests/social/strategy.test.ts (6 tests) 4ms
+ ✓ tests/lib/recommend-buyer-integrity.test.ts (3 tests) 44ms
+ ✓ tests/growth/inspection-translation.test.ts (3 tests) 4ms
+ ✓ tests/lib/distribution-shortlist.test.ts (3 tests) 161ms
+ ✓ tests/seo/rendered-revenue-audit.test.ts (2 tests) 3ms
+ ✓ tests/lib/revenue-scoring-current-truth.test.ts (5 tests) 44ms
+ ✓ tests/category/category-buying-guides.test.ts (5 tests) 3ms
+ ✓ tests/lib/buyer-checklists-revenue.test.ts (2 tests) 4ms
+ ✓ tests/lib/owner-blocker-analysis.test.ts (4 tests) 11ms
+ ✓ tests/analytics/money-map-read-failure.test.ts (3 tests) 71ms
+ ✓ tests/lib/outbound-source-page.test.ts (4 tests) 3ms
+stdout | tests/social/cron-schedule-auth.test.ts > social schedule cron authentication > keeps authenticated dry-run verification available
+Social schedule cycle {"dryRun":true,"scheduledCount":0}
+
+ ✓ tests/social/cron-schedule-auth.test.ts (2 tests) 7ms
+ ✓ tests/lib/deployment-identity.test.ts (11 tests) 3ms
+ ✓ tests/growth/decision-money-pages.test.ts (3 tests) 4ms
+ ✓ tests/lib/buyer-contrast.test.ts (7 tests) 3ms
+ ✓ tests/lib/affiliate-operation-guard.test.ts (5 tests) 2ms
+ ✓ tests/lib/alternative-decision-guide.test.ts (3 tests) 2ms
+ ✓ tests/lib/monetization-gaps-current-truth.test.ts (4 tests) 9ms
+ ✓ tests/agents/date-windows.test.ts (3 tests) 3ms
+ ✓ tests/agents/url-template-classifier.test.ts (6 tests) 3ms
+ ✓ tests/lib/commercial-graph-current-affiliate-truth.test.ts (4 tests) 163ms
+ ✓ tests/guides/ecwid-integration-decision.test.ts (2 tests) 2ms
+ ✓ tests/seo/sitemap-audit-policy.test.ts (3 tests) 93ms
+ ✓ tests/guides/family-password-manager.test.ts (2 tests) 3ms
+ ✓ tests/seo/internal-discovery-paths.test.ts (2 tests) 92ms
+ ✓ tests/lib/top-money-opportunities.test.ts (4 tests) 3ms
+ ✓ tests/growth/gsc-opportunity-protection.test.ts (2 tests) 82ms
+ ✓ tests/seo/zapier-alternatives.test.ts (2 tests) 2ms
+ ✓ tests/guides/store-comparison-trust.test.ts (2 tests) 42ms
+ ✓ tests/lib/category-money-map-current-truth.test.ts (2 tests) 2ms
+ ✓ tests/guides/guide-card-affiliate-disclosure.test.ts (1 test) 70ms
+ ✓ tests/agents/ga4-regression.test.ts (1 test) 3ms
+ ✓ tests/agents/comparison-similarity-analyzer.test.ts (3 tests) 342ms
+ ✓ tests/guides/ecwid-woocommerce-structure-choice.test.ts (2 tests) 3ms
+ ✓ tests/guides/ecwid-alternative-cost-intent.test.ts (2 tests) 2ms
+ ✓ tests/lib/software-search-route.test.ts (3 tests) 50ms
+ ✓ tests/software-page-pros.test.ts (2 tests) 40ms
+ ✓ tests/seo/n8n-alternatives.test.ts (2 tests) 3ms
+ ✓ tests/lib/pending-revenue-programs.test.ts (3 tests) 42ms
+ ✓ tests/seo-factory/failure-safety.test.ts (1 test) 3ms
+ ✓ tests/lib/adobe-segment-seo.test.ts (2 tests) 2ms
+ ✓ tests/lib/pending-program-readiness-current-truth.test.ts (2 tests) 3ms
+ ✓ tests/seo/guide-discovery.test.ts (2 tests) 45ms
+ ✓ tests/analytics/category-instrumentation.test.ts (1 test) 4ms
+ ✓ tests/lib/wix-funnel-gating.test.ts (1 test) 45ms
+ ✓ tests/lib/softr-approval-boundary.test.ts (1 test) 3ms
+ ✓ tests/growth/commercial-priority-evidence.test.ts (2 tests) 188ms
+ ✓ tests/lib/affiliation-disclaimer-consistency.test.ts (3 tests) 3ms
+ ✓ tests/social/dedup.test.ts (4 tests) 3ms
+ ✓ tests/seo-factory/semrush-alternatives.test.ts (1 test) 41ms
+ ✓ tests/guides/shopify-pricing-model.test.ts (2 tests) 3ms
+ ✓ tests/seo/smart-sme-coverage.test.ts (2 tests) 3ms
+ ✓ tests/seo/guide-heading.test.ts (2 tests) 19ms
+ ✓ tests/lib/link-severity.test.ts (2 tests) 2ms
+ ✓ tests/analytics/report-unavailable.test.ts (1 test) 194ms
+ ✓ tests/analytics/role-guide-analytics.test.ts (1 test) 2ms
+ ✓ tests/lib/newsletter-write-failure.test.ts (1 test) 5ms
+ ✓ tests/guides/wix-ecommerce-funnel.test.ts (2 tests) 42ms
+ ✓ tests/growth/google-war-quality-baseline.test.ts (1 test) 48ms
+ ✓ tests/consent-banner-layout.test.ts (1 test) 2ms
+ ✓ tests/guides/software-source-mobile-wrap.test.ts (1 test) 2ms
+
+ Test Files  283 passed (283)
+      Tests  2651 passed (2651)
+   Start at  10:59:30
+   Duration  59.15s (transform 2.32s, setup 1.32s, import 15.01s, tests 19.94s, environment 15ms)

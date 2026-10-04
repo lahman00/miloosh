@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/api/cron/social-publish",
+    "status": 200,
+    "observedAt": "2026-10-04T08:00:28.230294+00:00",
+    "authenticated": false,
+    "dryRun": true,
+    "topLevelKeys": [
+      "authenticated",
+      "dryRun",
+      "entriesAttempted",
+      "facebookContinuity",
+      "inPublishWindow",
+      "paused",
+      "ranAt",
+      "results",
+      "staleHandling"
+    ],
+    "queueMetadataExposed": true,
+    "rawSensitiveBodySaved": false
+  },
+  {
+    "path": "/api/cron/social-schedule",
+    "status": 200,
+    "observedAt": "2026-10-04T08:00:28.951902+00:00",
+    "authenticated": false,
+    "dryRun": true,
+    "topLevelKeys": [
+      "approvedCount",
+      "authenticated",
+      "dryRun",
+      "minCadence",
+      "perDay",
+      "ranAt",
+      "remainingApprovedCount",
+      "scheduledCount",
+      "scheduledEntryIds"
+    ],
+    "queueMetadataExposed": true,
+    "rawSensitiveBodySaved": false
+  }
+]

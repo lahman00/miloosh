@@ -1,0 +1,82 @@
+
+> miloosh@0.12.0 verify:static
+> python3 scripts/deployment/verify-static-release.py
+
+{
+  "scope": "Artifact audit only; a successful full build, tests and dependency audit are separate required gates.",
+  "buildId": "bP0vJ_UgUW--yZ17ye6IE",
+  "sitemapUrls": 988,
+  "dynamicSitemapRoutesRequiringHttpQA": [
+    "/recommend"
+  ],
+  "publicHtmlPages": 1786,
+  "internalLinksChecked": 93988,
+  "representativeArtifacts": {
+    "/": {
+      "htmlBytes": 163366,
+      "inlineScriptBytes": 86594,
+      "scriptFiles": 11
+    },
+    "/guides": {
+      "htmlBytes": 79231,
+      "inlineScriptBytes": 46977,
+      "scriptFiles": 10
+    },
+    "/compare": {
+      "htmlBytes": 274510,
+      "inlineScriptBytes": 197380,
+      "scriptFiles": 11
+    },
+    "/software/airtable": {
+      "htmlBytes": 156903,
+      "inlineScriptBytes": 89552,
+      "scriptFiles": 12
+    },
+    "/best-no-code-database-for-operations": {
+      "htmlBytes": 183618,
+      "inlineScriptBytes": 105928,
+      "scriptFiles": 11
+    },
+    "/software/todoist": {
+      "htmlBytes": 187061,
+      "inlineScriptBytes": 105304,
+      "scriptFiles": 12
+    },
+    "/best-task-management-for-individuals": {
+      "htmlBytes": 140093,
+      "inlineScriptBytes": 78547,
+      "scriptFiles": 11
+    },
+    "/software/close": {
+      "htmlBytes": 169017,
+      "inlineScriptBytes": 97541,
+      "scriptFiles": 12
+    },
+    "/best-crm-for-startups": {
+      "htmlBytes": 135427,
+      "inlineScriptBytes": 76074,
+      "scriptFiles": 11
+    },
+    "/software/setmore": {
+      "htmlBytes": 173381,
+      "inlineScriptBytes": 99011,
+      "scriptFiles": 12
+    },
+    "/best-scheduling-software-for-small-business": {
+      "htmlBytes": 142678,
+      "inlineScriptBytes": 80751,
+      "scriptFiles": 11
+    },
+    "/software/elevenlabs": {
+      "htmlBytes": 166712,
+      "inlineScriptBytes": 95167,
+      "scriptFiles": 12
+    },
+    "/best-voice-ai-for-creators": {
+      "htmlBytes": 181956,
+      "inlineScriptBytes": 104933,
+      "scriptFiles": 11
+    }
+  },
+  "failures": []
+}

@@ -1,0 +1,7 @@
+▲ Next.js 16.3.8
+- Local:         http://127.0.0.1:3117
+- Network:       http://127.0.0.1:3117
+✓ Ready in 115ms
+✓ Running next.config.ts took 62ms
+Social publish cycle {"inPublishWindow":false,"facebookContinuity":{"promotedEntryId":null,"reason":"dry-run"},"ranAt":"2026-10-04T08:05:05.431Z","dryRun":true,"paused":false,"entriesAttempted":0,"results":[],"staleHandling":{"graceWindowMs":86400000,"maxCatchupPerRun":5,"maxRequeueAttempts":3,"requeued":[],"abandoned":[],"staleRemaining":0}}
+Social schedule cycle {"ranAt":"2026-10-04T08:05:05.455Z","dryRun":true,"approvedCount":0,"scheduledCount":0,"remainingApprovedCount":0,"perDay":1,"minCadence":3,"scheduledEntryIds":[],"reason":"No APPROVED_FOR_AUTO entries to schedule."}

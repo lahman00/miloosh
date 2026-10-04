@@ -1,0 +1,37 @@
+
+> miloosh@0.12.0 test
+> vitest run tests/social/cron-auth-boundary.test.ts tests/social/cron-buffer-verification.test.ts tests/social/cron-schedule-auth.test.ts
+
+
+ RUN  v4.1.11 /Users/eyalhaimovich/Desktop/Miloosh/01-Current/qa-premium-20261004
+
+ ✓ tests/social/cron-auth-boundary.test.ts (34 tests) 38ms
+stdout | tests/social/cron-buffer-verification.test.ts > social cron Buffer verification-only gate > returns read-only metadata without entering the publish cycle
+Buffer production verification {
+  authenticated: true,
+  mode: 'buffer-verification',
+  transport: 'buffer',
+  bufferAuthenticated: true,
+  target: 'company_page',
+  channel: {
+    id: 'channel-1',
+    name: 'Miloosh',
+    displayName: 'Miloosh',
+    descriptor: 'LinkedIn Page',
+    service: 'linkedin',
+    type: 'page',
+    isDisconnected: false,
+    isLocked: false
+  }
+}
+
+ ✓ tests/social/cron-buffer-verification.test.ts (2 tests) 19ms
+stdout | tests/social/cron-schedule-auth.test.ts > social schedule cron authentication > keeps authenticated dry-run verification available
+Social schedule cycle {"dryRun":true,"scheduledCount":0}
+
+ ✓ tests/social/cron-schedule-auth.test.ts (2 tests) 8ms
+
+ Test Files  3 passed (3)
+      Tests  38 passed (38)
+   Start at  10:58:08
+   Duration  538ms (transform 60ms, setup 26ms, import 190ms, tests 65ms, environment 0ms)

@@ -1,0 +1,9 @@
+
+> miloosh@0.12.0 test:static-gate
+> python3 -B -m unittest discover -s scripts/deployment -p 'test_*.py'
+
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.030s
+
+OK

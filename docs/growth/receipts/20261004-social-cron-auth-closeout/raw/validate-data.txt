@@ -1,0 +1,5 @@
+
+> miloosh@0.12.0 validate:data
+> tsx scripts/validate-data.ts
+
+✓ Data valid — 354 software pages, 27 categories, 1348 comparisons, 0 problems.
