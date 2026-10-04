@@ -1564,7 +1564,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programId: "partnerstack-portfolio",
     programName: "PartnerStack Category-Gated Programs",
     network: "PartnerStack",
-    productSlugs: ["document360", "mixpanel", "reclaim-ai", "dialpad", "calendly", "motion", "guru", "scribe", "nutshell", "keap", "ruler-analytics", "front", "descript", "hotjar", "coda", "klaviyo", "gorgias", "quickbooks-online", "miro"],
+    productSlugs: ["document360", "mixpanel", "reclaim-ai", "dialpad", "calendly", "motion", "guru", "scribe", "nutshell", "keap", "ruler-analytics", "front", "descript", "hotjar", "coda", "klaviyo", "quickbooks-online", "miro"],
     status: "OWNER_ACTION_REQUIRED",
     statusUpdatedAt: "2026-08-21",
     applicationSubmittedAt: null,
@@ -1577,7 +1577,7 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     formBlocker: null,
     eligibility: "PartnerStack in-app application",
     applicationUrl: "https://dash.partnerstack.com/",
-    notes: "Consolidated PartnerStack category programs covering 19 catalog products."
+    notes: "Consolidated PartnerStack category programs covering 18 catalog products. Gorgias was removed on 2026-10-04 after its current first-party affiliate page was re-verified as a distinct public content-affiliate application path; no Gorgias application or approval is implied by that research correction."
   },
   {
     programId: "liveagent",
