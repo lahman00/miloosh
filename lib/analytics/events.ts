@@ -277,6 +277,11 @@ export type FirstPartyEvent =
 const BLOB_PREFIX = "first-party-analytics/";
 const LOCAL_FALLBACK_PATH = analyticsLocalPath("first-party-analytics.json");
 const MAX_STORED_EVENTS = 10000;
+/** Production reports read immutable one-event blobs. 32 is a bounded, benchmarked
+ * fan-out: enough to keep a ~3k-event report operational without turning one
+ * dashboard read into an unbounded request burst. Object failures still retry
+ * three times and any final failure makes the whole report fail closed. */
+const BLOB_READ_CONCURRENCY = 32;
 
 function hasBlobToken(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
@@ -364,7 +369,7 @@ export async function getAllFirstPartyEvents(): Promise<FirstPartyEvent[]> {
   let failures = 0;
   // Bounded reads avoid the request bursts that silently lost events in the
   // previous reader. A partial read must never masquerade as a complete report.
-  await Promise.all(Array.from({ length: Math.min(8, paths.length) }, async () => {
+  await Promise.all(Array.from({ length: Math.min(BLOB_READ_CONCURRENCY, paths.length) }, async () => {
     while (next < paths.length) {
       const pathname = paths[next++];
       let loaded = false;

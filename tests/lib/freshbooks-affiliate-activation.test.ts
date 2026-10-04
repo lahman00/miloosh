@@ -29,13 +29,13 @@ describe("FreshBooks email-backed activation on 2026-09-17", () => {
     expect(getSoftwareCtaRel(software!)).toContain("sponsored");
     expect(shouldShowAffiliateDisclosure(software!)).toBe(true);
   });
-  it("does not mistake referral approval for verified payouts or recurring revenue", () => {
+  it("uses provider-verified shared payout readiness without inventing recurring revenue", () => {
     const relation = CURRENT_AFFILIATE_LEDGER.find(p => p.programId === "freshbooks")!;
     expect(relation.notes).toMatch(/payout.*unverified/i);
     const moneyRow = getPartnerMoneyMatrix().find(row => row.slug === "freshbooks")!;
     expect(moneyRow.technicalPathReady).toBe(true);
-    expect(moneyRow.payoutReadiness).toBe("UNVERIFIED");
-    expect(moneyRow.revenueReady).toBe(false);
+    expect(moneyRow.payoutReadiness).toBe("VERIFIED");
+    expect(moneyRow.revenueReady).toBe(true);
     expect(relation.commissionModel).toBe("$10/qualified free trial, up to $200/paid plan");
     expect(relation.commissionModel).not.toMatch(/recurring|monthly/i);
   });

@@ -1,6 +1,6 @@
 import { ZOHO_ISSUED_ASSETS } from "@/data/affiliate/zoho-issued-assets";
 
-export type MonetizationReadiness = "READY NOW" | "APPROVED BUT NEEDS LINK" | "PENDING APPROVAL" | "NEEDS APPLICATION" | "REJECTED" | "NOT ELIGIBLE" | "HOLD / UNCLEAR";
+export type MonetizationReadiness = "READY NOW" | "APPROVED BUT NEEDS LINK" | "PENDING APPROVAL" | "NEEDS APPLICATION" | "REJECTED" | "PROGRAM_ENDED" | "NOT ELIGIBLE" | "HOLD / UNCLEAR";
 export type NormalizedCommissionType = "recurring_percentage" | "one_time_percentage" | "fixed_cpa" | "qualified_lead" | "revenue_share" | "hybrid" | "unknown";
 
 export type PartnerMaterialAudit = {
@@ -60,6 +60,19 @@ const PROGRAM_RESEARCH = "data/revenue/affiliate-programs.ts official-source res
 const LIVE_VERIFICATION = "Direct PartnerStack dashboard + production affiliate pipeline check, 2026-08-19 (see data/affiliate/AFFILIATE_EVIDENCE_AND_SURFACES_2026-08-19.md live re-verification addendum)";
 
 export const PARTNER_MATERIAL_AUDIT: readonly PartnerMaterialAudit[] = [
+  record({
+    company: "ActiveCampaign", slug: "activecampaign", programNetwork: "PartnerStack",
+    currentStatus: "HOLD", applicationStatus: "Approved", approvalStatus: "Approved 2026-10-02; public activation held for protected page",
+    affiliateUrl: "https://try.activecampaign.com/xu30znpbu737",
+    commission: { type: "recurring_percentage", value: "30% for up to 12 months", originalWording: "30% recurring per paying customer you refer for up to 12 months" },
+    recurrence: "Recurring for up to 12 months; first commission confirmation after the referred customer completes 60 days",
+    readiness: "HOLD / UNCLEAR",
+    evidence: [
+      "First-party ActiveCampaign/PartnerStack welcome Gmail 1a0fe9bfb9f19812 to hello@miloosh.com, received 2026-10-02: approval, exact issued referral URL, 30% recurring for up to 12 months and 60-day confirmation rule.",
+      "Public activation intentionally held because /software/activecampaign is RESERVED by the current ranking-intent protection registry; relationship approval must not silently overwrite a protected measurement surface.",
+    ],
+    lastVerifiedDate: "2026-10-04",
+  }),
   record({
     "company": "Fireflies.ai",
     "slug": "fireflies-ai",
@@ -190,7 +203,7 @@ export const PARTNER_MATERIAL_AUDIT: readonly PartnerMaterialAudit[] = [
     readiness: "READY NOW", lastVerifiedDate: "2026-09-17",
     evidence: ["Connected Gmail 1a0a27bf25150cef and duplicate 1a0a27ff1545db7d (2026-09-15), read directly 2026-09-17: approval and exact asset issued to hello@miloosh.com. READY NOW describes technical CTA readiness, not payouts or revenue."],
   }),
-  record({ company: "Zendesk", slug: "zendesk", programNetwork: "PartnerStack legacy account", currentStatus: "REJECTED", applicationStatus: "Rejected", approvalStatus: "Rejected", readiness: "REJECTED", evidence: ["Gmail 1a0e5ba2e7bc79c7 dated 2026-09-28 confirms legacy-account application rejection; canonical audit already recorded it."], lastVerifiedDate: "2026-09-28" }),
+  record({ company: "Zendesk", slug: "zendesk", programNetwork: "PartnerStack", currentStatus: "PROGRAM_ENDED", applicationStatus: "Program ended", approvalStatus: "Program ended", readiness: "PROGRAM_ENDED", evidence: ["Gmail 1a0e5ba2e7bc79c7 dated 2026-09-28 confirms the legacy-account application rejection.", "Superseding PartnerStack Gmail 1a0fcf8e9c851de9 dated 2026-10-02 confirms Zendesk ended the program; new commissions stop and referral links/forms no longer track."], lastVerifiedDate: "2026-10-02" }),
   record({ company: "Wrike", slug: "wrike", programNetwork: "PartnerStack", currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Approved", affiliateUrl: "https://get.wrike.com/wdgn8ok7i5ij", commission: { type: "unknown", value: UNKNOWN, originalWording: "Percentage of licenses sold / reward on qualified opportunities; exact rate not disclosed in the available first-party evidence" }, readiness: "READY NOW", evidence: ["First-party PartnerStack email dated 2026-08-25: Welcome to the Wrike Referral Program", "First-party Wrike referral-partner page confirming commissions on referred license sales", "data/affiliate/active-partners.ts", "data/affiliate/canonical-ledger.ts"], lastVerifiedDate: "2026-08-25" }),
   record({ company: "Setmore", slug: "setmore", programNetwork: "Tapfiliate", currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Approved", affiliateUrl: "https://www.setmore.com?ref=nge2zwi", commission: { type: "one_time_percentage", value: "30% of first subscription payment", originalWording: "30% of referred customer's first subscription payment (one-time)" }, recurrence: "one-time", cookieWindow: "90 days", ppcTrademarkRestrictions: "NO PAID MEDIA / PPC / brand or non-brand ads. Approval email explicitly prohibits Google Ads, PPC, display ads, and paid social advertising; commissions generated through prohibited paid channels will not be approved or paid. Only organic promotion (blog/content, organic social, newsletters, website referrals) is permitted.", readiness: "READY NOW", evidence: ["docs/affiliate-applications.md first-party approval email", "Tapfiliate dashboard", "assets.setmore.com official terms PDF", "data/affiliate/canonical-ledger.ts"], lastVerifiedDate: "2026-08-20" }),
   record({ company: "MailerLite", slug: "mailerlite", programNetwork: "MailerLite / Trackdesk / Tipalti", currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Approved affiliate; payout-provider approval pending", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", commission: { type: "unknown", value: UNKNOWN, originalWording: "Per current MailerLite partner terms; exact current rate retained in the partner portal" }, payoutMethod: "Tipalti profile: contact information added, payment method selected; Trackdesk saved PayPal/Wire/ACH as Default; Account approved pending", readiness: "READY NOW", evidence: ["Owner-supplied referral URL generated in the MailerLite affiliate portal, 2026-08-24", "Authenticated Trackdesk/Tipalti 2026-10-02: payment method selected, provider approval pending", "data/software/mailerlite.json", "data/affiliate/active-partners.ts", "data/affiliate/canonical-ledger.ts"], lastVerifiedDate: "2026-10-02" }),

@@ -30,6 +30,12 @@ describe("small-store conversion path", () => {
     expect(source).toContain('ctaName="store-decision-kit-open-checklist"');
     expect(source).toContain('ctaName="store-decision-kit-download-checklist"');
     expect(source).toContain('ctaName="store-decision-kit-wix-shopify-comparison"');
+    for (const name of [
+      "store-decision-kit-evaluate-wix",
+      "store-decision-kit-evaluate-shopify",
+      "store-decision-kit-evaluate-woocommerce",
+      "store-decision-kit-evaluate-ecwid",
+    ]) expect(source).toContain('ctaName="' + name + '"');
     expect(source).not.toContain('<a href="/resources/ecommerce-platform-decision-checklist.html"');
     expect(source).not.toContain('<Link href="/compare/wix-vs-shopify"');
 

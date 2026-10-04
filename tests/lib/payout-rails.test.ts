@@ -64,8 +64,8 @@ describe("payout rail integrity", () => {
     expect(PAYOUT_RAILS.find((rail) => rail.id === "jotform-tremendous")?.readiness).toBe("OWNER_ACTION_REQUIRED");
   });
 
-  it("does not over-promote the PartnerStack business rail just because PayPal is connected", () => {
-    expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-hello")?.readiness).toBe("UNVERIFIED");
+  it("marks the PartnerStack business rail verified only after provider confirmation of tax and payout setup", () => {
+    expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-hello")?.readiness).toBe("VERIFIED");
     expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal")?.readiness).toBe("OWNER_ACTION_REQUIRED");
   });
 

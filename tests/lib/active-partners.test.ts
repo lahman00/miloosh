@@ -101,8 +101,8 @@ describe("canonical active affiliate partner registry", () => {
     expect(matrix.find(({ slug }) => slug === "krispcall")).toMatchObject({
       url: "https://try.krispcall.com/aikpbrrrl8k9",
       technicalPathReady: true,
-      payoutReadiness: "UNVERIFIED",
-      revenueReady: false,
+      payoutReadiness: "VERIFIED",
+      revenueReady: true,
     });
     expect(matrix.find(({ slug }) => slug === "setmore")).toMatchObject({
       technicalPathReady: true,

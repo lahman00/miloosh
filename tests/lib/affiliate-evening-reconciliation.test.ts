@@ -56,7 +56,7 @@ describe("2026-09-30 first-party partner reconciliation", () => {
   });
   it("has synchronized Fireflies and Zendesk material status", () => {
     expect(PARTNER_MATERIAL_AUDIT.find(row => row.slug === "fireflies-ai")?.commission.value).toBe("10%");
-    expect(PARTNER_MATERIAL_AUDIT.find(row => row.slug === "zendesk")?.currentStatus).toBe("REJECTED");
+    expect(PARTNER_MATERIAL_AUDIT.find(row => row.slug === "zendesk")?.currentStatus).toBe("PROGRAM_ENDED");
   });
   it("does not change the first-revenue cohort or activate Buddy Punch without content", () => {
     expect(FIRST_REVENUE_PAGES.map(row => row.slug)).toEqual(["airtable", "todoist", "close", "setmore", "elevenlabs"]);

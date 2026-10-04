@@ -31,6 +31,22 @@ describe("complete production analytics reads", () => {
     expect(rows.map(row => row.timestamp)).toEqual(["2026-09-10T00:00:00Z", "2026-09-01T00:00:00Z"]);
     expect(blob.list).toHaveBeenLastCalledWith(expect.objectContaining({ cursor: "next-page" }));
   });
+  it("uses bounded parallelism above the old eight-reader bottleneck", async () => {
+    const blobs = Array.from({ length: 40 }, (_, i) => ({ pathname: `p-${i}` }));
+    blob.list.mockResolvedValue({ blobs, hasMore: false });
+    let active = 0;
+    let maxActive = 0;
+    blob.get.mockImplementation(async () => {
+      active++;
+      maxActive = Math.max(maxActive, active);
+      await new Promise(resolve => setTimeout(resolve, 5));
+      active--;
+      return response(event("2026-09-10T00:00:00Z"));
+    });
+    expect(await getAllFirstPartyEvents()).toHaveLength(40);
+    expect(maxActive).toBeGreaterThanOrEqual(16);
+    expect(maxActive).toBeLessThanOrEqual(32);
+  });
   it("recovers a transient object failure without losing the event", async () => {
     blob.list.mockResolvedValue({ blobs: [{ pathname: "retry" }], hasMore: false });
     blob.get.mockRejectedValueOnce(new Error("temporary")).mockResolvedValueOnce(response(event("2026-09-10T00:00:00Z")));

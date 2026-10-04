@@ -26,7 +26,7 @@ describe("catalog affiliate research registry follows current affiliate truth", 
   });
 
   it("locks the corrections that the stale hard-coded sets got wrong", () => {
-    expect(bySlug.get("activecampaign")?.status).toBe("PENDING_REVIEW");
+    expect(bySlug.get("activecampaign")?.status).toBe("HOLD");
     expect(bySlug.get("woocommerce")?.status).toBe("APPROVED_NEEDS_LINK");
     expect(bySlug.get("close")?.status).toBe("ACTIVE");
     expect(bySlug.get("freshbooks")?.status).toBe("ACTIVE");

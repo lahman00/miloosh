@@ -509,17 +509,19 @@ export const AFFILIATE_PROGRAMS: AffiliateProgramInfo[] = [
   },
   {
     slug: "activecampaign",
-    lastVerifiedAt: "2026-08-20",
+    lastVerifiedAt: "2026-10-04",
     programExists: "yes",
     type: "network",
     networkName: "PartnerStack",
     countryRestrictions: null,
-    commissionModel: "Tiered 20-30% recurring commission (starts at 20%, climbs based on new business and retention) for up to 12 months per referred customer; official page cites an average of $1,350 per referral",
+    commissionModel:
+      "Account-specific welcome: 30% recurring per paying referred customer for up to 12 months; commission confirms after the customer completes the first 60 days, with the first confirmed payout catching up amounts earned from day one",
     recurrence: "recurring",
     notes:
-      "First application REJECTED 2026-08-20: owner-provided first-party PartnerStack email, subject \"Updates to your ActiveCampaign Application\": \"After careful consideration, ActiveCampaign has declined your application.\" Updated 2026-09-26: a re-application was submitted and is PENDING vendor review (owner-verified; see data/affiliate/canonical-ledger.ts programId activecampaign). Pending is not approval: no affiliate link until a verified approval and exact issued tracking asset exist.",
+      "First application REJECTED 2026-08-20 and retained as history. Superseding first-party welcome/approval Gmail 1a0fe9bfb9f19812 to hello@miloosh.com, received 2026-10-02, confirms approval and exact issued referral URL https://try.activecampaign.com/xu30znpbu737. Public activation remains held because /software/activecampaign is RESERVED by the current ranking-intent protection registry; do not change that protected page merely because the relationship is now approved.",
     sourceUrls: ["https://activecampaign.com/partner/affiliate"],
     applicationUrl: "https://activecampaign.partnerstack.com/",
+    cookieDuration: "90 days",
     payoutThreshold: "$100",
     payoutMethod: "PayPal",
     confidence: "high",

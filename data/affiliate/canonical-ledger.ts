@@ -228,26 +228,27 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
 
   {
     "programId": "zendesk",
-    "programName": "Zendesk PartnerStack application (legacy account)",
+    "programName": "Zendesk PartnerStack program",
     "network": "PartnerStack — legacy/personal account",
     "productSlugs": [
       "zendesk"
     ],
-    "status": "REJECTED",
-    "statusUpdatedAt": "2026-09-28",
+    "status": "PROGRAM_ENDED",
+    "statusUpdatedAt": "2026-10-02",
     "applicationSubmittedAt": null,
-    "decisionAt": "2026-09-28",
+    "decisionAt": "2026-10-02",
     "affiliateUrl": null,
-    "commissionModel": "UNKNOWN — no active approved offer evidenced",
+    "commissionModel": "N/A — PartnerStack program ended",
     "cookieWindow": null,
     "evidence": [
-      "First-party PartnerStack email Gmail 1a0e5ba2e7bc79c7, Updates to your Zendesk Application, dated 2026-09-28, to lahman00@gmail.com: Zendesk declined the application."
+      "First-party PartnerStack email Gmail 1a0e5ba2e7bc79c7, dated 2026-09-28: Zendesk declined the evidenced legacy-account application.",
+      "Superseding first-party PartnerStack program-closure email Gmail 1a0fcf8e9c851de9, dated 2026-10-02: Zendesk ended its PartnerStack program; commissions after 2026-10-02 will not be created and referral links/forms no longer track."
     ],
     "ownerBlocker": null,
     "formBlocker": null,
-    "eligibility": "Declined for the evidenced legacy-account application; no inference about another account.",
+    "eligibility": "PartnerStack program ended; no active referral path",
     "applicationUrl": null,
-    "notes": "Record the vendor rejection separately from PartnerStack Network admission. No verified active Zendesk referral asset exists in Miloosh. Preserve independent editorial coverage and official-site links; do not automatically reapply or promote affiliate CTAs."
+    "notes": "Preserve independent editorial coverage and official-site links. Do not use historical Zendesk referral links or re-apply through the ended PartnerStack program unless new first-party evidence establishes a replacement program."
   },
   // ==========================================
   // 1. ACTIVE MONITORED PARTNERS (20 programs)
@@ -981,23 +982,23 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     programName: "ActiveCampaign Affiliate Program",
     network: "PartnerStack",
     productSlugs: ["activecampaign"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-09-26",
-    // Exact re-application timestamp is not recorded in the repo; see evidence.
+    status: "HOLD",
+    statusUpdatedAt: "2026-10-04",
     applicationSubmittedAt: null,
-    decisionAt: null,
-    affiliateUrl: null,
-    commissionModel: "20-30% recurring (prior program claim)",
+    decisionAt: "2026-10-02",
+    affiliateUrl: "https://try.activecampaign.com/xu30znpbu737",
+    commissionModel: "30% recurring per paying customer for up to 12 months; commissions confirm after the referred customer completes the first 60 days, with earned amounts from day one caught up in the first confirmed payout, per the account-specific welcome email",
     cookieWindow: "90 days",
     evidence: [
-      "Historical: first application submitted 2026-08-18; docs/affiliate-applications.md first-party decline email dated 2026-08-20: 'After careful consideration, ActiveCampaign has declined your application'",
-      "Owner-verified fact recorded 2026-09-26: a new ActiveCampaign re-application was submitted and is pending vendor review",
+      "Historical first application: first-party decline email dated 2026-08-20 retained in docs/affiliate-applications.md.",
+      "Owner-verified re-application recorded 2026-09-26.",
+      "Superseding first-party approval/welcome email to hello@miloosh.com, Gmail 1a0fe9bfb9f19812, received 2026-10-02: explicitly welcomes Miloosh to the ActiveCampaign affiliate program, issues exact unique referral URL https://try.activecampaign.com/xu30znpbu737, and states 30% recurring commission for up to 12 months with a 60-day confirmation period.",
     ],
     ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Re-application submitted; awaiting vendor decision",
+    eligibility: "Approved PartnerStack affiliate relationship with exact account-specific referral asset issued",
     applicationUrl: "https://activecampaign.partnerstack.com/",
-    notes: "The 2026-08-20 outcome applied to the first application only and is retained in evidence. The current re-application is undecided: no affiliate URL, no active-partner registry entry and no sponsored CTA until a verified approval and an exact issued tracking asset are on file."
+    notes: "Relationship approval and tracking asset are verified. Public monetization remains intentionally held outside ACTIVE_PARTNERS because /software/activecampaign is currently RESERVED by the ranking-intent protection registry; do not alter the protected page or its commercial rendering until that protection is explicitly reviewed/released. Approval is not a conversion or payout.",
   },
   {
     programId: "superhuman",

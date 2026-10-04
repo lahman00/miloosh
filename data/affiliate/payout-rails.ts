@@ -76,10 +76,10 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "apollo-io", // Active in the same authenticated PartnerStack account; account-level PayPal destination already exists.
       "toggl-track", // Authenticated 2026-10-02 as approved in the same MILOOSH PartnerStack account.
     ],
-    readiness: "UNVERIFIED",
+    readiness: "VERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
-    methodGuidance: "PartnerStack Support confirmed a PayPal account is already connected to hello@miloosh.com. Do not replace a working payout provider merely to optimize rails. Verify the account's tax/receipt profile and withdrawal readiness before marking this rail VERIFIED.",
-    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Authenticated MILOOSH commissions/withdrawals screen on 2026-10-02 additionally displayed 'Withdraw funds to: lahman00@gmail.com', confirming the shared account-level PayPal destination currently visible to the business PartnerStack account. Full tax/receipt-profile completeness and a successful withdrawal are still unverified, so this rail remains UNVERIFIED. Do not create program-specific payout methods for programs on this rail.",
+    methodGuidance: "Preserve the existing hello@miloosh.com PartnerStack business account and its connected PayPal payout destination. PartnerStack Support confirmed the tax location is filled and the account is all set; do not replace or duplicate the payout provider without a new provider-side requirement.",
+    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Authenticated MILOOSH commissions/withdrawals screen on 2026-10-02 displayed 'Withdraw funds to: lahman00@gmail.com'. In support request #124689, first-party email Gmail 1a0f9afd1cc59b74 dated 2026-10-01, PartnerStack Support explicitly confirmed after reviewing the account that everything is set up correctly, the tax location is filled out as needed, and 'We should be all set.' This verifies account-level payout setup/readiness; it does not prove any earned commission or successful withdrawal. Do not create program-specific payout methods for programs on this rail.",
   },
   {
     id: "partnerstack-personal",

@@ -68,8 +68,8 @@ describe("canonical affiliate ledger state invariants", () => {
     expect(byProgramId.get("callrail")?.status).toBe("OWNER_ACTION_REQUIRED");
     expect(byProgramId.get("callrail")?.applicationSubmittedAt).toBe("2026-09-30");
     expect(byProgramId.get("callrail")?.affiliateUrl).toBe("https://partners.callrail.com/p28z0h9qkxk2");
-    expect(byProgramId.get("zendesk")?.status).toBe("REJECTED");
-    expect(byProgramId.get("zendesk")?.decisionAt).toBe("2026-09-28");
+    expect(byProgramId.get("zendesk")?.status).toBe("PROGRAM_ENDED");
+    expect(byProgramId.get("zendesk")?.decisionAt).toBe("2026-10-02");
     expect(byProgramId.get("freshworks")?.lastFollowupAt).toBe("2026-09-29");
     expect(byProgramId.get("amplitude")?.lastFollowupAt).toBe("2026-09-29");
     expect(byProgramId.get("toggl-track")?.lastFollowupAt).toBe("2026-09-29");

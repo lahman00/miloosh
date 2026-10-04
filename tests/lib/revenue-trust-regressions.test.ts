@@ -83,9 +83,10 @@ describe("revenue trust and source-basis regression locks", () => {
       for (const row of brief.table.rows) expect(row).toHaveLength(brief.table.headers.length);
     }
   });
-  it("keeps affiliate-link confirmation separate from payout readiness", () => {
+  it("requires independent payout evidence instead of inferring readiness from an affiliate link", () => {
     expect(getPayoutRailForPartner("surveymonkey").id).toBe("partnerstack-hello");
-    expect(getPayoutRailForPartner("surveymonkey").readiness).toBe("UNVERIFIED");
+    expect(getPayoutRailForPartner("surveymonkey").readiness).toBe("VERIFIED");
+    expect(getPayoutRailForPartner("surveymonkey").notes).toContain("all set");
     expect(getPayoutRailForPartner("shopify").readiness).toBe("UNVERIFIED");
     expect(getPayoutRailForPartner("shopify").setupEvidence).toBe("PROVIDER_REVIEW_PENDING");
     expect(getPayoutRailForPartner("shopify").notes).toContain("not current proof a field is still missing");

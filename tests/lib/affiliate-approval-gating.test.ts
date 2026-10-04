@@ -14,12 +14,15 @@ const activeLedgerSlugs = new Set(
 );
 
 describe("affiliate approval gating (pending is never approval)", () => {
-  it("records the ActiveCampaign re-application as pending, retaining the first decline as history", () => {
+  it("records the superseding ActiveCampaign approval while keeping its protected page unmonetized", () => {
     const activecampaign = byId("activecampaign");
-    expect(activecampaign?.status).toBe("PENDING_REVIEW");
-    expect(activecampaign?.decisionAt).toBeNull();
-    expect(activecampaign?.affiliateUrl).toBeNull();
-    expect(activecampaign?.evidence.join(" ")).toMatch(/2026-08-20.*declined/);
+    expect(activecampaign?.status).toBe("HOLD");
+    expect(activecampaign?.decisionAt).toBe("2026-10-02");
+    expect(activecampaign?.affiliateUrl).toBe("https://try.activecampaign.com/xu30znpbu737");
+    expect(activecampaign?.evidence.join(" ")).toMatch(/decline.*2026-08-20/i);
+    expect(activecampaign?.evidence.join(" ")).toContain("1a0fe9bfb9f19812");
+    expect(activeSlugs.has("activecampaign")).toBe(false);
+    expect(activecampaign?.notes).toMatch(/protected|RESERVED/i);
   });
 
   it("records approved Automattic as link-gated for WooCommerce only, outside the generic Impact bucket", () => {
