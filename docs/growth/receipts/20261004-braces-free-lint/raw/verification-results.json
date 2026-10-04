@@ -1,0 +1,57 @@
+[
+  {
+    "check": "focused-regressions",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "tests/tooling/braces-free-lint.test.ts"
+    ],
+    "exitCode": 0,
+    "start": "2026-10-04T08:47:00.109289+00:00",
+    "end": "2026-10-04T08:47:05.286859+00:00"
+  },
+  {
+    "check": "fresh-install",
+    "command": [
+      "npm",
+      "ci"
+    ],
+    "exitCode": 0,
+    "start": "2026-10-04T08:47:05.287019+00:00",
+    "end": "2026-10-04T08:47:13.484953+00:00"
+  },
+  {
+    "check": "canonical-release-check",
+    "command": [
+      "npm",
+      "run",
+      "release:check"
+    ],
+    "exitCode": 0,
+    "start": "2026-10-04T08:47:13.485144+00:00",
+    "end": "2026-10-04T08:49:18.110234+00:00"
+  },
+  {
+    "check": "audit-final",
+    "command": [
+      "npm",
+      "audit",
+      "--json"
+    ],
+    "exitCode": 0,
+    "start": "2026-10-04T08:49:18.110527+00:00",
+    "end": "2026-10-04T08:49:18.693646+00:00"
+  },
+  {
+    "check": "audit-ci-moderate",
+    "command": [
+      "npm",
+      "audit",
+      "--audit-level=moderate"
+    ],
+    "exitCode": 0,
+    "start": "2026-10-04T08:49:18.694837+00:00",
+    "end": "2026-10-04T08:49:19.252974+00:00"
+  }
+]

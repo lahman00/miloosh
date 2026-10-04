@@ -1,0 +1,34 @@
+{
+  "cases": 75,
+  "passed": 74,
+  "bare": false,
+  "mismatches": [
+    {
+      "input": {
+        "id": "rootdir-33",
+        "settings": {
+          "next": {
+            "rootDir": "apps/!(docs)"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-33",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-33",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/web"
+        ]
+      }
+    }
+  ]
+}

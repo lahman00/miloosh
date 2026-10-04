@@ -1,0 +1,1375 @@
+{
+  "cases": 75,
+  "passed": 31,
+  "bare": true,
+  "mismatches": [
+    {
+      "input": {
+        "id": "rootdir-01",
+        "settings": {
+          "next": {
+            "rootDir": "app"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-01",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-01",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-02",
+        "settings": {
+          "next": {
+            "rootDir": "app/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-02",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-02",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-03",
+        "settings": {
+          "next": {
+            "rootDir": "./app"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-03",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-03",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-05",
+        "settings": {
+          "next": {
+            "rootDir": "components"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-05",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/components"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-05",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/components",
+          "__ROOT__/components/ui"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-06",
+        "settings": {
+          "next": {
+            "rootDir": "{app,lib}"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-06",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/lib"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-06",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-07",
+        "settings": {
+          "next": {
+            "rootDir": "app/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-07",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-07",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-08",
+        "settings": {
+          "next": {
+            "rootDir": [
+              "app",
+              "lib"
+            ]
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-08",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/lib"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-08",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-11",
+        "settings": {
+          "next": {
+            "rootDir": "."
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-11",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-11",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-12",
+        "settings": {
+          "next": {
+            "rootDir": ""
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-12",
+        "kind": "error",
+        "name": "TypeError",
+        "message": "Patterns must be a string (non empty) or an array of strings"
+      },
+      "actual": {
+        "id": "rootdir-12",
+        "kind": "roots",
+        "roots": []
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-13",
+        "settings": {
+          "next": {
+            "rootDir": "./"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-13",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-13",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-14",
+        "settings": {
+          "next": {
+            "rootDir": "*"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-14",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/link-web",
+          "__ROOT__/spaces dir"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-14",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/spaces dir"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-15",
+        "settings": {
+          "next": {
+            "rootDir": "./*"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-15",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/link-web",
+          "__ROOT__/spaces dir"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-15",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/spaces dir"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-16",
+        "settings": {
+          "next": {
+            "rootDir": "**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-16",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-16",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-17",
+        "settings": {
+          "next": {
+            "rootDir": "**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-17",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-17",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-19",
+        "settings": {
+          "next": {
+            "rootDir": "apps/**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-19",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-19",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-21",
+        "settings": {
+          "next": {
+            "rootDir": "__ROOT__/app"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-21",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-21",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-22",
+        "settings": {
+          "next": {
+            "rootDir": "__ROOT__/app/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-22",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-22",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-25",
+        "settings": {
+          "next": {
+            "rootDir": "apps/{web,admin}"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-25",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-25",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-26",
+        "settings": {
+          "next": {
+            "rootDir": "{lib,app}"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-26",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/lib"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-26",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-27",
+        "settings": {
+          "next": {
+            "rootDir": "./{app,lib}"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-27",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/lib"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-27",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-28",
+        "settings": {
+          "next": {
+            "rootDir": "./app/**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-28",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-28",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-31",
+        "settings": {
+          "next": {
+            "rootDir": "app/**/**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-31",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-31",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-32",
+        "settings": {
+          "next": {
+            "rootDir": "apps/@(web|admin)"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-32",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-32",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-33",
+        "settings": {
+          "next": {
+            "rootDir": "apps/!(docs)"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-33",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-33",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden",
+          "__ROOT__/apps/.hidden/app",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-34",
+        "settings": {
+          "next": {
+            "rootDir": "apps/w?b"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-34",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-34",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-36",
+        "settings": {
+          "next": {
+            "rootDir": "apps/.hidden"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-36",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-36",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden",
+          "__ROOT__/apps/.hidden/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-37",
+        "settings": {
+          "next": {
+            "rootDir": "apps/.hidden/**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-37",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-37",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/.hidden",
+          "__ROOT__/apps/.hidden/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-38",
+        "settings": {
+          "next": {
+            "rootDir": "spaces dir"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-38",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-38",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-39",
+        "settings": {
+          "next": {
+            "rootDir": "spaces dir/**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-39",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-39",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-40",
+        "settings": {
+          "next": {
+            "rootDir": "link-web"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-40",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/link-web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-40",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/link-web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-45",
+        "settings": {
+          "next": {
+            "rootDir": [
+              "app",
+              null,
+              42,
+              "lib"
+            ]
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-45",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/lib"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-45",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-49",
+        "settings": {
+          "next": {
+            "rootDir": [
+              "app",
+              "app"
+            ]
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-49",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-49",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-50",
+        "settings": {
+          "next": {
+            "rootDir": "app/../lib"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-50",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/lib"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-50",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-51",
+        "settings": {
+          "next": {
+            "rootDir": "__ROOT__"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-51",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-51",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-52",
+        "settings": {
+          "next": {
+            "rootDir": "__ROOT__/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-52",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-52",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-58",
+        "settings": {
+          "next": {
+            "rootDir": "app/**/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-58",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-58",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-59",
+        "settings": {
+          "next": {
+            "rootDir": "lib/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-59",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/lib/a"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-59",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-61",
+        "settings": {
+          "next": {
+            "rootDir": "lib/**/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-61",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/lib/a"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-61",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/lib",
+          "__ROOT__/lib/a"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-63",
+        "settings": {
+          "next": {
+            "rootDir": "components/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-63",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/components/ui"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-63",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/components",
+          "__ROOT__/components/ui"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-65",
+        "settings": {
+          "next": {
+            "rootDir": "components/**/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-65",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/components/ui"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-65",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/components",
+          "__ROOT__/components/ui"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-67",
+        "settings": {
+          "next": {
+            "rootDir": "apps/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-67",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-67",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-69",
+        "settings": {
+          "next": {
+            "rootDir": "apps/**/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-69",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-69",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-71",
+        "settings": {
+          "next": {
+            "rootDir": "spaces dir/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-71",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-71",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-73",
+        "settings": {
+          "next": {
+            "rootDir": "spaces dir/**/**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-73",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-73",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    }
+  ]
+}

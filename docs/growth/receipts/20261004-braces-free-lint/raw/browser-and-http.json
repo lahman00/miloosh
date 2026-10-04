@@ -1,0 +1,76 @@
+{
+  "browser": [
+    {
+      "check": "viewport-desktop",
+      "exitCode": 0
+    },
+    {
+      "check": "open-local",
+      "exitCode": 0
+    },
+    {
+      "check": "wait",
+      "exitCode": 0
+    },
+    {
+      "check": "desktop-snapshot",
+      "exitCode": 0
+    },
+    {
+      "check": "desktop-screenshot",
+      "exitCode": 0
+    },
+    {
+      "check": "desktop-state",
+      "exitCode": 0
+    },
+    {
+      "check": "desktop-errors",
+      "exitCode": 0
+    },
+    {
+      "check": "viewport-mobile",
+      "exitCode": 0
+    },
+    {
+      "check": "mobile-reload",
+      "exitCode": 0
+    },
+    {
+      "check": "mobile-wait",
+      "exitCode": 0
+    },
+    {
+      "check": "mobile-screenshot",
+      "exitCode": 0
+    },
+    {
+      "check": "mobile-state",
+      "exitCode": 0
+    },
+    {
+      "check": "mobile-errors",
+      "exitCode": 0
+    },
+    {
+      "check": "close-browser",
+      "exitCode": 0
+    }
+  ],
+  "localHttp": [
+    {
+      "path": "/api/cron/social-publish",
+      "status": 401,
+      "body": {
+        "error": "Unauthorized"
+      }
+    },
+    {
+      "path": "/api/cron/social-schedule",
+      "status": 401,
+      "body": {
+        "error": "Unauthorized"
+      }
+    }
+  ]
+}

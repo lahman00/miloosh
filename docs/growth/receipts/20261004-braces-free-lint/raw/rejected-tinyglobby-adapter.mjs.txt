@@ -1,0 +1,55 @@
+import { createRequire } from "node:module";
+import { isAbsolute } from "node:path";
+
+const require = createRequire(import.meta.url);
+const marker = Symbol.for("miloosh.next-lint-glob-compat.v1");
+
+/**
+ * Adapt only the published Next 16.3.8 plugin's directory-discovery call.
+ * This is NOT a general fast-glob replacement. The npm override removes
+ * braces; this adapter restores the consumer semantics a bare alias lacks.
+ * No package source on disk, Next rule, or audit result is patched.
+ */
+export function installNextLintGlobCompatibility() {
+  const pluginManifest = require("@next/eslint-plugin-next/package.json");
+  if (pluginManifest.version !== "16.3.8") {
+    throw new Error("Review/remove Miloosh's lint glob adapter before changing the Next ESLint plugin version.");
+  }
+  const pluginRequire = createRequire(require.resolve("@next/eslint-plugin-next"));
+  const globPath = pluginRequire.resolve("fast-glob");
+  const globManifest = pluginRequire("fast-glob/package.json");
+  if (globManifest.name !== "tinyglobby" || globManifest.version !== "0.2.17") {
+    throw new Error("Expected the reviewed tinyglobby@0.2.17 scoped override; refuse an unknown lint dependency.");
+  }
+  const implementation = pluginRequire("fast-glob");
+  if (implementation[marker]) return;
+
+  // A prior plugin import could retain an unadapted reference. Fail rather
+  // than silently performing only part of the expected lint checks.
+  const rootsModule = pluginRequire.resolve("./utils/get-root-dirs.js");
+  if (require.cache[rootsModule]) {
+    throw new Error("Install the lint glob adapter before importing eslint-config-next or the Next plugin.");
+  }
+
+  const globSync = (pattern, options) => {
+    if (typeof pattern !== "string" || pattern.length === 0) {
+      throw new TypeError("Patterns must be a string (non empty) or an array of strings");
+    }
+    if (!options || options.onlyDirectories !== true || Object.keys(options).length !== 1) {
+      throw new Error("Unreviewed Next glob call: only globSync(string, { onlyDirectories: true }) is supported.");
+    }
+    // fast-glob starts traversal below a trailing globstar's base directory.
+    // tinyglobby includes that base; require a child to preserve root sets.
+    const compatiblePattern = pattern.replace(/\/\*\*\/?$/, "/**/*");
+    const matches = implementation.globSync(compatiblePattern, {
+      onlyDirectories: true,
+      expandDirectories: false,
+      absolute: isAbsolute(pattern),
+    });
+    // The consumer path.join()s each directory with app/pages. Trailing
+    // separators and a redundant './' are equivalent for that operation.
+    return matches.map((directory) => directory === "/" ? directory : directory.replace(/\/$/, ""));
+  };
+
+  require.cache[globPath].exports = Object.freeze({ globSync, [marker]: true });
+}

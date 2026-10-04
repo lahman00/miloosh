@@ -1,0 +1,263 @@
+{
+  "cases": 75,
+  "passed": 68,
+  "bare": false,
+  "mismatches": [
+    {
+      "input": {
+        "id": "rootdir-14",
+        "settings": {
+          "next": {
+            "rootDir": "*"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-14",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/link-web",
+          "__ROOT__/spaces dir"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-14",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/spaces dir"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-15",
+        "settings": {
+          "next": {
+            "rootDir": "./*"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-15",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/link-web",
+          "__ROOT__/spaces dir"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-15",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/apps",
+          "__ROOT__/components",
+          "__ROOT__/lib",
+          "__ROOT__/spaces dir"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-16",
+        "settings": {
+          "next": {
+            "rootDir": "**/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-16",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-16",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-17",
+        "settings": {
+          "next": {
+            "rootDir": "**"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-17",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-17",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/app",
+          "__ROOT__/app/a",
+          "__ROOT__/app/a/deep",
+          "__ROOT__/app/b",
+          "__ROOT__/apps",
+          "__ROOT__/apps/admin",
+          "__ROOT__/apps/admin/pages",
+          "__ROOT__/apps/docs",
+          "__ROOT__/apps/docs/src",
+          "__ROOT__/apps/docs/src/pages",
+          "__ROOT__/apps/web",
+          "__ROOT__/apps/web/app",
+          "__ROOT__/components",
+          "__ROOT__/components/ui",
+          "__ROOT__/lib",
+          "__ROOT__/lib/a",
+          "__ROOT__/link-web/app",
+          "__ROOT__/spaces dir",
+          "__ROOT__/spaces dir/app"
+        ]
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-40",
+        "settings": {
+          "next": {
+            "rootDir": "link-web"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-40",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__/link-web"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-40",
+        "kind": "roots",
+        "roots": []
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-51",
+        "settings": {
+          "next": {
+            "rootDir": "__ROOT__"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-51",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-51",
+        "kind": "error",
+        "name": "TypeError",
+        "message": "Expected pattern to be a non-empty string"
+      }
+    },
+    {
+      "input": {
+        "id": "rootdir-52",
+        "settings": {
+          "next": {
+            "rootDir": "__ROOT__/"
+          }
+        }
+      },
+      "expected": {
+        "id": "rootdir-52",
+        "kind": "roots",
+        "roots": [
+          "__ROOT__"
+        ]
+      },
+      "actual": {
+        "id": "rootdir-52",
+        "kind": "error",
+        "name": "TypeError",
+        "message": "Expected pattern to be a non-empty string"
+      }
+    }
+  ]
+}

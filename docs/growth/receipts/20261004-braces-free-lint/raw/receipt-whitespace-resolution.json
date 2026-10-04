@@ -1,0 +1,10 @@
+{
+  "initialCheckExit": 2,
+  "files": [
+    "raw/focused-regressions.txt",
+    "raw/lint-candidate.txt"
+  ],
+  "cause": "Extra blank lines at EOF in captured command-output text views",
+  "fix": "Normalize text views only; exact originals retained as gzip",
+  "sourceChanged": false
+}

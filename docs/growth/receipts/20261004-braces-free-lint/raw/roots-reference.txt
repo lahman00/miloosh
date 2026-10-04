@@ -1,0 +1,4 @@
+{
+  "captured": 75,
+  "reference": "/Users/eyalhaimovich/Desktop/Miloosh/01-Current/qa-premium-20261004"
+}

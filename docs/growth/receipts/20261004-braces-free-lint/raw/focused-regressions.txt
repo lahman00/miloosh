@@ -1,0 +1,16 @@
+
+> miloosh@0.12.0 test
+> vitest run tests/tooling/braces-free-lint.test.ts
+
+
+ RUN  v4.1.11 /Users/eyalhaimovich/Desktop/Miloosh/01-Current/dependency-braces-removal-20261004
+
+ ✓ tests/tooling/braces-free-lint.test.ts (6 tests) 2867ms
+     ✓ preserves the original Next directory root sets for all reference cases  1095ms
+     ✓ preserves rule code, effective configuration and real negative diagnostics  920ms
+     ✓ fails closed on an unsupported glob API call  740ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  11:47:01
+   Duration  3.61s (transform 19ms, setup 22ms, import 9ms, tests 2.87s, environment 0ms)
