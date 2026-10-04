@@ -5,6 +5,10 @@ import { runPublishCycle } from "@/lib/social/publish";
 
 export const dynamic = "force-dynamic";
 
+// Authenticated responses contain operational queue/provider metadata. Keep
+// them out of browser and intermediary caches; errors use the same policy.
+const responseHeaders = { "Cache-Control": "private, no-store", Vary: "Authorization" };
+
 function businessHour(date: Date, timeZone: string): number {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone,
@@ -33,7 +37,7 @@ export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;
   if (!isAuthenticated) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401, headers: responseHeaders });
   }
   const forcedDryRun = new URL(request.url).searchParams.get("dryRun") === "true";
   const now = new Date();
@@ -46,11 +50,11 @@ export async function GET(request: NextRequest) {
       const verification = await verifyBufferLinkedInTarget();
       const result = { authenticated: true, mode: "buffer-verification", transport: getLinkedInTransport(), ...verification };
       console.info("Buffer production verification", result);
-      return NextResponse.json(result);
+      return NextResponse.json(result, { headers: responseHeaders });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Buffer verification failed";
       console.error("Buffer production verification failed", { authenticated: true, mode: "buffer-verification", message });
-      return NextResponse.json({ authenticated: true, mode: "buffer-verification", error: message }, { status: 502 });
+      return NextResponse.json({ authenticated: true, mode: "buffer-verification", error: message }, { status: 502, headers: responseHeaders });
     }
   }
 
@@ -69,7 +73,7 @@ export async function GET(request: NextRequest) {
       reason: "Outside the 13:00 America/New_York publication window.",
     };
     console.info("Social publish window skip", JSON.stringify(result));
-    return NextResponse.json(result);
+    return NextResponse.json(result, { headers: responseHeaders });
   }
 
   const liveRun = isAuthenticated && !forcedDryRun && inPublishWindow;
@@ -79,5 +83,5 @@ export async function GET(request: NextRequest) {
 
   const summary = await runPublishCycle({ dryRun: !liveRun });
   console.info("Social publish cycle", JSON.stringify({ inPublishWindow, facebookContinuity, ...summary }));
-  return NextResponse.json({ authenticated: isAuthenticated, inPublishWindow, facebookContinuity, ...summary });
+  return NextResponse.json({ authenticated: isAuthenticated, inPublishWindow, facebookContinuity, ...summary }, { headers: responseHeaders });
 }

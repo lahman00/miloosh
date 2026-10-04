@@ -3,6 +3,10 @@ import { runScheduleCycle } from "@/lib/social/schedule";
 
 export const dynamic = "force-dynamic";
 
+// Authenticated responses contain operational queue/provider metadata. Keep
+// them out of browser and intermediary caches; errors use the same policy.
+const responseHeaders = { "Cache-Control": "private, no-store", Vary: "Authorization" };
+
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — Vercel Cron
  * target. Same auth pattern as app/api/cron/social-publish/route.ts
@@ -27,11 +31,11 @@ export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;
   if (!isAuthenticated) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401, headers: responseHeaders });
   }
   const forcedDryRun = new URL(request.url).searchParams.get("dryRun") === "true";
 
   const summary = await runScheduleCycle({ dryRun: forcedDryRun || !isAuthenticated });
   console.info("Social schedule cycle", JSON.stringify(summary));
-  return NextResponse.json({ authenticated: isAuthenticated, ...summary });
+  return NextResponse.json({ authenticated: isAuthenticated, ...summary }, { headers: responseHeaders });
 }
