@@ -6,6 +6,7 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { formatIsoDate } from "@/lib/date";
 import { SITE_URL } from "@/lib/site";
+import { SOCIAL_BRAND_VERSION } from "@/lib/brand";
 import { getSocialStrategy } from "@/lib/social/strategy";
 import {
   BUYER_EDUCATION_CONCEPTS,
@@ -393,6 +394,7 @@ export function buildCardImageUrlFor(
   const size = IMAGE_SIZE_BY_CHANNEL[channel];
   if (!kind || !size) return null;
   const params = new URLSearchParams({
+    brand: SOCIAL_BRAND_VERSION,
     size,
     kind,
     headline: headline.slice(0, 140),

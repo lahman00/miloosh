@@ -2,6 +2,8 @@ import { getAllCategories } from "@/data/categories";
 import { getPublishedComparisonSlugs } from "@/data/comparisons";
 import { getAllSoftware } from "@/data/software";
 import { SITE_URL } from "@/lib/site";
+import { SOCIAL_BRAND_VERSION } from "@/lib/brand";
+import { withCurrentSocialBrand } from "@/lib/social/brand-version";
 import type { ChannelVariant, SocialQueueEntry } from "@/lib/social/types";
 
 const CARD_KIND_BY_PILLAR: Partial<Record<SocialQueueEntry["pillar"], string>> = {
@@ -30,9 +32,10 @@ export function isKnownPublicMilooshPath(pathname: string): boolean {
 export function prepareLinkedInVariant(entry: SocialQueueEntry): ChannelVariant | null {
   const variant = entry.channels.linkedin;
   if (!variant) return null;
-  if (variant.imageUrl || !CARD_KIND_BY_PILLAR[entry.pillar]) return variant;
+  if (variant.imageUrl) return { ...variant, imageUrl: withCurrentSocialBrand(variant.imageUrl) };
+  if (!CARD_KIND_BY_PILLAR[entry.pillar]) return variant;
   const [headline = variant.text, ...rest] = variant.text.split(/\n+/).map((part) => part.trim()).filter(Boolean);
-  const params = new URLSearchParams({ size: "linkedin", kind: CARD_KIND_BY_PILLAR[entry.pillar]!, headline: headline.slice(0, 140), sub: rest.join(" ").slice(0, 220) });
+  const params = new URLSearchParams({ brand: SOCIAL_BRAND_VERSION, size: "linkedin", kind: CARD_KIND_BY_PILLAR[entry.pillar]!, headline: headline.slice(0, 140), sub: rest.join(" ").slice(0, 220) });
   return { ...variant, imageUrl: `${SITE_URL}/api/social/card?${params.toString()}`, altText: variant.altText ?? `Miloosh editorial card: ${headline}` };
 }
 

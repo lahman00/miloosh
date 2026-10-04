@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -20,7 +19,6 @@ export function Navbar() {
     <header className="site-header" onKeyDown={(e) => { if (e.key === "Escape") { setOpen(false); document.getElementById("navigation-toggle")?.focus(); } }}>
       <div className="design-container nav-inner">
         <Link href="/" className="brand" aria-label="Miloosh home" onClick={() => setOpen(false)}>
-          <Image src="/logo-icon.png" alt="" width={32} height={29} priority className="brand-mark" />
           <span>miloosh<span className="brand-period">.</span></span>
         </Link>
         <nav aria-label="Main navigation" className="desktop-nav">

@@ -42,11 +42,11 @@ export const SITE_DESCRIPTION =
  */
 export const SITE_EMAIL = "hello@miloosh.com";
 
-/** Dark artwork background keeps generated icons and OG images legible. */
-export const SITE_THEME_COLOR = "#09090b";
-
-/** Warm UI canvas, also used by browser chrome and the web app manifest. */
+/** Warm UI canvas, used by browser chrome, manifest and the new public brand artwork. */
 export const SITE_CANVAS_COLOR = "#f8f9f4";
+
+/** Compatibility export. Public artwork now follows the warm redesigned canvas. */
+export const SITE_THEME_COLOR = SITE_CANVAS_COLOR;
 
 /** Sourced from package.json so it never drifts from the actual shipped version. */
 export const SITE_VERSION = packageJson.version;

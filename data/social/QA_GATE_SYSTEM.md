@@ -10,7 +10,7 @@ The deterministic gate file (`lib/social/qa-gates.ts`) is intentionally free of 
 
 **BRAND GATE**
 - `checkBrandName` — catches misspellings ("Milosh", "MiLoosh", etc.).
-- Correct logo/font/color/crop-safety is enforced at the template level (`MILOOSH_SOCIAL_BRAND_STANDARD.md` + the shared `loadInterFonts()`/`#3458a8` tokens every OG/card template now uses) rather than re-checked per-post — a systemic fix, not a per-post gate, since the templates are the only thing that can render an image at all.
+- Correct logo/font/color/crop-safety is enforced at the template level (`MILOOSH_SOCIAL_BRAND_STANDARD.md` + shared `loadBrandFonts()` / `BRAND_COLORS` tokens) rather than re-checked per post. Warm Canvas / Forest / Sage / Citrine is the only current public visual system.
 
 **TECHNICAL GATE**
 - `checkLink` — destination resolves against real site data (software/category/comparison slugs), rejects localhost/internal paths.

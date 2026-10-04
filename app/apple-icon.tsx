@@ -1,15 +1,10 @@
 import { ImageResponse } from "next/og";
-import { SITE_THEME_COLOR } from "@/lib/site";
-import { loadInterFonts } from "@/lib/social/fonts";
+import { BRAND_COLORS } from "@/lib/brand";
+import { loadBrandFonts } from "@/lib/social/fonts";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-/**
- * Typography-first app icon: the wordmark's own first letter, not a
- * separate icon or symbol — consistent with the wordmark-only logo used
- * everywhere else in the brand.
- */
 export default async function AppleIcon() {
   return new ImageResponse(
     (
@@ -20,22 +15,15 @@ export default async function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: SITE_THEME_COLOR,
+          background: BRAND_COLORS.ink,
           borderRadius: 40,
+          position: "relative",
         }}
       >
-        <span
-          style={{
-            fontSize: 108,
-            fontWeight: 800,
-            color: "white",
-            letterSpacing: -2,
-          }}
-        >
-          M
-        </span>
+        <span style={{ fontSize: 108, fontWeight: 800, color: BRAND_COLORS.canvas, letterSpacing: -4 }}>M</span>
+        <span style={{ position: "absolute", right: 30, bottom: 30, width: 22, height: 22, borderRadius: 999, background: BRAND_COLORS.citrine }} />
       </div>
     ),
-    { ...size, fonts: await loadInterFonts() }
+    { ...size, fonts: await loadBrandFonts() },
   );
 }

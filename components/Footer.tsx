@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { LEGAL_PAGES } from "@/lib/legal";
@@ -60,9 +59,8 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <Link href="/" prefetch={false} className="flex items-center gap-2 text-base font-bold tracking-tight text-white">
-              <Image src="/logo-icon.png" alt="" width={22} height={20} className="brand-mark" />
-              {SITE_NAME}
+            <Link href="/" prefetch={false} className="brand text-base" aria-label={SITE_NAME + " home"}>
+              <span>miloosh<span className="brand-period">.</span></span>
             </Link>
             <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-400">{SITE_TAGLINE}</p>
           </div>

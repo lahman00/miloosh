@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
 import { type QueueState, type SocialQueueEntry, QUEUE_STATES, isValidQueueTransition } from "@/lib/social/types";
+import { withCurrentSocialBrand } from "@/lib/social/brand-version";
 
 /**
  * Content queue persistence — same storage strategy as
@@ -44,6 +45,11 @@ function assertQueueShape(value: unknown): asserts value is SocialQueueEntry[] {
 function parseQueue(text: string): SocialQueueEntry[] {
   const value: unknown = JSON.parse(text);
   assertQueueShape(value);
+  for (const entry of value) {
+    for (const variant of Object.values(entry.channels)) {
+      if (variant?.imageUrl) variant.imageUrl = withCurrentSocialBrand(variant.imageUrl);
+    }
+  }
   return value;
 }
 

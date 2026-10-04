@@ -1,46 +1,14 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
-import { SITE_NAME, SITE_THEME_COLOR } from "@/lib/site";
-import { loadInterFonts } from "@/lib/social/fonts";
+import { SITE_NAME } from "@/lib/site";
+import { BRAND_COLORS } from "@/lib/brand";
+import { loadBrandFonts } from "@/lib/social/fonts";
 import { loadCanonicalLogoDataUri, logoWidthForHeight } from "@/lib/social/logo";
 
-// 2026-08-18 brand forensics: moved off edge runtime (fonts.ts needs Node's
-// fs to load the real Inter TTFs — see that file's header). Node/Fluid
-// Compute is also current Vercel guidance over edge for routes like this.
-
-/**
- * Phase 6 visual engine — one reusable, parameterized card generator
- * instead of eight near-duplicate static templates, since every required
- * card type (square, LinkedIn/Facebook/X landscape, comparison, pricing,
- * alternatives, research, category, switching) shares the same dark-brand
- * token system (background, wordmark, accent, tagline) but composes it
- * differently per kind. Visual language is pulled directly from
- * components/SocialImageContent.tsx (the real source of truth already
- * used for app/opengraph-image.tsx and app/twitter-image.tsx): dark/
- * charcoal background, bold white wordmark-style headline, muted
- * zinc-400 secondary text, no vendor logos (Phase 6: "must not imply
- * endorsement by third-party software brands"). The header does carry
- * Miloosh's own canonical logo mark (lib/social/logo.ts, the real
- * public/logo-icon.png asset, embedded as a data URI — added 2026-08-21 so
- * every future social card automatically uses the real logo instead of
- * text-only branding or an approximated mark).
- *
- * Usage: /api/social/card?size=square|linkedin|facebook|x&kind=comparison
- *   &headline=...&sub=...&badge=...
- * All text comes from the caller (the content engine, drafting from real
- * Miloosh data) — this route never fabricates copy itself.
- *
- * 2026-08-18 — LinkedIn Company Page audit found every kind rendering the
- * literal same stacked-headline layout, differing only by a two-word
- * badge ("the same black Miloosh card" for every post, not just link
- * previews). Fixed by giving comparison/switching/pricing/alternatives/
- * category each a real, distinct composition — parsed out of the same
- * headline/sub strings the content engine already sends (content-engine.ts's
- * exact phrasing for each pillar: "{A} vs {B}: ...", "Moving from {A} to
- * {B}? ...", "{N} {Category} tools, ..."), never new params or invented
- * facts. When a kind's expected pattern isn't present in the text, it
- * falls back to the original stacked layout rather than showing nothing.
- */
+// Public social artwork follows the same redesigned visual system as the site:
+// warm canvas, forest ink, sage panels, citrine emphasis and Manrope. The
+// content engine still supplies every factual headline/price/count; this route
+// only composes that real data into channel-specific artwork.
 
 const SIZES: Record<string, { width: number; height: number }> = {
   square: { width: 1080, height: 1080 },
@@ -58,8 +26,7 @@ const KIND_LABELS: Record<string, string> = {
   switching: "SWITCHING GUIDE",
 };
 
-// Matches app/globals.css's --color-accent — the site's real accent token, not an arbitrary blue.
-const ACCENT = "#3458a8";
+const ACCENT = BRAND_COLORS.citrine;
 
 function Header({ badge, logoDataUri }: { badge: string; logoDataUri: string }) {
   const logoHeight = 36;
@@ -68,7 +35,7 @@ function Header({ badge, logoDataUri }: { badge: string; logoDataUri: string }) 
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         {/* eslint-disable-next-line @next/next/no-img-element -- Satori (next/og) renders <img>, not next/image */}
         <img src={logoDataUri} width={logoWidthForHeight(logoHeight)} height={logoHeight} alt="" />
-        <div style={{ display: "flex", fontSize: 34, fontWeight: 800, color: "white", letterSpacing: -1 }}>{SITE_NAME}</div>
+        <div style={{ display: "flex", fontSize: 34, fontWeight: 800, color: BRAND_COLORS.ink, letterSpacing: -1.5 }}>miloosh<span style={{ color: BRAND_COLORS.citrine }}>.</span></div>
       </div>
       {badge ? (
         <div
@@ -76,8 +43,8 @@ function Header({ badge, logoDataUri }: { badge: string; logoDataUri: string }) 
             display: "flex",
             fontSize: 22,
             fontWeight: 600,
-            color: ACCENT,
-            border: `2px solid ${ACCENT}`,
+            color: BRAND_COLORS.ink,
+            background: BRAND_COLORS.citrine,
             borderRadius: 999,
             padding: "8px 20px",
           }}
@@ -90,14 +57,14 @@ function Header({ badge, logoDataUri }: { badge: string; logoDataUri: string }) 
 }
 
 function Footer() {
-  return <div style={{ display: "flex", fontSize: 22, color: "#71717a" }}>Software research you can verify.</div>;
+  return <div style={{ display: "flex", fontSize: 22, color: BRAND_COLORS.muted }}>Software research you can verify.</div>;
 }
 
 function StackedBody({ headline, sub, sizeKey }: { headline: string; sub: string; sizeKey: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-      <div style={{ display: "flex", fontSize: sizeKey === "square" ? 56 : 48, fontWeight: 800, color: "white", lineHeight: 1.15, letterSpacing: -1.5 }}>{headline}</div>
-      {sub ? <div style={{ display: "flex", fontSize: 28, color: "#a1a1aa", lineHeight: 1.4 }}>{sub}</div> : null}
+      <div style={{ display: "flex", fontSize: sizeKey === "square" ? 56 : 48, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.15, letterSpacing: -1.5 }}>{headline}</div>
+      {sub ? <div style={{ display: "flex", fontSize: 28, color: BRAND_COLORS.muted, lineHeight: 1.4 }}>{sub}</div> : null}
     </div>
   );
 }
@@ -111,24 +78,24 @@ function ComparisonBody({ headline, sub, sizeKey }: { headline: string; sub: str
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 28 }}>
-        <div style={{ display: "flex", flex: 1, fontSize: nameSize, fontWeight: 800, color: "white", lineHeight: 1.1, letterSpacing: -1, justifyContent: "flex-end", textAlign: "right" }}>{nameA}</div>
+        <div style={{ display: "flex", flex: 1, fontSize: nameSize, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.1, letterSpacing: -1, justifyContent: "flex-end", textAlign: "right" }}>{nameA}</div>
         <div
           style={{
             display: "flex",
             width: 64,
             height: 64,
             borderRadius: 999,
-            border: `3px solid ${ACCENT}`,
+            background: BRAND_COLORS.citrine,
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
           }}
         >
-          <div style={{ display: "flex", fontSize: 20, fontWeight: 800, color: ACCENT }}>VS</div>
+          <div style={{ display: "flex", fontSize: 20, fontWeight: 800, color: BRAND_COLORS.ink }}>VS</div>
         </div>
-        <div style={{ display: "flex", flex: 1, fontSize: nameSize, fontWeight: 800, color: "white", lineHeight: 1.1, letterSpacing: -1 }}>{nameB}</div>
+        <div style={{ display: "flex", flex: 1, fontSize: nameSize, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.1, letterSpacing: -1 }}>{nameB}</div>
       </div>
-      {sub ? <div style={{ display: "flex", fontSize: 26, color: "#a1a1aa", lineHeight: 1.4, textAlign: "center", justifyContent: "center" }}>{sub}</div> : null}
+      {sub ? <div style={{ display: "flex", fontSize: 26, color: BRAND_COLORS.muted, lineHeight: 1.4, textAlign: "center", justifyContent: "center" }}>{sub}</div> : null}
     </div>
   );
 }
@@ -147,16 +114,16 @@ function SwitchingBody({ headline, sub, sizeKey }: { headline: string; sub: stri
             display: "flex",
             fontSize: nameSize,
             fontWeight: 700,
-            color: "#a1a1aa",
+            color: BRAND_COLORS.muted,
             lineHeight: 1.1,
           }}
         >
           {nameA}
         </div>
-        <div style={{ display: "flex", fontSize: 40, fontWeight: 800, color: ACCENT }}>{"→"}</div>
-        <div style={{ display: "flex", fontSize: nameSize, fontWeight: 800, color: "white", lineHeight: 1.1, letterSpacing: -1 }}>{nameB}</div>
+        <div style={{ display: "flex", fontSize: 40, fontWeight: 800, color: BRAND_COLORS.ink }}>{"→"}</div>
+        <div style={{ display: "flex", fontSize: nameSize, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.1, letterSpacing: -1 }}>{nameB}</div>
       </div>
-      {sub ? <div style={{ display: "flex", fontSize: 26, color: "#a1a1aa", lineHeight: 1.4, maxWidth: 900 }}>{sub}</div> : null}
+      {sub ? <div style={{ display: "flex", fontSize: 26, color: BRAND_COLORS.muted, lineHeight: 1.4, maxWidth: 900 }}>{sub}</div> : null}
     </div>
   );
 }
@@ -167,14 +134,14 @@ function PricingBody({ headline, sub, sizeKey }: { headline: string; sub: string
   if (!priceMatch) return <StackedBody headline={headline} sub={sub} sizeKey={sizeKey} />;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <div style={{ display: "flex", fontSize: sizeKey === "square" ? 44 : 38, fontWeight: 800, color: "white", lineHeight: 1.15, letterSpacing: -1 }}>{headline}</div>
+      <div style={{ display: "flex", fontSize: sizeKey === "square" ? 44 : 38, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.15, letterSpacing: -1 }}>{headline}</div>
       <div style={{ display: "flex" }}>
         <div
           style={{
             display: "flex",
             fontSize: 44,
             fontWeight: 800,
-            color: SITE_THEME_COLOR,
+            color: BRAND_COLORS.ink,
             background: ACCENT,
             borderRadius: 10,
             padding: "14px 28px",
@@ -183,7 +150,7 @@ function PricingBody({ headline, sub, sizeKey }: { headline: string; sub: string
           {priceMatch[0]}
         </div>
       </div>
-      {sub ? <div style={{ display: "flex", fontSize: 24, color: "#a1a1aa", lineHeight: 1.4 }}>{sub}</div> : null}
+      {sub ? <div style={{ display: "flex", fontSize: 24, color: BRAND_COLORS.muted, lineHeight: 1.4 }}>{sub}</div> : null}
     </div>
   );
 }
@@ -198,7 +165,7 @@ function AlternativesBody({ headline, sub, sizeKey }: { headline: string; sub: s
   if (picks.length < 2) return <StackedBody headline={headline} sub={sub} sizeKey={sizeKey} />;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-      <div style={{ display: "flex", fontSize: sizeKey === "square" ? 46 : 40, fontWeight: 800, color: "white", lineHeight: 1.15, letterSpacing: -1.5 }}>{headline}</div>
+      <div style={{ display: "flex", fontSize: sizeKey === "square" ? 46 : 40, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.15, letterSpacing: -1.5 }}>{headline}</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         {picks.map((pick, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -208,8 +175,8 @@ function AlternativesBody({ headline, sub, sizeKey }: { headline: string; sub: s
                 width: 36,
                 height: 36,
                 borderRadius: 8,
-                border: `2px solid ${ACCENT}`,
-                color: ACCENT,
+                background: BRAND_COLORS.stage,
+                color: BRAND_COLORS.ink,
                 fontSize: 18,
                 fontWeight: 800,
                 alignItems: "center",
@@ -219,7 +186,7 @@ function AlternativesBody({ headline, sub, sizeKey }: { headline: string; sub: s
             >
               {i + 1}
             </div>
-            <div style={{ display: "flex", fontSize: 24, color: "#e4e4e7", lineHeight: 1.3 }}>{pick}</div>
+            <div style={{ display: "flex", fontSize: 24, color: BRAND_COLORS.ink, lineHeight: 1.3 }}>{pick}</div>
           </div>
         ))}
       </div>
@@ -235,12 +202,12 @@ function CategoryBody({ headline, sub, sizeKey }: { headline: string; sub: strin
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-        <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: ACCENT, lineHeight: 1 }}>{count}</div>
-        <div style={{ display: "flex", fontSize: 18, fontWeight: 600, color: "#71717a", letterSpacing: 1 }}>TOOLS</div>
+        <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1 }}>{count}</div>
+        <div style={{ display: "flex", fontSize: 18, fontWeight: 600, color: BRAND_COLORS.subtle, letterSpacing: 1 }}>TOOLS</div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <div style={{ display: "flex", fontSize: sizeKey === "square" ? 44 : 38, fontWeight: 800, color: "white", lineHeight: 1.15, letterSpacing: -1 }}>{categoryName}</div>
-        {sub ? <div style={{ display: "flex", fontSize: 24, color: "#a1a1aa", lineHeight: 1.4, maxWidth: 700 }}>{sub}</div> : null}
+        <div style={{ display: "flex", fontSize: sizeKey === "square" ? 44 : 38, fontWeight: 800, color: BRAND_COLORS.ink, lineHeight: 1.15, letterSpacing: -1 }}>{categoryName}</div>
+        {sub ? <div style={{ display: "flex", fontSize: 24, color: BRAND_COLORS.muted, lineHeight: 1.4, maxWidth: 700 }}>{sub}</div> : null}
       </div>
     </div>
   );
@@ -275,7 +242,7 @@ export async function GET(request: NextRequest) {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: SITE_THEME_COLOR,
+          background: BRAND_COLORS.canvas,
         }}
       >
         <Header badge={badge} logoDataUri={logoDataUri} />
@@ -283,6 +250,6 @@ export async function GET(request: NextRequest) {
         <Footer />
       </div>
     ),
-    { width, height, fonts: await loadInterFonts() }
+    { width, height, fonts: await loadBrandFonts() }
   );
 }

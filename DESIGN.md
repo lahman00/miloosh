@@ -18,7 +18,7 @@ colors:
   "card-hover": "#f2f5ea"
   "card-hover-line": "#aab9a2"
   "footer": "#f0f2e9"
-  "artwork-dark": "#09090b"
+  "artwork-canvas": "#f8f9f4"
 typography:
   display:
     fontFamily: "Manrope, sans-serif"
@@ -179,7 +179,7 @@ components:
 
 Miloosh uses a warm, light canvas, forest ink, citrine emphasis and a sage comparison desk. Large Manrope headings establish confidence; restrained rules and source-linked content make the research feel approachable and inspectable. The existing Miloosh name and M mark remain the identity anchors.
 
-The system is code-led. Software logos, an interactive shortlist and a constructed paper illustration provide the visual material; no generated raster is part of this redesign. The light UI and the inverse dark social artwork are distinct surfaces with separate color constants.
+The system is code-led. Software logos, an interactive shortlist and a constructed paper illustration provide the visual material. Website chrome, generated social artwork, profile avatars and cover images now share the same warm canvas / forest / sage / citrine visual system.
 
 This is a scan of the implemented source, including its final refinement overrides. Visual verification is limited to sampled homepage desktop/mobile views and the Airtable software page; it is not a whole-site visual audit. No separate quality-bar card was supplied. The measured Ramp reference in the approved design spec bounds the comparison, and its measurements are observations rather than Miloosh tokens. The prior independent review reported ship at 9.0/10 for the buyer-composition refinement and previously scored fixes; that verdict does not certify every generated route or the subsequent motion and logo refinement. The fresh independent motion/logo review reported 9.0/10 for the visual and code delta, with documentation freshness as its sole remaining blocker; this source-derived update resolves that documentation gap without extending the visual review scope. The detailed verdict remains owned by the review artifact.
 
@@ -211,11 +211,11 @@ The palette combines a warm neutral base with forest text, a pale sage stage and
 - **Quiet Rule** (`line`): separators and card edges.
 - **Footer Paper** (`footer`): the closing legal/navigation surface.
 - **Card Hover** (`card-hover`, `card-hover-line`) and **Button Hover** (`button-hover`): explicit interactive states.
-- **Artwork Dark** (`artwork-dark`): inverse social images and generated identity artwork only.
+- **Artwork Canvas** (`artwork-canvas`): generated social images and identity artwork now use the same warm canvas as the redesigned site.
 
 The compatibility layer on the site body remaps legacy white/zinc utility roles to the light palette. In this scope, `text-white` resolves to forest ink, and `bg-white/5` becomes a faint forest tint. Preserve this scope when maintaining old templates. Status text also receives light-canvas green, amber, red, blue and violet overrides; these are functional status colors, not new brand accents.
 
-**The Two Canvases Rule.** Use the warm canvas for the website and browser chrome. Keep inverse social and icon artwork on its dedicated dark constant; do not apply the body compatibility bridge to generated artwork.
+**The One Public Canvas Rule.** Website, browser chrome, generated social artwork and profile/banner assets share the warm canvas / forest / sage / citrine system. Dark inverse artwork is retired from public branding.
 
 ## Typography
 
@@ -333,7 +333,7 @@ Retain the existing `/software/[slug]`, `/category/[slug]`, comparison and guide
 
 ### Don't:
 
-- **Don't** turn dark social artwork colors into page background tokens.
+- **Don't** reintroduce the retired dark/blue social artwork system; public brand surfaces use the shared warm redesign tokens.
 - **Don't** invent ratings, customer claims, firsthand testing, popularity, conversion gains or vendor facts.
 - **Don't** add eyebrow headings or promote inherited uppercase eyebrow styles into new page patterns.
 - **Don't** turn editorial rows or every card into elevated panels; use the documented paper depth roles.
