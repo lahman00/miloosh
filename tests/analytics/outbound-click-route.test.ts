@@ -3,7 +3,7 @@ import { analyticsLocalPath } from "@/lib/analytics/local-store-path";
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest } from "next/server";
-import { POST } from "@/app/api/outbound-click/route";
+import { POST, safeOutboundObservation } from "@/app/api/outbound-click/route";
 import { outboundDestinationTestHelpers as __test__ } from "@/lib/revenue/outbound-destination";
 import { getSoftware } from "@/data/software";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
@@ -60,6 +60,43 @@ function post(body: unknown): Promise<Response> {
     }),
   );
 }
+
+describe("privacy-safe outbound observability", () => {
+  it("logs only bounded commercial dimensions and sink status, never visitor/session identity", () => {
+    const row = safeOutboundObservation({
+      softwareSlug: "todoist",
+      sourcePage: "/software/todoist",
+      ctaLocation: "pricing-section-cta",
+      destination: "affiliate",
+      isTest: false,
+      sinks: { legacy: "RECORDED", firstParty: "RECORDED" },
+    });
+    expect(row).toEqual({
+      softwareSlug: "todoist",
+      sourcePage: "/software/todoist",
+      ctaLocation: "pricing-section-cta",
+      destination: "affiliate",
+      testMarker: "explicit_non_test",
+      sinks: { legacy: "RECORDED", firstParty: "RECORDED" },
+    });
+    expect(JSON.stringify(row)).not.toMatch(/visitor|session|eventId|referrer|acquisition|https?:\/\//i);
+  });
+
+  it.each([
+    [true, "test"],
+    [false, "explicit_non_test"],
+    [undefined, "unknown"],
+  ] as const)("maps isTest=%s to %s without manufacturing a human claim", (isTest, expected) => {
+    expect(safeOutboundObservation({
+      softwareSlug: "close",
+      sourcePage: "/software/close",
+      ctaLocation: undefined,
+      destination: "affiliate",
+      isTest,
+      sinks: { legacy: "DISABLED", firstParty: "RECORDED" },
+    }).testMarker).toBe(expected);
+  });
+});
 
 describe("POST /api/outbound-click — preserves explicit and unknown isTest states", () => {
   it.each(ACTIVE_PARTNERS.flatMap(partner => [

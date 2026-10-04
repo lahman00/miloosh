@@ -39,6 +39,38 @@ type OutboundClickBody = {
   variant?: unknown;
 };
 
+export type SafeOutboundObservation = {
+  softwareSlug: string;
+  sourcePage: string;
+  ctaLocation: string | undefined;
+  destination: "affiliate" | "official";
+  testMarker: "test" | "explicit_non_test" | "unknown";
+  sinks: { legacy: "FAILED" | "RECORDED" | "DISABLED"; firstParty: "FAILED" | "RECORDED" | "DISABLED" };
+};
+
+/**
+ * Privacy-safe production observability for the revenue handoff.
+ * Deliberately excludes visitor/session IDs, acquisition data, destination
+ * URLs, referrers and event IDs. Vercel's own log timestamp supplies time.
+ */
+export function safeOutboundObservation(input: {
+  softwareSlug: string;
+  sourcePage: string;
+  ctaLocation: string | undefined;
+  destination: "affiliate" | "official";
+  isTest: boolean | undefined;
+  sinks: SafeOutboundObservation["sinks"];
+}): SafeOutboundObservation {
+  return {
+    softwareSlug: input.softwareSlug,
+    sourcePage: input.sourcePage,
+    ctaLocation: input.ctaLocation,
+    destination: input.destination,
+    testMarker: input.isTest === true ? "test" : input.isTest === false ? "explicit_non_test" : "unknown",
+    sinks: input.sinks,
+  };
+}
+
 function isWixContext(value: unknown): value is WixFunnelContext {
   return typeof value === "string" && (WIX_CONTEXTS as readonly string[]).includes(value);
 }
@@ -130,10 +162,22 @@ export async function POST(request: NextRequest) {
       ...experimentFields,
     }),
   ]);
-  const state = (result: PromiseSettledResult<boolean | undefined>) =>
+  const state = (result: PromiseSettledResult<boolean | undefined>): SafeOutboundObservation["sinks"]["legacy"] =>
     result.status === "rejected" || result.value === false ? "FAILED" :
       result.value === true ? "RECORDED" : "DISABLED";
-  const sinks = { legacy: state(results[0]), firstParty: state(results[1]) };
+  const sinks: SafeOutboundObservation["sinks"] = { legacy: state(results[0]), firstParty: state(results[1]) };
+
+  if (process.env.VERCEL_ENV === "production") {
+    const destination = !vendor && shouldShowAffiliateDisclosure(software) ? "affiliate" : "official";
+    console.info("[outbound-observation]", safeOutboundObservation({
+      softwareSlug: software.slug,
+      sourcePage,
+      ctaLocation: location,
+      destination,
+      isTest,
+      sinks,
+    }));
+  }
 
   return NextResponse.json({ ok: true, recorded: sinks.firstParty === "RECORDED", sinks }, { status: 202 });
 }
