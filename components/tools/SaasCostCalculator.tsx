@@ -157,7 +157,7 @@ export function SaasCostCalculator({ products }: { products: CalculatorProduct[]
                   ) : null}
                   <span className="text-zinc-400">
                     ${(product.amount * (product.perSeat ? seats : 1)).toFixed(2)}/mo
-                    {product.annualBillingRequired ? <span className="block text-[10px] text-amber-300/80">annual billing required</span> : null}
+                    {product.annualBillingRequired ? <span className="block text-[10px] text-amber-300">annual billing required</span> : null}
                   </span>
                   <button type="button" onClick={() => removeProduct(product.slug)} className="text-zinc-500 hover:text-red-400" aria-label={`Remove ${product.name}`}>
                     <X className="h-3.5 w-3.5" />

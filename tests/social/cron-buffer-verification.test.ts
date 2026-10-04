@@ -35,14 +35,14 @@ describe("social cron Buffer verification-only gate", () => {
     expect(await response.json()).toMatchObject({ authenticated: true, mode: "buffer-verification", transport: "buffer", bufferAuthenticated: true, target: "company_page", channel: { id: "channel-1", name: "Miloosh" } });
   });
 
-  it("never calls Buffer for an unauthenticated request", async () => {
+  it("rejects unauthenticated requests before inspecting the publish queue", async () => {
     Object.assign(process.env, { CRON_SECRET: "cron-secret", SOCIAL_BUFFER_VERIFY_ONLY: "true" });
-    runPublishCycle.mockResolvedValue({ dryRun: true });
 
     const response = await GET(new Request("https://miloosh.com/api/cron/social-publish") as never);
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(401);
+    expect(await response.json()).toEqual({ error: "Unauthorized" });
     expect(verifyBufferLinkedInTarget).not.toHaveBeenCalled();
-    expect(runPublishCycle).toHaveBeenCalledWith({ dryRun: true });
+    expect(runPublishCycle).not.toHaveBeenCalled();
   });
 });

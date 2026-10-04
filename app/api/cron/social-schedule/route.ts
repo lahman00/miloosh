@@ -8,8 +8,8 @@ export const dynamic = "force-dynamic";
  * target. Same auth pattern as app/api/cron/social-publish/route.ts
  * (Vercel sends `Authorization: Bearer ${CRON_SECRET}` on invocations it
  * triggers itself; anything else is rejected). Runs LIVE (dryRun: false)
- * only when CRON_SECRET is set and matches — otherwise it dry-runs, so a
- * misconfigured or missing secret fails safe rather than failing open.
+ * only when CRON_SECRET is set and matches. Missing or invalid credentials
+ * fail closed before queue data is read or returned.
  *
  * This is the fix for the mission's central finding: the publish cron
  * (social-publish) has run reliably 4x/day the whole time, but nothing
@@ -26,6 +26,9 @@ export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;
+  if (!isAuthenticated) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const forcedDryRun = new URL(request.url).searchParams.get("dryRun") === "true";
 
   const summary = await runScheduleCycle({ dryRun: forcedDryRun || !isAuthenticated });

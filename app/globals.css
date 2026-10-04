@@ -13,7 +13,7 @@
   --stage: #dfe8d4;
   --ink: #173b2c;
   --muted: #56645b;
-  --subtle: #647267;
+  --subtle: #5e6c62;
   --citrine: #e4f267;
   --citrine-hover: #d5e750;
   --line: #d7ded2;
@@ -43,7 +43,7 @@
   --color-zinc-300: #45574a;
   --color-zinc-400: var(--muted);
   --color-zinc-500: var(--subtle);
-  --color-zinc-600: #718073;
+  --color-zinc-600: #607066;
   --color-zinc-700: #b8c4b6;
   --color-zinc-800: #dce2d6;
   --color-zinc-900: var(--surface-soft);

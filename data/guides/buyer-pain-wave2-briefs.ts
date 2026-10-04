@@ -76,7 +76,7 @@ export const BUYER_PAIN_WAVE2_BRIEFS: Readonly<Record<string, BuyerDecisionBrief
       { id: "zapier-tasks", title: "Zapier task measurement and exemptions", url: "https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier" },
       { id: "zapier-replay", title: "Zapier replay behavior and task consumption", url: "https://help.zapier.com/hc/en-us/articles/8496241726989-Replay-Zap-runs" },
       { id: "make-credits", title: "Make credit billing model", url: "https://help.make.com/credits" },
-      { id: "make-features", title: "Make trigger, bundle and feature credit consumption", url: "https://help.make.com/how-features-use-credits" },
+      { id: "make-features", title: "Make credit consumption", url: "https://help.make.com/credits" },
       { id: "n8n-pricing", title: "n8n execution-based pricing", url: "https://n8n.io/pricing/" },
       { id: "n8n-community", title: "n8n Community edition feature boundaries", url: "https://docs.n8n.io/deploy/host-n8n/community-edition-features" },
       { id: "zoho-tasks", title: "Zoho Flow task allowances and plan model", url: "https://www.zoho.com/flow/pricing.html" },

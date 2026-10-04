@@ -27,7 +27,7 @@ export default async function SoftwareMoneyLayout({
     <>
       <div className="pb-36">{children}</div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-zinc-950/95 px-4 py-3 shadow-2xl backdrop-blur">
+      <aside aria-label="Decision shortcut" className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-zinc-950/95 px-4 py-3 shadow-2xl backdrop-blur">
         {/* Narrow phones stack the terms above a full-width button, so the
             billing commitment is never squeezed into a one-word column. */}
         <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
@@ -51,7 +51,7 @@ export default async function SoftwareMoneyLayout({
             <ExternalLink className="h-4 w-4" />
           </TrackedCtaLink>
         </div>
-      </div>
+      </aside>
     </>
   );
 }

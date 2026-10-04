@@ -70,7 +70,7 @@ export function PricingSection({ software }: { software: Software }) {
               {pricing.entryPaid.perSeat ? " / seat" : ""}
             </span>
           </p>
-          {pricing.entryPaid.annualBillingRequired ? <p className="mt-1 text-xs text-amber-300/80">Annual billing required at this price.</p> : null}
+          {pricing.entryPaid.annualBillingRequired ? <p className="mt-1 text-xs text-amber-300">Annual billing required at this price.</p> : null}
         </div>
       ) : null}
 

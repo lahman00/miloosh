@@ -9,7 +9,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
     title: "Best Time Tracking Software for Freelancers (2026)",
     headline: "The 4 Best Time Tracking Tools for Freelancers & Contractors",
     metaDescription:
-      "Discover the best time tracking apps for freelancers and solo contractors: Toggl Track, Clockify, Harvest, and Hubstaff tested on ease of use, invoicing, and zero-cost pricing.",
+      "Compare time tracking apps for freelancers and solo contractors: Toggl Track, Clockify, Harvest, and Hubstaff on invoicing, free-plan availability, and documented workflow fit.",
     categorySlug: "productivity",
     roleName: "Freelancers & Contractors",
     updatedAt: "2026-08-20",

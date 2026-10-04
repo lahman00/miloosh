@@ -17,7 +17,7 @@ function businessHour(date: Date, timeZone: string): number {
 /**
  * Vercel Cron target — Phase 18 scheduling. Vercel sends
  * `Authorization: Bearer ${CRON_SECRET}` on invocations it triggers.
- * Unauthenticated requests remain dry-run only.
+ * Unauthenticated requests are rejected before queue state is inspected.
  *
  * Live publication is additionally gated to the 13:00 hour in
  * America/New_York. The Vercel cron intentionally probes both UTC hours
@@ -32,6 +32,9 @@ export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;
+  if (!isAuthenticated) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const forcedDryRun = new URL(request.url).searchParams.get("dryRun") === "true";
   const now = new Date();
   const inPublishWindow = businessHour(now, "America/New_York") === 13;

@@ -46,7 +46,7 @@ export function ShortlistDemo({ groups }: { groups: ShortlistGroup[] }) {
           {paused ? <Play size={16} /> : <Pause size={16} />}
         </button>
       </div>
-      <div className="shortlist-tabs" aria-label="Explore software by need">
+      <div className="shortlist-tabs" role="group" aria-label="Explore software by need">
         {groups.map((item, index) => <button type="button" key={item.label} aria-pressed={active === index} onClick={() => setActive(index)}>{item.label}</button>)}
       </div>
       <div className="shortlist-window-scene">
