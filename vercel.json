@@ -12,5 +12,7 @@
       "path": "/api/cron/seo-factory",
       "schedule": "0 22 * * *"
     }
-  ]
+  ],
+  "installCommand": "npm ci",
+  "buildCommand": "node scripts/tooling/verify-next-lint-roots.mjs && node scripts/tooling/verify-next-lint-coverage.mjs && npm run lint && npm audit --audit-level=moderate && npm run build"
 }

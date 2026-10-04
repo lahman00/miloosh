@@ -8,6 +8,19 @@ const nextConfig: NextConfig = {
     distDir: ".next-miloosh-qa",
     typescript: { tsconfigPath: "tsconfig.qa.json" },
   } : {}),
+  // Deliberately narrow CSP: preserve scripts, analytics and vendor navigation.
+  // No public framing or plugin/object embedding is required by this site.
+  async headers() {
+    return [{
+      source: "/:path*",
+      headers: [
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        { key: "Content-Security-Policy", value: "base-uri 'self'; object-src 'none'; frame-ancestors 'self'" },
+      ],
+    }];
+  },
   async redirects() {
     return REMOVED_COMPARISON_REDIRECTS.map(([comparisonSlug, softwareSlug]) => ({
       source: `/compare/${comparisonSlug}`,
