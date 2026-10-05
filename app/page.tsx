@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 function HomeCta({ href, name, children, className }: { href: string; name: string; children: ReactNode; className?: string }) {
   return (
-    <TrackedInternalCtaLink href={href} sourcePath="/" targetPath={href} ctaName={"home-" + name} className={className}>
+    <TrackedInternalCtaLink href={href} sourcePath="/" targetPath={href.startsWith("#") ? "/" : href} ctaName={"home-" + name} className={className}>
       {children}
     </TrackedInternalCtaLink>
   );
