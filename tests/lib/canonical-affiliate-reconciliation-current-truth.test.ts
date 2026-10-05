@@ -43,8 +43,8 @@ describe("canonical affiliate reconciliation current truth", () => {
     expect(bySlug.get("tidio")?.status).toBe("OWNER_ACTION_REQUIRED");
   });
 
-  it("keeps owner-only account gates explicit", () => {
-    expect(bySlug.get("gorgias")?.status).toBe("OWNER_ACTION_REQUIRED");
+  it("keeps true owner-only account gates explicit while current public application paths remain ready", () => {
+    expect(bySlug.get("gorgias")?.status).toBe("READY_AND_VERIFIED");
     expect(bySlug.get("synthesia")?.status).toBe("OWNER_ACTION_REQUIRED");
   });
 });

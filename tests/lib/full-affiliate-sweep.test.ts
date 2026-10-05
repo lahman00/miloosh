@@ -15,8 +15,8 @@ describe("full affiliate sweep current truth", () => {
     expect(bySlug.get("webflow")?.classification).toBe("REJECTED");
   });
 
-  it("keeps Gorgias as owner action rather than silently ready-to-apply", () => {
-    expect(bySlug.get("gorgias")?.classification).toBe("OWNER_ACTION_REQUIRED");
+  it("keeps Gorgias ready to apply only while the verified public content-affiliate path remains current", () => {
+    expect(bySlug.get("gorgias")?.classification).toBe("ELIGIBLE_READY_TO_APPLY");
   });
 
   it("does not resurrect ended or absent programs", () => {

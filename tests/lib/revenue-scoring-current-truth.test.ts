@@ -19,9 +19,9 @@ describe("revenue scoring current affiliate truth", () => {
     expect(score("webflow").affiliateAvailabilityScore).toBe(0);
   });
 
-  it("keeps pending and owner-blocked relationships distinct from active", () => {
+  it("keeps pending relationships distinct from public-program-only candidates", () => {
     expect(score("freshdesk").affiliateAvailabilityScore).toBe(6);
-    expect(score("gorgias").affiliateAvailabilityScore).toBe(5);
+    expect(score("gorgias").affiliateAvailabilityScore).toBe(4);
   });
 
   it("does not reward ended/no-program relationships", () => {

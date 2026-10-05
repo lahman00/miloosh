@@ -10,9 +10,9 @@ describe("monetization gaps current truth", () => {
     expect(bySlug.get("wix")?.statusGroup).toBe("A");
   });
 
-  it("derives current pending and owner-blocked states from the ledger", () => {
+  it("derives current pending and verified public-application states from current evidence", () => {
     expect(bySlug.get("freshdesk")?.statusGroup).toBe("B");
-    expect(bySlug.get("gorgias")?.statusGroup).toBe("D");
+    expect(bySlug.get("gorgias")?.statusGroup).toBe("C");
   });
 
   it("keeps rejected and ended/no-program relationships out of application groups", () => {
