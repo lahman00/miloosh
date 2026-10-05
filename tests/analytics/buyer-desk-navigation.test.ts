@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import Link from "next/link";
 import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { trackEvent } from "@/lib/analytics/track";
 
@@ -13,6 +14,7 @@ describe("buyer desk reuses first-party internal navigation", () => {
     ["/recommend", "matcher"],
   ])("reports one internal event for %s, with no priorities or outbound event", (href, name) => {
     const element = TrackedInternalCtaLink({ href, sourcePath: "/", targetPath: href, ctaName: `buyer-desk-${name}`, children: "Explore" });
+    expect(element.type).toBe(Link);
     expect(element.props.href).toBe(href);
     element.props.onClick();
     expect(trackEvent).toHaveBeenCalledExactlyOnceWith({ type: "internal_cta_click", path: "/", targetPath: href, ctaName: `buyer-desk-${name}` });
