@@ -6,7 +6,7 @@ import { buildApplicationPack } from "@/lib/revenue/application-pack";
 describe("Gorgias current affiliate opportunity", () => {
   it("uses the current first-party content-affiliate program instead of the stale generic PartnerStack bucket", () => {
     const program = getAffiliateProgram("gorgias");
-    expect(program?.lastVerifiedAt).toBe("2026-10-04");
+    expect(program?.lastVerifiedAt).toBe("2026-10-05");
     expect(program?.networkName).toBe("PartnerStack");
     expect(program?.commissionModel).toContain("20%");
     expect(program?.commissionModel).toContain("first two years");
