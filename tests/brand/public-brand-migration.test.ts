@@ -74,6 +74,14 @@ describe("Miloosh public brand migration", () => {
     expect(statSync("public/miloosh-logo.png").size).toBeGreaterThan(1000);
   });
 
+  it("does not synthesize the retired M. monogram in public identity routes", () => {
+    for (const file of ["app/icon.tsx", "app/apple-icon.tsx", "app/api/social/avatar/route.tsx"]) {
+      const source = read(file);
+      expect(source).not.toContain(">M</span>");
+      expect(source).toContain("logo");
+    }
+  });
+
   it("bundles Manrope weights for generated artwork", () => {
     const loader = read("lib/social/fonts.ts");
     for (const weight of ["Regular", "SemiBold", "Bold", "ExtraBold"]) {
