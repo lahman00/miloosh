@@ -17,7 +17,7 @@ describe("LinkedIn production readiness gates", () => {
   it("adds a deterministic Miloosh editorial card to legacy entries without mutating them", () => {
     const original = entry("Bloomfire research was checked against current primary sources before publication, with the verification date shown on the page.");
     const prepared = prepareLinkedInVariant(original)!;
-    expect(prepared.imageUrl).toContain(`${SITE_URL}/api/social/card?brand=20261005&size=linkedin&kind=research`);
+    expect(prepared.imageUrl).toContain(`${SITE_URL}/api/social/card?brand=20261005-wordmark&size=linkedin&kind=research`);
     expect(prepared.altText).toContain("Miloosh editorial card");
     expect(original.channels.linkedin?.imageUrl).toBeNull();
   });

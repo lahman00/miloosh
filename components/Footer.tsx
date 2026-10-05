@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { LEGAL_PAGES } from "@/lib/legal";
@@ -60,7 +61,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
             <Link href="/" prefetch={false} className="brand text-base" aria-label={SITE_NAME + " home"}>
-              <span>miloosh<span className="brand-period">.</span></span>
+              <Image src="/miloosh-wordmark.png" alt="Miloosh" width={128} height={26} />
             </Link>
             <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-400">{SITE_TAGLINE}</p>
           </div>

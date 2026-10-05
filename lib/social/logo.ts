@@ -1,24 +1,31 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-/**
- * Canonical square Miloosh wordmark avatar used by structured data and generated
- * social artwork. The artwork is derived from the user-approved miloosh. logo.
- */
+const WORDMARK_ASPECT_RATIO = 212 / 43;
 
-const LOGO_ASPECT_RATIO = 1;
+let wordmarkCached: Promise<string> | null = null;
+let avatarCached: Promise<string> | null = null;
 
-let cached: Promise<string> | null = null;
-
+/** Exact canonical wordmark supplied by Eyal on 2026-10-05. */
 export function loadCanonicalLogoDataUri(): Promise<string> {
-  if (!cached) {
-    cached = readFile(join(process.cwd(), "public", "logo-icon.png")).then(
-      (buffer) => `data:image/png;base64,${buffer.toString("base64")}`
+  if (!wordmarkCached) {
+    wordmarkCached = readFile(join(process.cwd(), "public", "miloosh-wordmark.png")).then(
+      (buffer) => `data:image/png;base64,${buffer.toString("base64")}`,
     );
   }
-  return cached;
+  return wordmarkCached;
+}
+
+/** Square profile representation: the exact wordmark centered on the warm canvas. */
+export function loadCanonicalAvatarDataUri(): Promise<string> {
+  if (!avatarCached) {
+    avatarCached = readFile(join(process.cwd(), "public", "logo-icon.png")).then(
+      (buffer) => `data:image/png;base64,${buffer.toString("base64")}`,
+    );
+  }
+  return avatarCached;
 }
 
 export function logoWidthForHeight(height: number): number {
-  return Math.round(height * LOGO_ASPECT_RATIO);
+  return Math.round(height * WORDMARK_ASPECT_RATIO);
 }

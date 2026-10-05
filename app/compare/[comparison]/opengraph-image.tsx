@@ -3,6 +3,7 @@ import { getComparisonBySlug } from "@/lib/comparison";
 import { getPublishedComparisonSlugs } from "@/data/comparisons";
 import { BRAND_COLORS } from "@/lib/brand";
 import { loadBrandFonts } from "@/lib/social/fonts";
+import { loadCanonicalLogoDataUri, logoWidthForHeight } from "@/lib/social/logo";
 
 export const alt = "Software comparison";
 export const size = { width: 1200, height: 630 };
@@ -19,14 +20,14 @@ export default async function Image({ params }: { params: Promise<{ comparison: 
   const nameB = data?.softwareB.name ?? "Option B";
   const catA = data?.softwareA.category ?? "";
   const catB = data?.softwareB.category ?? "";
+  const logoDataUri = await loadCanonicalLogoDataUri();
+  const logoHeight = 38;
 
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 56, background: BRAND_COLORS.canvas, color: BRAND_COLORS.ink }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ display: "flex", fontSize: 34, fontWeight: 800, letterSpacing: -1.5, color: BRAND_COLORS.logoInk }}>
-            miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span>
-          </div>
+          <img src={logoDataUri} width={logoWidthForHeight(logoHeight)} height={logoHeight} alt="" />
           <div style={{ display: "flex", fontSize: 18, fontWeight: 700, background: BRAND_COLORS.citrine, borderRadius: 999, padding: "8px 18px" }}>COMPARISON</div>
         </div>
 

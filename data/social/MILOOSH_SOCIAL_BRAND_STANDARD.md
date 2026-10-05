@@ -4,7 +4,7 @@ Canonical source of truth for every public Miloosh visual surface after the 2026
 
 ## Identity
 
-The current public identity is **miloosh.** — lowercase Manrope with the final period in Citrine. The site no longer uses the legacy standalone image mark in Navbar/Footer. A compact square avatar remains for favicons, social profile images and structured data: Forest Ink background, warm-canvas "M", Citrine dot.
+The current public identity is the exact user-approved **miloosh.** wordmark supplied on 2026-10-05. Its dominant ink is `#203a2d`, its period is olive `#818d46`, and its canvas is `#f8f9f4`. Navbar/Footer, generated artwork and social covers use the approved wordmark asset rather than redrawing it. The square avatar used for profile surfaces is derived from that same wordmark; there is no standalone M monogram.
 
 Never reintroduce the previous dark/blue social system, the older chevron/crown artwork, or a capitalized social wordmark as the primary visual treatment.
 
@@ -44,9 +44,9 @@ The retired `#09090b` dark social background and `#3458a8` blue social accent ar
 
 ## Wordmark
 
-Use **miloosh.** in public artwork. The final period is Citrine.
+Use the supplied **miloosh.** asset in public artwork. Do not redraw the wordmark. Its final period is the approved olive `#818d46`, distinct from the broader Citrine UI accent.
 
-The compact avatar is the only place where the wordmark collapses to an "M" mark. It must use the same Forest/Warm/Citrine palette.
+The compact avatar must preserve the approved `miloosh.` wordmark. Do not collapse it to an invented M monogram. `public/logo-icon.png` is the square profile treatment derived from the approved wordmark.
 
 ## Public visual inventory
 

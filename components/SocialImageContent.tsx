@@ -1,7 +1,9 @@
 import { BRAND_COLORS } from "@/lib/brand";
 import { SITE_TAGLINE } from "@/lib/site";
+import { logoWidthForHeight } from "@/lib/social/logo";
 
-export function SocialImageContent() {
+export function SocialImageContent({ logoDataUri }: { logoDataUri: string }) {
+  const logoHeight = 52;
   return (
     <div
       style={{
@@ -15,9 +17,8 @@ export function SocialImageContent() {
         padding: 72,
       }}
     >
-      <div style={{ display: "flex", fontSize: 42, fontWeight: 800, letterSpacing: -2, color: BRAND_COLORS.logoInk }}>
-        miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element -- Satori renders img in ImageResponse. */}
+      <img src={logoDataUri} width={logoWidthForHeight(logoHeight)} height={logoHeight} alt="" />
 
       <div style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 900 }}>
         <div style={{ display: "flex", fontSize: 72, fontWeight: 600, lineHeight: 1.05, letterSpacing: -3 }}>

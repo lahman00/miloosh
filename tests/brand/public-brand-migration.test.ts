@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { BRAND_COLORS, BRAND_FONT_FAMILY, SOCIAL_BRAND_VERSION } from "@/lib/brand";
 import { withCurrentSocialBrand } from "@/lib/social/brand-version";
 import { SITE_CANVAS_COLOR, SITE_THEME_COLOR } from "@/lib/site";
@@ -49,13 +50,24 @@ describe("Miloosh public brand migration", () => {
     expect(source).toContain("BRAND_COLORS");
   });
 
-  it("uses the new wordmark in site chrome instead of the legacy image asset", () => {
+  it("uses the exact approved wordmark asset in site chrome", () => {
     for (const file of ["components/Navbar.tsx", "components/Footer.tsx"]) {
       const source = read(file);
       expect(source).not.toContain("/logo-icon.png");
-      expect(source).toContain("brand-period");
-      expect(source).toContain("miloosh");
+      expect(source).toContain("/miloosh-wordmark.png");
+      expect(source).not.toContain("brand-period");
     }
+
+    const approved = readFileSync("public/miloosh-logo.png");
+    expect(approved.readUInt32BE(16)).toBe(244);
+    expect(approved.readUInt32BE(20)).toBe(82);
+    expect(createHash("sha256").update(approved).digest("hex")).toBe(
+      "98d94efbeb2deae043f53c8c4a236205139082cd270dcc7b9b4dea68b8aabbb2",
+    );
+
+    const wordmark = readFileSync("public/miloosh-wordmark.png");
+    expect(wordmark.readUInt32BE(16)).toBe(212);
+    expect(wordmark.readUInt32BE(20)).toBe(43);
   });
 
   it("ships reusable profile and cover art for all supported public networks", () => {
@@ -74,12 +86,20 @@ describe("Miloosh public brand migration", () => {
     expect(statSync("public/miloosh-logo.png").size).toBeGreaterThan(1000);
   });
 
-  it("does not synthesize the retired M. monogram in public identity routes", () => {
-    for (const file of ["app/icon.tsx", "app/apple-icon.tsx", "app/api/social/avatar/route.tsx"]) {
+  it("does not synthesize the retired M. monogram anywhere in public identity routes", () => {
+    for (const file of [
+      "app/icon.tsx",
+      "app/apple-icon.tsx",
+      "app/api/social/avatar/route.tsx",
+      "components/SocialImageContent.tsx",
+      "components/SocialBannerContent.tsx",
+      "app/api/social/card/route.tsx",
+    ]) {
       const source = read(file);
       expect(source).not.toContain(">M</span>");
-      expect(source).toContain("logo");
     }
+    expect(read("components/SocialImageContent.tsx")).toContain("logoDataUri");
+    expect(read("components/SocialBannerContent.tsx")).toContain("logoDataUri");
   });
 
   it("bundles Manrope weights for generated artwork", () => {

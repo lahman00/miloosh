@@ -32,10 +32,10 @@ function Header({ badge, logoDataUri }: { badge: string; logoDataUri: string }) 
   const logoHeight = 36;
   return (
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {/* Exact user-approved Miloosh wordmark. */}
         {/* eslint-disable-next-line @next/next/no-img-element -- Satori (next/og) renders <img>, not next/image */}
         <img src={logoDataUri} width={logoWidthForHeight(logoHeight)} height={logoHeight} alt="" />
-        <div style={{ display: "flex", fontSize: 34, fontWeight: 800, color: BRAND_COLORS.logoInk, letterSpacing: -1.5 }}>miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span></div>
       </div>
       {badge ? (
         <div

@@ -1,16 +1,17 @@
 import { BRAND_COLORS } from "@/lib/brand";
 import { SITE_TAGLINE } from "@/lib/site";
+import { logoWidthForHeight } from "@/lib/social/logo";
 
 type BannerScale = "linkedin" | "facebook" | "x" | "youtube";
 
-const TYPE: Record<BannerScale, { wordmark: number; tagline: number; detail: number; gap: number; maxWidth: string; sideWidth: string; barWidth: string }> = {
-  linkedin: { wordmark: 154, tagline: 58, detail: 34, gap: 18, maxWidth: "68%", sideWidth: "18%", barWidth: "10%" },
-  facebook: { wordmark: 92, tagline: 38, detail: 24, gap: 14, maxWidth: "64%", sideWidth: "17%", barWidth: "10%" },
-  x: { wordmark: 86, tagline: 34, detail: 22, gap: 12, maxWidth: "66%", sideWidth: "16%", barWidth: "9%" },
-  youtube: { wordmark: 174, tagline: 66, detail: 42, gap: 24, maxWidth: "58%", sideWidth: "20%", barWidth: "12%" },
+const TYPE: Record<BannerScale, { logoHeight: number; tagline: number; detail: number; gap: number; maxWidth: string; sideWidth: string; barWidth: string }> = {
+  linkedin: { logoHeight: 116, tagline: 58, detail: 34, gap: 24, maxWidth: "68%", sideWidth: "18%", barWidth: "10%" },
+  facebook: { logoHeight: 72, tagline: 38, detail: 24, gap: 18, maxWidth: "64%", sideWidth: "17%", barWidth: "10%" },
+  x: { logoHeight: 66, tagline: 34, detail: 22, gap: 16, maxWidth: "66%", sideWidth: "16%", barWidth: "9%" },
+  youtube: { logoHeight: 136, tagline: 66, detail: 42, gap: 30, maxWidth: "58%", sideWidth: "20%", barWidth: "12%" },
 };
 
-export function SocialBannerContent({ scale = "facebook" }: { scale?: BannerScale }) {
+export function SocialBannerContent({ logoDataUri, scale = "facebook" }: { logoDataUri: string; scale?: BannerScale }) {
   const t = TYPE[scale];
   return (
     <div
@@ -40,9 +41,8 @@ export function SocialBannerContent({ scale = "facebook" }: { scale?: BannerScal
           maxWidth: t.maxWidth,
         }}
       >
-        <div style={{ display: "flex", fontSize: t.wordmark, fontWeight: 800, letterSpacing: -5, lineHeight: 1, color: BRAND_COLORS.logoInk }}>
-          miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- Satori renders img in ImageResponse. */}
+        <img src={logoDataUri} width={logoWidthForHeight(t.logoHeight)} height={t.logoHeight} alt="" />
         <div style={{ display: "flex", fontSize: t.tagline, fontWeight: 600, lineHeight: 1.15 }}>
           {SITE_TAGLINE}
         </div>

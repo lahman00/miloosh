@@ -298,7 +298,7 @@ The search is a labeled combobox: arrow keys select results, Enter navigates to 
 
 ### Navigation
 
-The sticky, warm header has a fine bottom rule, original M mark, wordmark, muted navigation links and a filled matcher action. Current and hovered links become forest and underline. Below 960px, a 44px menu button opens the full link list; mobile rows are at least 52px high. Preserve expanded state, accessible labels, Escape closing and focus return to the toggle. The visible skip link appears on keyboard focus.
+The sticky, warm header has a fine bottom rule, the approved `miloosh.` wordmark, muted navigation links and a filled matcher action. Current and hovered links become forest and underline. Below 960px, a 44px menu button opens the full link list; mobile rows are at least 52px high. Preserve expanded state, accessible labels, Escape closing and focus return to the toggle. The visible skip link appears on keyboard focus.
 
 ### Shortlist desk
 
@@ -324,7 +324,7 @@ Retain the existing `/software/[slug]`, `/category/[slug]`, comparison and guide
 
 ### Do:
 
-- **Do** preserve the Miloosh name, existing M mark and supplied vendor identities.
+- **Do** preserve the Miloosh name, the approved `miloosh.` wordmark and supplied vendor identities.
 - **Do** use semantic canvas, ink, surface and citrine tokens for new UI; resolve legacy classes through the body-scoped bridge only when maintaining incumbent components.
 - **Do** put real product titles first and category/source metadata below them.
 - **Do** keep existing canonical URLs, sourced product facts, pricing conditions, disclosure text and affiliate/tracking semantics intact when changing presentation.
