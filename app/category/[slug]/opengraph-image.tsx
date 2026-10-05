@@ -22,8 +22,8 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: BRAND_COLORS.canvas, color: BRAND_COLORS.ink }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ display: "flex", fontSize: 34, fontWeight: 800, letterSpacing: -1.5 }}>
-            miloosh<span style={{ color: BRAND_COLORS.citrine }}>.</span>
+          <div style={{ display: "flex", fontSize: 34, fontWeight: 800, letterSpacing: -1.5, color: BRAND_COLORS.logoInk }}>
+            miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span>
           </div>
           <div style={{ display: "flex", fontSize: 18, fontWeight: 700, color: BRAND_COLORS.ink, background: BRAND_COLORS.citrine, borderRadius: 999, padding: "8px 18px" }}>
             CATEGORY

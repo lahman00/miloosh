@@ -14,14 +14,16 @@ describe("Miloosh public brand migration", () => {
       stage: "#dfe8d4",
       ink: "#173b2c",
       citrine: "#e4f267",
+      logoInk: "#203a2d",
+      logoPeriod: "#818d46",
     });
     expect(SITE_THEME_COLOR).toBe(SITE_CANVAS_COLOR);
-    expect(SOCIAL_BRAND_VERSION).toBe("20261005");
+    expect(SOCIAL_BRAND_VERSION).toBe("20261005-wordmark");
   });
 
   it("cache-busts every trusted social-card URL onto the current visual system", () => {
     const updated = withCurrentSocialBrand("https://miloosh.com/api/social/card?size=linkedin&kind=research");
-    expect(updated).toContain("brand=20261005");
+    expect(updated).toContain("brand=20261005-wordmark");
     expect(withCurrentSocialBrand("https://example.com/card.png")).toBe("https://example.com/card.png");
   });
 
@@ -61,8 +63,15 @@ describe("Miloosh public brand migration", () => {
     for (const channel of ["linkedin", "facebook", "x", "youtube"]) {
       expect(banner).toContain(channel);
     }
-    expect(read("app/api/social/avatar/route.tsx")).toContain("800");
-    expect(statSync("public/logo-icon.png").size).toBeGreaterThan(1000);
+    const avatarRoute = read("app/api/social/avatar/route.tsx");
+    expect(avatarRoute).toContain("logo-icon.png");
+    expect(avatarRoute).not.toContain(">M</span>");
+
+    const avatar = readFileSync("public/logo-icon.png");
+    expect(avatar.readUInt32BE(16)).toBe(800);
+    expect(avatar.readUInt32BE(20)).toBe(800);
+    expect(avatar.length).toBeGreaterThan(1000);
+    expect(statSync("public/miloosh-logo.png").size).toBeGreaterThan(1000);
   });
 
   it("bundles Manrope weights for generated artwork", () => {

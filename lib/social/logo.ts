@@ -2,8 +2,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 /**
- * Canonical square Miloosh M. avatar used by structured data and generated
- * social artwork. The mark follows the redesigned forest/citrine identity.
+ * Canonical square Miloosh wordmark avatar used by structured data and generated
+ * social artwork. The artwork is derived from the user-approved miloosh. logo.
  */
 
 const LOGO_ASPECT_RATIO = 1;

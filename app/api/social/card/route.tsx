@@ -35,7 +35,7 @@ function Header({ badge, logoDataUri }: { badge: string; logoDataUri: string }) 
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         {/* eslint-disable-next-line @next/next/no-img-element -- Satori (next/og) renders <img>, not next/image */}
         <img src={logoDataUri} width={logoWidthForHeight(logoHeight)} height={logoHeight} alt="" />
-        <div style={{ display: "flex", fontSize: 34, fontWeight: 800, color: BRAND_COLORS.ink, letterSpacing: -1.5 }}>miloosh<span style={{ color: BRAND_COLORS.citrine }}>.</span></div>
+        <div style={{ display: "flex", fontSize: 34, fontWeight: 800, color: BRAND_COLORS.logoInk, letterSpacing: -1.5 }}>miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span></div>
       </div>
       {badge ? (
         <div

@@ -15,8 +15,8 @@ export function SocialImageContent() {
         padding: 72,
       }}
     >
-      <div style={{ display: "flex", fontSize: 42, fontWeight: 800, letterSpacing: -2 }}>
-        miloosh<span style={{ color: BRAND_COLORS.citrine }}>.</span>
+      <div style={{ display: "flex", fontSize: 42, fontWeight: 800, letterSpacing: -2, color: BRAND_COLORS.logoInk }}>
+        miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 900 }}>

@@ -10,9 +10,11 @@ export const BRAND_COLORS = {
   citrineHover: "#d5e750",
   line: "#d7ded2",
   accent: "#24543d",
+  logoInk: "#203a2d",
+  logoPeriod: "#818d46",
 } as const;
 
 export const BRAND_WORDMARK = "miloosh";
 export const BRAND_PERIOD = ".";
 export const BRAND_FONT_FAMILY = "Manrope";
-export const SOCIAL_BRAND_VERSION = "20261005";
+export const SOCIAL_BRAND_VERSION = "20261005-wordmark";

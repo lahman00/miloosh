@@ -40,8 +40,8 @@ export function SocialBannerContent({ scale = "facebook" }: { scale?: BannerScal
           maxWidth: t.maxWidth,
         }}
       >
-        <div style={{ display: "flex", fontSize: t.wordmark, fontWeight: 800, letterSpacing: -5, lineHeight: 1 }}>
-          miloosh<span style={{ color: BRAND_COLORS.citrine }}>.</span>
+        <div style={{ display: "flex", fontSize: t.wordmark, fontWeight: 800, letterSpacing: -5, lineHeight: 1, color: BRAND_COLORS.logoInk }}>
+          miloosh<span style={{ color: BRAND_COLORS.logoPeriod }}>.</span>
         </div>
         <div style={{ display: "flex", fontSize: t.tagline, fontWeight: 600, lineHeight: 1.15 }}>
           {SITE_TAGLINE}
