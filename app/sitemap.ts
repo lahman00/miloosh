@@ -4,6 +4,7 @@ import { BUYER_MIGRATION_CHECKLISTS } from "@/data/guides/buyer-migration-checkl
 import { SITE_URL } from "@/lib/site";
 import { LEGAL_PAGES } from "@/lib/legal";
 import { getAllSoftware } from "@/data/software";
+import { shouldSubmitSoftwareToSitemap } from "@/data/seo/software-indexing-cohort";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { getFirstRevenueSupportForGuide } from "@/data/guides/first-revenue";
@@ -36,7 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allSoftware = getAllSoftware();
   const softwareBySlug = new Map(allSoftware.map((s) => [s.slug, s]));
 
-  const softwarePages: MetadataRoute.Sitemap = allSoftware.map((software) => ({
+  const softwarePages: MetadataRoute.Sitemap = allSoftware
+    .filter((software) => shouldSubmitSoftwareToSitemap(software.slug))
+    .map((software) => ({
     url: `${SITE_URL}/software/${software.slug}`,
     // Actual page-content dates only: do not refresh the entire catalog at build time.
     lastModified: latestOf([

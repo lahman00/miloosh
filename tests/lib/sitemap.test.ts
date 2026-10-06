@@ -12,6 +12,10 @@ import {
   GSC_SITEMAP_SUPPRESSED_COMPARISONS,
   shouldSubmitComparisonToSitemap,
 } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import {
+  SOFTWARE_INDEXING_SUPPRESSED_SLUGS,
+  shouldSubmitSoftwareToSitemap,
+} from "@/data/seo/software-indexing-cohort";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real
@@ -26,10 +30,15 @@ import {
  * meta-description one found earlier in the same investigation.
  */
 describe("sitemap lastModified coverage", () => {
-  it("every software page entry has a lastModified date matching its genuine per-page content dates", () => {
+  it("every submitted software page has a genuine lastModified while the recovery cohort stays out of the sitemap", () => {
     const entries = sitemap();
     const software = getAllSoftware();
-    for (const s of software) {
+    const submitted = software.filter((s) => shouldSubmitSoftwareToSitemap(s.slug));
+
+    expect(SOFTWARE_INDEXING_SUPPRESSED_SLUGS).toHaveLength(146);
+    expect(submitted).toHaveLength(208);
+
+    for (const s of submitted) {
       const entry = entries.find((e) => e.url.endsWith(`/software/${s.slug}`));
       expect(entry?.lastModified, `${s.slug} missing from sitemap`).toBeTruthy();
       const expected = [
@@ -39,6 +48,10 @@ describe("sitemap lastModified coverage", () => {
         ...(BUYER_MIGRATION_CHECKLISTS[s.slug] ? [BUYER_MIGRATION_CHECKLISTS[s.slug]!.contentUpdatedAt] : []),
       ].sort().at(-1);
       expect(new Date(entry!.lastModified!).toISOString().slice(0, 10)).toBe(expected);
+    }
+
+    for (const slug of SOFTWARE_INDEXING_SUPPRESSED_SLUGS) {
+      expect(entries.some((e) => e.url.endsWith(`/software/${slug}`)), `${slug} should be suppressed from sitemap`).toBe(false);
     }
   });
 

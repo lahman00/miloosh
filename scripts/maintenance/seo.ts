@@ -5,6 +5,7 @@ import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import { shouldSubmitSoftwareToSitemap } from "@/data/seo/software-indexing-cohort";
 import { generateTitle, generateMetaDescription } from "@/lib/generators";
 import { generateComparisonTitle, generateComparisonMetaDescription } from "@/lib/comparison";
 import { LEGAL_PAGES } from "@/lib/legal";
@@ -291,7 +292,7 @@ export async function auditSeo() {
     `${SITE_URL}/contact`,
     `${SITE_URL}/recommend`,
     `${SITE_URL}/compare`,
-    ...getAllSoftware().map((s) => `${SITE_URL}/software/${s.slug}`),
+    ...getAllSoftware().filter((s) => shouldSubmitSoftwareToSitemap(s.slug)).map((s) => `${SITE_URL}/software/${s.slug}`),
     ...getAllCategories().map((c) => `${SITE_URL}/category/${c.slug}`),
     ...getAllRoleGuides().map((g) => `${SITE_URL}/${g.slug}`),
     // Indexable does not imply selected for sitemap submission. Honor the
@@ -312,6 +313,20 @@ export async function auditSeo() {
     }
   }
   const noindexPatterns = [`${SITE_URL}/recommend/results`, `${SITE_URL}/internal/`];
+
+  for (const software of getAllSoftware().filter((s) => !shouldSubmitSoftwareToSitemap(s.slug))) {
+    const url = `${SITE_URL}/software/${software.slug}`;
+    if (sitemapUrls.has(url)) {
+      sitemapCheckIssues.push({
+        id: `seo-sitemap-suppressed-software-${software.slug}`,
+        severity: "critical",
+        title: "Suppressed software route present in sitemap",
+        description: `${url} is in the software recovery noindex cohort and must stay out of app/sitemap.ts.`,
+        location: url,
+      });
+    }
+  }
+
   for (const url of sitemapUrls) {
     for (const pattern of noindexPatterns) {
       if (url.startsWith(pattern)) {
