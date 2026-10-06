@@ -14,8 +14,27 @@
     "Support-ticket deflector and duplicate-content detection",
     "SSO/SCIM, role-based access, IP restriction, SOC2 and ISO 27001:2022 certification"
   ],
-  "sources": ["https://document360.com", "https://document360.com/features/"],
-  "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Customized pricing; contact Document360 after the 14-day trial",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": true, "days": 14 },
+    "tiers": [
+      { "name": "14-day trial", "amount": "0", "currency": "USD", "billing_period": "unknown", "notes": "No credit card required." },
+      { "name": "Paid plan", "notes": "Customized quote based on setup and requirements." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://document360.com/pricing/"
+  },
+  "cons": [
+    "Document360 does not publish a numeric self-serve rate card; after the 14-day no-card trial, buyers need a customized quote.",
+    "Pricing is tailored to the deployment and requirements, so total cost cannot be inferred from a simple public seat price."
+  ],
+  "sources": ["https://document360.com", "https://document360.com/features/", "https://document360.com/pricing/", "https://document360.com/document360-overview/"],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "ReadMe",

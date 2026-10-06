@@ -14,8 +14,29 @@
     "Feature experimentation and feature management/flagging",
     "AI-powered feedback analysis and 400+ partner integrations"
   ],
-  "sources": ["https://amplitude.com", "https://amplitude.com/product"],
-  "accessed_at": "2026-08-01",
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free: $0 for 2M events/month; Plus starts at $0 and scales with event volume",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": false },
+    "tiers": [
+      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "2 million events/month forever, unlimited seats, no credit card required." },
+      { "name": "Plus", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "First 2 million events/month are free; paid usage scales with event volume up to 70 million events." },
+      { "name": "Growth", "notes": "Custom event-based pricing; adds advanced analytics, SSO, project permissions, and higher limits." },
+      { "name": "Enterprise", "notes": "Custom event-based pricing; adds advanced security, user management, RBAC, support, and custom retention." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.amplitude.com/pricing"
+  },
+  "cons": [
+    "The Free plan is capped at 2 million events per month; repeated overages can block account access, and continued overages without upgrading can ultimately lead to account deletion under Amplitude's documented policy.",
+    "Plus pricing becomes usage-based as event volume grows, while Growth and Enterprise pricing is custom and advanced features can require higher plans or add-ons."
+  ],
+  "sources": ["https://amplitude.com", "https://amplitude.com/product", "https://www.amplitude.com/pricing", "https://amplitude.com/docs/faq/billing-and-plans"],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Mixpanel",

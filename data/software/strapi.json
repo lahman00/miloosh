@@ -19,10 +19,37 @@
     "SOC 2 certification and GDPR compliance",
     "Audit logs, review workflows, content history, and SSO for enterprise plans"
   ],
-  "sources": [
-    "https://strapi.io"
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Community CMS: free forever; Strapi Cloud hosting starts at $35/project/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 30 },
+    "entry_paid": { "amount": "35", "currency": "USD", "billing_period": "monthly" },
+    "tiers": [
+      { "name": "CMS Community", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free forever, open source under MIT License; unlimited entries and API usage when self-hosted." },
+      { "name": "CMS Growth", "amount": "45", "currency": "USD", "billing_period": "monthly", "notes": "Includes 3 seats; extra seats $15/month. Growth features can be tried free for 30 days on self-hosted projects." },
+      { "name": "Cloud Starter", "amount": "35", "currency": "USD", "billing_period": "monthly", "unit": "project", "notes": "Hosting only; 100K API requests, 50 GB asset storage and bandwidth. Current Cloud has no free plan or free trial." },
+      { "name": "Cloud Pro", "amount": "90", "currency": "USD", "billing_period": "monthly", "unit": "project", "notes": "Hosting only; 1M API requests, 250 GB storage, 500 GB bandwidth." },
+      { "name": "Cloud Business", "amount": "450", "currency": "USD", "billing_period": "monthly", "unit": "project", "notes": "Hosting only; 10M API requests, 1 TB storage and bandwidth, and 99.9% SLA." },
+      { "name": "CMS Enterprise", "notes": "Custom pricing." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://strapi.io/pricing-cms"
+  },
+  "cons": [
+    "Strapi Cloud hosting and paid CMS features are separate purchases: paying for Starter, Pro, or Business Cloud hosting does not include Growth or Enterprise CMS features.",
+    "Strapi Cloud no longer offers a free plan or Cloud free trial; Cloud plans also have metered API, storage, and bandwidth limits with overage charges."
   ],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://strapi.io",
+    "https://strapi.io/pricing-cms",
+    "https://strapi.io/pricing-cloud",
+    "https://support.strapi.io/articles/3581379360-understanding-strapi-cloud-usage-and-billing"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Contentful",

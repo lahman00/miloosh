@@ -15,11 +15,33 @@
     "Keyboard shortcuts and Instant Reply for rapid navigation and response",
     "Integrated calendar viewing and event creation from within email"
   ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Starter: $30/month or $300/year per member",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "entry_paid": { "amount": "30", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "tiers": [
+      { "name": "Starter", "amount": "30", "currency": "USD", "billing_period": "monthly", "unit": "member", "notes": "$30/month or $300/year." },
+      { "name": "Business", "amount": "40", "currency": "USD", "billing_period": "monthly", "unit": "member", "notes": "$40/month or $396/year; adds Auto Drafts, Ask AI, custom auto labels, CRM integrations, and Recent Opens." },
+      { "name": "Enterprise", "notes": "Custom pricing; advanced security, SSO, dedicated support, and enterprise controls." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://help.superhuman.com/hc/en-us/articles/46178817646861-Pricing-Plans"
+  },
+  "cons": [
+    "Superhuman Mail has no permanent free tier; Starter is $30 per member monthly ($300/year) and Business is $40 per member monthly ($396/year).",
+    "Advanced AI workflows such as Auto Drafts and Ask AI are Business-tier features, while SSO and advanced security and controls require Enterprise."
+  ],
   "sources": [
     "https://superhuman.com/mail",
+    "https://help.superhuman.com/hc/en-us/articles/46178817646861-Pricing-Plans",
     "https://help.superhuman.com/hc/en-us/articles/46191245096979-Superhuman-Suite"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Front",

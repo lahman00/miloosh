@@ -18,10 +18,33 @@
     "Calendar sync across Google Calendar and Outlook",
     "Integrations with Slack, Zoom, Asana, Jira, ClickUp, Todoist, and Linear"
   ],
-  "sources": [
-    "https://reclaim.ai"
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Lite: free forever; Starter: $10/seat/month billed yearly",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": { "available": true, "days": 14 },
+    "entry_paid": { "amount": "10", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "tiers": [
+      { "name": "Lite", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free forever for one user." },
+      { "name": "Starter", "amount": "10", "currency": "USD", "billing_period": "annual", "unit": "seat", "notes": "Billed yearly; up to 10 seats." },
+      { "name": "Business", "amount": "15", "currency": "USD", "billing_period": "annual", "unit": "seat", "notes": "Billed yearly; up to 100 seats." },
+      { "name": "Enterprise", "amount": "22", "currency": "USD", "billing_period": "annual", "unit": "seat", "notes": "Yearly plan for organizations over 100 seats." }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://reclaim.ai/pricing"
+  },
+  "cons": [
+    "The free Lite plan is limited to one user, a one-week scheduling range, one calendar sync, and one scheduling link.",
+    "Paid pricing is per seat; Starter and Business cap team size at 10 and 100 seats respectively."
   ],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://reclaim.ai",
+    "https://reclaim.ai/pricing",
+    "https://help.reclaim.ai/en/articles/6405151-what-happens-at-the-end-of-a-free-trial"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Motion",

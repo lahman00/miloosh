@@ -17,11 +17,31 @@
     "B2B Commerce tools for custom catalogs, pricing, and purchasing workflows",
     "AI-powered personalization throughout checkout"
   ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing based on a percentage of storefront GMV; contact Salesforce",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": { "available": false },
+    "tiers": [
+      { "name": "Commerce Cloud B2B Growth Edition", "notes": "Contact for pricing; 6 storefronts, Order Management Lite, analytics, automation, and segmentation." },
+      { "name": "Commerce Cloud B2B Advanced Edition", "notes": "Contact for pricing; 10 storefronts, full Order Management, advanced analytics, automation, segmentation, and personalization." }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.salesforce.com/commerce/b2b-ecommerce/pricing/"
+  },
+  "cons": [
+    "Salesforce does not publish a fixed numeric Commerce Cloud subscription price; Growth and Advanced are quoted based on commerce needs and a percentage of storefront Gross Merchandise Value.",
+    "Orders processed through channels outside the Commerce Cloud storefront can require separate Salesforce Order Management charges, and Premier Success adds 30% of net license fees."
+  ],
   "sources": [
     "https://www.salesforce.com/commerce/",
-    "https://www.salesforce.com/commerce/cloud/"
+    "https://www.salesforce.com/commerce/cloud/",
+    "https://www.salesforce.com/commerce/b2b-ecommerce/pricing/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Adobe Commerce",
