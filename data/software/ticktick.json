@@ -23,9 +23,11 @@
     "40+ customizable themes"
   ],
   "sources": [
-    "https://www.ticktick.com"
+    "https://www.ticktick.com",
+    "https://ticktick.com/upgrade",
+    "https://ticktick.com/terms/subscription"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Todoist",
@@ -61,5 +63,43 @@
       ]
     }
   ],
-  "order": 49
+  "order": 49,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Premium: $49.99/year",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "49.99",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "9 lists, 99 tasks per list, 1 attachment/day, 2 reminders per task, and basic calendar/feature limits."
+      },
+      {
+        "name": "Premium",
+        "amount": "49.99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "299 lists, 999 tasks per list, expanded reminders/attachments, unlimited calendar views, timeline, filters, themes, statistics, and more."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://ticktick.com/upgrade"
+  },
+  "cons": [
+    "The Free plan has hard capacity limits such as 9 lists and 99 tasks per list, with reduced calendar, reminder, attachment, and customization capabilities.",
+    "Premium is sold as an annual $49.99 subscription on the current official upgrade page; subscription billing auto-renews unless canceled."
+  ]
 }

@@ -16,9 +16,11 @@
     "Reporting and analytics dashboards"
   ],
   "sources": [
-    "https://www.braze.com"
+    "https://www.braze.com",
+    "https://www.braze.com/pricing",
+    "https://www.braze.com/resources/articles/braze-pricing"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Klaviyo",
@@ -54,5 +56,36 @@
       ]
     }
   ],
-  "order": 45
+  "order": 45,
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom value-based pricing; contact Braze",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "tiers": [
+      {
+        "name": "Braze Go",
+        "notes": "Entry Platform Edition for early-stage growth teams; custom pricing."
+      },
+      {
+        "name": "Braze Select",
+        "notes": "Adds orchestration capacity, security, and user provisioning; custom pricing."
+      },
+      {
+        "name": "Braze Pro",
+        "notes": "Advanced BrazeAI and personalization; custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.braze.com/pricing"
+  },
+  "cons": [
+    "Braze does not publish a numeric rate card; pricing is customized around Platform Edition, active users, and flexible credits for messaging, features, and AI usage.",
+    "Costs can rise as the engaged audience, message volume, channels, or AI usage grows, so buyers need a usage-specific quote rather than a simple per-seat comparison."
+  ]
 }

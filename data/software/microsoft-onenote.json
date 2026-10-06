@@ -23,9 +23,10 @@
     "Free version, with additional features included in Microsoft 365 subscriptions"
   ],
   "sources": [
-    "https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app"
+    "https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app",
+    "https://support.microsoft.com/en-us/accounts-billing/subscriptions/what-s-the-difference-between-a-microsoft-365-subscription-and-free-web-apps"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Evernote",
@@ -61,5 +62,50 @@
       ]
     }
   ],
-  "order": 52
+  "order": 52,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "OneNote web app is free; Microsoft 365 Personal is $84.99/year",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "84.99",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free Microsoft 365 web apps",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Includes the web version of OneNote and other Microsoft 365 web apps."
+      },
+      {
+        "name": "Microsoft 365 Personal",
+        "amount": "84.99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "One person; includes OneNote desktop app, 1 TB cloud storage, other Microsoft 365 desktop apps, and Copilot features."
+      },
+      {
+        "name": "Microsoft 365 Family",
+        "amount": "12.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "For 1 to 6 people; includes desktop apps and up to 6 TB total cloud storage."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app"
+  },
+  "cons": [
+    "OneNote itself is available free on the web, but desktop Microsoft 365 apps, larger cloud-storage entitlements, and bundled Copilot capabilities require a Microsoft 365 subscription.",
+    "Paid OneNote value is bundled with the broader Microsoft 365 subscription rather than sold as a simple standalone OneNote plan, so comparisons should account for the rest of the bundle."
+  ]
 }

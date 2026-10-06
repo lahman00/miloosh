@@ -4,7 +4,9 @@
   "category": "api",
   "description": "Algolia is an AI-powered search and discovery API platform providing \"one AI retrieval platform\" for agentic, generative, and traditional search, recommendations, and personalization experiences.",
   "website": "https://www.algolia.com/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Ecommerce, B2B commerce, media, SaaS, and higher-education organizations seeking to improve product discovery, conversions, and user engagement through AI-powered search, serving 18,000+ customers across 150+ countries.",
   "features": [
     "AI Search with AI-driven ranking and retrieval",
@@ -16,22 +18,79 @@
     "MCP Server enabling search within agentic workflows",
     "70+ global data centers across 17 regions"
   ],
-  "sources": ["https://www.algolia.com/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.algolia.com/",
+    "https://www.algolia.com/pricing",
+    "https://www.algolia.com/pricing/free-plan",
+    "https://www.algolia.com/pricing/grow-plus"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Elastic",
       "slug": "elastic",
       "description": "The company behind Elasticsearch, a distributed search and analytics engine with AI-enabled search, observability, and security solutions.",
       "best_for": "Teams wanting a self-managed or cloud search/analytics engine with deep customization and observability tooling.",
-      "strengths": ["Vector database for embeddings", "Flexible deployment (serverless, hosted, self-managed)", "Combined search/observability/security platform"]
+      "strengths": [
+        "Vector database for embeddings",
+        "Flexible deployment (serverless, hosted, self-managed)",
+        "Combined search/observability/security platform"
+      ]
     },
     {
       "name": "Supabase",
       "slug": "supabase",
       "description": "An open-source backend platform built on Postgres, offering built-in full-text search alongside database, auth, and storage APIs.",
       "best_for": "Developers wanting basic search built into their existing Postgres backend rather than a dedicated search service.",
-      "strengths": ["Auto-generated REST and GraphQL APIs", "Postgres-native full-text search and pgvector", "Open-source, self-hostable core"]
+      "strengths": [
+        "Auto-generated REST and GraphQL APIs",
+        "Postgres-native full-text search and pgvector",
+        "Open-source, self-hostable core"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free plan; Grow and Grow Plus start at $0 and become usage-based beyond included allowances",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "10K search requests/month, 50K records, 5K recommendation requests/month, and 5K crawls/month; no credit card required."
+      },
+      {
+        "name": "Grow",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "10K search requests/month included, then $0.50/additional 1K; 100K records included, then $0.40/additional 1K records."
+      },
+      {
+        "name": "Grow Plus",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "10K search requests/month included, then $1.75/additional 1K; 100K records included, then $0.40/additional 1K records; adds AI capabilities."
+      },
+      {
+        "name": "Elevate",
+        "notes": "Custom annual enterprise pricing with volume discounts and advanced AI/search capabilities."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.algolia.com/pricing"
+  },
+  "cons": [
+    "Grow and Grow Plus have a $0 starting bill only while usage stays inside included allowances; search requests and stored records are metered and create variable monthly cost above those thresholds.",
+    "Advanced capabilities such as NeuralSearch, AI Collections, enterprise-scale infrastructure, SSO/SLA options, and higher-end support require the custom-priced Elevate tier."
   ]
 }

@@ -19,9 +19,12 @@
     "Craft Cloud managed hosting option"
   ],
   "sources": [
-    "https://craftcms.com"
+    "https://craftcms.com",
+    "https://craftcms.com/pricing",
+    "https://craftcms.com/cloud",
+    "https://craftcms.com/knowledge-base/how-craft-licenses-and-renewals-work"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "WordPress",
@@ -56,5 +59,69 @@
         "Enterprise security"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Solo: free; Team: $279/project; Pro: $399/project",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "279",
+      "currency": "USD",
+      "billing_period": "one_time"
+    },
+    "tiers": [
+      {
+        "name": "Solo",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free forever self-hosted; one user account."
+      },
+      {
+        "name": "Team",
+        "amount": "279",
+        "currency": "USD",
+        "billing_period": "one_time",
+        "notes": "Per project; includes one year of updates, then $99/year for updates. Free when hosted on Craft Cloud."
+      },
+      {
+        "name": "Pro",
+        "amount": "399",
+        "currency": "USD",
+        "billing_period": "one_time",
+        "notes": "Per project; includes one year of updates, then $99/year for updates. Free when hosted on Craft Cloud."
+      },
+      {
+        "name": "Craft Cloud Team",
+        "amount": "120",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$120/month per project when paid annually; includes Craft Team and managed hosting."
+      },
+      {
+        "name": "Craft Cloud Pro",
+        "amount": "240",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$240/month per project when paid annually; includes Craft Pro and managed hosting."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom licensing/hosting by request."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://craftcms.com/pricing"
+  },
+  "cons": [
+    "Self-hosted Team and Pro licenses include only one year of updates; continued updates/support cost $99/year per project after that, and commercial plugins can add separate costs.",
+    "Craft Cloud is a separate recurring hosting expense ($120/month Team or $240/month Pro when paid annually), so a hosted deployment has very different economics from the one-time self-hosted CMS license."
   ]
 }
