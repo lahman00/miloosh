@@ -22,9 +22,10 @@
     "Google Analytics integration for user behavior tracking"
   ],
   "sources": [
-    "https://firebase.google.com"
+    "https://firebase.google.com",
+    "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Supabase",
@@ -48,5 +49,34 @@
         "Zero-downtime deploys"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Spark: $0; Blaze: pay as you go",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Spark",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "No payment information required; includes no-cost products plus no-cost quotas for paid products."
+      },
+      {
+        "name": "Blaze",
+        "notes": "Pay-as-you-go for usage beyond no-cost quotas; requires a linked Cloud Billing account."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans"
+  },
+  "cons": [
+    "On Spark, exceeding a no-cost quota can shut off that specific paid Firebase product for the rest of the calendar month.",
+    "Blaze is usage-based: budget alerts do not cap charges, so production teams need billing alerts and cost controls."
   ]
 }

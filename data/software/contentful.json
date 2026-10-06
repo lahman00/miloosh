@@ -4,7 +4,9 @@
   "category": "cms",
   "description": "Contentful describes itself as a Digital Experience Platform (DXP) using AI-driven analytics to help organizations manage, personalize, and optimize digital content across multiple channels and touchpoints.",
   "website": "https://www.contentful.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Contentful positions itself for growth marketing teams, product and developer teams, content teams, and mid-market/enterprise organizations needing centralized, multi-channel content management.",
   "features": [
     "Centralized, modular content architecture",
@@ -14,22 +16,75 @@
     "Localization and translation automation",
     "Front-end hosting capabilities"
   ],
-  "sources": ["https://www.contentful.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.contentful.com",
+    "https://www.contentful.com/pricing/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Sanity",
       "slug": "sanity",
       "description": "A headless CMS / content operating system for structured content managed via schema-as-code and APIs.",
       "best_for": "Development teams needing structured, API-first content across web, mobile, and other surfaces.",
-      "strengths": ["GROQ query language", "Schema-as-code", "AI-powered Content Agent"]
+      "strengths": [
+        "GROQ query language",
+        "Schema-as-code",
+        "AI-powered Content Agent"
+      ]
     },
     {
       "name": "Webflow",
       "slug": "webflow",
       "description": "A visual site builder with a built-in CMS, hosting, and AI-driven optimization.",
       "best_for": "Marketers and designers who want visual site control paired with a CMS.",
-      "strengths": ["Visual CMS binding", "Managed hosting", "Design-to-code export"]
+      "strengths": [
+        "Visual CMS binding",
+        "Managed hosting",
+        "Design-to-code export"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$300/month for Lite",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "300",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "10 users, 2 roles, 2 locales, 100K API calls/month, 50 GB CDN bandwidth/month; hard caps."
+      },
+      {
+        "name": "Lite",
+        "amount": "300",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "20 users, 3 roles, 3 locales, 1M API calls/month, 100 GB CDN bandwidth/month."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing; contact sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.contentful.com/pricing/"
+  },
+  "cons": [
+    "The Free plan uses hard caps: 100,000 API calls and 50 GB of CDN bandwidth per month with no overages.",
+    "Lite starts at $300/month, and additional Lite Spaces are priced separately; Enterprise pricing is custom."
   ]
 }

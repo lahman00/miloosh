@@ -23,9 +23,10 @@
   ],
   "sources": [
     "https://tailscale.com",
-    "https://tailscale.com/kb"
+    "https://tailscale.com/kb",
+    "https://tailscale.com/pricing"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Cloudflare",
@@ -49,5 +50,55 @@
         "Broad app integrations"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$8/user/month for Standard",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "8",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Personal",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free forever; up to 6 users."
+      },
+      {
+        "name": "Standard",
+        "amount": "8",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user"
+      },
+      {
+        "name": "Premium",
+        "amount": "18",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user"
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing; contact sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://tailscale.com/pricing"
+  },
+  "cons": [
+    "The Personal plan is capped at 6 users, so teams beyond that size need a paid plan.",
+    "Standard and Premium include limits on ACL groups and ephemeral-resource minutes; higher usage or advanced controls can require Premium, Enterprise, or add-ons."
   ]
 }

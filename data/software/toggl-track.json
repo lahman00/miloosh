@@ -24,9 +24,11 @@
     "100+ integrations plus an open API"
   ],
   "sources": [
-    "https://toggl.com/track/"
+    "https://toggl.com/track/",
+    "https://toggl.com/pricing",
+    "https://support.toggl.com/en-us/article/basic-information-on-toggl-track-pricing-1jk9e2l/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Clockify",
@@ -62,5 +64,58 @@
       ]
     }
   ],
-  "order": 50
+  "order": 50,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Starter: $12/user/month monthly or $9/user/month billed annually",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "12",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free for up to 3 users."
+      },
+      {
+        "name": "Starter",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$9/user/month on annual billing."
+      },
+      {
+        "name": "Premium",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$18/user/month on annual billing."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://toggl.com/pricing"
+  },
+  "cons": [
+    "Paid subscriptions are licensed per user, and even vacant licenses can remain billable until an admin removes them.",
+    "The Free plan is limited to 3 users; larger teams need a paid organization plan."
+  ]
 }

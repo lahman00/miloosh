@@ -21,9 +21,11 @@
     "API and MCP integrations for connecting to other enterprise tools"
   ],
   "sources": [
-    "https://scribe.com"
+    "https://scribe.com",
+    "https://support.scribehow.com/hc/en-us/articles/8813933213469-How-does-Scribe-Pro-billing-work",
+    "https://support.scribehow.com/hc/en-us/articles/8814016327453-Does-Scribe-Pro-offer-mixed-license-plans"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Guru",
@@ -47,5 +49,19 @@
         "Multi-language support"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free plan available; Pro is paid per user with monthly or annual billing",
+    "has_free_tier": true,
+    "status": "unavailable",
+    "free_plan": true,
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://support.scribehow.com/hc/en-us/articles/8813933213469-How-does-Scribe-Pro-billing-work"
+  },
+  "cons": [
+    "On a Pro Team, every team member becomes a paid Pro seat; paid and free seats cannot be mixed within the same Pro Team.",
+    "Official support documentation confirms monthly and annual Pro billing but does not expose a stable public numeric Pro price in the documentation reviewed."
   ]
 }

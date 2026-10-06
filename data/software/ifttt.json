@@ -21,9 +21,11 @@
     "Pro subscription unlocking unlimited Applets and exclusive triggers/actions"
   ],
   "sources": [
-    "https://ifttt.com"
+    "https://ifttt.com",
+    "https://ifttt.com/plans",
+    "https://help.ifttt.com/hc/en-us/articles/360053706813-IFTTT-Plans-at-a-glance"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Zapier",
@@ -69,5 +71,51 @@
         "Deluge scripting for custom logic"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Pro: $2.99/month billed annually",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "2.99",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "2 Applets with unlimited runs and standard Applet speeds."
+      },
+      {
+        "name": "Pro",
+        "amount": "2.99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$35.88 billed annually; up to 20 Applets plus multi-action Applets, Webhooks, and faster speeds."
+      },
+      {
+        "name": "Pro+",
+        "amount": "8.99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$107.88 billed annually; unlimited Applets, AI services, multiple accounts, queries and filter code."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://ifttt.com/plans"
+  },
+  "cons": [
+    "The Free plan is limited to 2 Applets, so even light multi-workflow use can require a paid plan.",
+    "Advanced logic, multiple accounts per service, and IFTTT AI services require Pro+, not the lower Pro tier."
   ]
 }

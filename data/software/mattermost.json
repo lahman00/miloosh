@@ -23,10 +23,10 @@
   ],
   "sources": [
     "https://mattermost.com",
-    "https://mattermost.com/platform-overview/",
-    "https://mattermost.com/apps/"
+    "https://mattermost.com/pricing/",
+    "https://docs.mattermost.com/product-overview/subscription"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Slack",
@@ -62,5 +62,43 @@
       ]
     }
   ],
-  "order": 10
+  "order": 10,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Contact sales for paid Professional/Enterprise subscriptions",
+    "has_free_tier": true,
+    "status": "contact_sales",
+    "free_plan": true,
+    "free_trial": {
+      "available": true
+    },
+    "tiers": [
+      {
+        "name": "Team Edition",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Open-source/self-hosted edition."
+      },
+      {
+        "name": "Professional",
+        "notes": "Paid self-hosted subscription; public numeric price not shown."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Paid self-hosted subscription; public numeric price not shown."
+      },
+      {
+        "name": "Enterprise Advanced",
+        "notes": "Paid package; public numeric price not shown."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://mattermost.com/pricing/"
+  },
+  "cons": [
+    "Mattermost does not publish numeric prices for its current paid Professional and Enterprise packages; buyers need to contact sales.",
+    "Self-hosted paid subscriptions are sold as prepaid annual seat licenses, and each Mattermost server requires its own license."
+  ]
 }

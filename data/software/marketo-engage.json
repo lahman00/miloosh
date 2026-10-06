@@ -16,10 +16,11 @@
   ],
   "sources": [
     "https://business.adobe.com/products/marketo/adobe-marketo.html",
+    "https://business.adobe.com/products/marketo/pricing.html",
     "https://business.adobe.com/products/marketo/account-based-marketing.html",
     "https://business.adobe.com/products/marketo/dynamic-content-personalization.html"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "ActiveCampaign",
@@ -55,5 +56,37 @@
       ]
     }
   ],
-  "order": 44
+  "order": 44,
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom pricing based on database size; contact Adobe for pricing",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "tiers": [
+      {
+        "name": "Growth",
+        "notes": "Core marketing email, segmentation, automation, and measurement; pricing by request."
+      },
+      {
+        "name": "Select",
+        "notes": "Marketing automation and measurement; pricing by request."
+      },
+      {
+        "name": "Prime",
+        "notes": "Lead- and account-based marketing with journey analytics and AI personalization; pricing by request."
+      },
+      {
+        "name": "Ultimate",
+        "notes": "Advanced marketing automation with premium attribution; pricing by request."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://business.adobe.com/products/marketo/pricing.html"
+  },
+  "cons": [
+    "Adobe does not publish numeric Marketo Engage prices; pricing is customized and requires contacting Adobe.",
+    "Package pricing is based on database size, so cost depends on scale rather than a simple flat self-serve subscription."
+  ]
 }

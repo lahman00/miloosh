@@ -4,7 +4,9 @@
   "category": "analytics",
   "description": "FullStory is an AI-powered behavioral analytics platform that captures real user interactions across web and mobile and converts that data into actionable insights for product, support, and marketing teams.",
   "website": "https://www.fullstory.com/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Product management, data analytics, customer support, and marketing teams in retail/ecommerce, food and beverage, travel, financial services, gaming, and SaaS who want to remove conversion friction and personalize digital experiences.",
   "features": [
     "Session replay to record and play back real user sessions",
@@ -15,22 +17,71 @@
     "StoryAI, an intelligence layer that surfaces insights from behavioral data",
     "Fullcapture for automatic, privacy-first interaction recording"
   ],
-  "sources": ["https://www.fullstory.com/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.fullstory.com/",
+    "https://www.fullstory.com/plans/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Hotjar",
       "slug": "hotjar",
       "description": "An experience-intelligence platform for understanding and improving user behavior on websites/apps.",
       "best_for": "Product, design, and marketing teams wanting to reduce drop-offs and improve conversion.",
-      "strengths": ["Heatmaps", "Session recordings", "AI-summarized surveys"]
+      "strengths": [
+        "Heatmaps",
+        "Session recordings",
+        "AI-summarized surveys"
+      ]
     },
     {
       "name": "Heap",
       "slug": "heap",
       "description": "A product analytics platform that automatically captures every user interaction without manual event tagging.",
       "best_for": "Product teams wanting automatic data capture for conversion and retention analysis.",
-      "strengths": ["Automatic data capture", "Session replay", "Automated friction detection"]
+      "strengths": [
+        "Automatic data capture",
+        "Session replay",
+        "Automated friction detection"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free plan available; paid Business, Advanced, and Enterprise pricing by request",
+    "has_free_tier": true,
+    "status": "contact_sales",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "FullstoryFree",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "30,000 monthly sessions, 12 months analytics retention, up to 10 users."
+      },
+      {
+        "name": "Business",
+        "notes": "Request pricing and demo."
+      },
+      {
+        "name": "Advanced",
+        "notes": "Request pricing and demo."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Request pricing and demo."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.fullstory.com/plans/"
+  },
+  "cons": [
+    "Fullstory does not publish numeric pricing for its paid Business, Advanced, or Enterprise plans; buyers must request pricing.",
+    "The free plan is capped at 30,000 monthly sessions and up to 10 users; advanced capabilities and higher limits require a paid plan."
   ]
 }

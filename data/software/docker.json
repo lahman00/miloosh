@@ -4,7 +4,12 @@
   "category": "developer-tools",
   "description": "Docker is a platform for \"accelerated container application development,\" providing tools to build, ship, and run containerized applications with security and isolation.",
   "website": "https://www.docker.com",
-  "platforms": ["Web", "macOS", "Windows", "Linux"],
+  "platforms": [
+    "Web",
+    "macOS",
+    "Windows",
+    "Linux"
+  ],
   "best_for": "Docker serves individual developers (free Personal tier) up through Pro, Team, and Business/enterprise tiers; the site states 91% of Fortune 100 companies run on Docker and 20M+ developers build on it daily.",
   "features": [
     "Docker Desktop for local containerization",
@@ -14,22 +19,87 @@
     "Docker Sandboxes (microVM isolation for AI agent sessions)",
     "Docker Model Runner (local-first LLM inference)"
   ],
-  "sources": ["https://www.docker.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.docker.com",
+    "https://www.docker.com/pricing/",
+    "https://docs.docker.com/subscription-billing/plans/docker/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Vercel",
       "slug": "vercel",
       "description": "Agentic infrastructure for deploying web apps and AI agents at global scale with Git-connected preview deploys.",
       "best_for": "Developers and platform builders deploying apps and autonomous agent workflows.",
-      "strengths": ["AI Gateway/SDK", "Vercel Delivery Network", "Sandbox environments for untrusted code"]
+      "strengths": [
+        "AI Gateway/SDK",
+        "Vercel Delivery Network",
+        "Sandbox environments for untrusted code"
+      ]
     },
     {
       "name": "Netlify",
       "slug": "netlify",
       "description": "A platform to create with AI or code and deploy instantly on production infrastructure.",
       "best_for": "Product engineers, AI developers, marketers, and designers building web apps.",
-      "strengths": ["Deploy previews for every change", "Serverless functions", "Built-in AI Gateway"]
+      "strengths": [
+        "Deploy previews for every change",
+        "Serverless functions",
+        "Built-in AI Gateway"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$11/user/month for Pro on monthly billing",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "11",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Personal",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly"
+      },
+      {
+        "name": "Pro",
+        "amount": "11",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$9/user/month with annual billing."
+      },
+      {
+        "name": "Team",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$15/user/month with annual billing."
+      },
+      {
+        "name": "Business",
+        "amount": "24",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user"
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.docker.com/pricing/"
+  },
+  "cons": [
+    "Docker Desktop commercial use at companies with more than 250 employees OR more than $10 million in annual revenue requires a paid subscription.",
+    "Paid plans are seat-based and some product usage has separate limits or add-ons, so plan price is not necessarily the full operating cost."
   ]
 }

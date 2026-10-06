@@ -20,9 +20,10 @@
     "Self-hosted via npm on your own infrastructure or managed Directus Cloud"
   ],
   "sources": [
-    "https://directus.com"
+    "https://directus.com",
+    "https://directus.com/pricing"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Strapi",
@@ -57,5 +58,49 @@
         "App ecosystem"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Core: $0; Team: $499/month with annual commitment ($599 month-to-month)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "499",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Core",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "3 seats, 25 collections, 5 flows; cloud hosting is an optional add-on."
+      },
+      {
+        "name": "Team",
+        "amount": "499",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$499/month with annual commitment; $599/month on rolling monthly billing; includes 10 SSO seats."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://directus.com/pricing"
+  },
+  "cons": [
+    "Core has hard limits including 3 seats, 25 collections, and 5 flows; SSO is not available on Core.",
+    "Team is a large price step at $499/month with an annual commitment ($599 month-to-month), while Enterprise pricing is custom."
   ]
 }

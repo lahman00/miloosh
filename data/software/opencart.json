@@ -21,7 +21,7 @@
     "https://www.opencart.com",
     "https://www.opencart.com/index.php?route=cms/feature"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "PrestaShop",
@@ -56,5 +56,34 @@
         "Multi-channel selling"
       ]
     }
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "Self-hosted OpenCart core: free; OpenCart Cloud pricing is not publicly exposed on the current official page",
+    "has_free_tier": true,
+    "status": "unavailable",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Open-source self-hosted",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free download and updates; zero monthly OpenCart license fee."
+      },
+      {
+        "name": "OpenCart Cloud",
+        "notes": "Hosted plans are offered, but stable numeric plan pricing was not exposed on the retrieved official public page."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.opencart.com/"
+  },
+  "cons": [
+    "The core software has no monthly license fee, but self-hosting still requires infrastructure, maintenance, security, backups, and possibly paid extensions or support.",
+    "OpenCart advertises multiple hosted Cloud plans but does not expose stable numeric Cloud pricing on the retrieved official public page, so hosted total cost cannot be verified from that source."
   ]
 }

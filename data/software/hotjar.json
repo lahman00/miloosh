@@ -2,9 +2,11 @@
   "name": "Hotjar",
   "slug": "hotjar",
   "category": "analytics",
-  "description": "Hotjar (part of Contentsquare) is an experience-intelligence platform for understanding and improving user behavior on websites/apps — \"go from insight to impact, fast.\"",
-  "website": "https://www.hotjar.com",
-  "platforms": ["Web"],
+  "description": "Hotjar is now part of Contentsquare. Its heatmaps, session replay, surveys, and related experience-analytics capabilities have been merged into the Contentsquare platform; new users can no longer create a new Hotjar account.",
+  "website": "https://contentsquare.com/hotjar/",
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for product, design, and marketing teams who want to \"deliver experiences that convert\" by understanding user journeys and reducing drop-offs.",
   "features": [
     "Heatmaps (clicks, movement, scroll behavior)",
@@ -14,22 +16,73 @@
     "User Tests and 1:1 Interviews",
     "Integrations with Google Analytics, HubSpot, Optimizely"
   ],
-  "sources": ["https://contentsquare.com/hotjar/", "https://contentsquare.com/platform/capabilities/"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://contentsquare.com/hotjar/",
+    "https://support.contentsquare.com/hc/en-us/articles/37271913608721-Hotjar-is-now-part-of-Contentsquare-Plans-and-Pricing",
+    "https://contentsquare.com/pricing/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Heap",
       "slug": "heap",
       "description": "A product analytics platform that automatically captures every user interaction without manual event tagging.",
       "best_for": "Product teams wanting automatic data capture for conversion and retention analysis.",
-      "strengths": ["Automatic data capture", "Session replay", "Journey Maps and heatmaps"]
+      "strengths": [
+        "Automatic data capture",
+        "Session replay",
+        "Journey Maps and heatmaps"
+      ]
     },
     {
       "name": "Matomo",
       "slug": "matomo",
       "description": "Privacy-first analytics with full data ownership via self-hosted or cloud deployment.",
       "best_for": "Organizations wanting privacy-compliant analytics without vendor lock-in.",
-      "strengths": ["Heatmaps and session recordings", "Cookieless tracking", "Self-hosted or cloud"]
+      "strengths": [
+        "Heatmaps and session recordings",
+        "Cookieless tracking",
+        "Self-hosted or cloud"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Contentsquare Free is $0; paid Growth, Pro, and Enterprise pricing is not publicly exposed on the current pricing page",
+    "has_free_tier": true,
+    "status": "unavailable",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 15
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Includes up to 200,000 sessions/month plus heatmaps, session replay, surveys, funnels, and other capabilities."
+      },
+      {
+        "name": "Growth",
+        "notes": "15-day trial for new signups; current public pricing page does not expose a stable numeric price in the retrieved page."
+      },
+      {
+        "name": "Pro",
+        "notes": "Paid plan; current public pricing page does not expose a stable numeric price in the retrieved page."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Paid enterprise plan; book a demo."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://contentsquare.com/pricing/"
+  },
+  "cons": [
+    "Hotjar is no longer available for new account creation; new users are directed to Contentsquare instead.",
+    "The product and plan structure has changed to Contentsquare Free, Growth, Pro, and Enterprise, so older Hotjar pricing comparisons can be misleading."
   ]
 }

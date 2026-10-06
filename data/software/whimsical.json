@@ -4,7 +4,11 @@
   "category": "design",
   "description": "Whimsical is a visual workspace for product builders that combines flowcharts, mind maps, wireframes, and an infinite-canvas board with AI generation from text prompts.",
   "website": "https://whimsical.com",
-  "platforms": ["Web", "macOS", "Windows"],
+  "platforms": [
+    "Web",
+    "macOS",
+    "Windows"
+  ],
   "best_for": "Product builders, designers, and teams documenting processes and product ideas who want lightweight diagramming alongside wireframing in one tool.",
   "features": [
     "Flowcharts and diagrams for mapping processes and shared understanding",
@@ -16,30 +20,91 @@
     "Version history with restore functionality"
   ],
   "sources": [
-    "https://whimsical.com"
+    "https://whimsical.com",
+    "https://whimsical.com/pricing",
+    "https://whimsical.com/learn/billing/pricing"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Miro",
       "slug": "miro",
       "description": "An online collaborative whiteboard for brainstorming, diagramming, and workshops.",
       "best_for": "Cross-functional teams running remote workshops and visual collaboration.",
-      "strengths": ["Infinite canvas", "Templates", "Real-time collaboration"]
+      "strengths": [
+        "Infinite canvas",
+        "Templates",
+        "Real-time collaboration"
+      ]
     },
     {
       "name": "Lucidchart",
       "slug": "lucidchart",
       "description": "A web-based diagramming tool for flowcharts, org charts, and technical diagrams.",
       "best_for": "Teams needing structured diagramming and process documentation.",
-      "strengths": ["Diagramming templates", "Data-linked diagrams", "Integrations"]
+      "strengths": [
+        "Diagramming templates",
+        "Data-linked diagrams",
+        "Integrations"
+      ]
     },
     {
       "name": "Balsamiq",
       "slug": "balsamiq",
       "description": "A low-fidelity wireframing tool focused on structure over visual polish.",
       "best_for": "Teams wanting to rapidly sketch and align on interface structure.",
-      "strengths": ["Low-fidelity wireframing", "AI prototype generation", "Jira/Confluence plugins"]
+      "strengths": [
+        "Low-fidelity wireframing",
+        "AI prototype generation",
+        "Jira/Confluence plugins"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$12/editor/month for Pro monthly; $10/editor/month billed annually",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "12",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "50 board objects/month, 50 doc blocks/month, watermark on exports, 7-day version history."
+      },
+      {
+        "name": "Pro",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "editor",
+        "notes": "$10/editor/month when billed annually."
+      },
+      {
+        "name": "Business",
+        "amount": "24",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "editor",
+        "notes": "$20/editor/month when billed annually."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://whimsical.com/pricing"
+  },
+  "cons": [
+    "The Free plan caps creation at 50 board objects and 50 doc blocks per month and adds a watermark to exports.",
+    "Paid workspace billing is per editor; viewers and guests are free, so editor count drives recurring cost."
   ]
 }

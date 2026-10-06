@@ -4,7 +4,9 @@
   "category": "developer-tools",
   "description": "Netlify is a unified platform to \"create with AI or code, deploy instantly on production infrastructure,\" supporting deploys via Git, CLI, drag-and-drop, or AI agents.",
   "website": "https://www.netlify.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for diverse teams — product engineers, AI developers, marketers, designers, and ops personnel — building AI-powered apps, marketing sites, e-commerce storefronts, fullstack apps, and internal tools.",
   "features": [
     "Multiple deploy paths: Git, CLI, drag-and-drop, AI Agent Runners",
@@ -14,22 +16,84 @@
     "Deploy previews and one-click rollbacks",
     "Global edge network (100+ locations) with 99.99% uptime SLA"
   ],
-  "sources": ["https://www.netlify.com", "https://www.netlify.com/platform/"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.netlify.com",
+    "https://www.netlify.com/platform/",
+    "https://www.netlify.com/pricing/",
+    "https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Vercel",
       "slug": "vercel",
       "description": "Agentic infrastructure for deploying web apps and AI agents at global scale with Git-connected preview deploys.",
       "best_for": "Developers and platform builders deploying apps and autonomous agent workflows.",
-      "strengths": ["AI Gateway/SDK", "Vercel Delivery Network", "Sandbox environments for untrusted code"]
+      "strengths": [
+        "AI Gateway/SDK",
+        "Vercel Delivery Network",
+        "Sandbox environments for untrusted code"
+      ]
     },
     {
       "name": "Docker",
       "slug": "docker",
       "description": "A platform for building, shipping, and running containerized applications.",
       "best_for": "Developers and enterprises standardizing application packaging/deployment via containers.",
-      "strengths": ["Docker Desktop local dev", "Docker Hub image registry", "OCI-compliant open standards"]
+      "strengths": [
+        "Docker Desktop local dev",
+        "Docker Hub image registry",
+        "OCI-compliant open standards"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9/month for Personal; Pro starts at $20/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "300 credits/month; hard limit."
+      },
+      {
+        "name": "Personal",
+        "amount": "9",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "1,000 credits/month; optional auto recharge."
+      },
+      {
+        "name": "Pro",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts with 3,000 credits/month and unlimited team seats; higher credit tiers available."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.netlify.com/pricing/"
+  },
+  "cons": [
+    "Credit-based plans meter production deploys, compute, bandwidth, web requests, and other usage; plan price is not necessarily the full bill.",
+    "On Free, projects pause when the monthly credit limit is reached; legacy accounts created before September 4, 2025 can have different pricing rules."
   ]
 }

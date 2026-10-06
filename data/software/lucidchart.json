@@ -4,7 +4,9 @@
   "category": "design",
   "description": "Lucidchart is an intelligent diagramming platform for creating diagrams with AI, data, and automation to visualize and optimize systems, processes, and organizational structures.",
   "website": "https://lucid.co/lucidchart",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for enterprise teams across IT, engineering, product, project management, and operations who need to document and optimize processes, infrastructure, and technical systems.",
   "features": [
     "Lucid AI generates diagrams from text prompts",
@@ -15,22 +17,81 @@
     "100+ integrations including Jira, Confluence, Slack, and Microsoft Teams"
   ],
   "order": 34,
-  "sources": ["https://lucid.co/lucidchart"],
-  "accessed_at": "2026-07-31",
+  "sources": [
+    "https://lucid.co/lucidchart",
+    "https://lucid.co/lucidchart/trial",
+    "https://help.lucid.co/hc/en-us/articles/360056903132-Lucid-Plans"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Miro",
       "slug": "miro",
       "description": "A visual collaboration platform with an infinite multiplayer canvas for research, planning, and product development.",
       "best_for": "Teams wanting open-ended whiteboarding alongside structured diagrams",
-      "strengths": ["Infinite canvas", "AI workflows", "250+ integrations"]
+      "strengths": [
+        "Infinite canvas",
+        "AI workflows",
+        "250+ integrations"
+      ]
     },
     {
       "name": "Figma",
       "slug": "figma",
       "description": "A browser- and desktop-based design tool for interface design, prototyping, and real-time collaboration.",
       "best_for": "Teams that need diagramming alongside actual UI design work",
-      "strengths": ["Real-time collaboration", "Design tools", "Prototyping"]
+      "strengths": [
+        "Real-time collaboration",
+        "Design tools",
+        "Prototyping"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$9/month + tax for Individual after trial",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "3 editable Lucidchart documents and 60 shapes per document."
+      },
+      {
+        "name": "Individual",
+        "amount": "9",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Unlimited documents and shapes; price shown on Lucidchart trial page."
+      },
+      {
+        "name": "Team",
+        "notes": "Paid team plan; exact price depends on checkout/configuration."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://lucid.co/lucidchart/trial"
+  },
+  "cons": [
+    "The Free plan is limited to 3 editable Lucidchart documents and 60 shapes per document.",
+    "Enterprise pricing is not self-serve on the public plan overview and requires contacting sales."
   ]
 }

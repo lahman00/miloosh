@@ -4,7 +4,9 @@
   "category": "ai",
   "description": "Synthesia is an all-in-one AI video creation platform for businesses, letting users produce professional videos with AI avatars and voices without cameras, actors, or production studios.",
   "website": "https://www.synthesia.io/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Learning and development departments, sales-enablement teams, HR training programs, marketing departments, and compliance/technical training across manufacturing, tech, healthcare, and financial services.",
   "features": [
     "240+ AI avatars and 1,000+ AI voices across 160+ languages",
@@ -15,22 +17,83 @@
     "Real-time team collaboration with brand kits and version control",
     "SCORM export for LMS integration and detailed viewer analytics"
   ],
-  "sources": ["https://www.synthesia.io/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.synthesia.io/",
+    "https://www.synthesia.io/pricing",
+    "https://help.synthesia.io/en/articles/17217419-what-s-changing-in-synthesia-plans-on-october-1-2026"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Runway",
       "slug": "runway",
       "description": "An AI creative suite and developer API for generating and editing cinematic video, image, and audio content.",
       "best_for": "Teams wanting generative, cinematic video rather than avatar-led presenter videos.",
-      "strengths": ["Gen-4.5 video model", "Developer API for custom media pipelines", "Image-to-video generation"]
+      "strengths": [
+        "Gen-4.5 video model",
+        "Developer API for custom media pipelines",
+        "Image-to-video generation"
+      ]
     },
     {
       "name": "ElevenLabs",
       "slug": "elevenlabs",
       "description": "An AI audio platform for text-to-speech, voice cloning, and conversational voice agents.",
       "best_for": "Teams needing standalone voice generation or dubbing without a full avatar-video suite.",
-      "strengths": ["5,000+ voices across 70+ languages", "Voice cloning", "Dubbing with emotion preservation"]
+      "strengths": [
+        "5,000+ voices across 70+ languages",
+        "Voice cloning",
+        "Dubbing with emotion preservation"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Starter: $29/month; Pro: $89/month on monthly billing",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "29",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Basic",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "10 minutes of video creation or dubbing, 3 survey responses, and 500 credits per month; videos carry a Synthesia watermark."
+      },
+      {
+        "name": "Starter",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Self-serve paid plan; annual billing is discounted."
+      },
+      {
+        "name": "Pro",
+        "amount": "89",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Creator was renamed Pro on October 1, 2026; annual billing is discounted."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.synthesia.io/pricing"
+  },
+  "cons": [
+    "Synthesia uses a credit system across AI features, so included video minutes do not fully describe usage limits for dubbing, surveys, avatars, and other credit-consuming features.",
+    "Basic exports carry a Synthesia watermark; Enterprise pricing is custom."
   ]
 }

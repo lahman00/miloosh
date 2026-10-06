@@ -21,9 +21,10 @@
   ],
   "sources": [
     "https://www.jenkins.io",
-    "https://www.jenkins.io/download/"
+    "https://www.jenkins.io/download/",
+    "https://www.jenkins.io/project/governance/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "CircleCI",
@@ -58,5 +59,30 @@
         "Tight repo integration"
       ]
     }
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "Free and open source",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Jenkins core",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Independent open-source project; core uses the MIT License."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.jenkins.io/project/governance/"
+  },
+  "cons": [
+    "Jenkins is an independent open-source project rather than a commercial SaaS product, so the project itself does not provide a paid managed tier with guaranteed vendor support.",
+    "Teams are responsible for operating and maintaining their Jenkins infrastructure unless they separately buy services from a third-party vendor."
   ]
 }
