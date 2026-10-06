@@ -38,6 +38,7 @@ import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabel
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
+import { getComparisonRobotsMetadata } from "@/data/seo/comparison-indexing";
 import { getPairDecisionBrief } from "@/data/seo/pair-decision-briefs";
 import { PairDecisionBrief } from "@/components/PairDecisionBrief";
 
@@ -142,12 +143,14 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
   const brief = getPairDecisionBrief(comparison);
   const title = brief?.metadata?.title ?? serpOverride?.title ?? data.title;
   const description = brief?.metadata?.description ?? serpOverride?.description ?? data.metaDescription;
+  const robots = getComparisonRobotsMetadata(comparison);
 
   return {
     title,
     description,
     alternates: { canonical: `/compare/${comparison}` },
     openGraph: { title, description },
+    ...(robots ? { robots } : {}),
   };
 }
 
