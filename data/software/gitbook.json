@@ -14,9 +14,10 @@
     "SSO (SAML) and compliance features"
   ],
   "sources": [
-    "https://www.gitbook.com"
+    "https://www.gitbook.com",
+    "https://www.gitbook.com/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Confluence",
@@ -52,5 +53,58 @@
       ]
     }
   ],
-  "order": 25
+  "order": 25,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Premium: $65/site/month plus $12/user/month, billed annually",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "65",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "One free user; unlimited page views."
+      },
+      {
+        "name": "Premium",
+        "amount": "65",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "site",
+        "notes": "$65/site/month billed annually plus $12/user/month for collaborators."
+      },
+      {
+        "name": "Ultimate",
+        "amount": "249",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "site",
+        "notes": "$249/site/month billed annually plus $12/user/month."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing and contract."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.gitbook.com/pricing"
+  },
+  "cons": [
+    "Paid cost combines a per-site fee with a separate $12-per-user monthly collaborator charge, so team size materially changes total cost.",
+    "Advanced AI and enterprise controls are tier-gated: Ultimate adds the AI Assistant, while SAML SSO, custom integrations, and dedicated support require Enterprise."
+  ]
 }

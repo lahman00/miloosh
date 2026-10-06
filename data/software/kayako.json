@@ -4,7 +4,9 @@
   "category": "customer-support",
   "description": "Kayako is an AI help desk platform whose Kay AI agent classifies, prioritizes, routes, and drafts replies to support tickets, either as a standalone helpdesk or layered on top of existing systems.",
   "website": "https://kayako.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "SaaS, retail, financial services, and healthcare organizations with high ticket volumes looking to reduce support costs and speed up resolution.",
   "features": [
     "Kay AI agent that classifies, prioritizes, and drafts replies to tickets",
@@ -16,30 +18,44 @@
     "SOC 2 Type II, GDPR, and SSO/SAML enterprise security"
   ],
   "sources": [
-    "https://kayako.com"
+    "https://kayako.com",
+    "https://kayako.com/pricing/",
+    "https://kayako.com/ai-chatbot/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Zendesk",
       "slug": "zendesk",
       "description": "A customer service platform with ticketing, live chat, and AI-powered automation.",
       "best_for": "Support teams of all sizes needing an established, feature-rich helpdesk.",
-      "strengths": ["Mature ticketing system", "AI automation", "Large app marketplace"]
+      "strengths": [
+        "Mature ticketing system",
+        "AI automation",
+        "Large app marketplace"
+      ]
     },
     {
       "name": "Freshdesk",
       "slug": "freshdesk",
       "description": "A cloud-based help desk with ticketing, automation, and omnichannel support.",
       "best_for": "Support teams wanting an affordable, easy-to-deploy helpdesk.",
-      "strengths": ["Omnichannel ticketing", "Automation", "Affordable tiers"]
+      "strengths": [
+        "Omnichannel ticketing",
+        "Automation",
+        "Affordable tiers"
+      ]
     },
     {
       "name": "Help Scout",
       "slug": "help-scout",
       "description": "A shared inbox and help desk platform built for personalized, human-feeling support.",
       "best_for": "Small to mid-sized support teams wanting simple, email-centric ticketing.",
-      "strengths": ["Shared inbox", "Simplicity", "Beacon in-app help widget"]
+      "strengths": [
+        "Shared inbox",
+        "Simplicity",
+        "Beacon in-app help widget"
+      ]
     },
     {
       "name": "Zoho Desk",
@@ -52,5 +68,41 @@
         "Deep Zoho-suite integration"
       ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$1 per AI-resolved ticket",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "1",
+      "currency": "USD",
+      "billing_period": "unknown"
+    },
+    "tiers": [
+      {
+        "name": "Kay AI Agent",
+        "amount": "1",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "resolved ticket",
+        "notes": "$1 only when Kay fully resolves the issue; escalations and partial resolutions are not billed as resolutions."
+      },
+      {
+        "name": "Kayako One",
+        "notes": "Full helpdesk platform with Kay AI included; pricing requires talking to a pricing expert."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://kayako.com/pricing/"
+  },
+  "cons": [
+    "The transparent $1 rate applies per ticket fully resolved by Kay; the full Kayako One helpdesk platform does not publish a numeric self-serve subscription price.",
+    "Outcome-based pricing makes spend directly dependent on AI resolution volume, so monthly cost can scale materially with support demand even though there are no AI seat or setup fees."
   ]
 }

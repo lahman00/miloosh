@@ -4,7 +4,9 @@
   "category": "api",
   "description": "Plaid calls itself \"the world's largest financial data network,\" enabling companies to connect to financial institutions and build fintech solutions on top of verified account and transaction data.",
   "website": "https://plaid.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Plaid targets fintech companies, banks, lenders, payment processors, and organizations in consumer lending, insurance, healthcare, and gaming that need to build financial products.",
   "features": [
     "Bank connections across 12,000+ financial institutions in 20 countries",
@@ -14,22 +16,73 @@
     "Categorized transaction and investment data (up to 24 months)",
     "Fraud-prevention network built on aggregated data points"
   ],
-  "sources": ["https://plaid.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://plaid.com",
+    "https://plaid.com/pricing/",
+    "https://plaid.com/docs/account/billing/",
+    "https://support.plaid.com/hc/en-us/articles/16194632655895-How-much-does-Plaid-cost-and-what-are-the-pricing-models"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Stripe",
       "slug": "stripe",
       "description": "A payments and financial-infrastructure API for accepting payments and managing billing/subscriptions.",
       "best_for": "Businesses that need to actually process payments (cards, ACH, subscriptions) rather than just access bank data.",
-      "strengths": ["Broad global payment methods", "Billing/subscription tooling", "Card issuing"]
+      "strengths": [
+        "Broad global payment methods",
+        "Billing/subscription tooling",
+        "Card issuing"
+      ]
     },
     {
       "name": "Twilio",
       "slug": "twilio",
       "description": "Provides identity/verification APIs (Verify, Lookup) that overlap partially with Plaid's identity-verification use case.",
       "best_for": "Companies needing phone-based identity verification or fraud signals alongside bank-data verification.",
-      "strengths": ["SMS/voice-based verification", "Large-scale messaging infrastructure", "Broad developer SDKs"]
+      "strengths": [
+        "SMS/voice-based verification",
+        "Large-scale messaging infrastructure",
+        "Broad developer SDKs"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Trial is free; paid production rates are product-specific and shown during Production access or by sales",
+    "has_free_tier": true,
+    "status": "unavailable",
+    "free_plan": true,
+    "free_trial": {
+      "available": true
+    },
+    "tiers": [
+      {
+        "name": "Trial",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free production evaluation with limited live usage; Plaid documents a 10-Item Trial limit."
+      },
+      {
+        "name": "Pay as You Go",
+        "notes": "No minimum spend or upfront commitment; product-specific rates, pay only for usage."
+      },
+      {
+        "name": "Growth",
+        "notes": "12-month commitment with minimum spend, discounted product rates, support, SSO, and account management."
+      },
+      {
+        "name": "Custom",
+        "notes": "Custom annual/volume pricing for larger or regulated deployments; includes broader product/support options."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://plaid.com/pricing/"
+  },
+  "cons": [
+    "Plaid does not publish a universal numeric rate card: exact Pay-as-you-go and Growth product rates are shown during the Production-access flow, while Custom pricing is negotiated.",
+    "Billing varies by product—one-time per connected account, monthly subscription per connected account, or per successful request—and not every Plaid product is available on every plan."
   ]
 }

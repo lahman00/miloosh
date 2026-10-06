@@ -4,7 +4,9 @@
   "category": "analytics",
   "description": "Fathom Analytics is a privacy-focused web analytics platform positioned as a simple, fast alternative to Google Analytics that protects visitor privacy without sacrificing actionable insights.",
   "website": "https://usefathom.com/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Developers and technical teams seeking straightforward analytics, privacy-conscious businesses and creators, and companies wanting faster site performance, including customers like IBM, GitHub, and Bootstrap.",
   "features": [
     "Event tracking for custom interactions like sign-ups, clicks, and ecommerce transactions",
@@ -15,29 +17,98 @@
     "Bot detection to filter spam and scraper traffic",
     "Developer-friendly API integrating with any CMS or framework, with no cookie consent banners required"
   ],
-  "sources": ["https://usefathom.com/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://usefathom.com/",
+    "https://usefathom.com/pricing"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Plausible Analytics",
       "slug": "plausible",
       "description": "A privacy-focused, cookieless web analytics platform with funnels, goals, and SEO-focused features.",
       "best_for": "Teams wanting cookieless analytics with built-in funnel and campaign tracking.",
-      "strengths": ["Automatic scroll-depth tracking", "AI-tool traffic monitoring", "Real-time dashboards"]
+      "strengths": [
+        "Automatic scroll-depth tracking",
+        "AI-tool traffic monitoring",
+        "Real-time dashboards"
+      ]
     },
     {
       "name": "Google Analytics",
       "slug": "google-analytics",
       "description": "A free analytics tool from Google measuring customer behavior across websites and apps.",
       "best_for": "Businesses wanting free, easy measurement unified with Google's ad platforms.",
-      "strengths": ["Machine-learning insights", "Cross-platform attribution", "Google Ads integration"]
+      "strengths": [
+        "Machine-learning insights",
+        "Cross-platform attribution",
+        "Google Ads integration"
+      ]
     },
     {
       "name": "Matomo",
       "slug": "matomo",
       "description": "Privacy-first analytics with full data ownership via self-hosted or cloud deployment.",
       "best_for": "Organizations wanting privacy-compliant analytics without vendor lock-in.",
-      "strengths": ["Unsampled data", "Cookieless tracking", "Self-hosted or cloud"]
+      "strengths": [
+        "Unsampled data",
+        "Cookieless tracking",
+        "Self-hosted or cloud"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$15/month for up to 100,000 monthly pageviews",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "15",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "100K pageviews",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 100,000 monthly pageviews across included sites."
+      },
+      {
+        "name": "200K pageviews",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly"
+      },
+      {
+        "name": "500K pageviews",
+        "amount": "45",
+        "currency": "USD",
+        "billing_period": "monthly"
+      },
+      {
+        "name": "1M pageviews",
+        "amount": "60",
+        "currency": "USD",
+        "billing_period": "monthly"
+      },
+      {
+        "name": "High traffic",
+        "notes": "Published tiers continue through 25M monthly pageviews; custom pricing above 25M."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://usefathom.com/pricing"
+  },
+  "cons": [
+    "Fathom has no permanent free plan; the 7-day trial requires a card and converts to paid billing unless canceled.",
+    "Pageviews and custom events share the monthly allowance across all sites, so high event volume can consume the same quota that governs pageview pricing."
   ]
 }

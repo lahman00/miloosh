@@ -23,9 +23,11 @@
     "Operated as a 501(c)(3) nonprofit funded by grants and donations, with no subscription fees"
   ],
   "sources": [
-    "https://signal.org"
+    "https://signal.org",
+    "https://support.signal.org/hc/en-us/articles/5286774014362-Cost-to-use-Signal",
+    "https://signal.org/donate/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Telegram",
@@ -49,5 +51,30 @@
         "Bot ecosystem"
       ]
     }
+  ],
+  "pricing": {
+    "model": "free",
+    "starting_price": "Free",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Signal",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free to use; no ads, affiliate marketers, or tracking. Supported by grants and optional donations."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://support.signal.org/hc/en-us/articles/5286774014362-Cost-to-use-Signal"
+  },
+  "cons": [
+    "Signal registration requires receiving an SMS or phone call, so a phone number capable of completing registration is required.",
+    "Signal itself charges nothing, but registration SMS/calls and ongoing mobile-data usage can still incur carrier or mobile-provider charges."
   ]
 }
