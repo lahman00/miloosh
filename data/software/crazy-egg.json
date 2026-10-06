@@ -4,7 +4,9 @@
   "category": "analytics",
   "description": "Crazy Egg is a website-optimization platform that shows how visitors actually use a site, combining heatmaps, session recordings, A/B testing, and web analytics in one dashboard.",
   "website": "https://www.crazyegg.com/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Teams of any skill level, including those with multiple websites or team members, seeking to understand visitor behavior without complex configuration, with unlimited seats and domains on its plans.",
   "features": [
     "Heatmaps, Scrollmaps, and Confetti Maps visualizing visitor interaction",
@@ -16,22 +18,94 @@
     "Error tracking for technical issues affecting user experience",
     "Single-snippet setup with integrations for Google Tag Manager, Shopify, and WordPress"
   ],
-  "sources": ["https://www.crazyegg.com/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.crazyegg.com/",
+    "https://www.crazyegg.com/pricing",
+    "https://www.crazyegg.com/faq"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Hotjar",
       "slug": "hotjar",
       "description": "An experience-intelligence platform for understanding and improving user behavior on websites/apps.",
       "best_for": "Product, design, and marketing teams wanting to reduce drop-offs and improve conversion.",
-      "strengths": ["Heatmaps", "Session recordings", "AI-summarized surveys"]
+      "strengths": [
+        "Heatmaps",
+        "Session recordings",
+        "AI-summarized surveys"
+      ]
     },
     {
       "name": "FullStory",
       "slug": "fullstory",
       "description": "An AI-powered behavioral analytics platform capturing user interactions across web and mobile.",
       "best_for": "Teams needing deeper session replay and product analytics alongside heatmaps.",
-      "strengths": ["Session replay", "Mobile analytics", "AI-generated behavioral insights"]
+      "strengths": [
+        "Session replay",
+        "Mobile analytics",
+        "AI-generated behavioral insights"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free plan available; paid heatmap/recording plans start at $29/month, billed annually",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "29",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Includes Web Analytics, Instant Heatmaps, Conversion Analytics, and website Surveys."
+      },
+      {
+        "name": "Starter",
+        "amount": "29",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Monthly equivalent; billed annually. Includes 5,000 tracked pageviews/month, 5 heatmap reports, and 50 recordings/month."
+      },
+      {
+        "name": "Plus",
+        "amount": "99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Monthly equivalent; billed annually. Adds A/B testing, CTAs, error tracking, and higher limits."
+      },
+      {
+        "name": "Pro",
+        "amount": "249",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Monthly equivalent; billed annually."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "599",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Monthly equivalent; billed annually."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.crazyegg.com/pricing"
+  },
+  "cons": [
+    "Starter does not include A/B Testing, Popup CTAs, or Error Tracking; those capabilities begin on the $99/month Plus tier.",
+    "Crazy Egg does not charge overages, but tracking pauses when monthly plan limits are reached until the next month unless you upgrade or add capacity."
   ]
 }

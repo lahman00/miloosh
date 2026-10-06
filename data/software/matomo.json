@@ -4,7 +4,11 @@
   "category": "analytics",
   "description": "Matomo describes itself as \"privacy-first analytics you can trust,\" delivering accurate, GDPR-compliant analytics with full data ownership via self-hosted or cloud deployment.",
   "website": "https://matomo.org",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for organizations wanting privacy-compliant analytics without vendor lock-in — enterprises prioritizing data ownership, public sector bodies with regulatory requirements, and teams seeking a Google Analytics alternative.",
   "features": [
     "Unsampled data with no sampling limitations",
@@ -14,22 +18,82 @@
     "A/B testing and personalization",
     "Funnel/flow analysis and raw data export"
   ],
-  "sources": ["https://matomo.org", "https://matomo.org/integrate/"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://matomo.org",
+    "https://matomo.org/pricing/",
+    "https://matomo.org/what-is-on-premise/",
+    "https://matomo.org/faq/cloud/whats-included-in-the-matomo-cloud-21-day-free-trial/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Google Analytics",
       "slug": "google-analytics",
       "description": "A free analytics tool from Google measuring customer behavior across websites and apps.",
       "best_for": "Businesses of every size wanting free, easy measurement unified with Google's ad platforms.",
-      "strengths": ["Machine-learning insights", "Cross-platform attribution", "Google Ads integration"]
+      "strengths": [
+        "Machine-learning insights",
+        "Cross-platform attribution",
+        "Google Ads integration"
+      ]
     },
     {
       "name": "Hotjar",
       "slug": "hotjar",
       "description": "An experience-intelligence platform for understanding and improving user behavior on websites/apps.",
       "best_for": "Product, design, and marketing teams wanting to reduce drop-offs and improve conversion.",
-      "strengths": ["Heatmaps", "Session recordings", "AI-summarized surveys"]
+      "strengths": [
+        "Heatmaps",
+        "Session recordings",
+        "AI-summarized surveys"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "On-Premise Community: free; Matomo Cloud starts from $19/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 21
+    },
+    "entry_paid": {
+      "amount": "19",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "On-Premise Community",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free and open source; unlimited users and hits, hosted on your own infrastructure."
+      },
+      {
+        "name": "Matomo Cloud",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Cloud packages start from $19/month; pricing increases with traffic."
+      },
+      {
+        "name": "On-Premise paid bundles",
+        "notes": "Optional paid bundles and support add advanced features and service levels; pricing varies by bundle and user/hit limits."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom Cloud or On-Premise requirements can be quoted by sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://matomo.org/pricing/"
+  },
+  "cons": [
+    "The free On-Premise edition requires you to provide and maintain the server, database, updates, backups, and operational security yourself.",
+    "Matomo Cloud pricing scales with traffic, while advanced On-Premise capabilities and professional support can require paid bundles or separate subscriptions."
   ]
 }

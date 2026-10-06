@@ -22,9 +22,10 @@
   ],
   "sources": [
     "https://evernote.com",
-    "https://evernote.com/download"
+    "https://evernote.com/en-us/compare-plans",
+    "https://help.evernote.com/hc/en-us/articles/46317642175763-Discontinuing-Evernote-Personal-Professional-Introducing-Starter-Advanced-FAQ"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Notion",
@@ -60,5 +61,63 @@
       ]
     }
   ],
-  "order": 28
+  "order": 28,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Starter: $8.25/month equivalent on annual billing ($99/year)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "8.25",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 50 notes, 1 notebook, 1 connected device, 1 GB monthly uploads."
+      },
+      {
+        "name": "Starter",
+        "amount": "8.25",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$99/year; monthly subscription is $14.99. Up to 1,000 notes, 20 notebooks, and 3 synced devices."
+      },
+      {
+        "name": "Advanced",
+        "amount": "20.83",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$249.99/year; monthly subscription is $24.99. Unlimited notes, notebooks, attachments, and synced devices subject to safeguards."
+      },
+      {
+        "name": "Flexible",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "Team plan starting from $10/month/seat."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing for larger organizations; talk to sales."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://evernote.com/en-us/compare-plans"
+  },
+  "cons": [
+    "The Free plan is tightly capped at 50 notes, one notebook, and one connected device.",
+    "Evernote Personal and Professional are discontinued for new plan selection; current individual tiers are Starter and Advanced, so older pricing comparisons can be misleading."
+  ]
 }

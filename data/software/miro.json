@@ -4,7 +4,13 @@
   "category": "design",
   "description": "Miro is a visual collaboration platform with an infinite multiplayer canvas where teams do research, planning, and product development from ideation through launch.",
   "website": "https://miro.com",
-  "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "Windows",
+    "macOS",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for product, design/UX, engineering, and product operations teams across industries who want to break down tool silos and align on shared direction.",
   "features": [
     "Intelligent Canvas infinite multiplayer workspace",
@@ -15,22 +21,87 @@
     "Enterprise security and compliance certifications"
   ],
   "order": 33,
-  "sources": ["https://miro.com"],
-  "accessed_at": "2026-07-31",
+  "sources": [
+    "https://miro.com",
+    "https://miro.com/pricing/",
+    "https://help.miro.com/hc/en-us/articles/360014270500-Understanding-Miro-plans-and-pricing"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Lucidchart",
       "slug": "lucidchart",
       "description": "An intelligent diagramming platform for visualizing systems, processes, and organizational structures.",
       "best_for": "Teams focused on structured diagramming over open-ended whiteboarding",
-      "strengths": ["AI diagram generation", "Data linking", "Template library"]
+      "strengths": [
+        "AI diagram generation",
+        "Data linking",
+        "Template library"
+      ]
     },
     {
       "name": "Figma",
       "slug": "figma",
       "description": "A browser- and desktop-based design tool for interface design, prototyping, and real-time collaboration.",
       "best_for": "Teams that need whiteboarding alongside actual UI design work",
-      "strengths": ["Real-time collaboration", "Design tools", "Prototyping"]
+      "strengths": [
+        "Real-time collaboration",
+        "Design tools",
+        "Prototyping"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Starter: $8/member/month billed yearly",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "8",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Unlimited team members, but only the 3 most recent boards remain editable."
+      },
+      {
+        "name": "Starter",
+        "amount": "8",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "member",
+        "notes": "$8/member/month billed yearly; unlimited and private boards."
+      },
+      {
+        "name": "Business",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "member",
+        "notes": "$20/member/month billed yearly; includes advanced AI workflows, unlimited workspaces, guests, and SSO."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing; starts from 30 members."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://miro.com/pricing/"
+  },
+  "cons": [
+    "The Free plan only keeps the three most recent boards editable and does not provide private boards or guest roles.",
+    "Starter and Business are priced per paid member; removing a member does not reduce the paid seat count until renewal, and advanced AI/security capabilities are concentrated in higher tiers."
   ]
 }

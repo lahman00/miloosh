@@ -20,9 +20,11 @@
     "Drupal CMS distribution with guided setup for marketers and site builders"
   ],
   "sources": [
-    "https://new.drupal.org"
+    "https://www.drupal.org/about",
+    "https://www.drupal.org/about/licensing",
+    "https://www.drupal.org/docs/getting-started/system-requirements"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "WordPress",
@@ -57,5 +59,30 @@
         "Multi-site localization"
       ]
     }
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "Free and open source; no Drupal licensing fees",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Drupal core",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "GPL-licensed open-source software with no licensing fees."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.drupal.org/about"
+  },
+  "cons": [
+    "Drupal has no software license fee, but production use still requires hosting, a supported PHP/web-server/database stack, updates, backups, security operations, and often implementation expertise.",
+    "The Drupal project itself does not sell a managed SaaS plan; organizations that want managed hosting, development, or commercial support must source those services separately."
   ]
 }
