@@ -21,6 +21,7 @@ import { AlternativeDecisionGuide } from "@/components/AlternativeDecisionGuide"
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { CTA_COPY_EXPERIMENT_ID, getCtaCopyLabel } from "@/lib/experiments/cta-copy-experiment";
 import { getAllSoftware, getSoftware } from "@/data/software";
+import { getRoleGuidesForSoftware } from "@/data/guides/registry";
 import { getCategoryName } from "@/data/categories";
 import { getRelatedSoftware } from "@/lib/related";
 import { getComparisonSlug, getComparisonsInvolving } from "@/data/comparisons";
@@ -100,6 +101,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
   const alternativeGuide = getAlternativeGuide(software.slug);
+  const roleGuides = getRoleGuidesForSoftware(software.slug);
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -283,6 +285,39 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             ))}
           </ul>
         </Card>
+
+        {roleGuides.length > 0 ? (
+          <section className="mt-14">
+            <SectionHeading
+              eyebrow="Buyer guides"
+              title={`Where ${software.name} fits by use case`}
+              description="Role-specific guides connect product facts to the workflows, team sizes, and buying constraints that actually determine fit."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {roleGuides.map((guide) => (
+                <Link
+                  key={guide.slug}
+                  href={`/${guide.slug}`}
+                  className="group rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 transition hover:border-white/25 hover:bg-white/[0.05]"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-zinc-950">
+                      <BookOpen className="h-4 w-4" strokeWidth={2.25} />
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-semibold text-white transition group-hover:text-blue-400">
+                        {guide.title}
+                      </h3>
+                      <p className="mt-1 text-xs leading-5 text-zinc-400">
+                        {guide.headline}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {comparisons.length > 0 ? (
           <section className="mt-14">
