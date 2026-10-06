@@ -57,6 +57,7 @@ import {
 } from "@/lib/structured-data";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
+import { getSoftwareRobotsMetadata } from "@/data/seo/software-indexing";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -81,6 +82,7 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
   const serpOverride = getSoftwareSerpOverride(slug);
   const title = serpOverride?.title ?? generateTitle(software);
   const description = serpOverride?.description ?? generateMetaDescription(software);
+  const robots = getSoftwareRobotsMetadata(slug);
 
   return {
     title,
@@ -98,6 +100,7 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
       title,
       description,
     },
+    ...(robots ? { robots } : {}),
   };
 }
 
