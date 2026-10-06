@@ -4,7 +4,13 @@
   "category": "ai",
   "description": "DeepL is an AI-powered translation platform, trained with the help of language experts, offering text, document, and voice translation along with AI-assisted business writing.",
   "website": "https://www.deepl.com/en/translator",
-  "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "Windows",
+    "macOS",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Enterprise organizations requiring secure, high-volume translation, legal and financial services needing specialized terminology, healthcare and life-sciences industries, and marketing/localization and customer-support teams.",
   "features": [
     "Text translation supporting 100+ languages",
@@ -15,22 +21,93 @@
     "API for developers building multilingual applications",
     "Browser extensions and integrations with Microsoft Office and Google Workspace"
   ],
-  "sources": ["https://www.deepl.com/en/translator"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.deepl.com/en/translator",
+    "https://www.deepl.com/en/pro"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "ChatGPT",
       "slug": "chatgpt",
       "description": "OpenAI's general-purpose AI assistant, capable of translation among many other tasks.",
       "best_for": "Users wanting translation bundled with a broader general-purpose assistant.",
-      "strengths": ["Broad task versatility", "Voice and vision input", "Wide platform availability"]
+      "strengths": [
+        "Broad task versatility",
+        "Voice and vision input",
+        "Wide platform availability"
+      ]
     },
     {
       "name": "Gemini",
       "slug": "gemini",
       "description": "Google DeepMind's family of AI models, capable of multilingual translation as part of broader multimodal reasoning.",
       "best_for": "Users already in the Google ecosystem who need translation alongside document analysis and search.",
-      "strengths": ["Multimodal understanding", "Long-context processing", "Google Search AI Mode integration"]
+      "strengths": [
+        "Multimodal understanding",
+        "Long-context processing",
+        "Google Search AI Mode integration"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Individual: $8.74/month billed annually",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "8.74",
+      "currency": "USD",
+      "billing_period": "annual",
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "50,000 translation characters/month, 1 file translation/month, 1 glossary, max file size 5 MB."
+      },
+      {
+        "name": "Individual",
+        "amount": "8.74",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per month billed annually; 300,000 characters/month and 3 file translations/month."
+      },
+      {
+        "name": "Team",
+        "amount": "28.74",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "Per user/month billed annually; 1,000,000 characters/user/month and 20 file translations/month."
+      },
+      {
+        "name": "Business",
+        "amount": "57.49",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "Per user/month billed annually; unlimited characters under fair-use policy and 100 file translations/month."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.deepl.com/en/pro"
+  },
+  "cons": [
+    "The Free version is capped at 50,000 translation characters and one file translation per month; paid Individual and Team plans also have character and file limits.",
+    "Business describes several allowances as unlimited under a fair-usage policy, while Enterprise pricing and custom limits require a sales quote."
   ]
 }

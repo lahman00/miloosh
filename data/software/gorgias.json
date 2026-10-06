@@ -4,7 +4,11 @@
   "category": "customer-support",
   "description": "Gorgias is a conversational AI platform built for ecommerce businesses, combining a helpdesk and AI agent to handle customer conversations across channels while aiming to drive revenue.",
   "website": "https://www.gorgias.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned specifically for ecommerce brands and Shopify merchants — the site states Gorgias \"powers customer conversations for 40% of Shopify brands,\" spanning clothing, beauty, subscriptions, health & wellness, and food & beverage.",
   "features": [
     "AI support agent resolving inquiries instantly (site claims 60%)",
@@ -14,22 +18,36 @@
     "In-conversation actions (cancel order, apply discount, upsell)",
     "300+ integrations (Recharge, Klaviyo, Yotpo, Loop Returns)"
   ],
-  "sources": ["https://www.gorgias.com", "https://docs.gorgias.com/faq/mobile-app-fact-sheet"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.gorgias.com",
+    "https://www.gorgias.com/pricing",
+    "https://www.gorgias.com/blog/gorgias-plan",
+    "https://helpcenter.gorgias.com/en-US/how-youre-billed-for-using-gorgias-199385",
+    "https://docs.gorgias.com/faq/mobile-app-fact-sheet"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Freshdesk",
       "slug": "freshdesk",
       "description": "An AI-powered, easy-to-set-up customer service solution serving 74,000+ companies across industries.",
       "best_for": "General mid-market/enterprise support teams wanting quick setup and AI ticket resolution.",
-      "strengths": ["AI Copilot", "Omnichannel messaging", "Broad business-app integrations"]
+      "strengths": [
+        "AI Copilot",
+        "Omnichannel messaging",
+        "Broad business-app integrations"
+      ]
     },
     {
       "name": "Crisp",
       "slug": "crisp",
       "description": "An all-in-one support platform with AI agents, live chat, and a shared inbox for companies of any size.",
       "best_for": "Startups and small-to-mid businesses wanting a lightweight chat-first tool.",
-      "strengths": ["AI agent builder", "Multi-channel live chat", "Built-in CRM"]
+      "strengths": [
+        "AI agent builder",
+        "Multi-channel live chat",
+        "Built-in CRM"
+      ]
     },
     {
       "name": "Zoho Desk",
@@ -42,5 +60,62 @@
         "Deep Zoho-suite integration"
       ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Starter: $10/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "10",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Starter",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Entry helpdesk plan; pricing scales with billable ticket volume."
+      },
+      {
+        "name": "Basic",
+        "amount": "60",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Ticket-based pricing."
+      },
+      {
+        "name": "Pro",
+        "amount": "360",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Ticket-based pricing."
+      },
+      {
+        "name": "Advanced",
+        "amount": "900",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Ticket-based pricing."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom quote."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.gorgias.com/pricing"
+  },
+  "cons": [
+    "Helpdesk pricing is based on billable ticket usage rather than agent seats, so higher support volume can move a store into a much more expensive tier.",
+    "AI Agent is billed separately on an outcome basis, while Voice and SMS are paid add-ons, so helpdesk subscription price alone is not the full cost of an AI-heavy omnichannel setup."
   ]
 }

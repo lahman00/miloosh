@@ -4,7 +4,9 @@
   "category": "api",
   "description": "Adyen is an enterprise fintech platform offering \"one platform for payments, data, and financial products,\" enabling large businesses to accept payments, send payouts, and launch financial services through a single API.",
   "website": "https://www.adyen.com/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Large enterprises and platforms across retail, travel/hospitality, SaaS marketplaces, financial services, and digital media that need global scale, complex payment workflows, and consolidated financial operations.",
   "features": [
     "Payment acceptance across 150+ currencies and 200+ local payment methods",
@@ -15,22 +17,69 @@
     "Subscription revenue optimization",
     "Automated insurance reimbursement processing"
   ],
-  "sources": ["https://www.adyen.com/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.adyen.com/",
+    "https://www.adyen.com/pricing",
+    "https://www.adyen.com/knowledge-hub/interchange-fees-explained"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Stripe",
       "slug": "stripe",
       "description": "A payments and financial-infrastructure API for accepting payments and managing billing/subscriptions.",
       "best_for": "Businesses of any size that need to process payments and manage billing/subscriptions.",
-      "strengths": ["Broad global payment methods", "Billing/subscription tooling", "Card issuing"]
+      "strengths": [
+        "Broad global payment methods",
+        "Billing/subscription tooling",
+        "Card issuing"
+      ]
     },
     {
       "name": "Plaid",
       "slug": "plaid",
       "description": "Connects applications to bank accounts and financial data, often used alongside payment processors for verification.",
       "best_for": "Companies building fintech products that need to verify bank accounts or access financial data.",
-      "strengths": ["12,000+ bank connections", "Account/identity verification", "ACH/RTP/FedNow payment rails"]
+      "strengths": [
+        "12,000+ bank connections",
+        "Account/identity verification",
+        "ACH/RTP/FedNow payment rails"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Payments: $0.13 processing fee per transaction + payment-method fee",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "0.13",
+      "currency": "USD",
+      "billing_period": "unknown"
+    },
+    "tiers": [
+      {
+        "name": "Payments processing",
+        "amount": "0.13",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "unit": "transaction",
+        "notes": "Fixed $0.13 processing fee plus a payment-method fee; card pricing can use Interchange++ and varies by market/card."
+      },
+      {
+        "name": "Other Adyen products",
+        "notes": "Products beyond payment methods are priced separately."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.adyen.com/pricing"
+  },
+  "cons": [
+    "There is no single flat card rate: the $0.13 processing fee is combined with payment-method fees and, for Interchange++ cards, variable interchange and scheme costs.",
+    "Adyen products beyond payment acceptance are priced separately, so the public payment-method table is not a complete total-cost quote for a broader Adyen deployment."
   ]
 }

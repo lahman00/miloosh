@@ -21,10 +21,12 @@
   ],
   "sources": [
     "https://www.microsoft.com/en-us/power-platform/products/power-automate",
+    "https://www.microsoft.com/en-us/power-platform/products/power-automate/pricing",
+    "https://learn.microsoft.com/en-us/power-platform/admin/powerapps-flow-licensing-faq",
     "https://learn.microsoft.com/en-us/power-automate/mobile/overview-mobile",
     "https://learn.microsoft.com/en-us/power-platform/important-changes-coming"
   ],
-  "accessed_at": "2026-09-07",
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Zapier",
@@ -70,5 +72,63 @@
         "Deluge scripting for custom logic"
       ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Power Automate Premium: $15/user/month, paid yearly",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "15",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Premium",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$15/user/month, paid yearly; cloud flows, attended desktop flows, and limited process mining."
+      },
+      {
+        "name": "Process",
+        "amount": "150",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "bot",
+        "notes": "$150/bot/month, paid yearly; unattended automation and business-critical processes."
+      },
+      {
+        "name": "Hosted Process",
+        "amount": "215",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "bot",
+        "notes": "$215/bot/month, paid yearly; includes a Microsoft-hosted virtual machine."
+      },
+      {
+        "name": "Process Mining add-on",
+        "amount": "5000",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "tenant",
+        "notes": "$5,000/tenant/month, paid yearly; add-on for Premium."
+      }
+    ],
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.microsoft.com/en-us/power-platform/products/power-automate/pricing"
+  },
+  "cons": [
+    "There is a 30-day trial but no permanent standalone free Power Automate plan on the current pricing page.",
+    "Licensing differs by user, bot, hosted bot, and add-on; unattended scenarios can also require additional licenses for the software being automated, and flows remain subject to service/action limits."
   ]
 }

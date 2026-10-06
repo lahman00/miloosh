@@ -4,7 +4,9 @@
   "category": "security",
   "description": "Okta is an identity security platform that the vendor says \"secures all types of identity from AI agents to your customers, employees, and partners,\" providing workforce identity and access management.",
   "website": "https://www.okta.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for enterprises, governments, and public sector agencies across industries (financial services, healthcare, manufacturing, retail, travel, technology, energy), as well as small businesses and developers.",
   "features": [
     "Single Sign-On (SSO) across a large integration network",
@@ -14,22 +16,92 @@
     "Privileged Access Management",
     "AI agent identity governance"
   ],
-  "sources": ["https://www.okta.com", "https://www.okta.com/products/single-sign-on/"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.okta.com",
+    "https://www.okta.com/pricing/",
+    "https://www.okta.com/products/single-sign-on/"
+  ],
+  "accessed_at": "2026-10-06",
   "alternatives": [
     {
       "name": "Auth0",
       "slug": "auth0",
       "description": "An Okta product offering a developer-focused authentication and authorization platform with 30+ SDKs.",
       "best_for": "Developers and B2B/B2C SaaS companies embedding customer identity into their own apps.",
-      "strengths": ["Broad SDK/language support", "Fine-grained authorization", "AI agent auth"]
+      "strengths": [
+        "Broad SDK/language support",
+        "Fine-grained authorization",
+        "AI agent auth"
+      ]
     },
     {
       "name": "Cloudflare",
       "slug": "cloudflare",
       "description": "Provides network and application security services including WAF, bot management, and DDoS mitigation.",
       "best_for": "Organizations of all sizes wanting perimeter/application-layer security alongside identity.",
-      "strengths": ["Global network scale", "Unified security dashboard", "High-volume threat blocking"]
+      "strengths": [
+        "Global network scale",
+        "Unified security dashboard",
+        "High-volume threat blocking"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Workforce Identity Starter: $6/user/month, billed annually",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "6",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Starter",
+        "amount": "6",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$6/user/month billed annually; SSO, MFA, Universal Directory, and 5 Workflows."
+      },
+      {
+        "name": "Core Essentials",
+        "amount": "14",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "Lower-priced alternative to the full Essentials suite for customers not ready for advanced security/compliance."
+      },
+      {
+        "name": "Essentials",
+        "amount": "17",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$17/user/month billed annually; adds Adaptive MFA, Privileged Access, Lifecycle Management, Access Governance, and 50 Workflows."
+      },
+      {
+        "name": "Professional",
+        "notes": "Custom pricing."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-06",
+    "official_source": "https://www.okta.com/pricing/"
+  },
+  "cons": [
+    "Workforce Identity suites are billed annually and carry a $1,500 annual contract minimum, so the $6/user/month Starter rate is not the full minimum commitment for very small deployments.",
+    "Professional and Enterprise pricing is not public, and capabilities such as advanced threat protection, device access, API access management, and Access Gateway require higher suites or add-ons."
   ]
 }
