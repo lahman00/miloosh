@@ -24,6 +24,7 @@ import { SoftwareCard } from "@/components/SoftwareCard";
 import { CategoryCard } from "@/components/CategoryCard";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
+import { getRoleGuide } from "@/data/guides/registry";
 import { getSoftwareByCategory } from "@/lib/related";
 import { getComparisonSlug } from "@/data/comparisons";
 import { parseComparisonSlug } from "@/lib/comparison";
@@ -79,6 +80,22 @@ export default function Home() {
       return softwareA && softwareB ? { softwareA, softwareB } : null;
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
+
+  // Concentrate homepage authority on buyer guides with the strongest
+  // existing search evidence from the role-guide audit instead of linking
+  // every guide equally. This supports crawl discovery without inventing
+  // popularity claims.
+  const evidenceBackedGuideSlugs = [
+    "best-knowledge-base-software-for-teams",
+    "best-crm-for-startups",
+    "best-crm-for-sales-teams",
+    "best-customer-service-software-for-startups",
+    "best-voip-phone-system-for-small-business",
+    "best-password-manager-for-businesses",
+  ] as const;
+  const evidenceBackedGuides = evidenceBackedGuideSlugs
+    .map((slug) => getRoleGuide(slug))
+    .filter((guide): guide is NonNullable<typeof guide> => Boolean(guide));
 
   const stats = [
     { icon: LayoutGrid, value: String(allSoftware.length), label: "Tools covered" },
@@ -207,6 +224,42 @@ export default function Home() {
                 category={category}
                 count={getSoftwareByCategory(category.slug).length}
               />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-y border-white/10 bg-white/[0.02] py-20 sm:py-28">
+        <Container>
+          <SectionHeading
+            eyebrow="Buyer guides"
+            title="Start with the decision, not the feature list"
+            description="Role-specific guides with the strongest current search evidence, built around real workflows, constraints, and tradeoffs."
+          />
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {evidenceBackedGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/${guide.slug}`}
+                className="group block h-full"
+              >
+                <Card className="flex h-full flex-col justify-between group-hover:border-white/25 group-hover:bg-white/[0.05]">
+                  <div>
+                    <Badge>Decision guide</Badge>
+                    <h3 className="mt-4 text-lg font-semibold text-white transition group-hover:text-blue-400">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-zinc-400">
+                      {guide.headline}
+                    </p>
+                  </div>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-zinc-300">
+                    Read guide
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Card>
+              </Link>
             ))}
           </div>
         </Container>
