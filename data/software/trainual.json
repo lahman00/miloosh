@@ -21,9 +21,11 @@
     "Scorecards and KPI monitoring"
   ],
   "sources": [
+    "https://trainual.com/pricing",
+    "https://help.trainual.com/en/trainuals-plan-agreements",
     "https://trainual.com"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Guru",
@@ -59,5 +61,42 @@
       ]
     }
   ],
-  "order": 40
+  "order": 40,
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Pricing varies by team size and required features; request a demo for a current quote",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Core",
+        "notes": "Centralized documentation and training. Includes 2 GB video storage and 30-day version history; individual training paths, uploaded video hosting, and e-signatures are not included."
+      },
+      {
+        "name": "Pro",
+        "notes": "Adds individual training paths, uploaded video hosting, 15 GB video storage, 300 e-signatures/year, org/accountability charts, and 90-day version history."
+      },
+      {
+        "name": "Premium",
+        "notes": "Adds unlimited video storage/version history/e-signatures, custom branding/domain, SSO, training-path templates, and 15 GB SCORM storage."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Adds API/custom integration support, SOC 2 documentation access, extended implementation/migration, organizational rollout support, priority support, and a designated Customer Success Manager."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://trainual.com/pricing"
+  },
+  "cons": [
+    "Trainual does not publish one universal self-serve subscription price on its main pricing page; the current quote depends on team size and required features.",
+    "Core is limited to 2 GB of video storage and 30 days of version history; uploaded video hosting, individual training paths, and e-signatures require Pro or higher.",
+    "SSO and a custom domain require Premium or Enterprise, while API access and custom integration support are reserved for Enterprise.",
+    "Trainual's annual-plan agreement charges a full year upfront and automatically renews annually unless changed or cancelled under the account terms."
+  ]
 }
