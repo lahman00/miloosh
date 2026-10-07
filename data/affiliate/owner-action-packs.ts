@@ -21,7 +21,7 @@ export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
     title: "1. PartnerStack payout verification — hello@miloosh.com",
     priority: 1,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
-    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual"],
+    productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual", "callrail"],
     comparisonsAffected: 0,
     commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the business account for the assigned relationships and, on 2026-09-14, confirmed a PayPal account is connected. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed.",
     preFilledFields: { "Account email": "hello@miloosh.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },

@@ -57,6 +57,7 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "surveymonkey",
       "freshbooks", // First-party welcome to hello@miloosh.com; payout readiness remains UNVERIFIED.
       "trainual", // First-party PartnerStack welcome + exact referral URL issued to hello@miloosh.com on 2026-09-30.
+      "callrail", // PartnerStack approval 2026-10-01 + exact referral URL issued by CallRail Partner Marketing 2026-10-02.
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",

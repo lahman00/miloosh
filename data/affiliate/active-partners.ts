@@ -2,7 +2,7 @@ export const ACTIVE_PARTNER_SLUGS = [
   "fireflies-ai", "trainual",
   "constant-contact", "todoist", "moosend", "volza", "pipedrive",
   "getresponse", "airtable", "monday", "whatconverts", "elevenlabs", "krispcall",
-  "setmore", "hubstaff", "close", "shopify", "wix",
+  "setmore", "hubstaff", "close", "callrail", "shopify", "wix",
   "mailerlite", "omnisend", "wrike", "jotform", "surveymonkey", "freshbooks",
 ] as const;
 
@@ -122,6 +122,7 @@ export const ACTIVE_PARTNERS: readonly ActivePartner[] = [
   { slug: "setmore", status: "active", affiliateUrl: "https://www.setmore.com?ref=nge2zwi", blocker: null },
   { slug: "hubstaff", status: "active", affiliateUrl: "https://affiliate.hubstaff.com/ca2oe167vcj1", blocker: null },
   { slug: "close", status: "active", affiliateUrl: "https://refer.close.com/0alqdg4so8rm", blocker: null },
+  { slug: "callrail", status: "active", affiliateUrl: "https://partners.callrail.com/p28z0h9qkxk2", blocker: null },
   { slug: "shopify", status: "active", affiliateUrl: "https://shopify.pxf.io/L0EG9O", blocker: null },
   { slug: "wix", status: "active", affiliateUrl: "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb", blocker: null },
   { slug: "mailerlite", status: "active", affiliateUrl: "https://www.mailerlite.com/?linkId=lp_170762&sourceId=eyal-haimovich&tenantId=mailerlite", blocker: null },

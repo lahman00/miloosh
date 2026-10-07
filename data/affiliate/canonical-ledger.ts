@@ -618,22 +618,26 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
   },
   {
     programId: "callrail",
-    programName: "CallRail Partner Program",
+    programName: "CallRail Affiliate Partner Program",
     network: "PartnerStack",
     productSlugs: ["callrail"],
-    status: "PENDING_REVIEW",
-    statusUpdatedAt: "2026-08-20",
-    applicationSubmittedAt: "2026-08-20",
-    decisionAt: null,
-    affiliateUrl: null,
-    commissionModel: "Revenue share on new tracked accounts",
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-02",
+    applicationSubmittedAt: "2026-09-30",
+    decisionAt: "2026-10-01",
+    affiliateUrl: "https://partners.callrail.com/p28z0h9qkxk2",
+    commissionModel: "$50 for each referred customer upon their first CallRail invoice",
     cookieWindow: "90 days",
-    evidence: ["PartnerStack in-app review", "docs/affiliate-applications.md"],
+    evidence: [
+      "Connected Gmail 1a0f7c24949e51c7, received 2026-10-01: PartnerStack confirmed Miloosh's CallRail application was approved.",
+      "Connected Gmail 1a0fd06463121be6, received 2026-10-02: CallRail Partner Marketing Manager Becky Rappaport issued the exact unique referral URL https://partners.callrail.com/p28z0h9qkxk2 and stated a $50 commission upon the referred customer's first CallRail invoice.",
+      "data/affiliate/active-partners.ts"
+    ],
     ownerBlocker: null,
     formBlocker: null,
-    eligibility: "Publisher application submitted",
+    eligibility: "Approved affiliate publisher with an exact account-specific referral URL",
     applicationUrl: "https://www.callrail.com/partner-program",
-    notes: "Application in review."
+    notes: "Active relationship verified directly from PartnerStack approval and CallRail's first-party welcome email. Payout-profile readiness is tracked separately and remains unverified."
   },
 
   // ==========================================
