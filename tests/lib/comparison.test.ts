@@ -75,3 +75,36 @@ describe("pricing model labels", () => {
     expect(row).toEqual({ label: "Pricing model", a: "Paid plans", b: "Open source" });
   });
 });
+
+
+describe("MkDocs vs Read the Docs indexing-quality canary", () => {
+  it("has buyer-useful pricing and sourced constraints on both sides", async () => {
+    const { getSoftware } = await import("@/data/software");
+    const { generateComparisonRows } = await import("@/lib/comparison");
+    const mkdocs = getSoftware("mkdocs")!;
+    const readTheDocs = getSoftware("read-the-docs")!;
+
+    expect(mkdocs.pricing?.model).toBe("open_source");
+    expect(mkdocs.cons?.length).toBeGreaterThanOrEqual(2);
+    expect(readTheDocs.pricing?.entryPaid?.amount).toBe("50");
+    expect(readTheDocs.cons?.length).toBeGreaterThanOrEqual(2);
+
+    const pricing = generateComparisonRows(mkdocs, readTheDocs).find((row) => row.label === "Pricing model");
+    expect(pricing).toEqual({
+      label: "Pricing model",
+      a: "Open source",
+      b: "Free + paid plans",
+    });
+  });
+
+  it("uses canary-specific search intent and SERP metadata", async () => {
+    const { getComparisonSearchIntentNote, getComparisonSerpOverride } = await import("@/data/seo/serp-overrides");
+    const intent = getComparisonSearchIntentNote("mkdocs-vs-read-the-docs");
+    const meta = getComparisonSerpOverride("mkdocs-vs-read-the-docs");
+
+    expect(intent).toContain("not interchangeable products");
+    expect(intent).toContain("managed documentation build and hosting platform");
+    expect(meta?.title).toContain("Hosting, Pricing & Best Fit");
+    expect(meta?.description).toContain("static generation versus managed documentation");
+  });
+});

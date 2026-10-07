@@ -175,6 +175,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
 
   const relatedSoftware = getComparisonRelatedSoftware(softwareA, softwareB, 3);
   const isStoreComparison = softwareA.category === "ecommerce" || softwareB.category === "ecommerce";
+  const isMkDocsReadTheDocsCanary = comparison === "mkdocs-vs-read-the-docs";
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -217,6 +218,39 @@ export default async function ComparePage({ params }: ComparePageProps) {
             <ComparisonTable data={data} />
           </div>
         </section>
+
+        {isMkDocsReadTheDocsCanary ? (
+          <section className="mt-14">
+            <SectionHeading
+              title="Decision snapshot"
+              description="The practical difference is ownership of the documentation stack: MkDocs gives you the generator; Read the Docs adds managed build and hosting infrastructure around documentation projects."
+            />
+            <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+              {[
+                ["What you are buying", "A free open-source static documentation generator", "A managed documentation build and hosting platform"],
+                ["Entry price", "Free under the BSD license", "Community is free for open-source projects; Business starts at $50/month"],
+                ["Hosting & deployment", "You choose and operate the hosting and deployment path", "Managed hosting and automatic builds from connected Git repositories"],
+                ["Private/commercial docs", "Depends on the infrastructure you add around MkDocs", "Handled through paid Business plans with access-control features"],
+                ["Analytics & support", "Provided by your own stack or third-party services", "Higher Business tiers add analytics; Enterprise adds advanced support and controls"],
+              ].map(([label, mkdocs, readTheDocs]) => (
+                <div key={label} className="grid gap-3 border-b border-white/10 px-5 py-4 last:border-b-0 sm:grid-cols-[0.8fr_1.1fr_1.1fr]">
+                  <span className="text-sm font-medium text-zinc-400">{label}</span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">MkDocs</p>
+                    <p className="mt-1 text-sm leading-6 text-zinc-300">{mkdocs}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Read the Docs</p>
+                    <p className="mt-1 text-sm leading-6 text-zinc-300">{readTheDocs}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-6 text-zinc-400">
+              Bottom line: choose MkDocs when you want the documentation generator and are comfortable owning the surrounding deployment stack. Choose Read the Docs when managed builds, hosting, access controls, analytics, and support are worth paying for.
+            </p>
+          </section>
+        ) : null}
 
         <WixShopifyBuyerChecks comparison={comparison} />
         <ShopifyWooMigrationRecords comparison={comparison} />
@@ -288,7 +322,18 @@ export default async function ComparePage({ params }: ComparePageProps) {
                   <Ban className="h-4 w-4 text-zinc-500" />
                   Cons
                 </div>
-                <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
+                {isMkDocsReadTheDocsCanary && software.cons && software.cons.length > 0 ? (
+                  <ul className="mt-2 space-y-2">
+                    {software.cons.map((con) => (
+                      <li key={con} className="flex items-start gap-2 text-sm text-zinc-400">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
+                        <span className="leading-6">{con}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
+                )}
               </Card>
             ))}
           </div>
