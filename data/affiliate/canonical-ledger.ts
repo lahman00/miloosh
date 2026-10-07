@@ -390,6 +390,52 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
   {
     programId: "jotform", programName: "Jotform Affiliate Program", network: "Direct (Jotform)", productSlugs: ["jotform"], status: "ACTIVE", statusUpdatedAt: "2026-08-29", applicationSubmittedAt: null, decisionAt: "2026-08-19", affiliateUrl: "https://www.jotform.com/?partner=miloosh", commissionModel: "30% commission on every new paid user referred, paid monthly for the first 12 months of the customer's subscription; 60-day qualification window before commission is payable; payouts via Tremendous (per jotform.com/partnership/affiliate/, directly fetched 2026-08-16, data/revenue/affiliate-programs.ts)", cookieWindow: "60-day qualification window (distinct from a click-attribution cookie)", evidence: ["Independently verified, confidence: high (data/revenue/affiliate-programs.ts, 2026-08-16), directly against jotform.com/partnership/affiliate/: real, active direct program, free to join, no existing-paid-customer requirement, case-by-case approval", "Owner's own first-hand account, 2026-08-29, of personally re-reading the original correspondence in the connected Gmail account (not relayed via Codex, another agent, or any Git/PR reference): Jotform Affiliate Marketing Specialist Anna Scheucher confirmed the Miloosh application (account 'Eyal_hello', business email hello@miloosh.com) was approved 2026-08-19; explained that links generated in the partner dashboard's Custom Links section auto-track referrals; and, when asked specifically for a link generated for this account (to avoid publishing a demo or mismatched-partner link), supplied the two URLs recorded here, stating 'these are the tracking links associated with your account': homepage https://www.jotform.com/?partner=miloosh, pricing https://www.jotform.com/pricing/?partner=miloosh", "data/affiliate/active-partners.ts"], ownerBlocker: null, formBlocker: null, eligibility: "Approved affiliate with exact account-specific referral URLs", applicationUrl: "https://www.jotform.com/partnership/affiliate/application/", notes: "Activated 2026-08-29 on the owner's direct, first-hand account of the Jotform correspondence (see evidence) -- the same evidentiary standard already applied to MailerLite/Close/Omnisend/GetResponse. Canonical CTA URL is the homepage asset, mirroring the Wix precedent of designating one canonical general-site URL when multiple valid intent-specific links exist; the pricing-intent URL is recorded above for future intent-specific use but is not wired into a second CTA surface today, since lib/affiliate.ts resolves exactly one affiliateUrl per product regardless of page location."
   },
+  {
+    programId: "activecampaign",
+    programName: "ActiveCampaign Affiliate Program",
+    network: "PartnerStack",
+    productSlugs: ["activecampaign"],
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-02",
+    applicationSubmittedAt: "2026-08-18",
+    decisionAt: "2026-10-02",
+    affiliateUrl: "https://try.activecampaign.com/xu30znpbu737",
+    commissionModel: "30% recurring commission on eligible subscription revenue for up to 12 months per referred paying customer",
+    cookieWindow: null,
+    evidence: [
+      "Historical first-party PartnerStack decline dated 2026-08-20 remains preserved as superseded history.",
+      "Connected Gmail 1a0fe9bfb9f19812, received 2026-10-02: ActiveCampaign Affiliate Team welcomed Miloosh into the affiliate program, issued exact referral URL https://try.activecampaign.com/xu30znpbu737, and stated 30% recurring commission for up to 12 months.",
+      "Official ActiveCampaign Affiliate Partner Terms re-verified 2026-10-08: 30% of eligible monthly recurring revenue for the first 12 months; commissions are confirmed after the customer remains paid for at least 60 days; required Partner Documentation must be completed within 90 days of joining or commission rights can be forfeited."
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved affiliate publisher with an exact account-specific referral URL; the 2026-10-02 approval supersedes the 2026-08-20 decline.",
+    applicationUrl: "https://www.activecampaign.com/partners/affiliate",
+    notes: "Active relationship is first-party verified. Payout/document readiness remains separate: PartnerStack/ActiveCampaign documentation and payout conditions must be verified by the owner; no commission or payout is inferred."
+  },
+  {
+    programId: "apollo-io",
+    programName: "Apollo.io Affiliate Program",
+    network: "PartnerStack",
+    productSlugs: ["apollo-io"],
+    status: "ACTIVE",
+    statusUpdatedAt: "2026-10-01",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-10-01",
+    affiliateUrl: "https://get.apollo.io/3k3emp09ar05",
+    commissionModel: "15% of eligible revenue for monthly paid referrals and 20% for annual paid referrals, for the first 12 months",
+    cookieWindow: "90 days",
+    evidence: [
+      "Connected Gmail 1a0f8b97f73429ac, received 2026-10-01 from Apollo.io: welcome to the affiliate program, exact unique referral URL https://get.apollo.io/3k3emp09ar05, and up-to-20% first-12-month commission statement.",
+      "Official Apollo Affiliate Program and Affiliate Partner Program Terms re-verified 2026-10-08: 15% monthly-plan / 20% annual-plan commission for the first 12 months and a 90-day click-to-paid-referral window."
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved affiliate publisher with an exact account-specific referral URL",
+    applicationUrl: "https://www.apollo.io/partners/affiliates",
+    notes: "Active relationship and tracking asset are verified. PartnerStack payout readiness remains tracked separately and is not inferred from approval."
+  },
+
   // ==========================================
   // 2. APPROVED NEEDS EDITORIAL CONTENT (3 programs)
   // ==========================================
@@ -749,25 +795,6 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
     eligibility: "Declined by vendor",
     applicationUrl: "https://webflow.com/solutions/affiliates",
     notes: "Vendor declined. Do not re-apply without new credentials."
-  },
-  {
-    programId: "activecampaign",
-    programName: "ActiveCampaign Affiliate Program",
-    network: "PartnerStack",
-    productSlugs: ["activecampaign"],
-    status: "REJECTED",
-    statusUpdatedAt: "2026-08-20",
-    applicationSubmittedAt: "2026-08-18",
-    decisionAt: "2026-08-20",
-    affiliateUrl: null,
-    commissionModel: "20-30% recurring (prior program claim)",
-    cookieWindow: "90 days",
-    evidence: ["docs/affiliate-applications.md first-party decline email: 'After careful consideration, ActiveCampaign has declined your application'"],
-    ownerBlocker: null,
-    formBlocker: null,
-    eligibility: "Declined by vendor",
-    applicationUrl: "https://activecampaign.partnerstack.com/",
-    notes: "Vendor declined. Do not re-apply."
   },
   {
     programId: "superhuman",

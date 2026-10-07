@@ -58,6 +58,8 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "freshbooks", // First-party welcome to hello@miloosh.com; payout readiness remains UNVERIFIED.
       "trainual", // First-party PartnerStack welcome + exact referral URL issued to hello@miloosh.com on 2026-09-30.
       "callrail", // PartnerStack approval 2026-10-01 + exact referral URL issued by CallRail Partner Marketing 2026-10-02.
+      "activecampaign", // New first-party approval + exact PartnerStack referral URL issued 2026-10-02; supersedes Aug decline.
+      "apollo-io", // Apollo welcome + exact PartnerStack referral URL issued 2026-10-01.
     ],
     readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
