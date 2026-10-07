@@ -437,8 +437,50 @@ export const CANONICAL_AFFILIATE_LEDGER: readonly AffiliateProgramRelationship[]
   },
 
   // ==========================================
-  // 2. APPROVED NEEDS EDITORIAL CONTENT (3 programs)
+  // 2. APPROVED NEEDS EDITORIAL CONTENT (5 programs)
   // ==========================================
+  {
+    programId: "mrpeasy",
+    programName: "MRPeasy Partner Program",
+    network: "PartnerStack",
+    productSlugs: [],
+    status: "APPROVED_NEEDS_EDITORIAL_CONTENT",
+    statusUpdatedAt: "2026-09-30",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-09-30",
+    affiliateUrl: "https://try.mrpeasy.com/rlmf8edfjcie",
+    commissionModel: "Commission exists for sales through the issued referral link; exact rate was not stated in the welcome email and is not inferred.",
+    cookieWindow: null,
+    evidence: [
+      "Connected Gmail 1a0f2363ffd9d6fb, received 2026-09-30: MRPeasy welcomed Miloosh to the partner program and issued exact personal referral URL https://try.mrpeasy.com/rlmf8edfjcie."
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved partner with exact referral URL, but Miloosh currently has no MRPeasy catalog page or independent buyer-decision surface.",
+    applicationUrl: null,
+    notes: "Do not add to ACTIVE_PARTNERS or create content merely because a commission link exists. Revisit only if manufacturing/ERP coverage becomes an independently justified Miloosh editorial area."
+  },
+  {
+    programId: "cloro",
+    programName: "Cloro Partner Program",
+    network: "PartnerStack",
+    productSlugs: [],
+    status: "APPROVED_NEEDS_EDITORIAL_CONTENT",
+    statusUpdatedAt: "2026-09-04",
+    applicationSubmittedAt: null,
+    decisionAt: "2026-09-04",
+    affiliateUrl: "https://affiliate.cloro.dev/jg7ddymvspdm",
+    commissionModel: "Referral credit/commission exists for signups through the issued link; exact commercial terms were not stated in the welcome email and are not inferred.",
+    cookieWindow: null,
+    evidence: [
+      "Connected Gmail 1a06aea017f51283, received 2026-09-04: Cloro welcomed Miloosh to the partner program and issued exact referral URL https://affiliate.cloro.dev/jg7ddymvspdm."
+    ],
+    ownerBlocker: null,
+    formBlocker: null,
+    eligibility: "Approved partner with exact referral URL, but Miloosh currently has no Cloro catalog page or independent buyer-decision surface.",
+    applicationUrl: null,
+    notes: "Keep relationship recorded but inactive. No new Miloosh page or recommendation should be created solely to use this affiliate asset."
+  },
   {
     programId: "pdware",
     programName: "PDWare ResourceFirst Partner Program",
