@@ -19,9 +19,11 @@
     "Integrated documentation search"
   ],
   "sources": [
-    "https://about.readthedocs.com"
+    "https://about.readthedocs.com",
+    "https://about.readthedocs.com/pricing/",
+    "https://docs.readthedocs.com/platform/latest/about/index.html"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Docusaurus",
@@ -45,5 +47,65 @@
         "Publishing controls"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Community: free for open-source projects; Business Basic: $50/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "50",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Community",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free forever for open-source projects; public, ad-supported documentation hosting."
+      },
+      {
+        "name": "Business Basic",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "2 concurrent builds, shared domain, GitHub/GitLab SSO, 50 redirects."
+      },
+      {
+        "name": "Business Advanced",
+        "amount": "150",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "4 concurrent builds, 5 custom domains, 250 redirects, 30-day analytics."
+      },
+      {
+        "name": "Business Pro",
+        "amount": "250",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "6 concurrent builds, 15 custom domains, Google SSO, 500 redirects, 90-day analytics."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "10000",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Starts from $10k/year; custom requirements, SAML SSO, dedicated builders, advanced audit tracking, and support SLA."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://about.readthedocs.com/pricing/"
+  },
+  "cons": [
+    "The free Community service is for open-source projects and uses public, ad-supported hosting; private or commercial documentation belongs on the paid Business service.",
+    "Business Basic uses a shared domain and does not include the custom-domain and analytics allowances listed for Advanced and Pro; higher build concurrency and enterprise controls require more expensive tiers."
   ]
 }

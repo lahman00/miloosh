@@ -127,6 +127,11 @@ const COMPARISON_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
     description:
       "Jenkins vs Sentry: compare CI/CD automation with application error monitoring, including workflows, integrations, platform fit, and buyer tradeoffs.",
   },
+  "mkdocs-vs-read-the-docs": {
+    title: "MkDocs vs Read the Docs (2026): Hosting, Pricing & Best Fit",
+    description:
+      "Compare MkDocs vs Read the Docs: free open-source static generation versus managed documentation builds and hosting, including pricing, limits, and buyer fit.",
+  },
 };
 
 export function getSoftwareSerpOverride(slug: string): SerpMetadataOverride | undefined {
@@ -140,6 +145,9 @@ export function getComparisonSerpOverride(slug: string): SerpMetadataOverride | 
 export function getComparisonSearchIntentNote(slug: string): string | undefined {
   if (slug === "adobe-analytics-vs-segment") {
     return "This page compares Adobe Analytics with Twilio Segment, the customer data platform. It is not a guide to creating or comparing segments inside Adobe Analytics.";
+  }
+  if (slug === "mkdocs-vs-read-the-docs") {
+    return "These are not interchangeable products: MkDocs is a free open-source static documentation generator, while Read the Docs is a managed documentation build and hosting platform that can host MkDocs projects. The decision is mainly self-managed generation and hosting versus paying for managed builds, hosting, access controls, analytics, and support.";
   }
   return undefined;
 }

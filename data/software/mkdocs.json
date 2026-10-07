@@ -18,9 +18,11 @@
     "Deployable anywhere, including GitHub Pages and Amazon S3"
   ],
   "sources": [
-    "https://www.mkdocs.org"
+    "https://www.mkdocs.org",
+    "https://www.mkdocs.org/about/license/",
+    "https://www.mkdocs.org/user-guide/deploying-your-docs/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Docusaurus",
@@ -44,5 +46,30 @@
         "Hosting included"
       ]
     }
+  ],
+  "pricing": {
+    "model": "open_source",
+    "starting_price": "Free and open source under the BSD license",
+    "has_free_tier": true,
+    "status": "free_only",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "MkDocs",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Open-source static site generator; no MkDocs license fee."
+      }
+    ],
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.mkdocs.org/about/license/"
+  },
+  "cons": [
+    "MkDocs generates static documentation but does not provide a managed hosting, build, access-control, analytics, or support service by itself; teams must supply those pieces separately.",
+    "Operational responsibilities such as deployment, hosting, CI integration, backups, and production availability remain with the team or its chosen hosting provider."
   ]
 }
