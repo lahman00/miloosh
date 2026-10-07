@@ -29,6 +29,8 @@ describe("owner payout action queue", () => {
     const hello = OWNER_ACTION_PACKS.find((pack) => pack.id === "partnerstack-hello-payout-rail");
     const personal = OWNER_ACTION_PACKS.find((pack) => pack.id === "partnerstack-personal-payout-rail");
     expect(hello?.preFilledFields["Account email"]).toBe("hello@miloosh.com");
+    expect(hello?.ownerRequiredFields).toEqual([]);
+    expect(hello?.title.toLowerCase()).toContain("verified");
     expect(personal?.preFilledFields["Account email"]).toBe("lahman00@gmail.com");
     // Wrike joined this account 2026-08-25 (see data/affiliate/payout-rails.ts);
     // this checklist must name it too so the owner doesn't miss verifying it.

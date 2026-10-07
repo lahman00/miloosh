@@ -61,10 +61,10 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
       "activecampaign", // New first-party approval + exact PartnerStack referral URL issued 2026-10-02; supersedes Aug decline.
       "apollo-io", // Apollo welcome + exact PartnerStack referral URL issued 2026-10-01.
     ],
-    readiness: "UNVERIFIED",
+    readiness: "VERIFIED",
     ownerActionPackId: "partnerstack-hello-payout-rail",
-    methodGuidance: "PartnerStack Support confirmed a PayPal account is already connected to hello@miloosh.com. Do not replace a working payout provider merely to optimize rails. Verify the account's tax/receipt profile and withdrawal readiness before marking this rail VERIFIED.",
-    notes: "PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed, so this rail remains UNVERIFIED rather than being promoted to VERIFIED. First-party partner mail corroborates the relationships assigned here.",
+    methodGuidance: "Keep the existing PayPal payout provider unless PartnerStack itself reports a problem. PartnerStack Support confirmed PayPal is connected and later confirmed the business account is fully set up with the required tax location.",
+    notes: "Payout readiness is first-party verified. PartnerStack Support confirmed on 2026-09-14 that hello@miloosh.com has a connected PayPal account. In ticket 124689 on 2026-10-01, after being asked specifically whether tax/receipt details were complete and the account could withdraw without additional setup, Support replied that everything was set up correctly, the tax location was filled as needed, and the account should be all set. Program-specific eligibility conditions still apply independently.",
   },
   {
     id: "partnerstack-personal",

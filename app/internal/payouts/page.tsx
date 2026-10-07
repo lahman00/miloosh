@@ -79,7 +79,7 @@ export default function InternalPayoutsPage() {
                       </span>
                     ))}
                   </div>
-                  {pack ? (
+                  {pack && rail.readiness !== "VERIFIED" ? (
                     <div className="mt-5 border-t border-white/10 pt-5">
                       <p className="text-sm font-medium text-zinc-200">Next owner checkpoint</p>
                       <p className="mt-2 text-sm text-zinc-400">{pack.title}</p>

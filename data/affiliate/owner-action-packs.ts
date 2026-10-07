@@ -18,22 +18,16 @@ export interface OwnerActionPack {
 export const OWNER_ACTION_PACKS: readonly OwnerActionPack[] = [
   {
     id: "partnerstack-hello-payout-rail",
-    title: "1. PartnerStack payout verification — hello@miloosh.com",
-    priority: 1,
+    title: "PartnerStack payout verified — hello@miloosh.com",
+    priority: 99,
     loginOrSignupUrl: "https://dash.partnerstack.com/",
     productsCovered: ["constant-contact", "todoist", "moosend", "volza", "pipedrive", "getresponse", "airtable", "krispcall", "hubstaff", "close", "surveymonkey", "freshbooks", "trainual", "callrail", "activecampaign", "apollo-io"],
     comparisonsAffected: 0,
-    commissionEvidence: "PartnerStack Support confirmed hello@miloosh.com is the business account for the assigned relationships and, on 2026-09-14, confirmed a PayPal account is connected. Full tax/receipt-profile and withdrawal readiness were not explicitly confirmed.",
+    commissionEvidence: "PartnerStack Support confirmed PayPal connected on 2026-09-14. In ticket 124689 on 2026-10-01, Support answered Miloosh's explicit read-only payout-readiness question by confirming everything was set up correctly and the required tax location was filled; the account should be all set.",
     preFilledFields: { "Account email": "hello@miloosh.com", "Business / Property": "Miloosh", Website: "https://miloosh.com" },
-    ownerRequiredFields: [
-      "Sign in with the existing email-and-password PartnerStack account; PartnerStack Support explicitly warned not to use Google sign-in for this account",
-      "Open Team settings → Commissions / receipt details and verify the tax-registered location and payout-status checks",
-      "Confirm the already-connected PayPal provider is verified and withdrawal-ready; do not replace it merely to change rails",
-      "Complete any remaining tax/location or provider verification locally only if the dashboard requires it",
-      "ActiveCampaign-specific: verify any required Partner Documentation is complete within the program's 90-day deadline; do not assume approval alone makes commissions payable",
-    ],
-    securityAndComplianceNotes: "Do not put bank details, PayPal/Stripe credentials, identity documents, tax IDs, passwords, or verification codes in chat or source control. PartnerStack Airwallex direct deposit does not support virtual banks or foreign-currency accounts.",
-    postCompletionAutomation: "Record this PartnerStack account payout rail as verified only after the dashboard confirms it.",
+    ownerRequiredFields: [],
+    securityAndComplianceNotes: "No payout action is currently required. Do not expose or change bank, PayPal, tax, identity, password, or verification details unless PartnerStack itself reports a new account-specific requirement.",
+    postCompletionAutomation: "Keep this rail VERIFIED unless new first-party PartnerStack evidence reports a payout or compliance problem. Program-specific commission conditions remain separate.",
   },
   {
     id: "partnerstack-personal-payout-rail",
