@@ -93,5 +93,9 @@
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-09",
     "official_source": "https://www.bigcommerce.com/pricing/"
-  }
+  },
+  "cons": [
+    "Core is capped at $30,000 trailing-12-month GMV and automatically moves to Growth after that threshold.",
+    "Scale includes a GMV base threshold and a 0.9% overage above the published cap; an Open Payment Provider fee can also apply."
+  ]
 }

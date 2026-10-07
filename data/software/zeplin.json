@@ -4,7 +4,11 @@
   "category": "design",
   "description": "Zeplin is a design delivery platform that separates finalized, development-ready designs from work-in-progress, generating developer specs, code snippets, and AI-powered design reviews.",
   "website": "https://zeplin.io",
-  "platforms": ["Web", "macOS", "Windows"],
+  "platforms": [
+    "Web",
+    "macOS",
+    "Windows"
+  ],
   "best_for": "Product teams and enterprises managing design systems who need clean, structured handoffs between designers and developers.",
   "features": [
     "Automated development specs tailored to a team's tech stack",
@@ -16,30 +20,94 @@
     "Integrations with Figma, Sketch, Jira, Storybook, and VS Code"
   ],
   "sources": [
+    "https://support.zeplin.io/en/articles/1166181-choosing-a-subscription-plan",
+    "https://support.zeplin.io/en/articles/9451311-basic-plans",
     "https://zeplin.io"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Figma",
       "slug": "figma",
       "description": "A collaborative interface design tool with real-time multiplayer editing.",
       "best_for": "Product design teams needing collaborative UI/UX design and prototyping.",
-      "strengths": ["Real-time collaboration", "Component libraries", "Dev handoff"]
+      "strengths": [
+        "Real-time collaboration",
+        "Component libraries",
+        "Dev handoff"
+      ]
     },
     {
       "name": "Sketch",
       "slug": "sketch",
       "description": "A vector-based UI design tool for macOS with a large plugin ecosystem.",
       "best_for": "Mac-based design teams wanting a mature, plugin-extensible design tool.",
-      "strengths": ["Vector editing", "Plugin ecosystem", "Symbols/components"]
+      "strengths": [
+        "Vector editing",
+        "Plugin ecosystem",
+        "Symbols/components"
+      ]
     },
     {
       "name": "Marvel",
       "slug": "marvel",
       "description": "A design and prototyping platform with automatic developer handoff specs.",
       "best_for": "Teams wanting fast, code-free prototyping and handoff.",
-      "strengths": ["Interactive prototyping", "Handoff specs", "User testing"]
+      "strengths": [
+        "Interactive prototyping",
+        "Handoff specs",
+        "User testing"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free for 1 project; Basic starts at $13.75/month billed annually or $15 month-to-month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "1 project with up to 100 screens and 1 styleguide with up to 100 components; unlimited invited members."
+      },
+      {
+        "name": "Basic, 1 pack",
+        "amount": "13.75",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "1 project; $13.75/month equivalent on annual billing or $15 month-to-month. Unlimited users, unlimited screens/components, and 1 year of version history."
+      },
+      {
+        "name": "Basic, 3 pack",
+        "amount": "35.75",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "3 projects; $35.75/month equivalent on annual billing or $39 month-to-month."
+      },
+      {
+        "name": "Advanced",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Per-seat plan for larger cross-functional product teams; includes up to 50 active projects, unlimited styleguides, and broader administration/security capabilities."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Per-seat enterprise plan with advanced security, support, and organization controls; contact Zeplin for current pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://support.zeplin.io/en/articles/9451311-basic-plans"
+  },
+  "cons": [
+    "The Free plan is limited to 1 project, 100 screens, and 100 styleguide components.",
+    "Basic is priced per project rather than per seat and includes only 1 year of version history; larger multi-project organizations may need the per-seat Advanced or Enterprise plans.",
+    "Only the workspace owner can upload designs on the Free plan; invited members can review, inspect, comment, and download assets but do not get the same upload control."
   ]
 }

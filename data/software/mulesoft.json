@@ -4,7 +4,9 @@
   "category": "api",
   "description": "MuleSoft Anypoint Platform is Salesforce's unified iPaaS and full-lifecycle API management solution, letting organizations securely design, build, deploy, secure, and manage APIs and integrations at scale in one platform.",
   "website": "https://www.salesforce.com/mulesoft/anypoint-platform/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Enterprise platform and integration teams needing to design, secure, and govern APIs across cloud, on-prem, and hybrid environments, with hundreds of prebuilt connectors for applications, databases, and industry protocols.",
   "features": [
     "API Manager for managing APIs, users, traffic analysis, and SLA monitoring in one interface",
@@ -15,14 +17,20 @@
     "Anypoint Studio with prebuilt connectors for building integrations",
     "Automated MUnit testing and deployment to cloud, on-prem, or hybrid environments"
   ],
-  "sources": ["https://www.salesforce.com/mulesoft/anypoint-platform/", "https://www.mulesoft.com/platform/anypoint-platform-features"],
+  "sources": [
+    "https://www.salesforce.com/mulesoft/anypoint-platform/",
+    "https://www.mulesoft.com/platform/anypoint-platform-features"
+  ],
   "accessed_at": "2026-08-04",
   "pricing": {
     "model": "unknown",
     "has_free_tier": false,
     "status": "contact_sales",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 30 },
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-22",
     "official_source": "https://www.salesforce.com/mulesoft/pricing/"
@@ -33,14 +41,26 @@
       "slug": "kong",
       "description": "Provides API gateway and management products for securely connecting, governing, and monetizing APIs and AI tokens across any cloud.",
       "best_for": "Teams wanting a cloud-agnostic API gateway with AI-agent-specific tooling.",
-      "strengths": ["AI Gateway/token governance", "Multi-cloud flexibility", "Developer Portal"]
+      "strengths": [
+        "AI Gateway/token governance",
+        "Multi-cloud flexibility",
+        "Developer Portal"
+      ]
     },
     {
       "name": "Apigee",
       "slug": "apigee",
       "description": "Google Cloud's API management platform offering design, security, analytics, and lifecycle management for enterprise APIs.",
       "best_for": "Enterprises already on Google Cloud needing integrated API governance and analytics.",
-      "strengths": ["API analytics/monitoring", "Developer portal", "Policy/quota enforcement"]
+      "strengths": [
+        "API analytics/monitoring",
+        "Developer portal",
+        "Policy/quota enforcement"
+      ]
     }
+  ],
+  "cons": [
+    "MuleSoft does not publish a self-serve numeric price for Anypoint Platform; production pricing requires a sales quote.",
+    "The public evaluation is time-limited to 30 days, so long-term cost cannot be determined from the trial alone."
   ]
 }

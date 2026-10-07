@@ -8,6 +8,7 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
+import { isComparisonIndexingReady, isSoftwareIndexingReady } from "@/lib/indexing-quality";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -28,18 +29,22 @@ function latestOf(dates: Date[]): Date {
   return new Date(Math.max(...dates.map((d) => d.getTime())));
 }
 
+export const COMPARISON_TEMPLATE_UPDATED_AT = "2026-10-07";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const allSoftware = getAllSoftware();
   const softwareBySlug = new Map(allSoftware.map((s) => [s.slug, s]));
 
-  const softwarePages: MetadataRoute.Sitemap = allSoftware.map((software) => ({
-    url: `${SITE_URL}/software/${software.slug}`,
-    lastModified: getFirstRevenuePage(software.slug)
-      ? latestOf([toDate(software.accessedAt), toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)])
-      : toDate(software.accessedAt),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const softwarePages: MetadataRoute.Sitemap = allSoftware
+    .filter((software) => isSoftwareIndexingReady(software))
+    .map((software) => ({
+      url: `${SITE_URL}/software/${software.slug}`,
+      lastModified: getFirstRevenuePage(software.slug)
+        ? latestOf([toDate(software.accessedAt), toDate(FIRST_REVENUE_CONTENT_UPDATED_AT)])
+        : toDate(software.accessedAt),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }));
 
   const categoryPages: MetadataRoute.Sitemap = getAllCategories().map((category) => {
     const membersAccessedAt = allSoftware.filter((s) => s.category === category.slug).map((s) => toDate(s.accessedAt));
@@ -60,9 +65,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const comparisonPages: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/compare`, changeFrequency: "weekly", priority: 0.7 },
-    ...PUBLISHED_COMPARISONS.filter(([slugA, slugB]) =>
-      shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB))
-    ).map(([slugA, slugB]) => {
+    ...PUBLISHED_COMPARISONS.filter(([slugA, slugB]) => {
+      const softwareA = softwareBySlug.get(slugA);
+      const softwareB = softwareBySlug.get(slugB);
+      return Boolean(
+        softwareA &&
+          softwareB &&
+          shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB)) &&
+          isComparisonIndexingReady(softwareA, softwareB)
+      );
+    }).map(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);
       const softwareB = softwareBySlug.get(slugB);
       const comparisonSlug = getComparisonSlug(slugA, slugB);
@@ -70,6 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const dates = [softwareA, softwareB]
         .filter((s): s is NonNullable<typeof s> => Boolean(s))
         .map((s) => toDate(s.accessedAt));
+      dates.push(toDate(COMPARISON_TEMPLATE_UPDATED_AT));
       if (moneyPage) dates.push(toDate(moneyPage.updatedAt));
       return {
         url: `${SITE_URL}/compare/${comparisonSlug}`,

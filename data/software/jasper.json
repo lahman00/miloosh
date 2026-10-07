@@ -4,7 +4,9 @@
   "category": "ai",
   "description": "Jasper is an AI platform purpose-built for marketing teams that orchestrates specialized AI agents to execute end-to-end marketing workflows, combining content generation with brand governance and enterprise-scale automation.",
   "website": "https://www.jasper.ai/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Jasper positions itself for marketing teams and roles — product, content, performance, brand, PR/communications, and field/events marketers — across industries like financial services, healthcare, tech, retail, and media.",
   "features": [
     "100+ specialized marketing AI agents (SEO, campaigns, email, social, translation)",
@@ -14,7 +16,9 @@
     "Jasper IQ context layer",
     "LLM-agnostic architecture with API/MCP server"
   ],
-  "sources": ["https://www.jasper.ai/"],
+  "sources": [
+    "https://www.jasper.ai/"
+  ],
   "accessed_at": "2026-08-01",
   "pricing": {
     "model": "paid",
@@ -22,11 +26,30 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 7 },
-    "entry_paid": { "amount": "59", "currency": "USD", "billing_period": "annual", "per_seat": true, "annual_billing_required": true },
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "59",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
     "tiers": [
-      { "name": "Pro", "amount": "59", "currency": "USD", "billing_period": "annual", "unit": "seat", "notes": "Per month per seat, billed annually; $69/month/seat with monthly billing. Includes one seat and a 7-day free trial." },
-      { "name": "Business", "notes": "Custom pricing; adds advanced agents, custom AI agents, Jasper Grid, API access, enterprise governance, dedicated account management, and priority support." }
+      {
+        "name": "Pro",
+        "amount": "59",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "seat",
+        "notes": "Per month per seat, billed annually; $69/month/seat with monthly billing. Includes one seat and a 7-day free trial."
+      },
+      {
+        "name": "Business",
+        "notes": "Custom pricing; adds advanced agents, custom AI agents, Jasper Grid, API access, enterprise governance, dedicated account management, and priority support."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-25",
@@ -38,14 +61,26 @@
       "slug": "copy-ai",
       "description": "An AI-native GTM platform spanning sales, marketing, and operations rather than marketing-only content.",
       "best_for": "GTM teams wanting one platform to replace multiple point-solution copilots.",
-      "strengths": ["2,000+ integrations", "LLM-agnostic", "Cross-functional (sales/marketing/ops) scope"]
+      "strengths": [
+        "2,000+ integrations",
+        "LLM-agnostic",
+        "Cross-functional (sales/marketing/ops) scope"
+      ]
     },
     {
       "name": "ChatGPT",
       "slug": "chatgpt",
       "description": "OpenAI's general-purpose AI assistant, usable for drafting any content type.",
       "best_for": "Teams wanting a flexible all-purpose writing/research tool instead of a dedicated marketing suite.",
-      "strengths": ["Broad general use", "Voice/vision input", "Coding (Codex) capability"]
+      "strengths": [
+        "Broad general use",
+        "Voice/vision input",
+        "Coding (Codex) capability"
+      ]
     }
+  ],
+  "cons": [
+    "Pro includes one seat; additional team and enterprise capabilities move to the custom-priced Business plan.",
+    "The public self-serve trial is 7 days, and the lower Pro monthly equivalent requires annual billing."
   ]
 }

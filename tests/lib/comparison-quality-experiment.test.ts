@@ -1,8 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { generateWhoShouldChoose, generateWhoShouldChoosePairAware, generateComparisonData } from "@/lib/comparison";
-import { TREATMENT_COHORT, CONTROL_COHORT } from "@/data/experiments/comparison-quality-cohort";
 import { getSoftware } from "@/data/software";
-import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 
 /**
  * GOOGLE INDEXATION QUALITY WAR mission (2026-08-22). Proves the
@@ -54,57 +53,34 @@ describe("generateWhoShouldChoosePairAware", () => {
   });
 });
 
-describe("Comparison quality experiment — cohort gating", () => {
-  it("both cohorts have exactly 20 real, distinct, currently-published comparison slugs with no overlap", () => {
-    expect(TREATMENT_COHORT).toHaveLength(20);
-    expect(CONTROL_COHORT).toHaveLength(20);
-    expect(new Set(TREATMENT_COHORT).size).toBe(20);
-    expect(new Set(CONTROL_COHORT).size).toBe(20);
-    const overlap = TREATMENT_COHORT.filter((slug) => (CONTROL_COHORT as readonly string[]).includes(slug));
-    expect(overlap).toEqual([]);
-
-    const publishedSlugs = new Set(PUBLISHED_COMPARISONS.map(([a, b]) => getComparisonSlug(a, b)));
-    for (const slug of [...TREATMENT_COHORT, ...CONTROL_COHORT]) {
-      expect(publishedSlugs.has(slug), `${slug} is not a currently-published comparison`).toBe(true);
-    }
-  });
-
-  it("every TREATMENT_COHORT page's whoShouldChoose output differs from the plain (control-style) generator whenever a real difference exists", () => {
-    for (const slug of TREATMENT_COHORT) {
-      const marker = slug.indexOf("-vs-");
-      const slugA = slug.slice(0, marker);
-      const slugB = slug.slice(marker + 4);
-      const softwareA = getSoftware(slugA);
-      const softwareB = getSoftware(slugB);
-      if (!softwareA || !softwareB) continue;
+describe("Comparison pair-aware copy — full rollout", () => {
+  it("uses pair-aware choice text on every published comparison while preserving the grounded base claim", () => {
+    for (const [slugA, slugB] of PUBLISHED_COMPARISONS) {
+      const softwareA = getSoftware(slugA)!;
+      const softwareB = getSoftware(slugB)!;
       const data = generateComparisonData(softwareA, softwareB);
-      const plainA = generateWhoShouldChoose(softwareA);
-      const plainB = generateWhoShouldChoose(softwareB);
-      // At minimum, the treatment output must always start with the plain sentence (never diverge in the base claim).
-      expect(data.whoShouldChooseA.startsWith(plainA)).toBe(true);
-      expect(data.whoShouldChooseB.startsWith(plainB)).toBe(true);
+
+      expect(data.whoShouldChooseA.startsWith(generateWhoShouldChoose(softwareA))).toBe(true);
+      expect(data.whoShouldChooseB.startsWith(generateWhoShouldChoose(softwareB))).toBe(true);
     }
   });
 
-  it("every CONTROL_COHORT page produces EXACTLY the plain, unchanged generateWhoShouldChoose output — proving the experiment doesn't leak", () => {
-    for (const slug of CONTROL_COHORT) {
-      const marker = slug.indexOf("-vs-");
-      const slugA = slug.slice(0, marker);
-      const slugB = slug.slice(marker + 4);
-      const softwareA = getSoftware(slugA);
-      const softwareB = getSoftware(slugB);
-      if (!softwareA || !softwareB) continue;
-      const data = generateComparisonData(softwareA, softwareB);
-      expect(data.whoShouldChooseA).toBe(generateWhoShouldChoose(softwareA));
-      expect(data.whoShouldChooseB).toBe(generateWhoShouldChoose(softwareB));
-    }
-  });
-
-  it("a comparison NOT in either cohort also produces the exact unchanged plain output (the default for all other 1,192 pages)", () => {
+  it("changes the recommendation context for the same product when the competitor changes and real differences exist", () => {
     const notion = getSoftware("notion")!;
-    const slack = getSoftware("slack")!;
-    const data = generateComparisonData(notion, slack);
+    const clickup = getSoftware("clickup")!;
+    const coda = getSoftware("coda")!;
+
+    const vsClickup = generateComparisonData(notion, clickup).whoShouldChooseA;
+    const vsCoda = generateComparisonData(notion, coda).whoShouldChooseA;
+
+    expect(vsClickup).not.toBe(vsCoda);
+  });
+
+  it("never fabricates pair-specific copy when two products expose identical feature/platform sets", () => {
+    const notion = getSoftware("notion")!;
+    const identicalTwin = { ...notion, name: "NotionTwin", slug: "notion-twin" };
+    const data = generateComparisonData(notion, identicalTwin);
+
     expect(data.whoShouldChooseA).toBe(generateWhoShouldChoose(notion));
-    expect(data.whoShouldChooseB).toBe(generateWhoShouldChoose(slack));
   });
 });

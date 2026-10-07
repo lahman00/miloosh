@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { SectionHeading } from "@/components/SectionHeading";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { getCategoryName } from "@/data/categories";
 
@@ -20,11 +19,17 @@ export default function GuidesPage() {
   return (
     <main className="flex-1 py-16 sm:py-20">
       <Container>
-        <SectionHeading
-          eyebrow="Decision guides"
-          title="Start with the job, not the software logo"
-          description={`${guides.length} practical guides for common buying and switching decisions, built from the same sourced product dataset as our comparisons.`}
-        />
+        <header className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+            Decision guides
+          </p>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Start with the job, not the software logo
+          </h1>
+          <p className="mt-4 text-base leading-7 text-zinc-400 sm:text-lg">
+            {guides.length} practical guides for common buying and switching decisions, built from the same sourced product dataset as our comparisons.
+          </p>
+        </header>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {guides.map((guide) => (

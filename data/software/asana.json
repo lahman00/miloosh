@@ -119,5 +119,9 @@
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-09",
     "official_source": "https://asana.com/pricing"
-  }
+  },
+  "cons": [
+    "The free Personal plan is limited to 2 users; larger teams need a paid tier.",
+    "Portfolios, goals, workload, approvals, and time tracking require Advanced rather than Starter."
+  ]
 }

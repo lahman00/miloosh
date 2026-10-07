@@ -95,5 +95,9 @@
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-09",
     "official_source": "https://calendly.com/pricing"
-  }
+  },
+  "cons": [
+    "The Free plan is limited to one event type and one calendar connection; multiple event types and calendars require Standard or higher.",
+    "Enterprise starts at $15,000 per year and 50 seats, making it a materially different commitment from the self-serve plans."
+  ]
 }

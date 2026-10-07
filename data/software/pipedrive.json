@@ -28,13 +28,45 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "14", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "14",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Lite", "amount": "14", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$168/seat/year). Lead, calendar and pipeline management." },
-      { "name": "Growth", "amount": "39", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$468/seat/year). Full email sync, automations and nurturing sequences." },
-      { "name": "Premium", "amount": "59", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$708/seat/year). Lead generation/routing, AI-powered multi-email tools, e-signatures." },
-      { "name": "Ultimate", "amount": "79", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (US$948/seat/year). Sandbox account, extended phone support, security alerts." }
+      {
+        "name": "Lite",
+        "amount": "14",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (US$168/seat/year). Lead, calendar and pipeline management."
+      },
+      {
+        "name": "Growth",
+        "amount": "39",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (US$468/seat/year). Full email sync, automations and nurturing sequences."
+      },
+      {
+        "name": "Premium",
+        "amount": "59",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (US$708/seat/year). Lead generation/routing, AI-powered multi-email tools, e-signatures."
+      },
+      {
+        "name": "Ultimate",
+        "amount": "79",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (US$948/seat/year). Sandbox account, extended phone support, security alerts."
+      }
     ],
     "last_verified": "2026-08-22",
     "official_source": "https://www.pipedrive.com/en/pricing"
@@ -74,5 +106,9 @@
       ]
     }
   ],
-  "order": 14
+  "order": 14,
+  "cons": [
+    "Lite does not include the full email sync, automations, and nurturing sequences listed for Growth, so those workflows require a higher-priced seat.",
+    "The published per-seat prices are annual-billing rates; total cost grows directly with the number of paid seats."
+  ]
 }

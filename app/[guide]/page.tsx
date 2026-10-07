@@ -270,17 +270,20 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                         {p.summaryBestFor ?? p.software.bestFor}
                       </td>
                       <td className="py-4 px-4 font-semibold text-white">
-                        {p.summaryPrice ?? p.software.pricing?.startingPrice ?? "Contact sales"}
+                        {p.software.pricing?.startingPrice ??
+                          (p.software.pricing?.status === "contact_sales" ? "Contact sales" : "Verify current pricing")}
                       </td>
                       <td className="py-4 px-4 text-xs text-zinc-400">
-                        {p.summaryAvailability ? (
-                          <span className="text-zinc-300">{p.summaryAvailability}</span>
-                        ) : p.software.pricing?.hasFreeTier ? (
+                        {p.software.pricing?.freePlan || p.software.pricing?.hasFreeTier ? (
                           <span className="text-emerald-400 font-semibold">Free Plan</span>
                         ) : p.software.pricing?.freeTrial?.available ? (
                           <span className="text-zinc-300">Free Trial</span>
-                        ) : (
+                        ) : p.software.pricing?.status === "contact_sales" ? (
+                          <span className="text-zinc-300">Quote required</span>
+                        ) : p.software.pricing ? (
                           <span className="text-zinc-400">Paid only</span>
+                        ) : (
+                          <span className="text-zinc-400">Verify with vendor</span>
                         )}
                       </td>
                       <td className="hidden py-4 px-4 text-right sm:table-cell">
@@ -433,9 +436,18 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
 
                   <div>
                     <h5 className="text-xs font-bold text-white uppercase tracking-wider mb-2">Pricing Context</h5>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-3">
-                      {p.pricingNote}
+                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-2">
+                      {p.software.pricing?.startingPrice ?? "Verify current pricing with the vendor."}
                     </p>
+                    {p.software.pricing?.lastVerified ? (
+                      <p className="mb-3 text-[11px] text-zinc-500">
+                        Pricing verified {p.software.pricing.lastVerified}. See the full profile for current tier details and limits.
+                      </p>
+                    ) : (
+                      <p className="mb-3 text-[11px] text-zinc-500">
+                        Verify current pricing with the vendor before buying.
+                      </p>
+                    )}
                     <div className="text-xs text-zinc-400">
                       Platforms: {p.software.platforms?.join(", ") ?? "Web"}
                     </div>

@@ -4,8 +4,12 @@
   "category": "customer-support",
   "description": "Freshdesk (by Freshworks) is an AI-powered customer service solution designed to be easy to set up and boost agent productivity while delivering seamless customer experiences.",
   "website": "https://www.freshworks.com/freshdesk/",
-  "platforms": ["Web", "iOS", "Android"],
-  "best_for": "Positioned for organizations from mid-market to enterprise, trusted by 74,000+ companies including Forbes, Bridgestone, and PepsiCo.",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Teams that need email-first ticketing, a shared inbox, customer portal, automation, reporting, and optional AI features, with paid plans that scale by agent.",
   "features": [
     "AI agents that resolve customer intent and take action",
     "AI Copilot prioritizing agent work and recommending next steps",
@@ -14,27 +18,65 @@
     "Omnichannel connections (WhatsApp, Messenger, Instagram, Line)",
     "Integrations with Slack, Teams, Shopify, Salesforce, Jira, HubSpot"
   ],
-  "sources": ["https://www.freshworks.com/freshdesk/", "https://www.freshworks.com/freshdesk/mobile/"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.freshworks.com/freshdesk/",
+    "https://www.freshworks.com/freshdesk/pricing/",
+    "https://partnersupport.freshworks.com/support/solutions/articles/50000010099-explore-freshdesk-free-program",
+    "https://www.freshworks.com/freshdesk/mobile/"
+  ],
+  "accessed_at": "2026-10-07",
   "pricing": {
-    "model": "paid",
-    "starting_price": "$19/agent/month",
-    "has_free_tier": false,
+    "model": "freemium",
+    "starting_price": "$19/agent/month for paid plans; a limited six-month Free Program is available for up to 2 agents",
+    "has_free_tier": true,
     "status": "verified",
-    "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "19", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "19",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Growth", "amount": "19", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox." },
-      { "name": "Pro", "amount": "55", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk." },
-      { "name": "Enterprise", "amount": "89", "currency": "USD", "billing_period": "annual", "notes": "Per agent/month, billed annually. All AI and helpdesk features." }
+      {
+        "name": "Free Program",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Limited program for Freshdesk (not Freshdesk Omni): up to 2 agents for 6 months. Switching to it is handled through Customer Success rather than normal self-service."
+      },
+      {
+        "name": "Growth",
+        "amount": "19",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per agent/month, billed annually (20% cheaper than monthly). Freddy AI Agent (first 500 sessions included), ticketing and shared inbox."
+      },
+      {
+        "name": "Pro",
+        "amount": "55",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per agent/month, billed annually. Most popular. More AI and helpdesk features, multilingual helpdesk."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "89",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per agent/month, billed annually. All AI and helpdesk features."
+      }
     ],
-    "last_verified": "2026-08-23",
+    "last_verified": "2026-10-07",
     "official_source": "https://www.freshworks.com/freshdesk/pricing/"
   },
   "cons": [
-    "New signups get a 14-day trial of the Enterprise plan, not the plan you'll actually pay for -- confirm your real plan's feature set before committing.",
-    "Freddy AI Copilot is a paid add-on ($29/agent/month) on top of any tier, not bundled into the base per-agent price."
+    "Freshdesk's current Free Program is temporary rather than a permanent free tier: it is limited to six months and up to two agents, and switching to it is handled through Customer Success.",
+    "Paid Freshdesk plans start at $19/agent/month billed annually; AI sessions and some AI features can add usage or per-agent charges beyond the base seat price."
   ],
   "alternatives": [
     {
@@ -42,14 +84,22 @@
       "slug": "zendesk",
       "description": "An AI-first service platform unifying ticketing, omnichannel messaging, and self-learning AI agents.",
       "best_for": "Larger organizations needing contact-center and workforce-management capability alongside AI ticketing.",
-      "strengths": ["Broad omnichannel routing", "Workforce management", "Employee service tools"]
+      "strengths": [
+        "Broad omnichannel routing",
+        "Workforce management",
+        "Employee service tools"
+      ]
     },
     {
       "name": "Gorgias",
       "slug": "gorgias",
       "description": "A conversational AI helpdesk built specifically for ecommerce brands, especially Shopify merchants.",
       "best_for": "Ecommerce/DTC brands wanting support tightly integrated with order and revenue data.",
-      "strengths": ["Native Shopify integration", "AI shopping assistant", "In-conversation order actions"]
+      "strengths": [
+        "Native Shopify integration",
+        "AI shopping assistant",
+        "In-conversation order actions"
+      ]
     },
     {
       "name": "Zoho Desk",

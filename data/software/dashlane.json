@@ -104,5 +104,9 @@
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-09",
     "official_source": "https://support.dashlane.com/hc/en-us/articles/37023818065938-FAQ-about-professional-plan-changes"
-  }
+  },
+  "cons": [
+    "The $4/user Credential Protection plan is not a full password-management replacement; full password and passkey management is priced separately.",
+    "The combined Enterprise package is custom-priced and targeted at organizations with 50 or more employees."
+  ]
 }

@@ -23,61 +23,61 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$19/month",
+    "starting_price": "Lite list price: $23/month before temporary promotions",
     "has_free_tier": false,
     "status": "verified",
+    "free_plan": false,
     "free_trial": {
       "available": true,
       "days": 30
     },
     "entry_paid": {
-      "amount": "19",
+      "amount": "23",
       "currency": "USD",
       "billing_period": "monthly"
     },
     "tiers": [
       {
         "name": "Lite",
-        "amount": "19",
+        "amount": "23",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Send unlimited invoices to up to 5 billable clients; track expenses and tax reports."
+        "notes": "List price. Promotional pricing for new customers may be much lower for a limited period."
       },
       {
         "name": "Plus",
-        "amount": "33",
+        "amount": "43",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Up to 50 billable clients; adds automated recurring invoices, client retainers, and double-entry reports."
+        "notes": "List price. Promotional pricing may apply."
       },
       {
         "name": "Premium",
-        "amount": "60",
+        "amount": "70",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Unlimited billable clients; adds project profitability tracking, customize email templates, and accounts payable."
+        "notes": "List price. Promotional pricing may apply."
       },
       {
         "name": "Select",
-        "amount": "Custom",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Dedicated account manager, customized migration, and lower credit card transaction fees."
+        "billing_period": "unknown",
+        "notes": "Custom quote."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
+    "last_verified": "2026-10-07",
     "official_source": "https://www.freshbooks.com/pricing"
   },
   "pros": [
-    "Exceptionally user-friendly invoicing and client payment workflow",
-    "Built-in time tracking and project profitability tools included in core platform",
-    "Client portal allowing customers to view, accept estimates, and pay invoices directly"
+    "Invoicing, online payments, time tracking, and project profitability are integrated in one workflow",
+    "Client portal lets customers view estimates, invoices, and payments in one place",
+    "30-day trial and published list pricing make the entry cost easy to evaluate"
   ],
   "cons": [
-    "Lower tiers enforce strict limits on billable client counts (5 on Lite, 50 on Plus)",
-    "Each additional team member seat costs an extra $11/month",
-    "Inventory tracking and advanced supply-chain features are less comprehensive than QuickBooks Online"
+    "Lite and Plus cap billable clients at 5 and 50 respectively; Premium removes the billable-client cap.",
+    "Additional team members cost $11/month per user on the current pricing page.",
+    "FreshBooks frequently runs temporary new-customer promotions, so the checkout price can differ sharply from the regular list price."
   ],
   "faq": [
     {
@@ -86,7 +86,7 @@
     },
     {
       "question": "How does FreshBooks pricing compare to QuickBooks Online?",
-      "answer": "FreshBooks entry pricing ($19/mo on Lite) is lower than QuickBooks Online Simple Start ($38/mo), but FreshBooks caps the number of active billable clients on Lite (5) and Plus (50), whereas QuickBooks does not cap client counts."
+      "answer": "FreshBooks' current USD list price starts at $23/month on Lite before temporary promotions. Rather than comparing a promotional FreshBooks price with a separate QuickBooks price, compare the current list price, client limits, team-seat costs, and the accounting features your business actually needs."
     }
   ],
   "tags": [
@@ -99,9 +99,10 @@
   ],
   "sources": [
     "https://www.freshbooks.com/pricing",
+    "https://www.freshbooks.com/2026-faq-price-change",
     "https://www.freshbooks.com"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "QuickBooks Online",

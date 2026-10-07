@@ -10,36 +10,42 @@
     "Android"
   ],
   "pricing": {
-    "status": "unknown",
+    "model": "freemium",
+    "starting_price": "Free site available; paid-plan prices and currency vary by location",
+    "has_free_tier": true,
+    "status": "verified",
     "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
     "tiers": [
       {
         "name": "Free",
         "amount": "0",
         "currency": "USD",
-        "notes": "A free website is not a payment-enabled store."
+        "billing_period": "monthly",
+        "notes": "No credit card required; includes Wix hosting and editor. It is not a payment-enabled ecommerce plan."
       },
       {
         "name": "Light",
-        "notes": "For a website without accepting payments through the site. Confirm current regional pricing."
+        "notes": "Paid website plan for basic site needs; accepting payments is not listed for this tier. Pricing varies by location."
       },
       {
         "name": "Core",
-        "notes": "Includes accepting payments and basic ecommerce. Confirm the required features and current regional quote."
+        "notes": "Adds accepting payments and basic ecommerce. Pricing and currency vary by location."
       },
       {
         "name": "Business",
-        "notes": "Includes accepting payments and standard ecommerce. Match required features to the local quote."
+        "notes": "Adds standard ecommerce and broader business features. Pricing and currency vary by location."
       },
       {
         "name": "Business Elite",
-        "notes": "Advanced ecommerce tier. Confirm required features and current regional pricing before upgrading."
+        "notes": "Adds advanced ecommerce and higher resource/collaborator allowances. Pricing and currency vary by location."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-09-17",
-    "official_source": "https://www.wix.com/plans",
-    "starting_price": "Regional pricing; confirm your local plan quote"
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.wix.com/plans"
   },
   "best_for": "Wix positions itself for small business owners, entrepreneurs, creatives, and individuals seeking an accessible way to establish an online presence, including a free plan.",
   "features": [
@@ -51,10 +57,11 @@
     "SEO tools"
   ],
   "sources": [
+    "https://www.wix.com/plans",
     "https://www.wix.com",
     "https://www.wix.com/mobile/wix-app"
   ],
-  "accessed_at": "2026-08-01",
+  "accessed_at": "2026-10-07",
   "affiliate_url": "https://wix.pxf.io/c/7623171/2096727/25616?trafcat=wsb",
   "alternatives": [
     {
@@ -79,5 +86,10 @@
         "Large community/theme library"
       ]
     }
+  ],
+  "cons": [
+    "The free Wix site is not a payment-enabled store; accepting payments and basic ecommerce require Core or a higher plan.",
+    "Wix states that prices and currency vary by location, and yearly subscription prices are paid in full at purchase, so a displayed monthly equivalent is not a universal monthly quote.",
+    "Advanced ecommerce is reserved for higher plans, so stores should match required commerce features to Core, Business, or Business Elite before upgrading."
   ]
 }

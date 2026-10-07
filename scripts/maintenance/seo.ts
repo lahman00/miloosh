@@ -4,6 +4,8 @@ import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import { isComparisonIndexingReady, isSoftwareIndexingReady } from "@/lib/indexing-quality";
 import { generateTitle, generateMetaDescription } from "@/lib/generators";
 import { generateComparisonTitle, generateComparisonMetaDescription } from "@/lib/comparison";
 import { LEGAL_PAGES } from "@/lib/legal";
@@ -284,16 +286,29 @@ async function run() {
   const sitemapUrls = new Set(sitemapEntries.map((e) => e.url));
   const sitemapCheckIssues: MaintenanceIssue[] = [];
 
+  const allSoftware = getAllSoftware();
+  const softwareBySlug = new Map(allSoftware.map((software) => [software.slug, software]));
   const expectedUrls = [
     SITE_URL,
     `${SITE_URL}/about`,
     `${SITE_URL}/contact`,
     `${SITE_URL}/recommend`,
     `${SITE_URL}/compare`,
-    ...getAllSoftware().map((s) => `${SITE_URL}/software/${s.slug}`),
+    ...allSoftware
+      .filter((software) => isSoftwareIndexingReady(software))
+      .map((software) => `${SITE_URL}/software/${software.slug}`),
     ...getAllCategories().map((c) => `${SITE_URL}/category/${c.slug}`),
     ...getAllRoleGuides().map((g) => `${SITE_URL}/${g.slug}`),
-    ...PUBLISHED_COMPARISONS.map(([a, b]) => `${SITE_URL}/compare/${getComparisonSlug(a, b)}`),
+    ...PUBLISHED_COMPARISONS.filter(([a, b]) => {
+      const softwareA = softwareBySlug.get(a);
+      const softwareB = softwareBySlug.get(b);
+      return Boolean(
+        softwareA &&
+          softwareB &&
+          shouldSubmitComparisonToSitemap(getComparisonSlug(a, b)) &&
+          isComparisonIndexingReady(softwareA, softwareB)
+      );
+    }).map(([a, b]) => `${SITE_URL}/compare/${getComparisonSlug(a, b)}`),
     ...LEGAL_PAGES.map((p) => `${SITE_URL}${p.href}`),
   ];
   for (const expected of expectedUrls) {

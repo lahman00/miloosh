@@ -22,9 +22,11 @@
     "Seamless Meet integration for launching video calls"
   ],
   "sources": [
-    "https://workspace.google.com/products/chat"
+    "https://workspace.google.com/products/chat/",
+    "https://support.google.com/chat/answer/7653601?hl=en",
+    "https://workspace.google.com/pricing"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Slack",
@@ -59,5 +61,63 @@
         "Security controls"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free with a Google Account; included with Google Workspace at no additional Chat fee, with Business Starter at $7/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "tiers": [
+      {
+        "name": "Google Account",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Google Chat can be used with a Google Account. Business administration and some premium features require Google Workspace."
+      },
+      {
+        "name": "Workspace Business Starter",
+        "amount": "7",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Standard list price per user/month before temporary promotions; Chat is included as part of the Workspace bundle."
+      },
+      {
+        "name": "Workspace Business Standard",
+        "amount": "14",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Standard list price per user/month; includes broader Workspace and Gemini features."
+      },
+      {
+        "name": "Workspace Business Plus",
+        "amount": "22",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Standard list price per user/month; adds higher storage, security, and meeting capabilities."
+      },
+      {
+        "name": "Workspace Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Contact sales; Chat is included within the Enterprise Workspace bundle."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://workspace.google.com/pricing"
+  },
+  "cons": [
+    "Google Chat does not have a separate business subscription price: business capabilities are bundled into Google Workspace, so teams pay for the broader Workspace plan rather than Chat alone.",
+    "For work or school accounts, the organization must configure and enable Chat; users who cannot see Chat may need their Workspace administrator to turn it on.",
+    "Some AI and business features shown on Google's Chat product pages are available only on qualifying Workspace Business or Enterprise plans."
   ]
 }

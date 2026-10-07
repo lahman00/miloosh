@@ -34,12 +34,40 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "entry_paid": { "amount": "14.50", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "entry_paid": {
+      "amount": "14.50",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Free account includes unlimited messaging and calling with other Webex users, and meetings up to 40 minutes with up to 100 attendees in supported countries." },
-      { "name": "Meet", "amount": "14.50", "currency": "USD", "billing_period": "monthly", "unit": "license", "notes": "Per license per month; meetings up to 24 hours with up to 200 attendees and 10 GB cloud meeting recording." },
-      { "name": "Meet + Call", "amount": "25.00", "currency": "USD", "billing_period": "monthly", "unit": "license", "notes": "Per license per month; includes Meet features plus business calling capabilities." },
-      { "name": "Enterprise", "notes": "Webex also offers enterprise plans; some plans require contacting sales." }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free account includes unlimited messaging and calling with other Webex users, and meetings up to 40 minutes with up to 100 attendees in supported countries."
+      },
+      {
+        "name": "Meet",
+        "amount": "14.50",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "license",
+        "notes": "Per license per month; meetings up to 24 hours with up to 200 attendees and 10 GB cloud meeting recording."
+      },
+      {
+        "name": "Meet + Call",
+        "amount": "25.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "license",
+        "notes": "Per license per month; includes Meet features plus business calling capabilities."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Webex also offers enterprise plans; some plans require contacting sales."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-25",
@@ -79,5 +107,9 @@
         "AI voice agents"
       ]
     }
+  ],
+  "cons": [
+    "Free meetings are limited to 40 minutes and up to 100 attendees in supported countries.",
+    "Meet extends meeting limits, but business calling requires the higher-priced Meet + Call plan."
   ]
 }

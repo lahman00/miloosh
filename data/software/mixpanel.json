@@ -4,7 +4,9 @@
   "category": "analytics",
   "description": "Mixpanel describes itself as \"the product intelligence platform for the AI era,\" combining analytics, session replay, experiments, feature flags, and AI-powered insights.",
   "website": "https://mixpanel.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for product, data, marketing, and engineering teams — from startups to enterprises across SaaS, ecommerce, media, healthcare, and finance — who want fast, data-driven product decisions without needing SQL.",
   "features": [
     "Product and web analytics with fast querying",
@@ -14,22 +16,71 @@
     "Mixpanel AI (automated insight/agent surfacing)",
     "Warehouse/CDP connectors and headless/programmatic data access"
   ],
-  "sources": ["https://mixpanel.com", "https://mixpanel.com/platform"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://mixpanel.com/pricing/",
+    "https://mixpanel.com",
+    "https://mixpanel.com/platform"
+  ],
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Amplitude",
       "slug": "amplitude",
       "description": "A product analytics platform bringing AI into product-building, with experimentation and feature management.",
       "best_for": "Product, data, and engineering teams needing product analytics with feature experimentation.",
-      "strengths": ["Instant query results", "Session replay and heatmaps", "Feature experimentation"]
+      "strengths": [
+        "Instant query results",
+        "Session replay and heatmaps",
+        "Feature experimentation"
+      ]
     },
     {
       "name": "Heap",
       "slug": "heap",
       "description": "A product analytics platform that automatically captures every user interaction without manual event tagging.",
       "best_for": "Product teams wanting automatic data capture for conversion and retention analysis.",
-      "strengths": ["Automatic data capture", "Session replay", "Automated friction detection"]
+      "strengths": [
+        "Automatic data capture",
+        "Session replay",
+        "Automated friction detection"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free up to 1M events/month; Growth starts at $0 and scales with event volume",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Unlimited seats; up to 1M events/month, 10K session replays/month, 1K MEU/month for experiments, and 10 active feature flags."
+      },
+      {
+        "name": "Growth",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $0 with the first 1M events free, then scales by event volume up to 20M events/month. The pricing calculator shows different annual and monthly rates at higher volumes."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Contact sales; supports up to 1T events/month with custom replay, experimentation, retention, alerts, and dedicated support."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://mixpanel.com/pricing/"
+  },
+  "cons": [
+    "Free is capped at 1M events per month and 10K session replays; higher event or replay volumes require Growth or Enterprise.",
+    "Growth pricing is usage-based after the free event allowance, so the displayed cost changes with annual event volume and billing term rather than staying at a flat subscription price.",
+    "Several advanced monitoring, data-management, and enterprise-support capabilities are reserved for higher tiers or sold as add-ons."
   ]
 }

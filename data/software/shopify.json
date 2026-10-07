@@ -28,33 +28,35 @@
         "amount": "29",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Monthly equivalent with annual billing, not the annual total. $39/mo if billed monthly instead. Shopify lists a 2% third-party payment-provider transaction fee on this plan; that fee is separate from the provider’s own processing charge."
+        "notes": "$29/month equivalent when billed yearly; $39 month-to-month. Shopify lists a 2% third-party payment-provider fee when not using Shopify Payments."
       },
       {
         "name": "Grow",
         "amount": "79",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Monthly equivalent with annual billing, not the annual total. Shopify lists a 1% third-party payment-provider transaction fee on this plan; that fee is separate from the provider’s own processing charge. Up to 5 staff accounts."
+        "notes": "$79/month equivalent when billed yearly; $105 month-to-month. Up to 5 staff accounts; 1% third-party payment-provider fee."
       },
       {
         "name": "Advanced",
         "amount": "299",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Monthly equivalent with annual billing, not the annual total. Shopify lists a 0.6% third-party payment-provider transaction fee on this plan; that fee is separate from the provider’s own processing charge. Up to 15 staff accounts."
+        "notes": "$299/month equivalent when billed yearly; $399 month-to-month. Up to 15 staff accounts; 0.6% third-party payment-provider fee."
       },
       {
         "name": "Plus",
         "amount": "2300",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Starting price ('from'), for complex/high-volume businesses — likely negotiated above this for most merchants."
+        "notes": "Starts at $2,300/month on a 3-year term; more complex business structures can use a variable platform fee."
       }
     ],
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-10-07",
     "official_source": "https://www.shopify.com/pricing",
-    "model": "paid"
+    "model": "paid",
+    "starting_price": "$29/month billed yearly for Basic; $39 month-to-month",
+    "has_free_tier": false
   },
   "best_for": "Positioned for businesses of all sizes — from solo entrepreneurs launching their first store to large enterprises.",
   "features": [
@@ -66,9 +68,11 @@
     "Shipping/international tools (Shopify Markets)"
   ],
   "sources": [
+    "https://www.shopify.com/pricing",
+    "https://www.shopify.com/plus/pricing",
     "https://www.shopify.com"
   ],
-  "accessed_at": "2026-08-01",
+  "accessed_at": "2026-10-07",
   "affiliate_url": "https://shopify.pxf.io/L0EG9O",
   "alternatives": [
     {
@@ -93,5 +97,10 @@
         "Large plugin ecosystem"
       ]
     }
+  ],
+  "cons": [
+    "Shopify's lowest displayed Basic price requires annual billing; month-to-month Basic is $39 instead of the $29 annual-billing equivalent.",
+    "If a merchant uses a third-party payment provider instead of Shopify Payments, Shopify lists additional transaction fees of 2% on Basic, 1% on Grow, and 0.6% on Advanced.",
+    "Shopify Plus starts at $2,300/month on a 3-year term, so the enterprise tier has a much larger minimum commitment than the self-serve plans."
   ]
 }

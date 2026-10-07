@@ -21,60 +21,53 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$49/month",
+    "starting_price": "Starter: $99/month, or $69/month billed yearly for up to 10 units",
     "has_free_tier": false,
     "status": "verified",
+    "free_plan": false,
     "free_trial": {
-      "available": true,
-      "days": 14
+      "available": true
     },
     "entry_paid": {
-      "amount": "49",
+      "amount": "69",
       "currency": "USD",
-      "billing_period": "monthly"
+      "billing_period": "annual"
     },
     "tiers": [
       {
         "name": "Starter",
-        "amount": "49",
+        "amount": "69",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Up to 20 units; accounting, CRM, and rent collection."
-      },
-      {
-        "name": "Pro",
-        "amount": "79",
-        "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds owner portal, tenant screening, and outgoing payments."
+        "billing_period": "annual",
+        "notes": "$69/month equivalent billed yearly; $99 month-to-month; max 10 units on the current pricing page."
       },
       {
         "name": "Premium",
-        "amount": "109",
+        "amount": "209",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds open API access, custom website, and personalized onboarding."
+        "billing_period": "annual",
+        "notes": "$209/month equivalent billed yearly; $239 month-to-month on the current pricing page."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
+    "last_verified": "2026-10-07",
     "official_source": "https://www.doorloop.com/pricing"
   },
   "pros": [
-    "Extremely intuitive and modern user interface compared to legacy PM tools",
+    "Modern web and mobile interface with residential, commercial, HOA, and storage workflows in one account",
     "Supports all property types (residential, commercial, HOA, storage) in one login",
     "Built-in double-entry accounting eliminates mandatory third-party software"
   ],
   "cons": [
-    "No perpetual free plan; requires paid subscription after 14-day trial",
-    "Base price covers up to 20 units; per-unit pricing increases with portfolio scale",
-    "Advanced API access restricted to Premium tier"
+    "Starter is capped at 10 units on the current pricing page; larger portfolios move to higher plans.",
+    "Some services carry additional fees, including certain payment, screening, eSignature, and website-related charges depending on plan.",
+    "The lowest advertised monthly equivalent requires annual billing; month-to-month pricing is higher."
   ],
   "sources": [
     "https://www.doorloop.com/pricing",
     "https://www.doorloop.com"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "AppFolio",
@@ -104,7 +97,7 @@
       "description": "Affordable cloud property management and rent collection software for DIY landlords.",
       "best_for": "Smaller DIY landlords seeking budget-friendly rental management",
       "strengths": [
-        "Low entry price ($17/mo)",
+        "Lower-cost entry plans",
         "Direct rent collection",
         "Listing syndication"
       ]

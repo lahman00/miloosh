@@ -21,43 +21,51 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$17/month",
+    "starting_price": "Starter: $25/month, or $15/month billed annually",
     "has_free_tier": false,
     "status": "verified",
+    "free_plan": false,
     "free_trial": {
       "available": true,
       "days": 14
     },
     "entry_paid": {
-      "amount": "17",
+      "amount": "15",
       "currency": "USD",
-      "billing_period": "monthly"
+      "billing_period": "annual"
     },
     "tiers": [
       {
         "name": "Starter",
-        "amount": "17",
+        "amount": "15",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Core rent collection, listings, and tenant screening."
+        "billing_period": "annual",
+        "notes": "$180/year billed annually; $25 month-to-month."
       },
       {
         "name": "Growth",
-        "amount": "32",
+        "amount": "29",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds owner portal, QuickBooks sync, and lease builder."
+        "billing_period": "annual",
+        "notes": "$350/year billed annually; $35 month-to-month."
       },
       {
         "name": "Pro",
-        "amount": "55",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "$600/year billed annually; $60 month-to-month."
+      },
+      {
+        "name": "Business",
+        "amount": "100",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Adds vendor network and maintenance bidding."
+        "notes": "Starts at $100/month; annual pricing is custom."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
+    "last_verified": "2026-10-07",
     "official_source": "https://www.tenantcloud.com/pricing"
   },
   "pros": [
@@ -66,15 +74,15 @@
     "Comprehensive mobile apps for both landlords and tenants"
   ],
   "cons": [
-    "QuickBooks integration requires the Growth tier ($32/mo)",
-    "Customer support response times can be slower on the entry Starter tier",
-    "Less suited for large commercial or multi-family enterprise portfolios (100+ units)"
+    "Starter's lowest advertised rate requires annual billing; month-to-month pricing is higher.",
+    "Plan limits differ by portfolio size: TenantCloud lists 10 leases on Starter, 30 on Growth, 60 on Pro, and custom limits on Business.",
+    "Business pricing starts at $100/month and annual pricing is custom, so larger teams need a quote."
   ],
   "sources": [
     "https://www.tenantcloud.com/pricing",
     "https://www.tenantcloud.com"
   ],
-  "accessed_at": "2026-08-20",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "DoorLoop",

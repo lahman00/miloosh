@@ -20,9 +20,10 @@
   ],
   "order": 32,
   "sources": [
+    "https://linear.app/pricing",
     "https://linear.app"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Jira",
@@ -68,5 +69,51 @@
         "Affordable at scale"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free; Basic is $10/user/month billed yearly",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Unlimited members, 2 teams, 250 issues, and the agent platform."
+      },
+      {
+        "name": "Basic",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$10/user/month billed yearly; 5 teams, unlimited issues and file uploads, and admin roles."
+      },
+      {
+        "name": "Business",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$16/user/month billed yearly; unlimited teams, private teams and guests, Insights, Triage Intelligence, Loops, and additional integrations."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Custom annual pricing; adds SAML/SCIM, granular administration, enterprise security, migration/onboarding, and priority support."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://linear.app/pricing"
+  },
+  "cons": [
+    "The Free plan is limited to 2 teams and 250 issues; unlimited issues require Basic or higher.",
+    "Basic is limited to 5 teams; private teams, guests, and several advanced intelligence/analytics features require Business.",
+    "Some AI and agent workflow capabilities require separate AI credits even on paid plans."
   ]
 }

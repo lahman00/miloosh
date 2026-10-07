@@ -4,7 +4,9 @@
   "category": "finance-and-erp",
   "description": "SAP Cloud ERP is SAP's cloud ERP line, led by SAP S/4HANA Cloud Public Edition — a subscription-priced, preconfigured ERP with embedded AI across finance, supply chain, HR, and sales processes. SAP positions it around fast, guided go-lives using the SAP Activate methodology, industry-standard best-practice processes, and Public Edition, Private Edition, or two-tier deployment options.",
   "website": "https://www.sap.com/products/erp/s4hana.html",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Mid-size and larger companies that want a preconfigured, industry-best-practice cloud ERP with embedded AI across finance, supply chain, HR, and sales, and that are prepared for an SAP-led implementation.",
   "features": [
     "Preconfigured, industry-specific best-practice business processes",
@@ -37,7 +39,7 @@
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-09-05",
+    "last_verified": "2026-10-07",
     "official_source": "https://www.sap.com/products/erp/s4hana.html"
   },
   "alternatives": [
@@ -46,25 +48,38 @@
       "slug": "netsuite",
       "description": "Oracle's cloud ERP system unifying accounting, inventory, order management, and multi-subsidiary consolidation.",
       "best_for": "Growing to mid-market companies that want a single ERP vendor without SAP's typical enterprise-scale implementation footprint.",
-      "strengths": ["Large customer base (44,000+)", "Multi-subsidiary consolidation (OneWorld)", "Broad partner/consulting ecosystem"]
+      "strengths": [
+        "Large customer base (44,000+)",
+        "Multi-subsidiary consolidation (OneWorld)",
+        "Broad partner/consulting ecosystem"
+      ]
     },
     {
       "name": "Odoo",
       "slug": "odoo",
       "description": "An open-source, modular business platform covering accounting, inventory, manufacturing, and more as individually priced apps.",
       "best_for": "Smaller or mid-sized companies that want published per-user pricing and a lighter implementation than an SAP rollout.",
-      "strengths": ["Published self-serve pricing", "Modular, pay-for-what-you-use apps", "Open-source/self-hosting option"]
+      "strengths": [
+        "Published self-serve pricing",
+        "Modular, pay-for-what-you-use apps",
+        "Open-source/self-hosting option"
+      ]
     },
     {
       "name": "Sage Intacct",
       "slug": "sage-intacct",
       "description": "A cloud financial management platform focused on core financials, multi-entity consolidation, and dimensional reporting.",
       "best_for": "Mid-market finance teams that need strong financial consolidation without a full operational ERP the size of S/4HANA.",
-      "strengths": ["Multi-entity consolidation", "Dimensional general ledger", "Lighter-weight than a full SAP rollout"]
+      "strengths": [
+        "Multi-entity consolidation",
+        "Dimensional general ledger",
+        "Lighter-weight than a full SAP rollout"
+      ]
     }
   ],
   "sources": [
-    "https://www.sap.com/products/erp/s4hana.html"
+    "https://www.sap.com/products/erp/s4hana.html",
+    "https://help.sap.com/doc/7c9e0bbbd1664c2581b2038a1c7ae4b3/latest"
   ],
-  "accessed_at": "2026-09-05"
+  "accessed_at": "2026-10-07"
 }

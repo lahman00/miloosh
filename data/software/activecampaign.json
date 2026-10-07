@@ -4,7 +4,11 @@
   "category": "marketing",
   "description": "An \"autonomous marketing platform\" where AI agents handle email, SMS, WhatsApp, and more, backed by customer data; serves more than 180,000 businesses.",
   "website": "https://www.activecampaign.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for growing businesses of any size that want to automate marketing/sales work (email, SMS, WhatsApp, CRM) and reduce manual effort; the mobile app targets sales/CRM users managing deals and contacts on the go.",
   "features": [
     "Active Intelligence AI (brand-aware AI trained on top campaigns)",
@@ -14,7 +18,10 @@
     "Visual automation builder with custom rules",
     "1,000+ app integrations; mobile app for CRM/deal management"
   ],
-  "sources": ["https://www.activecampaign.com", "https://www.activecampaign.com/platform/mobile-application"],
+  "sources": [
+    "https://www.activecampaign.com",
+    "https://www.activecampaign.com/platform/mobile-application"
+  ],
   "accessed_at": "2026-08-01",
   "pricing": {
     "model": "paid",
@@ -22,10 +29,23 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "15", "currency": "USD", "billing_period": "monthly" },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "15",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
     "tiers": [
-      { "name": "Starter", "amount": "15", "currency": "USD", "billing_period": "monthly", "notes": "Starting price for accounts with fewer than 1,000 contacts. ActiveCampaign pricing scales with contact volume and feature needs." }
+      {
+        "name": "Starter",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price for accounts with fewer than 1,000 contacts. ActiveCampaign pricing scales with contact volume and feature needs."
+      }
     ],
     "last_verified": "2026-08-25",
     "official_source": "https://www.activecampaign.com/about/faq"
@@ -36,14 +56,26 @@
       "slug": "mailchimp",
       "description": "An email and SMS marketing platform combining marketing analytics, automations, and AI tools.",
       "best_for": "Small to mid-sized businesses wanting an easy-to-use email/SMS marketing tool.",
-      "strengths": ["300+ templates with AI generation", "Always-on automations", "300+ integrations"]
+      "strengths": [
+        "300+ templates with AI generation",
+        "Always-on automations",
+        "300+ integrations"
+      ]
     },
     {
       "name": "Klaviyo",
       "slug": "klaviyo",
       "description": "An AI marketing and service platform built as an autonomous B2C CRM unifying customer data with omnichannel automation.",
       "best_for": "Consumer/B2C brands, especially e-commerce retailers, wanting unified customer data and marketing.",
-      "strengths": ["Composer AI campaign generation", "Omnichannel marketing", "Unified customer data platform"]
+      "strengths": [
+        "Composer AI campaign generation",
+        "Omnichannel marketing",
+        "Unified customer data platform"
+      ]
     }
+  ],
+  "cons": [
+    "The published Starter price applies to accounts with fewer than 1,000 contacts; pricing rises with contact volume and required features.",
+    "There is no permanent free plan; the current trial is limited to 14 days."
   ]
 }

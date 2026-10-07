@@ -29,13 +29,42 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true, "days": 14 },
-    "entry_paid": { "amount": "8.50", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "8.50",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Free", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "Best for teams getting started." },
-      { "name": "Team", "amount": "8.50", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for small teams." },
-      { "name": "Business", "amount": "12", "currency": "USD", "billing_period": "annual", "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for fast-growing teams." },
-      { "name": "Enterprise", "notes": "Custom pricing. For mature software companies. Contact sales." }
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Best for teams getting started."
+      },
+      {
+        "name": "Team",
+        "amount": "8.50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for small teams."
+      },
+      {
+        "name": "Business",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per user/month, billed yearly (save up to 25% vs. monthly). Best for fast-growing teams."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing. For mature software companies. Contact sales."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-22",
@@ -86,5 +115,9 @@
         "Affordable at scale"
       ]
     }
+  ],
+  "cons": [
+    "The lowest Team and Business monthly equivalents require yearly billing.",
+    "Enterprise pricing is custom rather than publicly listed."
   ]
 }

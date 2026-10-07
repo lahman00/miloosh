@@ -4,7 +4,11 @@
   "category": "ai",
   "description": "Perplexity describes itself as an AI answer engine that researches the open web in real time and returns concise, cited answers.",
   "website": "https://www.perplexity.ai/",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Perplexity positions itself for people who want real-time, cited answers to questions rather than a list of links — i.e., research/search replacement, with Pro tiers for deeper \"Pro Search,\" file uploads, and Spaces (saved research collections).",
   "features": [
     "Real-time web-grounded search answers",
@@ -15,25 +19,99 @@
     "Comet Browser integration"
   ],
   "sources": [
-    "https://www.perplexity.ai/help-center/en/articles/10352155-what-is-perplexity",
     "https://www.perplexity.ai/hub",
-    "https://docs.perplexity.ai/"
+    "https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you",
+    "https://www.perplexity.ai/help-center/en/articles/11680686-perplexity-max",
+    "https://www.perplexity.ai/help-center/en/articles/10352986-enterprise-pricing-and-billing-frequently-asked-questions"
   ],
-  "accessed_at": "2026-08-01",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "ChatGPT",
       "slug": "chatgpt",
       "description": "OpenAI's AI assistant offering chat, voice, vision, and agentic \"Work\"/\"Codex\" capabilities.",
       "best_for": "Users wanting one broad assistant across chat, research, documents, and coding.",
-      "strengths": ["Voice and vision input", "Desktop apps with built-in browser", "Broad task coverage"]
+      "strengths": [
+        "Voice and vision input",
+        "Desktop apps with built-in browser",
+        "Broad task coverage"
+      ]
     },
     {
       "name": "Gemini",
       "slug": "gemini",
       "description": "Google DeepMind's family of AI models for building and using intelligent agents across text, image, video, and audio.",
       "best_for": "Users needing deep research across very large documents/contexts with Search integration.",
-      "strengths": ["Long-context processing", "Google Search AI Mode integration", "Agentic task execution"]
+      "strengths": [
+        "Long-context processing",
+        "Google Search AI Mode integration",
+        "Agentic task execution"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Standard is free; Pro is $20/month or $200/year",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "20",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Standard",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free core search with limited Pro Searches and basic file uploads; no access to advanced AI models, image generation, or premium support."
+      },
+      {
+        "name": "Pro",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$20/month or $200/year; adds higher research/search limits, advanced models, file analysis, image generation, and priority support."
+      },
+      {
+        "name": "Education Pro",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "For verified students and educators; eligibility verification required."
+      },
+      {
+        "name": "Max",
+        "amount": "200",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$200/month or $2,000/year on the web app; highest consumer access levels."
+      },
+      {
+        "name": "Enterprise Pro",
+        "amount": "40",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "$40/seat/month or $400/seat/year."
+      },
+      {
+        "name": "Enterprise Max",
+        "amount": "325",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "$325/seat/month or $3,250/seat/year."
+      }
+    ],
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.perplexity.ai/hub"
+  },
+  "cons": [
+    "The Free plan has very limited Pro Search access and does not include advanced AI models, image generation, or premium support.",
+    "API usage is billed separately and is not included with consumer or Enterprise subscriptions.",
+    "Max's annual billing option is available through the web app; mobile upgrades can create a separate subscription from an existing web subscription."
   ]
 }

@@ -98,5 +98,9 @@
         "AI agent builder"
       ]
     }
+  ],
+  "cons": [
+    "The Free plan is limited to 100 tasks per month, 5 flows, and 30 days of flow history.",
+    "Premium apps and on-premises integration require Professional rather than Standard."
   ]
 }

@@ -4,7 +4,11 @@
   "category": "marketing",
   "description": "A social intelligence platform that turns real-time social signals into direction for teams, enabling monitoring, management, and action on social conversations at scale.",
   "website": "https://sproutsocial.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for teams of varying sizes — from small teams on the Standard plan to enterprises with cross-functional workflows on Advanced/Enterprise plans — plus agencies and industries like travel, retail, and higher education.",
   "features": [
     "Real-time social intelligence for engagement spikes and conversation trends",
@@ -14,7 +18,9 @@
     "Influencer marketing (creator identification/activation via audience data)",
     "Employee advocacy for brand-aligned employee content sharing"
   ],
-  "sources": ["https://sproutsocial.com"],
+  "sources": [
+    "https://sproutsocial.com"
+  ],
   "accessed_at": "2026-08-01",
   "pricing": {
     "model": "paid",
@@ -22,13 +28,45 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "79", "currency": "USD", "billing_period": "annual", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "79",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Essentials", "amount": "79", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually ($99/seat/month billed monthly). 5 social profiles." },
-      { "name": "Standard", "amount": "199", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). 5 social profiles, consolidated inbox, Trellis AI agent." },
-      { "name": "Professional", "amount": "299", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Unlimited social profiles, message tagging, competitor insights." },
-      { "name": "Advanced", "amount": "399", "currency": "USD", "billing_period": "annual", "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Sentiment analysis, Sprout API, helpdesk integrations." }
+      {
+        "name": "Essentials",
+        "amount": "79",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually ($99/seat/month billed monthly). 5 social profiles."
+      },
+      {
+        "name": "Standard",
+        "amount": "199",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). 5 social profiles, consolidated inbox, Trellis AI agent."
+      },
+      {
+        "name": "Professional",
+        "amount": "299",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Unlimited social profiles, message tagging, competitor insights."
+      },
+      {
+        "name": "Advanced",
+        "amount": "399",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per seat/month, billed annually (pricing page defaults to annual billing; a separate monthly rate is not shown). Sentiment analysis, Sprout API, helpdesk integrations."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-22",
@@ -40,14 +78,26 @@
       "slug": "hootsuite",
       "description": "A social media management platform for posting, tracking, and competitive performance across networks.",
       "best_for": "Social media managers and enterprises managing multiple brand accounts.",
-      "strengths": ["Unified inbox", "Competitor/sentiment analysis", "Employee advocacy tools"]
+      "strengths": [
+        "Unified inbox",
+        "Competitor/sentiment analysis",
+        "Employee advocacy tools"
+      ]
     },
     {
       "name": "Buffer",
       "slug": "buffer",
       "description": "A social media workspace for planning and scheduling content across social platforms.",
       "best_for": "Creators, small businesses, and agencies wanting simplified social media management.",
-      "strengths": ["Scheduling across 11+ platforms", "Built-in AI Assistant", "Link-in-bio Start Page"]
+      "strengths": [
+        "Scheduling across 11+ platforms",
+        "Built-in AI Assistant",
+        "Link-in-bio Start Page"
+      ]
     }
+  ],
+  "cons": [
+    "Essentials and Standard are limited to 5 social profiles; unlimited social profiles require Professional or higher.",
+    "Pricing is per seat and the lowest published rates use annual billing, so team cost rises with each paid user."
   ]
 }

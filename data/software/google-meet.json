@@ -21,9 +21,11 @@
     "Free tier supporting up to 100 participants and 60-minute group calls"
   ],
   "sources": [
-    "https://workspace.google.com/products/meet"
+    "https://workspace.google.com/products/meet",
+    "https://support.google.com/meet/answer/7317473?hl=en",
+    "https://workspace.google.com/pricing"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Zoom",
@@ -58,5 +60,62 @@
         "Webinars"
       ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free with a personal Google Account; Google Workspace business plans start at $7/user/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "tiers": [
+      {
+        "name": "Personal Google Account",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 100 participants; one-to-one meetings up to 24 hours and group meetings with 3+ participants up to 60 minutes."
+      },
+      {
+        "name": "Workspace Business Starter",
+        "amount": "7",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "100 meeting participants; Meet is included within the Workspace bundle."
+      },
+      {
+        "name": "Workspace Business Standard",
+        "amount": "14",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Up to 150 participants and additional Workspace meeting capabilities."
+      },
+      {
+        "name": "Workspace Business Plus",
+        "amount": "22",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Up to 500 participants with attendance tracking and broader Workspace security/storage features."
+      },
+      {
+        "name": "Workspace Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Contact sales; some Enterprise editions support up to 1,000 participants and additional live-streaming/security capabilities."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://workspace.google.com/pricing"
+  },
+  "cons": [
+    "Without a Google Meet subscription, meetings with 3 or more participants are limited to 60 minutes and personal Google Accounts are capped at 100 participants.",
+    "Meeting capacity and advanced features such as attendance tracking depend on the Google Workspace edition; the business price is for the full Workspace bundle, not Meet alone."
   ]
 }

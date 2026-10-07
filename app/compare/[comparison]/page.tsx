@@ -322,7 +322,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
                   <Ban className="h-4 w-4 text-zinc-500" />
                   Cons
                 </div>
-                {isMkDocsReadTheDocsCanary && software.cons && software.cons.length > 0 ? (
+                {software.cons && software.cons.length > 0 ? (
                   <ul className="mt-2 space-y-2">
                     {software.cons.map((con) => (
                       <li key={con} className="flex items-start gap-2 text-sm text-zinc-400">

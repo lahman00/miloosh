@@ -4,8 +4,12 @@
   "category": "marketing",
   "description": "A social media management platform for managing posting, tracking, and competitive performance across multiple social networks from one dashboard.",
   "website": "https://www.hootsuite.com",
-  "platforms": ["Web", "iOS", "Android"],
-  "best_for": "Positioned for social media managers, marketing teams, and enterprises managing multiple brand accounts; used by \"world's leading brands\" per the site.",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Social media managers, marketing teams, and agencies that need publishing, inbox, monitoring, analytics, and multi-account workflows in one platform.",
   "features": [
     "Trend tracking and AI-powered market/competitor insights",
     "Unified inbox for public and private message engagement",
@@ -14,22 +18,91 @@
     "Employee advocacy content distribution (Hootsuite Parliament)",
     "AI-assisted post drafting grounded in social data"
   ],
-  "sources": ["https://www.hootsuite.com", "https://www.hootsuite.com/hootsuite-mobile-app"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.hootsuite.com",
+    "https://www.hootsuite.com/plans",
+    "https://help.hootsuite.com/s/article/get-started-std-team-adv"
+  ],
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Buffer",
       "slug": "buffer",
       "description": "A social media workspace for planning and scheduling content across social platforms.",
       "best_for": "Creators, small businesses, and agencies wanting simplified social media management.",
-      "strengths": ["Scheduling across 11+ platforms", "Built-in AI Assistant", "Link-in-bio Start Page"]
+      "strengths": [
+        "Scheduling across 11+ platforms",
+        "Built-in AI Assistant",
+        "Link-in-bio Start Page"
+      ]
     },
     {
       "name": "Sprout Social",
       "slug": "sprout-social",
       "description": "A social intelligence platform turning real-time social signals into direction for teams.",
       "best_for": "Teams and agencies needing social listening and analytics at scale.",
-      "strengths": ["AI-powered inbox (Trellis)", "Social listening", "Influencer marketing tools"]
+      "strengths": [
+        "AI-powered inbox (Trellis)",
+        "Social listening",
+        "Influencer marketing tools"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Standard starts at $99/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "99",
+      "currency": "USD",
+      "billing_period": "annual",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Standard",
+        "amount": "99",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user",
+        "notes": "Up to 10 social accounts on the current plan page."
+      },
+      {
+        "name": "Professional",
+        "amount": "199",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user",
+        "notes": "Unlimited social accounts and additional automation/reporting on the current plan page."
+      },
+      {
+        "name": "Advanced",
+        "amount": "399",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "per user",
+        "notes": "Adds team collaboration, approvals, customer-care workflows, and advanced reporting."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Custom pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.hootsuite.com/plans"
+  },
+  "cons": [
+    "Standard is limited to 10 social accounts; unlimited social accounts require Professional or higher.",
+    "Plans are sold per user, so team cost rises as more seats are added.",
+    "Enterprise pricing is custom rather than publicly listed."
   ]
 }

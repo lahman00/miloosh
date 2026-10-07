@@ -22,23 +22,41 @@
   ],
   "pricing": {
     "model": "paid",
-    "status": "contact_sales",
+    "starting_price": "Core starts at $1.49/unit/month; minimum spend and a 50-unit minimum apply",
     "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": false
+    },
     "tiers": [
       {
         "name": "Core",
-        "notes": "Entry tier; exact pricing requires contacting AppFolio directly — the official page states plans carry minimum spend and unit-minimum requirements."
+        "amount": "1.49",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per unit",
+        "notes": "Starting rate. AppFolio states a minimum spend and 50-unit minimum apply; exact minimum spend is not published."
       },
       {
         "name": "Plus",
-        "notes": "Adds read-only API access; custom quote."
+        "amount": "3.20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per unit",
+        "notes": "Starting rate. Minimum spend and unit requirements apply."
       },
       {
         "name": "Max",
-        "notes": "Adds read/write API access; custom quote."
+        "amount": "5.00",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per unit",
+        "notes": "Starting rate. Minimum spend and unit requirements apply."
       }
     ],
-    "last_verified": "2026-08-18",
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
     "official_source": "https://www.appfolio.com/pricing"
   },
   "pros": [
@@ -47,9 +65,9 @@
     "Genuine, directly observed real-world usage disclosure among small-to-mid property managers"
   ],
   "cons": [
-    "No public pricing — every quote requires contacting sales, unlike Buildium's published tiers",
-    "Minimum spend and unit-minimum requirements can price out very small portfolios",
-    "No public consumer affiliate/referral program — only a B2B partner program for vendors and consultants"
+    "AppFolio publishes per-unit starting rates, but also requires a minimum spend and a 50-unit minimum on Core; the exact minimum spend is quote-based.",
+    "Plus and Max also carry minimum-spend and unit requirements, so the displayed per-unit rate is not a complete monthly quote for every portfolio.",
+    "No public consumer affiliate/referral program is documented; AppFolio's partner program is aimed at vendors and consultants."
   ],
   "faq": [
     {
@@ -70,7 +88,7 @@
     "https://www.appfolio.com/pricing",
     "https://www.appfolio.com"
   ],
-  "accessed_at": "2026-08-18",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Buildium",
@@ -100,7 +118,7 @@
       "description": "Affordable cloud property management and rent collection software for DIY landlords.",
       "best_for": "Smaller DIY landlords seeking budget-friendly rental management",
       "strengths": [
-        "Low entry price ($17/mo)",
+        "Lower-cost entry plans",
         "Direct rent collection",
         "Listing syndication"
       ]

@@ -97,5 +97,9 @@
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-09",
     "official_source": "https://cal.com/pricing"
-  }
+  },
+  "cons": [
+    "The free Individuals plan is for one user; shared availability, round-robin scheduling, routing forms, and team analytics require the Teams plan.",
+    "Organizations adds SAML SSO, SCIM, RBAC, and company-level administration at a higher per-user annual price; Enterprise pricing is custom."
+  ]
 }

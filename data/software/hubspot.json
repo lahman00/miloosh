@@ -16,11 +16,27 @@
         "amount": "0",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "HubSpot describes its CRM as 100% free with no expiration. Paid HubSpot products vary by hub, edition, seats, and usage, so Miloosh does not normalize them into one unsupported CRM starting price."
+        "notes": "Free tools for up to 2 users on the current Sales Hub pricing page."
+      },
+      {
+        "name": "Sales Hub Starter",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "Standard catalog starting price; temporary annual-billing promotions may show a lower effective price."
+      },
+      {
+        "name": "Sales Hub Professional",
+        "amount": "100",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "per seat",
+        "notes": "Standard catalog starting price; promotions can temporarily lower the effective rate."
       }
     ],
-    "last_verified": "2026-08-31",
-    "official_source": "https://www.hubspot.com/pricing/crm"
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.hubspot.com/pricing/sales"
   },
   "platforms": [
     "Web",
@@ -38,9 +54,10 @@
   ],
   "sources": [
     "https://www.hubspot.com/products/crm",
-    "https://www.hubspot.com/pricing/crm"
+    "https://www.hubspot.com/pricing/sales",
+    "https://legal.hubspot.com/hubspot-product-and-services-catalog"
   ],
-  "accessed_at": "2026-08-31",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Salesforce",
@@ -76,5 +93,10 @@
       ]
     }
   ],
-  "order": 12
+  "order": 12,
+  "cons": [
+    "The free Sales Hub tools are limited to 2 users on the current pricing page.",
+    "Paid Sales Hub editions are priced per seat, so total cost scales with the number and type of seats.",
+    "HubSpot frequently displays new-customer promotions, so promotional prices should not be treated as permanent list prices."
+  ]
 }

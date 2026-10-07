@@ -17,11 +17,11 @@
     "Calendar integrations to auto-detect availability"
   ],
   "sources": [
-    "https://doodle.com",
-    "https://doodle.com/en/features/",
-    "https://doodle.com/en/doodle-mobile-app-change/"
+    "https://help.doodle.com/en/articles/9457366-how-much-does-doodle-cost",
+    "https://help.doodle.com/en/articles/13038481-team-plan-benefits-and-pricing-options",
+    "https://doodle.com"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Calendly",
@@ -46,5 +46,50 @@
       ]
     }
   ],
-  "order": 22
+  "order": 22,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free basic account; Professional is $15/month or $132/year for one user",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Basic account with Group Polls, Booking Page, and Sign-up Sheet."
+      },
+      {
+        "name": "Professional",
+        "amount": "11",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "$132/year for one user, equivalent to $11/month; $15/month on monthly billing."
+      },
+      {
+        "name": "Team",
+        "amount": "16",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "Starts at $16/user/month billed annually or $21/user/month monthly; minimum 2 users and team size 2-100. Per-user pricing can decrease for larger teams."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "For organizations over 100 users or with advanced security/support needs; contact sales for a tailored quote."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://help.doodle.com/en/articles/9457366-how-much-does-doodle-cost"
+  },
+  "cons": [
+    "The lowest Professional and Team monthly equivalents require annual billing; month-to-month pricing is higher.",
+    "Doodle Team requires at least 2 users and self-serve Team plans support up to 100 users; larger organizations are directed to Enterprise."
+  ]
 }

@@ -26,13 +26,43 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true },
-    "entry_paid": { "amount": "117.33", "currency": "USD", "billing_period": "annual" },
+    "free_trial": {
+      "available": true
+    },
+    "entry_paid": {
+      "amount": "117.33",
+      "currency": "USD",
+      "billing_period": "annual"
+    },
     "tiers": [
-      { "name": "SEO", "amount": "117.33", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($139/mo billed monthly). 5 websites, 500 tracked keywords, Site Audit, basic AI-search visibility tracking." },
-      { "name": "Starter (SEO + AI Search)", "amount": "165.17", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($199/mo billed monthly). 5 websites, 500 keywords, keyword research/optimization, 50 AI prompts tracked daily." },
-      { "name": "Pro+ (SEO + AI Search)", "amount": "248.17", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($299/mo billed monthly). 15 websites, 1,500 keywords, historical SEO data, multi-location tracking." },
-      { "name": "Advanced (SEO + AI Search)", "amount": "455.67", "currency": "USD", "billing_period": "annual", "notes": "Per month, billed annually ($549/mo billed monthly). 40 websites, 5,000 keywords, SEO share of voice, API data integration." }
+      {
+        "name": "SEO",
+        "amount": "117.33",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per month, billed annually ($139/mo billed monthly). 5 websites, 500 tracked keywords, Site Audit, basic AI-search visibility tracking."
+      },
+      {
+        "name": "Starter (SEO + AI Search)",
+        "amount": "165.17",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per month, billed annually ($199/mo billed monthly). 5 websites, 500 keywords, keyword research/optimization, 50 AI prompts tracked daily."
+      },
+      {
+        "name": "Pro+ (SEO + AI Search)",
+        "amount": "248.17",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per month, billed annually ($299/mo billed monthly). 15 websites, 1,500 keywords, historical SEO data, multi-location tracking."
+      },
+      {
+        "name": "Advanced (SEO + AI Search)",
+        "amount": "455.67",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Per month, billed annually ($549/mo billed monthly). 40 websites, 5,000 keywords, SEO share of voice, API data integration."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-22",
@@ -73,5 +103,9 @@
       ]
     }
   ],
-  "order": 46
+  "order": 46,
+  "cons": [
+    "The entry SEO plan is limited to 5 websites and 500 tracked keywords; larger site and keyword allowances require higher tiers.",
+    "The lowest displayed monthly equivalents require annual billing, while month-to-month rates are higher."
+  ]
 }

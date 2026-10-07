@@ -123,5 +123,9 @@
     "enterprise_contact_sales": false,
     "last_verified": "2026-09-09",
     "official_source": "https://trello.com/pricing"
-  }
+  },
+  "cons": [
+    "The Free plan is capped at 10 collaborators and 10 boards per Workspace; teams that exceed either limit need a paid plan.",
+    "Calendar, Timeline, Table, Dashboard, and Map views are reserved for Premium rather than Standard or Free."
+  ]
 }

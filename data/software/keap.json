@@ -4,7 +4,11 @@
   "category": "crm",
   "description": "Keap is a CRM and marketing automation platform for small businesses that combines contact management, sales pipelines, and automated follow-up with invoicing and a dedicated business phone line.",
   "website": "https://keap.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Small business owners, service providers, coaches, agencies, and ecommerce businesses — Keap has served 200,000+ small businesses for over 20 years.",
   "features": [
     "CRM and contact management with segmentation",
@@ -17,30 +21,79 @@
     "Keap AI content-generation assistant"
   ],
   "sources": [
+    "https://keap.com/pricing",
     "https://keap.com"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "HubSpot",
       "slug": "hubspot",
       "description": "An all-in-one CRM platform with marketing, sales, and service hubs.",
       "best_for": "Growing businesses wanting an integrated marketing-to-sales CRM suite.",
-      "strengths": ["Free CRM tier", "Marketing automation", "Extensive integrations"]
+      "strengths": [
+        "Free CRM tier",
+        "Marketing automation",
+        "Extensive integrations"
+      ]
     },
     {
       "name": "Zoho CRM",
       "slug": "zoho-crm",
       "description": "An AI-powered CRM with omnichannel engagement and deep workflow automation.",
       "best_for": "Businesses of any size wanting an affordable, feature-rich CRM.",
-      "strengths": ["Zia AI assistant", "Workflow automation", "Zoho app ecosystem"]
+      "strengths": [
+        "Zia AI assistant",
+        "Workflow automation",
+        "Zoho app ecosystem"
+      ]
     },
     {
       "name": "Nutshell",
       "slug": "nutshell",
       "description": "An AI-powered sales CRM combining pipeline management with built-in email marketing.",
       "best_for": "Small teams wanting a comprehensive CRM without complex setup.",
-      "strengths": ["Email marketing built in", "AI call transcription", "Simple pipeline"]
+      "strengths": [
+        "Email marketing built in",
+        "AI call transcription",
+        "Simple pipeline"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Starts at $299/month; annual billing is $2,988/year",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "entry_paid": {
+      "amount": "299",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Keap",
+        "amount": "299",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price; annual billing is $2,988/year. Includes the full software platform and starts with 2 user licenses."
+      },
+      {
+        "name": "Additional user",
+        "amount": "39",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Additional user licenses cost $39/month each."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://keap.com/pricing"
+  },
+  "cons": [
+    "Keap requires implementation services in addition to the software subscription, so the advertised $299/month starting price is not the complete onboarding cost.",
+    "The base subscription starts with 2 user licenses; additional users cost $39/month each, and contact-based pricing can increase as the database grows."
   ]
 }

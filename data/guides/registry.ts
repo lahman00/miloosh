@@ -12,7 +12,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Discover the best time tracking apps for freelancers and solo contractors: Toggl Track, Clockify, Harvest, and Hubstaff tested on ease of use, invoicing, and zero-cost pricing.",
     categorySlug: "productivity",
     roleName: "Freelancers & Contractors",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Freelancers need time tracking that gets out of the way: fast one-click timers, clear client separation, billable hour logging, and minimal or zero monthly software fees.",
     targetAudience: [
@@ -69,7 +69,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best for Freelancers Who Bill by the Hour",
         ranking: 3,
         fitReason:
-          "If your primary goal is turning tracked hours directly into paid invoices, Harvest is unbeatable. Its free tier allows 1 user on 2 active projects with built-in Stripe payments.",
+          "If your primary goal is turning tracked hours directly into paid invoices, Harvest combines tracked billable hours with invoice generation and online payments. Its free tier allows 1 user on 2 active projects.",
         limitations:
           "Free tier is strictly capped at 2 active client projects.",
         pricingNote:
@@ -114,7 +114,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Find the best accounting software for freelancers: Wave, FreshBooks, Zoho Books, and QuickBooks Online compared on invoicing, tax readiness, and pricing.",
     categorySlug: "accounting",
     roleName: "Freelancers & Solo Creators",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Freelancers need accounting software that simplifies client billing, categorizes business expenses for tax deductions, and tracks incoming cash flow without the complexity or high cost of enterprise ERP systems.",
     targetAudience: [
@@ -150,7 +150,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Free Accounting for Solopreneurs",
         ranking: 1,
         fitReason:
-          "Wave delivers unlimited invoicing, double-entry bookkeeping, and payment processing with zero monthly subscription fee on its Starter tier, making it the highest-value option for solo creators.",
+          "Wave delivers unlimited invoicing, double-entry bookkeeping, and payment processing with zero monthly subscription fee on its Starter tier, which can reduce fixed software cost for solo creators.",
         limitations:
           "Automatic bank transaction imports and receipt scanning require the $16/mo Pro tier; lacks project profitability tracking.",
         pricingNote:
@@ -163,9 +163,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "FreshBooks is crafted around client relationships. It combines beautiful invoice templates with built-in time tracking, project estimate workflows, and automated payment reminders.",
         limitations:
-          "Lite ($19/mo) and Plus ($33/mo) tiers enforce strict limits on active billable client counts (5 and 50).",
+          "Lite and Plus cap active billable clients at 5 and 50 respectively; Premium removes the billable-client cap.",
         pricingNote:
-          "Lite $19/mo, Plus $33/mo, Premium $60/mo (billed monthly).",
+          "Lite list price is $23/month, Plus $43/month, and Premium $70/month before temporary promotions.",
       },
       {
         slug: "zoho-books",
@@ -183,7 +183,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best for CPA Collaboration",
         ranking: 4,
         fitReason:
-          "QuickBooks Online Simple Start provides full double-entry accounting with the widest bookkeeper and CPA familiarity in North America, ideal for freelancers who outsource tax filing.",
+          "QuickBooks Online Simple Start provides full double-entry accounting with accountant access and a broad bookkeeping ecosystem, which can help freelancers who outsource tax filing.",
         limitations:
           "Higher base price ($38/mo) than competitors; frequent promo discounting complicates ongoing cost forecasting.",
         pricingNote: "Simple Start $38/mo, Essentials $85/mo (billed monthly).",
@@ -216,7 +216,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the leading small business accounting platforms: QuickBooks Online, Xero, Zoho Books, and FreshBooks evaluated on CPA support, multi-user seats, and inventory.",
     categorySlug: "accounting",
     roleName: "Small Businesses (1–50 Employees)",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Small businesses require robust double-entry general ledgers, multi-user collaboration, automated bank reconciliation, inventory management, and broad accountant compatibility to support business growth and compliance.",
     targetAudience: [
@@ -252,7 +252,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for US Small Businesses & CPAs",
         ranking: 1,
         fitReason:
-          "QuickBooks Online remains the standard for US small businesses. Virtually every bookkeeper and CPA knows how to use it, and its native payroll add-on and third-party app ecosystem provide unmatched operational breadth.",
+          "QuickBooks Online combines double-entry accounting with payroll add-ons and a large third-party app ecosystem. Teams that work with an external accountant should confirm that person's preferred platform before choosing.",
         limitations:
           "Higher list pricing ($38-$140/mo) and tiered user seat caps (1 on Simple Start, 3 on Essentials, 5 on Plus).",
         pricingNote:
@@ -263,7 +263,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Value for Multi-User Collaboration",
         ranking: 2,
         fitReason:
-          "Xero includes unlimited users on every plan, making it far more cost-effective for growing teams than per-seat platforms. Its bank reconciliation UX is praised by accountants and its clean interface reduces bookkeeping friction.",
+          "Xero includes unlimited users on every plan, which can reduce seat costs for growing teams compared with products that charge per user. Its bank-reconciliation workflow and multi-user access are central buying considerations.",
         limitations:
           "Entry-level Early plan ($25/mo) limits invoice volume to 20/month; US payroll requires external integrations.",
         pricingNote:
@@ -289,7 +289,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Extra team members cost $11/user/mo; inventory features are basic compared to QuickBooks Plus or Zoho Books.",
         pricingNote:
-          "Plus $33/mo (50 clients), Premium $60/mo (unlimited clients).",
+          "Plus list price is $43/month for up to 50 billable clients; Premium is $70/month with unlimited billable clients, before temporary promotions.",
       },
     ],
     comparisons: [
@@ -436,7 +436,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare email tools by contacts, campaign-day limits, prepaid credit expiry and annual cost, including a 2,500-subscriber occasional-sending worksheet.",
     categorySlug: "marketing",
     roleName: "Small Businesses & Local Services",
-    updatedAt: "2026-09-10",
+    updatedAt: "2026-10-07",
     intro:
       "Small business owners need email marketing software that is quick to launch, easy to maintain without a dedicated designer, reliable in hitting customer inboxes, and cost-effective.",
     targetAudience: [
@@ -474,7 +474,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Local Businesses & Event Marketing",
         ranking: 1,
         fitReason:
-          "Constant Contact is built specifically for non-technical small business owners. It pairs an exceptionally intuitive email builder with built-in event registration management, survey polling, social media scheduling, and phone customer support.",
+          "Constant Contact is built specifically for non-technical small business owners. It pairs a drag-and-drop email builder with event registration management, survey polling, social media scheduling, and phone customer support.",
         limitations:
           "Visual automation workflows are simpler than dedicated enterprise marketing automation platforms.",
         pricingNote:
@@ -654,7 +654,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best project management software for software engineering teams: Linear, Jira, ClickUp, and Monday.com evaluated on cycle planning, GitHub sync, speed, and roadmap visibility.",
     categorySlug: "project-management",
     roleName: "Agile Engineering & Product Teams",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Software engineering teams need project management that moves at the speed of code: fast keyboard shortcuts, bi-directional Git sync, automated sprint cycles, backlogs, and clean triage workflows.",
     targetAudience: [
@@ -690,7 +690,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Modern Agile & Developer Speed",
         ranking: 1,
         fitReason:
-          "Linear is the gold standard for high-performance product teams. Designed with uncompromising speed and keyboard-first navigation, it automates sprint cycles, streamlines bug triage, and connects seamlessly with GitHub and Slack.",
+          "Linear is designed for product and engineering teams that value fast, keyboard-first workflows. It automates sprint cycles, streamlines bug triage, and connects with GitHub and Slack.",
         limitations:
           "Opinionated workflow structure offers fewer custom field permutations than Jira for strict enterprise IT governance.",
         pricingNote:
@@ -759,7 +759,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best property management software for landlords and managers: AppFolio, Buildium, DoorLoop, and TenantCloud evaluated on rent collection, tenant screening, and accounting.",
     categorySlug: "property-management",
     roleName: "Landlords & Property Managers",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Managing rental properties requires automated rent collection, streamlined tenant screening, fast maintenance coordination, and complete double-entry real estate accounting.",
     targetAudience: [
@@ -795,11 +795,11 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Large Residential & Commercial Portfolios",
         ranking: 1,
         fitReason:
-          "AppFolio is the premier enterprise property management platform for established operators (50+ units). It features AI-powered leasing assistants, smart maintenance automation, robust double-entry accounting, and complete mixed-portfolio support.",
+          "AppFolio targets established property operators and supports residential and commercial portfolio workflows. It features AI-powered leasing assistants, smart maintenance automation, robust double-entry accounting, and complete mixed-portfolio support.",
         limitations:
-          "Strict minimum monthly fee ($280/mo) makes it cost-prohibitive for smaller landlords under 50 units.",
+          "AppFolio requires a 50-unit minimum on Core and also applies a minimum spend; the exact minimum spend is quote-based rather than publicly listed.",
         pricingNote:
-          "Core plan starts at $1.40/unit/mo (min $280/mo); Plus is $3.00/unit/mo; Max is $5.00/unit/mo.",
+          "Core starts at $1.49/unit/month, Plus at $3.20/unit/month, and Max at $5.00/unit/month. Minimum-spend and unit requirements apply, so the per-unit rate is not a complete quote.",
       },
       {
         slug: "buildium",
@@ -810,7 +810,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Payment processing and electronic lease fees apply on lower tiers; interface feels more traditional than DoorLoop.",
         pricingNote:
-          "Essential plan starts at $55/mo; Growth is $174/mo; Premium is $375/mo with performance analytics.",
+          "Essential starts at $62/month; Growth at $192/month; Premium at $400/month. Verify portfolio-specific fees and add-ons before buying.",
       },
       {
         slug: "doorloop",
@@ -819,20 +819,20 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "DoorLoop delivers the most modern, intuitive user experience in property management software, supporting residential, commercial, and HOA portfolios in a unified login with dedicated customer support.",
         limitations:
-          "Base pricing covers up to 20 units; per-unit costs scale as your rental portfolio expands.",
+          "Starter is capped at 10 units on the current pricing page; larger portfolios need a higher plan.",
         pricingNote:
-          "Starter starts at $49/mo (up to 20 units); Pro is $79/mo; Premium is $109/mo.",
+          "Starter is $99 month-to-month or $69/month billed yearly for up to 10 units. Higher plans add broader portfolio and workflow features.",
       },
       {
         slug: "tenantcloud",
         badge: "Best Budget Choice for DIY Landlords",
         ranking: 4,
         fitReason:
-          "TenantCloud offers an affordable entry-level property management platform for independent DIY landlords, combining online rent collection, TransUnion screening, and rental listings starting at just $17/month.",
+          "TenantCloud targets independent DIY landlords with online rent collection, screening, maintenance, and listing tools. Starter is $25 month-to-month or $15/month billed annually.",
         limitations:
-          "QuickBooks synchronization and owner portal features require upgrading to the Growth tier ($32/mo).",
+          "Growth is $35 month-to-month or $29/month billed annually and adds broader portfolio-management features beyond Starter.",
         pricingNote:
-          "Starter plan is $17/mo; Growth plan is $32/mo; Pro plan is $55/mo.",
+          "Starter is $25/month or $15/month billed annually; Growth is $35/month or $29/month billed annually; Pro is $60/month or $50/month billed annually.",
       },
     ],
     comparisons: [
@@ -846,12 +846,12 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         question:
           "What is the best property management software for small landlords with under 10 units?",
         answer:
-          "TenantCloud and DoorLoop are the best options for smaller landlords. TenantCloud provides an affordable $17/mo entry plan, while DoorLoop offers a modern all-in-one system with built-in accounting for up to 20 units at $49/mo.",
+          "TenantCloud and DoorLoop both target smaller landlords, but their current entry prices differ: TenantCloud Starter is $25 month-to-month or $15/month billed annually, while DoorLoop Starter is $99 month-to-month or $69/month billed yearly for up to 10 units.",
       },
       {
         question: "Why does AppFolio enforce a minimum monthly fee?",
         answer:
-          "AppFolio is designed specifically for professional management companies and larger property portfolios (50+ units), requiring a $280/mo minimum fee to cover its comprehensive AI tools, dedicated onboarding, and enterprise infrastructure.",
+          "AppFolio targets professional property operators. Its current Core pricing starts at $1.49/unit/month, but AppFolio also requires a 50-unit minimum and a separate minimum spend whose exact amount is provided by quote.",
       },
     ],
   },
@@ -864,7 +864,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare field service software for small contractors: Jobber, Housecall Pro, ServiceTitan, and FieldEdge evaluated on scheduling, dispatch, mobile workflows, true pricing, and accounting integrations.",
     categorySlug: "field-service-management",
     roleName: "Home Service Contractors & Trade Businesses",
-    updatedAt: "2026-09-09",
+    updatedAt: "2026-10-07",
     intro:
       "Small trade contractors need software that keeps the quote-to-schedule-to-invoice loop simple before it adds enterprise overhead. Team size, additional-user pricing, accounting integrations, dispatch depth, and whether pricing requires a sales call matter as much as the feature list.",
     targetAudience: [
@@ -900,7 +900,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Small-to-Midsize Trade Businesses",
         ranking: 1,
         fitReason:
-          "Jobber delivers the most polished operations platform for growing trade contractors. Its online Client Hub lets customers approve quotes and pay invoices 24/7, while technicians benefit from intuitive mobile routing and instant job notes.",
+          "Jobber combines quoting, scheduling, client communication, invoicing, and field workflows for growing trade contractors. Its online Client Hub lets customers approve quotes and pay invoices 24/7, while technicians benefit from intuitive mobile routing and instant job notes.",
         limitations:
           "Advanced automated follow-up campaigns and two-way QuickBooks line-item sync require the Connect or Grow tier.",
         pricingNote:
@@ -970,7 +970,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best CRM software for early-stage startups: Pipedrive, HubSpot, Close, and Freshsales evaluated on pipeline agility, automation, and affordability.",
     categorySlug: "crm",
     roleName: "Early-Stage & High-Growth Startups",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Early-stage startups need a CRM that reps actually enjoy updating: visual deal pipelines, fast email sync, minimal administrative overhead, and flexible APIs that grow alongside customer acquisition.",
     targetAudience: [
@@ -1010,7 +1010,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Native marketing automation and transactional email tools require third-party integrations.",
         pricingNote:
-          "Essential $14/user/mo; Advanced $29/user/mo (includes email sync and workflow automation); Professional $49/user/mo (billed annually).",
+          "Pipedrive now uses Lite, Growth, Premium and Ultimate plans. Pricing is localized by currency and billing cycle; verify the current quote shown for your location.",
       },
       {
         slug: "hubspot",
@@ -1019,9 +1019,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "HubSpot provides a generous free CRM tier supporting unlimited users and up to 1 million contacts, making it an attractive launchpad for startups prioritizing inbound content leads and marketing integration.",
         limitations:
-          "Professional and Enterprise tiers escalate rapidly in cost ($500-$1,200+/mo) as team features are unlocked.",
+          "Paid Sales Hub tiers are priced per seat, so total cost rises with team size and the seat types you need. HubSpot also runs temporary promotions, so compare the current quote with the standard catalog price.",
         pricingNote:
-          "Free core CRM; Starter Platform starts at $15/seat/mo; Professional Sales Hub is $90/seat/mo.",
+          "Free Sales Hub tools support up to 2 users. Standard catalog pricing starts at $20/seat/month for Starter and $100/seat/month for Professional; temporary promotions may show lower effective prices.",
       },
       {
         slug: "close",
@@ -1030,16 +1030,16 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Close is purpose-built for high-velocity outbound teams, combining a visual CRM with integrated Power Dialers, automated SMS sequences, and multi-channel email campaigns in one unified inbox.",
         limitations:
-          "Higher entry price point ($49/user/mo) and less suitable for complex multi-product enterprise sales.",
+          "Solo starts at $9/user/month billed annually, but teams that need multiple pipelines or team visibility will need Essentials or higher; complex enterprise selling may require a broader CRM.",
         pricingNote:
-          "Startup plan is $49/user/mo (includes 1 user, 1 pipeline); Professional is $99/user/mo; Enterprise is $139/user/mo.",
+          "Solo is $9/user/month, Essentials $35/user/month, Growth $99/user/month, and Scale $139/user/month when billed annually; monthly billing is higher.",
       },
       {
         slug: "freshsales",
         badge: "Best Budget CRM with Built-in Phone & AI",
         ranking: 4,
         fitReason:
-          "Freshsales combines contact management, AI-powered contact scoring (Freddy AI), and built-in cloud telephony at one of the most accessible price points on the market.",
+          "Freshsales combines contact management, built-in cloud telephony, and Freddy AI features for sales teams.",
         limitations:
           "Advanced custom reporting and CPQ quoting are reserved for higher tiers.",
         pricingNote:
@@ -1074,7 +1074,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Discover the best CRM software for real estate agents and brokerages: Pipedrive, HubSpot, Zoho CRM, and Freshsales compared on lead capture, pipeline stages, and mobile app quality.",
     categorySlug: "crm",
     roleName: "Real Estate Agents & Brokerages",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Real estate professionals manage fast-moving property inquiries, open house leads, buyer showings, and escrow closing timelines. A real estate CRM keeps buyer and seller relationships organized across mobile devices in the field.",
     targetAudience: [
@@ -1110,11 +1110,11 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Custom Property & Listing Pipelines",
         ranking: 1,
         fitReason:
-          "Pipedrive is widely favored by real estate teams for its customizable visual pipelines. Agents can configure dedicated pipelines for Buyers, Sellers, and Escrow Closings, while mobile geolocation helps locate nearby clients between showings.",
+          "Pipedrive supports customizable visual pipelines that real estate teams can configure for buyer, seller, and closing workflows. Agents can configure dedicated pipelines for Buyers, Sellers, and Escrow Closings, while mobile geolocation helps locate nearby clients between showings.",
         limitations:
           "Requires Zapier or webhook configuration for direct MLS and Zillow auto-ingestion.",
         pricingNote:
-          "Essential $14/user/mo; Advanced $29/user/mo (includes email templates and 2-way sync); Professional $49/user/mo.",
+          "Pipedrive now uses Lite, Growth, Premium and Ultimate plans. Pricing is localized by currency and billing cycle; verify the current quote shown for your location.",
       },
       {
         slug: "hubspot",
@@ -1125,7 +1125,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Dedicated real estate field customization can require extensive initial setup on the free/starter tiers.",
         pricingNote:
-          "Free core CRM; Starter Platform starts at $15/seat/mo; Professional Sales Hub is $90/seat/mo.",
+          "Free Sales Hub tools support up to 2 users. Standard catalog pricing starts at $20/seat/month for Starter and $100/seat/month for Professional; temporary promotions may show lower effective prices.",
       },
       {
         slug: "zoho-crm",
@@ -1180,7 +1180,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best help desk software for Shopify and ecommerce brands: Gorgias, Zendesk, Freshdesk, and Help Scout evaluated on order management, live chat, and AI automation.",
     categorySlug: "customer-support",
     roleName: "Ecommerce & DTC Support Teams",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Ecommerce support teams handle order tracking inquiries, return requests, size exchanges, and pre-purchase product questions. Dedicated ecommerce help desks pull real-time order data directly into support tickets to resolve issues in seconds.",
     targetAudience: [
@@ -1220,7 +1220,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Pricing is ticket-volume based rather than per-seat, meaning high holiday ticket volume can increase monthly invoices.",
         pricingNote:
-          "Starter plan is $10/mo (50 tickets); Basic is $50/mo (300 tickets); Pro is $300/mo (2,000 tickets) billed annually.",
+          "Starter is $10/month, Basic $60/month, Pro $360/month, and Advanced $900/month; Enterprise is custom. Gorgias prices helpdesk plans by billable ticket volume.",
       },
       {
         slug: "zendesk",
@@ -1235,14 +1235,14 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       },
       {
         slug: "freshdesk",
-        badge: "Best Value with Multichannel Support & Free Tier",
+        badge: "Best Value for Email-First Support",
         ranking: 3,
         fitReason:
-          "Freshdesk offers a free plan for up to 10 agents, integrated email and social ticketing, and affordable paid tiers with automated Freddy AI routing.",
+          "Freshdesk combines email-first ticketing, a shared inbox, knowledge base, reporting, and AI options. A limited six-month Free Program is available for up to two agents; paid plans scale by agent.",
         limitations:
           "Ecommerce integrations are less native than Gorgias, requiring plugin setup for store order lookups.",
         pricingNote:
-          "Free tier up to 10 agents; Growth is $15/agent/mo; Pro is $49/agent/mo (billed annually).",
+          "Growth is $19/agent/month, Pro $55/agent/month, and Enterprise $89/agent/month, billed annually. Verify current AI-session and add-on charges separately.",
       },
       {
         slug: "help-scout",
@@ -1253,7 +1253,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Advanced social media DM management and phone integrations are less deeply built than Gorgias or Zendesk.",
         pricingNote:
-          "Standard is $20/user/mo; Plus is $40/user/mo; Pro is $65/user/mo (billed annually).",
+          "Standard is $25/user/month, Plus $45/user/month, and Pro $75/user/month on the current annual-pricing view.",
       },
     ],
     comparisons: [
@@ -1285,7 +1285,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best customer service software for startups: Intercom, Freshdesk, Help Scout, and Front evaluated on in-app chat, shared inboxes, and onboarding tours.",
     categorySlug: "customer-support",
     roleName: "Tech Startups & SaaS Companies",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Tech startups need customer support software that combines reactive problem-solving with proactive product adoption: in-app chat widgets, shared team inboxes, AI self-service bots, and user onboarding tours.",
     targetAudience: [
@@ -1325,18 +1325,18 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Standard pricing scales significantly with contact volume; Fin AI usage is billed per resolution ($0.99/resolution).",
         pricingNote:
-          "Early Stage startup program available ($65/mo for eligible startups); Essential plan is $39/seat/mo; Advanced is $85/seat/mo.",
+          "Essential is $29/seat/month, Advanced $85/seat/month, and Expert $132/seat/month on annual billing; Fin AI Agent and some add-ons add usage-based charges.",
       },
       {
         slug: "freshdesk",
-        badge: "Best Free & Low-Cost Traditional Help Desk",
+        badge: "Best Low-Cost Traditional Help Desk",
         ranking: 2,
         fitReason:
-          "Freshdesk delivers a full-featured ticketing system with a perpetual free plan for up to 10 agents, knowledge base hosting, and omnichannel support across email and chat.",
+          "Freshdesk provides ticketing, a shared inbox, knowledge base, automation, and reporting. Its current Free Program is limited to six months and up to two agents rather than being a perpetual free tier.",
         limitations:
           "In-app product messaging and proactive onboarding tours are less interactive than Intercom.",
         pricingNote:
-          "Free plan up to 10 agents; Growth is $15/agent/mo; Pro is $49/agent/mo (billed annually).",
+          "Growth is $19/agent/month, Pro $55/agent/month, and Enterprise $89/agent/month, billed annually. Verify current AI-session and add-on charges separately.",
       },
       {
         slug: "help-scout",
@@ -1347,7 +1347,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "AI resolution bot capabilities are simpler than Intercom Fin AI.",
         pricingNote:
-          "Standard is $20/user/mo; Plus is $40/user/mo; Pro is $65/user/mo (billed annually).",
+          "Standard is $25/user/month, Plus $45/user/month, and Pro $75/user/month on the current annual-pricing view.",
       },
       {
         slug: "front",
@@ -1356,9 +1356,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Front unifies team email inboxes (support@, sales@), live chat, SMS, and WhatsApp with internal comments and collision detection, making it ideal for high-touch B2B SaaS accounts.",
         limitations:
-          "2-seat minimum on Starter plan ($19/seat/mo); lacks in-app product walkthrough builders.",
+          "Starter supports up to 10 seats and a single channel type; teams needing multiple channel types should compare Professional or Enterprise.",
         pricingNote:
-          "Starter is $19/seat/mo; Growth is $59/seat/mo; Scale is $99/seat/mo (billed annually).",
+          "Starter is $25/seat/month, Professional $65/seat/month, and Enterprise $105/seat/month on the current annual-pricing view.",
       },
     ],
     comparisons: [
@@ -1389,7 +1389,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best social media management software for agencies: Sprout Social, Buffer, Hootsuite, and Later evaluated on client approvals, white-label reporting, and social listening.",
     categorySlug: "marketing",
     roleName: "Social Media & Digital Agencies",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Social media agencies manage dozens of client brands simultaneously: scheduling multi-channel posts, securing client approvals before publishing, monitoring brand sentiment, and delivering branded performance reports.",
     targetAudience: [
@@ -1436,11 +1436,11 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Value for Boutique Agencies & Team Collaboration",
         ranking: 2,
         fitReason:
-          "Buffer provides transparent channel-based pricing and clean approval workflows, allowing boutique agencies to manage unlimited team collaborators and clients without paying steep per-user seat fees.",
+          "Buffer provides transparent channel-based pricing and clean approval workflows, allowing boutique agencies to manage unlimited team collaborators and clients without adding a separate per-user fee for every collaborator on the Team plan.",
         limitations:
           "Social listening and deep CRM integrations are less extensive than Sprout Social.",
         pricingNote:
-          "Free plan up to 3 channels; Essentials $5/channel/mo; Team $10/channel/mo with unlimited users; Agency $100/mo (10 channels).",
+          "Free supports up to 3 channels; Essentials is $5/channel/month and Team $10/channel/month when billed yearly. Buffer uses channel-based pricing with volume discounts as channel count grows.",
       },
       {
         slug: "hootsuite",
@@ -1451,7 +1451,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "User interface can feel cluttered compared to modern minimal tools like Buffer or Later.",
         pricingNote:
-          "Professional $99/mo (1 user, 10 profiles); Team $249/mo (3 users, 20 profiles); Enterprise custom.",
+          "Standard starts at $99/user/month, Professional at $199/user/month, Advanced at $399/user/month, and Enterprise is custom on the current plan page.",
       },
       {
         slug: "later",
@@ -1482,7 +1482,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         question:
           "Why is Buffer preferred by boutique agencies over Sprout Social?",
         answer:
-          "Buffer charges per social channel rather than per user seat on its Agency and Team tiers, allowing small agencies to invite all team members and clients to collaborate without incurring $200-$300/month per-user charges.",
+          "Buffer uses channel-based pricing on its self-serve plans rather than charging every collaborator a separate seat fee on Team. That can be attractive for boutique agencies, but compare the required channel count and features rather than assuming it is always cheaper than Sprout Social or Hootsuite.",
       },
     ],
   },
@@ -1495,7 +1495,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Find the best social media schedulers for small businesses: Buffer, Later, Sprout Social, and Hootsuite evaluated on ease of use, pricing, visual planning, and auto-publishing.",
     categorySlug: "marketing",
     roleName: "Small Businesses & Content Creators",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Small business owners and creators need social media scheduling software that saves time: scheduling weekly content in one sitting, previewing visual layouts, auto-publishing across multiple channels, and fitting a modest monthly budget.",
     targetAudience: [
@@ -1557,7 +1557,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Higher entry price point ($99/mo) compared to Buffer and Later.",
         pricingNote:
-          "Professional starts at $99/mo (10 profiles, unlimited posts); Team is $249/mo.",
+          "Standard starts at $99/user/month for up to 10 social accounts. Professional starts at $199/user/month and Advanced at $399/user/month; Enterprise is custom.",
       },
       {
         slug: "sprout-social",
@@ -1599,7 +1599,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best task management and to-do list apps for individuals: Todoist, TickTick, Things, and Any.do evaluated on natural language input, widgets, and daily planning.",
     categorySlug: "productivity",
     roleName: "Busy Professionals & Solo Creators",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Individuals need task management apps that capture thoughts effortlessly: lightning-fast natural language parsing, daily morning planning routines, cross-device widget sync, and zero friction in daily execution.",
     targetAudience: [
@@ -1637,9 +1637,9 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         fitReason:
           "Todoist is a popular personal task manager with fast natural language date parsing, customizable filters for GTD workflows, and Karma gamification to encourage consistent task completion.",
         limitations:
-          "Task reminders, custom filters, and calendar sync require upgrading to the Pro plan ($4/mo).",
+          "Advanced personal features such as expanded project capacity, calendar layout, task duration, and more filter views require the Pro plan.",
         pricingNote:
-          "Free plan (up to 5 personal projects); Pro is $4/mo ($48/yr); Business is $6/user/mo (billed annually).",
+          "Beginner is free; Pro is $5/user/month billed yearly ($60/year), and Business is $8/user/month billed yearly ($96/year), plus applicable tax.",
       },
       {
         slug: "ticktick",
@@ -1650,7 +1650,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         limitations:
           "Natural language date parsing is slightly less forgiving than Todoist.",
         pricingNote:
-          "Free core tier; Premium is $2.99/mo (or $35.99/yr billed annually).",
+          "Free core tier; Premium is $49.99/year (less than $4.17/month on the annual plan).",
       },
       {
         slug: "things",
@@ -1703,7 +1703,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare the best knowledge base and team wiki software: Notion, Confluence, Slite, and Coda evaluated on search speed, SOP documentation, and collaboration.",
     categorySlug: "productivity",
     roleName: "Remote Teams & Operations Leaders",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-10-07",
     intro:
       "Companies need knowledge base software that eliminates repetitive questions: centralizing Standard Operating Procedures (SOPs), engineering documentation, employee onboarding handbooks, and meeting notes in a fast searchable workspace.",
     targetAudience: [
@@ -1739,7 +1739,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Modular Team Wikis & Connected Databases",
         ranking: 1,
         fitReason:
-          "Notion is the most versatile team wiki platform available. Its modular block architecture allows teams to combine rich text documentation with live relational project databases, team directories, and AI question-answering in a single unified hub.",
+          "Notion combines team wiki pages, databases, collaboration, and AI features in one workspace. Its modular block architecture allows teams to combine rich text documentation with live relational project databases, team directories, and AI question-answering in a single unified hub.",
         limitations:
           "Page-level permission inheritance can become complex in large enterprise workspaces with hundreds of sub-pages.",
         pricingNote:
@@ -1914,7 +1914,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
       "Compare password managers for business: 1Password, Bitwarden, Keeper, and Dashlane evaluated on team administration, open-source control, SCIM, credential risk, and current pricing.",
     categorySlug: "security",
     roleName: "IT Teams & Security Administrators",
-    updatedAt: "2026-09-09",
+    updatedAt: "2026-10-07",
     intro:
       "Business password-manager buyers are usually deciding between user adoption, open-source or self-hosted control, security administration, and credential-risk monitoring. A lower seat price is not useful if employees bypass the vault or administrators cannot provision and revoke access cleanly.",
     targetAudience: [
@@ -1950,7 +1950,7 @@ export const ROLE_GUIDES: readonly RoleGuide[] = [
         badge: "Best Overall for Enterprise UX & Secret Key Architecture",
         ranking: 1,
         fitReason:
-          "1Password combines unmatched user experience with rigorous two-factor encryption (Master Password + 128-bit Secret Key). Its Watchtower security dashboard, Travel Mode, and SCIM directory integrations make employee adoption seamless.",
+          "1Password combines account-management features with its Secret Key architecture and encrypted shared vaults. Its Watchtower security dashboard, Travel Mode, and SCIM directory integrations make employee adoption seamless.",
         limitations:
           "No perpetual free tier; strictly paid subscription model.",
         pricingNote:

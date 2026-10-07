@@ -4,7 +4,9 @@
   "category": "marketing",
   "description": "An \"AI marketing & service platform for ambitious consumer brands\" — an autonomous B2C CRM that unifies customer data with omnichannel marketing automation and AI agents.",
   "website": "https://www.klaviyo.com",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Positioned for consumer/B2C brands, especially e-commerce retailers, plus enterprise brands, restaurants, and wellness companies wanting to consolidate a fragmented marketing tech stack.",
   "features": [
     "Composer: AI agent that audits and generates on-brand campaigns/flows from prompts",
@@ -14,22 +16,64 @@
     "Real-time marketing analytics and omnichannel attribution",
     "Customer Hub & Helpdesk for self-service support"
   ],
-  "sources": ["https://www.klaviyo.com", "https://community.klaviyo.com/marketing-30/is-there-a-klaviyo-ios-app-9502"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.klaviyo.com/pricing",
+    "https://www.klaviyo.com"
+  ],
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Mailchimp",
       "slug": "mailchimp",
       "description": "An email and SMS marketing platform combining marketing analytics, automations, and AI tools.",
       "best_for": "Small to mid-sized businesses wanting an easy-to-use email/SMS marketing tool.",
-      "strengths": ["300+ templates with AI generation", "Always-on automations", "300+ integrations"]
+      "strengths": [
+        "300+ templates with AI generation",
+        "Always-on automations",
+        "300+ integrations"
+      ]
     },
     {
       "name": "ActiveCampaign",
       "slug": "activecampaign",
       "description": "An autonomous marketing platform where AI agents handle email, SMS, WhatsApp, and CRM tasks backed by customer data.",
       "best_for": "Growing businesses that want to automate marketing and sales work and reduce manual effort.",
-      "strengths": ["Active Intelligence AI", "Visual automation builder", "1,000+ integrations"]
+      "strengths": [
+        "Active Intelligence AI",
+        "Visual automation builder",
+        "1,000+ integrations"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free up to 250 active profiles and 500 email sends/month; paid pricing scales with profile count and selected products",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 250 active profiles, 500 email sends/month, $5 of mobile messages/month, and $5 of Composer usage/month."
+      },
+      {
+        "name": "Paid marketing plans",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Pricing scales with active profile count, sending volume, and selected products; use Klaviyo's pricing calculator for the current quote."
+      }
+    ],
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.klaviyo.com/pricing"
+  },
+  "cons": [
+    "The Free plan is capped at 250 active profiles and 500 email sends per month; exceeding those limits can pause sending until the account upgrades or the billing cycle resets.",
+    "Free-plan email support is available only for the first 60 days; after that, support is primarily self-service through Klaviyo's Help Center, Academy, and Community."
   ]
 }

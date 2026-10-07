@@ -2,7 +2,6 @@ import type { Software } from "@/data/software";
 import { getAllSoftware, getSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 import { META_DESCRIPTION_MAX_LENGTH, truncateAtWord } from "@/lib/generators";
-import { TREATMENT_COHORT } from "@/data/experiments/comparison-quality-cohort";
 
 /**
  * Comparison engine backing /compare/[comparison] (Sprint 7). Built in
@@ -179,12 +178,13 @@ export function generateWhoShouldChoose(software: Software): string {
  * When no real difference exists (equal feature/platform sets — rare),
  * it falls back to the plain sentence rather than fabricate one.
  *
- * Applied ONLY to data/experiments/comparison-quality-cohort.ts's
- * TREATMENT_COHORT (20 pages, hand-selected by real evidence) —
- * generateComparisonData below still calls the plain, unchanged
- * generateWhoShouldChoose for every other comparison, including the
- * CONTROL_COHORT, so this is a true controlled experiment, not a
- * silent behavior change for all 1,212 pages.
+ * Originally introduced as a 20-page controlled experiment. The 2026-10-07
+ * full-site quality audit found the default text still repeated across most
+ * comparison pages, while the experiment produced too little unconfounded
+ * Search data to justify preserving generic copy. The pair-aware generator is
+ * now the default for every comparison. It remains fully grounded in the same
+ * source-backed feature/platform data and still falls back to the plain
+ * sentence whenever no real pair-specific difference exists.
  */
 const PAIR_AWARE_FEATURE_HIGHLIGHT_CAP = 3;
 
@@ -294,15 +294,6 @@ export function generateKeyDifferences(softwareA: Software, softwareB: Software)
 }
 
 export function generateComparisonData(softwareA: Software, softwareB: Software): ComparisonData {
-  // GOOGLE INDEXATION QUALITY WAR mission (2026-08-22) — the controlled
-  // experiment gate. Only the 20 hand-selected TREATMENT_COHORT slugs get
-  // the pair-aware whoShouldChoose text; every other comparison (including
-  // the 20-page CONTROL_COHORT) keeps calling the exact same, unchanged
-  // generateWhoShouldChoose it always has. See
-  // data/experiments/comparison-quality-cohort.ts for the selection
-  // methodology and hypothesis.
-  const isTreatment = TREATMENT_COHORT.includes(generateComparisonSlug(softwareA, softwareB));
-
   return {
     softwareA,
     softwareB,
@@ -311,8 +302,8 @@ export function generateComparisonData(softwareA: Software, softwareB: Software)
     intro: generateComparisonIntro(softwareA, softwareB),
     rows: generateComparisonRows(softwareA, softwareB),
     keyDifferences: generateKeyDifferences(softwareA, softwareB),
-    whoShouldChooseA: isTreatment ? generateWhoShouldChoosePairAware(softwareA, softwareB) : generateWhoShouldChoose(softwareA),
-    whoShouldChooseB: isTreatment ? generateWhoShouldChoosePairAware(softwareB, softwareA) : generateWhoShouldChoose(softwareB),
+    whoShouldChooseA: generateWhoShouldChoosePairAware(softwareA, softwareB),
+    whoShouldChooseB: generateWhoShouldChoosePairAware(softwareB, softwareA),
   };
 }
 

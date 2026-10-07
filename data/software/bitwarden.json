@@ -106,5 +106,9 @@
     "enterprise_contact_sales": true,
     "last_verified": "2026-09-09",
     "official_source": "https://bitwarden.com/pricing/business/"
-  }
+  },
+  "cons": [
+    "Business collaboration and administration are paid per user even though basic personal password management is free.",
+    "Granular enterprise controls, passwordless SSO integration, account recovery, and self-hosting are listed for Enterprise rather than Teams."
+  ]
 }

@@ -113,5 +113,9 @@
         "AI dashboards"
       ]
     }
+  ],
+  "cons": [
+    "The Free plan is limited to 5 users, 3 projects, and 5 GB of storage.",
+    "SSO, portfolio dashboards, critical path, and baseline features require Enterprise, while the highest resource and dashboard limits require Ultimate."
   ]
 }

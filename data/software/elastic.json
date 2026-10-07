@@ -4,7 +4,9 @@
   "category": "api",
   "description": "Elastic is the company behind Elasticsearch, a distributed RESTful search and analytics engine, offering unified solutions for AI-powered search, observability, and security built on the same data platform.",
   "website": "https://www.elastic.co/",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Organizations seeking unified solutions for search, monitoring, and threat detection, trusted by 50% of the Fortune 500 across financial services, manufacturing, retail, and telecommunications.",
   "features": [
     "Elasticsearch: a distributed, RESTful search and analytics engine",
@@ -15,22 +17,87 @@
     "XDR and endpoint security with AI-driven insights and automated alert triage",
     "Flexible deployment: Elastic Cloud Serverless, Elastic Cloud Hosted, or self-managed"
   ],
-  "sources": ["https://www.elastic.co/"],
-  "accessed_at": "2026-08-04",
+  "sources": [
+    "https://www.elastic.co/pricing/cloud-hosted",
+    "https://www.elastic.co/pricing",
+    "https://www.elastic.co/"
+  ],
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Algolia",
       "slug": "algolia",
       "description": "An AI-powered search and discovery API platform for search, recommendations, and personalization.",
       "best_for": "Teams wanting a fully managed, developer-friendly search API rather than operating a search cluster.",
-      "strengths": ["AI-driven ranking and retrieval", "Recommendations and personalization", "70+ global data centers"]
+      "strengths": [
+        "AI-driven ranking and retrieval",
+        "Recommendations and personalization",
+        "70+ global data centers"
+      ]
     },
     {
       "name": "Supabase",
       "slug": "supabase",
       "description": "An open-source backend platform built on Postgres, with built-in full-text search alongside database, auth, and storage APIs.",
       "best_for": "Developers wanting lightweight search built into their existing backend rather than a dedicated search/observability platform.",
-      "strengths": ["Auto-generated REST and GraphQL APIs", "Postgres-native full-text search and pgvector", "Open-source, self-hostable core"]
+      "strengths": [
+        "Auto-generated REST and GraphQL APIs",
+        "Postgres-native full-text search and pgvector",
+        "Open-source, self-hostable core"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Elastic Cloud Hosted Standard starts as low as $99/month; Serverless is usage-based and self-managed licensing is separate",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "tiers": [
+      {
+        "name": "Cloud Hosted Standard",
+        "amount": "99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts as low as $99/month; actual cost depends on cloud provider, region, deployment size, storage, and resource choices."
+      },
+      {
+        "name": "Cloud Hosted Gold",
+        "amount": "114",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts as low as $114/month with additional reporting, alerting, and monitoring capabilities."
+      },
+      {
+        "name": "Cloud Hosted Enterprise",
+        "amount": "184",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts as low as $184/month; adds higher-end search, AI, support, and platform capabilities."
+      },
+      {
+        "name": "Serverless",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Usage-based pricing rather than a fixed monthly subscription."
+      },
+      {
+        "name": "Self-managed",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "License-based pricing; separate from Elastic Cloud Hosted pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://www.elastic.co/pricing/cloud-hosted"
+  },
+  "cons": [
+    "Elastic Cloud Hosted prices are 'as low as' starting points rather than fixed quotes; actual cost changes with cloud provider, region, deployment resources, storage, and usage.",
+    "Elastic's Hosted, Serverless, and self-managed offerings use different billing models, so prices from one deployment model are not directly interchangeable with another.",
+    "Higher support levels and some advanced capabilities are tied to higher subscription levels rather than Standard."
   ]
 }

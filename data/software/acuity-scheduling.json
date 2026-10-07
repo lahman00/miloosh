@@ -102,5 +102,9 @@
     "enterprise_contact_sales": false,
     "last_verified": "2026-09-09",
     "official_source": "https://www.acuityscheduling.com/pricing"
-  }
+  },
+  "cons": [
+    "Starter supports only one calendar; businesses needing multiple calendars must move to Standard or Premium.",
+    "The lowest displayed prices require annual billing; month-to-month Starter, Standard, and Premium rates are higher."
+  ]
 }

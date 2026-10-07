@@ -4,7 +4,9 @@
   "category": "security",
   "description": "Snyk describes itself as \"the AI Security Fabric\" — an independent security layer that continuously validates AI-generated code, governs development agents, and secures applications across the software development lifecycle.",
   "website": "https://snyk.io",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Targets development teams using AI coding assistants, security/DevOps teams managing application security, and enterprises scaling AI adoption who need to secure agentic development workflows.",
   "features": [
     "Snyk Code — static application security scanning",
@@ -14,22 +16,76 @@
     "Snyk API and Web (DAST) — dynamic application/API testing",
     "AI agent governance and AI inventory tracking"
   ],
-  "sources": ["https://snyk.io", "https://snyk.io/platform/"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://snyk.io/plans/",
+    "https://snyk.io",
+    "https://snyk.io/platform/"
+  ],
+  "accessed_at": "2026-10-07",
   "alternatives": [
     {
       "name": "Cloudflare",
       "slug": "cloudflare",
       "description": "Offers network/application-layer security (WAF, DDoS, bot management) rather than source-code/SDLC scanning.",
       "best_for": "Organizations wanting perimeter and runtime web application protection.",
-      "strengths": ["Global edge network", "Unified security dashboard", "Large-scale threat blocking"]
+      "strengths": [
+        "Global edge network",
+        "Unified security dashboard",
+        "Large-scale threat blocking"
+      ]
     },
     {
       "name": "Okta",
       "slug": "okta",
       "description": "Secures workforce and customer identity via SSO, MFA, and governance rather than code security.",
       "best_for": "Enterprises needing centralized identity/access control as part of their security stack.",
-      "strengths": ["Large integration network", "Identity governance", "AI agent identity security"]
+      "strengths": [
+        "Large integration network",
+        "Identity governance",
+        "AI agent identity security"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free; Team starts at $25/month",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly"
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "5 projects and 100 Snyk Code (SAST) tests per month, with SCA, SAST, IaC, and Container access."
+      },
+      {
+        "name": "Team",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $25/month for teams of up to 10 developers; 100 projects and 1,000 Snyk Code tests per month."
+      },
+      {
+        "name": "Enterprise",
+        "currency": "USD",
+        "billing_period": "unknown",
+        "notes": "Credit-based platform subscription; contact sales for pricing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-07",
+    "official_source": "https://snyk.io/plans/"
+  },
+  "cons": [
+    "The Free plan is limited to 5 projects and 100 Snyk Code tests per month.",
+    "The Team plan is designed for teams of up to 10 developers and is capped at 100 projects and 1,000 Snyk Code tests per month.",
+    "Snyk Evo capabilities such as AI Pentesting and Coding Agent security require an Enterprise Platform Subscription rather than Free or Team."
   ]
 }

@@ -31,12 +31,27 @@
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
-    "free_trial": { "available": true, "days": 30 },
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
     "tiers": [
-      { "name": "Pro", "notes": "Restricted to 1-10 members. Only available to new customers, per the vendor's own pricing page." },
-      { "name": "Business", "notes": "Requires 3+ members. Marked as the most popular tier." },
-      { "name": "Enterprise", "notes": "Contact sales for pricing." },
-      { "name": "Advanced Work Management", "notes": "Contact sales for pricing; solutions-based." }
+      {
+        "name": "Pro",
+        "notes": "Restricted to 1-10 members. Only available to new customers, per the vendor's own pricing page."
+      },
+      {
+        "name": "Business",
+        "notes": "Requires 3+ members. Marked as the most popular tier."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales for pricing."
+      },
+      {
+        "name": "Advanced Work Management",
+        "notes": "Contact sales for pricing; solutions-based."
+      }
     ],
     "enterprise_contact_sales": true,
     "last_verified": "2026-08-23",
@@ -87,5 +102,9 @@
         "Affordable at scale"
       ]
     }
+  ],
+  "cons": [
+    "Pro is restricted to 1-10 members and is available only to new customers on the current pricing page.",
+    "Business requires at least 3 members, while Enterprise and Advanced Work Management use custom pricing."
   ]
 }
