@@ -24,3 +24,11 @@ Wait for or evaluate a genuinely patched release of `braces` or a supported pack
 - `npm audit --omit=dev --json`: exit 0, zero runtime dependency advisories. This is diagnostic only and is not a replacement for the full audit gate.
 - Separate test-gates branch commit `7b07b04` passed 1899/1899 tests, lint, data validation, and build; changes not merged with this security branch because its full audit still fails.
 - RELEASE REMAINS BLOCKED. Salesforce change still isolated/unpublished. Do not merge/push/deploy while full audit gate fails.
+
+## 2026-10-08 late recheck — authoritative advisory confirmation
+
+Rechecked published registry metadata from the authorized Mac (npm view braces, micromatch, @next/eslint-plugin-next and eslint-config-next); no newer stable release than braces 3.0.3, micromatch 4.0.8, Next ESLint plugin/config 16.4.0. Full npm audit still five HIGH and release-blocking.
+
+Public advisory verification (2026-10-08): GitHub reviewed advisory https://github.com/advisories/GHSA-vfj7-8cjw-p6xm (CVE-2026-93687, published 2026-09-18, updated 2026-10-02) states braces <=3.0.3 is vulnerable and lists *no patched release*. GitLab https://advisories.gitlab.com/npm/braces/CVE-2026-93687/ explicitly reports no solution currently available. A third-party fork/package @dieub/braces-depth-guard exists, but it is not an upstream fix; vendor warns renaming/aliasing does not establish remediation or acceptance. No replacement, vendor fork, audit suppression, downgrade, or gate exception is authorized by the project contract and none was applied. This validates continuing hold on production release.
+
+Next authorized action: re-check vendor advisory/official package registry for a patched upstream braces release (or a supported ESLint chain that does not depend on braces); only then evaluate in isolated branch and run full audit, all tests, build, 100+ unaffected-render checks and production verification before publishing Salesforce. NO deploy or indexing action in this recheck.
