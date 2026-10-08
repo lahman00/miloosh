@@ -2,12 +2,15 @@
   "name": "Sketch",
   "slug": "sketch",
   "category": "design",
-  "description": "Sketch is a vector-based UI/UX design application for creating interface designs and interactive prototypes, with tools for developer handoff.",
+  "description": "Sketch is a UI/UX design and prototyping platform centered on a native Mac editor, with browser-based collaboration, document sharing, developer handoff, version history, and workspace administration.",
   "website": "https://www.sketch.com",
   "platforms": [
-    "macOS"
+    "macOS",
+    "Web",
+    "iOS",
+    "iPadOS"
   ],
-  "best_for": "Positioned for professional UI/UX designers, from independent freelancers to enterprise design teams.",
+  "best_for": "Best suited to UI/UX designers and design teams that work primarily on macOS and want a native design editor with shared workspaces, browser review, prototyping, and developer handoff.",
   "features": [
     "Nestable frames and flexible stack layouts for responsive design",
     "Vector editing tools",
@@ -17,9 +20,11 @@
     "Component libraries and frame presets"
   ],
   "sources": [
-    "https://www.sketch.com"
+    "https://www.sketch.com/pricing/",
+    "https://www.sketch.com/docs/",
+    "https://www.sketch.com/support/subscriptions/manage/free-plan/"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "Figma",
@@ -44,5 +49,87 @@
       ]
     }
   ],
-  "order": 20
+  "order": 20,
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$12/editor/month for Standard, billed yearly",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "12",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Standard",
+        "amount": "12",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "editor",
+        "notes": "Billed yearly; includes the native Mac app, collaboration, unlimited documents, viewers, version history, and developer handoff."
+      },
+      {
+        "name": "Professional",
+        "amount": "24",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "editor",
+        "notes": "Billed yearly; adds SSO, project archiving, and permissions groups."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "44",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "editor",
+        "notes": "Billed yearly; adds SCIM, BYOK encryption, dedicated support, and custom reviews/terms."
+      },
+      {
+        "name": "Private Cloud",
+        "notes": "Custom pricing for a private-cloud environment with hosting-location choice and enterprise controls."
+      },
+      {
+        "name": "Mac-only license",
+        "amount": "120",
+        "currency": "USD",
+        "billing_period": "one_time",
+        "unit": "seat",
+        "notes": "One-time license for the native Mac app with one year of updates; excludes cloud collaboration and online document sharing."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-08",
+    "official_source": "https://www.sketch.com/pricing/"
+  },
+  "cons": [
+    "Sketch does not offer a permanent full-featured free editor plan; subscriptions start after a 30-day trial, aside from education offers and free viewer access.",
+    "The primary design editor is a native Mac app, so teams that require native Windows design editing should compare cross-platform alternatives.",
+    "The $12, $24, and $44 per-editor monthly rates shown for Standard, Professional, and Enterprise are billed yearly; Private Cloud is quote-based."
+  ],
+  "faq": [
+    {
+      "question": "How much does Sketch cost?",
+      "answer": "Sketch Standard is $12 per editor per month billed yearly, Professional is $24, and Enterprise is $44. Private Cloud uses custom pricing."
+    },
+    {
+      "question": "Does Sketch have a free plan?",
+      "answer": "Sketch does not offer a permanent full editor plan for general customers. It offers a 30-day free trial, free viewer access, and separate education offers."
+    },
+    {
+      "question": "Can I buy Sketch without a subscription?",
+      "answer": "Yes. Sketch sells a $120 per-seat Mac-only license that includes one year of updates and can be used offline, but it does not include the cloud collaboration and online sharing features of a subscription."
+    },
+    {
+      "question": "Does Sketch work on Windows?",
+      "answer": "Sketch's primary design editor is the native macOS app. Browser-based viewing, commenting, version history, and developer handoff are available on the web, but Windows users do not get an equivalent native Sketch design editor."
+    }
+  ]
 }

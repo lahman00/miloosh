@@ -2,10 +2,16 @@
   "name": "Slite",
   "slug": "slite",
   "category": "documentation",
-  "description": "Slite is an AI-powered knowledge base that monitors connected tools to detect outdated documentation and suggests updates, aiming to keep docs accurate as a \"single source of truth.\"",
+  "description": "Slite is a collaborative knowledge base with AI search, document verification, connected-tool search, and agent workflows designed to keep internal documentation current.",
   "website": "https://slite.com",
-  "platforms": ["Web", "macOS", "Windows", "iOS", "Android"],
-  "best_for": "Organizations (the site cites \"3,000+ leading companies\") across IT & Operations, Product & Engineering, Customer Support, and HR, including teams migrating from Notion, Confluence, or ClickUp.",
+  "platforms": [
+    "Web",
+    "macOS",
+    "Windows",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Best suited to teams that want a structured internal knowledge base with document verification and AI-assisted search, especially when knowledge is spread across tools such as Slack, GitHub, Jira, Linear, HubSpot, or Asana.",
   "features": [
     "Slite Agent that monitors integrated tools (Slack, Linear, GitHub, Jira, HubSpot, Asana, etc.) for changes",
     "Automatic \"knowledge drift\" detection with generated draft updates",
@@ -14,22 +20,100 @@
     "Analytics on what team members read and search for",
     "MCP (Model Context Protocol) compatibility"
   ],
-  "sources": ["https://slite.com", "https://slite.com/features", "https://slite.com/download"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://slite.com/pricing",
+    "https://slite.com/help/mbbEbTqWSmK3zx/Credits",
+    "https://slite.com/solutions/product-engineering"
+  ],
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "Slab",
       "slug": "slab",
       "description": "A knowledge management wiki emphasizing fast search and clean organization for company-wide knowledge sharing.",
       "best_for": "Non-technical to tech-savvy teams wanting a simple, well-organized company wiki.",
-      "strengths": ["Hierarchical organization", "Fast search", "Google/Slack/GitHub integrations"]
+      "strengths": [
+        "Hierarchical organization",
+        "Fast search",
+        "Google/Slack/GitHub integrations"
+      ]
     },
     {
       "name": "Document360",
       "slug": "document360",
       "description": "An AI-powered knowledge base for internal and external/customer-facing documentation.",
       "best_for": "Support and technical writing teams needing both internal KB and public docs with analytics.",
-      "strengths": ["AI chatbot", "Workflow builder", "Ticket deflection"]
+      "strengths": [
+        "AI chatbot",
+        "Workflow builder",
+        "Ticket deflection"
+      ]
+    }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$10/user/month for Basic, billed annually",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_plan": false,
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "10",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Basic",
+        "amount": "10",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Billed annually. Includes unlimited docs, verification, Ask within Slite docs, and a limited monthly AI-question allowance."
+      },
+      {
+        "name": "Pro",
+        "amount": "20",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Billed annually. Adds Slite Agent, search across connected tools, agent workflows, OpenID SSO, and 50 pooled AI credits per seat each month."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Custom pricing with advanced security, audit logs, SCIM, SLA, migration/onboarding support, and custom agent sources."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-08",
+    "official_source": "https://slite.com/pricing"
+  },
+  "cons": [
+    "Slite no longer offers a permanent free workspace plan; after the 14-day trial, a paid subscription is required to continue using the product.",
+    "Basic limits Ask to a monthly question allowance, while Pro's cross-tool Slite Agent uses pooled AI credits; heavier AI workflows can require additional credits.",
+    "The advertised $10 and $20 per-user monthly rates are billed annually, so teams should compare the full annual seat commitment rather than treating them as month-to-month prices."
+  ],
+  "faq": [
+    {
+      "question": "How much does Slite cost?",
+      "answer": "Slite Basic is $10 per user per month billed annually. Pro is $20 per user per month billed annually. Enterprise uses custom pricing."
+    },
+    {
+      "question": "Does Slite have a free plan?",
+      "answer": "No permanent free plan is currently offered. New workspaces get a 14-day free trial with no credit card required, then need a paid plan to continue."
+    },
+    {
+      "question": "How do Slite AI credits work?",
+      "answer": "Pro includes 50 pooled AI credits per seat each month. Slite Agent tasks such as cross-tool search, maintenance workflows, digests, and agent questions consume credits; ordinary writing, editing, and document verification do not use the same credit pool."
+    },
+    {
+      "question": "What should I check before moving knowledge into Slite?",
+      "answer": "Inventory your document hierarchy, permissions, owners, verification rules, integrations, and search sources. Slite supports imports from systems such as Confluence, Notion, Google Docs, and Markdown, but test structure and access rules on a representative workspace before a full migration."
     }
   ]
 }

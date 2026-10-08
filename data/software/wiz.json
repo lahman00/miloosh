@@ -2,12 +2,12 @@
   "name": "Wiz",
   "slug": "wiz",
   "category": "security",
-  "description": "Wiz is an AI-powered cloud security platform that connects code, cloud, and runtime data into a unified security graph to identify and remediate risk.",
+  "description": "Wiz is a cloud and AI security platform that connects code, cloud configuration, identities, data, vulnerabilities, and runtime context to prioritize and remediate risk.",
   "website": "https://www.wiz.io",
   "platforms": [
     "Web"
   ],
-  "best_for": "Security teams at enterprises running cloud-native and AI-heavy environments who need end-to-end visibility across code, cloud, and runtime.",
+  "best_for": "Best suited to cloud-security and platform teams managing complex AWS, Azure, GCP, Kubernetes, and AI environments that need broad visibility, risk prioritization, and security context across code, cloud, and runtime.",
   "features": [
     "Security Graph connecting code, cloud, and runtime context",
     "Cloud security posture management (CSPM)",
@@ -19,10 +19,11 @@
     "AI-specific risk identification for AI applications"
   ],
   "sources": [
-    "https://www.wiz.io",
-    "https://www.wiz.io/platform"
+    "https://www.wiz.io/pricing",
+    "https://www.wiz.io/academy/cloud-security/how-to-evaluate-wiz-faq",
+    "https://www.wiz.io/platform/wiz-cloud"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "CrowdStrike",
@@ -45,6 +46,42 @@
         "Container security",
         "Developer-first workflow"
       ]
+    }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "Custom quote based on cloud workload count and required capabilities",
+    "has_free_tier": false,
+    "status": "contact_sales",
+    "free_plan": false,
+    "free_trial": {
+      "available": true
+    },
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-08",
+    "official_source": "https://www.wiz.io/pricing"
+  },
+  "cons": [
+    "Wiz does not publish a stable numeric list price; pricing is tailored to each organization and generally depends on cloud workload count and required capabilities.",
+    "Evaluation is sales-assisted through a trial or proof of concept rather than a simple self-service free tier.",
+    "Wiz spans multiple cloud-security capabilities, so buyers should define which code, cloud, runtime, sensor, and AI-security functions they actually need before comparing quotes."
+  ],
+  "faq": [
+    {
+      "question": "How much does Wiz cost?",
+      "answer": "Wiz does not publish one numeric list price. Its official evaluation guidance says pricing is generally based on cloud workload count and additional features, with exact pricing provided on request."
+    },
+    {
+      "question": "Does Wiz offer a free trial?",
+      "answer": "Wiz offers trial and proof-of-concept options for organizations evaluating the platform. The evaluation path is sales-assisted rather than a permanent self-service free plan."
+    },
+    {
+      "question": "Is Wiz agentless?",
+      "answer": "Wiz Cloud connects to cloud accounts through API integrations for broad agentless visibility. Optional runtime sensors can be added where deeper runtime visibility is required."
+    },
+    {
+      "question": "What should I scope before asking Wiz for a quote?",
+      "answer": "Document your cloud providers, workload count, Kubernetes footprint, code-security needs, runtime requirements, data and identity risk, AI workloads, and required integrations. That prevents comparing a broad Wiz quote against narrower products that solve only one part of the problem."
     }
   ]
 }

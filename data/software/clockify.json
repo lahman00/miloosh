@@ -2,7 +2,7 @@
   "name": "Clockify",
   "slug": "clockify",
   "category": "productivity",
-  "description": "Clockify is a time tracking and timesheet app that lets teams log work with a timer or manual entries, monitor activity, and generate reports on billable hours, project budgets, and team capacity.",
+  "description": "Clockify is a time-tracking and timesheet platform for logging work, reporting billable hours, managing attendance, planning capacity, approving timesheets, tracking expenses, and invoicing.",
   "website": "https://clockify.me",
   "platforms": [
     "Web",
@@ -13,7 +13,7 @@
     "Android",
     "Browser extension"
   ],
-  "best_for": "Positioned for freelancers, agencies, developers, consultants, and construction companies that need to track productivity, attendance, and billable hours, with a free plan for unlimited users.",
+  "best_for": "Best suited to freelancers and teams that need time tracking first, with optional billing, approvals, scheduling, productivity monitoring, GPS, and enterprise administration on higher plans.",
   "features": [
     "Timer, manual timesheet entry, and calendar view for logging time",
     "Auto-tracker that turns app and website usage into time entries",
@@ -25,43 +25,130 @@
     "Role-based team administration"
   ],
   "sources": [
-    "https://clockify.me"
+    "https://clockify.me/pricing",
+    "https://clockify.me/basic-plan/",
+    "https://clockify.me/pro-plan/",
+    "https://clockify.me/enterprise-plan/"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "Toggl Track",
       "slug": "toggl-track",
-      "description": "A time tracking tool with one-click timers, background activity tracking, and profitability reporting.",
-      "best_for": "Teams wanting deeper profitability and workload reporting",
+      "description": "A time-tracking platform with timers, background activity, project profitability, workload reporting, and integrations.",
+      "best_for": "Teams prioritizing polished time tracking and profitability analysis.",
       "strengths": [
-        "Background activity tracking",
-        "Profitability reports",
-        "100+ integrations"
+        "One-click timers",
+        "Profitability reporting",
+        "Integrations"
       ]
     },
     {
       "name": "Hubstaff",
       "slug": "hubstaff",
-      "description": "A workforce management and time tracking tool with automated timesheets, activity monitoring, and payroll integrations.",
-      "best_for": "Teams needing workforce proof-of-work tracking, scheduling, and automated payroll",
+      "description": "A workforce management and time-tracking platform with activity monitoring, scheduling, GPS, and payroll integrations.",
+      "best_for": "Distributed teams that need workforce visibility, location tracking, and payroll workflows.",
       "strengths": [
-        "Proof-of-work activity tracking",
-        "GPS location tracking",
-        "Automated payroll integrations"
+        "Activity monitoring",
+        "GPS tracking",
+        "Payroll integrations"
       ]
     },
     {
-      "name": "Asana",
-      "slug": "asana",
-      "description": "A project management platform for planning, tracking, and reporting on team work.",
-      "best_for": "Teams that want project management alongside light time tracking via integrations",
+      "name": "Harvest",
+      "slug": "harvest",
+      "description": "A time-tracking and invoicing platform focused on project budgets, billable hours, expenses, and client billing.",
+      "best_for": "Agencies, consultancies, and freelancers connecting tracked time directly to project budgets and invoices.",
       "strengths": [
-        "Task management",
-        "Timeline views",
-        "Workflow automation"
+        "Time tracking",
+        "Project budgets",
+        "Client invoicing"
       ]
     }
   ],
-  "order": 51
+  "order": 51,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$3.99/seat/month for Basic billed annually ($4.99 monthly)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 7
+    },
+    "entry_paid": {
+      "amount": "3.99",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free for up to 5 users with unlimited time tracking and core timer/timesheet features."
+      },
+      {
+        "name": "Basic",
+        "amount": "3.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "Billed annually; $4.99/seat/month on monthly billing."
+      },
+      {
+        "name": "Standard",
+        "amount": "5.49",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "Billed annually; $6.99/seat/month on monthly billing. Adds billing, invoicing, approvals, time off, attendance, and related controls."
+      },
+      {
+        "name": "Pro",
+        "amount": "7.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "Billed annually; $9.99/seat/month on monthly billing. Adds scheduling, forecasting, expenses, profitability, GPS, and productivity controls."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "11.99",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "seat",
+        "notes": "Billed annually; $14.99/seat/month on monthly billing. Adds SSO, audit log, custom subdomain, and additional administrative controls."
+      }
+    ],
+    "last_verified": "2026-10-08",
+    "official_source": "https://clockify.me/pricing"
+  },
+  "cons": [
+    "Clockify's Free plan is currently capped at 5 users, so larger teams need a paid plan even if they only need basic time tracking.",
+    "Every active or invited user on a paid plan occupies a paid seat; annual pricing requires prepaying the seat for the year.",
+    "Features such as invoicing and approvals start on Standard, while scheduling, expenses, GPS tracking, and profitability controls require Pro or higher."
+  ],
+  "faq": [
+    {
+      "question": "Is Clockify still free for unlimited users?",
+      "answer": "No. Clockify's current pricing page lists the Free plan at $0 for up to 5 users. It still includes unlimited time tracking, but teams above 5 users need a paid plan."
+    },
+    {
+      "question": "How much do Clockify paid plans cost?",
+      "answer": "On annual billing, Basic is $3.99 per seat per month, Standard $5.49, Pro $7.99, and Enterprise $11.99. Monthly billing is higher at $4.99, $6.99, $9.99, and $14.99 respectively."
+    },
+    {
+      "question": "Does Clockify offer a free trial?",
+      "answer": "Yes. Clockify offers a 7-day trial of Pro features without requiring a credit card."
+    },
+    {
+      "question": "What should I compare before choosing Clockify?",
+      "answer": "Check your team size first, then decide whether you need only time tracking or also approvals, invoicing, attendance, scheduling, profitability, expenses, GPS, SSO, or audit logs. Those capabilities are split across different paid tiers."
+    }
+  ]
 }

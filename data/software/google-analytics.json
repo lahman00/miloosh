@@ -2,41 +2,107 @@
   "name": "Google Analytics",
   "slug": "google-analytics",
   "category": "analytics",
-  "description": "A free analytics tool from Google that helps businesses understand customer behavior across websites and apps, with cross-platform measurement and machine-learning-based insights to improve marketing ROI.",
+  "description": "Google Analytics measures user activity across websites and apps, with a free Standard service level and a paid Analytics 360 service level that raises data, reporting, retention, and export limits.",
   "website": "https://marketingplatform.google.com/about/analytics/",
-  "platforms": ["Web", "iOS", "Android"],
-  "best_for": "Positioned for businesses of every size, from small businesses wanting free/easy measurement to enterprises wanting analytics unified with Google's advertising platforms (Google Ads, Display & Video 360).",
-  "features": [
-    "Cross-platform (web + app) customer journey measurement",
-    "Machine-learning-based predictive insights",
-    "Cross-platform attribution modeling",
-    "Customizable, shareable reporting",
-    "Built-in automation for measurement",
-    "Native integrations with Google Ads, Search Ads 360, Search Console, Google Cloud"
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
   ],
-  "sources": ["https://marketingplatform.google.com/about/analytics/", "https://support.google.com/analytics/answer/9304153"],
-  "accessed_at": "2026-08-01",
+  "best_for": "Best suited to organizations that need web/app measurement and attribution tied closely to Google's advertising and cloud ecosystem; Analytics 360 is aimed at larger organizations that need higher limits, longer retention, unsampled analysis, and service-level commitments.",
+  "features": [
+    "Web and app event-based measurement in Google Analytics 4",
+    "Cross-platform reporting and attribution",
+    "Audiences, key events, explorations, and customizable reports",
+    "Machine-learning-based insights and predictive capabilities",
+    "Native integrations with Google Ads, Search Ads 360, Search Console, and Google Cloud",
+    "BigQuery export, with materially higher daily export limits on Analytics 360"
+  ],
+  "sources": [
+    "https://marketingplatform.google.com/about/analytics/",
+    "https://support.google.com/analytics/answer/11202874?hl=en",
+    "https://support.google.com/analytics/answer/12229528?hl=en"
+  ],
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "Mixpanel",
       "slug": "mixpanel",
-      "description": "A product intelligence platform combining analytics, session replay, experiments, and AI-powered insights.",
-      "best_for": "Product, data, and engineering teams wanting fast, data-driven product decisions.",
-      "strengths": ["Fast querying", "Session Replay", "Experiments/A-B testing"]
+      "description": "A product analytics platform focused on event analysis, funnels, retention, session replay, and product decision workflows.",
+      "best_for": "Product teams that want fast behavioral analysis and product-focused funnels and retention reporting.",
+      "strengths": [
+        "Product analytics",
+        "Funnels and retention",
+        "Session replay"
+      ]
     },
     {
       "name": "Matomo",
       "slug": "matomo",
-      "description": "Privacy-first analytics with full data ownership via self-hosted or cloud deployment.",
-      "best_for": "Organizations wanting privacy-compliant analytics without vendor lock-in.",
-      "strengths": ["Unsampled data", "Cookieless tracking", "Self-hosted or cloud"]
+      "description": "A privacy-focused analytics platform available as self-hosted software or managed cloud service.",
+      "best_for": "Organizations prioritizing data ownership, privacy controls, and a self-hosting option.",
+      "strengths": [
+        "Self-hosting option",
+        "Privacy controls",
+        "Web analytics"
+      ]
     },
     {
-      "name": "WhatConverts",
-      "slug": "whatconverts",
-      "description": "A lead tracking and reporting platform that attributes calls, form submissions, chats, and e-commerce transactions back to the specific marketing campaign, keyword, or channel that generated them.",
-      "best_for": "Marketing agencies and businesses that need call/form/chat lead-source attribution rather than general website analytics.",
-      "strengths": ["Call tracking", "Form/chat tracking", "Lead-to-source attribution"]
+      "name": "PostHog",
+      "slug": "posthog",
+      "description": "A product intelligence platform combining product/web analytics, session replay, experiments, feature flags, and data tooling.",
+      "best_for": "Developer-led product teams wanting analytics and experimentation in one platform.",
+      "strengths": [
+        "Product and web analytics",
+        "Session replay",
+        "Experiments and feature flags"
+      ]
+    }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Google Analytics Standard is free; Analytics 360 requires a paid contract",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "tiers": [
+      {
+        "name": "Google Analytics Standard",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Google states that the core Analytics tools are available free of charge, subject to Standard property limits."
+      },
+      {
+        "name": "Google Analytics 360",
+        "notes": "Paid contract with higher collection, reporting, retention, exploration, API, and BigQuery export limits; public self-service numeric pricing is not listed."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-08",
+    "official_source": "https://marketingplatform.google.com/about/analytics/"
+  },
+  "cons": [
+    "Standard properties have lower limits than Analytics 360, including up to 14 months of configurable data retention versus up to 50 months on 360.",
+    "Standard explorations can sample at 10 million events per query, while 360 raises that threshold and adds unsampled exploration capacity.",
+    "Standard daily BigQuery export is capped at 1 million events, while Analytics 360 supports much larger daily exports; organizations exceeding Standard limits need to evaluate a 360 contract."
+  ],
+  "faq": [
+    {
+      "question": "Is Google Analytics free?",
+      "answer": "Yes. Google states that Google Analytics provides its core measurement tools free of charge. The paid Analytics 360 service level is for organizations that need substantially higher limits and enterprise service commitments."
+    },
+    {
+      "question": "How much does Google Analytics 360 cost?",
+      "answer": "Google does not publish one self-service list price for Analytics 360 on the current Analytics pages. 360 requires an active contract or purchase through an authorized Google sales partner."
+    },
+    {
+      "question": "What are important limits in free Google Analytics?",
+      "answer": "Standard properties can retain user-level data for up to 14 months, have a 10-million-event exploration sampling threshold, and a 1-million-event daily BigQuery export limit. Analytics 360 raises these and several other limits."
+    },
+    {
+      "question": "When should I compare an alternative to Google Analytics?",
+      "answer": "Compare alternatives when privacy/data-ownership requirements, product analytics workflows, unsampled analysis, self-hosting, or non-Google data architecture matter more than tight integration with Google's advertising ecosystem."
     }
   ]
 }

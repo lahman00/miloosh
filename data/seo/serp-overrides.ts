@@ -5,6 +5,42 @@ export type SerpMetadataOverride = {
 };
 
 const SOFTWARE_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
+  slite: {
+    title: "Slite Pricing & Alternatives (2026): Slab, Document360",
+    description:
+      "Check Slite Basic and Pro pricing, AI credit limits, trial terms, buyer fit, and alternatives including Slab and Document360.",
+    h1: "Slite pricing & alternatives",
+  },
+  "google-analytics": {
+    title: "Google Analytics Pricing (2026): Free vs 360",
+    description:
+      "Compare free Google Analytics Standard with Analytics 360 limits, retention, BigQuery export, buyer fit, and analytics alternatives.",
+    h1: "Google Analytics pricing, limits & alternatives",
+  },
+  bitbucket: {
+    title: "Bitbucket Pricing (2026): Free, Standard, Premium",
+    description:
+      "Check Bitbucket Free, Standard and Premium pricing, Pipelines limits, Git LFS allowances, buyer fit, and Git hosting alternatives.",
+    h1: "Bitbucket pricing & alternatives",
+  },
+  sketch: {
+    title: "Sketch Pricing (2026): Standard, Pro, Mac License",
+    description:
+      "Check Sketch Standard, Professional, Enterprise and Mac-only pricing, 30-day trial, macOS tradeoffs, and design alternatives.",
+    h1: "Sketch pricing & alternatives",
+  },
+  clockify: {
+    title: "Clockify Pricing (2026): Free, Basic, Standard, Pro",
+    description:
+      "Check Clockify's 5-user Free limit and current Basic, Standard, Pro and Enterprise pricing, features, buyer fit, and alternatives.",
+    h1: "Clockify pricing & alternatives",
+  },
+  wiz: {
+    title: "Wiz Pricing (2026): Custom Quote & Cloud Security Fit",
+    description:
+      "Wiz pricing is quote-based. Check workload-based pricing factors, trial/PoC options, buyer fit, cloud-security scope, and alternatives.",
+    h1: "Wiz pricing & cloud-security alternatives",
+  },
   vercel: {
     title: "Vercel Pricing & Alternatives (2026): Netlify, Render",
     description:
@@ -197,6 +233,30 @@ export type SoftwareSearchIntentNote = {
 };
 
 const SOFTWARE_SEARCH_INTENT_NOTES: Readonly<Record<string, SoftwareSearchIntentNote>> = {
+  slite: {
+    text: "Slite has no permanent free workspace plan: Basic is $10/user/month billed annually, Pro is $20/user/month billed annually, and new workspaces get a 14-day trial.",
+    alternativeSectionTitle: "Knowledge-base alternatives",
+  },
+  "google-analytics": {
+    text: "Google Analytics Standard is free. Analytics 360 is a paid contract with higher limits for retention, exploration, APIs, and BigQuery export; Google does not list one self-service 360 price.",
+    alternativeSectionTitle: "Analytics alternatives",
+  },
+  bitbucket: {
+    text: "Bitbucket Free is limited to 5 users and 50 Pipelines build minutes per month. Standard and Premium are paid per workspace user and include higher CI/storage allowances.",
+    alternativeSectionTitle: "Git hosting alternatives",
+  },
+  sketch: {
+    text: "Sketch's primary design editor is native to macOS. There is no permanent general free editor plan; subscriptions start after a 30-day trial, or you can buy a Mac-only license without cloud collaboration.",
+    alternativeSectionTitle: "Design alternatives",
+  },
+  clockify: {
+    text: "Clockify's current Free plan is capped at 5 users. Paid pricing is per seat, and annual rates require prepaying the seat for the year.",
+    alternativeSectionTitle: "Time-tracking alternatives",
+  },
+  wiz: {
+    text: "Wiz does not publish a numeric list price. Quotes are tailored to workload count and required capabilities, and evaluation is typically through a trial or proof of concept.",
+    alternativeSectionTitle: "Cloud-security alternatives",
+  },
   vercel: {
     text: "Vercel Pro starts at $20/month but is not an all-inclusive flat bill: it includes usage credit and can add metered usage, paid add-ons, and developer-seat costs.",
   },

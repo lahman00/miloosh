@@ -2,10 +2,12 @@
   "name": "Bitbucket",
   "slug": "bitbucket",
   "category": "developer-tools",
-  "description": "Bitbucket is Atlassian's Git code hosting and CI/CD product, described on its site as \"Code & CI/CD, powered by AI and the Atlassian platform,\" built around native Jira integration.",
+  "description": "Bitbucket Cloud is Atlassian's Git repository hosting and CI/CD service, with pull requests, Bitbucket Pipelines, code review controls, and deep integration with Jira.",
   "website": "https://bitbucket.org",
-  "platforms": ["Web"],
-  "best_for": "Teams already using Jira who want commit messages/issue keys to automatically update Jira status and reduce context-switching between planning and code.",
+  "platforms": [
+    "Web"
+  ],
+  "best_for": "Best suited to software teams already using Jira or other Atlassian tools that want Git hosting, pull requests, and integrated CI/CD in the same workflow.",
   "features": [
     "Native Jira issue-status integration via commit messages",
     "Bitbucket Pipelines (built-in CI/CD)",
@@ -14,22 +16,106 @@
     "Snyk-based automated security scanning",
     "Branch permissions and merge checks (governance)"
   ],
-  "sources": ["https://bitbucket.org"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://www.atlassian.com/software/bitbucket/pricing",
+    "https://support.atlassian.com/bitbucket-cloud/docs/manage-your-plan-and-billing/",
+    "https://support.atlassian.com/bitbucket-cloud/docs/limitations-of-bitbucket-pipelines/"
+  ],
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "GitHub",
       "slug": "github",
       "description": "The widely-adopted developer platform combining repos, Actions CI/CD, and Copilot AI tooling.",
       "best_for": "Individual developers through large enterprises across many industries.",
-      "strengths": ["Actions automation", "Codespaces cloud dev environments", "Large third-party Marketplace"]
+      "strengths": [
+        "Actions automation",
+        "Codespaces cloud dev environments",
+        "Large third-party Marketplace"
+      ]
     },
     {
       "name": "GitLab",
       "slug": "gitlab",
       "description": "A single-application DevSecOps platform spanning planning, CI/CD, and security scanning.",
       "best_for": "Organizations wanting to consolidate multiple DevOps tools into one platform.",
-      "strengths": ["Built-in SAST/DAST scanning", "GitLab Duo AI agents", "Self-managed or SaaS deployment"]
+      "strengths": [
+        "Built-in SAST/DAST scanning",
+        "GitLab Duo AI agents",
+        "Self-managed or SaaS deployment"
+      ]
+    }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$3.65/user/month for Standard",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "3.65",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Free for up to 5 users; includes unlimited public/private repositories, 50 Pipelines build minutes/month, and 1 GB shared Git LFS storage."
+      },
+      {
+        "name": "Standard",
+        "amount": "3.65",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Includes 2,500 Pipelines build minutes/month and 5 GB shared Git LFS storage; paid per workspace user."
+      },
+      {
+        "name": "Premium",
+        "amount": "7.25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Includes 3,500 Pipelines build minutes/month, 10 GB shared Git LFS storage, and additional controls such as merge checks, IP allowlisting, and deployment permissions."
+      },
+      {
+        "name": "Data Center",
+        "notes": "Self-managed option for organizations with stricter regulatory, security, or infrastructure requirements; contact Atlassian."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-08",
+    "official_source": "https://www.atlassian.com/software/bitbucket/pricing"
+  },
+  "cons": [
+    "The Free plan is capped at 5 users and includes only 50 Pipelines build minutes per month plus 1 GB of shared Git LFS storage.",
+    "Standard and Premium are charged per workspace user, so repository access for a growing team directly increases subscription cost.",
+    "Pipelines minutes and Git LFS storage are allowance-based; teams that exceed included capacity can incur additional usage charges."
+  ],
+  "faq": [
+    {
+      "question": "How much does Bitbucket Cloud cost?",
+      "answer": "Bitbucket Cloud Free is $0 for up to 5 users. Standard is $3.65 per user per month and Premium is $7.25 per user per month on Atlassian's current pricing page."
+    },
+    {
+      "question": "What are the main Bitbucket Free limits?",
+      "answer": "Free supports up to 5 users and includes 50 Pipelines build minutes per month plus 1 GB of shared Git LFS storage. Standard and Premium raise those allowances."
+    },
+    {
+      "question": "Does Bitbucket have a free trial?",
+      "answer": "Yes. Atlassian documents a 30-day Bitbucket Cloud trial when starting or upgrading to a paid Standard or Premium plan."
+    },
+    {
+      "question": "What should I check before moving from Bitbucket to GitHub or GitLab?",
+      "answer": "Inventory repositories, branch permissions, merge checks, Pipelines configuration, deployment variables, Git LFS usage, Jira links, webhooks, access groups, and third-party integrations. Rebuild CI/CD and access policies before changing the primary repository host."
     }
   ]
 }

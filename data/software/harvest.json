@@ -90,10 +90,10 @@
     {
       "name": "Clockify",
       "slug": "clockify",
-      "description": "A time tracking and timesheet app with attendance, scheduling, and a free plan for unlimited users.",
+      "description": "A time tracking and timesheet app with attendance, scheduling, and a free plan for up to 5 users.",
       "best_for": "Teams wanting free time tracking for unlimited users with basic billing",
       "strengths": [
-        "Free plan for unlimited users",
+        "Free plan for up to 5 users",
         "Kiosk clock-in",
         "Timesheet approvals"
       ]
