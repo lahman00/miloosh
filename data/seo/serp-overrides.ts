@@ -1,9 +1,46 @@
 export type SerpMetadataOverride = {
   title: string;
   description: string;
+  h1?: string;
 };
 
 const SOFTWARE_OVERRIDES: Readonly<Record<string, SerpMetadataOverride>> = {
+  vercel: {
+    title: "Vercel Pricing & Alternatives (2026): Netlify, Render",
+    description:
+      "Check Vercel Pro pricing, Hobby commercial-use limits, metered costs, buyer fit, and alternatives including Netlify and Render.",
+    h1: "Vercel pricing & alternatives",
+  },
+  mattermost: {
+    title: "Mattermost Pricing (2026): Slack, Rocket.Chat",
+    description:
+      "Compare Mattermost Team Edition and paid plans, self-hosting tradeoffs, buyer fit, and alternatives including Rocket.Chat, Slack, and Teams.",
+    h1: "Mattermost pricing & alternatives",
+  },
+  jenkins: {
+    title: "Jenkins Alternatives (2026): CircleCI, GitLab, GitHub",
+    description:
+      "Compare Jenkins with CircleCI, GitLab, and GitHub Actions, including self-hosting costs, plugin tradeoffs, and migration considerations.",
+    h1: "Jenkins alternatives & self-hosting costs",
+  },
+  docker: {
+    title: "Docker Pricing & Deployment Alternatives (2026)",
+    description:
+      "Check Docker Desktop licensing, Pro, Team and Business pricing, buyer tradeoffs, and managed deployment alternatives that are not drop-in Docker-engine replacements.",
+    h1: "Docker pricing & deployment alternatives",
+  },
+  tailscale: {
+    title: "Tailscale Pricing (2026): Free, Standard, Premium",
+    description:
+      "Check Tailscale Personal, Standard and Premium pricing, user and resource limits, networking tradeoffs, and Zero Trust connectivity alternatives.",
+    h1: "Tailscale pricing & alternatives",
+  },
+  hotjar: {
+    title: "Hotjar Now Contentsquare (2026): Pricing & Alternatives",
+    description:
+      "Hotjar no longer accepts new accounts. Check current Contentsquare pricing, what changed, migration considerations, and Hotjar alternatives.",
+    h1: "Hotjar is now Contentsquare: pricing & alternatives",
+  },
   airtable: {
     title: "Airtable Pricing & Alternatives (2026): Notion, Monday",
     description:
@@ -156,9 +193,32 @@ export type SoftwareSearchIntentNote = {
   text: string;
   href?: string;
   linkLabel?: string;
+  alternativeSectionTitle?: string;
 };
 
 const SOFTWARE_SEARCH_INTENT_NOTES: Readonly<Record<string, SoftwareSearchIntentNote>> = {
+  vercel: {
+    text: "Vercel Pro starts at $20/month but is not an all-inclusive flat bill: it includes usage credit and can add metered usage, paid add-ons, and developer-seat costs.",
+  },
+  mattermost: {
+    text: "Mattermost Team Edition is open source and free to self-host. Current paid Professional and Enterprise packages are quote-based, and paid self-hosted licenses are prepaid annually by seat.",
+    alternativeSectionTitle: "Mattermost alternatives",
+  },
+  jenkins: {
+    text: "Jenkins core has no license fee, but that does not make a Jenkins deployment cost-free: your team owns infrastructure, agents, upgrades, plugins, backups, and operations.",
+  },
+  docker: {
+    text: "The managed platforms below are alternatives only when your goal is application deployment without operating the same container workflow. They are not drop-in replacements for Docker Engine.",
+    alternativeSectionTitle: "Managed deployment alternatives",
+  },
+  tailscale: {
+    text: "Cloudflare is a broader Zero Trust/network-security alternative, not a drop-in replacement for Tailscale's mesh-network architecture.",
+    alternativeSectionTitle: "Connectivity alternative",
+  },
+  hotjar: {
+    text: "New Hotjar accounts are no longer available. New buyers are directed to Contentsquare, so current pricing and plan decisions should use Contentsquare rather than legacy Hotjar plans.",
+    alternativeSectionTitle: "Alternatives to legacy Hotjar",
+  },
   freshdesk: {
     text: "Freshdesk and Freshservice are different products. This page covers Freshdesk for customer support; if you meant Freshservice for IT service management, use the Freshservice research page instead.",
     href: "/software/freshservice",

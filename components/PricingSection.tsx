@@ -106,7 +106,7 @@ export function PricingSection({ software }: { software: Software }) {
             rel="noopener noreferrer"
             className="text-xs text-zinc-500 underline underline-offset-4 hover:text-zinc-300"
           >
-            Official pricing page
+            Official pricing source
           </TrackedVendorLink>
         ) : null}
       </div>

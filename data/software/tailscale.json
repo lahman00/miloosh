@@ -2,7 +2,7 @@
   "name": "Tailscale",
   "slug": "tailscale",
   "category": "security",
-  "description": "Tailscale is a zero-trust, identity-based connectivity platform built on WireGuard that replaces legacy VPNs with a secure mesh network between devices.",
+  "description": "Tailscale is an identity-aware connectivity platform built on WireGuard that creates encrypted private networking between users, devices, services, and workloads, often as an alternative to traditional VPN architectures.",
   "website": "https://tailscale.com",
   "platforms": [
     "Web",
@@ -12,42 +12,31 @@
     "iOS",
     "Android"
   ],
-  "best_for": "IT teams managing remote workforces, DevOps engineers managing multi-cloud infrastructure, and developers wanting simplified, secure networking.",
+  "best_for": "Best suited to developers, IT, and security teams that need simple private connectivity across laptops, servers, cloud networks, Kubernetes, CI/CD, and remote environments without exposing services directly to the public internet.",
   "features": [
-    "Mesh overlay network connecting devices without centralized servers",
-    "WireGuard-based encryption for modern cryptographic security",
-    "Zero-config networking with setup in minutes",
-    "Identity-based access control tying permissions to user identity",
-    "Automatic NAT traversal across firewalls and multiple NATs",
-    "Support for Linux, macOS, Windows, iOS, Android, and NAS devices"
+    "Encrypted WireGuard-based connections between authorized devices and workloads",
+    "Direct peer-to-peer paths when possible, with DERP relay fallback when direct connectivity cannot be established",
+    "Identity-based access policies, groups, device posture, and role controls",
+    "Automatic NAT traversal across common firewall and network layouts",
+    "Tailscale SSH and Kubernetes connectivity",
+    "Logging, flow visibility, and advanced access controls on higher tiers"
   ],
   "sources": [
-    "https://tailscale.com",
-    "https://tailscale.com/kb",
-    "https://tailscale.com/pricing"
+    "https://tailscale.com/pricing",
+    "https://tailscale.com/docs",
+    "https://tailscale.com/"
   ],
-  "accessed_at": "2026-10-06",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "Cloudflare",
       "slug": "cloudflare",
-      "description": "A network and security platform offering CDN, DDoS protection, and zero-trust access tools.",
-      "best_for": "Organizations wanting network performance and security in one platform",
+      "description": "A broader network and security platform with Zero Trust access, private-network connectivity, CDN, and edge-security services.",
+      "best_for": "Organizations comparing private-access and Zero Trust connectivity as part of a wider network-security platform.",
       "strengths": [
+        "Zero Trust access",
         "Global network",
-        "DDoS protection",
-        "Zero-trust access"
-      ]
-    },
-    {
-      "name": "Okta",
-      "slug": "okta",
-      "description": "An identity and access management platform for single sign-on and user authentication.",
-      "best_for": "Enterprises managing identity across many applications",
-      "strengths": [
-        "Single sign-on",
-        "Adaptive MFA",
-        "Broad app integrations"
+        "Broader edge security platform"
       ]
     }
   ],
@@ -72,21 +61,23 @@
         "amount": "0",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Free forever; up to 6 users."
+        "notes": "Free forever for up to 6 users; includes up to 3 ACL groups, 50 tagged resources to start, and 1,000 ephemeral-resource minutes/month."
       },
       {
         "name": "Standard",
         "amount": "8",
         "currency": "USD",
         "billing_period": "monthly",
-        "unit": "user"
+        "unit": "user",
+        "notes": "Unlimited users; up to 10 ACL groups and 1,000 ephemeral-resource minutes/month."
       },
       {
         "name": "Premium",
         "amount": "18",
         "currency": "USD",
         "billing_period": "monthly",
-        "unit": "user"
+        "unit": "user",
+        "notes": "Up to 300 ACL groups and 10,000 ephemeral-resource minutes/month, plus advanced access, logging, and routing features."
       },
       {
         "name": "Enterprise",
@@ -94,11 +85,30 @@
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-10-06",
+    "last_verified": "2026-10-08",
     "official_source": "https://tailscale.com/pricing"
   },
   "cons": [
-    "The Personal plan is capped at 6 users, so teams beyond that size need a paid plan.",
-    "Standard and Premium include limits on ACL groups and ephemeral-resource minutes; higher usage or advanced controls can require Premium, Enterprise, or add-ons."
+    "Personal is capped at 6 users, 3 ACL groups, 50 tagged resources to start, and 1,000 ephemeral-resource minutes per month.",
+    "Standard and Premium are priced per user, while tagged resources and higher ephemeral-resource usage can add separate cost.",
+    "Advanced controls such as just-in-time access, network flow logs, regional routing, and higher ephemeral-resource allowances require Premium or Enterprise."
+  ],
+  "faq": [
+    {
+      "question": "How much does Tailscale cost?",
+      "answer": "Personal is free for up to 6 users. Standard is $8 per user per month, Premium is $18 per user per month, and Enterprise is custom-priced."
+    },
+    {
+      "question": "Does Tailscale always route traffic through its servers?",
+      "answer": "No. Tailscale attempts direct peer-to-peer WireGuard connections when network conditions allow. When a direct path cannot be established, traffic can use Tailscale's DERP relays."
+    },
+    {
+      "question": "What limits apply to the Tailscale Personal plan?",
+      "answer": "The current Personal plan supports up to 6 users, up to 3 ACL groups, 50 tagged resources to start, and 1,000 minutes per month for ephemeral resources."
+    },
+    {
+      "question": "Is Cloudflare a direct Tailscale replacement?",
+      "answer": "Not exactly. Cloudflare is a broader network and security platform. It is relevant when comparing Zero Trust access and private connectivity, but the architecture and surrounding product scope differ from Tailscale's mesh-network approach."
+    }
   ]
 }

@@ -2,26 +2,26 @@
   "name": "Hotjar",
   "slug": "hotjar",
   "category": "analytics",
-  "description": "Hotjar is now part of Contentsquare. Its heatmaps, session replay, surveys, and related experience-analytics capabilities have been merged into the Contentsquare platform; new users can no longer create a new Hotjar account.",
+  "description": "Hotjar has been merged into Contentsquare. New Hotjar accounts are no longer available; heatmaps, session replay, surveys, funnels, and related experience-analytics capabilities are now sold and delivered through Contentsquare.",
   "website": "https://contentsquare.com/hotjar/",
   "platforms": [
     "Web"
   ],
-  "best_for": "Positioned for product, design, and marketing teams who want to \"deliver experiences that convert\" by understanding user journeys and reducing drop-offs.",
+  "best_for": "Best suited to existing Hotjar users planning the transition and to teams evaluating behavior analytics, session replay, heatmaps, funnels, surveys, and experience insights in the current Contentsquare product suite.",
   "features": [
-    "Heatmaps (clicks, movement, scroll behavior)",
-    "Session recordings/replay",
-    "Funnels (conversion drop-off analysis)",
-    "Surveys with AI-powered summarization",
-    "User Tests and 1:1 Interviews",
-    "Integrations with Google Analytics, HubSpot, Optimizely"
+    "Heatmaps and zone-based behavior analysis",
+    "Session replay",
+    "Funnels and journey analysis",
+    "Surveys and feedback workflows",
+    "Error and performance monitoring",
+    "Sense AI features and LLM/MCP connectivity on current Contentsquare plans"
   ],
   "sources": [
     "https://contentsquare.com/hotjar/",
     "https://support.contentsquare.com/hc/en-us/articles/37271913608721-Hotjar-is-now-part-of-Contentsquare-Plans-and-Pricing",
     "https://contentsquare.com/pricing/"
   ],
-  "accessed_at": "2026-10-06",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "Heap",
@@ -48,13 +48,19 @@
   ],
   "pricing": {
     "model": "freemium",
-    "starting_price": "Contentsquare Free is $0; paid Growth, Pro, and Enterprise pricing is not publicly exposed on the current pricing page",
+    "starting_price": "Contentsquare Experience Analytics: Free $0; Growth starts at $49/month billed annually",
     "has_free_tier": true,
-    "status": "unavailable",
+    "status": "verified",
     "free_plan": true,
     "free_trial": {
       "available": true,
       "days": 15
+    },
+    "entry_paid": {
+      "amount": "49",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -62,27 +68,49 @@
         "amount": "0",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Includes up to 200,000 sessions/month plus heatmaps, session replay, surveys, funnels, and other capabilities."
+        "notes": "Experience Analytics Free includes up to 200,000 monthly sessions, 1 project, replays, heatmaps, funnels, error/performance monitoring, and basic surveys."
       },
       {
         "name": "Growth",
-        "notes": "15-day trial for new signups; current public pricing page does not expose a stable numeric price in the retrieved page."
+        "amount": "49",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Experience Analytics starts at $49/month billed annually; starts from 7,000 monthly sessions and includes 3 projects and longer data access."
       },
       {
         "name": "Pro",
-        "notes": "Paid plan; current public pricing page does not expose a stable numeric price in the retrieved page."
+        "notes": "Quote-based for Experience Analytics; aimed at higher-volume and revenue-focused analysis."
       },
       {
         "name": "Enterprise",
-        "notes": "Paid enterprise plan; book a demo."
+        "notes": "Quote-based; contact sales."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-10-06",
+    "last_verified": "2026-10-08",
     "official_source": "https://contentsquare.com/pricing/"
   },
   "cons": [
-    "Hotjar is no longer available for new account creation; new users are directed to Contentsquare instead.",
-    "The product and plan structure has changed to Contentsquare Free, Growth, Pro, and Enterprise, so older Hotjar pricing comparisons can be misleading."
+    "New users cannot create a Hotjar account; they are directed to Contentsquare instead.",
+    "The old Hotjar plan names and prices are no longer the right basis for a new purchase decision.",
+    "Contentsquare pricing is product-specific: Experience Analytics Growth starts at $49/month billed annually, while other products such as Voice of Customer have separate plan pricing."
+  ],
+  "faq": [
+    {
+      "question": "Can I still sign up for Hotjar?",
+      "answer": "No. Contentsquare states that new users can no longer create a Hotjar account. New signups are directed to Contentsquare, where Hotjar's heatmaps, session replay, surveys, and related capabilities now live."
+    },
+    {
+      "question": "What happened to Hotjar?",
+      "answer": "Hotjar merged into the Contentsquare Group and its core experience-analytics capabilities are now part of the Contentsquare product suite."
+    },
+    {
+      "question": "How much does the current Hotjar replacement cost?",
+      "answer": "Contentsquare Experience Analytics has a Free plan at $0. Growth starts at $49 per month when billed annually. Pro and Enterprise are quote-based. Contentsquare also sells other products, such as Voice of Customer, with separate pricing."
+    },
+    {
+      "question": "What should existing Hotjar customers check before switching plans?",
+      "answer": "Review your current session limits, projects, retention, surveys, integrations, user access, and billing. Compare those requirements against the current Contentsquare Experience Analytics and Voice of Customer plans rather than relying on old Hotjar plan names."
+    }
   ]
 }

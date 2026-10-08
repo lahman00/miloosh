@@ -2,7 +2,7 @@
   "name": "Mattermost",
   "slug": "mattermost",
   "category": "communication",
-  "description": "Mattermost is an open-source team messaging platform built for organizations that want to host and control their own chat infrastructure.",
+  "description": "Mattermost is a secure collaboration platform with an open-source Team Edition and paid Professional, Enterprise, and Enterprise Advanced offerings for organizations that need control over deployment, data, and operational workflows.",
   "website": "https://mattermost.com",
   "platforms": [
     "Windows",
@@ -12,27 +12,39 @@
     "Android",
     "Web"
   ],
-  "best_for": "Positioned as a collaboration platform for mission-critical work — defense, government, critical infrastructure, DevSecOps, and security-operations teams needing data sovereignty.",
+  "best_for": "Best suited to technical, operations, government, defense, and regulated teams that need self-hosting or private-cloud options, data sovereignty, workflow automation, and tighter administrative control than general-purpose SaaS chat.",
   "features": [
-    "Channels for secure messaging and collaboration",
-    "Playbooks for workflow automation",
-    "Calls with screenshare, transcription, and summarization",
-    "Boards for kanban task tracking",
-    "AI agents connectable to sovereign or private LLMs",
-    "Pre-built integrations for SIEM/SOAR and DevSecOps tooling"
+    "Channel-based messaging, file sharing, threaded discussions, and search",
+    "Audio calls and screen sharing",
+    "Playbooks and workflow automation for repeatable operational processes",
+    "REST API, webhooks, slash commands, plugins, and MCP Server integrations",
+    "Bring-your-own and multi-LLM support in the agentic platform",
+    "Enterprise access controls, compliance, high availability, and secure mobility on higher tiers"
   ],
   "sources": [
-    "https://mattermost.com",
     "https://mattermost.com/pricing/",
-    "https://docs.mattermost.com/product-overview/subscription"
+    "https://docs.mattermost.com/product-overview/subscription",
+    "https://docs.mattermost.com/product-overview/faq-license",
+    "https://docs.mattermost.com/product-overview/plans"
   ],
-  "accessed_at": "2026-10-06",
+  "accessed_at": "2026-10-08",
   "alternatives": [
+    {
+      "name": "Rocket.Chat",
+      "slug": "rocket-chat",
+      "description": "A secure communications platform with self-hosted, on-premises, and air-gapped deployment options.",
+      "best_for": "Organizations comparing self-hosted collaboration platforms for data sovereignty and controlled infrastructure.",
+      "strengths": [
+        "Self-hosting",
+        "Air-gapped deployment",
+        "Messaging and calling"
+      ]
+    },
     {
       "name": "Slack",
       "slug": "slack",
-      "description": "A workplace communication platform built around channels, direct messages, integrations, and searchable conversations.",
-      "best_for": "Teams that prefer a fully managed, cloud-hosted chat tool",
+      "description": "A managed workplace communication platform built around channels, direct messages, integrations, and searchable conversations.",
+      "best_for": "Teams that prefer a fully managed SaaS collaboration tool with a large integration ecosystem.",
       "strengths": [
         "Channels",
         "App integrations",
@@ -42,35 +54,25 @@
     {
       "name": "Microsoft Teams",
       "slug": "microsoft-teams",
-      "description": "A communication and collaboration platform with chat, meetings, file sharing, and Microsoft 365 integration.",
-      "best_for": "Organizations already using Microsoft 365",
+      "description": "A managed communication and collaboration platform with chat, meetings, file sharing, and Microsoft 365 integration.",
+      "best_for": "Organizations already standardized on Microsoft 365 and Microsoft identity tooling.",
       "strengths": [
         "Video meetings",
-        "Office integration",
+        "Microsoft 365 integration",
         "File collaboration"
-      ]
-    },
-    {
-      "name": "Discord",
-      "slug": "discord",
-      "description": "A community-focused communication platform with text channels, voice rooms, and real-time collaboration.",
-      "best_for": "Communities that value voice chat over self-hosting",
-      "strengths": [
-        "Voice channels",
-        "Community tools",
-        "Easy onboarding"
       ]
     }
   ],
   "order": 10,
   "pricing": {
     "model": "freemium",
-    "starting_price": "Contact sales for paid Professional/Enterprise subscriptions",
+    "starting_price": "Team Edition is open source and free; paid Professional and Enterprise packages require a quote",
     "has_free_tier": true,
-    "status": "contact_sales",
+    "status": "verified",
     "free_plan": true,
     "free_trial": {
-      "available": true
+      "available": true,
+      "days": 30
     },
     "tiers": [
       {
@@ -78,27 +80,46 @@
         "amount": "0",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Open-source/self-hosted edition."
+        "notes": "Open-source MIT-licensed self-hosted edition."
       },
       {
         "name": "Professional",
-        "notes": "Paid self-hosted subscription; public numeric price not shown."
+        "notes": "Paid subscription; numeric public price is not listed. Self-hosted licenses are prepaid annual seat subscriptions."
       },
       {
         "name": "Enterprise",
-        "notes": "Paid self-hosted subscription; public numeric price not shown."
+        "notes": "Paid subscription with broader compliance, workflow, scale, and administration capabilities; contact sales."
       },
       {
         "name": "Enterprise Advanced",
-        "notes": "Paid package; public numeric price not shown."
+        "notes": "Quote-based package for multi-domain, resilient, air-gapped, and high-security environments."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-10-06",
+    "last_verified": "2026-10-08",
     "official_source": "https://mattermost.com/pricing/"
   },
   "cons": [
-    "Mattermost does not publish numeric prices for its current paid Professional and Enterprise packages; buyers need to contact sales.",
-    "Self-hosted paid subscriptions are sold as prepaid annual seat licenses, and each Mattermost server requires its own license."
+    "Mattermost does not publish stable numeric prices for Professional, Enterprise, or Enterprise Advanced; buyers need a quote.",
+    "Paid self-hosted Professional and Enterprise licenses are prepaid annual seat subscriptions, so the commitment is different from month-to-month SaaS chat.",
+    "Running Team Edition or another self-hosted deployment means your organization owns infrastructure, upgrades, backups, monitoring, and operational security."
+  ],
+  "faq": [
+    {
+      "question": "Is Mattermost free?",
+      "answer": "Yes. Mattermost Team Edition is open source under the MIT License and can be self-hosted without a paid subscription. Paid Professional, Enterprise, and Enterprise Advanced offerings add commercial features, support, and administration capabilities."
+    },
+    {
+      "question": "How much do paid Mattermost plans cost?",
+      "answer": "Mattermost does not publish stable numeric prices for its current paid Professional and Enterprise packages. Buyers need to contact sales for a quote; self-hosted paid licenses are sold as prepaid annual seat subscriptions."
+    },
+    {
+      "question": "Does Mattermost have a free trial?",
+      "answer": "Mattermost documents a 30-day Enterprise trial for self-hosted deployments. The trial is for evaluation and is separate from the permanently free open-source Team Edition."
+    },
+    {
+      "question": "What should I plan for when moving to or from Mattermost?",
+      "answer": "Plan for users, channels, message history, files, integrations, identity, retention rules, and deployment infrastructure. Mattermost documents migration tooling for several systems, but large self-hosted migrations should be tested in staging before cutover."
+    }
   ]
 }

@@ -74,16 +74,25 @@ export function generateOverview(software: Software): string {
 }
 
 /**
- * Deliberately doesn't assert specific product weaknesses — we have no
- * sourced "cons" data (see docs/content-engine.md). Instead this points to
- * the real alternatives already on the page as the honest next step.
+ * Use documented product constraints when they exist. This gives buyers a
+ * concrete reason to keep comparing instead of repeating the same generic
+ * "feature set may not fit" sentence across the catalog. Fall back to the
+ * alternatives-only sentence when no sourced constraints are stored.
  */
 export function generateWhoShouldntUseIt(software: Software): string {
+  if (software.cons && software.cons.length > 0) {
+    const constraints = software.cons.slice(0, 2).join(" ");
+    return `Reasons to compare alternatives before committing: ${constraints}`;
+  }
+
   const alternativeNames = software.alternatives.map((alt) => alt.name).join(", ");
   return `If ${software.name}'s feature set above doesn't cover what you need, one of the alternatives compared here — ${alternativeNames} — may be a closer fit.`;
 }
 
 export function generateComparisonIntro(software: Software): string {
+  if (software.alternatives.length === 1) {
+    return `See when ${software.alternatives[0].name} is a relevant alternative to ${software.name}, based on use case fit and core strengths.`;
+  }
   return `See how the top ${software.name} alternatives compare on use case fit and core strengths.`;
 }
 

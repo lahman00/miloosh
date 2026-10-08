@@ -2,7 +2,7 @@
   "name": "Docker",
   "slug": "docker",
   "category": "developer-tools",
-  "description": "Docker is a platform for \"accelerated container application development,\" providing tools to build, ship, and run containerized applications with security and isolation.",
+  "description": "Docker provides developer tools for building, sharing, and running containerized applications, including Docker Desktop, Docker Engine and CLI tooling, Docker Compose, Docker Hub, build services, and software-supply-chain features.",
   "website": "https://www.docker.com",
   "platforms": [
     "Web",
@@ -10,48 +10,48 @@
     "Windows",
     "Linux"
   ],
-  "best_for": "Docker serves individual developers (free Personal tier) up through Pro, Team, and Business/enterprise tiers; the site states 91% of Fortune 100 companies run on Docker and 20M+ developers build on it daily.",
+  "best_for": "Best suited to developers and engineering teams that need a standardized container workflow across local development, CI, image distribution, and deployment environments.",
   "features": [
-    "Docker Desktop for local containerization",
-    "Docker Hub for discovering/sharing container images",
-    "Docker Scout (software supply-chain security)",
-    "Docker Hardened Images (SLSA Level 3 patched images)",
-    "Docker Sandboxes (microVM isolation for AI agent sessions)",
-    "Docker Model Runner (local-first LLM inference)"
+    "Docker Desktop with Docker Engine, CLI, GUI, and local container workflows",
+    "Docker Compose for defining and running multi-container applications",
+    "Docker Hub for public and private image distribution",
+    "Docker Build and optional cloud build capacity",
+    "Docker Scout for software-supply-chain visibility",
+    "Docker Hardened Images and enterprise security controls on higher tiers"
   ],
   "sources": [
-    "https://www.docker.com",
     "https://www.docker.com/pricing/",
+    "https://www.docker.com/products/personal/",
     "https://docs.docker.com/subscription-billing/plans/docker/"
   ],
-  "accessed_at": "2026-10-06",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
-      "name": "Vercel",
-      "slug": "vercel",
-      "description": "Agentic infrastructure for deploying web apps and AI agents at global scale with Git-connected preview deploys.",
-      "best_for": "Developers and platform builders deploying apps and autonomous agent workflows.",
+      "name": "Render",
+      "slug": "render",
+      "description": "A managed application-hosting platform that can deploy web services, workers, and databases without requiring you to operate a container platform yourself.",
+      "best_for": "Teams whose real goal is managed application deployment rather than replacing Docker with another container engine.",
       "strengths": [
-        "AI Gateway/SDK",
-        "Vercel Delivery Network",
-        "Sandbox environments for untrusted code"
+        "Managed web services",
+        "Background workers",
+        "Managed databases"
       ]
     },
     {
-      "name": "Netlify",
-      "slug": "netlify",
-      "description": "A platform to create with AI or code and deploy instantly on production infrastructure.",
-      "best_for": "Product engineers, AI developers, marketers, and designers building web apps.",
+      "name": "Vercel",
+      "slug": "vercel",
+      "description": "A managed deployment platform for web and AI applications with Git-connected previews, global delivery, and managed compute.",
+      "best_for": "Web teams that want managed deployment and delivery instead of owning the underlying container workflow.",
       "strengths": [
-        "Deploy previews for every change",
-        "Serverless functions",
-        "Built-in AI Gateway"
+        "Git-based deploys",
+        "Preview environments",
+        "Managed global delivery"
       ]
     }
   ],
   "pricing": {
     "model": "freemium",
-    "starting_price": "$11/user/month for Pro on monthly billing",
+    "starting_price": "$11/user/month for Pro on monthly billing; $9/user/month billed annually",
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
@@ -69,7 +69,8 @@
         "name": "Personal",
         "amount": "0",
         "currency": "USD",
-        "billing_period": "monthly"
+        "billing_period": "monthly",
+        "notes": "Free for eligible individual, education, open-source, and small-business use; Docker Desktop commercial-use licensing limits still apply."
       },
       {
         "name": "Pro",
@@ -92,14 +93,34 @@
         "amount": "24",
         "currency": "USD",
         "billing_period": "annual",
-        "unit": "user"
+        "unit": "user",
+        "notes": "$24/user/month billed annually; no monthly self-service price is listed."
       }
     ],
-    "last_verified": "2026-10-06",
+    "last_verified": "2026-10-08",
     "official_source": "https://www.docker.com/pricing/"
   },
   "cons": [
-    "Docker Desktop commercial use at companies with more than 250 employees OR more than $10 million in annual revenue requires a paid subscription.",
-    "Paid plans are seat-based and some product usage has separate limits or add-ons, so plan price is not necessarily the full operating cost."
+    "Docker Desktop commercial use at organizations with more than 250 employees OR more than $10 million in annual revenue requires a paid subscription.",
+    "Pro and Team are priced per user, and Business is $24/user/month on annual billing, so team cost scales with seats.",
+    "Cloud build, test, registry, and security features have plan-specific usage allowances; subscription price is not always the complete operating cost."
+  ],
+  "faq": [
+    {
+      "question": "Is Docker free for commercial use?",
+      "answer": "Docker Engine remains open source, but Docker Desktop has commercial-use licensing rules. Docker states that companies with more than 250 employees OR more than $10 million in annual revenue need a paid Pro, Team, or Business subscription for Docker Desktop."
+    },
+    {
+      "question": "How much do Docker paid plans cost?",
+      "answer": "Docker Pro is $11 per user per month on monthly billing or $9 billed annually. Team is $16 monthly or $15 billed annually. Business is $24 per user per month on annual billing."
+    },
+    {
+      "question": "Are Render and Vercel direct Docker replacements?",
+      "answer": "No. They are managed deployment alternatives for teams whose goal is to deploy applications without operating the same container workflow. They are not drop-in replacements for Docker Engine or Docker-compatible tooling."
+    },
+    {
+      "question": "What should I inventory before moving away from Docker?",
+      "answer": "Inventory Dockerfiles, Compose files, image registries, base images, build pipelines, secrets, volumes, networking, local-development dependencies, and production runtime assumptions before choosing a replacement workflow."
+    }
   ]
 }

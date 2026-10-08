@@ -56,6 +56,8 @@ import {
 } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
+import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import { isComparisonIndexingReady } from "@/lib/indexing-quality";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -110,10 +112,18 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
       const softwareB = getSoftware(slugB);
       return softwareA && softwareB ? { softwareA, softwareB } : null;
     })
-    .filter((item): item is NonNullable<typeof item> => item !== null);
+    .filter((item): item is NonNullable<typeof item> => item !== null)
+    .filter(({ softwareA, softwareB }) => {
+      const comparisonSlug = getComparisonSlug(softwareA.slug, softwareB.slug);
+      return (
+        shouldSubmitComparisonToSitemap(comparisonSlug) &&
+        isComparisonIndexingReady(softwareA, softwareB)
+      );
+    });
   const alternativeGuide = getAlternativeGuide(software.slug);
   const buyerChecklist = getBuyerChecklist(software.slug);
   const searchIntentNote = getSoftwareSearchIntentNote(software.slug);
+  const serpOverride = getSoftwareSerpOverride(software.slug);
   const decisionGuides = getRoleGuidesForSoftware(software.slug);
 
   return (
@@ -138,7 +148,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </Link>
 
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            {generateH1(software)}
+            {serpOverride?.h1 ?? generateH1(software)}
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-zinc-400">{generateIntro(software)}</p>
@@ -157,7 +167,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="inline-flex items-center gap-2 text-sm font-medium text-zinc-300">
               <GitCompare className="h-4 w-4" />
-              {software.alternatives.length} alternatives compared
+              {software.alternatives.length} {software.alternatives.length === 1 ? "alternative" : "alternatives"} compared
             </div>
             <ListingBadges software={software} />
             <ShareButton title={`${software.name} alternatives — Miloosh`} url={`${SITE_URL}/software/${software.slug}`} />
@@ -247,16 +257,24 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
 
         <section className="mt-14">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading title="Top alternatives" description={generateComparisonIntro(software)} />
+            <SectionHeading
+              title={searchIntentNote?.alternativeSectionTitle ?? "Top alternatives"}
+              description={generateComparisonIntro(software)}
+            />
 
             <span className="hidden shrink-0 rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-400 sm:block">
-              {software.alternatives.length} options
+              {software.alternatives.length} {software.alternatives.length === 1 ? "option" : "options"}
             </span>
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {software.alternatives.map((alternative, index) => (
-              <AlternativeCard key={alternative.slug} alternative={alternative} rank={index + 1} />
+              <AlternativeCard
+                key={alternative.slug}
+                alternative={alternative}
+                rank={index + 1}
+                showTopPick={software.alternatives.length > 1}
+              />
             ))}
           </div>
         </section>
@@ -315,7 +333,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </div>
 
           <p className="mt-4 max-w-3xl leading-7 text-zinc-400">
-            The facts on this page come from {software.name}&apos;s own official site, accessed{" "}
+            The facts on this page come from official vendor documentation and product pages, accessed{" "}
             {formatIsoDate(software.accessedAt)}. See our{" "}
             <Link href="/sources-policy" className="text-white underline underline-offset-4">
               Sources Policy

@@ -2,29 +2,30 @@
   "name": "Jenkins",
   "slug": "jenkins",
   "category": "developer-tools",
-  "description": "Jenkins is the leading open source automation server, providing hundreds of plugins to support building, deploying, and automating any software project as either a simple CI server or a full continuous delivery hub.",
+  "description": "Jenkins is an open-source automation server for continuous integration and delivery, with a large plugin ecosystem for building, testing, deploying, and automating software projects.",
   "website": "https://www.jenkins.io",
   "platforms": [
-    "Web",
     "Windows",
     "macOS",
-    "Linux"
+    "Linux",
+    "Unix-like"
   ],
-  "best_for": "Serves organizations of any scale that want a free, self-hosted, highly extensible continuous integration and delivery server, from a simple CI setup to a comprehensive delivery hub for many project types.",
+  "best_for": "Best suited to teams that want a free, highly extensible CI/CD server and are prepared to operate the Jenkins controller, agents, plugins, upgrades, backups, and security themselves.",
   "features": [
-    "Hundreds of plugins integrating nearly every CI/CD toolchain component",
-    "Web-based configuration UI with real-time error checking and built-in help",
-    "Distributed builds that spread work across multiple machines and platforms",
-    "Self-contained Java program that is ready to run out of the box",
-    "Pipeline-as-code support for defining delivery pipelines in version control",
-    "Free and open source with no licensing cost"
+    "Hundreds of plugins for source control, build, test, deployment, and notification workflows",
+    "Web-based configuration with built-in help and validation",
+    "Distributed builds across multiple agents and platforms",
+    "Pipeline-as-code for defining delivery workflows in version control",
+    "Self-contained Java application with packages for major operating systems",
+    "Open-source Jenkins core under the MIT License"
   ],
   "sources": [
-    "https://www.jenkins.io",
-    "https://www.jenkins.io/download/",
-    "https://www.jenkins.io/project/governance/"
+    "https://www.jenkins.io/",
+    "https://www.jenkins.io/doc/",
+    "https://www.jenkins.io/project/governance/",
+    "https://plugins.jenkins.io/"
   ],
-  "accessed_at": "2026-10-06",
+  "accessed_at": "2026-10-08",
   "alternatives": [
     {
       "name": "CircleCI",
@@ -78,11 +79,30 @@
         "notes": "Independent open-source project; core uses the MIT License."
       }
     ],
-    "last_verified": "2026-10-06",
+    "last_verified": "2026-10-08",
     "official_source": "https://www.jenkins.io/project/governance/"
   },
   "cons": [
-    "Jenkins is an independent open-source project rather than a commercial SaaS product, so the project itself does not provide a paid managed tier with guaranteed vendor support.",
-    "Teams are responsible for operating and maintaining their Jenkins infrastructure unless they separately buy services from a third-party vendor."
+    "Jenkins core is free, but infrastructure, storage, build agents, backups, monitoring, and administrator time are separate operating costs.",
+    "The Jenkins project does not sell a managed SaaS tier with a vendor SLA; teams either operate Jenkins themselves or buy hosting/support from third parties.",
+    "A heavily customized plugin stack increases the amount of compatibility and upgrade testing your team owns."
+  ],
+  "faq": [
+    {
+      "question": "Is Jenkins free?",
+      "answer": "Yes. Jenkins core is open source under the MIT License and has no software license fee. Your organization still pays for the infrastructure, storage, build agents, administration, and support model it chooses."
+    },
+    {
+      "question": "Does Jenkins offer a managed cloud plan?",
+      "answer": "The Jenkins project itself does not sell a managed SaaS tier. Organizations can self-host Jenkins or use commercial hosting and support services from third parties."
+    },
+    {
+      "question": "What should I inventory before migrating away from Jenkins?",
+      "answer": "Inventory pipelines, Jenkinsfiles, plugins, credentials, agents, shared libraries, triggers, artifacts, secrets, and external integrations. Rebuild and test those workflows on the target CI/CD platform before disabling production jobs."
+    },
+    {
+      "question": "What operating systems can run Jenkins?",
+      "answer": "Jenkins is a Java-based server with packages and installation paths for Windows, macOS, Linux, and other Unix-like systems."
+    }
   ]
 }
