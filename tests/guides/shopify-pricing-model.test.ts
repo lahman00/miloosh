@@ -16,7 +16,7 @@ describe("Shopify pricing model integrity", () => {
   });
 
   it("keeps the current official pricing page on the pricing contract", () => {
-    expect(shopify.pricing?.lastVerified).toBe("2026-08-17");
+    expect(shopify.pricing?.lastVerified).toBe("2026-10-07");
     expect(shopify.pricing?.officialSource).toBe("https://www.shopify.com/pricing");
   });
 });

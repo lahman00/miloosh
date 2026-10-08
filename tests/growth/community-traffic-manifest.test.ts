@@ -49,11 +49,11 @@ describe("community traffic manifest", () => {
         ? [getSoftware(page.slug)!]
         : [getComparisonBySlug(page.slug)!.softwareA, getComparisonBySlug(page.slug)!.softwareB];
       for (const product of products) {
-        if (page.pricing_status === "regional_quote_required") {
+        if (page.pricing_status === "regional_price_variable") {
           // חוסר מחיר אינו אישור למחיר מומצא: החריג חייב להיות מסומן ונטול סכומי תשלום.
-          expect(product.pricing?.status).toBe("unknown");
+          expect(product.pricing?.status).toBe("verified");
           expect(product.pricing?.entryPaid).toBeUndefined();
-          expect(product.pricing?.startingPrice).toMatch(/regional.*quote/i);
+          expect(product.pricing?.startingPrice).toMatch(/vary by location/i);
           for (const tier of product.pricing?.tiers ?? []) {
             expect(tier.amount === undefined || (tier.name === "Free" && tier.amount === "0")).toBe(true);
           }

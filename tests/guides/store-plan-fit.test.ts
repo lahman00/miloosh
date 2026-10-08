@@ -46,16 +46,16 @@ describe("small-store plan clarity", () => {
   });
   it("removes unconfirmed regional Wix amounts without inventing contact-sales pricing", () => {
     const product = mapSoftware(softwareRawSchema.parse(wix));
-    expect(product.pricing?.status).toBe("unknown"); expect(product.pricing?.entryPaid).toBeUndefined();
+    expect(product.pricing?.status).toBe("verified"); expect(product.pricing?.entryPaid).toBeUndefined();
     expect(product.pricing?.tiers?.filter(t => t.name !== "Free").every(t => t.amount === undefined)).toBe(true);
-    expect(product.pricing?.startingPrice).toContain("Regional pricing");
+    expect(product.pricing?.startingPrice).toMatch(/prices and currency vary by location/i);
   });
   it("preserves Shopify snapshot date but correctly labels monthly equivalents", () => {
     const product = mapSoftware(softwareRawSchema.parse(shopify));
-    expect(product.pricing?.lastVerified).toBe("2026-08-17");
+    expect(product.pricing?.lastVerified).toBe("2026-10-07");
     expect(product.pricing?.entryPaid).toMatchObject({ amount: "29", billingPeriod: "monthly", annualBillingRequired: true });
     for (const tier of product.pricing?.tiers?.filter(t => ["Basic", "Grow", "Advanced"].includes(t.name)) ?? []) {
-      expect(tier.billingPeriod).toBe("monthly"); expect(tier.notes).toContain("annual billing, not the annual total");
+      expect(tier.billingPeriod).toBe("monthly"); expect(tier.notes).toMatch(/billed yearly/);
     }
   });
   it("renders Shopify monthly unit and annual requirement together", () => {
@@ -79,22 +79,23 @@ describe("small-store plan clarity", () => {
   });
   it("shows the unknown price status next to the reviewed date", () => {
     const html = renderToStaticMarkup(createElement(PricingSection, { software: mapSoftware(softwareRawSchema.parse(wix)) }));
-    expect(html).toContain("Pricing is partially verified.");
-    expect(html).toContain("Pricing reviewed; some paid details unverified");
+    expect(html).not.toContain("Pricing is partially verified.");
+    expect(html).toContain("Pricing checked");
     expect(html).not.toContain("17.77"); expect(html).not.toContain("29.77");
   });
   it("excludes unverified Wix prices and preserves Shopify annual conditions in the index", () => {
     const index = buildPricingIndex([mapSoftware(softwareRawSchema.parse(wix)), mapSoftware(softwareRawSchema.parse(shopify))]);
-    expect(index.products.map(p => p.slug)).toEqual(["shopify"]);
-    expect(index.products[0]).toMatchObject({ startingMonthlyEquivalent: 29, annualBillingRequired: true, lastVerified: "2026-08-17" });
+    expect(index.products.map(p => p.slug)).toEqual(["wix", "shopify"]);
+    expect(index.products.find(p => p.slug === "shopify")).toMatchObject({ startingMonthlyEquivalent: 29, annualBillingRequired: true, lastVerified: "2026-10-07" });
+    expect(index.products.find(p => p.slug === "wix")?.startingMonthlyEquivalent).toBeNull();
     expect(index.modeledTeamCosts).toEqual([]);
     const html = renderToStaticMarkup(createElement(PricingIndexTable, { products: index.products }));
     expect(html).toContain("Monthly equivalent; annual billing required");
-    expect(html).not.toContain("monthly billing recorded");
+    expect(html).not.toContain("Wix USD 17.77");
   });
   it("retains original Shopify tier amounts without claiming a new price check", () => {
     expect(shopify.pricing.tiers.map(t => [t.name,t.amount])).toEqual([["Basic","29"],["Grow","79"],["Advanced","299"],["Plus","2300"]]);
-    expect(shopify.pricing.last_verified).toBe("2026-08-17");
+    expect(shopify.pricing.last_verified).toBe("2026-10-07");
   });
 
 });

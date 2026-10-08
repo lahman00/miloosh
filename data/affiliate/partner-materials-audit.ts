@@ -115,6 +115,42 @@ export const PARTNER_MATERIAL_AUDIT: readonly PartnerMaterialAudit[] = [
     ],
   }),
   record({
+    company: "ActiveCampaign", slug: "activecampaign", programNetwork: "PartnerStack",
+    currentStatus: "ACTIVE", applicationStatus: "Approved 2026-10-02", approvalStatus: "Issued referral URL 2026-10-02",
+    affiliateUrl: "https://try.activecampaign.com/xu30znpbu737",
+    commission: { type: "recurring_percentage", value: "30% first 12 months of eligible subscription revenue", originalWording: "30% recurring commission for up to 12 months" },
+    readiness: "READY NOW", lastVerifiedDate: "2026-10-08",
+    evidence: [
+      "Connected Gmail 1a0fe9bfb9f19812 (2026-10-02) confirms partner approval and unique URL, superseding 2026-08-20 decline.",
+      "Official affiliate terms reverified 2026-10-08; program documentation required within 90 days; payout readiness must be checked separately.",
+      "data/affiliate/canonical-ledger.ts",
+    ],
+  }),
+  record({
+    company: "Apollo.io", slug: "apollo-io", programNetwork: "PartnerStack",
+    currentStatus: "ACTIVE", applicationStatus: "Approved 2026-10-01", approvalStatus: "Issued referral URL 2026-10-01",
+    affiliateUrl: "https://get.apollo.io/3k3emp09ar05",
+    commission: { type: "recurring_percentage", value: "15% monthly-plan / 20% annual-plan for first 12 months", originalWording: "15% on monthly paid referrals and 20% on annual paid referrals for first 12 months" },
+    readiness: "READY NOW", lastVerifiedDate: "2026-10-08",
+    evidence: [
+      "Connected Gmail 1a0f8b97f73429ac (2026-10-01) confirms unique referral URL.",
+      "Official Apollo affiliate terms reverified 2026-10-08; 90-day attribution window; payout readiness remains separate.",
+      "data/affiliate/canonical-ledger.ts",
+    ],
+  }),
+  record({
+    company: "CallRail", slug: "callrail", programNetwork: "PartnerStack",
+    currentStatus: "ACTIVE", applicationStatus: "Approved 2026-10-01", approvalStatus: "Affiliate link issued 2026-10-02",
+    affiliateUrl: "https://partners.callrail.com/p28z0h9qkxk2",
+    commission: { type: "fixed_cpa", value: "$50 on qualifying first invoice", originalWording: "$50 commission upon the referred customer's first CallRail invoice" },
+    readiness: "READY NOW", lastVerifiedDate: "2026-10-02",
+    evidence: [
+      "Connected Gmail 1a0f7c24949e51c7 (2026-10-01): PartnerStack approved the CallRail application.",
+      "Connected Gmail 1a0fd06463121be6 (2026-10-02): CallRail Partner Marketing issued the exact account-specific URL and first-invoice commission terms.",
+      "data/affiliate/canonical-ledger.ts; data/affiliate/active-partners.ts",
+    ],
+  }),
+  record({
     company: "FreshBooks", slug: "freshbooks", programNetwork: "PartnerStack",
     currentStatus: "ACTIVE", applicationStatus: "Approved", approvalStatus: "Approved 2026-09-15",
     affiliateUrl: "https://partner.freshbooks.com/gg7ovvifr1bd",
