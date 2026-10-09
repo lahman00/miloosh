@@ -24,3 +24,8 @@ Date: 2026-10-09. Status at authorship: **LOCAL IMPLEMENTED / QA VERIFIED / NOT 
 Do not deploy this receipt's source until a **clean exact HEAD** passes the complete Guardian gate, the preview deployment is validated, and production is promoted with verified SHA/build identity. Confirm after release: www/apex alias, route/page content and SEO invariants, icon/social previews and buyer-desk/mobile interactions. GitHub production branch must incorporate the restored design before future SEO releases; otherwise a later build can undo the approved appearance again. Record a real deployment id/commit, never infer success from a green local build.
 
 The earlier dark website is retained only as historical Git rollback evidence. It is not the approved Miloosh design or an instruction to agents for future work.
+
+## Post-deployment mobile header follow-up
+- Live Chromium on the first production release discovered that `Where are you<br />in the decision?` concatenated as “Where are youin the decision?” on phones because a mobile CSS rule hid the `br`.
+- The targeted fix removes only that mobile `display: none` rule and adds an explicit JSX space before the break; no vendor data, protected experiment, navigation, affiliate link or indexation file is modified.
+- New premium brand regression assertions prevent the mobile issue recurring. Requires complete green gates on the new SHA and live mobile browser inspection after promotion.

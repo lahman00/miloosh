@@ -35,6 +35,10 @@ describe("approved Miloosh premium public identity", () => {
     expect(homepage).toContain('className="home-design"');
     expect(desk).toContain("Good software.");
     expect(desk).toContain("better fit.");
+    expect(desk).toContain('Where are you{" "}<br />in the decision?');
+    expect(readFileSync("components/BuyerDesk.module.css", "utf8")).not.toContain(
+      ".journey h2 br { display: none; }",
+    );
     expect(homepage).toContain("<BuyerDesk");
     expect(homepage).toContain("<SoftwareDirectory");
     expect(navigation).toContain('src="/miloosh-wordmark.png"');

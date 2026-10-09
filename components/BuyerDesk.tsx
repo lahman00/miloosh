@@ -134,7 +134,7 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
       </div>
       <div ref={stage} className={styles.stage} data-motion-running={moving}>
         <aside className={styles.journey} aria-labelledby="desk-journey-title">
-          <h2 id="desk-journey-title">Where are you<br />in the decision?</h2>
+          <h2 id="desk-journey-title">Where are you{" "}<br />in the decision?</h2>
           {situations.map(({ id, title, detail, Icon }) => <button key={id} onClick={() => openGuide(id)}><Icon size={20}/><span><strong>{title}</strong><small>{detail}</small></span><ArrowRight size={18}/></button>)}
           <p>You choose the direction. We make it easier to explore.</p>
         </aside>

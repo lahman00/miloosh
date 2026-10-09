@@ -114,7 +114,7 @@
 @media (max-width:959px) { .hero { grid-template-columns: 1fr; max-width: 720px; } .products { gap: 14px; } .product { padding: 20px; } .formGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } .briefCallout { align-items: flex-start; flex-direction: column; } .checklist { gap: 50px; } }
 @media (max-width:699px) {
   .hero { padding-block: 43px; gap: 35px; } .quick { gap: 15px; } .quick > span { display: none; }
-  .stage { padding: 17px; } .journey { padding: 25px 21px 20px; } .journey h2 { font-size: 29px; } .journey h2 br { display: none; }
+  .stage { padding: 17px; } .journey { padding: 25px 21px 20px; } .journey h2 { font-size: 29px; }
   .stageBottom { gap: 12px; margin-top: 20px; } .preview strong { font-size: 13px; }
   .heading { display: block; } .heading > .textButton { margin-top: 14px; } .heading > .note { display: block; max-width: none; }
   .guide { padding: 23px; } .guide .heading { display: flex; gap: 12px; } .guide h2 { font-size: 26px; }
