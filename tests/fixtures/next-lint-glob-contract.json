@@ -1,0 +1,643 @@
+{
+  "provenance": "Expected values captured from unmodified @next/eslint-plugin-next@16.3.8 + fast-glob@3.3.1. Paths compared after path.resolve, as the consumer resolves app/pages roots; order does not change its union of route matchers. Duplicate roots remain counted.",
+  "directories": [
+    "app",
+    "app/a",
+    "app/a/deep",
+    "app/b",
+    "lib",
+    "lib/a",
+    "components",
+    "components/ui",
+    "apps/web/app",
+    "apps/admin/pages",
+    "apps/docs/src/pages",
+    "apps/.hidden/app",
+    ".hidden/app",
+    "spaces dir/app"
+  ],
+  "files": [
+    "app/page.tsx",
+    "app/a/page.tsx",
+    "app/b/page.tsx",
+    "apps/web/app/page.tsx",
+    "apps/admin/pages/index.tsx",
+    "apps/docs/src/pages/index.tsx"
+  ],
+  "symlinks": [
+    {
+      "name": "link-web",
+      "target": "apps/web"
+    }
+  ],
+  "cases": [
+    {
+      "id": "no-next-settings",
+      "settings": {}
+    },
+    {
+      "id": "empty-next-settings",
+      "settings": {
+        "next": {}
+      }
+    },
+    {
+      "id": "rootdir-01",
+      "settings": {
+        "next": {
+          "rootDir": "app"
+        }
+      }
+    },
+    {
+      "id": "rootdir-02",
+      "settings": {
+        "next": {
+          "rootDir": "app/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-03",
+      "settings": {
+        "next": {
+          "rootDir": "./app"
+        }
+      }
+    },
+    {
+      "id": "rootdir-04",
+      "settings": {
+        "next": {
+          "rootDir": "app/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-05",
+      "settings": {
+        "next": {
+          "rootDir": "components"
+        }
+      }
+    },
+    {
+      "id": "rootdir-06",
+      "settings": {
+        "next": {
+          "rootDir": "{app,lib}"
+        }
+      }
+    },
+    {
+      "id": "rootdir-07",
+      "settings": {
+        "next": {
+          "rootDir": "app/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-08",
+      "settings": {
+        "next": {
+          "rootDir": [
+            "app",
+            "lib"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rootdir-09",
+      "settings": {
+        "next": {
+          "rootDir": "lib/*/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-10",
+      "settings": {
+        "next": {
+          "rootDir": "nope"
+        }
+      }
+    },
+    {
+      "id": "rootdir-11",
+      "settings": {
+        "next": {
+          "rootDir": "."
+        }
+      }
+    },
+    {
+      "id": "rootdir-12",
+      "settings": {
+        "next": {
+          "rootDir": ""
+        }
+      }
+    },
+    {
+      "id": "rootdir-13",
+      "settings": {
+        "next": {
+          "rootDir": "./"
+        }
+      }
+    },
+    {
+      "id": "rootdir-14",
+      "settings": {
+        "next": {
+          "rootDir": "*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-15",
+      "settings": {
+        "next": {
+          "rootDir": "./*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-16",
+      "settings": {
+        "next": {
+          "rootDir": "**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-17",
+      "settings": {
+        "next": {
+          "rootDir": "**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-18",
+      "settings": {
+        "next": {
+          "rootDir": "apps/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-19",
+      "settings": {
+        "next": {
+          "rootDir": "apps/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-20",
+      "settings": {
+        "next": {
+          "rootDir": [
+            "apps/*",
+            "!apps/admin"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rootdir-21",
+      "settings": {
+        "next": {
+          "rootDir": "__ROOT__/app"
+        }
+      }
+    },
+    {
+      "id": "rootdir-22",
+      "settings": {
+        "next": {
+          "rootDir": "__ROOT__/app/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-23",
+      "settings": {
+        "next": {
+          "rootDir": "__ROOT__/apps/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-24",
+      "settings": {
+        "next": {
+          "rootDir": "__ROOT__/**/pages"
+        }
+      }
+    },
+    {
+      "id": "rootdir-25",
+      "settings": {
+        "next": {
+          "rootDir": "apps/{web,admin}"
+        }
+      }
+    },
+    {
+      "id": "rootdir-26",
+      "settings": {
+        "next": {
+          "rootDir": "{lib,app}"
+        }
+      }
+    },
+    {
+      "id": "rootdir-27",
+      "settings": {
+        "next": {
+          "rootDir": "./{app,lib}"
+        }
+      }
+    },
+    {
+      "id": "rootdir-28",
+      "settings": {
+        "next": {
+          "rootDir": "./app/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-29",
+      "settings": {
+        "next": {
+          "rootDir": "apps/**/app"
+        }
+      }
+    },
+    {
+      "id": "rootdir-30",
+      "settings": {
+        "next": {
+          "rootDir": "app/**/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-31",
+      "settings": {
+        "next": {
+          "rootDir": "app/**/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-32",
+      "settings": {
+        "next": {
+          "rootDir": "apps/@(web|admin)"
+        }
+      }
+    },
+    {
+      "id": "rootdir-33",
+      "settings": {
+        "next": {
+          "rootDir": "apps/!(docs)"
+        }
+      }
+    },
+    {
+      "id": "rootdir-34",
+      "settings": {
+        "next": {
+          "rootDir": "apps/w?b"
+        }
+      }
+    },
+    {
+      "id": "rootdir-35",
+      "settings": {
+        "next": {
+          "rootDir": "apps/[aw]*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-36",
+      "settings": {
+        "next": {
+          "rootDir": "apps/.hidden"
+        }
+      }
+    },
+    {
+      "id": "rootdir-37",
+      "settings": {
+        "next": {
+          "rootDir": "apps/.hidden/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-38",
+      "settings": {
+        "next": {
+          "rootDir": "spaces dir"
+        }
+      }
+    },
+    {
+      "id": "rootdir-39",
+      "settings": {
+        "next": {
+          "rootDir": "spaces dir/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-40",
+      "settings": {
+        "next": {
+          "rootDir": "link-web"
+        }
+      }
+    },
+    {
+      "id": "rootdir-41",
+      "settings": {
+        "next": {
+          "rootDir": "link-web/app"
+        }
+      }
+    },
+    {
+      "id": "rootdir-42",
+      "settings": {
+        "next": {
+          "rootDir": "link-web/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-43",
+      "settings": {
+        "next": {
+          "rootDir": "missing/**"
+        }
+      }
+    },
+    {
+      "id": "rootdir-44",
+      "settings": {
+        "next": {
+          "rootDir": []
+        }
+      }
+    },
+    {
+      "id": "rootdir-45",
+      "settings": {
+        "next": {
+          "rootDir": [
+            "app",
+            null,
+            42,
+            "lib"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rootdir-46",
+      "settings": {
+        "next": {
+          "rootDir": null
+        }
+      }
+    },
+    {
+      "id": "rootdir-47",
+      "settings": {
+        "next": {
+          "rootDir": 42
+        }
+      }
+    },
+    {
+      "id": "rootdir-48",
+      "settings": {
+        "next": {
+          "rootDir": false
+        }
+      }
+    },
+    {
+      "id": "rootdir-49",
+      "settings": {
+        "next": {
+          "rootDir": [
+            "app",
+            "app"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rootdir-50",
+      "settings": {
+        "next": {
+          "rootDir": "app/../lib"
+        }
+      }
+    },
+    {
+      "id": "rootdir-51",
+      "settings": {
+        "next": {
+          "rootDir": "__ROOT__"
+        }
+      }
+    },
+    {
+      "id": "rootdir-52",
+      "settings": {
+        "next": {
+          "rootDir": "__ROOT__/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-53",
+      "settings": {
+        "next": {
+          "rootDir": "./apps/*/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-54",
+      "settings": {
+        "next": {
+          "rootDir": "apps/*/app"
+        }
+      }
+    },
+    {
+      "id": "rootdir-55",
+      "settings": {
+        "next": {
+          "rootDir": "apps/*/pages"
+        }
+      }
+    },
+    {
+      "id": "rootdir-56",
+      "settings": {
+        "next": {
+          "rootDir": "apps/*/src/pages"
+        }
+      }
+    },
+    {
+      "id": "rootdir-57",
+      "settings": {
+        "next": {
+          "rootDir": "app/*/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-58",
+      "settings": {
+        "next": {
+          "rootDir": "app/**/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-59",
+      "settings": {
+        "next": {
+          "rootDir": "lib/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-60",
+      "settings": {
+        "next": {
+          "rootDir": "lib/**/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-61",
+      "settings": {
+        "next": {
+          "rootDir": "lib/**/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-62",
+      "settings": {
+        "next": {
+          "rootDir": "components/*/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-63",
+      "settings": {
+        "next": {
+          "rootDir": "components/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-64",
+      "settings": {
+        "next": {
+          "rootDir": "components/**/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-65",
+      "settings": {
+        "next": {
+          "rootDir": "components/**/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-66",
+      "settings": {
+        "next": {
+          "rootDir": "apps/*/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-67",
+      "settings": {
+        "next": {
+          "rootDir": "apps/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-68",
+      "settings": {
+        "next": {
+          "rootDir": "apps/**/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-69",
+      "settings": {
+        "next": {
+          "rootDir": "apps/**/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-70",
+      "settings": {
+        "next": {
+          "rootDir": "spaces dir/*/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-71",
+      "settings": {
+        "next": {
+          "rootDir": "spaces dir/**/"
+        }
+      }
+    },
+    {
+      "id": "rootdir-72",
+      "settings": {
+        "next": {
+          "rootDir": "spaces dir/**/*"
+        }
+      }
+    },
+    {
+      "id": "rootdir-73",
+      "settings": {
+        "next": {
+          "rootDir": "spaces dir/**/**/"
+        }
+      }
+    }
+  ]
+}

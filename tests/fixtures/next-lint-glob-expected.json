@@ -1,0 +1,626 @@
+[
+  {
+    "id": "no-next-settings",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "empty-next-settings",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-01",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app"
+    ]
+  },
+  {
+    "id": "rootdir-02",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app"
+    ]
+  },
+  {
+    "id": "rootdir-03",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app"
+    ]
+  },
+  {
+    "id": "rootdir-04",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-05",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/components"
+    ]
+  },
+  {
+    "id": "rootdir-06",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/lib"
+    ]
+  },
+  {
+    "id": "rootdir-07",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-08",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/lib"
+    ]
+  },
+  {
+    "id": "rootdir-09",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/lib/a"
+    ]
+  },
+  {
+    "id": "rootdir-10",
+    "kind": "roots",
+    "roots": []
+  },
+  {
+    "id": "rootdir-11",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-12",
+    "kind": "error",
+    "name": "TypeError",
+    "message": "Patterns must be a string (non empty) or an array of strings"
+  },
+  {
+    "id": "rootdir-13",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-14",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/apps",
+      "__ROOT__/components",
+      "__ROOT__/lib",
+      "__ROOT__/link-web",
+      "__ROOT__/spaces dir"
+    ]
+  },
+  {
+    "id": "rootdir-15",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/apps",
+      "__ROOT__/components",
+      "__ROOT__/lib",
+      "__ROOT__/link-web",
+      "__ROOT__/spaces dir"
+    ]
+  },
+  {
+    "id": "rootdir-16",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b",
+      "__ROOT__/apps",
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/docs/src",
+      "__ROOT__/apps/docs/src/pages",
+      "__ROOT__/apps/web",
+      "__ROOT__/apps/web/app",
+      "__ROOT__/components",
+      "__ROOT__/components/ui",
+      "__ROOT__/lib",
+      "__ROOT__/lib/a",
+      "__ROOT__/link-web",
+      "__ROOT__/link-web/app",
+      "__ROOT__/spaces dir",
+      "__ROOT__/spaces dir/app"
+    ]
+  },
+  {
+    "id": "rootdir-17",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b",
+      "__ROOT__/apps",
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/docs/src",
+      "__ROOT__/apps/docs/src/pages",
+      "__ROOT__/apps/web",
+      "__ROOT__/apps/web/app",
+      "__ROOT__/components",
+      "__ROOT__/components/ui",
+      "__ROOT__/lib",
+      "__ROOT__/lib/a",
+      "__ROOT__/link-web",
+      "__ROOT__/link-web/app",
+      "__ROOT__/spaces dir",
+      "__ROOT__/spaces dir/app"
+    ]
+  },
+  {
+    "id": "rootdir-18",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-19",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/docs/src",
+      "__ROOT__/apps/docs/src/pages",
+      "__ROOT__/apps/web",
+      "__ROOT__/apps/web/app"
+    ]
+  },
+  {
+    "id": "rootdir-20",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-21",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app"
+    ]
+  },
+  {
+    "id": "rootdir-22",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app"
+    ]
+  },
+  {
+    "id": "rootdir-23",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-24",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs/src/pages"
+    ]
+  },
+  {
+    "id": "rootdir-25",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-26",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/lib"
+    ]
+  },
+  {
+    "id": "rootdir-27",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/lib"
+    ]
+  },
+  {
+    "id": "rootdir-28",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-29",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/web/app"
+    ]
+  },
+  {
+    "id": "rootdir-30",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-31",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-32",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-33",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/.hidden",
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-34",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-35",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-36",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/.hidden"
+    ]
+  },
+  {
+    "id": "rootdir-37",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/.hidden/app"
+    ]
+  },
+  {
+    "id": "rootdir-38",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/spaces dir"
+    ]
+  },
+  {
+    "id": "rootdir-39",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/spaces dir/app"
+    ]
+  },
+  {
+    "id": "rootdir-40",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/link-web"
+    ]
+  },
+  {
+    "id": "rootdir-41",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/link-web/app"
+    ]
+  },
+  {
+    "id": "rootdir-42",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/link-web/app"
+    ]
+  },
+  {
+    "id": "rootdir-43",
+    "kind": "roots",
+    "roots": []
+  },
+  {
+    "id": "rootdir-44",
+    "kind": "roots",
+    "roots": []
+  },
+  {
+    "id": "rootdir-45",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/lib"
+    ]
+  },
+  {
+    "id": "rootdir-46",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-47",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-48",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-49",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app",
+      "__ROOT__/app"
+    ]
+  },
+  {
+    "id": "rootdir-50",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/lib"
+    ]
+  },
+  {
+    "id": "rootdir-51",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-52",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__"
+    ]
+  },
+  {
+    "id": "rootdir-53",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-54",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/web/app"
+    ]
+  },
+  {
+    "id": "rootdir-55",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin/pages"
+    ]
+  },
+  {
+    "id": "rootdir-56",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/docs/src/pages"
+    ]
+  },
+  {
+    "id": "rootdir-57",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-58",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/app/a",
+      "__ROOT__/app/a/deep",
+      "__ROOT__/app/b"
+    ]
+  },
+  {
+    "id": "rootdir-59",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/lib/a"
+    ]
+  },
+  {
+    "id": "rootdir-60",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/lib/a"
+    ]
+  },
+  {
+    "id": "rootdir-61",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/lib/a"
+    ]
+  },
+  {
+    "id": "rootdir-62",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/components/ui"
+    ]
+  },
+  {
+    "id": "rootdir-63",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/components/ui"
+    ]
+  },
+  {
+    "id": "rootdir-64",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/components/ui"
+    ]
+  },
+  {
+    "id": "rootdir-65",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/components/ui"
+    ]
+  },
+  {
+    "id": "rootdir-66",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/web"
+    ]
+  },
+  {
+    "id": "rootdir-67",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/docs/src",
+      "__ROOT__/apps/docs/src/pages",
+      "__ROOT__/apps/web",
+      "__ROOT__/apps/web/app"
+    ]
+  },
+  {
+    "id": "rootdir-68",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/docs/src",
+      "__ROOT__/apps/docs/src/pages",
+      "__ROOT__/apps/web",
+      "__ROOT__/apps/web/app"
+    ]
+  },
+  {
+    "id": "rootdir-69",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/apps/admin",
+      "__ROOT__/apps/admin/pages",
+      "__ROOT__/apps/docs",
+      "__ROOT__/apps/docs/src",
+      "__ROOT__/apps/docs/src/pages",
+      "__ROOT__/apps/web",
+      "__ROOT__/apps/web/app"
+    ]
+  },
+  {
+    "id": "rootdir-70",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/spaces dir/app"
+    ]
+  },
+  {
+    "id": "rootdir-71",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/spaces dir/app"
+    ]
+  },
+  {
+    "id": "rootdir-72",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/spaces dir/app"
+    ]
+  },
+  {
+    "id": "rootdir-73",
+    "kind": "roots",
+    "roots": [
+      "__ROOT__/spaces dir/app"
+    ]
+  }
+]
