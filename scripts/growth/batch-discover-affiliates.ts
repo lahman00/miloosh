@@ -3,6 +3,7 @@ import { getSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 interface DiscoveredProgram {
   slug: string;
@@ -473,7 +474,7 @@ export async function runAffiliateDiscovery(): Promise<DiscoveredProgram[]> {
   return results;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runAffiliateDiscovery().then(results => {
     const outPath = path.join(process.cwd(), "var/agents/batch-discovered-affiliates.json");
     fs.mkdirSync(path.dirname(outPath), { recursive: true });

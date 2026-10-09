@@ -6,6 +6,7 @@ import { getAllRoleGuides } from "@/data/guides/registry";
 import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface CategoryAuditRow {
   slug: string;
@@ -105,7 +106,7 @@ export function auditCategoryIntelligence(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = auditCategoryIntelligence();
   const outPath = path.join(process.cwd(), "var/agents/category-intelligence-audit.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

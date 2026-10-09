@@ -4,6 +4,7 @@ import type { SoftwareRecommendation } from "@/lib/recommend/types";
 import { runAgent } from "@/lib/maintenance/run-agent";
 import { writeReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceIssue } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * Sprint 12 Phase 5 — Recommendation Regression Agent. Runs every fixture
@@ -152,6 +153,6 @@ async function main() {
   console.log(`[recommendations] run status: ${report.run.status}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

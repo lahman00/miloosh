@@ -3,6 +3,7 @@ import { auditCategoryIntelligence } from "./category-intelligence";
 import { mineGscOpportunities } from "./gsc-opportunity-miner";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export function hasActionableStrikingDistanceEvidence(impressions: number): boolean {
   return impressions >= 10;
@@ -116,7 +117,7 @@ export function runCommercialPriorityEngine(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = runCommercialPriorityEngine();
   const outPath = path.join(process.cwd(), "var/agents/commercial-priority-engine.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

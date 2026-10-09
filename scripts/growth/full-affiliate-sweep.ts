@@ -6,6 +6,7 @@ import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
 import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export type AffiliateClassification =
   | "ACTIVE_AFFILIATE"
@@ -177,7 +178,7 @@ export function runFullAffiliateSweep(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = runFullAffiliateSweep();
   const outPath = path.join(process.cwd(), "var/agents/full-affiliate-sweep.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

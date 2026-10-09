@@ -3,6 +3,7 @@ import { getAffiliateProgram } from "@/data/revenue/affiliate-programs";
 import { runAgent } from "@/lib/maintenance/run-agent";
 import { writeReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceIssue } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * Sprint 12 Phase 3 — Data Freshness Agent. Scores every software entry
@@ -177,6 +178,6 @@ async function main() {
   console.log(`[freshness] run status: ${report.run.status}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const LEGACY_PROTECTED_COHORT = new Set([
   "pipedrive", "airtable", "semrush", "freshdesk", "buffer",
@@ -119,7 +120,7 @@ export function mineGscOpportunities(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = mineGscOpportunities();
   const outPath = path.join(process.cwd(), "var/agents/gsc-opportunity-mining.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

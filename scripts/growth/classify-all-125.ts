@@ -2,6 +2,7 @@ import { computeLedgerSummary } from "@/scripts/affiliate/ledger";
 import { getSoftware } from "@/data/software";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 interface ComprehensiveClassification {
   slug: string;
@@ -1265,7 +1266,7 @@ export function classifyRemainingProducts(): ComprehensiveClassification[] {
   return results;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const list = classifyRemainingProducts();
   const outPath = path.join(process.cwd(), "var/agents/all-125-classified.json");
   fs.mkdirSync(path.dirname(outPath), { recursive: true });

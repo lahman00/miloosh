@@ -7,6 +7,7 @@ import { getRevenueTier } from "@/lib/revenue/tiers";
 import { runAgent } from "@/lib/maintenance/run-agent";
 import { writeReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceIssue } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * Sprint 12 Phase 7 — Affiliate Opportunity Agent. Reads only
@@ -152,6 +153,6 @@ async function main() {
   console.log(`[affiliate] run status: ${report.run.status}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

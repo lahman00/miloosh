@@ -2,6 +2,7 @@ import { getAllFirstPartyEvents, type FirstPartyEvent } from "@/lib/analytics/ev
 import { classifySessions } from "@/lib/analytics/human-classification";
 import { isSyntheticOrTestEvent } from "@/scripts/analytics/report";
 import { readQueue } from "@/lib/social/queue";
+import { pathToFileURL } from "node:url";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22/25).
@@ -134,7 +135,7 @@ async function main() {
   console.log("========================================================================================\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch(() => {
     console.error("POST ACQUISITION = UNKNOWN — evidence read failed; not zero.");
     process.exitCode = 1;

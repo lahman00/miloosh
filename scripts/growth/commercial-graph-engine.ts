@@ -9,6 +9,7 @@ import { getAllRoleGuides } from "@/data/guides/registry";
 import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface CommercialNode {
   slug: string;
@@ -292,7 +293,7 @@ export function buildCommercialGraph(): CommercialGraphSummary {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const graph = buildCommercialGraph();
   const outPath = path.join(process.cwd(), "var/agents/commercial-graph.json");
   fs.writeFileSync(outPath, JSON.stringify(graph, null, 2));

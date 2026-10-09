@@ -8,6 +8,7 @@ import { SITE_URL } from "@/lib/site";
 import { runAgent } from "@/lib/maintenance/run-agent";
 import { writeReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceIssue } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * Real Human Funnel War Room (2026-08-22) — Phase 19. Zero-tolerance
@@ -112,6 +113,6 @@ async function main() {
   console.log(`[social-links] run status: ${report.run.status}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

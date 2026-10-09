@@ -1,5 +1,6 @@
 import { getInboundSocialEvents, isExcludedSocialEvent, type InboundSocialEvent } from "@/lib/social/attribution";
 import { isOutboundTrackingEnabled } from "@/lib/revenue/events";
+import { pathToFileURL } from "node:url";
 
 /**
  * MILOOSH community-attribution readback (2026-08-31): real counts of
@@ -134,7 +135,7 @@ export async function buildSocialAttributionReport(): Promise<SocialAttributionR
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   buildSocialAttributionReport().then((report) => {
     console.log("================================================================");
     console.log("       MILOOSH SOCIAL ATTRIBUTION REPORT (real counts only)      ");

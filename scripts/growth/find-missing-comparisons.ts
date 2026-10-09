@@ -1,5 +1,6 @@
 import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
+import { pathToFileURL } from "node:url";
 
 const publishedSet = new Set(PUBLISHED_COMPARISONS.map(([a, b]) => `${a}-vs-${b}`));
 const reverseSet = new Set(PUBLISHED_COMPARISONS.map(([a, b]) => `${b}-vs-${a}`));
@@ -61,7 +62,7 @@ export function findMissingDirectComparisons(): MissingCandidate[] {
   return missing.sort((a, b) => b.score - a.score);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const candidates = findMissingDirectComparisons();
   console.log("================================================================");
   console.log("       MILOOSH HIGH-SIGNAL MISSING COMPARISONS AUDIT            ");

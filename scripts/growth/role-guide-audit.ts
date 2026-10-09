@@ -3,6 +3,7 @@ import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface RoleGuideAuditResult {
   slug: string;
@@ -121,7 +122,7 @@ export function auditRoleGuides(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = auditRoleGuides();
   const outPath = path.join(process.cwd(), "var/agents/role-guide-audit.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

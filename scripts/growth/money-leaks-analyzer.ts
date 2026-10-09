@@ -1,6 +1,7 @@
 import { buildCommercialGraph } from "./commercial-graph-engine";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface RankedOpportunity {
   rank: number;
@@ -121,7 +122,7 @@ export function rankCommercialOpportunities(): {
   return { rankedNodes: opportunities, groupSummary };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const { rankedNodes, groupSummary } = rankCommercialOpportunities();
   const outPath = path.join(process.cwd(), "var/agents/money-leaks-ranked.json");
   fs.writeFileSync(outPath, JSON.stringify({ groupSummary, rankedNodes }, null, 2));

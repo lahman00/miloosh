@@ -4,6 +4,7 @@ import { getAllRoleGuides } from "@/data/guides/registry";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface PageLinkMetrics {
   url: string;
@@ -88,7 +89,7 @@ export function auditInternalLinkIntelligence() {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = auditInternalLinkIntelligence();
   const outPath = path.join(process.cwd(), "var/agents/link-intelligence-audit.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

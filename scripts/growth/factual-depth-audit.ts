@@ -1,6 +1,7 @@
 import { getAllSoftware } from "@/data/software";
 import { getComparisonsInvolving } from "@/data/comparisons";
 import type { Software } from "@/data/software/types";
+import { pathToFileURL } from "node:url";
 
 /**
  * GOOGLE INDEXATION QUALITY WAR mission (2026-08-22), Phase 3 — permanent
@@ -157,6 +158,6 @@ async function main() {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

@@ -3,6 +3,7 @@ import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface BiasAuditItem {
   partnerSlug: string;
@@ -71,7 +72,7 @@ export function runAdversarialBiasTest(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = runAdversarialBiasTest();
   const outPath = path.join(process.cwd(), "var/agents/adversarial-bias-test.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

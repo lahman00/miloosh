@@ -1,6 +1,7 @@
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
 import type { AffiliateProgramRelationship, CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
+import { pathToFileURL } from "node:url";
 
 const OWNER_BLOCKING_STATUSES = new Set<CanonicalLedgerStatus>([
   "OWNER_ACTION_REQUIRED",
@@ -86,6 +87,6 @@ export function analyzeOwnerBlockers() {
   return rows;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   analyzeOwnerBlockers();
 }

@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { pathToFileURL } from "node:url";
 import { verifyProjectIdentity } from "@/lib/project-guard";
 
 export interface DeploymentRecord {
@@ -61,7 +62,7 @@ export async function verifyLiveDeployment(expectedCommit?: string) {
   console.log("DEPLOYMENT GUARD PASSED: exact source, READY production alias and canonical HTTP 200 verified");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   verifyLiveDeployment(process.argv[2]).catch(() => {
     // Never echo CLI/auth error objects. Unreadable metadata is not a pass.
     console.error("Deployment verification failed or evidence unavailable.");

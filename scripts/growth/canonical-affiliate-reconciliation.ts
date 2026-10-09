@@ -3,6 +3,7 @@ import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
 import { runFullAffiliateSweep, type AffiliateClassification } from "./full-affiliate-sweep";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export type CanonicalAffiliateStatus =
   | "ACTIVE"
@@ -168,7 +169,7 @@ export function buildCanonicalAffiliateState(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = buildCanonicalAffiliateState();
   const outPath = path.join(process.cwd(), "var/agents/canonical-affiliate-reconciliation.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

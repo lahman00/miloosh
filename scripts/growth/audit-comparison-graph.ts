@@ -1,5 +1,6 @@
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { getSoftware } from "@/data/software";
+import { pathToFileURL } from "node:url";
 
 export interface ComparisonAuditResult {
   pair: [string, string];
@@ -140,7 +141,7 @@ export function auditComparisonGraph(): ComparisonAuditResult[] {
   return results;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const audit = auditComparisonGraph();
   const direct = audit.filter(r => r.classification === "DIRECT_SUBSTITUTE");
   const legitCross = audit.filter(r => r.classification === "LEGITIMATE_NICHE_OVERLAP");

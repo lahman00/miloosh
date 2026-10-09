@@ -2,6 +2,7 @@ import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { getSoftware } from "@/data/software";
 import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
+import { pathToFileURL } from "node:url";
 
 /**
  * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) Critical Task 6 --
@@ -90,7 +91,7 @@ function main() {
   if (failures > 0) process.exitCode = 1;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }
 

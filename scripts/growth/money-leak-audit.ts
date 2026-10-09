@@ -2,6 +2,7 @@ import { ACTIVE_PARTNERS, getActivePartner } from "@/data/affiliate/active-partn
 import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { getSoftware } from "@/data/software";
 import { ROLE_GUIDES } from "@/data/guides/registry";
+import { pathToFileURL } from "node:url";
 
 export function runMoneyLeakAudit() {
   console.log("================================================================");
@@ -68,6 +69,6 @@ export function runMoneyLeakAudit() {
   console.log("\n================================================================\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runMoneyLeakAudit();
 }

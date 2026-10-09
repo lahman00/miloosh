@@ -4,6 +4,7 @@ import type { StoredOutboundEvent } from "@/lib/revenue/events";
 import { readOutboundEventsDetailed, formatOutboundLedger } from "@/lib/revenue/outbound-read";
 import { LEGACY_CONTAMINATED_SESSIONS, isLegacyContaminatedSession } from "@/lib/analytics/legacy-contaminated-sessions";
 import { classifySessions, classifyVisitors, summarizeBuckets, type TrafficBucket } from "@/lib/analytics/human-classification";
+import { pathToFileURL } from "node:url";
 
 /**
  * Flippa Activation + Recommend Expansion Super-Mission (2026-08-21) —
@@ -1103,6 +1104,6 @@ export async function generateAnalyticsReport() {
   console.log("========================================================================================\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   generateAnalyticsReport();
 }

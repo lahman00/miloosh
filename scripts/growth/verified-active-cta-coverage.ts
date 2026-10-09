@@ -1,6 +1,7 @@
 import { getAllFirstPartyEvents, type OutboundClickEvent } from "@/lib/analytics/events";
 import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { getAllSoftware } from "@/data/software";
+import { pathToFileURL } from "node:url";
 
 /**
  * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) Critical Task 5 --
@@ -121,7 +122,7 @@ async function main() {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }
 

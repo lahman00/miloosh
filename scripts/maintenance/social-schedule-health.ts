@@ -2,6 +2,7 @@ import { readQueue } from "@/lib/social/queue";
 import { runAgent } from "@/lib/maintenance/run-agent";
 import { writeReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceIssue } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) Track A ask #7
@@ -62,6 +63,6 @@ async function main() {
   console.log(`[social-schedule-health] run status: ${report.run.status}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

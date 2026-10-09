@@ -4,6 +4,7 @@ import { getAllSoftware } from "@/data/software";
 import { verifyProjectIdentity, ProjectIdentityError } from "@/lib/project-guard";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export const ALL_CANONICAL_STATUSES: readonly CanonicalLedgerStatus[] = [
   "ACTIVE",
@@ -137,7 +138,7 @@ export function computeLedgerSummary(): LedgerSummaryReport {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   try {
     verifyProjectIdentity();
   } catch (err) {

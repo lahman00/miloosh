@@ -2,6 +2,7 @@ import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { getSoftware } from "@/data/software";
 import { ROLE_GUIDES } from "@/data/guides/registry";
 import { CURRENT_AFFILIATE_LEDGER } from "@/data/affiliate/current-affiliate-truth";
+import { pathToFileURL } from "node:url";
 
 export interface PendingProgramReadiness {
   programId: string;
@@ -63,7 +64,7 @@ export function auditPendingPrograms(): PendingProgramReadiness[] {
   });
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const readiness = auditPendingPrograms();
   console.log("================================================================");
   console.log("          MILOOSH PENDING PROGRAM READINESS AUDIT               ");

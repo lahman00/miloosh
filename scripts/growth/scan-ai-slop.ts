@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { getAllSoftware } from "@/data/software";
 import { ROLE_GUIDES } from "@/data/guides/registry";
 
@@ -61,7 +62,7 @@ export function scanForSlop(): SlopMatch[] {
   return matches;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const results = scanForSlop();
   console.log("================================================================");
   console.log("            AI SLOP & GENERIC PHRASE CORPUS SCAN                ");

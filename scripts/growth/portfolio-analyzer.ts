@@ -5,6 +5,7 @@ import type { CanonicalLedgerStatus } from "@/data/affiliate/canonical-ledger";
 import { HEURISTIC_TRAFFIC_SIGNAL } from "@/lib/growth-audit/comparison-graph";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface PortfolioGroup {
   name: string;
@@ -143,7 +144,7 @@ export function analyzePortfolioPrograms(): PortfolioGroup[] {
   return results;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const portfolios = analyzePortfolioPrograms();
   const outPath = path.join(process.cwd(), "var/agents/portfolio-programs.json");
   fs.writeFileSync(outPath, JSON.stringify(portfolios, null, 2));

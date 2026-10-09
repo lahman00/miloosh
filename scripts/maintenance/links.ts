@@ -5,6 +5,7 @@ import { checkUrlsWithConcurrency, type LinkCheckResult, type LinkCheckOutcome }
 import { runAgent } from "@/lib/maintenance/run-agent";
 import { writeReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceIssue, SourceEvidence } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * Sprint 12 Phase 2 — Link Health Agent. Read-only: checks every official
@@ -179,6 +180,6 @@ async function main() {
   console.log(`[links] run status: ${report.run.status}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

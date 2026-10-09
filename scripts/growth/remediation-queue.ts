@@ -1,6 +1,7 @@
 import { getSoftware } from "@/data/software";
 import { buildIndexationPriorityList } from "@/scripts/growth/indexation-priority";
 import { scoreFactualDepth, type FactualDepthRow } from "@/scripts/growth/factual-depth-audit";
+import { pathToFileURL } from "node:url";
 
 /**
  * GOOGLE INDEXATION QUALITY WAR mission (2026-08-22), Phase 4 — crosses
@@ -77,6 +78,6 @@ async function main() {
   console.log("========================================================================================\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

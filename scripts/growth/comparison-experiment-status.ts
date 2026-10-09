@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { TREATMENT_COHORT, CONTROL_COHORT, EXPERIMENT_STARTED_AT } from "@/data/experiments/comparison-quality-cohort";
 import { loadPrioritySnapshot } from "@/scripts/growth/indexation-priority";
 
@@ -84,6 +85,6 @@ async function main() {
   console.log("========================================================================================\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

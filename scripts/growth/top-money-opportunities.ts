@@ -2,6 +2,7 @@ import { PUBLISHED_COMPARISONS } from "@/data/comparisons";
 import { runFullAffiliateSweep, type AffiliateClassification } from "./full-affiliate-sweep";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface TopMoneyOpportunity {
   rank: number;
@@ -141,7 +142,7 @@ export function rankTopMoneyOpportunities(): TopMoneyOpportunity[] {
   return list.slice(0, 20);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const top20 = rankTopMoneyOpportunities();
   const outPath = path.join(process.cwd(), "var/agents/top-money-opportunities.json");
   fs.writeFileSync(outPath, JSON.stringify(top20, null, 2));

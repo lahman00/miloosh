@@ -1,4 +1,5 @@
 import { readSnapshots, latestSnapshot } from "@/lib/agents/gsc-snapshot";
+import { pathToFileURL } from "node:url";
 
 /**
  * MILOOSH CRITICAL MONETIZATION CLOSEOUT (2026-08-29) Critical Task 4 --
@@ -55,7 +56,7 @@ function main() {
   console.log("-- the two must never be presented as the same kind of evidence.");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }
 

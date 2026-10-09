@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { readLatestSeoFactoryRun } from "@/lib/seo-factory/store";
 
 /**
@@ -101,6 +102,6 @@ async function main() {
   console.log(`Source run: ${run.id} (generated ${run.generatedAt}, window ${run.window.startDate}..${run.window.endDate})`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

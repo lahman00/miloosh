@@ -3,6 +3,7 @@ import { ACTIVE_PARTNERS } from "@/data/affiliate/active-partners";
 import { AFFILIATE_PROGRAMS } from "@/data/revenue/affiliate-programs";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export interface CompleteSoftwareAffiliateRecord {
   slug: string;
@@ -256,7 +257,7 @@ export function researchAllCatalogSoftware(): CompleteSoftwareAffiliateRecord[] 
   return records;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const records = researchAllCatalogSoftware();
   const outPath = path.join(process.cwd(), "var/agents/all-software-affiliate-registry.json");
   fs.writeFileSync(outPath, JSON.stringify(records, null, 2));

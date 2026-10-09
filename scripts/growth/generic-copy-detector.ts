@@ -1,6 +1,7 @@
 import { getAllSoftware } from "@/data/software";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const PROTECTED_COHORT = new Set([
   "pipedrive", "airtable", "semrush", "freshdesk", "buffer",
@@ -111,7 +112,7 @@ export function detectGenericCopy(): {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = detectGenericCopy();
   const outPath = path.join(process.cwd(), "var/agents/generic-copy-audit.json");
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2));

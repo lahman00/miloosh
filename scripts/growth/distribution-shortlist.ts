@@ -3,6 +3,7 @@ import { getSoftware } from "@/data/software";
 import { shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { readAgentReport } from "@/lib/maintenance/report-io";
 import type { MaintenanceReport } from "@/types/maintenance";
+import { pathToFileURL } from "node:url";
 
 /**
  * TRAFFIC ACQUISITION WAR MODE mission (2026-08-22) Phase 16 — a scored
@@ -102,6 +103,6 @@ async function main() {
   console.log("========================================================================================\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }
