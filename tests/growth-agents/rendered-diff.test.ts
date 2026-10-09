@@ -12,6 +12,26 @@ describe("normalizeRenderedHtml removes build noise and keeps what a reader or a
     expect(normalizeRenderedHtml(a)).toBe(normalizeRenderedHtml(b));
   });
 
+  it("drops the platform's deployment id from asset URLs wherever it sits, so a live page equals a local build of the same commit", () => {
+    const id = "dpl_4AHS358cZHgukiyYtVkwsTZ3W4kn";
+    const local = page(`<link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fa.png&amp;w=32&amp;q=75 1x"/><img src="/img/a.png"/><img src="/img/b.png?v=1"/><img src="/img/c.png"/>`);
+    const live = page(`<link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fa.png&amp;w=32&amp;q=75&amp;dpl=${id} 1x"/><img src="/img/a.png?dpl=${id}"/><img src="/img/b.png?dpl=${id}&amp;v=1"/><img src="/img/c.png?v=1"/>`.replace("c.png?v=1", "c.png"));
+    expect(normalizeRenderedHtml(live)).toBe(normalizeRenderedHtml(local));
+    expect(normalizeRenderedHtml(live)).not.toMatch(/dpl/);
+    // an unescaped & separator is handled the same way, as are the first and last position
+    expect(normalizeRenderedHtml(`<a href="/x?a=1&dpl=dpl_Z">x</a>`)).toBe(normalizeRenderedHtml(`<a href="/x?a=1">x</a>`));
+    expect(normalizeRenderedHtml(`<a href="/x?dpl=dpl_Z&a=1">x</a>`)).toBe(normalizeRenderedHtml(`<a href="/x?a=1">x</a>`));
+    expect(normalizeRenderedHtml(`<a href="/x?dpl=dpl_Z">x</a>`)).toBe(normalizeRenderedHtml(`<a href="/x">x</a>`));
+  });
+
+  it("does not hide a real difference that happens to sit next to a deployment id", () => {
+    const differ = (a: string, b: string) => expect(normalizeRenderedHtml(page(a))).not.toBe(normalizeRenderedHtml(page(b)));
+    differ(`<a href="/go?to=asana&amp;dpl=dpl_A">Go</a>`, `<a href="/go?to=monday&amp;dpl=dpl_B">Go</a>`);
+    // a difference after the marker survives as well
+    differ(`<a href="/go?dpl=dpl_A&amp;to=asana">Go</a>`, `<a href="/go?dpl=dpl_B&amp;to=monday">Go</a>`);
+    differ(`<a href="/go?x=1&amp;dpl=dpl_A&amp;to=asana">Go</a>`, `<a href="/go?x=1&amp;dpl=dpl_B&amp;to=monday">Go</a>`);
+  });
+
   it("keeps structured data, because JSON-LD is page content", () => {
     const withLd = (name: string) => page(`<script type="application/ld+json">{"@type":"Product","name":"${name}"}</script>`);
     expect(normalizeRenderedHtml(withLd("A"))).not.toBe(normalizeRenderedHtml(withLd("B")));

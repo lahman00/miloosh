@@ -16,7 +16,11 @@ export function normalizeRenderedHtml(html: string): string {
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/\/_next\/static\/[^"'\s)>]+/g, "/_next/static/<asset>")
     .replace(/\s(data-dpl-id|nonce|data-nscript)\s*=\s*("[^"]*"|'[^']*')/gi, "")
-    .replace(/([?&])dpl=[A-Za-z0-9_-]+/g, "$1dpl=<id>")
+    // The hosting platform appends its deployment id to asset URLs (also HTML-escaped as &amp;dpl=). A local build has none, so the
+    // whole parameter goes, wherever it sits: first (?dpl=x&..), last (..&dpl=x) or alone (?dpl=x).
+    .replace(/\?dpl=[A-Za-z0-9_-]+(?:&amp;|&)/g, "?")
+    .replace(/(?:&amp;|&)dpl=[A-Za-z0-9_-]+/g, "")
+    .replace(/\?dpl=[A-Za-z0-9_-]+/g, "")
     .replace(/>\s+</g, "><")
     .replace(/\s+/g, " ")
     .trim();
