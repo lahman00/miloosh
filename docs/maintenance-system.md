@@ -286,8 +286,11 @@ gates and a normal, human-reviewed commit.
    an internal `run()` returning `{ summary, issues, data }`, an exported
    `executeXAgent()` that calls `runAgent("<name>", run, options)` then
    `writeReport(...)`, a `main()` that calls it and logs, and the
-   `if (import.meta.url === ...)` guard so importing the module doesn't
-   execute it.
+   `if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href)`
+   guard (`pathToFileURL` from `node:url`) so importing the module doesn't
+   execute it. Compare real file URLs: a hand-built `file://${process.argv[1]}`
+   string is false for checkout paths with spaces or non-ASCII characters, and
+   the script would silently do nothing there.
 3. Decide its severity-escalation policy: does a critical finding mean
    "the world changed" (leave `escalateCriticalToFailure` unset) or "our
    codebase is wrong" (set it to `true`)? See "Severity rules" above.
