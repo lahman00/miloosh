@@ -52,7 +52,7 @@ Miloosh already has a substantial content base, so the daily LinkedIn company an
 Facebook: company Page only; never tag, share from, link or otherwise associate Eyal's personal profile. LinkedIn: occasional authorized personal reshare only when useful, not daily. Community replies must answer the actual question and follow the community rules; no repetitive link dropping, mass messaging or fake customer voices. Do not keep requesting external editorial promotion after a partner explicitly declines it. Launchpadly remains cancelled: no submission, payment or badge.
 
 ## 8. Quality and release gates
-No redesign, unnecessary dependencies, new paid tools, unrelated project work or surprise automation. Preserve existing credentials and old-path compatibility. Keep work inside the canonical Miloosh folder; do not revive scattered worktrees or discard recovery stashes. Inspect git status before writes and commit only owned changes.
+No **unapproved** redesign, unnecessary dependencies, new paid tools, unrelated project work or surprise automation. The owner explicitly approved restoring the previously released warm premium design on October 9, 2026; that restoration is governed by the design-release contract below. Preserve existing credentials and old-path compatibility. Keep work inside the canonical Miloosh folder; do not revive scattered worktrees or discard recovery stashes. Inspect git status before writes and commit only owned changes.
 
 For each change: identify the hypothesis and baseline, edit the smallest useful surface, verify source-linked claims, add focused regression checks, run tests/lint/typecheck/data validation/build, and inspect desktop/mobile rendering plus download/CTA behavior. Test captures with mocks or a local isolated store, never production PII or affiliate traffic. Confirm the current production deployment before promoting. No production release on a failed gate.
 
@@ -65,6 +65,18 @@ This document stays the operating policy. A set of read-only agents now applies 
 - **Roles and skills** (in `.agents/skills`): `miloosh-growth-director` coordinates; `miloosh-google-recovery-agent`, `miloosh-affiliate-revenue-agent`, `miloosh-premium-page-agent` (a typed handoff to `miloosh-money-page-upgrader`), `miloosh-authority-distribution-agent` (drafts only) and `miloosh-release-guardian` (reports gates, never waives one). Code lives in `lib/growth-agents`, tests in `tests/growth-agents`.
 - **Canonical report and evidence:** `docs/growth/receipts/20261009-growth-agent-system/README.md`. Query-level Search Console data stays outside git.
 - **Workspace note:** the "Canonical workspace" named in the first lines of this document is `~/Desktop/Miloosh/01-Current/site`. On October 9, 2026 that folder does not exist on the owner's machine; the live checkouts are under `~/AI/1. פרוייקטים/Miloosh/01-Current/`. Prove which commit production runs (`vercel inspect miloosh.com` and the Production deployment history) instead of trusting a folder name.
+
+
+## 10. Approved public design and anti-regression release contract (October 9, 2026)
+**The approved visual source of truth for Miloosh is the warm premium design**: light `#f8f9f4` canvas, dark-green `#173b2c` ink, citrine `#e4f267` accent, Manrope type, legible `miloosh.` wordmark, and the guided BuyerDesk home with an explorable shortlist. The original design was actually released in production on October 5 (the `20418cd` branded production deployment) and was unintentionally replaced when later content-focused deployments were built from the older UI branch. Do not interpret later SEO release commits as approval to restore that historical appearance.
+
+- **Deploy only merged/reconciled sources** that include both the approved premium visual system and the latest verified commercial/SEO/agent changes. An old branch or a screenshot is not the design source of truth.
+- **Automated anti-rollback checks:** `tests/brand/premium-design-regression.test.ts` and `tests/brand/social-preview-regression.test.ts` must remain active in the full suite. Never mute them to allow an old branch to publish.
+- **Visual QA:** confirm desktop, tablet and mobile, including wordmark at 320–430px, guided home interactions, mobile menu, one accessible H1, no overflow, no browser errors, and representative protected software, comparison and guide pages. Social previews and app icons must match the approved warm identity.
+- **Commercial/SEO protection:** restoration is a presentation operation, not authority to change page main text, vendor prices, affiliate links, canonical/robots, structured data, or in-flight experiments. Compare generated output across the whole site and investigate every change beyond the homepage.
+- **Release:** require clean source commit, successful complete npm audit (dev dependencies included), full tests/data/lint/typecheck/build, verified preview, production deployment ID/SHA, and post-deploy live browser and content checks. Do not bypass security gates.
+- **History, not current identity:** keep old commits/assets only as Git audit/rollback history. In documentation, agent prompts, reporting and future work, refer to the warm premium design as Miloosh's approved site. Do not resurrect earlier dark UI work as the desired default.
+
 
 ## Task input template
 - Avatar and concrete pain:
