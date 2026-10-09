@@ -346,8 +346,8 @@ describe("mapping changed files to the pages they re-render", () => {
 describe("parsers for the real command output (pure, no commands run)", () => {
   it("reads the deployment id and creation time from `vercel inspect`", () => {
     const output = [
-      "Fetching deployment \"miloosh.com\" in lahman00s-projects",
-      "> Fetched deployment \"miloosh-abc.vercel.app\" in lahman00s-projects [1s]",
+      "Fetching deployment \"miloosh.com\" in example-team",
+      "> Fetched deployment \"miloosh-abc.vercel.app\" in example-team [1s]",
       "",
       "  General",
       "",
@@ -458,10 +458,10 @@ describe("collectProductionFacts reads production without changing it", () => {
 
   it("issues exactly one `vercel inspect <domain>` and one `gh api` GET of the deployments list", () => {
     const { run, calls } = runner();
-    collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "lahman00/miloosh", run });
+    collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "owner/repo", run });
     expect(calls.map((c) => [c.file, c.args[0]])).toEqual([["vercel", "inspect"], ["gh", "api"]]);
     expect(calls[0]!.args).toEqual(["inspect", "miloosh.com"]);
-    expect(calls[1]!.args).toEqual(["api", "repos/lahman00/miloosh/deployments?environment=Production&per_page=8"]);
+    expect(calls[1]!.args).toEqual(["api", "repos/owner/repo/deployments?environment=Production&per_page=8"]);
     expect(calls[1]!.args.join(" ")).not.toMatch(/-X|--method|-f\b|-F\b|--input/);
   });
 
@@ -472,7 +472,7 @@ describe("collectProductionFacts reads production without changing it", () => {
 
   it("reports the newest production SHA, and never reads the history when no repository is named", () => {
     const { run, calls } = runner();
-    const facts = collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "lahman00/miloosh", run });
+    const facts = collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "owner/repo", run });
     expect(facts.deployedSha).toBe("b".repeat(40));
     const none = runner();
     collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: null, run: none.run });
@@ -482,11 +482,11 @@ describe("collectProductionFacts reads production without changing it", () => {
 
   it("leaves everything null, never invented, when both commands fail", () => {
     const { run } = runner({ vercel: { status: 1, stderr: "not logged in" }, gh: { status: 1, stderr: "auth required" } });
-    expect(collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "lahman00/miloosh", run })).toEqual({ deploymentId: null, createdAt: null, deployedSha: null, previousProductionShas: [], ancestorOfCurrent: {} });
+    expect(collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "owner/repo", run })).toEqual({ deploymentId: null, createdAt: null, deployedSha: null, previousProductionShas: [], ancestorOfCurrent: {} });
   });
 
   it("treats a non-JSON deployments answer as no history rather than crashing", () => {
     const { run } = runner({ gh: { status: 0, stdout: "<html>rate limited</html>" } });
-    expect(collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "lahman00/miloosh", run }).previousProductionShas).toEqual([]);
+    expect(collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "owner/repo", run }).previousProductionShas).toEqual([]);
   });
 });

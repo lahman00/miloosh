@@ -17,7 +17,7 @@ describe("redaction keeps reports safe for a public repository", () => {
   });
 
   it("replaces the name of a home folder, wherever the path appears, and keeps the rest of the path", () => {
-    expect(redactText("/Users/eyalhaimovich/AI/1. פרוייקטים/Miloosh/site")).toBe("/Users/<user>/AI/1. פרוייקטים/Miloosh/site");
+    expect(redactText("/Users/someone/AI/1. פרוייקטים/Miloosh/site")).toBe("/Users/<user>/AI/1. פרוייקטים/Miloosh/site");
     expect(redactText('worktrees: "/home/runner/work/site", (/Users/me.name_2/x)')).toBe('worktrees: "/home/<user>/work/site", (/Users/<user>/x)');
     expect(redactDeep({ evidence: ["/Users/someone/Documents/work"] })).toEqual({ evidence: ["/Users/<user>/Documents/work"] });
   });
