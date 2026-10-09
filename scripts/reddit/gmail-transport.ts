@@ -4,6 +4,7 @@ import { randomBytes } from "node:crypto";
 import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { parseRedditTask, type RedditTask } from "./worker";
 
 export const MAX_TASK_BODY_BYTES = 32 * 1024;
@@ -435,7 +436,7 @@ async function main(): Promise<void> {
   throw new Error("UNSUPPORTED_TRANSPORT_COMMAND");
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   void main()
     .then(() => process.exit(0))
     .catch((error) => {

@@ -10,6 +10,7 @@ import {
   computeCategoryMoneyMap,
   analyzeInternalLinkGraph,
 } from "@/lib/growth-audit";
+import { pathToFileURL } from "node:url";
 
 export function runCommercialAudit() {
   const software = getAllSoftware();
@@ -90,6 +91,6 @@ export function runCommercialAudit() {
   console.log("================================================================");
 }
 
-if (import.meta.url === "file://" + process.argv[1]) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runCommercialAudit();
 }

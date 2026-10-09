@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { evaluateReplyQuality } from "@/scripts/reddit/quality-gate";
 
@@ -612,6 +613,6 @@ async function main(): Promise<void> {
   }
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   void main().then(() => process.exit(process.exitCode ?? 0));
 }

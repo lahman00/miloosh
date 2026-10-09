@@ -3,6 +3,7 @@ import { mkdir, readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import {
   acquireLock,
@@ -797,6 +798,6 @@ async function main(): Promise<void> {
   }
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   void main().then(() => process.exit(process.exitCode ?? 0));
 }
