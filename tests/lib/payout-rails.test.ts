@@ -64,7 +64,12 @@ describe("payout rail integrity", () => {
 
   it("marks the PartnerStack business rail verified only after explicit payout-readiness confirmation", () => {
     expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-hello")?.readiness).toBe("VERIFIED");
-    expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal")?.readiness).toBe("OWNER_ACTION_REQUIRED");
+    expect(PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal")?.readiness).toBe("UNVERIFIED");
+    // Connected method ≠ verified withdrawals; the September setup blocker was superseded.
+    const legacy = PAYOUT_RAILS.find((rail) => rail.id === "partnerstack-personal");
+    expect(legacy?.methodGuidance).toContain("2026-10-09");
+    expect(legacy?.methodGuidance).toContain("Do not add a duplicate provider");
+    expect(legacy?.notes).toContain("remains UNVERIFIED, not VERIFIED");
   });
 
 });

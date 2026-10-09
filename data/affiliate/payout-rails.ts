@@ -71,10 +71,10 @@ export const PAYOUT_RAILS: readonly PayoutRail[] = [
     label: "PartnerStack — legacy/personal-email account",
     accountIdentity: "lahman00@gmail.com",
     partnerSlugs: ["monday", "whatconverts", "elevenlabs", "wrike"],
-    readiness: "OWNER_ACTION_REQUIRED",
+    readiness: "UNVERIFIED",
     ownerActionPackId: "partnerstack-personal-payout-rail",
-    methodGuidance: "PartnerStack Support confirmed the declined network application does not affect existing partnerships or commissions. Keep the four live tracking URLs active. The legacy account has no payment provider connected and needs its tax-registered location completed before withdrawals; do not close it until any migration preserves attribution.",
-    notes: "PartnerStack Support confirmed on 2026-09-01 that the legacy account's DECLINED network application does not affect commissions or existing partnerships. On 2026-09-14 Support confirmed lahman00@gmail.com has no payment provider connected and must add its tax-registered location before a method can be connected or commissions withdrawn. This rail is OWNER_ACTION_REQUIRED for payout setup, not because the live referral links are invalid. Zendesk still has no verified Miloosh tracking URL and is not included as an active partner."
+    methodGuidance: "Owner screenshots from 2026-10-09 show the tax-location requirement was cleared and an ILS direct-deposit payout method is connected in the existing legacy PartnerStack account. Do not add a duplicate provider or resubmit personal tax details. Confirm actual withdrawal readiness with the current authenticated PartnerStack dashboard or support before treating this account as VERIFIED. Keep all four issued referral links and the legacy account active.",
+    notes: "2026-09-01 Support confirmed the DECLINED network application did not invalidate the four existing partner links. On 2026-09-14 Support reported missing tax location and payout provider. This prior setup blocker was superseded by the owner's 2026-10-09 authenticated screenshots: tax-warning cleared and ILS direct-deposit method connected. The page showed no explicit VERIFIED/APPROVED badge and no received-payout evidence, so current account withdrawal readiness remains UNVERIFIED, not VERIFIED. No bank, tax, account-number, address or identity data is retained here. Zendesk has no verified Miloosh tracking asset."
   },
   {
     id: "impact",

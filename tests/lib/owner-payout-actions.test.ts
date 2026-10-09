@@ -35,6 +35,12 @@ describe("owner payout action queue", () => {
     // Wrike joined this account 2026-08-25 (see data/affiliate/payout-rails.ts);
     // this checklist must name it too so the owner doesn't miss verifying it.
     expect(personal?.productsCovered).toEqual(["monday", "whatconverts", "elevenlabs", "wrike"]);
+    expect(personal?.title).toContain("withdrawal readiness");
+    expect(personal?.commissionEvidence).toContain("2026-10-09");
+    expect(personal?.ownerRequiredFields.join(" ")).toContain("Do not reconnect or replace");
+    expect(personal?.ownerRequiredFields.join(" ")).not.toContain("add the tax-registered location");
+    expect(personal?.postCompletionAutomation).toContain("mark VERIFIED only after");
+
   });
 
   it("keeps CJ optional and restricted to current CJ-required targets", () => {

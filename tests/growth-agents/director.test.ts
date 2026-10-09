@@ -516,6 +516,13 @@ describe("Hebrew wording of the payout stake", () => {
     params: { railLabel: "Rail", partners: "p", impressions, pages, readiness: "OWNER_ACTION_REQUIRED", ownImpressions: own, otherCtaImpressions: other },
   });
 
+  it("asks to verify readiness rather than redo setup when provider is UNVERIFIED", () => {
+    const row = decision(148, 1, 0, 148);
+    const pending = { ...row, params: { ...row.params, readiness: "UNVERIFIED" } };
+    expect(ownerDecisionHe(pending)).toContain("לאמת את מוכנות המשיכה");
+    expect(ownerDecisionHe(row)).toContain("להשלים את הגדרת התשלום");
+  });
+
   it("says no demand was recorded, instead of '0 impressions on 0 pages'", () => {
     const text = ownerDecisionHe(decision(0, 0, 0, 0));
     expect(text).toMatch(/לא נרשמו חשיפות היסטוריות/);

@@ -129,6 +129,19 @@ describe("payout blockers are ranked by the demand they hold back", () => {
     expect(report.payoutBlockers[1]).toMatchObject({ partners: ["gamma"], historicalImpressionsAtStake: 110, pagesWithHistoricalDemand: 2 });
   });
 
+  it("requires verification, not redundant bank setup, for a rail marked UNVERIFIED", () => {
+    const report = run([partnerFacts("alpha", { payout: otherRail, revenueReady: false })]);
+    expect(report.recommendation.kind).toBe("OWNER_PAYOUT_ACTION");
+    expect(report.recommendation.summary).toContain("verify the current payout provider's withdrawal readiness");
+    expect(report.recommendation.summary).not.toContain("complete payout setup");
+    expect(report.outcomes.payoutsReceived.state).toBe("NOT_MEASURED");
+  });
+
+  it("still asks to complete setup for a rail genuinely marked OWNER_ACTION_REQUIRED", () => {
+    const report = run([partnerFacts("alpha", { payout: blockedRail, revenueReady: false })]);
+    expect(report.recommendation.summary).toContain("complete the documented payout setup");
+  });
+
   it("counts a page shared by two partners on one rail only once", () => {
     const shared = [
       partnerFacts("alpha", { payout: blockedRail, revenueReady: false, comparisonPageUrls: [U("/compare/alpha-vs-beta")] }),

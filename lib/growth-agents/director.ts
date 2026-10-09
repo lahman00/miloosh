@@ -428,7 +428,9 @@ export function runDirector(inputs: DirectorInputs): DirectorReport {
       id: `affiliate:${rec.kind.toLowerCase()}:${rec.subject ?? "general"}`,
       kind: rec.kind as ActionKind,
       lane: "AFFILIATE",
-      title: rec.kind === "OWNER_PAYOUT_ACTION" && topBlocker ? `Complete payout setup: ${topBlocker.railLabel}` : rec.summary.slice(0, 80),
+      title: rec.kind === "OWNER_PAYOUT_ACTION" && topBlocker
+        ? `${topBlocker.readiness === "UNVERIFIED" ? "Verify payout readiness" : "Complete payout setup"}: ${topBlocker.railLabel}`
+        : rec.summary.slice(0, 80),
       status: rec.requiresOwnerDecision ? "OWNER_DECISION" : "READY",
       targetUrl: null,
       summary: rec.summary + (packTitle ? ` Prepared owner action pack: "${packTitle}".` : ""),
@@ -440,7 +442,7 @@ export function runDirector(inputs: DirectorInputs): DirectorReport {
       historicalImpressionsAtStake: rec.kind === "OWNER_PAYOUT_ACTION" && topBlocker ? topBlocker.historicalImpressionsAtStake : null,
       params:
         rec.kind === "OWNER_PAYOUT_ACTION" && topBlocker
-          ? { railLabel: topBlocker.railLabel, partners: topBlocker.partners.join(", "), impressions: topBlocker.historicalImpressionsAtStake, ownImpressions: topBlocker.ownPagesImpressions, otherCtaImpressions: topBlocker.viaOtherCtasImpressions, pages: topBlocker.pagesWithHistoricalDemand, packId: topBlocker.ownerActionPackId }
+          ? { railLabel: topBlocker.railLabel, partners: topBlocker.partners.join(", "), impressions: topBlocker.historicalImpressionsAtStake, ownImpressions: topBlocker.ownPagesImpressions, otherCtaImpressions: topBlocker.viaOtherCtasImpressions, pages: topBlocker.pagesWithHistoricalDemand, packId: topBlocker.ownerActionPackId, readiness: topBlocker.readiness }
           : { subject: rec.subject },
     });
     if (rec.requiresOwnerDecision) {

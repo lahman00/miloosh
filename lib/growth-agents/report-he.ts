@@ -164,7 +164,7 @@ export function actionTitleHe(item: ActionItem): string {
   const p = item.params;
   switch (item.kind) {
     case "OWNER_PAYOUT_ACTION":
-      return `להשלים את הגדרת התשלום בחשבון "${p.railLabel}" (שותפים: ${p.partners})`;
+      return `${p.readiness === "UNVERIFIED" ? "לאמת את מוכנות המשיכה בחשבון" : "להשלים את הגדרת התשלום בחשבון"} "${p.railLabel}" (שותפים: ${p.partners})`;
     case "REPAIR_TECHNICAL_PATH":
       return `לתקן את נתיב השותף של ${p.subject ?? "השותף"}`;
     case "RESOLVE_REGISTRY_CONFLICT":
@@ -216,7 +216,7 @@ export function ownerDecisionHe(d: OwnerDecision): string {
   const p = d.params;
   switch (d.kind) {
     case "PAYOUT_RAIL":
-      return `להשלים את הגדרת התשלום ב"${p.railLabel}" (שותפים: ${p.partners}) — מצב: ${READINESS_HE[String(p.readiness)] ?? p.readiness}. ${stakeHe(p, "בדפים שמציגים אותם")}.`;
+      return `${p.readiness === "UNVERIFIED" ? "לאמת את מוכנות המשיכה בחשבון" : "להשלים את הגדרת התשלום בחשבון"} "${p.railLabel}" (שותפים: ${p.partners}) — מצב: ${READINESS_HE[String(p.readiness)] ?? p.readiness}. ${stakeHe(p, "בדפים שמציגים אותם")}.`;
     case "RELEASE_GATES":
       return "אילו מהתיקונים שעדיין לא אוחדו מותר לשלב כדי ששערי השחרור יעברו? אף סוכן לא ממזג, לא עוקף ולא מוותר על שער.";
     case "CLOSE_EXPERIMENTS":

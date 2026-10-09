@@ -357,7 +357,7 @@ export function runAffiliateRevenueAgent(inputs: AffiliateRevenueInputs): Affili
     const stake = top.historicalImpressionsAtStake === null ? "an unmeasured amount of" : `${top.historicalImpressionsAtStake}`;
     recommendation = {
       kind: "OWNER_PAYOUT_ACTION",
-      summary: `Owner action: complete payout setup for "${top.railLabel}" (${top.partners.join(", ")}). Pages that show these partners (their own pages and other products' pages that show them) drew ${stake} historical impressions; until the rail is verified, a click on them cannot be shown to end in a payable commission.`,
+      summary: `Owner action: ${top.readiness === "UNVERIFIED" ? "verify the current payout provider's withdrawal readiness (do not assume setup is missing)" : "complete the documented payout setup"} for "${top.railLabel}" (${top.partners.join(", ")}). Pages that show these partners (their own pages and other products' pages that show them) drew ${stake} historical impressions; until the rail is verified, a click on them cannot be shown to end in a payable commission.`,
       subject: top.railId,
       evidence: [`rail ${top.railId} is ${top.readiness}`, `owner action pack ${top.ownerActionPackId}`, `${top.pagesWithHistoricalDemand} page(s) with historical demand`],
       requiresOwnerDecision: true,
