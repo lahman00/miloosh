@@ -9,6 +9,12 @@ import { compareDates } from "./evidence";
  * is a release allowed, what is red, and is each red thing pre-existing or
  * introduced by the change under review. A gate that was not run is NOT_RUN,
  * which blocks a release exactly as a failure does.
+ *
+ * A recorded result only counts for the commit it was produced for. The
+ * Guardian reads that commit from the record itself, compares it with the
+ * commit under review, and ignores results it cannot tie to that commit (no
+ * commit named, another commit, a checkout that had uncommitted changes while
+ * the commands ran). Ignored results are reported, never silently used.
  */
 
 export type GateStatus = "PASS" | "FAIL" | "NOT_RUN";
@@ -30,8 +36,27 @@ export type GateResult = {
 
 export type GateBaseline = {
   baseSha: string;
+  /** True when the checkout had uncommitted changes while the baseline commands ran. Absent in older files. */
+  dirty?: boolean;
   results: GateResult[];
 };
+
+/** Where a set of gate results came from, so the Guardian can tell whether they describe the commit under review. */
+export type GateProvenance = {
+  source: "RAN_NOW" | "RECORDED_FILE" | "NONE";
+  /** Commit the recorder read from the checkout the commands ran in. Null when a recorded file does not name one. */
+  ranOnSha: string | null;
+  /** True when that checkout had uncommitted changes while the commands ran. Null when a recorded file does not say. */
+  dirtyWhenRun: boolean | null;
+  /** Set when a recorded file was supplied but could not be read as gate results. */
+  problem?: string;
+};
+
+export type GateTrustCode = "TRUSTED" | "NO_RESULTS" | "FILE_UNREADABLE" | "NO_COMMIT_IN_FILE" | "OTHER_COMMIT" | "DIRTY_CHECKOUT" | "CLEANLINESS_UNKNOWN";
+
+export type GateTrust = { trusted: boolean; code: GateTrustCode; detail: string };
+
+export type BaselineTrust = { supplied: boolean; usable: boolean; baseSha: string | null; detail: string | null };
 
 export type CheckStatus = "PASS" | "FAIL" | "WARN" | "NOT_RUN" | "NOT_VERIFIED" | "INFO";
 
@@ -88,16 +113,26 @@ export type GuardianInputs = {
   git: GitFacts;
   worktrees: WorktreeFacts[];
   gates: GateResult[];
+  /** Where `gates` came from. Required: results without a provenance are not accepted. */
+  gateProvenance: GateProvenance;
   baseline: GateBaseline | null;
+  /** Set when a baseline file was supplied but could not be read as gate results. */
+  baselineProblem?: string;
   protection: ProtectionFacts;
   production: ProductionFacts | null;
   /** Rendered-output comparison against the base build: number of differing page files, or null if not compared. */
   renderedDiff: { compared: number; differing: number; differingSample: string[] } | null;
 };
 
-export type GuardianReasonCode = "GATE_FAILED" | "GATE_NOT_RUN" | "DIRTY_WORKTREE" | "PROTECTED_PAGES_AFFECTED" | "PRODUCTION_LINEAGE_DROPPED" | "UNRUN_GATES";
+export type GuardianReasonCode = "GATE_FAILED" | "GATE_NOT_RUN" | "GATE_RESULTS_NOT_TRUSTED" | "DIRTY_WORKTREE" | "PROTECTED_PAGES_AFFECTED" | "PRODUCTION_LINEAGE_DROPPED" | "UNRUN_GATES";
 
-export type GuardianReason = { code: GuardianReasonCode; gate?: GateName; detail: string };
+export type GuardianReason = {
+  code: GuardianReasonCode;
+  gate?: GateName;
+  detail: string;
+  /** Commits the reason is about (for example the production deployments a release would drop). */
+  shas?: string[];
+};
 
 export type GuardianReport = {
   verdict: "RELEASE_ALLOWED" | "RELEASE_BLOCKED" | "NOT_VERIFIED";
@@ -105,8 +140,49 @@ export type GuardianReport = {
   deploymentAllowedByGuardian: false;
   reasons: GuardianReason[];
   checks: GuardianCheck[];
+  /** Whether the supplied gate results were tied to the commit under review, and if not, why they were set aside. */
+  gateTrust: GateTrust & { source: GateProvenance["source"]; ranOnSha: string | null; headSha: string };
+  baselineTrust: BaselineTrust;
+  /** The rendered-output comparison with the base build, when one was supplied. */
+  renderedDiff: GuardianInputs["renderedDiff"];
   gates: Array<GateResult & { baselineStatus: GateStatus | null; relation: "INTRODUCED" | "PRE_EXISTING" | "NO_CHANGE" | "IMPROVED" | "UNKNOWN" }>;
 };
+
+const shortSha = (sha: string): string => sha.slice(0, 7);
+
+/** Two commit identifiers name the same commit when one is the other or an abbreviation of it (7 hex digits or more). */
+export function sameCommit(a: string | null | undefined, b: string | null | undefined): boolean {
+  if (!a || !b) return false;
+  const x = a.trim().toLowerCase();
+  const y = b.trim().toLowerCase();
+  if (!/^[0-9a-f]{7,40}$/.test(x) || !/^[0-9a-f]{7,40}$/.test(y)) return false;
+  return x.startsWith(y) || y.startsWith(x);
+}
+
+/** Whether gate results describe the commit under review. Results that cannot be tied to it are not used. */
+export function judgeGateProvenance(provenance: GateProvenance, headSha: string): GateTrust {
+  if (provenance.source === "NONE") return { trusted: false, code: "NO_RESULTS", detail: "No gate results were supplied and no gate was run." };
+  if (provenance.source === "RAN_NOW") return { trusted: true, code: "TRUSTED", detail: `The gates ran in this checkout at ${shortSha(headSha)}.` };
+  if (provenance.problem) return { trusted: false, code: "FILE_UNREADABLE", detail: provenance.problem };
+  if (!provenance.ranOnSha) return { trusted: false, code: "NO_COMMIT_IN_FILE", detail: "The recorded gate results do not say which commit they were produced for, so they are not used." };
+  if (!sameCommit(provenance.ranOnSha, headSha)) {
+    return { trusted: false, code: "OTHER_COMMIT", detail: `The recorded gate results were produced for ${shortSha(provenance.ranOnSha)}, not for the commit under review (${shortSha(headSha)}), so they are not used.` };
+  }
+  if (provenance.dirtyWhenRun === null) return { trusted: false, code: "CLEANLINESS_UNKNOWN", detail: "The recorded gate results do not say whether the checkout was clean while the commands ran, so they are not used." };
+  if (provenance.dirtyWhenRun) return { trusted: false, code: "DIRTY_CHECKOUT", detail: "The checkout had uncommitted changes while the commands ran, so the results cannot be tied to the commit and are not used." };
+  return { trusted: true, code: "TRUSTED", detail: `The recorded gate results were produced for ${shortSha(headSha)} in a clean checkout.` };
+}
+
+/** A baseline is only meaningful when it was recorded at the base commit, in a clean checkout. */
+export function judgeBaseline(baseline: GateBaseline | null, baseSha: string | null): BaselineTrust {
+  if (!baseline) return { supplied: false, usable: false, baseSha: null, detail: null };
+  if (!baseSha) return { supplied: true, usable: false, baseSha: baseline.baseSha, detail: "A baseline was supplied but no base commit was given, so it cannot be tied to anything and is not used." };
+  if (!sameCommit(baseline.baseSha, baseSha)) {
+    return { supplied: true, usable: false, baseSha: baseline.baseSha, detail: `The baseline was recorded at ${shortSha(baseline.baseSha)}, not at the base commit ${shortSha(baseSha)}, so it is not used.` };
+  }
+  if (baseline.dirty === true) return { supplied: true, usable: false, baseSha: baseline.baseSha, detail: "The baseline was recorded in a checkout with uncommitted changes, so it is not used." };
+  return { supplied: true, usable: true, baseSha: baseline.baseSha, detail: `The baseline was recorded at the base commit ${shortSha(baseSha)}.` };
+}
 
 function relation(current: GateResult, base: GateResult | undefined): GuardianReport["gates"][number]["relation"] {
   if (!base || base.status === "NOT_RUN" || current.status === "NOT_RUN") return "UNKNOWN";
@@ -121,24 +197,98 @@ function relation(current: GateResult, base: GateResult | undefined): GuardianRe
 
 export const REQUIRED_GATES: readonly GateName[] = ["audit", "tests", "validate-data", "lint", "typecheck", "build"];
 
+/** A set of gate results as `growth:record-gates` writes it: the commit and cleanliness are read from the checkout, never typed in. */
+export type RecordedGateRun = {
+  schemaVersion: 1;
+  sha: string;
+  branch: string | null;
+  /** True when the checkout had uncommitted changes before or after the commands ran. */
+  dirty: boolean;
+  recordedAt: string;
+  results: GateResult[];
+};
+
+const COMMIT_ID = /^[0-9a-f]{7,40}$/i;
+
+function isGateResult(value: unknown): value is GateResult {
+  if (typeof value !== "object" || value === null) return false;
+  const v = value as Record<string, unknown>;
+  return (
+    typeof v.gate === "string" &&
+    (REQUIRED_GATES as readonly string[]).includes(v.gate) &&
+    typeof v.command === "string" &&
+    (v.status === "PASS" || v.status === "FAIL" || v.status === "NOT_RUN") &&
+    (v.exitCode === null || typeof v.exitCode === "number") &&
+    typeof v.summary === "string" &&
+    Array.isArray(v.failureIds) &&
+    v.failureIds.every((id) => typeof id === "string") &&
+    (v.ranAt === null || typeof v.ranAt === "string")
+  );
+}
+
+/**
+ * Reads a recorded gate file. A bare array of results (the first, commit-less shape) is accepted as results but names
+ * no commit, so the Guardian will not trust it. Anything that is not gate results returns null.
+ */
+export function readRecordedGateRun(json: unknown): { sha: string | null; dirty: boolean | null; results: GateResult[] } | null {
+  if (Array.isArray(json)) return json.every(isGateResult) ? { sha: null, dirty: null, results: json } : null;
+  if (typeof json !== "object" || json === null) return null;
+  const v = json as Record<string, unknown>;
+  if (!Array.isArray(v.results) || !v.results.every(isGateResult)) return null;
+  return { sha: typeof v.sha === "string" && COMMIT_ID.test(v.sha) ? v.sha : null, dirty: typeof v.dirty === "boolean" ? v.dirty : null, results: v.results };
+}
+
+/** Reads the baseline file: either `{ baseSha, results }` or a recorded gate run (its `sha` is the base commit). Anything else returns null. */
+export function readGateBaseline(json: unknown): GateBaseline | null {
+  if (typeof json !== "object" || json === null || Array.isArray(json)) return null;
+  const v = json as Record<string, unknown>;
+  if (!Array.isArray(v.results) || !v.results.every(isGateResult)) return null;
+  const sha = typeof v.baseSha === "string" ? v.baseSha : typeof v.sha === "string" ? v.sha : null;
+  if (!sha || !COMMIT_ID.test(sha)) return null;
+  return { baseSha: sha, ...(typeof v.dirty === "boolean" ? { dirty: v.dirty } : {}), results: v.results };
+}
+
 export function runGuardian(inputs: GuardianInputs): GuardianReport {
   const checks: GuardianCheck[] = [];
   const reasons: GuardianReason[] = [];
-  const baseByGate = new Map((inputs.baseline?.results ?? []).map((g) => [g.gate, g]));
+  const gateTrust = judgeGateProvenance(inputs.gateProvenance, inputs.git.headSha);
+  const baselineTrust = judgeBaseline(inputs.baseline, inputs.git.baseSha);
+  const usableGates = gateTrust.trusted ? inputs.gates : [];
+  const baseByGate = new Map((baselineTrust.usable ? (inputs.baseline?.results ?? []) : []).map((g) => [g.gate, g]));
 
   const gates = REQUIRED_GATES.map((name) => {
-    const found = inputs.gates.find((g) => g.gate === name) ?? {
+    const found = usableGates.find((g) => g.gate === name) ?? {
       gate: name,
       command: "(not provided)",
       status: "NOT_RUN" as const,
       exitCode: null,
-      summary: "this gate was not run",
+      summary: gateTrust.trusted || gateTrust.code === "NO_RESULTS" ? "this gate was not run" : `recorded results were set aside: ${gateTrust.code}`,
       failureIds: [],
       ranAt: null,
     };
     const base = baseByGate.get(name);
     return { ...found, baselineStatus: base?.status ?? null, relation: relation(found, base) };
   });
+
+  checks.push({
+    id: "gates:provenance",
+    title: "Gate results belong to the commit under review",
+    status: gateTrust.trusted ? "PASS" : gateTrust.code === "NO_RESULTS" ? "NOT_RUN" : "NOT_VERIFIED",
+    detail: gateTrust.detail,
+    evidence: inputs.gateProvenance.ranOnSha ? [`gates ran on ${inputs.gateProvenance.ranOnSha}`] : [],
+  });
+  if (!gateTrust.trusted && gateTrust.code !== "NO_RESULTS") reasons.push({ code: "GATE_RESULTS_NOT_TRUSTED", detail: gateTrust.detail });
+  if (inputs.baselineProblem) {
+    checks.push({ id: "gates:baseline", title: "The baseline was recorded at the base commit", status: "WARN", detail: inputs.baselineProblem, evidence: [] });
+  } else if (baselineTrust.supplied) {
+    checks.push({
+      id: "gates:baseline",
+      title: "The baseline was recorded at the base commit",
+      status: baselineTrust.usable ? "PASS" : "WARN",
+      detail: baselineTrust.detail ?? "",
+      evidence: baselineTrust.baseSha ? [`baseline recorded at ${baselineTrust.baseSha}`] : [],
+    });
+  }
 
   for (const gate of gates) {
     const status: CheckStatus = gate.status === "PASS" ? "PASS" : gate.status === "FAIL" ? "FAIL" : "NOT_RUN";
@@ -235,7 +385,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
           : `${notAncestors.length} recent production SHA(s) are not ancestors, so releasing would drop what they shipped: ${notAncestors.map((s) => s.slice(0, 7)).join(", ")}.`,
       evidence: ["hosting platform deployment history"],
     });
-    if (notAncestors.length > 0) reasons.push({ code: "PRODUCTION_LINEAGE_DROPPED", detail: "Releasing this SHA would drop work that an earlier production deployment shipped." });
+    if (notAncestors.length > 0) reasons.push({ code: "PRODUCTION_LINEAGE_DROPPED", detail: "Releasing this SHA would drop work that an earlier production deployment shipped.", shas: notAncestors.map(shortSha) });
   } else {
     checks.push({ id: "production:identity", title: "Current production deployment is identified", status: "NOT_VERIFIED", detail: "Production identity was not read.", evidence: [] });
   }
@@ -255,6 +405,9 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     deploymentAllowedByGuardian: false,
     reasons,
     checks,
+    gateTrust: { ...gateTrust, source: inputs.gateProvenance.source, ranOnSha: inputs.gateProvenance.ranOnSha, headSha: inputs.git.headSha },
+    baselineTrust,
+    renderedDiff: inputs.renderedDiff,
     gates,
   };
 }

@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { REQUIRED_GATES, affectedByChangedFiles, newFailureIds, onOrAfter, runGuardian } from "@/lib/growth-agents/guardian";
-import { GATE_COMMANDS, collectProductionFacts, combinedOutput, notRun, parseAuditJson, parseProductionDeployments, parseVercelInspect, parseVitestJson, type CommandRunner } from "@/lib/growth-agents/guardian-sources";
-import { SHA, gateResult, guardianInputs } from "./fixtures";
+import { execFileSync } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { REQUIRED_GATES, affectedByChangedFiles, judgeBaseline, judgeGateProvenance, newFailureIds, onOrAfter, readGateBaseline, readRecordedGateRun, runGuardian, sameCommit, type GateProvenance } from "@/lib/growth-agents/guardian";
+import { GATE_COMMANDS, collectProductionFacts, combinedOutput, notRun, parseAuditJson, parseProductionDeployments, parseVercelInspect, parseVitestJson, recordGateRun, type CommandRunner } from "@/lib/growth-agents/guardian-sources";
+import { NOW, SHA, gateResult, guardianInputs, recordedGateRun } from "./fixtures";
 
 describe("gate verdicts", () => {
   it("allows a release only when every required gate passed, the tree is clean and nothing protected is affected", () => {
@@ -55,6 +59,216 @@ describe("gate verdicts", () => {
     const base = gateResult("tests", "FAIL", ["a", "b"]);
     expect(newFailureIds(gateResult("tests", "FAIL", ["a", "b", "c"]), base)).toEqual(["c"]);
     expect(newFailureIds(gateResult("tests", "FAIL", ["x"]), undefined)).toEqual(["x"]);
+  });
+});
+
+describe("which commit a set of gate results describes", () => {
+  const OTHER = "1d6746b3a1c0000000000000000000000000abcd";
+  const recorded = (overrides: Partial<GateProvenance> = {}): GateProvenance => ({ source: "RECORDED_FILE", ranOnSha: SHA, dirtyWhenRun: false, ...overrides });
+
+  it("compares commits by identity or by an abbreviation of at least seven hex digits, and never guesses", () => {
+    expect(sameCommit(SHA, SHA)).toBe(true);
+    expect(sameCommit(SHA.slice(0, 7), SHA)).toBe(true);
+    expect(sameCommit(SHA, SHA.slice(0, 12).toUpperCase())).toBe(true);
+    expect(sameCommit(SHA.slice(0, 6), SHA)).toBe(false);
+    expect(sameCommit(SHA, OTHER)).toBe(false);
+    expect(sameCommit(null, SHA)).toBe(false);
+    expect(sameCommit(SHA, undefined)).toBe(false);
+    expect(sameCommit("main", "main")).toBe(false);
+    expect(sameCommit("", "")).toBe(false);
+  });
+
+  it("trusts results it ran itself, and recorded results only for this commit, in a clean checkout", () => {
+    expect(judgeGateProvenance({ source: "RAN_NOW", ranOnSha: SHA, dirtyWhenRun: true }, SHA)).toMatchObject({ trusted: true, code: "TRUSTED" });
+    expect(judgeGateProvenance(recorded(), SHA)).toMatchObject({ trusted: true, code: "TRUSTED" });
+    expect(judgeGateProvenance(recorded({ ranOnSha: SHA.slice(0, 7) }), SHA).trusted).toBe(true);
+  });
+
+  it.each([
+    ["nothing was supplied", { source: "NONE", ranOnSha: null, dirtyWhenRun: null } as GateProvenance, "NO_RESULTS"],
+    ["a file could not be read", recorded({ ranOnSha: null, dirtyWhenRun: null, problem: "not gate results" }), "FILE_UNREADABLE"],
+    ["the file names no commit", recorded({ ranOnSha: null }), "NO_COMMIT_IN_FILE"],
+    ["the file is for another commit", recorded({ ranOnSha: OTHER }), "OTHER_COMMIT"],
+    ["the file does not say whether the checkout was clean", recorded({ dirtyWhenRun: null }), "CLEANLINESS_UNKNOWN"],
+    ["the checkout was dirty", recorded({ dirtyWhenRun: true }), "DIRTY_CHECKOUT"],
+  ])("does not trust results when %s", (_label, provenance, code) => {
+    expect(judgeGateProvenance(provenance, SHA)).toMatchObject({ trusted: false, code });
+  });
+
+  it("sets aside results it cannot tie to the commit: every gate is NOT_RUN, the verdict is NOT_VERIFIED, and the reason is named", () => {
+    const report = runGuardian(guardianInputs({ gateProvenance: recorded({ ranOnSha: OTHER }) }));
+    expect(report.verdict).toBe("NOT_VERIFIED");
+    expect(report.gates.every((g) => g.status === "NOT_RUN")).toBe(true);
+    expect(report.gates[0]!.summary).toMatch(/OTHER_COMMIT/);
+    expect(report.reasons.map((r) => r.code)).toEqual(expect.arrayContaining(["GATE_RESULTS_NOT_TRUSTED", "UNRUN_GATES"]));
+    expect(report.checks.find((c) => c.id === "gates:provenance")).toMatchObject({ status: "NOT_VERIFIED", detail: expect.stringMatching(/1d6746b.*not for the commit under review \(80eb1e5\)/) });
+    expect(report.gateTrust).toMatchObject({ trusted: false, code: "OTHER_COMMIT", ranOnSha: OTHER, headSha: SHA });
+  });
+
+  it("does not let failing results from another commit block this one, and does not let passing ones allow it", () => {
+    const failing = REQUIRED_GATES.map((g) => gateResult(g, "FAIL", ["x"]));
+    const blockedByOther = runGuardian(guardianInputs({ gates: failing, gateProvenance: recorded({ ranOnSha: OTHER }) }));
+    expect(blockedByOther.verdict).toBe("NOT_VERIFIED");
+    expect(blockedByOther.reasons.map((r) => r.code)).not.toContain("GATE_FAILED");
+    const allowedByOther = runGuardian(guardianInputs({ gateProvenance: recorded({ ranOnSha: OTHER }) }));
+    expect(allowedByOther.verdict).not.toBe("RELEASE_ALLOWED");
+  });
+
+  it("allows a release on recorded results for this commit, and reports the provenance as a passed check", () => {
+    const report = runGuardian(guardianInputs({ gateProvenance: recorded() }));
+    expect(report.verdict).toBe("RELEASE_ALLOWED");
+    expect(report.checks.find((c) => c.id === "gates:provenance")!.status).toBe("PASS");
+  });
+
+  it("shows 'nothing supplied' as not run, without a trust reason", () => {
+    const report = runGuardian(guardianInputs({ gates: [], gateProvenance: { source: "NONE", ranOnSha: null, dirtyWhenRun: null } }));
+    expect(report.checks.find((c) => c.id === "gates:provenance")!.status).toBe("NOT_RUN");
+    expect(report.reasons.map((r) => r.code)).not.toContain("GATE_RESULTS_NOT_TRUSTED");
+    expect(report.gates[0]!.summary).toBe("this gate was not run");
+  });
+
+  it("names the commits a release would drop on the lineage reason", () => {
+    const production = { deploymentId: "dpl_x", createdAt: null, deployedSha: SHA, previousProductionShas: ["1d6746bAAAA", "11ba877BBBB", "80eb1e5CCCC"], ancestorOfCurrent: { "1d6746bAAAA": false, "11ba877BBBB": false, "80eb1e5CCCC": true } };
+    const reason = runGuardian(guardianInputs({ production })).reasons.find((r) => r.code === "PRODUCTION_LINEAGE_DROPPED")!;
+    expect(reason.shas).toEqual(["1d6746b", "11ba877"]);
+  });
+});
+
+describe("the baseline must belong to the base commit", () => {
+  const baseline = { baseSha: SHA, results: REQUIRED_GATES.map((g) => gateResult(g)) };
+
+  it("is used only when recorded at the base commit in a checkout that was not known to be dirty", () => {
+    expect(judgeBaseline(null, SHA)).toEqual({ supplied: false, usable: false, baseSha: null, detail: null });
+    expect(judgeBaseline(baseline, SHA)).toMatchObject({ supplied: true, usable: true });
+    expect(judgeBaseline({ ...baseline, baseSha: SHA.slice(0, 7) }, SHA).usable).toBe(true);
+    expect(judgeBaseline({ ...baseline, dirty: false }, SHA).usable).toBe(true);
+    expect(judgeBaseline({ ...baseline, dirty: true }, SHA)).toMatchObject({ usable: false, detail: expect.stringMatching(/uncommitted changes/) });
+    expect(judgeBaseline({ ...baseline, baseSha: "1d6746b3a1c0000000000000000000000000abcd" }, SHA)).toMatchObject({ usable: false, detail: expect.stringMatching(/1d6746b.*80eb1e5/) });
+    expect(judgeBaseline(baseline, null)).toMatchObject({ usable: false, detail: expect.stringMatching(/no base commit/) });
+  });
+
+  it("leaves every relation UNKNOWN and warns when the baseline is set aside", () => {
+    const wrong = { ...baseline, baseSha: "1d6746b3a1c0000000000000000000000000abcd", results: REQUIRED_GATES.map((g) => gateResult(g, "FAIL", ["old"])) };
+    const report = runGuardian(guardianInputs({ baseline: wrong }));
+    expect(report.gates.every((g) => g.relation === "UNKNOWN" && g.baselineStatus === null)).toBe(true);
+    expect(report.checks.find((c) => c.id === "gates:baseline")!.status).toBe("WARN");
+    expect(report.baselineTrust.usable).toBe(false);
+  });
+
+  it("reports a baseline file that could not be read", () => {
+    const report = runGuardian(guardianInputs({ baselineProblem: "unreadable" }));
+    expect(report.checks.find((c) => c.id === "gates:baseline")).toMatchObject({ status: "WARN", detail: "unreadable" });
+  });
+});
+
+describe("reading recorded gate files strictly", () => {
+  it("accepts a recorded run, reading the commit and cleanliness the recorder wrote", () => {
+    const run = recordedGateRun();
+    expect(readRecordedGateRun(JSON.parse(JSON.stringify(run)))).toEqual({ sha: SHA, dirty: false, results: run.results });
+  });
+
+  it("accepts a bare list of results but treats it as naming no commit", () => {
+    const results = REQUIRED_GATES.map((g) => gateResult(g));
+    expect(readRecordedGateRun(results)).toEqual({ sha: null, dirty: null, results });
+  });
+
+  it("reads a missing or malformed commit or cleanliness as unknown, never as clean", () => {
+    const run = recordedGateRun();
+    expect(readRecordedGateRun({ ...run, sha: "main" })!.sha).toBeNull();
+    expect(readRecordedGateRun({ ...run, sha: 5 })!.sha).toBeNull();
+    expect(readRecordedGateRun({ ...run, dirty: "no" })!.dirty).toBeNull();
+    const { dirty: _dirty, ...rest } = run;
+    void _dirty;
+    expect(readRecordedGateRun(rest)!.dirty).toBeNull();
+  });
+
+  it("rejects anything that is not gate results", () => {
+    const good = gateResult("lint");
+    for (const bad of [null, undefined, 5, "text", {}, { results: "x" }, { results: [{ gate: "lint" }] }, { results: [{ ...good, gate: "deploy" }] }, { results: [{ ...good, status: "SKIPPED" }] }, { results: [{ ...good, failureIds: [1] }] }, { results: [{ ...good, exitCode: "0" }] }, [{ ...good, summary: 3 }]]) {
+      expect(readRecordedGateRun(bad), JSON.stringify(bad)).toBeNull();
+    }
+  });
+
+  it("reads a baseline in either file shape and rejects one without a commit", () => {
+    const results = REQUIRED_GATES.map((g) => gateResult(g));
+    expect(readGateBaseline({ baseSha: SHA, results })).toEqual({ baseSha: SHA, results });
+    expect(readGateBaseline(recordedGateRun({ dirty: true }))).toMatchObject({ baseSha: SHA, dirty: true });
+    expect(readGateBaseline({ results })).toBeNull();
+    expect(readGateBaseline({ baseSha: "main", results })).toBeNull();
+    expect(readGateBaseline(results)).toBeNull();
+    expect(readGateBaseline(null)).toBeNull();
+  });
+});
+
+describe("recording gate results (commit and cleanliness read from the checkout, never typed in)", () => {
+  function tempRepo(): string {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "record-gates-"));
+    const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@example.test", "-c", "user.name=t", "-c", "commit.gpgsign=false", ...args], { cwd: dir, stdio: "ignore" });
+    git("init", "-q", "-b", "main");
+    fs.writeFileSync(path.join(dir, "a.txt"), "one\n");
+    git("add", "a.txt");
+    git("commit", "-q", "-m", "one");
+    return dir;
+  }
+  const head = (dir: string) => execFileSync("git", ["rev-parse", "HEAD"], { cwd: dir, encoding: "utf8" }).trim();
+
+  it("runs every gate command once, in order, in the checkout it was given, and records its commit as clean", () => {
+    const dir = tempRepo();
+    try {
+      const seen: string[] = [];
+      const record = recordGateRun(dir, { runOne: (checkout, spec) => (seen.push(`${checkout}|${spec.gate}`), gateResult(spec.gate)), now: () => NOW });
+      expect(seen).toEqual(GATE_COMMANDS.map((spec) => `${dir}|${spec.gate}`));
+      expect(record).toMatchObject({ schemaVersion: 1, sha: head(dir), branch: "main", dirty: false, recordedAt: NOW.toISOString() });
+      expect(record.results.map((r) => r.gate)).toEqual(GATE_COMMANDS.map((spec) => spec.gate));
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reports each result as it arrives", () => {
+    const dir = tempRepo();
+    try {
+      const arrived: string[] = [];
+      recordGateRun(dir, { runOne: (_c, spec) => gateResult(spec.gate), onGate: (result) => arrived.push(result.gate) });
+      expect(arrived).toEqual(GATE_COMMANDS.map((spec) => spec.gate));
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("marks the record dirty when the checkout had uncommitted changes before the commands, or the commands left some behind", () => {
+    const before = tempRepo();
+    const after = tempRepo();
+    try {
+      fs.writeFileSync(path.join(before, "a.txt"), "changed\n");
+      expect(recordGateRun(before, { runOne: (_c, spec) => gateResult(spec.gate) }).dirty).toBe(true);
+      expect(recordGateRun(after, { runOne: (c, spec) => (fs.writeFileSync(path.join(c, "left-behind.txt"), "x"), gateResult(spec.gate)) }).dirty).toBe(true);
+    } finally {
+      fs.rmSync(before, { recursive: true, force: true });
+      fs.rmSync(after, { recursive: true, force: true });
+    }
+  });
+
+  it("still marks the record dirty when the commands undid the uncommitted changes that were there when they started", () => {
+    const dir = tempRepo();
+    try {
+      fs.writeFileSync(path.join(dir, "a.txt"), "changed\n");
+      const record = recordGateRun(dir, { runOne: (c, spec) => (fs.writeFileSync(path.join(c, "a.txt"), "one\n"), gateResult(spec.gate)) });
+      expect(execFileSync("git", ["status", "--porcelain"], { cwd: dir, encoding: "utf8" })).toBe("");
+      expect(record.dirty).toBe(true);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("refuses to describe a run during which HEAD moved", () => {
+    const dir = tempRepo();
+    try {
+      const commit = (message: string) => execFileSync("git", ["-c", "user.email=t@example.test", "-c", "user.name=t", "-c", "commit.gpgsign=false", "commit", "-q", "--allow-empty", "-m", message], { cwd: dir, stdio: "ignore" });
+      expect(() => recordGateRun(dir, { runOne: (_c, spec) => (commit("moved"), gateResult(spec.gate)) })).toThrow(/HEAD moved/);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 

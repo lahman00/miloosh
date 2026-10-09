@@ -145,6 +145,7 @@ describe("the command-line entry points", () => {
   const outreach = read("scripts/growth/outreach-ledger-check.ts");
   const pageCheck = read("scripts/growth/page-live-check.ts");
   const renderedDiff = read("scripts/growth/rendered-diff.ts");
+  const recordGates = read("scripts/growth/record-gates.ts");
   const fsCalls = (code: string) => new Set([...code.matchAll(/fs\.([A-Za-z]+)\(/g)].map((m) => m[1]));
 
   it("the director touches the filesystem only to read, plus the two writes the orchestrator asks for when --out is given", () => {
@@ -170,6 +171,14 @@ describe("the command-line entry points", () => {
     expect(renderedDiff).not.toMatch(/\bfetch\s*\(|child_process|unlinkSync|rmSync|renameSync|mkdirSync/);
   });
 
+  it("the gate recorder creates one new file, never overwrites, and has no network, deployment or repository-changing command of its own", () => {
+    expect(fsCalls(recordGates)).toEqual(new Set(["writeFileSync", "existsSync"]));
+    expect(recordGates).toMatch(/flag:\s*"wx"/);
+    expect(recordGates).toMatch(/if \(real\.exists\(options\.out\)\)/);
+    expect(recordGates).not.toMatch(/\bfetch\s*\(|child_process|unlinkSync|rmSync|renameSync|mkdirSync|spawnSync|execFileSync/);
+    expect(recordGates).not.toMatch(/vercel (deploy|--prod|promote)|git (push|commit|checkout|reset|clean|stash|merge)|gh (pr|release|api)|--force|--no-verify/);
+  });
+
   it("the page check requests nothing but the pages it was given, through the allow-listed adapter", () => {
     expect([...pageCheck.matchAll(/\bfetch\s*\(/g)]).toHaveLength(1);
     expect(pageCheck).toMatch(/observeLivePage\(url, deps\.fetchImpl\)/);
@@ -178,7 +187,7 @@ describe("the command-line entry points", () => {
   });
 
   it("neither the director nor the ledger check calls fetch or a deployment, push, merge or account API", () => {
-    for (const code of [director, outreach, pageCheck, renderedDiff]) {
+    for (const code of [director, outreach, pageCheck, renderedDiff, recordGates]) {
       expect(code).not.toMatch(/vercel (deploy|--prod|promote)|git push|gh (pr|release|api -X)|child_process/);
     }
     for (const code of [director, outreach, renderedDiff]) expect(code).not.toMatch(/\bfetch\s*\(/);

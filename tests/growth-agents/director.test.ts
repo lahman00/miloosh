@@ -6,7 +6,8 @@ import { partnerExposureFor, runAffiliateRevenueAgent } from "@/lib/growth-agent
 import { funnelFromEvents, unavailableFunnel } from "@/lib/growth-agents/funnel";
 import { actionTitleHe, andHe, he, ownerDecisionHe, renderHebrewReport } from "@/lib/growth-agents/report-he";
 import { buildGscEvidence } from "@/lib/growth-agents/gsc-import";
-import { PROV, SHA, NOW, U, addPageQueryTable, fullExtras, makeCapture, makeGuardian, makeIndexation, makeInventory, makeProtection, makeWorld, partnerFacts, signal, type PageRow } from "./fixtures";
+import { REQUIRED_GATES, runGuardian, type GateProvenance } from "@/lib/growth-agents/guardian";
+import { PROV, SHA, NOW, U, addPageQueryTable, fullExtras, gateResult, guardianInputs, makeCapture, makeGuardian, makeIndexation, makeInventory, makeProtection, makeWorld, partnerFacts, signal, type PageRow } from "./fixtures";
 
 const ALPHA = U("/software/alpha");
 const BETA = U("/software/beta");
@@ -327,6 +328,83 @@ describe("the Hebrew report says how much of the visible site is locked", () => 
     const w = makeWorld({ signals: [signal({ urls: [ALPHA] }), signal({ urls: [BETA], kind: "OBSERVATION_WINDOW", source: "release-observation", until: "2026-11-01" })] });
     const text = renderHebrewReport(direct(w), w.google, w.affiliate, makeGuardian());
     expect(text).toMatch(/מתוך 7 דפים שגוגל הציגה בחלון ההיסטורי: 5 דפים ניתנים לעריכה, דף אחד מוגן \(ניסוי\), דף אחד בחלון מדידה, 0 דפים בעבודה פעילה בעץ אחר\./);
+  });
+});
+
+describe("the release-gates section says which commit the results belong to and what each gate did", () => {
+  const OTHER = "1d6746b3a1c0000000000000000000000000abcd";
+  const section = (guardian: ReturnType<typeof makeGuardian> | null): string[] => {
+    const w = makeWorld();
+    const lines = renderHebrewReport(direct(w), w.google, w.affiliate, guardian).split("\n");
+    const from = lines.indexOf("## שערי שחרור") + 1;
+    return lines.slice(from, lines.indexOf("## מה לא לעשות")).filter((line) => line !== "");
+  };
+  const recorded = (overrides: Partial<GateProvenance> = {}): GateProvenance => ({ source: "RECORDED_FILE", ranOnSha: SHA, dirtyWhenRun: false, ...overrides });
+  const failingTests = REQUIRED_GATES.map((g) => gateResult(g, g === "tests" ? "FAIL" : "PASS", g === "tests" ? ["a > b"] : []));
+  const baseline = { baseSha: SHA, results: failingTests };
+
+  it("lists every gate with its result, and whether the failure was already there at the base commit", () => {
+    const lines = section(runGuardian(guardianInputs({ gates: failingTests, gateProvenance: recorded(), baseline, renderedDiff: { compared: 1785, differing: 0, differingSample: [] } })));
+    expect(lines).toContain("- פסק הדין של השומר: שחרור חסום.");
+    expect(lines.some((l) => /תוצאות השערים נרשמו עבור הקומיט 80eb1e5 בעץ עבודה נקי, והן שייכות לקומיט הנבדק/.test(l))).toBe(true);
+    expect(lines.some((l) => /ההשוואה לבסיס נעשתה מול תוצאות שנרשמו בקומיט הבסיס 80eb1e5 בעץ נקי/.test(l))).toBe(true);
+    expect(lines).toContain("- בדיקות: נכשל — failed · נכשל גם בקומיט הבסיס; השינוי לא הוסיף כשל.");
+    expect(lines).toContain("- בנייה: עבר — ok · כמו בקומיט הבסיס.");
+    expect(lines.filter((l) => /: (עבר|נכשל|לא הורץ)/.test(l))).toHaveLength(REQUIRED_GATES.length);
+    expect(lines).toContain("- השוואת ה-HTML שנבנה מול קומיט הבסיס: 1,785 קבצי דף נבדקו, אף אחד לא שונה.");
+  });
+
+  it("says when a failure was introduced by the change, and when a gate was fixed", () => {
+    const base = { baseSha: SHA, results: REQUIRED_GATES.map((g) => gateResult(g, g === "lint" ? "FAIL" : "PASS", g === "lint" ? ["old"] : [])) };
+    const lines = section(runGuardian(guardianInputs({ gates: REQUIRED_GATES.map((g) => gateResult(g, g === "build" ? "FAIL" : "PASS")), gateProvenance: recorded(), baseline: base })));
+    expect(lines.find((l) => l.startsWith("- בנייה:"))).toMatch(/הכשל הוכנס על ידי השינוי/);
+    expect(lines.find((l) => l.startsWith("- lint:"))).toMatch(/תוקן לעומת קומיט הבסיס/);
+  });
+
+  it("does not repeat a gate failure as a separate reason line", () => {
+    const lines = section(runGuardian(guardianInputs({ gates: failingTests, gateProvenance: recorded(), baseline })));
+    expect(lines.filter((l) => /נכשל/.test(l))).toHaveLength(1);
+  });
+
+  it("explains in Hebrew why recorded results were set aside, for each reason", () => {
+    const cases: Array<[GateProvenance, RegExp]> = [
+      [recorded({ ranOnSha: OTHER }), /נרשמו עבור הקומיט 1d6746b ולא עבור הקומיט הנבדק \(80eb1e5\), ולכן לא נעשה בהן שימוש/],
+      [recorded({ ranOnSha: null }), /לא מציין על איזה קומיט הורצו השערים/],
+      [recorded({ dirtyWhenRun: true }), /בעץ עבודה עם שינויים שלא נשמרו/],
+      [recorded({ dirtyWhenRun: null }), /לא מציין אם עץ העבודה היה נקי/],
+      [recorded({ ranOnSha: null, dirtyWhenRun: null, problem: "x" }), /אינו קריא כתוצאות שערים/],
+    ];
+    for (const [provenance, pattern] of cases) {
+      const lines = section(runGuardian(guardianInputs({ gates: failingTests, gateProvenance: provenance })));
+      expect(lines.some((l) => pattern.test(l)), String(pattern)).toBe(true);
+      expect(lines).toContain("- פסק הדין של השומר: לא ניתן לאמת, שער אחד לפחות לא הורץ.");
+      expect(lines.filter((l) => /: לא הורץ/.test(l))).toHaveLength(REQUIRED_GATES.length);
+    }
+  });
+
+  it("says the gates ran now when they did, says nothing about provenance when none were supplied, and notes an unusable baseline", () => {
+    expect(section(runGuardian(guardianInputs())).some((l) => l === "- השערים הורצו עכשיו בעץ העבודה הזה.")).toBe(true);
+    const none = section(runGuardian(guardianInputs({ gates: [], gateProvenance: { source: "NONE", ranOnSha: null, dirtyWhenRun: null } })));
+    expect(none.some((l) => /תוצאות השערים/.test(l))).toBe(false);
+    expect(none.filter((l) => /: לא הורץ/.test(l))).toHaveLength(REQUIRED_GATES.length);
+    const wrongBaseline = section(runGuardian(guardianInputs({ baseline: { ...baseline, baseSha: OTHER } })));
+    expect(wrongBaseline.some((l) => /תוצאות הבסיס שנמסרו לא שימשו להשוואה/.test(l))).toBe(true);
+  });
+
+  it("says no rendered comparison was made when none was supplied, and names the production commits a release would drop", () => {
+    const production = { deploymentId: "dpl_x", createdAt: null, deployedSha: SHA, previousProductionShas: ["1d6746bAAAA", "11ba877BBBB"], ancestorOfCurrent: { "1d6746bAAAA": false, "11ba877BBBB": false } };
+    const lines = section(runGuardian(guardianInputs({ production })));
+    expect(lines).toContain("- לא בוצעה השוואת HTML שנבנה מול קומיט הבסיס (NOT_RUN).");
+    expect(lines).toContain("- שחרור הקומיט הזה יסיר עבודה שכבר פורסמה ב-production (הקומיטים 1d6746b, 11ba877 אינם אבות של הקומיט הנבדק).");
+  });
+
+  it("reports differing rendered pages by number", () => {
+    const lines = section(runGuardian(guardianInputs({ renderedDiff: { compared: 10, differing: 3, differingSample: ["a.html"] } })));
+    expect(lines).toContain("- השוואת ה-HTML שנבנה מול קומיט הבסיס: 10 קבצי דף נבדקו, 3 שונים.");
+  });
+
+  it("says the Guardian did not run when there is no Guardian report", () => {
+    expect(section(null)).toEqual(["- השומר לא הורץ, ולכן בטיחות השחרור NOT_VERIFIED."]);
   });
 });
 

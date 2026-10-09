@@ -234,15 +234,72 @@ function guardianReasonHe(reason: GuardianReason): string {
       return `שער ${GATE_HE[reason.gate ?? ""] ?? reason.gate} נכשל`;
     case "GATE_NOT_RUN":
       return `שער ${GATE_HE[reason.gate ?? ""] ?? reason.gate} לא הורץ בריצה הזו`;
+    case "GATE_RESULTS_NOT_TRUSTED":
+      return "תוצאות השערים שנמסרו לא שימשו, כי אי אפשר לקשור אותן לקומיט הנבדק";
     case "DIRTY_WORKTREE":
       return "יש שינויים שלא נשמרו בעץ העבודה הנבדק";
     case "PROTECTED_PAGES_AFFECTED":
       return "השינוי עלול לשנות דפים מוגנים, בחלון מדידה או בעבודה פעילה";
     case "PRODUCTION_LINEAGE_DROPPED":
-      return "שחרור הקומיט הזה יסיר עבודה שכבר פורסמה ב-production";
+      return `שחרור הקומיט הזה יסיר עבודה שכבר פורסמה ב-production${reason.shas && reason.shas.length > 0 ? ` (הקומיטים ${reason.shas.join(", ")} אינם אבות של הקומיט הנבדק)` : ""}`;
     case "UNRUN_GATES":
       return "שער נדרש אחד לפחות לא הורץ, ולכן אי אפשר לאשר שחרור";
   }
+}
+
+const GATE_STATUS_HE: Record<string, string> = { PASS: "עבר", FAIL: "נכשל", NOT_RUN: "לא הורץ" };
+const GATE_RELATION_HE: Record<string, string> = {
+  PRE_EXISTING: "נכשל גם בקומיט הבסיס; השינוי לא הוסיף כשל",
+  INTRODUCED: "הכשל הוכנס על ידי השינוי",
+  NO_CHANGE: "כמו בקומיט הבסיס",
+  IMPROVED: "תוקן לעומת קומיט הבסיס",
+  UNKNOWN: "",
+};
+
+/** One sentence on whether the gate results were tied to the commit under review; null when nothing was supplied (the per-gate lines say it). */
+function gateTrustHe(guardian: GuardianReport): string | null {
+  const trust = guardian.gateTrust;
+  const short = (sha: string | null): string => (sha ? sha.slice(0, 7) : "לא ידוע");
+  switch (trust.code) {
+    case "TRUSTED":
+      return trust.source === "RAN_NOW" ? "השערים הורצו עכשיו בעץ העבודה הזה." : `תוצאות השערים נרשמו עבור הקומיט ${short(trust.ranOnSha)} בעץ עבודה נקי, והן שייכות לקומיט הנבדק.`;
+    case "NO_RESULTS":
+      return null;
+    case "FILE_UNREADABLE":
+      return "קובץ תוצאות השערים אינו קריא כתוצאות שערים, ולכן לא נעשה בו שימוש.";
+    case "NO_COMMIT_IN_FILE":
+      return "קובץ תוצאות השערים לא מציין על איזה קומיט הורצו השערים, ולכן לא נעשה בו שימוש.";
+    case "OTHER_COMMIT":
+      return `תוצאות השערים נרשמו עבור הקומיט ${short(trust.ranOnSha)} ולא עבור הקומיט הנבדק (${short(trust.headSha)}), ולכן לא נעשה בהן שימוש.`;
+    case "DIRTY_CHECKOUT":
+      return "השערים הורצו בעץ עבודה עם שינויים שלא נשמרו, ולכן אי אפשר לקשור את התוצאות לקומיט ולא נעשה בהן שימוש.";
+    case "CLEANLINESS_UNKNOWN":
+      return "קובץ תוצאות השערים לא מציין אם עץ העבודה היה נקי בזמן ההרצה, ולכן לא נעשה בו שימוש.";
+  }
+}
+
+/** Reasons the per-gate lines and the provenance sentence already cover are not repeated. */
+const COVERED_BY_GATE_LINES = new Set<GuardianReason["code"]>(["GATE_FAILED", "GATE_NOT_RUN", "GATE_RESULTS_NOT_TRUSTED"]);
+
+function guardianLinesHe(guardian: GuardianReport): string[] {
+  const lines: string[] = [`- פסק הדין של השומר: ${VERDICT_HE[guardian.verdict]}.`];
+  const trust = gateTrustHe(guardian);
+  if (trust) lines.push(`- ${trust}`);
+  if (guardian.baselineTrust.supplied) {
+    lines.push(
+      guardian.baselineTrust.usable
+        ? `- ההשוואה לבסיס נעשתה מול תוצאות שנרשמו בקומיט הבסיס ${guardian.baselineTrust.baseSha?.slice(0, 7) ?? ""} בעץ נקי.`
+        : "- תוצאות הבסיס שנמסרו לא שימשו להשוואה, כי לא ניתן לקשור אותן לקומיט הבסיס בעץ נקי (הפירוט ב-JSON).",
+    );
+  }
+  for (const gate of guardian.gates) {
+    const relation = GATE_RELATION_HE[gate.relation] ?? "";
+    lines.push(`- ${GATE_HE[gate.gate] ?? gate.gate}: ${GATE_STATUS_HE[gate.status]}${gate.status === "NOT_RUN" ? "" : ` — ${gate.summary}`}${relation ? ` · ${relation}` : ""}.`);
+  }
+  const diff = guardian.renderedDiff;
+  lines.push(diff ? `- השוואת ה-HTML שנבנה מול קומיט הבסיס: ${num(diff.compared)} קבצי דף נבדקו, ${diff.differing === 0 ? "אף אחד לא שונה" : `${num(diff.differing)} שונים`}.` : "- לא בוצעה השוואת HTML שנבנה מול קומיט הבסיס (NOT_RUN).");
+  for (const reason of guardian.reasons) if (!COVERED_BY_GATE_LINES.has(reason.code)) lines.push(`- ${guardianReasonHe(reason)}.`);
+  return lines;
 }
 
 export function whyThisFirstHe(report: DirectorReport, first: ActionItem | undefined): string[] {
@@ -332,8 +389,7 @@ export function renderHebrewReport(report: DirectorReport, google: GoogleRecover
   lines.push("");
   lines.push("## שערי שחרור");
   if (guardian) {
-    lines.push(`- פסק הדין של השומר: ${VERDICT_HE[guardian.verdict]}.`);
-    for (const reason of guardian.reasons) lines.push(`- ${guardianReasonHe(reason)}.`);
+    lines.push(...guardianLinesHe(guardian));
   } else {
     lines.push("- השומר לא הורץ, ולכן בטיחות השחרור NOT_VERIFIED.");
   }

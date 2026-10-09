@@ -16,7 +16,7 @@ injected `Ports` object, so tests prove the default run writes nothing).
 | `--production-id`, `--production-created`, `--production-sha` | Owner-recorded production facts, when the platform is not queried. |
 | `--extras-file <json>` | Per-page evidence an agent collected read-only (live response, query intent, vendor-confirmed gap). |
 | `--events-file <json>` | First-party analytics events for the funnel. Without it the funnel is `UNAVAILABLE`, not zero. |
-| `--gates-file <json>` | Recorded gate results. `--baseline-file <json>`: gate results at the base commit. |
+| `--gates-file <json>` | Gate results recorded by `growth:record-gates` for the commit under review. A file that names no commit, another commit or a dirty checkout is set aside and reported, never used. `--baseline-file <json>`: the same kind of record made at the base commit. |
 | `--rendered-diff-file <json>` | Result of `growth:rendered-diff` for this change. Without it the Guardian's rendered-output check is `NOT_RUN`. |
 | `--run-gates` | Run the repository's real gates (audit, tests, validate:data, lint, tsc, build). Slow; writes `.next` and `var/`. |
 | `--check-production` | Read the live deployment (`vercel inspect`) and the GitHub Production deployment history. Read-only. |
@@ -29,8 +29,23 @@ sends a message or changes an account, and a test fails if one is added.
 
 ## Gate files
 
-`--gates-file` is a JSON array of gate results; `--baseline-file` is
-`{ "baseSha": "<sha>", "results": [ ...gate results at the base commit... ] }`.
+A gate result only counts for the commit it was produced for. Make the record with
+`npm run growth:record-gates -- --checkout <clean checkout of exactly that commit> --out <file>`:
+it runs the repository's own gates there and writes
+
+```jsonc
+{ "schemaVersion": 1, "sha": "<HEAD of that checkout>", "branch": "...", "dirty": false,   // read from git, never typed in
+  "recordedAt": "2026-10-09T00:00:00Z", "results": [ /* gate results */ ] }
+```
+
+`--gates-file` takes such a record for the commit under review (HEAD of the repository the Director runs in).
+The Guardian sets the results aside, reports why and leaves every gate `NOT_RUN` when the file names no commit
+(a bare array of results is accepted as results but names none), names another commit, was recorded in a checkout
+with uncommitted changes, does not say whether it was clean, or is not gate results at all. `--baseline-file` takes
+the same kind of record made at the base commit (the older `{ "baseSha": "<sha>", "results": [...] }` shape also
+works); it is used only when it names the `--base-sha` commit and was not recorded in a dirty checkout. `--run-gates`
+runs the gates in the current checkout, so its results belong to it by construction.
+
 A gate result is:
 
 ```jsonc
@@ -44,6 +59,14 @@ a failure the change introduced from one that was already there. A required gate
 that is absent counts as `NOT_RUN`.
 
 ## Other commands
+
+- `npm run growth:record-gates -- --out <file> [--checkout <dir>]`: runs the repository's gates (audit, tests,
+  validate:data, lint, typecheck, build) in a checkout and writes the record described above. Not read-only on
+  disk (the commands write gitignored build output) and slow; it never edits a gate, passes a bypass flag, retries,
+  installs or deploys, and it refuses to overwrite an existing file. A failing gate is a result: exit 0 when the record
+  was written, 2 for invalid arguments. Run it in a clean detached worktree on a plain path
+  (`git worktree add --detach <path> <sha>`, then `npm ci`): the repository's own entry-point guards mis-detect paths
+  with spaces or non-ASCII characters, and the recorder warns when it is given one.
 
 - `npm run growth:outreach-check -- <ledger.json>`: validates an outreach ledger
   (see the Authority & Distribution skill). Read-only. Exit 0 honest, 1 problems, 2 unreadable.
@@ -92,7 +115,7 @@ that is absent counts as `NOT_RUN`.
 npm run growth:director -- \
   --gsc-dir docs/growth/receipts/20261009-growth-agent-system/evidence/gsc-ui-capture-20261009 \
   --gsc-private-dir "$HOME/MilooshReceipts/20261009-growth-agent-system/gsc-ui-capture-20261009" \
-  --base-sha 80eb1e5 --now 2026-10-09T01:00:00Z --release-date 2026-10-08 \
+  --base-sha 80eb1e5 --now 2026-10-09T00:20:00Z --release-date 2026-10-08 \
   --production-id dpl_4AHS358cZHgukiyYtVkwsTZ3W4kn --production-created 2026-10-08T11:05:03Z
 ```
 

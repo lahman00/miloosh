@@ -9,8 +9,10 @@ import { funnelFromEvents, unavailableFunnel, type FunnelEvidence } from "./funn
 import { GscImportError, loadGscCapture, type GscEvidence } from "./gsc-import";
 import {
   affectedByChangedFiles,
+  readGateBaseline,
+  readRecordedGateRun,
   runGuardian,
-  type GateBaseline,
+  type GateProvenance,
   type GateResult,
   type GitFacts,
   type GuardianReport,
@@ -106,6 +108,24 @@ function readJson<T>(ports: Ports, filePath: string): T | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * The gate results the Guardian will judge, with where they came from. A recorded file carries the commit it was produced for;
+ * results that were just run belong to this checkout by construction; nothing supplied means nothing was run.
+ */
+function gateEvidenceOf(options: CliOptions, ports: Ports, git: GitFacts): { gates: GateResult[]; provenance: GateProvenance } {
+  if (options.gatesFile) {
+    const run = readRecordedGateRun(readJson<unknown>(ports, options.gatesFile));
+    return run
+      ? { gates: run.results, provenance: { source: "RECORDED_FILE", ranOnSha: run.sha, dirtyWhenRun: run.dirty } }
+      : { gates: [], provenance: { source: "RECORDED_FILE", ranOnSha: null, dirtyWhenRun: null, problem: "The gate file could not be read as gate results, so no gate result is used." } };
+  }
+  const gates = options.runGates ? ports.runGates(options.repoRoot) : [];
+  return {
+    gates,
+    provenance: options.runGates ? { source: "RAN_NOW", ranOnSha: git.headSha, dirtyWhenRun: git.dirtyPaths.length > 0 } : { source: "NONE", ranOnSha: null, dirtyWhenRun: null },
+  };
 }
 
 export function loadEvidence(options: CliOptions, ports: Ports): { gsc: GscEvidence | null; indexation: IndexationEvidence | null; problems: string[] } {
@@ -215,8 +235,8 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
   const git = ports.gitFacts(options.repoRoot, options.baseSha);
   const worktrees = ports.worktreeFacts(options.repoRoot, options.baseSha, options.repoRoot);
   const production = options.checkProduction ? ports.productionFacts(options.repoRoot, sha) : null;
-  const gates = options.gatesFile ? (readJson<GateResult[]>(ports, options.gatesFile) ?? []) : options.runGates ? ports.runGates(options.repoRoot) : [];
-  const baseline = options.baselineFile ? readJson<GateBaseline>(ports, options.baselineFile) : null;
+  const gateEvidence = gateEvidenceOf(options, ports, git);
+  const baseline = options.baselineFile ? readGateBaseline(readJson<unknown>(ports, options.baselineFile)) : null;
   const renderedDiff = options.renderedDiffFile ? readJson<{ compared?: number; differing?: number; differingSample?: string[] }>(ports, options.renderedDiffFile) : null;
   const affected = affectedByChangedFiles(git.changedFiles, (slug) => derivedUrls(inventory, `https://miloosh.com/software/${slug}`), ports.isSharedTemplate);
   const affectedNonEditable = affected.affectedUrls
@@ -227,8 +247,10 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
     now,
     git,
     worktrees,
-    gates,
+    gates: gateEvidence.gates,
+    gateProvenance: gateEvidence.provenance,
     baseline,
+    ...(options.baselineFile && !baseline ? { baselineProblem: "The baseline file could not be read as gate results, so no baseline is used." } : {}),
     protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged },
     production,
     renderedDiff: renderedDiff && typeof renderedDiff.compared === "number" && typeof renderedDiff.differing === "number" ? { compared: renderedDiff.compared, differing: renderedDiff.differing, differingSample: renderedDiff.differingSample ?? [] } : null,

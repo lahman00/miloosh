@@ -1,6 +1,6 @@
 import type { Software } from "@/data/software";
 import { addDays, measured } from "@/lib/growth-agents/evidence";
-import { REQUIRED_GATES, runGuardian, type GateName, type GateResult, type GuardianInputs, type GuardianReport } from "@/lib/growth-agents/guardian";
+import { REQUIRED_GATES, runGuardian, type GateName, type GateResult, type GuardianInputs, type GuardianReport, type RecordedGateRun } from "@/lib/growth-agents/guardian";
 import { buildIndexationEvidence, type IndexationEvidence } from "@/lib/growth-agents/indexation";
 import { runAffiliateRevenueAgent, type AffiliateRevenueReport } from "@/lib/growth-agents/affiliate-revenue-agent";
 import { unavailableFunnel } from "@/lib/growth-agents/funnel";
@@ -283,12 +283,26 @@ export function gateResult(gate: GateName, status: GateResult["status"] = "PASS"
   };
 }
 
+/** A gate record as `growth:record-gates` writes it: for SHA, in a clean checkout, with the given gates failing. */
+export function recordedGateRun(overrides: Partial<RecordedGateRun> = {}, failing: GateName[] = []): RecordedGateRun {
+  return {
+    schemaVersion: 1,
+    sha: SHA,
+    branch: "claude/test",
+    dirty: false,
+    recordedAt: NOW.toISOString(),
+    results: REQUIRED_GATES.map((gate) => gateResult(gate, failing.includes(gate) ? "FAIL" : "PASS", failing.includes(gate) ? [`${gate}-failure`] : [])),
+    ...overrides,
+  };
+}
+
 export function guardianInputs(overrides: Partial<GuardianInputs> = {}): GuardianInputs {
   return {
     now: NOW,
     git: { branch: "claude/test", headSha: SHA, baseSha: SHA, dirtyPaths: [], changedFiles: [], commitsAheadOfBase: 0, pushedToRemote: null },
     worktrees: [],
     gates: REQUIRED_GATES.map((gate) => gateResult(gate)),
+    gateProvenance: { source: "RAN_NOW", ranOnSha: SHA, dirtyWhenRun: false },
     baseline: null,
     protection: { affectedUrls: [], affectedNonEditable: [], sharedTemplateChanged: false },
     production: null,

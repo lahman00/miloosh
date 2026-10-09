@@ -38,6 +38,12 @@ the repository later defines a release script, use that and update this note.
    each compared with the result recorded at the base commit: `INTRODUCED`,
    `PRE_EXISTING`, `IMPROVED`, `NO_CHANGE` or `UNKNOWN`. A pre-existing failure
    still blocks a release; it is just not blamed on the change under review.
+   **Results count only for the commit they were produced for.** A recorded file
+   must name the commit and say the checkout was clean (`growth:record-gates` reads
+   both from git). Results with no commit, another commit or a dirty checkout are
+   set aside: every gate is `NOT_RUN`, the verdict is `NOT_VERIFIED`, and the reason
+   is reported. A baseline is used only if it was recorded at the `--base-sha`
+   commit, otherwise every relation stays `UNKNOWN`.
 2. **Git.** This worktree is clean; a verified base commit exists; other
    worktrees' unfinished work is listed and never read into, merged or deployed.
 3. **Protection.** The pages a change would re-render (a software record fans out
@@ -50,14 +56,23 @@ the repository later defines a release script, use that and update this note.
 
 ## Run
 
+Record the gates in a clean checkout of exactly the commit under review, and at the
+base commit, then let the Director judge them:
+
 ```bash
-npm run growth:director -- --gsc-dir <capture> --base-sha <base> --run-gates --check-production --baseline-file <gates-at-base.json>
+git worktree add --detach /tmp/gates-base <base-sha> && (cd /tmp/gates-base && npm ci)
+git worktree add --detach /tmp/gates-candidate <commit-under-review> && (cd /tmp/gates-candidate && npm ci)
+npm run growth:record-gates -- --checkout /tmp/gates-base --out base-gates.json
+npm run growth:record-gates -- --checkout /tmp/gates-candidate --out candidate-gates.json
+npm run growth:director -- --gsc-dir <capture> --base-sha <base> --gates-file candidate-gates.json --baseline-file base-gates.json --check-production
 ```
 
-`--run-gates` runs the repository's real commands (slow; writes `.next` and
-`var/`, both gitignored). `--gates-file` replays recorded results instead.
-`--check-production` reads `vercel inspect miloosh.com` and the GitHub Production
-deployment history; both are read-only.
+`growth:record-gates` runs the repository's real commands (slow; writes `.next`,
+gitignored) and reads the commit and cleanliness from git. `--run-gates` runs them in
+the current checkout instead. Use a plain path: the repository's own entry-point
+guards mis-detect paths with spaces or non-ASCII characters, which fails tests for
+that reason alone. `--check-production` reads `vercel inspect miloosh.com` and the
+GitHub Production deployment history; both are read-only.
 
 ## Hard rules
 

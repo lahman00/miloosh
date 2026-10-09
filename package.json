@@ -21,6 +21,7 @@
     "growth:outreach-check": "tsx scripts/growth/outreach-ledger-check.ts",
     "growth:page-check": "tsx scripts/growth/page-live-check.ts",
     "growth:rendered-diff": "tsx scripts/growth/rendered-diff.ts",
+    "growth:record-gates": "tsx scripts/growth/record-gates.ts",
     "report:pricing": "tsx scripts/report-pricing-freshness.ts",
     "report:links": "tsx scripts/report-internal-links.ts",
     "maintenance": "tsx scripts/maintenance/run-all.ts",

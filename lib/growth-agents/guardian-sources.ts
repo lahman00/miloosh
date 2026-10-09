@@ -5,6 +5,7 @@ import {
   type GateResult,
   type GitFacts,
   type ProductionFacts,
+  type RecordedGateRun,
   type WorktreeFacts,
 } from "./guardian";
 import { listWorktrees, parsePorcelainPaths } from "./protection-sources";
@@ -180,7 +181,7 @@ export function parseAuditJson(json: unknown): { counts: Record<string, number>;
   return { counts: root.metadata?.vulnerabilities ?? {}, advisoryIds: [...ids].sort() };
 }
 
-type CommandSpec = { gate: GateName; command: string; file: string; args: string[] };
+export type CommandSpec = { gate: GateName; command: string; file: string; args: string[] };
 
 export const GATE_COMMANDS: readonly CommandSpec[] = [
   { gate: "audit", command: "npm audit --audit-level=moderate --json", file: "npm", args: ["audit", "--audit-level=moderate", "--json"] },
@@ -215,9 +216,37 @@ export function runGate(repoRoot: string, spec: CommandSpec, now: () => Date = (
   }
   const tail = (stdout + stderr).trim().split("\n").slice(-1)[0] ?? "";
   const tsErrors = spec.gate === "typecheck" ? (stdout.match(/error TS\d+/g) ?? []).length : 0;
-  return { ...base, status, summary: spec.gate === "typecheck" ? `${tsErrors} TypeScript error(s).` : tail.slice(0, 160) || `exit code ${exitCode}`, failureIds: [] };
+  // The last output line of a passing lint or build says nothing ("> eslint", a route legend), so the exit status is the summary.
+  const quiet = status === "PASS" && (spec.gate === "lint" || spec.gate === "build");
+  return { ...base, status, summary: spec.gate === "typecheck" ? `${tsErrors} TypeScript error(s).` : quiet ? `${spec.command} exited 0.` : tail.slice(0, 160) || `exit code ${exitCode}`, failureIds: [] };
 }
 
 export function notRun(spec: CommandSpec): GateResult {
   return { gate: spec.gate, command: spec.command, status: "NOT_RUN", exitCode: null, summary: "not run in this invocation (pass --run-gates to execute the repository's real gate)", failureIds: [], ranAt: null };
+}
+
+/**
+ * Runs the repository's own gate commands in `checkout` and returns their results together with the commit and the
+ * cleanliness they describe, both read from the checkout itself and never typed in. It writes nothing: the caller
+ * decides where the record goes. The commands themselves write gitignored build output (`.next`).
+ */
+export function recordGateRun(
+  checkout: string,
+  deps: { runOne?: (checkout: string, spec: CommandSpec) => GateResult; now?: () => Date; onGate?: (result: GateResult) => void } = {},
+): RecordedGateRun {
+  const now = deps.now ?? (() => new Date());
+  const runOne = deps.runOne ?? ((dir: string, spec: CommandSpec) => runGate(dir, spec));
+  const sha = git(checkout, ["rev-parse", "HEAD"]).trim();
+  const branch = gitOrNull(checkout, ["branch", "--show-current"])?.trim() || null;
+  const dirtyBefore = parsePorcelainPaths(git(checkout, ["status", "--porcelain", "--untracked-files=all"])).length > 0;
+  const results: GateResult[] = [];
+  for (const spec of GATE_COMMANDS) {
+    const result = runOne(checkout, spec);
+    results.push(result);
+    deps.onGate?.(result);
+  }
+  const shaAfter = git(checkout, ["rev-parse", "HEAD"]).trim();
+  if (shaAfter !== sha) throw new Error(`HEAD moved from ${sha} to ${shaAfter} while the gates ran; the results describe neither commit.`);
+  const dirtyAfter = parsePorcelainPaths(git(checkout, ["status", "--porcelain", "--untracked-files=all"])).length > 0;
+  return { schemaVersion: 1, sha, branch, dirty: dirtyBefore || dirtyAfter, recordedAt: now().toISOString(), results };
 }

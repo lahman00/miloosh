@@ -6,7 +6,7 @@ import { GROWTH_AGENT_SCHEMA_VERSION } from "@/lib/growth-agents/contracts";
 import { candidatesCsv, loadEvidence, monetizationLookup, runDirectorCli, type CliOptions, type Ports } from "@/lib/growth-agents/director-cli";
 import { REQUIRED_GATES } from "@/lib/growth-agents/guardian";
 import { parseArgs } from "../../scripts/growth/growth-director";
-import { NOW, SHA, U, gateResult, makeCapture, makeInventory, makeProtection, makeWorld, partnerFacts, signal, type PageRow } from "./fixtures";
+import { NOW, SHA, U, gateResult, makeCapture, makeInventory, makeProtection, makeWorld, partnerFacts, recordedGateRun, signal, type PageRow } from "./fixtures";
 
 const GSC_DIR = "/capture";
 const PRIVATE_DIR = "/private-capture";
@@ -122,11 +122,11 @@ describe("read-only by default: nothing is mutated unless --out is given", () =>
   });
 
   it("reads recorded gate results from a file instead of running anything", () => {
-    const gates = REQUIRED_GATES.map((gate) => gateResult(gate, gate === "tests" ? "FAIL" : "PASS", gate === "tests" ? ["a > b"] : []));
-    const { ports, calls } = makePorts({ ...captureFiles(), "/gates.json": JSON.stringify(gates) });
+    const { ports, calls } = makePorts({ ...captureFiles(), "/gates.json": JSON.stringify(recordedGateRun({}, ["tests"])) });
     const result = runDirectorCli(options({ gatesFile: "/gates.json" }), ports);
     expect(calls.gates).toBe(0);
     expect(result.guardian!.verdict).toBe("RELEASE_BLOCKED");
+    expect(result.guardian!.gateTrust).toMatchObject({ trusted: true, code: "TRUSTED", source: "RECORDED_FILE", ranOnSha: SHA });
   });
 
   it("writes exactly the three report files, and only inside the requested directory", () => {
@@ -251,6 +251,95 @@ describe("missing or broken evidence", () => {
     expect(loaded.gsc).not.toBeNull();
     expect(loaded.problems).toEqual([]);
     expect(loaded.indexation!.sitemap.state).toBe("NOT_MEASURED");
+  });
+});
+
+describe("gate results count only for the commit they were produced for", () => {
+  const OTHER = "1d6746b3a1c0000000000000000000000000abcd";
+  const guardianFor = (gatesFile: unknown, gitOverrides: Partial<ReturnType<Ports["gitFacts"]>> = {}) => {
+    const files: Record<string, string> = { ...captureFiles(), "/gates.json": typeof gatesFile === "string" ? gatesFile : JSON.stringify(gatesFile) };
+    const { ports } = makePorts(files, { gitFacts: () => ({ branch: "b", headSha: SHA, baseSha: SHA, dirtyPaths: [], changedFiles: [], commitsAheadOfBase: 0, pushedToRemote: null, ...gitOverrides }) });
+    return runDirectorCli(options({ gatesFile: "/gates.json" }), ports).guardian!;
+  };
+
+  it("sets aside a bare list of results, which names no commit, and reports that no gate counted", () => {
+    const guardian = guardianFor(REQUIRED_GATES.map((gate) => gateResult(gate)));
+    expect(guardian.gateTrust).toMatchObject({ trusted: false, code: "NO_COMMIT_IN_FILE" });
+    expect(guardian.verdict).toBe("NOT_VERIFIED");
+    expect(guardian.gates.every((g) => g.status === "NOT_RUN")).toBe(true);
+    expect(guardian.reasons.map((r) => r.code)).toContain("GATE_RESULTS_NOT_TRUSTED");
+  });
+
+  it("sets aside results recorded for another commit, even when every one of them passed", () => {
+    const guardian = guardianFor(recordedGateRun({ sha: OTHER }));
+    expect(guardian.gateTrust).toMatchObject({ trusted: false, code: "OTHER_COMMIT", ranOnSha: OTHER });
+    expect(guardian.verdict).toBe("NOT_VERIFIED");
+    expect(guardian.gates.every((g) => g.status === "NOT_RUN")).toBe(true);
+  });
+
+  it("sets aside results recorded in a checkout with uncommitted changes, or that do not say", () => {
+    expect(guardianFor(recordedGateRun({ dirty: true })).gateTrust.code).toBe("DIRTY_CHECKOUT");
+    const { dirty: _dirty, ...withoutDirty } = recordedGateRun();
+    void _dirty;
+    expect(guardianFor(withoutDirty).gateTrust.code).toBe("CLEANLINESS_UNKNOWN");
+  });
+
+  it("accepts an abbreviated commit id of the commit under review", () => {
+    expect(guardianFor(recordedGateRun({ sha: SHA.slice(0, 9) })).gateTrust.trusted).toBe(true);
+  });
+
+  it("says a file that is not gate results is unreadable instead of treating it as no file", () => {
+    for (const bad of ["{nope", JSON.stringify({ results: [{ gate: "lint" }] }), JSON.stringify("text")]) {
+      const guardian = guardianFor(bad);
+      expect(guardian.gateTrust).toMatchObject({ trusted: false, code: "FILE_UNREADABLE" });
+      expect(guardian.verdict).toBe("NOT_VERIFIED");
+    }
+  });
+
+  it("trusts the gates it ran itself in this checkout, even in a dirty one, where the dirty tree is reported on its own", () => {
+    const { ports, calls } = makePorts(captureFiles(), { gitFacts: () => ({ branch: "b", headSha: SHA, baseSha: SHA, dirtyPaths: ["lib/x.ts"], changedFiles: [], commitsAheadOfBase: 0, pushedToRemote: null }) });
+    const guardian = runDirectorCli(options({ runGates: true }), ports).guardian!;
+    expect(calls.gates).toBe(1);
+    expect(guardian.gateTrust).toMatchObject({ trusted: true, source: "RAN_NOW", ranOnSha: SHA });
+    expect(guardian.reasons.map((r) => r.code)).toContain("DIRTY_WORKTREE");
+  });
+
+  it("reports that nothing was supplied when neither a file nor --run-gates was given", () => {
+    const guardian = runDirectorCli(options(), makePorts(captureFiles()).ports).guardian!;
+    expect(guardian.gateTrust).toMatchObject({ trusted: false, code: "NO_RESULTS", source: "NONE" });
+    expect(guardian.reasons.map((r) => r.code)).not.toContain("GATE_RESULTS_NOT_TRUSTED");
+  });
+
+  describe("the baseline", () => {
+    const baselineFor = (baseline: unknown, baseSha: string | null = SHA) => {
+      const files: Record<string, string> = { ...captureFiles(), "/gates.json": JSON.stringify(recordedGateRun({}, ["tests"])), "/base.json": typeof baseline === "string" ? baseline : JSON.stringify(baseline) };
+      const { ports } = makePorts(files, { gitFacts: () => ({ branch: "b", headSha: SHA, baseSha, dirtyPaths: [], changedFiles: [], commitsAheadOfBase: 0, pushedToRemote: null }) });
+      return runDirectorCli(options({ gatesFile: "/gates.json", baselineFile: "/base.json", baseSha }), ports).guardian!;
+    };
+
+    it("is used when it was recorded at the base commit, in either file shape", () => {
+      const asRun = baselineFor(recordedGateRun({}, ["tests"]));
+      expect(asRun.baselineTrust).toMatchObject({ supplied: true, usable: true });
+      expect(asRun.gates.find((g) => g.gate === "tests")!.relation).toBe("PRE_EXISTING");
+      const legacy = baselineFor({ baseSha: SHA, results: REQUIRED_GATES.map((gate) => gateResult(gate, gate === "tests" ? "FAIL" : "PASS", gate === "tests" ? ["tests-failure"] : [])) });
+      expect(legacy.baselineTrust.usable).toBe(true);
+      expect(legacy.gates.find((g) => g.gate === "tests")!.relation).toBe("PRE_EXISTING");
+    });
+
+    it("is set aside, leaving every relation UNKNOWN, when it was recorded at another commit or in a dirty checkout", () => {
+      const other = baselineFor(recordedGateRun({ sha: OTHER }, ["tests"]));
+      expect(other.baselineTrust).toMatchObject({ supplied: true, usable: false });
+      expect(other.gates.every((g) => g.relation === "UNKNOWN")).toBe(true);
+      expect(other.checks.find((c) => c.id === "gates:baseline")!.status).toBe("WARN");
+      expect(baselineFor(recordedGateRun({ dirty: true }, ["tests"])).baselineTrust.usable).toBe(false);
+    });
+
+    it("is set aside when no base commit was given, and a file that is not gate results is reported", () => {
+      expect(baselineFor(recordedGateRun({}, ["tests"]), null).baselineTrust.usable).toBe(false);
+      const unreadable = baselineFor("{nope");
+      expect(unreadable.baselineTrust.supplied).toBe(false);
+      expect(unreadable.checks.find((c) => c.id === "gates:baseline")).toMatchObject({ status: "WARN", detail: expect.stringMatching(/could not be read/) });
+    });
   });
 });
 
