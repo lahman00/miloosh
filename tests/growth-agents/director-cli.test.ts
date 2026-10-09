@@ -129,6 +129,20 @@ describe("read-only by default: nothing is mutated unless --out is given", () =>
     expect(result.guardian!.gateTrust).toMatchObject({ trusted: true, code: "TRUSTED", source: "RECORDED_FILE", ranOnSha: SHA });
   });
 
+  it("leaves no folder path or home-folder name in any written file, even when other worktrees are listed", () => {
+    const { ports, calls } = makePorts(captureFiles(), {
+      worktreeFacts: () => [{ path: "/Users/someone/Documents/Codex/work/miloosh-release", branch: "codex/premium-production", head: "8c476c1aaaa", dirtyPaths: ["data/software/x.json"], aheadOfBase: 3 }],
+    });
+    runDirectorCli(options({ outDir: OUT_DIR }), ports);
+    expect(calls.writes).toHaveLength(3);
+    for (const [file, content] of calls.writes) {
+      expect(content, file).not.toContain("someone");
+      expect(content, file).not.toContain("/Users/");
+    }
+    const json = JSON.parse(calls.writes.find(([p]) => p.endsWith(".json"))![1]);
+    expect(json.guardian.checks.find((c: { id: string }) => c.id === "worktrees:inflight").evidence).toEqual(["git worktree: codex/premium-production"]);
+  });
+
   it("writes exactly the three report files, and only inside the requested directory", () => {
     const { ports, calls } = makePorts(captureFiles());
     const result = runDirectorCli(options({ outDir: OUT_DIR }), ports);

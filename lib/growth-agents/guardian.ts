@@ -333,7 +333,8 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     title: "Other unfinished work is preserved",
     status: "INFO",
     detail: `${inFlight.length} other worktree(s) hold uncommitted or unmerged work; none is read, merged or deployed by the Guardian: ${inFlight.map((w) => w.branch ?? w.head.slice(0, 7)).join(", ") || "none"}.`,
-    evidence: inFlight.map((w) => w.path),
+    // Branch names, not folder paths: a path names the machine's owner and has no place in a committed report.
+    evidence: inFlight.map((w) => `git worktree: ${w.branch ?? w.head.slice(0, 7)}`),
   });
 
   // Protected experiments.

@@ -1,11 +1,15 @@
 /**
  * Reports are committed to a repository that may be public. Two things must
  * never reach them: affiliate or referral URLs and personal email addresses.
- * Page URLs on miloosh.com are the subject of the reports and are kept.
+ * Page URLs on miloosh.com are the subject of the reports and are kept. The
+ * name of a person's home folder (/Users/<name>, /home/<name>) is replaced too:
+ * a report never needs it, and it identifies the machine's owner.
  */
 
 const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const URL_RE = /https?:\/\/[^\s"'<>)\]]+/g;
+/** A folder path, not a URL path: the slash that starts it must not follow a URL-ish character. */
+const HOME_FOLDER = /(?<![A-Za-z0-9._~:%@/-])\/(Users|home)\/[A-Za-z0-9._-]+/g;
 
 function isOwnPage(url: string): boolean {
   try {
@@ -17,7 +21,10 @@ function isOwnPage(url: string): boolean {
 }
 
 export function redactText(text: string): string {
-  return text.replace(EMAIL, "<email-redacted>").replace(URL_RE, (match) => (isOwnPage(match) ? match : "<url-redacted>"));
+  return text
+    .replace(EMAIL, "<email-redacted>")
+    .replace(URL_RE, (match) => (isOwnPage(match) ? match : "<url-redacted>"))
+    .replace(HOME_FOLDER, "/$1/<user>");
 }
 
 export function redactDeep<T>(value: T): T {

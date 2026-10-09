@@ -16,6 +16,17 @@ describe("redaction keeps reports safe for a public repository", () => {
     expect(redactText("https://evil.example/?u=https://miloosh.com/x")).toBe("<url-redacted>");
   });
 
+  it("replaces the name of a home folder, wherever the path appears, and keeps the rest of the path", () => {
+    expect(redactText("/Users/eyalhaimovich/AI/1. פרוייקטים/Miloosh/site")).toBe("/Users/<user>/AI/1. פרוייקטים/Miloosh/site");
+    expect(redactText('worktrees: "/home/runner/work/site", (/Users/me.name_2/x)')).toBe('worktrees: "/home/<user>/work/site", (/Users/<user>/x)');
+    expect(redactDeep({ evidence: ["/Users/someone/Documents/work"] })).toEqual({ evidence: ["/Users/<user>/Documents/work"] });
+  });
+
+  it("does not mistake a page path on the site for a folder path", () => {
+    expect(redactText("https://miloosh.com/home/pricing and https://www.miloosh.com/Users/x")).toBe("https://miloosh.com/home/pricing and https://www.miloosh.com/Users/x");
+    expect(redactText("see /compare/home/x")).toBe("see /compare/home/x");
+  });
+
   it("redacts nested strings in objects and arrays and leaves numbers and nulls alone", () => {
     const value = { a: ["x@y.zz", 3, null], b: { c: "https://p.example/aff?id=1", d: "ok" } };
     expect(redactDeep(value)).toEqual({ a: ["<email-redacted>", 3, null], b: { c: "<url-redacted>", d: "ok" } });

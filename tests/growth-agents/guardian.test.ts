@@ -311,6 +311,8 @@ describe("what else blocks a release", () => {
     const check = report.checks.find((c) => c.id === "worktrees:inflight")!;
     expect(check.status).toBe("INFO");
     expect(check.detail).toMatch(/none is read, merged or deployed by the Guardian/);
+    expect(check.evidence).toEqual(["git worktree: claude/salesforce"]);
+    expect(JSON.stringify(report)).not.toContain("/w/salesforce");
     expect(report.verdict).toBe("RELEASE_ALLOWED");
   });
 
