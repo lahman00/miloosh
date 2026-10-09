@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Content-level check that the live site was built from commit 80eb1e5, the commit the base of this branch points to.",
+  "method": "Plain GET of six public miloosh.com pages (saved HTML), compared with the prerendered HTML of a local `npm ci && npm run build` of 80eb1e5 after the normalisation in lib/growth-agents/rendered-diff.ts (scripts, hashed asset names, deployment markers and whitespace removed; JSON-LD kept).",
+  "production": {
+    "deploymentId": "dpl_4AHS358cZHgukiyYtVkwsTZ3W4kn",
+    "createdAtUtc": "2026-10-08T11:05:03Z",
+    "githubDeploymentSha": "80eb1e57ff73cacf563aafbe21f377f8db7673ed",
+    "read": "vercel inspect and the GitHub Deployments API, read-only"
+  },
+  "buildCommit": "80eb1e57ff73cacf563aafbe21f377f8db7673ed",
+  "identical": 6,
+  "compared": 6,
+  "pages": [
+    {
+      "url": "https://miloosh.com/software/activecampaign",
+      "liveFetchedAtUtc": "2026-10-08T23:26:31Z",
+      "identical": true,
+      "normalizedBytes": 51284,
+      "normalizedSha256Live": "017bbc17e580c5ffd2bb07380e487c28d21f0c66dae49e4ffe932f8caeb2728d",
+      "normalizedSha256Build": "017bbc17e580c5ffd2bb07380e487c28d21f0c66dae49e4ffe932f8caeb2728d"
+    },
+    {
+      "url": "https://miloosh.com/software/clickup",
+      "liveFetchedAtUtc": "2026-10-08T23:26:30Z",
+      "identical": true,
+      "normalizedBytes": 56300,
+      "normalizedSha256Live": "c454d86c14c812da47289b05200f17c5c7b362ddcf977653b0d57aed541651c3",
+      "normalizedSha256Build": "c454d86c14c812da47289b05200f17c5c7b362ddcf977653b0d57aed541651c3"
+    },
+    {
+      "url": "https://miloosh.com/software/confluence",
+      "liveFetchedAtUtc": "2026-10-08T23:26:31Z",
+      "identical": true,
+      "normalizedBytes": 51490,
+      "normalizedSha256Live": "32bf6678434e69979a2e532890399f4482a46187d6b54493925a4c78d3209849",
+      "normalizedSha256Build": "32bf6678434e69979a2e532890399f4482a46187d6b54493925a4c78d3209849"
+    },
+    {
+      "url": "https://miloosh.com/software/segment",
+      "liveFetchedAtUtc": "2026-10-08T23:26:32Z",
+      "identical": true,
+      "normalizedBytes": 42805,
+      "normalizedSha256Live": "e35abf98823f374628cdc1caddc7e0b3e484951105330c23e85934dc408e1f8e",
+      "normalizedSha256Build": "e35abf98823f374628cdc1caddc7e0b3e484951105330c23e85934dc408e1f8e"
+    },
+    {
+      "url": "https://miloosh.com/software/tidio",
+      "liveFetchedAtUtc": "2026-10-08T23:26:32Z",
+      "identical": true,
+      "normalizedBytes": 52214,
+      "normalizedSha256Live": "04e8784fa6d8862ff30d86fc43c92ca450378fff41fbf5f204d67050f0fa9dce",
+      "normalizedSha256Build": "04e8784fa6d8862ff30d86fc43c92ca450378fff41fbf5f204d67050f0fa9dce"
+    },
+    {
+      "url": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+      "liveFetchedAtUtc": "2026-10-08T23:26:33Z",
+      "identical": true,
+      "normalizedBytes": 57151,
+      "normalizedSha256Live": "8454db303090f89474fb24d75d1aa697968078bb6ec4de30b6e5073f4e127774",
+      "normalizedSha256Build": "8454db303090f89474fb24d75d1aa697968078bb6ec4de30b6e5073f4e127774"
+    }
+  ],
+  "limits": "Six pages, not the hundred or more the Google Recovery Director skill asks for. A bulk read of live pages was not run because the permission system required the owner's approval for it. The six pages include a page whose Decision snapshot exists only in this lineage."
+}

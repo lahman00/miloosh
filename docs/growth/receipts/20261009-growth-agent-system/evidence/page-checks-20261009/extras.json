@@ -13,7 +13,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/activecampaign",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "A public GET of the page. It does not show what Google has indexed."
       }
     },
@@ -30,7 +30,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/activecampaign",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
       }
     }
@@ -49,7 +49,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/mulesoft",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "A public GET of the page. It does not show what Google has indexed."
       }
     },
@@ -63,7 +63,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/mulesoft",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
       }
     }
@@ -82,7 +82,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/clickup",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "A public GET of the page. It does not show what Google has indexed."
       }
     },
@@ -98,7 +98,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/clickup",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
       }
     }
@@ -117,7 +117,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/sprout-social",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "A public GET of the page. It does not show what Google has indexed."
       }
     },
@@ -131,7 +131,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/sprout-social",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
       }
     }
@@ -150,7 +150,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/confluence",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "A public GET of the page. It does not show what Google has indexed."
       }
     },
@@ -164,7 +164,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/software/confluence",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
       }
     }
@@ -183,7 +183,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "A public GET of the page. It does not show what Google has indexed."
       }
     },
@@ -197,7 +197,7 @@
       "provenance": {
         "source": "live-page-get",
         "locator": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
-        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "capturedAt": "2026-10-09T00:35:32.204Z",
         "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
       }
     }

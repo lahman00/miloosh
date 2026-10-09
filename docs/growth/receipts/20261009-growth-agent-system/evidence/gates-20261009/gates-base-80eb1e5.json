@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "sha": "80eb1e57ff73cacf563aafbe21f377f8db7673ed",
+  "branch": null,
+  "dirty": false,
+  "recordedAt": "2026-10-09T00:35:48.450Z",
+  "results": [
+    {
+      "gate": "audit",
+      "command": "npm audit --audit-level=moderate --json",
+      "exitCode": 1,
+      "ranAt": "2026-10-09T00:34:31.692Z",
+      "status": "FAIL",
+      "summary": "Advisories: 1 critical, 9 high, 0 moderate, 1 low.",
+      "failureIds": [
+        "GHSA-39w2-rjm5-chcv",
+        "GHSA-3w37-wq28-93x7",
+        "GHSA-3wwx-pv8p-q78v",
+        "GHSA-4jqv-mc3x-m676",
+        "GHSA-6688-9rhm-gjv2",
+        "GHSA-68fv-2mgg-jv7q",
+        "GHSA-6j4f-fj2g-mc7p",
+        "GHSA-cjq9-62q9-8jv4",
+        "GHSA-f87g-xv8r-7p7x",
+        "GHSA-mcj8-r9mp-w47p",
+        "GHSA-p98j-92pf-mc4p",
+        "GHSA-q2hr-2g5m-vwhr",
+        "GHSA-qhr7-859c-m2p7",
+        "GHSA-r53p-7pc4-xj5r",
+        "GHSA-rfgv-xxqx-mfg5",
+        "GHSA-vcvr-r3jv-pc5j",
+        "GHSA-vfj7-8cjw-p6xm",
+        "GHSA-wq5f-xc86-pv6w"
+      ]
+    },
+    {
+      "gate": "tests",
+      "command": "npx vitest run --reporter=json",
+      "exitCode": 1,
+      "ranAt": "2026-10-09T00:34:35.102Z",
+      "status": "FAIL",
+      "summary": "1887 passed, 12 failed of 1899 tests.",
+      "failureIds": [
+        "tests/growth/community-traffic-manifest.test.ts > community traffic manifest requires verified pricing or an explicit nonnumeric regional quote contract",
+        "tests/guides/ecwid-integration-decision.test.ts > Ecwid integration buyer guidance stays on the existing Ecwid software page",
+        "tests/guides/shopify-pricing-model.test.ts > Shopify pricing model integrity keeps the current official pricing page on the pricing contract",
+        "tests/guides/store-plan-fit.test.ts > small-store plan clarity excludes unverified Wix prices and preserves Shopify annual conditions in the index",
+        "tests/guides/store-plan-fit.test.ts > small-store plan clarity preserves Shopify snapshot date but correctly labels monthly equivalents",
+        "tests/guides/store-plan-fit.test.ts > small-store plan clarity removes unconfirmed regional Wix amounts without inventing contact-sales pricing",
+        "tests/guides/store-plan-fit.test.ts > small-store plan clarity retains original Shopify tier amounts without claiming a new price check",
+        "tests/guides/store-plan-fit.test.ts > small-store plan clarity shows the unknown price status next to the reviewed date",
+        "tests/guides/woocommerce-repair-check.test.ts > WooCommerce repair-before-migration check is integrated before pricing without changing Wix routing code",
+        "tests/lib/freshbooks-affiliate-activation.test.ts > FreshBooks email-backed activation on 2026-09-17 does not mistake referral approval for verified payouts or recurring revenue",
+        "tests/lib/partner-materials-audit.test.ts > partner materials audit resolves every currently active partner to READY NOW with a real affiliate URL, never stale pending/rejected history",
+        "tests/lib/revenue-trust-regressions.test.ts > revenue trust and source-basis regression locks keeps affiliate-link confirmation separate from payout readiness"
+      ]
+    },
+    {
+      "gate": "validate-data",
+      "command": "npm run validate:data",
+      "exitCode": 0,
+      "ranAt": "2026-10-09T00:35:16.752Z",
+      "status": "PASS",
+      "summary": "✓ Data valid — 354 software pages, 27 categories, 1348 comparisons, 0 problems.",
+      "failureIds": []
+    },
+    {
+      "gate": "lint",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "ranAt": "2026-10-09T00:35:17.118Z",
+      "status": "PASS",
+      "summary": "npm run lint exited 0.",
+      "failureIds": []
+    },
+    {
+      "gate": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ranAt": "2026-10-09T00:35:24.612Z",
+      "status": "PASS",
+      "summary": "0 TypeScript error(s).",
+      "failureIds": []
+    },
+    {
+      "gate": "build",
+      "command": "npm run build",
+      "exitCode": 0,
+      "ranAt": "2026-10-09T00:35:26.383Z",
+      "status": "PASS",
+      "summary": "npm run build exited 0.",
+      "failureIds": []
+    }
+  ]
+}
