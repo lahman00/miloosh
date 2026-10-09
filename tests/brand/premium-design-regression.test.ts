@@ -13,6 +13,11 @@ describe("approved Miloosh premium public identity", () => {
     expect(css).toContain("--citrine: #e4f267");
     expect(css).toContain("--font-sans: var(--font-manrope)");
     expect(css).toContain(".miloosh-theme");
+    // The citrine plate is offset; the headline itself is not translated.
+    expect(css).toContain(".hero-copy h1>span::before");
+    expect(css).toContain("transform:translateY(.10em)");
+    expect(css).not.toContain("background:var(--citrine); box-shadow:8px 0 0 var(--citrine)");
+
     expect(css).toContain(".brand img { width:120px; height:auto; }");
     expect(existsSync("public/miloosh-wordmark.png")).toBe(true);
   });

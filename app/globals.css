@@ -88,7 +88,18 @@ h1,h2,h3 { text-wrap:balance; }
 .hero-section { padding-top:64px; }
 .hero-grid { display:grid; grid-template-columns:1.08fr 1fr; gap:56px; align-items:center; padding-block:24px 64px; }
 .hero-copy h1 { font-size:clamp(52px,5.25vw,76px); line-height:1.03; letter-spacing:-.04em; font-weight:550; margin:0; }
-.hero-copy h1>span { display:inline; background:var(--citrine); box-shadow:8px 0 0 var(--citrine),-4px 0 0 var(--citrine); }
+/* The highlight is a background plate, not part of the headline's layout.
+   Lower only the plate by 0.10em; keep the text, selection and baseline still. */
+.hero-copy h1>span { position:relative; display:inline; isolation:isolate; }
+.hero-copy h1>span::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0 -0.11em 0 -0.05em;
+  background:var(--citrine);
+  transform:translateY(.10em);
+  pointer-events:none;
+}
 .hero-description { max-width:43ch; margin:32px 0; color:var(--muted); font-size:17px; line-height:1.7; }
 .hero-explore { display:flex; align-items:center; flex-wrap:wrap; gap:8px 16px; margin-top:16px; font-size:11px; }
 .hero-explore>span { color:var(--subtle); }

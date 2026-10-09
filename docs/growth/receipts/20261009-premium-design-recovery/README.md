@@ -29,3 +29,8 @@ The earlier dark website is retained only as historical Git rollback evidence. I
 - Live Chromium on the first production release discovered that `Where are you<br />in the decision?` concatenated as “Where are youin the decision?” on phones because a mobile CSS rule hid the `br`.
 - The targeted fix removes only that mobile `display: none` rule and adds an explicit JSX space before the break; no vendor data, protected experiment, navigation, affiliate link or indexation file is modified.
 - New premium brand regression assertions prevent the mobile issue recurring. Requires complete green gates on the new SHA and live mobile browser inspection after promotion.
+
+## October 9 owner-requested accent adjustment
+- Owner asked to lower the yellow background behind “better fit.” slightly, without changing the words or their baseline.
+- Changed only the shared home hero span styling to use an isolated `::before` citrine background plate shifted down by `0.10em`; the `h1` and span text geometry are unchanged. No new asset, layout shift, color change, external link or indexation operation.
+- A preview comparison on 1440px desktop and 390px mobile verified the plate is lower while headline text bounds remain identical; brand regression tests now guard the accent plate. A final browser and whole-site gate run are required on the exact candidate SHA before publishing.
