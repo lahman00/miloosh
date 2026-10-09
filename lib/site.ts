@@ -37,7 +37,7 @@ export const SITE_DESCRIPTION =
 export const SITE_EMAIL = "hello@miloosh.com";
 
 /** Matches the viewport theme-color in app/layout.tsx and the generated icons/OG images — one place to change the brand color. */
-export const SITE_THEME_COLOR = "#09090b";
+export const SITE_THEME_COLOR = "#f8f9f4";
 
 /** Sourced from package.json so it never drifts from the actual shipped version. */
 export const SITE_VERSION = packageJson.version;

@@ -15,6 +15,7 @@ const productLinks = [
   { name: "Find my software", href: "/recommend" },
   { name: "Cost calculator", href: "/tools/saas-cost-calculator" },
   { name: "Pricing Pressure Index", href: "/research/saas-pricing-pressure-index-2026" },
+  { name: "Research", href: "/research" },
 ];
 
 const companyLinks = [
@@ -23,6 +24,7 @@ const companyLinks = [
   { name: "Newsletter", href: "/newsletter" },
 ];
 
+// Legal and secondary navigation should load on navigation, not passive footer exposure.
 function FooterColumn({
   title,
   links,
@@ -32,12 +34,13 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">{title}</h3>
+      <p className="text-xs font-semibold text-zinc-400">{title}</p>
       <ul className="mt-4 space-y-2.5">
         {links.map((link) => (
           <li key={link.name}>
             <Link
               href={link.href}
+              prefetch={false}
               className="text-sm text-zinc-400 transition hover:text-accent-hover"
             >
               {link.name}
@@ -53,13 +56,12 @@ export function Footer() {
   const freshness = getDataFreshness();
 
   return (
-    <footer className="border-t border-white/10">
+    <footer className="site-footer border-t border-white/10">
       <Container className="py-14">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <Link href="/" className="flex items-center gap-2 text-base font-bold tracking-tight text-white">
-              <Image src="/logo-icon.png" alt="" width={22} height={20} />
-              {SITE_NAME}
+            <Link href="/" prefetch={false} className="brand text-base" aria-label={SITE_NAME + " home"}>
+              <Image src="/miloosh-wordmark.png" alt="Miloosh" width={128} height={26} />
             </Link>
             <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-400">{SITE_TAGLINE}</p>
           </div>
@@ -71,8 +73,13 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-zinc-400">
-            © {new Date().getFullYear()} {SITE_NAME} — independent comparisons, not affiliated
-            with the listed brands.
+            © {new Date().getFullYear()} {SITE_NAME} — independent comparisons. Some outbound
+            links are disclosed affiliate links; see our{" "}
+            <Link href="/affiliate-disclosure" prefetch={false} className="underline underline-offset-4 hover:text-white">
+              Affiliate Disclosure
+            </Link>
+            .
+
           </p>
           <p className="text-xs text-zinc-400">
             v{SITE_VERSION} · {freshness.softwareCount} tools across {freshness.categoryCount}{" "}

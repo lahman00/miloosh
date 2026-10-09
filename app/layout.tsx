@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
@@ -10,8 +10,8 @@ import { getOrganizationJsonLd } from "@/lib/structured-data";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_THEME_COLOR, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -65,14 +65,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-zinc-950 font-sans text-white antialiased">
+    <html lang="en" className={`${manrope.variable} h-full`}>
+      <body className="miloosh-theme flex min-h-full flex-col bg-zinc-950 font-sans text-white antialiased">
         <JsonLd data={getOrganizationJsonLd()} />
         <FirstPartyAnalytics />
         <SocialLandingCapture />
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
         <Analytics />
-        {children}
+        <div id="main-content" className="site-content" tabIndex={-1}>{children}</div>
         <Footer />
       </body>
     </html>

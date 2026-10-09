@@ -1,29 +1,12 @@
 import type { Metadata } from "next";
-import {
-  BadgeCheck,
-  LayoutGrid,
-  GitCompare,
-  Layers,
-  Search,
-  Scale,
-  CircleCheck,
-  Compass,
-  ArrowRight,
-} from "lucide-react";
 import Link from "next/link";
-import { Container } from "@/components/Container";
-import { Badge } from "@/components/Badge";
-import { Card } from "@/components/Card";
-import { ButtonLink } from "@/components/ButtonLink";
-import { SearchForm } from "@/components/SearchForm";
-import { PopularSearches } from "@/components/PopularSearches";
-import { StatItem } from "@/components/StatItem";
-import { SectionHeading } from "@/components/SectionHeading";
-import { FeatureCard } from "@/components/FeatureCard";
-import { SoftwareCard } from "@/components/SoftwareCard";
-import { CategoryCard } from "@/components/CategoryCard";
+import { ArrowRight, ArrowUpRight, Check, CircleCheck, BookOpen, GitCompare, Layers, ShieldCheck, SlidersHorizontal } from "lucide-react";
+import { SoftwareMark } from "@/components/SoftwareMark";
+import { BuyerDesk } from "@/components/BuyerDesk";
+import { getBuyerDeskComparisons, getBuyerDeskProducts } from "@/lib/buyer-desk-catalog";
+import { SoftwareDirectory } from "@/components/SoftwareDirectory";
 import { getAllSoftware, getSoftware } from "@/data/software";
-import { getAllCategories } from "@/data/categories";
+import { getAllCategories, getCategoryName } from "@/data/categories";
 import { getRoleGuide } from "@/data/guides/registry";
 import { FIRST_REVENUE_SUPPORTING_GUIDES } from "@/data/guides/first-revenue";
 import { FIRST_REVENUE_PAGES } from "@/data/revenue/first-revenue-cohort";
@@ -39,10 +22,6 @@ export const metadata: Metadata = {
 export default function Home() {
   const allSoftware = getAllSoftware();
   const allCategories = getAllCategories();
-
-  const alternativeCount = new Set(
-    allSoftware.flatMap((software) => software.alternatives.map((alternative) => alternative.slug))
-  ).size;
 
   const categoryCount = new Set(allSoftware.map((software) => software.category)).size;
 
@@ -124,242 +103,80 @@ export default function Home() {
     .map((support) => getRoleGuide(support.guideSlug))
     .filter((guide): guide is NonNullable<typeof guide> => guide !== undefined);
 
-  const stats = [
-    { icon: LayoutGrid, value: String(allSoftware.length), label: "Tools covered" },
-    { icon: GitCompare, value: `${alternativeCount}+`, label: "Alternatives compared" },
-    { icon: Layers, value: String(categoryCount), label: "Categories" },
-    { icon: CircleCheck, value: "Free", label: "No signup required" },
-  ];
-
-  const steps = [
-    {
-      icon: Search,
-      step: "01",
-      title: "Search any tool",
-      description:
-        "Type the name of software you use today, or one you're thinking about switching from.",
-    },
-    {
-      icon: Scale,
-      step: "02",
-      title: "Compare side-by-side",
-      description:
-        "See strengths, best-fit use cases, and what makes each alternative different.",
-    },
-    {
-      icon: CircleCheck,
-      step: "03",
-      title: "Switch with confidence",
-      description:
-        "Pick the option that actually matches your workflow, team size, and budget.",
-    },
-  ];
+  const briefCopy: Record<string,string> = {
+    airtable: "Turn spreadsheets into workflows your whole team can use.",
+    todoist: "Bring tasks, plans, and everyday work into focus.",
+    close: "Keep calling, email, and your sales pipeline together.",
+    setmore: "Give clients a simpler way to book time with you.",
+    elevenlabs: "Explore lifelike AI voices and audio creation.",
+  };
+  const catalogue = allSoftware.map(tool => ({name:tool.name, slug:tool.slug, category:getCategoryName(tool.category)}));
+  const categoryOrder = ["productivity","ai","crm","marketing","project-management","automation"];
+  const leadCategories = categoryOrder.flatMap(slug => allCategories.filter(category => category.slug === slug));
+  const otherCategories = allCategories.filter(category => !categoryOrder.includes(category.slug));
 
   return (
-    <main className="flex-1">
-      <section id="search" className="relative scroll-mt-16">
-        <Container className="flex flex-col items-center py-20 text-center sm:py-28 lg:py-32">
-          <Badge>
-            <BadgeCheck className="h-3.5 w-3.5" />
-            Independent, source-verified comparisons
-          </Badge>
-
-          <h1 className="mt-8 text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Software research
-            <span className="block text-zinc-400">you can verify.</span>
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-            Compare software alternatives, pricing, features, and migration options — every
-            claim sourced and dated, so you can switch with confidence.
-          </p>
-
-          <SearchForm className="mt-10 w-full max-w-2xl" />
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm">
-            <span className="text-zinc-500">Explore:</span>
-            <PopularSearches
-              items={popularSoftware.map((software) => ({
-                name: software.name,
-                slug: software.slug,
-              }))}
-            />
-          </div>
-        </Container>
+    <main className="home-design">
+      <BuyerDesk products={getBuyerDeskProducts()} catalogue={catalogue} comparisons={getBuyerDeskComparisons()} />
+      <section aria-label="Explore more of Miloosh">
+        <div className="design-container evidence-strip">
+          <p>Clarity for your next software decision.</p>
+          <span><strong>{allSoftware.length}</strong> tools to explore</span><span><strong>{categoryCount}</strong> categories</span><span><Check size={16} /> Free to use. No signup.</span>
+        </div>
+        <div className="design-container hero-explore"><span>More research</span>{popularSoftware.slice(0,4).map(tool => <Link href={`/software/${tool.slug}`} key={tool.slug}>{tool.name}</Link>)}{["notion", "hubspot", "synthesia", "jasper"].map(slug => <Link href={`/software/${slug}`} key={slug}>{getSoftware(slug)?.name}</Link>)}</div>
       </section>
 
-      <section className="border-y border-white/10 bg-white/[0.02]">
-        <Container className="grid grid-cols-2 gap-x-6 gap-y-8 py-10 sm:grid-cols-4">
-          {stats.map((stat) => (
-            <StatItem key={stat.label} {...stat} />
-          ))}
-        </Container>
-      </section>
-
-      <section className="py-20 sm:py-24">
-        <Container>
-          <SectionHeading
-            eyebrow="Buyer decisions"
-            title="Five buyer-ready product pages"
-            description="Go straight to current pricing context, fit and non-fit guidance, drawbacks, alternatives, and the vendor handoff."
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {firstRevenueSoftware.map((software) => (
-              <SoftwareCard key={software.slug} software={software} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-20 sm:py-28">
-        <Container>
-          <Card className="flex flex-col items-start gap-8 border-white/15 bg-white/[0.04] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-            <div className="max-w-xl">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-zinc-950">
-                <Compass className="h-5 w-5" strokeWidth={2.25} />
-              </span>
-              <h2 className="mt-5 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Not sure where to start? Get matched.
-              </h2>
-              <p className="mt-3 leading-7 text-zinc-400">
-                Answer a few questions about your team, budget, and what you need — our
-                recommendation engine matches you against the verified dataset and explains every
-                point of every score. No AI guessing, no invented facts.
-              </p>
+      <section className="design-section" id="buyer-picks">
+        <div className="design-container">
+          <div className="section-intro"><h2>A good place<br />to start.</h2><div><p>Useful tools. Clear tradeoffs. Get to know the software before you make it part of your day.</p><Link href="#browse" className="text-action">Explore the directory <ArrowUpRight size={17}/></Link></div></div>
+          <div className="buyer-editorial">
+            {firstRevenueSoftware.slice(0,1).map(tool => <Link className="featured-software" href={`/software/${tool.slug}`} key={tool.slug}>
+              <div className="featured-software-top"><SoftwareMark slug={tool.slug} name={tool.name} tone={0}/><ArrowUpRight size={24} strokeWidth={1.5}/></div>
+              <h3>{tool.name}</h3><span className="product-category">{getCategoryName(tool.category)}</span>
+              <p>{briefCopy[tool.slug] ?? tool.description}</p>
+              <span className="featured-software-action">Explore {tool.name}<span>{tool.alternatives.length} alternatives</span></span>
+            </Link>)}
+            <div className="buyer-tool-list">
+              {firstRevenueSoftware.slice(1).map((tool,index) => <Link className="buyer-tool-row" href={`/software/${tool.slug}`} key={tool.slug}>
+                <SoftwareMark slug={tool.slug} name={tool.name} tone={(index+1) % 5}/>
+                <div className="buyer-tool-copy"><h3>{tool.name}</h3><p>{briefCopy[tool.slug] ?? tool.description}</p><span className="buyer-tool-meta">{getCategoryName(tool.category)}<span>{tool.alternatives.length} alternatives</span></span></div>
+                <ArrowUpRight size={20} strokeWidth={1.5}/>
+              </Link>)}
             </div>
-            <ButtonLink href="/recommend" size="lg" className="w-full shrink-0 sm:w-auto">
-              Find my software
-              <ArrowRight className="h-4 w-4" />
-            </ButtonLink>
-          </Card>
-        </Container>
+          </div>
+          <div className="matcher-strip">
+            <div><h3>Your needs. Your shortlist.</h3><p>A few questions about your team and budget. Recommendations with a reason.</p></div>
+            <div className="matcher-strip-action"><Link href="/recommend" className="design-button">Find my software <ArrowRight size={17}/></Link><small>Free. No account needed.</small></div>
+          </div>
+        </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-16 py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="How it works"
-            title="Three steps to a better tool"
-            description="No accounts, no spreadsheets — just a fast, honest comparison."
-          />
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {steps.map((step) => (
-              <FeatureCard key={step.title} {...step} />
-            ))}
-          </div>
-        </Container>
+      <section className="comparison-section design-section" id="compare">
+        <div className="design-container"><div className="section-intro"><h2>The difference<br />is in the details.</h2><div><p>Two tools can look alike and work very differently. See where each one fits.</p><Link href="/compare" className="text-action">All comparisons <ArrowUpRight size={17}/></Link></div></div>
+          <div className="comparison-list">{popularComparisons.map(({softwareA,softwareB}) => <Link key={`${softwareA.slug}-${softwareB.slug}`} href={`/compare/${getComparisonSlug(softwareA.slug,softwareB.slug)}`}><span className="comparison-names"><strong>{softwareA.name}</strong><span className="versus">vs</span><strong>{softwareB.name}</strong></span><span className="comparison-action">Compare tools <ArrowUpRight size={19}/></span></Link>)}</div>
+        </div>
       </section>
 
-      <section id="categories" className="scroll-mt-16 py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="Categories"
-            title="Browse by category"
-            description="Every tool belongs to one category — start there if you know what kind of tool you need."
-          />
+      <section className="design-section" id="categories"><div className="design-container">
+        <div className="section-intro"><h2>What are you<br />working on?</h2><p>Start with the job you need to do.<br />Find a tool that makes it easier.</p></div>
+        <div className="category-list">{leadCategories.map((category,index) => <Link href={`/category/${category.slug}`} key={category.slug}><span className="category-symbol" aria-hidden="true">{index === 0 ? <Layers/> : index === 1 ? <CircleCheck/> : index === 2 ? <GitCompare/> : index === 3 ? <BookOpen/> : index === 4 ? <Check/> : <SlidersHorizontal/>}</span><span><strong>{category.name}</strong><small>{getSoftwareByCategory(category.slug).length} tools to explore</small></span><ArrowUpRight size={20}/></Link>)}</div>
+        <details className="more-categories"><summary>Explore all {allCategories.length} categories <span>+</span></summary><div className="category-extra">{otherCategories.map(category => <Link href={`/category/${category.slug}`} key={category.slug}>{category.name}<ArrowUpRight size={15}/></Link>)}</div></details>
+      </div></section>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {allCategories.map((category) => (
-              <CategoryCard
-                key={category.slug}
-                category={category}
-                count={getSoftwareByCategory(category.slug).length}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <section className="trust-section" id="how-it-works"><div className="design-container trust-grid">
+        <div><ShieldCheck size={36} strokeWidth={1.4}/><h2>Less second-guessing.<br />More knowing.</h2><p>Good decisions need more than a feature list. We bring the options, limitations, and sources into one place so you can decide what matters.</p><Link href="/editorial-policy" className="text-action">How we research software <ArrowUpRight size={17}/></Link></div>
+        <ol className="trust-steps"><li><span>1</span><div><h3>Start with your needs</h3><p>Search a tool you know, explore a category, or use the software matcher.</p></div></li><li><span>2</span><div><h3>Look at the whole picture</h3><p>Compare strengths, limitations, pricing context, and alternatives.</p></div></li><li><span>3</span><div><h3>Take the next step, informed</h3><p>Check the sources and current vendor terms before you commit.</p></div></li></ol>
+      </div></section>
 
-      <section id="guides" className="scroll-mt-16 py-20 sm:py-28">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              eyebrow="Decision guides"
-              title="Start with the decision you need to make"
-              description="Practical buying and switching guides for common software decisions."
-            />
-            <Link
-              href="/guides"
-              className="hidden shrink-0 text-sm font-medium text-zinc-400 transition hover:text-accent-hover sm:block"
-            >
-              View all decision guides →
-            </Link>
-          </div>
+      <section className="design-section" id="guides"><div className="design-container"><div className="section-intro"><h2>A little research.<br />A better decision.</h2><Link href="/guides" className="text-action">All decision guides <ArrowUpRight size={17}/></Link></div>
+        <div className="guide-layout">{homepageGuides.slice(0,1).map(guide => <Link href={`/${guide.slug}`} key={guide.slug} className="featured-guide"><div className="guide-graphic" aria-hidden="true"><span className="guide-paper"><Layers size={38} strokeWidth={1.2}/><span>Build around<br />the way you work.</span><span className="paper-rule"/><small>THE MILOOSH FIELD GUIDE</small></span><span className="guide-tab"/></div><div className="featured-guide-copy"><h3>{guide.title}</h3><span className="text-action">Read the guide <ArrowUpRight size={17}/></span></div></Link>)}
+        <div className="guide-list">{homepageGuides.slice(1).map(guide => <Link href={`/${guide.slug}`} key={guide.slug}><h3>{guide.title}</h3><ArrowUpRight size={19}/></Link>)}</div></div>
+      </div></section>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {homepageGuides.map((guide) => (
-              <Link
-                key={guide.slug}
-                href={`/${guide.slug}`}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/25 hover:bg-white/[0.05]"
-              >
-                <h3 className="font-semibold text-white">{guide.title}</h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-400">
-                  {guide.metaDescription}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <section className="design-section directory-section" id="browse"><div className="design-container"><div className="section-intro"><h2>Know the name?<br />Start there.</h2><p>Explore {browseSoftware.length} research-priority tools below.<br />Search above to reach all {allSoftware.length}.</p></div><SoftwareDirectory items={browseSoftware.map(tool => ({name:tool.name,slug:tool.slug,category:getCategoryName(tool.category)}))}/></div></section>
 
-      <section id="compare" className="scroll-mt-16 py-20 sm:py-28">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              eyebrow="Compare"
-              title="Featured comparisons"
-              description="Side-by-side breakdowns, prioritized by real search demand and page connectivity."
-            />
-            <Link
-              href="/compare"
-              className="hidden shrink-0 text-sm font-medium text-zinc-400 transition hover:text-accent-hover sm:block"
-            >
-              View all comparisons →
-            </Link>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {popularComparisons.map(({ softwareA, softwareB }) => (
-              <Link
-                key={getComparisonSlug(softwareA.slug, softwareB.slug)}
-                href={`/compare/${getComparisonSlug(softwareA.slug, softwareB.slug)}`}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-5 text-center text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/[0.05]"
-              >
-                {softwareA.name} vs {softwareB.name}
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section id="browse" className="scroll-mt-16 py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="Browse"
-            title="Start from a tool you already know"
-            description={`Explore ${browseSoftware.length} research-priority tools here, or use the search above and category pages to reach all ${allSoftware.length}.`}
-          />
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {browseSoftware.map((software) => (
-              <SoftwareCard key={software.slug} software={software} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-t border-white/10 bg-white/[0.02] py-20 sm:py-28">
-        <Container className="flex flex-col items-center text-center">
-          <SectionHeading
-            align="center"
-            title="Don't see what you're looking for?"
-            description="Search any software by name and we'll help you find the right alternative."
-          />
-          <SearchForm className="mt-10 w-full max-w-2xl" />
-        </Container>
-      </section>
+      <section className="closing-section"><div className="design-container closing-inner"><div><h2>Your next tool<br />should feel right.</h2><p>Let’s find the software that fits the way you work.</p></div><div><Link href="/recommend" className="design-button button-citrine">Find my software <ArrowUpRight size={19}/></Link><span>Free to explore. Yours to decide.</span></div></div></section>
+      <div className="design-container affiliate-note"><ShieldCheck size={17}/><p>Some links may earn Miloosh a commission. We explain our approach so you can make an informed choice. <Link href="/affiliate-disclosure">Read our affiliate disclosure</Link>.</p></div>
     </main>
   );
 }
