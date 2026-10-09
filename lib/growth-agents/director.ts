@@ -1,6 +1,6 @@
 import { partnerExposureFor, type AffiliateRevenueReport, type PartnerExposure, type PartnerRow } from "./affiliate-revenue-agent";
 import { GROWTH_AGENT_SCHEMA_VERSION, opportunitySchema, type Blocker, type Opportunity } from "./contracts";
-import { addDays, valueOf } from "./evidence";
+import { valueOf } from "./evidence";
 import type { GoogleRecoveryReport, PageEvaluation } from "./google-recovery-agent";
 import type { GuardianReport } from "./guardian";
 import { pathOf } from "./urls";
@@ -258,7 +258,7 @@ function buyerIntentOf(e: PageEvaluation, name: string): Opportunity["buyerInten
   };
 }
 
-export function buildOpportunity(e: PageEvaluation, exposure: PartnerExposure, tier: PartnerTier, releaseDate: string | null): Opportunity {
+export function buildOpportunity(e: PageEvaluation, exposure: PartnerExposure, tier: PartnerTier): Opportunity {
   const rows = allRows(exposure);
   const step = nextStepOf(e, tier);
   const name = e.title ?? pathOf(e.url);
@@ -305,7 +305,8 @@ export function buildOpportunity(e: PageEvaluation, exposure: PartnerExposure, t
     measurement: {
       baseline: `${hist.impressions ?? "?"} impressions in ${windowText(hist)} (${hist.impressionsPerDay ?? "?"} per observed day) versus ${rec.impressions ?? "?"} in ${windowText(rec)}.`,
       metric: "Impressions and clicks for this exact URL in equivalent finalised Search Console windows; Google crawl and coverage state recorded separately.",
-      firstReviewAfter: e.protection.eligibleAfter ?? (releaseDate ? addDays(releaseDate, 14) : null),
+      // Only an existing observation window has an end date. A page that is free to edit has no review date until a change ships and Google recrawls it.
+      firstReviewAfter: e.protection.eligibleAfter ?? null,
       clockStart: "The first observed Google recrawl after the change is released, never the deployment date.",
     },
     status: step.status,
@@ -338,7 +339,6 @@ export function runDirector(inputs: DirectorInputs): DirectorReport {
   const { google, affiliate, guardian } = inputs;
   const generatedAt = inputs.now.toISOString();
   const bySlug = new Map(affiliate.partners.map((p) => [p.slug, p]));
-  const releaseDate = inputs.production?.createdAt ? inputs.production.createdAt.slice(0, 10) : null;
   const size = inputs.shortlistSize ?? 5;
   const floor = google.config.minHistoricalImpressions;
 
@@ -367,7 +367,7 @@ export function runDirector(inputs: DirectorInputs): DirectorReport {
     chosen.push(item);
     for (const slug of item.e.softwareSlugs) ownerOfProduct.set(slug, item.e.url);
   }
-  const shortlist = chosen.map(({ e, tier }) => buildOpportunity(e, partnerExposureFor(e, bySlug), tier, releaseDate));
+  const shortlist = chosen.map(({ e, tier }) => buildOpportunity(e, partnerExposureFor(e, bySlug), tier));
 
   const guardianBlocked = guardian ? guardian.verdict !== "RELEASE_ALLOWED" : true;
   if (guardian) {

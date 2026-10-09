@@ -175,16 +175,16 @@ describe("buildOpportunity: one recommended step per page state", () => {
   const rowsFor = (url: string, w = world) => partnerExposureFor(evaluation(url, w), new Map(w.affiliate.partners.map((p) => [p.slug, p])));
 
   it("routes an editable page with missing evidence to read-only evidence collection", () => {
-    const opp = buildOpportunity(evaluation(ALPHA), rowsFor(ALPHA), 0, "2026-10-08");
+    const opp = buildOpportunity(evaluation(ALPHA), rowsFor(ALPHA), 0);
     expect(opp.status).toBe("NEEDS_DATA");
     expect(opp.recommendedAction).toMatchObject({ kind: "COLLECT_EVIDENCE", handoffSkill: "miloosh-revenue-recovery-finder" });
     expect(opp.ownerDecision.required).toBe(false);
-    expect(opp.measurement.firstReviewAfter).toBe("2026-10-22");
+    expect(opp.measurement.firstReviewAfter).toBeNull(); // no change is proposed, so no review clock can be set
   });
 
   it("routes a protected page to the owner and states that only measurement is permitted", () => {
     const w = makeWorld({ signals: [signal({ urls: [ALPHA] })] });
-    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0, null);
+    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0);
     expect(opp.status).toBe("OWNER_DECISION");
     expect(opp.recommendedAction.summary).toMatch(/Do not edit/);
     expect(opp.ownerDecision).toMatchObject({ required: true });
@@ -193,13 +193,13 @@ describe("buildOpportunity: one recommended step per page state", () => {
 
   it("asks the owner to close a MEASURING experiment record whose declared window has ended", () => {
     const w = makeWorld({ signals: [signal({ urls: [ALPHA], needsClosure: true, source: "measuring-receipts" })] });
-    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0, null);
+    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0);
     expect(opp.recommendedAction.summary).toMatch(/still MEASURING although its declared window has ended/);
   });
 
   it("makes an observation-window page WAITING until the window ends", () => {
     const w = makeWorld({ signals: [signal({ urls: [ALPHA], kind: "OBSERVATION_WINDOW", source: "release-observation", until: "2026-10-30" })] });
-    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0, null);
+    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0);
     expect(opp.status).toBe("WAITING");
     expect(opp.protection.eligibleAfter).toBe("2026-10-30");
     expect(opp.measurement.firstReviewAfter).toBe("2026-10-30");
@@ -208,7 +208,7 @@ describe("buildOpportunity: one recommended step per page state", () => {
 
   it("treats another worktree's unfinished work as an owner decision", () => {
     const w = makeWorld({ signals: [signal({ urls: [ALPHA], kind: "IN_FLIGHT", source: "in-flight-work" })] });
-    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0, null);
+    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0);
     expect(opp.status).toBe("OWNER_DECISION");
     expect(opp.recommendedAction.summary).toMatch(/Unfinished work/);
   });
@@ -216,19 +216,19 @@ describe("buildOpportunity: one recommended step per page state", () => {
   it("hands over only a page whose every gate passed", () => {
     const urls = [ALPHA, BETA, GAMMA, AB, BG];
     const w = makeWorld({ google: { extras: new Map(urls.map((u) => [u, fullExtras(u)])), indexation: makeIndexation(urls) } });
-    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0, null);
+    const opp = buildOpportunity(evaluation(ALPHA, w), rowsFor(ALPHA, w), 0);
     expect(opp.status).toBe("READY");
     expect(opp.recommendedAction).toMatchObject({ kind: "HANDOFF_TO_PAGE_UPGRADER", handoffSkill: "miloosh-money-page-upgrader" });
   });
 
   it("says plainly when a page has no active partner and is worth visibility only", () => {
-    const opp = buildOpportunity(evaluation(BETA), { own: [], viaOtherCtas: [] }, 2, null);
+    const opp = buildOpportunity(evaluation(BETA), { own: [], viaOtherCtas: [] }, 2);
     expect(opp.affiliate).toMatchObject({ relationship: "NO_ACTIVE_PARTNER", partnerSlugs: [] });
     expect(opp.commercial.opportunity).toMatch(/visibility and decision usefulness only/);
   });
 
   it("does not call a click payable while a payout rail is unverified", () => {
-    const opp = buildOpportunity(evaluation(GAMMA), rowsFor(GAMMA), 1, null);
+    const opp = buildOpportunity(evaluation(GAMMA), rowsFor(GAMMA), 1);
     expect(opp.commercial.opportunity).toMatch(/cannot yet be shown to end in a payable commission/);
     expect(opp.affiliate.payoutReadiness).toBe("NONE_VERIFIED");
   });
@@ -273,7 +273,7 @@ describe("a partner shown as another option is a call to action on the page", ()
 
   it("keeps a page whose only partner is on an unverified rail out of the verified-revenue class", () => {
     const w = world();
-    const delta = buildOpportunity(w.google.candidates.find((c) => c.url === U("/software/delta"))!, partnerExposureFor({ softwareSlugs: ["delta"], otherCtaSlugs: ["gamma"] }, new Map(w.affiliate.partners.map((p) => [p.slug, p]))), 1, null);
+    const delta = buildOpportunity(w.google.candidates.find((c) => c.url === U("/software/delta"))!, partnerExposureFor({ softwareSlugs: ["delta"], otherCtaSlugs: ["gamma"] }, new Map(w.affiliate.partners.map((p) => [p.slug, p]))), 1);
     expect(delta.commercial.opportunity).toMatch(/no payout rail is verified/);
     expect(delta.commercial.opportunity).toMatch(/cannot yet be shown to end in a payable commission/);
     expect(delta.affiliate.payoutReadiness).toBe("NONE_VERIFIED");
