@@ -12,7 +12,7 @@ import { join } from "node:path";
  * Same fs-read pattern as lib/social/fonts.ts's loadInterFonts().
  */
 
-const LOGO_ASPECT_RATIO = 399 / 356; // public/logo-icon.png's real pixel dimensions
+const LOGO_ASPECT_RATIO = 1; // approved public/logo-icon.png is square (800 x 800)
 
 let cached: Promise<string> | null = null;
 
@@ -27,4 +27,22 @@ export function loadCanonicalLogoDataUri(): Promise<string> {
 
 export function logoWidthForHeight(height: number): number {
   return Math.round(height * LOGO_ASPECT_RATIO);
+}
+
+// Warm premium web and OG artwork use the exact reviewed wordmark rather
+// than redrawing it with a synthetic font.
+const WORDMARK_ASPECT_RATIO = 212 / 43;
+let wordmarkCached: Promise<string> | null = null;
+export function loadCanonicalWordmarkDataUri(): Promise<string> {
+  if (!wordmarkCached) {
+    wordmarkCached = readFile(join(process.cwd(), "public", "miloosh-wordmark.png"))
+      .then((buffer) => `data:image/png;base64,${buffer.toString("base64")}`);
+  }
+  return wordmarkCached;
+}
+export function wordmarkWidthForHeight(height: number): number {
+  return Math.round(height * WORDMARK_ASPECT_RATIO);
+}
+export function loadCanonicalAvatarDataUri(): Promise<string> {
+  return loadCanonicalLogoDataUri();
 }

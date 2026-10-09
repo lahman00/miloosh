@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { BRAND_FONT_FAMILY } from "@/lib/brand";
 
 /**
  * 2026-08-18 brand forensics — every ImageResponse in the app (OG images,
@@ -31,4 +32,25 @@ export function loadInterFonts(): Promise<OgFont[]> {
     ]);
   }
   return cached;
+}
+
+// The restored warm social artwork uses Manrope, while the existing social
+// publishing service retains Inter until its own separate editorial review.
+let brandFontsCached: Promise<OgFont[]> | null = null;
+function loadBrandWeight(file: string, weight: 400 | 600 | 700 | 800): Promise<OgFont> {
+  return readFile(join(process.cwd(), "assets", "fonts", file)).then((buffer) => ({
+    name: BRAND_FONT_FAMILY,
+    data: buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength),
+    weight,
+    style: "normal" as const,
+  }));
+}
+export function loadBrandFonts(): Promise<OgFont[]> {
+  if (!brandFontsCached) brandFontsCached = Promise.all([
+    loadBrandWeight("Manrope-Regular.ttf", 400),
+    loadBrandWeight("Manrope-SemiBold.ttf", 600),
+    loadBrandWeight("Manrope-Bold.ttf", 700),
+    loadBrandWeight("Manrope-ExtraBold.ttf", 800),
+  ]);
+  return brandFontsCached;
 }

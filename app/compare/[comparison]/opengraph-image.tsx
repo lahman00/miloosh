@@ -1,20 +1,9 @@
 import { ImageResponse } from "next/og";
 import { getComparisonBySlug } from "@/lib/comparison";
 import { getPublishedComparisonSlugs } from "@/data/comparisons";
-import { SITE_NAME, SITE_THEME_COLOR } from "@/lib/site";
-import { loadInterFonts } from "@/lib/social/fonts";
-
-/**
- * 2026-08-18 — LinkedIn Company Page visual audit found every Miloosh
- * link (software, compare, category — all of them) sharing the single
- * static root app/opengraph-image.tsx, so every link preview on every
- * channel looked identical ("the same black Miloosh card"). This is the
- * fix for the /compare route specifically: a real "X vs Y" split layout
- * driven by the actual two products being compared, not a generic
- * placeholder. Deliberately NOT edge runtime — getComparisonBySlug reads
- * the software/comparison data via fs, same as the page itself, so this
- * needs the Node runtime the page already implicitly uses.
- */
+import { BRAND_COLORS } from "@/lib/brand";
+import { loadBrandFonts } from "@/lib/social/fonts";
+import { loadCanonicalWordmarkDataUri, wordmarkWidthForHeight } from "@/lib/social/logo";
 
 export const alt = "Software comparison";
 export const size = { width: 1200, height: 630 };
@@ -24,79 +13,41 @@ export function generateStaticParams() {
   return getPublishedComparisonSlugs().map((comparison) => ({ comparison }));
 }
 
-// Matches app/globals.css's --color-accent — the site's real accent token, not an arbitrary blue.
-const ACCENT = "#3458a8";
-
 export default async function Image({ params }: { params: Promise<{ comparison: string }> }) {
   const { comparison } = await params;
   const data = getComparisonBySlug(comparison);
-
   const nameA = data?.softwareA.name ?? "Option A";
   const nameB = data?.softwareB.name ?? "Option B";
-  const catA = data ? data.softwareA.category : "";
-  const catB = data ? data.softwareB.category : "";
+  const catA = data?.softwareA.category ?? "";
+  const catB = data?.softwareB.category ?? "";
+  const logoDataUri = await loadCanonicalWordmarkDataUri();
+  const logoHeight = 38;
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          background: SITE_THEME_COLOR,
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "40px 56px 0" }}>
-          <div style={{ display: "flex", fontSize: 28, fontWeight: 800, color: "white", letterSpacing: -0.5 }}>{SITE_NAME}</div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 18,
-              fontWeight: 600,
-              color: ACCENT,
-              border: `2px solid ${ACCENT}`,
-              borderRadius: 999,
-              padding: "6px 16px",
-            }}
-          >
-            COMPARISON
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 56, background: BRAND_COLORS.canvas, color: BRAND_COLORS.ink }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <img src={logoDataUri} width={wordmarkWidthForHeight(logoHeight)} height={logoHeight} alt="" />
+          <div style={{ display: "flex", fontSize: 18, fontWeight: 700, background: BRAND_COLORS.citrine, borderRadius: 999, padding: "8px 18px" }}>COMPARISON</div>
+        </div>
+
+        <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", gap: 28 }}>
+          <div style={{ display: "flex", flex: 1, minHeight: 230, borderRadius: 24, background: BRAND_COLORS.stage, padding: 32, flexDirection: "column", justifyContent: "center", alignItems: "flex-end", textAlign: "right", gap: 10 }}>
+            <div style={{ display: "flex", fontSize: 52, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>{nameA}</div>
+            {catA ? <div style={{ display: "flex", fontSize: 21, color: BRAND_COLORS.muted }}>{catA}</div> : null}
+          </div>
+          <div style={{ display: "flex", width: 78, height: 78, borderRadius: 999, background: BRAND_COLORS.citrine, alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <div style={{ display: "flex", fontSize: 23, fontWeight: 800 }}>VS</div>
+          </div>
+          <div style={{ display: "flex", flex: 1, minHeight: 230, borderRadius: 24, background: BRAND_COLORS.surfaceSoft, padding: 32, flexDirection: "column", justifyContent: "center", alignItems: "flex-start", textAlign: "left", gap: 10 }}>
+            <div style={{ display: "flex", fontSize: 52, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>{nameB}</div>
+            {catB ? <div style={{ display: "flex", fontSize: 21, color: BRAND_COLORS.muted }}>{catB}</div> : null}
           </div>
         </div>
 
-        <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", padding: "0 56px" }}>
-          <div style={{ display: "flex", flex: 1, flexDirection: "column", alignItems: "flex-end", textAlign: "right", gap: 8 }}>
-            <div style={{ display: "flex", fontSize: 56, fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: -1.5 }}>{nameA}</div>
-            {catA ? <div style={{ display: "flex", fontSize: 22, color: "#a1a1aa" }}>{catA}</div> : null}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              width: 88,
-              height: 88,
-              borderRadius: 999,
-              border: `3px solid ${ACCENT}`,
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 40px",
-              flexShrink: 0,
-            }}
-          >
-            <div style={{ display: "flex", fontSize: 26, fontWeight: 800, color: ACCENT }}>VS</div>
-          </div>
-
-          <div style={{ display: "flex", flex: 1, flexDirection: "column", alignItems: "flex-start", textAlign: "left", gap: 8 }}>
-            <div style={{ display: "flex", fontSize: 56, fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: -1.5 }}>{nameB}</div>
-            {catB ? <div style={{ display: "flex", fontSize: 22, color: "#a1a1aa" }}>{catB}</div> : null}
-          </div>
-        </div>
-
-        <div style={{ display: "flex", justifyContent: "center", padding: "0 56px 40px" }}>
-          <div style={{ display: "flex", fontSize: 20, color: "#71717a" }}>Software research you can verify.</div>
-        </div>
+        <div style={{ display: "flex", fontSize: 21, color: BRAND_COLORS.muted, justifyContent: "center" }}>Software research you can verify.</div>
       </div>
     ),
-    { ...size, fonts: await loadInterFonts() }
+    { ...size, fonts: await loadBrandFonts() },
   );
 }
