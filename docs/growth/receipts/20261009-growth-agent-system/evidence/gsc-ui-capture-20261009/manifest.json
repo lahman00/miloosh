@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "captureId": "gsc-ui-capture-20261009",
+  "property": "sc-domain:miloosh.com",
+  "searchType": "web",
+  "filters": {},
+  "timezone": "America/Los_Angeles",
+  "capturedAt": "2026-10-08T22:25:00Z",
+  "capturedVia": "ui-table-capture",
+  "dataThrough": "2026-10-05",
+  "dataThroughRule": "Capture date in Pacific time (2026-10-08) minus 3 days, the same processing delay the repository's own date-window helper uses (scripts/agents/seo/lib/date-windows.ts, processingDelayDays=3). Search Console does not print its final-data date, so this is an assumption, not a Google statement.",
+  "tables": [
+    {
+      "id": "pages-historical",
+      "role": "historical",
+      "kind": "pages",
+      "file": "pages-historical.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 487,
+      "complete": true,
+      "zeroIfAbsentJustification": "Pages table read in full (487 of 487 rows, below the 1,000-row display limit), no filters, window finalised. A page missing from it had no impressions in the window.",
+      "propertyTotals": {
+        "clicks": 9,
+        "impressions": 25646,
+        "impressionsDisplayed": "25.6K",
+        "position": 74.4
+      }
+    },
+    {
+      "id": "pages-recent",
+      "role": "recent",
+      "kind": "pages",
+      "file": "pages-recent.csv",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "rowsReported": 6,
+      "complete": true,
+      "zeroIfAbsentJustification": "Pages table read in full (6 of 6 rows), no filters, window finalised. A page missing from it had no impressions in the window.",
+      "propertyTotals": {
+        "clicks": 1,
+        "impressions": 39,
+        "position": 21.1
+      }
+    },
+    {
+      "id": "dates-historical",
+      "role": "context",
+      "kind": "dates",
+      "file": "dates-historical.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-09-07"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 32,
+      "complete": true
+    },
+    {
+      "id": "dates-recent",
+      "role": "recent",
+      "kind": "dates",
+      "file": "dates-recent.csv",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-08"
+      },
+      "rowsReported": 31,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 1,
+        "impressions": 39,
+        "position": 21.1
+      }
+    },
+    {
+      "id": "queries-historical",
+      "role": "historical",
+      "kind": "queries",
+      "file": "queries-historical-top10.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 1000,
+      "complete": false,
+      "truncation": "Only the first 10 of the 1,000 rows the UI lists were captured (sorted by clicks, then impressions). The rows-per-page control did not respond reliably, so the rest was not read.",
+      "propertyTotals": {
+        "clicks": 9,
+        "impressionsDisplayed": "25.6K"
+      },
+      "visibility": "private"
+    },
+    {
+      "id": "queries-recent",
+      "role": "recent",
+      "kind": "queries",
+      "file": "queries-recent.csv",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "rowsReported": 2,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 1,
+        "impressions": 39
+      },
+      "visibility": "private"
+    },
+    {
+      "id": "queries-page-software-clickup",
+      "role": "historical",
+      "kind": "queries",
+      "file": "queries-page-software-clickup.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 37,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 0,
+        "impressions": 428
+      },
+      "visibility": "private",
+      "pageFilter": {
+        "mode": "contains",
+        "value": "/software/clickup"
+      }
+    },
+    {
+      "id": "queries-page-software-activecampaign",
+      "role": "historical",
+      "kind": "queries",
+      "file": "queries-page-software-activecampaign.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 28,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 0,
+        "impressions": 233
+      },
+      "visibility": "private",
+      "pageFilter": {
+        "mode": "contains",
+        "value": "/software/activecampaign"
+      }
+    },
+    {
+      "id": "queries-page-software-mulesoft",
+      "role": "historical",
+      "kind": "queries",
+      "file": "queries-page-software-mulesoft.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 51,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 0,
+        "impressions": 479
+      },
+      "visibility": "private",
+      "pageFilter": {
+        "mode": "contains",
+        "value": "/software/mulesoft"
+      }
+    },
+    {
+      "id": "queries-page-software-sprout-social",
+      "role": "historical",
+      "kind": "queries",
+      "file": "queries-page-software-sprout-social.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 33,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 0,
+        "impressions": 383
+      },
+      "visibility": "private",
+      "pageFilter": {
+        "mode": "contains",
+        "value": "/software/sprout-social"
+      }
+    },
+    {
+      "id": "queries-page-software-confluence",
+      "role": "historical",
+      "kind": "queries",
+      "file": "queries-page-software-confluence.csv",
+      "window": {
+        "start": "2026-07-23",
+        "end": "2026-08-19"
+      },
+      "firstDataDate": "2026-08-07",
+      "rowsReported": 32,
+      "complete": true,
+      "propertyTotals": {
+        "clicks": 0,
+        "impressions": 338
+      },
+      "visibility": "private",
+      "pageFilter": {
+        "mode": "contains",
+        "value": "/software/confluence"
+      }
+    }
+  ],
+  "exactPageChecks": [
+    {
+      "url": "https://miloosh.com/software/clickup",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "result": "NO_DATA",
+      "checkedAt": "2026-10-08T23:55:00Z",
+      "method": "Search Console performance report, Web, no other filter, Page contains /software/clickup: 0 clicks and 0 impressions in the window"
+    },
+    {
+      "url": "https://miloosh.com/software/activecampaign",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "result": "NO_DATA",
+      "checkedAt": "2026-10-08T23:55:00Z",
+      "method": "Search Console performance report, Web, no other filter, Page contains /software/activecampaign: 0 clicks and 0 impressions in the window"
+    },
+    {
+      "url": "https://miloosh.com/software/mulesoft",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "result": "NO_DATA",
+      "checkedAt": "2026-10-08T23:55:00Z",
+      "method": "Search Console performance report, Web, no other filter, Page contains /software/mulesoft: 0 clicks and 0 impressions in the window"
+    },
+    {
+      "url": "https://miloosh.com/software/sprout-social",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "result": "NO_DATA",
+      "checkedAt": "2026-10-08T23:55:00Z",
+      "method": "Search Console performance report, Web, no other filter, Page contains /software/sprout-social: 0 clicks and 0 impressions in the window"
+    },
+    {
+      "url": "https://miloosh.com/software/confluence",
+      "window": {
+        "start": "2026-09-08",
+        "end": "2026-10-05"
+      },
+      "result": "NO_DATA",
+      "checkedAt": "2026-10-08T23:55:00Z",
+      "method": "Search Console performance report, Web, no other filter, Page contains /software/confluence: 0 clicks and 0 impressions in the window"
+    }
+  ],
+  "notes": [
+    "Captured from the property owner's signed-in Search Console session in the Claude desktop built-in browser (Hebrew UI). Read-only: no export download, no Request Indexing, no URL live test, no sitemap action.",
+    "Tables were read from the rendered page text; each CSV reproduces the Search Console export layout. Row counts, click totals and daily sums were cross-checked against the report headers (see capture-notes.md).",
+    "dates-recent lists 2026-10-06 to 2026-10-08 as zero-impression days; those days are after dataThrough (2026-10-05) and are not final, so the importer marks them non-final rather than measured zeros.",
+    "Query tables are marked private: the repository is public and keeps query-level data outside git (see docs/growth/receipts/20260925-first-revenue/README.md). Copies live under ~/MilooshReceipts/20261009-growth-agent-system/gsc-ui-capture-20261009/.",
+    "Page-level query tables (queries-page-software-*) were read for the five pages the Director shortlisted, with the report filtered to 'Page contains /software/<slug>' for the historical window. Each table's impression total equals that page's row in pages-historical.csv, which is how the importer decides to attribute it. Search Console lists only queries it does not anonymise; the remaining impressions are not listed. They are private for the same reason as the other query tables.",
+    "Exact-page checks: the same five pages, recent window 2026-09-08..2026-10-05, the same filter, returned 0 clicks and 0 impressions. Because the filter is 'contains', it also covers the www host and any URL starting with the same path."
+  ]
+}

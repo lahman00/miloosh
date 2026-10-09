@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "kind": "page-indexing",
+  "property": "sc-domain:miloosh.com",
+  "capturedAt": "2026-10-08T22:35:00Z",
+  "reportLastUpdated": "2026-10-04",
+  "source": "Search Console UI > Indexing > Pages (Hebrew UI), read-only; sitemap filter: all known pages",
+  "indexedPages": 211,
+  "notIndexedPages": 1325,
+  "notIndexedHeadline": "1.32K",
+  "reasons": [
+    {
+      "label": "Crawled - currently not indexed",
+      "labelAsShown": "נסרק - לא נכלל באינדקס כרגע",
+      "source": "Google systems",
+      "pages": 844,
+      "validation": { "state": "FAILED", "started": "2026-09-24", "failed": "2026-10-05" },
+      "sampleLastCrawled": [
+        { "url": "https://miloosh.com/compare/mkdocs-vs-read-the-docs", "lastCrawled": "2026-10-04" },
+        { "url": "https://miloosh.com/compare/chatgpt-vs-deepl", "lastCrawled": "2026-10-04" },
+        { "url": "https://www.miloosh.com/compare/nuclino-vs-scribe", "lastCrawled": "2026-10-03" },
+        { "url": "https://miloosh.com/software/postmark", "lastCrawled": "2026-10-03" },
+        { "url": "https://www.miloosh.com/compare/postmark-vs-workos", "lastCrawled": "2026-10-03" },
+        { "url": "https://www.miloosh.com/software/postmark", "lastCrawled": "2026-10-03" },
+        { "url": "https://miloosh.com/compare/sanity-vs-wix", "lastCrawled": "2026-10-03" },
+        { "url": "https://miloosh.com/compare/document360-vs-scribe", "lastCrawled": "2026-10-03" },
+        { "url": "https://miloosh.com/compare/savvycal-vs-setmore", "lastCrawled": "2026-10-03" },
+        { "url": "https://www.miloosh.com/compare/savvycal-vs-setmore", "lastCrawled": "2026-10-03" }
+      ]
+    },
+    {
+      "label": "Alternate page with proper canonical tag",
+      "source": "Website",
+      "pages": 58,
+      "validation": { "state": "NOT_STARTED" }
+    },
+    {
+      "label": "Page with redirect",
+      "source": "Website",
+      "pages": 2,
+      "validation": { "state": "NOT_STARTED" }
+    },
+    {
+      "label": "Second 'crawled but not indexed' group (English equivalent NOT_VERIFIED)",
+      "labelAsShown": "נסרק אך לא נכלל באינדקס",
+      "source": "Google systems",
+      "pages": 421,
+      "firstDetected": "2026-08-08",
+      "validation": { "state": "NOT_STARTED" },
+      "sampleLastCrawled": "UNAVAILABLE (every sampled row shows 'not available')",
+      "sampleUrls": [
+        "https://miloosh.com/best-automation-software-for-small-business",
+        "https://miloosh.com/best-crm-for-consultants",
+        "https://miloosh.com/best-crm-for-sales-teams",
+        "https://miloosh.com/best-crm-for-startups",
+        "https://miloosh.com/best-customer-service-software-for-startups",
+        "https://miloosh.com/best-lead-tracking-for-agencies",
+        "https://miloosh.com/best-password-manager-for-businesses",
+        "https://miloosh.com/best-password-manager-for-families",
+        "https://miloosh.com/best-project-management-for-agencies",
+        "https://miloosh.com/best-project-management-software-for-small-teams"
+      ]
+    }
+  ],
+  "notes": [
+    "The report was last updated by Google on 2026-10-04, before the 2026-10-07 and 2026-10-08 production releases; it cannot show their effect.",
+    "The UI language is Hebrew; English reason names are translations. The 421-page group shows no last-crawl date for any sampled URL, which is consistent with 'discovered, not yet crawled', but the exact English reason name was not verified.",
+    "Counts come from the report header and reason table, not from an export."
+  ]
+}

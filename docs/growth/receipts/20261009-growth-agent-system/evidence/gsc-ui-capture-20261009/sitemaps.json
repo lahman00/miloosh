@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "sitemaps",
+  "property": "sc-domain:miloosh.com",
+  "capturedAt": "2026-10-08T22:25:00Z",
+  "source": "Search Console UI > Sitemaps (Hebrew UI), read-only",
+  "sitemaps": [
+    {
+      "url": "https://miloosh.com/sitemap.xml",
+      "type": "Sitemap",
+      "submitted": "2026-10-08",
+      "lastRead": "2026-10-08",
+      "status": "SUCCESS",
+      "discoveredPages": 692,
+      "discoveredVideos": 0
+    }
+  ],
+  "notes": [
+    "Dates are shown without a time of day in the UI.",
+    "692 equals the live sitemap URL count reported in 01-Command-Center/TASKS.md after the 2026-10-08 production release, so Google has read the current sitemap.",
+    "A sitemap read is not a crawl of the listed pages and not an indexing decision."
+  ]
+}

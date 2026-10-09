@@ -58,6 +58,14 @@ For each change: identify the hypothesis and baseline, edit the smallest useful 
 
 Report exactly what changed, what was tested, whether it is live, and what remains unverified. Content shipped is not traffic earned. Avoid invented "percentage complete" estimates for the business. Never promise unscheduled background work.
 
+## 9. Growth agent system (added October 9, 2026)
+This document stays the operating policy. A set of read-only agents now applies it to the live evidence and returns one ranked, explained next action; it adds no second rulebook.
+
+- **Run it:** `npm run growth:director -- --gsc-dir <Search Console capture> --base-sha <production commit>` prints a Hebrew report and writes nothing unless `--out` is given. Missing evidence is `UNAVAILABLE`, `NOT_MEASURED` or `NOT_OBSERVED`, never zero; protected, observed and in-flight pages are never offered for editing; a partner click is never reported as a conversion. Its supporting commands are `growth:page-check`, `growth:rendered-diff` and `growth:outreach-check`.
+- **Roles and skills** (in `.agents/skills`): `miloosh-growth-director` coordinates; `miloosh-google-recovery-agent`, `miloosh-affiliate-revenue-agent`, `miloosh-premium-page-agent` (a typed handoff to `miloosh-money-page-upgrader`), `miloosh-authority-distribution-agent` (drafts only) and `miloosh-release-guardian` (reports gates, never waives one). Code lives in `lib/growth-agents`, tests in `tests/growth-agents`.
+- **Canonical report and evidence:** `docs/growth/receipts/20261009-growth-agent-system/README.md`. Query-level Search Console data stays outside git.
+- **Workspace note:** the "Canonical workspace" named in the first lines of this document is `~/Desktop/Miloosh/01-Current/site`. On October 9, 2026 that folder does not exist on the owner's machine; the live checkouts are under `~/AI/1. פרוייקטים/Miloosh/01-Current/`. Prove which commit production runs (`vercel inspect miloosh.com` and the Production deployment history) instead of trusting a folder name.
+
 ## Task input template
 - Avatar and concrete pain:
 - Decision and user constraints:

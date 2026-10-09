@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "crawl-stats",
+  "property": "sc-domain:miloosh.com",
+  "capturedAt": "2026-10-08T22:40:00Z",
+  "reportLastUpdated": "2026-10-06",
+  "window": "last 90 days as shown by the UI (chart axis 2026-08-08 to 2026-10-03)",
+  "source": "Search Console UI > Settings > Crawl stats (Hebrew UI), read-only",
+  "totalCrawlRequests": 83600,
+  "totalDownloadBytes": 349000000,
+  "averageResponseTimeMs": 98,
+  "hosts": [
+    { "host": "miloosh.com", "requests": 64890, "status": "no issues detected" },
+    { "host": "www.miloosh.com", "requests": 18747, "status": "no issues detected" }
+  ],
+  "byResponse": [
+    { "response": "OK (200)", "share": "100%" },
+    { "response": "Not found (404)", "share": "<1%" },
+    { "response": "Moved permanently (301)", "share": "<1%" }
+  ],
+  "byPurpose": [
+    { "purpose": "Refresh", "share": "97%" },
+    { "purpose": "Discovery", "share": "3%" }
+  ],
+  "dailySeries": "NOT_MEASURED (chart values are not present in the page text; the export requires a file download that was not performed)",
+  "notes": [
+    "The totals are unchanged from the 2026-10-03 receipt (83.6K requests over 90 days), so the aggregate carries no information about crawling after the 2026-10-06 update.",
+    "Page-indexing samples show individual URLs last crawled on 2026-10-03 and 2026-10-04, so Googlebot was not completely idle in early October."
+  ]
+}

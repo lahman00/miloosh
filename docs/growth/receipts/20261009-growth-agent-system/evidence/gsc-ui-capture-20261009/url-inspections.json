@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "url-inspections",
+  "property": "sc-domain:miloosh.com",
+  "capturedAt": "2026-10-08T23:43:00Z",
+  "source": "Search Console UI > URL inspection (Hebrew UI), read-only: the indexed version only. Not 'Test live URL', not 'Request indexing'.",
+  "indexedVersionOnly": true,
+  "inspections": [
+    {
+      "url": "https://miloosh.com/software/activecampaign",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-09-01T16:34:01+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/activecampaign",
+      "googleCanonical": "https://miloosh.com/software/activecampaign"
+    },
+    {
+      "url": "https://miloosh.com/software/mulesoft",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-08-10T16:05:03+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/mulesoft",
+      "googleCanonical": "https://miloosh.com/software/mulesoft"
+    },
+    {
+      "url": "https://miloosh.com/software/clickup",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-08-30T21:19:43+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/clickup",
+      "googleCanonical": "https://miloosh.com/software/clickup"
+    },
+    {
+      "url": "https://miloosh.com/software/sprout-social",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-08-31T23:30:27+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/sprout-social",
+      "googleCanonical": "https://miloosh.com/software/sprout-social"
+    },
+    {
+      "url": "https://miloosh.com/software/confluence",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-08-08T02:16:41+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/confluence",
+      "googleCanonical": "https://miloosh.com/software/confluence"
+    },
+    {
+      "url": "https://miloosh.com/software/tidio",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-08-10T03:35:48+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/tidio",
+      "googleCanonical": "https://miloosh.com/software/tidio"
+    },
+    {
+      "url": "https://miloosh.com/software/segment",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-08-10T05:18:55+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/software/segment",
+      "googleCanonical": "https://miloosh.com/software/segment"
+    },
+    {
+      "url": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+      "inspectedAt": "2026-10-08T23:43:00Z",
+      "coverageState": "Crawled - currently not indexed",
+      "lastCrawl": "2026-10-07T13:51:01+03:00",
+      "crawlAllowed": true,
+      "indexingAllowed": true,
+      "pageFetch": "Successful",
+      "userCanonical": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+      "googleCanonical": "https://miloosh.com/compare/mkdocs-vs-read-the-docs"
+    }
+  ],
+  "notes": [
+    "All eight lookups were read between about 23:25Z and 23:43Z on 2026-10-08. Each shows 'URL is not on Google' with the reason 'Crawled - currently not indexed' (Hebrew: 'נסרק - לא נכלל באינדקס כרגע'), crawl and indexing allowed, page fetch successful, crawled as Googlebot Smartphone.",
+    "Last-crawl times are stored with the +03:00 offset in which the UI showed them (the browser's local time zone, assumed to be Israel Daylight Time for every date), so each date matches what the owner sees. Only the dates matter to the agents; none is within a day of a release boundary except the 2026-10-07 crawl of the canary page.",
+    "The 'Google-selected canonical' row shows the label 'Inspected URL' for every page, which is read as: Google's canonical is the URL itself.",
+    "Every inspected URL's last crawl is dated before the 2026-10-08 production release. For the canary /compare/mkdocs-vs-read-the-docs the last crawl is 2026-10-07 13:51 local, after the 2026-10-07 release(s) and before the 2026-10-08 one: see the production deployment history for the exact order. This is a sample of eight URLs, not the whole site.",
+    "The UI's 'Sitemaps' row says 'no referring sitemaps detected' for five of these URLs and 'temporary processing error' for three, although the live sitemap (read 2026-10-09, HTTP 200, 692 unique URLs, last-modified 2026-10-08 11:07:52 GMT) lists all eight. The row describes Google's indexed-version discovery data, not the current sitemap file; no sitemap defect is asserted.",
+    "Referring pages shown include the old hostname flowtemplate-delta.vercel.app for several URLs. A plain GET of https://flowtemplate-delta.vercel.app/software/clickup answers HTTP 301 to https://miloosh.com/software/clickup, so the old host redirects and is not a duplicate-content source (one URL checked)."
+  ]
+}

@@ -1,0 +1,205 @@
+[
+  {
+    "url": "https://miloosh.com/software/activecampaign",
+    "live": {
+      "state": "MEASURED",
+      "value": {
+        "status": 200,
+        "canonical": "https://miloosh.com/software/activecampaign",
+        "robotsMeta": null,
+        "xRobotsTag": null,
+        "indexable": true
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/activecampaign",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "A public GET of the page. It does not show what Google has indexed."
+      }
+    },
+    "rendered": {
+      "state": "MEASURED",
+      "value": {
+        "sponsoredLinkCount": 3,
+        "partnerSlugs": [
+          "activecampaign",
+          "getresponse"
+        ],
+        "unmatchedAnchorTexts": []
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/activecampaign",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
+      }
+    }
+  },
+  {
+    "url": "https://miloosh.com/software/mulesoft",
+    "live": {
+      "state": "MEASURED",
+      "value": {
+        "status": 200,
+        "canonical": "https://miloosh.com/software/mulesoft",
+        "robotsMeta": null,
+        "xRobotsTag": null,
+        "indexable": true
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/mulesoft",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "A public GET of the page. It does not show what Google has indexed."
+      }
+    },
+    "rendered": {
+      "state": "MEASURED",
+      "value": {
+        "sponsoredLinkCount": 0,
+        "partnerSlugs": [],
+        "unmatchedAnchorTexts": []
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/mulesoft",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
+      }
+    }
+  },
+  {
+    "url": "https://miloosh.com/software/clickup",
+    "live": {
+      "state": "MEASURED",
+      "value": {
+        "status": 200,
+        "canonical": "https://miloosh.com/software/clickup",
+        "robotsMeta": null,
+        "xRobotsTag": null,
+        "indexable": true
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/clickup",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "A public GET of the page. It does not show what Google has indexed."
+      }
+    },
+    "rendered": {
+      "state": "MEASURED",
+      "value": {
+        "sponsoredLinkCount": 1,
+        "partnerSlugs": [
+          "monday"
+        ],
+        "unmatchedAnchorTexts": []
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/clickup",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
+      }
+    }
+  },
+  {
+    "url": "https://miloosh.com/software/sprout-social",
+    "live": {
+      "state": "MEASURED",
+      "value": {
+        "status": 200,
+        "canonical": "https://miloosh.com/software/sprout-social",
+        "robotsMeta": null,
+        "xRobotsTag": null,
+        "indexable": true
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/sprout-social",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "A public GET of the page. It does not show what Google has indexed."
+      }
+    },
+    "rendered": {
+      "state": "MEASURED",
+      "value": {
+        "sponsoredLinkCount": 0,
+        "partnerSlugs": [],
+        "unmatchedAnchorTexts": []
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/sprout-social",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
+      }
+    }
+  },
+  {
+    "url": "https://miloosh.com/software/confluence",
+    "live": {
+      "state": "MEASURED",
+      "value": {
+        "status": 200,
+        "canonical": "https://miloosh.com/software/confluence",
+        "robotsMeta": null,
+        "xRobotsTag": null,
+        "indexable": true
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/confluence",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "A public GET of the page. It does not show what Google has indexed."
+      }
+    },
+    "rendered": {
+      "state": "MEASURED",
+      "value": {
+        "sponsoredLinkCount": 0,
+        "partnerSlugs": [],
+        "unmatchedAnchorTexts": []
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/software/confluence",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
+      }
+    }
+  },
+  {
+    "url": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+    "live": {
+      "state": "MEASURED",
+      "value": {
+        "status": 200,
+        "canonical": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+        "robotsMeta": null,
+        "xRobotsTag": null,
+        "indexable": true
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "A public GET of the page. It does not show what Google has indexed."
+      }
+    },
+    "rendered": {
+      "state": "MEASURED",
+      "value": {
+        "sponsoredLinkCount": 0,
+        "partnerSlugs": [],
+        "unmatchedAnchorTexts": []
+      },
+      "provenance": {
+        "source": "live-page-get",
+        "locator": "https://miloosh.com/compare/mkdocs-vs-read-the-docs",
+        "capturedAt": "2026-10-09T00:30:00.000Z",
+        "caveat": "Sponsored links found in the page HTML. The link targets are never followed or recorded."
+      }
+    }
+  }
+]
