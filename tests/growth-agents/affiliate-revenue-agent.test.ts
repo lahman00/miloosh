@@ -269,6 +269,12 @@ describe("pages that show a call to action for a partner they are not about", ()
     expect(run([partnerFacts("alpha")], { inventory }).partners[0]!.demand.viaOtherCtas).toEqual({ pagesChecked: 0, pagesWithHistoricalDemand: 0, historicalImpressions: 0 });
   });
 
+  it("does not trust the inventory to leave a page's own product out of what it shows", () => {
+    const inventory = makeInventory();
+    inventory.pages.get(U("/software/alpha"))!.otherCtaSlugs.push("alpha");
+    expect(run([partnerFacts("alpha")], { inventory }).partners[0]!.demand.viaOtherCtas).toMatchObject({ pagesChecked: 0 });
+  });
+
   it("does not know the exposure without an inventory, and says so with null instead of zero", () => {
     expect(run([partnerFacts("alpha")], { inventory: null }).partners[0]!.demand.viaOtherCtas).toBeNull();
   });

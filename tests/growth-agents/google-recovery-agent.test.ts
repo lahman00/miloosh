@@ -288,6 +288,15 @@ describe("candidate selection", () => {
     expect(small.candidates.map((c) => c.url)).not.toContain(U("/software/tiny-retired"));
   });
 
+  it("lists an unpublished page once, even when it qualifies as a candidate through the ranked-page rule", () => {
+    // 6 impressions at position 8: below the floor but ranked, so it is evaluated as a candidate and is also below the floor.
+    const hist: PageRow[] = [...HIST, [U("/software/retired-ranked"), 0, 6, 8]];
+    const triage = run({}, hist).technicalTriage.filter((t) => t.url === U("/software/retired-ranked"));
+    expect(triage).toHaveLength(1);
+    const urls = run({}, hist).technicalTriage.map((t) => t.url);
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+
   it("requires a positive measured loss", () => {
     const hist: PageRow[] = [[ALPHA, 0, 60, 70]];
     const recent: PageRow[] = [[ALPHA, 0, 3000, 70]];

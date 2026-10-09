@@ -187,7 +187,7 @@ export type GoogleRecoveryReport = {
   candidates: PageEvaluation[];
   shortlist: PageEvaluation[];
   technicalTriage: Array<{ url: string; historicalImpressions: number; reason: string }>;
-  cannibalization: { status: "NOT_MEASURED"; reason: string; howToMeasure: string };
+  cannibalization: { status: "NOT_MEASURED"; reason: string; howToMeasure: string; /** Queries tables filtered to one page that the capture holds; they describe those pages only. */ pageQueryTablesCaptured: number };
   keywordDifficulty: { status: "NOT_VERIFIED"; reason: string };
   nextAction: RecoveryNextAction;
   warnings: string[];
@@ -699,7 +699,7 @@ export function runGoogleRecoveryAgent(inputs: GoogleRecoveryInputs): GoogleReco
       candidates: [],
       shortlist: [],
       technicalTriage: [],
-      cannibalization: { status: "NOT_MEASURED", reason: "no performance capture", howToMeasure: "" },
+      cannibalization: { status: "NOT_MEASURED", reason: "no performance capture", howToMeasure: "", pageQueryTablesCaptured: 0 },
       keywordDifficulty: { status: "NOT_VERIFIED", reason: "no SERP or authority data was provided" },
       nextAction: {
         kind: "NEEDS_DATA",
@@ -724,6 +724,7 @@ export function runGoogleRecoveryAgent(inputs: GoogleRecoveryInputs): GoogleReco
   const evalInputs: EvaluationInputs = { gsc, protection: inputs.protection, inventory: inputs.inventory, indexation: inputs.indexation, extras: inputs.extras, monetization: inputs.monetization, now: inputs.now };
   const candidates: PageEvaluation[] = [];
   const technicalTriage: GoogleRecoveryReport["technicalTriage"] = [];
+  const triaged = new Set<string>();
   for (const record of historicalTable.pages.values()) {
     const kind = classifyPage(record.canonicalUrl, inputs.inventory.routes).kind;
     if (kind === "home" || kind === "legal" || kind === "other") continue;
@@ -732,12 +733,13 @@ export function runGoogleRecoveryAgent(inputs: GoogleRecoveryInputs): GoogleReco
     const evaluation = evaluatePage(record.canonicalUrl, evalInputs, config);
     candidates.push(evaluation);
     if (!evaluation.inventory.published) {
+      triaged.add(record.canonicalUrl);
       technicalTriage.push({ url: record.canonicalUrl, historicalImpressions: record.metrics.impressions, reason: "Not published by the checked-out code; verify what the live URL returns." });
     }
   }
   // Unpublished pages below the candidate floor are still worth listing: a 404 on a URL Google once showed is a technical fact.
   for (const record of historicalTable.pages.values()) {
-    if (record.metrics.impressions >= config.minHistoricalImpressions) continue;
+    if (record.metrics.impressions >= config.minHistoricalImpressions || triaged.has(record.canonicalUrl)) continue;
     if (!inputs.inventory.pages.has(record.canonicalUrl) && !inputs.inventory.sitemapPaths.has(pathOf(record.canonicalUrl))) {
       technicalTriage.push({ url: record.canonicalUrl, historicalImpressions: record.metrics.impressions, reason: "Not published by the checked-out code; verify what the live URL returns." });
     }
@@ -822,7 +824,8 @@ export function runGoogleRecoveryAgent(inputs: GoogleRecoveryInputs): GoogleReco
     technicalTriage,
     cannibalization: {
       status: "NOT_MEASURED",
-      reason: "Cannibalization needs page-by-query rows. Search Console tables are single-dimension, so a query's competing pages were not captured.",
+      pageQueryTablesCaptured: gsc.tables.filter((t) => t.kind === "queries" && t.pageFilter !== null).length,
+      reason: "Cannibalization needs, for each query, the list of this site's pages that earned impressions for it. Search Console tables are single-dimension, so a query's competing pages are not in the captured tables; a queries table filtered to one page describes that page only.",
       howToMeasure: "For each query worth testing, filter the Pages table by that exact query; two or more of this site's pages above a minimum impression share is overlap. Choose one owner page per intent; never delete, redirect or noindex a page with demand without owner approval.",
     },
     keywordDifficulty: {

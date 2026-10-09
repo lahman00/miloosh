@@ -330,6 +330,43 @@ describe("the Hebrew report says how much of the visible site is locked", () => 
   });
 });
 
+describe("demand on products with no active partner is shown for a partner-program check only", () => {
+  it("lists the largest such pages with the program's own status, and never calls them partners", () => {
+    const w = makeWorld();
+    const affiliate = { ...w.affiliate, nonPartnerDemand: [{ url: U("/software/semrush"), historicalImpressions: 1655, programStatus: "OWNER_ACTION_REQUIRED", programNote: null }, { url: U("/software/freshdesk"), historicalImpressions: 1, programStatus: "PENDING_REVIEW", programNote: null }, { url: U("/software/zzz"), historicalImpressions: 30, programStatus: null, programNote: null }, { url: U("/software/odd"), historicalImpressions: 20, programStatus: "SOMETHING_NEW", programNote: null }] };
+    const text = renderHebrewReport(direct(w), w.google, affiliate, makeGuardian());
+    const line = text.split("\n").find((l) => l.includes("אינו שותף פעיל")) ?? "";
+    expect(line).toMatch(/\/software\/semrush \(1,655 חשיפות; תוכנית: נדרשת פעולה שלך\)/);
+    expect(line).toMatch(/\/software\/freshdesk \(חשיפה אחת; תוכנית: ממתין להחלטת התוכנית\)/);
+    expect(line).toMatch(/\/software\/zzz \(30 חשיפות; תוכנית: לא רשומה\)/);
+    expect(line).toMatch(/\/software\/odd \(20 חשיפות; תוכנית: SOMETHING_NEW\)/);
+    expect(line).toMatch(/אין לקדם אותם כשותפים/);
+  });
+
+  it("is absent when no such page has demand", () => {
+    const w = makeWorld();
+    const text = renderHebrewReport(direct(w), w.google, { ...w.affiliate, nonPartnerDemand: [] }, makeGuardian());
+    expect(text).not.toMatch(/אינו שותף פעיל/);
+  });
+});
+
+describe("cannibalization is never overstated", () => {
+  it("stays NOT_MEASURED site-wide even when queries were captured for some pages, and says how many", () => {
+    const capture = makeCapture({ hist: [[ALPHA, 0, 240, 70], [U("/"), 1, 20, 5]], recent: [[U("/"), 0, 4, 5]] });
+    addPageQueryTable(capture, { path: "/software/alpha", rows: [["alpha alternatives", 150], ["alpha vs beta", 60], ["alpha login", 30]], declaredImpressions: 240 });
+    const w = makeWorld({ google: { gsc: buildGscEvidence(capture.manifest, capture.files) } });
+    expect(w.google.cannibalization).toMatchObject({ status: "NOT_MEASURED", pageQueryTablesCaptured: 1 });
+    expect(renderHebrewReport(direct(w), w.google, w.affiliate, makeGuardian())).toMatch(/שאילתות נלכדו רק עבור דף אחד, ולכן חפיפת דפים \(cannibalization\) נשארת NOT_MEASURED באתר כולו/);
+    expect(direct(w).limitations.join(" ")).toMatch(/Queries were captured for 1 page\(s\) only, so cannibalization stays NOT_MEASURED site-wide/);
+  });
+
+  it("says no query rows were captured when none were", () => {
+    const w = makeWorld();
+    expect(w.google.cannibalization.pageQueryTablesCaptured).toBe(0);
+    expect(renderHebrewReport(direct(w), w.google, w.affiliate, makeGuardian())).toMatch(/לא נלכדו שורות של שאילתה לפי דף/);
+  });
+});
+
 describe("what is still open is said on each shortlist line", () => {
   const lineFor = (w: ReturnType<typeof makeWorld>, path: string) => renderHebrewReport(direct(w), w.google, w.affiliate, makeGuardian()).split("\n").find((l) => l.includes(`${path} —`)) ?? "";
 

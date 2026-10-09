@@ -589,7 +589,9 @@ export function runDirector(inputs: DirectorInputs): DirectorReport {
     limitations: [
       captureLimitation(google.windows.capturedVia),
       "Search Console reports do not show a final-data date; the three-day finalisation rule is an assumption shared with the repository's own helper.",
-      "Page-by-query rows were not captured, so cannibalization is NOT_MEASURED; no keyword difficulty or Domain Rating was available, so no low-competition claim is made.",
+      google.cannibalization.pageQueryTablesCaptured > 0
+        ? `Queries were captured for ${google.cannibalization.pageQueryTablesCaptured} page(s) only, so cannibalization stays NOT_MEASURED site-wide; no keyword difficulty or Domain Rating was available, so no low-competition claim is made.`
+        : "Page-by-query rows were not captured, so cannibalization is NOT_MEASURED; no keyword difficulty or Domain Rating was available, so no low-competition claim is made.",
       "Conversions, commissions and received payouts have no data source in this repository and are NOT_MEASURED.",
       ...(valueOf(affiliate.funnel) ? [] : ["The first-party funnel could not be read in this run, so human sessions and qualified partner clicks are UNAVAILABLE, not zero."]),
     ],

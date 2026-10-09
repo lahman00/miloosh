@@ -54,6 +54,13 @@ print a final-data date, so this is an assumption, not a Google statement.
   Search Console does not list anonymised queries, so the rest are not in the rows.
 - **Exact-page checks:** the same five pages, recent window, the same filter: 0 clicks
   and 0 impressions each.
+- **Cannibalization probes (partial):** for the leading query of each of the five pages,
+  the report filtered to that exact query (historical window, page breakdown) listed
+  exactly one Miloosh page, the page itself: "clickup alternatives" (123 impressions)
+  and "activecampaign alternatives" (80), "mulesoft vs wso2" (44) and "mulesoft
+  alternatives" (19) and "sprout social alternatives" (88) and "confluence alternatives"
+  (98). So no overlap was measured for those six queries. This is six probes, not a
+  site-wide measurement: cannibalization stays `NOT_MEASURED` as a general statement.
 
 ## Indexation and crawl evidence
 
@@ -77,7 +84,7 @@ print a final-data date, so this is an assumption, not a Google statement.
 
 ## Not in this capture (NOT_MEASURED or NOT_VERIFIED)
 
-- Query-by-page rows for every page, so cannibalization is `NOT_MEASURED`.
+- Query-by-page rows for every page, so cannibalization is `NOT_MEASURED` (six probes above aside).
 - A daily crawl-stats series, and Google's crawl dates for pages outside the samples.
 - Search Console's manual-actions and security-issues pages were not read in this run.
 - Any figure for rankings, difficulty or authority beyond Search Console's own average position.
@@ -85,8 +92,9 @@ print a final-data date, so this is an assumption, not a Google statement.
 ## Interface notes for the next capture
 
 - URL parameters that work: `start_date`, `end_date` (`YYYYMMDD`), `breakdown`
-  (`query|page|date`), `metrics=CLICKS,IMPRESSIONS,CTR,POSITION`, and the page filter
-  `page=*<path>` ("contains"). A full-URL `page=` value is ignored.
+  (`query|page|date`), `metrics=CLICKS,IMPRESSIONS,CTR,POSITION`, the page filter
+  `page=*<path>` ("contains"), and the exact-query filter `query=!<text>`. A full-URL
+  `page=` value is ignored.
 - The rows-per-page control is unreliable and text read right after a change can be
   stale. Open the listbox through its reference and choose the 250 option, or paginate.
 - When the page-text reader returns the cached main view, read `document.body.innerText`.

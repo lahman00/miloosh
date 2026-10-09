@@ -72,6 +72,16 @@ const VERDICT_HE: Record<string, string> = {
   NOT_VERIFIED: "לא ניתן לאמת, שער אחד לפחות לא הורץ",
 };
 
+/** Ledger statuses a product without an active partner can carry, in plain words. An unknown status is shown as it is. */
+const PROGRAM_STATUS_HE: Record<string, string> = {
+  OWNER_ACTION_REQUIRED: "נדרשת פעולה שלך",
+  PENDING_REVIEW: "ממתין להחלטת התוכנית",
+  PROGRAM_NOT_VERIFIED: "התוכנית לא אומתה",
+  NO_REAL_PROGRAM_FOUND: "לא נמצאה תוכנית",
+  REJECTED: "נדחה",
+  ACTIVE: "פעיל",
+};
+
 const OPEN_BLOCKER_HE: Record<string, string> = {
   LIVE_TECHNICAL_NOT_CHECKED: "תגובת הדף החי לא נבדקה",
   LIVE_TECHNICAL_DEFECT: "יש פגם טכני בדף החי",
@@ -299,6 +309,10 @@ export function renderHebrewReport(report: DirectorReport, google: GoogleRecover
     const c = affiliate.commercialPaths;
     lines.push(`- מתוך ${num(c.comparisonsTotal)} השוואות באתר: ${num(c.comparisonsWithActivePartnerOnOneSide)} עם שותף פעיל בצד אחד, ${num(c.comparisonsWithActivePartnerOnBothSides)} בשני הצדדים; ${num(c.monetizedComparisonsInSitemap)} מהן נמצאות ב-sitemap לפי הקוד.`);
   }
+  if (affiliate.nonPartnerDemand.length > 0) {
+    const shown = affiliate.nonPartnerDemand.slice(0, 5).map((row) => `${pathOf(row.url)} (${he.impressions(row.historicalImpressions)}; תוכנית: ${row.programStatus ? (PROGRAM_STATUS_HE[row.programStatus] ?? row.programStatus) : "לא רשומה"})`);
+    lines.push(`- ביקוש היסטורי בדפים שהמוצר שלהם אינו שותף פעיל (החמישה הגדולים, לבדיקת תוכנית שותפים בלבד; אין לקדם אותם כשותפים): ${shown.join(", ")}.`);
+  }
   lines.push("- המרות, עמלות מאושרות ותשלומים שהתקבלו: NOT_MEASURED. אין מקור נתונים כזה בריפו, והם לא נספרים כאפס.");
   lines.push(`- משפך האתר (סשנים אנושיים וקליקים מוסמכים): ${valueOf(affiliate.funnel) ? "נקרא" : "UNAVAILABLE בריצה הזו — לא נקרא ולא הוחלף באפס"}.`);
   lines.push("");
@@ -337,6 +351,10 @@ export function renderHebrewReport(report: DirectorReport, google: GoogleRecover
   lines.push("## מגבלות");
   lines.push(`- ${google.windows.capturedVia ? CAPTURE_HE[google.windows.capturedVia] : "לא נקרא שום נתון מ-Search Console בריצה הזו."}`);
   lines.push("- Search Console לא מציג תאריך נתונים סופי. כלל שלושת הימים הוא הנחה שמשותפת לעוזר התאריכים של הריפו.");
-  lines.push("- לא נלכדו שורות של שאילתה לפי דף, ולכן חפיפת דפים (cannibalization) היא NOT_MEASURED. אין נתון על קושי מילת מפתח או Domain Rating, ולכן לא נטען שום דבר על תחרות נמוכה.");
+  lines.push(
+    google.cannibalization.pageQueryTablesCaptured > 0
+      ? `- שאילתות נלכדו רק עבור ${he.pages(google.cannibalization.pageQueryTablesCaptured)}, ולכן חפיפת דפים (cannibalization) נשארת NOT_MEASURED באתר כולו. אין נתון על קושי מילת מפתח או Domain Rating, ולכן לא נטען שום דבר על תחרות נמוכה.`
+      : "- לא נלכדו שורות של שאילתה לפי דף, ולכן חפיפת דפים (cannibalization) היא NOT_MEASURED. אין נתון על קושי מילת מפתח או Domain Rating, ולכן לא נטען שום דבר על תחרות נמוכה.",
+  );
   return `${lines.join("\n")}\n`;
 }
