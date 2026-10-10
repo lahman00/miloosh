@@ -20,6 +20,16 @@ describe("LinkedIn production readiness gates", () => {
     expect(prepared.imageUrl).toContain(`${SITE_URL}/api/social/card?size=linkedin&kind=research`);
     expect(prepared.altText).toContain("Miloosh editorial card");
     expect(original.channels.linkedin?.imageUrl).toBeNull();
+    expect(new URL(prepared.imageUrl!).searchParams.get("v")).toBe("20261011-warm-v2");
+  });
+
+  it("updates an already queued legacy social-card URL before publishing", () => {
+    const original = entry("Asana vs Basecamp: what actually differs? Compare sources and workflow fit before choosing software.");
+    original.channels.linkedin!.imageUrl = "https://miloosh.com/api/social/card?size=linkedin&kind=comparison&headline=Asana%20vs%20Basecamp";
+    original.channels.linkedin!.altText = "Asana and Basecamp comparison";
+    const prepared = prepareLinkedInVariant(original)!;
+    expect(new URL(prepared.imageUrl!).searchParams.get("v")).toBe("20261011-warm-v2");
+    expect(original.channels.linkedin!.imageUrl).not.toContain("v=");
   });
 
   it("blocks malformed, internal, placeholder, spammy, and personal-profile-style copy before Buffer", () => {

@@ -4,6 +4,7 @@ import { ADAPTERS } from "@/lib/social/channels/registry";
 import type { SocialAdapter } from "@/lib/social/channels/types";
 import { publishWithRetry } from "@/lib/social/retry";
 import { buildUtmUrl } from "@/lib/social/utm";
+import { versionSocialCardUrl } from "@/lib/social/card-model";
 import type { Channel, ChannelVariant, ProviderPublishState, PublishResult, SocialQueueEntry } from "@/lib/social/types";
 import { reconcileBufferLinkedInPost } from "@/lib/social/channels/linkedin";
 import { linkedinPublishIssues, prepareLinkedInVariant } from "@/lib/social/linkedin-readiness";
@@ -275,7 +276,14 @@ export async function publishOneEntry(
     // stable, and already the resolved Miloosh destination (never the
     // raw affiliate URL — content-engine.ts resolves commercial-pillar
     // links to the Miloosh page, not the vendor, before this ever runs).
-    const taggedVariant: ChannelVariant = variant.link ? { ...variant, link: buildUtmUrl(variant.link, channel, entry.campaign, entry.id) } : variant;
+    // Stored queue media can predate the approved warm design. Cache-bust
+    // only Miloosh's canonical card endpoint at send time, including old
+    // SCHEDULED entries. Never rewrite a third-party image URL.
+    const taggedVariant: ChannelVariant = {
+      ...variant,
+      link: variant.link ? buildUtmUrl(variant.link, channel, entry.campaign, entry.id) : variant.link,
+      imageUrl: versionSocialCardUrl(variant.imageUrl),
+    };
     let result: PublishResult;
     try {
       result = await publishWithRetry(() => adapter.publish(taggedVariant, { dryRun, entryId: entry.id, scheduledAt: variant.scheduledFor ?? entry.scheduledFor }));

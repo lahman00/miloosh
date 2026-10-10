@@ -225,5 +225,6 @@ describe("Facebook media eligibility — every card-eligible pillar gets a real 
     const params = new URL(url!).searchParams;
     expect(params.get("headline")!.length).toBe(140);
     expect(params.get("sub")!.length).toBe(220);
+    expect(params.get("v")).toBe("20261011-warm-v2");
   });
 });

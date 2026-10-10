@@ -315,6 +315,16 @@ describe("publishOneEntry — UTM tagging is wired into the real publish path", 
     expect(url.searchParams.get("utm_content")).toBe("utm-entry-1"); // stable identifier — the queue entry's own id
   });
 
+  it("updates an already-scheduled legacy social image before Facebook publishes it", async () => {
+    const received: ChannelVariant[] = [];
+    const oldImage = "https://miloosh.com/api/social/card?size=facebook&kind=comparison&headline=Asana%20vs%20Basecamp";
+    const entry = fixtureEntry({ facebook: { ...blankVariant, imageUrl: oldImage } });
+    await publishOneEntry(entry, true, { facebook: capturingAdapter("facebook", received) } as Record<Channel, SocialAdapter>);
+    expect(received).toHaveLength(1);
+    expect(new URL(received[0]!.imageUrl!).searchParams.get("v")).toBe("20261011-warm-v2");
+    expect(entry.channels.facebook?.imageUrl).toBe(oldImage);
+  });
+
   it("defaults utm_campaign to organic when the entry has no campaign set", async () => {
     const received: ChannelVariant[] = [];
     const entry = { ...fixtureEntry({ facebook: { ...blankVariant, link: "https://miloosh.com/software/notion" } }), campaign: null };

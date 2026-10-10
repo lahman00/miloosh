@@ -1,53 +1,32 @@
 import { ImageResponse } from "next/og";
-import { SITE_THEME_COLOR } from "@/lib/site";
-import { loadInterFonts } from "@/lib/social/fonts";
+import { BRAND_COLORS, BRAND_FONT_FAMILY } from "@/lib/brand";
+import { loadBrandFonts } from "@/lib/social/fonts";
 
 /**
- * 2026-08-18 — LinkedIn Company Page banner, built once and uploaded
- * manually (not part of the automated OG/card pipeline — LinkedIn has no
- * upload API for this admins actually use here). 4200x700 is LinkedIn's
- * current documented upload size for company page cover images (verified
- * via search, not assumed); the live page renders it at ~1128x191, and
- * mobile shows a narrower horizontal slice with the page logo overlapping
- * the bottom-left ~30% width. Headline kept short, single line, centered
- * in the top half, well clear of both danger zones — see
- * MILOOSH_SOCIAL_BRAND_STANDARD.md for the full brand tokens this reuses.
- *
- * Temporary route — delete once the banner is uploaded and verified live.
+ * LinkedIn company-page cover art, matching the approved warm Miloosh brand.
+ * Keep the headline clear of the profile-photo overlay and the mobile crop.
+ * This is a media route, not an automatic LinkedIn cover upload.
  */
-
 const WIDTH = 4200;
 const HEIGHT = 700;
 
 export async function GET() {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          paddingTop: 130,
-          background: SITE_THEME_COLOR,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: 152,
-            fontWeight: 800,
-            color: "white",
-            letterSpacing: -4,
-            lineHeight: 1,
-          }}
-        >
-          Software research you can verify.
-        </div>
-      </div>
-    ),
-    { width: WIDTH, height: HEIGHT, fonts: await loadInterFonts() }
+    <div style={{
+      width: "100%", height: "100%", display: "flex",
+      flexDirection: "column", alignItems: "center", justifyContent: "center",
+      background: BRAND_COLORS.canvas, fontFamily: BRAND_FONT_FAMILY,
+      gap: 52,
+    }}>
+      <div style={{
+        display: "flex", color: BRAND_COLORS.ink, fontSize: 147,
+        fontWeight: 800, letterSpacing: -5, lineHeight: 1.06,
+      }}>Software research you can verify.</div>
+      <div style={{
+        display: "flex", width: 280, height: 21,
+        borderRadius: 999, background: BRAND_COLORS.citrine,
+      }} />
+    </div>,
+    { width: WIDTH, height: HEIGHT, fonts: await loadBrandFonts() },
   );
 }

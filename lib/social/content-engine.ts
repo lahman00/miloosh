@@ -5,6 +5,7 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldShowAffiliateDisclosure } from "@/lib/affiliate";
 import { formatIsoDate } from "@/lib/date";
 import { SITE_URL } from "@/lib/site";
+import { SOCIAL_CARD_VERSION } from "@/lib/social/card-model";
 import { getSocialStrategy } from "@/lib/social/strategy";
 import {
   BUYER_EDUCATION_CONCEPTS,
@@ -395,6 +396,7 @@ export function buildCardImageUrlFor(
     kind,
     headline: headline.slice(0, 140),
     sub: body.slice(0, 220),
+    v: SOCIAL_CARD_VERSION,
   });
   return `${SITE_URL}/api/social/card?${params.toString()}`;
 }

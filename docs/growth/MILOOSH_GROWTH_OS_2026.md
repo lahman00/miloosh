@@ -77,6 +77,10 @@ This document stays the operating policy. A set of read-only agents now applies 
 - **Release:** require clean source commit, successful complete npm audit (dev dependencies included), full tests/data/lint/typecheck/build, verified preview, production deployment ID/SHA, and post-deploy live browser and content checks. Do not bypass security gates.
 - **History, not current identity:** keep old commits/assets only as Git audit/rollback history. In documentation, agent prompts, reporting and future work, refer to the warm premium design as Miloosh's approved site. Do not resurrect earlier dark UI work as the desired default.
 
+- **Social-card brand lock (October 11, 2026):** `/api/social/card` and `/api/social/linkedin-banner` must use the actual `miloosh-wordmark.png`, Manrope and the approved light canvas/dark green/citrine palette. Never render white text on the light canvas or duplicate a tiny icon with a second fake text wordmark. Keep comparison images to two readable product names and a short decision question, not truncated vendor descriptions. Social cards are summaries, not substitutes for sourced article copy.
+- **Publishing protection:** all newly drafted and previously scheduled Miloosh card URLs must be versioned with `SOCIAL_CARD_VERSION` before the real LinkedIn/Buffer or Facebook send. Only the exact first-party card URL may be rewritten; never mutate a vendor image URL or affiliate destination. Confirm 1200x627 LinkedIn, 1200x630 Facebook and 1080x1080 square rendered pixels with actual dark ink on the warm canvas, legible wordmark and no clipping. Automated tests are in `tests/social/social-card-model.test.ts` and `tests/social/social-card-render.test.ts`. Existing published social images are not automatically replaced by a new route deployment.
+
+
 
 ## Task input template
 - Avatar and concrete pain:
