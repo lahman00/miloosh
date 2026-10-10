@@ -191,6 +191,32 @@ describe("stale or incomplete measurements are never turned into numbers", () =>
     expect(report.barriers.map((b) => b.id)).not.toContain("CURRENT_DEMAND");
   });
 
+  it("uses an exact finalized property header without inventing a daily series or summing page rows", () => {
+    const capture = makeCapture({ hist: HIST, recent: [[U("/"), 1, 13, 16], [BETA, 0, 6, 18]], zeroJustification: false });
+    capture.manifest.tables = capture.manifest.tables.filter((table) => table.kind !== "dates");
+    const recent = capture.manifest.tables.find((table) => table.id === "pages-recent")!;
+    recent.propertyTotals = { clicks: 1, impressions: 14 };
+    const report = run({ gsc: buildGscEvidence(capture.manifest, capture.files) });
+    expect(report.windows.recent!.impressions).toBe(14);
+    expect(report.windows.recent!.impressionsBasis).toBe("PROPERTY_HEADER_TOTAL");
+    expect(report.windows.recent!.pageRowImpressions).toBe(19);
+    expect(report.windows.recent!.impressionsPerObservedDay).toBe(0.5);
+    expect(report.daily).toBeNull();
+    expect(report.candidates.find((candidate) => candidate.url === ALPHA)!.recent.state).toBe("NOT_OBSERVED");
+  });
+
+  it("does not convert rounded or non-final property headers into exact impressions", () => {
+    for (const finalized of [true, false]) {
+      const capture = makeCapture({ hist: HIST, recent: RECENT, dataThrough: finalized ? "2026-10-05" : "2026-10-02" });
+      capture.manifest.tables = capture.manifest.tables.filter((table) => table.kind !== "dates");
+      const recent = capture.manifest.tables.find((table) => table.id === "pages-recent")!;
+      recent.propertyTotals = finalized ? { clicks: 0, impressionsDisplayed: "25.6K" } : { clicks: 0, impressions: 28 };
+      const report = run({ gsc: buildGscEvidence(capture.manifest, capture.files) });
+      expect(report.windows.recent!.impressions).toBeNull();
+      expect(report.windows.recent!.impressionsBasis).toBe("NOT_MEASURED");
+    }
+  });
+
   it("counts only finalised days: a window whose last days are not final has no property total", () => {
     const capture = makeCapture({ hist: HIST, recent: RECENT, dataThrough: "2026-10-02" });
     const gsc = buildGscEvidence(capture.manifest, capture.files);
