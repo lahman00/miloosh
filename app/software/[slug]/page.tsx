@@ -57,6 +57,7 @@ import {
 } from "@/lib/structured-data";
 import { describeReviewStatus, getReviewStatus } from "@/lib/review-status";
 import { isProfileTemplateV2 } from "@/lib/template-cohorts";
+import { VENDOR_STATUS_NOTES } from "@/data/seo/vendor-status-notes";
 import { READINESS_CHANGED_AFTER_BASE, isReadinessFrozen } from "@/data/seo/held-page-freeze";
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
@@ -157,6 +158,16 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-zinc-400">{generateIntro(software)}</p>
+
+          {VENDOR_STATUS_NOTES[software.slug] ? (
+            <p className="mt-4 rounded-xl border border-amber-500/30 bg-amber-500/[0.05] px-4 py-3 text-sm leading-6 text-zinc-300">
+              <strong className="text-amber-300">Not yet verified:</strong> {VENDOR_STATUS_NOTES[software.slug]!.text}{" "}
+              <a href={VENDOR_STATUS_NOTES[software.slug]!.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                {VENDOR_STATUS_NOTES[software.slug]!.sourceLabel}
+              </a>{" "}
+              (checked {formatIsoDate(VENDOR_STATUS_NOTES[software.slug]!.checkedOn)}).
+            </p>
+          ) : null}
 
           {profileV2 ? (
             <p className="mt-3 text-sm leading-6 text-zinc-500">

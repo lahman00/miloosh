@@ -14,6 +14,7 @@
     "check:external-links": "tsx scripts/maintenance/check-external-links.ts",
     "check:held-pages": "tsx scripts/maintenance/check-held-pages.ts",
     "check:live": "tsx scripts/maintenance/check-live-consistency.ts",
+    "seo:check-noindex-search": "tsx scripts/seo/check-noindex-search-data.ts",
     "seo:template-cohorts": "tsx scripts/seo/generate-template-cohorts.ts",
     "audit:growth": "tsx scripts/growth/commercial-audit.ts",
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",

@@ -62,6 +62,9 @@ export default function PricingPressureIndexPage() {
           <p className="mt-6 text-lg leading-8 text-zinc-400">
             {`Published SaaS list prices and plan availability from ${index.sampleSize} catalog products. Sources were checked between ${index.verificationWindow.earliest ?? 'an unrecorded date'} and ${index.verificationWindow.latest ?? 'an unrecorded date'}; this view was compiled on ${generatedDate}. These are not customer invoices or evidence of actual spending.`}
           </p>
+          <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-zinc-400">
+            Coverage data was updated on October 12, 2026 (more products with verified prices were added). Medians are not directly comparable with earlier versions of this page: a change in a median can come from a change in the sample, not from a change in prices. Each median below shows its sample size.
+          </p>
           <div className="mt-6 flex items-center gap-3">
             <ShareButton title="Miloosh SaaS Pricing Pressure Index 2026" url={PAGE_URL} />
           </div>
@@ -97,11 +100,11 @@ export default function PricingPressureIndexPage() {
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <Card>
             <p className="text-2xl font-semibold text-white">{formatIndexMoney(index.medianStartingPrice)}</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Median recorded USD monthly starting rate (${index.monthlyUsdSampleSize} records)`}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Median recorded USD monthly starting rate (n = ${index.monthlyUsdSampleSize} records, as of ${generatedDate})`}</p>
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{formatIndexMoney(index.medianModeledCost10Seats)}</p>
-            <p className="mt-1 text-xs text-zinc-500">{`Median arithmetic scenario for 10 licensed seats (${index.modeledTeamCosts.length} explicitly per-seat products)`}</p>
+            <p className="mt-1 text-xs text-zinc-500">{`Median arithmetic scenario for 10 licensed seats (n = ${index.modeledTeamCosts.length} explicitly per-seat products, as of ${generatedDate})`}</p>
           </Card>
           <Card>
             <p className="text-2xl font-semibold text-white">{freeTrial.pct}%</p>
