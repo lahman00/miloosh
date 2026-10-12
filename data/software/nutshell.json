@@ -4,7 +4,11 @@
   "category": "crm",
   "description": "Nutshell is an AI-powered sales CRM and marketing automation platform for small businesses, combining pipeline management, built-in email marketing, and AI call transcription.",
   "website": "https://www.nutshell.com",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Small teams and individual entrepreneurs — Nutshell reports 5,000+ companies across 50 countries since 2009 — wanting a comprehensive CRM without complex setup.",
   "features": [
     "Unlimited contact and company storage with custom fields",
@@ -17,7 +21,8 @@
     "SMS outreach and landing pages"
   ],
   "sources": [
-    "https://www.nutshell.com"
+    "https://www.nutshell.com",
+    "https://www.nutshell.com/pricing"
   ],
   "accessed_at": "2026-08-04",
   "alternatives": [
@@ -26,21 +31,64 @@
       "slug": "pipedrive",
       "description": "A sales-focused CRM built around a visual, pipeline-first workflow.",
       "best_for": "Sales teams wanting a simple, activity-based pipeline tool.",
-      "strengths": ["Visual pipeline", "Ease of use", "Sales automation"]
+      "strengths": [
+        "Visual pipeline",
+        "Ease of use",
+        "Sales automation"
+      ]
     },
     {
       "name": "Zoho CRM",
       "slug": "zoho-crm",
       "description": "An AI-powered CRM with omnichannel engagement and deep workflow automation.",
       "best_for": "Businesses of any size wanting an affordable, feature-rich CRM.",
-      "strengths": ["Zia AI assistant", "Workflow automation", "Zoho app ecosystem"]
+      "strengths": [
+        "Zia AI assistant",
+        "Workflow automation",
+        "Zoho app ecosystem"
+      ]
     },
     {
       "name": "Keap",
       "slug": "keap",
       "description": "A small business CRM and marketing automation platform with invoicing built in.",
       "best_for": "Small businesses automating follow-up, invoicing, and scheduling.",
-      "strengths": ["Marketing automation", "Built-in invoicing", "Business phone line"]
+      "strengths": [
+        "Marketing automation",
+        "Built-in invoicing",
+        "Business phone line"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$13/user/month",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_trial": {
+      "available": true,
+      "days": 14
+    },
+    "entry_paid": {
+      "amount": "13",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
+    "tiers": [
+      {
+        "name": "Foundation",
+        "amount": "13",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Shown as $13 per user per month with \"Save $6/month with annual billing\". Higher plans are listed at $25, $42, $59 and $79 per user per month. The page lists unlimited contacts and storage on all plans and says it does not require a credit card for the 14-day trial."
+      }
+    ],
+    "last_verified": "2026-10-12",
+    "official_source": "https://www.nutshell.com/pricing"
+  },
+  "cons": [
+    "The entry plan (Foundation) has a limit of 100 open leads, per its pricing page FAQ"
   ]
 }
