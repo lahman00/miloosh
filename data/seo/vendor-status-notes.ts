@@ -8,9 +8,9 @@ export type VendorStatusNote = { checkedOn: string; text: string; sourceUrl: str
 export const VENDOR_STATUS_NOTES: Readonly<Record<string, VendorStatusNote>> = {
   clari: {
     checkedOn: "2026-10-12",
-    text: "Clari's website now redirects to salesloft.com. On August 7, 2025 Clari and Salesloft announced a definitive agreement to merge; the announcement does not say the merger has closed. Pricing, features and security details below were recorded earlier and are not yet verified against the current official pages.",
-    sourceUrl: "https://www.salesloft.com/company/newsroom/clari-and-salesloft-announce-merger-agreement",
-    sourceLabel: "Official announcement",
+    text: "The official announcement published December 3, 2025 confirms that Clari and Salesloft completed their merger. Salesloft is now the company and platform brand; Clari Forecast retains its name. Pricing, features and security details below were recorded earlier and are not yet verified against the current official pages.",
+    sourceUrl: "https://www.salesloft.com/company/newsroom/clari-salesloft-merger",
+    sourceLabel: "Merger completion announcement (published December 3, 2025)",
   },
   windsurf: {
     checkedOn: "2026-10-12",

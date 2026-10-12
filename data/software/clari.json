@@ -2,7 +2,7 @@
   "name": "Clari",
   "slug": "clari",
   "category": "sales",
-  "description": "Clari is a revenue orchestration platform for enterprise sales and RevOps teams, providing AI-driven forecasting, pipeline inspection, and deal-risk signals, alongside sales engagement (Groove) and conversation intelligence (Copilot) modules.",
+  "description": "Clari, now part of Salesloft, is a revenue orchestration platform for enterprise sales and RevOps teams, providing AI-driven forecasting, pipeline inspection, and deal-risk signals, alongside sales engagement (Groove) and conversation intelligence (Copilot) modules.",
   "website": "https://www.clari.com",
   "best_for": "Enterprise revenue and sales-operations teams that want AI-driven forecasting and pipeline visibility connected to sales engagement and conversation data in one platform.",
   "features": [
@@ -35,7 +35,7 @@
   "cons": [
     "No published self-serve pricing; the pricing page contains no plan names or numbers and leads only to a contact form",
     "Positioned and priced for large/enterprise revenue teams rather than small sales teams",
-    "Clari and Salesloft completed their merger in December 2025, but their product brands and websites still expose distinct product surfaces, so buyers should verify current packaging during the ongoing integration."
+    "Salesloft is now the company and platform brand, while Clari Forecast retains its name; buyers should verify current module packaging and integration with the vendor."
   ],
   "faq": [
     {
@@ -44,7 +44,7 @@
     },
     {
       "question": "Are Clari and Salesloft the same company?",
-      "answer": "Clari and Salesloft completed their merger on December 3, 2025, forming a combined revenue AI company under CEO Steve Cox. Their product brands and websites continue to expose distinct product experiences, so buyers should verify current packaging and migration details with the vendor."
+      "answer": "Yes. An official announcement published December 3, 2025 confirms that Clari and Salesloft completed their merger. Salesloft announced on September 2, 2026 that it is the company and platform brand going forward, while Clari Forecast retains its name. Confirm current module packaging and integration with the vendor."
     },
     {
       "question": "What is Clari Copilot?",
@@ -65,7 +65,10 @@
     "https://www.clari.com/platform/forecasting/",
     "https://www.clari.com/security/",
     "https://www.clari.com/press/clari-and-salesloft-announce-agreement-to-merge/",
-    "https://www.clari.com/resources/press/"
+    "https://www.clari.com/resources/press/",
+    "https://www.salesloft.com/company/newsroom/clari-salesloft-merger",
+    "https://www.salesloft.com/company/newsroom/salesloft-unveils-unified-brand-identity",
+    "https://www.salesloft.com/clari-salesloft-merger"
   ],
   "accessed_at": "2026-09-05",
   "alternatives": [
