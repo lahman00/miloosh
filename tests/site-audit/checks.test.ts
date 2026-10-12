@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   checkAffiliateDisclosure,
   checkCanonicals,
+  checkComparisonTemplateGating,
   checkFooterConsistency,
   checkHeadings,
   checkInternalLinks,
@@ -56,6 +57,7 @@ function model(pages: PageFacts[], overrides: Partial<SiteModel> = {}): SiteMode
     explainExclusion: () => null,
     explainDeferral: () => null,
     isProfileTemplateV2: () => null,
+    isComparisonTemplateV2: () => null,
     ...overrides,
   };
 }
@@ -370,6 +372,27 @@ describe("checkProfileTemplateGating", () => {
   });
 });
 
+describe("checkComparisonTemplateGating", () => {
+  const v2Text = "Quick verdict Choose A if... Pricing at a glance Plan facts";
+  const gate = (v2: string[], other: string[]) => (path: string) => (v2.includes(path) ? true : other.includes(path) ? false : null);
+
+  it("passes when wave comparisons carry the v2 sections and others do not", () => {
+    const m = model([page("/compare/a-vs-b", { text: v2Text }), page("/compare/c-vs-d", { text: "We don't infer weaknesses" }), page("/about")], { isComparisonTemplateV2: gate(["/compare/a-vs-b"], ["/compare/c-vs-d"]) });
+    expect(checkComparisonTemplateGating(m).detail).toContain("1 wave comparisons");
+    expect(checkComparisonTemplateGating(m).status).toBe("PASS");
+  });
+
+  it("fails when a comparison outside the wave shows a v2 section", () => {
+    const m = model([page("/compare/c-vs-d", { text: v2Text })], { isComparisonTemplateV2: gate([], ["/compare/c-vs-d"]) });
+    expect(checkComparisonTemplateGating(m).items).toEqual(["/compare/c-vs-d: not in a wave but shows the quick verdict and the pricing table"]);
+  });
+
+  it("fails when a wave comparison lacks a section or keeps the generic cons disclosure", () => {
+    const m = model([page("/compare/a-vs-b", { text: "Quick verdict only" }), page("/compare/e-vs-f", { text: `${v2Text} We don't infer weaknesses` })], { isComparisonTemplateV2: gate(["/compare/a-vs-b", "/compare/e-vs-f"], []) });
+    expect(checkComparisonTemplateGating(m).items).toEqual(["/compare/a-vs-b: no pricing table", "/compare/e-vs-f: still shows the generic cons disclosure"]);
+  });
+});
+
 describe("checkHeadings", () => {
   it("fails for a page with no h1 or two", () => {
     const result = checkHeadings(model([page("/a", { h1Count: 0 }), page("/b", { h1Count: 2 }), page("/c")]));
@@ -411,6 +434,7 @@ describe("runAllChecks", () => {
       "structured-data",
       "affiliate-disclosure",
       "profile-template-gating",
+      "comparison-template-gating",
       "single-h1",
       "generic-text:faq-migration",
       "generic-text:faq-integrations",

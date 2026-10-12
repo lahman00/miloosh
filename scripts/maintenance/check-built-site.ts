@@ -10,6 +10,7 @@ import { getSoftwareIndexingQualityReasons } from "@/lib/indexing-quality";
 import { runAllChecks, unreachableComparisonSlugs, type CheckResult, type SiteModel } from "@/lib/site-audit/checks";
 import { parsePageFacts, type PageFacts } from "@/lib/site-audit/page-facts";
 import { readGeneratedSlugs, replaceGeneratedBlock } from "@/lib/site-audit/unreachable-list";
+import { isComparisonTemplateV2 } from "@/data/seo/comparison-waves";
 import { isProfileTemplateV2 } from "@/lib/template-cohorts";
 
 /**
@@ -119,6 +120,10 @@ export async function buildModel(appBuildDir: string, { root = process.cwd(), to
     isProfileTemplateV2(route) {
       const slug = /^\/software\/([a-z0-9-]+)$/.exec(route)?.[1];
       return slug ? isProfileTemplateV2(slug) : null;
+    },
+    isComparisonTemplateV2(route) {
+      const slug = /^\/compare\/([a-z0-9-]+)$/.exec(route)?.[1];
+      return slug ? isComparisonTemplateV2(slug) : null;
     },
     explainDeferral(route) {
       const slug = /^\/compare\/([a-z0-9-]+)$/.exec(route)?.[1];

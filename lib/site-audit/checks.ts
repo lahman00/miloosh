@@ -39,6 +39,8 @@ export type SiteModel = {
   explainDeferral(path: string): string | null;
   /** For a software profile path: whether it may use the v2 profile template. Null when the path is not a profile. */
   isProfileTemplateV2(path: string): boolean | null;
+  /** For a comparison path: whether it may use the v2 comparison template. Null when the path is not a comparison. */
+  isComparisonTemplateV2(path: string): boolean | null;
 };
 
 const MAX_EXAMPLES = 6;
@@ -304,6 +306,30 @@ export function checkProfileTemplateGating(model: SiteModel): CheckResult {
   return result("profile-template-gating", "The v2 profile template is on editable profiles only", failures, `${v2Pages} editable profiles use it; no held profile does.`, `${failures.length} profile(s) do not match the cohort file.`);
 }
 
+/**
+ * The v2 comparison template (quick verdict, pricing table) appears on exactly the comparisons in a rollout wave,
+ * and the generic cons disclosure is gone from them. Every other comparison must be untouched.
+ */
+export function checkComparisonTemplateGating(model: SiteModel): CheckResult {
+  const failures: string[] = [];
+  let v2Pages = 0;
+  for (const page of model.pages.values()) {
+    const v2 = model.isComparisonTemplateV2(page.path);
+    if (v2 === null) continue;
+    const hasVerdict = page.text.includes("Quick verdict");
+    const hasPricing = page.text.includes("Pricing at a glance");
+    const hasDisclosure = page.text.includes("We don't infer weaknesses");
+    if (v2) {
+      v2Pages += 1;
+      const problems = [!hasVerdict && "no quick verdict", !hasPricing && "no pricing table", hasDisclosure && "still shows the generic cons disclosure"].filter(Boolean);
+      if (problems.length > 0) failures.push(`${page.path}: ${problems.join(", ")}`);
+    } else if (hasVerdict || hasPricing) {
+      failures.push(`${page.path}: not in a wave but shows ${[hasVerdict && "the quick verdict", hasPricing && "the pricing table"].filter(Boolean).join(" and ")}`);
+    }
+  }
+  return result("comparison-template-gating", "The v2 comparison template is on wave comparisons only", failures, `${v2Pages} wave comparisons use it; no other comparison does.`, `${failures.length} comparison(s) do not match the wave list.`);
+}
+
 /** Every page has exactly one h1. */
 export function checkHeadings(model: SiteModel): CheckResult {
   const failures = [...model.pages.values()].filter((page) => page.h1Count !== 1).map((page) => `${page.path}: ${page.h1Count} h1 element(s)`);
@@ -351,6 +377,7 @@ export function runAllChecks(model: SiteModel, options: { maxGeneric?: Readonly<
     checkStructuredData(model),
     checkAffiliateDisclosure(model),
     checkProfileTemplateGating(model),
+    checkComparisonTemplateGating(model),
     checkHeadings(model),
     ...reportGenericText(model, GENERIC_PATTERNS, options.maxGeneric),
   ];
