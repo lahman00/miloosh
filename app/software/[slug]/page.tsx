@@ -57,6 +57,7 @@ import {
 } from "@/lib/structured-data";
 import { describeReviewStatus, getReviewStatus } from "@/lib/review-status";
 import { isProfileTemplateV2 } from "@/lib/template-cohorts";
+import { READINESS_CHANGED_AFTER_BASE, isReadinessFrozen } from "@/data/seo/held-page-freeze";
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
@@ -119,7 +120,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
       const comparisonSlug = getComparisonSlug(softwareA.slug, softwareB.slug);
       return (
         shouldSubmitComparisonToSitemap(comparisonSlug) &&
-        isComparisonIndexingReady(softwareA, softwareB)
+        isComparisonIndexingReady(softwareA, softwareB) &&
+        (profileV2 || !isReadinessFrozen(softwareA.slug, softwareB.slug))
       );
     });
   const alternativeGuide = getAlternativeGuide(software.slug);
@@ -293,7 +295,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
 
         {buyerChecklist ? <DecisionBuyerChecklist checklist={buyerChecklist} /> : null}
 
-        {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
+        {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} frozenSlugs={profileV2 ? undefined : READINESS_CHANGED_AFTER_BASE} /> : null}
 
         <StorePlanFit slug={software.slug} />
         <PricingSection software={software} />

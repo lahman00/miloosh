@@ -12,6 +12,7 @@
     "validate:data": "tsx scripts/validate-data.ts",
     "check:built-site": "tsx scripts/maintenance/check-built-site.ts",
     "check:external-links": "tsx scripts/maintenance/check-external-links.ts",
+    "check:held-pages": "tsx scripts/maintenance/check-held-pages.ts",
     "seo:template-cohorts": "tsx scripts/seo/generate-template-cohorts.ts",
     "audit:growth": "tsx scripts/growth/commercial-audit.ts",
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",
