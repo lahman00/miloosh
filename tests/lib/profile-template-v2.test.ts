@@ -61,7 +61,7 @@ describe("generateChoosingGuide", () => {
 
   it("v2 keeps the product-specific part and the platforms note and drops the closing advice", () => {
     const text = generateChoosingGuide(software(), { v2: true });
-    expect(text).toBe("Before switching to X, weigh it against its listed alternatives: A (Small teams); B (Large teams). Confirm it runs on the platforms you need (Web, iOS) before switching.");
+    expect(text).toBe("If you are weighing a move away from X, compare its listed alternatives: A (Small teams); B (Large teams). Confirm it runs on the platforms you need (Web, iOS) before switching.");
   });
 });
 
@@ -116,5 +116,14 @@ describe("getProductJsonLd", () => {
       expect(json, product.slug).not.toMatch(/aggregateRating|"review"|"offers"|"price"/);
     }
     expect(getProductJsonLd(software({ platforms: undefined }))).not.toHaveProperty("operatingSystem");
+  });
+});
+
+describe("generateOverview", () => {
+  it("v1 repeats the description before best-for; v2 gives only who it is for", async () => {
+    const { generateOverview } = await import("@/lib/generators");
+    const s = software();
+    expect(generateOverview(s)).toBe("X is a tool. Sales teams that want a pipeline view.");
+    expect(generateOverview(s, { v2: true })).toBe("Sales teams that want a pipeline view.");
   });
 });

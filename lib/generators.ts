@@ -69,8 +69,9 @@ export function generateIntro(software: Software): string {
 }
 
 /** A slightly richer overview combining what it is with who it's positioned for. */
-export function generateOverview(software: Software): string {
-  return `${software.description} ${software.bestFor}`;
+export function generateOverview(software: Software, { v2 = false }: { v2?: boolean } = {}): string {
+  // The page already opens with the description; the v2 overview adds only who it is for instead of repeating it.
+  return v2 ? software.bestFor : `${software.description} ${software.bestFor}`;
 }
 
 /**
@@ -126,7 +127,9 @@ export function generateChoosingGuide(software: Software, { v2 = false }: { v2?:
 
   // The v2 profile template drops the closing advice: it was the same sentence on all 354 profiles.
   const closing = v2 ? "" : " Compare each against the workflow you actually run today — integrations, customization, and the effort required to migrate your existing data usually matter more than headline features.";
-  return `Before switching to ${software.name}, weigh it against its listed alternatives: ${altSummary}.${closing}${platformsNote}`;
+  // "Before switching to X" read as a move toward X on a page about alternatives to X; v2 says which way the move goes.
+  const lead = v2 ? `If you are weighing a move away from ${software.name}, compare its listed alternatives` : `Before switching to ${software.name}, weigh it against its listed alternatives`;
+  return `${lead}: ${altSummary}.${closing}${platformsNote}`;
 }
 
 /**

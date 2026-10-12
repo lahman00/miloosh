@@ -204,7 +204,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         <section className="mt-14 grid gap-6 lg:grid-cols-[2fr_1fr]">
           <Card>
             <h2 className="text-xl font-semibold text-white">About {software.name}</h2>
-            <p className="mt-4 leading-7 text-zinc-400">{generateOverview(software)}</p>
+            <p className="mt-4 leading-7 text-zinc-400">{generateOverview(software, { v2: profileV2 })}</p>
 
             <ul className="mt-6 grid gap-2 sm:grid-cols-2">
               {software.features.map((feature) => (
