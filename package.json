@@ -11,6 +11,7 @@
     "analytics:report": "tsx scripts/analytics/report.ts",
     "validate:data": "tsx scripts/validate-data.ts",
     "check:built-site": "tsx scripts/maintenance/check-built-site.ts",
+    "check:external-links": "tsx scripts/maintenance/check-external-links.ts",
     "audit:growth": "tsx scripts/growth/commercial-audit.ts",
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",
     "growth:graph": "tsx scripts/growth/commercial-graph-engine.ts",
