@@ -40,3 +40,29 @@ export function getSoftwareFaqItems(software: Software): Array<{
 
   return items;
 }
+
+/**
+ * Questions whose answers are taken from the product's own stored data. Nothing here reads the same for every
+ * product: the migration and integrations answers of getSoftwareFaqItems() were identical across 264 profiles and
+ * said nothing specific, so the v2 profile template leaves them out instead of repeating them.
+ */
+export function getGroundedSoftwareFaqItems(software: Software): Array<{ question: string; answer: string }> {
+  const items: Array<{ question: string; answer: string }> = [];
+
+  if (software.alternatives.length > 0) {
+    items.push({
+      question: `What are the best alternatives to ${software.name}?`,
+      answer: `Based on core features and use case fit, the strongest ${software.name} alternatives are ${joinWithAnd(software.alternatives.map((alternative) => alternative.name))}.`,
+    });
+  }
+
+  if (software.platforms && software.platforms.length > 0) {
+    items.push({
+      question: `What platforms does ${software.name} run on?`,
+      answer: `${software.name} is available on ${joinWithAnd(software.platforms)}, per its official site.`,
+    });
+  }
+
+  return items;
+}
+

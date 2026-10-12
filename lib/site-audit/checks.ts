@@ -37,6 +37,8 @@ export type SiteModel = {
   explainExclusion(path: string): string | null;
   /** Why a page that nothing links to may stay indexable for now (for example, it is under protection until a date), or null. */
   explainDeferral(path: string): string | null;
+  /** For a software profile path: whether it may use the v2 profile template. Null when the path is not a profile. */
+  isProfileTemplateV2(path: string): boolean | null;
 };
 
 const MAX_EXAMPLES = 6;
@@ -275,6 +277,33 @@ export function checkAffiliateDisclosure(model: SiteModel): CheckResult {
   return result("affiliate-disclosure", "Every sponsored link has a disclosure beside it", failures, `${sponsored} sponsored link(s) all have a disclosure beside them.`, `${failures.length} page(s) have sponsored links without a disclosure beside them.`);
 }
 
+const REVIEW_LINE = /Last reviewed [A-Z][a-z]+ \d{1,2}, \d{4} against the vendor's official sources\./;
+const GENERIC_PROFILE_ANSWERS = ["Most teams start by exporting their existing", "Integration support varies by tool"];
+
+/**
+ * The v2 profile template appears on exactly the profiles the cohort file allows, and on no held profile. A held
+ * profile is under a running measurement, so a change to it is a defect even when the change is an improvement.
+ */
+export function checkProfileTemplateGating(model: SiteModel): CheckResult {
+  const failures: string[] = [];
+  let v2Pages = 0;
+  for (const page of model.pages.values()) {
+    const v2 = model.isProfileTemplateV2(page.path);
+    if (v2 === null) continue;
+    const hasReviewLine = REVIEW_LINE.test(page.text);
+    const hasProductEntity = page.jsonLd.topTypes.includes("SoftwareApplication");
+    const hasGenericAnswers = GENERIC_PROFILE_ANSWERS.some((needle) => page.text.includes(needle));
+    if (v2) {
+      v2Pages += 1;
+      const missing = [!hasReviewLine && "the review line", !hasProductEntity && "the product entity", hasGenericAnswers && "(it still has the generic FAQ answers)"].filter(Boolean);
+      if (missing.length > 0) failures.push(`${page.path}: v2 profile is missing ${missing.join(", ")}`);
+    } else if (hasReviewLine || hasProductEntity) {
+      failures.push(`${page.path}: held profile shows ${[hasReviewLine && "the review line", hasProductEntity && "the product entity"].filter(Boolean).join(" and ")}`);
+    }
+  }
+  return result("profile-template-gating", "The v2 profile template is on editable profiles only", failures, `${v2Pages} editable profiles use it; no held profile does.`, `${failures.length} profile(s) do not match the cohort file.`);
+}
+
 /** Every page has exactly one h1. */
 export function checkHeadings(model: SiteModel): CheckResult {
   const failures = [...model.pages.values()].filter((page) => page.h1Count !== 1).map((page) => `${page.path}: ${page.h1Count} h1 element(s)`);
@@ -321,6 +350,7 @@ export function runAllChecks(model: SiteModel, options: { maxGeneric?: Readonly<
     ...checkSitemapCoverage(model),
     checkStructuredData(model),
     checkAffiliateDisclosure(model),
+    checkProfileTemplateGating(model),
     checkHeadings(model),
     ...reportGenericText(model, GENERIC_PATTERNS, options.maxGeneric),
   ];

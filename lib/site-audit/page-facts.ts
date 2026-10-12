@@ -23,7 +23,8 @@ export type PageFacts = {
   robots: string | null;
   og: Record<string, string>;
   twitter: Record<string, string>;
-  jsonLd: { types: string[]; invalid: number };
+  /** `types` are all @type values found anywhere in the JSON-LD; `topTypes` only those of each block's own root object(s). */
+  jsonLd: { types: string[]; topTypes: string[]; invalid: number };
   h1Count: number;
   /** "v0.12.0 · 354 tools across 27 categories · sources last verified October 8, 2026", whitespace-normalised. */
   footerLine: string | null;
@@ -96,10 +97,17 @@ export function parsePageFacts(path: string, html: string): PageFacts {
   const titleMatch = /<title\b[^>]*>([\s\S]*?)<\/title>/i.exec(html);
 
   const types: string[] = [];
+  const topTypes: string[] = [];
   let invalid = 0;
   for (const match of html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
-      collectTypes(JSON.parse(match[1]!), types);
+      const parsed: unknown = JSON.parse(match[1]!);
+      collectTypes(parsed, types);
+      for (const root of Array.isArray(parsed) ? parsed : [parsed]) {
+        const type = root && typeof root === "object" ? (root as Record<string, unknown>)["@type"] : undefined;
+        if (typeof type === "string") topTypes.push(type);
+        else if (Array.isArray(type)) topTypes.push(...type.filter((t): t is string => typeof t === "string"));
+      }
     } catch {
       invalid += 1;
     }
@@ -132,7 +140,7 @@ export function parsePageFacts(path: string, html: string): PageFacts {
     robots,
     og,
     twitter,
-    jsonLd: { types: [...new Set(types)].sort(), invalid },
+    jsonLd: { types: [...new Set(types)].sort(), topTypes: [...new Set(topTypes)].sort(), invalid },
     h1Count: [...html.matchAll(/<h1\b/gi)].length,
     footerLine: footerMatch ? footerMatch[0].replace(/\s+/g, " ").replace(/^v /, "v") : null,
     anchors,

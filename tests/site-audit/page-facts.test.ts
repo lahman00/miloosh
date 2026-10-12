@@ -44,7 +44,7 @@ describe("parsePageFacts", () => {
   it("collects JSON-LD types from nested objects and arrays, and counts blocks that do not parse", () => {
     const ld = (value: string) => `<script type="application/ld+json">${value}</script>`;
     const facts = parsePageFacts("/x", `${ld(JSON.stringify({ "@type": "ItemList", itemListElement: [{ "@type": "ListItem", item: { "@type": "SoftwareApplication" } }] }))}${ld('{"@type":["Organization","Thing"]}')}${ld("{not json")}`);
-    expect(facts.jsonLd).toEqual({ types: ["ItemList", "ListItem", "Organization", "SoftwareApplication", "Thing"], invalid: 1 });
+    expect(facts.jsonLd).toEqual({ types: ["ItemList", "ListItem", "Organization", "SoftwareApplication", "Thing"], topTypes: ["ItemList", "Organization", "Thing"], invalid: 1 });
   });
 
   it("reads anchors with their rel and visible text, ignoring anchors without an href", () => {

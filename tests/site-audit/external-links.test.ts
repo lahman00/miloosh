@@ -5,7 +5,7 @@ import type { Anchor, PageFacts } from "@/lib/site-audit/page-facts";
 const SITE = "https://miloosh.com";
 const anchor = (href: string, rel = "noopener noreferrer"): Anchor => ({ href, rel, text: "x", disclosureNearby: true });
 const page = (path: string, anchors: Anchor[]): PageFacts =>
-  ({ path, title: null, description: null, canonical: null, robots: null, og: {}, twitter: {}, jsonLd: { types: [], invalid: 0 }, h1Count: 1, footerLine: null, anchors, text: "" }) as PageFacts;
+  ({ path, title: null, description: null, canonical: null, robots: null, og: {}, twitter: {}, jsonLd: { types: [], topTypes: [], invalid: 0 }, h1Count: 1, footerLine: null, anchors, text: "" }) as PageFacts;
 
 describe("collectExternalTargets", () => {
   it("lists each external URL once with every page that links to it, and ignores internal and non-http links", () => {

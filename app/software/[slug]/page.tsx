@@ -52,8 +52,11 @@ import {
 import {
   getBreadcrumbJsonLd,
   getFaqJsonLd,
+  getProductJsonLd,
   getSoftwareApplicationJsonLd,
 } from "@/lib/structured-data";
+import { describeReviewStatus, getReviewStatus } from "@/lib/review-status";
+import { isProfileTemplateV2 } from "@/lib/template-cohorts";
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
@@ -103,7 +106,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
   const relatedSoftware = software.category === "ecommerce"
     ? getStoreRelatedSoftware([software], 3, true)
     : getRelatedSoftware(software, 3);
-  const faqItems = generateFaq(software);
+  const profileV2 = isProfileTemplateV2(software.slug);
+  const faqItems = generateFaq(software, { v2: profileV2 });
   const comparisons = getComparisonsInvolving(software.slug)
     .map(([slugA, slugB]) => {
       const softwareA = getSoftware(slugA);
@@ -133,7 +137,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         ])}
       />
       <JsonLd data={getSoftwareApplicationJsonLd(software)} />
-      <JsonLd data={getFaqJsonLd(faqItems)} />
+      {profileV2 ? <JsonLd data={getProductJsonLd(software)} /> : null}
+      {faqItems.length > 0 ? <JsonLd data={getFaqJsonLd(faqItems)} /> : null}
 
       <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: software.name }]} />
@@ -150,6 +155,15 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-zinc-400">{generateIntro(software)}</p>
+
+          {profileV2 ? (
+            <p className="mt-3 text-sm leading-6 text-zinc-500">
+              {describeReviewStatus(getReviewStatus(software))}{" "}
+              <Link href="/sources-policy" className="underline underline-offset-4 hover:text-zinc-300">
+                How we verify
+              </Link>
+            </p>
+          ) : null}
 
           {searchIntentNote ? (
             <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-zinc-400">
@@ -292,13 +306,13 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             <h2 className="text-2xl font-semibold text-white">How to choose</h2>
           </div>
 
-          <p className="mt-4 max-w-3xl leading-7 text-zinc-400">{generateChoosingGuide(software)}</p>
+          <p className="mt-4 max-w-3xl leading-7 text-zinc-400">{generateChoosingGuide(software, { v2: profileV2 })}</p>
           <p className="mt-3 max-w-3xl leading-7 text-zinc-400">
             {generateWhoShouldntUseIt(software)}
           </p>
         </Card>
 
-        <FaqSection items={faqItems} />
+        {faqItems.length > 0 ? <FaqSection items={faqItems} /> : null}
 
         {decisionGuides.length > 0 ? (
           <section className="mt-14">

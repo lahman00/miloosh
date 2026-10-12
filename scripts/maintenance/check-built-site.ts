@@ -10,6 +10,7 @@ import { getSoftwareIndexingQualityReasons } from "@/lib/indexing-quality";
 import { runAllChecks, unreachableComparisonSlugs, type CheckResult, type SiteModel } from "@/lib/site-audit/checks";
 import { parsePageFacts, type PageFacts } from "@/lib/site-audit/page-facts";
 import { readGeneratedSlugs, replaceGeneratedBlock } from "@/lib/site-audit/unreachable-list";
+import { isProfileTemplateV2 } from "@/lib/template-cohorts";
 
 /**
  * `npm run check:built-site` — audits the HTML that `next build` prerendered.
@@ -115,6 +116,10 @@ export async function buildModel(appBuildDir: string, { root = process.cwd(), to
     redirects,
     isStaticRoute: (route) => appRoutes.has(route),
     isPublicAsset: (route) => files.has(route) || CONVENTION_ROUTE.test(route),
+    isProfileTemplateV2(route) {
+      const slug = /^\/software\/([a-z0-9-]+)$/.exec(route)?.[1];
+      return slug ? isProfileTemplateV2(slug) : null;
+    },
     explainDeferral(route) {
       const slug = /^\/compare\/([a-z0-9-]+)$/.exec(route)?.[1];
       const deferral = slug ? UNREACHABLE_COMPARISON_DEFERRALS[slug] : undefined;

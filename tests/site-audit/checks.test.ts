@@ -7,6 +7,7 @@ import {
   checkInternalLinks,
   checkLinksThroughRedirects,
   checkMetadataUniqueness,
+  checkProfileTemplateGating,
   checkRedirects,
   checkSitemapCoverage,
   checkSocialMetadata,
@@ -35,7 +36,7 @@ function page(path: string, overrides: Partial<PageFacts> = {}): PageFacts {
     robots: "index, follow",
     og: { title: `Title of ${path}`, description: `Description of ${path}`, url: `${SITE}${path}` },
     twitter: { title: `Title of ${path}`, description: `Description of ${path}` },
-    jsonLd: { types: [], invalid: 0 },
+    jsonLd: { types: [], topTypes: [], invalid: 0 },
     h1Count: 1,
     footerLine: FOOTER,
     anchors: [],
@@ -54,6 +55,7 @@ function model(pages: PageFacts[], overrides: Partial<SiteModel> = {}): SiteMode
     isPublicAsset: () => false,
     explainExclusion: () => null,
     explainDeferral: () => null,
+    isProfileTemplateV2: () => null,
     ...overrides,
   };
 }
@@ -299,14 +301,14 @@ describe("checkSitemapCoverage", () => {
 });
 
 describe("checkStructuredData", () => {
-  const full = { types: ["BreadcrumbList", "ItemList", "Organization"], invalid: 0 };
+  const full = { types: ["BreadcrumbList", "ItemList", "Organization"], topTypes: ["BreadcrumbList", "ItemList"], invalid: 0 };
 
   it("passes when each page type has the entities it needs", () => {
-    expect(checkStructuredData(model([page("/software/a", { jsonLd: full }), page("/compare/a-vs-b", { jsonLd: full }), page("/category/crm", { jsonLd: { types: ["BreadcrumbList", "CollectionPage", "Organization"], invalid: 0 } }), page("/about")])).status).toBe("PASS");
+    expect(checkStructuredData(model([page("/software/a", { jsonLd: full }), page("/compare/a-vs-b", { jsonLd: full }), page("/category/crm", { jsonLd: { types: ["BreadcrumbList", "CollectionPage", "Organization"], topTypes: [], invalid: 0 } }), page("/about")])).status).toBe("PASS");
   });
 
   it("fails when a profile lacks an expected entity or a block does not parse", () => {
-    const result = checkStructuredData(model([page("/software/a", { jsonLd: { types: ["Organization"], invalid: 0 } }), page("/about", { jsonLd: { types: [], invalid: 1 } })]));
+    const result = checkStructuredData(model([page("/software/a", { jsonLd: { types: ["Organization"], topTypes: [], invalid: 0 } }), page("/about", { jsonLd: { types: [], topTypes: [], invalid: 1 } })]));
     expect(result.items).toEqual(["/software/a: software profile lacks BreadcrumbList, ItemList", "/about: 1 JSON-LD block(s) are not valid JSON"]);
   });
 
@@ -330,6 +332,41 @@ describe("checkAffiliateDisclosure", () => {
 
   it("does not mistake a rel that merely contains the word for sponsored", () => {
     expect(checkAffiliateDisclosure(model([page("/g", { anchors: [link("https://v.example", { rel: "nosponsoredx", disclosureNearby: false })] })])).status).toBe("PASS");
+  });
+});
+
+describe("checkProfileTemplateGating", () => {
+  const review = "Last reviewed October 8, 2026 against the vendor's official sources. Pricing last verified October 6, 2026.";
+  const v2Page = (path: string, overrides = {}) => page(path, { text: review, jsonLd: { types: ["SoftwareApplication"], topTypes: ["SoftwareApplication"], invalid: 0 }, ...overrides });
+  const gate = (v2: string[], held: string[]) => (path: string) => (v2.includes(path) ? true : held.includes(path) ? false : null);
+
+  it("passes when editable profiles carry the v2 markers and held profiles carry none", () => {
+    const m = model([v2Page("/software/a"), page("/software/b", { text: "Most teams start by exporting their existing b data." }), page("/about")], { isProfileTemplateV2: gate(["/software/a"], ["/software/b"]) });
+    const result = checkProfileTemplateGating(m);
+    expect(result.status).toBe("PASS");
+    expect(result.detail).toContain("1 editable profiles");
+  });
+
+  it("fails when a held profile shows a v2 marker, because its measurement would be spoiled", () => {
+    const m = model([v2Page("/software/b")], { isProfileTemplateV2: gate([], ["/software/b"]) });
+    expect(checkProfileTemplateGating(m).items).toEqual(["/software/b: held profile shows the review line and the product entity"]);
+  });
+
+  it("fails when an editable profile lacks a marker or keeps the generic answers", () => {
+    const m = model(
+      [page("/software/a"), v2Page("/software/c", { text: `${review} Integration support varies by tool.` }), v2Page("/software/d", { jsonLd: { types: [], topTypes: [], invalid: 0 } })],
+      { isProfileTemplateV2: gate(["/software/a", "/software/c", "/software/d"], []) },
+    );
+    expect(checkProfileTemplateGating(m).items).toEqual([
+      "/software/a: v2 profile is missing the review line, the product entity",
+      "/software/c: v2 profile is missing (it still has the generic FAQ answers)",
+      "/software/d: v2 profile is missing the product entity",
+    ]);
+  });
+
+  it("does not count a SoftwareApplication that only sits inside the alternatives list as the product entity", () => {
+    const m = model([page("/software/a", { text: review, jsonLd: { types: ["ItemList", "SoftwareApplication"], topTypes: ["ItemList"], invalid: 0 } })], { isProfileTemplateV2: gate(["/software/a"], []) });
+    expect(checkProfileTemplateGating(m).items).toEqual(["/software/a: v2 profile is missing the product entity"]);
   });
 });
 
@@ -373,6 +410,7 @@ describe("runAllChecks", () => {
       "unreachable-deferred",
       "structured-data",
       "affiliate-disclosure",
+      "profile-template-gating",
       "single-h1",
       "generic-text:faq-migration",
       "generic-text:faq-integrations",
