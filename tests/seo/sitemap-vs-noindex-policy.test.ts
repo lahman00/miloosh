@@ -19,6 +19,13 @@ import {
  *
  * Any future mass noindex policy requires separately reviewed evidence
  * and a deliberate change to the policy/test; not a side effect of sitemap.
+ *
+ * Reviewed exception (owner decision, 2026-10-12): a comparison that is outside
+ * the sitemap AND that no page a crawler can reach links to is `noindex, follow`,
+ * because it can be neither found nor kept up to date. The list is generated from
+ * the built HTML and the rule lifts itself when a pair is promoted into the
+ * sitemap: data/seo/unreachable-comparisons.ts, tests/seo/unreachable-comparisons.test.ts.
+ * Every suppressed comparison that IS linked stays indexable, as tested below.
  */
 describe("Miloosh sitemap versus noindex policy", () => {
   const urls = () => new Set(sitemap().map((entry) => entry.url));

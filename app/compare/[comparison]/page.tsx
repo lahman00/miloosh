@@ -38,6 +38,7 @@ import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabel
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
 import { socialMetadata } from "@/lib/social-metadata";
+import { isUnreachableSuppressedComparison } from "@/data/seo/unreachable-comparisons";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -143,6 +144,8 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
     title,
     description,
     alternates: { canonical: `/compare/${comparison}` },
+    // Pages that are outside the sitemap and that no crawlable page links to: see data/seo/unreachable-comparisons.ts.
+    ...(isUnreachableSuppressedComparison(comparison) ? { robots: { index: false, follow: true } } : {}),
     ...socialMetadata({ title, description, path: `/compare/${comparison}` }),
   };
 }
