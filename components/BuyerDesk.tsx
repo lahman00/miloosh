@@ -6,7 +6,7 @@ import { ArrowRight, ArrowRightLeft, Bookmark, Check, Columns2, Pause, Play, Sea
 import { DiscoverySearch } from "@/components/DiscoverySearch";
 import { SoftwareMark } from "@/components/SoftwareMark";
 import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
-import { BUYER_DESK_KEY, DESK_CATEGORIES, addDeskPair, categorySaved, cleanContext, deskCategory, deskMotionAllowed, emptyDesk, hasDeskResearch, makeDeskBrief, parseDesk, toggleDeskProduct, validateDeskPair } from "@/lib/buyer-desk";
+import { BUYER_DESK_KEY, DESK_CATEGORIES, NO_LIMITATION_TEXT, addDeskPair, categorySaved, cleanContext, deskCategory, deskMotionAllowed, emptyDesk, hasDeskResearch, makeDeskBrief, parseDesk, toggleDeskProduct, validateDeskPair } from "@/lib/buyer-desk";
 import type { DeskCategory, DeskIntent, DeskProduct, DeskState } from "@/lib/buyer-desk";
 import styles from "./BuyerDesk.module.css";
 
@@ -108,7 +108,7 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
   const rows: { label: string; values: string[] }[] = [
     { label: "Documented fit", values: picks.map(p => p.bestFor) },
     { label: "Key capabilities", values: picks.map(p => p.features.join(" · ")) },
-    { label: "A limitation to weigh", values: picks.map(p => p.limitation) },
+    { label: "A limitation to weigh", values: picks.map(p => p.limitation ?? NO_LIMITATION_TEXT) },
     { label: "Source check recorded", values: picks.map(p => p.checkedAt) },
     { label: "Before committing", values: picks.map(() => "Confirm current plan, total cost, usage limits and migration requirements.") },
   ];
@@ -169,7 +169,7 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
       <div className={styles.products}>{categoryProducts.map(p => <article key={p.slug} className={styles.product}>
         <div className={styles.productTop}><SoftwareMark name={p.name} slug={p.slug}/><button className={styles.saveButton} aria-label={`${saved.includes(p.slug) ? "Remove" : "Save"} ${p.name}`} aria-pressed={saved.includes(p.slug)} onClick={() => toggle(p)}>{saved.includes(p.slug) ? <Check size={16}/> : <Bookmark size={16}/>} {saved.includes(p.slug) ? "Saved" : "Save"}</button></div>
         <h3>{p.name}</h3><p>{p.description}</p>
-        <details className={styles.research}><summary>Fit & tradeoffs</summary><h4>Documented fit</h4><p>{p.bestFor}</p><h4>A limitation to weigh</h4><p>{p.limitation}</p><p className={styles.note}>Source check recorded {p.checkedAt}. Confirm current terms.</p></details>
+        <details className={styles.research}><summary>Fit & tradeoffs</summary><h4>Documented fit</h4><p>{p.bestFor}</p>{p.limitation && <><h4>A limitation to weigh</h4><p>{p.limitation}</p></>}<p className={styles.note}>Source check recorded {p.checkedAt}. Confirm current terms.</p></details>
         <div className={styles.productBottom}><ResearchLink href={`/software/${p.slug}`} name="product-research" className={styles.textButton}>Read the research <ArrowRight size={17}/></ResearchLink><span className={styles.note}>Sources in profile</span></div>
       </article>)}</div>
       <p className={styles.note}>These starting points use Miloosh’s existing research, not personalized recommendations. Check the full profiles for pricing, alternatives and linked sources. Saving a tool does not endorse it.</p>

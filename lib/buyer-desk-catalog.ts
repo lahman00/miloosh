@@ -16,7 +16,7 @@ export function getBuyerDeskProducts(): DeskProduct[] {
     return {
       slug: tool.slug, name: tool.name, category: category.id, description: tool.description,
       bestFor: tool.bestFor, features: tool.features.slice(0, 3),
-      limitation: tool.cons?.[0] ?? "Check the required plan, usage limits and workflow fit before choosing.",
+      limitation: tool.cons?.[0] ?? null,
       checkedAt: tool.accessedAt,
     };
   }));
