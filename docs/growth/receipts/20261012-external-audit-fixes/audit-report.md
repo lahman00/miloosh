@@ -96,3 +96,10 @@ npm run check:external-links -- --dry-run     # then without --dry-run
 npm run check:live                            # 8 own pages, one build?
 npm run seo:template-cohorts -- --base <production sha> --check-hold
 ```
+
+## Update after the owner's review (2026-10-12)
+
+- Released from the hold, by the owner's decision: `adobe-analytics-vs-segment`, `clickup-vs-coda`, `coda-vs-todoist`, `notion-vs-coda` (`data/seo/hold-releases.ts`). Coda's prices now match the page the official site shows (Superhuman Docs: Pro $12 and Business $33 per Doc Maker per month billed annually); Segment's recorded prices were removed because Twilio publishes none. All four are listed in `EXPERIMENT_EXCLUSIONS` (comparison-quality experiment journal) and must be left out of the treatment/control analysis. The other 179 held pages are unchanged from production (`check:held-pages`).
+- Vendor notes: Clari says only that a merger agreement was announced on 2025-08-07 and the announcement does not say it closed. Windsurf: devin.ai states Devin Desktop is the new name for Windsurf with unchanged plans (checked in a browser; an earlier tool fetch had returned 404). Coda and Segment draw no conclusion about ownership.
+- Pricing index: n and date beside each median, plus a visible note that earlier versions are not directly comparable.
+- Before merge: export the Search Console Pages report (Performance, Search results, last 28 days, Pages tab, Export) and run `npm run seo:check-noindex-search -- --gsc <file>`; any listed page with impressions or clicks must leave `data/seo/unreachable-comparisons.ts` (the file is generated; add such a page to the deferrals instead). Then preview checks, merge, submit the sitemap.

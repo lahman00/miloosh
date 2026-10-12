@@ -20,18 +20,16 @@
   ],
   "pricing": {
     "model": "freemium",
-    "starting_price": "$10/doc maker/month",
+    "starting_price": "$12/Doc Maker/month (billed annually)",
     "has_free_tier": true,
     "status": "verified",
-    "free_trial": {
-      "available": true,
-      "days": 14
-    },
+    "free_plan": true,
     "entry_paid": {
-      "amount": "10",
+      "amount": "12",
       "currency": "USD",
       "billing_period": "monthly",
-      "unit": "doc maker"
+      "per_seat": true,
+      "annual_billing_required": true
     },
     "tiers": [
       {
@@ -39,28 +37,28 @@
         "amount": "0",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Unlimited unshared docs, basic table size limits, standard Packs, and collaborative viewing."
+        "notes": "Collaborative docs, connected tables, views and forms, formulas and automations."
       },
       {
         "name": "Pro",
-        "amount": "10",
+        "amount": "12",
         "currency": "USD",
         "billing_period": "monthly",
-        "unit": "doc maker",
-        "notes": "Billed annually at $10/doc maker/mo (or $12/mo monthly); adds unlimited doc size, hidden pages, 30-day version history, and custom domains. Editors and viewers are free."
+        "unit": "Doc Maker",
+        "notes": "$12 per Doc Maker per month billed annually; $15 when billed monthly. Adds unlimited doc size, 30-day version history and custom icons, branding and domains."
       },
       {
-        "name": "Team",
-        "amount": "30",
+        "name": "Business",
+        "amount": "33",
         "currency": "USD",
         "billing_period": "monthly",
-        "unit": "doc maker",
-        "notes": "Billed annually at $30/doc maker/mo (or $36/mo monthly); adds unlimited version history, advanced Packs, automation rules, and team workspaces."
+        "unit": "Doc Maker",
+        "notes": "$33 per Doc Maker per month billed annually; $40 when billed monthly. Adds databases, unlimited automations, unlimited version history and private folders for teams."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
-    "official_source": "https://coda.io/pricing"
+    "last_verified": "2026-10-12",
+    "official_source": "https://superhuman.com/plans/docs"
   },
   "pros": [
     "Doc maker pricing model only charges for creators while viewers and editors collaborate for free",
@@ -73,8 +71,8 @@
     "Large complex docs with hundreds of automation rules can experience slower initial load times"
   ],
   "sources": [
-    "https://coda.io/pricing",
-    "https://coda.io/product"
+    "https://coda.io/product",
+    "https://superhuman.com/plans/docs"
   ],
   "accessed_at": "2026-08-20",
   "alternatives": [

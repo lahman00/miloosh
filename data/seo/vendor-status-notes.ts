@@ -8,25 +8,25 @@ export type VendorStatusNote = { checkedOn: string; text: string; sourceUrl: str
 export const VENDOR_STATUS_NOTES: Readonly<Record<string, VendorStatusNote>> = {
   clari: {
     checkedOn: "2026-10-12",
-    text: "Clari's website now redirects to salesloft.com. On August 7, 2025 Clari and Salesloft announced a definitive agreement to merge. Pricing, features and security details below were recorded earlier and are not yet verified against the current official pages.",
+    text: "Clari's website now redirects to salesloft.com. On August 7, 2025 Clari and Salesloft announced a definitive agreement to merge; the announcement does not say the merger has closed. Pricing, features and security details below were recorded earlier and are not yet verified against the current official pages.",
     sourceUrl: "https://www.salesloft.com/company/newsroom/clari-and-salesloft-announce-merger-agreement",
     sourceLabel: "Official announcement",
   },
   windsurf: {
     checkedOn: "2026-10-12",
-    text: "Windsurf's website and documentation now redirect to devin.ai, and the destination page was not available when checked. Pricing and features below were recorded earlier and are not yet verified against the current official pages.",
-    sourceUrl: "https://windsurf.com/editor",
-    sourceLabel: "Windsurf website",
+    text: "Windsurf's website now redirects to devin.ai, where Devin Desktop is described as the new name for Windsurf, with the existing plan and pricing unchanged. Pricing and features below were recorded earlier and are not yet verified against the current official pages.",
+    sourceUrl: "https://devin.ai/desktop",
+    sourceLabel: "Devin Desktop page",
   },
   coda: {
     checkedOn: "2026-10-12",
-    text: "Coda's pricing page now redirects to superhuman.com, and the current page does not mention Coda. Pricing and features below were recorded earlier and are not yet verified against the current official pages.",
+    text: "Coda's pricing page now redirects to Superhuman Docs plans. The prices below were read from that page on the date shown; other details were recorded earlier and are not yet verified against the current official pages.",
     sourceUrl: "https://superhuman.com/plans/docs",
     sourceLabel: "Current pricing page",
   },
   segment: {
     checkedOn: "2026-10-12",
-    text: "Segment's pricing page now redirects to Twilio, which lists Twilio Segment with no published prices (\"Contact us for plan and add-on pricing\"). Plan names and prices below were recorded earlier and are not yet verified against the current official pages.",
+    text: "Segment's pricing page now redirects to Twilio, whose page for Twilio Segment publishes no prices (\\\"Contact us for plan and add-on pricing\\\"). The prices recorded earlier were removed; other details are not yet verified against the current official pages.",
     sourceUrl: "https://www.twilio.com/en-us/pricing/customer-data",
     sourceLabel: "Twilio Segment pricing page",
   },

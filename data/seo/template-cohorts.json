@@ -1209,6 +1209,7 @@
       "adobe-analytics-vs-mixpanel",
       "adobe-analytics-vs-plausible",
       "adobe-analytics-vs-posthog",
+      "adobe-analytics-vs-segment",
       "adobe-commerce-vs-bigcommerce",
       "adobe-commerce-vs-opencart",
       "adobe-commerce-vs-prestashop",
@@ -1444,6 +1445,7 @@
       "claude-vs-perplexity",
       "claude-vs-runway",
       "clickup-vs-basecamp",
+      "clickup-vs-coda",
       "clickup-vs-teamwork",
       "clio-manage-vs-mycase",
       "clockify-vs-craft",
@@ -1470,6 +1472,7 @@
       "coda-vs-slite",
       "coda-vs-smartsheet",
       "coda-vs-superhuman",
+      "coda-vs-todoist",
       "cognism-vs-zoominfo-sales",
       "confluence-vs-bloomfire",
       "confluence-vs-guru",
@@ -2142,6 +2145,7 @@
       "ninjaone-vs-teamviewer",
       "nordpass-vs-okta",
       "nordpass-vs-tailscale",
+      "notion-vs-coda",
       "notion-vs-obsidian",
       "nuclino-vs-read-the-docs",
       "nuclino-vs-readme",
@@ -2466,13 +2470,6 @@
       "zoom-vs-webex"
     ],
     "held": {
-      "adobe-analytics-vs-segment": {
-        "verdict": "PROTECTED",
-        "sources": [
-          "comparison-quality-cohort"
-        ],
-        "eligibleAfter": null
-      },
       "airtable-vs-notion": {
         "verdict": "PROTECTED",
         "sources": [
@@ -2502,13 +2499,6 @@
         "eligibleAfter": null
       },
       "clickup-vs-asana": {
-        "verdict": "PROTECTED",
-        "sources": [
-          "comparison-quality-cohort"
-        ],
-        "eligibleAfter": null
-      },
-      "clickup-vs-coda": {
         "verdict": "PROTECTED",
         "sources": [
           "comparison-quality-cohort"
@@ -2579,13 +2569,6 @@
         "eligibleAfter": null
       },
       "clickup-vs-zoho-projects": {
-        "verdict": "PROTECTED",
-        "sources": [
-          "comparison-quality-cohort"
-        ],
-        "eligibleAfter": null
-      },
-      "coda-vs-todoist": {
         "verdict": "PROTECTED",
         "sources": [
           "comparison-quality-cohort"
@@ -2680,13 +2663,6 @@
         "eligibleAfter": null
       },
       "notion-vs-clockify": {
-        "verdict": "PROTECTED",
-        "sources": [
-          "comparison-quality-cohort"
-        ],
-        "eligibleAfter": null
-      },
-      "notion-vs-coda": {
         "verdict": "PROTECTED",
         "sources": [
           "comparison-quality-cohort"
@@ -2841,7 +2817,6 @@
     "1password",
     "activecampaign",
     "acuity-scheduling",
-    "adobe-analytics",
     "adyen",
     "airtable",
     "algolia",
@@ -2861,7 +2836,6 @@
     "clickup",
     "clockify",
     "close",
-    "coda",
     "confluence",
     "constant-contact",
     "contentful",
@@ -2947,7 +2921,6 @@
     "salesforce-commerce-cloud",
     "sap-cloud-erp",
     "scribe",
-    "segment",
     "semrush",
     "sentry",
     "setmore",
@@ -2990,5 +2963,23 @@
     "zoho-desk",
     "zoho-flow",
     "zoho-projects"
-  ]
+  ],
+  "released": {
+    "adobe-analytics-vs-segment": {
+      "reason": "Segment's recorded pricing is no longer published; data updated to what Twilio shows.",
+      "releasedOn": "2026-10-12"
+    },
+    "clickup-vs-coda": {
+      "reason": "Coda's pricing page now shows Superhuman Docs prices that differ from the recorded ones.",
+      "releasedOn": "2026-10-12"
+    },
+    "coda-vs-todoist": {
+      "reason": "Coda's pricing page now shows Superhuman Docs prices that differ from the recorded ones.",
+      "releasedOn": "2026-10-12"
+    },
+    "notion-vs-coda": {
+      "reason": "Coda's pricing page now shows Superhuman Docs prices that differ from the recorded ones.",
+      "releasedOn": "2026-10-12"
+    }
+  }
 }

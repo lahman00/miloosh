@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 import { loadSiteInventory } from "@/lib/growth-agents/inventory-loader";
 import { protectionFor } from "@/lib/growth-agents/protection";
 import { headSha, loadProtectionSnapshot } from "@/lib/growth-agents/protection-sources";
+import { HOLD_RELEASES } from "@/data/seo/hold-releases";
 import { buildTemplateCohorts, type ProtectionRow, type TemplateCohorts } from "@/lib/template-cohorts-build";
 
 /**
@@ -62,7 +63,7 @@ function run(): number {
     return { kind: entry.identity.kind, slug: entry.identity.slug, verdict: result.verdict, sources: [...new Set(result.reasons.map((reason) => reason.source))], eligibleAfter: result.eligibleAfter, softwareSlugs: entry.softwareSlugs };
   });
   const full = execFileSync("git", ["rev-parse", baseSha], { cwd: root, encoding: "utf8" }).trim();
-  const cohorts = buildTemplateCohorts(rows, { generatedAt: now.toISOString(), baseSha: full, holdUntil: arg("hold-until") ?? "2026-11-04" });
+  const cohorts = buildTemplateCohorts(rows, { generatedAt: now.toISOString(), baseSha: full, holdUntil: arg("hold-until") ?? "2026-11-04" }, HOLD_RELEASES);
   fs.writeFileSync(file, `${JSON.stringify(cohorts, null, 2)}\n`, "utf8");
   console.log(`${OUT}: software ${cohorts.software.editable.length} editable / ${Object.keys(cohorts.software.held).length} held; comparisons ${cohorts.comparisons.editable.length} editable / ${Object.keys(cohorts.comparisons.held).length} held; ${cohorts.productsSharedWithHeldPages.length} products shared with held pages.`);
   const unknown = rows.filter((row) => row.verdict === "UNKNOWN").length;

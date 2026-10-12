@@ -11,6 +11,8 @@ export type TemplateCohorts = {
   comparisons: { editable: string[]; held: Record<string, HeldPage> };
   /** Product slugs used by at least one held page: editing their data would change a held page. */
   productsSharedWithHeldPages: string[];
+  /** Held pages the owner released early, with the reason. They are counted as editable. */
+  released?: Record<string, { reason: string; releasedOn: string }>;
 };
 
 export type ProtectionRow = {
@@ -23,7 +25,8 @@ export type ProtectionRow = {
 };
 
 /** Pure: turns one protection verdict per page into the cohort file. Anything that is not plainly EDITABLE is held, UNKNOWN included. */
-export function buildTemplateCohorts(rows: readonly ProtectionRow[], meta: { generatedAt: string; baseSha: string; holdUntil: string }): TemplateCohorts {
+export function buildTemplateCohorts(rows: readonly ProtectionRow[], meta: { generatedAt: string; baseSha: string; holdUntil: string }, released: Record<string, { reason: string; releasedOn: string }> = {}): TemplateCohorts {
+  rows = rows.map((row) => (row.kind === "compare" && row.slug && released[row.slug] ? { ...row, verdict: "EDITABLE" } : row));
   const split = (kind: string) => {
     const editable: string[] = [];
     const held: Record<string, HeldPage> = {};
@@ -40,5 +43,6 @@ export function buildTemplateCohorts(rows: readonly ProtectionRow[], meta: { gen
     software: split("software"),
     comparisons: split("compare"),
     productsSharedWithHeldPages: [...shared].sort(),
+    ...(Object.keys(released).length > 0 ? { released } : {}),
   };
 }

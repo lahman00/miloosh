@@ -4,7 +4,9 @@
   "category": "analytics",
   "description": "Segment is Twilio's customer data platform (CDP) that collects, cleans, and activates first-party customer data across a company's tools, unifying it into a single customer profile.",
   "website": "https://www.twilio.com/en-us/segment",
-  "platforms": ["Web"],
+  "platforms": [
+    "Web"
+  ],
   "best_for": "Organizations seeking to unify fragmented customer data across systems, enable data-driven personalization at scale, and activate customer insights across marketing, sales, and service channels.",
   "features": [
     "Connections: a customer data pipeline collecting first-party data and routing it to 550+ destinations",
@@ -15,45 +17,25 @@
     "Combines customer data infrastructure with Twilio's communications capabilities"
   ],
   "pricing": {
-    "model": "freemium",
-    "starting_price": "$120/month",
-    "has_free_tier": true,
-    "status": "verified",
+    "model": "unknown",
+    "starting_price": "No public price: the pricing page says to contact Twilio",
+    "status": "contact_sales",
+    "enterprise_contact_sales": true,
     "free_trial": {
-      "available": true,
-      "days": 14
-    },
-    "entry_paid": {
-      "amount": "120",
-      "currency": "USD",
-      "billing_period": "monthly"
+      "available": true
     },
     "tiers": [
       {
-        "name": "Free",
-        "amount": "0",
-        "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Up to 1,000 monthly active visitors/MTUs, 2 sources, and unlimited destinations."
+        "name": "Connections (Customer Data Pipeline)",
+        "notes": "Priced by monthly tracked users; the page names a Business tier and says Connections starts with a free trial. No prices are published."
       },
       {
-        "name": "Team",
-        "amount": "120",
-        "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Starts at $120/mo for 10,000 MTUs; adds 1 data warehouse destination and custom event filters."
-      },
-      {
-        "name": "Business",
-        "amount": "Custom",
-        "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Custom enterprise pricing; adds real-time data governance (Protocols), reverse ETL, Unify profiles, and Twilio Engage."
+        "name": "Customer Data Platform",
+        "notes": "Custom volume pricing billed by invoice. No prices are published."
       }
     ],
-    "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
-    "official_source": "https://segment.com/pricing"
+    "last_verified": "2026-10-12",
+    "official_source": "https://www.twilio.com/en-us/pricing/customer-data"
   },
   "pros": [
     "Unified customer data pipeline (CDP) connecting a single tracking SDK to 550+ analytics, marketing, and warehouse destinations",
@@ -66,7 +48,7 @@
     "Advanced data governance and reverse ETL features require enterprise Business plan contracts"
   ],
   "sources": [
-    "https://segment.com/pricing",
+    "https://www.twilio.com/en-us/pricing/customer-data",
     "https://www.twilio.com/en-us/segment"
   ],
   "accessed_at": "2026-08-20",
@@ -76,21 +58,33 @@
       "slug": "amplitude",
       "description": "A product analytics platform combining analytics, feedback, experimentation, and feature management.",
       "best_for": "Product, data, and engineering teams needing analytics with feature experimentation.",
-      "strengths": ["Instant query results", "Session replay and heatmaps", "Feature experimentation"]
+      "strengths": [
+        "Instant query results",
+        "Session replay and heatmaps",
+        "Feature experimentation"
+      ]
     },
     {
       "name": "Mixpanel",
       "slug": "mixpanel",
       "description": "A product intelligence platform combining analytics, session replay, experiments, and AI-powered insights.",
       "best_for": "Product, data, and engineering teams wanting fast, data-driven product decisions.",
-      "strengths": ["Fast querying", "Session Replay", "Metric Trees"]
+      "strengths": [
+        "Fast querying",
+        "Session Replay",
+        "Metric Trees"
+      ]
     },
     {
       "name": "PostHog",
       "slug": "posthog",
       "description": "A product intelligence platform combining product analytics, session replay, feature flags, and a customer data pipeline in one suite.",
       "best_for": "Engineering-led teams wanting analytics, experimentation, and data pipelines in a single self-hostable platform.",
-      "strengths": ["All-in-one product suite", "Open-source/self-hostable option", "Broad framework SDK support"]
+      "strengths": [
+        "All-in-one product suite",
+        "Open-source/self-hostable option",
+        "Broad framework SDK support"
+      ]
     }
   ]
 }
