@@ -10,6 +10,7 @@ import { PricingIndexTable } from "@/components/pricing-index/PricingIndexTable"
 import { buildPricingIndex } from "@/lib/pricing-index/build";
 import { formatIndexMoney } from "@/lib/pricing-index/format";
 import { SITE_URL } from "@/lib/site";
+import { socialMetadata } from "@/lib/social-metadata";
 
 const PAGE_URL = `${SITE_URL}/research/saas-pricing-pressure-index-2026`;
 const SMART_SME_COVERAGE_URL =
@@ -20,10 +21,11 @@ export const metadata: Metadata = {
   description:
     "Published SaaS starting prices and documented plan availability, with dated vendor sources, explicit sample sizes, currencies, and modeled-cost limitations.",
   alternates: { canonical: "/research/saas-pricing-pressure-index-2026" },
-  openGraph: {
+  ...socialMetadata({
     title: "Miloosh SaaS Pricing Pressure Index 2026",
     description: "Published SaaS list prices, not customer invoices. Dated sources, sample sizes, and modeled-cost limitations included.",
-  },
+    path: "/research/saas-pricing-pressure-index-2026",
+  }),
 };
 
 /**

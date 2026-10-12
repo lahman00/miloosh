@@ -21,6 +21,7 @@ import {
   shouldPrioritizeComparisonDiscovery,
 } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getRoleGuidesForCategory } from "@/data/guides/registry";
+import { socialMetadata } from "@/lib/social-metadata";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -45,11 +46,13 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   }
 
   const softwareCount = getSoftwareByCategory(category.slug).length;
+  const description = `${category.description} Compare ${softwareCount} ${category.name.toLowerCase()} tools.`;
 
   return {
     title: category.name,
-    description: `${category.description} Compare ${softwareCount} ${category.name.toLowerCase()} tools.`,
+    description,
     alternates: { canonical: `/category/${slug}` },
+    ...socialMetadata({ title: category.name, description, path: `/category/${slug}` }),
   };
 }
 

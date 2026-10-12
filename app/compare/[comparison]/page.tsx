@@ -37,6 +37,7 @@ import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliat
 import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
+import { socialMetadata } from "@/lib/social-metadata";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -135,15 +136,14 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
   }
 
   const serpOverride = getComparisonSerpOverride(comparison);
+  const title = serpOverride?.title ?? data.title;
+  const description = serpOverride?.description ?? data.metaDescription;
 
   return {
-    title: serpOverride?.title ?? data.title,
-    description: serpOverride?.description ?? data.metaDescription,
+    title,
+    description,
     alternates: { canonical: `/compare/${comparison}` },
-    openGraph: {
-      title: serpOverride?.title ?? data.title,
-      description: serpOverride?.description ?? data.metaDescription,
-    },
+    ...socialMetadata({ title, description, path: `/compare/${comparison}` }),
   };
 }
 

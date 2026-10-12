@@ -58,6 +58,7 @@ import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { isComparisonIndexingReady } from "@/lib/indexing-quality";
+import { socialMetadata } from "@/lib/social-metadata";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -87,10 +88,7 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
     title,
     description,
     alternates: { canonical: `/software/${slug}` },
-    openGraph: {
-      title,
-      description,
-    },
+    ...socialMetadata({ title, description, path: `/software/${slug}` }),
   };
 }
 
