@@ -4,10 +4,12 @@ import { pathToFileURL } from "node:url";
 import nextConfig from "../../next.config";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { isComparisonDiscoverySuppressed } from "@/data/seo/gsc-sitemap-comparison-cohort";
+import { UNREACHABLE_COMPARISON_DEFERRALS } from "@/data/seo/unreachable-comparisons";
 import { getSoftware } from "@/data/software";
 import { getSoftwareIndexingQualityReasons } from "@/lib/indexing-quality";
-import { runAllChecks, type CheckResult, type SiteModel } from "@/lib/site-audit/checks";
+import { runAllChecks, unreachableComparisonSlugs, type CheckResult, type SiteModel } from "@/lib/site-audit/checks";
 import { parsePageFacts, type PageFacts } from "@/lib/site-audit/page-facts";
+import { readGeneratedSlugs, replaceGeneratedBlock } from "@/lib/site-audit/unreachable-list";
 
 /**
  * `npm run check:built-site` — audits the HTML that `next build` prerendered.
@@ -19,11 +21,15 @@ import { parsePageFacts, type PageFacts } from "@/lib/site-audit/page-facts";
 
 const SITE_URL = "https://miloosh.com";
 
-const USAGE = `Usage: npm run check:built-site -- [--dir <.next/server/app>] [--json <file>] [--list <check-id>]
+const UNREACHABLE_FILE = "data/seo/unreachable-comparisons.ts";
 
-  --dir <dir>       Prerendered app folder (default .next/server/app).
-  --json <file>     Also write every result, with all offending items, to this file.
-  --list <check-id> Print every offending item of one check (for example no-orphan-pages).
+const USAGE = `Usage: npm run check:built-site -- [--dir <.next/server/app>] [--json <file>] [--list <check-id>] [--write-unreachable [file]]
+
+  --dir <dir>                 Prerendered app folder (default .next/server/app).
+  --json <file>               Also write every result, with all offending items, to this file.
+  --list <check-id>           Print every offending item of one check (for example indexable-pages-reachable).
+  --write-unreachable [file]  Rewrite the generated block of ${UNREACHABLE_FILE} (or the given file) with the
+                              comparison pages no crawler-reachable page links to, then exit. Review the diff.
 `;
 
 function walkHtml(root: string): string[] {
@@ -75,7 +81,16 @@ function publicFiles(publicDir: string): Set<string> {
 
 const CONVENTION_ROUTE = /^\/(_next\/|api\/|feed\.xml$|robots\.txt$|sitemap\.xml$|manifest\.webmanifest$|icon$|apple-icon$)|\/(opengraph-image|twitter-image)$/;
 
-export async function buildModel(appBuildDir: string, root = process.cwd()): Promise<SiteModel> {
+export type BuildOptions = {
+  /** Repository root, for app/ and public/. */
+  root?: string;
+  /** The day deferrals are judged against. */
+  today?: Date;
+  /** Replaces the redirects of next.config.ts; for tests. */
+  redirects?: ReadonlyMap<string, string>;
+};
+
+export async function buildModel(appBuildDir: string, { root = process.cwd(), today = new Date(), redirects: redirectsOverride }: BuildOptions = {}): Promise<SiteModel> {
   const pages = new Map<string, PageFacts>();
   for (const relative of walkHtml(appBuildDir)) {
     if (relative.startsWith("_")) continue;
@@ -86,8 +101,8 @@ export async function buildModel(appBuildDir: string, root = process.cwd()): Pro
   const sitemapXml = fs.readFileSync(path.join(appBuildDir, "sitemap.xml.body"), "utf8");
   const sitemapPaths = new Set([...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]!.replace(SITE_URL, "") || "/"));
 
-  const redirects = new Map<string, string>();
-  for (const redirect of (await nextConfig.redirects?.()) ?? []) redirects.set(redirect.source, redirect.destination);
+  const redirects = new Map<string, string>(redirectsOverride ?? []);
+  if (!redirectsOverride) for (const redirect of (await nextConfig.redirects?.()) ?? []) redirects.set(redirect.source, redirect.destination);
 
   const appRoutes = staticAppRoutes(path.join(root, "app"));
   const files = publicFiles(path.join(root, "public"));
@@ -100,6 +115,11 @@ export async function buildModel(appBuildDir: string, root = process.cwd()): Pro
     redirects,
     isStaticRoute: (route) => appRoutes.has(route),
     isPublicAsset: (route) => files.has(route) || CONVENTION_ROUTE.test(route),
+    explainDeferral(route) {
+      const slug = /^\/compare\/([a-z0-9-]+)$/.exec(route)?.[1];
+      const deferral = slug ? UNREACHABLE_COMPARISON_DEFERRALS[slug] : undefined;
+      return deferral && today.toISOString().slice(0, 10) < deferral.until ? `deferred until ${deferral.until}: ${deferral.reason}` : null;
+    },
     explainExclusion(route) {
       const softwareMatch = /^\/software\/([a-z0-9-]+)$/.exec(route);
       if (softwareMatch) {
@@ -134,7 +154,29 @@ export function formatResults(results: readonly CheckResult[]): string {
   return `${lines.join("\n")}\n`;
 }
 
-export async function main(argv: string[]): Promise<number> {
+/** Rewrite the generated list from the build. Refuses to list a page the list cannot noindex, and a build that is clearly incomplete. */
+export function writeUnreachable(model: SiteModel, file: string, isSuppressed: (slug: string) => boolean = isComparisonDiscoverySuppressed): number {
+  if (model.pages.size < 100 || model.sitemapPaths.size === 0) {
+    console.error(`Refusing to rewrite ${file}: the build has only ${model.pages.size} pages and ${model.sitemapPaths.size} sitemap URLs.`);
+    return 2;
+  }
+  const found = unreachableComparisonSlugs(model).filter((slug) => !model.explainDeferral(`/compare/${slug}`));
+  const unlistable = found.filter((slug) => !isSuppressed(slug));
+  if (unlistable.length > 0) {
+    console.error(`These unreachable comparison pages are not in the discovery-suppression cohort, so the list cannot take them out of the index:\n  ${unlistable.join("\n  ")}\nLink to them, add them to the sitemap, or change the policy deliberately.`);
+    return 1;
+  }
+  const source = fs.readFileSync(file, "utf8");
+  const before = new Set(readGeneratedSlugs(source));
+  const after = new Set(found);
+  fs.writeFileSync(file, replaceGeneratedBlock(source, found), "utf8");
+  const added = found.filter((slug) => !before.has(slug));
+  const removed = [...before].filter((slug) => !after.has(slug));
+  process.stdout.write(`${path.relative(process.cwd(), file)}: ${after.size} unreachable comparison page(s), ${added.length} added, ${removed.length} removed.\n`);
+  return 0;
+}
+
+export async function main(argv: string[], options: BuildOptions = {}): Promise<number> {
   const flags = new Map<string, string | true>();
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i]!;
@@ -153,7 +195,7 @@ export async function main(argv: string[]): Promise<number> {
     return 0;
   }
   for (const key of flags.keys()) {
-    if (!["dir", "json", "list", "help"].includes(key)) {
+    if (!["dir", "json", "list", "write-unreachable", "help"].includes(key)) {
       console.error(`Unknown option --${key}\n${USAGE}`);
       return 2;
     }
@@ -164,7 +206,12 @@ export async function main(argv: string[]): Promise<number> {
     return 2;
   }
 
-  const results = runAllChecks(await buildModel(dir));
+  const model = await buildModel(dir, options);
+
+  const write = flags.get("write-unreachable");
+  if (write !== undefined) return writeUnreachable(model, path.resolve(typeof write === "string" ? write : UNREACHABLE_FILE));
+
+  const results = runAllChecks(model);
   const list = flags.get("list");
   if (typeof list === "string") {
     const found = results.find((result) => result.id === list);

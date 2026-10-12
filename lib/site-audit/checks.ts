@@ -35,6 +35,8 @@ export type SiteModel = {
   isPublicAsset(path: string): boolean;
   /** Why an indexable page may stay out of the sitemap by deliberate policy, or null when nothing explains it. */
   explainExclusion(path: string): string | null;
+  /** Why a page that nothing links to may stay indexable for now (for example, it is under protection until a date), or null. */
+  explainDeferral(path: string): string | null;
 };
 
 const MAX_EXAMPLES = 6;
@@ -110,6 +112,33 @@ export function checkLinksThroughRedirects(model: SiteModel): CheckResult {
   return result("links-through-redirects", "No internal link goes through a redirect", failures, "Every internal link names its destination.", `${through.size} internal link target(s) only redirect.`);
 }
 
+/** Every configured redirect lands on a page in one hop: no chain, no loop, no destination that does not exist. */
+export function checkRedirects(model: SiteModel): CheckResult {
+  const failures: string[] = [];
+  for (const [source, destination] of model.redirects) {
+    const target = internalPath(destination, model.siteUrl);
+    if (target === null) continue;
+    if (model.redirects.has(target)) failures.push(`${source} -> ${destination} -> ${model.redirects.get(target)} (a redirect chain)`);
+    else if (!model.pages.has(target) && !model.isStaticRoute(target) && !model.isPublicAsset(target)) failures.push(`${source} -> ${destination} (the destination does not exist)`);
+  }
+  return result("redirects", "Every redirect reaches a page in one hop", failures.sort(), `${model.redirects.size} redirects, none chained or dead.`, `${failures.length} redirect(s) are chained or lead nowhere.`);
+}
+
+/** Every indexable page names itself as its canonical URL: absolute, on the site's origin, without query or trailing slash. */
+export function checkCanonicals(model: SiteModel): CheckResult {
+  const failures: string[] = [];
+  for (const page of model.pages.values()) {
+    if (!indexable(page)) continue;
+    if (!page.canonical) {
+      failures.push(`${page.path}: no canonical link`);
+      continue;
+    }
+    const expected = page.path === "/" ? [model.siteUrl, `${model.siteUrl}/`] : [`${model.siteUrl}${page.path}`];
+    if (!expected.includes(page.canonical)) failures.push(`${page.path}: canonical is ${page.canonical}`);
+  }
+  return result("canonical-self", "Every indexable page is its own canonical URL", failures, "Every indexable page has a self-referencing canonical URL.", `${failures.length} indexable page(s) have a missing or different canonical URL.`);
+}
+
 /** Open Graph and Twitter cards say the same thing, and og:url is the page's own canonical URL. */
 export function checkSocialMetadata(model: SiteModel): CheckResult {
   const failures: string[] = [];
@@ -138,37 +167,79 @@ export function checkMetadataUniqueness(model: SiteModel): CheckResult {
 }
 
 /**
+ * The paths a crawler can discover: the home page and every sitemap URL, then everything they link to, and so on,
+ * following redirects. Links on a noindex page do not count, because Google eventually stops following them.
+ * With `countNoindexLinks` every link counts: that is the graph as it is before any page is taken out of the index.
+ */
+export function reachablePaths(model: SiteModel, { countNoindexLinks = false }: { countNoindexLinks?: boolean } = {}): Set<string> {
+  const seen = new Set<string>();
+  const queue: string[] = [];
+  const visit = (path: string) => {
+    if (model.pages.has(path) && !seen.has(path)) {
+      seen.add(path);
+      queue.push(path);
+    }
+  };
+  visit("/");
+  for (const path of model.sitemapPaths) visit(path);
+  while (queue.length > 0) {
+    const page = model.pages.get(queue.pop()!)!;
+    if (!countNoindexLinks && !indexable(page)) continue;
+    for (const anchor of page.anchors) {
+      const target = internalPath(anchor.href, model.siteUrl);
+      if (target !== null) visit(model.redirects.get(target) ?? target);
+    }
+  }
+  return seen;
+}
+
+/** Comparison pages that no crawler-reachable page links to and the sitemap does not list, counting every link. */
+export function unreachableComparisonSlugs(model: SiteModel): string[] {
+  const reachable = reachablePaths(model, { countNoindexLinks: true });
+  return [...model.pages.keys()]
+    .filter((path) => path.startsWith("/compare/") && !reachable.has(path))
+    .map((path) => path.slice("/compare/".length))
+    .sort();
+}
+
+/**
  * The sitemap and the pages agree. Every sitemap URL is a real page and indexable; every indexable page is
  * either in the sitemap or excluded for a reason the policy states; and an indexable page that is outside the
- * sitemap must still be reachable by an internal link, otherwise nothing leads a crawler to it.
+ * sitemap must still be reachable by following internal links, otherwise nothing leads a crawler to it.
  */
 export function checkSitemapCoverage(model: SiteModel): CheckResult[] {
   const missing = [...model.sitemapPaths].filter((path) => !model.pages.has(path) && !model.isStaticRoute(path)).sort();
   const noindexed = [...model.sitemapPaths].filter((path) => model.pages.has(path) && !indexable(model.pages.get(path)!)).sort();
 
-  const inbound = new Map<string, Set<string>>();
-  for (const page of model.pages.values()) {
-    for (const anchor of page.anchors) {
-      const target = internalPath(anchor.href, model.siteUrl);
-      if (target === null || target === page.path) continue;
-      if (!inbound.has(target)) inbound.set(target, new Set());
-      inbound.get(target)!.add(page.path);
-    }
-  }
-
+  const reachable = reachablePaths(model);
   const unexplained: string[] = [];
-  const orphans: string[] = [];
+  const unreachable: string[] = [];
+  const deferred: string[] = [];
   for (const page of model.pages.values()) {
     if (!indexable(page) || model.sitemapPaths.has(page.path)) continue;
     if (!model.explainExclusion(page.path)) unexplained.push(page.path);
-    if (page.path !== "/" && (inbound.get(page.path)?.size ?? 0) === 0) orphans.push(page.path);
+    if (reachable.has(page.path)) continue;
+    const deferral = model.explainDeferral(page.path);
+    if (deferral) deferred.push(`${page.path}: ${deferral}`);
+    else unreachable.push(page.path);
   }
+
+  const deferredResult: CheckResult = {
+    id: "unreachable-deferred",
+    title: "Unreachable indexable pages that are deliberately left alone for now",
+    status: deferred.length > 0 ? "INFO" : "PASS",
+    detail: deferred.length > 0 ? `${deferred.length} page(s) are outside the sitemap and unlinked but have a recorded deferral.` : "No deferrals are in use.",
+    count: deferred.length,
+    examples: sample(deferred.sort()),
+    items: deferred.sort(),
+  };
 
   return [
     result("sitemap-urls-exist", "Every sitemap URL is a real page", missing, `${model.sitemapPaths.size} sitemap URLs all resolve.`, `${missing.length} sitemap URL(s) match no page.`),
     result("sitemap-excludes-noindex", "No noindex page is in the sitemap", noindexed, "No page that forbids indexing is listed in the sitemap.", `${noindexed.length} noindex page(s) are in the sitemap.`),
     result("sitemap-exclusions-explained", "Every indexable page outside the sitemap has a stated reason", unexplained.sort(), "Each indexable page missing from the sitemap is covered by the quality gate or the discovery policy.", `${unexplained.length} indexable page(s) are outside the sitemap with no stated reason.`),
-    result("no-orphan-pages", "Every indexable page outside the sitemap is linked from another page", orphans.sort(), "No indexable page is both unlisted and unlinked.", `${orphans.length} indexable page(s) have no sitemap entry and no internal link.`),
+    result("indexable-pages-reachable", "Every indexable page is in the sitemap or reachable by links from it or the home page", unreachable.sort(), "No indexable page is both unlisted and unreachable.", `${unreachable.length} indexable page(s) are outside the sitemap and no indexable page links to them, directly or through other unlinked pages.`),
+    deferredResult,
   ];
 }
 
@@ -243,6 +314,8 @@ export function runAllChecks(model: SiteModel, options: { maxGeneric?: Readonly<
     checkFooterConsistency(model),
     checkInternalLinks(model),
     checkLinksThroughRedirects(model),
+    checkRedirects(model),
+    checkCanonicals(model),
     checkSocialMetadata(model),
     checkMetadataUniqueness(model),
     ...checkSitemapCoverage(model),

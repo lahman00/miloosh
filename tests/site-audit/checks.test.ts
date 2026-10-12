@@ -1,17 +1,21 @@
 import { describe, expect, it } from "vitest";
 import {
   checkAffiliateDisclosure,
+  checkCanonicals,
   checkFooterConsistency,
   checkHeadings,
   checkInternalLinks,
   checkLinksThroughRedirects,
   checkMetadataUniqueness,
+  checkRedirects,
   checkSitemapCoverage,
   checkSocialMetadata,
   checkStructuredData,
   internalPath,
+  reachablePaths,
   reportGenericText,
   runAllChecks,
+  unreachableComparisonSlugs,
   type GenericPattern,
   type SiteModel,
 } from "@/lib/site-audit/checks";
@@ -49,6 +53,7 @@ function model(pages: PageFacts[], overrides: Partial<SiteModel> = {}): SiteMode
     isStaticRoute: () => false,
     isPublicAsset: () => false,
     explainExclusion: () => null,
+    explainDeferral: () => null,
     ...overrides,
   };
 }
@@ -131,6 +136,31 @@ describe("checkLinksThroughRedirects", () => {
   });
 });
 
+describe("checkRedirects", () => {
+  const m = (redirects: Array<[string, string]>, pages = [page("/target")]) => model(pages, { redirects: new Map(redirects), isStaticRoute: (path) => path === "/recommend" });
+
+  it("passes for redirects that land on a page, a route or an absolute URL elsewhere", () => {
+    expect(checkRedirects(m([["/a", "/target"], ["/b", "/recommend"], ["/c", "https://other.example/x"], ["/d", "https://miloosh.com/target"]])).status).toBe("PASS");
+  });
+
+  it("fails on a chain, a loop and a destination that does not exist", () => {
+    const result = checkRedirects(m([["/a", "/b"], ["/b", "/target"], ["/x", "/x"], ["/gone", "/nowhere"]]));
+    expect(result.items).toEqual(["/a -> /b -> /target (a redirect chain)", "/gone -> /nowhere (the destination does not exist)", "/x -> /x -> /x (a redirect chain)"]);
+  });
+});
+
+describe("checkCanonicals", () => {
+  it("passes when each indexable page names itself, including the home page with or without a slash", () => {
+    expect(checkCanonicals(model([page("/", { canonical: SITE }), page("/a"), page("/b", { canonical: null, robots: "noindex" })])).status).toBe("PASS");
+    expect(checkCanonicals(model([page("/", { canonical: `${SITE}/` })])).status).toBe("PASS");
+  });
+
+  it("fails on a missing canonical, another page's, a query string, a trailing slash or another host", () => {
+    const result = checkCanonicals(model([page("/a", { canonical: null }), page("/b", { canonical: `${SITE}/a` }), page("/c", { canonical: `${SITE}/c?x=1` }), page("/d", { canonical: `${SITE}/d/` }), page("/e", { canonical: "https://www.miloosh.com/e" })]));
+    expect(result.items).toEqual(["/a: no canonical link", `/b: canonical is ${SITE}/a`, `/c: canonical is ${SITE}/c?x=1`, `/d: canonical is ${SITE}/d/`, "/e: canonical is https://www.miloosh.com/e"]);
+  });
+});
+
 describe("checkSocialMetadata", () => {
   it("passes when the two cards agree and og:url is the canonical URL", () => {
     expect(checkSocialMetadata(model([page("/a")])).status).toBe("PASS");
@@ -164,19 +194,62 @@ describe("checkMetadataUniqueness", () => {
   });
 });
 
+describe("reachablePaths", () => {
+  const anchors = (...hrefs: string[]) => hrefs.map((href) => link(href));
+
+  it("starts from the home page and the sitemap, and follows internal links and redirects", () => {
+    const m = model([page("/", { anchors: anchors("/a", "/old") }), page("/a", { anchors: anchors("/b") }), page("/b"), page("/c"), page("/d"), page("/new")], {
+      sitemapPaths: new Set(["/c"]),
+      redirects: new Map([["/old", "/new"]]),
+    });
+    expect([...reachablePaths(m)].sort()).toEqual(["/", "/a", "/b", "/c", "/new"]);
+  });
+
+  it("does not follow links on a noindex page, unless asked to count every link", () => {
+    const m = model([page("/", { anchors: anchors("/hidden") }), page("/hidden", { robots: "noindex, follow", anchors: anchors("/behind") }), page("/behind")]);
+    expect([...reachablePaths(m)].sort()).toEqual(["/", "/hidden"]);
+    expect([...reachablePaths(m, { countNoindexLinks: true })].sort()).toEqual(["/", "/behind", "/hidden"]);
+  });
+
+  it("ignores external links, missing pages and links back to a visited page", () => {
+    const m = model([page("/", { anchors: anchors("https://vendor.example/x", "/missing", "/") })]);
+    expect([...reachablePaths(m)]).toEqual(["/"]);
+  });
+});
+
+describe("unreachableComparisonSlugs", () => {
+  it("lists only comparison pages that are neither in the sitemap nor reachable, even when linked from noindex pages", () => {
+    const m = model(
+      [
+        page("/", { anchors: [link("/compare/a-vs-b")] }),
+        page("/compare/a-vs-b"),
+        page("/compare/c-vs-d", { robots: "noindex, follow", anchors: [link("/compare/e-vs-f")] }),
+        page("/compare/e-vs-f"),
+        page("/compare/g-vs-h"),
+        page("/software/x"),
+      ],
+      { sitemapPaths: new Set(["/compare/g-vs-h"]) },
+    );
+    expect(unreachableComparisonSlugs(m)).toEqual(["c-vs-d", "e-vs-f"]);
+  });
+});
+
 describe("checkSitemapCoverage", () => {
   const byId = (results: ReturnType<typeof checkSitemapCoverage>) => Object.fromEntries(results.map((r) => [r.id, r]));
 
-  it("passes for a site whose indexable pages are listed or linked, with the exclusions explained", () => {
-    const m = model([page("/", { anchors: [link("/a")] }), page("/a"), page("/b", { anchors: [link("/a")] })], {
-      sitemapPaths: new Set(["/", "/a"]),
-    });
-    // /b is unlisted, unlinked and unexplained: only that is wrong here.
+  it("passes for a site whose indexable pages are listed or reachable, with the exclusions explained", () => {
+    const m = model([page("/", { anchors: [link("/a")] }), page("/a")], { sitemapPaths: new Set(["/"]), explainExclusion: () => "quality gate" });
+    const r = byId(checkSitemapCoverage(m));
+    expect(Object.values(r).map((x) => x.status)).toEqual(["PASS", "PASS", "PASS", "PASS", "PASS"]);
+  });
+
+  it("flags an unlisted page that nothing links to, and one whose exclusion no policy explains", () => {
+    const m = model([page("/", { anchors: [link("/a")] }), page("/a"), page("/b", { anchors: [link("/a")] })], { sitemapPaths: new Set(["/", "/a"]) });
     const r = byId(checkSitemapCoverage(m));
     expect(r["sitemap-urls-exist"]!.status).toBe("PASS");
     expect(r["sitemap-excludes-noindex"]!.status).toBe("PASS");
     expect(r["sitemap-exclusions-explained"]!.items).toEqual(["/b"]);
-    expect(r["no-orphan-pages"]!.items).toEqual(["/b"]);
+    expect(r["indexable-pages-reachable"]!.items).toEqual(["/b"]);
   });
 
   it("fails when a sitemap URL matches no page, unless it is a known route", () => {
@@ -189,23 +262,39 @@ describe("checkSitemapCoverage", () => {
     expect(byId(checkSitemapCoverage(m))["sitemap-excludes-noindex"]!.items).toEqual(["/"]);
   });
 
-  it("accepts an unlisted page when the policy explains it and something links to it", () => {
+  it("accepts an unlisted page when the policy explains it and a reachable page links to it", () => {
     const m = model([page("/", { anchors: [link("/c")] }), page("/c")], { sitemapPaths: new Set(["/"]), explainExclusion: (path) => (path === "/c" ? "quality gate" : null) });
     const r = byId(checkSitemapCoverage(m));
     expect(r["sitemap-exclusions-explained"]!.status).toBe("PASS");
-    expect(r["no-orphan-pages"]!.status).toBe("PASS");
+    expect(r["indexable-pages-reachable"]!.status).toBe("PASS");
   });
 
-  it("reports an unlisted page that nothing links to as an orphan even when the policy explains why it is unlisted", () => {
+  it("reports an unreachable page even when the policy explains why it is unlisted", () => {
     const m = model([page("/"), page("/c")], { sitemapPaths: new Set(["/"]), explainExclusion: () => "discovery suppression" });
     const r = byId(checkSitemapCoverage(m));
     expect(r["sitemap-exclusions-explained"]!.status).toBe("PASS");
-    expect(r["no-orphan-pages"]!.items).toEqual(["/c"]);
+    expect(r["indexable-pages-reachable"]!.items).toEqual(["/c"]);
   });
 
-  it("does not count a page's link to itself, nor a noindex page, as an orphan", () => {
-    const m = model([page("/", { anchors: [link("/")] }), page("/self", { anchors: [link("/self")] }), page("/hidden", { robots: "noindex, follow" })], { sitemapPaths: new Set(["/"]), explainExclusion: () => "reason" });
-    expect(byId(checkSitemapCoverage(m))["no-orphan-pages"]!.items).toEqual(["/self"]);
+  it("treats pages that only link to each other as unreachable, although each has an inbound link", () => {
+    const m = model([page("/"), page("/x", { anchors: [link("/y")] }), page("/y", { anchors: [link("/x")] })], { sitemapPaths: new Set(["/"]), explainExclusion: () => "reason" });
+    expect(byId(checkSitemapCoverage(m))["indexable-pages-reachable"]!.items).toEqual(["/x", "/y"]);
+  });
+
+  it("does not let a link on a noindex page rescue another page, and does not count a noindex page itself", () => {
+    const m = model([page("/", { anchors: [link("/hidden")] }), page("/hidden", { robots: "noindex, follow", anchors: [link("/behind")] }), page("/behind")], { sitemapPaths: new Set(["/"]), explainExclusion: () => "reason" });
+    expect(byId(checkSitemapCoverage(m))["indexable-pages-reachable"]!.items).toEqual(["/behind"]);
+  });
+
+  it("reports a deferred page as information with its reason, not as a failure, and leaves the others failing", () => {
+    const m = model([page("/"), page("/held"), page("/lost")], {
+      sitemapPaths: new Set(["/"]),
+      explainExclusion: () => "reason",
+      explainDeferral: (path) => (path === "/held" ? "deferred until 2026-11-04: protected" : null),
+    });
+    const r = byId(checkSitemapCoverage(m));
+    expect(r["indexable-pages-reachable"]!.items).toEqual(["/lost"]);
+    expect(r["unreachable-deferred"]).toMatchObject({ status: "INFO", count: 1, items: ["/held: deferred until 2026-11-04: protected"] });
   });
 });
 
@@ -273,12 +362,15 @@ describe("runAllChecks", () => {
       "footer-consistency",
       "internal-links",
       "links-through-redirects",
+      "redirects",
+      "canonical-self",
       "social-metadata",
       "metadata-uniqueness",
       "sitemap-urls-exist",
       "sitemap-excludes-noindex",
       "sitemap-exclusions-explained",
-      "no-orphan-pages",
+      "indexable-pages-reachable",
+      "unreachable-deferred",
       "structured-data",
       "affiliate-disclosure",
       "single-h1",
