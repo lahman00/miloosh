@@ -1,0 +1,2994 @@
+{
+  "generatedAt": "2026-10-12T21:00:00.000Z",
+  "baseSha": "0f5443984666f8e44bec76f60db24642e81020df",
+  "holdUntil": "2026-11-04",
+  "software": {
+    "editable": [
+      "6sense",
+      "acumatica",
+      "adobe-analytics",
+      "adobe-commerce",
+      "adp-workforce-now",
+      "affinity",
+      "ahrefs",
+      "airbyte",
+      "aircall",
+      "anydo",
+      "apigee",
+      "apollo-io",
+      "archbee",
+      "atera",
+      "auth0",
+      "azuga-fleet",
+      "balsamiq",
+      "bamboohr",
+      "bill",
+      "birdeye",
+      "bloomfire",
+      "brevo",
+      "brex",
+      "callrail",
+      "canva",
+      "chatgpt",
+      "chili-piper",
+      "circleci",
+      "clari",
+      "claude",
+      "clickup",
+      "clio-manage",
+      "cloudflare",
+      "coda",
+      "cognism",
+      "confluence",
+      "connectwise-rmm",
+      "consensus",
+      "constant-contact",
+      "copper",
+      "coupa",
+      "craft",
+      "crisp",
+      "culture-amp",
+      "cursor",
+      "databricks",
+      "datadog",
+      "dbt-cloud",
+      "deel",
+      "demandbase",
+      "descript",
+      "dialpad",
+      "discord",
+      "docusaurus",
+      "docusign",
+      "domo",
+      "drata",
+      "dropbox",
+      "duo-security",
+      "entrata",
+      "expensify",
+      "fathom",
+      "fieldedge",
+      "figma",
+      "fireflies-ai",
+      "five9",
+      "fivetran",
+      "floqast",
+      "framer",
+      "freshsales",
+      "freshservice",
+      "gemini",
+      "genesys-cloud-cx",
+      "geotab",
+      "getresponse",
+      "ghost",
+      "github-copilot",
+      "gitlab",
+      "gohighlevel",
+      "gong",
+      "google-cloud-bigquery",
+      "grammarly",
+      "greenhouse",
+      "guru",
+      "gusto",
+      "happyfox",
+      "heap",
+      "helpjuice",
+      "hibob",
+      "jamf-pro",
+      "jira",
+      "jobber",
+      "joomla",
+      "jotform",
+      "keeper",
+      "keeper-security",
+      "knowbe4",
+      "knowledgeowl",
+      "kong",
+      "krispcall",
+      "later",
+      "lattice",
+      "lever",
+      "linkedin-sales-navigator",
+      "liveagent",
+      "looker",
+      "lovable",
+      "mailchimp",
+      "mailerlite",
+      "maintainx",
+      "manageengine-endpoint-central",
+      "marvel",
+      "microsoft-bookings",
+      "microsoft-dynamics-365-business-central",
+      "microsoft-power-bi",
+      "microsoft-teams",
+      "midjourney",
+      "monday",
+      "moosend",
+      "motion",
+      "motive",
+      "moz",
+      "murf-ai",
+      "mycase",
+      "navan",
+      "netsuite",
+      "nextiva",
+      "ninjaone",
+      "nordpass",
+      "notion",
+      "nuclino",
+      "nutshell",
+      "obsidian",
+      "odoo",
+      "omnisend",
+      "onetrust",
+      "otter-ai",
+      "outreach",
+      "pandadoc",
+      "papaya-global",
+      "paychex-flex",
+      "paycom",
+      "paylocity",
+      "paypal-payments",
+      "pipedream",
+      "posthog",
+      "postman",
+      "postmark",
+      "prestashop",
+      "procore",
+      "qualtrics",
+      "ramp",
+      "rapidapi",
+      "readme",
+      "reamaze",
+      "remote",
+      "render",
+      "rent-manager",
+      "replit",
+      "rippling",
+      "rocket-chat",
+      "ruler-analytics",
+      "runway",
+      "sage-intacct",
+      "salesloft",
+      "samsara",
+      "sanity",
+      "sap-concur",
+      "savvycal",
+      "secureframe",
+      "segment",
+      "sendgrid",
+      "sentinelone",
+      "sentry",
+      "servicenow-itsm",
+      "servicetitan",
+      "shift4shop",
+      "shopware",
+      "slab",
+      "slack",
+      "snowflake",
+      "sophos-endpoint",
+      "sprinto",
+      "squarespace",
+      "stack-overflow-for-teams",
+      "stampli",
+      "storyblok",
+      "stripe",
+      "supabase",
+      "surveymonkey",
+      "swaggerhub",
+      "tableau",
+      "talkdesk",
+      "teamviewer",
+      "telegram",
+      "tettra",
+      "things",
+      "tidio",
+      "tipalti",
+      "tray-ai",
+      "twilio",
+      "typeform",
+      "uipath",
+      "vanta",
+      "veeam-data-platform",
+      "verizon-connect",
+      "wave",
+      "webflow",
+      "weebly",
+      "whatconverts",
+      "windsurf",
+      "wordpress",
+      "workato",
+      "workday-hcm",
+      "workiz",
+      "workos",
+      "yardi-breeze",
+      "youcanbookme",
+      "zendesk",
+      "zeroheight",
+      "zoho-campaigns",
+      "zoom",
+      "zoominfo-sales"
+    ],
+    "held": {
+      "1password": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "activecampaign": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "acuity-scheduling": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "adyen": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "airtable": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "first-revenue-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "algolia": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "amplitude": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "appfolio": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "asana": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "basecamp": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "bigcommerce": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "bitbucket": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "bitwarden": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "braze": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "buffer": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "buildium": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "cal-com": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "calendly": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "clockify": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "close": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "first-revenue-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "contentful": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "copy-ai": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "craft-cms": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "crazy-egg": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "crowdstrike": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "dashlane": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "deepl": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "directus": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "docker": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "document360": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "doodle": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "doorloop": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "drupal": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "ecwid": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "elastic": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "elevenlabs": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "first-revenue-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "evernote": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "fathom-analytics": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "firebase": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "freshbooks": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "freshdesk": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "front": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "fullstory": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "gitbook": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "github": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "google-analytics": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "google-chat": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "google-meet": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "gorgias": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "harvest": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "help-scout": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "hootsuite": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "hotjar": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "housecall-pro": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "hubspot": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "hubstaff": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "ifttt": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "intercom": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "jasper": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "jenkins": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "kayako": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "keap": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "klaviyo": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "lastpass": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "linear": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "lucidchart": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "make": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "marketo-engage": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "matomo": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "mattermost": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "microsoft-onenote": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "miro": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "mixpanel": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "mkdocs": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "mulesoft": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "n8n": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "netlify": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "okta": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "opencart": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "perplexity": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "pipedrive": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "plaid": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "plausible": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "power-automate": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "quickbooks-online": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "read-the-docs": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "reclaim-ai": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "ringcentral": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "salesforce": {
+        "verdict": "IN_FLIGHT",
+        "sources": [
+          "in-flight-work"
+        ],
+        "eligibleAfter": null
+      },
+      "salesforce-commerce-cloud": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "sap-cloud-erp": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "scribe": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "semrush": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "legacy-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "setmore": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "first-revenue-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "shopify": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "shortcut": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "signal": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "sketch": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "slite": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "smartsheet": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "snyk": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "sprout-social": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "in-flight-work",
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "strapi": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "superhuman": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "synthesia": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "tailscale": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "teamwork": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts"
+        ],
+        "eligibleAfter": null
+      },
+      "tenantcloud": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "ticktick": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "time-doctor": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "todoist": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "first-revenue-cohort",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "toggl-track": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "trainual": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "trello": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "umbraco": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "vercel": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "volza": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "webex": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "whimsical": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "wix": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "wiz": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-05"
+      },
+      "woocommerce": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "wrike": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts"
+        ],
+        "eligibleAfter": null
+      },
+      "xero": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "zapier": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "zeplin": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "zoho-books": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "zoho-crm": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "measuring-receipts",
+          "release-observation"
+        ],
+        "eligibleAfter": null
+      },
+      "zoho-desk": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "zoho-flow": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "zoho-projects": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      }
+    }
+  },
+  "comparisons": {
+    "editable": [
+      "1password-vs-auth0",
+      "1password-vs-bitwarden",
+      "1password-vs-cloudflare",
+      "1password-vs-crowdstrike",
+      "1password-vs-dashlane",
+      "1password-vs-duo-security",
+      "1password-vs-keeper",
+      "1password-vs-keeper-security",
+      "1password-vs-lastpass",
+      "1password-vs-nordpass",
+      "1password-vs-okta",
+      "1password-vs-snyk",
+      "1password-vs-tailscale",
+      "1password-vs-wiz",
+      "6sense-vs-demandbase",
+      "activecampaign-vs-buffer",
+      "activecampaign-vs-hootsuite",
+      "activecampaign-vs-klaviyo",
+      "activecampaign-vs-mailchimp",
+      "activecampaign-vs-sprout-social",
+      "acuity-scheduling-vs-microsoft-bookings",
+      "acuity-scheduling-vs-motion",
+      "acuity-scheduling-vs-reclaim-ai",
+      "acuity-scheduling-vs-savvycal",
+      "acuity-scheduling-vs-setmore",
+      "acuity-scheduling-vs-youcanbookme",
+      "acumatica-vs-microsoft-dynamics-365-business-central",
+      "acumatica-vs-netsuite",
+      "acumatica-vs-odoo",
+      "acumatica-vs-sage-intacct",
+      "adobe-analytics-vs-amplitude",
+      "adobe-analytics-vs-crazy-egg",
+      "adobe-analytics-vs-fathom-analytics",
+      "adobe-analytics-vs-fullstory",
+      "adobe-analytics-vs-google-analytics",
+      "adobe-analytics-vs-heap",
+      "adobe-analytics-vs-hotjar",
+      "adobe-analytics-vs-matomo",
+      "adobe-analytics-vs-mixpanel",
+      "adobe-analytics-vs-plausible",
+      "adobe-analytics-vs-posthog",
+      "adobe-commerce-vs-bigcommerce",
+      "adobe-commerce-vs-opencart",
+      "adobe-commerce-vs-prestashop",
+      "adobe-commerce-vs-salesforce-commerce-cloud",
+      "adobe-commerce-vs-shift4shop",
+      "adobe-commerce-vs-shopify",
+      "adobe-commerce-vs-shopware",
+      "adobe-commerce-vs-weebly",
+      "adp-workforce-now-vs-gusto",
+      "adp-workforce-now-vs-paychex-flex",
+      "adp-workforce-now-vs-paycom",
+      "adp-workforce-now-vs-paylocity",
+      "adp-workforce-now-vs-workday-hcm",
+      "adyen-vs-plaid",
+      "adyen-vs-rapidapi",
+      "adyen-vs-stripe",
+      "affinity-vs-balsamiq",
+      "affinity-vs-framer",
+      "affinity-vs-whimsical",
+      "affinity-vs-zeplin",
+      "ahrefs-vs-activecampaign",
+      "ahrefs-vs-buffer",
+      "ahrefs-vs-google-analytics",
+      "ahrefs-vs-hootsuite",
+      "ahrefs-vs-klaviyo",
+      "ahrefs-vs-mailchimp",
+      "ahrefs-vs-moz",
+      "ahrefs-vs-sprout-social",
+      "airbyte-vs-fivetran",
+      "aircall-vs-dialpad",
+      "aircall-vs-ringcentral",
+      "airtable-vs-clockify",
+      "airtable-vs-microsoft-onenote",
+      "airtable-vs-pipedrive",
+      "airtable-vs-smartsheet",
+      "airtable-vs-superhuman",
+      "airtable-vs-ticktick",
+      "algolia-vs-elastic",
+      "algolia-vs-kong",
+      "algolia-vs-mulesoft",
+      "algolia-vs-rapidapi",
+      "algolia-vs-stripe",
+      "algolia-vs-twilio",
+      "amplitude-vs-crazy-egg",
+      "amplitude-vs-fullstory",
+      "amplitude-vs-google-analytics",
+      "amplitude-vs-heap",
+      "amplitude-vs-hotjar",
+      "amplitude-vs-matomo",
+      "amplitude-vs-mixpanel",
+      "amplitude-vs-plausible",
+      "amplitude-vs-posthog",
+      "amplitude-vs-segment",
+      "apigee-vs-elastic",
+      "apigee-vs-kong",
+      "apigee-vs-mulesoft",
+      "apigee-vs-plaid",
+      "apigee-vs-rapidapi",
+      "apigee-vs-sendgrid",
+      "apigee-vs-stripe",
+      "apigee-vs-twilio",
+      "apigee-vs-workos",
+      "apollo-io-vs-cognism",
+      "apollo-io-vs-linkedin-sales-navigator",
+      "apollo-io-vs-outreach",
+      "apollo-io-vs-salesloft",
+      "apollo-io-vs-zoominfo-sales",
+      "appfolio-vs-buildium",
+      "appfolio-vs-doorloop",
+      "appfolio-vs-entrata",
+      "appfolio-vs-rent-manager",
+      "appfolio-vs-tenantcloud",
+      "appfolio-vs-yardi-breeze",
+      "archbee-vs-document360",
+      "archbee-vs-docusaurus",
+      "archbee-vs-gitbook",
+      "archbee-vs-mkdocs",
+      "archbee-vs-nuclino",
+      "archbee-vs-read-the-docs",
+      "archbee-vs-readme",
+      "archbee-vs-scribe",
+      "archbee-vs-slab",
+      "archbee-vs-slite",
+      "archbee-vs-swaggerhub",
+      "archbee-vs-zeroheight",
+      "asana-vs-basecamp",
+      "asana-vs-clockify",
+      "asana-vs-linear",
+      "asana-vs-shortcut",
+      "asana-vs-smartsheet",
+      "asana-vs-teamwork",
+      "asana-vs-toggl-track",
+      "asana-vs-trello",
+      "asana-vs-wrike",
+      "asana-vs-zoho-projects",
+      "atera-vs-connectwise-rmm",
+      "atera-vs-ninjaone",
+      "auth0-vs-bitwarden",
+      "auth0-vs-cloudflare",
+      "auth0-vs-dashlane",
+      "auth0-vs-duo-security",
+      "auth0-vs-keeper-security",
+      "auth0-vs-lastpass",
+      "auth0-vs-nordpass",
+      "auth0-vs-okta",
+      "auth0-vs-snyk",
+      "auth0-vs-workos",
+      "azuga-fleet-vs-geotab",
+      "azuga-fleet-vs-samsara",
+      "azuga-fleet-vs-verizon-connect",
+      "balsamiq-vs-framer",
+      "balsamiq-vs-marvel",
+      "balsamiq-vs-whimsical",
+      "balsamiq-vs-zeplin",
+      "bamboohr-vs-greenhouse",
+      "bamboohr-vs-gusto",
+      "basecamp-vs-shortcut",
+      "basecamp-vs-smartsheet",
+      "basecamp-vs-teamwork",
+      "basecamp-vs-wrike",
+      "basecamp-vs-zoho-projects",
+      "bigcommerce-vs-ecwid",
+      "bigcommerce-vs-prestashop",
+      "bigcommerce-vs-salesforce-commerce-cloud",
+      "bigcommerce-vs-shift4shop",
+      "bigcommerce-vs-shopify",
+      "bigcommerce-vs-shopware",
+      "bigcommerce-vs-weebly",
+      "bigcommerce-vs-woocommerce",
+      "bill-vs-ramp",
+      "bill-vs-tipalti",
+      "bitbucket-vs-circleci",
+      "bitbucket-vs-datadog",
+      "bitbucket-vs-docker",
+      "bitbucket-vs-firebase",
+      "bitbucket-vs-github",
+      "bitbucket-vs-gitlab",
+      "bitbucket-vs-jenkins",
+      "bitbucket-vs-netlify",
+      "bitbucket-vs-postman",
+      "bitbucket-vs-render",
+      "bitbucket-vs-sentry",
+      "bitbucket-vs-supabase",
+      "bitbucket-vs-vercel",
+      "bitwarden-vs-cloudflare",
+      "bitwarden-vs-dashlane",
+      "bitwarden-vs-duo-security",
+      "bitwarden-vs-keeper",
+      "bitwarden-vs-keeper-security",
+      "bitwarden-vs-lastpass",
+      "bitwarden-vs-nordpass",
+      "bitwarden-vs-okta",
+      "bitwarden-vs-snyk",
+      "bloomfire-vs-knowledgeowl",
+      "bloomfire-vs-stack-overflow-for-teams",
+      "bloomfire-vs-trainual",
+      "braze-vs-activecampaign",
+      "braze-vs-ahrefs",
+      "braze-vs-buffer",
+      "braze-vs-hootsuite",
+      "braze-vs-klaviyo",
+      "braze-vs-mailchimp",
+      "braze-vs-sprout-social",
+      "brevo-vs-activecampaign",
+      "brevo-vs-ahrefs",
+      "brevo-vs-braze",
+      "brevo-vs-getresponse",
+      "brevo-vs-klaviyo",
+      "brevo-vs-mailchimp",
+      "brevo-vs-marketo-engage",
+      "brevo-vs-semrush",
+      "brevo-vs-sprout-social",
+      "brex-vs-expensify",
+      "brex-vs-navan",
+      "brex-vs-ramp",
+      "buffer-vs-hootsuite",
+      "buffer-vs-klaviyo",
+      "buffer-vs-later",
+      "buffer-vs-mailchimp",
+      "buffer-vs-sprout-social",
+      "buildium-vs-doorloop",
+      "buildium-vs-entrata",
+      "buildium-vs-rent-manager",
+      "buildium-vs-tenantcloud",
+      "buildium-vs-yardi-breeze",
+      "cal-com-vs-acuity-scheduling",
+      "cal-com-vs-microsoft-bookings",
+      "cal-com-vs-motion",
+      "cal-com-vs-reclaim-ai",
+      "cal-com-vs-savvycal",
+      "cal-com-vs-setmore",
+      "cal-com-vs-youcanbookme",
+      "calendly-vs-acuity-scheduling",
+      "calendly-vs-cal-com",
+      "calendly-vs-doodle",
+      "calendly-vs-microsoft-bookings",
+      "calendly-vs-motion",
+      "calendly-vs-reclaim-ai",
+      "calendly-vs-savvycal",
+      "calendly-vs-setmore",
+      "calendly-vs-youcanbookme",
+      "callrail-vs-hubspot",
+      "callrail-vs-ruler-analytics",
+      "canva-vs-affinity",
+      "canva-vs-miro",
+      "canva-vs-sketch",
+      "chatgpt-vs-claude",
+      "chatgpt-vs-copy-ai",
+      "chatgpt-vs-deepl",
+      "chatgpt-vs-elevenlabs",
+      "chatgpt-vs-gemini",
+      "chatgpt-vs-github-copilot",
+      "chatgpt-vs-grammarly",
+      "chatgpt-vs-jasper",
+      "chatgpt-vs-midjourney",
+      "chatgpt-vs-perplexity",
+      "circleci-vs-datadog",
+      "circleci-vs-github",
+      "circleci-vs-gitlab",
+      "circleci-vs-jenkins",
+      "circleci-vs-postman",
+      "circleci-vs-render",
+      "circleci-vs-vercel",
+      "clari-vs-gong",
+      "clari-vs-outreach",
+      "claude-vs-copy-ai",
+      "claude-vs-deepl",
+      "claude-vs-gemini",
+      "claude-vs-github-copilot",
+      "claude-vs-grammarly",
+      "claude-vs-jasper",
+      "claude-vs-otter-ai",
+      "claude-vs-perplexity",
+      "claude-vs-runway",
+      "clickup-vs-basecamp",
+      "clickup-vs-teamwork",
+      "clio-manage-vs-mycase",
+      "clockify-vs-craft",
+      "clockify-vs-harvest",
+      "clockify-vs-microsoft-onenote",
+      "clockify-vs-superhuman",
+      "clockify-vs-time-doctor",
+      "close-vs-copper",
+      "close-vs-freshsales",
+      "close-vs-keap",
+      "close-vs-nutshell",
+      "close-vs-zoho-crm",
+      "cloudflare-vs-crowdstrike",
+      "cloudflare-vs-duo-security",
+      "cloudflare-vs-lastpass",
+      "cloudflare-vs-okta",
+      "cloudflare-vs-snyk",
+      "cloudflare-vs-tailscale",
+      "cloudflare-vs-wiz",
+      "coda-vs-airtable",
+      "coda-vs-confluence",
+      "coda-vs-craft",
+      "coda-vs-evernote",
+      "coda-vs-slite",
+      "coda-vs-smartsheet",
+      "coda-vs-superhuman",
+      "cognism-vs-zoominfo-sales",
+      "confluence-vs-bloomfire",
+      "confluence-vs-guru",
+      "confluence-vs-helpjuice",
+      "confluence-vs-knowledgeowl",
+      "confluence-vs-obsidian",
+      "confluence-vs-slite",
+      "confluence-vs-stack-overflow-for-teams",
+      "confluence-vs-tettra",
+      "confluence-vs-trainual",
+      "connectwise-rmm-vs-ninjaone",
+      "constant-contact-vs-activecampaign",
+      "constant-contact-vs-ahrefs",
+      "constant-contact-vs-braze",
+      "constant-contact-vs-brevo",
+      "constant-contact-vs-buffer",
+      "constant-contact-vs-hootsuite",
+      "constant-contact-vs-klaviyo",
+      "constant-contact-vs-mailchimp",
+      "constant-contact-vs-marketo-engage",
+      "constant-contact-vs-moosend",
+      "constant-contact-vs-sprout-social",
+      "constant-contact-vs-zoho-campaigns",
+      "contentful-vs-craft-cms",
+      "contentful-vs-directus",
+      "contentful-vs-drupal",
+      "contentful-vs-ghost",
+      "contentful-vs-joomla",
+      "contentful-vs-sanity",
+      "contentful-vs-squarespace",
+      "contentful-vs-storyblok",
+      "contentful-vs-strapi",
+      "contentful-vs-umbraco",
+      "contentful-vs-webflow",
+      "contentful-vs-wix",
+      "contentful-vs-wordpress",
+      "copper-vs-freshsales",
+      "copper-vs-keap",
+      "copper-vs-nutshell",
+      "copper-vs-zoho-crm",
+      "copy-ai-vs-deepl",
+      "copy-ai-vs-elevenlabs",
+      "copy-ai-vs-gemini",
+      "copy-ai-vs-github-copilot",
+      "copy-ai-vs-grammarly",
+      "copy-ai-vs-jasper",
+      "copy-ai-vs-midjourney",
+      "copy-ai-vs-perplexity",
+      "coupa-vs-stampli",
+      "craft-cms-vs-directus",
+      "craft-cms-vs-drupal",
+      "craft-cms-vs-ghost",
+      "craft-cms-vs-joomla",
+      "craft-cms-vs-squarespace",
+      "craft-cms-vs-storyblok",
+      "craft-cms-vs-strapi",
+      "craft-cms-vs-umbraco",
+      "craft-cms-vs-webflow",
+      "craft-cms-vs-wix",
+      "craft-cms-vs-wordpress",
+      "crazy-egg-vs-fathom-analytics",
+      "crazy-egg-vs-fullstory",
+      "crazy-egg-vs-google-analytics",
+      "crazy-egg-vs-heap",
+      "crazy-egg-vs-hotjar",
+      "crazy-egg-vs-matomo",
+      "crazy-egg-vs-mixpanel",
+      "crazy-egg-vs-plausible",
+      "crazy-egg-vs-posthog",
+      "crazy-egg-vs-segment",
+      "crisp-vs-freshdesk",
+      "crisp-vs-front",
+      "crisp-vs-gorgias",
+      "crisp-vs-happyfox",
+      "crisp-vs-help-scout",
+      "crisp-vs-intercom",
+      "crisp-vs-kayako",
+      "crisp-vs-liveagent",
+      "crisp-vs-reamaze",
+      "crisp-vs-tidio",
+      "crisp-vs-zendesk",
+      "crisp-vs-zoho-desk",
+      "crowdstrike-vs-duo-security",
+      "crowdstrike-vs-keeper-security",
+      "crowdstrike-vs-okta",
+      "crowdstrike-vs-sentinelone",
+      "crowdstrike-vs-snyk",
+      "crowdstrike-vs-tailscale",
+      "crowdstrike-vs-wiz",
+      "culture-amp-vs-lattice",
+      "cursor-vs-github-copilot",
+      "cursor-vs-replit",
+      "cursor-vs-windsurf",
+      "dashlane-vs-duo-security",
+      "dashlane-vs-keeper",
+      "dashlane-vs-keeper-security",
+      "dashlane-vs-lastpass",
+      "dashlane-vs-nordpass",
+      "dashlane-vs-tailscale",
+      "dashlane-vs-wiz",
+      "databricks-vs-google-cloud-bigquery",
+      "databricks-vs-snowflake",
+      "datadog-vs-firebase",
+      "datadog-vs-github",
+      "datadog-vs-gitlab",
+      "datadog-vs-jenkins",
+      "datadog-vs-netlify",
+      "datadog-vs-posthog",
+      "datadog-vs-postman",
+      "datadog-vs-render",
+      "datadog-vs-sentry",
+      "datadog-vs-supabase",
+      "datadog-vs-vercel",
+      "deel-vs-gusto",
+      "deel-vs-papaya-global",
+      "deel-vs-remote",
+      "deepl-vs-elevenlabs",
+      "deepl-vs-gemini",
+      "deepl-vs-github-copilot",
+      "deepl-vs-grammarly",
+      "deepl-vs-jasper",
+      "deepl-vs-midjourney",
+      "deepl-vs-otter-ai",
+      "deepl-vs-perplexity",
+      "deepl-vs-runway",
+      "deepl-vs-synthesia",
+      "descript-vs-otter-ai",
+      "descript-vs-runway",
+      "dialpad-vs-nextiva",
+      "directus-vs-drupal",
+      "directus-vs-ghost",
+      "directus-vs-joomla",
+      "directus-vs-sanity",
+      "directus-vs-storyblok",
+      "directus-vs-strapi",
+      "directus-vs-umbraco",
+      "directus-vs-webflow",
+      "directus-vs-wordpress",
+      "discord-vs-google-chat",
+      "discord-vs-google-meet",
+      "discord-vs-mattermost",
+      "discord-vs-ringcentral",
+      "discord-vs-rocket-chat",
+      "discord-vs-signal",
+      "discord-vs-telegram",
+      "discord-vs-webex",
+      "discord-vs-zoom",
+      "docker-vs-github",
+      "docker-vs-gitlab",
+      "docker-vs-netlify",
+      "docker-vs-postman",
+      "docker-vs-supabase",
+      "document360-vs-docusaurus",
+      "document360-vs-mkdocs",
+      "document360-vs-nuclino",
+      "document360-vs-read-the-docs",
+      "document360-vs-readme",
+      "document360-vs-scribe",
+      "document360-vs-slab",
+      "document360-vs-slite",
+      "document360-vs-swaggerhub",
+      "document360-vs-zeroheight",
+      "docusaurus-vs-mkdocs",
+      "docusaurus-vs-nuclino",
+      "docusaurus-vs-read-the-docs",
+      "docusaurus-vs-readme",
+      "docusaurus-vs-slab",
+      "docusaurus-vs-slite",
+      "docusaurus-vs-swaggerhub",
+      "docusaurus-vs-zeroheight",
+      "docusign-vs-pandadoc",
+      "domo-vs-microsoft-power-bi",
+      "domo-vs-tableau",
+      "doodle-vs-acuity-scheduling",
+      "doodle-vs-cal-com",
+      "doodle-vs-microsoft-bookings",
+      "doodle-vs-motion",
+      "doodle-vs-reclaim-ai",
+      "doodle-vs-savvycal",
+      "doodle-vs-setmore",
+      "doodle-vs-youcanbookme",
+      "doorloop-vs-tenantcloud",
+      "drata-vs-onetrust",
+      "drata-vs-secureframe",
+      "drata-vs-sprinto",
+      "drata-vs-vanta",
+      "drupal-vs-joomla",
+      "drupal-vs-sanity",
+      "drupal-vs-storyblok",
+      "drupal-vs-strapi",
+      "drupal-vs-umbraco",
+      "drupal-vs-webflow",
+      "drupal-vs-wordpress",
+      "duo-security-vs-keeper-security",
+      "duo-security-vs-lastpass",
+      "duo-security-vs-nordpass",
+      "duo-security-vs-okta",
+      "duo-security-vs-tailscale",
+      "duo-security-vs-wiz",
+      "ecwid-vs-opencart",
+      "ecwid-vs-prestashop",
+      "ecwid-vs-salesforce-commerce-cloud",
+      "ecwid-vs-shift4shop",
+      "ecwid-vs-shopify",
+      "ecwid-vs-weebly",
+      "ecwid-vs-woocommerce",
+      "elastic-vs-kong",
+      "elastic-vs-mulesoft",
+      "elastic-vs-rapidapi",
+      "elastic-vs-workos",
+      "elevenlabs-vs-descript",
+      "elevenlabs-vs-gemini",
+      "elevenlabs-vs-grammarly",
+      "elevenlabs-vs-jasper",
+      "elevenlabs-vs-midjourney",
+      "elevenlabs-vs-murf-ai",
+      "elevenlabs-vs-otter-ai",
+      "elevenlabs-vs-perplexity",
+      "elevenlabs-vs-runway",
+      "elevenlabs-vs-synthesia",
+      "entrata-vs-yardi-breeze",
+      "evernote-vs-airtable",
+      "evernote-vs-clockify",
+      "evernote-vs-craft",
+      "evernote-vs-microsoft-onenote",
+      "evernote-vs-superhuman",
+      "evernote-vs-things",
+      "evernote-vs-ticktick",
+      "evernote-vs-toggl-track",
+      "expensify-vs-navan",
+      "expensify-vs-ramp",
+      "expensify-vs-sap-concur",
+      "fathom-analytics-vs-fullstory",
+      "fathom-analytics-vs-google-analytics",
+      "fathom-analytics-vs-heap",
+      "fathom-analytics-vs-hotjar",
+      "fathom-analytics-vs-matomo",
+      "fathom-analytics-vs-mixpanel",
+      "fathom-analytics-vs-plausible",
+      "fathom-analytics-vs-posthog",
+      "fathom-analytics-vs-segment",
+      "fathom-vs-fireflies-ai",
+      "fathom-vs-gong",
+      "fathom-vs-otter-ai",
+      "fieldedge-vs-jobber",
+      "fieldedge-vs-servicetitan",
+      "fieldedge-vs-workiz",
+      "figma-vs-affinity",
+      "figma-vs-balsamiq",
+      "figma-vs-canva",
+      "figma-vs-framer",
+      "figma-vs-lucidchart",
+      "figma-vs-marvel",
+      "figma-vs-miro",
+      "figma-vs-sketch",
+      "figma-vs-whimsical",
+      "figma-vs-zeplin",
+      "figma-vs-zeroheight",
+      "firebase-vs-github",
+      "firebase-vs-gitlab",
+      "firebase-vs-jenkins",
+      "firebase-vs-netlify",
+      "firebase-vs-render",
+      "firebase-vs-sentry",
+      "firebase-vs-supabase",
+      "firebase-vs-vercel",
+      "fireflies-ai-vs-gong",
+      "five9-vs-genesys-cloud-cx",
+      "five9-vs-ringcentral",
+      "five9-vs-talkdesk",
+      "framer-vs-marvel",
+      "framer-vs-webflow",
+      "framer-vs-whimsical",
+      "framer-vs-zeplin",
+      "freshbooks-vs-clockify",
+      "freshbooks-vs-harvest",
+      "freshbooks-vs-toggl-track",
+      "freshbooks-vs-wave",
+      "freshbooks-vs-zoho-books",
+      "freshdesk-vs-front",
+      "freshdesk-vs-gorgias",
+      "freshdesk-vs-happyfox",
+      "freshdesk-vs-help-scout",
+      "freshdesk-vs-kayako",
+      "freshdesk-vs-liveagent",
+      "freshdesk-vs-reamaze",
+      "freshdesk-vs-tidio",
+      "freshdesk-vs-zendesk",
+      "freshdesk-vs-zoho-desk",
+      "freshsales-vs-keap",
+      "freshsales-vs-nutshell",
+      "freshsales-vs-salesforce",
+      "freshsales-vs-zoho-crm",
+      "freshservice-vs-servicenow-itsm",
+      "front-vs-gorgias",
+      "front-vs-happyfox",
+      "front-vs-help-scout",
+      "front-vs-intercom",
+      "front-vs-kayako",
+      "front-vs-liveagent",
+      "front-vs-reamaze",
+      "front-vs-tidio",
+      "front-vs-zendesk",
+      "front-vs-zoho-desk",
+      "fullstory-vs-heap",
+      "fullstory-vs-hotjar",
+      "fullstory-vs-matomo",
+      "fullstory-vs-mixpanel",
+      "fullstory-vs-plausible",
+      "fullstory-vs-posthog",
+      "fullstory-vs-segment",
+      "gemini-vs-github-copilot",
+      "gemini-vs-grammarly",
+      "gemini-vs-jasper",
+      "gemini-vs-midjourney",
+      "gemini-vs-otter-ai",
+      "gemini-vs-perplexity",
+      "gemini-vs-runway",
+      "gemini-vs-synthesia",
+      "genesys-cloud-cx-vs-ringcentral",
+      "genesys-cloud-cx-vs-talkdesk",
+      "geotab-vs-motive",
+      "geotab-vs-samsara",
+      "geotab-vs-verizon-connect",
+      "getresponse-vs-activecampaign",
+      "getresponse-vs-ahrefs",
+      "getresponse-vs-braze",
+      "getresponse-vs-buffer",
+      "getresponse-vs-hootsuite",
+      "getresponse-vs-klaviyo",
+      "getresponse-vs-mailchimp",
+      "getresponse-vs-marketo-engage",
+      "getresponse-vs-semrush",
+      "getresponse-vs-sprout-social",
+      "getresponse-vs-zoho-campaigns",
+      "ghost-vs-joomla",
+      "ghost-vs-sanity",
+      "ghost-vs-squarespace",
+      "ghost-vs-storyblok",
+      "ghost-vs-strapi",
+      "ghost-vs-umbraco",
+      "ghost-vs-webflow",
+      "ghost-vs-wix",
+      "ghost-vs-wordpress",
+      "gitbook-vs-bloomfire",
+      "gitbook-vs-docusaurus",
+      "gitbook-vs-guru",
+      "gitbook-vs-helpjuice",
+      "gitbook-vs-knowledgeowl",
+      "gitbook-vs-read-the-docs",
+      "gitbook-vs-stack-overflow-for-teams",
+      "gitbook-vs-tettra",
+      "gitbook-vs-trainual",
+      "github-copilot-vs-jasper",
+      "github-copilot-vs-otter-ai",
+      "github-copilot-vs-perplexity",
+      "github-copilot-vs-replit",
+      "github-copilot-vs-runway",
+      "github-copilot-vs-windsurf",
+      "github-vs-gitlab",
+      "github-vs-jenkins",
+      "github-vs-netlify",
+      "github-vs-postman",
+      "github-vs-sentry",
+      "github-vs-vercel",
+      "gitlab-vs-jenkins",
+      "gitlab-vs-netlify",
+      "gitlab-vs-postman",
+      "gitlab-vs-render",
+      "gitlab-vs-vercel",
+      "gohighlevel-vs-activecampaign",
+      "gohighlevel-vs-close",
+      "gohighlevel-vs-freshsales",
+      "gohighlevel-vs-hubspot",
+      "gohighlevel-vs-keap",
+      "gohighlevel-vs-pipedrive",
+      "gohighlevel-vs-zoho-crm",
+      "google-analytics-vs-heap",
+      "google-analytics-vs-hotjar",
+      "google-analytics-vs-matomo",
+      "google-analytics-vs-mixpanel",
+      "google-analytics-vs-plausible",
+      "google-analytics-vs-posthog",
+      "google-chat-vs-google-meet",
+      "google-chat-vs-ringcentral",
+      "google-chat-vs-telegram",
+      "google-chat-vs-webex",
+      "google-cloud-bigquery-vs-snowflake",
+      "google-meet-vs-ringcentral",
+      "google-meet-vs-rocket-chat",
+      "google-meet-vs-signal",
+      "google-meet-vs-webex",
+      "gorgias-vs-happyfox",
+      "gorgias-vs-help-scout",
+      "gorgias-vs-intercom",
+      "gorgias-vs-kayako",
+      "gorgias-vs-liveagent",
+      "gorgias-vs-reamaze",
+      "gorgias-vs-tidio",
+      "gorgias-vs-zendesk",
+      "gorgias-vs-zoho-desk",
+      "grammarly-vs-jasper",
+      "grammarly-vs-midjourney",
+      "grammarly-vs-otter-ai",
+      "grammarly-vs-runway",
+      "grammarly-vs-synthesia",
+      "greenhouse-vs-lever",
+      "guru-vs-bloomfire",
+      "guru-vs-helpjuice",
+      "guru-vs-knowledgeowl",
+      "guru-vs-scribe",
+      "guru-vs-stack-overflow-for-teams",
+      "guru-vs-tettra",
+      "guru-vs-trainual",
+      "happyfox-vs-help-scout",
+      "happyfox-vs-intercom",
+      "happyfox-vs-kayako",
+      "happyfox-vs-liveagent",
+      "happyfox-vs-reamaze",
+      "happyfox-vs-tidio",
+      "happyfox-vs-zendesk",
+      "happyfox-vs-zoho-desk",
+      "harvest-vs-asana",
+      "harvest-vs-time-doctor",
+      "heap-vs-hotjar",
+      "heap-vs-matomo",
+      "heap-vs-mixpanel",
+      "heap-vs-plausible",
+      "heap-vs-posthog",
+      "help-scout-vs-intercom",
+      "help-scout-vs-kayako",
+      "help-scout-vs-liveagent",
+      "help-scout-vs-reamaze",
+      "help-scout-vs-tidio",
+      "help-scout-vs-zendesk",
+      "help-scout-vs-zoho-desk",
+      "helpjuice-vs-bloomfire",
+      "helpjuice-vs-knowledgeowl",
+      "helpjuice-vs-scribe",
+      "helpjuice-vs-stack-overflow-for-teams",
+      "helpjuice-vs-tettra",
+      "helpjuice-vs-trainual",
+      "hootsuite-vs-klaviyo",
+      "hootsuite-vs-later",
+      "hootsuite-vs-mailchimp",
+      "hootsuite-vs-sprout-social",
+      "hotjar-vs-matomo",
+      "hotjar-vs-mixpanel",
+      "hotjar-vs-plausible",
+      "hotjar-vs-posthog",
+      "housecall-pro-vs-workiz",
+      "hubspot-vs-close",
+      "hubspot-vs-copper",
+      "hubspot-vs-freshsales",
+      "hubspot-vs-keap",
+      "hubspot-vs-marketo-engage",
+      "hubspot-vs-nutshell",
+      "hubspot-vs-pipedrive",
+      "hubspot-vs-salesforce",
+      "hubspot-vs-zoho-crm",
+      "hubstaff-vs-asana",
+      "hubstaff-vs-clickup",
+      "hubstaff-vs-clockify",
+      "hubstaff-vs-harvest",
+      "hubstaff-vs-monday",
+      "hubstaff-vs-time-doctor",
+      "hubstaff-vs-todoist",
+      "hubstaff-vs-toggl-track",
+      "ifttt-vs-pipedream",
+      "ifttt-vs-power-automate",
+      "ifttt-vs-tray-ai",
+      "ifttt-vs-uipath",
+      "ifttt-vs-workato",
+      "ifttt-vs-zoho-flow",
+      "intercom-vs-freshdesk",
+      "intercom-vs-kayako",
+      "intercom-vs-liveagent",
+      "intercom-vs-reamaze",
+      "intercom-vs-tidio",
+      "intercom-vs-zendesk",
+      "intercom-vs-zoho-desk",
+      "jamf-pro-vs-manageengine-endpoint-central",
+      "jamf-pro-vs-ninjaone",
+      "jasper-vs-midjourney",
+      "jasper-vs-perplexity",
+      "jasper-vs-runway",
+      "jasper-vs-synthesia",
+      "jenkins-vs-render",
+      "jenkins-vs-vercel",
+      "jira-vs-asana",
+      "jira-vs-basecamp",
+      "jira-vs-linear",
+      "jira-vs-shortcut",
+      "jira-vs-smartsheet",
+      "jira-vs-teamwork",
+      "jira-vs-wrike",
+      "jira-vs-zoho-projects",
+      "jobber-vs-housecall-pro",
+      "jobber-vs-workiz",
+      "joomla-vs-sanity",
+      "joomla-vs-storyblok",
+      "joomla-vs-strapi",
+      "joomla-vs-umbraco",
+      "joomla-vs-webflow",
+      "joomla-vs-wix",
+      "joomla-vs-wordpress",
+      "kayako-vs-liveagent",
+      "kayako-vs-reamaze",
+      "kayako-vs-tidio",
+      "kayako-vs-zendesk",
+      "kayako-vs-zoho-desk",
+      "keap-vs-nutshell",
+      "keap-vs-zoho-crm",
+      "keeper-security-vs-lastpass",
+      "keeper-security-vs-nordpass",
+      "keeper-security-vs-okta",
+      "keeper-security-vs-snyk",
+      "keeper-security-vs-wiz",
+      "keeper-vs-nordpass",
+      "klaviyo-vs-mailchimp",
+      "klaviyo-vs-sprout-social",
+      "knowledgeowl-vs-document360",
+      "knowledgeowl-vs-trainual",
+      "kong-vs-mulesoft",
+      "kong-vs-plaid",
+      "kong-vs-rapidapi",
+      "kong-vs-sendgrid",
+      "kong-vs-stripe",
+      "kong-vs-twilio",
+      "kong-vs-workos",
+      "krispcall-vs-dialpad",
+      "krispcall-vs-google-meet",
+      "krispcall-vs-microsoft-teams",
+      "krispcall-vs-nextiva",
+      "krispcall-vs-ringcentral",
+      "krispcall-vs-webex",
+      "krispcall-vs-zoom",
+      "lastpass-vs-keeper",
+      "lastpass-vs-nordpass",
+      "lastpass-vs-okta",
+      "lastpass-vs-snyk",
+      "linear-vs-shortcut",
+      "linear-vs-smartsheet",
+      "linear-vs-teamwork",
+      "linear-vs-wrike",
+      "linear-vs-zoho-projects",
+      "linkedin-sales-navigator-vs-zoominfo-sales",
+      "liveagent-vs-reamaze",
+      "liveagent-vs-tidio",
+      "liveagent-vs-zendesk",
+      "liveagent-vs-zoho-desk",
+      "looker-vs-microsoft-power-bi",
+      "looker-vs-tableau",
+      "lovable-vs-replit",
+      "lucidchart-vs-affinity",
+      "lucidchart-vs-balsamiq",
+      "lucidchart-vs-framer",
+      "lucidchart-vs-whimsical",
+      "lucidchart-vs-zeplin",
+      "mailchimp-vs-sprout-social",
+      "mailerlite-vs-brevo",
+      "mailerlite-vs-getresponse",
+      "mailerlite-vs-zoho-campaigns",
+      "make-vs-ifttt",
+      "make-vs-n8n",
+      "make-vs-pipedream",
+      "make-vs-power-automate",
+      "make-vs-tray-ai",
+      "make-vs-workato",
+      "make-vs-zoho-flow",
+      "manageengine-endpoint-central-vs-ninjaone",
+      "marketo-engage-vs-activecampaign",
+      "marketo-engage-vs-ahrefs",
+      "marketo-engage-vs-braze",
+      "marketo-engage-vs-buffer",
+      "marketo-engage-vs-hootsuite",
+      "marketo-engage-vs-klaviyo",
+      "marketo-engage-vs-mailchimp",
+      "marketo-engage-vs-semrush",
+      "marketo-engage-vs-sprout-social",
+      "marvel-vs-whimsical",
+      "marvel-vs-zeplin",
+      "matomo-vs-mixpanel",
+      "matomo-vs-plausible",
+      "matomo-vs-posthog",
+      "mattermost-vs-google-chat",
+      "mattermost-vs-google-meet",
+      "mattermost-vs-ringcentral",
+      "mattermost-vs-rocket-chat",
+      "mattermost-vs-signal",
+      "mattermost-vs-telegram",
+      "mattermost-vs-zoom",
+      "microsoft-bookings-vs-motion",
+      "microsoft-bookings-vs-reclaim-ai",
+      "microsoft-bookings-vs-savvycal",
+      "microsoft-bookings-vs-setmore",
+      "microsoft-bookings-vs-youcanbookme",
+      "microsoft-dynamics-365-business-central-vs-netsuite",
+      "microsoft-dynamics-365-business-central-vs-sage-intacct",
+      "microsoft-onenote-vs-craft",
+      "microsoft-onenote-vs-superhuman",
+      "microsoft-power-bi-vs-tableau",
+      "microsoft-teams-vs-discord",
+      "microsoft-teams-vs-google-chat",
+      "microsoft-teams-vs-google-meet",
+      "microsoft-teams-vs-mattermost",
+      "microsoft-teams-vs-otter-ai",
+      "microsoft-teams-vs-ringcentral",
+      "microsoft-teams-vs-rocket-chat",
+      "microsoft-teams-vs-telegram",
+      "microsoft-teams-vs-webex",
+      "midjourney-vs-perplexity",
+      "midjourney-vs-runway",
+      "midjourney-vs-synthesia",
+      "miro-vs-balsamiq",
+      "miro-vs-framer",
+      "miro-vs-lucidchart",
+      "miro-vs-marvel",
+      "miro-vs-whimsical",
+      "mixpanel-vs-posthog",
+      "mixpanel-vs-segment",
+      "mkdocs-vs-nuclino",
+      "mkdocs-vs-readme",
+      "mkdocs-vs-scribe",
+      "mkdocs-vs-slab",
+      "mkdocs-vs-slite",
+      "mkdocs-vs-swaggerhub",
+      "mkdocs-vs-zeroheight",
+      "monday-vs-basecamp",
+      "monday-vs-jira",
+      "monday-vs-linear",
+      "monday-vs-pipedrive",
+      "monday-vs-shortcut",
+      "monday-vs-smartsheet",
+      "monday-vs-wrike",
+      "monday-vs-zoho-projects",
+      "moosend-vs-activecampaign",
+      "moosend-vs-braze",
+      "moosend-vs-brevo",
+      "moosend-vs-getresponse",
+      "moosend-vs-klaviyo",
+      "moosend-vs-mailchimp",
+      "moosend-vs-marketo-engage",
+      "moosend-vs-zoho-campaigns",
+      "motion-vs-reclaim-ai",
+      "motion-vs-savvycal",
+      "motion-vs-setmore",
+      "motion-vs-youcanbookme",
+      "motive-vs-samsara",
+      "motive-vs-verizon-connect",
+      "mulesoft-vs-rapidapi",
+      "mulesoft-vs-twilio",
+      "mulesoft-vs-workos",
+      "murf-ai-vs-descript",
+      "n8n-vs-ifttt",
+      "n8n-vs-pipedream",
+      "n8n-vs-power-automate",
+      "n8n-vs-tray-ai",
+      "n8n-vs-uipath",
+      "n8n-vs-workato",
+      "n8n-vs-zoho-flow",
+      "netlify-vs-postman",
+      "netlify-vs-render",
+      "netlify-vs-sentry",
+      "netlify-vs-supabase",
+      "netlify-vs-vercel",
+      "netsuite-vs-odoo",
+      "netsuite-vs-sage-intacct",
+      "netsuite-vs-sap-cloud-erp",
+      "ninjaone-vs-teamviewer",
+      "nordpass-vs-okta",
+      "nordpass-vs-tailscale",
+      "notion-vs-obsidian",
+      "nuclino-vs-read-the-docs",
+      "nuclino-vs-readme",
+      "nuclino-vs-scribe",
+      "nuclino-vs-slab",
+      "nuclino-vs-slite",
+      "nuclino-vs-swaggerhub",
+      "nutshell-vs-zoho-crm",
+      "obsidian-vs-evernote",
+      "obsidian-vs-gitbook",
+      "obsidian-vs-guru",
+      "obsidian-vs-microsoft-onenote",
+      "odoo-vs-sage-intacct",
+      "okta-vs-snyk",
+      "okta-vs-tailscale",
+      "okta-vs-wiz",
+      "okta-vs-workos",
+      "omnisend-vs-brevo",
+      "omnisend-vs-klaviyo",
+      "omnisend-vs-mailchimp",
+      "omnisend-vs-zoho-campaigns",
+      "onetrust-vs-vanta",
+      "opencart-vs-prestashop",
+      "opencart-vs-salesforce-commerce-cloud",
+      "opencart-vs-shift4shop",
+      "opencart-vs-shopify",
+      "opencart-vs-shopware",
+      "opencart-vs-weebly",
+      "opencart-vs-woocommerce",
+      "otter-ai-vs-perplexity",
+      "otter-ai-vs-runway",
+      "otter-ai-vs-synthesia",
+      "outreach-vs-salesloft",
+      "papaya-global-vs-remote",
+      "paycom-vs-paylocity",
+      "paycom-vs-workday-hcm",
+      "paylocity-vs-workday-hcm",
+      "paypal-payments-vs-stripe",
+      "perplexity-vs-runway",
+      "perplexity-vs-synthesia",
+      "pipedream-vs-power-automate",
+      "pipedream-vs-tray-ai",
+      "pipedream-vs-uipath",
+      "pipedream-vs-workato",
+      "pipedream-vs-zoho-flow",
+      "pipedrive-vs-close",
+      "pipedrive-vs-copper",
+      "pipedrive-vs-freshsales",
+      "pipedrive-vs-keap",
+      "pipedrive-vs-nutshell",
+      "pipedrive-vs-whatconverts",
+      "pipedrive-vs-zoho-crm",
+      "plaid-vs-rapidapi",
+      "plaid-vs-sendgrid",
+      "plaid-vs-stripe",
+      "plaid-vs-twilio",
+      "plausible-vs-segment",
+      "posthog-vs-segment",
+      "postman-vs-readme",
+      "postman-vs-render",
+      "postman-vs-swaggerhub",
+      "postman-vs-vercel",
+      "postmark-vs-brevo",
+      "postmark-vs-sendgrid",
+      "postmark-vs-twilio",
+      "power-automate-vs-tray-ai",
+      "power-automate-vs-uipath",
+      "power-automate-vs-workato",
+      "power-automate-vs-zoho-flow",
+      "prestashop-vs-salesforce-commerce-cloud",
+      "prestashop-vs-shift4shop",
+      "prestashop-vs-shopify",
+      "prestashop-vs-shopware",
+      "prestashop-vs-weebly",
+      "prestashop-vs-woocommerce",
+      "quickbooks-online-vs-freshbooks",
+      "quickbooks-online-vs-wave",
+      "quickbooks-online-vs-xero",
+      "quickbooks-online-vs-zoho-books",
+      "ramp-vs-sap-concur",
+      "rapidapi-vs-sendgrid",
+      "rapidapi-vs-stripe",
+      "rapidapi-vs-twilio",
+      "rapidapi-vs-workos",
+      "read-the-docs-vs-readme",
+      "read-the-docs-vs-slab",
+      "read-the-docs-vs-slite",
+      "read-the-docs-vs-swaggerhub",
+      "read-the-docs-vs-zeroheight",
+      "readme-vs-gitbook",
+      "readme-vs-scribe",
+      "readme-vs-slab",
+      "readme-vs-slite",
+      "readme-vs-swaggerhub",
+      "readme-vs-zeroheight",
+      "reamaze-vs-tidio",
+      "reamaze-vs-zendesk",
+      "reamaze-vs-zoho-desk",
+      "reclaim-ai-vs-savvycal",
+      "reclaim-ai-vs-setmore",
+      "reclaim-ai-vs-youcanbookme",
+      "render-vs-sentry",
+      "render-vs-supabase",
+      "render-vs-vercel",
+      "rent-manager-vs-yardi-breeze",
+      "replit-vs-windsurf",
+      "ringcentral-vs-dialpad",
+      "ringcentral-vs-nextiva",
+      "ringcentral-vs-rocket-chat",
+      "ringcentral-vs-signal",
+      "ringcentral-vs-talkdesk",
+      "ringcentral-vs-telegram",
+      "ringcentral-vs-webex",
+      "rippling-vs-adp-workforce-now",
+      "rippling-vs-bamboohr",
+      "rippling-vs-deel",
+      "rippling-vs-gusto",
+      "rocket-chat-vs-signal",
+      "rocket-chat-vs-telegram",
+      "rocket-chat-vs-webex",
+      "ruler-analytics-vs-google-analytics",
+      "ruler-analytics-vs-hubspot",
+      "runway-vs-synthesia",
+      "salesforce-commerce-cloud-vs-shift4shop",
+      "salesforce-commerce-cloud-vs-shopify",
+      "salesforce-commerce-cloud-vs-shopware",
+      "salesforce-commerce-cloud-vs-weebly",
+      "salesforce-commerce-cloud-vs-woocommerce",
+      "salesforce-vs-close",
+      "salesforce-vs-copper",
+      "salesforce-vs-keap",
+      "salesforce-vs-nutshell",
+      "salesforce-vs-pipedrive",
+      "salesforce-vs-zoho-crm",
+      "samsara-vs-verizon-connect",
+      "sanity-vs-squarespace",
+      "sanity-vs-storyblok",
+      "sanity-vs-strapi",
+      "sanity-vs-umbraco",
+      "sanity-vs-webflow",
+      "sanity-vs-wix",
+      "sanity-vs-wordpress",
+      "savvycal-vs-setmore",
+      "savvycal-vs-youcanbookme",
+      "scribe-vs-slab",
+      "scribe-vs-slite",
+      "scribe-vs-zeroheight",
+      "secureframe-vs-sprinto",
+      "secureframe-vs-vanta",
+      "semrush-vs-activecampaign",
+      "semrush-vs-ahrefs",
+      "semrush-vs-google-analytics",
+      "semrush-vs-hootsuite",
+      "semrush-vs-klaviyo",
+      "semrush-vs-moz",
+      "semrush-vs-sprout-social",
+      "sendgrid-vs-stripe",
+      "sendgrid-vs-twilio",
+      "sendgrid-vs-workos",
+      "sentinelone-vs-sophos-endpoint",
+      "sentry-vs-posthog",
+      "servicetitan-vs-housecall-pro",
+      "servicetitan-vs-jobber",
+      "setmore-vs-hubspot",
+      "setmore-vs-youcanbookme",
+      "shift4shop-vs-shopify",
+      "shift4shop-vs-shopware",
+      "shift4shop-vs-weebly",
+      "shopify-vs-weebly",
+      "shopify-vs-woocommerce",
+      "shopware-vs-weebly",
+      "shopware-vs-woocommerce",
+      "shortcut-vs-smartsheet",
+      "shortcut-vs-teamwork",
+      "shortcut-vs-wrike",
+      "shortcut-vs-zoho-projects",
+      "signal-vs-telegram",
+      "sketch-vs-affinity",
+      "sketch-vs-balsamiq",
+      "sketch-vs-framer",
+      "sketch-vs-lucidchart",
+      "sketch-vs-marvel",
+      "sketch-vs-miro",
+      "sketch-vs-whimsical",
+      "sketch-vs-zeplin",
+      "sketch-vs-zeroheight",
+      "slab-vs-slite",
+      "slab-vs-swaggerhub",
+      "slab-vs-zeroheight",
+      "slack-vs-discord",
+      "slack-vs-google-chat",
+      "slack-vs-google-meet",
+      "slack-vs-mattermost",
+      "slack-vs-microsoft-teams",
+      "slack-vs-ringcentral",
+      "slack-vs-rocket-chat",
+      "slack-vs-webex",
+      "slack-vs-zoom",
+      "slite-vs-swaggerhub",
+      "slite-vs-zeroheight",
+      "smartsheet-vs-teamwork",
+      "smartsheet-vs-wrike",
+      "smartsheet-vs-zoho-projects",
+      "snyk-vs-wiz",
+      "sprinto-vs-vanta",
+      "sprout-social-vs-later",
+      "squarespace-vs-storyblok",
+      "squarespace-vs-strapi",
+      "squarespace-vs-umbraco",
+      "squarespace-vs-webflow",
+      "squarespace-vs-weebly",
+      "squarespace-vs-wix",
+      "squarespace-vs-wordpress",
+      "stack-overflow-for-teams-vs-knowledgeowl",
+      "stack-overflow-for-teams-vs-trainual",
+      "storyblok-vs-strapi",
+      "storyblok-vs-umbraco",
+      "storyblok-vs-webflow",
+      "storyblok-vs-wix",
+      "storyblok-vs-wordpress",
+      "strapi-vs-umbraco",
+      "strapi-vs-webflow",
+      "strapi-vs-wix",
+      "strapi-vs-wordpress",
+      "stripe-vs-twilio",
+      "supabase-vs-vercel",
+      "superhuman-vs-craft",
+      "surveymonkey-vs-qualtrics",
+      "surveymonkey-vs-typeform",
+      "swaggerhub-vs-gitbook",
+      "swaggerhub-vs-zeroheight",
+      "synthesia-vs-descript",
+      "synthesia-vs-murf-ai",
+      "tailscale-vs-wiz",
+      "teamwork-vs-wrike",
+      "teamwork-vs-zoho-projects",
+      "tettra-vs-bloomfire",
+      "tettra-vs-knowledgeowl",
+      "tettra-vs-stack-overflow-for-teams",
+      "tettra-vs-trainual",
+      "things-vs-anydo",
+      "things-vs-clockify",
+      "things-vs-craft",
+      "things-vs-microsoft-onenote",
+      "things-vs-superhuman",
+      "things-vs-ticktick",
+      "things-vs-toggl-track",
+      "ticktick-vs-anydo",
+      "ticktick-vs-clockify",
+      "ticktick-vs-craft",
+      "ticktick-vs-microsoft-onenote",
+      "ticktick-vs-superhuman",
+      "ticktick-vs-toggl-track",
+      "tidio-vs-zendesk",
+      "tidio-vs-zoho-desk",
+      "todoist-vs-anydo",
+      "todoist-vs-craft",
+      "todoist-vs-microsoft-onenote",
+      "todoist-vs-motion",
+      "todoist-vs-reclaim-ai",
+      "todoist-vs-superhuman",
+      "todoist-vs-things",
+      "todoist-vs-ticktick",
+      "toggl-track-vs-clockify",
+      "toggl-track-vs-craft",
+      "toggl-track-vs-harvest",
+      "toggl-track-vs-superhuman",
+      "toggl-track-vs-time-doctor",
+      "tray-ai-vs-workato",
+      "tray-ai-vs-zoho-flow",
+      "trello-vs-basecamp",
+      "trello-vs-jira",
+      "trello-vs-linear",
+      "trello-vs-monday",
+      "trello-vs-shortcut",
+      "trello-vs-smartsheet",
+      "trello-vs-teamwork",
+      "trello-vs-wrike",
+      "trello-vs-zoho-projects",
+      "twilio-vs-workos",
+      "uipath-vs-workato",
+      "uipath-vs-zoho-flow",
+      "umbraco-vs-webflow",
+      "umbraco-vs-wix",
+      "umbraco-vs-wordpress",
+      "volza-vs-google-analytics",
+      "wave-vs-zoho-books",
+      "webflow-vs-wix",
+      "webflow-vs-wordpress",
+      "weebly-vs-woocommerce",
+      "whatconverts-vs-callrail",
+      "whatconverts-vs-google-analytics",
+      "whatconverts-vs-hubspot",
+      "whatconverts-vs-ruler-analytics",
+      "whimsical-vs-zeplin",
+      "wix-vs-wordpress",
+      "workato-vs-zoho-flow",
+      "workos-vs-duo-security",
+      "wrike-vs-zoho-projects",
+      "xero-vs-freshbooks",
+      "xero-vs-wave",
+      "xero-vs-zoho-books",
+      "zapier-vs-ifttt",
+      "zapier-vs-make",
+      "zapier-vs-n8n",
+      "zapier-vs-pipedream",
+      "zapier-vs-power-automate",
+      "zapier-vs-tray-ai",
+      "zapier-vs-uipath",
+      "zapier-vs-workato",
+      "zapier-vs-zoho-flow",
+      "zendesk-vs-zoho-desk",
+      "zeplin-vs-zeroheight",
+      "zoom-vs-google-chat",
+      "zoom-vs-google-meet",
+      "zoom-vs-microsoft-teams",
+      "zoom-vs-otter-ai",
+      "zoom-vs-ringcentral",
+      "zoom-vs-rocket-chat",
+      "zoom-vs-signal",
+      "zoom-vs-telegram",
+      "zoom-vs-webex"
+    ],
+    "held": {
+      "adobe-analytics-vs-segment": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "airtable-vs-notion": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "asana-vs-monday": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "canva-vs-lucidchart": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-22"
+      },
+      "clickup-vs-airtable": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-asana": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-coda": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-confluence": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-jira": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-linear": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-monday": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-shortcut": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-smartsheet": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-todoist": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-trello": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-wrike": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "clickup-vs-zoho-projects": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "coda-vs-todoist": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "confluence-vs-gitbook": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "constant-contact-vs-getresponse": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "decision-money-pages",
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-23"
+      },
+      "docker-vs-vercel": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-22"
+      },
+      "github-vs-render": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-22"
+      },
+      "google-chat-vs-signal": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-22"
+      },
+      "jenkins-vs-sentry": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-22"
+      },
+      "linear-vs-notion": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "mailerlite-vs-moosend": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "decision-money-pages",
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-23"
+      },
+      "microsoft-teams-vs-signal": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-22"
+      },
+      "mkdocs-vs-read-the-docs": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-04"
+      },
+      "monday-vs-airtable": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "decision-money-pages",
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-23"
+      },
+      "notion-vs-clickup": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-clockify": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-coda": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-confluence": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-craft": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-evernote": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-gitbook": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-guru": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-microsoft-onenote": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-slite": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-smartsheet": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-things": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-ticktick": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-todoist": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-toggl-track": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "notion-vs-trello": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "surveymonkey-vs-jotform": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "decision-money-pages",
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-23"
+      },
+      "todoist-vs-airtable": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "todoist-vs-asana": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "todoist-vs-clockify": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "todoist-vs-evernote": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "trello-vs-todoist": {
+        "verdict": "PROTECTED",
+        "sources": [
+          "comparison-quality-cohort"
+        ],
+        "eligibleAfter": null
+      },
+      "wix-vs-shopify": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "decision-money-pages",
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-10-23"
+      }
+    }
+  },
+  "productsSharedWithHeldPages": [
+    "1password",
+    "activecampaign",
+    "acuity-scheduling",
+    "adobe-analytics",
+    "adyen",
+    "airtable",
+    "algolia",
+    "amplitude",
+    "appfolio",
+    "asana",
+    "basecamp",
+    "bigcommerce",
+    "bitbucket",
+    "bitwarden",
+    "braze",
+    "buffer",
+    "buildium",
+    "cal-com",
+    "calendly",
+    "canva",
+    "clickup",
+    "clockify",
+    "close",
+    "coda",
+    "confluence",
+    "constant-contact",
+    "contentful",
+    "copy-ai",
+    "craft",
+    "craft-cms",
+    "crazy-egg",
+    "crowdstrike",
+    "dashlane",
+    "deepl",
+    "directus",
+    "docker",
+    "document360",
+    "doodle",
+    "doorloop",
+    "drupal",
+    "ecwid",
+    "elastic",
+    "elevenlabs",
+    "evernote",
+    "fathom-analytics",
+    "firebase",
+    "freshbooks",
+    "freshdesk",
+    "front",
+    "fullstory",
+    "getresponse",
+    "gitbook",
+    "github",
+    "google-analytics",
+    "google-chat",
+    "google-meet",
+    "gorgias",
+    "guru",
+    "harvest",
+    "help-scout",
+    "hootsuite",
+    "hotjar",
+    "housecall-pro",
+    "hubspot",
+    "hubstaff",
+    "ifttt",
+    "intercom",
+    "jasper",
+    "jenkins",
+    "jira",
+    "jotform",
+    "kayako",
+    "keap",
+    "klaviyo",
+    "lastpass",
+    "linear",
+    "lucidchart",
+    "mailerlite",
+    "make",
+    "marketo-engage",
+    "matomo",
+    "mattermost",
+    "microsoft-onenote",
+    "microsoft-teams",
+    "miro",
+    "mixpanel",
+    "mkdocs",
+    "monday",
+    "moosend",
+    "mulesoft",
+    "n8n",
+    "netlify",
+    "notion",
+    "okta",
+    "opencart",
+    "perplexity",
+    "pipedrive",
+    "plaid",
+    "plausible",
+    "power-automate",
+    "quickbooks-online",
+    "read-the-docs",
+    "reclaim-ai",
+    "render",
+    "ringcentral",
+    "salesforce",
+    "salesforce-commerce-cloud",
+    "sap-cloud-erp",
+    "scribe",
+    "segment",
+    "semrush",
+    "sentry",
+    "setmore",
+    "shopify",
+    "shortcut",
+    "signal",
+    "sketch",
+    "slite",
+    "smartsheet",
+    "snyk",
+    "sprout-social",
+    "strapi",
+    "superhuman",
+    "surveymonkey",
+    "synthesia",
+    "tailscale",
+    "teamwork",
+    "tenantcloud",
+    "things",
+    "ticktick",
+    "time-doctor",
+    "todoist",
+    "toggl-track",
+    "trainual",
+    "trello",
+    "umbraco",
+    "vercel",
+    "volza",
+    "webex",
+    "whimsical",
+    "wix",
+    "wiz",
+    "woocommerce",
+    "wrike",
+    "xero",
+    "zapier",
+    "zeplin",
+    "zoho-books",
+    "zoho-crm",
+    "zoho-desk",
+    "zoho-flow",
+    "zoho-projects"
+  ]
+}
