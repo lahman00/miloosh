@@ -16,12 +16,13 @@ import { buildModel } from "./check-built-site";
 
 const SITE_URL = "https://miloosh.com";
 
-const USAGE = `Usage: npm run check:external-links -- [--dir <.next/server/app>] [--concurrency <n>] [--gap-ms <n>] [--limit <n>] [--json <file>] [--dry-run]
+const USAGE = `Usage: npm run check:external-links -- [--dir <.next/server/app>] [--concurrency <n>] [--gap-ms <n>] [--limit <n>] [--json <file>] [--recheck <report.json>] [--dry-run]
 
   --concurrency <n>  Requests in flight at once (default 4).
   --gap-ms <n>       Minimum gap between two requests to the same host (default 1500).
   --limit <n>        Check only the first n URLs after interleaving (for a trial run).
   --json <file>      Write the full report, with every URL and the pages that link to it.
+  --recheck <file>   Check again only the URLs that a previous --json report did not find ok or bot-blocked (use a slower pace).
   --dry-run          Print what would be requested and what is left alone; send nothing.
 `;
 
@@ -44,7 +45,7 @@ export async function main(argv: string[]): Promise<number> {
     } else flags.set(arg.slice(2), true);
   }
   for (const key of flags.keys()) {
-    if (!["dir", "concurrency", "gap-ms", "limit", "json", "dry-run", "help"].includes(key)) {
+    if (!["dir", "concurrency", "gap-ms", "limit", "json", "recheck", "dry-run", "help"].includes(key)) {
       console.error(`Unknown option --${key}\n${USAGE}`);
       return 2;
     }
@@ -68,6 +69,12 @@ export async function main(argv: string[]): Promise<number> {
   const model = await buildModel(dir);
   const { checkable, excluded } = collectExternalTargets(model.pages.values(), SITE_URL);
   let ordered = interleaveByHost(checkable);
+  const recheck = flags.get("recheck");
+  if (typeof recheck === "string") {
+    const previous = JSON.parse(fs.readFileSync(path.resolve(recheck), "utf8")) as { results: Row[] };
+    const again = new Set(previous.results.filter(({ result }) => !INFO_OUTCOMES.has(result.outcome)).map(({ target }) => target.url));
+    ordered = ordered.filter((target) => again.has(target.url));
+  }
   const limit = flags.get("limit");
   if (typeof limit === "string") ordered = ordered.slice(0, number("limit", ordered.length));
   const hosts = new Set(ordered.map((target) => new URL(target.url).hostname)).size;
