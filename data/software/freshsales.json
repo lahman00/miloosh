@@ -4,7 +4,11 @@
   "category": "crm",
   "description": "Freshsales is Freshworks' cloud-based sales CRM that uses Freddy AI for lead scoring, deal recommendations, and automated email writing alongside kanban-style pipeline tracking.",
   "website": "https://www.freshworks.com/crm/sales/",
-  "platforms": ["Web", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Sales teams at companies of varying sizes — Freshworks reports 74,000+ businesses use the platform — seeking AI-assisted lead management and a 360° customer view.",
   "features": [
     "AI-assisted lead capture, qualification, and routing",
@@ -16,7 +20,8 @@
     "Voice and image-to-text note capture in the mobile app"
   ],
   "sources": [
-    "https://www.freshworks.com/crm/sales/"
+    "https://www.freshworks.com/crm/sales/",
+    "https://www.freshworks.com/crm/pricing/"
   ],
   "accessed_at": "2026-08-04",
   "alternatives": [
@@ -25,21 +30,82 @@
       "slug": "hubspot",
       "description": "An all-in-one CRM platform with marketing, sales, and service hubs.",
       "best_for": "Growing businesses wanting an integrated marketing-to-sales CRM suite.",
-      "strengths": ["Free CRM tier", "Marketing automation", "Extensive integrations"]
+      "strengths": [
+        "Free CRM tier",
+        "Marketing automation",
+        "Extensive integrations"
+      ]
     },
     {
       "name": "Zoho CRM",
       "slug": "zoho-crm",
       "description": "An AI-powered CRM with omnichannel engagement and deep workflow automation.",
       "best_for": "Businesses of any size wanting an affordable, feature-rich CRM.",
-      "strengths": ["Zia AI assistant", "Workflow automation", "Zoho app ecosystem"]
+      "strengths": [
+        "Zia AI assistant",
+        "Workflow automation",
+        "Zoho app ecosystem"
+      ]
     },
     {
       "name": "Close",
       "slug": "close",
       "description": "A sales CRM with built-in calling, email, and SMS plus an AI sales agent.",
       "best_for": "Sales teams automating outbound outreach and lead qualification.",
-      "strengths": ["Chloe AI agent", "Built-in calling", "Automated follow-up"]
+      "strengths": [
+        "Chloe AI agent",
+        "Built-in calling",
+        "Automated follow-up"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "paid",
+    "starting_price": "$9/user/month (billed annually)",
+    "has_free_tier": false,
+    "status": "verified",
+    "free_trial": {
+      "available": true,
+      "days": 21
+    },
+    "entry_paid": {
+      "amount": "9",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Growth",
+        "amount": "9",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Shown as $9 per user per month billed annually; the monthly-billing price is not shown."
+      },
+      {
+        "name": "Pro",
+        "amount": "39",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Shown as $39 per user per month billed annually; the monthly-billing price is not shown."
+      },
+      {
+        "name": "Enterprise",
+        "amount": "59",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "Shown as $59 per user per month billed annually; the monthly-billing price is not shown."
+      }
+    ],
+    "last_verified": "2026-10-12",
+    "official_source": "https://www.freshworks.com/crm/pricing/"
+  },
+  "cons": [
+    "Pricing page shows per-user prices only for annual billing; monthly-billing prices are not shown",
+    "Some capabilities are priced separately from the plans, such as branded documents ($19 per user per month) and the Freddy AI Agent ($49 per 100 sessions), per its pricing page"
   ]
 }

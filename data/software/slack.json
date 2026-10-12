@@ -24,7 +24,8 @@
   "sources": [
     "https://slack.com",
     "https://slack.com/downloads",
-    "https://slack.com/features"
+    "https://slack.com/features",
+    "https://slack.com/pricing"
   ],
   "accessed_at": "2026-07-31",
   "alternatives": [
@@ -62,5 +63,53 @@
       ]
     }
   ],
-  "order": 2
+  "order": 2,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "$7.25/user/month (billed annually)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "7.25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Messages are saved and searchable for 90 days; up to 10 apps."
+      },
+      {
+        "name": "Pro",
+        "amount": "7.25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$7.25 per user per month when paying annually; $8.75 per user per month when paying monthly. The page shows a 50% discount for the first 3 months of an eligible upgrade."
+      },
+      {
+        "name": "Business+",
+        "amount": "15",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$15 per user per month when paying annually; $18 per user per month when paying monthly. The page shows a 50% discount for the first 3 months of an eligible upgrade."
+      }
+    ],
+    "last_verified": "2026-10-12",
+    "official_source": "https://slack.com/pricing"
+  },
+  "cons": [
+    "Free plan keeps messages saved and searchable for only 90 days, per its pricing page",
+    "Free plan is limited to up to 10 apps, per its pricing page"
+  ]
 }
