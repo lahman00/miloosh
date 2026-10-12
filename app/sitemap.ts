@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { LEGAL_PAGES } from "@/lib/legal";
+import { LEGAL_LAST_UPDATED, LEGAL_PAGES } from "@/lib/legal";
 import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
@@ -9,6 +9,8 @@ import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparis
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { isComparisonIndexingReady, isSoftwareIndexingReady } from "@/lib/indexing-quality";
+import { getDataFreshness } from "@/lib/freshness";
+import { buildPricingIndex } from "@/lib/pricing-index/build";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -29,11 +31,30 @@ function latestOf(dates: Date[]): Date {
   return new Date(Math.max(...dates.map((d) => d.getTime())));
 }
 
+const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+/** "July 31, 2026" (the format the legal pages print) as a UTC date, or undefined when it cannot be read. */
+export function parseLongDate(text: string): Date | undefined {
+  const match = /^([A-Za-z]+) (\d{1,2}), (\d{4})$/.exec(text.trim());
+  const month = match ? MONTHS.indexOf(match[1]!.toLowerCase()) : -1;
+  if (!match || month < 0) return undefined;
+  return new Date(Date.UTC(Number(match[3]), month, Number(match[2])));
+}
+
 export const COMPARISON_TEMPLATE_UPDATED_AT = "2026-10-07";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const allSoftware = getAllSoftware();
   const softwareBySlug = new Map(allSoftware.map((s) => [s.slug, s]));
+
+  // Freshness of the hubs and tools comes from the data they are built from, never from the build date:
+  // the catalog's latest verification, the guides' own update dates, the latest pricing check behind the calculator
+  // and the research report. Pages with no such data (about, contact, newsletter, recommend) carry no lastmod.
+  const latestCatalogDate = toDate(getDataFreshness().latestAccessedAt);
+  const guides = getAllRoleGuides();
+  const calculatorChecks = allSoftware.flatMap((s) => (s.pricing?.entryPaid && s.pricing.lastVerified ? [toDate(s.pricing.lastVerified)] : []));
+  const reportChecked = buildPricingIndex().verificationWindow.latest;
+  const legalLastUpdated = parseLongDate(LEGAL_LAST_UPDATED);
 
   const softwarePages: MetadataRoute.Sitemap = allSoftware
     .filter((software) => isSoftwareIndexingReady(software))
@@ -64,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const comparisonPages: MetadataRoute.Sitemap = [
-    { url: `${SITE_URL}/compare`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE_URL}/compare`, lastModified: latestCatalogDate, changeFrequency: "weekly", priority: 0.7 },
     ...PUBLISHED_COMPARISONS.filter(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);
       const softwareB = softwareBySlug.get(slugB);
@@ -100,15 +121,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // a new legal page only needs to be added there once.
   const legalPages: MetadataRoute.Sitemap = LEGAL_PAGES.map((page) => ({
     url: `${SITE_URL}${page.href}`,
+    ...(legalLastUpdated ? { lastModified: legalLastUpdated } : {}),
     changeFrequency: "yearly",
     priority: 0.3,
   }));
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, changeFrequency: "weekly", priority: 1 },
+    { url: SITE_URL, lastModified: latestCatalogDate, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/about`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/contact`, changeFrequency: "yearly", priority: 0.4 },
-    { url: `${SITE_URL}/guides`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/guides`, ...(guides.length > 0 ? { lastModified: latestOf(guides.map((guide) => toDate(guide.updatedAt))) } : {}), changeFrequency: "weekly", priority: 0.8 },
     // /recommend/results is excluded — it's query-param-driven and marked
     // noindex on the page itself; every answer combination would otherwise
     // look like near-duplicate content to a crawler.
@@ -117,11 +139,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // the newsletter landing page. /newsletter/unsubscribe is correctly
     // excluded (already noindex on the page itself, and query-param-driven
     // per-token content the same way /recommend/results is).
-    { url: `${SITE_URL}/tools/saas-cost-calculator`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/tools/saas-cost-calculator`, ...(calculatorChecks.length > 0 ? { lastModified: latestOf(calculatorChecks) } : {}), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/newsletter`, changeFrequency: "monthly", priority: 0.5 },
     // MILOOSH WAR MODE mission (2026-08-24) — the PR data asset. Weekly
     // since the underlying pricing dataset is re-verified continuously.
-    { url: `${SITE_URL}/research/saas-pricing-pressure-index-2026`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/research/saas-pricing-pressure-index-2026`, ...(reportChecked ? { lastModified: toDate(reportChecked) } : {}), changeFrequency: "weekly", priority: 0.8 },
   ];
 
   return [...staticPages, ...categoryPages, ...roleGuidePages, ...softwarePages, ...comparisonPages, ...legalPages];
