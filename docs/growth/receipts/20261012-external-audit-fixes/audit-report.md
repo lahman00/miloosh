@@ -103,3 +103,7 @@ npm run seo:template-cohorts -- --base <production sha> --check-hold
 - Vendor notes: Clari says only that a merger agreement was announced on 2025-08-07 and the announcement does not say it closed. Windsurf: devin.ai states Devin Desktop is the new name for Windsurf with unchanged plans (checked in a browser; an earlier tool fetch had returned 404). Coda and Segment draw no conclusion about ownership.
 - Pricing index: n and date beside each median, plus a visible note that earlier versions are not directly comparable.
 - Before merge: export the Search Console Pages report (Performance, Search results, last 28 days, Pages tab, Export) and run `npm run seo:check-noindex-search -- --gsc <file>`; any listed page with impressions or clicks must leave `data/seo/unreachable-comparisons.ts` (the file is generated; add such a page to the deferrals instead). Then preview checks, merge, submit the sitemap.
+
+## Search Console check of the noindex list (2026-10-13)
+
+Source: Pages data for 2026-09-13 to 2026-10-10 (28 days) as read from the Search Console screen by the owner's assistant and written to a Pages CSV (the report itself lists six pages: the home page, two policy pages, two profiles and one `best-*` guide; 1 click and 20 impressions in total). `npm run seo:check-noindex-search`: 382 listed pages checked, 0 with impressions or clicks, so none leaves the list. The check is limited to the pages Search Console listed with impressions, which is the whole export. Both `www` policy URLs answer 301 to the apex host.
