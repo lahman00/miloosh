@@ -141,7 +141,7 @@ export type PropertyWindowSummary = {
   finalized: boolean;
   clicks: number | null;
   impressions: number | null;
-  impressionsBasis: "DAILY_SERIES_SUM" | "PAGE_ROW_SUM" | "NOT_MEASURED";
+  impressionsBasis: "DAILY_SERIES_SUM" | "PROPERTY_HEADER_TOTAL" | "PAGE_ROW_SUM" | "NOT_MEASURED";
   pageRowImpressions: number | null;
   pageRowsListed: number | null;
   impressionsPerObservedDay: number | null;
@@ -263,7 +263,11 @@ function summarizeProperty(evidence: GscEvidence, role: "historical" | "recent")
       break;
     }
   }
-  const impressions = fromDaily?.impressions ?? null;
+  // A captured exact property total is independent of the per-page rows:
+  // several URLs can share a result impression, so never sum those rows as a
+  // substitute. Rounded display labels also cannot supply an exact total.
+  const headerImpressions = pages.finalized ? pages.propertyTotals?.impressions ?? null : null;
+  const impressions = fromDaily?.impressions ?? headerImpressions;
   return {
     window: pages.window,
     windowDays: pages.windowDays,
@@ -271,7 +275,7 @@ function summarizeProperty(evidence: GscEvidence, role: "historical" | "recent")
     finalized: pages.finalized,
     clicks: fromDaily?.clicks ?? pages.propertyTotals?.clicks ?? null,
     impressions,
-    impressionsBasis: impressions !== null ? "DAILY_SERIES_SUM" : "NOT_MEASURED",
+    impressionsBasis: fromDaily !== null ? "DAILY_SERIES_SUM" : headerImpressions !== null ? "PROPERTY_HEADER_TOTAL" : "NOT_MEASURED",
     pageRowImpressions: pages.rowSum.impressions,
     pageRowsListed: pages.rowsCaptured,
     impressionsPerObservedDay: impressions !== null && pages.observedDays > 0 ? round(impressions / pages.observedDays, 2) : null,
