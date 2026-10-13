@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { getQueueEntry, setQueueState, updateQueueEntry } from "@/lib/social/queue";
 import { publishOneEntry, providerStateFromResult } from "@/lib/social/publish";
@@ -11,6 +12,7 @@ import { reconcileBufferLinkedInPost } from "@/lib/social/channels/linkedin";
  * without waiting for the next automated window.
  */
 export async function GET(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   const secret = process.env.SOCIAL_MANUAL_PUBLISH_SECRET;
   const authHeader = request.headers.get("authorization");
   if (!secret || authHeader !== `Bearer ${secret}`) {
@@ -65,6 +67,7 @@ export async function GET(request: NextRequest) {
  * specific credential — same fail-closed pattern as the cron route.
  */
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   const secret = process.env.SOCIAL_MANUAL_PUBLISH_SECRET;
   const authHeader = request.headers.get("authorization");
   if (!secret || authHeader !== `Bearer ${secret}`) {

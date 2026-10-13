@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import { readQueue, writeQueue, applyQueueTransition } from "@/lib/social/queue";
 import { getSocialStrategy, getEffectiveCadence } from "@/lib/social/strategy";
 import { CHANNELS } from "@/lib/social/types";
@@ -68,6 +69,7 @@ export type ScheduleRunSummary = {
 };
 
 export async function runScheduleCycle(options: { dryRun: boolean; now?: Date }): Promise<ScheduleRunSummary> {
+  if (!options.dryRun) await assertMutationAllowed();
   const now = options.now ?? new Date();
   const strategy = getSocialStrategy();
   const enabledCadences = CHANNELS.filter((c) => strategy.enabledChannels[c]).map((c) => getEffectiveCadence(strategy, c, now));

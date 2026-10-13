@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { getLinkedInTransport, verifyBufferLinkedInTarget } from "@/lib/social/channels/linkedin";
 import { ensureFacebookDueForDailyWindow } from "@/lib/social/facebook-continuity";
@@ -29,6 +30,7 @@ function businessHour(date: Date, timeZone: string): number {
  * `?dryRun=true` always forces a dry run.
  */
 export async function GET(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;

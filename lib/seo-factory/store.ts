@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
@@ -34,6 +35,7 @@ export async function readLatestSeoFactoryRun(): Promise<SeoFactoryRun | null> {
 }
 
 export async function writeSeoFactoryRun(run: SeoFactoryRun): Promise<void> {
+  await assertMutationAllowed();
   if (!hasBlob()) { writeLocal(LOCAL_LATEST, run); return; }
   await writeBlob(`seo-factory/runs/${run.id}.json`, run);
   await writeBlob(LATEST_BLOB, run);
@@ -44,11 +46,13 @@ export async function readSeoExperiments(): Promise<SeoExperiment[]> {
 }
 
 export async function writeSeoExperiments(experiments: SeoExperiment[]): Promise<void> {
+  await assertMutationAllowed();
   if (!hasBlob()) { writeLocal(LOCAL_EXPERIMENTS, experiments); return; }
   await writeBlob(EXPERIMENTS_BLOB, experiments);
 }
 
 export async function recordSeoExperiment(experiment: SeoExperiment): Promise<{ recorded: boolean; experiments: SeoExperiment[] }> {
+  await assertMutationAllowed();
   const existing = await readSeoExperiments();
   const prior = existing.filter((item) => item.page === experiment.page).sort((a, b) => b.recordedAt.localeCompare(a.recordedAt))[0];
   if (prior && (prior.decision === "MEASURING" || experimentIsCoolingDown(prior.recordedAt, prior.measurementWindowDays))) {
@@ -60,6 +64,7 @@ export async function recordSeoExperiment(experiment: SeoExperiment): Promise<{ 
 }
 
 export async function recordSeoExperimentBatch(experiments: SeoExperiment[]): Promise<{ recorded: boolean; experiments: SeoExperiment[] }> {
+  await assertMutationAllowed();
   const existing = await readSeoExperiments();
   const ids = new Set(existing.map((item) => item.id));
   const measuringPages = new Set(existing.filter((item) => item.decision === "MEASURING").map((item) => item.page));
@@ -77,6 +82,7 @@ export async function readSeoExperimentBaselines(): Promise<SeoExperimentBaselin
 }
 
 export async function recordSeoExperimentBaselines(baselines: SeoExperimentBaseline[]): Promise<{ recorded: boolean; baselines: SeoExperimentBaseline[] }> {
+  await assertMutationAllowed();
   const existing = await readSeoExperimentBaselines();
   const ids = new Set(existing.map((item) => item.id));
   if (baselines.some((item) => ids.has(item.id))) return { recorded: false, baselines: existing };
@@ -87,6 +93,7 @@ export async function recordSeoExperimentBaselines(baselines: SeoExperimentBasel
 }
 
 export async function claimSeoFactoryRun(day: string): Promise<boolean> {
+  await assertMutationAllowed();
   if (!hasBlob()) return true;
   try {
     const { put } = await import("@vercel/blob");
@@ -96,6 +103,7 @@ export async function claimSeoFactoryRun(day: string): Promise<boolean> {
 }
 
 export async function releaseSeoFactoryRunClaim(day: string): Promise<void> {
+  await assertMutationAllowed();
   if (!hasBlob()) return;
   try {
     const { del } = await import("@vercel/blob");

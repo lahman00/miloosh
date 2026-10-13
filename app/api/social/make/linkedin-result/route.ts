@@ -1,9 +1,11 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { isValidMakeCallbackAuthorization, reconcileMakeLinkedInResult, validateMakeResult } from "@/lib/social/linkedin-reconciliation";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   if (!isValidMakeCallbackAuthorization(request.headers.get("authorization"))) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   let body: unknown;
   try { body = await request.json(); } catch { return NextResponse.json({ error: "invalid JSON" }, { status: 400 }); }

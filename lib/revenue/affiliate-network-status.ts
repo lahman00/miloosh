@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
@@ -65,6 +66,7 @@ export async function readNetworkStatuses(): Promise<AffiliateNetworkStatusEntry
 }
 
 async function writeNetworkStatuses(entries: AffiliateNetworkStatusEntry[]): Promise<void> {
+  await assertMutationAllowed();
   if (!hasBlobToken()) {
     writeLocalFallback(entries);
     return;

@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { get as getBlob, list as listBlobs, put as putBlob } from "@vercel/blob";
@@ -159,6 +160,7 @@ function newLead(input: SubscribeInput, existing: NewsletterLead | null): Newsle
 }
 
 export async function recordNewsletterLead(input: SubscribeInput): Promise<NewsletterLead> {
+  await assertMutationAllowed();
   const email = input.email.trim().toLowerCase();
   if (!hasBlobToken()) {
     // מקומית הקריאה והכתיבה סינכרוניות באותו תהליך; אין הבטחת נעילה בין תהליכים.
@@ -182,6 +184,7 @@ export async function getLeadByEmail(email: string): Promise<NewsletterLead | nu
 // true פירושו העדפה שנשמרה כמוסרת; false פירושו חיפוש מלא ללא התאמה.
 // כשל אחסון נזרק בנפרד ומוצג במסך כמצב זמני, לא כקישור שגוי.
 export async function unsubscribeByToken(token: string): Promise<boolean> {
+  await assertMutationAllowed();
   if (typeof token !== "string" || !token.trim() || token.length > 256) return false;
   if (!hasBlobToken()) {
     const leads = readLocalFallback(), lead = leads.find(l => l.unsubscribeToken === token);

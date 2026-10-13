@@ -1,3 +1,4 @@
+import { canMutate } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { isOutboundTrackingEnabled } from "@/lib/revenue/events";
@@ -69,7 +70,8 @@ function writeLog(events: StoredRecommendationEvent[]): void {
  * Miloosh managed to log it. Same discipline as
  * lib/revenue/events.ts's recordOutboundEvent.
  */
-export function recordRecommendationEvent(event: RecommendationEvent): void {
+export async function recordRecommendationEvent(event: RecommendationEvent): Promise<void> {
+  if (!(await canMutate())) return;
   if (!isOutboundTrackingEnabled()) {
     return;
   }

@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { isValidChannel, recordInboundSocialEvent } from "@/lib/social/attribution";
 
@@ -22,6 +23,7 @@ type LandingBody = {
 };
 
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   let body: LandingBody;
   try {
     body = await request.json();

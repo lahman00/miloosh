@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { recordNewsletterLead } from "@/lib/newsletter/leads";
@@ -38,6 +39,7 @@ type SubscribeBody = {
 };
 
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   const classification = classifyRequest(request.headers);
   if (classification.kind !== "PASS") {
     return NextResponse.json({ subscribed: false, reason: "rejected" }, { status: 200 });

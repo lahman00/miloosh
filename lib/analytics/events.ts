@@ -1,3 +1,4 @@
+import { canMutate } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
@@ -292,6 +293,7 @@ function appendLocalFallback(event: FirstPartyEvent): void {
  * in `vercel logs` — instead of swallowing the error with a bare comment.
  */
 export async function recordFirstPartyEvent(event: FirstPartyEvent): Promise<boolean> {
+  if (!(await canMutate())) return false;
   if (!hasBlobToken()) {
     try {
       appendLocalFallback(event);

@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
@@ -130,6 +131,7 @@ export async function readAffiliatePipeline(): Promise<AffiliatePipelineEntry[]>
 }
 
 async function writeAffiliatePipeline(entries: AffiliatePipelineEntry[]): Promise<void> {
+  await assertMutationAllowed();
   if (!hasBlobToken()) {
     writeLocalFallback(entries);
     return;

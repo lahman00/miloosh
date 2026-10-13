@@ -1,3 +1,4 @@
+import { canMutate } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
@@ -143,6 +144,7 @@ function appendLocalFallback(event: StoredOutboundEvent): void {
  * write side instead of the read side.
  */
 export async function recordOutboundEvent(event: OutboundEvent, sourcePage: string): Promise<void> {
+  if (!(await canMutate())) return;
   if (!isOutboundTrackingEnabled()) {
     return;
   }

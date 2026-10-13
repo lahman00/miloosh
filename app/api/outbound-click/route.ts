@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { CTA_COPY_EXPERIMENT_ID } from "@/lib/experiments/cta-copy-experiment";
@@ -112,6 +113,7 @@ function resolveVendorLinkUrl(software: SoftwareRecord, ctaLocation?: string): s
 }
 
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   if (classifyRequest(request.headers).kind !== "PASS") {
     return NextResponse.json({ ok: true, recorded: false }, { status: 202 });
   }

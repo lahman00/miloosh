@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { getSoftware } from "@/data/software";
 import { recordRecommendationEvent } from "@/lib/recommend/events";
@@ -18,6 +19,7 @@ type RecommendationClickBody = {
 };
 
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   let body: RecommendationClickBody;
 
   try {
@@ -36,7 +38,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "unknown software slug" }, { status: 404 });
   }
 
-  recordRecommendationEvent({
+  await recordRecommendationEvent({
     type: "recommendation_result_click",
     softwareSlug: slug,
     rank: typeof rank === "number" ? rank : undefined,

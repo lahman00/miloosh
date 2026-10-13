@@ -1,3 +1,4 @@
+import { canMutate } from "@/lib/deployment/mutation-policy";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, XCircle } from "lucide-react";
@@ -21,9 +22,10 @@ export const dynamic = "force-dynamic";
 export default async function UnsubscribePage({ searchParams }: UnsubscribePageProps) {
   const { token } = await searchParams;
   const hasToken = typeof token === "string" && token.trim().length > 0;
+  const readOnly = !(await canMutate());
   let success = false;
   let unavailable = false;
-  if (hasToken) {
+  if (hasToken && !readOnly) {
     try { success = await unsubscribeByToken(token); }
     catch { unavailable = true; }
   }
@@ -36,10 +38,12 @@ export default async function UnsubscribePage({ searchParams }: UnsubscribePageP
             {success ? <CheckCircle2 className="h-6 w-6" /> : <XCircle className="h-6 w-6" />}
           </span>
           <h1 className="mt-5 text-2xl font-bold text-white">
-            {unavailable ? "Unsubscribe temporarily unavailable" : success ? "You're unsubscribed" : "Link not recognized"}
+            {readOnly ? "No preference was changed" : unavailable ? "Unsubscribe temporarily unavailable" : success ? "You're unsubscribed" : "Link not recognized"}
           </h1>
           <p className="mt-3 text-sm leading-6 text-zinc-400">
-            {unavailable
+            {readOnly
+              ? "This is a read-only version of Miloosh. Open your unsubscribe link on miloosh.com to update your preference."
+              : unavailable
               ? "We couldn't confirm that your newsletter preference was saved. Please retry this link shortly or contact Miloosh for help."
               : success
                 ? "Your newsletter preference is saved as unsubscribed. You can re-subscribe any time from the newsletter page."

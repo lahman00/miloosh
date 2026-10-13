@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import { timingSafeEqual } from "node:crypto";
 import { applyQueueTransition, readQueue, writeQueue } from "@/lib/social/queue";
 import type { PublishResult, SocialQueueEntry } from "@/lib/social/types";
@@ -31,6 +32,7 @@ export function validateMakeResult(value: unknown): MakeLinkedInResult | null {
 }
 
 export async function reconcileMakeLinkedInResult(result: MakeLinkedInResult, now = new Date()): Promise<{ entry: SocialQueueEntry; duplicate: boolean } | null> {
+  await assertMutationAllowed();
   const queue = await readQueue();
   const index = queue.findIndex((entry) => entry.id === result.postId);
   if (index < 0) return null;

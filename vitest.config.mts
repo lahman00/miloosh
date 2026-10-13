@@ -12,7 +12,7 @@ export default defineConfig({
   test: {
     include: ["tests/**/*.test.ts"],
     environment: "node",
-    setupFiles: ["tests/analytics-store-setup.ts"],
+    setupFiles: ["tests/analytics-store-setup.ts", "tests/mutation-fixture-setup.ts"],
     fileParallelism: false,
   },
   resolve: {

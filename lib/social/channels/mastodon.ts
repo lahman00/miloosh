@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import type { ChannelVariant, PublishResult } from "@/lib/social/types";
 import { contentHash } from "@/lib/social/dedup";
 import { type SocialAdapter, buildPublishResult, defaultFormat, envAll, missingEnvNames } from "@/lib/social/channels/types";
@@ -30,6 +31,7 @@ export const mastodonAdapter: SocialAdapter = {
   format: (text, link) => defaultFormat(text, link, CHAR_LIMIT),
 
   async publish(variant: ChannelVariant, { dryRun }): Promise<PublishResult> {
+    if (!dryRun) await assertMutationAllowed();
     const body = defaultFormat(variant.text, variant.link, CHAR_LIMIT);
     const link = variant.link ?? "";
     const env = envAll(REQUIRED_ENV);

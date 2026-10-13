@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
@@ -82,6 +83,7 @@ export async function readQueue(): Promise<SocialQueueEntry[]> {
 }
 
 export async function writeQueue(entries: SocialQueueEntry[]): Promise<void> {
+  await assertMutationAllowed();
   assertQueueShape(entries);
   if (!hasBlobToken()) {
     writeLocalFallback(entries);

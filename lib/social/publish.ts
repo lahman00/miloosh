@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import { getSocialStrategy } from "@/lib/social/strategy";
 import { readQueue, updateQueueEntry, setQueueState } from "@/lib/social/queue";
 import { ADAPTERS } from "@/lib/social/channels/registry";
@@ -241,6 +242,7 @@ export async function publishOneEntry(
   adapters: Record<Channel, SocialAdapter> = ADAPTERS,
   skipChannels: Channel[] = []
 ): Promise<{ channel: Channel; result: PublishResult }[]> {
+  if (!dryRun) await assertMutationAllowed();
   const attempts: { channel: Channel; result: PublishResult }[] = [];
   const channelKeys = (Object.keys(entry.channels) as Channel[]).filter((channel) => channelNeedsAttempt(entry.channels[channel]!));
 
@@ -326,6 +328,7 @@ function buildBlockedPublishResult(channel: Channel, variant: ChannelVariant, is
 }
 
 export async function runPublishCycle(options: { dryRun: boolean; now?: Date; strategy?: ReturnType<typeof getSocialStrategy>; adapters?: Record<Channel, SocialAdapter> }): Promise<PublishRunSummary> {
+  if (!options.dryRun) await assertMutationAllowed();
   const now = options.now ?? new Date();
   const strategy = options.strategy ?? getSocialStrategy();
   const adapters = options.adapters ?? ADAPTERS;

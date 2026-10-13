@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import { del, put } from "@vercel/blob";
 
 const localClaims = new Set<string>();
@@ -7,6 +8,7 @@ function claimPath(providerIdentity: string): string {
 }
 
 export async function claimLinkedInDelivery(providerIdentity: string): Promise<boolean> {
+  await assertMutationAllowed();
   const pathname = claimPath(providerIdentity);
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     if (localClaims.has(pathname)) return false;
@@ -28,6 +30,7 @@ export async function claimLinkedInDelivery(providerIdentity: string): Promise<b
 }
 
 export async function recordLinkedInDelivery(providerIdentity: string, evidence: Record<string, unknown>): Promise<void> {
+  await assertMutationAllowed();
   if (!process.env.BLOB_READ_WRITE_TOKEN) return;
   await put(claimPath(providerIdentity), JSON.stringify({ providerIdentity, recordedAt: new Date().toISOString(), ...evidence }), {
     access: "private",
@@ -38,6 +41,7 @@ export async function recordLinkedInDelivery(providerIdentity: string, evidence:
 }
 
 export async function releaseLinkedInDelivery(providerIdentity: string): Promise<void> {
+  await assertMutationAllowed();
   const pathname = claimPath(providerIdentity);
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     localClaims.delete(pathname);

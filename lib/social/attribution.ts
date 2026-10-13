@@ -1,3 +1,4 @@
+import { canMutate } from "@/lib/deployment/mutation-policy";
 import fs from "node:fs";
 import path from "node:path";
 import { AGENTS_DIR } from "@/lib/agents/paths";
@@ -121,6 +122,7 @@ export function isValidChannel(value: unknown): value is Channel {
  * both are the same "did we turn on first-party analytics" decision.
  */
 export async function recordInboundSocialEvent(input: { channel: Channel; campaign: string | null; contentId: string | null; landingPath: string; isTest?: boolean }): Promise<void> {
+  if (!(await canMutate())) return;
   if (!isOutboundTrackingEnabled()) return;
   const events = await readEvents();
   events.push({ ...input, timestamp: new Date().toISOString() });

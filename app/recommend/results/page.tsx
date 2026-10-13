@@ -78,9 +78,9 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
   const { recommendations, confidence, confidenceNote } = getRecommendations(answers, 3);
   const repairFirst = answers.primaryNeed === "ecommerce_platform" && answers.ecommerceSituation === "repair";
 
-  recordRecommendationEvent({ type: "recommendation_generated", answersSummary });
+  await recordRecommendationEvent({ type: "recommendation_generated", answersSummary });
   for (const rec of recommendations) {
-    recordRecommendationEvent({
+    await recordRecommendationEvent({
       type: "recommendation_shown",
       softwareSlug: rec.software.slug,
       rank: rec.rank,

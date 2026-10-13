@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { ECOMMERCE_SITUATIONS, type EcommerceSituation } from "@/lib/recommend/types";
@@ -36,6 +37,7 @@ const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
 ];
 
 export async function POST(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   const classification = classifyRequest(request.headers);
   if (classification.kind !== "PASS") {
     console.warn(`[analytics] ${classification.kind}: ${classification.reason}`);

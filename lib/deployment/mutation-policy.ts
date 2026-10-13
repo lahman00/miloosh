@@ -1,3 +1,5 @@
+import { get } from "@vercel/blob";
+
 /** One write owner. This module never creates or updates the control record. */
 export const ACTIVE_DEPLOYMENT_PATH = "runtime/active-deployment.json";
 export type MutationPolicy = { allowed: boolean; reason: "active" | "not-production" | "missing-identity" | "control-unavailable" | "inactive" };
@@ -12,7 +14,6 @@ function isControl(value: unknown): value is ActiveDeployment {
 
 async function readActiveDeployment(): Promise<unknown> {
   if (!process.env.BLOB_READ_WRITE_TOKEN) throw new Error("Control unavailable");
-  const { get } = await import("@vercel/blob");
   const result = await get(ACTIVE_DEPLOYMENT_PATH, { access: "private", useCache: false, abortSignal: AbortSignal.timeout(2000) });
   if (!result || result.statusCode !== 200) throw new Error("Control unavailable");
   const body = await new Response(result.stream).text();

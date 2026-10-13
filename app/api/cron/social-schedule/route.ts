@@ -1,3 +1,4 @@
+import { canMutate, readOnlyResponse } from "@/lib/deployment/mutation-policy";
 import { NextResponse, type NextRequest } from "next/server";
 import { runScheduleCycle } from "@/lib/social/schedule";
 
@@ -23,6 +24,7 @@ export const dynamic = "force-dynamic";
  * safe post-deploy verification without mutating queue state.
  */
 export async function GET(request: NextRequest) {
+  if (!(await canMutate())) return readOnlyResponse();
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   const isAuthenticated = Boolean(secret) && authHeader === `Bearer ${secret}`;

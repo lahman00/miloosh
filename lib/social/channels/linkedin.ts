@@ -1,3 +1,4 @@
+import { assertMutationAllowed } from "@/lib/deployment/mutation-policy";
 import { createHmac } from "node:crypto";
 import type { ChannelVariant, PublishResult } from "@/lib/social/types";
 import { type SocialAdapter, buildPublishResult, defaultFormat, envAll, missingEnvNames } from "@/lib/social/channels/types";
@@ -198,6 +199,7 @@ export const linkedinAdapter: SocialAdapter = {
   format: (text, link) => defaultFormat(text, link, CHAR_LIMIT),
 
   async publish(variant: ChannelVariant, options): Promise<PublishResult> {
+    if (!options.dryRun) await assertMutationAllowed();
     const body = defaultFormat(variant.text, variant.link, CHAR_LIMIT);
     const transport = getLinkedInTransport();
     if (options.dryRun) return buildPublishResult({ channel: "linkedin", status: "DRY_RUN", text: body, link: variant.link ?? "", transport, targetId: transport === "buffer" ? process.env.SOCIAL_LINKEDIN_BUFFER_CHANNEL_ID ?? null : null });
