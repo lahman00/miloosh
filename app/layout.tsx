@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Analytics } from "@/components/Analytics";
+import { RuntimeAnalyticsGate } from "@/components/RuntimeAnalyticsGate";
 import { FirstPartyAnalytics } from "@/components/FirstPartyAnalytics";
 import { SocialLandingCapture } from "@/components/SocialLandingCapture";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
@@ -68,11 +69,13 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} h-full`}>
       <body className="miloosh-theme flex min-h-full flex-col bg-zinc-950 font-sans text-white antialiased">
         <JsonLd data={getOrganizationJsonLd()} />
-        <FirstPartyAnalytics />
-        <SocialLandingCapture />
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <Analytics />
+        <RuntimeAnalyticsGate>
+          <FirstPartyAnalytics />
+          <SocialLandingCapture />
+          <Analytics />
+        </RuntimeAnalyticsGate>
         <div id="main-content" className="site-content" tabIndex={-1}>{children}</div>
         <Footer />
       </body>

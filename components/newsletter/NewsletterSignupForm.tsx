@@ -20,7 +20,7 @@ export function NewsletterSignupForm({ source }: { source: string }) {
   const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
-  const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error" | "read-only">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,6 +48,10 @@ export function NewsletterSignupForm({ source }: { source: string }) {
         }),
       });
       const result: unknown = await res.json();
+      if (result && typeof result === "object" && "readOnly" in result && result.readOnly === true) {
+        setStatus("read-only");
+        return;
+      }
       const subscribed = !!result && typeof result === "object" && "subscribed" in result && result.subscribed === true;
       setStatus(res.ok && subscribed ? "done" : "error");
     } catch {
@@ -108,6 +112,7 @@ export function NewsletterSignupForm({ source }: { source: string }) {
       </label>
 
       {status === "error" ? <p role="alert" className="text-xs text-red-400">We could not confirm your registration was saved. Please try again.</p> : null}
+      {status === "read-only" ? <p role="alert" className="text-xs text-amber-300">No registration was saved. This version is read-only; visit miloosh.com to join.</p> : null}
     </form>
   );
 }

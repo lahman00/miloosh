@@ -76,4 +76,3 @@ export function resolveVendorLinkUrl(software: SoftwareRecord, ctaLocation?: str
       return software.website;
   }
 }
-
