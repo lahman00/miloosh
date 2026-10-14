@@ -21,9 +21,12 @@
   ],
   "sources": [
     "https://www.freshworks.com/crm/sales/",
-    "https://www.freshworks.com/crm/pricing/"
+    "https://www.freshworks.com/crm/pricing/",
+    "https://www.freshworks.com/crm/features/",
+    "https://crmsupport.freshworks.com/support/solutions/articles/50000002952-how-to-check-in-and-check-out-on-the-mobile-app-",
+    "https://crmsupport.freshworks.com/support/solutions/articles/50000010028-how-to-quickly-add-notes-using-voice-and-image-in-freshsales-mobile-app-on-your-ios-device-"
   ],
-  "accessed_at": "2026-08-04",
+  "accessed_at": "2026-10-14",
   "alternatives": [
     {
       "name": "HubSpot",

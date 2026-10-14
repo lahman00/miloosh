@@ -11,6 +11,7 @@
     "analytics:report": "tsx scripts/analytics/report.ts",
     "validate:data": "tsx scripts/validate-data.ts",
     "check:built-site": "tsx scripts/maintenance/check-built-site.ts",
+    "seo:indexing-forecast": "tsx scripts/seo/indexing-freshness-watch.ts",
     "check:external-links": "tsx scripts/maintenance/check-external-links.ts",
     "check:held-pages": "tsx scripts/maintenance/check-held-pages.ts",
     "check:live": "tsx scripts/maintenance/check-live-consistency.ts",
