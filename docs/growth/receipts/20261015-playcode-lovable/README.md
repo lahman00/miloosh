@@ -16,7 +16,9 @@ order. The new profile links back to Lovable; it does not create a second
 head-to-head comparison page or invent a partner link. Playcode is not labeled
 a top pick, hands-on result or superior product.
 
-Only two product records and a focused integration test change. Existing
+Only two product records, a focused integration test and the existing exact
+catalog-count assertion change, plus this receipt. The count remains an exact
+assertion: 355 records including the newly approved Playcode record. Existing
 Lovable facts, pricing and verification dates are retained. The new Playcode
 claims carry their own 2026-10-15 verification date and official sources.
 The existing sitemap rules add the new profile and update the containing
