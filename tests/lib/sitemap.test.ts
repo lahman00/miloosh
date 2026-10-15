@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import sitemap, { COMPARISON_TEMPLATE_UPDATED_AT } from "@/app/sitemap";
+import sitemap, { COMPARISON_TEMPLATE_UPDATED_AT, parseLongDate } from "@/app/sitemap";
+import { getAllRoleGuides } from "@/data/guides/registry";
+import { getDataFreshness } from "@/lib/freshness";
+import { LEGAL_LAST_UPDATED, LEGAL_PAGES } from "@/lib/legal";
+import { buildPricingIndex } from "@/lib/pricing-index/build";
 import { getAllSoftware } from "@/data/software";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
@@ -137,5 +141,56 @@ describe("sitemap indexing-quality gate", () => {
       if (!entry.lastModified) continue;
       expect(new Date(entry.lastModified).getTime(), `${entry.url} has a future lastModified`).toBeLessThanOrEqual(now);
     }
+  });
+});
+
+describe("sitemap lastmod on hubs, tools and legal pages", () => {
+  const entries = () => sitemap();
+  const day = (value: Date | string | number | undefined) => (value === undefined ? undefined : new Date(value).toISOString().slice(0, 10));
+  // SITE_URL is localhost under test, so entries are matched by path.
+  const pathOf = (url: string) => new URL(url).pathname;
+  const entryFor = (path: string) => entries().find((entry) => pathOf(entry.url) === path);
+
+  it("reads the long dates the legal pages print", () => {
+    expect(day(parseLongDate("July 31, 2026"))).toBe("2026-07-31");
+    expect(day(parseLongDate("  January 1, 2027 "))).toBe("2027-01-01");
+    expect(parseLongDate("2026-07-31")).toBeUndefined();
+    expect(parseLongDate("Smarch 3, 2026")).toBeUndefined();
+    expect(parseLongDate("")).toBeUndefined();
+  });
+
+  it("dates the home page and the comparison hub by the latest verification in the catalog", () => {
+    const latest = getDataFreshness().latestAccessedAt;
+    expect(day(entryFor("/")?.lastModified)).toBe(latest);
+    expect(day(entryFor("/compare")?.lastModified)).toBe(latest);
+  });
+
+  it("dates the guides hub by the newest guide update", () => {
+    const newest = getAllRoleGuides().map((guide) => guide.updatedAt).sort().at(-1);
+    expect(day(entryFor("/guides")?.lastModified)).toBe(newest);
+  });
+
+  it("dates the calculator by the latest pricing check behind it and the report by its own latest source check", () => {
+    const checks = getAllSoftware().flatMap((s) => (s.pricing?.entryPaid && s.pricing.lastVerified ? [s.pricing.lastVerified] : [])).sort();
+    expect(day(entryFor("/tools/saas-cost-calculator")?.lastModified)).toBe(checks.at(-1));
+    expect(day(entryFor("/research/saas-pricing-pressure-index-2026")?.lastModified)).toBe(buildPricingIndex().verificationWindow.latest);
+  });
+
+  it("dates every legal page by the 'Last updated' date those pages print", () => {
+    const expected = day(parseLongDate(LEGAL_LAST_UPDATED));
+    expect(expected).toBeDefined();
+    for (const page of LEGAL_PAGES) expect(day(entryFor(page.href)?.lastModified), page.href).toBe(expected);
+  });
+
+  it("leaves lastmod off the pages that have no data-derived date, instead of inventing one", () => {
+    for (const path of ["/about", "/contact", "/newsletter", "/recommend"]) {
+      expect(entryFor(path), path).toBeDefined();
+      expect(entryFor(path)?.lastModified, path).toBeUndefined();
+    }
+  });
+
+  it("leaves no page of the sitemap without a date except those four", () => {
+    const undated = entries().filter((entry) => !entry.lastModified).map((entry) => pathOf(entry.url));
+    expect(undated.sort()).toEqual(["/about", "/contact", "/newsletter", "/recommend"]);
   });
 });

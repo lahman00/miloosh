@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { TrackedCtaLink } from "@/components/TrackedCtaLink";
+import { AffiliateLinkNote } from "@/components/AffiliateLinkNote";
 import { getAllRoleGuides, getRoleGuide } from "@/data/guides/registry";
 import { BUYER_DECISION_BRIEFS } from "@/data/guides/buyer-decision-briefs";
 import { getFirstRevenueSupportForGuide } from "@/data/guides/first-revenue";
@@ -264,6 +265,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                           >
                             Visit Site <ExternalLink className="w-3 h-3 ml-1" />
                           </TrackedCtaLink>
+                          {p.hasAffiliate ? <AffiliateLinkNote className="mt-2" /> : null}
                         </div>
                       </td>
                       <td className="py-4 px-4 text-zinc-300 max-w-xs text-xs">
@@ -299,6 +301,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                         >
                           Visit Site <ExternalLink className="w-3 h-3 ml-1" />
                         </TrackedCtaLink>
+                        {p.hasAffiliate ? <AffiliateLinkNote className="ml-auto mt-2 max-w-[14rem]" /> : null}
                       </td>
                     </tr>
                   ))}
@@ -386,7 +389,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     </h3>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-start gap-2 sm:items-end">
                     <TrackedCtaLink
                       slug={p.software.slug}
                       href={p.ctaUrl}
@@ -398,6 +401,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
                     >
                       Visit {p.software.name} <ExternalLink className="w-4 h-4 ml-1.5" />
                     </TrackedCtaLink>
+                    {p.hasAffiliate ? <AffiliateLinkNote /> : null}
                   </div>
                 </div>
 

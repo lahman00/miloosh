@@ -1,3 +1,5 @@
+/** Shown where a product has no sourced constraint on record. */
+export const NO_LIMITATION_TEXT = "No sourced constraint is recorded yet.";
 export const BUYER_DESK_KEY = "miloosh-buyer-desk-v1";
 export const DESK_CATEGORIES = [
   { id: "crm", name: "CRM & sales", slugs: ["pipedrive", "close", "nutshell"] },
@@ -8,7 +10,7 @@ export type DeskCategory = typeof DESK_CATEGORIES[number]["id"];
 export type DeskIntent = "new" | "switch" | "compare";
 export type DeskProduct = {
   slug: string; name: string; category: DeskCategory; description: string;
-  bestFor: string; features: string[]; limitation: string; checkedAt: string;
+  bestFor: string; features: string[]; /** The first sourced constraint, or null when none is recorded; nothing is invented in its place. */ limitation: string | null; checkedAt: string;
 };
 export type DeskContext = { intent: DeskIntent; team: string; current: string; concern: string; note: string };
 export type DeskState = { saved: string[]; category: DeskCategory; contexts: Partial<Record<DeskCategory, DeskContext>> };
@@ -54,7 +56,7 @@ export function makeDeskBrief(state: DeskState, products: DeskProduct[]): string
     `Situation: ${context ? { new: "Finding a new tool", switch: "Replacing a tool", compare: "Comparing options" }[context.intent] : "Not specified"}`,
     `Team: ${context?.team || "Not specified"}`, `Current tool: ${context?.current || "Not specified"}`,
     `Main concern: ${context?.concern || "Not specified"}`, `My non-negotiable: ${context?.note || "Not specified"}`, "", "MY SHORTLIST",
-    ...picks.flatMap(p => [p.name, `Documented fit: ${p.bestFor}`, `Limitation: ${p.limitation}`, `Research: https://miloosh.com/software/${p.slug}`, `Source check recorded: ${p.checkedAt}`, ""]),
+    ...picks.flatMap(p => [p.name, `Documented fit: ${p.bestFor}`, `Limitation: ${p.limitation ?? NO_LIMITATION_TEXT}`, `Research: https://miloosh.com/software/${p.slug}`, `Source check recorded: ${p.checkedAt}`, ""]),
     "BEFORE COMMITTING", "Confirm your required plan, current total cost and usage limits. Test a real workflow and verify imports, exports and cancellation terms. Research dates are not a fresh vendor quote.",
   ].join("\n");
 }

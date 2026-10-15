@@ -1,5 +1,5 @@
 import type { FaqItem, Software } from "@/data/software";
-import { getSoftwareFaqItems } from "@/lib/faq";
+import { getGroundedSoftwareFaqItems, getSoftwareFaqItems } from "@/lib/faq";
 
 export function generateTitle(software: Software): string {
   return `Best ${software.name} Alternatives`;
@@ -69,8 +69,9 @@ export function generateIntro(software: Software): string {
 }
 
 /** A slightly richer overview combining what it is with who it's positioned for. */
-export function generateOverview(software: Software): string {
-  return `${software.description} ${software.bestFor}`;
+export function generateOverview(software: Software, { v2 = false }: { v2?: boolean } = {}): string {
+  // The page already opens with the description; the v2 overview adds only who it is for instead of repeating it.
+  return v2 ? software.bestFor : `${software.description} ${software.bestFor}`;
 }
 
 /**
@@ -113,7 +114,7 @@ function stripTrailingPeriod(text: string): string {
  * starts with the product's own name, e.g. "HubSpot positions...", and a
  * naive first-letter lowercase mangles it into "hubSpot positions...").
  */
-export function generateChoosingGuide(software: Software): string {
+export function generateChoosingGuide(software: Software, { v2 = false }: { v2?: boolean } = {}): string {
   const platformsNote = software.platforms?.length
     ? ` Confirm it runs on the platforms you need (${software.platforms.join(", ")}) before switching.`
     : "";
@@ -124,12 +125,25 @@ export function generateChoosingGuide(software: Software): string {
 
   const altSummary = software.alternatives.map((alt) => `${alt.name} (${stripTrailingPeriod(alt.bestFor)})`).join("; ");
 
-  return `Before switching to ${software.name}, weigh it against its listed alternatives: ${altSummary}. Compare each against the workflow you actually run today — integrations, customization, and the effort required to migrate your existing data usually matter more than headline features.${platformsNote}`;
+  // The v2 profile template drops the closing advice: it was the same sentence on all 354 profiles.
+  const closing = v2 ? "" : " Compare each against the workflow you actually run today — integrations, customization, and the effort required to migrate your existing data usually matter more than headline features.";
+  // "Before switching to X" read as a move toward X on a page about alternatives to X; v2 says which way the move goes.
+  const lead = v2 ? `If you are weighing a move away from ${software.name}, compare its listed alternatives` : `Before switching to ${software.name}, weigh it against its listed alternatives`;
+  return `${lead}: ${altSummary}.${closing}${platformsNote}`;
 }
 
-export function generateFaq(software: Software): FaqItem[] {
+/**
+ * A product's own FAQ when it has one. Otherwise the v1 template's questions, or, under the v2 profile template,
+ * only the questions grounded in the product's data, and none at all when fewer than two remain: a FAQ section
+ * (and its FAQPage markup) of generic or single answers is dropped rather than repeated.
+ */
+export function generateFaq(software: Software, { v2 = false }: { v2?: boolean } = {}): FaqItem[] {
   if (software.faq && software.faq.length > 0) {
     return software.faq;
+  }
+  if (v2) {
+    const grounded = getGroundedSoftwareFaqItems(software);
+    return grounded.length >= 2 ? grounded : [];
   }
   return getSoftwareFaqItems(software);
 }

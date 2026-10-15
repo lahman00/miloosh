@@ -67,6 +67,18 @@
 
 export const EXPERIMENT_STARTED_AT = "2026-08-22";
 
+/**
+ * Journal: pages taken out of the analysis. Owner decision 2026-10-12: Coda's and Segment's recorded data stopped matching
+ * their vendors' official pages, so these four were edited (data/seo/hold-releases.ts) and must be excluded when
+ * treatment and control are compared. They stay in the cohorts so the original assignment is preserved.
+ */
+export const EXPERIMENT_EXCLUSIONS: readonly string[] = [
+  "adobe-analytics-vs-segment", // treatment
+  "notion-vs-coda", // control
+  "clickup-vs-coda", // control
+  "coda-vs-todoist", // control
+] as const;
+
 export const TREATMENT_COHORT: readonly string[] = [
   "adobe-analytics-vs-segment",
   "notion-vs-clickup",

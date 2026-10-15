@@ -52,12 +52,18 @@ import {
 import {
   getBreadcrumbJsonLd,
   getFaqJsonLd,
+  getProductJsonLd,
   getSoftwareApplicationJsonLd,
 } from "@/lib/structured-data";
+import { describeReviewStatus, getReviewStatus } from "@/lib/review-status";
+import { isProfileTemplateV2 } from "@/lib/template-cohorts";
+import { VENDOR_STATUS_NOTES } from "@/data/seo/vendor-status-notes";
+import { READINESS_CHANGED_AFTER_BASE, isReadinessFrozen } from "@/data/seo/held-page-freeze";
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { isComparisonIndexingReady } from "@/lib/indexing-quality";
+import { socialMetadata } from "@/lib/social-metadata";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -87,10 +93,7 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
     title,
     description,
     alternates: { canonical: `/software/${slug}` },
-    openGraph: {
-      title,
-      description,
-    },
+    ...socialMetadata({ title, description, path: `/software/${slug}` }),
   };
 }
 
@@ -105,7 +108,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
   const relatedSoftware = software.category === "ecommerce"
     ? getStoreRelatedSoftware([software], 3, true)
     : getRelatedSoftware(software, 3);
-  const faqItems = generateFaq(software);
+  const profileV2 = isProfileTemplateV2(software.slug);
+  const faqItems = generateFaq(software, { v2: profileV2 });
   const comparisons = getComparisonsInvolving(software.slug)
     .map(([slugA, slugB]) => {
       const softwareA = getSoftware(slugA);
@@ -117,7 +121,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
       const comparisonSlug = getComparisonSlug(softwareA.slug, softwareB.slug);
       return (
         shouldSubmitComparisonToSitemap(comparisonSlug) &&
-        isComparisonIndexingReady(softwareA, softwareB)
+        isComparisonIndexingReady(softwareA, softwareB) &&
+        (profileV2 || !isReadinessFrozen(softwareA.slug, softwareB.slug))
       );
     });
   const alternativeGuide = getAlternativeGuide(software.slug);
@@ -135,7 +140,8 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         ])}
       />
       <JsonLd data={getSoftwareApplicationJsonLd(software)} />
-      <JsonLd data={getFaqJsonLd(faqItems)} />
+      {profileV2 ? <JsonLd data={getProductJsonLd(software)} /> : null}
+      {faqItems.length > 0 ? <JsonLd data={getFaqJsonLd(faqItems)} /> : null}
 
       <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: software.name }]} />
@@ -152,6 +158,25 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-zinc-400">{generateIntro(software)}</p>
+
+          {VENDOR_STATUS_NOTES[software.slug] ? (
+            <p className="mt-4 rounded-xl border border-amber-500/30 bg-amber-500/[0.05] px-4 py-3 text-sm leading-6 text-zinc-300">
+              <strong className="text-amber-300">Not yet verified:</strong> {VENDOR_STATUS_NOTES[software.slug]!.text}{" "}
+              <a href={VENDOR_STATUS_NOTES[software.slug]!.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                {VENDOR_STATUS_NOTES[software.slug]!.sourceLabel}
+              </a>{" "}
+              (checked {formatIsoDate(VENDOR_STATUS_NOTES[software.slug]!.checkedOn)}).
+            </p>
+          ) : null}
+
+          {profileV2 ? (
+            <p className="mt-3 text-sm leading-6 text-zinc-500">
+              {describeReviewStatus(getReviewStatus(software))}{" "}
+              <Link href="/sources-policy" className="underline underline-offset-4 hover:text-zinc-300">
+                How we verify
+              </Link>
+            </p>
+          ) : null}
 
           {searchIntentNote ? (
             <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-6 text-zinc-400">
@@ -179,7 +204,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
         <section className="mt-14 grid gap-6 lg:grid-cols-[2fr_1fr]">
           <Card>
             <h2 className="text-xl font-semibold text-white">About {software.name}</h2>
-            <p className="mt-4 leading-7 text-zinc-400">{generateOverview(software)}</p>
+            <p className="mt-4 leading-7 text-zinc-400">{generateOverview(software, { v2: profileV2 })}</p>
 
             <ul className="mt-6 grid gap-2 sm:grid-cols-2">
               {software.features.map((feature) => (
@@ -281,7 +306,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
 
         {buyerChecklist ? <DecisionBuyerChecklist checklist={buyerChecklist} /> : null}
 
-        {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} /> : null}
+        {alternativeGuide ? <AlternativeDecisionGuide guide={alternativeGuide} category={software.category} frozenSlugs={profileV2 ? undefined : READINESS_CHANGED_AFTER_BASE} /> : null}
 
         <StorePlanFit slug={software.slug} />
         <PricingSection software={software} />
@@ -294,13 +319,13 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             <h2 className="text-2xl font-semibold text-white">How to choose</h2>
           </div>
 
-          <p className="mt-4 max-w-3xl leading-7 text-zinc-400">{generateChoosingGuide(software)}</p>
+          <p className="mt-4 max-w-3xl leading-7 text-zinc-400">{generateChoosingGuide(software, { v2: profileV2 })}</p>
           <p className="mt-3 max-w-3xl leading-7 text-zinc-400">
             {generateWhoShouldntUseIt(software)}
           </p>
         </Card>
 
-        <FaqSection items={faqItems} />
+        {faqItems.length > 0 ? <FaqSection items={faqItems} /> : null}
 
         {decisionGuides.length > 0 ? (
           <section className="mt-14">

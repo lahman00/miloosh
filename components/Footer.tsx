@@ -1,28 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { FOOTER_COMPANY_LINKS, FOOTER_PRODUCT_LINKS } from "@/lib/footer-links";
 import { LEGAL_PAGES } from "@/lib/legal";
 import { SITE_NAME, SITE_TAGLINE, SITE_VERSION } from "@/lib/site";
 import { getDataFreshness } from "@/lib/freshness";
 import { formatIsoDate } from "@/lib/date";
-
-const productLinks = [
-  { name: "How it works", href: "/#how-it-works" },
-  { name: "Categories", href: "/#categories" },
-  { name: "Browse", href: "/#browse" },
-  { name: "Compare", href: "/compare" },
-  { name: "Decision guides", href: "/guides" },
-  { name: "Find my software", href: "/recommend" },
-  { name: "Cost calculator", href: "/tools/saas-cost-calculator" },
-  { name: "Pricing Pressure Index", href: "/research/saas-pricing-pressure-index-2026" },
-  { name: "Research", href: "/research" },
-];
-
-const companyLinks = [
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-  { name: "Newsletter", href: "/newsletter" },
-];
 
 // Legal and secondary navigation should load on navigation, not passive footer exposure.
 function FooterColumn({
@@ -66,8 +49,8 @@ export function Footer() {
             <p className="mt-4 max-w-[22ch] text-sm leading-6 text-zinc-400">{SITE_TAGLINE}</p>
           </div>
 
-          <FooterColumn title="Product" links={productLinks} />
-          <FooterColumn title="Company" links={companyLinks} />
+          <FooterColumn title="Product" links={FOOTER_PRODUCT_LINKS} />
+          <FooterColumn title="Company" links={FOOTER_COMPANY_LINKS} />
           <FooterColumn title="Legal & trust" links={LEGAL_PAGES} />
         </div>
 

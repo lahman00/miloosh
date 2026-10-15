@@ -8,16 +8,18 @@ import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupFo
 import { Card } from "@/components/Card";
 import { getAllSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
+import { socialMetadata } from "@/lib/social-metadata";
 
 export const metadata: Metadata = {
   title: "SaaS Stack Cost Calculator — Miloosh",
   description:
     "Add the software tools you use and see your real monthly and annual cost, built from first-party pricing verified on each vendor's own site — no estimates.",
   alternates: { canonical: "/tools/saas-cost-calculator" },
-  openGraph: {
+  ...socialMetadata({
     title: "SaaS Stack Cost Calculator",
     description: "See what your software stack really costs, from verified first-party pricing.",
-  },
+    path: "/tools/saas-cost-calculator",
+  }),
 };
 
 /**

@@ -9,11 +9,15 @@ const nextConfig: NextConfig = {
     typescript: { tsconfigPath: "tsconfig.qa.json" },
   } : {}),
   async redirects() {
-    return REMOVED_COMPARISON_REDIRECTS.map(([comparisonSlug, softwareSlug]) => ({
-      source: `/compare/${comparisonSlug}`,
-      destination: `/software/${softwareSlug}`,
-      permanent: true,
-    }));
+    return [
+      // /research was linked from the footer of every page but has no page of its own; the one research report lives below it.
+      { source: "/research", destination: "/research/saas-pricing-pressure-index-2026", permanent: true },
+      ...REMOVED_COMPARISON_REDIRECTS.map(([comparisonSlug, softwareSlug]) => ({
+        source: `/compare/${comparisonSlug}`,
+        destination: `/software/${softwareSlug}`,
+        permanent: true,
+      })),
+    ];
   },
 };
 

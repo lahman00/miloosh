@@ -23,9 +23,10 @@
   ],
   "sources": [
     "https://obsidian.md",
-    "https://obsidian.md/download"
+    "https://obsidian.md/download",
+    "https://obsidian.md/pricing"
   ],
-  "accessed_at": "2026-07-31",
+  "accessed_at": "2026-10-14",
   "alternatives": [
     {
       "name": "Notion",
@@ -61,5 +62,61 @@
       ]
     }
   ],
-  "order": 24
+  "order": 24,
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free app; Sync from $4/user/month (billed annually)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": false
+    },
+    "entry_paid": {
+      "amount": "4",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true,
+      "annual_billing_required": true
+    },
+    "tiers": [
+      {
+        "name": "Obsidian app",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Described as free without limits, with no sign-up required. A commercial license is not required."
+      },
+      {
+        "name": "Obsidian Sync",
+        "amount": "4",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "user",
+        "notes": "$4 per user per month billed annually; $5 per user per month billed monthly. Includes cross-device sync, end-to-end encryption, version history and shared vaults."
+      },
+      {
+        "name": "Obsidian Publish",
+        "amount": "8",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "site",
+        "notes": "$8 per site per month billed annually; $10 per site per month billed monthly."
+      },
+      {
+        "name": "Commercial license (optional)",
+        "amount": "50",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "Optional $50 per user per year for organizations that want to support development."
+      }
+    ],
+    "last_verified": "2026-10-12",
+    "official_source": "https://obsidian.md/pricing"
+  },
+  "cons": [
+    "Cross-device sync, version history and shared-vault collaboration are part of the paid Obsidian Sync add-on ($4 per user per month billed annually, $5 billed monthly), not the free app",
+    "Publishing notes to the web needs the separate paid Obsidian Publish add-on, priced per site"
+  ]
 }

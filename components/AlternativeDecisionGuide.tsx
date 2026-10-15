@@ -19,7 +19,8 @@ export function getVerifiedStartingPrice(software: Software): string | null {
   return software.pricing.startingPrice ?? null;
 }
 
-export function AlternativeDecisionGuide({ guide, category }: { guide: AlternativeGuide; category: string }) {
+/** `frozenSlugs`: alternatives whose newly completed data a held page must not show yet (see data/seo/held-page-freeze.ts). */
+export function AlternativeDecisionGuide({ guide, category, frozenSlugs }: { guide: AlternativeGuide; category: string; frozenSlugs?: readonly string[] }) {
   return (
     <section className="mt-14" aria-labelledby="alternative-decision-heading">
       <SectionHeading eyebrow="Decision guide" title={<span id="alternative-decision-heading">{guide.heading}</span>} description={guide.introduction} />
@@ -31,7 +32,7 @@ export function AlternativeDecisionGuide({ guide, category }: { guide: Alternati
         {guide.decisions.map((decision) => {
           const alternative = getSoftware(decision.alternativeSlug);
           if (!alternative) return null;
-          const startingPrice = getVerifiedStartingPrice(alternative);
+          const startingPrice = frozenSlugs?.includes(alternative.slug) ? null : getVerifiedStartingPrice(alternative);
 
           return (
             <Card key={decision.heading} className="flex h-full flex-col">

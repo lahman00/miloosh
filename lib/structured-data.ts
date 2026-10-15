@@ -50,6 +50,24 @@ export function getSoftwareApplicationJsonLd(software: Software) {
   };
 }
 
+/**
+ * The product the profile page is about, described only with facts the profile stores: its name, description,
+ * category, platforms and official website. Deliberately no aggregateRating, review or offers: the site publishes
+ * none, so the markup claims none.
+ */
+export function getProductJsonLd(software: Software) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: software.name,
+    description: software.description,
+    applicationCategory: getCategory(software.category)?.name,
+    ...(software.platforms?.length ? { operatingSystem: software.platforms.join(", ") } : {}),
+    url: `${SITE_URL}/software/${software.slug}`,
+    sameAs: [software.website],
+  };
+}
+
 export function getFaqJsonLd(items: Array<{ question: string; answer: string }>) {
   return {
     "@context": "https://schema.org",
