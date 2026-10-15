@@ -132,6 +132,17 @@
         "Multi-agent workflows",
         "Developer integrations"
       ]
+    },
+    {
+      "name": "Playcode",
+      "slug": "playcode",
+      "description": "A browser-based AI builder with static publishing and paid Cloud apps. Code export and custom domains require a paid plan; development and running services share a credit balance.",
+      "best_for": "Founders and small teams considering an integrated builder and managed runtime, with a separate check of ongoing usage costs and migration requirements.",
+      "strengths": [
+        "AI-assisted web apps",
+        "Managed backend and database",
+        "Paid code export"
+      ]
     }
   ],
   "accessed_at": "2026-09-06"
