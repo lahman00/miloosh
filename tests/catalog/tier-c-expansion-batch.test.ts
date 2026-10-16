@@ -75,11 +75,11 @@ describe("Tier C catalog expansion", () => {
     expect(w.name).toMatch(/Devin Desktop/);
   });
 
-  it("has unique slugs, names, and websites and reaches 354 catalog files", () => {
+  it("has unique slugs, names, and websites and reaches 355 catalog files including Playcode", () => {
     const rows = SLUGS.map(load);
     expect(new Set(rows.map(x => x.slug)).size).toBe(15);
     expect(new Set(rows.map(x => x.name)).size).toBe(15);
     expect(new Set(rows.map(x => x.website)).size).toBe(15);
-    expect(readdirSync(DIR).filter(f => f.endsWith(".json")).length).toBe(354);
+    expect(readdirSync(DIR).filter(f => f.endsWith(".json")).length).toBe(355);
   });
 });

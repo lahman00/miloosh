@@ -1,0 +1,100 @@
+{
+  "name": "Playcode",
+  "slug": "playcode",
+  "category": "developer-tools",
+  "description": "Playcode is an AI platform for creating and running websites and web apps through a browser-based conversation and preview. Static sites can use its Free plan; paid Cloud apps add a managed backend, database, files and background work.",
+  "website": "https://playcode.io/",
+  "platforms": ["Web"],
+  "best_for": "Founders and small teams evaluating a browser-based app builder with a managed runtime, who are willing to budget for both AI development and ongoing service usage.",
+  "features": [
+    "AI-assisted project creation and revisions with a live preview",
+    "Static website publishing on a Playcode address, including on the Free plan",
+    "Paid Cloud apps with a backend, database, stored files and background work",
+    "Paid custom-domain connection and project-code export",
+    "Cloud snapshots that restore code, files and database to the saved state"
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free static publishing; Pro $25/month with 100 monthly credits",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false,
+      "annual_billing_required": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Static publishing on a Playcode address with branding. Trial AI credits depend on signup eligibility; no fixed trial-credit grant is promised here."
+      },
+      {
+        "name": "Pro",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "$25 charged monthly; 100 credits granted each month. Adds Cloud apps, code export and custom-domain connection. Building and running services draw on the shared credit balance."
+      },
+      {
+        "name": "Max",
+        "amount": "100",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starts at $100 charged monthly with 400 monthly credits. Higher credit packages cost more. This is not a fixed total price for building or operating an app."
+      }
+    ],
+    "last_verified": "2026-10-15",
+    "official_source": "https://playcode.io/pricing"
+  },
+  "pros": [
+    "A branded static site can remain hosted after eligible trial AI credits run out",
+    "Paid Cloud apps combine development and a managed application runtime",
+    "Paid plans let customers export project code, including tests"
+  ],
+  "cons": [
+    "Building, Cloud runtime, email and app AI usage can consume the same credit balance; a subscription is not an all-inclusive operating-cost cap",
+    "Code export and custom-domain connection require a paid plan; domain purchases and renewals are charged separately",
+    "Moving a running app requires transferring its data, configuration and connected services as well as its code",
+    "Restoring a Cloud snapshot also restores the database and discards changes made after that saved point"
+  ],
+  "faq": [
+    {
+      "question": "Can I use Playcode without a paid subscription?",
+      "answer": "The Free plan supports branded static sites on a Playcode address. Trial AI credits depend on signup eligibility. Cloud apps, code export and custom-domain connection require a paid plan."
+    },
+    {
+      "question": "Does the subscription cover every cost of running an app?",
+      "answer": "No. Pro includes 100 monthly credits and the entry Max package includes 400. Development and metered Cloud, email and app AI services share the workspace balance. Domains and external providers can have separate charges. Review Billing for your workload before relying on a production app."
+    },
+    {
+      "question": "What should I check when comparing Playcode with Lovable?",
+      "answer": "Check whether your project needs only static publishing or a backend and database, which paid features you need, and how ongoing usage affects the budget. For a move away from either platform, plan how to transfer data, settings and connected services; exporting code alone is not a complete migration. This profile is based on official documentation, not hands-on testing."
+    }
+  ],
+  "tags": ["ai-app-builder", "web-app-builder", "developer-tools"],
+  "links": {
+    "pricing": "https://playcode.io/pricing",
+    "docs": "https://playcode.io/docs/start/what-is-playcode"
+  },
+  "sources": [
+    "https://playcode.io/docs/start/what-is-playcode",
+    "https://playcode.io/pricing",
+    "https://playcode.io/cloud"
+  ],
+  "alternatives": [
+    {
+      "name": "Lovable",
+      "slug": "lovable",
+      "description": "An existing alternative for creating web applications through prompts and visual editing.",
+      "best_for": "Teams comparing another app-builder workflow before committing to a platform and its usage model.",
+      "strengths": ["Prompt-based building", "Visual editing", "Web application publishing"]
+    }
+  ],
+  "accessed_at": "2026-10-15"
+}
