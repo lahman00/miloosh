@@ -120,7 +120,7 @@ describe("explainDeferral", () => {
     const on = await buildModel(dir, { today: new Date("2026-11-04T00:00:00Z") });
     expect(before.explainDeferral("/compare/clickup-vs-zoho-projects")).toContain("deferred until 2026-11-04");
     expect(on.explainDeferral("/compare/clickup-vs-zoho-projects")).toBeNull();
-    expect(before.explainDeferral("/compare/github-vs-vercel")).toBeNull();
+    expect(before.explainDeferral("/compare/not-listed-vs-pair")).toBeNull();
     expect(before.explainDeferral("/software/pipedrive")).toBeNull();
   });
 });
