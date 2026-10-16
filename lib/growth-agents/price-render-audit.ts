@@ -1,6 +1,3 @@
-import { execFileSync } from "node:child_process";
-import fs from "node:fs";
-import path from "node:path";
 import hold from "@/data/seo/price-label-hold.json";
 import { OWNER_PRICE_LABEL_FACTUAL_RELEASES } from "@/data/seo/price-label-factual-releases";
 import { normalizeRenderedHtml } from "./rendered-diff";
@@ -18,27 +15,18 @@ export type PricingRenderAudit = {
   errors: string[];
 };
 
-function sha(root: string): string | null {
-  try {
-    const value = execFileSync("git", ["-C", root, "rev-parse", "HEAD"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
-    return /^[a-f0-9]{40}$/.test(value) ? value : null;
-  } catch {
-    return null;
-  }
-}
-
-function treeClean(root: string): boolean {
-  try {
-    return execFileSync("git", ["-C", root, "status", "--porcelain", "--untracked-files=all"], { encoding: "utf8" }).trim() === "";
-  } catch {
-    return false;
-  }
-}
-
-/** The caller must supply .next/server/app paths in two clean, exact-commit checkouts. */
+/**
+ * Pure verification of already-read prerendered HTML maps and repo facts.
+ * Filesystem and Git access happen ONLY in the read-only Guardian adapter,
+ * never in this module. This preserves the Growth OS pure-module boundary.
+ */
 export function auditPricingRenderedBuilds(input: {
-  baseDir: string;
-  candidateDir: string;
+  before: ReadonlyMap<string, string>;
+  after: ReadonlyMap<string, string>;
+  baseCheckoutSha: string | null;
+  candidateCheckoutSha: string | null;
+  baseClean: boolean;
+  candidateClean: boolean;
   baseSha: string;
   headSha: string;
   protection: ProtectionSnapshot;
@@ -46,30 +34,10 @@ export function auditPricingRenderedBuilds(input: {
   const errors: string[] = [];
   const approved = new Set(Object.keys(OWNER_PRICE_LABEL_FACTUAL_RELEASES));
   const held = new Set(hold.heldSoftware);
-  const baseRoot = path.resolve(input.baseDir, "../../..");
-  const candidateRoot = path.resolve(input.candidateDir, "../../..");
-  const files = (root: string) => {
-    const result = new Map<string, string>();
-    const walk = (dir: string): void => {
-      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-        const full = path.join(dir, entry.name);
-        if (entry.isDirectory()) walk(full);
-        else if (entry.name.endsWith(".html")) result.set(path.relative(root, full).split(path.sep).join("/"), fs.readFileSync(full, "utf8"));
-      }
-    };
-    walk(root);
-    return result;
-  };
-  let before = new Map<string, string>();
-  let after = new Map<string, string>();
-  try {
-    before = files(input.baseDir);
-    after = files(input.candidateDir);
-  } catch (error) {
-    errors.push("Could not read both complete prerendered HTML directories: " + String(error));
-  }
-  if (sha(baseRoot) !== input.baseSha || sha(candidateRoot) !== input.headSha) errors.push("Build checkout SHA does not match the Guardian base and current HEAD.");
-  if (!treeClean(baseRoot) || !treeClean(candidateRoot)) errors.push("A build checkout has uncommitted source changes.");
+  const before = input.before;
+  const after = input.after;
+  if (input.baseCheckoutSha !== input.baseSha || input.candidateCheckoutSha !== input.headSha) errors.push("Build checkout SHA does not match Guardian base and HEAD.");
+  if (!input.baseClean || !input.candidateClean) errors.push("A build checkout has uncommitted source changes.");
   if (input.protection.checkoutSha !== input.headSha) errors.push("The protection snapshot is not for the current checkout.");
   if (hold.baseSha !== input.baseSha) errors.push("The hold list was generated against a different production commit.");
   if (hold.heldSoftware.length < 130) errors.push("The expected protected profile inventory is incomplete.");

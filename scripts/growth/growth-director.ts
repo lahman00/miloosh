@@ -10,7 +10,7 @@ import { loadSiteInventory } from "@/lib/growth-agents/inventory-loader";
 import { loadPartnerFacts } from "@/lib/growth-agents/partners";
 import { headSha, isSharedInputFile, loadProtectionSnapshot } from "@/lib/growth-agents/protection-sources";
 import { redactText } from "@/lib/growth-agents/redact";
-import { auditPricingRenderedBuilds } from "@/lib/growth-agents/price-render-audit";
+import { verifyPricingRenderedBuilds } from "@/lib/growth-agents/guardian-sources";
 
 /**
  * `npm run growth:director` — the Miloosh Growth Director, read-only by default.
@@ -118,7 +118,7 @@ export function realPorts(repoRoot: string): Ports {
     runGates: (root) => GATE_COMMANDS.map((spec) => runGate(root, spec)),
     isSharedTemplate: isSharedInputFile,
     verifyPriceRendering: (baseDir, candidateDir, baseSha, headSha, snapshot) =>
-      auditPricingRenderedBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot }),
+      verifyPricingRenderedBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot }),
   };
 }
 
