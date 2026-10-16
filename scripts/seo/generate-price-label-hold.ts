@@ -15,6 +15,14 @@ import { headSha, loadProtectionSnapshot } from "@/lib/growth-agents/protection-
  * holdUntil is the mandatory review date; it does not automatically lift a hold or invalidate newer observation windows.
  * Read-only apart from that file.
  */
+/** Price-label releases were approved on the owner's Israel-local calendar day,
+ * not the preceding UTC day during the first three hours after midnight. */
+export function ownerBusinessDate(now: Date): string {
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Jerusalem", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(now);
+  const fields = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${fields.year}-${fields.month}-${fields.day}`;
+}
+
 const OUT = "data/seo/price-label-hold.json";
 const arg = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
@@ -29,14 +37,16 @@ function run(): number {
   }
   const root = process.cwd();
   const now = new Date(arg("now") ?? new Date().toISOString());
+  if (Number.isNaN(now.getTime())) { console.error("Invalid --now timestamp"); return 2; }
+  const today = ownerBusinessDate(now);
   const sha = headSha(root);
   const inventory = loadSiteInventory({ checkoutSha: sha, now });
-  const { snapshot } = loadProtectionSnapshot({ repoRoot: root, baseSha, today: now.toISOString().slice(0, 10), ownWorktreePath: root, knownComparisonSlugs: new Set(inventory.comparisons.keys()), checkoutSha: sha, generatedAt: now.toISOString() });
+  const { snapshot } = loadProtectionSnapshot({ repoRoot: root, baseSha, today, ownWorktreePath: root, knownComparisonSlugs: new Set(inventory.comparisons.keys()), checkoutSha: sha, generatedAt: now.toISOString() });
   const approved = new Set(Object.keys(OWNER_PRICE_LABEL_FACTUAL_RELEASES));
   const allSoftware = new Set([...inventory.pages.values()].filter((entry) => entry.identity.kind === "software").map((entry) => entry.identity.slug));
   for (const [slug, release] of Object.entries(OWNER_PRICE_LABEL_FACTUAL_RELEASES)) {
     if (!allSoftware.has(slug) || !release.reason.trim() || !release.evidence.startsWith("https://")
-      || release.approvedOn > now.toISOString().slice(0, 10)) {
+      || release.approvedOn > today) {
       console.error(`Invalid or future factual release record: ${slug}`);
       return 2;
     }

@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import hold from "@/data/seo/price-label-hold.json";
 import { OWNER_PRICE_LABEL_FACTUAL_RELEASES } from "@/data/seo/price-label-factual-releases";
+import { ownerBusinessDate } from "@/scripts/seo/generate-price-label-hold";
 import { PricingSection } from "@/components/PricingSection";
 import { getAllSoftware, getSoftware, type Software } from "@/data/software";
 import { isPriceLabelHeld } from "@/lib/price-label-hold";
@@ -86,5 +87,13 @@ describe("tier units that already say per user/month", () => {
     const html = text(getSoftware("fathom")!);
     expect(html).toContain("USD 15 / month / user · billed annually");
     expect(html).not.toMatch(/\/ per |\/ month \/ per|month · billed annually \(price unit not stated\)/);
+  });
+});
+
+
+describe("owner-local date for factual corrections", () => {
+  it("recognizes the Israel-local October 17 approval while UTC is still October 16", () => {
+    expect(ownerBusinessDate(new Date("2026-10-16T22:00:00Z"))).toBe("2026-10-17");
+    expect(ownerBusinessDate(new Date("2026-10-16T20:59:00Z"))).toBe("2026-10-16");
   });
 });

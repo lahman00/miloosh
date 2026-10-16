@@ -10,15 +10,17 @@ Production at the time: `dpl_BojystVMop5C6UDwDRzqusUHp5oM`, source `912378b` (ve
 
 Official pages checked on 2026-10-17: Pipedrive (US$14, "Per seat per month, billed annually", US$168 per seat/year), Front ("$25/seat/mo", billed annually), TickTick ("US$49.99 /Year").
 
-## Protection
-The corrected wording applies only to profiles outside `data/seo/price-label-hold.json` (141 profiles that are protected, in an observation window or in flight against `912378b`, written by `npm run seo:price-label-hold`). Held profiles keep the previous wording until 2026-11-04. **This includes Pipedrive, Front and TickTick, so the examples in the issue stay as they are on production until the hold ends or the owner releases those pages** (as was done for Coda and Segment on 2026-10-12).
+## Protection — owner follow-up (2026-10-17)
+Claude's initial draft preserved 141 profiles and left the published Pipedrive, Front and TickTick mislabelled. The owner subsequently authorized exactly these three factual corrections, without changing their amounts or links. The reviewed follow-up therefore preserves **138 held profiles**. The three approved slugs and official evidence are recorded in `data/seo/price-label-factual-releases.ts`. The held list does **not** automatically expire on November 4; a fresh protection review is still required.
 
-## Evidence
-- Rendered comparison of every page against a production build of `912378b`: 1,786 compared, 81 differ (editable software profiles, text only, price wording only), 0 only in either build. None of the 141 held profiles or the 48 held comparisons differs.
-- Gates on a clean checkout of the final commit, against the base: audit, tests (2,612 vs 2,590), data validation, lint, typecheck, build all PASS, no regression.
-- Release Guardian: `RELEASE_BLOCKED`, single reason `PROTECTED_PAGES_AFFECTED` with "0 affected page(s) are not editable": the Guardian flags any change to a shared component. Production lineage and identity PASS. The rendered comparison above is the evidence that no protected page changed. Not waived.
-- Browser (desktop and 375px): Apollo.io, Secureframe and Fathom show the corrected wording with no overflow and unchanged canonical, robots and sponsored links; Pipedrive still shows the old wording.
-- Tests: `tests/lib/pricing-display.test.ts` (monthly, annual billing of a monthly rate, genuine yearly total, one time, unknown, units that name a period, the whole catalog) and `tests/lib/price-period-labels.test.ts` (the real components, corrected and held).
+## Release evidence — owner follow-up (2026-10-17)
+- 1,786 complete static HTML pages compared with production commit `912378b`; **84 profiles differed** (the initial 81 editable pages plus Pipedrive, Front and TickTick). All 138 remaining held software profiles were unchanged, and zero other pages (including the protected comparisons) differed.
+- Source-only change: amount values, URL destinations, affiliate disclosures, CTA attributes and SEO headers remain unchanged in every modified profile. The separate source/renderer audit is tied to the exact base and candidate Git commits.
+- The prior `PROTECTED_PAGES_AFFECTED` warning was not waived. The Guardian now accepts this specific price-renderer change **only** when an independent, complete, SHA-pinned HTML audit proves that no held page changed and no unrelated source file was modified. Missing or failing evidence retains the block.
+- On the owner-reviewed candidate, six release gates passed (including 2,617 tests), the pricing render proof passed, and the Guardian returned `RELEASE_ALLOWED`. Changes after that test require a new six-gate run on the final commit.
+- Pipedrive: USD 14 / month / seat · billed annually. Front: USD 25 / month / seat · billed annually. TickTick: USD 49.99 / year. No actual amount was changed.
+- The old 141-profile figures and blocked Guardian result referred to the first draft, not to the reviewed follow-up.
+- No merge or live deployment is authorized merely by this audit.
 
 ## Not done
 No price amount changed. The 7 annual entries with no stated unit keep a neutral label; they need an official-source check before a unit is stated. `components/DecisionMoneyPanel.tsx` has the same wording but is not used by any page. PR #75 and noindex changes are not touched.
