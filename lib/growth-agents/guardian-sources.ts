@@ -1,4 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import {
   type GateName,
@@ -9,6 +10,8 @@ import {
   type WorktreeFacts,
 } from "./guardian";
 import { listWorktrees, parsePorcelainPaths } from "./protection-sources";
+import { auditPricingRenderedBuilds, type PricingRenderAudit } from "./price-render-audit";
+import type { ProtectionSnapshot } from "./protection";
 
 /**
  * Read-only adapters for the Release & Quality Guardian.
@@ -249,4 +252,57 @@ export function recordGateRun(
   if (shaAfter !== sha) throw new Error(`HEAD moved from ${sha} to ${shaAfter} while the gates ran; the results describe neither commit.`);
   const dirtyAfter = parsePorcelainPaths(git(checkout, ["status", "--porcelain", "--untracked-files=all"])).length > 0;
   return { schemaVersion: 1, sha, branch, dirty: dirtyBefore || dirtyAfter, recordedAt: now().toISOString(), results };
+}
+
+
+/** Read-only adapter: compare every prerendered page from two clean, commit-pinned checkouts.
+ * This does not make any Git changes or publish anything. The pure verifier
+ * checks protected pages, owner exceptions, commercial link attributes and SEO headers.
+ */
+export function verifyPricingRenderedBuilds(input: {
+  baseDir: string;
+  candidateDir: string;
+  baseSha: string;
+  headSha: string;
+  protection: ProtectionSnapshot;
+}): PricingRenderAudit {
+  const baseRoot = path.resolve(input.baseDir, "../../..");
+  const candidateRoot = path.resolve(input.candidateDir, "../../..");
+  const loadHtml = (root: string): ReadonlyMap<string, string> => {
+    const found = new Map<string, string>();
+    const walk = (dir: string): void => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const file = path.join(dir, entry.name);
+        if (entry.isDirectory()) walk(file);
+        else if (entry.name.endsWith(".html")) found.set(path.relative(root, file).split(path.sep).join("/"), fs.readFileSync(file, "utf8"));
+      }
+    };
+    walk(root);
+    return found;
+  };
+  try {
+    return auditPricingRenderedBuilds({
+      before: loadHtml(input.baseDir),
+      after: loadHtml(input.candidateDir),
+      baseCheckoutSha: gitOrNull(baseRoot, ["rev-parse", "HEAD"])?.trim() ?? null,
+      candidateCheckoutSha: gitOrNull(candidateRoot, ["rev-parse", "HEAD"])?.trim() ?? null,
+      baseClean: gitOrNull(baseRoot, ["status", "--porcelain", "--untracked-files=all"])?.trim() === "",
+      candidateClean: gitOrNull(candidateRoot, ["status", "--porcelain", "--untracked-files=all"])?.trim() === "",
+      baseSha: input.baseSha,
+      headSha: input.headSha,
+      protection: input.protection,
+    });
+  } catch (error) {
+    return {
+      kind: "PRICE_ONLY_FULL_STATIC_BUILD_AUDIT",
+      ok: false,
+      baseSha: input.baseSha,
+      headSha: input.headSha,
+      pagesCompared: 0,
+      protectedSoftwareUnchanged: 0,
+      changedPages: 0,
+      approvedChanged: [],
+      errors: [String(error)],
+    };
+  }
 }

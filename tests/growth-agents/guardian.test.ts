@@ -287,6 +287,49 @@ describe("what else blocks a release", () => {
     expect(template.verdict).toBe("RELEASE_BLOCKED");
   });
 
+  it("requires exact-commit, full-build proof to clear only the scoped pricing renderer while keeping other shared changes blocked", () => {
+    const input = guardianInputs();
+    const changedFiles = [
+      "components/PricingSection.tsx",
+      "data/seo/price-label-factual-releases.ts",
+      "data/seo/price-label-hold.json",
+      "lib/pricing-display.ts",
+      "lib/price-label-hold.ts",
+      "lib/revenue/first-revenue-price.ts",
+    ];
+    const git = { ...input.git, changedFiles };
+    const audit = {
+      kind: "PRICE_ONLY_FULL_STATIC_BUILD_AUDIT" as const,
+      ok: true,
+      baseSha: SHA,
+      headSha: SHA,
+      pagesCompared: 1786,
+      protectedSoftwareUnchanged: 138,
+      changedPages: 84,
+      approvedChanged: ["front", "pipedrive", "ticktick"],
+      errors: [],
+    };
+    const protection = { affectedUrls: [], affectedNonEditable: [], sharedTemplateChanged: true, pricingRenderAudit: audit };
+    const valid = runGuardian(guardianInputs({ git, protection }));
+    expect(valid.verdict).toBe("RELEASE_ALLOWED");
+    expect(valid.checks.find((check) => check.id === "protection:pricing-rendered-proof")?.status).toBe("PASS");
+
+    for (const invalid of [
+      { git, protection: { ...protection, pricingRenderAudit: { ...audit, ok: false } } },
+      { git, protection: { ...protection, pricingRenderAudit: { ...audit, headSha: "abcdef012345678901234567890123456789abcd" } } },
+      { git, protection: { ...protection, pricingRenderAudit: { ...audit, pagesCompared: 50 } } },
+      { git, protection: { ...protection, pricingRenderAudit: { ...audit, protectedSoftwareUnchanged: 0 } } },
+      { git, protection: { ...protection, pricingRenderAudit: { ...audit, approvedChanged: ["pipedrive", "ticktick"] } } },
+      { git, protection: { ...protection, pricingRenderAudit: { ...audit, errors: ["held page changed"] } } },
+      { git, protection: { ...protection, affectedNonEditable: [{ url: "https://miloosh.com/software/close", verdict: "PROTECTED" }] } },
+      { git: { ...git, changedFiles: [...changedFiles, "components/GlobalNavigation.tsx"] }, protection },
+    ]) {
+      const denied = runGuardian(guardianInputs(invalid));
+      expect(denied.verdict).toBe("RELEASE_BLOCKED");
+      expect(denied.reasons.map((reason) => reason.code)).toContain("PROTECTED_PAGES_AFFECTED");
+    }
+  });
+
   it("blocks a release that would drop work an earlier production deployment shipped", () => {
     const production = { deploymentId: "dpl_x", createdAt: "2026-10-08T11:05:03.000Z", deployedSha: SHA, previousProductionShas: ["1d6746b", "11ba877"], ancestorOfCurrent: { "1d6746b": false, "11ba877": true } };
     const report = runGuardian(guardianInputs({ production }));

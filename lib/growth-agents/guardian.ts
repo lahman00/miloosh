@@ -106,6 +106,18 @@ export type ProtectionFacts = {
   /** Subset that is protected, observed or in flight. */
   affectedNonEditable: Array<{ url: string; verdict: string }>;
   sharedTemplateChanged: boolean;
+  /** Independently compared complete static builds, bound to the exact base and head commits. */
+  pricingRenderAudit?: {
+    kind: "PRICE_ONLY_FULL_STATIC_BUILD_AUDIT";
+    ok: boolean;
+    baseSha: string;
+    headSha: string;
+    pagesCompared: number;
+    protectedSoftwareUnchanged: number;
+    changedPages: number;
+    approvedChanged: string[];
+    errors: string[];
+  } | null;
 };
 
 export type GuardianInputs = {
@@ -337,19 +349,69 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     evidence: inFlight.map((w) => `git worktree: ${w.branch ?? w.head.slice(0, 7)}`),
   });
 
-  // Protected experiments.
+  // Protected experiments. A shared component is blocked by default. Only a
+  // separately verified complete build comparison, for THIS exact price-label
+  // fix and with no unrelated changed files, can prove it did not change any
+  // held page. This is not a blanket shared-component waiver.
   const p = inputs.protection;
+  const priceAudit = p.pricingRenderAudit;
+  const allowedPriceFiles = new Set([
+    "components/PricingSection.tsx",
+    "data/seo/price-label-factual-releases.ts",
+    "data/seo/price-label-hold.json",
+    "docs/growth/receipts/20261017-price-period-labels/README.md",
+    ".agents/skills/miloosh-growth-director/references/run-book.md",
+    "lib/price-label-hold.ts",
+    "lib/pricing-display.ts",
+    "lib/revenue/first-revenue-price.ts",
+    "lib/growth-agents/price-render-audit.ts",
+    "lib/growth-agents/guardian.ts",
+    "lib/growth-agents/guardian-sources.ts",
+    "lib/growth-agents/director-cli.ts",
+    "package.json",
+    "scripts/seo/generate-price-label-hold.ts",
+    "scripts/growth/growth-director.ts",
+    "tests/lib/price-period-labels.test.ts",
+    "tests/lib/pricing-display.test.ts",
+    "tests/growth-agents/guardian.test.ts",
+    "tests/growth-agents/price-render-audit.test.ts",
+    "tests/growth-agents/director-cli.test.ts",
+  ]);
+  const expectedCorrections = ["front", "pipedrive", "ticktick"];
+  const scopedPriceRenderProven =
+    p.sharedTemplateChanged &&
+    Boolean(priceAudit?.ok) &&
+    priceAudit?.kind === "PRICE_ONLY_FULL_STATIC_BUILD_AUDIT" &&
+    sameCommit(priceAudit.baseSha, git.baseSha) &&
+    sameCommit(priceAudit.headSha, git.headSha) &&
+    priceAudit.pagesCompared >= 1700 &&
+    priceAudit.protectedSoftwareUnchanged >= 130 &&
+    priceAudit.changedPages >= expectedCorrections.length &&
+    priceAudit.changedPages <= 100 &&
+    JSON.stringify([...priceAudit.approvedChanged].sort()) === JSON.stringify(expectedCorrections) &&
+    priceAudit.errors.length === 0 &&
+    git.changedFiles.length > 0 &&
+    git.changedFiles.every((file) => allowedPriceFiles.has(file));
+  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven);
+  checks.push({
+    id: "protection:pricing-rendered-proof",
+    title: "Exact-commit complete render proof for an approved pricing-only shared component",
+    status: !p.sharedTemplateChanged ? "INFO" : scopedPriceRenderProven ? "PASS" : priceAudit ? "FAIL" : "NOT_RUN",
+    detail: scopedPriceRenderProven
+      ? `Compared ${priceAudit!.pagesCompared} pages, ${priceAudit!.protectedSoftwareUnchanged} held profiles unchanged; exactly the owner-approved exceptions were corrected; no unrelated sources changed.`
+      : p.sharedTemplateChanged ? "No trusted, correctly scoped complete render proof; shared component remains blocked." : "No shared template change.",
+    evidence: scopedPriceRenderProven ? [`base ${priceAudit!.baseSha}, head ${priceAudit!.headSha}`] : [],
+  });
   checks.push({
     id: "protection:unaffected",
     title: "Protected, observed and in-flight pages are unaffected",
-    status: p.affectedNonEditable.length === 0 && !p.sharedTemplateChanged ? "PASS" : "FAIL",
-    detail:
-      p.affectedNonEditable.length === 0 && !p.sharedTemplateChanged
-        ? `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
-        : `${p.affectedNonEditable.length} affected page(s) are not editable${p.sharedTemplateChanged ? " and a shared template changed" : ""}: ${p.affectedNonEditable.slice(0, 4).map((a) => `${a.url} (${a.verdict})`).join(", ")}.`,
+    status: protectedUnchanged ? "PASS" : "FAIL",
+    detail: protectedUnchanged
+      ? scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
+      : `${p.affectedNonEditable.length} affected page(s) are not editable${p.sharedTemplateChanged ? " and a shared template changed" : ""}: ${p.affectedNonEditable.slice(0, 4).map((a) => `${a.url} (${a.verdict})`).join(", ")}.`,
     evidence: [],
   });
-  if (p.affectedNonEditable.length > 0 || p.sharedTemplateChanged) reasons.push({ code: "PROTECTED_PAGES_AFFECTED", detail: "The change can alter pages that are protected, in an observation window or in flight." });
+  if (!protectedUnchanged) reasons.push({ code: "PROTECTED_PAGES_AFFECTED", detail: "The change can alter pages that are protected, in an observation window or in flight." });
 
   // Rendered output.
   if (inputs.renderedDiff) {

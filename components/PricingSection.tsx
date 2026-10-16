@@ -11,6 +11,8 @@ import {
   shouldShowAffiliateDisclosure,
 } from "@/lib/affiliate";
 import type { Software } from "@/data/software";
+import { describePrice } from "@/lib/pricing-display";
+import { isPriceLabelHeld } from "@/lib/price-label-hold";
 
 /**
  * 2026-08-17 growth sprint, Phase 3 — the first public renderer for the
@@ -25,6 +27,8 @@ export function PricingSection({ software }: { software: Software }) {
   if (!hasBackfilledData) return null;
 
   const hasActiveAffiliatePath = shouldShowAffiliateDisclosure(software);
+  // Held profiles keep the previous wording until their measurement closes; see lib/price-label-hold.ts.
+  const corrected = !isPriceLabelHeld(software.slug);
 
   return (
     <Card className="mt-14">
@@ -63,11 +67,17 @@ export function PricingSection({ software }: { software: Software }) {
         <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-4">
           <p className="text-sm text-zinc-500">Entry paid plan</p>
           <p className="mt-1 text-2xl font-semibold text-white">
-            {pricing.entryPaid.currency} {pricing.entryPaid.amount}
-            <span className="ml-1 text-sm font-normal text-zinc-500">
-              / {pricing.entryPaid.billingPeriod === "unknown" ? "billing period unstated" : pricing.entryPaid.billingPeriod}
-              {pricing.entryPaid.perSeat ? " / seat" : ""}
-            </span>
+            {corrected ? (
+              <>{describePrice({ amount: pricing.entryPaid.amount, currency: pricing.entryPaid.currency, billingPeriod: pricing.entryPaid.billingPeriod, per: pricing.entryPaid.perSeat ? "seat" : null }, [pricing.startingPrice, pricing.tiers?.find((t) => t.amount === pricing.entryPaid!.amount)?.notes]).text}</>
+            ) : (
+              <>
+                {pricing.entryPaid.currency} {pricing.entryPaid.amount}
+                <span className="ml-1 text-sm font-normal text-zinc-500">
+                  / {pricing.entryPaid.billingPeriod === "unknown" ? "billing period unstated" : pricing.entryPaid.billingPeriod}
+                  {pricing.entryPaid.perSeat ? " / seat" : ""}
+                </span>
+              </>
+            )}
           </p>
           {pricing.entryPaid.annualBillingRequired ? <p className="mt-1 text-xs text-amber-300/80">Annual billing required at this price.</p> : null}
         </div>
@@ -80,9 +90,15 @@ export function PricingSection({ software }: { software: Software }) {
               <p className="font-semibold text-white">{tier.name}</p>
               {tier.amount ? (
                 <p className="mt-1 text-sm text-zinc-400">
-                  {tier.currency} {tier.amount}
-                  {tier.billingPeriod && tier.billingPeriod !== "unknown" ? ` / ${tier.billingPeriod}` : ""}
-                  {tier.unit ? ` / ${tier.unit}` : ""}
+                  {corrected && tier.billingPeriod && tier.currency
+                    ? describePrice({ amount: tier.amount, currency: tier.currency, billingPeriod: tier.billingPeriod, per: tier.unit ?? null }, [tier.notes, tier.amount === pricing.entryPaid?.amount ? pricing.startingPrice : null]).text
+                    : (
+                      <>
+                        {tier.currency} {tier.amount}
+                        {tier.billingPeriod && tier.billingPeriod !== "unknown" ? ` / ${tier.billingPeriod}` : ""}
+                        {tier.unit ? ` / ${tier.unit}` : ""}
+                      </>
+                    )}
                 </p>
               ) : null}
               {tier.notes ? <p className="mt-1 text-xs text-zinc-500">{tier.notes}</p> : null}

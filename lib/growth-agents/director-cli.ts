@@ -25,6 +25,7 @@ import { derivedUrls, type SiteInventory } from "./inventory";
 import type { PartnerFacts } from "./partners";
 import { protectionFor, type ProtectionSnapshot } from "./protection";
 import { redactDeep, redactText } from "./redact";
+import type { PricingRenderAudit } from "./price-render-audit";
 
 /**
  * The read-only orchestration behind `npm run growth:director`.
@@ -48,6 +49,9 @@ export type CliOptions = {
   gatesFile: string | null;
   /** Result of `growth:rendered-diff` for this change; without it the rendered comparison is NOT_RUN. */
   renderedDiffFile: string | null;
+  /** Optional exact-commit full-build proof. Both options must be supplied. */
+  priceRenderBaseDir?: string | null;
+  priceRenderCandidateDir?: string | null;
   runGates: boolean;
   checkProduction: boolean;
   /** Owner-recorded production facts used when the platform is not queried. */
@@ -73,6 +77,7 @@ export type Ports = {
   productionFacts(repoRoot: string, currentSha: string): ProductionFacts | null;
   runGates(repoRoot: string): GateResult[];
   isSharedTemplate(file: string): boolean;
+  verifyPriceRendering?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string, snapshot: ProtectionSnapshot) => PricingRenderAudit;
 };
 
 export type CliResult = {
@@ -238,6 +243,9 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
   const gateEvidence = gateEvidenceOf(options, ports, git);
   const baseline = options.baselineFile ? readGateBaseline(readJson<unknown>(ports, options.baselineFile)) : null;
   const renderedDiff = options.renderedDiffFile ? readJson<{ compared?: number; differing?: number; differingSample?: string[] }>(ports, options.renderedDiffFile) : null;
+  const pricingRenderAudit = options.priceRenderBaseDir && options.priceRenderCandidateDir && options.baseSha && ports.verifyPriceRendering
+    ? ports.verifyPriceRendering(options.priceRenderBaseDir, options.priceRenderCandidateDir, options.baseSha, git.headSha, protection.snapshot)
+    : null;
   const affected = affectedByChangedFiles(git.changedFiles, (slug) => derivedUrls(inventory, `https://miloosh.com/software/${slug}`), ports.isSharedTemplate);
   const affectedNonEditable = affected.affectedUrls
     .map((url) => protectionFor(url, protection.snapshot))
@@ -251,7 +259,7 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
     gateProvenance: gateEvidence.provenance,
     baseline,
     ...(options.baselineFile && !baseline ? { baselineProblem: "The baseline file could not be read as gate results, so no baseline is used." } : {}),
-    protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged },
+    protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged, pricingRenderAudit },
     production,
     renderedDiff: renderedDiff && typeof renderedDiff.compared === "number" && typeof renderedDiff.differing === "number" ? { compared: renderedDiff.compared, differing: renderedDiff.differing, differingSample: renderedDiff.differingSample ?? [] } : null,
   });
