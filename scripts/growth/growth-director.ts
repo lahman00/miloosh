@@ -10,6 +10,7 @@ import { loadSiteInventory } from "@/lib/growth-agents/inventory-loader";
 import { loadPartnerFacts } from "@/lib/growth-agents/partners";
 import { headSha, isSharedInputFile, loadProtectionSnapshot } from "@/lib/growth-agents/protection-sources";
 import { redactText } from "@/lib/growth-agents/redact";
+import { auditPricingRenderedBuilds } from "@/lib/growth-agents/price-render-audit";
 
 /**
  * `npm run growth:director` — the Miloosh Growth Director, read-only by default.
@@ -34,6 +35,7 @@ const USAGE = `Usage: npm run growth:director -- [options]
   --events-file <json>       First-party analytics events (array) for the funnel; otherwise the funnel is UNAVAILABLE.
   --gates-file <json>        Recorded gate results.   --baseline-file <json>   Gate results at the base commit.
   --rendered-diff-file <json>  Result of growth:rendered-diff comparing the base build with this change.
+  --price-render-base <dir> --price-render-candidate <dir>  Independently audit complete HTML builds before accepting pricing-only shared component changes.
   --run-gates                Run audit, tests, validate:data, lint, tsc and build (slow; writes .next and var/).
   --check-production         Read the live deployment (vercel inspect) and GitHub deployment history (read-only).
   --out <dir>                Write director-report.json, director-report.he.md and candidates.csv here. Without it nothing is written.
@@ -57,7 +59,7 @@ export function parseArgs(argv: string[], repoRoot: string): CliOptions | { help
     const v = flags.get(name);
     return typeof v === "string" ? v : null;
   };
-  const known = new Set(["gsc-dir", "gsc-private-dir", "now", "base-sha", "release-date", "production-id", "production-created", "production-sha", "extras-file", "events-file", "gates-file", "baseline-file", "rendered-diff-file", "run-gates", "check-production", "out", "strict", "help"]);
+  const known = new Set(["gsc-dir", "gsc-private-dir", "now", "base-sha", "release-date", "production-id", "production-created", "production-sha", "extras-file", "events-file", "gates-file", "baseline-file", "rendered-diff-file", "price-render-base", "price-render-candidate", "run-gates", "check-production", "out", "strict", "help"]);
   for (const key of flags.keys()) if (!known.has(key)) throw new Error(`Unknown option --${key}\n${USAGE}`);
   const now = value("now") ? new Date(value("now")!) : new Date();
   if (Number.isNaN(now.getTime())) throw new Error("--now must be an ISO timestamp");
@@ -75,6 +77,8 @@ export function parseArgs(argv: string[], repoRoot: string): CliOptions | { help
     baselineFile: resolve(value("baseline-file")),
     gatesFile: resolve(value("gates-file")),
     renderedDiffFile: resolve(value("rendered-diff-file")),
+    priceRenderBaseDir: resolve(value("price-render-base")),
+    priceRenderCandidateDir: resolve(value("price-render-candidate")),
     runGates: flags.get("run-gates") === true,
     checkProduction: flags.get("check-production") === true,
     productionOverride: productionId || productionCreated || productionSha ? { deploymentId: productionId, createdAt: productionCreated, sha: productionSha } : null,
@@ -113,6 +117,8 @@ export function realPorts(repoRoot: string): Ports {
     productionFacts: (root, sha) => collectProductionFacts({ repoRoot: root, currentSha: sha, domain: "miloosh.com", githubRepo: EXPECTED_REPO_SLUG }),
     runGates: (root) => GATE_COMMANDS.map((spec) => runGate(root, spec)),
     isSharedTemplate: isSharedInputFile,
+    verifyPriceRendering: (baseDir, candidateDir, baseSha, headSha, snapshot) =>
+      auditPricingRenderedBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot }),
   };
 }
 
