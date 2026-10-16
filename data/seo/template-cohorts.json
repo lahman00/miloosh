@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-12T21:00:00.000Z",
-  "baseSha": "0f5443984666f8e44bec76f60db24642e81020df",
+  "generatedAt": "2026-10-16T09:00:00.000Z",
+  "baseSha": "50732394ee15732e1d8330cab1bb14dd00b328a1",
   "holdUntil": "2026-11-04",
   "software": {
     "editable": [
@@ -110,7 +110,6 @@
       "linkedin-sales-navigator",
       "liveagent",
       "looker",
-      "lovable",
       "mailchimp",
       "mailerlite",
       "maintainx",
@@ -467,8 +466,7 @@
       "ecwid": {
         "verdict": "PROTECTED",
         "sources": [
-          "measuring-receipts",
-          "release-observation"
+          "measuring-receipts"
         ],
         "eligibleAfter": null
       },
@@ -693,6 +691,13 @@
         ],
         "eligibleAfter": "2026-11-04"
       },
+      "lovable": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-12"
+      },
       "lucidchart": {
         "verdict": "OBSERVATION_WINDOW",
         "sources": [
@@ -819,6 +824,13 @@
           "release-observation"
         ],
         "eligibleAfter": "2026-11-04"
+      },
+      "playcode": {
+        "verdict": "OBSERVATION_WINDOW",
+        "sources": [
+          "release-observation"
+        ],
+        "eligibleAfter": "2026-11-12"
       },
       "power-automate": {
         "verdict": "OBSERVATION_WINDOW",
@@ -2888,6 +2900,7 @@
     "klaviyo",
     "lastpass",
     "linear",
+    "lovable",
     "lucidchart",
     "mailerlite",
     "make",
@@ -2911,6 +2924,7 @@
     "pipedrive",
     "plaid",
     "plausible",
+    "playcode",
     "power-automate",
     "quickbooks-online",
     "read-the-docs",

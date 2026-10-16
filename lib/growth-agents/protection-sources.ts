@@ -241,6 +241,8 @@ export type GitSignalOptions = {
   today: string;
   /** This checkout's own worktree path, excluded from the in-flight scan. */
   ownWorktreePath: string;
+  /** Other worktrees that carry this same change (for example the branch a release candidate was cut from); they are not claims by someone else. */
+  ignoreWorktreePaths?: readonly string[];
   knownComparisonSlugs: ReadonlySet<string>;
   /** Worktrees whose diff against the base touches more than this many files are reported as divergent lineages, not claimed page by page. */
   divergentFileLimit?: number;
@@ -328,7 +330,8 @@ export function collectGitSignals(options: GitSignalOptions): GitSignals {
 
   try {
     const limit = options.divergentFileLimit ?? 200;
-    const worktrees = listWorktrees(repoRoot).filter((w) => path.resolve(w.path) !== path.resolve(options.ownWorktreePath));
+    const ignored = new Set([options.ownWorktreePath, ...(options.ignoreWorktreePaths ?? [])].map((p) => path.resolve(p)));
+    const worktrees = listWorktrees(repoRoot).filter((w) => !ignored.has(path.resolve(w.path)));
     let claimed = 0;
     for (const worktree of worktrees) {
       const label = worktree.branch ?? worktree.head.slice(0, 7);

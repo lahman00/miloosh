@@ -54,6 +54,7 @@ function run(): number {
     baseSha,
     today: now.toISOString().slice(0, 10),
     ownWorktreePath: root,
+    ignoreWorktreePaths: process.argv.flatMap((arg, i) => (arg === "--ignore-worktree" && process.argv[i + 1] ? [process.argv[i + 1]!] : [])),
     knownComparisonSlugs: new Set(inventory.comparisons.keys()),
     checkoutSha: sha,
     generatedAt: now.toISOString(),
