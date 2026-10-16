@@ -2,6 +2,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import hold from "@/data/seo/price-label-hold.json";
+import { OWNER_PRICE_LABEL_FACTUAL_RELEASES } from "@/data/seo/price-label-factual-releases";
 import { PricingSection } from "@/components/PricingSection";
 import { getAllSoftware, getSoftware, type Software } from "@/data/software";
 import { isPriceLabelHeld } from "@/lib/price-label-hold";
@@ -50,10 +51,16 @@ describe("price wording on a profile that is not under a hold", () => {
 });
 
 describe("price wording on a profile that is under a hold", () => {
-  it("leaves Pipedrive (protected) exactly as it was until the hold ends", () => {
-    expect(isPriceLabelHeld("pipedrive")).toBe(true);
-    expect(entryLine(text(getSoftware("pipedrive")!))).toContain("USD 14 / annual / seat");
-    expect(firstRevenuePriceLine(getSoftware("pipedrive")!)).toContain("USD 14/year per seat");
+  it("shows the owner-approved Pipedrive factual correction without changing its amount", () => {
+    expect(isPriceLabelHeld("pipedrive")).toBe(false);
+    expect(entryLine(text(getSoftware("pipedrive")!))).toContain("USD 14 / month / seat · billed annually");
+    expect(firstRevenuePriceLine(getSoftware("pipedrive")!)).toContain("USD 14 / month / seat · billed annually");
+  });
+  it("shows Front as monthly billed annually, but TickTick as a real yearly total", () => {
+    expect(isPriceLabelHeld("front")).toBe(false);
+    expect(isPriceLabelHeld("ticktick")).toBe(false);
+    expect(entryLine(text(getSoftware("front")!))).toContain("USD 25 / month / seat · billed annually");
+    expect(entryLine(text(getSoftware("ticktick")!))).toContain("USD 49.99 / year");
   });
 
   it("keeps the previous monthly wording of a held money page", () => {
@@ -69,6 +76,8 @@ describe("the hold list", () => {
     expect(slugs).toEqual([...new Set(slugs)].sort());
     expect(hold.holdUntil).toBe("2026-11-04");
     expect(hold.baseSha).toMatch(/^[0-9a-f]{40}$/);
+    expect(slugs.length).toBe(138);
+    for (const slug of Object.keys(OWNER_PRICE_LABEL_FACTUAL_RELEASES)) expect(slugs).not.toContain(slug);
   });
 });
 
