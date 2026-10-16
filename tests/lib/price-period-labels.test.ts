@@ -71,3 +71,11 @@ describe("the hold list", () => {
     expect(hold.baseSha).toMatch(/^[0-9a-f]{40}$/);
   });
 });
+
+describe("tier units that already say per user/month", () => {
+  it("never prints a doubled 'per' or a repeated period in a profile that is not held", () => {
+    const html = text(getSoftware("fathom")!);
+    expect(html).toContain("USD 15 / month / user · billed annually");
+    expect(html).not.toMatch(/\/ per |\/ month \/ per|month · billed annually \(price unit not stated\)/);
+  });
+});

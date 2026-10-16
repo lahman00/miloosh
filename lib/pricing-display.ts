@@ -63,16 +63,40 @@ export function annualAmountMeaning(amount: string, texts: readonly (string | un
   return "unknown";
 }
 
+/** A unit string such as "seat", "per user/month", "month, billed annually" or "per month, starting from" split into parts. */
+export function parseUnit(unit: string | null | undefined): { noun: string | null; period: "month" | "year" | null; extra: string | null } {
+  if (!unit) return { noun: null, period: null, extra: null };
+  const comma = unit.indexOf(",");
+  const extra = comma === -1 ? null : unit.slice(comma + 1).trim().toLowerCase() || null;
+  let text = (comma === -1 ? unit : unit.slice(0, comma)).trim().toLowerCase().replace(/^per\s+/, "");
+  let period: "month" | "year" | null = null;
+  const slash = /^(.*?)\s*\/\s*(month|mo|year|yr)$/.exec(text);
+  if (slash) {
+    text = slash[1]!.trim();
+    period = /^(month|mo)$/.test(slash[2]!) ? "month" : "year";
+  }
+  const leading = /^(month|year)(?:\s+(.*))?$/.exec(text);
+  if (leading) {
+    period = leading[1] === "month" ? "month" : "year";
+    text = (leading[2] ?? "").trim();
+  }
+  return { noun: text || null, period, extra };
+}
+
 export function describePrice(price: PriceInput, evidence: readonly (string | undefined | null)[] = []): { basis: PriceBasis; text: string } {
   const money = `${price.currency} ${price.amount}`;
-  const per = price.per ? ` / ${price.per}` : "";
+  const { noun, period: unitPeriod, extra } = parseUnit(price.per);
+  const per = noun ? ` / ${noun}` : "";
+  const billedAnnually = Boolean(price.annualBillingRequired) || (extra !== null && /billed annually/.test(extra));
+  const tail = extra && !/^billed annually$/.test(extra) ? `, ${extra.replace(/,?\s*billed annually/, "")}`.replace(/,\s*$/, "") : "";
   if (price.billingPeriod === "monthly") {
-    return { basis: "per_month", text: `${money} / month${per}${price.annualBillingRequired ? " · billed annually" : ""}` };
+    return { basis: "per_month", text: `${money} / month${per}${tail}${billedAnnually ? " · billed annually" : ""}` };
   }
   if (price.billingPeriod === "one_time") return { basis: "one_time", text: `${money}${per} one time` };
   if (price.billingPeriod === "unknown") return { basis: "unstated", text: `${money}${per} · billing period unstated` };
-  const meaning = annualAmountMeaning(price.amount, evidence);
-  if (meaning === "per_month") return { basis: "per_month_billed_annually", text: `${money} / month${per} · billed annually` };
-  if (meaning === "per_year") return { basis: "per_year", text: `${money} / year${per}` };
-  return { basis: "billed_annually_unit_unstated", text: `${money}${per} · billed annually (price unit not stated)` };
+  // The record's unit can itself name the period ("per user/month"); otherwise the sourced strings decide.
+  const meaning = unitPeriod === "month" ? "per_month" : unitPeriod === "year" ? "per_year" : annualAmountMeaning(price.amount, evidence);
+  if (meaning === "per_month") return { basis: "per_month_billed_annually", text: `${money} / month${per}${tail} · billed annually` };
+  if (meaning === "per_year") return { basis: "per_year", text: `${money} / year${per}${tail}` };
+  return { basis: "billed_annually_unit_unstated", text: `${money}${per}${tail} · billed annually (price unit not stated)` };
 }

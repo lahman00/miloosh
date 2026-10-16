@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { annualAmountMeaning, describePrice } from "@/lib/pricing-display";
+import { annualAmountMeaning, describePrice, parseUnit } from "@/lib/pricing-display";
 import { getAllSoftware } from "@/data/software";
 
 describe("annualAmountMeaning", () => {
@@ -68,5 +68,28 @@ describe("describePrice", () => {
       if (software.slug === "front") expect(text).toBe("USD 25 / month / seat · billed annually");
       if (software.slug === "ticktick") expect(text).toBe("USD 49.99 / year");
     }
+  });
+});
+
+describe("parseUnit and units that name their own period", () => {
+  it("splits what is priced from the period the unit names", () => {
+    expect(parseUnit("seat")).toEqual({ noun: "seat", period: null, extra: null });
+    expect(parseUnit("per seat")).toEqual({ noun: "seat", period: null, extra: null });
+    expect(parseUnit("per user/month")).toEqual({ noun: "user", period: "month", extra: null });
+    expect(parseUnit("per month base fee")).toEqual({ noun: "base fee", period: "month", extra: null });
+    expect(parseUnit("doc maker")).toEqual({ noun: "doc maker", period: null, extra: null });
+    expect(parseUnit("per endpoint/year")).toEqual({ noun: "endpoint", period: "year", extra: null });
+    expect(parseUnit("month, billed annually")).toEqual({ noun: null, period: "month", extra: "billed annually" });
+    expect(parseUnit("per month, starting from")).toEqual({ noun: null, period: "month", extra: "starting from" });
+    expect(parseUnit(null)).toEqual({ noun: null, period: null, extra: null });
+  });
+
+  it("does not repeat 'per' or the period in the wording", () => {
+    expect(describePrice({ amount: "0", currency: "USD", billingPeriod: "monthly", per: "per seat" }).text).toBe("USD 0 / month / seat");
+    expect(describePrice({ amount: "16", currency: "USD", billingPeriod: "annual", per: "per user/month" }).text).toBe("USD 16 / month / user · billed annually");
+    expect(describePrice({ amount: "480", currency: "USD", billingPeriod: "annual", per: "per endpoint/year" }).text).toBe("USD 480 / year / endpoint");
+    expect(describePrice({ amount: "20", currency: "USD", billingPeriod: "monthly", per: "month" }).text).toBe("USD 20 / month");
+    expect(describePrice({ amount: "11", currency: "USD", billingPeriod: "monthly", per: "month, billed annually" }).text).toBe("USD 11 / month · billed annually");
+    expect(describePrice({ amount: "39", currency: "USD", billingPeriod: "monthly", per: "per month, starting from" }).text).toBe("USD 39 / month, starting from");
   });
 });
