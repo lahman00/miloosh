@@ -27,7 +27,7 @@
       { "name": "Pro", "amount": "100", "currency": "USD", "billing_period": "monthly", "notes": "Single account. Adds call flows, report builder, scheduled reports, HIPAA." },
       { "name": "Elite", "amount": "160", "currency": "USD", "billing_period": "monthly", "notes": "Single account. Adds customer journey, multi-click attribution, lead intelligence." }
     ],
-    "last_verified": "2026-08-24",
+    "last_verified": "2026-10-19",
     "official_source": "https://www.whatconverts.com/pricing/"
   },
   "platforms": [

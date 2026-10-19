@@ -19,42 +19,49 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "£199/month",
+    "starting_price": "From £299/month (indicative, scaled to traffic)",
     "has_free_tier": false,
     "status": "verified",
     "free_trial": {
       "available": false
     },
     "entry_paid": {
-      "amount": "199",
+      "amount": "299",
       "currency": "GBP",
       "billing_period": "monthly"
     },
     "tiers": [
       {
-        "name": "Medium Business",
-        "amount": "199",
+        "name": "Small",
+        "amount": "299",
         "currency": "GBP",
         "billing_period": "monthly",
-        "notes": "Up to 10k monthly visitors and 100 conversions."
+        "notes": "Up to 10k monthly visits, from £299 a month; a second price set of £269 appears with the annual toggle (save 10%)."
       },
       {
-        "name": "Large Business",
+        "name": "Medium",
         "amount": "499",
         "currency": "GBP",
         "billing_period": "monthly",
-        "notes": "Up to 50k monthly visitors."
+        "notes": "Up to 50k visits a month, from £499; £449 with the annual toggle."
       },
       {
-        "name": "Enterprise",
-        "amount": "Custom",
+        "name": "Large",
+        "amount": "999",
         "currency": "GBP",
         "billing_period": "monthly",
-        "notes": "High volume custom visitor tracking and bespoke integrations."
+        "notes": "Up to 100k visits a month, from £999; £899 with the annual toggle."
+      },
+      {
+        "name": "Advanced",
+        "amount": "1499",
+        "currency": "GBP",
+        "billing_period": "monthly",
+        "notes": "From 100k visits a month, from £1,499; £1,349 with the annual toggle. The page calls all prices indicative, scaled to traffic volume and product, data and integration requirements."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
+    "last_verified": "2026-10-19",
     "official_source": "https://www.ruleranalytics.com/pricing/"
   },
   "pros": [
@@ -63,9 +70,9 @@
     "Supports sophisticated multi-touch attribution models for long B2B buying cycles"
   ],
   "cons": [
-    "Higher price point (£199/mo baseline) compared to basic call tracking tools",
+    "Prices start at £299 a month and rise with monthly visits, which is a higher floor than basic call tracking tools",
     "Requires active CRM pipeline integration to unlock full closed-loop attribution power",
-    "No self-serve free trial; requires guided demo setup"
+    "The page lists no free trial; each plan's Get Started button leads to a demo booking page"
   ],
   "sources": [
     "https://www.ruleranalytics.com/pricing/",
