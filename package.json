@@ -14,6 +14,8 @@
     "audit:growth": "tsx scripts/growth/commercial-audit.ts",
     "growth:priority": "tsx scripts/growth/commercial-priority-engine.ts",
     "growth:graph": "tsx scripts/growth/commercial-graph-engine.ts",
+    "growth:opportunity-matrix": "tsx scripts/growth/opportunity-matrix.ts",
+    "growth:first-party-funnel": "tsx scripts/growth/first-party-funnel.ts",
     "growth:gsc-factual": "tsx scripts/growth/gsc-factual-report.ts",
     "growth:cta-coverage": "tsx scripts/growth/verified-active-cta-coverage.ts",
     "growth:one-sided-audit": "tsx scripts/growth/one-sided-comparison-audit.ts",
