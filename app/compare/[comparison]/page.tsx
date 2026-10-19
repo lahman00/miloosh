@@ -37,6 +37,11 @@ import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliat
 import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
+import { isComparisonTemplateV2 } from "@/data/seo/comparison-waves";
+import { getComparisonVerdict } from "@/data/seo/comparison-verdicts";
+import { ComparisonPricingTable } from "@/components/ComparisonPricingTable";
+import { ComparisonVerdictCard } from "@/components/ComparisonVerdictCard";
+import { sourcedCons, sourcedPros } from "@/lib/comparison-v2";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -176,6 +181,8 @@ export default async function ComparePage({ params }: ComparePageProps) {
   const relatedSoftware = getComparisonRelatedSoftware(softwareA, softwareB, 3);
   const isStoreComparison = softwareA.category === "ecommerce" || softwareB.category === "ecommerce";
   const isMkDocsReadTheDocsCanary = comparison === "mkdocs-vs-read-the-docs";
+  const comparisonV2 = isComparisonTemplateV2(comparison);
+  const verdict = comparisonV2 ? getComparisonVerdict(comparison) : null;
 
   return (
     <main className="flex-1 py-16 sm:py-20">
@@ -212,12 +219,16 @@ export default async function ComparePage({ params }: ComparePageProps) {
           </div>
         </header>
 
+        {verdict ? <ComparisonVerdictCard verdict={verdict} /> : null}
+
         <section className="mt-14">
           <SectionHeading title="Side-by-side summary" />
           <div className="mt-8">
             <ComparisonTable data={data} />
           </div>
         </section>
+
+        {comparisonV2 ? <ComparisonPricingTable softwareA={softwareA} softwareB={softwareB} /> : null}
 
         {isMkDocsReadTheDocsCanary ? (
           <section className="mt-14">
@@ -300,44 +311,89 @@ export default async function ComparePage({ params }: ComparePageProps) {
           </div>
         </section>
 
-        <section className="mt-14">
-          <SectionHeading title="Pros and cons" />
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {[softwareA, softwareB].map((software) => (
-              <Card key={software.slug}>
-                <h3 className="text-lg font-semibold text-white">{software.name}</h3>
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-300">
-                  <ThumbsUp className="h-4 w-4 text-zinc-500" />
-                  Pros
-                </div>
-                <ul className="mt-2 space-y-2">
-                  {generateProsList(software).map((pro) => (
-                    <li key={pro} className="flex items-start gap-2 text-sm text-zinc-400">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-300">
-                  <Ban className="h-4 w-4 text-zinc-500" />
-                  Cons
-                </div>
-                {software.cons && software.cons.length > 0 ? (
+        {comparisonV2 ? (
+          <section className="mt-14">
+            <SectionHeading title="Pros and cons" description="Each point below comes from the vendor's own pages; points the vendor does not document are left out rather than guessed." />
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {[softwareA, softwareB].map((software) => (
+                <Card key={software.slug}>
+                  <h3 className="text-lg font-semibold text-white">{software.name}</h3>
+                  {sourcedPros(software).length > 0 ? (
+                    <>
+                      <div className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-300">
+                        <ThumbsUp className="h-4 w-4 text-zinc-500" />
+                        Pros
+                      </div>
+                      <ul className="mt-2 space-y-2">
+                        {sourcedPros(software).map((pro) => (
+                          <li key={pro} className="flex items-start gap-2 text-sm text-zinc-400">
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+                            {pro}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : null}
+                  {sourcedCons(software).length > 0 ? (
+                    <>
+                      <div className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-300">
+                        <Ban className="h-4 w-4 text-zinc-500" />
+                        Cons
+                      </div>
+                      <ul className="mt-2 space-y-2">
+                        {sourcedCons(software).map((con) => (
+                          <li key={con} className="flex items-start gap-2 text-sm text-zinc-400">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
+                            <span className="leading-6">{con}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : null}
+                </Card>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section className="mt-14">
+            <SectionHeading title="Pros and cons" />
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {[softwareA, softwareB].map((software) => (
+                <Card key={software.slug}>
+                  <h3 className="text-lg font-semibold text-white">{software.name}</h3>
+                  <div className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-300">
+                    <ThumbsUp className="h-4 w-4 text-zinc-500" />
+                    Pros
+                  </div>
                   <ul className="mt-2 space-y-2">
-                    {software.cons.map((con) => (
-                      <li key={con} className="flex items-start gap-2 text-sm text-zinc-400">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
-                        <span className="leading-6">{con}</span>
+                    {generateProsList(software).map((pro) => (
+                      <li key={pro} className="flex items-start gap-2 text-sm text-zinc-400">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+                        {pro}
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
-                )}
-              </Card>
-            ))}
-          </div>
-        </section>
+                  <div className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-300">
+                    <Ban className="h-4 w-4 text-zinc-500" />
+                    Cons
+                  </div>
+                  {software.cons && software.cons.length > 0 ? (
+                    <ul className="mt-2 space-y-2">
+                      {software.cons.map((con) => (
+                        <li key={con} className="flex items-start gap-2 text-sm text-zinc-400">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
+                          <span className="leading-6">{con}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-2 text-sm leading-6 text-zinc-400">{CONS_DISCLOSURE}</p>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </section>
+        )}
 
         <Card className="mt-14">
           <div className="flex items-center gap-3">
