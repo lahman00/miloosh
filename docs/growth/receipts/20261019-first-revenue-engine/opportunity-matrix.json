@@ -1,0 +1,2995 @@
+{
+  "summary": {
+    "generatedAt": "2026-10-19T20:25:45.998Z",
+    "baseSha": "1d86765",
+    "comparisons": 1348,
+    "withPayoutVerifiedPartner": 134,
+    "editable": 120,
+    "editableWithEditableData": 10,
+    "editableDataSameCategory": 10,
+    "editableAndFresh": 14,
+    "withHistoricalImpressions": 19,
+    "notMeasured": [
+      "search volume",
+      "keyword difficulty",
+      "competing results",
+      "conversion rate"
+    ]
+  },
+  "rows": [
+    {
+      "slug": "apollo-io-vs-linkedin-sales-navigator",
+      "url": "https://miloosh.com/compare/apollo-io-vs-linkedin-sales-navigator",
+      "products": [
+        "apollo-io",
+        "linkedin-sales-navigator"
+      ],
+      "payoutVerifiedPartners": [
+        "apollo-io"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "callrail-vs-ruler-analytics",
+      "url": "https://miloosh.com/compare/callrail-vs-ruler-analytics",
+      "products": [
+        "callrail",
+        "ruler-analytics"
+      ],
+      "payoutVerifiedPartners": [
+        "callrail"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "krispcall-vs-dialpad",
+      "url": "https://miloosh.com/compare/krispcall-vs-dialpad",
+      "products": [
+        "krispcall",
+        "dialpad"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "krispcall-vs-nextiva",
+      "url": "https://miloosh.com/compare/krispcall-vs-nextiva",
+      "products": [
+        "krispcall",
+        "nextiva"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "whatconverts-vs-callrail",
+      "url": "https://miloosh.com/compare/whatconverts-vs-callrail",
+      "products": [
+        "whatconverts",
+        "callrail"
+      ],
+      "payoutVerifiedPartners": [
+        "callrail"
+      ],
+      "otherPartners": [
+        "whatconverts (UNVERIFIED)"
+      ],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "apollo-io-vs-cognism",
+      "url": "https://miloosh.com/compare/apollo-io-vs-cognism",
+      "products": [
+        "apollo-io",
+        "cognism"
+      ],
+      "payoutVerifiedPartners": [
+        "apollo-io"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "apollo-io-vs-outreach",
+      "url": "https://miloosh.com/compare/apollo-io-vs-outreach",
+      "products": [
+        "apollo-io",
+        "outreach"
+      ],
+      "payoutVerifiedPartners": [
+        "apollo-io"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "apollo-io-vs-salesloft",
+      "url": "https://miloosh.com/compare/apollo-io-vs-salesloft",
+      "products": [
+        "apollo-io",
+        "salesloft"
+      ],
+      "payoutVerifiedPartners": [
+        "apollo-io"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 0,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "apollo-io-vs-zoominfo-sales",
+      "url": "https://miloosh.com/compare/apollo-io-vs-zoominfo-sales",
+      "products": [
+        "apollo-io",
+        "zoominfo-sales"
+      ],
+      "payoutVerifiedPartners": [
+        "apollo-io"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": 44,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "krispcall-vs-zoom",
+      "url": "https://miloosh.com/compare/krispcall-vs-zoom",
+      "products": [
+        "krispcall",
+        "zoom"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": true
+    },
+    {
+      "slug": "todoist-vs-superhuman",
+      "url": "https://miloosh.com/compare/todoist-vs-superhuman",
+      "products": [
+        "todoist",
+        "superhuman"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 24,
+      "historicalImpressions": 6,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-microsoft-onenote",
+      "url": "https://miloosh.com/compare/todoist-vs-microsoft-onenote",
+      "products": [
+        "todoist",
+        "microsoft-onenote"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 24,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "krispcall-vs-google-meet",
+      "url": "https://miloosh.com/compare/krispcall-vs-google-meet",
+      "products": [
+        "krispcall",
+        "google-meet"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 12,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-ticktick",
+      "url": "https://miloosh.com/compare/todoist-vs-ticktick",
+      "products": [
+        "todoist",
+        "ticktick"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 24,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "volza-vs-google-analytics",
+      "url": "https://miloosh.com/compare/volza-vs-google-analytics",
+      "products": [
+        "volza",
+        "google-analytics"
+      ],
+      "payoutVerifiedPartners": [
+        "volza"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 12,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "marketo-engage-vs-activecampaign",
+      "url": "https://miloosh.com/compare/marketo-engage-vs-activecampaign",
+      "products": [
+        "marketo-engage",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 55,
+      "historicalImpressions": 6,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-klaviyo",
+      "url": "https://miloosh.com/compare/constant-contact-vs-klaviyo",
+      "products": [
+        "constant-contact",
+        "klaviyo"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 3,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-mailchimp",
+      "url": "https://miloosh.com/compare/constant-contact-vs-mailchimp",
+      "products": [
+        "constant-contact",
+        "mailchimp"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 3,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-marketo-engage",
+      "url": "https://miloosh.com/compare/constant-contact-vs-marketo-engage",
+      "products": [
+        "constant-contact",
+        "marketo-engage"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 3,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "evernote-vs-airtable",
+      "url": "https://miloosh.com/compare/evernote-vs-airtable",
+      "products": [
+        "evernote",
+        "airtable"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 2,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "activecampaign-vs-buffer",
+      "url": "https://miloosh.com/compare/activecampaign-vs-buffer",
+      "products": [
+        "activecampaign",
+        "buffer"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-ticktick",
+      "url": "https://miloosh.com/compare/airtable-vs-ticktick",
+      "products": [
+        "airtable",
+        "ticktick"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "close-vs-copper",
+      "url": "https://miloosh.com/compare/close-vs-copper",
+      "products": [
+        "close",
+        "copper"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-activecampaign",
+      "url": "https://miloosh.com/compare/constant-contact-vs-activecampaign",
+      "products": [
+        "constant-contact",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact",
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-buffer",
+      "url": "https://miloosh.com/compare/constant-contact-vs-buffer",
+      "products": [
+        "constant-contact",
+        "buffer"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-mailchimp",
+      "url": "https://miloosh.com/compare/getresponse-vs-mailchimp",
+      "products": [
+        "getresponse",
+        "mailchimp"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-craft",
+      "url": "https://miloosh.com/compare/todoist-vs-craft",
+      "products": [
+        "todoist",
+        "craft"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "activecampaign-vs-hootsuite",
+      "url": "https://miloosh.com/compare/activecampaign-vs-hootsuite",
+      "products": [
+        "activecampaign",
+        "hootsuite"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 55,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "activecampaign-vs-klaviyo",
+      "url": "https://miloosh.com/compare/activecampaign-vs-klaviyo",
+      "products": [
+        "activecampaign",
+        "klaviyo"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 55,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "activecampaign-vs-mailchimp",
+      "url": "https://miloosh.com/compare/activecampaign-vs-mailchimp",
+      "products": [
+        "activecampaign",
+        "mailchimp"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "activecampaign-vs-sprout-social",
+      "url": "https://miloosh.com/compare/activecampaign-vs-sprout-social",
+      "products": [
+        "activecampaign",
+        "sprout-social"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "ahrefs-vs-activecampaign",
+      "url": "https://miloosh.com/compare/ahrefs-vs-activecampaign",
+      "products": [
+        "ahrefs",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-clockify",
+      "url": "https://miloosh.com/compare/airtable-vs-clockify",
+      "products": [
+        "airtable",
+        "clockify"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-microsoft-onenote",
+      "url": "https://miloosh.com/compare/airtable-vs-microsoft-onenote",
+      "products": [
+        "airtable",
+        "microsoft-onenote"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-superhuman",
+      "url": "https://miloosh.com/compare/airtable-vs-superhuman",
+      "products": [
+        "airtable",
+        "superhuman"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "bloomfire-vs-trainual",
+      "url": "https://miloosh.com/compare/bloomfire-vs-trainual",
+      "products": [
+        "bloomfire",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "braze-vs-activecampaign",
+      "url": "https://miloosh.com/compare/braze-vs-activecampaign",
+      "products": [
+        "braze",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 55,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "brevo-vs-activecampaign",
+      "url": "https://miloosh.com/compare/brevo-vs-activecampaign",
+      "products": [
+        "brevo",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "brevo-vs-getresponse",
+      "url": "https://miloosh.com/compare/brevo-vs-getresponse",
+      "products": [
+        "brevo",
+        "getresponse"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "close-vs-freshsales",
+      "url": "https://miloosh.com/compare/close-vs-freshsales",
+      "products": [
+        "close",
+        "freshsales"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "close-vs-keap",
+      "url": "https://miloosh.com/compare/close-vs-keap",
+      "products": [
+        "close",
+        "keap"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "close-vs-nutshell",
+      "url": "https://miloosh.com/compare/close-vs-nutshell",
+      "products": [
+        "close",
+        "nutshell"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "close-vs-zoho-crm",
+      "url": "https://miloosh.com/compare/close-vs-zoho-crm",
+      "products": [
+        "close",
+        "zoho-crm"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "coda-vs-airtable",
+      "url": "https://miloosh.com/compare/coda-vs-airtable",
+      "products": [
+        "coda",
+        "airtable"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "confluence-vs-trainual",
+      "url": "https://miloosh.com/compare/confluence-vs-trainual",
+      "products": [
+        "confluence",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-ahrefs",
+      "url": "https://miloosh.com/compare/constant-contact-vs-ahrefs",
+      "products": [
+        "constant-contact",
+        "ahrefs"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-braze",
+      "url": "https://miloosh.com/compare/constant-contact-vs-braze",
+      "products": [
+        "constant-contact",
+        "braze"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-brevo",
+      "url": "https://miloosh.com/compare/constant-contact-vs-brevo",
+      "products": [
+        "constant-contact",
+        "brevo"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-hootsuite",
+      "url": "https://miloosh.com/compare/constant-contact-vs-hootsuite",
+      "products": [
+        "constant-contact",
+        "hootsuite"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-moosend",
+      "url": "https://miloosh.com/compare/constant-contact-vs-moosend",
+      "products": [
+        "constant-contact",
+        "moosend"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact",
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-sprout-social",
+      "url": "https://miloosh.com/compare/constant-contact-vs-sprout-social",
+      "products": [
+        "constant-contact",
+        "sprout-social"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-zoho-campaigns",
+      "url": "https://miloosh.com/compare/constant-contact-vs-zoho-campaigns",
+      "products": [
+        "constant-contact",
+        "zoho-campaigns"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "freshbooks-vs-wave",
+      "url": "https://miloosh.com/compare/freshbooks-vs-wave",
+      "products": [
+        "freshbooks",
+        "wave"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "freshbooks-vs-zoho-books",
+      "url": "https://miloosh.com/compare/freshbooks-vs-zoho-books",
+      "products": [
+        "freshbooks",
+        "zoho-books"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-activecampaign",
+      "url": "https://miloosh.com/compare/getresponse-vs-activecampaign",
+      "products": [
+        "getresponse",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse",
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-ahrefs",
+      "url": "https://miloosh.com/compare/getresponse-vs-ahrefs",
+      "products": [
+        "getresponse",
+        "ahrefs"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-braze",
+      "url": "https://miloosh.com/compare/getresponse-vs-braze",
+      "products": [
+        "getresponse",
+        "braze"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-buffer",
+      "url": "https://miloosh.com/compare/getresponse-vs-buffer",
+      "products": [
+        "getresponse",
+        "buffer"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-hootsuite",
+      "url": "https://miloosh.com/compare/getresponse-vs-hootsuite",
+      "products": [
+        "getresponse",
+        "hootsuite"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-klaviyo",
+      "url": "https://miloosh.com/compare/getresponse-vs-klaviyo",
+      "products": [
+        "getresponse",
+        "klaviyo"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-marketo-engage",
+      "url": "https://miloosh.com/compare/getresponse-vs-marketo-engage",
+      "products": [
+        "getresponse",
+        "marketo-engage"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-semrush",
+      "url": "https://miloosh.com/compare/getresponse-vs-semrush",
+      "products": [
+        "getresponse",
+        "semrush"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-sprout-social",
+      "url": "https://miloosh.com/compare/getresponse-vs-sprout-social",
+      "products": [
+        "getresponse",
+        "sprout-social"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "getresponse-vs-zoho-campaigns",
+      "url": "https://miloosh.com/compare/getresponse-vs-zoho-campaigns",
+      "products": [
+        "getresponse",
+        "zoho-campaigns"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "gitbook-vs-trainual",
+      "url": "https://miloosh.com/compare/gitbook-vs-trainual",
+      "products": [
+        "gitbook",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 13,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "gohighlevel-vs-close",
+      "url": "https://miloosh.com/compare/gohighlevel-vs-close",
+      "products": [
+        "gohighlevel",
+        "close"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 62,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "gohighlevel-vs-pipedrive",
+      "url": "https://miloosh.com/compare/gohighlevel-vs-pipedrive",
+      "products": [
+        "gohighlevel",
+        "pipedrive"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 62,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "guru-vs-trainual",
+      "url": "https://miloosh.com/compare/guru-vs-trainual",
+      "products": [
+        "guru",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "helpjuice-vs-trainual",
+      "url": "https://miloosh.com/compare/helpjuice-vs-trainual",
+      "products": [
+        "helpjuice",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubspot-vs-close",
+      "url": "https://miloosh.com/compare/hubspot-vs-close",
+      "products": [
+        "hubspot",
+        "close"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubspot-vs-pipedrive",
+      "url": "https://miloosh.com/compare/hubspot-vs-pipedrive",
+      "products": [
+        "hubspot",
+        "pipedrive"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-clockify",
+      "url": "https://miloosh.com/compare/hubstaff-vs-clockify",
+      "products": [
+        "hubstaff",
+        "clockify"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-harvest",
+      "url": "https://miloosh.com/compare/hubstaff-vs-harvest",
+      "products": [
+        "hubstaff",
+        "harvest"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-time-doctor",
+      "url": "https://miloosh.com/compare/hubstaff-vs-time-doctor",
+      "products": [
+        "hubstaff",
+        "time-doctor"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-todoist",
+      "url": "https://miloosh.com/compare/hubstaff-vs-todoist",
+      "products": [
+        "hubstaff",
+        "todoist"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff",
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-toggl-track",
+      "url": "https://miloosh.com/compare/hubstaff-vs-toggl-track",
+      "products": [
+        "hubstaff",
+        "toggl-track"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "knowledgeowl-vs-trainual",
+      "url": "https://miloosh.com/compare/knowledgeowl-vs-trainual",
+      "products": [
+        "knowledgeowl",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "krispcall-vs-microsoft-teams",
+      "url": "https://miloosh.com/compare/krispcall-vs-microsoft-teams",
+      "products": [
+        "krispcall",
+        "microsoft-teams"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "krispcall-vs-ringcentral",
+      "url": "https://miloosh.com/compare/krispcall-vs-ringcentral",
+      "products": [
+        "krispcall",
+        "ringcentral"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "krispcall-vs-webex",
+      "url": "https://miloosh.com/compare/krispcall-vs-webex",
+      "products": [
+        "krispcall",
+        "webex"
+      ],
+      "payoutVerifiedPartners": [
+        "krispcall"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 55,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "mailerlite-vs-getresponse",
+      "url": "https://miloosh.com/compare/mailerlite-vs-getresponse",
+      "products": [
+        "mailerlite",
+        "getresponse"
+      ],
+      "payoutVerifiedPartners": [
+        "getresponse"
+      ],
+      "otherPartners": [
+        "mailerlite (OWNER_ACTION_REQUIRED)"
+      ],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-activecampaign",
+      "url": "https://miloosh.com/compare/moosend-vs-activecampaign",
+      "products": [
+        "moosend",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend",
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-braze",
+      "url": "https://miloosh.com/compare/moosend-vs-braze",
+      "products": [
+        "moosend",
+        "braze"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-brevo",
+      "url": "https://miloosh.com/compare/moosend-vs-brevo",
+      "products": [
+        "moosend",
+        "brevo"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-getresponse",
+      "url": "https://miloosh.com/compare/moosend-vs-getresponse",
+      "products": [
+        "moosend",
+        "getresponse"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend",
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-klaviyo",
+      "url": "https://miloosh.com/compare/moosend-vs-klaviyo",
+      "products": [
+        "moosend",
+        "klaviyo"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-mailchimp",
+      "url": "https://miloosh.com/compare/moosend-vs-mailchimp",
+      "products": [
+        "moosend",
+        "mailchimp"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-marketo-engage",
+      "url": "https://miloosh.com/compare/moosend-vs-marketo-engage",
+      "products": [
+        "moosend",
+        "marketo-engage"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "moosend-vs-zoho-campaigns",
+      "url": "https://miloosh.com/compare/moosend-vs-zoho-campaigns",
+      "products": [
+        "moosend",
+        "zoho-campaigns"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-close",
+      "url": "https://miloosh.com/compare/pipedrive-vs-close",
+      "products": [
+        "pipedrive",
+        "close"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive",
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-copper",
+      "url": "https://miloosh.com/compare/pipedrive-vs-copper",
+      "products": [
+        "pipedrive",
+        "copper"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-freshsales",
+      "url": "https://miloosh.com/compare/pipedrive-vs-freshsales",
+      "products": [
+        "pipedrive",
+        "freshsales"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-keap",
+      "url": "https://miloosh.com/compare/pipedrive-vs-keap",
+      "products": [
+        "pipedrive",
+        "keap"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-nutshell",
+      "url": "https://miloosh.com/compare/pipedrive-vs-nutshell",
+      "products": [
+        "pipedrive",
+        "nutshell"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-zoho-crm",
+      "url": "https://miloosh.com/compare/pipedrive-vs-zoho-crm",
+      "products": [
+        "pipedrive",
+        "zoho-crm"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "quickbooks-online-vs-freshbooks",
+      "url": "https://miloosh.com/compare/quickbooks-online-vs-freshbooks",
+      "products": [
+        "quickbooks-online",
+        "freshbooks"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 62,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "salesforce-vs-close",
+      "url": "https://miloosh.com/compare/salesforce-vs-close",
+      "products": [
+        "salesforce",
+        "close"
+      ],
+      "payoutVerifiedPartners": [
+        "close"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "salesforce-vs-pipedrive",
+      "url": "https://miloosh.com/compare/salesforce-vs-pipedrive",
+      "products": [
+        "salesforce",
+        "pipedrive"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "semrush-vs-activecampaign",
+      "url": "https://miloosh.com/compare/semrush-vs-activecampaign",
+      "products": [
+        "semrush",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "stack-overflow-for-teams-vs-trainual",
+      "url": "https://miloosh.com/compare/stack-overflow-for-teams-vs-trainual",
+      "products": [
+        "stack-overflow-for-teams",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "surveymonkey-vs-qualtrics",
+      "url": "https://miloosh.com/compare/surveymonkey-vs-qualtrics",
+      "products": [
+        "surveymonkey",
+        "qualtrics"
+      ],
+      "payoutVerifiedPartners": [
+        "surveymonkey"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 56,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 4,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "tettra-vs-trainual",
+      "url": "https://miloosh.com/compare/tettra-vs-trainual",
+      "products": [
+        "tettra",
+        "trainual"
+      ],
+      "payoutVerifiedPartners": [
+        "trainual"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 3,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-anydo",
+      "url": "https://miloosh.com/compare/todoist-vs-anydo",
+      "products": [
+        "todoist",
+        "anydo"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-things",
+      "url": "https://miloosh.com/compare/todoist-vs-things",
+      "products": [
+        "todoist",
+        "things"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "xero-vs-freshbooks",
+      "url": "https://miloosh.com/compare/xero-vs-freshbooks",
+      "products": [
+        "xero",
+        "freshbooks"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 62,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-reclaim-ai",
+      "url": "https://miloosh.com/compare/todoist-vs-reclaim-ai",
+      "products": [
+        "todoist",
+        "reclaim-ai"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 24,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "callrail-vs-hubspot",
+      "url": "https://miloosh.com/compare/callrail-vs-hubspot",
+      "products": [
+        "callrail",
+        "hubspot"
+      ],
+      "payoutVerifiedPartners": [
+        "callrail"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 12,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "freshbooks-vs-clockify",
+      "url": "https://miloosh.com/compare/freshbooks-vs-clockify",
+      "products": [
+        "freshbooks",
+        "clockify"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 12,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "freshbooks-vs-toggl-track",
+      "url": "https://miloosh.com/compare/freshbooks-vs-toggl-track",
+      "products": [
+        "freshbooks",
+        "toggl-track"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 13,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-motion",
+      "url": "https://miloosh.com/compare/todoist-vs-motion",
+      "products": [
+        "todoist",
+        "motion"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": false,
+      "oldestPricingCheckDays": null,
+      "historicalImpressions": 4,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": false,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-pipedrive",
+      "url": "https://miloosh.com/compare/airtable-vs-pipedrive",
+      "products": [
+        "airtable",
+        "pipedrive"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable",
+        "pipedrive"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-smartsheet",
+      "url": "https://miloosh.com/compare/airtable-vs-smartsheet",
+      "products": [
+        "airtable",
+        "smartsheet"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "freshbooks-vs-harvest",
+      "url": "https://miloosh.com/compare/freshbooks-vs-harvest",
+      "products": [
+        "freshbooks",
+        "harvest"
+      ],
+      "payoutVerifiedPartners": [
+        "freshbooks"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 2,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "gohighlevel-vs-activecampaign",
+      "url": "https://miloosh.com/compare/gohighlevel-vs-activecampaign",
+      "products": [
+        "gohighlevel",
+        "activecampaign"
+      ],
+      "payoutVerifiedPartners": [
+        "activecampaign"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 62,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-asana",
+      "url": "https://miloosh.com/compare/hubstaff-vs-asana",
+      "products": [
+        "hubstaff",
+        "asana"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-clickup",
+      "url": "https://miloosh.com/compare/hubstaff-vs-clickup",
+      "products": [
+        "hubstaff",
+        "clickup"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "hubstaff-vs-monday",
+      "url": "https://miloosh.com/compare/hubstaff-vs-monday",
+      "products": [
+        "hubstaff",
+        "monday"
+      ],
+      "payoutVerifiedPartners": [
+        "hubstaff"
+      ],
+      "otherPartners": [
+        "monday (UNVERIFIED)"
+      ],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "monday-vs-pipedrive",
+      "url": "https://miloosh.com/compare/monday-vs-pipedrive",
+      "products": [
+        "monday",
+        "pipedrive"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [
+        "monday (UNVERIFIED)"
+      ],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "pipedrive-vs-whatconverts",
+      "url": "https://miloosh.com/compare/pipedrive-vs-whatconverts",
+      "products": [
+        "pipedrive",
+        "whatconverts"
+      ],
+      "payoutVerifiedPartners": [
+        "pipedrive"
+      ],
+      "otherPartners": [
+        "whatconverts (UNVERIFIED)"
+      ],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 58,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "surveymonkey-vs-typeform",
+      "url": "https://miloosh.com/compare/surveymonkey-vs-typeform",
+      "products": [
+        "surveymonkey",
+        "typeform"
+      ],
+      "payoutVerifiedPartners": [
+        "surveymonkey"
+      ],
+      "otherPartners": [],
+      "protection": "EDITABLE",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 56,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 4,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-clockify",
+      "url": "https://miloosh.com/compare/todoist-vs-clockify",
+      "products": [
+        "todoist",
+        "clockify"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 24,
+      "historicalImpressions": 2,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-evernote",
+      "url": "https://miloosh.com/compare/todoist-vs-evernote",
+      "products": [
+        "todoist",
+        "evernote"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 24,
+      "historicalImpressions": 1,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "airtable-vs-notion",
+      "url": "https://miloosh.com/compare/airtable-vs-notion",
+      "products": [
+        "airtable",
+        "notion"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "coda-vs-todoist",
+      "url": "https://miloosh.com/compare/coda-vs-todoist",
+      "products": [
+        "coda",
+        "todoist"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "constant-contact-vs-getresponse",
+      "url": "https://miloosh.com/compare/constant-contact-vs-getresponse",
+      "products": [
+        "constant-contact",
+        "getresponse"
+      ],
+      "payoutVerifiedPartners": [
+        "constant-contact",
+        "getresponse"
+      ],
+      "otherPartners": [],
+      "protection": "OBSERVATION_WINDOW",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "mailerlite-vs-moosend",
+      "url": "https://miloosh.com/compare/mailerlite-vs-moosend",
+      "products": [
+        "mailerlite",
+        "moosend"
+      ],
+      "payoutVerifiedPartners": [
+        "moosend"
+      ],
+      "otherPartners": [
+        "mailerlite (OWNER_ACTION_REQUIRED)"
+      ],
+      "protection": "OBSERVATION_WINDOW",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 61,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "notion-vs-todoist",
+      "url": "https://miloosh.com/compare/notion-vs-todoist",
+      "products": [
+        "notion",
+        "todoist"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-airtable",
+      "url": "https://miloosh.com/compare/todoist-vs-airtable",
+      "products": [
+        "todoist",
+        "airtable"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist",
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 57,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": true,
+      "dataEditable": false
+    },
+    {
+      "slug": "todoist-vs-asana",
+      "url": "https://miloosh.com/compare/todoist-vs-asana",
+      "products": [
+        "todoist",
+        "asana"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 40,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "trello-vs-todoist",
+      "url": "https://miloosh.com/compare/trello-vs-todoist",
+      "products": [
+        "trello",
+        "todoist"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 40,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "clickup-vs-todoist",
+      "url": "https://miloosh.com/compare/clickup-vs-todoist",
+      "products": [
+        "clickup",
+        "todoist"
+      ],
+      "payoutVerifiedPartners": [
+        "todoist"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 2,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "clickup-vs-airtable",
+      "url": "https://miloosh.com/compare/clickup-vs-airtable",
+      "products": [
+        "clickup",
+        "airtable"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [],
+      "protection": "PROTECTED",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "monday-vs-airtable",
+      "url": "https://miloosh.com/compare/monday-vs-airtable",
+      "products": [
+        "monday",
+        "airtable"
+      ],
+      "payoutVerifiedPartners": [
+        "airtable"
+      ],
+      "otherPartners": [
+        "monday (UNVERIFIED)"
+      ],
+      "protection": "OBSERVATION_WINDOW",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 60,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 0,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": false,
+      "sameCategory": false,
+      "dataEditable": false
+    },
+    {
+      "slug": "surveymonkey-vs-jotform",
+      "url": "https://miloosh.com/compare/surveymonkey-vs-jotform",
+      "products": [
+        "surveymonkey",
+        "jotform"
+      ],
+      "payoutVerifiedPartners": [
+        "surveymonkey"
+      ],
+      "otherPartners": [
+        "jotform (OWNER_ACTION_REQUIRED)"
+      ],
+      "protection": "OBSERVATION_WINDOW",
+      "bothQualityReady": true,
+      "oldestPricingCheckDays": 56,
+      "historicalImpressions": 0,
+      "historicalClicks": 0,
+      "restrictionCount": 4,
+      "hasPricingBoth": true,
+      "hasProsConsBoth": true,
+      "sameCategory": false,
+      "dataEditable": false
+    }
+  ]
+}

@@ -21,7 +21,7 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$45/month",
+    "starting_price": "$50/month (plus usage, yearly billing)",
     "has_free_tier": false,
     "status": "verified",
     "free_trial": {
@@ -29,35 +29,42 @@
       "days": 14
     },
     "entry_paid": {
-      "amount": "45",
+      "amount": "50",
       "currency": "USD",
-      "billing_period": "monthly"
+      "billing_period": "annual"
     },
     "tiers": [
       {
-        "name": "Call Tracking",
-        "amount": "45",
+        "name": "Lead Tracking",
+        "amount": "50",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Includes 5 local numbers and 250 local minutes."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Includes 5 local numbers and 250 local minutes a month. The yearly-billing view shows $50 a month; monthly billing shows $55."
       },
       {
-        "name": "Call Tracking + Conversation Intelligence",
+        "name": "Lead Tracking Complete",
         "amount": "95",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds AI call transcripts and sentiment analysis."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Adds form tracking and attribution. The yearly-billing view shows $95 a month; monthly billing shows $105."
       },
       {
-        "name": "Complete",
-        "amount": "145",
+        "name": "Lead Conversion",
+        "amount": "150",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds Form Tracking, Lead Center, and advanced attribution."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Adds Premium Conversation Intelligence. The yearly-billing view shows $150 a month; monthly billing shows $165."
+      },
+      {
+        "name": "Lead Conversion Complete",
+        "amount": "195",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Includes form tracking and attribution and Premium Conversation Intelligence. The yearly-billing view shows $195 a month; monthly billing shows $215."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
+    "last_verified": "2026-10-19",
     "official_source": "https://www.callrail.com/pricing"
   },
   "pros": [
@@ -67,8 +74,8 @@
   ],
   "cons": [
     "Usage overages apply when exceeding monthly minute or phone number thresholds",
-    "Lead valuation and custom lead tracking fields are less customizable than WhatConverts",
-    "Conversation intelligence AI features significantly increase monthly subscription cost"
+    "Conversation intelligence is only on the two Lead Conversion plans, which start at $150 a month compared with $50 for Lead Tracking",
+    "Prices are listed per month plus additional usage; the page shows a yearly saving of up to 10% but no yearly prices"
   ],
   "sources": [
     "https://www.callrail.com/pricing",

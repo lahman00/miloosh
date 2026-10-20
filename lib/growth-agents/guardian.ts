@@ -1,4 +1,5 @@
 import { compareDates } from "./evidence";
+import { COMPARISON_TEMPLATE_WAVE_SIZE, isComparisonTemplateFile } from "./comparison-template-render-audit";
 
 /**
  * Release & Quality Guardian: a pure verdict over facts that adapters read.
@@ -116,6 +117,20 @@ export type ProtectionFacts = {
     protectedSoftwareUnchanged: number;
     changedPages: number;
     approvedChanged: string[];
+    errors: string[];
+  } | null;
+  /** Same idea for the v2 comparison-template change only: complete builds at the exact base and head commits. */
+  comparisonTemplateAudit?: {
+    kind: "COMPARISON_TEMPLATE_V2_FULL_STATIC_BUILD_AUDIT";
+    ok: boolean;
+    baseSha: string;
+    headSha: string;
+    pagesCompared: number;
+    nonEditablePagesUnchanged: number;
+    heldProfilesUnchanged: number;
+    changedPages: number;
+    wavePagesChanged: string[];
+    derivedPagesChanged: string[];
     errors: string[];
   } | null;
 };
@@ -392,7 +407,32 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     priceAudit.errors.length === 0 &&
     git.changedFiles.length > 0 &&
     git.changedFiles.every((file) => allowedPriceFiles.has(file));
-  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven);
+  // The comparison-template proof is separate and equally narrow: only these shared files, only these reviewed product records,
+  // and only a complete build comparison that shows every non-editable page unchanged.
+  const templateAudit = p.comparisonTemplateAudit;
+  const scopedTemplateRenderProven =
+    p.sharedTemplateChanged &&
+    Boolean(templateAudit?.ok) &&
+    templateAudit?.kind === "COMPARISON_TEMPLATE_V2_FULL_STATIC_BUILD_AUDIT" &&
+    sameCommit(templateAudit.baseSha, git.baseSha) &&
+    sameCommit(templateAudit.headSha, git.headSha) &&
+    templateAudit.pagesCompared >= 1700 &&
+    templateAudit.nonEditablePagesUnchanged >= 130 &&
+    templateAudit.heldProfilesUnchanged >= 130 &&
+    templateAudit.wavePagesChanged.length === COMPARISON_TEMPLATE_WAVE_SIZE &&
+    templateAudit.errors.length === 0 &&
+    git.changedFiles.length > 0 &&
+    git.changedFiles.every((file) => isComparisonTemplateFile(file));
+  checks.push({
+    id: "protection:comparison-template-render-proof",
+    title: "Exact-commit complete render proof for the v2 comparison template (this change only)",
+    status: !p.sharedTemplateChanged ? "INFO" : scopedTemplateRenderProven ? "PASS" : templateAudit ? "FAIL" : "NOT_RUN",
+    detail: scopedTemplateRenderProven
+      ? `Compared ${templateAudit!.pagesCompared} pages; ${templateAudit!.nonEditablePagesUnchanged} protected, observed or held pages (${templateAudit!.heldProfilesUnchanged} held profiles) unchanged; ${templateAudit!.changedPages} changed pages, all editable and within the reviewed scope; no link removed and no affiliate link added.`
+      : p.sharedTemplateChanged ? (templateAudit ? `The comparison-template proof failed: ${templateAudit.errors.slice(0, 3).join("; ") || "scope, commit or file allowlist mismatch"}.` : "No comparison-template render proof was supplied.") : "No shared template change.",
+    evidence: scopedTemplateRenderProven ? [`base ${templateAudit!.baseSha}, head ${templateAudit!.headSha}`] : [],
+  });
+  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven || scopedTemplateRenderProven);
   checks.push({
     id: "protection:pricing-rendered-proof",
     title: "Exact-commit complete render proof for an approved pricing-only shared component",
@@ -407,7 +447,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     title: "Protected, observed and in-flight pages are unaffected",
     status: protectedUnchanged ? "PASS" : "FAIL",
     detail: protectedUnchanged
-      ? scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
+      ? scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : scopedTemplateRenderProven ? "Comparison-template change proven not to alter any protected, observed or held page; changes are confined to the reviewed wave and the pages that render its corrected data." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
       : `${p.affectedNonEditable.length} affected page(s) are not editable${p.sharedTemplateChanged ? " and a shared template changed" : ""}: ${p.affectedNonEditable.slice(0, 4).map((a) => `${a.url} (${a.verdict})`).join(", ")}.`,
     evidence: [],
   });

@@ -23,43 +23,52 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$20/user/month",
+    "starting_price": "$15/user/month (small business Core, annual term)",
     "has_free_tier": false,
     "status": "verified",
-    "free_trial": {
-      "available": true,
-      "days": 7
-    },
     "entry_paid": {
-      "amount": "20",
+      "amount": "15",
       "currency": "USD",
-      "billing_period": "monthly"
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": false
     },
     "tiers": [
       {
-        "name": "Digital",
-        "amount": "20",
-        "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Unlimited chat, SMS, and video (billed annually)."
-      },
-      {
         "name": "Core",
-        "amount": "30",
+        "amount": "15",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds unlimited voice calling, auto attendant, and toll-free numbers."
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "The annual view shows $15 per user per month (new small business customers on a paid term of 12 months or longer); the monthly view shows $23. Voice calling, business texting, video meetings, call routing, team chat and a mobile app."
       },
       {
         "name": "Engage",
-        "amount": "40",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "The annual view shows $25 per user per month on a term of 12 months or longer; the monthly view shows $50."
+      },
+      {
+        "name": "Scale",
+        "amount": "75",
         "currency": "USD",
         "billing_period": "monthly",
-        "notes": "Adds advanced CRM integrations and call recording."
+        "unit": "user",
+        "notes": "Shown as $75 per user per month in both the monthly and annual views."
+      },
+      {
+        "name": "Contact center Essential",
+        "amount": "75",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "unit": "agent",
+        "notes": "Shown as From $75 per agent per month. Professional and Premium contact center plans are priced through sales."
       }
     ],
     "enterprise_contact_sales": true,
-    "last_verified": "2026-08-20",
+    "last_verified": "2026-10-19",
     "official_source": "https://www.nextiva.com/nextiva-pricing.html"
   },
   "pros": [
@@ -68,9 +77,9 @@
     "Unified interface integrating phone, video, chat, and CRM contact details"
   ],
   "cons": [
-    "Monthly rates increase significantly if paying month-to-month rather than annual contracts",
-    "Real-time AI voice transcription and conversation intelligence are less mature than Dialpad",
-    "Advanced integrations require upgrading to higher-tier plans"
+    "The pricing page shows two figures for each small business plan and does not say which is annual and which is monthly",
+    "Contact center plans are priced per agent, and the Professional and Premium tiers require contacting sales",
+    "Real-time AI voice transcription and conversation intelligence are less mature than Dialpad"
   ],
   "sources": [
     "https://www.nextiva.com/nextiva-pricing.html",

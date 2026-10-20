@@ -31,33 +31,41 @@
     "entry_paid": {
       "amount": "12",
       "currency": "USD",
-      "billing_period": "monthly",
+      "billing_period": "annual",
       "unit": "user",
       "annual_billing_required": true
     },
     "tiers": [
       {
-        "name": "Essential",
+        "name": "Starter",
         "amount": "12",
         "currency": "USD",
-        "billing_period": "monthly",
+        "billing_period": "annual",
         "unit": "user",
-        "notes": "Billed at $12/user/month annually ($15/user/month billed monthly). For teams of 1-5 needing business calling, SMS, and basic call routing. Includes 1 free US/UK/CA number per user."
+        "notes": "Billed at $12/user/month annually ($15/user/month billed monthly). For teams of up to 5 users needing business calling and SMS. Includes 1 free US/CA/UK number per user."
       },
       {
-        "name": "Standard",
+        "name": "Advance",
         "amount": "32",
         "currency": "USD",
-        "billing_period": "monthly",
+        "billing_period": "annual",
         "unit": "user",
-        "notes": "Billed at $32/user/month annually ($40/user/month billed monthly). For growing teams of up to 50 users; adds call recording, call transfer, transcription and summaries, Power Dialer, bulk SMS, and Salesforce integration."
+        "notes": "Billed at $32/user/month annually ($40/user/month billed monthly). For teams of up to 50 users; adds call recording, call transfer, transcription and summaries, Power Dialer, bulk SMS, and Salesforce integration."
+      },
+      {
+        "name": "Max",
+        "amount": "48",
+        "currency": "USD",
+        "billing_period": "annual",
+        "unit": "user",
+        "notes": "Billed at $48/user/month annually; the page lists a saving of $144 per user per year against monthly billing. No member limit; adds unlimited outbound and inbound calling. Calling and SMS beyond plan inclusions are billed at usage rates."
       },
       {
         "name": "Enterprise",
-        "notes": "For teams of 50+ seats requiring SSO, a dedicated account manager, custom SLAs, or volume pricing. Custom quote."
+        "notes": "Custom pricing for larger teams, with custom invoicing and procurement."
       }
     ],
-    "last_verified": "2026-08-19",
+    "last_verified": "2026-10-19",
     "official_source": "https://krispcall.com/pricing/"
   },
   "pros": [
