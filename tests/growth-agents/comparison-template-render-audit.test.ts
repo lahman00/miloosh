@@ -67,6 +67,15 @@ describe("auditComparisonTemplateBuilds", () => {
     expect(auditComparisonTemplateBuilds(input).errors.join("|")).toContain(`HELD_PAGE_CHANGED: software/${slug}.html`);
   });
 
+  it("fails when a held page that lists a corrected product (its starting price) changes", () => {
+    const input = base({ protection: makeProtection([signal({ urls: [U("/software/ringcentral")] })]) });
+    input.before.set("software/ringcentral.html", page("alternatives: KrispCall $12/month"));
+    input.after.set("software/ringcentral.html", page("alternatives: KrispCall $12/user/month (billed annually)"));
+    const audit = auditComparisonTemplateBuilds(input);
+    expect(audit.ok).toBe(false);
+    expect(audit.errors.join("|")).toContain("HELD_PAGE_CHANGED: software/ringcentral.html (PROTECTED)");
+  });
+
   it("fails when an editable page outside the reviewed scope changes", () => {
     const input = base();
     input.after.set("filler-7.html", page("quietly changed"));

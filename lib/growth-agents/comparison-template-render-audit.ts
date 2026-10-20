@@ -30,12 +30,27 @@ export type ComparisonTemplateRenderAudit = {
   errors: string[];
 };
 
-/** Pages that aggregate the whole catalog and therefore change when any product record changes. */
-export const CATALOG_AGGREGATE_ROUTES: readonly string[] = ["research/saas-pricing-pressure-index-2026.html"];
+/**
+ * Pages that render reviewed product records without a recorded product link in the site inventory: the catalog-wide
+ * pricing index and three editable buying guides that list CallRail, Ruler Analytics, Dialpad, KrispCall and Nextiva prices.
+ * Any other page changing is still an error.
+ */
+export const CATALOG_AGGREGATE_ROUTES: readonly string[] = [
+  "research/saas-pricing-pressure-index-2026.html",
+  "best-cloud-phone-system-for-remote-teams.html",
+  "best-lead-tracking-for-agencies.html",
+  "best-voip-phone-system-for-small-business.html",
+];
 
 export function routeToUrl(route: string): string {
   const stem = route.replace(/\.html$/, "");
   return stem === "index" ? "https://miloosh.com/" : `https://miloosh.com/${stem}`;
+}
+
+/** Same commit when one id is an abbreviation (at least 7 hex digits) of the other. Never true for a missing id. */
+function sameCommit(a: string | null | undefined, b: string | null | undefined): boolean {
+  if (!a || !b || a.length < 7 || b.length < 7) return false;
+  return a.startsWith(b) || b.startsWith(a);
 }
 
 const tags = (html: string, tag: string): string[] => [...html.matchAll(new RegExp(`<${tag}\\b[^>]*>`, "gi"))].map((m) => m[0].replace(/\s+/g, " "));
@@ -62,7 +77,7 @@ export function auditComparisonTemplateBuilds(input: {
   const allowedDerived = new Set([...input.derivedRoutes, ...CATALOG_AGGREGATE_ROUTES]);
   const heldProfiles = new Set(hold.heldSoftware);
 
-  if (input.baseCheckoutSha !== input.baseSha || input.candidateCheckoutSha !== input.headSha) errors.push("Build checkout SHA does not match Guardian base and HEAD.");
+  if (!sameCommit(input.baseCheckoutSha, input.baseSha) || !sameCommit(input.candidateCheckoutSha, input.headSha)) errors.push("Build checkout SHA does not match Guardian base and HEAD.");
   if (!input.baseClean || !input.candidateClean) errors.push("A build checkout has uncommitted source changes.");
   if (input.protection.checkoutSha !== input.headSha) errors.push("The protection snapshot is not for the current checkout.");
   if (input.waveSlugs.length === 0) errors.push("The wave list is empty.");

@@ -21,7 +21,7 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$12/user/month (billed annually)",
+    "starting_price": "$12/month",
     "has_free_tier": false,
     "status": "verified",
     "free_plan": false,
