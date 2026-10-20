@@ -23,31 +23,32 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$15/user/month (small business Core)",
+    "starting_price": "$15/user/month (small business Core, annual term)",
     "has_free_tier": false,
     "status": "verified",
     "entry_paid": {
       "amount": "15",
       "currency": "USD",
-      "billing_period": "monthly",
-      "per_seat": true
+      "billing_period": "annual",
+      "per_seat": true,
+      "annual_billing_required": false
     },
     "tiers": [
       {
         "name": "Core",
         "amount": "15",
         "currency": "USD",
-        "billing_period": "monthly",
+        "billing_period": "annual",
         "unit": "user",
-        "notes": "Shown as $15 per user per month next to $23 with a Save 35% label; the page does not say which figure is annual. Voice calling, business texting, video meetings, call routing, team chat and a mobile app."
+        "notes": "The annual view shows $15 per user per month (new small business customers on a paid term of 12 months or longer); the monthly view shows $23. Voice calling, business texting, video meetings, call routing, team chat and a mobile app."
       },
       {
         "name": "Engage",
         "amount": "25",
         "currency": "USD",
-        "billing_period": "monthly",
+        "billing_period": "annual",
         "unit": "user",
-        "notes": "Shown as $25 per user per month next to $50 with a Save 50% label."
+        "notes": "The annual view shows $25 per user per month on a term of 12 months or longer; the monthly view shows $50."
       },
       {
         "name": "Scale",
@@ -55,7 +56,7 @@
         "currency": "USD",
         "billing_period": "monthly",
         "unit": "user",
-        "notes": "Shown as $75 per user per month."
+        "notes": "Shown as $75 per user per month in both the monthly and annual views."
       },
       {
         "name": "Contact center Essential",

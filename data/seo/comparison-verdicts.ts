@@ -28,19 +28,19 @@ export const COMPARISON_VERDICTS: Readonly<Record<string, ComparisonVerdict>> = 
   },
   "callrail-vs-ruler-analytics": {
     rule: "Choose CallRail if inbound phone leads drive your business and you want call tracking you can try for 14 days; choose Ruler Analytics if you need closed-won revenue attribution across a long B2B sales cycle and have CRM data to connect.",
-    verdict: "CallRail's plans run from $50 to $195 a month plus usage and include a 14-day free trial. Ruler Analytics starts at £299 a month for up to 10k monthly visits, rises with traffic, and lists no free trial; its Get Started button leads to a demo booking page.",
+    verdict: "CallRail's plans run from $50 to $195 a month on yearly billing (higher on monthly billing) plus usage, and include a 14-day free trial. Ruler Analytics starts at £299 a month for up to 10k monthly visits, rises with traffic, and lists no free trial; its Get Started button leads to a demo booking page.",
   },
   "krispcall-vs-dialpad": {
     rule: "Choose KrispCall if you want a low-priced cloud phone system with global numbers for a small team; choose Dialpad if native AI call transcription and summaries matter to you.",
-    verdict: "KrispCall lists plans from $12 per user per month and includes a 14-day money-back guarantee on paid plans. Dialpad's Connect plans list $15 for Standard and $25 for Pro, with a 14-day free trial.",
+    verdict: "KrispCall lists plans from $12 per user per month billed annually ($15 billed monthly) and a 14-day refund on the subscription. Dialpad's Connect plans list $15 for Standard and $25 for Pro on annual billing ($27 and $35 billed monthly), with a 14-day free trial.",
   },
   "krispcall-vs-nextiva": {
     rule: "Choose KrispCall if a low price and a simple cloud phone for a small team matter most; choose Nextiva if 24/7 live telephone support and a unified phone, video and chat interface matter more.",
-    verdict: "KrispCall lists plans from $12 per user per month. Nextiva's small business plans list $15, $25 and $75 per user per month and its contact center plan starts at $75 per agent per month; its pricing page shows two figures for each small business plan without saying which is annual.",
+    verdict: "KrispCall lists plans from $12 per user per month billed annually. Nextiva's small business plans list $15, $25 and $75 per user per month and its contact center plan starts at $75 per agent per month. Nextiva's $15 and $25 figures apply to annual terms of 12 months or longer; its monthly view shows $23 and $50.",
   },
   "whatconverts-vs-callrail": {
     rule: "Choose WhatConverts if you track calls, forms and chats from many ad platforms or run an agency and want a white-label option; choose CallRail if inbound phone leads are the focus.",
-    verdict: "WhatConverts' single-account plans run from $30 to $160 a month plus usage, with a $30 usage credit and a 14-day trial. CallRail's plans run from $50 to $195 a month plus usage with a 14-day trial, and its conversation intelligence is on the $150 and $195 plans.",
+    verdict: "WhatConverts' single-account plans run from $30 to $160 a month plus usage, with a $30 usage credit and a 14-day trial. CallRail's plans run from $50 to $195 a month on yearly billing plus usage with a 14-day trial, and its conversation intelligence is on the $150 and $195 plans.",
   },
 };
 

@@ -21,7 +21,7 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$50/month (plus usage)",
+    "starting_price": "$50/month (plus usage, yearly billing)",
     "has_free_tier": false,
     "status": "verified",
     "free_trial": {
@@ -31,36 +31,36 @@
     "entry_paid": {
       "amount": "50",
       "currency": "USD",
-      "billing_period": "monthly"
+      "billing_period": "annual"
     },
     "tiers": [
       {
         "name": "Lead Tracking",
         "amount": "50",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Plus additional usage. Includes 5 local numbers and 250 local minutes a month."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Includes 5 local numbers and 250 local minutes a month. The yearly-billing view shows $50 a month; monthly billing shows $55."
       },
       {
         "name": "Lead Tracking Complete",
         "amount": "95",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Plus additional usage. Adds form tracking and attribution."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Adds form tracking and attribution. The yearly-billing view shows $95 a month; monthly billing shows $105."
       },
       {
         "name": "Lead Conversion",
         "amount": "150",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Plus additional usage. Adds Premium Conversation Intelligence."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Adds Premium Conversation Intelligence. The yearly-billing view shows $150 a month; monthly billing shows $165."
       },
       {
         "name": "Lead Conversion Complete",
         "amount": "195",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Plus additional usage. Includes form tracking and attribution and Premium Conversation Intelligence."
+        "billing_period": "annual",
+        "notes": "Plus additional usage. Includes form tracking and attribution and Premium Conversation Intelligence. The yearly-billing view shows $195 a month; monthly billing shows $215."
       }
     ],
     "enterprise_contact_sales": true,

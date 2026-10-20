@@ -23,7 +23,7 @@
   ],
   "pricing": {
     "model": "paid",
-    "starting_price": "$15/user/month",
+    "starting_price": "$15/user/month (annual billing)",
     "has_free_tier": false,
     "status": "verified",
     "free_trial": {
@@ -33,22 +33,22 @@
     "entry_paid": {
       "amount": "15",
       "currency": "USD",
-      "billing_period": "monthly"
+      "billing_period": "annual"
     },
     "tiers": [
       {
         "name": "Standard",
         "amount": "15",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Unlimited calling in US/CA, SMS/MMS, and real-time AI transcription (billed annually at $15/mo or $23/mo monthly)."
+        "billing_period": "annual",
+        "notes": "Unlimited calling in US/CA, SMS/MMS, and real-time AI transcription. The annual view shows $15 per user per month; the monthly view shows $27."
       },
       {
         "name": "Pro",
         "amount": "25",
         "currency": "USD",
-        "billing_period": "monthly",
-        "notes": "Adds CRM integrations (Salesforce, HubSpot), 24/7 phone support, and global office locations."
+        "billing_period": "annual",
+        "notes": "Adds CRM integrations (Salesforce, HubSpot), 24/7 phone support, and global office locations. The annual view shows $25 per user per month; the monthly view shows $35."
       },
       {
         "name": "Enterprise",
