@@ -11,6 +11,8 @@ import {
 } from "./guardian";
 import { listWorktrees, parsePorcelainPaths } from "./protection-sources";
 import { auditPricingRenderedBuilds, type PricingRenderAudit } from "./price-render-audit";
+import { COMPARISON_V2_WAVE } from "@/data/seo/comparison-waves";
+import { auditComparisonTemplateBuilds, type ComparisonTemplateRenderAudit } from "./comparison-template-render-audit";
 import type { ProtectionSnapshot } from "./protection";
 
 /**
@@ -302,6 +304,65 @@ export function verifyPricingRenderedBuilds(input: {
       protectedSoftwareUnchanged: 0,
       changedPages: 0,
       approvedChanged: [],
+      errors: [String(error)],
+    };
+  }
+}
+
+
+/**
+ * Read-only adapter for the v2 comparison-template proof: compares every prerendered page of two clean, commit-pinned
+ * checkouts. `derivedUrls` are the pages that render a changed product record (derived from the changed data files).
+ */
+export function verifyComparisonTemplateBuilds(input: {
+  baseDir: string;
+  candidateDir: string;
+  baseSha: string;
+  headSha: string;
+  protection: ProtectionSnapshot;
+  derivedUrls: readonly string[];
+}): ComparisonTemplateRenderAudit {
+  const baseRoot = path.resolve(input.baseDir, "../../..");
+  const candidateRoot = path.resolve(input.candidateDir, "../../..");
+  const loadHtml = (root: string): ReadonlyMap<string, string> => {
+    const found = new Map<string, string>();
+    const walk = (dir: string): void => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const file = path.join(dir, entry.name);
+        if (entry.isDirectory()) walk(file);
+        else if (entry.name.endsWith(".html")) found.set(path.relative(root, file).split(path.sep).join("/"), fs.readFileSync(file, "utf8"));
+      }
+    };
+    walk(root);
+    return found;
+  };
+  const derivedRoutes = new Set(input.derivedUrls.map((url) => `${new URL(url).pathname.replace(/^\//, "")}.html`));
+  try {
+    return auditComparisonTemplateBuilds({
+      before: loadHtml(input.baseDir),
+      after: loadHtml(input.candidateDir),
+      baseCheckoutSha: gitOrNull(baseRoot, ["rev-parse", "HEAD"])?.trim() ?? null,
+      candidateCheckoutSha: gitOrNull(candidateRoot, ["rev-parse", "HEAD"])?.trim() ?? null,
+      baseClean: gitOrNull(baseRoot, ["status", "--porcelain", "--untracked-files=all"])?.trim() === "",
+      candidateClean: gitOrNull(candidateRoot, ["status", "--porcelain", "--untracked-files=all"])?.trim() === "",
+      baseSha: input.baseSha,
+      headSha: input.headSha,
+      protection: input.protection,
+      waveSlugs: COMPARISON_V2_WAVE,
+      derivedRoutes,
+    });
+  } catch (error) {
+    return {
+      kind: "COMPARISON_TEMPLATE_V2_FULL_STATIC_BUILD_AUDIT",
+      ok: false,
+      baseSha: input.baseSha,
+      headSha: input.headSha,
+      pagesCompared: 0,
+      nonEditablePagesUnchanged: 0,
+      heldProfilesUnchanged: 0,
+      changedPages: 0,
+      wavePagesChanged: [],
+      derivedPagesChanged: [],
       errors: [String(error)],
     };
   }

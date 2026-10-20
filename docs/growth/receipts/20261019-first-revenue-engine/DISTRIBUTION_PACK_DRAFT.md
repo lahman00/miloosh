@@ -4,7 +4,7 @@
 
 Destinations are the 8 comparison pages upgraded on branch `claude/first-revenue-engine-20261019` (v2 template). **They are not live until this branch is reviewed, merged and deployed by the owner.** Do not publish any link below before the owner confirms the deployment (the pages exist today in the old template, so a link would still resolve, but the facts quoted below would not yet appear on the page).
 
-Claim sources: official vendor pricing pages read 2026-10-19 (CallRail, Ruler Analytics, Nextiva, KrispCall, Dialpad, Apollo.io, Sales Navigator, Cognism, Outreach, Salesloft, WhatConverts). The same wording is in `data/seo/comparison-verdicts.ts`, which tests tie to the stored product data. Figures are list prices at the time read and can change.
+Claim sources: official vendor pricing pages read 2026-10-19 and re-read with their monthly/annual toggles on 2026-10-20 (CallRail, Ruler Analytics, Nextiva, KrispCall, Dialpad, Apollo.io, Sales Navigator, Cognism, Outreach, Salesloft, WhatConverts). The same wording is in `data/seo/comparison-verdicts.ts`, which tests tie to the stored product data. Figures are list prices at the time read and can change.
 
 Voice: plain US English, one fact first, a limit stated, no promise, no hashtags, no em dashes. Disclosure line on every post because the pages contain affiliate links.
 
@@ -13,7 +13,7 @@ Destination: https://miloosh.com/compare/callrail-vs-ruler-analytics?utm_source=
 ```
 Call tracking and marketing attribution look similar on a feature list, but they price differently.
 
-CallRail's plans run from $50 to $195 a month plus usage, with a 14-day free trial. Ruler Analytics starts at £299 a month for up to 10k monthly visits and rises with traffic. It lists no free trial, and its Get Started button leads to a demo booking page.
+CallRail's plans run from $50 to $195 a month on yearly billing (monthly billing costs more) plus usage, with a 14-day free trial. Ruler Analytics starts at £299 a month for up to 10k monthly visits and rises with traffic. It lists no free trial, and its Get Started button leads to a demo booking page.
 
 We put both on one page with the official sources: https://miloosh.com/compare/callrail-vs-ruler-analytics?utm_source=linkedin&utm_medium=organic_social&utm_campaign=call_tracking_oct2026
 
@@ -23,7 +23,7 @@ Some Miloosh pages contain disclosed affiliate links. Partnerships do not determ
 ## Post 2: X, @MilooshHQ. Pair: KrispCall vs Dialpad
 Destination: https://miloosh.com/compare/krispcall-vs-dialpad?utm_source=x&utm_medium=organic_social&utm_campaign=business_phone_oct2026
 ```
-KrispCall lists plans from $12 per user per month. Dialpad's Connect plans list $15 (Standard) and $25 (Pro), with a 14-day free trial.
+KrispCall lists plans from $12 per user per month billed annually. Dialpad Connect lists $15 (Standard) and $25 (Pro) on annual billing, with a 14-day free trial.
 
 Sources on the page: https://miloosh.com/compare/krispcall-vs-dialpad?utm_source=x&utm_medium=organic_social&utm_campaign=business_phone_oct2026
 
@@ -45,7 +45,7 @@ Some Miloosh pages contain disclosed affiliate links. Partnerships do not determ
 ## Post 4: X. Pair: WhatConverts vs CallRail
 Destination: https://miloosh.com/compare/whatconverts-vs-callrail?utm_source=x&utm_medium=organic_social&utm_campaign=call_tracking_oct2026
 ```
-WhatConverts lists $30 to $160 a month plus usage and a 14-day trial. CallRail lists $50 to $195 plus usage, also with a 14-day trial.
+WhatConverts lists $30 to $160 a month plus usage and a 14-day trial. CallRail lists $50 to $195 plus usage on yearly billing, also with a 14-day trial.
 
 https://miloosh.com/compare/whatconverts-vs-callrail?utm_source=x&utm_medium=organic_social&utm_campaign=call_tracking_oct2026
 

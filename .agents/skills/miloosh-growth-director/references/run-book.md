@@ -20,6 +20,8 @@ injected `Ports` object, so tests prove the default run writes nothing).
 | `--rendered-diff-file <json>` | Result of `growth:rendered-diff` for this change. Without it the Guardian's rendered-output check is `NOT_RUN`. |
 | `--price-render-base <dir>` | Read-only base commit's complete `.next/server/app` folder for owner-approved pricing-label-only shared-renderer verification. Must be combined with the candidate directory and exact base SHA. |
 | `--price-render-candidate <dir>` | Read-only candidate commit's complete `.next/server/app` folder. The verifier checks full page inventory, preserved profiles, changed-page scope, SEO headers and affiliate/CTA link attributes; no source writes or waiver flags. |
+| `--template-render-base <dir>` | Read-only base commit's complete `.next/server/app` folder for the v2 comparison-template change only. Must be combined with the candidate directory and the exact base SHA. It is not a general shared-component waiver. |
+| `--template-render-candidate <dir>` | Read-only candidate commit's complete `.next/server/app` folder. The verifier requires every protected, observed, in-flight and held page to be identical, every changed page to be editable and inside the fixed wave or the pages that render a corrected product record, no removed or altered link, no added affiliate link, and a changed-file allowlist. |
 | `--run-gates` | Run the repository's real gates (audit, tests, validate:data, lint, tsc, build). Slow; writes `.next` and `var/`. |
 | `--check-production` | Read the live deployment (`vercel inspect`) and the GitHub Production deployment history. Read-only. |
 | `--out <dir>` | Write `director-report.json`, `director-report.he.md`, `candidates.csv`. Without it nothing is written. |

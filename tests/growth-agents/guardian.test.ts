@@ -1,3 +1,4 @@
+import { COMPARISON_V2_WAVE } from "@/data/seo/comparison-waves";
 import { describe, expect, it } from "vitest";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -323,6 +324,56 @@ describe("what else blocks a release", () => {
       { git, protection: { ...protection, pricingRenderAudit: { ...audit, errors: ["held page changed"] } } },
       { git, protection: { ...protection, affectedNonEditable: [{ url: "https://miloosh.com/software/close", verdict: "PROTECTED" }] } },
       { git: { ...git, changedFiles: [...changedFiles, "components/GlobalNavigation.tsx"] }, protection },
+    ]) {
+      const denied = runGuardian(guardianInputs(invalid));
+      expect(denied.verdict).toBe("RELEASE_BLOCKED");
+      expect(denied.reasons.map((reason) => reason.code)).toContain("PROTECTED_PAGES_AFFECTED");
+    }
+  });
+
+  it("clears only the v2 comparison-template change with an exact-commit complete render proof, and nothing broader", () => {
+    const input = guardianInputs();
+    const changedFiles = [
+      "app/compare/[comparison]/page.tsx",
+      "components/ComparisonPricingTable.tsx",
+      "components/ComparisonVerdictCard.tsx",
+      "data/seo/comparison-waves.ts",
+      "data/software/callrail.json",
+    ];
+    const git = { ...input.git, changedFiles };
+    const audit = {
+      kind: "COMPARISON_TEMPLATE_V2_FULL_STATIC_BUILD_AUDIT" as const,
+      ok: true,
+      baseSha: SHA,
+      headSha: SHA,
+      pagesCompared: 1786,
+      nonEditablePagesUnchanged: 400,
+      heldProfilesUnchanged: 138,
+      changedPages: 30,
+      wavePagesChanged: [...COMPARISON_V2_WAVE].map((slug) => `compare/${slug}.html`),
+      derivedPagesChanged: ["software/callrail.html"],
+      errors: [],
+    };
+    const protection = { affectedUrls: [], affectedNonEditable: [], sharedTemplateChanged: true, comparisonTemplateAudit: audit };
+    const valid = runGuardian(guardianInputs({ git, protection }));
+    expect(valid.verdict).toBe("RELEASE_ALLOWED");
+    expect(valid.checks.find((check) => check.id === "protection:comparison-template-render-proof")?.status).toBe("PASS");
+
+    for (const invalid of [
+      { git, protection: { ...protection, comparisonTemplateAudit: null } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, ok: false } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, headSha: "abcdef012345678901234567890123456789abcd" } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, baseSha: "abcdef012345678901234567890123456789abcd" } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, pagesCompared: 50 } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, nonEditablePagesUnchanged: 0 } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, heldProfilesUnchanged: 5 } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, wavePagesChanged: audit.wavePagesChanged.slice(1) } } },
+      { git, protection: { ...protection, comparisonTemplateAudit: { ...audit, errors: ["HELD_PAGE_CHANGED: compare/x.html"] } } },
+      { git, protection: { ...protection, affectedNonEditable: [{ url: "https://miloosh.com/software/close", verdict: "PROTECTED" }] } },
+      { git: { ...git, changedFiles: [...changedFiles, "components/GlobalNavigation.tsx"] }, protection },
+      { git: { ...git, changedFiles: [...changedFiles, "components/PricingSection.tsx"] }, protection },
+      { git: { ...git, changedFiles: [...changedFiles, "data/software/slack.json"] }, protection },
+      { git: { ...git, changedFiles: [...changedFiles, "app/layout.tsx"] }, protection },
     ]) {
       const denied = runGuardian(guardianInputs(invalid));
       expect(denied.verdict).toBe("RELEASE_BLOCKED");
