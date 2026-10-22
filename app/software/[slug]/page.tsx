@@ -225,7 +225,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {software.alternatives.map((alternative, index) => (
-              <AlternativeCard key={alternative.slug} alternative={alternative} rank={index + 1} />
+              <AlternativeCard key={alternative.slug} alternative={alternative} rank={index + 1} showTopPick={software.slug !== "miro"} />
             ))}
           </div>
         </section>

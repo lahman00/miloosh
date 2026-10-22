@@ -4,7 +4,13 @@
   "category": "design",
   "description": "Miro is a visual collaboration platform with an infinite multiplayer canvas where teams do research, planning, and product development from ideation through launch.",
   "website": "https://miro.com",
-  "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
+  "platforms": [
+    "Web",
+    "Windows",
+    "macOS",
+    "iOS",
+    "Android"
+  ],
   "best_for": "Positioned for product, design/UX, engineering, and product operations teams across industries who want to break down tool silos and align on shared direction.",
   "features": [
     "Intelligent Canvas infinite multiplayer workspace",
@@ -15,22 +21,91 @@
     "Enterprise security and compliance certifications"
   ],
   "order": 33,
-  "sources": ["https://miro.com"],
-  "accessed_at": "2026-07-31",
+  "sources": [
+    "https://miro.com",
+    "https://miro.com/pricing/",
+    "https://miro.com/integrations/",
+    "https://www.figma.com/figjam/",
+    "https://www.mural.co/features",
+    "https://lucid.co/lucidspark",
+    "https://whimsical.com/diagrams",
+    "https://lucid.co/lucidchart",
+    "https://whimsical.com/learn/imports-exports/miro-to-whimsical"
+  ],
+  "accessed_at": "2026-10-22",
   "alternatives": [
+    {
+      "name": "FigJam",
+      "slug": "figjam",
+      "description": "Figma's collaborative whiteboard for brainstorming, workshops, and visual planning.",
+      "best_for": "Product and design teams running collaborative ideation and planning sessions.",
+      "strengths": [
+        "Real-time whiteboarding",
+        "Facilitation tools",
+        "Figma workflow"
+      ]
+    },
+    {
+      "name": "Mural",
+      "slug": "mural",
+      "description": "A collaborative visual workspace with facilitation tools for workshops and team alignment.",
+      "best_for": "Facilitators and cross-functional teams running structured workshops.",
+      "strengths": [
+        "Facilitation controls",
+        "Infinite canvas",
+        "Templates"
+      ]
+    },
+    {
+      "name": "Lucidspark",
+      "slug": "lucidspark",
+      "description": "A collaborative virtual whiteboard for brainstorming, agile ceremonies, and planning.",
+      "best_for": "Teams organizing ideas, meetings, and planning work visually.",
+      "strengths": [
+        "Dynamic mind maps",
+        "Facilitator tools",
+        "Voting and breakout boards"
+      ]
+    },
+    {
+      "name": "Whimsical",
+      "slug": "whimsical",
+      "description": "An infinite-canvas workspace for flowcharts, mind maps, wireframes, and collaborative visual thinking.",
+      "best_for": "Product teams prioritizing diagrams, mind maps, and wireframes.",
+      "strengths": [
+        "Flowcharts and mind maps",
+        "Wireframes",
+        "Real-time editing"
+      ]
+    },
     {
       "name": "Lucidchart",
       "slug": "lucidchart",
-      "description": "An intelligent diagramming platform for visualizing systems, processes, and organizational structures.",
-      "best_for": "Teams focused on structured diagramming over open-ended whiteboarding",
-      "strengths": ["AI diagram generation", "Data linking", "Template library"]
+      "description": "A structured diagramming platform for systems, processes, and organizational diagrams.",
+      "best_for": "Teams that need formal process diagrams and data-linked documentation.",
+      "strengths": [
+        "Structured diagramming",
+        "Data linking",
+        "Template library"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Which Miro alternatives are closest to a collaborative whiteboard?",
+      "answer": "FigJam, Mural, and Lucidspark all provide collaborative whiteboards with facilitation features. Whimsical focuses on diagrams, mind maps, and wireframes; Lucidchart is a stronger fit for structured technical diagrams. Compare the workflow and plan limits rather than assuming every tool replaces every Miro feature."
     },
     {
-      "name": "Figma",
-      "slug": "figma",
-      "description": "A browser- and desktop-based design tool for interface design, prototyping, and real-time collaboration.",
-      "best_for": "Teams that need whiteboarding alongside actual UI design work",
-      "strengths": ["Real-time collaboration", "Design tools", "Prototyping"]
+      "question": "Is FigJam the same product as Figma Design?",
+      "answer": "No. FigJam is Figma's collaborative whiteboarding product for brainstorming, workshops, and visual planning. Figma Design is focused on interface design and prototyping. Teams should compare FigJam, not Figma Design alone, when evaluating whiteboard alternatives."
+    },
+    {
+      "question": "Can I move a Miro board to Whimsical?",
+      "answer": "Whimsical documents a copy-and-paste workflow that transfers many Miro shapes, sticky notes, text elements, and connectors as editable objects. Some items do not transfer fully: images need to be re-added, and comments, votes, reactions, and timers do not come across. Test a representative board before migrating."
+    },
+    {
+      "question": "What should I check before switching from Miro?",
+      "answer": "Check the features you actually use, especially workshop facilitation, integrations, board permissions, export or migration support, and limits of the free or paid plan. Confirm current pricing and test collaboration with your team before committing."
     }
   ]
 }
