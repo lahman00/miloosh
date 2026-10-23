@@ -27,10 +27,13 @@ describe("braces-free lint dependency boundary", () => {
     expect(JSON.parse(result.stdout)).toMatchObject({ checkedFileKinds: 6, activeNextRules: 22, unchangedRuleFiles: 22, mismatches: [] });
   }, 25_000);
 
-  it("removes vulnerable packages without weakening the release audit or upgrading the framework", () => {
+  it("keeps the lint adapter and release audit while applying security-only framework patches", () => {
     const manifest = JSON.parse(readFileSync("package.json", "utf8"));
     const lock = JSON.parse(readFileSync("package-lock.json", "utf8"));
-    expect(manifest.dependencies.next).toBe("16.4.0");
+    expect(manifest.dependencies.next).toBe("16.4.2");
+    expect(lock.packages["node_modules/next"].version).toBe("16.4.2");
+    expect(lock.packages["node_modules/vitest"].version).toBe("4.1.12");
+    expect(lock.packages["node_modules/dompurify"].version).toBe("3.4.17");
     expect(manifest.devDependencies["eslint-config-next"]).toBe("16.4.0");
     expect(manifest.overrides).toEqual({ "@next/eslint-plugin-next@16.4.0": { "fast-glob": "npm:glob@13.0.6" } });
     expect(manifest.scripts["growth:record-gates"]).toBe("tsx scripts/growth/record-gates.ts");

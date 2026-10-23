@@ -1,0 +1,65 @@
+{
+  "name": "Mural",
+  "slug": "mural",
+  "category": "design",
+  "description": "Mural is a visual collaboration workspace for team workshops, brainstorming, and aligning plans on shared canvases.",
+  "website": "https://www.mural.co/",
+  "platforms": [
+    "Web",
+    "Windows",
+    "macOS",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Facilitators, consultants, and cross-functional teams that run structured collaborative workshops and planning sessions.",
+  "features": [
+    "Shared infinite or resizable canvases with sticky notes and diagrams",
+    "Facilitation tools including timer, voting, private mode, and summon",
+    "Workshop templates and reusable custom templates",
+    "Role-based access with view, edit, and facilitator permissions",
+    "Real-time collaboration with comments and shared links",
+    "AI-supported brainstorming and feedback synthesis",
+    "Integrations with productivity tools"
+  ],
+  "sources": [
+    "https://www.mural.co/",
+    "https://www.mural.co/features",
+    "https://www.mural.co/pricing"
+  ],
+  "accessed_at": "2026-10-22",
+  "alternatives": [
+    {
+      "name": "Miro",
+      "slug": "miro",
+      "description": "A shared visual workspace for brainstorming, workshops, diagrams, and cross-functional planning.",
+      "best_for": "Cross-functional teams working from early ideas through structured plans.",
+      "strengths": [
+        "Intelligent Canvas",
+        "Workshops and facilitation",
+        "Integrations"
+      ]
+    },
+    {
+      "name": "FigJam",
+      "slug": "figjam",
+      "description": "Figma's collaborative whiteboard for brainstorming, workshops, and visual planning.",
+      "best_for": "Product and design teams running collaborative ideation and planning sessions.",
+      "strengths": [
+        "Real-time whiteboarding",
+        "Facilitation tools",
+        "Figma workflow"
+      ]
+    },
+    {
+      "name": "Lucidspark",
+      "slug": "lucidspark",
+      "description": "A collaborative virtual whiteboard for brainstorming, agile ceremonies, and planning.",
+      "best_for": "Teams organizing ideas, meetings, and planning work visually.",
+      "strengths": [
+        "Dynamic mind maps",
+        "Facilitator tools",
+        "Voting and breakout boards"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "FigJam",
+  "slug": "figjam",
+  "category": "design",
+  "description": "FigJam is Figma's collaborative online whiteboard for brainstorming, diagramming, workshops, and early product planning.",
+  "website": "https://www.figma.com/figjam/",
+  "platforms": [
+    "Web",
+    "iPadOS"
+  ],
+  "best_for": "Product and design teams that want real-time workshops, visual planning, and a whiteboard connected to Figma workflows.",
+  "features": [
+    "Real-time collaborative brainstorming and sticky notes",
+    "Diagramming with shapes and connectors for user flows and processes",
+    "Workshop tools including timers, voting, and Spotlight",
+    "AI-assisted templates, sticky-note grouping, and summaries",
+    "Templates for kickoffs, retrospectives, and roadmaps",
+    "Comments, live chat, and audio conversations",
+    "Integrations with Jira, Asana, and GitHub"
+  ],
+  "sources": [
+    "https://www.figma.com/figjam/",
+    "https://www.figma.com/figjam/online-whiteboard/"
+  ],
+  "accessed_at": "2026-10-22",
+  "alternatives": [
+    {
+      "name": "Miro",
+      "slug": "miro",
+      "description": "A shared visual workspace for brainstorming, workshops, diagrams, and cross-functional planning.",
+      "best_for": "Cross-functional teams working from early ideas through structured plans.",
+      "strengths": [
+        "Intelligent Canvas",
+        "Workshops and facilitation",
+        "Integrations"
+      ]
+    },
+    {
+      "name": "Mural",
+      "slug": "mural",
+      "description": "A collaborative visual workspace with facilitation tools for workshops and team alignment.",
+      "best_for": "Facilitators and cross-functional teams running structured workshops.",
+      "strengths": [
+        "Facilitation controls",
+        "Infinite canvas",
+        "Templates"
+      ]
+    },
+    {
+      "name": "Whimsical",
+      "slug": "whimsical",
+      "description": "An infinite-canvas workspace for flowcharts, mind maps, wireframes, and collaborative visual thinking.",
+      "best_for": "Product teams prioritizing diagrams, mind maps, and wireframes.",
+      "strengths": [
+        "Flowcharts and mind maps",
+        "Wireframes",
+        "Real-time editing"
+      ]
+    }
+  ]
+}
