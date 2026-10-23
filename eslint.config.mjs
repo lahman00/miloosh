@@ -1,7 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import { installNextLintGlobCompatibility } from "./scripts/tooling/next-lint-glob-compat.mjs";
 
-// Preserve the published Next 16.4.0 lint rules while avoiding the unfixed
+// Preserve the published Next 16.4.x lint rules (16.4.0 and 16.4.2 reviewed) while avoiding the unfixed
 // vulnerable braces dependency. Fail closed if the reviewed plugin changes.
 installNextLintGlobCompatibility();
 const { default: nextVitals } = await import("eslint-config-next/core-web-vitals");
