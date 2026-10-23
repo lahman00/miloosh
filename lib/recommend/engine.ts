@@ -73,6 +73,15 @@ function computeConfidence(
     return { confidence: "low", confidenceNote: "Repair first: these products are research options, not a recommendation to replace your store. Diagnose the current problem before comparing platforms. If you use WooCommerce, start with the WooCommerce repair check; use the store decision checklist before committing to a switch." };
   }
 
+  // No need selected ("just browsing"): the products are matched only on team size, budget or stage, so they can be unrelated
+  // to each other (a live check returned two store platforms and a to-do app for a small, free-only buyer). Never label that "high".
+  if (!answers.primaryNeed) {
+    return {
+      confidence: "low",
+      confidenceNote: "You didn't say what you need the tool for, so these are generic matches on team size, budget and similar answers, not a recommendation. Pick a need to get a real shortlist.",
+    };
+  }
+
   if (!hasDiscriminatingAnswers(answers)) {
     return { confidence: "low", confidenceNote: "You selected a category without enough constraints to distinguish buyer fit. These are eligible options, not a personalized best pick. Equal scores are ordered alphabetically, not by suitability or affiliate status." };
   }
