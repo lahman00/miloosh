@@ -1,0 +1,60 @@
+{
+  "name": "Lucidspark",
+  "slug": "lucidspark",
+  "category": "design",
+  "description": "Lucidspark is a collaborative virtual whiteboard for brainstorming, agile teamwork, meeting facilitation, and project planning.",
+  "website": "https://lucid.co/lucidspark",
+  "platforms": [
+    "Web"
+  ],
+  "best_for": "Teams that need structured brainstorming, agile sessions, mind maps, and facilitated visual planning.",
+  "features": [
+    "Real-time and asynchronous brainstorming with comments, chat, and reactions",
+    "Dynamic mind maps and AI-assisted ideation",
+    "Meeting facilitation with voting, breakout boards, and presentation mode",
+    "Agile planning templates for standups, sprints, and retrospectives",
+    "Project planning with dynamic tables, frames, and paths",
+    "Guest collaboration and embedded links",
+    "Integration with productivity and project management tools"
+  ],
+  "sources": [
+    "https://lucid.co/lucidspark",
+    "https://lucid.app/pricing/lucidspark"
+  ],
+  "accessed_at": "2026-10-22",
+  "alternatives": [
+    {
+      "name": "Miro",
+      "slug": "miro",
+      "description": "A shared visual workspace for brainstorming, workshops, diagrams, and cross-functional planning.",
+      "best_for": "Cross-functional teams working from early ideas through structured plans.",
+      "strengths": [
+        "Intelligent Canvas",
+        "Workshops and facilitation",
+        "Integrations"
+      ]
+    },
+    {
+      "name": "Mural",
+      "slug": "mural",
+      "description": "A collaborative visual workspace with facilitation tools for workshops and team alignment.",
+      "best_for": "Facilitators and cross-functional teams running structured workshops.",
+      "strengths": [
+        "Facilitation controls",
+        "Infinite canvas",
+        "Templates"
+      ]
+    },
+    {
+      "name": "Lucidchart",
+      "slug": "lucidchart",
+      "description": "A structured diagramming platform for systems, processes, and organizational diagrams.",
+      "best_for": "Teams that need formal process diagrams and data-linked documentation.",
+      "strengths": [
+        "Structured diagramming",
+        "Data linking",
+        "Template library"
+      ]
+    }
+  ]
+}

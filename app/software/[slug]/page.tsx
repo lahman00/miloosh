@@ -273,7 +273,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
                 key={alternative.slug}
                 alternative={alternative}
                 rank={index + 1}
-                showTopPick={software.alternatives.length > 1}
+                showTopPick={software.alternatives.length > 1 && software.slug !== "miro"}
               />
             ))}
           </div>
