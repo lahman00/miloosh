@@ -14,9 +14,9 @@ import { SearchForm } from "@/components/SearchForm";
 import { WixShopifyBuyerChecks } from "@/components/WixShopifyBuyerChecks";
 import { ShopifyWooMigrationRecords } from "@/components/ShopifyWooMigrationRecords";
 import { EcwidWooStructureChoice } from "@/components/EcwidWooStructureChoice";
-import { TrackedCtaLink } from "@/components/TrackedCtaLink";
+import { ComparisonChoiceCta } from "@/components/ComparisonChoiceCta";
 import { ButtonLink } from "@/components/ButtonLink";
-import { getSoftware, type Software } from "@/data/software";
+import { getSoftware } from "@/data/software";
 import {
   PUBLISHED_COMPARISONS,
   getComparisonSlug,
@@ -33,8 +33,6 @@ import { getComparisonRelatedSoftware } from "@/lib/store-related";
 import { getBreadcrumbJsonLd, getComparisonJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { formatIsoDate } from "@/lib/date";
-import { getSoftwareCtaRel, shouldShowAffiliateDisclosure } from "@/lib/affiliate";
-import { resolveComparisonCtaUrl, getWixContextForComparison, getWixProductLabelForComparison } from "@/lib/wix-funnels";
 import { getAlternativeGuide } from "@/data/seo/alternative-guides";
 import { getComparisonSearchIntentNote, getComparisonSerpOverride } from "@/data/seo/serp-overrides";
 import { isComparisonTemplateV2 } from "@/data/seo/comparison-waves";
@@ -46,66 +44,6 @@ import { sourcedCons, sourcedPros } from "@/lib/comparison-v2";
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
 };
-
-/**
- * CTA for a "Choose X if…" card — always renders, for every product,
- * exactly like the software page's own CTA (getSoftwareCtaUrl never
- * returns an empty string: it resolves to the affiliate link when one is
- * active, otherwise the plain official site). WAR MODE mission (2026-08-22)
- * Phase 22 fix: this used to early-return null for any non-affiliate
- * product, so a real buyer persuaded by "Choose X if…" text had no button
- * to act on it — found on 138 of 1212 published comparisons where only
- * one side had a deal (the other side's card was silently dead) and on
- * 1062 more where both sides were dead. Rendering unconditionally and
- * gating only the disclosure text on affiliate status restores parity
- * between the two sides regardless of which one Miloosh monetizes — the
- * same commission-independent-of-display principle already enforced by
- * lib/recommend and lib/comparison's editorial neutrality.
- *
- * Wix specifically routes through the funnel-aware resolver
- * (lib/wix-funnels.ts) using the OTHER product in the pairing to pick
- * the right funnel (e.g. a headless-CMS comparison routes to the
- * Headless funnel, not the generic Website Builder one) — every other
- * product just uses its own single affiliate_url, same as the software
- * page.
- */
-function ComparisonChoiceCta({ software, otherSlug }: { software: Software; otherSlug: string }) {
-  const href = resolveComparisonCtaUrl(software, otherSlug);
-  const wixContext = software.slug === "wix" ? getWixContextForComparison(otherSlug) : undefined;
-  const ctaProductName = software.slug === "wix" ? getWixProductLabelForComparison(otherSlug) : software.name;
-
-  return (
-    <div className="mt-5">
-      {software.slug === "wix" && ctaProductName !== software.name ? (
-        <p className="mb-3 text-sm leading-6 text-zinc-400">
-          For this comparison, the relevant Wix offering is <span className="font-medium text-zinc-200">{ctaProductName}</span>.
-        </p>
-      ) : null}
-      <TrackedCtaLink
-        slug={software.slug}
-        href={href}
-        rel={getSoftwareCtaRel(software)}
-        target="_blank"
-        variant="secondary"
-        className="w-full"
-        ctaLocation="compare-page-choose-card"
-        wixContext={wixContext}
-      >
-        Visit {ctaProductName}
-        <ExternalLink className="h-4 w-4" />
-      </TrackedCtaLink>
-      {shouldShowAffiliateDisclosure(software) ? (
-        <p className="mt-2 text-center text-xs text-zinc-400">
-          This is an affiliate link. See our{" "}
-          <Link href="/affiliate-disclosure" className="underline underline-offset-4 hover:text-zinc-300">
-            Affiliate Disclosure
-          </Link>
-          .
-        </p>
-      ) : null}
-    </div>
-  );
-}
 
 // Only ever render the curated set below — a valid-but-uncurated pair
 // (e.g. two real software slugs that just happen to parse) must 404, not
@@ -229,6 +167,18 @@ export default async function ComparePage({ params }: ComparePageProps) {
         </section>
 
         {comparisonV2 ? <ComparisonPricingTable softwareA={softwareA} softwareB={softwareB} /> : null}
+
+        {comparisonV2 ? (
+          <section aria-label="Visit the vendors" className="mt-6">
+            <p className="text-sm leading-6 text-zinc-400">
+              Ready to check a plan? Both vendors are linked here with the same treatment. Confirm the plan, billing period and any term on the vendor&apos;s own page.
+            </p>
+            <div className="mt-2 grid gap-4 sm:grid-cols-2">
+              <ComparisonChoiceCta software={softwareA} otherSlug={softwareB.slug} ctaLocation="compare-page-pricing-table" />
+              <ComparisonChoiceCta software={softwareB} otherSlug={softwareA.slug} ctaLocation="compare-page-pricing-table" />
+            </div>
+          </section>
+        ) : null}
 
         {isMkDocsReadTheDocsCanary ? (
           <section className="mt-14">
