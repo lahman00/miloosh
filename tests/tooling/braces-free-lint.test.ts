@@ -27,12 +27,12 @@ describe("braces-free lint dependency boundary", () => {
     expect(JSON.parse(result.stdout)).toMatchObject({ checkedFileKinds: 6, activeNextRules: 22, unchangedRuleFiles: 22, mismatches: [] });
   }, 25_000);
 
-  it("removes vulnerable packages without weakening the release audit or upgrading the framework", () => {
+  it("removes vulnerable packages without weakening the release audit; the framework is held at the reviewed 16.4.2 patch", () => {
     const manifest = JSON.parse(readFileSync("package.json", "utf8"));
     const lock = JSON.parse(readFileSync("package-lock.json", "utf8"));
-    expect(manifest.dependencies.next).toBe("16.4.0");
-    expect(manifest.devDependencies["eslint-config-next"]).toBe("16.4.0");
-    expect(manifest.overrides).toEqual({ "@next/eslint-plugin-next@16.4.0": { "fast-glob": "npm:glob@13.0.6" } });
+    expect(manifest.dependencies.next).toBe("16.4.2");
+    expect(manifest.devDependencies["eslint-config-next"]).toBe("16.4.2");
+    expect(manifest.overrides).toEqual({ "@next/eslint-plugin-next@16.4.2": { "fast-glob": "npm:glob@13.0.6" } });
     expect(manifest.scripts["growth:record-gates"]).toBe("tsx scripts/growth/record-gates.ts");
     const guardian = readFileSync("lib/growth-agents/guardian-sources.ts", "utf8");
     for (const check of ["npm audit --audit-level=moderate --json", "npx vitest run --reporter=json", "npm run validate:data", "npm run lint", "npx tsc --noEmit", "npm run build"]) {
