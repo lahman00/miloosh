@@ -7,14 +7,16 @@ const require = createRequire(import.meta.url);
 const marker = Symbol.for("miloosh.next-lint-glob-compat.v2");
 
 /**
- * Adapt only the published Next 16.4.0 plugin's directory-discovery call.
+ * Adapt only the published Next 16.4.0 and 16.4.2 plugin's directory-discovery call.
+ * 16.4.2 was reviewed on 2026-10-23: its dist/ is byte-identical to 16.4.0 (only package.json differs),
+ * and the single fast-glob call in dist/utils/get-root-dirs.js is unchanged.
  * This is NOT a general fast-glob replacement. The npm override removes
  * braces; this boundary maps the caller to published glob@13.0.6.
  * No vendor package source, Next rule, or audit result is patched on disk.
  */
 export function installNextLintGlobCompatibility() {
   const pluginManifest = require("@next/eslint-plugin-next/package.json");
-  if (pluginManifest.version !== "16.4.0") {
+  if (!["16.4.0", "16.4.2"].includes(pluginManifest.version)) {
     throw new Error("Review/remove Miloosh's lint glob adapter before changing the Next ESLint plugin version.");
   }
   const pluginRequire = createRequire(require.resolve("@next/eslint-plugin-next"));

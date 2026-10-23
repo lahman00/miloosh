@@ -19,7 +19,7 @@ describe("buyer-path text contrast regression", () => {
     expect(source).not.toMatch(/text-zinc-[56]00/);
   });
   it("affiliate disclosure in the comparison remains readable", () => {
-    const source = fs.readFileSync("app/compare/[comparison]/page.tsx", "utf8");
+    const source = fs.readFileSync("components/ComparisonChoiceCta.tsx", "utf8");
     expect(source).toContain('mt-2 text-center text-xs text-zinc-400');
   });
 });
