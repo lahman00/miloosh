@@ -25,7 +25,7 @@ Intentional exclusions were respected: 1,093 built pages are not in the sitemap 
 4. **Thin or near-duplicate content, internal-link gaps, intent cannibalization and search snippet quality were not measured** (they need GSC query data that was unavailable). Not assessed, not assumed fine.
 
 ## Security finding that affects SEO delivery
-`npm audit` reported a critical advisory set for the pinned Next.js 16.4.0 (unauthenticated remote code execution in the image optimization API with SVG, remote code execution in `use cache` functions, and a Server Actions denial of service), fixed in 16.4.2. This branch updates to 16.4.2. Exposure was not proven: the repository has no `use cache`, one Server Actions file (`lib/revenue/affiliate-pipeline-actions.ts`) and no SVG optimization setting. Treat as: production still runs the affected version until this is released.
+`npm audit` reported a critical advisory set for the pinned Next.js 16.4.0 (unauthenticated remote code execution in the image optimization API with SVG, remote code execution in `use cache` functions, and a Server Actions denial of service), fixed in 16.4.2. Production was updated to 16.4.2 on 2026-10-23 (PR #87). Exposure was not proven: the repository has no `use cache`, one Server Actions file (`lib/revenue/affiliate-pipeline-actions.ts`) and no SVG optimization setting. Treat as: resolved in production as of the 2026-10-23 deployment (not re-verified by an authenticated scan).
 
 ## What was changed for SEO
 Nothing in robots, canonical, noindex, sitemap or structured data. The only page-level change is the vendor-link row on the eight v2 comparison pages (conversion, not indexation).

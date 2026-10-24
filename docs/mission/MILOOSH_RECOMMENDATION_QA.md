@@ -14,7 +14,7 @@ Method: seven realistic buyer scenarios were run through `getRecommendations` (t
 | Browse only, small team, free budget | **OpenCart, WooCommerce, Any.do** | **high (defect)** | Two store platforms and a to-do app, for a buyer who named no need |
 | Whiteboard intent through another domain | none | none | Honest: "none of the products we cover fit" |
 
-## Defect fixed
+## Defect fixed (shipped to production as PR #88 on 2026-10-23, an equivalent fix)
 **High confidence on a browse-only request.** `computeConfidence` judged confidence only by the top result's match percentage, so a request with no selected need could be labelled "high" while the other results admitted "No strong positive signal". Fix: when no need is selected the confidence is always `low` with the note "You didn't say what you need the tool for ... Pick a need to get a real shortlist." Regression test `tests/lib/recommend-no-need-confidence.test.ts` (browse-only answers across four constraint combinations never return high; a real CRM need still returns high). The 217 existing recommend tests pass with the change. No wizard UI, scoring, eligibility or affiliate logic was touched.
 
 ## Verified good behavior

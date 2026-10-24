@@ -6,7 +6,7 @@ Internal only. Nothing here is published, sent or merged. Thomas Fraher was not 
 - The branch holds one commit (`c406808`, 8 files: Miro, FigJam, Mural and Lucidspark data, one editorial note, one test, and a two-line "Top pick" toggle in `components/AlternativeCard.tsx` and `app/software/[slug]/page.tsx`).
 - It is **245 commits behind** the production branch (`ab75185`). Applying only its own commit onto current production (throwaway worktree, nothing pushed) **conflicts in `data/software/miro.json` and `app/software/[slug]/page.tsx`**, and the Miro test then fails to load because `miro.json` is no longer valid JSON. So it is **not compatible as-is**; it needs a rebase by whoever owns it, followed by a fresh `validate:data`, tests and a protection check for the Miro page and for FigJam, Mural, Lucidspark and Whimsical.
 - Its own QA figures (256 records, 1,221 comparisons, 145 test files) describe an old base and must be re-run. The content approach (use-case fit, sourced paraphrase, no ranking, no Novastart, no unsupported "Top pick") is consistent with the site's rules.
-- I did not merge, rebase, overwrite or push it.
+- I did not merge, rebase, overwrite or push it. Note (2026-10-24): a separate PR #85, `release/miro-alternatives-20261023` ("HOLD: Miro observation window"), now exists; it was not reviewed here.
 
 ## 2. Novastart: decision on inclusion as a Miro alternative
 **Decision: do not include Novastart as a recommended Miro alternative now.** Product functionality is not verified to the standard needed to call it a substitute.

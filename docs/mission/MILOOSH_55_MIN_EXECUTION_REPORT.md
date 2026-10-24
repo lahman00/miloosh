@@ -1,5 +1,7 @@
 # 55-minute mission: execution report (2026-10-23)
 
+> **Update 2026-10-24:** while this was being finished, the owner shipped equivalent fixes to production as PR #87 (Next.js 16.4.2, vitest 4.1.12, DOMPurify 3.4.17) and PR #88 (BuyerDesk browse-only confidence), deployed 2026-10-23 18:22 (`dpl_AoJFZVhxcZusvVHUAC1JLr7WFQJH`). This branch was rebuilt from that head and keeps only what is not yet in production: the vendor-link row, the tests that follow the extracted CTA component, the scoped render-audit extension for this change, and these reports. The commit table below describes the original work; rows 2, 3 and 5 are now superseded by #87 and #88. A separate PR #85 (Miro alternatives, on hold) exists and was not reviewed here.
+
 Branch `claude/mission-55min-20261023`, from production head `ab75185` (Vercel deployment `dpl_6NtvE2nGJCgjLMZdfxmF4Dqdoewi`). Nothing was deployed, merged, published, emailed or purchased; Thomas Fraher was not contacted; no affiliate destination, protected page, robots, canonical or noindex setting was changed.
 
 ## Baseline (verified today)
