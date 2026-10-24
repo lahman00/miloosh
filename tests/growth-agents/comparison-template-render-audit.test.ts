@@ -88,6 +88,13 @@ describe("auditComparisonTemplateBuilds", () => {
     expect(audit.errors.join("|")).toContain(`WAVE_PAGE_NOT_EDITABLE: ${wave}`);
   });
 
+  it("fails when a comparison page outside the reviewed list changes, even another v2 wave page", () => {
+    const input = base({ waveSlugs: COMPARISON_V2_WAVE.slice(0, 3) });
+    const other = COMPARISON_V2_WAVE[5]!;
+    input.after.set(`compare/${other}.html`, page(`quietly changed ${SPONSORED}`));
+    expect(auditComparisonTemplateBuilds(input).errors.join("|")).toContain(`UNEXPECTED_RENDERED_CHANGE: compare/${other}.html`);
+  });
+
   it("fails when a wave page did not change, so a gated page cannot silently drop out", () => {
     const input = base();
     const wave = COMPARISON_V2_WAVE[1]!;

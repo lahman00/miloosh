@@ -1,5 +1,5 @@
 import hold from "@/data/seo/price-label-hold.json";
-import { COMPARISON_V2_WAVE } from "@/data/seo/comparison-waves";
+import { PREMIUM_GATE_COMPARISONS } from "@/data/seo/premium-gate";
 import { normalizeRenderedHtml } from "./rendered-diff";
 import { protectionFor, type ProtectionSnapshot } from "./protection";
 
@@ -214,7 +214,13 @@ const COMPARISON_TEMPLATE_FILES = new Set([
   "tests/growth-agents/director-cli.test.ts",
 ]);
 
-export const COMPARISON_TEMPLATE_WAVE_SIZE = COMPARISON_V2_WAVE.length;
+/**
+ * The comparison pages the change under review is expected to alter, and the only comparison pages the proof lets change. It is
+ * specific to one change at a time: for the premium validation gate these are the three gate pages. Any other comparison page
+ * changing, including another v2 wave page, fails the proof. Update it (and the allowlist) with the next reviewed change.
+ */
+export const COMPARISON_TEMPLATE_EXPECTED_CHANGED: readonly string[] = PREMIUM_GATE_COMPARISONS;
+export const COMPARISON_TEMPLATE_WAVE_SIZE = COMPARISON_TEMPLATE_EXPECTED_CHANGED.length;
 
 /** True for a changed file this proof is allowed to cover. Anything else makes the proof fail. */
 export function isComparisonTemplateFile(file: string): boolean {
