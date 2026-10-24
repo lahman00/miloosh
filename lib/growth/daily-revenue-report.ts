@@ -60,6 +60,8 @@ export type WindowSummary = {
   events: number;
   sessions: { qualified: number; probableHuman: number; excluded: number; total: number };
   byChannel: Record<string, { qualified: number; probableHuman: number; excluded: number }>;
+  /** Strict and probable sessions by device bucket. NOT_RECORDED covers sessions with no viewport field (events before 2026-10-24); it is not "desktop". */
+  byViewport: Record<"mobile" | "tablet" | "desktop" | "NOT_RECORDED", { qualified: number; probableHuman: number }>;
   /** Distinct strict-qualified plus probable sessions that viewed a software, comparison or guide page. */
   commercialPageSessions: { qualified: number; probableHuman: number };
   ctaImpressionEvents: number;
@@ -102,6 +104,9 @@ function summarize(
   const kind = (id: string) => (QUALIFIED.has(bucket.get(id) ?? "") ? "qualified" : bucket.get(id) === "PROBABLE_HUMAN" ? "probableHuman" : "excluded");
   const sessions = { qualified: 0, probableHuman: 0, excluded: 0, total: classifications.length };
   const byChannel: WindowSummary["byChannel"] = {};
+  const byViewport: WindowSummary["byViewport"] = { mobile: { qualified: 0, probableHuman: 0 }, tablet: { qualified: 0, probableHuman: 0 }, desktop: { qualified: 0, probableHuman: 0 }, NOT_RECORDED: { qualified: 0, probableHuman: 0 } };
+  const viewportOf = new Map<string, "mobile" | "tablet" | "desktop">();
+  for (const e of windowEvents) if (e.viewport && !viewportOf.has(e.sessionId)) viewportOf.set(e.sessionId, e.viewport);
   const firstPageView = new Map<string, FirstPartyEvent>();
   for (const e of [...windowEvents].sort((a, b) => a.timestamp.localeCompare(b.timestamp))) if (e.type === "page_view" && !firstPageView.has(e.sessionId)) firstPageView.set(e.sessionId, e);
   for (const c of classifications) {
@@ -110,6 +115,7 @@ function summarize(
     const landing = firstPageView.get(c.sessionId);
     const channel = (landing && landing.type === "page_view" ? landing.trafficSource : undefined) ?? "unknown";
     (byChannel[channel] ??= { qualified: 0, probableHuman: 0, excluded: 0 })[k] += 1;
+    if (k !== "excluded") byViewport[viewportOf.get(c.sessionId) ?? "NOT_RECORDED"][k] += 1;
   }
   const commercial = { qualified: new Set<string>(), probableHuman: new Set<string>() };
   let impressions = 0;
@@ -133,6 +139,7 @@ function summarize(
     events: windowEvents.length,
     sessions,
     byChannel,
+    byViewport,
     commercialPageSessions: { qualified: commercial.qualified.size, probableHuman: commercial.probableHuman.size },
     ctaImpressionEvents: impressions,
     ctaClickEvents: clicks,

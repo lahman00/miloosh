@@ -15,7 +15,9 @@ describe("Wix and Shopify scoped buyer checks", () => {
     const page = fs.readFileSync("app/compare/[comparison]/page.tsx", "utf8");
     expect(page.indexOf("<ComparisonTable data={data}")).toBeLessThan(page.indexOf("<WixShopifyBuyerChecks comparison={comparison}"));
     expect(page).toContain('alternates: { canonical: `/compare/${comparison}` }');
-    expect(page).toContain('ctaLocation="compare-page-choose-card"');
+    // The default tracking location of the choice cards now lives in the extracted component.
+    expect(fs.readFileSync("components/ComparisonChoiceCta.tsx", "utf8")).toContain('ctaLocation = "compare-page-choose-card"');
+    expect(page).not.toContain('ctaLocation="compare-page-choose-card"');
     expect(page).toContain('id="vendor-choice"');
   });
   it("preserves distinct workflow fit and a stay-or-embed alternative", () => {

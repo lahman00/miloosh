@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { classifyRequest } from "@/lib/analytics/bot-filter";
 import { ECOMMERCE_SITUATIONS, type EcommerceSituation } from "@/lib/recommend/types";
 import { recordFirstPartyEvent, type FirstPartyEvent, type FirstPartyEventType } from "@/lib/analytics/events";
+import { isViewportBucket } from "@/lib/analytics/viewport";
 
 /**
  * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21).
@@ -112,6 +113,7 @@ export async function POST(request: NextRequest) {
     const value = record[key];
     if (typeof value === "number" && Number.isFinite(value) && value >= 0) fields[key] = value;
   }
+  if (isViewportBucket(record.viewport)) fields.viewport = record.viewport;
   if (typeof record.referrerHost === "string" && /^[a-zA-Z0-9.-]{1,253}$/.test(record.referrerHost)) fields.referrerHost = record.referrerHost;
   if (typeof record.targetPath === "string" && record.targetPath.startsWith("/") && !record.targetPath.startsWith("//")) fields.targetPath = record.targetPath.split(/[?#]/)[0].slice(0, 300);
   const sanitizedEvent: FirstPartyEvent = {

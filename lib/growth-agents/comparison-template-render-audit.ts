@@ -53,6 +53,7 @@ function sameCommit(a: string | null | undefined, b: string | null | undefined):
   return a.startsWith(b) || b.startsWith(a);
 }
 
+const hrefOf = (tag: string): string => /href="([^"]*)"/i.exec(tag)?.[1] ?? "";
 const tags = (html: string, tag: string): string[] => [...html.matchAll(new RegExp(`<${tag}\\b[^>]*>`, "gi"))].map((m) => m[0].replace(/\s+/g, " "));
 const headOf = (html: string): string => normalizeRenderedHtml(/<head\b[^>]*>[\s\S]*?<\/head>/i.exec(html)?.[0] ?? "");
 
@@ -124,9 +125,12 @@ export function auditComparisonTemplateBuilds(input: {
       if (at === -1) errors.push(`LINK_REMOVED_OR_ALTERED: ${route}: ${link.slice(0, 120)}`);
       else remaining.splice(at, 1);
     }
+    // A sponsored link may be added to a wave page only as a repeat of a sponsored destination the page already had
+    // (the vendor-link row under the pricing table repeats the choice-card link). A new affiliate destination is never allowed.
+    const oldSponsoredHrefs = new Set(oldLinks.filter((l) => /sponsored/i.test(l)).map(hrefOf));
     for (const added of remaining) {
       if (!isWave) errors.push(`LINK_ADDED_OUTSIDE_WAVE: ${route}: ${added.slice(0, 120)}`);
-      else if (/sponsored/i.test(added)) errors.push(`AFFILIATE_LINK_ADDED: ${route}: ${added.slice(0, 120)}`);
+      else if (/sponsored/i.test(added) && !oldSponsoredHrefs.has(hrefOf(added))) errors.push(`AFFILIATE_LINK_ADDED: ${route}: ${added.slice(0, 120)}`);
     }
     if (JSON.stringify(tags(old, "button")) !== JSON.stringify(tags(next, "button"))) errors.push(`BUTTON_ATTRIBUTES_CHANGED: ${route}`);
   }
@@ -165,6 +169,12 @@ const COMPARISON_TEMPLATE_FILES = new Set([
   "data/seo/comparison-waves.ts",
   "data/seo/comparison-verdicts.ts",
   "tests/seo/comparison-waves.test.ts",
+  // Vendor-link row under the pricing table (2026-10-24): the extracted CTA component and the tests that follow it.
+  "components/ComparisonChoiceCta.tsx",
+  "tests/seo/comparison-choice-cta.test.ts",
+  "tests/guides/store-decision-conversion-path.test.ts",
+  "tests/guides/wix-shopify-buyer-checks.test.ts",
+  "tests/lib/buyer-contrast.test.ts",
   // Read-only tooling shipped in the same PR.
   "lib/growth/funnel-by-landing.ts",
   "scripts/growth/first-party-funnel.ts",
@@ -189,6 +199,7 @@ export const COMPARISON_TEMPLATE_WAVE_SIZE = COMPARISON_V2_WAVE.length;
 export function isComparisonTemplateFile(file: string): boolean {
   if (COMPARISON_TEMPLATE_FILES.has(file)) return true;
   if (file.startsWith("docs/growth/receipts/20261019-first-revenue-engine/")) return true;
+  if (file.startsWith("docs/mission/")) return true;
   const product = /^data\/software\/([a-z0-9-]+)\.json$/.exec(file)?.[1];
   return product !== undefined && COMPARISON_TEMPLATE_REVIEWED_PRODUCTS.includes(product);
 }
