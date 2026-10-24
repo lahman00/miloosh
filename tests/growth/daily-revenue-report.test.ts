@@ -57,6 +57,15 @@ describe("buildDailyRevenueReport", () => {
     expect(win(r.current).byViewport).toEqual({ mobile: { qualified: 1, probableHuman: 0 }, tablet: { qualified: 0, probableHuman: 0 }, desktop: { qualified: 0, probableHuman: 1 }, NOT_RECORDED: { qualified: 0, probableHuman: 1 } });
   });
 
+  it("reports the premium gate against its own page views and ignores test and excluded sessions", () => {
+    const gatePath = "/compare/krispcall-vs-dialpad";
+    const view = (sid: string, ts: string): FirstPartyEvent => ({ ...base(sid, ts, gatePath), type: "comparison_view", comparisonSlug: "krispcall-vs-dialpad" }) as FirstPartyEvent;
+    const intent = (sid: string, ts: string, isTest = false): FirstPartyEvent => ({ ...base(sid, ts, gatePath), type: "premium_intent_clicked", comparisonSlug: "krispcall-vs-dialpad", isTest }) as FirstPartyEvent;
+    const events = [view("q1", day(1)), intent("q1", day(1, 1)), view("q2", day(1)), view("p1", day(1)), intent("p1", day(1, 1)), view("x1", day(1)), intent("x1", day(1, 1)), view("q3", day(1)), intent("q3", day(1, 1), true), { ...view("q4", day(1)), path: "/compare/other-vs-thing" } as FirstPartyEvent];
+    const gate = win(run({ events }).current).premiumGate;
+    expect(gate).toEqual({ pageSessions: { qualified: 3, probableHuman: 1 }, intentSessions: { qualified: 1, probableHuman: 1 }, intentEvents: 2 });
+  });
+
   it("counts test-marked outbound clicks on their own line and never as handoffs", () => {
     const r = run({ events: [pv("q1", day(1)), out("q1", day(1, 1), "affiliate", true), out("q1", day(1, 2), "official")] });
     expect(win(r.current).firstPartyOutbound).toEqual({ affiliate: 0, official: 1, testMarked: 1 });

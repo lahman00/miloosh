@@ -15,6 +15,8 @@ import { WixShopifyBuyerChecks } from "@/components/WixShopifyBuyerChecks";
 import { ShopifyWooMigrationRecords } from "@/components/ShopifyWooMigrationRecords";
 import { EcwidWooStructureChoice } from "@/components/EcwidWooStructureChoice";
 import { ComparisonChoiceCta } from "@/components/ComparisonChoiceCta";
+import { PremiumValidationGate } from "@/components/PremiumValidationGate";
+import { isPremiumGateComparison } from "@/data/seo/premium-gate";
 import { ButtonLink } from "@/components/ButtonLink";
 import { getSoftware } from "@/data/software";
 import {
@@ -179,6 +181,8 @@ export default async function ComparePage({ params }: ComparePageProps) {
             </div>
           </section>
         ) : null}
+
+        {isPremiumGateComparison(comparison) ? <PremiumValidationGate comparisonSlug={comparison} /> : null}
 
         {isMkDocsReadTheDocsCanary ? (
           <section className="mt-14">

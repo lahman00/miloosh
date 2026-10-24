@@ -1,0 +1,87 @@
+{
+  "pagesScanned": 1786,
+  "outboundLinks": 11484,
+  "affiliateTagged": 428,
+  "taggedWithoutRegistryUrl": 10,
+  "registryUrlWithoutSponsoredRel": 0,
+  "taggedOnPagesWithoutDisclosure": 0,
+  "untaggedToVendorWithKnownActiveProgram": 85,
+  "distinctVendors": 451,
+  "topUntaggedVendors": [
+    {
+      "vendor": "zoho.com",
+      "links": 197,
+      "pages": 66
+    },
+    {
+      "vendor": "microsoft.com",
+      "links": 155,
+      "pages": 56
+    },
+    {
+      "vendor": "business.adobe.com",
+      "links": 136,
+      "pages": 38
+    },
+    {
+      "vendor": "freshworks.com",
+      "links": 103,
+      "pages": 35
+    },
+    {
+      "vendor": "atlassian.com",
+      "links": 103,
+      "pages": 44
+    },
+    {
+      "vendor": "salesforce.com",
+      "links": 99,
+      "pages": 32
+    },
+    {
+      "vendor": "asana.com",
+      "links": 95,
+      "pages": 21
+    },
+    {
+      "vendor": "todoist.com",
+      "links": 93,
+      "pages": 19
+    },
+    {
+      "vendor": "clockify.me",
+      "links": 89,
+      "pages": 19
+    },
+    {
+      "vendor": "github.com",
+      "links": 80,
+      "pages": 27
+    },
+    {
+      "vendor": "trello.com",
+      "links": 76,
+      "pages": 17
+    },
+    {
+      "vendor": "workspace.google.com",
+      "links": 73,
+      "pages": 23
+    },
+    {
+      "vendor": "hubspot.com",
+      "links": 71,
+      "pages": 25
+    },
+    {
+      "vendor": "notion.com",
+      "links": 71,
+      "pages": 25
+    },
+    {
+      "vendor": "clickup.com",
+      "links": 69,
+      "pages": 25
+    }
+  ]
+}

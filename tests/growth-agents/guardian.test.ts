@@ -1,4 +1,4 @@
-import { COMPARISON_V2_WAVE } from "@/data/seo/comparison-waves";
+import { COMPARISON_TEMPLATE_EXPECTED_CHANGED } from "@/lib/growth-agents/comparison-template-render-audit";
 import { describe, expect, it } from "vitest";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -350,7 +350,7 @@ describe("what else blocks a release", () => {
       nonEditablePagesUnchanged: 400,
       heldProfilesUnchanged: 138,
       changedPages: 30,
-      wavePagesChanged: [...COMPARISON_V2_WAVE].map((slug) => `compare/${slug}.html`),
+      wavePagesChanged: [...COMPARISON_TEMPLATE_EXPECTED_CHANGED].map((slug) => `compare/${slug}.html`),
       derivedPagesChanged: ["software/callrail.html"],
       errors: [],
     };

@@ -11,8 +11,7 @@ import {
 } from "./guardian";
 import { listWorktrees, parsePorcelainPaths } from "./protection-sources";
 import { auditPricingRenderedBuilds, type PricingRenderAudit } from "./price-render-audit";
-import { COMPARISON_V2_WAVE } from "@/data/seo/comparison-waves";
-import { auditComparisonTemplateBuilds, type ComparisonTemplateRenderAudit } from "./comparison-template-render-audit";
+import { COMPARISON_TEMPLATE_EXPECTED_CHANGED, auditComparisonTemplateBuilds, type ComparisonTemplateRenderAudit } from "./comparison-template-render-audit";
 import type { ProtectionSnapshot } from "./protection";
 
 /**
@@ -348,7 +347,7 @@ export function verifyComparisonTemplateBuilds(input: {
       baseSha: input.baseSha,
       headSha: input.headSha,
       protection: input.protection,
-      waveSlugs: COMPARISON_V2_WAVE,
+      waveSlugs: COMPARISON_TEMPLATE_EXPECTED_CHANGED,
       derivedRoutes,
     });
   } catch (error) {

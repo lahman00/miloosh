@@ -88,6 +88,13 @@ describe("auditComparisonTemplateBuilds", () => {
     expect(audit.errors.join("|")).toContain(`WAVE_PAGE_NOT_EDITABLE: ${wave}`);
   });
 
+  it("fails when a comparison page outside the reviewed list changes, even another v2 wave page", () => {
+    const input = base({ waveSlugs: COMPARISON_V2_WAVE.slice(0, 3) });
+    const other = COMPARISON_V2_WAVE[5]!;
+    input.after.set(`compare/${other}.html`, page(`quietly changed ${SPONSORED}`));
+    expect(auditComparisonTemplateBuilds(input).errors.join("|")).toContain(`UNEXPECTED_RENDERED_CHANGE: compare/${other}.html`);
+  });
+
   it("fails when a wave page did not change, so a gated page cannot silently drop out", () => {
     const input = base();
     const wave = COMPARISON_V2_WAVE[1]!;
@@ -116,6 +123,28 @@ describe("auditComparisonTemplateBuilds", () => {
     const official = base();
     official.after.set(`compare/${wave}.html`, page(`${SPONSORED}<a href="https://vendor.example/pricing" rel="nofollow noopener">Official pricing</a>`));
     expect(auditComparisonTemplateBuilds(official).ok).toBe(true);
+  });
+
+  it("allows one added plain button on a wave page but never a changed, submit or extra button, or a button elsewhere", () => {
+    const wave = COMPARISON_V2_WAVE[0]!;
+    const gate = '<button type="button" class="x">I would use this</button>';
+    const ok = base();
+    ok.before.set(`compare/${wave}.html`, page(`old ${SPONSORED}<button type="button" class="old">Share</button>`));
+    ok.after.set(`compare/${wave}.html`, page(`new ${SPONSORED}<button type="button" class="old">Share</button>${gate}`));
+    expect(auditComparisonTemplateBuilds(ok).errors).toEqual([]);
+    const changed = base();
+    changed.before.set(`compare/${wave}.html`, page(`old ${SPONSORED}<button type="button" class="old">Share</button>`));
+    changed.after.set(`compare/${wave}.html`, page(`new ${SPONSORED}<button type="button" class="other">Share</button>`));
+    expect(auditComparisonTemplateBuilds(changed).errors.join("|")).toContain("BUTTON_ATTRIBUTES_CHANGED");
+    const submit = base();
+    submit.after.set(`compare/${wave}.html`, page(`new ${SPONSORED}<button type="submit">Go</button>`));
+    expect(auditComparisonTemplateBuilds(submit).errors.join("|")).toContain("BUTTON_ADDED_OUTSIDE_SCOPE");
+    const two = base();
+    two.after.set(`compare/${wave}.html`, page(`new ${SPONSORED}${gate}${gate}`));
+    expect(auditComparisonTemplateBuilds(two).errors.join("|")).toContain("BUTTON_ADDED_OUTSIDE_SCOPE");
+    const elsewhere = base();
+    elsewhere.after.set("software/callrail.html", page(`callrail $50 ${gate}`));
+    expect(auditComparisonTemplateBuilds(elsewhere).errors.join("|")).toContain("BUTTON_ADDED_OUTSIDE_SCOPE");
   });
 
   it("fails when a derived page adds any link or changes its SEO header", () => {
