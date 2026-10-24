@@ -106,6 +106,13 @@ describe("auditComparisonTemplateBuilds", () => {
     const added = base();
     added.after.set(`compare/${wave}.html`, page(`${SPONSORED}<a href="https://new.example" rel="sponsored">More</a>`));
     expect(auditComparisonTemplateBuilds(added).errors.join("|")).toContain("AFFILIATE_LINK_ADDED");
+    // Repeating a sponsored destination the page already had is allowed (the vendor-link row); a different one is not.
+    const repeated = base();
+    repeated.after.set(`compare/${wave}.html`, page(`${SPONSORED}${SPONSORED}`));
+    expect(auditComparisonTemplateBuilds(repeated).errors).toEqual([]);
+    const lookalike = base();
+    lookalike.after.set(`compare/${wave}.html`, page(`${SPONSORED}<a href="https://partner.example/x2" rel="sponsored noopener">Visit</a>`));
+    expect(auditComparisonTemplateBuilds(lookalike).errors.join("|")).toContain("AFFILIATE_LINK_ADDED");
     const official = base();
     official.after.set(`compare/${wave}.html`, page(`${SPONSORED}<a href="https://vendor.example/pricing" rel="nofollow noopener">Official pricing</a>`));
     expect(auditComparisonTemplateBuilds(official).ok).toBe(true);
@@ -141,7 +148,7 @@ describe("auditComparisonTemplateBuilds", () => {
 
 describe("isComparisonTemplateFile", () => {
   it("accepts only the reviewed template, data, tooling and receipt files", () => {
-    for (const file of ["app/compare/[comparison]/page.tsx", "components/ComparisonVerdictCard.tsx", "data/software/callrail.json", "docs/growth/receipts/20261019-first-revenue-engine/README.md"]) expect(isComparisonTemplateFile(file)).toBe(true);
+    for (const file of ["app/compare/[comparison]/page.tsx", "components/ComparisonVerdictCard.tsx", "components/ComparisonChoiceCta.tsx", "data/software/callrail.json", "docs/growth/receipts/20261019-first-revenue-engine/README.md", "docs/mission/MILOOSH_55_MIN_EXECUTION_REPORT.md"]) expect(isComparisonTemplateFile(file)).toBe(true);
     for (const file of ["components/PricingSection.tsx", "components/GlobalNavigation.tsx", "app/software/[software]/page.tsx", "data/software/slack.json", "app/layout.tsx", "lib/affiliate.ts", "docs/growth/receipts/other/README.md"]) expect(isComparisonTemplateFile(file)).toBe(false);
   });
 
