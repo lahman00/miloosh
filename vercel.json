@@ -12,5 +12,10 @@
       "path": "/api/cron/seo-factory",
       "schedule": "0 22 * * *"
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "codex/social-publish-queue-fix-20261024": false
+    }
+  }
 }
