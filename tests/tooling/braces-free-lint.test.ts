@@ -32,7 +32,8 @@ describe("braces-free lint dependency boundary", () => {
     const lock = JSON.parse(readFileSync("package-lock.json", "utf8"));
     expect(manifest.dependencies.next).toBe("16.4.2");
     expect(manifest.devDependencies["eslint-config-next"]).toBe("16.4.2");
-    expect(manifest.overrides).toEqual({ "@next/eslint-plugin-next@16.4.2": { "fast-glob": "npm:glob@13.0.6" } });
+    // Exactly two reviewed overrides: the lint glob replacement and the zod pin of @vercel/cli-config (GHSA-mrhx-c7xc-m3w5, no upstream release drops the exact pin).
+    expect(manifest.overrides).toEqual({ "@vercel/cli-config": { zod: "4.6.7" }, "@next/eslint-plugin-next@16.4.2": { "fast-glob": "npm:glob@13.0.6" } });
     expect(manifest.scripts["growth:record-gates"]).toBe("tsx scripts/growth/record-gates.ts");
     const guardian = readFileSync("lib/growth-agents/guardian-sources.ts", "utf8");
     for (const check of ["npm audit --audit-level=moderate --json", "npx vitest run --reporter=json", "npm run validate:data", "npm run lint", "npx tsc --noEmit", "npm run build"]) {
