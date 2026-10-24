@@ -35,7 +35,8 @@ export type FirstPartyEventType =
   | "recommend_comparison_open"
   | "cta_impression"
   | "cta_click"
-  | "newsletter_signup";
+  | "newsletter_signup"
+  | "premium_intent_clicked";
 
 export interface BaseAnalyticsEvent {
   type: FirstPartyEventType;
@@ -237,6 +238,17 @@ export interface NewsletterSignupEvent extends BaseAnalyticsEvent {
   source: string;
 }
 
+/**
+ * Validation gate (2026-10-24): a visitor clicked "I would use this" on the premium-report card of a comparison page. This is demand
+ * research for a product that does not exist, not a purchase and not a lead: no email, no payment, no account. It carries the
+ * comparison slug only. The denominator for any rate is the page's own comparison_view sessions.
+ */
+export interface PremiumIntentClickedEvent extends BaseAnalyticsEvent {
+  type: "premium_intent_clicked";
+  comparisonSlug: string;
+  ctaLocation?: string;
+}
+
 export type FirstPartyEvent =
   | PageViewEvent
   | EngagedViewEvent
@@ -257,7 +269,8 @@ export type FirstPartyEvent =
   | RecommendComparisonOpenEvent
   | CtaImpressionEvent
   | CtaClickEvent
-  | NewsletterSignupEvent;
+  | NewsletterSignupEvent
+  | PremiumIntentClickedEvent;
 
 const BLOB_PREFIX = "first-party-analytics/";
 const LOCAL_FALLBACK_PATH = analyticsLocalPath("first-party-analytics.json");

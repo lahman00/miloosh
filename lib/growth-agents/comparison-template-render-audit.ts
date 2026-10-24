@@ -132,7 +132,17 @@ export function auditComparisonTemplateBuilds(input: {
       if (!isWave) errors.push(`LINK_ADDED_OUTSIDE_WAVE: ${route}: ${added.slice(0, 120)}`);
       else if (/sponsored/i.test(added) && !oldSponsoredHrefs.has(hrefOf(added))) errors.push(`AFFILIATE_LINK_ADDED: ${route}: ${added.slice(0, 120)}`);
     }
-    if (JSON.stringify(tags(old, "button")) !== JSON.stringify(tags(next, "button"))) errors.push(`BUTTON_ATTRIBUTES_CHANGED: ${route}`);
+    // No existing button may change. A wave page may gain at most one plain type="button" button (the premium validation card);
+    // a submit button, a form action or any change to an existing button still fails.
+    const remainingButtons = [...tags(next, "button")];
+    for (const button of tags(old, "button")) {
+      const at = remainingButtons.indexOf(button);
+      if (at === -1) errors.push(`BUTTON_ATTRIBUTES_CHANGED: ${route}`);
+      else remainingButtons.splice(at, 1);
+    }
+    if (remainingButtons.length > 0 && (!isWave || remainingButtons.length > 1 || !/^<button type="button"/i.test(remainingButtons[0]!) || /formaction|type="submit"/i.test(remainingButtons[0]!))) {
+      errors.push(`BUTTON_ADDED_OUTSIDE_SCOPE: ${route}`);
+    }
   }
   for (const route of waveRoutes) if (!waveChanged.includes(route)) errors.push(`WAVE_PAGE_UNCHANGED: ${route}`);
   if (nonEditableUnchanged < 130) errors.push("Too few protected, observed or held pages were directly compared.");
@@ -175,6 +185,17 @@ const COMPARISON_TEMPLATE_FILES = new Set([
   "tests/guides/store-decision-conversion-path.test.ts",
   "tests/guides/wix-shopify-buyer-checks.test.ts",
   "tests/lib/buyer-contrast.test.ts",
+  // Premium validation card (2026-10-24) and its event wiring.
+  "components/PremiumValidationGate.tsx",
+  "data/seo/premium-gate.ts",
+  "tests/seo/premium-validation-gate.test.ts",
+  "lib/analytics/events.ts",
+  "app/api/analytics/event/route.ts",
+  "lib/growth/daily-revenue-report.ts",
+  "scripts/growth/daily-revenue-report.ts",
+  "scripts/growth/money-path-inventory.ts",
+  "tests/growth/money-path-inventory.test.ts",
+  "tests/growth/daily-revenue-report.test.ts",
   // Read-only tooling shipped in the same PR.
   "lib/growth/funnel-by-landing.ts",
   "scripts/growth/first-party-funnel.ts",
@@ -200,6 +221,7 @@ export function isComparisonTemplateFile(file: string): boolean {
   if (COMPARISON_TEMPLATE_FILES.has(file)) return true;
   if (file.startsWith("docs/growth/receipts/20261019-first-revenue-engine/")) return true;
   if (file.startsWith("docs/mission/")) return true;
+  if (file.startsWith("docs/growth/receipts/20261024-saas-phase0/")) return true;
   const product = /^data\/software\/([a-z0-9-]+)\.json$/.exec(file)?.[1];
   return product !== undefined && COMPARISON_TEMPLATE_REVIEWED_PRODUCTS.includes(product);
 }

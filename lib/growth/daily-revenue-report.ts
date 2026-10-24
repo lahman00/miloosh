@@ -2,6 +2,7 @@ import type { FirstPartyEvent } from "@/lib/analytics/events";
 import { classifySessions } from "@/lib/analytics/human-classification";
 import type { StoredOutboundEvent } from "@/lib/revenue/events";
 import { buildFunnelByLanding, type FunnelRow } from "./funnel-by-landing";
+import { premiumGatePaths } from "@/data/seo/premium-gate";
 
 /**
  * Daily revenue-evidence report: one dated, denominated answer to "what happened, who is a real buyer, how far did they
@@ -66,6 +67,11 @@ export type WindowSummary = {
   commercialPageSessions: { qualified: number; probableHuman: number };
   ctaImpressionEvents: number;
   ctaClickEvents: number;
+  /**
+   * Validation gate on three comparison pages. Denominator = strict or probable sessions that viewed one of those pages; numerator =
+   * those sessions that clicked "I would use this". Demand research only: not a lead, not revenue.
+   */
+  premiumGate: { pageSessions: { qualified: number; probableHuman: number }; intentSessions: { qualified: number; probableHuman: number }; intentEvents: number };
   firstPartyOutbound: { affiliate: number; official: number; testMarked: number };
   ledger: Measured<{ stored: number; test: number; explicitNonTest: number; unmarked: number; affiliateNonTest: number; officialNonTest: number }>;
 };
@@ -118,6 +124,8 @@ function summarize(
     if (k !== "excluded") byViewport[viewportOf.get(c.sessionId) ?? "NOT_RECORDED"][k] += 1;
   }
   const commercial = { qualified: new Set<string>(), probableHuman: new Set<string>() };
+  const gatePaths = new Set(premiumGatePaths());
+  const gate = { pages: { qualified: new Set<string>(), probableHuman: new Set<string>() }, intents: { qualified: new Set<string>(), probableHuman: new Set<string>() }, events: 0 };
   let impressions = 0;
   let clicks = 0;
   const outbound = { affiliate: 0, official: 0, testMarked: 0 };
@@ -125,6 +133,8 @@ function summarize(
     const k = kind(e.sessionId);
     if (COMMERCIAL.has(e.type) && k !== "excluded") commercial[k].add(e.sessionId);
     if (k === "excluded") continue;
+    if (e.type === "comparison_view" && gatePaths.has(e.path)) gate.pages[k].add(e.sessionId);
+    if (e.type === "premium_intent_clicked" && !e.isTest) { gate.intents[k].add(e.sessionId); gate.events += 1; }
     if (e.type === "cta_impression") impressions += 1;
     if (e.type === "cta_click") clicks += 1;
     if (e.type === "outbound_click") {
@@ -142,6 +152,11 @@ function summarize(
     byViewport,
     commercialPageSessions: { qualified: commercial.qualified.size, probableHuman: commercial.probableHuman.size },
     ctaImpressionEvents: impressions,
+    premiumGate: {
+      pageSessions: { qualified: gate.pages.qualified.size, probableHuman: gate.pages.probableHuman.size },
+      intentSessions: { qualified: gate.intents.qualified.size, probableHuman: gate.intents.probableHuman.size },
+      intentEvents: gate.events,
+    },
     ctaClickEvents: clicks,
     firstPartyOutbound: outbound,
     ledger: ledgerRows

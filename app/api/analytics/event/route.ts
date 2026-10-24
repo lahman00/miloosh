@@ -33,7 +33,7 @@ const VALID_EVENT_TYPES: readonly FirstPartyEventType[] = [
   "recommend_use", "internal_cta_click", "recommend_started", "recommend_step_viewed", "recommend_need_selected",
   "recommend_ecommerce_situation_selected",
   "recommend_completed", "recommend_result_viewed", "recommend_product_open", "recommend_comparison_open",
-  "cta_impression", "cta_click", "newsletter_signup",
+  "cta_impression", "cta_click", "newsletter_signup", "premium_intent_clicked",
 ];
 
 export async function POST(request: NextRequest) {
