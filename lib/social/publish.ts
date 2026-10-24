@@ -251,10 +251,10 @@ export async function publishOneEntry(
     const variant = channel === "linkedin" ? prepareLinkedInVariant(entry) : entry.channels[channel];
     if (!variant) continue;
     const adapter = adapters[channel];
-    // Enforce the buyer-question-first cutover on REAL live publication.
-    // Fake adapters are used by orchestration unit tests, and dry-runs must
-    // remain able to exercise transport/UTM behavior without mutating state.
-    if (!dryRun && adapter === ADAPTERS[channel]) {
+    // Preview the same editorial gate used by live publication. Checking
+    // copy is pure; dry runs still never call a provider or mutate state.
+    // Injected adapters keep orchestration tests independent of copy QA.
+    if (adapter === ADAPTERS[channel]) {
       const buyerQuestionIssues = buyerQuestionFirstIssues(variant);
       if (buyerQuestionIssues.length) {
         attempts.push({ channel, result: buildBlockedPublishResult(channel, variant, buyerQuestionIssues) });
@@ -345,17 +345,28 @@ export async function runPublishCycle(options: { dryRun: boolean; now?: Date; st
   // due work, so Buffer remains transport rather than a second scheduler.
   if (!options.dryRun) await reconcilePendingBufferPosts(queue, now);
   const { onTime, stale } = classifyScheduledEntries(queue, now);
-  const due = onTime.slice(0, DAILY_ENTRY_CAP);
+  // Apply channel eligibility before the entry cap. Legacy completed
+  // entries can retain pending variants for disabled channels forever;
+  // counting those entries first starves real Facebook/LinkedIn work.
+  const eligibleNow = (entry: SocialQueueEntry, channel: Channel): boolean => {
+    const variant = entry.channels[channel];
+    if (!variant || !channelNeedsAttempt(variant) || !strategy.enabledChannels[channel]) return false;
+    if (variant.scheduledFor && new Date(variant.scheduledFor).getTime() > now.getTime()) return false;
+    if (strategy.excludedPillarsByChannel[channel]?.includes(entry.pillar)) return false;
+    if (channel === "linkedin" && (now.getUTCHours() !== 17 || hasChannelAttemptedToday(queue, channel, now, strategy.timezone))) return false;
+    return !hasChannelPublishedToday(queue, channel, now, strategy.timezone);
+  };
+  const due = onTime.filter((entry) => (Object.keys(entry.channels) as Channel[]).some((channel) => eligibleNow(entry, channel))).slice(0, DAILY_ENTRY_CAP);
   const linkedinOnlyEntryIds = new Set<string>();
   // LinkedIn-only continuity once the pre-scheduled runway is exhausted.
   // The selected APPROVED entry is explicitly marked LinkedIn-only for
   // this invocation; no other adapter is eligible and the shared entry's
   // schedule/state is not changed. 17:00 UTC matches the existing slots.
-  const hasDueLinkedIn = due.some((entry) => entry.channels.linkedin && channelNeedsAttempt(entry.channels.linkedin));
+  const hasDueLinkedIn = due.some((entry) => eligibleNow(entry, "linkedin"));
   if (now.getUTCHours() === 17 && !hasDueLinkedIn && !hasChannelAttemptedToday(queue, "linkedin", now, strategy.timezone)) {
     const approvedLinkedIn = queue.find((entry) => {
       const variant = prepareLinkedInVariant(entry);
-      return entry.state === "APPROVED_FOR_AUTO" && variant && channelNeedsAttempt(variant) && linkedinPublishIssues(entry, variant).length === 0;
+      return entry.state === "APPROVED_FOR_AUTO" && variant && eligibleNow(entry, "linkedin") && buyerQuestionFirstIssues(variant).length === 0 && linkedinPublishIssues(entry, variant).length === 0;
     });
     if (approvedLinkedIn) {
       due.push(approvedLinkedIn);

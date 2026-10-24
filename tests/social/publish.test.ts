@@ -561,7 +561,7 @@ describe("runPublishCycle — pillar exclusion per channel", () => {
 });
 
 describe("runPublishCycle — LinkedIn-only daily continuity", () => {
-  const safeLinkedIn = { ...blankVariant, text: "A durable software decision starts with the workflow constraint your team cannot compromise on, not a generic feature-count ranking." };
+  const safeLinkedIn = { ...blankVariant, text: "Which workflow constraint can your team not compromise on?\n\nStart with that constraint before comparing software feature lists." };
 
   it("selects one approved LinkedIn candidate at 17:00 UTC without calling Facebook", async () => {
     const approved = { ...fixtureEntry({ linkedin: safeLinkedIn, facebook: blankVariant }), id: "approved-linkedin", state: "APPROVED_FOR_AUTO" as const, scheduledFor: null };
@@ -669,5 +669,82 @@ describe("buyer-question-first publish gate", () => {
   it("rejects AI-style em/en dash punctuation even when the first line is a question", () => {
     const base = { link: null, imageUrl: null, altText: null, hashtags: [], publishResult: null };
     expect(buyerQuestionFirstIssues({ ...base, text: "Is HubSpot worth it?\n\nIt depends — especially on team size." })[0]).toContain("dash punctuation");
+  });
+});
+
+
+describe("production queue regressions from October 24", () => {
+  it("does not let 20 completed entries with only disabled channels starve Facebook", async () => {
+    const now = new Date("2026-10-24T17:00:00.000Z");
+    const blockers = Array.from({ length: 20 }, (_, index) => ({
+      ...fixtureEntry({ bluesky: blankVariant, mastodon: blankVariant, reddit: blankVariant }),
+      id: `disabled-only-${index}`,
+      state: "PUBLISHED" as const,
+      scheduledFor: "2026-08-20T17:00:00.000Z",
+    }));
+    const target = { ...fixtureEntry({ facebook: blankVariant }), id: "facebook-due", scheduledFor: now.toISOString() };
+    await addQueueEntries([...blockers, target]);
+    const summary = await runPublishCycle({ dryRun: false, now, adapters: { facebook: fakeAdapter("facebook", "publish") } as Record<Channel, SocialAdapter> });
+    expect(summary.results).toEqual([{ entryId: target.id, channel: "facebook", status: "PUBLISHED" }]);
+    const after = await readQueue();
+    expect(after.slice(0, 20)).toEqual(blockers);
+    expect(after[20]!.channels.facebook?.providerState?.status).toBe("PUBLISHED");
+  });
+
+  it("skips a legacy approved LinkedIn draft that the live quality gate would reject", async () => {
+    const bad = { ...fixtureEntry({ linkedin: { ...blankVariant, text: "Moving from Cal.com to Acuity Scheduling? Check these 3 things first.\n\nBefore switching, check platform support, data export and integrations." } }), id: "legacy-bad-hook", state: "APPROVED_FOR_AUTO" as const, scheduledFor: null };
+    const good = { ...fixtureEntry({ linkedin: { ...blankVariant, text: "What should you check before switching scheduling tools?\n\nCheck platform support, data export and the integrations you would need to rebuild." } }), id: "ready-good-hook", state: "APPROVED_FOR_AUTO" as const, scheduledFor: null };
+    await addQueueEntries([bad, good]);
+    const summary = await runPublishCycle({ dryRun: false, now: new Date("2026-10-24T17:00:00.000Z"), adapters: { linkedin: fakeAdapter("linkedin", "publish") } as Record<Channel, SocialAdapter> });
+    expect(summary.results).toEqual([{ entryId: good.id, channel: "linkedin", status: "PUBLISHED" }]);
+    expect((await readQueue())[0]).toEqual(bad);
+  });
+
+  it("reports the same buyer-question blocker in a dry run without calling a provider", async () => {
+    const entry = fixtureEntry({ linkedin: { ...blankVariant, text: "Moving from Cal.com to Acuity Scheduling? Check these 3 things first.\n\nBefore switching, check platform support, data export and integrations." } });
+    const network = vi.fn(() => { throw new Error("No network allowed in a preview"); });
+    vi.stubGlobal("fetch", network);
+    try {
+      const results = await publishOneEntry(entry, true);
+      expect(results[0]?.result.status).toBe("FAILED");
+      expect(results[0]?.result.error).toContain("first non-empty line");
+      expect(network).not.toHaveBeenCalled();
+    } finally { vi.unstubAllGlobals(); }
+  });
+});
+
+
+describe("queue eligibility preserves existing publication controls", () => {
+  it.each(["UNKNOWN_OUTCOME", "PENDING_CONFIRMATION", "PUBLISHED", "BLOCKED"] as const)("never retries a %s provider while removing disabled backlog blockers", async (status) => {
+    const now = new Date("2026-10-24T17:00:00.000Z");
+    const held = { ...fixtureEntry({ facebook: { ...blankVariant, providerState: { status, attempts: 1, lastAttemptAt: "2026-10-23T17:00:00.000Z", publishedAt: null, postId: null, postUrl: null, contentHash: "x", verified: false, error: "existing provider evidence" } }, bluesky: blankVariant }), id: "do-not-retry", state: "PUBLISHED" as const, scheduledFor: now.toISOString() };
+    const eligible = { ...fixtureEntry({ facebook: blankVariant }), id: "eligible", scheduledFor: now.toISOString() };
+    await addQueueEntries([held, eligible]);
+    const summary = await runPublishCycle({ dryRun: false, now, adapters: { facebook: fakeAdapter("facebook", "publish") } as Record<Channel, SocialAdapter> });
+    expect(summary.results).toEqual([{ entryId: eligible.id, channel: "facebook", status: "PUBLISHED" }]);
+    expect((await readQueue())[0]).toEqual(held);
+  });
+
+  it("keeps one Facebook publication per day after removing the 20 disabled blockers", async () => {
+    const now = new Date("2026-10-24T17:00:00.000Z");
+    const blockers = Array.from({ length: 20 }, (_, i) => ({ ...fixtureEntry({ bluesky: blankVariant }), id: `disabled-${i}`, scheduledFor: now.toISOString() }));
+    const pending = ["first", "second"].map((id) => ({ ...fixtureEntry({ facebook: blankVariant }), id, scheduledFor: now.toISOString() }));
+    await addQueueEntries([...blockers, ...pending]);
+    const adapters = { facebook: fakeAdapter("facebook", "publish") } as Record<Channel, SocialAdapter>;
+    const first = await runPublishCycle({ dryRun: false, now, adapters });
+    const repeated = await runPublishCycle({ dryRun: false, now, adapters });
+    expect(first.results).toEqual([{ entryId: "first", channel: "facebook", status: "PUBLISHED" }]);
+    expect(repeated.results).toEqual([]);
+    expect((await readQueue()).find((entry) => entry.id === "second")!.channels.facebook?.publishResult).toBeNull();
+  });
+
+  it("does not let future channel schedules consume the cap", async () => {
+    const now = new Date("2026-10-24T17:00:00.000Z");
+    const future = Array.from({ length: 20 }, (_, i) => ({ ...fixtureEntry({ facebook: { ...blankVariant, scheduledFor: "2026-10-25T17:00:00.000Z" } }), id: `future-${i}`, scheduledFor: now.toISOString() }));
+    const eligible = { ...fixtureEntry({ facebook: blankVariant }), id: "due-now", scheduledFor: now.toISOString() };
+    await addQueueEntries([...future, eligible]);
+    const summary = await runPublishCycle({ dryRun: false, now, adapters: { facebook: fakeAdapter("facebook", "publish") } as Record<Channel, SocialAdapter> });
+    expect(summary.results).toEqual([{ entryId: eligible.id, channel: "facebook", status: "PUBLISHED" }]);
+    expect((await readQueue()).slice(0, 20)).toEqual(future);
   });
 });
