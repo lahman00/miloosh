@@ -44,6 +44,8 @@ export interface BaseAnalyticsEvent {
   timestamp: string;
   path: string;
   isTest?: boolean;
+  /** Coarse device bucket from the window width at send time (see lib/analytics/viewport.ts). Absent on events recorded before 2026-10-24: not recorded is not mobile. */
+  viewport?: "mobile" | "tablet" | "desktop";
   /**
    * Analytics Zero-Drop Production Proof Mega Mission (2026-08-21) Phase 5:
    * an operator-supplied run identifier for one specific QA session, so its

@@ -50,6 +50,13 @@ describe("buildDailyRevenueReport", () => {
     expect(win(r.current).byChannel.social).toEqual({ qualified: 1, probableHuman: 1, excluded: 2 });
   });
 
+  it("splits strict and probable sessions by device bucket and never calls an unrecorded session desktop", () => {
+    const withViewport = (e: FirstPartyEvent, viewport: "mobile" | "desktop") => ({ ...e, viewport }) as FirstPartyEvent;
+    const events = [withViewport(pv("q1", day(1)), "mobile"), pv("q1", day(1, 1)), withViewport(pv("p1", day(1)), "desktop"), pv("p2", day(1))];
+    const r = run({ events });
+    expect(win(r.current).byViewport).toEqual({ mobile: { qualified: 1, probableHuman: 0 }, tablet: { qualified: 0, probableHuman: 0 }, desktop: { qualified: 0, probableHuman: 1 }, NOT_RECORDED: { qualified: 0, probableHuman: 1 } });
+  });
+
   it("counts test-marked outbound clicks on their own line and never as handoffs", () => {
     const r = run({ events: [pv("q1", day(1)), out("q1", day(1, 1), "affiliate", true), out("q1", day(1, 2), "official")] });
     expect(win(r.current).firstPartyOutbound).toEqual({ affiliate: 0, official: 1, testMarked: 1 });
