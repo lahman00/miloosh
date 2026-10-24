@@ -1,6 +1,7 @@
 "use client";
 
 import { markAndCheckSyntheticQa, getSyntheticQaRun } from "@/lib/analytics/synthetic";
+import { viewportBucket } from "@/lib/analytics/viewport";
 
 /**
  * Recommend Engine Integrity Patch (2026-08-21) — the shared client-side
@@ -71,8 +72,10 @@ export function getStoredSessionId(): string | undefined {
 export function trackEvent(data: Record<string, unknown>): void {
   try {
     const isTest = markAndCheckSyntheticQa();
+    const viewport = typeof window !== "undefined" ? viewportBucket(window.innerWidth) : undefined;
     const body = JSON.stringify({
       ...data,
+      ...(viewport ? { viewport } : {}),
       visitorId: getOrCreateVisitorId(),
       sessionId: getOrCreateSessionId(),
       isTest,
