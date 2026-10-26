@@ -36,6 +36,19 @@ export function parseDesk(raw: string | null): DeskState {
     return { saved: cleanSaved(input?.saved), category: deskCategory(input?.category), contexts };
   } catch { return emptyDesk(); }
 }
+const words = (text: string) => text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+/** True when the buyer said they are replacing this product. Whole-word match, so "closed spreadsheets" is not "Close". */
+export function isReplacedTool(context: DeskContext | undefined, product: Pick<DeskProduct, "name" | "slug">): boolean {
+  if (context?.intent !== "switch") return false;
+  const typed = words(context.current);
+  if (!typed.length) return false;
+  return [words(product.name), words(product.slug)].some(target => target.length > 0 && typed.some((_, start) => target.every((word, offset) => typed[start + offset] === word)));
+}
+/** Starting points for a category, without the tool the buyer is leaving. Hidden ones are returned so the page can say so. */
+export function startingPoints(products: DeskProduct[], category: DeskCategory, context: DeskContext | undefined) {
+  const inCategory = products.filter(p => p.category === category);
+  return { shown: inCategory.filter(p => !isReplacedTool(context, p)), hidden: inCategory.filter(p => isReplacedTool(context, p)) };
+}
 export const categorySaved = (saved: string[], category: DeskCategory) => cleanSaved(saved).filter(slug => productCategory(slug) === category);
 export const toggleDeskProduct = (saved: string[], slug: string) => cleanSaved(saved.includes(slug) ? saved.filter(s => s !== slug) : [...saved, slug]);
 export function validateDeskPair(first: string, second: string) {
