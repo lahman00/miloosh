@@ -23,7 +23,7 @@ Labels: OBSERVED = measured by me today; GSC-REPORTED = supplied by ChatGPT from
    | 2026-12-25 | 78 | 43 |
 
    Not the cause of the Aug-Oct collapse (today the freshness reasons block 0 pages by themselves; the 90 blocked software pages fail `pricing-evidence`, which is not date-based). It will accelerate the same discovery problem if left alone.
-4. **The impression history is mostly rank 70-80** (GSC-REPORTED, avg position 74.2 over 28,500 impressions / 11 clicks). The collapse to 12 impressions might represent loss of deep-rank appearances, failure to re-crawl after content changes, reduced visibility around an algorithm update, or site-quality evaluation. The available evidence cannot distinguish these causes. I cannot tell whether Google dropped pages or simply stopped showing deep-rank results. Do not call this a penalty (Manual Actions: none, GSC-REPORTED).
+4. **The site-wide 3-month average position is 74.2; past high-impression pages often ranked in the 70s–80s** (GSC-REPORTED, avg position 74.2 over 28,500 impressions / 11 clicks). The collapse to 12 impressions might represent loss of deep-rank appearances, failure to re-crawl after content changes, reduced visibility around an algorithm update, or site-quality evaluation. The available evidence cannot distinguish these causes. I cannot tell whether Google dropped pages or simply stopped showing deep-rank results. Do not call this a penalty (Manual Actions: none, GSC-REPORTED).
 
 I did **not** change which pages are linked, in the sitemap or noindexed. Reasons in section 6.
 
@@ -55,7 +55,7 @@ Google documents the sitemap as a discovery hint, not an index-control. Excludin
 
 ## 5. Unknowns and what would settle them
 
-* **Which URLs are in the 905 / 357 / 58 buckets.** I cannot see them. Export the three lists from GSC Page indexing (Export → CSV) and diff against `crawl-graph-20261026.json` orphan/in-sitemap sets. That is the decisive test of section 1.2.
+* **Which URLs are in the 905 / 357 / 58 buckets.** Individual URLs were not exported. Export the three lists from GSC Page indexing (Export → CSV) and compare them with `crawl-graph-20261026.json` orphan/in-sitemap sets. This would measure how the URL sets overlap, but alone would not prove why Google did not index the pages.
 * **Whether Googlebot is crawling at all.** Crawl Stats (Settings → Crawl stats): requests/day, by response and host, since Aug 1. Not accessible to me. If requests stopped around Oct 8-19, the cause is demand/quality-side, not link-graph-side.
 * **The 58 "alternate page with proper canonical".** Not investigated. Likely duplicates by trailing slash or query parameters, but UNKNOWN. Inspect 3 of them.
 * **GA page views are not Search impressions.** Do not use first-party/GA sessions to confirm or deny the GSC drop. Clicks (11 in 80 days) are also not revenue; no revenue inference is made here.
@@ -84,7 +84,7 @@ Run in this order. Record Coverage, Last crawl, Google-selected canonical, Refer
 
 Validated steps:
 1. GSC → Settings → Crawl stats: capture daily requests since 2026-08-01 (export). Compare to the dates in section 3.
-2. GSC → Page indexing: export the "Discovered" and "Crawled" lists. Diff against `docs/mission/gsc-recovery-20261026/crawl-graph-20261026.json` (`orphanSample` is capped at 25; rerun the command with a larger sample via code if needed).
+2. GSC → Page indexing: export the 905 and 357 Hebrew-labeled indexing groups without assuming their English classification. Compare with `docs/mission/gsc-recovery-20261026/crawl-graph-20261026.json` (`orphanSample` is capped at 25; rerun the command with a larger sample via code if needed).
 3. Inspect the table above. Update section 1.2 with the measured outcome.
 4. Re-run `npm run growth:crawl-graph -- gate` before every deploy until the freshness gate is addressed.
 
