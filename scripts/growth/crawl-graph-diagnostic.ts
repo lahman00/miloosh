@@ -1,10 +1,11 @@
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { getAllSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import {
   analyzeCrawlGraph,
+  analyzeFocusPaths,
   normalizeSitemapPath,
   projectIndexingGate,
   type CrawledPage,
@@ -16,6 +17,8 @@ import {
  *   gate   (offline) project the date-dependent sitemap quality gate forward.
  *   crawl  GET the site's own public routes (throttled) and measure how many
  *          URLs outside the sitemap have any crawlable inbound internal link.
+ *          --focus /a,/b or --focus-file list.txt (one path per line) also reports
+ *          per-URL inbound detail for those paths (a recovery cohort).
  *
  * Never requests indexing, submits a sitemap, writes to the site or touches a
  * non-public URL. Output goes to stdout; --out writes the same JSON to a file.
@@ -29,6 +32,13 @@ const HONEST_UA = "MiloooshDiagnostic/1.0 (read-only self-check)";
 function arg(name: string, fallback?: string): string | undefined {
   const index = process.argv.indexOf(`--${name}`);
   return index >= 0 ? process.argv[index + 1] : fallback;
+}
+
+function focusPathsFromArgs(): string[] {
+  const inline = arg("focus")?.split(",") ?? [];
+  const file = arg("focus-file");
+  const fromFile = file ? readFileSync(file, "utf8").split("\n") : [];
+  return [...inline, ...fromFile].map((p) => p.trim()).filter((p) => p.startsWith("/"));
 }
 
 function runGate() {
@@ -86,6 +96,8 @@ async function runCrawl() {
   );
 
   const report = analyzeCrawlGraph({ pages, sitemapPaths, siteUrl: base });
+  const focusPaths = focusPathsFromArgs();
+  const focus = focusPaths.length > 0 ? analyzeFocusPaths({ pages, sitemapPaths, siteUrl: base, focusPaths }) : undefined;
   return {
     mode: "crawl",
     base,
@@ -94,13 +106,14 @@ async function runCrawl() {
     pagesCrawled: pages.length,
     sitemapUrls: sitemapPaths.length,
     ...report,
+    ...(focus ? { focus } : {}),
   };
 }
 
 async function main() {
   const mode = process.argv[2];
   if (mode !== "gate" && mode !== "crawl") {
-    console.error("usage: crawl-graph-diagnostic <gate|crawl> [--base URL] [--ua googlebot] [--concurrency N<=6] [--limit N] [--out file.json]");
+    console.error("usage: crawl-graph-diagnostic <gate|crawl> [--base URL] [--ua googlebot] [--concurrency N<=6] [--limit N] [--focus /a,/b] [--focus-file list.txt] [--out file.json]");
     process.exit(2);
   }
   const result = mode === "gate" ? runGate() : await runCrawl();
