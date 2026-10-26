@@ -8,6 +8,7 @@ import { versionSocialCardUrl } from "@/lib/social/card-model";
 import type { Channel, ChannelVariant, ProviderPublishState, PublishResult, SocialQueueEntry } from "@/lib/social/types";
 import { reconcileBufferLinkedInPost } from "@/lib/social/channels/linkedin";
 import { linkedinPublishIssues, prepareLinkedInVariant } from "@/lib/social/linkedin-readiness";
+import { isAuthBlockedError, isAuthBlockedResult, isProviderAuthFailure, markAuthBlocked } from "@/lib/social/auth-failure";
 
 /**
  * Publish orchestrator — the TypeScript equivalent of Need Go Home's
@@ -133,16 +134,17 @@ export function hasChannelAttemptedToday(queue: SocialQueueEntry[], channel: Cha
 }
 
 function channelNeedsAttempt(variant: ChannelVariant): boolean {
-  if (variant.providerState) return variant.providerState.status === "PENDING" || (variant.providerState.status === "FAILED" && variant.providerState.attempts < 3);
+  if (variant.providerState) return variant.providerState.status === "PENDING" || (variant.providerState.status === "FAILED" && variant.providerState.attempts < 3) || (variant.providerState.status === "BLOCKED" && isAuthBlockedError(variant.providerState.error));
   return variant.publishResult === null || variant.publishResult.status === "FAILED" || variant.publishResult.status === "RATE_LIMITED";
 }
 
 export function providerStateFromResult(previous: ProviderPublishState | undefined, result: PublishResult, attemptedAt: string): ProviderPublishState {
   const unknownOutcome = result.status === "FAILED" && (result.error.includes("NETWORK_ERROR") || result.error.includes("unknown publication outcome"));
-  const status: ProviderPublishState["status"] = result.status === "PUBLISHED" ? "PUBLISHED" : result.status === "PENDING_CONFIRMATION" ? "PENDING_CONFIRMATION" : result.status === "MANUAL_ONLY" ? "MANUAL_READY" : result.status === "SETUP_REQUIRED" ? "BLOCKED" : result.status === "DRY_RUN" || result.status === "DUPLICATE_SKIPPED" ? "PENDING" : unknownOutcome ? "UNKNOWN_OUTCOME" : "FAILED";
+  const authBlocked = isAuthBlockedResult(result);
+  const status: ProviderPublishState["status"] = authBlocked ? "BLOCKED" : result.status === "PUBLISHED" ? "PUBLISHED" : result.status === "PENDING_CONFIRMATION" ? "PENDING_CONFIRMATION" : result.status === "MANUAL_ONLY" ? "MANUAL_READY" : result.status === "SETUP_REQUIRED" ? "BLOCKED" : result.status === "DRY_RUN" || result.status === "DUPLICATE_SKIPPED" ? "PENDING" : unknownOutcome ? "UNKNOWN_OUTCOME" : "FAILED";
   return {
     status,
-    attempts: (previous?.attempts ?? 0) + (result.status === "DRY_RUN" ? 0 : 1),
+    attempts: (previous?.attempts ?? 0) + (result.status === "DRY_RUN" || authBlocked ? 0 : 1),
     lastAttemptAt: result.status === "DRY_RUN" ? previous?.lastAttemptAt ?? null : attemptedAt,
     publishedAt: result.status === "PUBLISHED" ? attemptedAt : previous?.publishedAt ?? null,
     postId: result.postId,
@@ -249,10 +251,10 @@ export async function publishOneEntry(
     const variant = channel === "linkedin" ? prepareLinkedInVariant(entry) : entry.channels[channel];
     if (!variant) continue;
     const adapter = adapters[channel];
-    // Enforce the buyer-question-first cutover on REAL live publication.
-    // Fake adapters are used by orchestration unit tests, and dry-runs must
-    // remain able to exercise transport/UTM behavior without mutating state.
-    if (!dryRun && adapter === ADAPTERS[channel]) {
+    // Preview the same editorial gate used by live publication. Checking
+    // copy is pure; dry runs still never call a provider or mutate state.
+    // Injected adapters keep orchestration tests independent of copy QA.
+    if (adapter === ADAPTERS[channel]) {
       const buyerQuestionIssues = buyerQuestionFirstIssues(variant);
       if (buyerQuestionIssues.length) {
         attempts.push({ channel, result: buildBlockedPublishResult(channel, variant, buyerQuestionIssues) });
@@ -303,6 +305,7 @@ export async function publishOneEntry(
         contentHash: "",
       };
     }
+    if (isProviderAuthFailure(result)) result = markAuthBlocked(result);
     attempts.push({ channel, result });
   }
 
@@ -342,17 +345,28 @@ export async function runPublishCycle(options: { dryRun: boolean; now?: Date; st
   // due work, so Buffer remains transport rather than a second scheduler.
   if (!options.dryRun) await reconcilePendingBufferPosts(queue, now);
   const { onTime, stale } = classifyScheduledEntries(queue, now);
-  const due = onTime.slice(0, DAILY_ENTRY_CAP);
+  // Apply channel eligibility before the entry cap. Legacy completed
+  // entries can retain pending variants for disabled channels forever;
+  // counting those entries first starves real Facebook/LinkedIn work.
+  const eligibleNow = (entry: SocialQueueEntry, channel: Channel): boolean => {
+    const variant = entry.channels[channel];
+    if (!variant || !channelNeedsAttempt(variant) || !strategy.enabledChannels[channel]) return false;
+    if (variant.scheduledFor && new Date(variant.scheduledFor).getTime() > now.getTime()) return false;
+    if (strategy.excludedPillarsByChannel[channel]?.includes(entry.pillar)) return false;
+    if (channel === "linkedin" && (now.getUTCHours() !== 17 || hasChannelAttemptedToday(queue, channel, now, strategy.timezone))) return false;
+    return !hasChannelPublishedToday(queue, channel, now, strategy.timezone);
+  };
+  const due = onTime.filter((entry) => (Object.keys(entry.channels) as Channel[]).some((channel) => eligibleNow(entry, channel))).slice(0, DAILY_ENTRY_CAP);
   const linkedinOnlyEntryIds = new Set<string>();
   // LinkedIn-only continuity once the pre-scheduled runway is exhausted.
   // The selected APPROVED entry is explicitly marked LinkedIn-only for
   // this invocation; no other adapter is eligible and the shared entry's
   // schedule/state is not changed. 17:00 UTC matches the existing slots.
-  const hasDueLinkedIn = due.some((entry) => entry.channels.linkedin && channelNeedsAttempt(entry.channels.linkedin));
+  const hasDueLinkedIn = due.some((entry) => eligibleNow(entry, "linkedin"));
   if (now.getUTCHours() === 17 && !hasDueLinkedIn && !hasChannelAttemptedToday(queue, "linkedin", now, strategy.timezone)) {
     const approvedLinkedIn = queue.find((entry) => {
       const variant = prepareLinkedInVariant(entry);
-      return entry.state === "APPROVED_FOR_AUTO" && variant && channelNeedsAttempt(variant) && linkedinPublishIssues(entry, variant).length === 0;
+      return entry.state === "APPROVED_FOR_AUTO" && variant && eligibleNow(entry, "linkedin") && buyerQuestionFirstIssues(variant).length === 0 && linkedinPublishIssues(entry, variant).length === 0;
     });
     if (approvedLinkedIn) {
       due.push(approvedLinkedIn);
@@ -406,6 +420,8 @@ export async function runPublishCycle(options: { dryRun: boolean; now?: Date; st
   const channelHasPublishedToday = (channel: Channel) => publishedTodayByChannel.get(channel) ?? hasChannelPublishedToday(queue, channel, now, strategy.timezone);
   const channelHasAttemptedToday = (channel: Channel) => attemptedTodayByChannel.get(channel) ?? hasChannelAttemptedToday(queue, channel, now, strategy.timezone);
 
+  const authBlockedThisCycle = new Set<Channel>();
+
   for (const entry of due) {
     // Two independent, permanent-until-config-changes reasons a channel
     // gets withheld for this entry: (1) that channel already published
@@ -436,6 +452,9 @@ export async function runPublishCycle(options: { dryRun: boolean; now?: Date; st
       // per-entry logic, since a disabled channel is a blanket fact, not
       // conditional on this entry.
       if (!strategy.enabledChannels[channel]) return true;
+      // The provider already rejected the credential in this cycle; more
+      // calls would only repeat the rejection for every later entry.
+      if (authBlockedThisCycle.has(channel)) return true;
       if (linkedinOnlyEntryIds.has(entry.id) && channel !== "linkedin") return true;
       const channelScheduledFor = entry.channels[channel]?.scheduledFor;
       if (channelScheduledFor && new Date(channelScheduledFor).getTime() > now.getTime()) return true;
@@ -460,6 +479,7 @@ export async function runPublishCycle(options: { dryRun: boolean; now?: Date; st
         ...(result.linkedinPostId ? { linkedinPostId: result.linkedinPostId } : {}),
         ...(result.error ? { error: result.error } : {}),
       });
+      if (isAuthBlockedResult(result)) authBlockedThisCycle.add(channel);
       if (result.status === "PUBLISHED") publishedTodayByChannel.set(channel, true);
       if (channel === "linkedin" && !options.dryRun && result.status !== "DUPLICATE_SKIPPED") attemptedTodayByChannel.set(channel, true);
     }
@@ -505,6 +525,10 @@ export async function runPublishCycle(options: { dryRun: boolean; now?: Date; st
     const realPublish = attempts.some((a) => a.result.status === "PUBLISHED");
     const manualReady = attempts.some((a) => a.result.status === "MANUAL_ONLY");
     const pendingConfirmation = attempts.some((a) => a.result.status === "PENDING_CONFIRMATION");
+    // Every attempted channel was turned away for credentials only: the
+    // post itself did nothing wrong, so it stays SCHEDULED for the next
+    // cycle after the owner re-authorizes.
+    if (attempts.every((attempt) => isAuthBlockedResult(attempt.result))) continue;
     const nextState = realPublish ? "PUBLISHED" : manualReady ? "READY_FOR_MANUAL" : pendingConfirmation ? "SCHEDULED" : "FAILED";
     const note = nextState === "FAILED" ? "All channel attempts failed — see per-channel publishResult for detail." : nextState === "READY_FOR_MANUAL" ? "No channel published automatically — manual-only content is drafted and ready for a human to post (see per-channel publishResult)." : undefined;
     if (entry.state === "SCHEDULED" && nextState !== "SCHEDULED") await setQueueState(entry.id, nextState, note);
