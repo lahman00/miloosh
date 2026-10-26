@@ -6,7 +6,7 @@ import { ArrowRight, ArrowRightLeft, Bookmark, Check, Columns2, Pause, Play, Sea
 import { DiscoverySearch } from "@/components/DiscoverySearch";
 import { SoftwareMark } from "@/components/SoftwareMark";
 import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
-import { BUYER_DESK_KEY, DESK_CATEGORIES, addDeskPair, categorySaved, cleanContext, deskCategory, deskMotionAllowed, emptyDesk, hasDeskResearch, makeDeskBrief, parseDesk, toggleDeskProduct, validateDeskPair } from "@/lib/buyer-desk";
+import { BUYER_DESK_KEY, DESK_CATEGORIES, addDeskPair, categorySaved, cleanContext, deskCategory, deskMotionAllowed, emptyDesk, hasDeskResearch, makeDeskBrief, parseDesk, startingPoints, toggleDeskProduct, validateDeskPair } from "@/lib/buyer-desk";
 import type { DeskCategory, DeskIntent, DeskProduct, DeskState } from "@/lib/buyer-desk";
 import styles from "./BuyerDesk.module.css";
 
@@ -102,9 +102,9 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
   }
   const saved = categorySaved(state.saved, state.category);
   const picks = saved.flatMap(slug => products.filter(p => p.slug === slug));
-  const categoryProducts = products.filter(p => p.category === state.category);
   const formProducts = products.filter(p => p.category === formCategory);
   const context = state.contexts[state.category];
+  const { shown: categoryProducts, hidden: replacedProducts } = startingPoints(products, state.category, context);
   const rows: { label: string; values: string[] }[] = [
     { label: "Documented fit", values: picks.map(p => p.bestFor) },
     { label: "Key capabilities", values: picks.map(p => p.features.join(" · ")) },
@@ -148,12 +148,12 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
     <section className={`design-container ${styles.guide}`} hidden={!guided} aria-labelledby="desk-intent-title">
       <div className={styles.heading}><div><h2 id="desk-intent-title" tabIndex={-1} ref={guideHeading}>Find your starting point.</h2><p>Keep your priorities beside the research. No automatic winner.</p></div><button className={styles.iconButton} aria-label="Close guided choice" onClick={() => { setGuided(false); document.getElementById("desk-journey-title")?.parentElement?.querySelector("button")?.focus(); }}><X size={20}/></button></div>
       <div className={styles.tabs} role="group" aria-label="Your buying situation">{situations.map(s => <button key={s.id} aria-pressed={intent === s.id} onClick={() => { setIntent(s.id); setError(""); }}>{s.id === "new" ? "New tool" : s.id === "switch" ? "Replace a tool" : "Compare options"}</button>)}</div>
-      <form key={`${intent}-${formCategory}`} onSubmit={submit}>
+      <form key={intent} onSubmit={submit}>
         <div className={styles.formGrid}>
           <label>What are you working on?<select name="category" value={formCategory} onChange={e => setFormCategory(deskCategory(e.target.value))}>{DESK_CATEGORIES.map(c => <option value={c.id} key={c.id}>{c.name}</option>)}</select></label>
           {intent === "new" && <label>People who will use it<select name="team" defaultValue=""><option value="">Not sure yet</option>{["Just me", "2–5 people", "6–15 people", "16+ people"].map(v => <option key={v}>{v}</option>)}</select></label>}
           {intent === "switch" && <label>Which tool are you replacing?<input name="current" maxLength={180} placeholder="Your current tool" required/></label>}
-          {intent === "compare" && <><label>First option<select name="first" defaultValue={formProducts[0]?.slug}>{formProducts.map(p => <option value={p.slug} key={p.slug}>{p.name}</option>)}</select></label><label>Second option<select name="second" defaultValue={formProducts[1]?.slug}>{formProducts.map(p => <option value={p.slug} key={p.slug}>{p.name}</option>)}</select></label></>}
+          {intent === "compare" && <><label>First option<select key={formCategory} name="first" defaultValue={formProducts[0]?.slug}>{formProducts.map(p => <option value={p.slug} key={p.slug}>{p.name}</option>)}</select></label><label>Second option<select key={formCategory} name="second" defaultValue={formProducts[1]?.slug}>{formProducts.map(p => <option value={p.slug} key={p.slug}>{p.name}</option>)}</select></label></>}
           <label>Main concern<select name="concern" defaultValue=""><option value="">Not sure yet</option>{["Total cost", "Moving my existing work", "Team adoption", "A missing workflow or integration"].map(v => <option key={v}>{v}</option>)}</select></label>
         </div>
         <div className={styles.formBottom}><label>One thing your next tool must do (optional)<input name="note" maxLength={180} placeholder="e.g. Track client handoffs"/></label><button className={styles.primary} type="submit">{intent === "compare" ? "Compare my options" : "Explore my options"}<ArrowRight size={18}/></button></div>
@@ -165,7 +165,8 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
     <section className={`design-container ${styles.catalogue}`} ref={cards} id="desk-discover" aria-labelledby="desk-results-title">
       <div className={styles.heading}><div><h2 id="desk-results-title" tabIndex={-1}>Start with the work you want to do.</h2><p>A few useful starting points. The tradeoffs to understand before you choose.</p></div><ResearchLink href="/#browse" name="full-directory" className={styles.textButton}>Explore all software <ArrowRight size={17}/></ResearchLink></div>
       <div className={styles.tabs} role="group" aria-label="Starting-point categories">{DESK_CATEGORIES.map(c => <button key={c.id} aria-pressed={state.category === c.id} onClick={() => selectCategory(c.id)}>{c.name}</button>)}</div>
-      <div className={styles.context}><span>3 starting points · not a ranking</span><span>{context?.concern ? `Your priority: ${context.concern}` : "Save the tools you want to investigate."}</span></div>
+      <div className={styles.context}><span>{categoryProducts.length} starting point{categoryProducts.length === 1 ? "" : "s"} · not a ranking</span><span>{context?.concern ? `Your priority: ${context.concern}` : "Save the tools you want to investigate."}</span></div>
+      {replacedProducts.length > 0 && <p className={styles.note} role="status">Not shown: {replacedProducts.map(p => p.name).join(", ")}, the tool you said you are replacing.</p>}
       <div className={styles.products}>{categoryProducts.map(p => <article key={p.slug} className={styles.product}>
         <div className={styles.productTop}><SoftwareMark name={p.name} slug={p.slug}/><button className={styles.saveButton} aria-label={`${saved.includes(p.slug) ? "Remove" : "Save"} ${p.name}`} aria-pressed={saved.includes(p.slug)} onClick={() => toggle(p)}>{saved.includes(p.slug) ? <Check size={16}/> : <Bookmark size={16}/>} {saved.includes(p.slug) ? "Saved" : "Save"}</button></div>
         <h3>{p.name}</h3><p>{p.description}</p>
