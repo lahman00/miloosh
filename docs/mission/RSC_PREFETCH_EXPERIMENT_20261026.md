@@ -31,3 +31,26 @@ Tradeoff: on-click navigation may be slower because the destination was not prel
 ## Not changed
 
 No global robots Disallow rule for RSC queries; these requests can be needed for client-side navigation and Google rendering. No mass pages, no noindex/canonical/sitemap changes, no protected Miro or pricing page edits. Follow Google's crawlable-links guidance: https://developers.google.com/search/docs/crawling-indexing/links-crawlable .
+
+## Verified preview and production comparison — 2026-10-26
+
+Vercel production-mode preview deployment dpl_EuEgqehAFZnpx36F5ox292N6pFAu was READY for code commit 0d0817e (later documentary receipts do not alter the code behavior).
+
+Headless Chrome at 1440x900, reduced motion, three identical viewport scrolls, no clicks before sampling, with non-GET and third-party analytics requests blocked:
+
+| Metric | live /compare | preview /compare |
+| --- | ---: | ---: |
+| HTTP status | 200 | 200 |
+| Total GET requests | 89 | 30 |
+| Speculative RSC requests | 69 | 11 |
+| Requests for comparison destinations | 56 | 0 |
+| Crawlable comparison anchors | 72 | 72 |
+| JavaScript page exceptions | 0 | 0 |
+
+This session saw 58 fewer automatic RSC requests (about 84% less). Browser-load variance means it is not a universal traffic percentage or an actual Googlebot projection. Normal anchor click navigated to /compare/wix-vs-shopify in both live and preview; H1 was Wix vs Shopify, and canonical matched the destination.
+
+Additional critical countercheck: a spoofed Googlebot user-agent on four current-production routes triggered zero RSC prefetch requests. Historical Google Crawl Stats examples remain valid but current Googlebot behavior is **not verified**. Do not infer indexing or ranking gains from this no-click browser experiment.
+
+Clean local npm ci (no shared node_modules symlink) followed by complete validation: **2,710/2,710 Vitest tests across 264 files PASS**, ESLint PASS, TypeScript PASS, data validation PASS (355 products/1,348 comparisons), npm audit 0 vulnerabilities. One earlier run using a symlink to a different checkout's node_modules had a lint-configuration provenance test failure; this was environmental. Installing dependencies in this checkout without a symlink resolved it with zero code changes. Vercel production preview build passed.
+
+No production release is implied. A complete clean release-gate receipt and official Guardian sign-off remain necessary. The change lives in a shared component directory, so **if Guardian reports a protected-template block the experiment stays draft**.
