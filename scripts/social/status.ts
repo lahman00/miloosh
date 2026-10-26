@@ -2,6 +2,8 @@ import "./_load-env";
 import { readQueue, countByQueueState } from "@/lib/social/queue";
 import { getAllChannelHealth } from "@/lib/social/channels/registry";
 import { getSocialStrategy } from "@/lib/social/strategy";
+import { getLinkedInTransport, verifyBufferLinkedInChannel } from "@/lib/social/channels/linkedin";
+import { isAuthBlockedError, isProviderAuthFailure } from "@/lib/social/auth-failure";
 
 /** Usage: npx tsx --env-file=.env.local scripts/social/status.ts */
 async function main() {
@@ -40,8 +42,22 @@ async function main() {
         }
       }
     }
+    if (channel === "linkedin" && h.status === "READY" && getLinkedInTransport() === "buffer") {
+      try {
+        const buffer = await verifyBufferLinkedInChannel();
+        console.log(`  linkedin: CONNECTED — Buffer channel ${buffer.id} (${buffer.service}/${buffer.type}) authenticated by a read-only channel query${buffer.isDisconnected || buffer.isLocked ? `, but disconnected=${buffer.isDisconnected} locked=${buffer.isLocked}` : ""}.`);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "unknown error";
+        const authFailure = isProviderAuthFailure({ status: "FAILED", error: message });
+        console.log(`  linkedin: ${authFailure ? "NEEDS_OWNER_AUTH" : "ERROR"} — Config is present but the read-only Buffer probe failed (${message}).`);
+      }
+      continue;
+    }
     console.log(`  ${channel}: ${h.status} — ${h.detail}`);
   }
+
+  const authBlocked = queue.flatMap((entry) => Object.entries(entry.channels).filter(([, variant]) => variant?.providerState?.status === "BLOCKED" && isAuthBlockedError(variant.providerState.error)).map(([channel]) => `${entry.id}/${channel}`));
+  if (authBlocked.length) console.log(`\nHeld for provider re-authorization (no attempt consumed, still retryable): ${authBlocked.length}`);
 
   const nextScheduled = queue
     .filter((e) => e.state === "SCHEDULED")
