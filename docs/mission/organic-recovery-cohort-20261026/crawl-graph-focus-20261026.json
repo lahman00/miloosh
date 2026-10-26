@@ -1,0 +1,470 @@
+{
+  "mode": "crawl",
+  "base": "https://miloosh.com",
+  "userAgent": "diagnostic",
+  "crawledAt": "2026-10-26T14:51:53.063Z",
+  "pagesCrawled": 1784,
+  "sitemapUrls": 693,
+  "families": {
+    "comparison": {
+      "pages": 1348,
+      "inSitemap": 347,
+      "notInSitemap": 1001,
+      "nonOk": 0,
+      "noindex": 0,
+      "notInSitemapZeroInbound": 325,
+      "notInSitemapOneOrFewerInbound": 459,
+      "notInSitemapOnlyFromSameFamily": 406,
+      "medianInboundSitemap": 6,
+      "medianInboundNotInSitemap": 2
+    },
+    "software": {
+      "pages": 355,
+      "inSitemap": 265,
+      "notInSitemap": 90,
+      "nonOk": 0,
+      "noindex": 0,
+      "notInSitemapZeroInbound": 0,
+      "notInSitemapOneOrFewerInbound": 0,
+      "notInSitemapOnlyFromSameFamily": 0,
+      "medianInboundSitemap": 17,
+      "medianInboundNotInSitemap": 26.5
+    },
+    "category": {
+      "pages": 27,
+      "inSitemap": 27,
+      "notInSitemap": 0,
+      "nonOk": 0,
+      "noindex": 0,
+      "notInSitemapZeroInbound": 0,
+      "notInSitemapOneOrFewerInbound": 0,
+      "notInSitemapOnlyFromSameFamily": 0,
+      "medianInboundSitemap": 15,
+      "medianInboundNotInSitemap": null
+    },
+    "other": {
+      "pages": 54,
+      "inSitemap": 54,
+      "notInSitemap": 0,
+      "nonOk": 0,
+      "noindex": 0,
+      "notInSitemapZeroInbound": 0,
+      "notInSitemapOneOrFewerInbound": 0,
+      "notInSitemapOnlyFromSameFamily": 0,
+      "medianInboundSitemap": 7.5,
+      "medianInboundNotInSitemap": null
+    }
+  },
+  "orphanSample": [
+    "/compare/1password-vs-wiz",
+    "/compare/acuity-scheduling-vs-motion",
+    "/compare/acuity-scheduling-vs-reclaim-ai",
+    "/compare/adobe-analytics-vs-hotjar",
+    "/compare/adobe-commerce-vs-prestashop",
+    "/compare/affinity-vs-balsamiq",
+    "/compare/affinity-vs-framer",
+    "/compare/affinity-vs-whimsical",
+    "/compare/affinity-vs-zeplin",
+    "/compare/ahrefs-vs-activecampaign",
+    "/compare/ahrefs-vs-buffer",
+    "/compare/ahrefs-vs-hootsuite",
+    "/compare/ahrefs-vs-klaviyo",
+    "/compare/ahrefs-vs-sprout-social",
+    "/compare/airtable-vs-clockify",
+    "/compare/algolia-vs-twilio",
+    "/compare/archbee-vs-zeroheight",
+    "/compare/asana-vs-shortcut",
+    "/compare/asana-vs-wrike",
+    "/compare/asana-vs-zoho-projects",
+    "/compare/balsamiq-vs-framer",
+    "/compare/balsamiq-vs-zeplin",
+    "/compare/basecamp-vs-shortcut",
+    "/compare/basecamp-vs-wrike",
+    "/compare/basecamp-vs-zoho-projects"
+  ],
+  "nonOkPaths": [],
+  "focus": [
+    {
+      "path": "/compare/1password-vs-wiz",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 0,
+      "inboundByFamily": {
+        "comparison": 0,
+        "software": 0,
+        "category": 0,
+        "other": 0
+      },
+      "inboundSample": []
+    },
+    {
+      "path": "/compare/airtable-vs-notion",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 25,
+      "inboundByFamily": {
+        "comparison": 23,
+        "software": 1,
+        "category": 0,
+        "other": 1
+      },
+      "inboundSample": [
+        "/best-no-code-database-for-operations",
+        "/compare/airtable-vs-clockify",
+        "/compare/airtable-vs-microsoft-onenote",
+        "/compare/airtable-vs-pipedrive",
+        "/compare/airtable-vs-smartsheet",
+        "/compare/airtable-vs-superhuman",
+        "/compare/airtable-vs-ticktick",
+        "/compare/notion-vs-clickup",
+        "/compare/notion-vs-clockify",
+        "/compare/notion-vs-coda",
+        "/compare/notion-vs-confluence",
+        "/compare/notion-vs-craft"
+      ]
+    },
+    {
+      "path": "/compare/microsoft-teams-vs-mattermost",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 16,
+      "inboundByFamily": {
+        "comparison": 16,
+        "software": 0,
+        "category": 0,
+        "other": 0
+      },
+      "inboundSample": [
+        "/compare/mattermost-vs-google-chat",
+        "/compare/mattermost-vs-google-meet",
+        "/compare/mattermost-vs-ringcentral",
+        "/compare/mattermost-vs-rocket-chat",
+        "/compare/mattermost-vs-signal",
+        "/compare/mattermost-vs-telegram",
+        "/compare/mattermost-vs-zoom",
+        "/compare/microsoft-teams-vs-discord",
+        "/compare/microsoft-teams-vs-google-chat",
+        "/compare/microsoft-teams-vs-google-meet",
+        "/compare/microsoft-teams-vs-otter-ai",
+        "/compare/microsoft-teams-vs-ringcentral"
+      ]
+    },
+    {
+      "path": "/compare/semrush-vs-ahrefs",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 15,
+      "inboundByFamily": {
+        "comparison": 14,
+        "software": 1,
+        "category": 0,
+        "other": 0
+      },
+      "inboundSample": [
+        "/compare/ahrefs-vs-activecampaign",
+        "/compare/ahrefs-vs-buffer",
+        "/compare/ahrefs-vs-google-analytics",
+        "/compare/ahrefs-vs-hootsuite",
+        "/compare/ahrefs-vs-klaviyo",
+        "/compare/ahrefs-vs-mailchimp",
+        "/compare/ahrefs-vs-moz",
+        "/compare/ahrefs-vs-sprout-social",
+        "/compare/semrush-vs-activecampaign",
+        "/compare/semrush-vs-google-analytics",
+        "/compare/semrush-vs-hootsuite",
+        "/compare/semrush-vs-klaviyo"
+      ]
+    },
+    {
+      "path": "/compare/slack-vs-mattermost",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 17,
+      "inboundByFamily": {
+        "comparison": 15,
+        "software": 0,
+        "category": 1,
+        "other": 1
+      },
+      "inboundSample": [
+        "/category/communication",
+        "/compare",
+        "/compare/mattermost-vs-google-chat",
+        "/compare/mattermost-vs-google-meet",
+        "/compare/mattermost-vs-ringcentral",
+        "/compare/mattermost-vs-rocket-chat",
+        "/compare/mattermost-vs-signal",
+        "/compare/mattermost-vs-telegram",
+        "/compare/mattermost-vs-zoom",
+        "/compare/slack-vs-discord",
+        "/compare/slack-vs-google-chat",
+        "/compare/slack-vs-google-meet"
+      ]
+    },
+    {
+      "path": "/compare/umbraco-vs-wordpress",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 2,
+      "inboundByFamily": {
+        "comparison": 2,
+        "software": 0,
+        "category": 0,
+        "other": 0
+      },
+      "inboundSample": [
+        "/compare/umbraco-vs-webflow",
+        "/compare/umbraco-vs-wix"
+      ]
+    },
+    {
+      "path": "/software/airtable",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 72,
+      "inboundByFamily": {
+        "comparison": 61,
+        "software": 7,
+        "category": 1,
+        "other": 3
+      },
+      "inboundSample": [
+        "/",
+        "/best-no-code-database-for-operations",
+        "/category/productivity",
+        "/compare/airtable-vs-clockify",
+        "/compare/airtable-vs-microsoft-onenote",
+        "/compare/airtable-vs-notion",
+        "/compare/airtable-vs-pipedrive",
+        "/compare/airtable-vs-smartsheet",
+        "/compare/airtable-vs-superhuman",
+        "/compare/airtable-vs-ticktick",
+        "/compare/clickup-vs-airtable",
+        "/compare/coda-vs-airtable"
+      ]
+    },
+    {
+      "path": "/software/auth0",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": false,
+      "inboundTotal": 84,
+      "inboundByFamily": {
+        "comparison": 65,
+        "software": 18,
+        "category": 1,
+        "other": 0
+      },
+      "inboundSample": [
+        "/category/security",
+        "/compare/1password-vs-auth0",
+        "/compare/1password-vs-bitwarden",
+        "/compare/1password-vs-cloudflare",
+        "/compare/1password-vs-crowdstrike",
+        "/compare/1password-vs-dashlane",
+        "/compare/1password-vs-duo-security",
+        "/compare/1password-vs-keeper",
+        "/compare/1password-vs-keeper-security",
+        "/compare/1password-vs-lastpass",
+        "/compare/1password-vs-nordpass",
+        "/compare/1password-vs-okta"
+      ]
+    },
+    {
+      "path": "/software/clickup",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 78,
+      "inboundByFamily": {
+        "comparison": 52,
+        "software": 20,
+        "category": 1,
+        "other": 5
+      },
+      "inboundSample": [
+        "/",
+        "/best-project-management-for-agencies",
+        "/best-project-management-for-software-teams",
+        "/best-project-management-software-for-small-teams",
+        "/category/project-management",
+        "/compare/basecamp-vs-shortcut",
+        "/compare/basecamp-vs-smartsheet",
+        "/compare/basecamp-vs-teamwork",
+        "/compare/basecamp-vs-wrike",
+        "/compare/basecamp-vs-zoho-projects",
+        "/compare/clickup-vs-airtable",
+        "/compare/clickup-vs-asana"
+      ]
+    },
+    {
+      "path": "/software/freshdesk",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 78,
+      "inboundByFamily": {
+        "comparison": 57,
+        "software": 15,
+        "category": 1,
+        "other": 5
+      },
+      "inboundSample": [
+        "/",
+        "/best-customer-service-software-for-startups",
+        "/best-help-desk-for-ecommerce",
+        "/best-help-desk-for-small-business",
+        "/category/customer-support",
+        "/compare/crisp-vs-freshdesk",
+        "/compare/crisp-vs-front",
+        "/compare/crisp-vs-gorgias",
+        "/compare/crisp-vs-happyfox",
+        "/compare/crisp-vs-help-scout",
+        "/compare/crisp-vs-intercom",
+        "/compare/crisp-vs-kayako"
+      ]
+    },
+    {
+      "path": "/software/intercom",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 49,
+      "inboundByFamily": {
+        "comparison": 37,
+        "software": 7,
+        "category": 1,
+        "other": 4
+      },
+      "inboundSample": [
+        "/",
+        "/best-customer-service-software-for-startups",
+        "/best-help-desk-for-small-business",
+        "/category/customer-support",
+        "/compare/crisp-vs-freshdesk",
+        "/compare/crisp-vs-front",
+        "/compare/crisp-vs-gorgias",
+        "/compare/crisp-vs-happyfox",
+        "/compare/crisp-vs-help-scout",
+        "/compare/crisp-vs-intercom",
+        "/compare/crisp-vs-kayako",
+        "/compare/crisp-vs-liveagent"
+      ]
+    },
+    {
+      "path": "/software/jenkins",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 12,
+      "inboundByFamily": {
+        "comparison": 9,
+        "software": 1,
+        "category": 1,
+        "other": 1
+      },
+      "inboundSample": [
+        "/",
+        "/category/developer-tools",
+        "/compare/bitbucket-vs-jenkins",
+        "/compare/circleci-vs-jenkins",
+        "/compare/datadog-vs-jenkins",
+        "/compare/firebase-vs-jenkins",
+        "/compare/github-vs-jenkins",
+        "/compare/gitlab-vs-jenkins",
+        "/compare/jenkins-vs-render",
+        "/compare/jenkins-vs-sentry",
+        "/compare/jenkins-vs-vercel",
+        "/software/circleci"
+      ]
+    },
+    {
+      "path": "/software/mattermost",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 47,
+      "inboundByFamily": {
+        "comparison": 34,
+        "software": 10,
+        "category": 1,
+        "other": 2
+      },
+      "inboundSample": [
+        "/",
+        "/category/communication",
+        "/compare/discord-vs-mattermost",
+        "/compare/discord-vs-zoom",
+        "/compare/google-meet-vs-ringcentral",
+        "/compare/google-meet-vs-rocket-chat",
+        "/compare/google-meet-vs-signal",
+        "/compare/google-meet-vs-webex",
+        "/compare/krispcall-vs-zoom",
+        "/compare/mattermost-vs-google-chat",
+        "/compare/mattermost-vs-google-meet",
+        "/compare/mattermost-vs-ringcentral"
+      ]
+    },
+    {
+      "path": "/software/semrush",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 16,
+      "inboundByFamily": {
+        "comparison": 10,
+        "software": 3,
+        "category": 1,
+        "other": 2
+      },
+      "inboundSample": [
+        "/",
+        "/category/marketing",
+        "/compare/brevo-vs-semrush",
+        "/compare/getresponse-vs-semrush",
+        "/compare/marketo-engage-vs-semrush",
+        "/compare/semrush-vs-activecampaign",
+        "/compare/semrush-vs-ahrefs",
+        "/compare/semrush-vs-google-analytics",
+        "/compare/semrush-vs-hootsuite",
+        "/compare/semrush-vs-klaviyo",
+        "/compare/semrush-vs-moz",
+        "/compare/semrush-vs-sprout-social"
+      ]
+    },
+    {
+      "path": "/software/tidio",
+      "crawled": true,
+      "status": 200,
+      "inSitemap": true,
+      "inboundTotal": 20,
+      "inboundByFamily": {
+        "comparison": 15,
+        "software": 2,
+        "category": 1,
+        "other": 2
+      },
+      "inboundSample": [
+        "/",
+        "/category/customer-support",
+        "/compare/crisp-vs-tidio",
+        "/compare/freshdesk-vs-tidio",
+        "/compare/front-vs-tidio",
+        "/compare/gorgias-vs-tidio",
+        "/compare/happyfox-vs-tidio",
+        "/compare/help-scout-vs-tidio",
+        "/compare/intercom-vs-tidio",
+        "/compare/kayako-vs-tidio",
+        "/compare/liveagent-vs-reamaze",
+        "/compare/liveagent-vs-tidio"
+      ]
+    }
+  ]
+}

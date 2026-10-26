@@ -1,0 +1,1219 @@
+{
+  "checkoutSha": "6d74bec710259c8c54bd2d6a901391f3fd27d8b3",
+  "today": "2026-10-26",
+  "queryRows": 1000,
+  "result": [
+    {
+      "path": "/software/semrush",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "PROTECTED",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/semrush",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "legacy-cohort",
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "semrush",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-11-03",
+          "pricingGateFailsOn": "2026-11-21",
+          "sources": {
+            "sourceCount": 3,
+            "foreignHosts": [
+              "sproutsocial.com"
+            ],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Semrush",
+            "queries": 29,
+            "impressions": 1900,
+            "clicks": 0,
+            "position": 77.3
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/semrush",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 16,
+        "inboundByFamily": {
+          "comparison": 10,
+          "software": 3,
+          "category": 1,
+          "other": 2
+        },
+        "inboundSample": [
+          "/",
+          "/category/marketing",
+          "/compare/brevo-vs-semrush",
+          "/compare/getresponse-vs-semrush",
+          "/compare/marketo-engage-vs-semrush",
+          "/compare/semrush-vs-activecampaign",
+          "/compare/semrush-vs-ahrefs",
+          "/compare/semrush-vs-google-analytics",
+          "/compare/semrush-vs-hootsuite",
+          "/compare/semrush-vs-klaviyo",
+          "/compare/semrush-vs-moz",
+          "/compare/semrush-vs-sprout-social"
+        ]
+      }
+    },
+    {
+      "path": "/software/intercom",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "PROTECTED",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/intercom",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "legacy-cohort"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "intercom",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-10-31",
+          "pricingGateFailsOn": "2026-11-22",
+          "sources": {
+            "sourceCount": 3,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Intercom",
+            "queries": 44,
+            "impressions": 1690,
+            "clicks": 1,
+            "position": 86.1
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/intercom",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 49,
+        "inboundByFamily": {
+          "comparison": 37,
+          "software": 7,
+          "category": 1,
+          "other": 4
+        },
+        "inboundSample": [
+          "/",
+          "/best-customer-service-software-for-startups",
+          "/best-help-desk-for-small-business",
+          "/category/customer-support",
+          "/compare/crisp-vs-freshdesk",
+          "/compare/crisp-vs-front",
+          "/compare/crisp-vs-gorgias",
+          "/compare/crisp-vs-happyfox",
+          "/compare/crisp-vs-help-scout",
+          "/compare/crisp-vs-intercom",
+          "/compare/crisp-vs-kayako",
+          "/compare/crisp-vs-liveagent"
+        ]
+      }
+    },
+    {
+      "path": "/software/freshdesk",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "PROTECTED",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/freshdesk",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "legacy-cohort",
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "freshdesk",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2027-01-06",
+          "pricingGateFailsOn": "2027-01-06",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Freshdesk",
+            "queries": 18,
+            "impressions": 768,
+            "clicks": 0,
+            "position": 82.4
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/freshdesk",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 78,
+        "inboundByFamily": {
+          "comparison": 57,
+          "software": 15,
+          "category": 1,
+          "other": 5
+        },
+        "inboundSample": [
+          "/",
+          "/best-customer-service-software-for-startups",
+          "/best-help-desk-for-ecommerce",
+          "/best-help-desk-for-small-business",
+          "/category/customer-support",
+          "/compare/crisp-vs-freshdesk",
+          "/compare/crisp-vs-front",
+          "/compare/crisp-vs-gorgias",
+          "/compare/crisp-vs-happyfox",
+          "/compare/crisp-vs-help-scout",
+          "/compare/crisp-vs-intercom",
+          "/compare/crisp-vs-kayako"
+        ]
+      }
+    },
+    {
+      "path": "/software/mattermost",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "OBSERVATION_WINDOW",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/mattermost",
+          "verdict": "OBSERVATION_WINDOW",
+          "eligibleAfter": "2026-11-05",
+          "sources": [
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "mattermost",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2027-01-07",
+          "pricingGateFailsOn": "2027-01-07",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Mattermost",
+            "queries": 5,
+            "impressions": 70,
+            "clicks": 1,
+            "position": 61.4
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/mattermost",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 47,
+        "inboundByFamily": {
+          "comparison": 34,
+          "software": 10,
+          "category": 1,
+          "other": 2
+        },
+        "inboundSample": [
+          "/",
+          "/category/communication",
+          "/compare/discord-vs-mattermost",
+          "/compare/discord-vs-zoom",
+          "/compare/google-meet-vs-ringcentral",
+          "/compare/google-meet-vs-rocket-chat",
+          "/compare/google-meet-vs-signal",
+          "/compare/google-meet-vs-webex",
+          "/compare/krispcall-vs-zoom",
+          "/compare/mattermost-vs-google-chat",
+          "/compare/mattermost-vs-google-meet",
+          "/compare/mattermost-vs-ringcentral"
+        ]
+      }
+    },
+    {
+      "path": "/software/airtable",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "PROTECTED",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/compare/airtable-vs-notion",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-airtable",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/todoist-vs-airtable",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/software/airtable",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "first-revenue-cohort"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "airtable",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-10-30",
+          "pricingGateFailsOn": "2026-11-22",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Airtable",
+            "queries": 13,
+            "impressions": 183,
+            "clicks": 1,
+            "position": 79.3
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/airtable",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 72,
+        "inboundByFamily": {
+          "comparison": 61,
+          "software": 7,
+          "category": 1,
+          "other": 3
+        },
+        "inboundSample": [
+          "/",
+          "/best-no-code-database-for-operations",
+          "/category/productivity",
+          "/compare/airtable-vs-clockify",
+          "/compare/airtable-vs-microsoft-onenote",
+          "/compare/airtable-vs-notion",
+          "/compare/airtable-vs-pipedrive",
+          "/compare/airtable-vs-smartsheet",
+          "/compare/airtable-vs-superhuman",
+          "/compare/airtable-vs-ticktick",
+          "/compare/clickup-vs-airtable",
+          "/compare/coda-vs-airtable"
+        ]
+      }
+    },
+    {
+      "path": "/software/clickup",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/compare/clickup-vs-airtable",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-asana",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-coda",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-confluence",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-jira",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-linear",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-monday",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-shortcut",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-smartsheet",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-todoist",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-trello",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-wrike",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/clickup-vs-zoho-projects",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/compare/notion-vs-clickup",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "clickup",
+          "priceLabelHold": false,
+          "contentGateFailsOn": "2026-11-19",
+          "pricingGateFailsOn": "2026-11-19",
+          "sources": {
+            "sourceCount": 2,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "ClickUp",
+            "queries": 16,
+            "impressions": 382,
+            "clicks": 0,
+            "position": 85.6
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/clickup",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 78,
+        "inboundByFamily": {
+          "comparison": 52,
+          "software": 20,
+          "category": 1,
+          "other": 5
+        },
+        "inboundSample": [
+          "/",
+          "/best-project-management-for-agencies",
+          "/best-project-management-for-software-teams",
+          "/best-project-management-software-for-small-teams",
+          "/category/project-management",
+          "/compare/basecamp-vs-shortcut",
+          "/compare/basecamp-vs-smartsheet",
+          "/compare/basecamp-vs-teamwork",
+          "/compare/basecamp-vs-wrike",
+          "/compare/basecamp-vs-zoho-projects",
+          "/compare/clickup-vs-airtable",
+          "/compare/clickup-vs-asana"
+        ]
+      }
+    },
+    {
+      "path": "/software/jenkins",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "OBSERVATION_WINDOW",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/jenkins",
+          "verdict": "OBSERVATION_WINDOW",
+          "eligibleAfter": "2026-11-05",
+          "sources": [
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "jenkins",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2027-01-07",
+          "pricingGateFailsOn": "2027-01-07",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Jenkins",
+            "queries": 7,
+            "impressions": 50,
+            "clicks": 1,
+            "position": 72.9
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/jenkins",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 12,
+        "inboundByFamily": {
+          "comparison": 9,
+          "software": 1,
+          "category": 1,
+          "other": 1
+        },
+        "inboundSample": [
+          "/",
+          "/category/developer-tools",
+          "/compare/bitbucket-vs-jenkins",
+          "/compare/circleci-vs-jenkins",
+          "/compare/datadog-vs-jenkins",
+          "/compare/firebase-vs-jenkins",
+          "/compare/github-vs-jenkins",
+          "/compare/gitlab-vs-jenkins",
+          "/compare/jenkins-vs-render",
+          "/compare/jenkins-vs-sentry",
+          "/compare/jenkins-vs-vercel",
+          "/software/circleci"
+        ]
+      }
+    },
+    {
+      "path": "/compare/umbraco-vs-wordpress",
+      "published": true,
+      "kind": "compare",
+      "inSitemap": false,
+      "qualityGate": {
+        "ready": false,
+        "reasons": [
+          "pricing-evidence",
+          "pricing-freshness",
+          "documented-constraints"
+        ]
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/umbraco",
+          "verdict": "OBSERVATION_WINDOW",
+          "eligibleAfter": "2026-11-04",
+          "sources": [
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "umbraco",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-11-03",
+          "pricingGateFailsOn": "2026-11-24",
+          "sources": {
+            "sourceCount": 3,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Umbraco",
+            "queries": 10,
+            "impressions": 248,
+            "clicks": 0,
+            "position": 61.8
+          }
+        },
+        {
+          "slug": "wordpress",
+          "priceLabelHold": false,
+          "contentGateFailsOn": "2026-10-31",
+          "pricingGateFailsOn": null,
+          "sources": {
+            "sourceCount": 2,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": false,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "WordPress",
+            "queries": 6,
+            "impressions": 203,
+            "clicks": 0,
+            "position": 64.9
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/compare/umbraco-vs-wordpress",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": false,
+        "inboundTotal": 2,
+        "inboundByFamily": {
+          "comparison": 2,
+          "software": 0,
+          "category": 0,
+          "other": 0
+        },
+        "inboundSample": [
+          "/compare/umbraco-vs-webflow",
+          "/compare/umbraco-vs-wix"
+        ]
+      }
+    },
+    {
+      "path": "/software/tidio",
+      "published": true,
+      "kind": "software",
+      "inSitemap": true,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": false,
+      "blockedBy": [],
+      "products": [
+        {
+          "slug": "tidio",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-11-03",
+          "pricingGateFailsOn": "2026-11-22",
+          "sources": {
+            "sourceCount": 2,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Tidio",
+            "queries": 6,
+            "impressions": 257,
+            "clicks": 0,
+            "position": 87
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/tidio",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": true,
+        "inboundTotal": 20,
+        "inboundByFamily": {
+          "comparison": 15,
+          "software": 2,
+          "category": 1,
+          "other": 2
+        },
+        "inboundSample": [
+          "/",
+          "/category/customer-support",
+          "/compare/crisp-vs-tidio",
+          "/compare/freshdesk-vs-tidio",
+          "/compare/front-vs-tidio",
+          "/compare/gorgias-vs-tidio",
+          "/compare/happyfox-vs-tidio",
+          "/compare/help-scout-vs-tidio",
+          "/compare/intercom-vs-tidio",
+          "/compare/kayako-vs-tidio",
+          "/compare/liveagent-vs-reamaze",
+          "/compare/liveagent-vs-tidio"
+        ]
+      }
+    },
+    {
+      "path": "/software/auth0",
+      "published": true,
+      "kind": "software",
+      "inSitemap": false,
+      "qualityGate": {
+        "ready": false,
+        "reasons": [
+          "pricing-evidence",
+          "pricing-freshness",
+          "documented-constraints",
+          "source-coverage"
+        ]
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": true,
+      "blockedBy": [],
+      "products": [
+        {
+          "slug": "auth0",
+          "priceLabelHold": false,
+          "contentGateFailsOn": "2026-10-31",
+          "pricingGateFailsOn": null,
+          "sources": {
+            "sourceCount": 1,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": false,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Auth0",
+            "queries": 4,
+            "impressions": 44,
+            "clicks": 0,
+            "position": 70.4
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/software/auth0",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": false,
+        "inboundTotal": 84,
+        "inboundByFamily": {
+          "comparison": 65,
+          "software": 18,
+          "category": 1,
+          "other": 0
+        },
+        "inboundSample": [
+          "/category/security",
+          "/compare/1password-vs-auth0",
+          "/compare/1password-vs-bitwarden",
+          "/compare/1password-vs-cloudflare",
+          "/compare/1password-vs-crowdstrike",
+          "/compare/1password-vs-dashlane",
+          "/compare/1password-vs-duo-security",
+          "/compare/1password-vs-keeper",
+          "/compare/1password-vs-keeper-security",
+          "/compare/1password-vs-lastpass",
+          "/compare/1password-vs-nordpass",
+          "/compare/1password-vs-okta"
+        ]
+      }
+    },
+    {
+      "path": "/compare/slack-vs-mattermost",
+      "published": true,
+      "kind": "compare",
+      "inSitemap": false,
+      "qualityGate": {
+        "ready": false,
+        "reasons": [
+          "pricing-evidence",
+          "pricing-freshness",
+          "documented-constraints"
+        ]
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/mattermost",
+          "verdict": "OBSERVATION_WINDOW",
+          "eligibleAfter": "2026-11-05",
+          "sources": [
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "slack",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-10-30",
+          "pricingGateFailsOn": null,
+          "sources": {
+            "sourceCount": 3,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": false,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Slack",
+            "queries": 1,
+            "impressions": 7,
+            "clicks": 0,
+            "position": 57.3
+          }
+        },
+        {
+          "slug": "mattermost",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2027-01-07",
+          "pricingGateFailsOn": "2027-01-07",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Mattermost",
+            "queries": 5,
+            "impressions": 70,
+            "clicks": 1,
+            "position": 61.4
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/compare/slack-vs-mattermost",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": false,
+        "inboundTotal": 17,
+        "inboundByFamily": {
+          "comparison": 15,
+          "software": 0,
+          "category": 1,
+          "other": 1
+        },
+        "inboundSample": [
+          "/category/communication",
+          "/compare",
+          "/compare/mattermost-vs-google-chat",
+          "/compare/mattermost-vs-google-meet",
+          "/compare/mattermost-vs-ringcentral",
+          "/compare/mattermost-vs-rocket-chat",
+          "/compare/mattermost-vs-signal",
+          "/compare/mattermost-vs-telegram",
+          "/compare/mattermost-vs-zoom",
+          "/compare/slack-vs-discord",
+          "/compare/slack-vs-google-chat",
+          "/compare/slack-vs-google-meet"
+        ]
+      }
+    },
+    {
+      "path": "/compare/microsoft-teams-vs-mattermost",
+      "published": true,
+      "kind": "compare",
+      "inSitemap": false,
+      "qualityGate": {
+        "ready": false,
+        "reasons": [
+          "pricing-evidence",
+          "pricing-freshness",
+          "documented-constraints"
+        ]
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/mattermost",
+          "verdict": "OBSERVATION_WINDOW",
+          "eligibleAfter": "2026-11-05",
+          "sources": [
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "microsoft-teams",
+          "priceLabelHold": false,
+          "contentGateFailsOn": "2026-10-30",
+          "pricingGateFailsOn": null,
+          "sources": {
+            "sourceCount": 2,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": false,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Microsoft Teams",
+            "queries": 1,
+            "impressions": 6,
+            "clicks": 0,
+            "position": 54.8
+          }
+        },
+        {
+          "slug": "mattermost",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2027-01-07",
+          "pricingGateFailsOn": "2027-01-07",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Mattermost",
+            "queries": 5,
+            "impressions": 70,
+            "clicks": 1,
+            "position": 61.4
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/compare/microsoft-teams-vs-mattermost",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": false,
+        "inboundTotal": 16,
+        "inboundByFamily": {
+          "comparison": 16,
+          "software": 0,
+          "category": 0,
+          "other": 0
+        },
+        "inboundSample": [
+          "/compare/mattermost-vs-google-chat",
+          "/compare/mattermost-vs-google-meet",
+          "/compare/mattermost-vs-ringcentral",
+          "/compare/mattermost-vs-rocket-chat",
+          "/compare/mattermost-vs-signal",
+          "/compare/mattermost-vs-telegram",
+          "/compare/mattermost-vs-zoom",
+          "/compare/microsoft-teams-vs-discord",
+          "/compare/microsoft-teams-vs-google-chat",
+          "/compare/microsoft-teams-vs-google-meet",
+          "/compare/microsoft-teams-vs-otter-ai",
+          "/compare/microsoft-teams-vs-ringcentral"
+        ]
+      }
+    },
+    {
+      "path": "/compare/semrush-vs-ahrefs",
+      "published": true,
+      "kind": "compare",
+      "inSitemap": false,
+      "qualityGate": {
+        "ready": false,
+        "reasons": [
+          "pricing-evidence",
+          "pricing-freshness",
+          "documented-constraints",
+          "source-coverage"
+        ]
+      },
+      "pageProtection": "EDITABLE",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/software/semrush",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "legacy-cohort",
+            "release-observation"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "semrush",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-11-03",
+          "pricingGateFailsOn": "2026-11-21",
+          "sources": {
+            "sourceCount": 3,
+            "foreignHosts": [
+              "sproutsocial.com"
+            ],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Semrush",
+            "queries": 29,
+            "impressions": 1900,
+            "clicks": 0,
+            "position": 77.3
+          }
+        },
+        {
+          "slug": "ahrefs",
+          "priceLabelHold": false,
+          "contentGateFailsOn": "2026-11-03",
+          "pricingGateFailsOn": null,
+          "sources": {
+            "sourceCount": 1,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": false,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Ahrefs",
+            "queries": 2,
+            "impressions": 7,
+            "clicks": 0,
+            "position": 65
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/compare/semrush-vs-ahrefs",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": false,
+        "inboundTotal": 15,
+        "inboundByFamily": {
+          "comparison": 14,
+          "software": 1,
+          "category": 0,
+          "other": 0
+        },
+        "inboundSample": [
+          "/compare/ahrefs-vs-activecampaign",
+          "/compare/ahrefs-vs-buffer",
+          "/compare/ahrefs-vs-google-analytics",
+          "/compare/ahrefs-vs-hootsuite",
+          "/compare/ahrefs-vs-klaviyo",
+          "/compare/ahrefs-vs-mailchimp",
+          "/compare/ahrefs-vs-moz",
+          "/compare/ahrefs-vs-sprout-social",
+          "/compare/semrush-vs-activecampaign",
+          "/compare/semrush-vs-google-analytics",
+          "/compare/semrush-vs-hootsuite",
+          "/compare/semrush-vs-klaviyo"
+        ]
+      }
+    },
+    {
+      "path": "/compare/airtable-vs-notion",
+      "published": true,
+      "kind": "compare",
+      "inSitemap": false,
+      "qualityGate": {
+        "ready": true,
+        "reasons": []
+      },
+      "pageProtection": "PROTECTED",
+      "editableToday": false,
+      "blockedBy": [
+        {
+          "path": "/compare/airtable-vs-notion",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "comparison-quality-cohort"
+          ]
+        },
+        {
+          "path": "/software/airtable",
+          "verdict": "PROTECTED",
+          "eligibleAfter": null,
+          "sources": [
+            "first-revenue-cohort"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "slug": "airtable",
+          "priceLabelHold": true,
+          "contentGateFailsOn": "2026-10-30",
+          "pricingGateFailsOn": "2026-11-22",
+          "sources": {
+            "sourceCount": 4,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Airtable",
+            "queries": 13,
+            "impressions": 183,
+            "clicks": 1,
+            "position": 79.3
+          }
+        },
+        {
+          "slug": "notion",
+          "priceLabelHold": false,
+          "contentGateFailsOn": "2026-11-19",
+          "pricingGateFailsOn": "2026-11-19",
+          "sources": {
+            "sourceCount": 2,
+            "foreignHosts": [],
+            "hasOfficialPricingSource": true,
+            "unreadable": []
+          },
+          "queryNameMatch": {
+            "term": "Notion",
+            "queries": 7,
+            "impressions": 77,
+            "clicks": 0,
+            "position": 76.7
+          }
+        }
+      ],
+      "inbound": {
+        "path": "/compare/airtable-vs-notion",
+        "crawled": true,
+        "status": 200,
+        "inSitemap": false,
+        "inboundTotal": 25,
+        "inboundByFamily": {
+          "comparison": 23,
+          "software": 1,
+          "category": 0,
+          "other": 1
+        },
+        "inboundSample": [
+          "/best-no-code-database-for-operations",
+          "/compare/airtable-vs-clockify",
+          "/compare/airtable-vs-microsoft-onenote",
+          "/compare/airtable-vs-pipedrive",
+          "/compare/airtable-vs-smartsheet",
+          "/compare/airtable-vs-superhuman",
+          "/compare/airtable-vs-ticktick",
+          "/compare/notion-vs-clickup",
+          "/compare/notion-vs-clockify",
+          "/compare/notion-vs-coda",
+          "/compare/notion-vs-confluence",
+          "/compare/notion-vs-craft"
+        ]
+      }
+    }
+  ]
+}

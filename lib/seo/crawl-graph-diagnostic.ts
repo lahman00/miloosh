@@ -156,6 +156,62 @@ export function analyzeCrawlGraph(input: {
   };
 }
 
+export type FocusInboundDetail = {
+  path: string;
+  /** False when the path was not among the crawled pages, so nothing can be said about its links. */
+  crawled: boolean;
+  status: number | null;
+  inSitemap: boolean;
+  /** Distinct crawled pages whose server-rendered HTML links to this path. */
+  inboundTotal: number;
+  inboundByFamily: Record<FamilyKey, number>;
+  /** Alphabetical, capped by `sampleSize`, for hand verification against the HTML. */
+  inboundSample: string[];
+};
+
+/**
+ * Per-URL inbound-link detail for a hand-picked set of paths (a recovery cohort).
+ * Same link definition as analyzeCrawlGraph (server-rendered hrefs only, self-links ignored, query and
+ * fragment stripped). Pure and additive; it does not change analyzeCrawlGraph output.
+ */
+export function analyzeFocusPaths(input: {
+  pages: CrawledPage[];
+  sitemapPaths: string[];
+  siteUrl: string;
+  focusPaths: string[];
+  sampleSize?: number;
+}): FocusInboundDetail[] {
+  const { pages, siteUrl } = input;
+  const sitemap = new Set(input.sitemapPaths.map((p) => normalizeSitemapPath(p, siteUrl)));
+  const byPath = new Map(pages.map((p) => [p.path, p]));
+  const focus = new Set(input.focusPaths.map((p) => normalizeInternalHref(p, siteUrl) ?? p));
+  const sources = new Map<string, Set<string>>([...focus].map((p) => [p, new Set<string>()]));
+
+  for (const page of pages) {
+    for (const href of page.hrefs) {
+      const target = normalizeInternalHref(href, siteUrl);
+      if (!target || target === page.path) continue;
+      sources.get(target)?.add(page.path);
+    }
+  }
+
+  return [...focus].sort().map((path) => {
+    const page = byPath.get(path);
+    const from = [...(sources.get(path) ?? [])].sort();
+    const inboundByFamily: Record<FamilyKey, number> = { comparison: 0, software: 0, category: 0, other: 0 };
+    for (const source of from) inboundByFamily[familyOf(source)] += 1;
+    return {
+      path,
+      crawled: Boolean(page),
+      status: page?.status ?? null,
+      inSitemap: sitemap.has(path),
+      inboundTotal: from.length,
+      inboundByFamily,
+      inboundSample: from.slice(0, input.sampleSize ?? 12),
+    };
+  });
+}
+
 export type GateProjectionRow = {
   asOf: string;
   softwareReady: number;

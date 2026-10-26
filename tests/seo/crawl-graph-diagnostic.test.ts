@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   analyzeCrawlGraph,
+  analyzeFocusPaths,
   familyOf,
   normalizeInternalHref,
   projectIndexingGate,
@@ -148,5 +149,58 @@ describe("projectIndexingGate", () => {
       })[0].comparisonsEligible;
     expect(eligible(true)).toBe(1);
     expect(eligible(false)).toBe(0);
+  });
+});
+
+describe("analyzeFocusPaths", () => {
+  const pages = [
+    page("/", ["/software/a", "/compare/a-vs-b"]),
+    page("/software/a", ["/compare/a-vs-b", "/compare/a-vs-b?ref=x", "/software/a", "https://vendor.example/a"]),
+    page("/compare/a-vs-b", ["/compare/a-vs-c/"]),
+    page("/compare/a-vs-c", ["/compare/a-vs-b"]),
+    page("/compare/a-vs-orphan", []),
+    page("/category/x", ["/compare/a-vs-b"]),
+  ];
+  const sitemapPaths = [`${SITE}/`, `${SITE}/software/a`, `${SITE}/compare/a-vs-b`];
+  const detail = analyzeFocusPaths({
+    pages,
+    sitemapPaths,
+    siteUrl: SITE,
+    focusPaths: ["/compare/a-vs-b", "/compare/a-vs-orphan", "/compare/a-vs-c/", "/compare/missing"],
+  });
+  const by = (path: string) => detail.find((d) => d.path === path)!;
+
+  it("counts distinct crawlable linking pages by family, ignoring self-links, duplicates and external links", () => {
+    expect(by("/compare/a-vs-b")).toMatchObject({
+      crawled: true,
+      status: 200,
+      inSitemap: true,
+      inboundTotal: 4,
+      inboundByFamily: { comparison: 1, software: 1, category: 1, other: 1 },
+      inboundSample: ["/", "/category/x", "/compare/a-vs-c", "/software/a"],
+    });
+  });
+
+  it("reports a true orphan as zero inbound and not in the sitemap", () => {
+    expect(by("/compare/a-vs-orphan")).toMatchObject({ crawled: true, inSitemap: false, inboundTotal: 0, inboundSample: [] });
+  });
+
+  it("normalises focus paths and link targets the same way (trailing slash)", () => {
+    expect(by("/compare/a-vs-c")).toMatchObject({ crawled: true, inboundTotal: 1 });
+  });
+
+  it("marks a path that was never crawled instead of reporting it as a measured orphan", () => {
+    expect(by("/compare/missing")).toMatchObject({ crawled: false, status: null, inboundTotal: 0 });
+  });
+
+  it("caps the sample without changing the total", () => {
+    const capped = analyzeFocusPaths({ pages, sitemapPaths, siteUrl: SITE, focusPaths: ["/compare/a-vs-b"], sampleSize: 2 });
+    expect(capped[0]).toMatchObject({ inboundTotal: 4, inboundSample: ["/", "/category/x"] });
+  });
+
+  it("does not change the aggregate analysis", () => {
+    const before = JSON.stringify(analyzeCrawlGraph({ pages, sitemapPaths, siteUrl: SITE }));
+    analyzeFocusPaths({ pages, sitemapPaths, siteUrl: SITE, focusPaths: ["/compare/a-vs-b"] });
+    expect(JSON.stringify(analyzeCrawlGraph({ pages, sitemapPaths, siteUrl: SITE }))).toBe(before);
   });
 });
