@@ -19,6 +19,7 @@
     "growth:daily-report": "tsx scripts/growth/daily-revenue-report.ts",
     "growth:money-path": "tsx scripts/growth/money-path-inventory.ts",
     "growth:gsc-factual": "tsx scripts/growth/gsc-factual-report.ts",
+    "growth:crawl-graph": "tsx scripts/growth/crawl-graph-diagnostic.ts",
     "growth:cta-coverage": "tsx scripts/growth/verified-active-cta-coverage.ts",
     "growth:one-sided-audit": "tsx scripts/growth/one-sided-comparison-audit.ts",
     "growth:social-attribution": "tsx scripts/growth/social-attribution-report.ts",
