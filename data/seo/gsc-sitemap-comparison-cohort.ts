@@ -850,9 +850,13 @@ export function isComparisonDiscoverySuppressed(slug: string): boolean {
 
 /**
  * Priority discovery cohort used for sitemap submission and high-authority
- * directory surfaces. Suppressed routes remain live and retain contextual
- * links from their two software pages, so this is crawl prioritization —
- * not deletion, noindex, or orphaning.
+ * directory surfaces. Suppressed routes remain live, canonical and indexable
+ * (no noindex, no deletion). NOTE (2026-10-26 crawl): they do NOT keep links
+ * from their software pages, because app/software/[slug]/page.tsx filters its
+ * comparison links through this same function, and /compare server-renders
+ * only its first 72 entries. Many are therefore reachable only through
+ * other comparison pages, and some through nothing. See
+ * docs/mission/GSC_RECOVERY_20261026.md before treating this as "prioritization only".
  */
 export function shouldPrioritizeComparisonDiscovery(slug: string): boolean {
   return !isComparisonDiscoverySuppressed(slug);
