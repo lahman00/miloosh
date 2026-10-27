@@ -6,7 +6,7 @@ import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
-import { isComparisonIndexingReady, isSoftwareIndexingReady } from "@/lib/indexing-quality";
+import { isComparisonDiscoveryEligible, isSoftwareDiscoveryEligible } from "@/lib/discovery-continuity";
 import { generateTitle, generateMetaDescription } from "@/lib/generators";
 import { generateComparisonTitle, generateComparisonMetaDescription } from "@/lib/comparison";
 import { LEGAL_PAGES } from "@/lib/legal";
@@ -296,7 +296,7 @@ async function run() {
     `${SITE_URL}/recommend`,
     `${SITE_URL}/compare`,
     ...allSoftware
-      .filter((software) => isSoftwareIndexingReady(software))
+      .filter((software) => isSoftwareDiscoveryEligible(software))
       .map((software) => `${SITE_URL}/software/${software.slug}`),
     ...getAllCategories().map((c) => `${SITE_URL}/category/${c.slug}`),
     ...getAllRoleGuides().map((g) => `${SITE_URL}/${g.slug}`),
@@ -307,7 +307,7 @@ async function run() {
         softwareA &&
           softwareB &&
           shouldSubmitComparisonToSitemap(getComparisonSlug(a, b)) &&
-          isComparisonIndexingReady(softwareA, softwareB)
+          isComparisonDiscoveryEligible(softwareA, softwareB, getComparisonSlug(a, b))
       );
     }).map(([a, b]) => `${SITE_URL}/compare/${getComparisonSlug(a, b)}`),
     ...LEGAL_PAGES.map((p) => `${SITE_URL}${p.href}`),

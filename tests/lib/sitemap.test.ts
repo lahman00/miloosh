@@ -9,20 +9,17 @@ import {
   GSC_SITEMAP_SUPPRESSED_COMPARISONS,
   shouldSubmitComparisonToSitemap,
 } from "@/data/seo/gsc-sitemap-comparison-cohort";
-import {
-  isComparisonIndexingReady,
-  isSoftwareIndexingReady,
-} from "@/lib/indexing-quality";
+import { isComparisonDiscoveryEligible, isSoftwareDiscoveryEligible } from "@/lib/discovery-continuity";
 
-describe("sitemap indexing-quality gate", () => {
+describe("sitemap discovery admission (strict quality gate plus explicit baseline continuity)", () => {
   it("submits only software pages that pass the publication-quality gate", () => {
     const entries = sitemap();
     const software = getAllSoftware();
 
     for (const item of software) {
       const entry = entries.find((e) => e.url.endsWith(`/software/${item.slug}`));
-      if (!isSoftwareIndexingReady(item)) {
-        expect(entry, `${item.slug} should stay out of the sitemap until it passes the quality gate`).toBeUndefined();
+      if (!isSoftwareDiscoveryEligible(item)) {
+        expect(entry, `${item.slug} should stay out of the sitemap until it is strictly ready or a baseline-admitted continuity page`).toBeUndefined();
         continue;
       }
 
@@ -49,7 +46,7 @@ describe("sitemap indexing-quality gate", () => {
         a &&
           b &&
           shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB)) &&
-          isComparisonIndexingReady(a, b)
+          isComparisonDiscoveryEligible(a, b, getComparisonSlug(slugA, slugB))
       );
     });
 
@@ -63,7 +60,7 @@ describe("sitemap indexing-quality gate", () => {
         a &&
           b &&
           shouldSubmitComparisonToSitemap(slug) &&
-          isComparisonIndexingReady(a, b)
+          isComparisonDiscoveryEligible(a, b, getComparisonSlug(slugA, slugB))
       );
       const included = [...comparisonUrls].some((url) => url.endsWith(`/compare/${slug}`));
       expect(included, slug).toBe(shouldSubmit);

@@ -8,7 +8,7 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
-import { isComparisonIndexingReady, isSoftwareIndexingReady } from "@/lib/indexing-quality";
+import { isComparisonDiscoveryEligible, isSoftwareDiscoveryEligible } from "@/lib/discovery-continuity";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const softwareBySlug = new Map(allSoftware.map((s) => [s.slug, s]));
 
   const softwarePages: MetadataRoute.Sitemap = allSoftware
-    .filter((software) => isSoftwareIndexingReady(software))
+    .filter((software) => isSoftwareDiscoveryEligible(software))
     .map((software) => ({
       url: `${SITE_URL}/software/${software.slug}`,
       lastModified: getFirstRevenuePage(software.slug)
@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         softwareA &&
           softwareB &&
           shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB)) &&
-          isComparisonIndexingReady(softwareA, softwareB)
+          isComparisonDiscoveryEligible(softwareA, softwareB, getComparisonSlug(slugA, slugB))
       );
     }).map(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);

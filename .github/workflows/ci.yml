@@ -38,6 +38,9 @@ jobs:
       - name: Validate data
         run: npm run validate:data
 
+      - name: SEO discovery sentinel
+        run: npm run seo:release-sentinel
+
       - name: Lint
         run: npm run lint
 

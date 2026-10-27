@@ -51,6 +51,9 @@ jobs:
         continue-on-error: true
         run: npm run maintenance
 
+      - name: Fact re-verification queue (read-only report)
+        run: npm run seo:reverification-queue
+
       - name: Validate data
         run: npm run validate:data
 
