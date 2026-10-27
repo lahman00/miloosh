@@ -448,3 +448,48 @@ describe("the real entry point (this workspace's path contains spaces and non-AS
     expect(pkg.scripts["growth:director"]).toBe("tsx scripts/growth/growth-director.ts");
   });
 });
+
+describe("discovery-continuity proof options", () => {
+  const BASE = "a1b2c3d4e5f60718293a4b5c6d7e8f9012345678";
+  const changed = ["app/sitemap.ts", "lib/discovery-continuity.ts"];
+  const audit = (over: Record<string, unknown> = {}) => ({
+    kind: "DISCOVERY_CONTINUITY_FULL_STATIC_BUILD_AUDIT" as const, ok: true, baseSha: BASE, headSha: SHA, pagesCompared: 1800, changedPages: 0,
+    sitemapUrls: 693, sitemapIdentical: true, robotsIdentical: true, changedFilesChecked: changed.length, errors: [] as string[], ...over,
+  });
+  const run = (extra: Partial<CliOptions>, verify?: Ports["verifyDiscoveryContinuity"]) => {
+    const { ports } = makePorts(captureFiles(), {
+      gitFacts: () => ({ branch: "b", headSha: SHA, baseSha: BASE, dirtyPaths: [], changedFiles: changed, commitsAheadOfBase: 1, pushedToRemote: null }),
+      isSharedTemplate: (f) => f === "app/sitemap.ts",
+      ...(verify ? { verifyDiscoveryContinuity: verify } : {}),
+    });
+    return runDirectorCli(options({ baseSha: BASE, gatesFile: null, ...extra }), ports).guardian!;
+  };
+  const proof = (g: ReturnType<typeof run>) => g.checks.find((c) => c.id === "protection:discovery-continuity-render-proof")!;
+
+  it("calls the verifier with the Guardian's own base and head ids, and accepts its result", () => {
+    const seen: string[][] = [];
+    const guardian = run({ discoveryRenderBaseDir: "/base", discoveryRenderCandidateDir: "/cand" }, (b, c, base, head) => {
+      seen.push([b, c, base, head]);
+      return audit();
+    });
+    expect(seen).toEqual([["/base", "/cand", BASE, SHA]]);
+    expect(proof(guardian).status).toBe("PASS");
+  });
+
+  it("never runs the verifier unless both directories and a base commit are supplied", () => {
+    let calls = 0;
+    const verify = () => {
+      calls += 1;
+      return audit();
+    };
+    expect(proof(run({ discoveryRenderBaseDir: "/base" }, verify)).status).toBe("NOT_RUN");
+    expect(proof(run({ discoveryRenderCandidateDir: "/cand" }, verify)).status).toBe("NOT_RUN");
+    expect(proof(run({ discoveryRenderBaseDir: "/b", discoveryRenderCandidateDir: "/c", baseSha: null }, verify)).status).toBe("NOT_RUN");
+    expect(calls).toBe(0);
+  });
+
+  it("keeps the shared component blocked when the verifier reports an error or no verifier port exists", () => {
+    expect(run({ discoveryRenderBaseDir: "/b", discoveryRenderCandidateDir: "/c" }, () => audit({ ok: false, errors: ["PAGE_CHANGED: x.html"] })).verdict).toBe("RELEASE_BLOCKED");
+    expect(run({ discoveryRenderBaseDir: "/b", discoveryRenderCandidateDir: "/c" }).verdict).toBe("RELEASE_BLOCKED");
+  });
+});

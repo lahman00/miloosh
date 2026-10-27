@@ -1,5 +1,6 @@
 import { compareDates } from "./evidence";
 import { COMPARISON_TEMPLATE_WAVE_SIZE, isComparisonTemplateFile } from "./comparison-template-render-audit";
+import { DISCOVERY_MIN_PAGES, DISCOVERY_EXPECTED_SITEMAP_URLS, isDiscoveryContinuityFile } from "./discovery-continuity-render-audit";
 
 /**
  * Release & Quality Guardian: a pure verdict over facts that adapters read.
@@ -131,6 +132,20 @@ export type ProtectionFacts = {
     changedPages: number;
     wavePagesChanged: string[];
     derivedPagesChanged: string[];
+    errors: string[];
+  } | null;
+  /** Same idea for the discovery-continuity repair only: no page, sitemap entry or robots byte may differ. */
+  discoveryContinuityAudit?: {
+    kind: "DISCOVERY_CONTINUITY_FULL_STATIC_BUILD_AUDIT";
+    ok: boolean;
+    baseSha: string;
+    headSha: string;
+    pagesCompared: number;
+    changedPages: number;
+    sitemapUrls: number;
+    sitemapIdentical: boolean;
+    robotsIdentical: boolean;
+    changedFilesChecked: number;
     errors: string[];
   } | null;
 };
@@ -423,6 +438,41 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     templateAudit.errors.length === 0 &&
     git.changedFiles.length > 0 &&
     git.changedFiles.every((file) => isComparisonTemplateFile(file));
+  // The discovery-continuity proof is the strictest of the three: no page may differ at all, and the sitemap and robots must be
+  // identical. It needs the exact full base and head ids, the exact reviewed file set, and every protection rule otherwise intact.
+  const discoveryAudit = p.discoveryContinuityAudit;
+  const fullIds = /^[0-9a-f]{40}$/;
+  const scopedDiscoveryProven =
+    p.sharedTemplateChanged &&
+    Boolean(discoveryAudit?.ok) &&
+    discoveryAudit?.kind === "DISCOVERY_CONTINUITY_FULL_STATIC_BUILD_AUDIT" &&
+    git.baseSha !== null &&
+    fullIds.test(git.baseSha) &&
+    fullIds.test(git.headSha) &&
+    git.baseSha !== git.headSha &&
+    discoveryAudit.baseSha === git.baseSha &&
+    discoveryAudit.headSha === git.headSha &&
+    discoveryAudit.pagesCompared >= DISCOVERY_MIN_PAGES &&
+    discoveryAudit.changedPages === 0 &&
+    discoveryAudit.sitemapIdentical === true &&
+    discoveryAudit.robotsIdentical === true &&
+    discoveryAudit.sitemapUrls === DISCOVERY_EXPECTED_SITEMAP_URLS &&
+    discoveryAudit.errors.length === 0 &&
+    git.changedFiles.length > 0 &&
+    discoveryAudit.changedFilesChecked === git.changedFiles.length &&
+    git.changedFiles.every((file) => isDiscoveryContinuityFile(file)) &&
+    p.affectedUrls.length === 0 &&
+    p.affectedNonEditable.length === 0 &&
+    git.dirtyPaths.length === 0;
+  checks.push({
+    id: "protection:discovery-continuity-render-proof",
+    title: "Exact-commit complete render proof for the discovery-continuity repair (this change only)",
+    status: !p.sharedTemplateChanged ? "INFO" : scopedDiscoveryProven ? "PASS" : discoveryAudit ? "FAIL" : "NOT_RUN",
+    detail: scopedDiscoveryProven
+      ? `Compared ${discoveryAudit!.pagesCompared} pages: none differs; ${discoveryAudit!.sitemapUrls} sitemap entries (with lastmod) and robots.txt are identical; only the reviewed fix files changed.`
+      : p.sharedTemplateChanged ? (discoveryAudit ? `The discovery-continuity proof failed: ${discoveryAudit.errors.slice(0, 3).join("; ") || "scope, commit or file allowlist mismatch"}.` : "No discovery-continuity render proof was supplied.") : "No shared template change.",
+    evidence: scopedDiscoveryProven ? [`base ${discoveryAudit!.baseSha}, head ${discoveryAudit!.headSha}`] : [],
+  });
   checks.push({
     id: "protection:comparison-template-render-proof",
     title: "Exact-commit complete render proof for the v2 comparison template (this change only)",
@@ -432,7 +482,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
       : p.sharedTemplateChanged ? (templateAudit ? `The comparison-template proof failed: ${templateAudit.errors.slice(0, 3).join("; ") || "scope, commit or file allowlist mismatch"}.` : "No comparison-template render proof was supplied.") : "No shared template change.",
     evidence: scopedTemplateRenderProven ? [`base ${templateAudit!.baseSha}, head ${templateAudit!.headSha}`] : [],
   });
-  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven || scopedTemplateRenderProven);
+  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven || scopedTemplateRenderProven || scopedDiscoveryProven);
   checks.push({
     id: "protection:pricing-rendered-proof",
     title: "Exact-commit complete render proof for an approved pricing-only shared component",
@@ -447,7 +497,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     title: "Protected, observed and in-flight pages are unaffected",
     status: protectedUnchanged ? "PASS" : "FAIL",
     detail: protectedUnchanged
-      ? scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : scopedTemplateRenderProven ? "Comparison-template change proven not to alter any protected, observed or held page; changes are confined to the reviewed wave and the pages that render its corrected data." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
+      ? scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : scopedDiscoveryProven ? "Discovery-continuity repair proven to leave every page, the sitemap and robots.txt byte-for-byte equivalent; no protected, observed or held page is affected." : scopedTemplateRenderProven ? "Comparison-template change proven not to alter any protected, observed or held page; changes are confined to the reviewed wave and the pages that render its corrected data." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
       : `${p.affectedNonEditable.length} affected page(s) are not editable${p.sharedTemplateChanged ? " and a shared template changed" : ""}: ${p.affectedNonEditable.slice(0, 4).map((a) => `${a.url} (${a.verdict})`).join(", ")}.`,
     evidence: [],
   });

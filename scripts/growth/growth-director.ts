@@ -10,7 +10,7 @@ import { loadSiteInventory } from "@/lib/growth-agents/inventory-loader";
 import { loadPartnerFacts } from "@/lib/growth-agents/partners";
 import { headSha, isSharedInputFile, loadProtectionSnapshot } from "@/lib/growth-agents/protection-sources";
 import { redactText } from "@/lib/growth-agents/redact";
-import { verifyComparisonTemplateBuilds, verifyPricingRenderedBuilds } from "@/lib/growth-agents/guardian-sources";
+import { verifyComparisonTemplateBuilds, verifyDiscoveryContinuityBuilds, verifyPricingRenderedBuilds } from "@/lib/growth-agents/guardian-sources";
 
 /**
  * `npm run growth:director` — the Miloosh Growth Director, read-only by default.
@@ -37,6 +37,7 @@ const USAGE = `Usage: npm run growth:director -- [options]
   --rendered-diff-file <json>  Result of growth:rendered-diff comparing the base build with this change.
   --price-render-base <dir> --price-render-candidate <dir>  Independently audit complete HTML builds before accepting pricing-only shared component changes.
   --template-render-base <dir> --template-render-candidate <dir>  Same, for the v2 comparison-template change only (fixed wave, reviewed product records).
+  --discovery-render-base <worktree> --discovery-render-candidate <worktree>  Same, for the discovery-continuity repair only: roots of two built, clean worktrees at the exact base and head commits (--base-sha must be the full 40-character base commit).
   --run-gates                Run audit, tests, validate:data, lint, tsc and build (slow; writes .next and var/).
   --check-production         Read the live deployment (vercel inspect) and GitHub deployment history (read-only).
   --out <dir>                Write director-report.json, director-report.he.md and candidates.csv here. Without it nothing is written.
@@ -60,7 +61,7 @@ export function parseArgs(argv: string[], repoRoot: string): CliOptions | { help
     const v = flags.get(name);
     return typeof v === "string" ? v : null;
   };
-  const known = new Set(["gsc-dir", "gsc-private-dir", "now", "base-sha", "release-date", "production-id", "production-created", "production-sha", "extras-file", "events-file", "gates-file", "baseline-file", "rendered-diff-file", "price-render-base", "price-render-candidate", "template-render-base", "template-render-candidate", "run-gates", "check-production", "out", "strict", "help"]);
+  const known = new Set(["gsc-dir", "gsc-private-dir", "now", "base-sha", "release-date", "production-id", "production-created", "production-sha", "extras-file", "events-file", "gates-file", "baseline-file", "rendered-diff-file", "price-render-base", "price-render-candidate", "template-render-base", "template-render-candidate", "discovery-render-base", "discovery-render-candidate", "run-gates", "check-production", "out", "strict", "help"]);
   for (const key of flags.keys()) if (!known.has(key)) throw new Error(`Unknown option --${key}\n${USAGE}`);
   const now = value("now") ? new Date(value("now")!) : new Date();
   if (Number.isNaN(now.getTime())) throw new Error("--now must be an ISO timestamp");
@@ -82,6 +83,8 @@ export function parseArgs(argv: string[], repoRoot: string): CliOptions | { help
     priceRenderCandidateDir: resolve(value("price-render-candidate")),
     templateRenderBaseDir: resolve(value("template-render-base")),
     templateRenderCandidateDir: resolve(value("template-render-candidate")),
+    discoveryRenderBaseDir: resolve(value("discovery-render-base")),
+    discoveryRenderCandidateDir: resolve(value("discovery-render-candidate")),
     runGates: flags.get("run-gates") === true,
     checkProduction: flags.get("check-production") === true,
     productionOverride: productionId || productionCreated || productionSha ? { deploymentId: productionId, createdAt: productionCreated, sha: productionSha } : null,
@@ -124,6 +127,7 @@ export function realPorts(repoRoot: string): Ports {
       verifyPricingRenderedBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot }),
     verifyComparisonTemplate: (baseDir, candidateDir, baseSha, headSha, snapshot, derivedUrls) =>
       verifyComparisonTemplateBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot, derivedUrls }),
+    verifyDiscoveryContinuity: (baseDir, candidateDir, baseSha, headSha) => verifyDiscoveryContinuityBuilds({ baseDir, candidateDir, baseSha, headSha }),
   };
 }
 

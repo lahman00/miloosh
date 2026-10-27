@@ -57,7 +57,7 @@ import {
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
 import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
-import { isComparisonIndexingReady } from "@/lib/indexing-quality";
+import { isComparisonDiscoveryEligible } from "@/lib/discovery-continuity";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -117,7 +117,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
       const comparisonSlug = getComparisonSlug(softwareA.slug, softwareB.slug);
       return (
         shouldSubmitComparisonToSitemap(comparisonSlug) &&
-        isComparisonIndexingReady(softwareA, softwareB)
+        isComparisonDiscoveryEligible(softwareA, softwareB, comparisonSlug)
       );
     });
   const alternativeGuide = getAlternativeGuide(software.slug);
