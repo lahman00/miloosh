@@ -30,7 +30,8 @@ export type DiscoveryContinuityRenderAudit = {
 };
 
 export const DISCOVERY_MIN_PAGES = 1700;
-const MIN_SITEMAP_URLS = 1000;
+/** The real production sitemap holds 693 URLs (measured on the base build); a sitemap far below that is a truncated build, not a baseline. */
+export const DISCOVERY_MIN_SITEMAP_URLS = 600;
 const FULL_SHA = /^[0-9a-f]{40}$/;
 
 /** Exact files of the reviewed fix, shipped as the runtime change. No wildcard and no directory is allowed. */
@@ -192,7 +193,7 @@ export function auditDiscoveryContinuityBuilds(input: {
     const a = parseSitemapEntries(input.beforeSitemap);
     const b = parseSitemapEntries(input.afterSitemap);
     sitemapUrls = Math.min(a.length, b.length);
-    if (a.length < MIN_SITEMAP_URLS || b.length < MIN_SITEMAP_URLS) errors.push(`SITEMAP_TOO_SMALL: ${a.length} before, ${b.length} after (at least ${MIN_SITEMAP_URLS} required).`);
+    if (a.length < DISCOVERY_MIN_SITEMAP_URLS || b.length < DISCOVERY_MIN_SITEMAP_URLS) errors.push(`SITEMAP_TOO_SMALL: ${a.length} before, ${b.length} after (at least ${DISCOVERY_MIN_SITEMAP_URLS} required).`);
     if (a.some((e) => !e.loc) || b.some((e) => !e.loc)) errors.push("SITEMAP_UNREADABLE: an entry has no <loc>.");
     sitemapIdentical = input.beforeSitemap.trim() === input.afterSitemap.trim() && a.length === b.length && JSON.stringify(a) === JSON.stringify(b);
     if (!sitemapIdentical) {
