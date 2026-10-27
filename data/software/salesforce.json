@@ -2,7 +2,7 @@
   "name": "Salesforce",
   "slug": "salesforce",
   "category": "crm",
-  "description": "Salesforce is a configurable CRM for sales, service and marketing teams, combining customer records with automation, reports and AI assistance. Teams comparing replacements should check how custom objects, data export and mobile workflows will transfer before choosing another CRM.",
+  "description": "Salesforce is a cloud-based CRM platform that centralizes customer data across sales, service, marketing, and IT so teams share one view of the customer, with AI layered in for automation and assistance.",
   "website": "https://www.salesforce.com/crm/",
   "platforms": [
     "Web",
