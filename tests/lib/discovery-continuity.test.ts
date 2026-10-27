@@ -211,9 +211,38 @@ describe("maintenance queue and release sentinel", () => {
     without.delete(target);
     expect(checkDiscoverySentinel(without, DISCOVERY_BASELINE, []).missing).toEqual([target]);
     const waiver = { path: target, reason: "product discontinued", evidence: "vendor shutdown notice", reviewedBy: "owner", reviewedAt: "2026-11-01" };
-    expect(checkDiscoverySentinel(without, DISCOVERY_BASELINE, [waiver]).ok).toBe(true);
+    expect(checkDiscoverySentinel(without, DISCOVERY_BASELINE, [waiver], new Date("2026-11-02T00:00:00Z")).ok).toBe(true);
     expect(checkDiscoverySentinel(without, DISCOVERY_BASELINE, [{ ...waiver, path: "/software/*" }]).ok).toBe(false);
     expect(checkDiscoverySentinel(without, DISCOVERY_BASELINE, [{ ...waiver, reviewedBy: "" }]).ok).toBe(false);
     expect(checkDiscoverySentinel(without, DISCOVERY_BASELINE, [{ ...waiver, path: "/software/other" }]).ok).toBe(false);
+  });
+});
+
+
+describe("independent evidence-integrity probes", () => {
+  it.each(["2027-06-01", "2026-02-31", "2026-10-32", "soon"])("rejects invalid/future current dates before strict admission: %s", (date) => {
+    const product = clone("airtable", (s) => { s.accessedAt = date; s.pricing!.lastVerified = "2026-10-20"; });
+    expect(isSoftwareDiscoveryEligible(product, BASELINE_DAY)).toBe(false);
+    const badPrice = clone("airtable", (s) => { s.accessedAt = "2026-10-20"; s.pricing!.lastVerified = date; });
+    expect(isSoftwareDiscoveryEligible(badPrice, BASELINE_DAY)).toBe(false);
+  });
+  it("does not use cached approval for a later-corrupted registry object", () => {
+    const registry = structuredClone(DISCOVERY_BASELINE);
+    const future = new Date("2026-12-31T00:00:00Z");
+    expect(isSoftwareDiscoveryEligible(getSoftware("airtable")!, future, registry)).toBe(true);
+    registry.sitemapSha256 = "corrupted";
+    expect(isSoftwareDiscoveryEligible(getSoftware("airtable")!, future, registry)).toBe(false);
+  });
+  it("rejects invalid/future baseline capture dates for retention", () => {
+    expect(validateDiscoveryBaseline({ ...DISCOVERY_BASELINE, capturedAtUtc: "2026-02-31T00:00:00Z" })).not.toEqual([]);
+    expect(isSoftwareDiscoveryEligible(getSoftware("airtable")!, new Date("2026-12-31T00:00:00Z"), { ...DISCOVERY_BASELINE, capturedAtUtc: "2027-01-01T00:00:00Z" })).toBe(false);
+  });
+  it("cannot use a baseline pair slug to admit unrelated products", () => {
+    expect(isComparisonDiscoveryEligible(getSoftware("shopify")!, getSoftware("wix")!, "monday-vs-airtable", BASELINE_DAY)).toBe(false);
+  });
+  it("future-dated removal approval cannot authorize a disappearance", () => {
+    const paths = new Set([...DISCOVERY_BASELINE.software.filter(s => s !== "airtable").map(s => `/software/${s}`), ...DISCOVERY_BASELINE.comparisons.map(s => `/compare/${s}`)]);
+    const waiver = { path: "/software/airtable", reason: "product discontinued", evidence: "vendor shutdown notice", reviewedBy: "owner", reviewedAt: "2027-01-01" };
+    expect(checkDiscoverySentinel(paths, DISCOVERY_BASELINE, [waiver], BASELINE_DAY).ok).toBe(false);
   });
 });

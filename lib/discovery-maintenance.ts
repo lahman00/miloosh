@@ -91,7 +91,8 @@ export interface SentinelResult {
 export function checkDiscoverySentinel(
   currentPaths: ReadonlySet<string>,
   baseline: DiscoveryBaseline,
-  removals: readonly IntentionalRemoval[]
+  removals: readonly IntentionalRemoval[],
+  now: Date = new Date()
 ): SentinelResult {
   const required = [
     ...baseline.software.map((slug) => `/software/${slug}`),
@@ -102,7 +103,7 @@ export function checkDiscoverySentinel(
   for (const removal of removals) {
     const complete = [removal.reason, removal.evidence, removal.reviewedBy].every((v) => typeof v === "string" && v.trim().length >= 5);
     const exact = /^\/(software|compare)\/[a-z0-9][a-z0-9.-]*$/.test(removal.path ?? "");
-    if (complete && exact && isRealPastDate(removal.reviewedAt, new Date(8.64e15))) validWaivers.set(removal.path, removal);
+    if (complete && exact && required.includes(removal.path) && !validWaivers.has(removal.path) && isRealPastDate(removal.reviewedAt, now)) validWaivers.set(removal.path, removal);
     else invalidWaivers.push(String(removal.path));
   }
   const missing: string[] = [];

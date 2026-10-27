@@ -1,4 +1,5 @@
 import type { Software } from "@/data/software";
+import { getComparisonSlug } from "@/data/comparisons";
 import { DISCOVERY_BASELINE } from "@/data/seo/discovery-baseline";
 import { getSoftwareIndexingQualityReasons, type IndexingQualityReason } from "@/lib/indexing-quality";
 
@@ -39,7 +40,7 @@ export function validateDiscoveryBaseline(baseline: unknown): string[] {
   if (!b || typeof b !== "object") return ["registry is not an object"];
   const problems: string[] = [];
   if (b.version !== 1) problems.push("unsupported version");
-  if (typeof b.capturedAtUtc !== "string" || Number.isNaN(Date.parse(b.capturedAtUtc))) problems.push("invalid capturedAtUtc");
+  if (typeof b.capturedAtUtc !== "string" || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(b.capturedAtUtc) || Number.isNaN(Date.parse(b.capturedAtUtc)) || new Date(b.capturedAtUtc).toISOString().replace(".000Z", "Z") !== b.capturedAtUtc.replace(".000Z", "Z")) problems.push("invalid capturedAtUtc");
   if (typeof b.sourceSha !== "string" || !/^[0-9a-f]{40}$/.test(b.sourceSha)) problems.push("invalid sourceSha");
   if (typeof b.sitemapSha256 !== "string" || !/^[0-9a-f]{64}$/.test(b.sitemapSha256)) problems.push("invalid sitemapSha256");
   if (!Array.isArray(b.software) || b.software.length === 0 || !isSortedUnique(b.software)) problems.push("software list invalid, unsorted or duplicated");
@@ -63,14 +64,10 @@ interface Lookups {
   comparisons: ReadonlySet<string>;
 }
 
-const lookupCache = new WeakMap<object, Lookups | null>();
-
 function lookupsFor(baseline: DiscoveryBaseline): Lookups | null {
-  if (lookupCache.has(baseline)) return lookupCache.get(baseline) ?? null;
   const lookups = validateDiscoveryBaseline(baseline).length === 0
     ? { software: new Set(baseline.software), comparisons: new Set(baseline.comparisons) }
     : null;
-  lookupCache.set(baseline, lookups);
   return lookups;
 }
 
@@ -80,11 +77,16 @@ export function getSoftwareDiscoveryDecision(
   baseline: DiscoveryBaseline = DISCOVERY_BASELINE
 ): DiscoveryDecision {
   const strictReasons = getSoftwareIndexingQualityReasons(software, now);
+  // Date validity is evidence, not age: never accept future/normalised-invalid dates even when the strict age check is empty.
+  const dateProblems: string[] = [];
+  if (!isRealPastDate(software.accessedAt, now)) dateProblems.push("content-date-invalid");
+  if (!isRealPastDate(software.pricing?.lastVerified, now)) dateProblems.push("pricing-date-invalid");
+  if (dateProblems.length) return { eligible: false, basis: "excluded", strictReasons, blockingReasons: dateProblems };
   if (strictReasons.length === 0) return { eligible: true, basis: "strict", strictReasons, blockingReasons: [] };
 
   const lookups = lookupsFor(baseline);
   const blockingReasons: string[] = strictReasons.filter((reason) => !AGE_ONLY_REASONS.has(reason));
-  if (!lookups) blockingReasons.push("baseline-invalid");
+  if (!lookups || Date.parse(baseline.capturedAtUtc) > now.getTime()) blockingReasons.push("baseline-invalid");
   else if (!lookups.software.has(software.slug)) blockingReasons.push("not-in-baseline");
   // An age failure only counts as "merely old" when the date is a real, non-future calendar date. Missing, malformed
   // or future dates are provenance faults and must not be retained.
@@ -113,6 +115,7 @@ export function isComparisonDiscoveryEligible(
   now: Date = new Date(),
   baseline: DiscoveryBaseline = DISCOVERY_BASELINE
 ): boolean {
+  if (comparisonSlug !== getComparisonSlug(softwareA.slug, softwareB.slug)) return false;
   const a = getSoftwareDiscoveryDecision(softwareA, now, baseline);
   const b = getSoftwareDiscoveryDecision(softwareB, now, baseline);
   if (!a.eligible || !b.eligible) return false;
