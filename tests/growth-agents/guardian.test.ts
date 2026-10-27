@@ -584,3 +584,107 @@ describe("collectProductionFacts reads production without changing it", () => {
     expect(collectProductionFacts({ repoRoot: process.cwd(), currentSha: "HEAD", domain: "miloosh.com", githubRepo: "owner/repo", run }).previousProductionShas).toEqual([]);
   });
 });
+
+describe("discovery-continuity render proof", () => {
+  const BASE_SHA = "a1b2c3d4e5f60718293a4b5c6d7e8f9012345678";
+  const changedFiles = ["app/sitemap.ts", "app/software/[slug]/page.tsx", "lib/discovery-continuity.ts", "data/seo/discovery-baseline.ts"];
+  const audit = {
+    kind: "DISCOVERY_CONTINUITY_FULL_STATIC_BUILD_AUDIT" as const,
+    ok: true,
+    baseSha: BASE_SHA,
+    headSha: SHA,
+    pagesCompared: 1786,
+    changedPages: 0,
+    sitemapUrls: 1500,
+    sitemapIdentical: true,
+    robotsIdentical: true,
+    changedFilesChecked: changedFiles.length,
+    errors: [] as string[],
+  };
+  const git = { branch: "fix/x", headSha: SHA, baseSha: BASE_SHA, dirtyPaths: [] as string[], changedFiles, commitsAheadOfBase: 1, pushedToRemote: null };
+  const protection = { affectedUrls: [] as string[], affectedNonEditable: [] as Array<{ url: string; verdict: string }>, sharedTemplateChanged: true, discoveryContinuityAudit: audit as typeof audit | null };
+  const check = (report: ReturnType<typeof runGuardian>) => report.checks.find((c) => c.id === "protection:discovery-continuity-render-proof")!;
+
+  it("is blocked by default: a shared sitemap or software page change with no proof", () => {
+    const report = runGuardian(guardianInputs({ git, protection: { ...protection, discoveryContinuityAudit: null } }));
+    expect(report.verdict).toBe("RELEASE_BLOCKED");
+    expect(check(report).status).toBe("NOT_RUN");
+    expect(report.reasons.map((r) => r.code)).toContain("PROTECTED_PAGES_AFFECTED");
+    // also blocked when the field is absent entirely, as in every older caller
+    const { discoveryContinuityAudit: _omit, ...legacy } = protection;
+    void _omit;
+    expect(runGuardian(guardianInputs({ git, protection: legacy })).verdict).toBe("RELEASE_BLOCKED");
+  });
+
+  it("accepts the exact scoped proof, and still reports no deployment permission", () => {
+    const report = runGuardian(guardianInputs({ git, protection }));
+    expect(report.verdict).toBe("RELEASE_ALLOWED");
+    expect(check(report).status).toBe("PASS");
+    expect(report.checks.find((c) => c.id === "protection:unaffected")!.status).toBe("PASS");
+    expect(report.deploymentAllowedByGuardian).toBe(false);
+  });
+
+  it("does not turn a failing formal gate into a pass", () => {
+    const gates = REQUIRED_GATES.map((g) => gateResult(g, g === "build" ? "FAIL" : "PASS"));
+    expect(runGuardian(guardianInputs({ git, protection, gates })).verdict).toBe("RELEASE_BLOCKED");
+    expect(runGuardian(guardianInputs({ git, protection, gates: [] })).verdict).not.toBe("RELEASE_ALLOWED");
+  });
+
+  it("rejects absent, partial, failed, mismatched or error-carrying proof", () => {
+    const other = "abcdef012345678901234567890123456789abcd";
+    const bad: Array<Record<string, unknown>> = [
+      { ok: false },
+      { headSha: other },
+      { baseSha: other },
+      { baseSha: "a1b2c3d" },
+      { pagesCompared: 1699 },
+      { changedPages: 1 },
+      { sitemapIdentical: false },
+      { robotsIdentical: false },
+      { sitemapUrls: 10 },
+      { errors: ["PAGE_CHANGED: software/x.html"] },
+      { changedFilesChecked: 0 },
+      { changedFilesChecked: changedFiles.length - 1 },
+      { kind: "COMPARISON_TEMPLATE_V2_FULL_STATIC_BUILD_AUDIT" },
+    ];
+    for (const patch of bad) {
+      const report = runGuardian(guardianInputs({ git, protection: { ...protection, discoveryContinuityAudit: { ...audit, ...patch } as never } }));
+      expect(report.verdict, JSON.stringify(patch)).toBe("RELEASE_BLOCKED");
+      expect(check(report).status).toBe("FAIL");
+    }
+  });
+
+  it("rejects a dirty tree and abbreviated or identical SHAs", () => {
+    expect(runGuardian(guardianInputs({ git: { ...git, dirtyPaths: ["app/sitemap.ts"] }, protection })).verdict).toBe("RELEASE_BLOCKED");
+    expect(runGuardian(guardianInputs({ git: { ...git, baseSha: BASE_SHA.slice(0, 7) }, protection })).verdict).toBe("RELEASE_BLOCKED");
+    expect(runGuardian(guardianInputs({ git: { ...git, baseSha: SHA }, protection: { ...protection, discoveryContinuityAudit: { ...audit, baseSha: SHA } } })).verdict).toBe("RELEASE_BLOCKED");
+  });
+
+  it("rejects an unrelated component, product or control file even when every output check passes", () => {
+    for (const file of ["components/GlobalNavigation.tsx", "data/software/slack.json", "app/layout.tsx", "app/robots.ts", "lib/indexing-quality.ts", "components/PricingSection.tsx", "lib/discovery-continuity.tsx", "docs/growth/receipts/20261027/README.md"]) {
+      const files = [...changedFiles, file];
+      const report = runGuardian(guardianInputs({ git: { ...git, changedFiles: files }, protection: { ...protection, discoveryContinuityAudit: { ...audit, changedFilesChecked: files.length } } }));
+      expect(report.verdict, file).toBe("RELEASE_BLOCKED");
+      expect(check(report).status).toBe("FAIL");
+    }
+  });
+
+  it("rejects a product edit and any protected, observed or in-flight affected page", () => {
+    const withProduct = { ...protection, affectedUrls: ["https://miloosh.com/software/slack"] };
+    expect(runGuardian(guardianInputs({ git: { ...git, changedFiles: [...changedFiles, "data/software/slack.json"] }, protection: withProduct })).verdict).toBe("RELEASE_BLOCKED");
+    expect(runGuardian(guardianInputs({ git, protection: { ...protection, affectedNonEditable: [{ url: "https://miloosh.com/software/close", verdict: "PROTECTED" }] } })).verdict).toBe("RELEASE_BLOCKED");
+  });
+
+  it("does not let the discovery proof stand in for the pricing or template proof, nor the reverse", () => {
+    const priceOnly = runGuardian(guardianInputs({ git: { ...git, changedFiles: ["components/PricingSection.tsx"] }, protection: { ...protection } }));
+    expect(priceOnly.verdict).toBe("RELEASE_BLOCKED");
+    const templateAudit = { kind: "COMPARISON_TEMPLATE_V2_FULL_STATIC_BUILD_AUDIT" as const, ok: true, baseSha: BASE_SHA, headSha: SHA, pagesCompared: 1786, nonEditablePagesUnchanged: 400, heldProfilesUnchanged: 138, changedPages: 3, wavePagesChanged: [...COMPARISON_TEMPLATE_EXPECTED_CHANGED].map((s) => `compare/${s}.html`), derivedPagesChanged: [], errors: [] };
+    const crossed = runGuardian(guardianInputs({ git, protection: { affectedUrls: [], affectedNonEditable: [], sharedTemplateChanged: true, comparisonTemplateAudit: templateAudit } }));
+    expect(crossed.verdict).toBe("RELEASE_BLOCKED");
+  });
+
+  it("is only informational when no shared template changed", () => {
+    const report = runGuardian(guardianInputs({ git: { ...git, changedFiles: [] }, protection: { affectedUrls: [], affectedNonEditable: [], sharedTemplateChanged: false } }));
+    expect(check(report).status).toBe("INFO");
+  });
+});

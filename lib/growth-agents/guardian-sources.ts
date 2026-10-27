@@ -12,6 +12,7 @@ import {
 import { listWorktrees, parsePorcelainPaths } from "./protection-sources";
 import { auditPricingRenderedBuilds, type PricingRenderAudit } from "./price-render-audit";
 import { COMPARISON_TEMPLATE_EXPECTED_CHANGED, auditComparisonTemplateBuilds, type ComparisonTemplateRenderAudit } from "./comparison-template-render-audit";
+import { DISCOVERY_ADDITIVE_ONLY, auditDiscoveryContinuityBuilds, type DiscoveryContinuityRenderAudit } from "./discovery-continuity-render-audit";
 import type { ProtectionSnapshot } from "./protection";
 
 /**
@@ -364,5 +365,75 @@ export function verifyComparisonTemplateBuilds(input: {
       derivedPagesChanged: [],
       errors: [String(error)],
     };
+  }
+}
+
+
+/** Every prerendered page, plus the sitemap and robots route outputs, of one build. Read-only. */
+export function loadPrerenderedBuild(checkoutRoot: string): { html: ReadonlyMap<string, string>; sitemap: string | null; robots: string | null } {
+  const appDir = path.join(checkoutRoot, ".next", "server", "app");
+  const html = new Map<string, string>();
+  const walk = (dir: string): void => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const file = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(file);
+      else if (entry.name.endsWith(".html")) html.set(path.relative(appDir, file).split(path.sep).join("/"), fs.readFileSync(file, "utf8"));
+    }
+  };
+  walk(appDir);
+  const body = (name: string): string | null => {
+    const file = path.join(appDir, name);
+    return fs.existsSync(file) ? fs.readFileSync(file, "utf8") : null;
+  };
+  return { html, sitemap: body("sitemap.xml.body"), robots: body("robots.txt.body") };
+}
+
+/**
+ * Read-only adapter for the discovery-continuity proof. `baseDir` and `candidateDir` are the ROOTS of two clean worktrees, each at its
+ * exact commit and each already built (`npm run build`). Everything is read from those folders and from git; no input says "pass".
+ * The base and head ids are the ones the Guardian runs against and are checked against the checkouts' own HEAD.
+ */
+export function verifyDiscoveryContinuityBuilds(input: { baseDir: string; candidateDir: string; baseSha: string; headSha: string }): DiscoveryContinuityRenderAudit {
+  const fail = (error: string): DiscoveryContinuityRenderAudit => ({
+    kind: "DISCOVERY_CONTINUITY_FULL_STATIC_BUILD_AUDIT",
+    ok: false,
+    baseSha: input.baseSha,
+    headSha: input.headSha,
+    pagesCompared: 0,
+    changedPages: 0,
+    sitemapUrls: 0,
+    sitemapIdentical: false,
+    robotsIdentical: false,
+    changedFilesChecked: 0,
+    errors: [error],
+  });
+  try {
+    const baseRoot = path.resolve(input.baseDir);
+    const candidateRoot = path.resolve(input.candidateDir);
+    const before = loadPrerenderedBuild(baseRoot);
+    const after = loadPrerenderedBuild(candidateRoot);
+    const changed = (gitOrNull(candidateRoot, ["diff", "--name-only", `${input.baseSha}..${input.headSha}`]) ?? "").split("\n").filter(Boolean);
+    const sharedFileDiffs: Record<string, string> = {};
+    for (const file of Object.keys(DISCOVERY_ADDITIVE_ONLY)) {
+      if (changed.includes(file)) sharedFileDiffs[file] = gitOrNull(candidateRoot, ["diff", "--unified=0", `${input.baseSha}..${input.headSha}`, "--", file]) ?? "";
+    }
+    return auditDiscoveryContinuityBuilds({
+      before: before.html,
+      after: after.html,
+      beforeSitemap: before.sitemap,
+      afterSitemap: after.sitemap,
+      beforeRobots: before.robots,
+      afterRobots: after.robots,
+      baseCheckoutSha: gitOrNull(baseRoot, ["rev-parse", "HEAD"])?.trim() ?? null,
+      candidateCheckoutSha: gitOrNull(candidateRoot, ["rev-parse", "HEAD"])?.trim() ?? null,
+      baseClean: gitOrNull(baseRoot, ["status", "--porcelain", "--untracked-files=all"])?.trim() === "",
+      candidateClean: gitOrNull(candidateRoot, ["status", "--porcelain", "--untracked-files=all"])?.trim() === "",
+      baseSha: input.baseSha,
+      headSha: input.headSha,
+      changedFiles: changed,
+      sharedFileDiffs,
+    });
+  } catch (error) {
+    return fail(String(error));
   }
 }
