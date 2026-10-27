@@ -246,3 +246,13 @@ describe("independent evidence-integrity probes", () => {
     expect(checkDiscoverySentinel(paths, DISCOVERY_BASELINE, [waiver], BASELINE_DAY).ok).toBe(false);
   });
 });
+
+
+describe("prebuild sentinel integration", () => {
+  it("runs the sentinel before every npm build, including direct Vercel deployments", () => {
+    const manifest = JSON.parse(readFileSync("package.json", "utf8"));
+    expect(manifest.scripts.prebuild).toBe("npm run seo:release-sentinel");
+    expect(manifest.scripts.build).toBe("next build");
+    expect(manifest.scripts["seo:release-sentinel"]).toBe("tsx scripts/seo/release-sentinel.ts");
+  });
+});

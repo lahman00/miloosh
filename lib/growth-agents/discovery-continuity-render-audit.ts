@@ -69,6 +69,7 @@ export const DISCOVERY_SUPPORT_FILES: readonly string[] = [
  */
 export const DISCOVERY_ADDITIVE_ONLY: Readonly<Record<string, readonly RegExp[]>> = {
   "package.json": [
+    /^\s*"prebuild": "npm run seo:release-sentinel",?$/,
     /^\s*"seo:release-sentinel": "tsx scripts\/seo\/release-sentinel\.ts",?$/,
     /^\s*"seo:reverification-queue": "tsx scripts\/seo\/reverification-queue\.ts",?$/,
     /^\s*"seo:capture-discovery-baseline": "tsx scripts\/seo\/capture-discovery-baseline\.ts",?$/,

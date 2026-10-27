@@ -41,3 +41,11 @@ Not done, by design: no date bumps, no 90-day change, no gate disabled, no noind
 - Added an exact-scope independent full-build proof path: at least 1,700 complete HTML pages must be identical, and the **exact 693-entry sitemap including lastmod and robots.txt** must be identical. Wrong/dirty commit, partial build, changed content/links/JSON-LD/canonical, unrelated files or modified existing CI/package lines block. Required six gates still mandatory; no universal shared-template exception was added.
 - The correct sitemap count is 693, measured independently from production, not an assumed 1,000+ threshold. Tests reject equal but partial/expanded inventories too.
 - Google Search Console confirmed one indexing request was accepted for `/software/semrush` and put in its priority crawl queue on 2026-10-27. Last known crawl before request: 2026-08-18; not indexed when checked. Accepted request is **not indexing or ranking recovery**; do not repeat the request expecting faster processing.
+
+## Build-lifecycle guard and confirmed Google requests
+
+The pre-existing GitHub CI workflow targets only `main`, while Miloosh production uses `growth/buyer-acquisition-20260917`. The sentinel therefore also runs through the **npm prebuild lifecycle**, before `next build`, including direct Vercel builds. The existing build command remains unchanged; a sentinel error prevents building. A focused integration assertion checks this wiring. No paid service or new recurring task was created.
+
+A second targeted indexing request for `/software/intercom` was explicitly accepted by Google Search Console on 2026-10-27. Last previously reported crawl: 2026-09-01. Both requests (Semrush/Intercom) are confirmed queued only; neither has been reported as indexed.
+
+The independent forward-date evaluation on unchanged product records found 612 admitted product/comparison URLs preserved; old strict discovery would produce 597 on Oct30, 563 on Oct31 and 513 on Nov3. Thus the fix prevents 15, 49 and 99 **clock-only** removals respectively in this scenario; those are code simulations, not Google ranking predictions. Current sitemap still has 693 URLs including other existing route families.
