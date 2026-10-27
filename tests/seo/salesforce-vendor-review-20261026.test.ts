@@ -25,11 +25,9 @@ describe("Salesforce October 2026 vendor-evidence refresh", () => {
     expect(limitations).toContain("Check the objects");
   });
 
-  it("prevents the previously verified content from falling out of the November 1 sitemap solely due to age", () => {
+  it("does not bump the shared accessedAt field as part of this scoped editorial release", () => {
     const salesforce = getSoftware("salesforce")!;
-    expect(salesforce.accessedAt).toBe("2026-10-26");
-    expect(getSoftwareIndexingQualityReasons(salesforce, reviewDate)).not.toContain("content-freshness");
-    const beforeReview = { ...salesforce, accessedAt: "2026-07-31" };
-    expect(getSoftwareIndexingQualityReasons(beforeReview, reviewDate)).toContain("content-freshness");
+    expect(salesforce.accessedAt).toBe("2026-07-31");
+    expect(getSoftwareIndexingQualityReasons(salesforce, reviewDate)).toContain("content-freshness");
   });
 });
