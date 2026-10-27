@@ -27,6 +27,7 @@ import { protectionFor, type ProtectionSnapshot } from "./protection";
 import { redactDeep, redactText } from "./redact";
 import type { PricingRenderAudit } from "./price-render-audit";
 import type { ComparisonTemplateRenderAudit } from "./comparison-template-render-audit";
+import type { DiscoveryContinuityRenderAudit } from "./discovery-continuity-render-audit";
 
 /**
  * The read-only orchestration behind `npm run growth:director`.
@@ -56,6 +57,9 @@ export type CliOptions = {
   /** Exact-commit full-build proof for the v2 comparison template only. Both options must be supplied. */
   templateRenderBaseDir?: string | null;
   templateRenderCandidateDir?: string | null;
+  /** Exact-commit full-build proof for the discovery-continuity repair only: the ROOTS of two built, clean worktrees. Both must be supplied. */
+  discoveryRenderBaseDir?: string | null;
+  discoveryRenderCandidateDir?: string | null;
   runGates: boolean;
   checkProduction: boolean;
   /** Owner-recorded production facts used when the platform is not queried. */
@@ -83,6 +87,7 @@ export type Ports = {
   isSharedTemplate(file: string): boolean;
   verifyPriceRendering?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string, snapshot: ProtectionSnapshot) => PricingRenderAudit;
   verifyComparisonTemplate?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string, snapshot: ProtectionSnapshot, derivedUrls: readonly string[]) => ComparisonTemplateRenderAudit;
+  verifyDiscoveryContinuity?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string) => DiscoveryContinuityRenderAudit;
 };
 
 export type CliResult = {
@@ -255,6 +260,10 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
   const comparisonTemplateAudit = options.templateRenderBaseDir && options.templateRenderCandidateDir && options.baseSha && ports.verifyComparisonTemplate
     ? ports.verifyComparisonTemplate(options.templateRenderBaseDir, options.templateRenderCandidateDir, options.baseSha, git.headSha, protection.snapshot, affected.affectedUrls)
     : null;
+  // The adapter is told the Guardian's own base and head ids (head is read from git, never typed in) and checks both checkouts against them.
+  const discoveryContinuityAudit = options.discoveryRenderBaseDir && options.discoveryRenderCandidateDir && options.baseSha && ports.verifyDiscoveryContinuity
+    ? ports.verifyDiscoveryContinuity(options.discoveryRenderBaseDir, options.discoveryRenderCandidateDir, options.baseSha, git.headSha)
+    : null;
   const affectedNonEditable = affected.affectedUrls
     .map((url) => protectionFor(url, protection.snapshot))
     .filter((r) => r.verdict !== "EDITABLE")
@@ -267,7 +276,7 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
     gateProvenance: gateEvidence.provenance,
     baseline,
     ...(options.baselineFile && !baseline ? { baselineProblem: "The baseline file could not be read as gate results, so no baseline is used." } : {}),
-    protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged, pricingRenderAudit, comparisonTemplateAudit },
+    protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged, pricingRenderAudit, comparisonTemplateAudit, discoveryContinuityAudit },
     production,
     renderedDiff: renderedDiff && typeof renderedDiff.compared === "number" && typeof renderedDiff.differing === "number" ? { compared: renderedDiff.compared, differing: renderedDiff.differing, differingSample: renderedDiff.differingSample ?? [] } : null,
   });
