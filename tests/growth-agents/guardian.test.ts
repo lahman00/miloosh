@@ -595,7 +595,7 @@ describe("discovery-continuity render proof", () => {
     headSha: SHA,
     pagesCompared: 1786,
     changedPages: 0,
-    sitemapUrls: 1500,
+    sitemapUrls: 693,
     sitemapIdentical: true,
     robotsIdentical: true,
     changedFilesChecked: changedFiles.length,

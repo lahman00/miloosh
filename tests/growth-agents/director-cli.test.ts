@@ -454,7 +454,7 @@ describe("discovery-continuity proof options", () => {
   const changed = ["app/sitemap.ts", "lib/discovery-continuity.ts"];
   const audit = (over: Record<string, unknown> = {}) => ({
     kind: "DISCOVERY_CONTINUITY_FULL_STATIC_BUILD_AUDIT" as const, ok: true, baseSha: BASE, headSha: SHA, pagesCompared: 1800, changedPages: 0,
-    sitemapUrls: 1500, sitemapIdentical: true, robotsIdentical: true, changedFilesChecked: changed.length, errors: [] as string[], ...over,
+    sitemapUrls: 693, sitemapIdentical: true, robotsIdentical: true, changedFilesChecked: changed.length, errors: [] as string[], ...over,
   });
   const run = (extra: Partial<CliOptions>, verify?: Ports["verifyDiscoveryContinuity"]) => {
     const { ports } = makePorts(captureFiles(), {

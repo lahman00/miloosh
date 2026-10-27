@@ -30,7 +30,8 @@ export type DiscoveryContinuityRenderAudit = {
 };
 
 export const DISCOVERY_MIN_PAGES = 1700;
-const MIN_SITEMAP_URLS = 1000;
+// Exact public production sitemap inventory independently captured on 2026-10-27; this proof is scoped to that no-op release.
+export const DISCOVERY_EXPECTED_SITEMAP_URLS = 693;
 const FULL_SHA = /^[0-9a-f]{40}$/;
 
 /** Exact files of the reviewed fix, shipped as the runtime change. No wildcard and no directory is allowed. */
@@ -51,6 +52,7 @@ export const DISCOVERY_SUPPORT_FILES: readonly string[] = [
   "scripts/seo/reverification-queue.ts",
   "tests/lib/discovery-continuity.test.ts",
   "tests/lib/sitemap.test.ts",
+  "docs/mission/GOOGLE_DISCOVERY_STABILITY_20261027.md",
   "lib/growth-agents/discovery-continuity-render-audit.ts",
   "lib/growth-agents/guardian.ts",
   "lib/growth-agents/guardian-sources.ts",
@@ -192,7 +194,7 @@ export function auditDiscoveryContinuityBuilds(input: {
     const a = parseSitemapEntries(input.beforeSitemap);
     const b = parseSitemapEntries(input.afterSitemap);
     sitemapUrls = Math.min(a.length, b.length);
-    if (a.length < MIN_SITEMAP_URLS || b.length < MIN_SITEMAP_URLS) errors.push(`SITEMAP_TOO_SMALL: ${a.length} before, ${b.length} after (at least ${MIN_SITEMAP_URLS} required).`);
+    if (a.length !== DISCOVERY_EXPECTED_SITEMAP_URLS || b.length !== DISCOVERY_EXPECTED_SITEMAP_URLS) errors.push(`SITEMAP_COUNT_MISMATCH: ${a.length} before, ${b.length} after (exactly ${DISCOVERY_EXPECTED_SITEMAP_URLS} required for this release).`);
     if (a.some((e) => !e.loc) || b.some((e) => !e.loc)) errors.push("SITEMAP_UNREADABLE: an entry has no <loc>.");
     sitemapIdentical = input.beforeSitemap.trim() === input.afterSitemap.trim() && a.length === b.length && JSON.stringify(a) === JSON.stringify(b);
     if (!sitemapIdentical) {

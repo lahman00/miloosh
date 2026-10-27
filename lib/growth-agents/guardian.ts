@@ -1,6 +1,6 @@
 import { compareDates } from "./evidence";
 import { COMPARISON_TEMPLATE_WAVE_SIZE, isComparisonTemplateFile } from "./comparison-template-render-audit";
-import { DISCOVERY_MIN_PAGES, isDiscoveryContinuityFile } from "./discovery-continuity-render-audit";
+import { DISCOVERY_MIN_PAGES, DISCOVERY_EXPECTED_SITEMAP_URLS, isDiscoveryContinuityFile } from "./discovery-continuity-render-audit";
 
 /**
  * Release & Quality Guardian: a pure verdict over facts that adapters read.
@@ -456,7 +456,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     discoveryAudit.changedPages === 0 &&
     discoveryAudit.sitemapIdentical === true &&
     discoveryAudit.robotsIdentical === true &&
-    discoveryAudit.sitemapUrls >= 1000 &&
+    discoveryAudit.sitemapUrls === DISCOVERY_EXPECTED_SITEMAP_URLS &&
     discoveryAudit.errors.length === 0 &&
     git.changedFiles.length > 0 &&
     discoveryAudit.changedFilesChecked === git.changedFiles.length &&

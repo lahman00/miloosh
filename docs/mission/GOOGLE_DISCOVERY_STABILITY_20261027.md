@@ -33,3 +33,11 @@ Not done, by design: no date bumps, no 90-day change, no gate disabled, no noind
 - New products need current strict readiness; the baseline must be regenerated deliberately after a reviewed release.
 - Retained URLs are a hint to Google, not a guarantee of indexing or traffic.
 - Supervisor items: shared-template proof, independent review, release and production SHA confirmation.
+
+## Independent review — 2026-10-27
+
+- Source baseline independently matched **1,351/1,351** uploaded production files to Git `60bbf275d67623b18ec87016bf1d19d3a5b02999`. Both canonical domains point to `dpl_FRYv4hj8MugAeAYnSYEehET29G9u` before release.
+- Fixed invalid/future date admission, mutated-registry validation, exact product-pair identity, and future-dated removal approvals; 48 focused tests passed before integrating the render proof. No product date or price was edited.
+- Added an exact-scope independent full-build proof path: at least 1,700 complete HTML pages must be identical, and the **exact 693-entry sitemap including lastmod and robots.txt** must be identical. Wrong/dirty commit, partial build, changed content/links/JSON-LD/canonical, unrelated files or modified existing CI/package lines block. Required six gates still mandatory; no universal shared-template exception was added.
+- The correct sitemap count is 693, measured independently from production, not an assumed 1,000+ threshold. Tests reject equal but partial/expanded inventories too.
+- Google Search Console confirmed one indexing request was accepted for `/software/semrush` and put in its priority crawl queue on 2026-10-27. Last known crawl before request: 2026-08-18; not indexed when checked. Accepted request is **not indexing or ranking recovery**; do not repeat the request expecting faster processing.

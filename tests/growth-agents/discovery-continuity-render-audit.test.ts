@@ -21,7 +21,7 @@ const LD = '<script type="application/ld+json">{"@type":"Article","name":"X"}</s
 const page = (body: string, head = `<title>T</title>${CANON}<meta name="robots" content="index,follow"/>${LD}`) =>
   `<!DOCTYPE html><html><head>${head}</head><body>${body}</body></html>`;
 
-const sitemap = (n = 1200, lastmod = "2026-10-01") =>
+const sitemap = (n = 693, lastmod = "2026-10-01") =>
   `<?xml version="1.0"?><urlset>${Array.from({ length: n }, (_, i) => `<url><loc>https://miloosh.com/p${i}</loc><lastmod>${lastmod}</lastmod></url>`).join("")}</urlset>`;
 const ROBOTS = "User-Agent: *\nAllow: /\nSitemap: https://miloosh.com/sitemap.xml\n";
 
@@ -59,7 +59,7 @@ describe("auditDiscoveryContinuityBuilds", () => {
   it("passes when the complete builds, sitemap and robots are identical and only the reviewed files changed", () => {
     const audit = auditDiscoveryContinuityBuilds(input());
     expect(audit.errors).toEqual([]);
-    expect(audit).toMatchObject({ ok: true, pagesCompared: 1750, changedPages: 0, sitemapUrls: 1200, sitemapIdentical: true, robotsIdentical: true });
+    expect(audit).toMatchObject({ ok: true, pagesCompared: 1750, changedPages: 0, sitemapUrls: 693, sitemapIdentical: true, robotsIdentical: true });
   });
 
   it("ignores build noise only (hashed asset names, framework scripts, deployment ids)", () => {
@@ -123,10 +123,10 @@ describe("auditDiscoveryContinuityBuilds", () => {
       expect(errorsOf(input({ afterSitemap: sitemap(1201) }))).toContain("SITEMAP_CHANGED");
     });
     it("fails when only a lastmod changes", () => {
-      expect(errorsOf(input({ afterSitemap: sitemap(1200, "2026-10-02") }))).toContain("SITEMAP_CHANGED");
+      expect(errorsOf(input({ afterSitemap: sitemap(693, "2026-10-02") }))).toContain("SITEMAP_CHANGED");
     });
     it("fails on a trivial sitemap or robots even if identical", () => {
-      expect(errorsOf(input({ beforeSitemap: sitemap(3), afterSitemap: sitemap(3) }))).toContain("SITEMAP_TOO_SMALL");
+      expect(errorsOf(input({ beforeSitemap: sitemap(3), afterSitemap: sitemap(3) }))).toContain("SITEMAP_COUNT_MISMATCH");
       expect(errorsOf(input({ beforeRobots: "", afterRobots: "" }))).toContain("ROBOTS_UNREADABLE");
     });
     it("fails when robots.txt changes", () => {
@@ -300,5 +300,15 @@ describe("verifyDiscoveryContinuityBuilds (read-only adapter on real clean workt
     expect(git(headTree, "status", "--porcelain")).toBe(before);
     const missing = verifyDiscoveryContinuityBuilds({ baseDir: path.join(tmp, "nope"), candidateDir: headTree, baseSha: base, headSha: head });
     expect(missing.ok).toBe(false);
+  });
+});
+
+
+describe("exact deployed sitemap count", () => {
+  it.each([0, 692, 694, 1000, 1200])("rejects equal but non-baseline sitemap inventories: %s", n => {
+    expect(errorsOf(input({beforeSitemap:sitemap(n), afterSitemap:sitemap(n)}))).toContain("SITEMAP_COUNT_MISMATCH");
+  });
+  it("accepts the independently counted 693-URL baseline", () => {
+    expect(auditDiscoveryContinuityBuilds(input({beforeSitemap:sitemap(693), afterSitemap:sitemap(693)})).ok).toBe(true);
   });
 });
