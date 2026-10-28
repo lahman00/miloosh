@@ -9,7 +9,7 @@
     "iOS",
     "Android"
   ],
-  "best_for": "Salesforce markets itself for companies of any size wanting a single, AI-enabled platform unifying sales, service, marketing, and IT — from small businesses up through large enterprises.",
+  "best_for": "Organizations needing CRM workflows across multiple teams and willing to plan setup, integrations and ongoing administration. Before switching, check whether the chosen edition supports the automations, exports and mobile workflows your team relies on.",
   "features": [
     "Contact, account, and opportunity management",
     "Slack-based team collaboration",
@@ -20,7 +20,11 @@
   ],
   "sources": [
     "https://www.salesforce.com/crm/",
-    "https://www.salesforce.com/products/mobile/"
+    "https://www.salesforce.com/products/mobile/",
+    "https://www.salesforce.com/crm/pricing/",
+    "https://www.salesforce.com/crm/free-crm/",
+    "https://help.salesforce.com/s/articleView?id=000383962&language=en_US&type=1",
+    "https://help.salesforce.com/s/articleView?id=000383363&language=en_US&type=1"
   ],
   "accessed_at": "2026-07-31",
   "pricing": {
@@ -29,12 +33,38 @@
     "has_free_tier": true,
     "status": "verified",
     "free_plan": true,
-    "free_trial": { "available": true, "days": 30 },
-    "entry_paid": { "amount": "25", "currency": "USD", "billing_period": "monthly", "per_seat": true },
+    "free_trial": {
+      "available": true,
+      "days": 30
+    },
+    "entry_paid": {
+      "amount": "25",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": true
+    },
     "tiers": [
-      { "name": "Free Suite", "amount": "0", "currency": "USD", "billing_period": "monthly", "notes": "2 user licenses included. No contract or credit card required. Lead/opportunity/case management, assistive AI." },
-      { "name": "Starter Suite", "amount": "25", "currency": "USD", "billing_period": "monthly", "notes": "Starting price per user/month, billed monthly or annually. Transaction fees apply. Unlimited users, built-in sales flows." },
-      { "name": "Pro Suite", "amount": "100", "currency": "USD", "billing_period": "annual", "notes": "Starting price per user/month, billed annually -- a signed contract is required for this tier. Transaction fees apply. Advanced automation, sales quoting/forecasting." }
+      {
+        "name": "Free Suite",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "2 user licenses included. No contract or credit card required. Lead/opportunity/case management, assistive AI."
+      },
+      {
+        "name": "Starter Suite",
+        "amount": "25",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Starting price per user/month, billed monthly or annually. Transaction fees apply. Unlimited users, built-in sales flows."
+      },
+      {
+        "name": "Pro Suite",
+        "amount": "100",
+        "currency": "USD",
+        "billing_period": "annual",
+        "notes": "Starting price per user/month, billed annually -- a signed contract is required for this tier. Transaction fees apply. Advanced automation, sales quoting/forecasting."
+      }
     ],
     "last_verified": "2026-08-23",
     "official_source": "https://www.salesforce.com/crm/pricing/"
@@ -42,7 +72,9 @@
   "cons": [
     "Pro Suite and above require a signed annual contract -- unlike Starter Suite, you can't pay month-to-month once you need Pro-tier features.",
     "Transaction fees apply on paid tiers on top of the per-user subscription price, per the vendor's own pricing page.",
-    "This page covers Salesforce's small-business CRM Suite pricing; the vendor's larger Enterprise/Unlimited/Agentforce editions for bigger organizations are priced and sold separately."
+    "This page covers Salesforce's small-business CRM Suite pricing; the vendor's larger Enterprise/Unlimited/Agentforce editions for bigger organizations are priced and sold separately.",
+    "Salesforce Data Export has edition-dependent weekly or monthly availability, and completed export files are available to download for a limited 48-hour window. Plan backup and migration timing before changing CRMs.",
+    "Some Salesforce desktop administration, reporting, and complex layouts are unavailable or work differently in the mobile app. Check the objects and field layouts mobile users actually need."
   ],
   "alternatives": [
     {
