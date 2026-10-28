@@ -5,7 +5,7 @@
   "description": "Tidio is a customer service platform combining live chat, a help desk, and the Lyro AI agent, which can independently handle a large share of repetitive support conversations.",
   "website": "https://www.tidio.com",
   "platforms": ["Web", "iOS", "Android", "Windows", "macOS"],
-  "best_for": "Around 300,000 businesses wanting AI-assisted customer service without replacing their human support team, particularly ecommerce sites on Shopify and WordPress.",
+  "best_for": "Ecommerce and support teams that want AI-assisted service alongside a human team and can forecast human-agent conversations, Lyro AI conversations and Flows visitors as three separate monthly quotas.",
   "features": [
     "Lyro AI agent for automated conversation handling",
     "Live chat widget for real-time website engagement",
@@ -15,7 +15,11 @@
     "Native desktop and mobile apps across Windows, Mac, iOS, and Android"
   ],
   "sources": [
-    "https://www.tidio.com"
+    "https://www.tidio.com",
+    "https://www.tidio.com/pricing/",
+    "https://help.tidio.com/hc/en-us/articles/11874534946460-The-monthly-conversations-limit",
+    "https://help.tidio.com/hc/en-us/articles/5423133940764-The-Tidio-trial-version",
+    "https://www.tidio.com/faq/"
   ],
   "accessed_at": "2026-08-04",
   "pricing": {
@@ -38,6 +42,7 @@
   },
   "cons": [
     "Above the Free plan, pricing scales with conversation volume rather than being a flat per-tier price -- Growth and Plus are both \"starting at\" prices that increase with usage.",
+    "The monthly billable-conversation quota is pooled across agent-handled live chat, tickets/email and Messenger, Instagram and WhatsApp conversations (Lyro and Flows have separate quotas). Once it is reached, agents cannot reply or see incoming message details until the quota resets or the plan is upgraded.",
     "The Free plan's Lyro AI allotment (50 conversations) is one-time, not monthly -- ongoing AI automation requires a paid tier."
   ],
   "alternatives": [
