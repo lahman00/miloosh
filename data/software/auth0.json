@@ -2,10 +2,14 @@
   "name": "Auth0",
   "slug": "auth0",
   "category": "security",
-  "description": "Auth0 is an authentication and authorization platform (an Okta product) that the vendor describes as \"an easy to implement, adaptable authentication and authorization platform\" for integrating identity into applications.",
+  "description": "Auth0 is an identity platform for adding authentication and authorization to web, mobile, B2B, and AI-enabled applications. Buyers should compare MAU-based pricing, organization limits, MFA entitlements, enterprise connections, and migration requirements before committing.",
   "website": "https://auth0.com",
-  "platforms": ["Web", "iOS", "Android"],
-  "best_for": "Serves developers building consumer apps, internal tools, and enterprise software, plus startups, enterprises needing SSO/SCIM/multi-tenancy, and B2B/B2C SaaS companies.",
+  "platforms": [
+    "Web",
+    "iOS",
+    "Android"
+  ],
+  "best_for": "Development teams that want a managed customer-identity layer with SDKs, Universal Login, social or enterprise connections, Organizations, MFA, and extensibility without building the full identity stack themselves.",
   "features": [
     "Universal Login and passwordless authentication",
     "Multi-Factor Authentication and breached-password/bot detection",
@@ -14,22 +18,89 @@
     "Auth0 for AI Agents (async authorization, RAG pipeline controls)",
     "Actions framework for extensibility"
   ],
-  "sources": ["https://auth0.com"],
-  "accessed_at": "2026-08-01",
+  "sources": [
+    "https://auth0.com/",
+    "https://auth0.com/pricing",
+    "https://auth0.com/organizations",
+    "https://support.auth0.com/center/s/article/SCIM-support-at-Auth0",
+    "https://support.auth0.com/center/s/article/Entitlements-for-Enterprise-MFA-Feature"
+  ],
+  "accessed_at": "2026-10-28",
   "alternatives": [
     {
       "name": "Okta",
       "slug": "okta",
       "description": "Auth0's parent-company workforce identity platform, providing SSO and adaptive MFA for employees/partners across 8,000+ integrations.",
       "best_for": "Enterprises managing internal workforce access rather than embedding customer-facing auth into an app.",
-      "strengths": ["Large pre-built integration network", "Identity governance", "Lifecycle management"]
+      "strengths": [
+        "Large pre-built integration network",
+        "Identity governance",
+        "Lifecycle management"
+      ]
     },
     {
       "name": "1Password",
       "slug": "1password",
       "description": "Provides a credential vault and secrets management platform rather than a developer authentication API.",
       "best_for": "Teams needing a shared vault for passwords/secrets rather than building login flows into their own product.",
-      "strengths": ["Secrets management", "Privileged access", "SaaS governance"]
+      "strengths": [
+        "Secrets management",
+        "Privileged access",
+        "SaaS governance"
+      ]
     }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "starting_price": "Free up to 25,000 MAU; paid self-service starts at $35/month for Essentials at 500 MAU (B2C monthly)",
+    "has_free_tier": true,
+    "status": "verified",
+    "free_plan": true,
+    "free_trial": {
+      "available": true,
+      "days": 22
+    },
+    "entry_paid": {
+      "amount": "35",
+      "currency": "USD",
+      "billing_period": "monthly",
+      "per_seat": false
+    },
+    "tiers": [
+      {
+        "name": "Free",
+        "amount": "0",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Up to 25,000 monthly active users; 5 Organizations, 1 Enterprise Connection, 1 custom domain, passwordless authentication, SCIM and community support are listed on the current B2C pricing page."
+      },
+      {
+        "name": "Essentials",
+        "amount": "35",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Shown at $35/month for up to 500 MAU in the B2C monthly view; adds higher limits, Pro MFA, 10 Organizations, log streaming, separate production/development environments and standard support."
+      },
+      {
+        "name": "Professional",
+        "amount": "240",
+        "currency": "USD",
+        "billing_period": "monthly",
+        "notes": "Shown at $240/month for up to 500 MAU in the B2C monthly view; adds custom database connections, Enterprise MFA and enhanced attack protection. M2M tokens are an add-on."
+      },
+      {
+        "name": "Enterprise",
+        "notes": "Contact sales; custom user and SSO tiers, 99.99% SLA, enterprise rate limits and advanced support/features."
+      }
+    ],
+    "enterprise_contact_sales": true,
+    "last_verified": "2026-10-28",
+    "official_source": "https://auth0.com/pricing"
+  },
+  "cons": [
+    "Paid self-service pricing scales with monthly active users and use case, so the displayed $35 Essentials and $240 Professional rates are not universal prices for larger deployments.",
+    "Plan entitlements differ sharply: Pro MFA starts on Essentials, Enterprise MFA and custom database connections start on Professional, while some advanced security and administration capabilities remain Enterprise-only or add-ons.",
+    "B2B identity can change the plan decision: Auth0 notes that Enterprise Connections, Self-Service SSO, and SCIM entitlements differ by use case and may require moving to B2B plans rather than staying on the B2C self-service tiers.",
+    "The Free tier is generous on MAU but has tighter operational limits, including 5 Organizations, 1 Enterprise Connection, 3 admin/contributor seats and 1 day of log retention."
   ]
 }
