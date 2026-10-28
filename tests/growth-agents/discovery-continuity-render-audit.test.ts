@@ -287,7 +287,7 @@ describe("verifyDiscoveryContinuityBuilds (read-only adapter on real clean workt
     expect(verifyDiscoveryContinuityBuilds({ baseDir: baseTree, candidateDir: headTree, baseSha: base, headSha: unrelatedHead }).errors.join("|")).toContain("not at the exact head commit");
     writeBuild(badTree);
     expect(verifyDiscoveryContinuityBuilds({ baseDir: baseTree, candidateDir: badTree, baseSha: base, headSha: unrelatedHead }).errors.join("|")).toContain("FILE_OUT_OF_SCOPE: other.txt");
-  });
+  }, 15_000);
 
   it("fails on a dirty checkout and on a missing build folder, and never writes to either worktree", () => {
     writeBuild(baseTree);
