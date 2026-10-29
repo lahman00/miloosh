@@ -9,13 +9,13 @@ export function Breadcrumbs({
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex flex-wrap items-center gap-1.5 text-sm text-zinc-400"
+      className="flex flex-wrap items-center gap-x-1.5 text-sm text-zinc-400"
     >
       {items.map((item, index) => (
-        <span key={item.name} className="flex items-center gap-1.5">
+        <span key={item.name} className="flex min-h-11 items-center gap-1.5">
           {index > 0 ? <ChevronRight className="h-3.5 w-3.5" /> : null}
           {item.href ? (
-            <Link href={item.href} className="transition hover:text-white">
+            <Link href={item.href} className="underline decoration-[var(--line)] underline-offset-4 transition hover:text-white hover:decoration-current">
               {item.name}
             </Link>
           ) : (

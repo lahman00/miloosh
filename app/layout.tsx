@@ -9,6 +9,7 @@ import { SocialLandingCapture } from "@/components/SocialLandingCapture";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_THEME_COLOR, SITE_URL } from "@/lib/site";
 import "./globals.css";
+import "./design-system.css";
 
 const manrope = Manrope({
   variable: "--font-manrope",
