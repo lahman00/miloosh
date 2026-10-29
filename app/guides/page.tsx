@@ -17,13 +17,13 @@ export default function GuidesPage() {
   );
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className="page-shell flex-1">
       <Container>
         <header className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
             Decision guides
           </p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h1 className="page-title">
             Start with the job, not the software logo
           </h1>
           <p className="mt-4 text-base leading-7 text-zinc-400 sm:text-lg">

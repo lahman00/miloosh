@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PremiumLegalPageLayout as LegalPageLayout } from "@/app/_design/PremiumLegalPageLayout";
+import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { SITE_EMAIL, SITE_NAME } from "@/lib/site";
 
 const TITLE = "Accessibility Statement";

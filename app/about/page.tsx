@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import styles from "@/app/_design/premium.module.css";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ReadingLayout } from "@/app/_design/ReadingLayout";
+import { ReadingLayout } from "@/components/ReadingLayout";
 import { JsonLd } from "@/components/JsonLd";
 import { getBreadcrumbJsonLd } from "@/lib/structured-data";
 import { getDataFreshness } from "@/lib/freshness";
@@ -88,7 +87,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className={`${styles.shell} flex-1`}>
+    <main className="page-shell flex-1">
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -96,13 +95,13 @@ export default function AboutPage() {
         ])}
       />
 
-      <Container className={styles.wide}>
+      <Container size="wide">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "About" }]} />
 
-        <h1 className={styles.title}>About {SITE_NAME}</h1>
-        <p className={styles.meta}>Last updated {LEGAL_LAST_UPDATED}</p>
+        <h1 className="page-title">About {SITE_NAME}</h1>
+        <p className="page-meta">Last updated {LEGAL_LAST_UPDATED}</p>
 
-        <p className={styles.intro}>
+        <p className="page-intro">
           {SITE_NAME} helps you figure out what to switch to before you actually switch —
           comparing the strongest alternatives to the software you already use, side by side.
         </p>

@@ -1,0 +1,110 @@
+/* Site-wide page system, ported from the About page (Oct 29, 2026).
+   Presentation only. The home page (.home-design) keeps its own layout; every
+   inner route renders through <main class="page-shell">. Colours come from the
+   semantic tokens in globals.css. Rules here are unlayered on purpose so they
+   settle legacy dark-theme utilities (border-white/10, bg-white/[0.03], ...)
+   into intentional light surfaces. */
+
+:root {
+  --line-strong: #aab9a2;
+  --stage-soft: #eaf0e1;
+  --shadow-soft: 0 1px 2px rgba(23, 59, 44, .04), 0 8px 24px rgba(23, 59, 44, .06);
+}
+
+/* ---- Page shell, title, intro ------------------------------------------ */
+.page-shell { padding-block: var(--space-8); color: var(--ink); }
+.page-shell-centered { padding-block: var(--space-8); }
+.page-title {
+  margin-top: var(--space-5);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.12;
+  font-weight: 650;
+  letter-spacing: -.03em;
+  color: var(--ink);
+}
+.page-intro,
+.page-shell header > .page-title + p {
+  max-width: 62ch;
+  margin-top: var(--space-5);
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+.page-meta { margin-top: var(--space-3); color: var(--subtle); font-size: .875rem; }
+.page-shell header { max-width: 48rem; }
+.page-shell header > .page-title { margin-top: var(--space-4); }
+.page-shell header > p:first-child:not(.page-intro) { letter-spacing: .14em; }
+@media (max-width: 540px) {
+  .page-shell { padding-block: var(--space-7); }
+  .page-title { font-size: 2.25rem; }
+}
+
+/* ---- Type weight: medium-editorial instead of ultra-bold ---------------- */
+.page-shell :is(h2, h3, h4) { letter-spacing: -.02em; text-wrap: balance; }
+.page-shell :is(h2, h3, h4).font-bold,
+.page-shell :is(h2, h3, h4).font-extrabold { font-weight: 650; }
+.page-shell :is(h2, h3, h4).font-semibold { font-weight: 650; }
+.page-shell :is(p, li, dd) { text-wrap: pretty; }
+
+/* ---- Hairlines and surfaces ---------------------------------------------
+   Legacy utilities were authored for a dark theme and bridged to ink tints.
+   Map them to the line and surface tokens used by the About and home pages. */
+.page-shell :is(
+  [class~="border-white/5"], [class~="border-white/10"], [class~="border-white/15"],
+  [class~="border-white/20"], [class~="border-zinc-800"]
+) { border-color: var(--line); }
+.page-shell :is([class~="divide-white/5"], [class~="divide-white/10"], [class~="divide-zinc-800"]) > :not(:first-child) { border-color: var(--line); }
+.page-shell :is([class~="hover:border-white/25"], [class~="hover:border-white/30"]):hover { border-color: var(--line-strong); }
+.page-shell :is(
+  [class~="bg-white/[0.02]"], [class~="bg-white/[0.025]"], [class~="bg-white/[0.03]"], [class~="bg-white/[0.04]"]
+) { background-color: var(--surface); }
+.page-shell :is([class~="bg-white/5"], [class~="bg-white/[0.05]"], [class~="bg-white/[0.07]"], [class~="bg-white/[0.08]"], [class~="bg-white/10"]):not(button):not(a) { background-color: var(--surface-soft); }
+.page-shell :is([class~="hover:bg-white/[0.05]"], [class~="hover:bg-white/5"], [class~="hover:bg-white/10"]):hover { background-color: var(--surface-soft); }
+/* Emerald tints are semantic "good fit / verified" surfaces: use the stage tone. */
+.page-shell :is(
+  [class~="bg-emerald-500/5"], [class~="bg-emerald-500/10"], [class~="bg-emerald-500/[0.03]"], [class~="bg-emerald-500/[0.06]"],
+  [class~="bg-emerald-400/[0.03]"], [class~="bg-emerald-400/[0.04]"]
+) { background-color: var(--stage-soft); }
+.page-shell :is(
+  [class~="border-emerald-300"], [class~="border-emerald-400/20"], [class~="border-emerald-400/30"], [class~="border-emerald-400/50"],
+  [class~="border-emerald-500/20"], [class~="border-emerald-500/30"]
+) { border-color: #c4d0ba; }
+
+/* Cards: white, 1px line, radius 16. Soft shadow only on the verdict surface. */
+.page-shell :is(.rounded-2xl)[class*="border"] { border-radius: var(--radius-card); }
+.decision-surface { box-shadow: var(--shadow-soft); }
+
+/* ---- Links and interaction ---------------------------------------------- */
+.page-shell a:not([class]) { text-decoration-color: var(--line-strong); }
+.page-shell a[class~="underline"]:not(:hover) { text-decoration-color: var(--line-strong); }
+.page-shell a[class~="underline"]:hover { text-decoration-color: currentColor; }
+.page-shell summary { min-height: 44px; }
+.page-shell :is(input, select, textarea):not([type="checkbox"], [type="radio"]) { border-color: #bbc8b8; }
+.page-shell :is(input, select, textarea):focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* Chip-style navigation links keep a 44px target without changing their look. */
+.page-shell nav[aria-label="On this page"] > a { display: inline-flex; align-items: center; min-height: 44px; border-color: var(--line); border-radius: 999px; }
+.page-shell nav[aria-label="On this page"] > a:hover { border-color: var(--ink); }
+
+/* ---- Tables: line-based decision surface -------------------------------- */
+.page-shell table { border-collapse: collapse; }
+.page-shell :is(th, td) { border-color: var(--line); }
+.page-shell thead { background: var(--surface-soft); }
+
+/* ---- Structure rhythm ---------------------------------------------------- */
+.page-shell section[class~="mt-14"] { margin-top: var(--space-8); }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell *, .page-shell *::before, .page-shell *::after { scroll-behavior: auto !important; }
+}
+
+/* Home retains the already-approved BuyerDesk hero and information hierarchy.
+   These finishing primitives align its section rhythm with the About editorial
+   language without changing its interactions, copy or ranking logic. */
+.home-design .section-intro h2 { font-weight: 600; letter-spacing: -.035em; }
+.home-design :is(.featured-software,.guide-graphic,.shortlist-sheet) { border-radius: var(--radius-card); }
+.home-design :is(.buyer-tool-row,.comparison-list > a,.guide-list > a) { border-color: var(--line); }
+.home-design :is(.text-action,.featured-software-action) { text-decoration-thickness: 1px; text-underline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) {
+  .home-design *, .home-design *::before, .home-design *::after { scroll-behavior: auto !important; }
+}

@@ -55,7 +55,7 @@ export default function ComparePage() {
     );
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className="page-shell flex-1">
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -71,7 +71,7 @@ export default function ComparePage() {
             <GitCompare className="h-5 w-5" strokeWidth={2.25} />
           </span>
 
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h1 className="page-title">
             Compare software
           </h1>
 

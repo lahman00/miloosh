@@ -150,7 +150,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
       <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
 
-      <main className="flex-1 py-16 sm:py-20">
+      <main className="page-shell flex-1">
         <Container>
           <Breadcrumbs
             items={[
@@ -168,7 +168,7 @@ export default async function RoleGuidePage({ params }: GuidePageProps) {
               <span className="text-xs text-zinc-400 font-medium">• Curated for {guide.roleName}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+            <h1 className="page-title">
               {guide.title}
             </h1>
             <p className="text-lg sm:text-xl text-zinc-400 leading-relaxed">

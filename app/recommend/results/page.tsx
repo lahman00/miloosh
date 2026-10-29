@@ -1,4 +1,3 @@
-import styles from "@/app/_design/premium.module.css";
 import type { Metadata } from "next";
 import { Ban, Check, Compass, ThumbsUp } from "lucide-react";
 import { Container } from "@/components/Container";
@@ -62,7 +61,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white">
             <Compass className="h-6 w-6" strokeWidth={2} />
           </span>
-          <h1 className={styles.title}>
+          <h1 className="page-title">
             No answers to work with yet
           </h1>
           <p className="mt-4 max-w-md text-zinc-400">
@@ -91,7 +90,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
   }
 
   return (
-    <main className={`${styles.shell} flex-1`}>
+    <main className="page-shell flex-1">
       <RecommendResultsAnalytics
         domain={answers.primaryNeed ?? "not_sure"}
         confidence={confidence}
@@ -107,7 +106,7 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
         />
 
         <header className="mt-6 max-w-2xl">
-          <h1 className={styles.title}>
+          <h1 className="page-title">
             {confidence === "none" ? "No strong match yet" : repairFirst ? "Research options — repair first" : `Your top ${recommendations.length} recommendation${recommendations.length === 1 ? "" : "s"}`}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">
