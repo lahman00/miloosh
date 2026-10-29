@@ -1,0 +1,64 @@
+name: Growth branch release gates
+
+on:
+  pull_request:
+    branches: [growth/buyer-acquisition-20260917]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: growth-release-gates-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-commit-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact proposed source commit
+        uses: actions/checkout@v7
+        with:
+          # Avoid testing GitHub's synthetic PR merge instead of the proposed commit.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Install Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Record all six unmodified release gates at the checked-out SHA
+        run: npm run growth:record-gates -- --out "${{ runner.temp }}/miloosh-release-gates.json"
+
+      - name: Enforce clean exact-commit provenance and every passing gate
+        env:
+          GATES_PATH: ${{ runner.temp }}/miloosh-release-gates.json
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const receipt=JSON.parse(fs.readFileSync(process.env.GATES_PATH,'utf8'));
+          const expected=['audit','tests','validate-data','lint','typecheck','build'];
+          const missing=expected.filter(g=>!receipt.results?.some(x=>x.gate===g));
+          const failing=(receipt.results||[]).filter(x=>x.status!=='PASS');
+          if(receipt.sha!==process.env.EXPECTED_SHA || receipt.dirty!==false || missing.length || failing.length) {
+            console.error('Release gate failure:',JSON.stringify({sha:receipt.sha,expected:process.env.EXPECTED_SHA,dirty:receipt.dirty,missing,failing}));
+            process.exit(1);
+          }
+          console.log('All six release gates PASS at clean SHA',receipt.sha);
+          JS
+
+      - name: Archive exact-commit gate evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: growth-release-gates-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/miloosh-release-gates.json
+          if-no-files-found: warn
+          retention-days: 14
