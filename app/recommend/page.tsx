@@ -23,7 +23,7 @@ export default async function RecommendPage({
   const fastEcommerceEntry = campaign === "ecommerce-decision" && initialAnswers.primaryNeed === "ecommerce_platform";
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className="page-shell flex-1">
       <Container size="narrow">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Find your software" }]} />
 
@@ -31,7 +31,7 @@ export default async function RecommendPage({
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-zinc-950">
             <Compass className="h-5 w-5" strokeWidth={2.25} />
           </span>
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="page-title">
             {fastEcommerceEntry ? "What should you do with your store?" : "Find your software"}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">

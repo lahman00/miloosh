@@ -125,7 +125,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
   const verdict = comparisonV2 ? getComparisonVerdict(comparison) : null;
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className="page-shell flex-1">
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -145,7 +145,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
         />
 
         <header className="mt-6 max-w-3xl">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h1 className="page-title">
             {data.title}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">{data.intro}</p>

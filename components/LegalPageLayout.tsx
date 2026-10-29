@@ -19,7 +19,7 @@ export function LegalPageLayout({
   lastUpdated?: string;
 }) {
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className="page-shell flex-1">
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -27,11 +27,11 @@ export function LegalPageLayout({
         ])}
       />
 
-      <Container size="narrow">
+      <Container size="wide">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: title }]} />
 
-        <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
-        <p className="mt-4 text-sm text-zinc-500">Last updated {lastUpdated}</p>
+        <h1 className="page-title">{title}</h1>
+        <p className="page-meta">Last updated {lastUpdated}</p>
 
         <LegalContent sections={sections} />
       </Container>
