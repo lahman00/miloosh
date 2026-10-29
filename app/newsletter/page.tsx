@@ -1,3 +1,4 @@
+import styles from "@/app/_design/premium.module.css";
 import type { Metadata } from "next";
 import { Mail, DollarSign, GitCompare, AlertTriangle } from "lucide-react";
 import { Container } from "@/components/Container";
@@ -29,7 +30,7 @@ const sections = [
  */
 export default function NewsletterPage() {
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className={`${styles.shell} flex-1`}>
       <Container size="narrow">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Newsletter" }]} />
 
@@ -37,7 +38,7 @@ export default function NewsletterPage() {
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-zinc-950">
             <Mail className="h-5 w-5" strokeWidth={2.25} />
           </span>
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className={styles.title}>
             Miloosh Software Brief: Interest List
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">

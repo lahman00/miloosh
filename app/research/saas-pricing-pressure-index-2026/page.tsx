@@ -1,3 +1,4 @@
+import styles from "@/app/_design/premium.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TrendingUp, FileCheck2, Users, ExternalLink } from "lucide-react";
@@ -46,7 +47,7 @@ export default function PricingPressureIndexPage() {
   const generatedDate = new Date(index.generatedAt).toISOString().slice(0, 10);
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className={`${styles.shell} flex-1`}>
       <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "SaaS Pricing Pressure Index 2026" }]} />
 
@@ -54,7 +55,7 @@ export default function PricingPressureIndexPage() {
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-zinc-950">
             <TrendingUp className="h-5 w-5" strokeWidth={2.25} />
           </span>
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className={styles.title}>
             SaaS Pricing Pressure Index 2026
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">

@@ -1,3 +1,4 @@
+import styles from "@/app/_design/premium.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, XCircle } from "lucide-react";
@@ -29,13 +30,13 @@ export default async function UnsubscribePage({ searchParams }: UnsubscribePageP
   }
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className={`${styles.shell} flex-1`}>
       <Container size="narrow">
         <Card className="text-center">
           <span className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full ${success ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
             {success ? <CheckCircle2 className="h-6 w-6" /> : <XCircle className="h-6 w-6" />}
           </span>
-          <h1 className="mt-5 text-2xl font-bold text-white">
+          <h1 className={styles.title}>
             {unavailable ? "Unsubscribe temporarily unavailable" : success ? "You're unsubscribed" : "Link not recognized"}
           </h1>
           <p className="mt-3 text-sm leading-6 text-zinc-400">

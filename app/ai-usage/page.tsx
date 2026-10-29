@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LegalPageLayout } from "@/components/LegalPageLayout";
+import { PremiumLegalPageLayout as LegalPageLayout } from "@/app/_design/PremiumLegalPageLayout";
 import { SITE_EMAIL, SITE_NAME } from "@/lib/site";
 
 const TITLE = "AI Usage Disclosure";

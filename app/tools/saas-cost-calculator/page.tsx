@@ -1,3 +1,4 @@
+import styles from "@/app/_design/premium.module.css";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Calculator } from "lucide-react";
@@ -43,7 +44,7 @@ export default function SaasCostCalculatorPage() {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className={`${styles.shell} flex-1`}>
       <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "SaaS Stack Cost Calculator" }]} />
 
@@ -51,7 +52,7 @@ export default function SaasCostCalculatorPage() {
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-zinc-950">
             <Calculator className="h-5 w-5" strokeWidth={2.25} />
           </span>
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className={styles.title}>
             SaaS Stack Cost Calculator
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">

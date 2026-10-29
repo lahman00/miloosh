@@ -1,3 +1,4 @@
+import styles from "@/app/_design/premium.module.css";
 import type { Metadata } from "next";
 import { Mail } from "lucide-react";
 import { Container } from "@/components/Container";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="flex-1 py-16 sm:py-20">
+    <main className={`${styles.shell} flex-1`}>
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -27,7 +28,7 @@ export default function ContactPage() {
       <Container size="narrow">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Contact" }]} />
 
-        <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <h1 className={styles.title}>
           Get in touch
         </h1>
 
