@@ -21,6 +21,18 @@ describe("canonical outbound boundary", () => {
     expect(sinks.cta.mock.calls[0][1]).toBe("https://www.jotform.com/pricing/?partner=miloosh");
     expect(sinks.cta.mock.calls[0][4]).toBeUndefined();
   });
+  it("Decision Room brief vendor handoff retains its bounded source location in both recorded sinks", async () => {
+    // 2026-10-30 regression: previously normalized to unknown-cta-location,
+    // defeating source-specific outbound attribution while client cta_click kept the value.
+    const result = await POST(req({ slug: "notion", kind: "cta", sourcePage: "/decision-room", ctaLocation: "decision-room-brief", isTest: true }));
+    expect(result.status).toBe(202);
+    expect(__test__.normalizeCtaLocation("decision-room-brief")).toBe("decision-room-brief");
+    expect(sinks.cta).toHaveBeenCalledWith(expect.anything(), expect.any(String), "/decision-room", "decision-room-brief", true);
+    expect(sinks.first).toHaveBeenCalledWith(expect.objectContaining({
+      type: "outbound_click", path: "/decision-room", softwareSlug: "notion",
+      ctaLocation: "decision-room-brief", isTest: true,
+    }));
+  });
   it("buyer-checklist is a bounded recognized placement", () => {
     expect(__test__.normalizeCtaLocation("buyer-checklist-cta")).toBe("buyer-checklist-cta");
     expect(__test__.normalizeCtaLocation("free-text-secret")).toBe("unknown-cta-location");

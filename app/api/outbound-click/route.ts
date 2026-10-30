@@ -51,6 +51,7 @@ function isWixContext(value: unknown): value is WixFunnelContext {
 const KNOWN_CTA_LOCATIONS = new Set([
   "software-page-cta",
   "buyer-checklist-cta",
+  "decision-room-brief", // Only the isolated Decision Room buyer-brief CTA, not a new destination.
   "pricing-section-cta",
   "alternative-decision-guide",
   "compare-page-choose-card",
