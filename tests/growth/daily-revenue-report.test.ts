@@ -66,6 +66,20 @@ describe("buildDailyRevenueReport", () => {
     expect(gate).toEqual({ pageSessions: { qualified: 3, probableHuman: 1 }, intentSessions: { qualified: 1, probableHuman: 1 }, intentEvents: 2 });
   });
 
+  it("counts Decision Room sessions per step, strict and probable only, and ignores test and excluded sessions", () => {
+    const room = "/decision-room";
+    const open = (sid: string, ts: string): FirstPartyEvent => ({ ...base(sid, ts, room), type: "page_view", trafficSource: "direct" }) as FirstPartyEvent;
+    const step = (sid: string, ts: string, type: string, extra: object = {}): FirstPartyEvent => ({ ...base(sid, ts, room), type, ...extra }) as FirstPartyEvent;
+    const events = [
+      open("q1", day(1)), step("q1", day(1, 1), "decision_room_product_saved", { softwareSlug: "callrail" }), step("q1", day(1, 2), "decision_room_product_saved", { softwareSlug: "krispcall" }),
+      step("q1", day(1, 3), "decision_room_compare_configured", { resultCount: 2, rank: 3 }), step("q1", day(1, 4), "decision_room_brief_generated", { resultCount: 2, source: "create" }), step("q1", day(1, 5), "cta_click", { softwareSlug: "callrail", ctaLocation: "decision-room-brief" }),
+      open("p1", day(1)), step("p1", day(1, 1), "decision_room_product_saved", { softwareSlug: "callrail" }),
+      open("x1", day(1)), step("x1", day(1, 1), "decision_room_brief_generated", { resultCount: 1, source: "print" }),
+      open("q2", day(1)), step("q2", day(1, 1), "decision_room_product_saved", { softwareSlug: "callrail", isTest: true }),
+    ];
+    expect(win(run({ events }).current).decisionRoom).toEqual({ opened: 3, saved: 2, configured: 1, briefGenerated: 1, vendorClick: 1 });
+  });
+
   it("counts test-marked outbound clicks on their own line and never as handoffs", () => {
     const r = run({ events: [pv("q1", day(1)), out("q1", day(1, 1), "affiliate", true), out("q1", day(1, 2), "official")] });
     expect(win(r.current).firstPartyOutbound).toEqual({ affiliate: 0, official: 1, testMarked: 1 });

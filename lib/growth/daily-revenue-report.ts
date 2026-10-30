@@ -73,6 +73,11 @@ export type WindowSummary = {
    */
   premiumGate: { pageSessions: { qualified: number; probableHuman: number }; intentSessions: { qualified: number; probableHuman: number }; intentEvents: number };
   firstPartyOutbound: { affiliate: number; official: number; testMarked: number };
+  /**
+   * Decision Room funnel: strict plus probable sessions that reached each step (test excluded). A rate between steps is NOT_MEASURED
+   * when the earlier step is zero. opened = page_view of /decision-room; vendorClick = cta_click located in the brief.
+   */
+  decisionRoom: { opened: number; saved: number; configured: number; briefGenerated: number; vendorClick: number };
   ledger: Measured<{ stored: number; test: number; explicitNonTest: number; unmarked: number; affiliateNonTest: number; officialNonTest: number }>;
 };
 
@@ -126,6 +131,7 @@ function summarize(
   const commercial = { qualified: new Set<string>(), probableHuman: new Set<string>() };
   const gatePaths = new Set(premiumGatePaths());
   const gate = { pages: { qualified: new Set<string>(), probableHuman: new Set<string>() }, intents: { qualified: new Set<string>(), probableHuman: new Set<string>() }, events: 0 };
+  const room = { opened: new Set<string>(), saved: new Set<string>(), configured: new Set<string>(), briefGenerated: new Set<string>(), vendorClick: new Set<string>() };
   let impressions = 0;
   let clicks = 0;
   const outbound = { affiliate: 0, official: 0, testMarked: 0 };
@@ -133,6 +139,13 @@ function summarize(
     const k = kind(e.sessionId);
     if (COMMERCIAL.has(e.type) && k !== "excluded") commercial[k].add(e.sessionId);
     if (k === "excluded") continue;
+    if (!e.isTest) {
+      if (e.type === "page_view" && e.path === "/decision-room") room.opened.add(e.sessionId);
+      else if (e.type === "decision_room_product_saved") room.saved.add(e.sessionId);
+      else if (e.type === "decision_room_compare_configured") room.configured.add(e.sessionId);
+      else if (e.type === "decision_room_brief_generated") room.briefGenerated.add(e.sessionId);
+      else if (e.type === "cta_click" && e.ctaLocation === "decision-room-brief") room.vendorClick.add(e.sessionId);
+    }
     if (e.type === "comparison_view" && gatePaths.has(e.path)) gate.pages[k].add(e.sessionId);
     if (e.type === "premium_intent_clicked" && !e.isTest) { gate.intents[k].add(e.sessionId); gate.events += 1; }
     if (e.type === "cta_impression") impressions += 1;
@@ -159,6 +172,7 @@ function summarize(
     },
     ctaClickEvents: clicks,
     firstPartyOutbound: outbound,
+    decisionRoom: { opened: room.opened.size, saved: room.saved.size, configured: room.configured.size, briefGenerated: room.briefGenerated.size, vendorClick: room.vendorClick.size },
     ledger: ledgerRows
       ? {
           stored: ledgerRows.length,
