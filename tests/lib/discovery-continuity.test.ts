@@ -15,7 +15,7 @@ import {
   validateDiscoveryBaseline,
   type DiscoveryBaseline,
 } from "@/lib/discovery-continuity";
-import { getSoftwareIndexingQualityReasons, isSoftwareIndexingReady } from "@/lib/indexing-quality";
+import { getSoftwareIndexingQualityReasons, isComparisonIndexingReady, isSoftwareIndexingReady } from "@/lib/indexing-quality";
 import { buildReverificationQueue, checkDiscoverySentinel } from "@/lib/discovery-maintenance";
 import { readFileSync } from "node:fs";
 
@@ -140,21 +140,51 @@ describe("sitemap across frozen dates", () => {
     return sitemap();
   }
 
-  const today = at("2026-10-27");
-  const todayByPath = new Map(today.map((e) => [path(e.url), e]));
+  const baselineSnapshot = at("2026-10-27");
+  const baselineSnapshotByPath = new Map(baselineSnapshot.map((e) => [path(e.url), e]));
+  const baselinePathSet = new Set(baselinePaths);
+  const softwareBySlug = new Map(getAllSoftware().map((software) => [software.slug, software]));
 
-  it("today's sitemap equals the baseline admission set (current-day no-op)", () => {
-    const inSitemap = [...todayByPath.keys()].filter((p) => p.startsWith("/software/") || p.startsWith("/compare/") && p !== "/compare");
-    expect(new Set(inSitemap)).toEqual(new Set(baselinePaths));
+  function expectOnlyStrictNewAdmissions(entries: ReturnType<typeof sitemap>, date: string) {
+    const now = new Date(`${date}T12:00:00Z`);
+    for (const entry of entries) {
+      const p = path(entry.url);
+      if (baselinePathSet.has(p)) continue;
+      if (p.startsWith("/software/")) {
+        const slug = p.slice("/software/".length);
+        const software = softwareBySlug.get(slug);
+        expect(software, `new sitemap software ${p} must exist`).toBeDefined();
+        expect(isSoftwareIndexingReady(software!, now), `${p} may be new only through the strict quality gate`).toBe(true);
+        continue;
+      }
+      if (p.startsWith("/compare/") && p !== "/compare") {
+        const slug = p.slice("/compare/".length);
+        const pair = PUBLISHED_COMPARISONS.find(([a, b]) => getComparisonSlug(a, b) === slug);
+        expect(pair, `new sitemap comparison ${p} must be published`).toBeDefined();
+        const [a, b] = pair!;
+        expect(shouldSubmitComparisonToSitemap(slug), `${p} must pass the curated discovery policy`).toBe(true);
+        expect(
+          isComparisonIndexingReady(softwareBySlug.get(a)!, softwareBySlug.get(b)!, now),
+          `${p} may be new only when both source products pass the strict quality gate`
+        ).toBe(true);
+      }
+    }
+  }
+
+  it("the frozen baseline date retains every recorded URL and permits only strict new admissions", () => {
+    const currentPaths = new Set(baselineSnapshot.map((entry) => path(entry.url)));
+    for (const p of baselinePaths) expect(currentPaths.has(p), p).toBe(true);
+    expectOnlyStrictNewAdmissions(baselineSnapshot, "2026-10-27");
   });
 
-  it.each(["2026-10-30", "2026-11-03", "2026-11-30", "2026-12-31"])("keeps every admitted URL, adds none and preserves lastmod on %s", (date) => {
+  it.each(["2026-10-30", "2026-11-03", "2026-11-30", "2026-12-31"])("keeps every baseline URL, permits only strict new admissions and preserves baseline lastmod on %s", (date) => {
     const later = at(date);
     const laterByPath = new Map(later.map((e) => [path(e.url), e]));
-    expect([...laterByPath.keys()].sort()).toEqual([...todayByPath.keys()].sort());
-    for (const [p, entry] of todayByPath) {
-      expect(laterByPath.get(p)?.lastModified, p).toEqual(entry.lastModified);
+    for (const p of baselinePaths) {
+      expect(laterByPath.has(p), `${p} must not disappear because of age`).toBe(true);
+      expect(laterByPath.get(p)?.lastModified, p).toEqual(baselineSnapshotByPath.get(p)?.lastModified);
     }
+    expectOnlyStrictNewAdmissions(later, date);
   });
 
   it("names the three products from the confirmed defect", () => {
