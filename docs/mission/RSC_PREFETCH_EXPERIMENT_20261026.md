@@ -1,0 +1,56 @@
+# Miloosh: RSC prefetch and Google's crawl requests — controlled experiment
+
+Status: isolated experiment, NOT released. Source baseline 9130c2c. No indexing, robots, canonical or sitemap changes. No costs or external posts.
+
+## Google Search Console, owner-authenticated (2026-10-26)
+
+Crawl Stats report last updated 2026-10-21, past 90 days: 83.8k crawl requests, average response 98 ms; about 74.7k requests (89%) classified as Other file type, 6% HTML, 4% JavaScript, 97% refresh requests, 3% discovery. Google Search Console drilldown for Other file type includes numerous requests such as /compare/slack-vs-mattermost?_rsc=5kx_-4JFflOuADiS, /compare/slack-vs-discord?_rsc=..., and /sources-policy?_rsc=... . Sample events occurred in September and on October 3. They are historical; NOT proof of current bot behavior.
+
+GET of /compare/slack-vs-mattermost and the same route with the sampled _rsc query, with a Googlebot string user agent and WITHOUT Next RSC headers, returned byte-identical 119,454-byte text/html content with the same SHA256. No duplicate canonical change was observed.
+
+Headless Chrome on current production, three viewport scrolls and zero clicks:
+- Normal user agent: /compare 52 RSC prefetch requests out of 72; /software/slack 26/50; /software/semrush 27/54; /category/project-management 44/68.
+- Requests had RSC: 1 and Next-Router-Prefetch: 1 headers.
+- Using a Googlebot user-agent string in that same Chrome probe produced zero RSC requests on each of those four routes. That imitation does NOT reproduce Google's real rendering service. The historical GSC requests are real, but the current Googlebot rate is UNKNOWN.
+
+## Narrow experiment
+
+Only one Next Link call is changed: the progressive 72-card comparison directory in components/CompareGrid.tsx now sets prefetch=false. This leaves the same ordinary HTML anchor links, visible labels, search/filter behavior and routes. It avoids background prefetch for 72 cards that may not be clicked. Next.js documents that prefetch=false disables loading on viewport entry and hover (https://nextjs.org/docs/app/guides/prefetching).
+
+Tradeoff: on-click navigation may be slower because the destination was not preloaded. Verify navigation and accessibility with headless Chrome desktop/mobile.
+
+## Required tests
+
+1. Source guard, TypeScript, lint and data validation.
+2. Vercel preview build at exact SHA.
+3. Compare no-click RSC request counts on production versus preview under identical Chrome scroll conditions.
+4. Check card click navigation, HTTP 200 and canonical links.
+5. Run the official Release Guardian and rendered comparison. Shared-component protection may block publication even when SSR HTML is identical. Do not bypass it.
+6. If a future release is permitted, observe actual GSC Crawl Stats after recrawling; fewer speculative requests do not imply increased indexation or traffic.
+
+## Not changed
+
+No global robots Disallow rule for RSC queries; these requests can be needed for client-side navigation and Google rendering. No mass pages, no noindex/canonical/sitemap changes, no protected Miro or pricing page edits. Follow Google's crawlable-links guidance: https://developers.google.com/search/docs/crawling-indexing/links-crawlable .
+
+## Verified preview and production comparison — 2026-10-26
+
+Vercel production-mode preview deployment dpl_EuEgqehAFZnpx36F5ox292N6pFAu was READY for code commit 0d0817e (later documentary receipts do not alter the code behavior).
+
+Headless Chrome at 1440x900, reduced motion, three identical viewport scrolls, no clicks before sampling, with non-GET and third-party analytics requests blocked:
+
+| Metric | live /compare | preview /compare |
+| --- | ---: | ---: |
+| HTTP status | 200 | 200 |
+| Total GET requests | 89 | 30 |
+| Speculative RSC requests | 69 | 11 |
+| Requests for comparison destinations | 56 | 0 |
+| Crawlable comparison anchors | 72 | 72 |
+| JavaScript page exceptions | 0 | 0 |
+
+This session saw 58 fewer automatic RSC requests (about 84% less). Browser-load variance means it is not a universal traffic percentage or an actual Googlebot projection. Normal anchor click navigated to /compare/wix-vs-shopify in both live and preview; H1 was Wix vs Shopify, and canonical matched the destination.
+
+Additional critical countercheck: a spoofed Googlebot user-agent on four current-production routes triggered zero RSC prefetch requests. Historical Google Crawl Stats examples remain valid but current Googlebot behavior is **not verified**. Do not infer indexing or ranking gains from this no-click browser experiment.
+
+Clean local npm ci (no shared node_modules symlink) followed by complete validation: **2,710/2,710 Vitest tests across 264 files PASS**, ESLint PASS, TypeScript PASS, data validation PASS (355 products/1,348 comparisons), npm audit 0 vulnerabilities. One earlier run using a symlink to a different checkout's node_modules had a lint-configuration provenance test failure; this was environmental. Installing dependencies in this checkout without a symlink resolved it with zero code changes. Vercel production preview build passed.
+
+No production release is implied. A complete clean release-gate receipt and official Guardian sign-off remain necessary. The change lives in a shared component directory, so **if Guardian reports a protected-template block the experiment stays draft**.
