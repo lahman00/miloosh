@@ -8,6 +8,8 @@ The Guardian's new evidence path is restricted to this baseline and an explicit 
 
 Every held route requires browser evidence at 390, 768 and 1440 pixels: HTTP 200, no JavaScript or local-asset failures, equal full-page screenshot hashes, equal computed layout/style hashes and equal controls/FAQ interaction hashes. Missing or duplicate rows, changed assets, wrong commits or a stale build fingerprint fail. The browser process blocks external requests and non-GET requests; it cannot send production analytics or merchant clicks. Evidence is generated outside the repository and bound to the exact HTML/CSS/JS/font assets of both builds.
 
+The browser loads off-screen images before capture and uses software rasterization on both sides. A repeated baseline/baseline/candidate control found identical pixels at all three widths with this setting; GPU rendering had produced small antialiasing differences. The acceptance threshold remains exact pixel equality, with no tolerance or ignored regions.
+
 The existing six engineering gates, production-lineage check, protections and three earlier narrow proof paths remain in force. A green preview does not authorize release by itself. No experiment or measurement window is closed by this change.
 
 Verification commands (replace paths with the actual clean checkouts and evidence location):

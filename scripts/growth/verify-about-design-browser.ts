@@ -46,7 +46,9 @@ export async function main(argv:string[]):Promise<void>{
   const servers=[base,candidate].map((root,i)=>spawn(process.execPath,[path.join(root,"node_modules/next/dist/bin/next"),"start","--hostname","127.0.0.1","--port",String(ports[i])],{cwd:root,stdio:["ignore","ignore","inherit"],env:{...process.env,NODE_ENV:"production",NEXT_TELEMETRY_DISABLED:"1"}}));
   const executable=process.env.CHROME_PATH??["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","/usr/bin/google-chrome","/usr/bin/chromium"].find(p=>fs.existsSync(p));
   if(!executable)throw Error("No installed Chromium browser found.");
-  const browser=await chromium.launch({executablePath:executable,headless:true});
+  // Software rasterization avoids GPU antialiasing variance between contexts.
+  // Pixel equality stays exact; there is no image-difference tolerance.
+  const browser=await chromium.launch({executablePath:executable,headless:true,args:["--disable-gpu"]});
   const rows:AboutVisualRow[]=[];
   const jobs=held.flatMap(p=>ABOUT_WIDTHS.map(width=>({p,width})));
   let next=0;
