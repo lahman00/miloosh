@@ -4,7 +4,7 @@ import net from "node:net";
 import { spawn, execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { chromium, type Page } from "playwright-core";
-import { ABOUT_WIDTHS, aboutVisualVariants, type AboutVisualReceipt, type AboutVisualRow } from "@/lib/growth-agents/about-design-render-audit";
+import { ABOUT_WIDTHS, aboutVisualVariants, isSuccessfulPrefetchCancellation, type AboutPrefetchCancellation, type AboutVisualReceipt, type AboutVisualRow } from "@/lib/growth-agents/about-design-render-audit";
 import { aboutBuildFingerprint, sha256 } from "@/lib/growth-agents/about-design-sources";
 
 import { assignCtaCopyVariant, getCtaCopyLabel } from "@/lib/experiments/cta-copy-experiment";
@@ -65,13 +65,25 @@ export async function main(argv:string[]):Promise<void>{
         const job=jobs[next++]!;
         const contexts=await Promise.all(urls.map(()=>browser.newContext({viewport:{width:job.width,height:900},deviceScaleFactor:1,reducedMotion:"reduce",locale:"en-US",timezoneId:"UTC",serviceWorkers:"block"})));
         const errors:string[]=[];
+        const prefetchCancellations:AboutPrefetchCancellation[]=[];
         try {
           const states=await Promise.all(contexts.map(async(ctx,i)=>{
             await ctx.addInitScript(visitorId=>localStorage.setItem("miloosh_vid",visitorId),visitors[job.variant]);
             await ctx.route("**/*",route=>{const u=new URL(route.request().url());return route.request().method()==="GET"&&u.origin===urls[i]?route.continue():route.abort();});
             const page=await ctx.newPage();
-            page.on("pageerror",error=>errors.push(`${i}:${error.message}`));
-            page.on("requestfailed",req=>{if(req.method()==="GET"&&req.url().startsWith(urls[i]!))errors.push(`ASSET_FAILURE:${i}:${req.url()}`);});
+            const requestChecks:Promise<void>[]=[];
+            const onError=(error:Error)=>errors.push(`${i}:${error.message}`);
+            const onFailure=(req:import("playwright-core").Request)=>{
+              if(req.method()!=="GET"||new URL(req.url()).origin!==urls[i])return;
+              requestChecks.push((async()=>{
+                const response=await req.response(),headers=req.headers();
+                const observation:AboutPrefetchCancellation={side:i,url:req.url(),resourceType:req.resourceType(),method:req.method(),errorText:req.failure()?.errorText??"",prefetchHeader:headers["next-router-prefetch"]??"",rscHeader:headers.rsc??"",responseStatus:response?.status()??0,contentType:response?.headers()["content-type"]??""};
+                if(isSuccessfulPrefetchCancellation(observation))prefetchCancellations.push(observation);
+                else errors.push(`ASSET_FAILURE:${i}:${req.url()}:${observation.errorText}:${observation.responseStatus}`);
+              })());
+            };
+            page.on("pageerror",onError);
+            page.on("requestfailed",onFailure);
             const response=await page.goto(urls[i]+job.p,{waitUntil:"networkidle",timeout:45000});
             if(job.p.startsWith("/software/")) {
               const software=JSON.parse(fs.readFileSync(path.join(candidate,"data/software",job.p.split("/").at(-1)!+".json"),"utf8")) as {name:string};
@@ -86,10 +98,13 @@ export async function main(argv:string[]):Promise<void>{
             const interactions=await behavior(page);
             // FAQ scrolling can start link prefetches; finish them before closing.
             await page.waitForLoadState("networkidle",{timeout:15000});
+            await Promise.all(requestChecks);
+            // Intentional context teardown is outside the page verification.
+            page.off("requestfailed",onFailure);page.off("pageerror",onError);
             return {status:response?.status()??0,computed,pixels,interactions};
           }));
           const [a,b]=states;
-          rows.push({path:job.p,width:job.width,variant:job.variant,baseStatus:a!.status,candidateStatus:b!.status,basePixels:sha256(a!.pixels),candidatePixels:sha256(b!.pixels),baseStyles:a!.computed,candidateStyles:b!.computed,baseInteraction:a!.interactions,candidateInteraction:b!.interactions,errors});
+          rows.push({path:job.p,width:job.width,variant:job.variant,baseStatus:a!.status,candidateStatus:b!.status,basePixels:sha256(a!.pixels),candidatePixels:sha256(b!.pixels),baseStyles:a!.computed,candidateStyles:b!.computed,baseInteraction:a!.interactions,candidateInteraction:b!.interactions,errors:[...errors],prefetchCancellations});
           if(a!.computed!==b!.computed||sha256(a!.pixels)!==sha256(b!.pixels)||a!.interactions!==b!.interactions){
             const dir=path.join(path.dirname(out),"visual-differences");fs.mkdirSync(dir,{recursive:true});
             const name=job.p.replaceAll("/","_")+"-"+job.width+"-"+job.variant;
@@ -98,7 +113,7 @@ export async function main(argv:string[]):Promise<void>{
           }
         } catch(error){
           console.error(`PAGE_FAILURE ${job.p} ${job.width} ${job.variant}: ${String(error)}`);
-          rows.push({path:job.p,width:job.width,variant:job.variant,baseStatus:0,candidateStatus:0,basePixels:"",candidatePixels:"",baseStyles:"",candidateStyles:"",baseInteraction:"",candidateInteraction:"",errors:[String(error)]});
+          rows.push({path:job.p,width:job.width,variant:job.variant,baseStatus:0,candidateStatus:0,basePixels:"",candidatePixels:"",baseStyles:"",candidateStyles:"",baseInteraction:"",candidateInteraction:"",errors:[String(error)],prefetchCancellations});
         } finally {await Promise.all(contexts.map(c=>c.close()));}
         if(errors.length) console.error(`PAGE_ERRORS ${job.p} ${job.width} ${job.variant}: ${errors.join("; ")}`);
         if(rows.length%30===0)console.log(`Verified ${rows.length}/${jobs.length} protected viewport pairs`);

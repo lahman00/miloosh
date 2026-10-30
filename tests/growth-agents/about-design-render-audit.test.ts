@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
-import { ABOUT_BASE_SHA, ABOUT_WIDTHS, aboutVisualVariants, auditAboutDesign } from "@/lib/growth-agents/about-design-render-audit";
+import { ABOUT_BASE_SHA, ABOUT_WIDTHS, aboutVisualVariants, isSuccessfulPrefetchCancellation, type AboutPrefetchCancellation, auditAboutDesign } from "@/lib/growth-agents/about-design-render-audit";
 import { aboutCssScopeErrors } from "@/lib/growth-agents/about-design-sources";
 import { runGuardian } from "@/lib/growth-agents/guardian";
 import { guardianInputs } from "./fixtures";
@@ -12,7 +12,7 @@ function fixture(){
   const before=new Map<string,string>(protectedPaths.map(p=>[p.slice(1)+".html",html()]));
   for(let i=193;i<1788;i++)before.set(`page-${i}.html`,html());
   const after=new Map(before);after.set("page-193.html",html("page-shell"));
-  return {baseSha:ABOUT_BASE_SHA,headSha:head,baseCheckoutSha:ABOUT_BASE_SHA,candidateCheckoutSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,before,after,beforeSitemap:"<urlset>same</urlset>",afterSitemap:"<urlset>same</urlset>",beforeRobots:"Allow: /",afterRobots:"Allow: /",protectedPaths,requiredProtectedPaths:[...protectedPaths],unreadProtectionSources:[] as string[],sourceErrors:[] as string[],visual:{schemaVersion:2 as const,baseSha:ABOUT_BASE_SHA,headSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,rows:protectedPaths.flatMap(path=>ABOUT_WIDTHS.flatMap(width=>aboutVisualVariants(path).map(variant=>({path,width,variant,baseStatus:200,candidateStatus:200,basePixels:hash,candidatePixels:hash,baseStyles:hash,candidateStyles:hash,baseInteraction:hash,candidateInteraction:hash,errors:[] as string[]}))))}};
+  return {baseSha:ABOUT_BASE_SHA,headSha:head,baseCheckoutSha:ABOUT_BASE_SHA,candidateCheckoutSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,before,after,beforeSitemap:"<urlset>same</urlset>",afterSitemap:"<urlset>same</urlset>",beforeRobots:"Allow: /",afterRobots:"Allow: /",protectedPaths,requiredProtectedPaths:[...protectedPaths],unreadProtectionSources:[] as string[],sourceErrors:[] as string[],visual:{schemaVersion:2 as const,baseSha:ABOUT_BASE_SHA,headSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,rows:protectedPaths.flatMap(path=>ABOUT_WIDTHS.flatMap(width=>aboutVisualVariants(path).map(variant=>({path,width,variant,baseStatus:200,candidateStatus:200,basePixels:hash,candidatePixels:hash,baseStyles:hash,candidateStyles:hash,baseInteraction:hash,candidateInteraction:hash,errors:[] as string[],prefetchCancellations:[] as AboutPrefetchCancellation[]}))))}};
 }
 describe("scoped About design proof",()=>{
   it("confines every rule in the shipped stylesheet to the eligible page containers",()=>expect(aboutCssScopeErrors(fs.readFileSync("app/design-system.css","utf8"))).toEqual([]));
@@ -44,4 +44,10 @@ describe("scoped About design proof",()=>{
     expect(runGuardian({...args,gates:args.gates.map(g=>({...g,status:"FAIL" as const}))}).verdict).toBe("RELEASE_BLOCKED");
     expect(runGuardian({...args,protection:{...args.protection,aboutDesignAudit:null}}).verdict).toBe("RELEASE_BLOCKED");
   });
+});
+
+describe("successful Next speculative Flight cancellation",()=>{
+  const successful:AboutPrefetchCancellation={side:0,url:"http://127.0.0.1:3000/recommend?_rsc=prefix",method:"GET",resourceType:"fetch",errorText:"net::ERR_ABORTED",prefetchHeader:"1",rscHeader:"1",responseStatus:200,contentType:"text/x-component"};
+  it("records a successful speculative response without treating it as a failed asset",()=>{expect(isSuccessfulPrefetchCancellation(successful)).toBe(true);const f=fixture();f.visual.rows[0]!.prefetchCancellations.push(successful);expect(auditAboutDesign(f).ok).toBe(true);});
+  it.each([{responseStatus:404},{responseStatus:0},{responseStatus:500},{resourceType:"script"},{resourceType:"image"},{resourceType:"font"},{errorText:"net::ERR_FAILED"},{prefetchHeader:""},{rscHeader:""},{contentType:"text/html"},{method:"POST"},{url:"http://127.0.0.1:3000/recommend"}])("blocks unverified cancellation %j",change=>{const row={...successful,...change};expect(isSuccessfulPrefetchCancellation(row)).toBe(false);const f=fixture();f.visual.rows[0]!.prefetchCancellations.push(row);expect(auditAboutDesign(f).errors.join()).toContain("PREFETCH_RESPONSE_UNVERIFIED");});
 });

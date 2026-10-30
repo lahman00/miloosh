@@ -3,10 +3,20 @@ import { normalizeRenderedHtml } from "./rendered-diff";
 export const ABOUT_BASE_SHA = "954cfb2f943496ec31b7ccaf325d368fb2d3e765";
 export const ABOUT_WIDTHS = [390, 768, 1440] as const;
 export const aboutVisualVariants = (pathname: string): readonly ("control" | "treatment")[] => pathname.startsWith("/software/") ? ["control", "treatment"] : ["control"];
+export type AboutPrefetchCancellation = {
+  side: number; url: string; resourceType: string; method: string; errorText: string;
+  prefetchHeader: string; rscHeader: string; responseStatus: number; contentType: string;
+};
+/** Next truncates successful speculative Flight streams once their static prefix is read. */
+export function isSuccessfulPrefetchCancellation(r: AboutPrefetchCancellation): boolean {
+  return (r.side===0||r.side===1) && r.method==="GET" && r.resourceType==="fetch" &&
+    r.errorText==="net::ERR_ABORTED" && r.prefetchHeader==="1" && r.rscHeader==="1" &&
+    r.responseStatus===200 && r.contentType.split(";")[0]?.trim()==="text/x-component" && /[?&]_rsc=/.test(r.url);
+}
 export type AboutVisualRow = {
   path: string; width: number; variant: "control" | "treatment"; baseStatus: number; candidateStatus: number;
   basePixels: string; candidatePixels: string; baseStyles: string; candidateStyles: string;
-  baseInteraction: string; candidateInteraction: string; errors: string[];
+  baseInteraction: string; candidateInteraction: string; errors: string[]; prefetchCancellations: AboutPrefetchCancellation[];
 };
 export type AboutVisualReceipt = {
   schemaVersion: 2; baseSha: string; headSha: string; baseClean: boolean; candidateClean: boolean;
@@ -83,6 +93,7 @@ export function auditAboutDesign(input: {
     const key=`${row.path}:${row.width}:${row.variant}`;
     if(seen.has(key)||!held.has(row.path)||!aboutVisualVariants(row.path).includes(row.variant)||!(ABOUT_WIDTHS as readonly number[]).includes(row.width)) errors.push(`VISUAL_ROW_UNEXPECTED: ${key}`);
     seen.add(key);
+    if(!Array.isArray(row.prefetchCancellations)||row.prefetchCancellations.some(r=>!isSuccessfulPrefetchCancellation(r))) errors.push(`PREFETCH_RESPONSE_UNVERIFIED: ${key}`);
     if(row.baseStatus!==200||row.candidateStatus!==200||row.errors.length) errors.push(`VISUAL_PAGE_ERROR: ${key}`);
     for(const [a,b] of [[row.basePixels,row.candidatePixels],[row.baseStyles,row.candidateStyles],[row.baseInteraction,row.candidateInteraction]]) if(!/^[a-f0-9]{64}$/.test(a)||a!==b) errors.push(`PROTECTED_VISUAL_OR_BEHAVIOR_CHANGED: ${key}`);
   }

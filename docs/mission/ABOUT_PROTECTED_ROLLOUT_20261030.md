@@ -12,6 +12,8 @@ The browser loads off-screen images before capture and uses software rasterizati
 
 The software-page CTA experiment assigns copy by anonymous visitor ID. Browser comparisons seed the same visitor ID on both origins before hydration and verify the expected label. Every protected software page is checked separately in both control and treatment at all three widths; comparison pages use the control fixture because that experiment is not enabled there. This prevents comparing different experiment arms by chance. Receipt schema 2 records the arm, and Guardian rejects a missing treatment row or a regression in either arm. The production experiment code and assignment logic are unchanged.
 
+Next.js 16 truncates successful speculative Flight streams after reading their static prefix (`segment-cache/cache.js`, `bufferPrefetchResponseBody`). The browser receipt records those cancellations with response evidence. They qualify only as GET fetches with both RSC/prefetch headers, an `_rsc` query, HTTP 200, `text/x-component`, and `net::ERR_ABORTED`. Missing responses, failed status codes, actual script/image/font failures, and other cancellations still block. Tests cover these negative cases.
+
 The existing six engineering gates, production-lineage check, protections and three earlier narrow proof paths remain in force. A green preview does not authorize release by itself. No experiment or measurement window is closed by this change.
 
 Verification commands (replace paths with the actual clean checkouts and evidence location):
