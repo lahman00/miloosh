@@ -5,7 +5,7 @@
    settle legacy dark-theme utilities (border-white/10, bg-white/[0.03], ...)
    into intentional light surfaces. */
 
-:root {
+.page-shell, .home-design {
   --line-strong: #aab9a2;
   --stage-soft: #eaf0e1;
   --shadow-soft: 0 1px 2px rgba(23, 59, 44, .04), 0 8px 24px rgba(23, 59, 44, .06);
@@ -72,7 +72,7 @@
 
 /* Cards: white, 1px line, radius 16. Soft shadow only on the verdict surface. */
 .page-shell :is(.rounded-2xl)[class*="border"] { border-radius: var(--radius-card); }
-.decision-surface { box-shadow: var(--shadow-soft); }
+.page-shell .decision-surface { box-shadow: var(--shadow-soft); }
 
 /* ---- Links and interaction ---------------------------------------------- */
 .page-shell a:not([class]) { text-decoration-color: var(--line-strong); }
@@ -108,3 +108,23 @@
 @media (prefers-reduced-motion: reduce) {
   .home-design *, .home-design *::before, .home-design *::after { scroll-behavior: auto !important; }
 }
+
+/* Keep shared component markup identical to production. These overrides only
+   apply inside the opted-in route shell (or the unprotected home). */
+.page-shell .max-w-6xl, .home-design .max-w-6xl { max-width: 1120px; }
+.page-shell nav[aria-label="Breadcrumb"] { row-gap: 0; }
+.page-shell nav[aria-label="Breadcrumb"] > span { min-height: 44px; }
+.page-shell nav[aria-label="Breadcrumb"] a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+.page-shell nav[aria-label="Breadcrumb"] a:hover { text-decoration-color: currentColor; }
+.page-shell span.rounded-full[class~="px-3.5"][class~="py-1.5"] { padding: 4px 12px; }
+.page-shell .max-w-2xl { max-width: 48rem; }
+.page-shell h2.text-3xl { line-height: 1.15; letter-spacing: -.03em; }
+.page-shell .max-w-2xl > p.uppercase { font-size: .75rem; letter-spacing: .14em; }
+.page-shell .max-w-2xl > p.mt-4 { max-width: 62ch; line-height: 2rem; }
+.page-shell summary { font-weight: 650; }
+.page-shell :is(a,button).inline-flex.rounded-xl[class~="active:scale-[0.98]"] { border-radius: .5rem; font-weight: 650; }
+.page-shell :is(a,button).inline-flex[class~="border-white/15"] { background: var(--surface); }
+.page-shell :is(a,button).inline-flex[class~="hover:bg-white/5"]:hover,
+.page-shell :is(a,button).inline-flex[class~="hover:bg-white/10"]:hover { background: var(--surface-soft); }
+.page-shell .rounded-2xl.border[class~="border-white/20"],
+.page-shell .rounded-2xl.border:has(> .grid.grid-cols-3) { box-shadow: var(--shadow-soft); }

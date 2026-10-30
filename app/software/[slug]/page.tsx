@@ -1,3 +1,4 @@
+import { usesAboutDesign } from "@/lib/about-design-rollout";
 import { WooCommerceRepairCheck } from "@/components/WooCommerceRepairCheck";
 import { EcwidIntegrationDecision } from "@/components/EcwidIntegrationDecision";
 import { StorePlanFit } from "@/components/StorePlanFit";
@@ -126,8 +127,10 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
   const serpOverride = getSoftwareSerpOverride(software.slug);
   const decisionGuides = getRoleGuidesForSoftware(software.slug);
 
+  const aboutDesign = usesAboutDesign(`/software/${software.slug}`);
+
   return (
-    <main className="page-shell flex-1">
+    <main className={aboutDesign ? "page-shell flex-1" : "flex-1 py-16 sm:py-20"}>
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -147,7 +150,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
             </Badge>
           </Link>
 
-          <h1 className="page-title">
+          <h1 className={aboutDesign ? "page-title" : "mt-5 text-4xl font-bold tracking-tight text-white sm:text-6xl"}>
             {serpOverride?.h1 ?? generateH1(software)}
           </h1>
 

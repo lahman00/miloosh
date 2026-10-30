@@ -1,3 +1,4 @@
+import { verifyAboutDesignBuilds } from "@/lib/growth-agents/about-design-sources";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -38,6 +39,7 @@ const USAGE = `Usage: npm run growth:director -- [options]
   --price-render-base <dir> --price-render-candidate <dir>  Independently audit complete HTML builds before accepting pricing-only shared component changes.
   --template-render-base <dir> --template-render-candidate <dir>  Same, for the v2 comparison-template change only (fixed wave, reviewed product records).
   --discovery-render-base <worktree> --discovery-render-candidate <worktree>  Same, for the discovery-continuity repair only: roots of two built, clean worktrees at the exact base and head commits (--base-sha must be the full 40-character base commit).
+  --about-render-base <root> --about-render-candidate <root> --about-visual-file <json>  Exact-commit protected About design proof.
   --run-gates                Run audit, tests, validate:data, lint, tsc and build (slow; writes .next and var/).
   --check-production         Read the live deployment (vercel inspect) and GitHub deployment history (read-only).
   --out <dir>                Write director-report.json, director-report.he.md and candidates.csv here. Without it nothing is written.
@@ -61,7 +63,7 @@ export function parseArgs(argv: string[], repoRoot: string): CliOptions | { help
     const v = flags.get(name);
     return typeof v === "string" ? v : null;
   };
-  const known = new Set(["gsc-dir", "gsc-private-dir", "now", "base-sha", "release-date", "production-id", "production-created", "production-sha", "extras-file", "events-file", "gates-file", "baseline-file", "rendered-diff-file", "price-render-base", "price-render-candidate", "template-render-base", "template-render-candidate", "discovery-render-base", "discovery-render-candidate", "run-gates", "check-production", "out", "strict", "help"]);
+  const known = new Set(["gsc-dir", "gsc-private-dir", "now", "base-sha", "release-date", "production-id", "production-created", "production-sha", "extras-file", "events-file", "gates-file", "baseline-file", "rendered-diff-file", "price-render-base", "price-render-candidate", "template-render-base", "template-render-candidate", "discovery-render-base", "discovery-render-candidate", "about-render-base", "about-render-candidate", "about-visual-file", "run-gates", "check-production", "out", "strict", "help"]);
   for (const key of flags.keys()) if (!known.has(key)) throw new Error(`Unknown option --${key}\n${USAGE}`);
   const now = value("now") ? new Date(value("now")!) : new Date();
   if (Number.isNaN(now.getTime())) throw new Error("--now must be an ISO timestamp");
@@ -85,6 +87,9 @@ export function parseArgs(argv: string[], repoRoot: string): CliOptions | { help
     templateRenderCandidateDir: resolve(value("template-render-candidate")),
     discoveryRenderBaseDir: resolve(value("discovery-render-base")),
     discoveryRenderCandidateDir: resolve(value("discovery-render-candidate")),
+    aboutRenderBaseDir: resolve(value("about-render-base")),
+    aboutRenderCandidateDir: resolve(value("about-render-candidate")),
+    aboutVisualFile: resolve(value("about-visual-file")),
     runGates: flags.get("run-gates") === true,
     checkProduction: flags.get("check-production") === true,
     productionOverride: productionId || productionCreated || productionSha ? { deploymentId: productionId, createdAt: productionCreated, sha: productionSha } : null,
@@ -127,6 +132,7 @@ export function realPorts(repoRoot: string): Ports {
       verifyPricingRenderedBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot }),
     verifyComparisonTemplate: (baseDir, candidateDir, baseSha, headSha, snapshot, derivedUrls) =>
       verifyComparisonTemplateBuilds({ baseDir, candidateDir, baseSha, headSha, protection: snapshot, derivedUrls }),
+    verifyAboutDesign: (baseDir, candidateDir, baseSha, headSha, visualFile, protection) => verifyAboutDesignBuilds({baseDir, candidateDir, baseSha, headSha, visualFile, protection}),
     verifyDiscoveryContinuity: (baseDir, candidateDir, baseSha, headSha) => verifyDiscoveryContinuityBuilds({ baseDir, candidateDir, baseSha, headSha }),
   };
 }

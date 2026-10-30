@@ -23,7 +23,7 @@ describe("site-wide page system", () => {
     expect(css).toContain("line-height: 1.12");
     expect(css).toContain("font-weight: 650");
     expect(css).toContain("max-width: 62ch");
-    expect(read("components/Container.tsx")).toContain("max-w-[1120px]");
+    expect(css).toContain("max-width: 1120px");
     expect(read("app/layout.tsx")).toContain('import "./design-system.css"');
   });
 
@@ -54,10 +54,11 @@ describe("site-wide page system", () => {
     expect(read("components/LegalContent.tsx")).toContain("ReadingLayout");
   });
 
-  it("shared surfaces use the line and surface tokens", () => {
-    expect(read("components/Card.tsx")).toContain("border-[var(--line)]");
-    expect(read("components/Card.tsx")).toContain("bg-[var(--surface)]");
-    expect(read("components/FaqSection.tsx")).toContain("min-h-11");
-    expect(read("components/Breadcrumbs.tsx")).toContain("min-h-11");
+  it("scopes surfaces and touch targets to opted-in pages", () => {
+    expect(css).toContain("border-color: var(--line)");
+    expect(css).toContain("background-color: var(--surface)");
+    expect(css).toContain(".page-shell summary { min-height: 44px; }");
+    expect(css).toContain('.page-shell nav[aria-label="Breadcrumb"] > span { min-height: 44px; }');
+    expect(css).not.toContain(":root");
   });
 });

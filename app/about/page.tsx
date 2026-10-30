@@ -95,7 +95,7 @@ export default function AboutPage() {
         ])}
       />
 
-      <Container size="wide">
+      <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "About" }]} />
 
         <h1 className="page-title">About {SITE_NAME}</h1>

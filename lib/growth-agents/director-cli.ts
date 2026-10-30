@@ -1,3 +1,4 @@
+import type { AboutDesignAudit } from "./about-design-render-audit";
 import path from "node:path";
 import { runAffiliateRevenueAgent, type AffiliateRevenueReport, type ProgramStatusLookup } from "./affiliate-revenue-agent";
 import { GROWTH_AGENT_SCHEMA_VERSION } from "./contracts";
@@ -60,6 +61,9 @@ export type CliOptions = {
   /** Exact-commit full-build proof for the discovery-continuity repair only: the ROOTS of two built, clean worktrees. Both must be supplied. */
   discoveryRenderBaseDir?: string | null;
   discoveryRenderCandidateDir?: string | null;
+  aboutRenderBaseDir?: string | null;
+  aboutRenderCandidateDir?: string | null;
+  aboutVisualFile?: string | null;
   runGates: boolean;
   checkProduction: boolean;
   /** Owner-recorded production facts used when the platform is not queried. */
@@ -87,6 +91,7 @@ export type Ports = {
   isSharedTemplate(file: string): boolean;
   verifyPriceRendering?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string, snapshot: ProtectionSnapshot) => PricingRenderAudit;
   verifyComparisonTemplate?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string, snapshot: ProtectionSnapshot, derivedUrls: readonly string[]) => ComparisonTemplateRenderAudit;
+  verifyAboutDesign?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string, visualFile: string, snapshot: ProtectionSnapshot) => AboutDesignAudit;
   verifyDiscoveryContinuity?: (baseDir: string, candidateDir: string, baseSha: string, headSha: string) => DiscoveryContinuityRenderAudit;
 };
 
@@ -264,6 +269,8 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
   const discoveryContinuityAudit = options.discoveryRenderBaseDir && options.discoveryRenderCandidateDir && options.baseSha && ports.verifyDiscoveryContinuity
     ? ports.verifyDiscoveryContinuity(options.discoveryRenderBaseDir, options.discoveryRenderCandidateDir, options.baseSha, git.headSha)
     : null;
+  const aboutDesignAudit = options.aboutRenderBaseDir && options.aboutRenderCandidateDir && options.aboutVisualFile && options.baseSha && ports.verifyAboutDesign
+    ? ports.verifyAboutDesign(options.aboutRenderBaseDir, options.aboutRenderCandidateDir, options.baseSha, git.headSha, options.aboutVisualFile, protection.snapshot) : null;
   const affectedNonEditable = affected.affectedUrls
     .map((url) => protectionFor(url, protection.snapshot))
     .filter((r) => r.verdict !== "EDITABLE")
@@ -276,7 +283,7 @@ export function runDirectorCli(options: CliOptions, ports: Ports): CliResult {
     gateProvenance: gateEvidence.provenance,
     baseline,
     ...(options.baselineFile && !baseline ? { baselineProblem: "The baseline file could not be read as gate results, so no baseline is used." } : {}),
-    protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged, pricingRenderAudit, comparisonTemplateAudit, discoveryContinuityAudit },
+    protection: { affectedUrls: affected.affectedUrls, affectedNonEditable, sharedTemplateChanged: affected.sharedTemplateChanged, aboutDesignAudit, pricingRenderAudit, comparisonTemplateAudit, discoveryContinuityAudit },
     production,
     renderedDiff: renderedDiff && typeof renderedDiff.compared === "number" && typeof renderedDiff.differing === "number" ? { compared: renderedDiff.compared, differing: renderedDiff.differing, differingSample: renderedDiff.differingSample ?? [] } : null,
   });

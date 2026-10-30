@@ -2,8 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const maxWidths = {
-  default: "max-w-[1120px]",
-  wide: "max-w-[1120px]",
+  default: "max-w-6xl",
   narrow: "max-w-3xl",
 } as const;
 

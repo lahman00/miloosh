@@ -1,5 +1,7 @@
 # Full Miloosh About design adoption — engineering candidate, October 29, 2026
 
+> Updated October 30: the all-route candidate below is superseded by the protected rollout in `ABOUT_PROTECTED_ROLLOUT_20261030.md`. Protected routes now retain production presentation. The original October 29 description is preserved as history.
+
 ## Scope and principle
 
 Consolidates the **approved** 2026-10-28 About visual language across the entire public site. This is not a new creative direction: warm canvas `#f8f9f4`, ink `#173b2c`, citrine accents `#e4f267`, Manrope, 1120px inner reading content, restrained 1px lines, 16px cards and modest editorial headings. Homepage retains its independently approved BuyerDesk layout and hero; home section typography and card primitives now participate in the shared design layer.

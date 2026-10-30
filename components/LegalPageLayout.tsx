@@ -27,7 +27,7 @@ export function LegalPageLayout({
         ])}
       />
 
-      <Container size="wide">
+      <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: title }]} />
 
         <h1 className="page-title">{title}</h1>

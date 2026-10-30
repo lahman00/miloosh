@@ -1,3 +1,5 @@
+import { ABOUT_BASE_SHA, type AboutDesignAudit } from "./about-design-render-audit";
+import { isAboutDesignFile } from "./about-design-scope";
 import { compareDates } from "./evidence";
 import { COMPARISON_TEMPLATE_WAVE_SIZE, isComparisonTemplateFile } from "./comparison-template-render-audit";
 import { DISCOVERY_MIN_PAGES, DISCOVERY_EXPECTED_SITEMAP_URLS, isDiscoveryContinuityFile } from "./discovery-continuity-render-audit";
@@ -108,6 +110,8 @@ export type ProtectionFacts = {
   /** Subset that is protected, observed or in flight. */
   affectedNonEditable: Array<{ url: string; verdict: string }>;
   sharedTemplateChanged: boolean;
+  /** Scoped design only, with every protected route proven unchanged in complete builds and browser. */
+  aboutDesignAudit?: AboutDesignAudit | null;
   /** Independently compared complete static builds, bound to the exact base and head commits. */
   pricingRenderAudit?: {
     kind: "PRICE_ONLY_FULL_STATIC_BUILD_AUDIT";
@@ -482,7 +486,28 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
       : p.sharedTemplateChanged ? (templateAudit ? `The comparison-template proof failed: ${templateAudit.errors.slice(0, 3).join("; ") || "scope, commit or file allowlist mismatch"}.` : "No comparison-template render proof was supplied.") : "No shared template change.",
     evidence: scopedTemplateRenderProven ? [`base ${templateAudit!.baseSha}, head ${templateAudit!.headSha}`] : [],
   });
-  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven || scopedTemplateRenderProven || scopedDiscoveryProven);
+  const aboutAudit = p.aboutDesignAudit;
+  const scopedAboutProven = Boolean(
+    p.sharedTemplateChanged && aboutAudit?.ok &&
+    aboutAudit.kind === "SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT" &&
+    git.baseSha === ABOUT_BASE_SHA && aboutAudit.baseSha === git.baseSha &&
+    aboutAudit.headSha === git.headSha && /^[0-9a-f]{40}$/.test(git.headSha) &&
+    aboutAudit.pagesCompared >= 1786 && aboutAudit.protectedPagesUnchanged >= 193 &&
+    aboutAudit.visualPairs === aboutAudit.protectedPagesUnchanged * 3 &&
+    aboutAudit.sitemapIdentical && aboutAudit.robotsIdentical && !aboutAudit.errors.length &&
+    git.changedFiles.length && git.changedFiles.every(isAboutDesignFile)
+  );
+  checks.push({
+    id: "protection:about-design-render-proof",
+    title: "Scoped About design preserves every protected page, SEO and behavior",
+    status: !p.sharedTemplateChanged ? "INFO" : scopedAboutProven ? "PASS" : aboutAudit ? "FAIL" : "NOT_RUN",
+    detail: scopedAboutProven
+      ? `${aboutAudit!.pagesCompared} complete pages checked; ${aboutAudit!.protectedPagesUnchanged} protected pages identical; ${aboutAudit!.visualPairs} responsive pixel/style/interaction pairs identical; sitemap and robots identical.`
+      : aboutAudit ? aboutAudit.errors.slice(0, 5).join("; ") || "About proof scope or provenance mismatch."
+      : "No exact-commit protected About rollout proof supplied.",
+    evidence: aboutAudit ? [aboutAudit.baseSha, aboutAudit.headSha] : [],
+  });
+  const protectedUnchanged = p.affectedNonEditable.length === 0 && (!p.sharedTemplateChanged || scopedPriceRenderProven || scopedTemplateRenderProven || scopedDiscoveryProven || scopedAboutProven);
   checks.push({
     id: "protection:pricing-rendered-proof",
     title: "Exact-commit complete render proof for an approved pricing-only shared component",
@@ -497,7 +522,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     title: "Protected, observed and in-flight pages are unaffected",
     status: protectedUnchanged ? "PASS" : "FAIL",
     detail: protectedUnchanged
-      ? scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : scopedDiscoveryProven ? "Discovery-continuity repair proven to leave every page, the sitemap and robots.txt byte-for-byte equivalent; no protected, observed or held page is affected." : scopedTemplateRenderProven ? "Comparison-template change proven not to alter any protected, observed or held page; changes are confined to the reviewed wave and the pages that render its corrected data." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
+      ? scopedAboutProven ? "Scoped About design proven not to alter any protected presentation, content, SEO, links or behavior." : scopedPriceRenderProven ? "Pricing-only shared component proven not to alter held pages; owner-approved factual exceptions only." : scopedDiscoveryProven ? "Discovery-continuity repair proven to leave every page, the sitemap and robots.txt byte-for-byte equivalent; no protected, observed or held page is affected." : scopedTemplateRenderProven ? "Comparison-template change proven not to alter any protected, observed or held page; changes are confined to the reviewed wave and the pages that render its corrected data." : `${p.affectedUrls.length} page(s) would re-render; none is protected, observed or in flight.`
       : `${p.affectedNonEditable.length} affected page(s) are not editable${p.sharedTemplateChanged ? " and a shared template changed" : ""}: ${p.affectedNonEditable.slice(0, 4).map((a) => `${a.url} (${a.verdict})`).join(", ")}.`,
     evidence: [],
   });

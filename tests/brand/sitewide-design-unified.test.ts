@@ -3,7 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 const read = (p:string) => fs.readFileSync(p, "utf8");
 const routeFamilies = ["app/software/[slug]/page.tsx", "app/compare/[comparison]/page.tsx", "app/compare/page.tsx", "app/category/[slug]/page.tsx", "app/guides/page.tsx", "app/[guide]/page.tsx", "app/recommend/page.tsx", "app/recommend/results/page.tsx", "app/about/page.tsx", "app/contact/page.tsx", "app/newsletter/page.tsx", "app/research/saas-pricing-pressure-index-2026/page.tsx", "app/tools/saas-cost-calculator/page.tsx"];
-describe("unified About presentation across the public catalog",()=>{
+describe("About presentation across eligible public routes",()=>{
   it("has one shared palette and stylesheet imported at root",()=>{
     expect(read("app/layout.tsx")).toContain('import "./design-system.css"');
     const css=read("app/design-system.css");

@@ -1,3 +1,4 @@
+import { usesAboutDesign } from "@/lib/about-design-rollout";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -124,8 +125,10 @@ export default async function ComparePage({ params }: ComparePageProps) {
   const comparisonV2 = isComparisonTemplateV2(comparison);
   const verdict = comparisonV2 ? getComparisonVerdict(comparison) : null;
 
+  const aboutDesign = usesAboutDesign(`/compare/${comparison}`);
+
   return (
-    <main className="page-shell flex-1">
+    <main className={aboutDesign ? "page-shell flex-1" : "flex-1 py-16 sm:py-20"}>
       <JsonLd
         data={getBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
@@ -145,7 +148,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
         />
 
         <header className="mt-6 max-w-3xl">
-          <h1 className="page-title">
+          <h1 className={aboutDesign ? "page-title" : "text-4xl font-bold tracking-tight text-white sm:text-6xl"}>
             {data.title}
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400">{data.intro}</p>

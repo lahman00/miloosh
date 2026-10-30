@@ -11,7 +11,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 transition sm:p-7",
+        "min-w-0 rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition sm:p-7",
         className
       )}
     >
