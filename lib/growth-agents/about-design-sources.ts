@@ -57,6 +57,6 @@ export function verifyAboutDesignBuilds(input:{baseDir:string;candidateDir:strin
     const visual=JSON.parse(fs.readFileSync(input.visualFile,"utf8")) as AboutVisualReceipt;
     return auditAboutDesign({...input,before:before.html,after:after.html,beforeSitemap:before.sitemap,afterSitemap:after.sitemap,beforeRobots:before.robots,afterRobots:after.robots,baseCheckoutSha:git(input.baseDir,["rev-parse","HEAD"]),candidateCheckoutSha:git(input.candidateDir,["rev-parse","HEAD"]),baseClean:git(input.baseDir,["status","--porcelain","--untracked-files=all"])==="",candidateClean:git(input.candidateDir,["status","--porcelain","--untracked-files=all"])==="",baseBuild:aboutBuildFingerprint(input.baseDir),candidateBuild:aboutBuildFingerprint(input.candidateDir),protectedPaths:manifest.paths,requiredProtectedPaths,unreadProtectionSources:input.protection.sources.filter(s=>!s.ok).map(s=>s.id),sourceErrors,visual});
   } catch(error){
-    return {kind:"SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT",ok:false,baseSha:input.baseSha,headSha:input.headSha,pagesCompared:0,protectedPagesUnchanged:0,visualPairs:0,changedPages:0,sitemapIdentical:false,robotsIdentical:false,errors:[`AUDIT_UNREADABLE: ${String(error)}`]};
+    return {kind:"SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT",ok:false,baseSha:input.baseSha,headSha:input.headSha,pagesCompared:0,protectedPagesUnchanged:0,visualPairs:0,protectedExperimentPages:0,changedPages:0,sitemapIdentical:false,robotsIdentical:false,errors:[`AUDIT_UNREADABLE: ${String(error)}`]};
   }
 }
