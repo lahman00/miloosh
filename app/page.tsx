@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, CircleCheck, BookOpen, GitCompare, Layers, ShieldCheck, SlidersHorizontal } from "lucide-react";
 import { SoftwareMark } from "@/components/SoftwareMark";
 import { BuyerDesk } from "@/components/BuyerDesk";
+import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { getBuyerDeskComparisons, getBuyerDeskProducts } from "@/lib/buyer-desk-catalog";
 import { SoftwareDirectory } from "@/components/SoftwareDirectory";
 import { getAllSoftware, getSoftware } from "@/data/software";
@@ -146,7 +147,19 @@ export default function Home() {
           </div>
           <div className="matcher-strip">
             <div><h3>Your needs. Your shortlist.</h3><p>A few questions about your team and budget. Recommendations with a reason.</p></div>
-            <div className="matcher-strip-action"><Link href="/recommend" className="design-button">Find my software <ArrowRight size={17}/></Link><small>Free. No account needed.</small></div>
+            <div className="matcher-strip-action">
+              <Link href="/recommend" className="design-button">Find my software <ArrowRight size={17}/></Link>
+              <small>Free. No account needed.</small>
+              <TrackedInternalCtaLink
+                href="/decision-room"
+                sourcePath="/"
+                targetPath="/decision-room"
+                ctaName="homepage-decision-room"
+                className="text-action focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
+                Already comparing? Open Decision Room <ArrowUpRight size={16} aria-hidden="true" />
+              </TrackedInternalCtaLink>
+            </div>
           </div>
         </div>
       </section>
