@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SaasCostCalculator, type CalculatorProduct } from "@/components/tools/SaasCostCalculator";
 import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupForm";
 import { Card } from "@/components/Card";
+import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { getAllSoftware } from "@/data/software";
 import { getCategoryName } from "@/data/categories";
 
@@ -65,6 +66,14 @@ export default function SaasCostCalculatorPage() {
             <SaasCostCalculator products={products} />
           </Suspense>
         </div>
+
+        <Card className="mx-auto mt-10 max-w-2xl">
+          <h2 className="text-xl font-semibold text-white">Comparing individual software options?</h2>
+          <p className="mt-3 leading-7 text-zinc-400">The stack calculator and Decision Room answer different questions. Use Decision Room to shortlist specific tools, check uncertain costs and prepare a buyer decision brief without signing up.</p>
+          <TrackedInternalCtaLink href="/decision-room" sourcePath="/tools/saas-cost-calculator" targetPath="/decision-room" ctaName="calculator-decision-room" className="mt-5 inline-flex min-h-11 items-center rounded-lg bg-[var(--ink)] px-5 py-3 text-sm font-semibold text-[var(--surface)] hover:opacity-90 focus-visible:outline-offset-4">
+            Compare options in Decision Room <span aria-hidden="true" className="ml-2">→</span>
+          </TrackedInternalCtaLink>
+        </Card>
 
         <Card className="mx-auto mt-12 max-w-2xl">
           <h2 className="text-sm font-semibold text-white">Get pricing alerts for the tools you use</h2>
