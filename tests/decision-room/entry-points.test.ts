@@ -15,10 +15,15 @@ describe("safe Decision Room discovery links",()=>{
     expect(page).toContain('href="/decision-room" sourcePath="/tools/saas-cost-calculator" targetPath="/decision-room"');
     expect(page).toContain('className="mt-5 inline-flex min-h-11');
   });
-  it("does not alter SEO or render the room on shared templates",()=>{
+  it("keeps the room noindex and off protected software and comparison templates",()=>{
     expect(read("app/decision-room/page.tsx")).toContain("index: false");
     expect(read("app/software/[slug]/page.tsx")).not.toContain('"/decision-room"');
     expect(read("app/compare/[comparison]/page.tsx")).not.toContain('"/decision-room"');
-    expect(read("app/page.tsx")).not.toContain('"/decision-room"');
+    // Home is intentionally unprotected and now hosts an explicit, measured entry.
+    // The shared software/comparison templates still must not gain this CTA.
+    const held=JSON.parse(read("data/design/about-rollout-holds.json")) as {paths:string[]};
+    expect(held.paths).not.toContain("/");
+    expect(read("app/page.tsx")).toContain('ctaName="homepage-decision-room"');
+    expect(read("app/sitemap.ts")).not.toContain('"/decision-room"');
   });
 });
