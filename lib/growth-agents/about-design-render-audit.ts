@@ -1,6 +1,6 @@
 import { normalizeRenderedHtml } from "./rendered-diff";
 
-export const ABOUT_BASE_SHA = "dbd866a0ea2f2c8052aa27fa4eb3135462490986";
+export const ABOUT_BASE_SHA = "954cfb2f943496ec31b7ccaf325d368fb2d3e765";
 export const ABOUT_WIDTHS = [390, 768, 1440] as const;
 export type AboutVisualRow = {
   path: string; width: number; baseStatus: number; candidateStatus: number;
@@ -54,7 +54,7 @@ export function auditAboutDesign(input: {
   const held = new Set(input.protectedPaths);
   if(held.size < 193 || held.size !== input.protectedPaths.length) errors.push("PROTECTED_INVENTORY_INCOMPLETE_OR_DUPLICATE");
   for(const p of input.requiredProtectedPaths) if(!held.has(p)) errors.push(`HOLD_MISSING: ${p}`);
-  if(input.before.size < 1786 || input.after.size !== input.before.size) errors.push("PAGE_INVENTORY_INCOMPLETE");
+  if(input.before.size < 1788 || input.after.size !== input.before.size) errors.push("PAGE_INVENTORY_INCOMPLETE");
   for(const route of input.after.keys()) if(!input.before.has(route)) errors.push(`PAGE_ADDED: ${route}`);
   let changedPages=0, protectedPagesUnchanged=0;
   for(const [route, before] of input.before){

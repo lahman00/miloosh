@@ -492,7 +492,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     aboutAudit.kind === "SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT" &&
     git.baseSha === ABOUT_BASE_SHA && aboutAudit.baseSha === git.baseSha &&
     aboutAudit.headSha === git.headSha && /^[0-9a-f]{40}$/.test(git.headSha) &&
-    aboutAudit.pagesCompared >= 1786 && aboutAudit.protectedPagesUnchanged >= 193 &&
+    aboutAudit.pagesCompared >= 1788 && aboutAudit.protectedPagesUnchanged >= 193 &&
     aboutAudit.visualPairs === aboutAudit.protectedPagesUnchanged * 3 &&
     aboutAudit.sitemapIdentical && aboutAudit.robotsIdentical && !aboutAudit.errors.length &&
     git.changedFiles.length && git.changedFiles.every(isAboutDesignFile)

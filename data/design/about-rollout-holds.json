@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "baseSha": "dbd866a0ea2f2c8052aa27fa4eb3135462490986",
+  "baseSha": "954cfb2f943496ec31b7ccaf325d368fb2d3e765",
   "capturedOn": "2026-10-30",
   "policy": "Frozen union of all seven protection sources plus price-label holds. Never expires automatically. New holds must be reconciled before release.",
   "paths": [

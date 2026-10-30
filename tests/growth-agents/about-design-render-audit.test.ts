@@ -10,7 +10,7 @@ const html=(className="old")=>`<html><head><title>T</title><meta name="robots" c
 function fixture(){
   const protectedPaths=Array.from({length:193},(_,i)=>`/software/held-${i}`);
   const before=new Map<string,string>(protectedPaths.map(p=>[p.slice(1)+".html",html()]));
-  for(let i=193;i<1786;i++)before.set(`page-${i}.html`,html());
+  for(let i=193;i<1788;i++)before.set(`page-${i}.html`,html());
   const after=new Map(before);after.set("page-193.html",html("page-shell"));
   return {baseSha:ABOUT_BASE_SHA,headSha:head,baseCheckoutSha:ABOUT_BASE_SHA,candidateCheckoutSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,before,after,beforeSitemap:"<urlset>same</urlset>",afterSitemap:"<urlset>same</urlset>",beforeRobots:"Allow: /",afterRobots:"Allow: /",protectedPaths,requiredProtectedPaths:[...protectedPaths],unreadProtectionSources:[] as string[],sourceErrors:[] as string[],visual:{schemaVersion:1 as const,baseSha:ABOUT_BASE_SHA,headSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,rows:protectedPaths.flatMap(path=>ABOUT_WIDTHS.map(width=>({path,width,baseStatus:200,candidateStatus:200,basePixels:hash,candidatePixels:hash,baseStyles:hash,candidateStyles:hash,baseInteraction:hash,candidateInteraction:hash,errors:[] as string[]})))}};
 }
