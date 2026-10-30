@@ -2,19 +2,20 @@ import { normalizeRenderedHtml } from "./rendered-diff";
 
 export const ABOUT_BASE_SHA = "954cfb2f943496ec31b7ccaf325d368fb2d3e765";
 export const ABOUT_WIDTHS = [390, 768, 1440] as const;
+export const aboutVisualVariants = (pathname: string): readonly ("control" | "treatment")[] => pathname.startsWith("/software/") ? ["control", "treatment"] : ["control"];
 export type AboutVisualRow = {
-  path: string; width: number; baseStatus: number; candidateStatus: number;
+  path: string; width: number; variant: "control" | "treatment"; baseStatus: number; candidateStatus: number;
   basePixels: string; candidatePixels: string; baseStyles: string; candidateStyles: string;
   baseInteraction: string; candidateInteraction: string; errors: string[];
 };
 export type AboutVisualReceipt = {
-  schemaVersion: 1; baseSha: string; headSha: string; baseClean: boolean; candidateClean: boolean;
+  schemaVersion: 2; baseSha: string; headSha: string; baseClean: boolean; candidateClean: boolean;
   baseBuild: string; candidateBuild: string; rows: AboutVisualRow[];
 };
 export type AboutDesignAudit = {
   kind: "SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT"; ok: boolean;
   baseSha: string; headSha: string; pagesCompared: number; protectedPagesUnchanged: number;
-  visualPairs: number; changedPages: number; sitemapIdentical: boolean; robotsIdentical: boolean;
+  visualPairs: number; protectedExperimentPages: number; changedPages: number; sitemapIdentical: boolean; robotsIdentical: boolean;
   errors: string[];
 };
 
@@ -76,15 +77,15 @@ export function auditAboutDesign(input: {
   if(!sitemapIdentical) errors.push("SITEMAP_CHANGED_OR_MISSING");
   if(!robotsIdentical) errors.push("ROBOTS_CHANGED_OR_MISSING");
   const v=input.visual;
-  if(!v || v.schemaVersion!==1 || v.baseSha!==input.baseSha || v.headSha!==input.headSha || !v.baseClean || !v.candidateClean || v.baseBuild!==input.baseBuild || v.candidateBuild!==input.candidateBuild) errors.push("VISUAL_PROVENANCE_INVALID");
+  if(!v || v.schemaVersion!==2 || v.baseSha!==input.baseSha || v.headSha!==input.headSha || !v.baseClean || !v.candidateClean || v.baseBuild!==input.baseBuild || v.candidateBuild!==input.candidateBuild) errors.push("VISUAL_PROVENANCE_INVALID");
   const seen=new Set<string>();
   for(const row of v?.rows??[]){
-    const key=`${row.path}:${row.width}`;
-    if(seen.has(key)||!held.has(row.path)||!(ABOUT_WIDTHS as readonly number[]).includes(row.width)) errors.push(`VISUAL_ROW_UNEXPECTED: ${key}`);
+    const key=`${row.path}:${row.width}:${row.variant}`;
+    if(seen.has(key)||!held.has(row.path)||!aboutVisualVariants(row.path).includes(row.variant)||!(ABOUT_WIDTHS as readonly number[]).includes(row.width)) errors.push(`VISUAL_ROW_UNEXPECTED: ${key}`);
     seen.add(key);
     if(row.baseStatus!==200||row.candidateStatus!==200||row.errors.length) errors.push(`VISUAL_PAGE_ERROR: ${key}`);
     for(const [a,b] of [[row.basePixels,row.candidatePixels],[row.baseStyles,row.candidateStyles],[row.baseInteraction,row.candidateInteraction]]) if(!/^[a-f0-9]{64}$/.test(a)||a!==b) errors.push(`PROTECTED_VISUAL_OR_BEHAVIOR_CHANGED: ${key}`);
   }
-  for(const p of held) for(const width of ABOUT_WIDTHS) if(!seen.has(`${p}:${width}`)) errors.push(`VISUAL_ROW_MISSING: ${p}:${width}`);
-  return {kind:"SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT",ok:errors.length===0,baseSha:input.baseSha,headSha:input.headSha,pagesCompared:input.before.size,protectedPagesUnchanged,visualPairs:seen.size,changedPages,sitemapIdentical,robotsIdentical,errors};
+  for(const p of held) for(const width of ABOUT_WIDTHS) for(const variant of aboutVisualVariants(p)) if(!seen.has(`${p}:${width}:${variant}`)) errors.push(`VISUAL_ROW_MISSING: ${p}:${width}:${variant}`);
+  return {kind:"SCOPED_ABOUT_DESIGN_FULL_BUILD_AND_BROWSER_AUDIT",ok:errors.length===0,baseSha:input.baseSha,headSha:input.headSha,pagesCompared:input.before.size,protectedPagesUnchanged,visualPairs:seen.size,protectedExperimentPages:[...held].filter(p=>p.startsWith("/software/")).length,changedPages,sitemapIdentical,robotsIdentical,errors};
 }

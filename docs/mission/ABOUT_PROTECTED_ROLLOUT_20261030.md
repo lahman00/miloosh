@@ -10,6 +10,8 @@ Every held route requires browser evidence at 390, 768 and 1440 pixels: HTTP 200
 
 The browser loads off-screen images before capture and uses software rasterization on both sides. A repeated baseline/baseline/candidate control found identical pixels at all three widths with this setting; GPU rendering had produced small antialiasing differences. The acceptance threshold remains exact pixel equality, with no tolerance or ignored regions.
 
+The software-page CTA experiment assigns copy by anonymous visitor ID. Browser comparisons seed the same visitor ID on both origins before hydration and verify the expected label. Every protected software page is checked separately in both control and treatment at all three widths; comparison pages use the control fixture because that experiment is not enabled there. This prevents comparing different experiment arms by chance. Receipt schema 2 records the arm, and Guardian rejects a missing treatment row or a regression in either arm. The production experiment code and assignment logic are unchanged.
+
 The existing six engineering gates, production-lineage check, protections and three earlier narrow proof paths remain in force. A green preview does not authorize release by itself. No experiment or measurement window is closed by this change.
 
 Verification commands (replace paths with the actual clean checkouts and evidence location):

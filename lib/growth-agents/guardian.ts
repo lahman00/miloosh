@@ -493,7 +493,8 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     git.baseSha === ABOUT_BASE_SHA && aboutAudit.baseSha === git.baseSha &&
     aboutAudit.headSha === git.headSha && /^[0-9a-f]{40}$/.test(git.headSha) &&
     aboutAudit.pagesCompared >= 1788 && aboutAudit.protectedPagesUnchanged >= 193 &&
-    aboutAudit.visualPairs === aboutAudit.protectedPagesUnchanged * 3 &&
+    aboutAudit.protectedExperimentPages >= 0 && aboutAudit.protectedExperimentPages <= aboutAudit.protectedPagesUnchanged &&
+    aboutAudit.visualPairs === (aboutAudit.protectedPagesUnchanged + aboutAudit.protectedExperimentPages) * 3 &&
     aboutAudit.sitemapIdentical && aboutAudit.robotsIdentical && !aboutAudit.errors.length &&
     git.changedFiles.length && git.changedFiles.every(isAboutDesignFile)
   );
@@ -502,7 +503,7 @@ export function runGuardian(inputs: GuardianInputs): GuardianReport {
     title: "Scoped About design preserves every protected page, SEO and behavior",
     status: !p.sharedTemplateChanged ? "INFO" : scopedAboutProven ? "PASS" : aboutAudit ? "FAIL" : "NOT_RUN",
     detail: scopedAboutProven
-      ? `${aboutAudit!.pagesCompared} complete pages checked; ${aboutAudit!.protectedPagesUnchanged} protected pages identical; ${aboutAudit!.visualPairs} responsive pixel/style/interaction pairs identical; sitemap and robots identical.`
+      ? `${aboutAudit!.pagesCompared} complete pages checked; ${aboutAudit!.protectedPagesUnchanged} protected pages identical; ${aboutAudit!.visualPairs} responsive pixel/style/interaction pairs identical, including both CTA experiment arms on ${aboutAudit!.protectedExperimentPages} software pages; sitemap and robots identical.`
       : aboutAudit ? aboutAudit.errors.slice(0, 5).join("; ") || "About proof scope or provenance mismatch."
       : "No exact-commit protected About rollout proof supplied.",
     evidence: aboutAudit ? [aboutAudit.baseSha, aboutAudit.headSha] : [],
