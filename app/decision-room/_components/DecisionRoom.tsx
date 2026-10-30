@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import styles from "../decision-room.module.css";
 import { BriefSection } from "./BriefSection";
@@ -47,6 +48,13 @@ export function DecisionRoom({ index }: { index: RoomIndexEntry[] }) {
             <CompareSection room={r.room} products={products} status={r.detailsStatus} retry={r.retryDetails} />
             <CostSection room={r.room} products={products} update={r.update} />
             <BriefSection room={r.room} products={products} announce={r.setNotice} generated={r.briefGenerated} onPrinting={setPrinting} />
+            <section id="switching-lab" className={`${styles.section} ${styles.noPrint}`} aria-labelledby="switching-lab-h">
+              <h2 id="switching-lab-h">Next: test them hands-on</h2>
+              <div className={styles.keep}>
+                <p className={styles.lead} style={{ marginTop: 0 }}>The Switching Lab uses the products you are comparing here. Plan a short trial, record what worked and what is blocked, and check migration risks before you switch. Your results stay in this browser.</p>
+                <p style={{ marginTop: 16 }}><Link href="/decision-room/switching-lab" className={`${styles.btn} ${styles.btnPrimary}`}>Open the Switching Lab</Link></p>
+              </div>
+            </section>
           </>
         )}
       </div>
