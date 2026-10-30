@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { ABOUT_BASE_SHA, ABOUT_WIDTHS, auditAboutDesign } from "@/lib/growth-agents/about-design-render-audit";
 import { aboutCssScopeErrors } from "@/lib/growth-agents/about-design-sources";
@@ -14,6 +15,7 @@ function fixture(){
   return {baseSha:ABOUT_BASE_SHA,headSha:head,baseCheckoutSha:ABOUT_BASE_SHA,candidateCheckoutSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,before,after,beforeSitemap:"<urlset>same</urlset>",afterSitemap:"<urlset>same</urlset>",beforeRobots:"Allow: /",afterRobots:"Allow: /",protectedPaths,requiredProtectedPaths:[...protectedPaths],unreadProtectionSources:[] as string[],sourceErrors:[] as string[],visual:{schemaVersion:1 as const,baseSha:ABOUT_BASE_SHA,headSha:head,baseClean:true,candidateClean:true,baseBuild:hash,candidateBuild:hash,rows:protectedPaths.flatMap(path=>ABOUT_WIDTHS.map(width=>({path,width,baseStatus:200,candidateStatus:200,basePixels:hash,candidatePixels:hash,baseStyles:hash,candidateStyles:hash,baseInteraction:hash,candidateInteraction:hash,errors:[] as string[]})))}};
 }
 describe("scoped About design proof",()=>{
+  it("confines every rule in the shipped stylesheet to the eligible page containers",()=>expect(aboutCssScopeErrors(fs.readFileSync("app/design-system.css","utf8"))).toEqual([]));
   it("accepts a complete exact-build proof with every protected viewport unchanged",()=>expect(auditAboutDesign(fixture()).ok).toBe(true));
   it.each(["baseSha","headSha","baseCheckoutSha","candidateCheckoutSha"] as const)("rejects wrong %s",key=>{const f=fixture();f[key]="c".repeat(40);expect(auditAboutDesign(f).ok).toBe(false);});
   it("rejects dirty source and incomplete static output",()=>{const f=fixture();f.candidateClean=false;f.after.delete("page-200.html");expect(auditAboutDesign(f).errors).toContain("CHECKOUT_PROVENANCE_INVALID");expect(auditAboutDesign(f).errors).toContain("PAGE_INVENTORY_INCOMPLETE");});

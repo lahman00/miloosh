@@ -1,6 +1,6 @@
 /* Site-wide page system, ported from the About page (Oct 29, 2026).
    Presentation only. The home page (.home-design) keeps its own layout; every
-   inner route renders through <main class="page-shell">. Colours come from the
+   eligible inner route renders through <main class="page-shell">. Colours come from the
    semantic tokens in globals.css. Rules here are unlayered on purpose so they
    settle legacy dark-theme utilities (border-white/10, bg-white/[0.03], ...)
    into intentional light surfaces. */
@@ -13,8 +13,8 @@
 
 /* ---- Page shell, title, intro ------------------------------------------ */
 .page-shell { padding-block: var(--space-8); color: var(--ink); }
-.page-shell-centered { padding-block: var(--space-8); }
-.page-title {
+.page-shell.page-shell-centered { padding-block: var(--space-8); }
+.page-shell .page-title {
   margin-top: var(--space-5);
   font-size: clamp(2.25rem, 4vw, 3.5rem);
   line-height: 1.12;
@@ -22,7 +22,7 @@
   letter-spacing: -.03em;
   color: var(--ink);
 }
-.page-intro,
+.page-shell .page-intro,
 .page-shell header > .page-title + p {
   max-width: 62ch;
   margin-top: var(--space-5);
@@ -30,13 +30,13 @@
   font-size: 1.125rem;
   line-height: 1.8;
 }
-.page-meta { margin-top: var(--space-3); color: var(--subtle); font-size: .875rem; }
+.page-shell .page-meta { margin-top: var(--space-3); color: var(--subtle); font-size: .875rem; }
 .page-shell header { max-width: 48rem; }
 .page-shell header > .page-title { margin-top: var(--space-4); }
 .page-shell header > p:first-child:not(.page-intro) { letter-spacing: .14em; }
 @media (max-width: 540px) {
   .page-shell { padding-block: var(--space-7); }
-  .page-title { font-size: 2.25rem; }
+  .page-shell .page-title { font-size: 2.25rem; }
 }
 
 /* ---- Type weight: medium-editorial instead of ultra-bold ---------------- */
