@@ -36,7 +36,10 @@ export type FirstPartyEventType =
   | "cta_impression"
   | "cta_click"
   | "newsletter_signup"
-  | "premium_intent_clicked";
+  | "premium_intent_clicked"
+  | "decision_room_product_saved"
+  | "decision_room_compare_configured"
+  | "decision_room_brief_generated";
 
 export interface BaseAnalyticsEvent {
   type: FirstPartyEventType;
@@ -249,6 +252,30 @@ export interface PremiumIntentClickedEvent extends BaseAnalyticsEvent {
   ctaLocation?: string;
 }
 
+/**
+ * Decision Room (2026-10-30). Interaction events only: opening the room is already recorded by the page_view event for /decision-room,
+ * so no load-time event type is added (an extra type fired on every render would feed the traffic classifier).
+ * No private data is ever carried: no note, cost, current tool or free-text requirement.
+ */
+export interface DecisionRoomProductSavedEvent extends BaseAnalyticsEvent {
+  type: "decision_room_product_saved";
+  softwareSlug: string;
+  ctaLocation?: string;
+}
+export interface DecisionRoomCompareConfiguredEvent extends BaseAnalyticsEvent {
+  type: "decision_room_compare_configured";
+  /** Number of products being compared. */
+  resultCount: number;
+  /** Number of criteria selected (built-in plus custom). */
+  rank: number;
+}
+export interface DecisionRoomBriefGeneratedEvent extends BaseAnalyticsEvent {
+  type: "decision_room_brief_generated";
+  resultCount: number;
+  /** create, print, text or link. */
+  source: string;
+}
+
 export type FirstPartyEvent =
   | PageViewEvent
   | EngagedViewEvent
@@ -270,7 +297,10 @@ export type FirstPartyEvent =
   | CtaImpressionEvent
   | CtaClickEvent
   | NewsletterSignupEvent
-  | PremiumIntentClickedEvent;
+  | PremiumIntentClickedEvent
+  | DecisionRoomProductSavedEvent
+  | DecisionRoomCompareConfiguredEvent
+  | DecisionRoomBriefGeneratedEvent;
 
 const BLOB_PREFIX = "first-party-analytics/";
 const LOCAL_FALLBACK_PATH = analyticsLocalPath("first-party-analytics.json");
