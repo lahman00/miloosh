@@ -1,5 +1,6 @@
 /** Exact scope of the owner-requested protected-route rollout. No data, SEO, analytics or experiment edits. */
 export const ABOUT_DESIGN_FILES: readonly string[] = [
+  ".agents/skills/miloosh-growth-director/references/run-book.md",
   "app/[guide]/page.tsx",
   "app/_design/PremiumLegalPageLayout.tsx",
   "app/_design/premium.module.css",
@@ -53,6 +54,7 @@ export const ABOUT_DESIGN_FILES: readonly string[] = [
   "tests/brand/sitewide-design-unified.test.ts",
   "tests/brand/staged-about-design-isolation.test.ts",
   "tests/growth-agents/about-design-render-audit.test.ts",
-  "tests/growth-agents/guardian.test.ts"
+  "tests/growth-agents/guardian.test.ts",
+  "tests/growth-agents/read-only-guard.test.ts"
 ];
 export const isAboutDesignFile = (file: string): boolean => ABOUT_DESIGN_FILES.includes(file);

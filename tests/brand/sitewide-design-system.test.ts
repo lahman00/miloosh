@@ -1,9 +1,18 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { createHash } from "node:crypto";
 
 /** Contract for the About-derived page system (presentation only). */
 const read = (p: string) => readFileSync(p, "utf8");
+// These isolated, noindex buyer tools shipped while this PR was open. Preserve
+// their current production layout rather than absorbing them into this rollout.
+const isolatedProductionFiles: Record<string, string> = {
+  "app/decision-room/page.tsx": "e98b1800b4e4e0138aceaaad47e71e50d809ade3e5853ac796016b6ce1f3ebcc",
+  "app/decision-room/switching-lab/page.tsx": "e700f6cb2d09134e5f71bca26e9d25039d7f4a8bc9e6b813ca15fe226acf767c",
+  "app/decision-room/decision-room.module.css": "6d8f4a87341d970ccc6a88cbed64ab9ddd15615ef2fc48b53cee2322a907a95e",
+  "app/decision-room/switching-lab/switching-lab.module.css": "1432acbbea151c97c42d9428bd5465339071552b2711352e32313f314da1abc8",
+};
 
 function routeFiles(dir: string, out: string[] = []) {
   for (const name of readdirSync(dir)) {
@@ -31,14 +40,20 @@ describe("site-wide page system", () => {
     expect(css).not.toMatch(/gradient|backdrop-filter/);
   });
 
-  it("renders every inner route through page-shell with a page-title H1", () => {
+  it("renders eligible inner routes through page-shell with a page-title H1", () => {
     for (const file of routeFiles("app")) {
       const src = read(file);
-      if (file === "app/page.tsx") continue;
+      if (file === "app/page.tsx" || isolatedProductionFiles[file]) continue;
       if (src.includes("<main")) expect(src, file).toContain("page-shell");
       expect(src, file).not.toMatch(/<h1 className="[^"]*font-bold/);
     }
     expect(read("components/LegalPageLayout.tsx")).toContain('className="page-title"');
+  });
+
+  it("preserves the isolated production buyer-tool pages and styles byte for byte", () => {
+    for (const [file, hash] of Object.entries(isolatedProductionFiles)) {
+      expect(createHash("sha256").update(read(file)).digest("hex"), file).toBe(hash);
+    }
   });
 
   it("keeps home on its own layout", () => {

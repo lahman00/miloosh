@@ -14,7 +14,7 @@ const source = (file: string) => fs.readFileSync(path.join(LIB, file), "utf8");
 const allModules = fs.readdirSync(LIB).filter((f) => f.endsWith(".ts"));
 
 /** Modules that gather facts from git, the hosting platform or the registries. Everything else must be pure. */
-const ADAPTERS = new Set(["protection-sources.ts", "guardian-sources.ts", "inventory-loader.ts", "partners.ts", "director-cli.ts", "live-check-source.ts"]);
+const ADAPTERS = new Set(["protection-sources.ts", "guardian-sources.ts", "about-design-sources.ts", "inventory-loader.ts", "partners.ts", "director-cli.ts", "live-check-source.ts"]);
 const PURE = allModules.filter((f) => !ADAPTERS.has(f));
 
 /** Type-only imports are erased at compile time, so they can never run anything. */
@@ -59,7 +59,7 @@ describe("adapters only read", () => {
   const FORBIDDEN_GIT_VERBS = /\b(commit|push|pull|fetch|checkout|switch|reset|clean|stash|merge(?!-base)|rebase|add|rm|mv|restore|cherry-pick|apply|am|tag|gc|prune|remote|config|update-ref|symbolic-ref)\b/;
 
   it("issues only read-only git subcommands", () => {
-    for (const file of ["protection-sources.ts", "guardian-sources.ts"]) {
+    for (const file of ["protection-sources.ts", "guardian-sources.ts", "about-design-sources.ts"]) {
       const code = stripComments(source(file));
       const calls = [...code.matchAll(/\b(?:git|gitOrNull)\(\s*[^,]+,\s*\[\s*"([a-z-]+)"(?:\s*,\s*"([^"]+)")?/g)];
       expect(calls.length, file).toBeGreaterThan(0);
@@ -80,7 +80,7 @@ describe("adapters only read", () => {
   });
 
   it("never lets git take an optional lock on a repository it only reads", () => {
-    for (const file of ["protection-sources.ts", "guardian-sources.ts"]) {
+    for (const file of ["protection-sources.ts", "guardian-sources.ts", "about-design-sources.ts"]) {
       const code = source(file);
       expect(code).toMatch(/--no-optional-locks/);
       expect(code).toMatch(/GIT_OPTIONAL_LOCKS:\s*"0"/);
@@ -95,6 +95,15 @@ describe("adapters only read", () => {
     expect(ghCalls.length).toBe(1);
     expect(ghCalls[0]![1]).toBe("api");
     expect(ghCalls[0]![2]).not.toMatch(/-X|--method|-f\b|-F\b|--field|--input|POST|PATCH|PUT|DELETE/);
+  });
+
+  it("the About proof adapter only reads local builds and git facts", () => {
+    const code = stripComments(source("about-design-sources.ts"));
+    const fsCalls = [...new Set([...code.matchAll(/fs\.([A-Za-z]+)\(/g)].map(m => m[1]))].sort();
+    expect(fsCalls).toEqual(["readFileSync", "readdirSync"]);
+    expect(code).not.toMatch(/\bfetch\s*\(|spawnSync\(|node:(http|https|net)|vercel|\bgh\b/);
+    expect([...code.matchAll(/execFileSync\(/g)]).toHaveLength(1);
+    expect(code).toMatch(/execFileSync\("git",\["--no-optional-locks",\.\.\.args\]/);
   });
 
   it("runs only the repository's own gate commands, without bypass flags, and only when asked", () => {

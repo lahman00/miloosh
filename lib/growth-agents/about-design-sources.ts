@@ -8,7 +8,7 @@ import { auditAboutDesign, type AboutVisualReceipt, type AboutDesignAudit } from
 import { isAboutDesignFile } from "./about-design-scope";
 import type { ProtectionSnapshot } from "./protection";
 
-const git=(root:string,args:string[])=>execFileSync("git",["--no-optional-locks",...args],{cwd:root,encoding:"utf8",maxBuffer:64*1024*1024}).trim();
+const git=(root:string,args:string[])=>execFileSync("git",["--no-optional-locks",...args],{cwd:root,encoding:"utf8",maxBuffer:64*1024*1024,env:{...process.env,GIT_OPTIONAL_LOCKS: "0"}}).trim();
 export const sha256=(data:string|Buffer)=>createHash("sha256").update(data).digest("hex");
 /** Binds a browser receipt to actual HTML, robots, sitemap, scripts, fonts and CSS. */
 export function aboutBuildFingerprint(root:string):string {
