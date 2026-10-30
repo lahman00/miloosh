@@ -64,7 +64,9 @@ export async function main(argv:string[]):Promise<void>{
             page.on("pageerror",error=>errors.push(`${i}:${error.message}`));
             page.on("requestfailed",req=>{if(req.method()==="GET"&&req.url().startsWith(urls[i]!))errors.push(`ASSET_FAILURE:${i}:${req.url()}`);});
             const response=await page.goto(urls[i]+job.p,{waitUntil:"networkidle",timeout:45000});
-            await page.evaluate(async()=>{await document.fonts.ready;await Promise.all(Array.from(document.images).map(img=>img.decode().catch(()=>{})));});
+            // Off-screen lazy images do not finish decoding until requested.
+            // Load them on both sides before comparing the full-page pixels.
+            await page.evaluate(async()=>{await document.fonts.ready;for(const img of document.images)img.loading="eager";await Promise.all(Array.from(document.images).map(img=>img.decode().catch(()=>{})));});
             const computed=await styles(page);
             const pixels=await page.screenshot({fullPage:true,animations:"disabled"});
             const interactions=await behavior(page);
