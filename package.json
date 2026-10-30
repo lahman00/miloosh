@@ -21,6 +21,7 @@
     "growth:first-party-funnel": "tsx scripts/growth/first-party-funnel.ts",
     "growth:daily-report": "tsx scripts/growth/daily-revenue-report.ts",
     "growth:money-path": "tsx scripts/growth/money-path-inventory.ts",
+    "growth:evidence-maintenance": "tsx scripts/growth/evidence-maintenance.ts",
     "growth:gsc-factual": "tsx scripts/growth/gsc-factual-report.ts",
     "growth:crawl-graph": "tsx scripts/growth/crawl-graph-diagnostic.ts",
     "growth:cohort-evidence": "tsx scripts/growth/organic-cohort-evidence.ts",

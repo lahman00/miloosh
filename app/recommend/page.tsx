@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Compass } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { RecommendWizard } from "@/components/recommend/RecommendWizard";
 import { initialRecommendAnswers } from "@/lib/recommend/query";
 
@@ -44,6 +45,14 @@ export default async function RecommendPage({
         <div className="mt-12">
           <RecommendWizard initialAnswers={initialAnswers} fastEcommerceEntry={fastEcommerceEntry} />
         </div>
+
+        <aside aria-labelledby="decision-workspace-title" className="mt-10 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-7">
+          <h2 id="decision-workspace-title" className="text-xl font-semibold text-white">Already considering a few tools?</h2>
+          <p className="mt-3 leading-7 text-zinc-400">Save your shortlist, check what is documented or unknown, plan your first-year cost, and prepare a sourced buyer brief. No account or email needed.</p>
+          <TrackedInternalCtaLink href="/decision-room" sourcePath="/recommend" targetPath="/decision-room" ctaName="recommend-decision-room" className="mt-5 inline-flex min-h-11 items-center rounded-lg bg-[var(--ink)] px-5 py-3 text-sm font-semibold text-[var(--surface)] hover:opacity-90 focus-visible:outline-offset-4">
+            Open Decision Room <span aria-hidden="true" className="ml-2">→</span>
+          </TrackedInternalCtaLink>
+        </aside>
       </Container>
     </main>
   );

@@ -1,0 +1,47 @@
+/* Switching Lab: route-scoped additions to decision-room.module.css on the same approved warm premium tokens (app/globals.css :root).
+   No globals, no shared templates, no other route. */
+.back { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; color: var(--ink); font-weight: 650; text-underline-offset: 4px; }
+.back:focus-visible, .switch button:focus-visible, .option input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.stage { display: inline-flex; align-items: center; gap: var(--space-2); }
+.saveLine { min-height: 44px; display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); font-size: .875rem; color: var(--muted); }
+.saveWarn { color: #6b2a20; }
+.products { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0 0; padding: 0; list-style: none; }
+.products li { display: inline-flex; flex-direction: column; justify-content: center; min-height: 44px; padding: var(--space-2) var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--canvas); }
+.products small { color: var(--subtle); font-size: .75rem; }
+.switch { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.switch button { min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-weight: 650; cursor: pointer; }
+.switch button[aria-pressed="true"] { border-color: var(--ink); background: var(--citrine); }
+.group { margin-top: var(--space-5); }
+.group > h3 { font-size: 1.125rem; font-weight: 650; }
+.entry { margin-top: var(--space-3); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--canvas); min-width: 0; }
+.entry legend { float: left; width: 100%; padding: 0; font-weight: 650; line-height: 1.5; }
+.entry legend + * { clear: both; }
+.options { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.option { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; padding: 0 var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface); font-size: .9375rem; font-weight: 600; cursor: pointer; }
+.option input { width: 20px; height: 20px; accent-color: var(--ink); flex: none; }
+.option:has(input:checked) { border-color: var(--ink); background: var(--surface-soft); }
+.noteField { margin-top: var(--space-3); }
+.confirm { margin-top: var(--space-3); padding: var(--space-4); border: 1px solid var(--ink); border-radius: var(--radius-control); background: var(--surface-soft); }
+.confirm p { line-height: 1.6; }
+.summaryGrid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; margin-top: var(--space-5); }
+@media (min-width: 880px) { .summaryGrid { grid-template-columns: repeat(2, 1fr); } }
+.summaryCard { padding: var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+.summaryCard h3 { font-size: 1.25rem; font-weight: 650; }
+.summaryCard h4 { margin-top: var(--space-4); font-size: .8125rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--subtle); }
+.summaryCard ul { margin: var(--space-2) 0 0; padding-left: 1.25rem; line-height: 1.6; }
+.verdict { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-2); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--ink); font-size: .8125rem; font-weight: 700; }
+.verdictBlocked { border-color: #8a3b2e; background: #fbefeb; color: #6b2a20; }
+.verdictClear { background: var(--ink); color: #fff; }
+.verdictOpen { border-style: dashed; }
+.preview { margin-top: var(--space-4); }
+.preview summary { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; cursor: pointer; }
+.preview summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pre { max-height: 420px; overflow: auto; margin-top: var(--space-3); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--canvas); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.printOnly { display: none; }
+.nextCard { margin-top: var(--space-8); }
+@media print {
+  .printOnly { display: block; }
+  .appendix h2 { font-size: 1.5rem; font-weight: 650; }
+  .appendix h3 { margin-top: var(--space-5); font-size: 1.125rem; font-weight: 650; break-after: avoid; }
+  .appendix ul, .appendix ol { margin: var(--space-2) 0 0; padding-left: 1.25rem; line-height: 1.6; }
+}
