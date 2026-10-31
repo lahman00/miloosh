@@ -99,7 +99,7 @@ export type KeepCurrent = { name: string; yearlyCost: number | null; formula: st
 /** "Stay with the current tool" is a real outcome: its yearly cost comes only from the buyer's own monthly figure. */
 export function keepCurrentCost(state: RoomState): KeepCurrent {
   const m = state.currentTool.monthlyCost;
-  return { name: state.currentTool.name || "Your current tool", yearlyCost: m === null ? null : r2(m * 12), formula: m === null ? "Unknown: enter what you pay today" : `${m} ${state.currency} per month x 12 months (your entry)` };
+  return { name: state.currentTool.name.trim() || "Your current tool", yearlyCost: m === null ? null : r2(m * 12), formula: m === null ? "Unknown: enter what you pay today" : `${m} ${state.currency} per month x 12 months (your entry)` };
 }
 
 export function formatMoney(amount: number, currency: RoomCurrency): string {

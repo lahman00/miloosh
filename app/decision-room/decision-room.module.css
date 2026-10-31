@@ -34,6 +34,7 @@
 .itemName { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
 .itemMeta { font-size: .8125rem; color: var(--subtle); }
 .empty { padding: var(--space-5); border: 1px dashed var(--line); border-radius: var(--radius-card); color: var(--muted); line-height: 1.6; margin-top: var(--space-4); }
+.empty a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .banner { margin-top: var(--space-4); padding: var(--space-3) var(--space-4); border: 1px solid var(--ink); border-radius: var(--radius-control); background: var(--surface-soft); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; justify-content: space-between; }
 .error { margin-top: var(--space-4); padding: var(--space-3) var(--space-4); border: 1px solid #8a3b2e; border-radius: var(--radius-control); background: #fbefeb; color: #6b2a20; }
 .check { display: flex; align-items: center; gap: var(--space-3); min-height: 44px; font-size: .9375rem; }

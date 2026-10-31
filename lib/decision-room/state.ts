@@ -38,6 +38,9 @@ export const emptyRoom = (): RoomState => ({
 
 export const hasRoomContent = (s: RoomState) => s.saved.length > 0 || s.criteria.length > 0 || s.custom.length > 0;
 
+/** For fields the buyer is typing into: keeps a trailing space and line breaks so typing is not undone on every keystroke. Trim where the value is used. */
+const typed = (v: unknown, max: number) =>
+  typeof v === "string" ? v.replace(/[^\S\n]+/g, " ").replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, "").replace(/\n{3,}/g, "\n\n").slice(0, max) : "";
 const text = (v: unknown, max: number) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, max) : "");
 const money = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) && v >= 0 && v <= 10_000_000 ? Math.round(v * 100) / 100 : null);
 const count = (v: unknown): number | null => (typeof v === "number" && Number.isInteger(v) && v >= 1 && v <= 100_000 ? v : null);
@@ -73,8 +76,8 @@ export function cleanRoom(input: unknown, isKnown: SlugCheck): RoomState {
     team: count(r.team),
     currency: ROOM_CURRENCIES.includes(r.currency as RoomCurrency) ? (r.currency as RoomCurrency) : "USD",
     costs,
-    currentTool: { name: text(ct.name, 80), monthlyCost: money(ct.monthlyCost) },
-    note: text(r.note, 500),
+    currentTool: { name: typed(ct.name, 80), monthlyCost: money(ct.monthlyCost) },
+    note: typed(r.note, 500),
     importedFromDesk: r.importedFromDesk === true,
   };
 }

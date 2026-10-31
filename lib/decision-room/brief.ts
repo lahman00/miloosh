@@ -56,7 +56,7 @@ export function buildBrief(state: RoomState, products: readonly RoomProduct[], g
 
   return {
     generatedOn,
-    requirements: { labels: criteria.filter((c) => !c.id.startsWith("custom_")).map((c) => c.label), custom: state.custom.map((c) => ({ label: c.label, kind: c.kind })), team: state.team, currency: state.currency, note: state.note },
+    requirements: { labels: criteria.filter((c) => !c.id.startsWith("custom_")).map((c) => c.label), custom: state.custom.map((c) => ({ label: c.label, kind: c.kind })), team: state.team, currency: state.currency, note: state.note.trim() },
     options, keepCurrent: keepCurrentCost(state), unresolved: [...new Set(unresolved)], sources,
     nextSteps: [
       "Confirm the exact plan you need, its price, billing period and any minimum term with each vendor.",

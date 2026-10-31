@@ -59,11 +59,26 @@ const sourceList = (urls: Array<string | null | undefined>) => {
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 function haystack(p: RoomProduct): string[] {
-  return [...p.features, ...p.tags, p.description, p.bestFor, ...p.faq.flatMap((f) => [f.question, f.answer])].filter(Boolean);
+  return [...p.features, ...p.tags, p.description, p.bestFor, ...p.faq.map((f) => f.answer)].filter(Boolean);
+}
+
+const NEGATION = /\b(no|not|never|without|cannot|can't|isn't|aren't|doesn't|don't|unavailable|lacks?|n\/a)\b/i;
+
+/** A mention counts only when no negation sits close to it ("No public API", "SSO is not supported"). A negated sentence stays Unknown, never a documented yes. */
+function mentionsPositively(text: string, pattern: RegExp): boolean {
+  const flags = pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`;
+  const re = new RegExp(pattern.source, flags);
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const window = text.slice(Math.max(0, m.index - 40), m.index + m[0].length + 40);
+    if (!NEGATION.test(window)) return true;
+    if (m[0].length === 0) re.lastIndex += 1;
+  }
+  return false;
 }
 
 function keywordEvidence(p: RoomProduct, id: string, label: string, pattern: RegExp, verifyHint: string): Evidence {
-  const hit = haystack(p).find((text) => pattern.test(text));
+  const hit = haystack(p).find((text) => mentionsPositively(text, pattern));
   if (hit) {
     return {
       criterionId: id, label, status: "documented_limited", value: "yes",
