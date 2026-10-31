@@ -11,7 +11,7 @@ const marker = Symbol.for("miloosh.next-lint-glob-compat.v2");
  * 16.4.2 was reviewed on 2026-10-23: its dist/ is byte-identical to 16.4.0 (only package.json differs),
  * and the single fast-glob call in dist/utils/get-root-dirs.js is unchanged.
  * This is NOT a general fast-glob replacement. The npm override removes
- * braces; this boundary maps the caller to published glob@13.0.6.
+ * braces; this boundary maps the caller to published glob@14.0.3.
  * No vendor package source, Next rule, or audit result is patched on disk.
  */
 export function installNextLintGlobCompatibility() {
@@ -22,8 +22,8 @@ export function installNextLintGlobCompatibility() {
   const pluginRequire = createRequire(require.resolve("@next/eslint-plugin-next"));
   const globPath = pluginRequire.resolve("fast-glob");
   const globManifest = pluginRequire("fast-glob/package.json");
-  if (globManifest.name !== "glob" || globManifest.version !== "13.0.6") {
-    throw new Error("Expected the reviewed glob@13.0.6 scoped override; refuse an unknown lint dependency.");
+  if (globManifest.name !== "glob" || globManifest.version !== "14.0.3") {
+    throw new Error("Expected the reviewed glob@14.0.3 scoped override; refuse an unknown lint dependency.");
   }
   const implementation = pluginRequire("fast-glob");
   if (implementation[marker]) return;
