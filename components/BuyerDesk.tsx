@@ -8,6 +8,8 @@ import { SoftwareMark } from "@/components/SoftwareMark";
 import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { BUYER_DESK_KEY, DESK_CATEGORIES, addDeskPair, categorySaved, cleanContext, deskCategory, deskMotionAllowed, emptyDesk, hasDeskResearch, makeDeskBrief, parseDesk, toggleDeskProduct, validateDeskPair } from "@/lib/buyer-desk";
 import type { DeskCategory, DeskIntent, DeskProduct, DeskState } from "@/lib/buyer-desk";
+import { encodeShare } from "@/lib/decision-room/share";
+import { emptyRoom } from "@/lib/decision-room/state";
 import styles from "./BuyerDesk.module.css";
 
 const situations = [
@@ -112,6 +114,8 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
     { label: "Source check recorded", values: picks.map(p => p.checkedAt) },
     { label: "Before committing", values: picks.map(() => "Confirm current plan, total cost, usage limits and migration requirements.") },
   ];
+  // Only trusted product ids enter the URL. BuyerDesk notes and priorities stay local.
+  const roomHref = `/decision-room?${encodeShare({ ...emptyRoom(), saved: picks.map((p) => p.slug) })}`;
   const briefText = makeDeskBrief(state, products);
   async function copyBrief() {
     try { await navigator.clipboard.writeText(briefText); setMessage("Decision brief copied."); }
@@ -186,7 +190,8 @@ export function BuyerDesk({ products, catalogue, comparisons }: { products: Desk
           <tr><th scope="row">Pricing & full research</th>{picks.map(p => <td key={p.slug}><ResearchLink href={`/software/${p.slug}`} name="shortlist-research" className={styles.textButton}>Explore {p.name}<ArrowRight size={16}/></ResearchLink></td>)}</tr>
         </tbody></table></div>
         <div className={styles.actions}>{comparisons.filter(pair => saved.includes(pair.a) && saved.includes(pair.b)).map(pair => <ResearchLink key={pair.href} href={pair.href} name="full-comparison" className={styles.textButton}>{products.find(p => p.slug === pair.a)?.name} vs {products.find(p => p.slug === pair.b)?.name}<ArrowRight size={16}/></ResearchLink>)}</div>
-        <div className={styles.briefCallout}><div><h3>Turn your research into a conversation.</h3><p>Your options, priorities and questions — one decision brief.</p></div><button className={styles.primary} onClick={() => setBrief(true)}>Create my decision brief <ArrowRight size={18}/></button></div>
+        <div className={styles.briefCallout}><div><h3>Take the next step with your shortlist.</h3><p>Create a brief here, or examine the choices and tradeoffs in Decision Room.</p></div><div className={styles.actions}><button className={styles.primary} onClick={() => setBrief(true)}>Create my decision brief <ArrowRight size={18}/></button><TrackedInternalCtaLink href={roomHref} sourcePath="/" targetPath="/decision-room" ctaName="buyer-desk-shortlist-decision-room" className={styles.secondary}>Continue in Decision Room <ArrowRight size={18}/></TrackedInternalCtaLink></div></div>
+        <p className={styles.note}>The Decision Room link includes only saved tool identifiers, never your notes or priorities. Existing Decision Room choices are not overwritten.</p>
       </>}
       {brief && picks.length >= 2 && <section className={styles.brief} aria-labelledby="desk-brief-title"><div className={styles.heading}><div><h3 id="desk-brief-title">Your decision brief</h3><p>Take it to your team or into your next product demo.</p></div><button className={styles.textButton} onClick={() => setBrief(false)}>Close brief</button></div><pre>{briefText}</pre><div className={styles.actions}><button className={styles.primary} onClick={copyBrief}>Copy brief</button><button className={styles.secondary} onClick={downloadBrief}>Download .txt</button></div><p className={styles.note}>The brief is generated locally. Your written priorities are not sent to Miloosh or a vendor.</p></section>}
       {storageWarning && <p className={styles.error} role="status">Browser storage is unavailable. Your selections work on this page but may not survive a reload. Download your brief to keep it.</p>}

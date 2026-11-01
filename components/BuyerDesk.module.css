@@ -125,7 +125,7 @@
   .comparison { padding-block: 44px; } .listNav { gap: 8px; } .listNav button { padding-inline: 10px; gap: 6px; }
   .empty { display: block; } .empty .primary { margin-top: 23px; width: 100%; }
   .controls { gap: 12px; } .controls label,.controls button { font-size: 12px; }
-  .briefCallout .primary { width: 100%; } .brief { padding: 22px; }
+  .briefCallout .primary,.briefCallout .secondary { width: 100%; } .brief { padding: 22px; }
   .checklist { grid-template-columns: 1fr; gap: 30px; padding-block: 51px; }
   .shelf { bottom: 10px; width: calc(100% - 20px); padding: 12px; gap: 10px; } .shelf > span { gap: 7px; } .shelf small { flex-basis: 100%; } .shelf .limeButton { padding-inline: 12px; gap: 8px; font-size: 12px; }
 }
