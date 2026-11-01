@@ -25,7 +25,7 @@ export function DecisionRoom({ index }: { index: RoomIndexEntry[] }) {
           <p className={styles.eyebrow}>Decision Room</p>
           <h1 className={styles.title}>Decide with evidence, not hype</h1>
           <p className={styles.intro}>Save the software you are considering, say what matters to you, see what is verified and what is still unknown, estimate the cost, and leave with a sourced brief you can share with your team.</p>
-          <p className={styles.privacy}><span aria-hidden="true">🔒</span><span>No account and no email. Your shortlist and notes stay in this browser. Miloosh does not rank products here and affiliate status never changes the evidence.</span></p>
+          <p className={styles.privacy}><span aria-hidden="true">🔒</span><span>No account and no email. Your shortlist and notes stay in this browser; only the product ids you pick are requested from Miloosh to load their details. Miloosh does not rank products here and affiliate status never changes the evidence.</span></p>
           <nav aria-label="Decision Room steps"><ol className={styles.steps}>{STEPS.map(([id, label], i) => (<li key={id}><a href={`#${id}`}><span className={styles.stepNum} aria-hidden="true">{i + 1}</span>{label}</a></li>))}</ol></nav>
         </header>
 

@@ -49,7 +49,7 @@ export function CostSection({ room, products, update }: { room: RoomState; produ
             <ul className={styles.list} aria-label={`Cost lines for ${p.name}`}>
               {r.lines.map((l) => (<li key={l.id} className={styles.item}><span>{l.label}</span><span><strong>{l.amount === null ? "Unknown" : formatMoney(l.amount, r.currency)}</strong> <span className={styles.formula}>{l.formula}</span></span></li>))}
             </ul>
-            <p className={styles.total}>{r.knownTotal === null ? "Unknown" : formatMoney(r.knownTotal, r.currency)} <span className={styles.counts}>{r.knownTotal === null ? "nothing known yet" : r.complete ? "first-year total" : "known parts only"}</span></p>
+            <p className={styles.total}>{r.knownTotal === null ? "Unknown" : r.complete ? formatMoney(r.knownTotal, r.currency) : "Incomplete"} <span className={styles.counts}>{r.knownTotal === null ? "nothing known yet" : r.complete ? "first-year total" : `${formatMoney(r.knownTotal, r.currency)} known so far; not a total`}</span></p>
             {!r.complete ? <ul className={styles.warn}>{r.missing.map((m) => <li key={m}>{m}</li>)}</ul> : null}
             <details><summary>Assumptions and exclusions</summary><ul>{r.assumptions.map((a) => <li key={a}>{a}</li>)}</ul></details>
           </article>

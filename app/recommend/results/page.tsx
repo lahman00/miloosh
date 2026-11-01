@@ -6,6 +6,7 @@ import { Badge } from "@/components/Badge";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ButtonLink } from "@/components/ButtonLink";
+import { TrackedInternalCtaLink } from "@/components/TrackedInternalCtaLink";
 import { TrackedRecommendationLink } from "@/components/recommend/TrackedRecommendationLink";
 import { TrackedComparisonLink } from "@/components/recommend/TrackedComparisonLink";
 import { RecommendResultsAnalytics } from "@/components/recommend/RecommendResultsAnalytics";
@@ -283,6 +284,25 @@ export default async function RecommendResultsPage({ searchParams }: ResultsPage
             );
           })}
         </div>
+
+        {recommendations.length > 0 ? (
+          <aside aria-labelledby="results-next-step" className="mt-14 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+            <h2 id="results-next-step" className="text-xl font-semibold text-white">Compare these on evidence before you decide</h2>
+            <p className="mt-3 max-w-2xl leading-7 text-zinc-400">
+              Add these {Math.min(recommendations.length, 4)} to a Decision Room shortlist to see what is documented and what is still unknown, plan your first-year cost and prepare a sourced brief.
+              Keeping your current tool is a valid outcome. No account or email. Only the product names travel in the link, never your answers.
+            </p>
+            <TrackedInternalCtaLink
+              href={`/decision-room?p=${recommendations.slice(0, 4).map((rec) => rec.software.slug).join(".")}`}
+              sourcePath="/recommend/results"
+              targetPath="/decision-room"
+              ctaName="recommend-results-decision-room"
+              className="mt-5 inline-flex min-h-11 items-center rounded-lg border border-white/15 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-offset-4"
+            >
+              Open these in Decision Room <span aria-hidden="true" className="ml-2">→</span>
+            </TrackedInternalCtaLink>
+          </aside>
+        ) : null}
 
         <section className="mt-16 border-t border-white/10 pt-14 text-center">
           <SectionHeading

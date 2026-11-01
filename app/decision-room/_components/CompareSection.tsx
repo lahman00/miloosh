@@ -39,11 +39,11 @@ export function CompareSection({ room, products, status, retry }: { room: RoomSt
         <div className={styles.error} role="alert">Product details could not be loaded. Your shortlist is safe. <button type="button" className={styles.btn} onClick={retry}>Try again</button></div>
       ) : null}
       {room.saved.length < 2 ? (
-        <p className={styles.empty}>Save at least two products to compare them side by side.</p>
+        <p className={styles.empty}>Save at least two products to compare them side by side. <a href="#shortlist" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: 3 }}>Go to your shortlist</a>.</p>
       ) : products.length < 2 ? (
-        <p className={styles.empty} role="status">{status === "loading" ? "Loading product evidence…" : "Choose at least two products from your shortlist to compare."}</p>
+        <p className={styles.empty} role="status">{status === "loading" ? "Loading product evidence…" : <>Choose at least two products from your shortlist to compare. <a href="#shortlist" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: 3 }}>Go to your shortlist</a>.</>}</p>
       ) : criteria.length === 0 ? (
-        <p className={styles.empty}>Choose at least one requirement above to see the evidence for each product.</p>
+        <p className={styles.empty}>Choose at least one requirement above to see the evidence for each product. <a href="#requirements" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: 3 }}>Go to requirements</a>.</p>
       ) : (
         <>
           <div className={styles.tableWrap} role="region" aria-label="Evidence comparison table, scrolls sideways when wide" tabIndex={0}>
@@ -71,7 +71,7 @@ export function CompareSection({ room, products, status, retry }: { room: RoomSt
       )}
       <div className={styles.keep}>
         <h3 style={{ fontWeight: 650 }}>Or: keep your current tool, or wait</h3>
-        <p className={styles.lead} style={{ marginTop: 8 }}>Not buying is a real outcome. If the unknowns above matter to you, staying with {room.currentTool.name || "what you use today"} until you have verified them is a sound decision.</p>
+        <p className={styles.lead} style={{ marginTop: 8 }}>Not buying is a real outcome. If the unknowns above matter to you, staying with {room.currentTool.name.trim() || "what you use today"} until you have verified them is a sound decision.</p>
       </div>
     </section>
   );

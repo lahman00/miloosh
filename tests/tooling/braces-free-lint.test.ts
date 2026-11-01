@@ -32,8 +32,8 @@ describe("braces-free lint dependency boundary", () => {
     const lock = JSON.parse(readFileSync("package-lock.json", "utf8"));
     expect(manifest.dependencies.next).toBe("16.4.2");
     expect(manifest.devDependencies["eslint-config-next"]).toBe("16.4.2");
-    // Exactly two reviewed overrides: the lint glob replacement and the zod pin of @vercel/cli-config (GHSA-mrhx-c7xc-m3w5, no upstream release drops the exact pin).
-    expect(manifest.overrides).toEqual({ "@vercel/cli-config": { zod: "4.6.7" }, "@next/eslint-plugin-next@16.4.2": { "fast-glob": "npm:glob@13.0.6" } });
+    // Exactly three reviewed overrides: the lint glob replacement and the zod pin of @vercel/cli-config (GHSA-mrhx-c7xc-m3w5, no upstream release drops the exact pin).
+    expect(manifest.overrides).toEqual({ "@vercel/cli-config": { zod: "4.6.7" }, "@next/eslint-plugin-next@16.4.2": { "fast-glob": "npm:glob@14.0.3" }, "minimatch": "11.0.3" });
     expect(manifest.scripts["growth:record-gates"]).toBe("tsx scripts/growth/record-gates.ts");
     const guardian = readFileSync("lib/growth-agents/guardian-sources.ts", "utf8");
     for (const check of ["npm audit --audit-level=moderate --json", "npx vitest run --reporter=json", "npm run validate:data", "npm run lint", "npx tsc --noEmit", "npm run build"]) {
@@ -41,10 +41,10 @@ describe("braces-free lint dependency boundary", () => {
     }
     expect(manifest.devDependencies.picomatch).toBe("4.0.4");
     expect(Object.keys(lock.packages).some((key) => /node_modules\/(braces|micromatch)$/.test(key))).toBe(false);
-    const alias = lock.packages["node_modules/@next/eslint-plugin-next/node_modules/fast-glob"];
+    const alias = lock.packages["node_modules/fast-glob"];
     expect(alias.name).toBe("glob");
-    expect(alias.version).toBe("13.0.6");
-    expect(alias.resolved).toBe("https://registry.npmjs.org/glob/-/glob-13.0.6.tgz");
+    expect(alias.version).toBe("14.0.3");
+    expect(alias.resolved).toBe("https://registry.npmjs.org/glob/-/glob-14.0.3.tgz");
   });
 
   it("fails closed on an unsupported glob API call", () => {

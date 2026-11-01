@@ -82,8 +82,10 @@ export function useRoom(index: RoomIndexEntry[]) {
   }, [activeSlugs.length]);
 
   const acceptShared = useCallback(() => {
-    update((s) => { let next = s; for (const slug of derived.pendingShared) next = toggleSaved(next, slug, known); return next; });
-    setNotice("Shared products added to your shortlist.");
+    let added = 0;
+    update((s) => { let next = s; for (const slug of derived.pendingShared) { const after = toggleSaved(next, slug, known); if (after.saved.length > next.saved.length) added += 1; next = after; } return next; });
+    const skipped = derived.pendingShared.length - added;
+    setNotice(skipped > 0 ? `Added ${added} of ${derived.pendingShared.length}. Your shortlist holds at most 12 products.` : "Shared products added to your shortlist.");
   }, [derived.pendingShared, known, update]);
 
   const banner: { kind: "imported" | "shared"; count: number } | null =
