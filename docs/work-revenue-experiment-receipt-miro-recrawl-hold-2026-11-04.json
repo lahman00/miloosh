@@ -1,0 +1,36 @@
+{
+  "registeredAt": "2026-11-04",
+  "purpose": "Fail-closed release protection for Miro. This receipt is a protection record, not a claim that a Google measurement period has started.",
+  "experiments": [
+    {
+      "id": "miro-recrawl-gated-release-observation-20261104",
+      "page": "/software/miro",
+      "decision": "MEASURING",
+      "intervention": "RECRAWL_GATED_RELEASE_OBSERVATION_HOLD",
+      "recordedAt": "2026-11-04",
+      "measurementWindowDays": 28,
+      "productionChangeDate": "2026-10-07",
+      "productionSourceCommit": "2387e6b",
+      "lastGoogleCrawlObservedDate": "2026-08-10",
+      "postChangeRecrawlVerifiedAt": null,
+      "measurementStartAt": null,
+      "day14ReviewAt": null,
+      "day28ReviewAt": null,
+      "result": null,
+      "releaseAuthorized": false,
+      "reason": "The 2026-10-07 Miro production content change has not been followed by a verified Google recrawl in the latest documented GSC inspection. Elapsed calendar days or Git log retention cannot authorize release.",
+      "closureRequirements": [
+        "Obtain authenticated GSC URL Inspection evidence of a Google crawl after the 2026-10-07 production change; preserve property, exact canonical URL, crawl timestamp, retrieval date and evidence reference.",
+        "Set measurementStartAt only after verifying the post-change crawl. Compare matched page/query and search-type windows at 14 and 28 days with the documented Growth OS rules and account for reporting lag.",
+        "Document owner review and explicit closure decision in this receipt; never infer closure from elapsed time, zero data or missing GSC access.",
+        "Reconcile PR #85 against current production lineage and rerun all six commit-bound release gates, complete protection/rendered-diff checks, previews and release approval before any merge or deployment."
+      ],
+      "evidenceSources": [
+        "GitHub PR #85 release hold: https://github.com/lahman00/miloosh/pull/85",
+        "Git history: data/software/miro.json in production-source commit 2387e6b, 2026-10-07",
+        "GSC observation documented 2026-11-04: last observed crawl 2026-08-10; fresh authenticated recheck required before closure",
+        "lib/growth-agents/protection-sources.ts: MEASURING receipts are treated as PROTECTED until explicitly closed"
+      ]
+    }
+  ]
+}
