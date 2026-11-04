@@ -16,7 +16,7 @@ describe("Miro recrawl-gated measurement hold", () => {
         sources: registry.sources,
         signals: registry.signals,
       });
-      const result = protectionFor("/software/miro", snapshot);
+      const result = protectionFor("https://miloosh.com/software/miro", snapshot);
       expect(result.verdict).toBe("PROTECTED");
       expect(result.reasons.some((reason) =>
         reason.source === "measuring-receipts" &&
