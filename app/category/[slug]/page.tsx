@@ -15,11 +15,9 @@ import { getSoftwareByCategory } from "@/lib/related";
 import { getBreadcrumbJsonLd, getCategoryJsonLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { isIndexableComparison } from "@/data/seo/index-allowlist";
 import { generateCategorySynthesis, getCategoryFeaturedComparisons } from "@/lib/category";
-import {
-  GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
-  shouldPrioritizeComparisonDiscovery,
-} from "@/data/seo/gsc-sitemap-comparison-cohort";
+import { GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getRoleGuidesForCategory } from "@/data/guides/registry";
 
 type CategoryPageProps = {
@@ -65,7 +63,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const categorySlugs = new Set(software.map((item) => item.slug));
   const roleGuides = getRoleGuidesForCategory(category.slug);
   const featuredComparisons = getCategoryFeaturedComparisons(category.slug, PUBLISHED_COMPARISONS.length)
-    .filter((item) => shouldPrioritizeComparisonDiscovery(item.comparisonSlug))
+    .filter((item) => isIndexableComparison(item.comparisonSlug))
     .sort(
       (a, b) =>
         Number(explicitDiscoveryPriority.has(b.comparisonSlug)) -
@@ -77,7 +75,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const comparisons = PUBLISHED_COMPARISONS.filter(
     ([slugA, slugB]) =>
       (categorySlugs.has(slugA) || categorySlugs.has(slugB)) &&
-      shouldPrioritizeComparisonDiscovery(getComparisonSlug(slugA, slugB))
+      isIndexableComparison(getComparisonSlug(slugA, slugB))
   )
     .map(([slugA, slugB]) => {
       const softwareA = getSoftware(slugA);

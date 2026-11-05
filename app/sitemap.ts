@@ -5,10 +5,9 @@ import { getAllSoftware } from "@/data/software";
 import { getAllCategories } from "@/data/categories";
 import { getAllRoleGuides } from "@/data/guides/registry";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
-import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
 import { getDecisionMoneyPage } from "@/data/growth/decision-money-pages";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
-import { isComparisonDiscoveryEligible, isSoftwareDiscoveryEligible } from "@/lib/discovery-continuity";
+import { isIndexableComparison, isIndexableSoftware } from "@/data/seo/index-allowlist";
 
 /**
  * ROAD TO THE FIRST 1,000 REAL HUMANS mission (2026-08-22) — real finding:
@@ -36,7 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const softwareBySlug = new Map(allSoftware.map((s) => [s.slug, s]));
 
   const softwarePages: MetadataRoute.Sitemap = allSoftware
-    .filter((software) => isSoftwareDiscoveryEligible(software))
+    // SEO reset 2026-11-06: the index allowlist is the single source of truth for what we submit.
+    .filter((software) => isIndexableSoftware(software.slug))
     .map((software) => ({
       url: `${SITE_URL}/software/${software.slug}`,
       lastModified: getFirstRevenuePage(software.slug)
@@ -68,12 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...PUBLISHED_COMPARISONS.filter(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);
       const softwareB = softwareBySlug.get(slugB);
-      return Boolean(
-        softwareA &&
-          softwareB &&
-          shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB)) &&
-          isComparisonDiscoveryEligible(softwareA, softwareB, getComparisonSlug(slugA, slugB))
-      );
+      return Boolean(softwareA && softwareB && isIndexableComparison(getComparisonSlug(slugA, slugB)));
     }).map(([slugA, slugB]) => {
       const softwareA = softwareBySlug.get(slugA);
       const softwareB = softwareBySlug.get(slugB);

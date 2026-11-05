@@ -1,4 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { isIndexableComparison, isIndexableSoftware } from "@/data/seo/index-allowlist";
+import { DISCOVERY_INTENTIONAL_REMOVALS } from "@/data/seo/discovery-intentional-removals";
 import sitemap from "@/app/sitemap";
 import { getAllSoftware, getSoftware, type Software } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
@@ -143,9 +145,14 @@ describe("sitemap across frozen dates", () => {
   const today = at("2026-10-27");
   const todayByPath = new Map(today.map((e) => [path(e.url), e]));
 
-  it("today's sitemap equals the baseline admission set (current-day no-op)", () => {
-    const inSitemap = [...todayByPath.keys()].filter((p) => p.startsWith("/software/") || p.startsWith("/compare/") && p !== "/compare");
-    expect(new Set(inSitemap)).toEqual(new Set(baselinePaths));
+  it("SEO reset 2026-11-06: every baseline URL is either still submitted or carries a reviewed removal", () => {
+    const inSitemap = new Set([...todayByPath.keys()].filter((p) => p.startsWith("/software/") || p.startsWith("/compare/") && p !== "/compare"));
+    const waived = new Set(DISCOVERY_INTENTIONAL_REMOVALS.map((removal) => removal.path));
+    for (const p of baselinePaths) expect(inSitemap.has(p) || waived.has(p), p).toBe(true);
+    for (const p of inSitemap) {
+      const [, family, slug] = p.split("/");
+      expect(family === "software" ? isIndexableSoftware(slug) : isIndexableComparison(slug), p).toBe(true);
+    }
   });
 
   it.each(["2026-10-30", "2026-11-03", "2026-11-30", "2026-12-31"])("keeps every admitted URL, adds none and preserves lastmod on %s", (date) => {
@@ -169,19 +176,18 @@ describe("sitemap across frozen dates", () => {
     for (const suppressed of GSC_SITEMAP_SUPPRESSED_COMPARISONS.filter((slug) => !priority.has(slug))) expect(later.has(`/compare/${suppressed}`), suppressed).toBe(false);
   });
 
-  it("keeps software related-comparison links on the same predicate as the sitemap", () => {
+  it("keeps software related-comparison links on the same predicate as the sitemap (index allowlist)", () => {
     const page = readFileSync("app/software/[slug]/page.tsx", "utf8");
     const map = readFileSync("app/sitemap.ts", "utf8");
     for (const source of [page, map]) {
-      expect(source).toContain("isComparisonDiscoveryEligible(");
+      expect(source).toContain("isIndexableComparison(");
       expect(source).not.toMatch(/isComparisonIndexingReady\(/);
     }
-    // Every admitted pair a software page would link is in the sitemap at a future date.
+    // Every pair a software page would link is in the sitemap, at any future build date.
     const later = new Set(at("2026-12-31").map((e) => path(e.url)));
     for (const [a, b] of PUBLISHED_COMPARISONS) {
       const slug = getComparisonSlug(a, b);
-      const linked = shouldSubmitComparisonToSitemap(slug) && isComparisonDiscoveryEligible(getSoftware(a)!, getSoftware(b)!, slug, new Date("2026-12-31T12:00:00Z"));
-      expect(later.has(`/compare/${slug}`), slug).toBe(linked);
+      expect(later.has(`/compare/${slug}`), slug).toBe(isIndexableComparison(slug));
     }
   });
 

@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
     distDir: ".next-miloosh-qa",
     typescript: { tsconfigPath: "tsconfig.qa.json" },
   } : {}),
+  async headers() {
+    return [
+      {
+        // *.vercel.app deployment hosts are copies of the site. Search Console lists vercel.app as the top "linking
+        // site" (92 of 100 external links), so Google has crawled such copies. Only miloosh.com should be indexed.
+        source: "/:path*",
+        has: [{ type: "host", value: "(?<deployment>.+)\\.vercel\\.app" }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Preserve old shared/footer links without creating a second research page.
