@@ -33,6 +33,7 @@ import { getCategoryName } from "@/data/categories";
 import { getRelatedSoftware } from "@/lib/related";
 import { getStoreRelatedSoftware } from "@/lib/store-related";
 import { getComparisonSlug, getComparisonsInvolving } from "@/data/comparisons";
+import { isIndexableComparison, isIndexableSoftware } from "@/data/seo/index-allowlist";
 import {
   getSoftwareCtaRel,
   getSoftwareCtaUrl,
@@ -57,8 +58,6 @@ import {
 } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { getSoftwareSearchIntentNote, getSoftwareSerpOverride } from "@/data/seo/serp-overrides";
-import { shouldSubmitComparisonToSitemap } from "@/data/seo/gsc-sitemap-comparison-cohort";
-import { isComparisonDiscoveryEligible } from "@/lib/discovery-continuity";
 
 type SoftwarePageProps = {
   params: Promise<{
@@ -88,6 +87,8 @@ export async function generateMetadata({ params }: SoftwarePageProps): Promise<M
     title,
     description,
     alternates: { canonical: `/software/${slug}` },
+    // SEO reset 2026-11-06: only allowlisted software profiles are offered to Google; the rest stay usable but noindex.
+    ...(isIndexableSoftware(slug) ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       title,
       description,
@@ -116,10 +117,7 @@ export default async function SoftwarePage({ params }: SoftwarePageProps) {
     .filter((item): item is NonNullable<typeof item> => item !== null)
     .filter(({ softwareA, softwareB }) => {
       const comparisonSlug = getComparisonSlug(softwareA.slug, softwareB.slug);
-      return (
-        shouldSubmitComparisonToSitemap(comparisonSlug) &&
-        isComparisonDiscoveryEligible(softwareA, softwareB, comparisonSlug)
-      );
+      return isIndexableComparison(comparisonSlug);
     });
   const alternativeGuide = getAlternativeGuide(software.slug);
   const buyerChecklist = getBuyerChecklist(software.slug);

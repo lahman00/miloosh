@@ -8,6 +8,7 @@ import { CompareGrid } from "@/components/CompareGrid";
 import { JsonLd } from "@/components/JsonLd";
 import { getSoftware } from "@/data/software";
 import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
+import { isIndexableComparison } from "@/data/seo/index-allowlist";
 import {
   GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
   shouldPrioritizeComparisonDiscovery,
@@ -39,6 +40,7 @@ export default function ComparePage() {
       sourceIndex,
       explicitDiscoveryPriority: explicitDiscoveryPriority.get(comparisonSlug) ?? null,
       discoveryPriority: shouldPrioritizeComparisonDiscovery(comparisonSlug),
+      indexable: isIndexableComparison(comparisonSlug),
     };
   })
     .filter((item): item is NonNullable<typeof item> => item !== null)
@@ -47,6 +49,8 @@ export default function ComparePage() {
         const aRank = a.explicitDiscoveryPriority ?? Number.POSITIVE_INFINITY;
         const bRank = b.explicitDiscoveryPriority ?? Number.POSITIVE_INFINITY;
         return (
+          // SEO reset 2026-11-06: every indexable comparison is in the server-rendered first page of cards.
+          Number(b.indexable) - Number(a.indexable) ||
           aRank - bRank ||
           Number(b.discoveryPriority) - Number(a.discoveryPriority) ||
           a.sourceIndex - b.sourceIndex

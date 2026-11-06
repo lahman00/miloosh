@@ -43,6 +43,7 @@ import { getComparisonVerdict } from "@/data/seo/comparison-verdicts";
 import { ComparisonPricingTable } from "@/components/ComparisonPricingTable";
 import { ComparisonVerdictCard } from "@/components/ComparisonVerdictCard";
 import { sourcedCons, sourcedPros } from "@/lib/comparison-v2";
+import { isIndexableComparison } from "@/data/seo/index-allowlist";
 
 type ComparePageProps = {
   params: Promise<{ comparison: string }>;
@@ -86,6 +87,8 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
     title: serpOverride?.title ?? data.title,
     description: serpOverride?.description ?? data.metaDescription,
     alternates: { canonical: `/compare/${comparison}` },
+    // SEO reset 2026-11-06: only allowlisted comparisons are offered to Google; the rest stay usable but noindex.
+    ...(isIndexableComparison(comparison) ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       title: serpOverride?.title ?? data.title,
       description: serpOverride?.description ?? data.metaDescription,
@@ -117,7 +120,10 @@ export default async function ComparePage({ params }: ComparePageProps) {
   );
   const uniqueRelatedComparisons = Array.from(
     new Map(relatedComparisons.map((pair) => [getComparisonSlug(pair[0], pair[1]), pair])).values()
-  ).slice(0, 4);
+  )
+    // Link only to comparisons we ask Google to index, so internal links concentrate on the pages that matter.
+    .filter(([a, b]) => isIndexableComparison(getComparisonSlug(a, b)))
+    .slice(0, 4);
 
   const relatedSoftware = getComparisonRelatedSoftware(softwareA, softwareB, 3);
   const isStoreComparison = softwareA.category === "ecommerce" || softwareB.category === "ecommerce";

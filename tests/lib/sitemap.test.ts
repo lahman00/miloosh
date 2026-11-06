@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { isIndexableComparison, isIndexableSoftware } from "@/data/seo/index-allowlist";
 import sitemap, { COMPARISON_TEMPLATE_UPDATED_AT } from "@/app/sitemap";
 import { getAllSoftware } from "@/data/software";
 import { FIRST_REVENUE_CONTENT_UPDATED_AT, getFirstRevenuePage } from "@/data/revenue/first-revenue-cohort";
@@ -7,19 +8,17 @@ import { PUBLISHED_COMPARISONS, getComparisonSlug } from "@/data/comparisons";
 import {
   GSC_SITEMAP_PRIORITY_INCLUDE_COMPARISONS,
   GSC_SITEMAP_SUPPRESSED_COMPARISONS,
-  shouldSubmitComparisonToSitemap,
 } from "@/data/seo/gsc-sitemap-comparison-cohort";
-import { isComparisonDiscoveryEligible, isSoftwareDiscoveryEligible } from "@/lib/discovery-continuity";
 
-describe("sitemap discovery admission (strict quality gate plus explicit baseline continuity)", () => {
-  it("submits only software pages that pass the publication-quality gate", () => {
+describe("sitemap discovery admission (index allowlist, SEO reset 2026-11-06)", () => {
+  it("submits exactly the allowlisted software pages (SEO reset 2026-11-06)", () => {
     const entries = sitemap();
     const software = getAllSoftware();
 
     for (const item of software) {
       const entry = entries.find((e) => e.url.endsWith(`/software/${item.slug}`));
-      if (!isSoftwareDiscoveryEligible(item)) {
-        expect(entry, `${item.slug} should stay out of the sitemap until it is strictly ready or a baseline-admitted continuity page`).toBeUndefined();
+      if (!isIndexableSoftware(item.slug)) {
+        expect(entry, `${item.slug} is not in the index allowlist and must stay out of the sitemap`).toBeUndefined();
         continue;
       }
 
@@ -31,7 +30,7 @@ describe("sitemap discovery admission (strict quality gate plus explicit baselin
     }
   });
 
-  it("submits a comparison only when discovery rules and both product quality gates pass", () => {
+  it("submits a comparison only when it is in the index allowlist (SEO reset 2026-11-06)", () => {
     const entries = sitemap();
     const allSoftware = getAllSoftware();
     const softwareBySlug = new Map(allSoftware.map((s) => [s.slug, s]));
@@ -42,12 +41,7 @@ describe("sitemap discovery admission (strict quality gate plus explicit baselin
     const expectedPairs = PUBLISHED_COMPARISONS.filter(([slugA, slugB]) => {
       const a = softwareBySlug.get(slugA);
       const b = softwareBySlug.get(slugB);
-      return Boolean(
-        a &&
-          b &&
-          shouldSubmitComparisonToSitemap(getComparisonSlug(slugA, slugB)) &&
-          isComparisonDiscoveryEligible(a, b, getComparisonSlug(slugA, slugB))
-      );
+      return Boolean(a && b && isIndexableComparison(getComparisonSlug(slugA, slugB)));
     });
 
     expect(comparisonUrls.size).toBe(expectedPairs.length);
@@ -56,12 +50,7 @@ describe("sitemap discovery admission (strict quality gate plus explicit baselin
       const slug = getComparisonSlug(slugA, slugB);
       const a = softwareBySlug.get(slugA);
       const b = softwareBySlug.get(slugB);
-      const shouldSubmit = Boolean(
-        a &&
-          b &&
-          shouldSubmitComparisonToSitemap(slug) &&
-          isComparisonDiscoveryEligible(a, b, getComparisonSlug(slugA, slugB))
-      );
+      const shouldSubmit = Boolean(a && b && isIndexableComparison(slug));
       const included = [...comparisonUrls].some((url) => url.endsWith(`/compare/${slug}`));
       expect(included, slug).toBe(shouldSubmit);
     }
